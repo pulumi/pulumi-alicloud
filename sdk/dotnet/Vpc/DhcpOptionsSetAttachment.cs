@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// For information about VPC Dhcp Options Set and how to use it, see [What is Dhcp Options Set](https://www.alibabacloud.com/help/doc-detail/174112.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.153.0+.
+    /// &gt; **NOTE:** Available since v1.153.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,16 +28,18 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
     ///     {
-    ///         VpcName = "test",
-    ///         CidrBlock = "172.16.0.0/12",
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
     ///     var exampleDhcpOptionsSet = new AliCloud.Vpc.DhcpOptionsSet("exampleDhcpOptionsSet", new()
     ///     {
-    ///         DhcpOptionsSetName = "example_value",
-    ///         DhcpOptionsSetDescription = "example_value",
+    ///         DhcpOptionsSetName = name,
+    ///         DhcpOptionsSetDescription = name,
     ///         DomainName = "example.com",
     ///         DomainNameServers = "100.100.2.136",
     ///     });

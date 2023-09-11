@@ -19,9 +19,9 @@ import javax.annotation.Nullable;
 /**
  * Provides an Alicloud Serverless App Engine (SAE) Application Load Balancer Attachment resource.
  * 
- * For information about Serverless App Engine (SAE) Load Balancer Intranet Attachment and how to use it, see [alicloud.sae.LoadBalancerIntranet](https://help.aliyun.com/document_detail/126360.html).
+ * For information about Serverless App Engine (SAE) Load Balancer Intranet Attachment and how to use it, see [alicloud.sae.LoadBalancerIntranet](https://www.alibabacloud.com/help/en/sae/latest/bindslb).
  * 
- * &gt; **NOTE:** Available in v1.165.0+.
+ * &gt; **NOTE:** Available since v1.165.0.
  * 
  * ## Example Usage
  * 
@@ -32,6 +32,23 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.sae.Namespace;
+ * import com.pulumi.alicloud.sae.NamespaceArgs;
+ * import com.pulumi.alicloud.sae.Application;
+ * import com.pulumi.alicloud.sae.ApplicationArgs;
+ * import com.pulumi.alicloud.slb.ApplicationLoadBalancer;
+ * import com.pulumi.alicloud.slb.ApplicationLoadBalancerArgs;
  * import com.pulumi.alicloud.sae.LoadBalancerIntranet;
  * import com.pulumi.alicloud.sae.LoadBalancerIntranetArgs;
  * import com.pulumi.alicloud.sae.inputs.LoadBalancerIntranetIntranetArgs;
@@ -48,14 +65,75 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new LoadBalancerIntranet(&#34;example&#34;, LoadBalancerIntranetArgs.builder()        
- *             .appId(&#34;your_application_id&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
+ *             .namespaceId(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s:example%s&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),result)))
+ *             .namespaceName(name)
+ *             .namespaceDescription(name)
+ *             .enableMicroRegistration(false)
+ *             .build());
+ * 
+ *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
+ *             .appDescription(name)
+ *             .appName(name)
+ *             .namespaceId(defaultNamespace.id())
+ *             .imageUrl(&#34;registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5&#34;)
+ *             .packageType(&#34;Image&#34;)
+ *             .jdk(&#34;Open JDK 8&#34;)
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .vpcId(defaultNetwork.id())
+ *             .vswitchId(defaultSwitch.id())
+ *             .timezone(&#34;Asia/Beijing&#34;)
+ *             .replicas(&#34;5&#34;)
+ *             .cpu(&#34;500&#34;)
+ *             .memory(&#34;2048&#34;)
+ *             .build());
+ * 
+ *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;defaultApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+ *             .loadBalancerName(name)
+ *             .vswitchId(defaultSwitch.id())
+ *             .loadBalancerSpec(&#34;slb.s2.small&#34;)
+ *             .addressType(&#34;intranet&#34;)
+ *             .build());
+ * 
+ *         var defaultLoadBalancerIntranet = new LoadBalancerIntranet(&#34;defaultLoadBalancerIntranet&#34;, LoadBalancerIntranetArgs.builder()        
+ *             .appId(defaultApplication.id())
+ *             .intranetSlbId(defaultApplicationLoadBalancer.id())
  *             .intranets(LoadBalancerIntranetIntranetArgs.builder()
- *                 .port(80)
  *                 .protocol(&#34;TCP&#34;)
+ *                 .port(80)
  *                 .targetPort(8080)
  *                 .build())
- *             .intranetSlbId(&#34;intranet_slb_id&#34;)
  *             .build());
  * 
  *     }
@@ -116,14 +194,14 @@ public class LoadBalancerIntranet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.intranetSlbId);
     }
     /**
-     * The bound private network SLB. See the following `Block intranet`.
+     * The bound private network SLB. See `intranet` below.
      * 
      */
     @Export(name="intranets", type=List.class, parameters={LoadBalancerIntranetIntranet.class})
     private Output<List<LoadBalancerIntranetIntranet>> intranets;
 
     /**
-     * @return The bound private network SLB. See the following `Block intranet`.
+     * @return The bound private network SLB. See `intranet` below.
      * 
      */
     public Output<List<LoadBalancerIntranetIntranet>> intranets() {

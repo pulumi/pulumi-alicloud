@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ARMS Prometheus Monitoring resource. Including serviceMonitor, podMonitor, customJob, probe and other four types of monitoring.
@@ -156,6 +157,12 @@ func (i *PrometheusMonitoring) ToPrometheusMonitoringOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(PrometheusMonitoringOutput)
 }
 
+func (i *PrometheusMonitoring) ToOutput(ctx context.Context) pulumix.Output[*PrometheusMonitoring] {
+	return pulumix.Output[*PrometheusMonitoring]{
+		OutputState: i.ToPrometheusMonitoringOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrometheusMonitoringArrayInput is an input type that accepts PrometheusMonitoringArray and PrometheusMonitoringArrayOutput values.
 // You can construct a concrete instance of `PrometheusMonitoringArrayInput` via:
 //
@@ -179,6 +186,12 @@ func (i PrometheusMonitoringArray) ToPrometheusMonitoringArrayOutput() Prometheu
 
 func (i PrometheusMonitoringArray) ToPrometheusMonitoringArrayOutputWithContext(ctx context.Context) PrometheusMonitoringArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PrometheusMonitoringArrayOutput)
+}
+
+func (i PrometheusMonitoringArray) ToOutput(ctx context.Context) pulumix.Output[[]*PrometheusMonitoring] {
+	return pulumix.Output[[]*PrometheusMonitoring]{
+		OutputState: i.ToPrometheusMonitoringArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PrometheusMonitoringMapInput is an input type that accepts PrometheusMonitoringMap and PrometheusMonitoringMapOutput values.
@@ -206,6 +219,12 @@ func (i PrometheusMonitoringMap) ToPrometheusMonitoringMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(PrometheusMonitoringMapOutput)
 }
 
+func (i PrometheusMonitoringMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrometheusMonitoring] {
+	return pulumix.Output[map[string]*PrometheusMonitoring]{
+		OutputState: i.ToPrometheusMonitoringMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrometheusMonitoringOutput struct{ *pulumi.OutputState }
 
 func (PrometheusMonitoringOutput) ElementType() reflect.Type {
@@ -218,6 +237,12 @@ func (o PrometheusMonitoringOutput) ToPrometheusMonitoringOutput() PrometheusMon
 
 func (o PrometheusMonitoringOutput) ToPrometheusMonitoringOutputWithContext(ctx context.Context) PrometheusMonitoringOutput {
 	return o
+}
+
+func (o PrometheusMonitoringOutput) ToOutput(ctx context.Context) pulumix.Output[*PrometheusMonitoring] {
+	return pulumix.Output[*PrometheusMonitoring]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the prometheus instance.
@@ -259,6 +284,12 @@ func (o PrometheusMonitoringArrayOutput) ToPrometheusMonitoringArrayOutputWithCo
 	return o
 }
 
+func (o PrometheusMonitoringArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PrometheusMonitoring] {
+	return pulumix.Output[[]*PrometheusMonitoring]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PrometheusMonitoringArrayOutput) Index(i pulumi.IntInput) PrometheusMonitoringOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PrometheusMonitoring {
 		return vs[0].([]*PrometheusMonitoring)[vs[1].(int)]
@@ -277,6 +308,12 @@ func (o PrometheusMonitoringMapOutput) ToPrometheusMonitoringMapOutput() Prometh
 
 func (o PrometheusMonitoringMapOutput) ToPrometheusMonitoringMapOutputWithContext(ctx context.Context) PrometheusMonitoringMapOutput {
 	return o
+}
+
+func (o PrometheusMonitoringMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrometheusMonitoring] {
+	return pulumix.Output[map[string]*PrometheusMonitoring]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrometheusMonitoringMapOutput) MapIndex(k pulumi.StringInput) PrometheusMonitoringOutput {

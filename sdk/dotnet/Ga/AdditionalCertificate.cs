@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string> AcceleratorId { get; private set; } = null!;
 
         /// <summary>
-        /// The Certificate ID.
+        /// The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
         /// </summary>
         [Output("certificateId")]
         public Output<string> CertificateId { get; private set; } = null!;
@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string> AcceleratorId { get; set; } = null!;
 
         /// <summary>
-        /// The Certificate ID.
+        /// The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
         /// </summary>
         [Input("certificateId", required: true)]
         public Input<string> CertificateId { get; set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? AcceleratorId { get; set; }
 
         /// <summary>
-        /// The Certificate ID.
+        /// The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
         /// </summary>
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }

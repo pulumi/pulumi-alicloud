@@ -204,6 +204,16 @@ namespace Pulumi.AliCloud.Rds
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
+        /// The instance configuration type. Valid values:
+        /// - Up
+        /// - Down
+        /// - TempUpgrade
+        /// - Serverless
+        /// </summary>
+        [Output("direction")]
+        public Output<string?> Direction { get; private set; } = null!;
+
+        /// <summary>
         /// The method to update the engine version and change.  Default value: Immediate. Valid values:
         /// - Immediate: The change immediately takes effect.
         /// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -556,10 +566,10 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> TcpConnectionType { get; private set; } = null!;
 
         /// <summary>
-        /// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+        /// The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         /// </summary>
         [Output("tdeStatus")]
-        public Output<string?> TdeStatus { get; private set; } = null!;
+        public Output<string> TdeStatus { get; private set; } = null!;
 
         /// <summary>
         /// Whether to upgrade a minor version of the kernel. Valid values:
@@ -839,6 +849,16 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// The instance configuration type. Valid values:
+        /// - Up
+        /// - Down
+        /// - TempUpgrade
+        /// - Serverless
+        /// </summary>
+        [Input("direction")]
+        public Input<string>? Direction { get; set; }
 
         /// <summary>
         /// The method to update the engine version and change.  Default value: Immediate. Valid values:
@@ -1217,7 +1237,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? TcpConnectionType { get; set; }
 
         /// <summary>
-        /// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+        /// The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }
@@ -1480,6 +1500,16 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// The instance configuration type. Valid values:
+        /// - Up
+        /// - Down
+        /// - TempUpgrade
+        /// - Serverless
+        /// </summary>
+        [Input("direction")]
+        public Input<string>? Direction { get; set; }
 
         /// <summary>
         /// The method to update the engine version and change.  Default value: Immediate. Valid values:
@@ -1870,7 +1900,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? TcpConnectionType { get; set; }
 
         /// <summary>
-        /// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+        /// The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }

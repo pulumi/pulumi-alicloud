@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ddoscoo Domain Resources of the current Alibaba Cloud user.
@@ -120,6 +121,12 @@ func (o GetDdosCooDomainResourcesResultOutput) ToGetDdosCooDomainResourcesResult
 
 func (o GetDdosCooDomainResourcesResultOutput) ToGetDdosCooDomainResourcesResultOutputWithContext(ctx context.Context) GetDdosCooDomainResourcesResultOutput {
 	return o
+}
+
+func (o GetDdosCooDomainResourcesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDdosCooDomainResourcesResult] {
+	return pulumix.Output[GetDdosCooDomainResourcesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

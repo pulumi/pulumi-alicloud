@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECD Nas File System resource.
@@ -215,6 +216,12 @@ func (i *NasFileSystem) ToNasFileSystemOutputWithContext(ctx context.Context) Na
 	return pulumi.ToOutputWithContext(ctx, i).(NasFileSystemOutput)
 }
 
+func (i *NasFileSystem) ToOutput(ctx context.Context) pulumix.Output[*NasFileSystem] {
+	return pulumix.Output[*NasFileSystem]{
+		OutputState: i.ToNasFileSystemOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NasFileSystemArrayInput is an input type that accepts NasFileSystemArray and NasFileSystemArrayOutput values.
 // You can construct a concrete instance of `NasFileSystemArrayInput` via:
 //
@@ -238,6 +245,12 @@ func (i NasFileSystemArray) ToNasFileSystemArrayOutput() NasFileSystemArrayOutpu
 
 func (i NasFileSystemArray) ToNasFileSystemArrayOutputWithContext(ctx context.Context) NasFileSystemArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NasFileSystemArrayOutput)
+}
+
+func (i NasFileSystemArray) ToOutput(ctx context.Context) pulumix.Output[[]*NasFileSystem] {
+	return pulumix.Output[[]*NasFileSystem]{
+		OutputState: i.ToNasFileSystemArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NasFileSystemMapInput is an input type that accepts NasFileSystemMap and NasFileSystemMapOutput values.
@@ -265,6 +278,12 @@ func (i NasFileSystemMap) ToNasFileSystemMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(NasFileSystemMapOutput)
 }
 
+func (i NasFileSystemMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NasFileSystem] {
+	return pulumix.Output[map[string]*NasFileSystem]{
+		OutputState: i.ToNasFileSystemMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NasFileSystemOutput struct{ *pulumi.OutputState }
 
 func (NasFileSystemOutput) ElementType() reflect.Type {
@@ -277,6 +296,12 @@ func (o NasFileSystemOutput) ToNasFileSystemOutput() NasFileSystemOutput {
 
 func (o NasFileSystemOutput) ToNasFileSystemOutputWithContext(ctx context.Context) NasFileSystemOutput {
 	return o
+}
+
+func (o NasFileSystemOutput) ToOutput(ctx context.Context) pulumix.Output[*NasFileSystem] {
+	return pulumix.Output[*NasFileSystem]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of nas file system.
@@ -328,6 +353,12 @@ func (o NasFileSystemArrayOutput) ToNasFileSystemArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o NasFileSystemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NasFileSystem] {
+	return pulumix.Output[[]*NasFileSystem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NasFileSystemArrayOutput) Index(i pulumi.IntInput) NasFileSystemOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NasFileSystem {
 		return vs[0].([]*NasFileSystem)[vs[1].(int)]
@@ -346,6 +377,12 @@ func (o NasFileSystemMapOutput) ToNasFileSystemMapOutput() NasFileSystemMapOutpu
 
 func (o NasFileSystemMapOutput) ToNasFileSystemMapOutputWithContext(ctx context.Context) NasFileSystemMapOutput {
 	return o
+}
+
+func (o NasFileSystemMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NasFileSystem] {
+	return pulumix.Output[map[string]*NasFileSystem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NasFileSystemMapOutput) MapIndex(k pulumi.StringInput) NasFileSystemOutput {

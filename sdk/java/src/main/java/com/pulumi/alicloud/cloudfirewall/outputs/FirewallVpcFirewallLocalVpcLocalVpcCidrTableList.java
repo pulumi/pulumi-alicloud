@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class FirewallVpcFirewallLocalVpcLocalVpcCidrTableList {
     /**
-     * @return The list of route entries of the local VPC.See the following `Block LocalRouteEntryList`.
+     * @return The list of route entries of the local VPC. See `local_route_entry_list` below.
      * 
      */
     private List<FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList> localRouteEntryLists;
@@ -24,7 +24,7 @@ public final class FirewallVpcFirewallLocalVpcLocalVpcCidrTableList {
 
     private FirewallVpcFirewallLocalVpcLocalVpcCidrTableList() {}
     /**
-     * @return The list of route entries of the local VPC.See the following `Block LocalRouteEntryList`.
+     * @return The list of route entries of the local VPC. See `local_route_entry_list` below.
      * 
      */
     public List<FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList> localRouteEntryLists() {

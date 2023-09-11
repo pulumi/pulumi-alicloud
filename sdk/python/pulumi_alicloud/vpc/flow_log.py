@@ -477,43 +477,7 @@ class FlowLog(pulumi.CustomResource):
 
         For information about Vpc Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/flow-logs-overview).
 
-        > **NOTE:** Available in v1.117.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testacc-example"
-        default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
-            resource_group_name=name,
-            display_name="tf-testAcc-rg78")
-        default_vpc = alicloud.vpc.Network("defaultVpc",
-            vpc_name=f"{name}1",
-            cidr_block="10.0.0.0/8")
-        modify_rg = alicloud.resourcemanager.ResourceGroup("modifyRG",
-            display_name="tf-testAcc-rg405",
-            resource_group_name=f"{name}2")
-        default_project = alicloud.log.Project("defaultProject")
-        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
-        default_flow_log = alicloud.vpc.FlowLog("defaultFlowLog",
-            flow_log_name=name,
-            log_store_name=default_store.name,
-            description="tf-testAcc-flowlog",
-            traffic_paths=["all"],
-            project_name=default_project.name,
-            resource_type="VPC",
-            resource_group_id=default_rg.id,
-            resource_id=default_vpc.id,
-            aggregation_interval="1",
-            traffic_type="All")
-        ```
+        > **NOTE:** Available since v1.117.0.
 
         ## Import
 
@@ -549,43 +513,7 @@ class FlowLog(pulumi.CustomResource):
 
         For information about Vpc Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/flow-logs-overview).
 
-        > **NOTE:** Available in v1.117.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testacc-example"
-        default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
-            resource_group_name=name,
-            display_name="tf-testAcc-rg78")
-        default_vpc = alicloud.vpc.Network("defaultVpc",
-            vpc_name=f"{name}1",
-            cidr_block="10.0.0.0/8")
-        modify_rg = alicloud.resourcemanager.ResourceGroup("modifyRG",
-            display_name="tf-testAcc-rg405",
-            resource_group_name=f"{name}2")
-        default_project = alicloud.log.Project("defaultProject")
-        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
-        default_flow_log = alicloud.vpc.FlowLog("defaultFlowLog",
-            flow_log_name=name,
-            log_store_name=default_store.name,
-            description="tf-testAcc-flowlog",
-            traffic_paths=["all"],
-            project_name=default_project.name,
-            resource_type="VPC",
-            resource_group_id=default_rg.id,
-            resource_id=default_vpc.id,
-            aggregation_interval="1",
-            traffic_type="All")
-        ```
+        > **NOTE:** Available since v1.117.0.
 
         ## Import
 

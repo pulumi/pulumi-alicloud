@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cen Transit Router Multicast Domain Member resource.
@@ -166,6 +167,12 @@ func (i *TransitRouterMulticastDomainMember) ToTransitRouterMulticastDomainMembe
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterMulticastDomainMemberOutput)
 }
 
+func (i *TransitRouterMulticastDomainMember) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterMulticastDomainMember] {
+	return pulumix.Output[*TransitRouterMulticastDomainMember]{
+		OutputState: i.ToTransitRouterMulticastDomainMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TransitRouterMulticastDomainMemberArrayInput is an input type that accepts TransitRouterMulticastDomainMemberArray and TransitRouterMulticastDomainMemberArrayOutput values.
 // You can construct a concrete instance of `TransitRouterMulticastDomainMemberArrayInput` via:
 //
@@ -189,6 +196,12 @@ func (i TransitRouterMulticastDomainMemberArray) ToTransitRouterMulticastDomainM
 
 func (i TransitRouterMulticastDomainMemberArray) ToTransitRouterMulticastDomainMemberArrayOutputWithContext(ctx context.Context) TransitRouterMulticastDomainMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterMulticastDomainMemberArrayOutput)
+}
+
+func (i TransitRouterMulticastDomainMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterMulticastDomainMember] {
+	return pulumix.Output[[]*TransitRouterMulticastDomainMember]{
+		OutputState: i.ToTransitRouterMulticastDomainMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TransitRouterMulticastDomainMemberMapInput is an input type that accepts TransitRouterMulticastDomainMemberMap and TransitRouterMulticastDomainMemberMapOutput values.
@@ -216,6 +229,12 @@ func (i TransitRouterMulticastDomainMemberMap) ToTransitRouterMulticastDomainMem
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterMulticastDomainMemberMapOutput)
 }
 
+func (i TransitRouterMulticastDomainMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterMulticastDomainMember] {
+	return pulumix.Output[map[string]*TransitRouterMulticastDomainMember]{
+		OutputState: i.ToTransitRouterMulticastDomainMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TransitRouterMulticastDomainMemberOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterMulticastDomainMemberOutput) ElementType() reflect.Type {
@@ -228,6 +247,12 @@ func (o TransitRouterMulticastDomainMemberOutput) ToTransitRouterMulticastDomain
 
 func (o TransitRouterMulticastDomainMemberOutput) ToTransitRouterMulticastDomainMemberOutputWithContext(ctx context.Context) TransitRouterMulticastDomainMemberOutput {
 	return o
+}
+
+func (o TransitRouterMulticastDomainMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterMulticastDomainMember] {
+	return pulumix.Output[*TransitRouterMulticastDomainMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies whether only to precheck the request.
@@ -276,6 +301,12 @@ func (o TransitRouterMulticastDomainMemberArrayOutput) ToTransitRouterMulticastD
 	return o
 }
 
+func (o TransitRouterMulticastDomainMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterMulticastDomainMember] {
+	return pulumix.Output[[]*TransitRouterMulticastDomainMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TransitRouterMulticastDomainMemberArrayOutput) Index(i pulumi.IntInput) TransitRouterMulticastDomainMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TransitRouterMulticastDomainMember {
 		return vs[0].([]*TransitRouterMulticastDomainMember)[vs[1].(int)]
@@ -294,6 +325,12 @@ func (o TransitRouterMulticastDomainMemberMapOutput) ToTransitRouterMulticastDom
 
 func (o TransitRouterMulticastDomainMemberMapOutput) ToTransitRouterMulticastDomainMemberMapOutputWithContext(ctx context.Context) TransitRouterMulticastDomainMemberMapOutput {
 	return o
+}
+
+func (o TransitRouterMulticastDomainMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterMulticastDomainMember] {
+	return pulumix.Output[map[string]*TransitRouterMulticastDomainMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransitRouterMulticastDomainMemberMapOutput) MapIndex(k pulumi.StringInput) TransitRouterMulticastDomainMemberOutput {

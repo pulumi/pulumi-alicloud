@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`
+        /// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
         /// </summary>
         public readonly string? Operator;
         /// <summary>

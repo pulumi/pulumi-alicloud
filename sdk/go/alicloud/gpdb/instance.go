@@ -10,12 +10,94 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services.
 // You can see detail product introduction [here](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance)
 //
 // > **NOTE:** Available since v1.47.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/gpdb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultZones, err := gpdb.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gpdb.NewInstance(ctx, "defaultInstance", &gpdb.InstanceArgs{
+//				DbInstanceCategory:  pulumi.String("HighAvailability"),
+//				DbInstanceClass:     pulumi.String("gpdb.group.segsdx1"),
+//				DbInstanceMode:      pulumi.String("StorageElastic"),
+//				Description:         pulumi.String(name),
+//				Engine:              pulumi.String("gpdb"),
+//				EngineVersion:       pulumi.String("6.0"),
+//				ZoneId:              *pulumi.String(defaultZones.Ids[0]),
+//				InstanceNetworkType: pulumi.String("VPC"),
+//				InstanceSpec:        pulumi.String("2C16G"),
+//				MasterNodeNum:       pulumi.Int(1),
+//				PaymentType:         pulumi.String("PayAsYouGo"),
+//				PrivateIpAddress:    pulumi.String("1.1.1.1"),
+//				SegStorageType:      pulumi.String("cloud_essd"),
+//				SegNodeNum:          pulumi.Int(4),
+//				StorageSize:         pulumi.Int(50),
+//				VpcId:               defaultNetwork.ID(),
+//				VswitchId:           defaultSwitch.ID(),
+//				IpWhitelists: gpdb.InstanceIpWhitelistArray{
+//					&gpdb.InstanceIpWhitelistArgs{
+//						SecurityIpList: pulumi.String("127.0.0.1"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -550,6 +632,12 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceOutput)
 }
 
+func (i *Instance) ToOutput(ctx context.Context) pulumix.Output[*Instance] {
+	return pulumix.Output[*Instance]{
+		OutputState: i.ToInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
@@ -573,6 +661,12 @@ func (i InstanceArray) ToInstanceArrayOutput() InstanceArrayOutput {
 
 func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) InstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceArrayOutput)
+}
+
+func (i InstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*Instance] {
+	return pulumix.Output[[]*Instance]{
+		OutputState: i.ToInstanceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
@@ -600,6 +694,12 @@ func (i InstanceMap) ToInstanceMapOutputWithContext(ctx context.Context) Instanc
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceMapOutput)
 }
 
+func (i InstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Instance] {
+	return pulumix.Output[map[string]*Instance]{
+		OutputState: i.ToInstanceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceOutput struct{ *pulumi.OutputState }
 
 func (InstanceOutput) ElementType() reflect.Type {
@@ -612,6 +712,12 @@ func (o InstanceOutput) ToInstanceOutput() InstanceOutput {
 
 func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) InstanceOutput {
 	return o
+}
+
+func (o InstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*Instance] {
+	return pulumix.Output[*Instance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Field `availabilityZone` has been deprecated from provider version 1.187.0. New field `zoneId` instead.
@@ -826,6 +932,12 @@ func (o InstanceArrayOutput) ToInstanceArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o InstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Instance] {
+	return pulumix.Output[[]*Instance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceArrayOutput) Index(i pulumi.IntInput) InstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Instance {
 		return vs[0].([]*Instance)[vs[1].(int)]
@@ -844,6 +956,12 @@ func (o InstanceMapOutput) ToInstanceMapOutput() InstanceMapOutput {
 
 func (o InstanceMapOutput) ToInstanceMapOutputWithContext(ctx context.Context) InstanceMapOutput {
 	return o
+}
+
+func (o InstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Instance] {
+	return pulumix.Output[map[string]*Instance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceMapOutput) MapIndex(k pulumi.StringInput) InstanceOutput {

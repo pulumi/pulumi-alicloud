@@ -5,30 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * This resource will help you to manager Container Registry Enterprise Edition instances.
- *
- * For information about Container Registry Enterprise Edition instances and how to use it, see [Create a Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm)
- *
- * > **NOTE:** Available in v1.124.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const my_instance = new alicloud.cr.RegistryEnterpriseInstance("my-instance", {
- *     instanceName: "test",
- *     instanceType: "Advanced",
- *     paymentType: "Subscription",
- *     period: 1,
- *     renewPeriod: 1,
- *     renewalStatus: "AutoRenewal",
- * });
- * ```
- *
  * ## Import
  *
  * Container Registry Enterprise Edition instance can be imported using the `id`, e.g.

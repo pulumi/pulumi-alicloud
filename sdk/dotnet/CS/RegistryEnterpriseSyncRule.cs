@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.CS
     /// <summary>
     /// This resource will help you to manager Container Registry Enterprise Edition sync rules.
     /// 
-    /// For information about Container Registry Enterprise Edition sync rules and how to use it, see [Create a Sync Rule](https://www.alibabacloud.com/help/doc-detail/145280.htm)
+    /// For information about Container Registry Enterprise Edition sync rules and how to use it, see [Create a Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposynctaskbyrule)
     /// 
-    /// &gt; **NOTE:** Available in v1.90.0+.
+    /// &gt; **NOTE:** Available since v1.90.0.
     /// 
     /// &gt; **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
     /// 
@@ -30,16 +30,75 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.CS.RegistryEnterpriseSyncRule("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var sourceRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("sourceRegistryEnterpriseInstance", new()
     ///     {
-    ///         InstanceId = "my-source-instance-id",
-    ///         NamespaceName = "my-source-namespace",
-    ///         RepoName = "my-source-repo",
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         RenewPeriod = 0,
+    ///         RenewalStatus = "ManualRenewal",
+    ///         InstanceType = "Advanced",
+    ///         InstanceName = $"{name}-source",
+    ///     });
+    /// 
+    ///     var targetRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("targetRegistryEnterpriseInstance", new()
+    ///     {
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         RenewPeriod = 0,
+    ///         RenewalStatus = "ManualRenewal",
+    ///         InstanceType = "Advanced",
+    ///         InstanceName = $"{name}-target",
+    ///     });
+    /// 
+    ///     var sourceRegistryEnterpriseNamespace = new AliCloud.CS.RegistryEnterpriseNamespace("sourceRegistryEnterpriseNamespace", new()
+    ///     {
+    ///         InstanceId = sourceRegistryEnterpriseInstance.Id,
+    ///         AutoCreate = false,
+    ///         DefaultVisibility = "PUBLIC",
+    ///     });
+    /// 
+    ///     var targetRegistryEnterpriseNamespace = new AliCloud.CS.RegistryEnterpriseNamespace("targetRegistryEnterpriseNamespace", new()
+    ///     {
+    ///         InstanceId = targetRegistryEnterpriseInstance.Id,
+    ///         AutoCreate = false,
+    ///         DefaultVisibility = "PUBLIC",
+    ///     });
+    /// 
+    ///     var sourceRegistryEnterpriseRepo = new AliCloud.CS.RegistryEnterpriseRepo("sourceRegistryEnterpriseRepo", new()
+    ///     {
+    ///         InstanceId = sourceRegistryEnterpriseInstance.Id,
+    ///         Namespace = sourceRegistryEnterpriseNamespace.Name,
+    ///         Summary = "this is summary of my new repo",
+    ///         RepoType = "PUBLIC",
+    ///         Detail = "this is a public repo",
+    ///     });
+    /// 
+    ///     var targetRegistryEnterpriseRepo = new AliCloud.CS.RegistryEnterpriseRepo("targetRegistryEnterpriseRepo", new()
+    ///     {
+    ///         InstanceId = targetRegistryEnterpriseInstance.Id,
+    ///         Namespace = targetRegistryEnterpriseNamespace.Name,
+    ///         Summary = "this is summary of my new repo",
+    ///         RepoType = "PUBLIC",
+    ///         Detail = "this is a public repo",
+    ///     });
+    /// 
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultRegistryEnterpriseSyncRule = new AliCloud.CS.RegistryEnterpriseSyncRule("defaultRegistryEnterpriseSyncRule", new()
+    ///     {
+    ///         InstanceId = sourceRegistryEnterpriseInstance.Id,
+    ///         NamespaceName = sourceRegistryEnterpriseNamespace.Name,
+    ///         TargetRegionId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         TargetInstanceId = targetRegistryEnterpriseInstance.Id,
+    ///         TargetNamespaceName = targetRegistryEnterpriseNamespace.Name,
     ///         TagFilter = ".*",
-    ///         TargetInstanceId = "my-target-instance-id",
-    ///         TargetNamespaceName = "my-target-namespace",
-    ///         TargetRegionId = "cn-hangzhou",
-    ///         TargetRepoName = "my-target-repo",
+    ///         RepoName = sourceRegistryEnterpriseRepo.Name,
+    ///         TargetRepoName = targetRegistryEnterpriseRepo.Name,
     ///     });
     /// 
     /// });

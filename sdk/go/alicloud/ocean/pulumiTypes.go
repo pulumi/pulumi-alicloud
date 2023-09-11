@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -98,6 +99,12 @@ func (i GetBaseInstancesInstanceArgs) ToGetBaseInstancesInstanceOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetBaseInstancesInstanceOutput)
 }
 
+func (i GetBaseInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetBaseInstancesInstance] {
+	return pulumix.Output[GetBaseInstancesInstance]{
+		OutputState: i.ToGetBaseInstancesInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetBaseInstancesInstanceArrayInput is an input type that accepts GetBaseInstancesInstanceArray and GetBaseInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetBaseInstancesInstanceArrayInput` via:
 //
@@ -123,6 +130,12 @@ func (i GetBaseInstancesInstanceArray) ToGetBaseInstancesInstanceArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetBaseInstancesInstanceArrayOutput)
 }
 
+func (i GetBaseInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetBaseInstancesInstance] {
+	return pulumix.Output[[]GetBaseInstancesInstance]{
+		OutputState: i.ToGetBaseInstancesInstanceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetBaseInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetBaseInstancesInstanceOutput) ElementType() reflect.Type {
@@ -135,6 +148,12 @@ func (o GetBaseInstancesInstanceOutput) ToGetBaseInstancesInstanceOutput() GetBa
 
 func (o GetBaseInstancesInstanceOutput) ToGetBaseInstancesInstanceOutputWithContext(ctx context.Context) GetBaseInstancesInstanceOutput {
 	return o
+}
+
+func (o GetBaseInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetBaseInstancesInstance] {
+	return pulumix.Output[GetBaseInstancesInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The product code of the OceanBase cluster.
@@ -219,6 +238,12 @@ func (o GetBaseInstancesInstanceArrayOutput) ToGetBaseInstancesInstanceArrayOutp
 
 func (o GetBaseInstancesInstanceArrayOutput) ToGetBaseInstancesInstanceArrayOutputWithContext(ctx context.Context) GetBaseInstancesInstanceArrayOutput {
 	return o
+}
+
+func (o GetBaseInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetBaseInstancesInstance] {
+	return pulumix.Output[[]GetBaseInstancesInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetBaseInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetBaseInstancesInstanceOutput {

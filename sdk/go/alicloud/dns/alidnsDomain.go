@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Alidns domain resource.
@@ -235,6 +236,12 @@ func (i *AlidnsDomain) ToAlidnsDomainOutputWithContext(ctx context.Context) Alid
 	return pulumi.ToOutputWithContext(ctx, i).(AlidnsDomainOutput)
 }
 
+func (i *AlidnsDomain) ToOutput(ctx context.Context) pulumix.Output[*AlidnsDomain] {
+	return pulumix.Output[*AlidnsDomain]{
+		OutputState: i.ToAlidnsDomainOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AlidnsDomainArrayInput is an input type that accepts AlidnsDomainArray and AlidnsDomainArrayOutput values.
 // You can construct a concrete instance of `AlidnsDomainArrayInput` via:
 //
@@ -258,6 +265,12 @@ func (i AlidnsDomainArray) ToAlidnsDomainArrayOutput() AlidnsDomainArrayOutput {
 
 func (i AlidnsDomainArray) ToAlidnsDomainArrayOutputWithContext(ctx context.Context) AlidnsDomainArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlidnsDomainArrayOutput)
+}
+
+func (i AlidnsDomainArray) ToOutput(ctx context.Context) pulumix.Output[[]*AlidnsDomain] {
+	return pulumix.Output[[]*AlidnsDomain]{
+		OutputState: i.ToAlidnsDomainArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AlidnsDomainMapInput is an input type that accepts AlidnsDomainMap and AlidnsDomainMapOutput values.
@@ -285,6 +298,12 @@ func (i AlidnsDomainMap) ToAlidnsDomainMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AlidnsDomainMapOutput)
 }
 
+func (i AlidnsDomainMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AlidnsDomain] {
+	return pulumix.Output[map[string]*AlidnsDomain]{
+		OutputState: i.ToAlidnsDomainMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlidnsDomainOutput struct{ *pulumi.OutputState }
 
 func (AlidnsDomainOutput) ElementType() reflect.Type {
@@ -297,6 +316,12 @@ func (o AlidnsDomainOutput) ToAlidnsDomainOutput() AlidnsDomainOutput {
 
 func (o AlidnsDomainOutput) ToAlidnsDomainOutputWithContext(ctx context.Context) AlidnsDomainOutput {
 	return o
+}
+
+func (o AlidnsDomainOutput) ToOutput(ctx context.Context) pulumix.Output[*AlidnsDomain] {
+	return pulumix.Output[*AlidnsDomain]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of the dns server name.
@@ -365,6 +390,12 @@ func (o AlidnsDomainArrayOutput) ToAlidnsDomainArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o AlidnsDomainArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AlidnsDomain] {
+	return pulumix.Output[[]*AlidnsDomain]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AlidnsDomainArrayOutput) Index(i pulumi.IntInput) AlidnsDomainOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AlidnsDomain {
 		return vs[0].([]*AlidnsDomain)[vs[1].(int)]
@@ -383,6 +414,12 @@ func (o AlidnsDomainMapOutput) ToAlidnsDomainMapOutput() AlidnsDomainMapOutput {
 
 func (o AlidnsDomainMapOutput) ToAlidnsDomainMapOutputWithContext(ctx context.Context) AlidnsDomainMapOutput {
 	return o
+}
+
+func (o AlidnsDomainMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AlidnsDomain] {
+	return pulumix.Output[map[string]*AlidnsDomain]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlidnsDomainMapOutput) MapIndex(k pulumi.StringInput) AlidnsDomainOutput {

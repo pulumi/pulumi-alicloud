@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -234,6 +235,12 @@ func (i *VpcAccess) ToVpcAccessOutputWithContext(ctx context.Context) VpcAccessO
 	return pulumi.ToOutputWithContext(ctx, i).(VpcAccessOutput)
 }
 
+func (i *VpcAccess) ToOutput(ctx context.Context) pulumix.Output[*VpcAccess] {
+	return pulumix.Output[*VpcAccess]{
+		OutputState: i.ToVpcAccessOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VpcAccessArrayInput is an input type that accepts VpcAccessArray and VpcAccessArrayOutput values.
 // You can construct a concrete instance of `VpcAccessArrayInput` via:
 //
@@ -257,6 +264,12 @@ func (i VpcAccessArray) ToVpcAccessArrayOutput() VpcAccessArrayOutput {
 
 func (i VpcAccessArray) ToVpcAccessArrayOutputWithContext(ctx context.Context) VpcAccessArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcAccessArrayOutput)
+}
+
+func (i VpcAccessArray) ToOutput(ctx context.Context) pulumix.Output[[]*VpcAccess] {
+	return pulumix.Output[[]*VpcAccess]{
+		OutputState: i.ToVpcAccessArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // VpcAccessMapInput is an input type that accepts VpcAccessMap and VpcAccessMapOutput values.
@@ -284,6 +297,12 @@ func (i VpcAccessMap) ToVpcAccessMapOutputWithContext(ctx context.Context) VpcAc
 	return pulumi.ToOutputWithContext(ctx, i).(VpcAccessMapOutput)
 }
 
+func (i VpcAccessMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VpcAccess] {
+	return pulumix.Output[map[string]*VpcAccess]{
+		OutputState: i.ToVpcAccessMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VpcAccessOutput struct{ *pulumi.OutputState }
 
 func (VpcAccessOutput) ElementType() reflect.Type {
@@ -296,6 +315,12 @@ func (o VpcAccessOutput) ToVpcAccessOutput() VpcAccessOutput {
 
 func (o VpcAccessOutput) ToVpcAccessOutputWithContext(ctx context.Context) VpcAccessOutput {
 	return o
+}
+
+func (o VpcAccessOutput) ToOutput(ctx context.Context) pulumix.Output[*VpcAccess] {
+	return pulumix.Output[*VpcAccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID of the instance in VPC (ECS/Server Load Balance).
@@ -332,6 +357,12 @@ func (o VpcAccessArrayOutput) ToVpcAccessArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o VpcAccessArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VpcAccess] {
+	return pulumix.Output[[]*VpcAccess]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VpcAccessArrayOutput) Index(i pulumi.IntInput) VpcAccessOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VpcAccess {
 		return vs[0].([]*VpcAccess)[vs[1].(int)]
@@ -350,6 +381,12 @@ func (o VpcAccessMapOutput) ToVpcAccessMapOutput() VpcAccessMapOutput {
 
 func (o VpcAccessMapOutput) ToVpcAccessMapOutputWithContext(ctx context.Context) VpcAccessMapOutput {
 	return o
+}
+
+func (o VpcAccessMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VpcAccess] {
+	return pulumix.Output[map[string]*VpcAccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VpcAccessMapOutput) MapIndex(k pulumi.StringInput) VpcAccessOutput {

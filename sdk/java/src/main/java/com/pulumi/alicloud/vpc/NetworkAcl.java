@@ -26,7 +26,88 @@ import javax.annotation.Nullable;
  * 
  * For information about VPC Network Acl and how to use it, see [What is Network Acl](https://www.alibabacloud.com/help/en/ens/latest/createnetworkacl).
  * 
- * &gt; **NOTE:** Available in v1.43.0+.
+ * &gt; **NOTE:** Available since v1.43.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.vpc.NetworkAcl;
+ * import com.pulumi.alicloud.vpc.NetworkAclArgs;
+ * import com.pulumi.alicloud.vpc.inputs.NetworkAclIngressAclEntryArgs;
+ * import com.pulumi.alicloud.vpc.inputs.NetworkAclEgressAclEntryArgs;
+ * import com.pulumi.alicloud.vpc.inputs.NetworkAclResourceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         var exampleNetworkAcl = new NetworkAcl(&#34;exampleNetworkAcl&#34;, NetworkAclArgs.builder()        
+ *             .vpcId(exampleNetwork.id())
+ *             .networkAclName(name)
+ *             .description(name)
+ *             .ingressAclEntries(NetworkAclIngressAclEntryArgs.builder()
+ *                 .description(String.format(&#34;%s-ingress&#34;, name))
+ *                 .networkAclEntryName(String.format(&#34;%s-ingress&#34;, name))
+ *                 .sourceCidrIp(&#34;196.168.2.0/21&#34;)
+ *                 .policy(&#34;accept&#34;)
+ *                 .port(&#34;22/80&#34;)
+ *                 .protocol(&#34;tcp&#34;)
+ *                 .build())
+ *             .egressAclEntries(NetworkAclEgressAclEntryArgs.builder()
+ *                 .description(String.format(&#34;%s-egress&#34;, name))
+ *                 .networkAclEntryName(String.format(&#34;%s-egress&#34;, name))
+ *                 .destinationCidrIp(&#34;0.0.0.0/0&#34;)
+ *                 .policy(&#34;accept&#34;)
+ *                 .port(&#34;-1/-1&#34;)
+ *                 .protocol(&#34;all&#34;)
+ *                 .build())
+ *             .resources(NetworkAclResourceArgs.builder()
+ *                 .resourceId(exampleSwitch.id())
+ *                 .resourceType(&#34;VSwitch&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -68,28 +149,28 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Out direction rule information. See the following `Block EgressAclEntries`.
+     * Out direction rule information. See `egress_acl_entries` below.
      * 
      */
     @Export(name="egressAclEntries", type=List.class, parameters={NetworkAclEgressAclEntry.class})
     private Output<List<NetworkAclEgressAclEntry>> egressAclEntries;
 
     /**
-     * @return Out direction rule information. See the following `Block EgressAclEntries`.
+     * @return Out direction rule information. See `egress_acl_entries` below.
      * 
      */
     public Output<List<NetworkAclEgressAclEntry>> egressAclEntries() {
         return this.egressAclEntries;
     }
     /**
-     * Inward direction rule information. See the following `Block IngressAclEntries`.
+     * Inward direction rule information. See `ingress_acl_entries` below.
      * 
      */
     @Export(name="ingressAclEntries", type=List.class, parameters={NetworkAclIngressAclEntry.class})
     private Output<List<NetworkAclIngressAclEntry>> ingressAclEntries;
 
     /**
-     * @return Inward direction rule information. See the following `Block IngressAclEntries`.
+     * @return Inward direction rule information. See `ingress_acl_entries` below.
      * 
      */
     public Output<List<NetworkAclIngressAclEntry>> ingressAclEntries() {
@@ -128,28 +209,28 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
         return this.networkAclName;
     }
     /**
-     * The associated resource. See the following `Block Resources`.
+     * The associated resource. See `resources` below.
      * 
      */
     @Export(name="resources", type=List.class, parameters={NetworkAclResource.class})
     private Output<List<NetworkAclResource>> resources;
 
     /**
-     * @return The associated resource. See the following `Block Resources`.
+     * @return The associated resource. See `resources` below.
      * 
      */
     public Output<List<NetworkAclResource>> resources() {
         return this.resources;
     }
     /**
-     * The state of the network ACL.
+     * The status of the associated resource.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The state of the network ACL.
+     * @return The status of the associated resource.
      * 
      */
     public Output<String> status() {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -54,6 +55,12 @@ func (i GetFaceConfigsConfigArgs) ToGetFaceConfigsConfigOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetFaceConfigsConfigOutput)
 }
 
+func (i GetFaceConfigsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetFaceConfigsConfig] {
+	return pulumix.Output[GetFaceConfigsConfig]{
+		OutputState: i.ToGetFaceConfigsConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetFaceConfigsConfigArrayInput is an input type that accepts GetFaceConfigsConfigArray and GetFaceConfigsConfigArrayOutput values.
 // You can construct a concrete instance of `GetFaceConfigsConfigArrayInput` via:
 //
@@ -79,6 +86,12 @@ func (i GetFaceConfigsConfigArray) ToGetFaceConfigsConfigArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetFaceConfigsConfigArrayOutput)
 }
 
+func (i GetFaceConfigsConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetFaceConfigsConfig] {
+	return pulumix.Output[[]GetFaceConfigsConfig]{
+		OutputState: i.ToGetFaceConfigsConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetFaceConfigsConfigOutput struct{ *pulumi.OutputState }
 
 func (GetFaceConfigsConfigOutput) ElementType() reflect.Type {
@@ -91,6 +104,12 @@ func (o GetFaceConfigsConfigOutput) ToGetFaceConfigsConfigOutput() GetFaceConfig
 
 func (o GetFaceConfigsConfigOutput) ToGetFaceConfigsConfigOutputWithContext(ctx context.Context) GetFaceConfigsConfigOutput {
 	return o
+}
+
+func (o GetFaceConfigsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetFaceConfigsConfig] {
+	return pulumix.Output[GetFaceConfigsConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Scene name.
@@ -120,6 +139,12 @@ func (o GetFaceConfigsConfigArrayOutput) ToGetFaceConfigsConfigArrayOutput() Get
 
 func (o GetFaceConfigsConfigArrayOutput) ToGetFaceConfigsConfigArrayOutputWithContext(ctx context.Context) GetFaceConfigsConfigArrayOutput {
 	return o
+}
+
+func (o GetFaceConfigsConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetFaceConfigsConfig] {
+	return pulumix.Output[[]GetFaceConfigsConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetFaceConfigsConfigArrayOutput) Index(i pulumi.IntInput) GetFaceConfigsConfigOutput {

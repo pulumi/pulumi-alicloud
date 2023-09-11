@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type BastionHostInstance struct {
@@ -192,6 +193,12 @@ func (i *BastionHostInstance) ToBastionHostInstanceOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(BastionHostInstanceOutput)
 }
 
+func (i *BastionHostInstance) ToOutput(ctx context.Context) pulumix.Output[*BastionHostInstance] {
+	return pulumix.Output[*BastionHostInstance]{
+		OutputState: i.ToBastionHostInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BastionHostInstanceArrayInput is an input type that accepts BastionHostInstanceArray and BastionHostInstanceArrayOutput values.
 // You can construct a concrete instance of `BastionHostInstanceArrayInput` via:
 //
@@ -215,6 +222,12 @@ func (i BastionHostInstanceArray) ToBastionHostInstanceArrayOutput() BastionHost
 
 func (i BastionHostInstanceArray) ToBastionHostInstanceArrayOutputWithContext(ctx context.Context) BastionHostInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BastionHostInstanceArrayOutput)
+}
+
+func (i BastionHostInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*BastionHostInstance] {
+	return pulumix.Output[[]*BastionHostInstance]{
+		OutputState: i.ToBastionHostInstanceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BastionHostInstanceMapInput is an input type that accepts BastionHostInstanceMap and BastionHostInstanceMapOutput values.
@@ -242,6 +255,12 @@ func (i BastionHostInstanceMap) ToBastionHostInstanceMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(BastionHostInstanceMapOutput)
 }
 
+func (i BastionHostInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BastionHostInstance] {
+	return pulumix.Output[map[string]*BastionHostInstance]{
+		OutputState: i.ToBastionHostInstanceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BastionHostInstanceOutput struct{ *pulumi.OutputState }
 
 func (BastionHostInstanceOutput) ElementType() reflect.Type {
@@ -254,6 +273,12 @@ func (o BastionHostInstanceOutput) ToBastionHostInstanceOutput() BastionHostInst
 
 func (o BastionHostInstanceOutput) ToBastionHostInstanceOutputWithContext(ctx context.Context) BastionHostInstanceOutput {
 	return o
+}
+
+func (o BastionHostInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*BastionHostInstance] {
+	return pulumix.Output[*BastionHostInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BastionHostInstanceOutput) AdAuthServers() BastionHostInstanceAdAuthServerArrayOutput {
@@ -338,6 +363,12 @@ func (o BastionHostInstanceArrayOutput) ToBastionHostInstanceArrayOutputWithCont
 	return o
 }
 
+func (o BastionHostInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BastionHostInstance] {
+	return pulumix.Output[[]*BastionHostInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BastionHostInstanceArrayOutput) Index(i pulumi.IntInput) BastionHostInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BastionHostInstance {
 		return vs[0].([]*BastionHostInstance)[vs[1].(int)]
@@ -356,6 +387,12 @@ func (o BastionHostInstanceMapOutput) ToBastionHostInstanceMapOutput() BastionHo
 
 func (o BastionHostInstanceMapOutput) ToBastionHostInstanceMapOutputWithContext(ctx context.Context) BastionHostInstanceMapOutput {
 	return o
+}
+
+func (o BastionHostInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BastionHostInstance] {
+	return pulumix.Output[map[string]*BastionHostInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BastionHostInstanceMapOutput) MapIndex(k pulumi.StringInput) BastionHostInstanceOutput {

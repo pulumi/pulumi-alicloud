@@ -55,59 +55,60 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var exampleInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(default_.zones()[0].id())
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
  * 
- *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
- *             .mostRecent(true)
+ *         final var exampleImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
  *             .owners(&#34;system&#34;)
  *             .build());
  * 
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;test_havip_attachment&#34;);
- *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
  *             .build());
  * 
- *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
- *             .vpcId(fooNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/21&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var fooHAVip = new HAVip(&#34;fooHAVip&#34;, HAVipArgs.builder()        
- *             .vswitchId(fooSwitch.id())
+ *         var exampleHAVip = new HAVip(&#34;exampleHAVip&#34;, HAVipArgs.builder()        
+ *             .vswitchId(exampleSwitch.id())
  *             .description(name)
  *             .build());
  * 
- *         var tfTestFoo = new SecurityGroup(&#34;tfTestFoo&#34;, SecurityGroupArgs.builder()        
- *             .description(&#34;foo&#34;)
- *             .vpcId(fooNetwork.id())
+ *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .description(name)
+ *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
- *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .vswitchId(fooSwitch.id())
- *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .availabilityZone(default_.zones()[0].id())
+ *             .vswitchId(exampleSwitch.id())
+ *             .imageId(exampleImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(exampleInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
  *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
  *             .internetChargeType(&#34;PayByTraffic&#34;)
  *             .internetMaxBandwidthOut(5)
- *             .securityGroups(tfTestFoo.id())
+ *             .securityGroups(exampleSecurityGroup.id())
  *             .instanceName(name)
  *             .userData(&#34;echo &#39;net.ipv4.ip_forward=1&#39;&gt;&gt; /etc/sysctl.conf&#34;)
  *             .build());
  * 
- *         var fooHAVipAttachment = new HAVipAttachment(&#34;fooHAVipAttachment&#34;, HAVipAttachmentArgs.builder()        
- *             .havipId(fooHAVip.id())
- *             .instanceId(fooInstance.id())
+ *         var exampleHAVipAttachment = new HAVipAttachment(&#34;exampleHAVipAttachment&#34;, HAVipAttachmentArgs.builder()        
+ *             .havipId(exampleHAVip.id())
+ *             .instanceId(exampleInstance.id())
  *             .build());
  * 
  *     }

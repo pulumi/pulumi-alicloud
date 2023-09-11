@@ -9,13 +9,14 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Vpc Public Ip Address Pool resource.
 //
 // For information about Vpc Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
 //
-// > **NOTE:** Available in v1.186.0+.
+// > **NOTE:** Available since v1.186.0.
 //
 // ## Example Usage
 //
@@ -29,30 +30,28 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultRg, err := resourcemanager.NewResourceGroup(ctx, "defaultRg", &resourcemanager.ResourceGroupArgs{
-//				DisplayName:       pulumi.String("tf-test-acc-publicaddresspool-383"),
-//				ResourceGroupName: pulumi.String("tf-test-acc-publicaddresspool-855"),
-//			})
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = resourcemanager.NewResourceGroup(ctx, "changeRg", &resourcemanager.ResourceGroupArgs{
-//				DisplayName:       pulumi.String("tf-testacc-publicaddresspool-change-368"),
-//				ResourceGroupName: pulumi.String("tf-testacc-publicaddresspool-change-499"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vpc.NewPublicIpAddressPool(ctx, "default", &vpc.PublicIpAddressPoolArgs{
-//				Description:             pulumi.String("rdk-test"),
-//				PublicIpAddressPoolName: pulumi.String("rdk-test"),
+//			_, err = vpc.NewPublicIpAddressPool(ctx, "defaultPublicIpAddressPool", &vpc.PublicIpAddressPoolArgs{
+//				Description:             pulumi.String(name),
+//				PublicIpAddressPoolName: pulumi.String(name),
 //				Isp:                     pulumi.String("BGP"),
-//				ResourceGroupId:         defaultRg.ID(),
+//				ResourceGroupId:         *pulumi.String(defaultResourceGroups.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
@@ -229,6 +228,12 @@ func (i *PublicIpAddressPool) ToPublicIpAddressPoolOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(PublicIpAddressPoolOutput)
 }
 
+func (i *PublicIpAddressPool) ToOutput(ctx context.Context) pulumix.Output[*PublicIpAddressPool] {
+	return pulumix.Output[*PublicIpAddressPool]{
+		OutputState: i.ToPublicIpAddressPoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PublicIpAddressPoolArrayInput is an input type that accepts PublicIpAddressPoolArray and PublicIpAddressPoolArrayOutput values.
 // You can construct a concrete instance of `PublicIpAddressPoolArrayInput` via:
 //
@@ -252,6 +257,12 @@ func (i PublicIpAddressPoolArray) ToPublicIpAddressPoolArrayOutput() PublicIpAdd
 
 func (i PublicIpAddressPoolArray) ToPublicIpAddressPoolArrayOutputWithContext(ctx context.Context) PublicIpAddressPoolArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PublicIpAddressPoolArrayOutput)
+}
+
+func (i PublicIpAddressPoolArray) ToOutput(ctx context.Context) pulumix.Output[[]*PublicIpAddressPool] {
+	return pulumix.Output[[]*PublicIpAddressPool]{
+		OutputState: i.ToPublicIpAddressPoolArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PublicIpAddressPoolMapInput is an input type that accepts PublicIpAddressPoolMap and PublicIpAddressPoolMapOutput values.
@@ -279,6 +290,12 @@ func (i PublicIpAddressPoolMap) ToPublicIpAddressPoolMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(PublicIpAddressPoolMapOutput)
 }
 
+func (i PublicIpAddressPoolMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PublicIpAddressPool] {
+	return pulumix.Output[map[string]*PublicIpAddressPool]{
+		OutputState: i.ToPublicIpAddressPoolMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PublicIpAddressPoolOutput struct{ *pulumi.OutputState }
 
 func (PublicIpAddressPoolOutput) ElementType() reflect.Type {
@@ -291,6 +308,12 @@ func (o PublicIpAddressPoolOutput) ToPublicIpAddressPoolOutput() PublicIpAddress
 
 func (o PublicIpAddressPoolOutput) ToPublicIpAddressPoolOutputWithContext(ctx context.Context) PublicIpAddressPoolOutput {
 	return o
+}
+
+func (o PublicIpAddressPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*PublicIpAddressPool] {
+	return pulumix.Output[*PublicIpAddressPool]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation time of the resource.
@@ -361,6 +384,12 @@ func (o PublicIpAddressPoolArrayOutput) ToPublicIpAddressPoolArrayOutputWithCont
 	return o
 }
 
+func (o PublicIpAddressPoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PublicIpAddressPool] {
+	return pulumix.Output[[]*PublicIpAddressPool]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PublicIpAddressPoolArrayOutput) Index(i pulumi.IntInput) PublicIpAddressPoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PublicIpAddressPool {
 		return vs[0].([]*PublicIpAddressPool)[vs[1].(int)]
@@ -379,6 +408,12 @@ func (o PublicIpAddressPoolMapOutput) ToPublicIpAddressPoolMapOutput() PublicIpA
 
 func (o PublicIpAddressPoolMapOutput) ToPublicIpAddressPoolMapOutputWithContext(ctx context.Context) PublicIpAddressPoolMapOutput {
 	return o
+}
+
+func (o PublicIpAddressPoolMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PublicIpAddressPool] {
+	return pulumix.Output[map[string]*PublicIpAddressPool]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PublicIpAddressPoolMapOutput) MapIndex(k pulumi.StringInput) PublicIpAddressPoolOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -58,6 +59,12 @@ func (i ConnectionBgpConfigArgs) ToConnectionBgpConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBgpConfigOutput)
 }
 
+func (i ConnectionBgpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionBgpConfig] {
+	return pulumix.Output[ConnectionBgpConfig]{
+		OutputState: i.ToConnectionBgpConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConnectionBgpConfigArgs) ToConnectionBgpConfigPtrOutput() ConnectionBgpConfigPtrOutput {
 	return i.ToConnectionBgpConfigPtrOutputWithContext(context.Background())
 }
@@ -99,6 +106,12 @@ func (i *connectionBgpConfigPtrType) ToConnectionBgpConfigPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBgpConfigPtrOutput)
 }
 
+func (i *connectionBgpConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionBgpConfig] {
+	return pulumix.Output[*ConnectionBgpConfig]{
+		OutputState: i.ToConnectionBgpConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectionBgpConfigOutput struct{ *pulumi.OutputState }
 
 func (ConnectionBgpConfigOutput) ElementType() reflect.Type {
@@ -121,6 +134,12 @@ func (o ConnectionBgpConfigOutput) ToConnectionBgpConfigPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionBgpConfig) *ConnectionBgpConfig {
 		return &v
 	}).(ConnectionBgpConfigPtrOutput)
+}
+
+func (o ConnectionBgpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionBgpConfig] {
+	return pulumix.Output[ConnectionBgpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to enable Health Check.
@@ -155,6 +174,12 @@ func (o ConnectionBgpConfigPtrOutput) ToConnectionBgpConfigPtrOutput() Connectio
 
 func (o ConnectionBgpConfigPtrOutput) ToConnectionBgpConfigPtrOutputWithContext(ctx context.Context) ConnectionBgpConfigPtrOutput {
 	return o
+}
+
+func (o ConnectionBgpConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionBgpConfig] {
+	return pulumix.Output[*ConnectionBgpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionBgpConfigPtrOutput) Elem() ConnectionBgpConfigOutput {
@@ -256,6 +281,12 @@ func (i ConnectionHealthCheckConfigArgs) ToConnectionHealthCheckConfigOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionHealthCheckConfigOutput)
 }
 
+func (i ConnectionHealthCheckConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionHealthCheckConfig] {
+	return pulumix.Output[ConnectionHealthCheckConfig]{
+		OutputState: i.ToConnectionHealthCheckConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConnectionHealthCheckConfigArgs) ToConnectionHealthCheckConfigPtrOutput() ConnectionHealthCheckConfigPtrOutput {
 	return i.ToConnectionHealthCheckConfigPtrOutputWithContext(context.Background())
 }
@@ -297,6 +328,12 @@ func (i *connectionHealthCheckConfigPtrType) ToConnectionHealthCheckConfigPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionHealthCheckConfigPtrOutput)
 }
 
+func (i *connectionHealthCheckConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionHealthCheckConfig] {
+	return pulumix.Output[*ConnectionHealthCheckConfig]{
+		OutputState: i.ToConnectionHealthCheckConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectionHealthCheckConfigOutput struct{ *pulumi.OutputState }
 
 func (ConnectionHealthCheckConfigOutput) ElementType() reflect.Type {
@@ -319,6 +356,12 @@ func (o ConnectionHealthCheckConfigOutput) ToConnectionHealthCheckConfigPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionHealthCheckConfig) *ConnectionHealthCheckConfig {
 		return &v
 	}).(ConnectionHealthCheckConfigPtrOutput)
+}
+
+func (o ConnectionHealthCheckConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionHealthCheckConfig] {
+	return pulumix.Output[ConnectionHealthCheckConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The destination IP address.
@@ -358,6 +401,12 @@ func (o ConnectionHealthCheckConfigPtrOutput) ToConnectionHealthCheckConfigPtrOu
 
 func (o ConnectionHealthCheckConfigPtrOutput) ToConnectionHealthCheckConfigPtrOutputWithContext(ctx context.Context) ConnectionHealthCheckConfigPtrOutput {
 	return o
+}
+
+func (o ConnectionHealthCheckConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionHealthCheckConfig] {
+	return pulumix.Output[*ConnectionHealthCheckConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionHealthCheckConfigPtrOutput) Elem() ConnectionHealthCheckConfigOutput {
@@ -485,6 +534,12 @@ func (i ConnectionIkeConfigArgs) ToConnectionIkeConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIkeConfigOutput)
 }
 
+func (i ConnectionIkeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionIkeConfig] {
+	return pulumix.Output[ConnectionIkeConfig]{
+		OutputState: i.ToConnectionIkeConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConnectionIkeConfigArgs) ToConnectionIkeConfigPtrOutput() ConnectionIkeConfigPtrOutput {
 	return i.ToConnectionIkeConfigPtrOutputWithContext(context.Background())
 }
@@ -526,6 +581,12 @@ func (i *connectionIkeConfigPtrType) ToConnectionIkeConfigPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIkeConfigPtrOutput)
 }
 
+func (i *connectionIkeConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionIkeConfig] {
+	return pulumix.Output[*ConnectionIkeConfig]{
+		OutputState: i.ToConnectionIkeConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectionIkeConfigOutput struct{ *pulumi.OutputState }
 
 func (ConnectionIkeConfigOutput) ElementType() reflect.Type {
@@ -548,6 +609,12 @@ func (o ConnectionIkeConfigOutput) ToConnectionIkeConfigPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionIkeConfig) *ConnectionIkeConfig {
 		return &v
 	}).(ConnectionIkeConfigPtrOutput)
+}
+
+func (o ConnectionIkeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionIkeConfig] {
+	return pulumix.Output[ConnectionIkeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 . Default value: md5
@@ -607,6 +674,12 @@ func (o ConnectionIkeConfigPtrOutput) ToConnectionIkeConfigPtrOutput() Connectio
 
 func (o ConnectionIkeConfigPtrOutput) ToConnectionIkeConfigPtrOutputWithContext(ctx context.Context) ConnectionIkeConfigPtrOutput {
 	return o
+}
+
+func (o ConnectionIkeConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionIkeConfig] {
+	return pulumix.Output[*ConnectionIkeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionIkeConfigPtrOutput) Elem() ConnectionIkeConfigOutput {
@@ -754,6 +827,12 @@ func (i ConnectionIpsecConfigArgs) ToConnectionIpsecConfigOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIpsecConfigOutput)
 }
 
+func (i ConnectionIpsecConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionIpsecConfig] {
+	return pulumix.Output[ConnectionIpsecConfig]{
+		OutputState: i.ToConnectionIpsecConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConnectionIpsecConfigArgs) ToConnectionIpsecConfigPtrOutput() ConnectionIpsecConfigPtrOutput {
 	return i.ToConnectionIpsecConfigPtrOutputWithContext(context.Background())
 }
@@ -795,6 +874,12 @@ func (i *connectionIpsecConfigPtrType) ToConnectionIpsecConfigPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIpsecConfigPtrOutput)
 }
 
+func (i *connectionIpsecConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionIpsecConfig] {
+	return pulumix.Output[*ConnectionIpsecConfig]{
+		OutputState: i.ToConnectionIpsecConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectionIpsecConfigOutput struct{ *pulumi.OutputState }
 
 func (ConnectionIpsecConfigOutput) ElementType() reflect.Type {
@@ -817,6 +902,12 @@ func (o ConnectionIpsecConfigOutput) ToConnectionIpsecConfigPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionIpsecConfig) *ConnectionIpsecConfig {
 		return &v
 	}).(ConnectionIpsecConfigPtrOutput)
+}
+
+func (o ConnectionIpsecConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionIpsecConfig] {
+	return pulumix.Output[ConnectionIpsecConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
@@ -851,6 +942,12 @@ func (o ConnectionIpsecConfigPtrOutput) ToConnectionIpsecConfigPtrOutput() Conne
 
 func (o ConnectionIpsecConfigPtrOutput) ToConnectionIpsecConfigPtrOutputWithContext(ctx context.Context) ConnectionIpsecConfigPtrOutput {
 	return o
+}
+
+func (o ConnectionIpsecConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionIpsecConfig] {
+	return pulumix.Output[*ConnectionIpsecConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionIpsecConfigPtrOutput) Elem() ConnectionIpsecConfigOutput {
@@ -948,6 +1045,12 @@ func (i GatewayVpnAttachmentBgpConfigArgs) ToGatewayVpnAttachmentBgpConfigOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayVpnAttachmentBgpConfigOutput)
 }
 
+func (i GatewayVpnAttachmentBgpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GatewayVpnAttachmentBgpConfig] {
+	return pulumix.Output[GatewayVpnAttachmentBgpConfig]{
+		OutputState: i.ToGatewayVpnAttachmentBgpConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GatewayVpnAttachmentBgpConfigArgs) ToGatewayVpnAttachmentBgpConfigPtrOutput() GatewayVpnAttachmentBgpConfigPtrOutput {
 	return i.ToGatewayVpnAttachmentBgpConfigPtrOutputWithContext(context.Background())
 }
@@ -989,6 +1092,12 @@ func (i *gatewayVpnAttachmentBgpConfigPtrType) ToGatewayVpnAttachmentBgpConfigPt
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayVpnAttachmentBgpConfigPtrOutput)
 }
 
+func (i *gatewayVpnAttachmentBgpConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GatewayVpnAttachmentBgpConfig] {
+	return pulumix.Output[*GatewayVpnAttachmentBgpConfig]{
+		OutputState: i.ToGatewayVpnAttachmentBgpConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GatewayVpnAttachmentBgpConfigOutput struct{ *pulumi.OutputState }
 
 func (GatewayVpnAttachmentBgpConfigOutput) ElementType() reflect.Type {
@@ -1011,6 +1120,12 @@ func (o GatewayVpnAttachmentBgpConfigOutput) ToGatewayVpnAttachmentBgpConfigPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayVpnAttachmentBgpConfig) *GatewayVpnAttachmentBgpConfig {
 		return &v
 	}).(GatewayVpnAttachmentBgpConfigPtrOutput)
+}
+
+func (o GatewayVpnAttachmentBgpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GatewayVpnAttachmentBgpConfig] {
+	return pulumix.Output[GatewayVpnAttachmentBgpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to enable BGP.
@@ -1045,6 +1160,12 @@ func (o GatewayVpnAttachmentBgpConfigPtrOutput) ToGatewayVpnAttachmentBgpConfigP
 
 func (o GatewayVpnAttachmentBgpConfigPtrOutput) ToGatewayVpnAttachmentBgpConfigPtrOutputWithContext(ctx context.Context) GatewayVpnAttachmentBgpConfigPtrOutput {
 	return o
+}
+
+func (o GatewayVpnAttachmentBgpConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayVpnAttachmentBgpConfig] {
+	return pulumix.Output[*GatewayVpnAttachmentBgpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GatewayVpnAttachmentBgpConfigPtrOutput) Elem() GatewayVpnAttachmentBgpConfigOutput {
@@ -1150,6 +1271,12 @@ func (i GatewayVpnAttachmentHealthCheckConfigArgs) ToGatewayVpnAttachmentHealthC
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayVpnAttachmentHealthCheckConfigOutput)
 }
 
+func (i GatewayVpnAttachmentHealthCheckConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GatewayVpnAttachmentHealthCheckConfig] {
+	return pulumix.Output[GatewayVpnAttachmentHealthCheckConfig]{
+		OutputState: i.ToGatewayVpnAttachmentHealthCheckConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GatewayVpnAttachmentHealthCheckConfigArgs) ToGatewayVpnAttachmentHealthCheckConfigPtrOutput() GatewayVpnAttachmentHealthCheckConfigPtrOutput {
 	return i.ToGatewayVpnAttachmentHealthCheckConfigPtrOutputWithContext(context.Background())
 }
@@ -1191,6 +1318,12 @@ func (i *gatewayVpnAttachmentHealthCheckConfigPtrType) ToGatewayVpnAttachmentHea
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayVpnAttachmentHealthCheckConfigPtrOutput)
 }
 
+func (i *gatewayVpnAttachmentHealthCheckConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GatewayVpnAttachmentHealthCheckConfig] {
+	return pulumix.Output[*GatewayVpnAttachmentHealthCheckConfig]{
+		OutputState: i.ToGatewayVpnAttachmentHealthCheckConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GatewayVpnAttachmentHealthCheckConfigOutput struct{ *pulumi.OutputState }
 
 func (GatewayVpnAttachmentHealthCheckConfigOutput) ElementType() reflect.Type {
@@ -1213,6 +1346,12 @@ func (o GatewayVpnAttachmentHealthCheckConfigOutput) ToGatewayVpnAttachmentHealt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayVpnAttachmentHealthCheckConfig) *GatewayVpnAttachmentHealthCheckConfig {
 		return &v
 	}).(GatewayVpnAttachmentHealthCheckConfigPtrOutput)
+}
+
+func (o GatewayVpnAttachmentHealthCheckConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GatewayVpnAttachmentHealthCheckConfig] {
+	return pulumix.Output[GatewayVpnAttachmentHealthCheckConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The destination IP address that is used for health checks.
@@ -1257,6 +1396,12 @@ func (o GatewayVpnAttachmentHealthCheckConfigPtrOutput) ToGatewayVpnAttachmentHe
 
 func (o GatewayVpnAttachmentHealthCheckConfigPtrOutput) ToGatewayVpnAttachmentHealthCheckConfigPtrOutputWithContext(ctx context.Context) GatewayVpnAttachmentHealthCheckConfigPtrOutput {
 	return o
+}
+
+func (o GatewayVpnAttachmentHealthCheckConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayVpnAttachmentHealthCheckConfig] {
+	return pulumix.Output[*GatewayVpnAttachmentHealthCheckConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GatewayVpnAttachmentHealthCheckConfigPtrOutput) Elem() GatewayVpnAttachmentHealthCheckConfigOutput {
@@ -1394,6 +1539,12 @@ func (i GatewayVpnAttachmentIkeConfigArgs) ToGatewayVpnAttachmentIkeConfigOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayVpnAttachmentIkeConfigOutput)
 }
 
+func (i GatewayVpnAttachmentIkeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GatewayVpnAttachmentIkeConfig] {
+	return pulumix.Output[GatewayVpnAttachmentIkeConfig]{
+		OutputState: i.ToGatewayVpnAttachmentIkeConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GatewayVpnAttachmentIkeConfigArgs) ToGatewayVpnAttachmentIkeConfigPtrOutput() GatewayVpnAttachmentIkeConfigPtrOutput {
 	return i.ToGatewayVpnAttachmentIkeConfigPtrOutputWithContext(context.Background())
 }
@@ -1435,6 +1586,12 @@ func (i *gatewayVpnAttachmentIkeConfigPtrType) ToGatewayVpnAttachmentIkeConfigPt
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayVpnAttachmentIkeConfigPtrOutput)
 }
 
+func (i *gatewayVpnAttachmentIkeConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GatewayVpnAttachmentIkeConfig] {
+	return pulumix.Output[*GatewayVpnAttachmentIkeConfig]{
+		OutputState: i.ToGatewayVpnAttachmentIkeConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GatewayVpnAttachmentIkeConfigOutput struct{ *pulumi.OutputState }
 
 func (GatewayVpnAttachmentIkeConfigOutput) ElementType() reflect.Type {
@@ -1457,6 +1614,12 @@ func (o GatewayVpnAttachmentIkeConfigOutput) ToGatewayVpnAttachmentIkeConfigPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayVpnAttachmentIkeConfig) *GatewayVpnAttachmentIkeConfig {
 		return &v
 	}).(GatewayVpnAttachmentIkeConfigPtrOutput)
+}
+
+func (o GatewayVpnAttachmentIkeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GatewayVpnAttachmentIkeConfig] {
+	return pulumix.Output[GatewayVpnAttachmentIkeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // IKE authentication algorithm supports sha1 and MD5.
@@ -1516,6 +1679,12 @@ func (o GatewayVpnAttachmentIkeConfigPtrOutput) ToGatewayVpnAttachmentIkeConfigP
 
 func (o GatewayVpnAttachmentIkeConfigPtrOutput) ToGatewayVpnAttachmentIkeConfigPtrOutputWithContext(ctx context.Context) GatewayVpnAttachmentIkeConfigPtrOutput {
 	return o
+}
+
+func (o GatewayVpnAttachmentIkeConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayVpnAttachmentIkeConfig] {
+	return pulumix.Output[*GatewayVpnAttachmentIkeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GatewayVpnAttachmentIkeConfigPtrOutput) Elem() GatewayVpnAttachmentIkeConfigOutput {
@@ -1663,6 +1832,12 @@ func (i GatewayVpnAttachmentIpsecConfigArgs) ToGatewayVpnAttachmentIpsecConfigOu
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayVpnAttachmentIpsecConfigOutput)
 }
 
+func (i GatewayVpnAttachmentIpsecConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GatewayVpnAttachmentIpsecConfig] {
+	return pulumix.Output[GatewayVpnAttachmentIpsecConfig]{
+		OutputState: i.ToGatewayVpnAttachmentIpsecConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GatewayVpnAttachmentIpsecConfigArgs) ToGatewayVpnAttachmentIpsecConfigPtrOutput() GatewayVpnAttachmentIpsecConfigPtrOutput {
 	return i.ToGatewayVpnAttachmentIpsecConfigPtrOutputWithContext(context.Background())
 }
@@ -1704,6 +1879,12 @@ func (i *gatewayVpnAttachmentIpsecConfigPtrType) ToGatewayVpnAttachmentIpsecConf
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayVpnAttachmentIpsecConfigPtrOutput)
 }
 
+func (i *gatewayVpnAttachmentIpsecConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GatewayVpnAttachmentIpsecConfig] {
+	return pulumix.Output[*GatewayVpnAttachmentIpsecConfig]{
+		OutputState: i.ToGatewayVpnAttachmentIpsecConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GatewayVpnAttachmentIpsecConfigOutput struct{ *pulumi.OutputState }
 
 func (GatewayVpnAttachmentIpsecConfigOutput) ElementType() reflect.Type {
@@ -1726,6 +1907,12 @@ func (o GatewayVpnAttachmentIpsecConfigOutput) ToGatewayVpnAttachmentIpsecConfig
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayVpnAttachmentIpsecConfig) *GatewayVpnAttachmentIpsecConfig {
 		return &v
 	}).(GatewayVpnAttachmentIpsecConfigPtrOutput)
+}
+
+func (o GatewayVpnAttachmentIpsecConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GatewayVpnAttachmentIpsecConfig] {
+	return pulumix.Output[GatewayVpnAttachmentIpsecConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
@@ -1760,6 +1947,12 @@ func (o GatewayVpnAttachmentIpsecConfigPtrOutput) ToGatewayVpnAttachmentIpsecCon
 
 func (o GatewayVpnAttachmentIpsecConfigPtrOutput) ToGatewayVpnAttachmentIpsecConfigPtrOutputWithContext(ctx context.Context) GatewayVpnAttachmentIpsecConfigPtrOutput {
 	return o
+}
+
+func (o GatewayVpnAttachmentIpsecConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayVpnAttachmentIpsecConfig] {
+	return pulumix.Output[*GatewayVpnAttachmentIpsecConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GatewayVpnAttachmentIpsecConfigPtrOutput) Elem() GatewayVpnAttachmentIpsecConfigOutput {
@@ -1873,6 +2066,12 @@ func (i IpsecServerIkeConfigArgs) ToIpsecServerIkeConfigOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(IpsecServerIkeConfigOutput)
 }
 
+func (i IpsecServerIkeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[IpsecServerIkeConfig] {
+	return pulumix.Output[IpsecServerIkeConfig]{
+		OutputState: i.ToIpsecServerIkeConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IpsecServerIkeConfigArrayInput is an input type that accepts IpsecServerIkeConfigArray and IpsecServerIkeConfigArrayOutput values.
 // You can construct a concrete instance of `IpsecServerIkeConfigArrayInput` via:
 //
@@ -1898,6 +2097,12 @@ func (i IpsecServerIkeConfigArray) ToIpsecServerIkeConfigArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(IpsecServerIkeConfigArrayOutput)
 }
 
+func (i IpsecServerIkeConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]IpsecServerIkeConfig] {
+	return pulumix.Output[[]IpsecServerIkeConfig]{
+		OutputState: i.ToIpsecServerIkeConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IpsecServerIkeConfigOutput struct{ *pulumi.OutputState }
 
 func (IpsecServerIkeConfigOutput) ElementType() reflect.Type {
@@ -1910,6 +2115,12 @@ func (o IpsecServerIkeConfigOutput) ToIpsecServerIkeConfigOutput() IpsecServerIk
 
 func (o IpsecServerIkeConfigOutput) ToIpsecServerIkeConfigOutputWithContext(ctx context.Context) IpsecServerIkeConfigOutput {
 	return o
+}
+
+func (o IpsecServerIkeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[IpsecServerIkeConfig] {
+	return pulumix.Output[IpsecServerIkeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication algorithm that is used in Phase 1 negotiations. Default value: `sha1`.
@@ -1966,6 +2177,12 @@ func (o IpsecServerIkeConfigArrayOutput) ToIpsecServerIkeConfigArrayOutputWithCo
 	return o
 }
 
+func (o IpsecServerIkeConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IpsecServerIkeConfig] {
+	return pulumix.Output[[]IpsecServerIkeConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IpsecServerIkeConfigArrayOutput) Index(i pulumi.IntInput) IpsecServerIkeConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpsecServerIkeConfig {
 		return vs[0].([]IpsecServerIkeConfig)[vs[1].(int)]
@@ -2017,6 +2234,12 @@ func (i IpsecServerIpsecConfigArgs) ToIpsecServerIpsecConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(IpsecServerIpsecConfigOutput)
 }
 
+func (i IpsecServerIpsecConfigArgs) ToOutput(ctx context.Context) pulumix.Output[IpsecServerIpsecConfig] {
+	return pulumix.Output[IpsecServerIpsecConfig]{
+		OutputState: i.ToIpsecServerIpsecConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IpsecServerIpsecConfigArrayInput is an input type that accepts IpsecServerIpsecConfigArray and IpsecServerIpsecConfigArrayOutput values.
 // You can construct a concrete instance of `IpsecServerIpsecConfigArrayInput` via:
 //
@@ -2042,6 +2265,12 @@ func (i IpsecServerIpsecConfigArray) ToIpsecServerIpsecConfigArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(IpsecServerIpsecConfigArrayOutput)
 }
 
+func (i IpsecServerIpsecConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]IpsecServerIpsecConfig] {
+	return pulumix.Output[[]IpsecServerIpsecConfig]{
+		OutputState: i.ToIpsecServerIpsecConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IpsecServerIpsecConfigOutput struct{ *pulumi.OutputState }
 
 func (IpsecServerIpsecConfigOutput) ElementType() reflect.Type {
@@ -2054,6 +2283,12 @@ func (o IpsecServerIpsecConfigOutput) ToIpsecServerIpsecConfigOutput() IpsecServ
 
 func (o IpsecServerIpsecConfigOutput) ToIpsecServerIpsecConfigOutputWithContext(ctx context.Context) IpsecServerIpsecConfigOutput {
 	return o
+}
+
+func (o IpsecServerIpsecConfigOutput) ToOutput(ctx context.Context) pulumix.Output[IpsecServerIpsecConfig] {
+	return pulumix.Output[IpsecServerIpsecConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication algorithm that is used in Phase 2 negotiations. Default value: `sha1`.
@@ -2088,6 +2323,12 @@ func (o IpsecServerIpsecConfigArrayOutput) ToIpsecServerIpsecConfigArrayOutput()
 
 func (o IpsecServerIpsecConfigArrayOutput) ToIpsecServerIpsecConfigArrayOutputWithContext(ctx context.Context) IpsecServerIpsecConfigArrayOutput {
 	return o
+}
+
+func (o IpsecServerIpsecConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IpsecServerIpsecConfig] {
+	return pulumix.Output[[]IpsecServerIpsecConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IpsecServerIpsecConfigArrayOutput) Index(i pulumi.IntInput) IpsecServerIpsecConfigOutput {
@@ -2179,6 +2420,12 @@ func (i GetConnectionsConnectionArgs) ToGetConnectionsConnectionOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsConnectionOutput)
 }
 
+func (i GetConnectionsConnectionArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectionsConnection] {
+	return pulumix.Output[GetConnectionsConnection]{
+		OutputState: i.ToGetConnectionsConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetConnectionsConnectionArrayInput is an input type that accepts GetConnectionsConnectionArray and GetConnectionsConnectionArrayOutput values.
 // You can construct a concrete instance of `GetConnectionsConnectionArrayInput` via:
 //
@@ -2204,6 +2451,12 @@ func (i GetConnectionsConnectionArray) ToGetConnectionsConnectionArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsConnectionArrayOutput)
 }
 
+func (i GetConnectionsConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectionsConnection] {
+	return pulumix.Output[[]GetConnectionsConnection]{
+		OutputState: i.ToGetConnectionsConnectionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetConnectionsConnectionOutput struct{ *pulumi.OutputState }
 
 func (GetConnectionsConnectionOutput) ElementType() reflect.Type {
@@ -2216,6 +2469,12 @@ func (o GetConnectionsConnectionOutput) ToGetConnectionsConnectionOutput() GetCo
 
 func (o GetConnectionsConnectionOutput) ToGetConnectionsConnectionOutputWithContext(ctx context.Context) GetConnectionsConnectionOutput {
 	return o
+}
+
+func (o GetConnectionsConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectionsConnection] {
+	return pulumix.Output[GetConnectionsConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetConnectionsConnectionOutput) CreateTime() pulumi.StringOutput {
@@ -2304,6 +2563,12 @@ func (o GetConnectionsConnectionArrayOutput) ToGetConnectionsConnectionArrayOutp
 	return o
 }
 
+func (o GetConnectionsConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectionsConnection] {
+	return pulumix.Output[[]GetConnectionsConnection]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetConnectionsConnectionArrayOutput) Index(i pulumi.IntInput) GetConnectionsConnectionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsConnection {
 		return vs[0].([]GetConnectionsConnection)[vs[1].(int)]
@@ -2375,6 +2640,12 @@ func (i GetConnectionsConnectionIkeConfigArgs) ToGetConnectionsConnectionIkeConf
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsConnectionIkeConfigOutput)
 }
 
+func (i GetConnectionsConnectionIkeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectionsConnectionIkeConfig] {
+	return pulumix.Output[GetConnectionsConnectionIkeConfig]{
+		OutputState: i.ToGetConnectionsConnectionIkeConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetConnectionsConnectionIkeConfigArrayInput is an input type that accepts GetConnectionsConnectionIkeConfigArray and GetConnectionsConnectionIkeConfigArrayOutput values.
 // You can construct a concrete instance of `GetConnectionsConnectionIkeConfigArrayInput` via:
 //
@@ -2400,6 +2671,12 @@ func (i GetConnectionsConnectionIkeConfigArray) ToGetConnectionsConnectionIkeCon
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsConnectionIkeConfigArrayOutput)
 }
 
+func (i GetConnectionsConnectionIkeConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectionsConnectionIkeConfig] {
+	return pulumix.Output[[]GetConnectionsConnectionIkeConfig]{
+		OutputState: i.ToGetConnectionsConnectionIkeConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetConnectionsConnectionIkeConfigOutput struct{ *pulumi.OutputState }
 
 func (GetConnectionsConnectionIkeConfigOutput) ElementType() reflect.Type {
@@ -2412,6 +2689,12 @@ func (o GetConnectionsConnectionIkeConfigOutput) ToGetConnectionsConnectionIkeCo
 
 func (o GetConnectionsConnectionIkeConfigOutput) ToGetConnectionsConnectionIkeConfigOutputWithContext(ctx context.Context) GetConnectionsConnectionIkeConfigOutput {
 	return o
+}
+
+func (o GetConnectionsConnectionIkeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectionsConnectionIkeConfig] {
+	return pulumix.Output[GetConnectionsConnectionIkeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication algorithm of phase-one negotiation.
@@ -2473,6 +2756,12 @@ func (o GetConnectionsConnectionIkeConfigArrayOutput) ToGetConnectionsConnection
 	return o
 }
 
+func (o GetConnectionsConnectionIkeConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectionsConnectionIkeConfig] {
+	return pulumix.Output[[]GetConnectionsConnectionIkeConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetConnectionsConnectionIkeConfigArrayOutput) Index(i pulumi.IntInput) GetConnectionsConnectionIkeConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsConnectionIkeConfig {
 		return vs[0].([]GetConnectionsConnectionIkeConfig)[vs[1].(int)]
@@ -2524,6 +2813,12 @@ func (i GetConnectionsConnectionIpsecConfigArgs) ToGetConnectionsConnectionIpsec
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsConnectionIpsecConfigOutput)
 }
 
+func (i GetConnectionsConnectionIpsecConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectionsConnectionIpsecConfig] {
+	return pulumix.Output[GetConnectionsConnectionIpsecConfig]{
+		OutputState: i.ToGetConnectionsConnectionIpsecConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetConnectionsConnectionIpsecConfigArrayInput is an input type that accepts GetConnectionsConnectionIpsecConfigArray and GetConnectionsConnectionIpsecConfigArrayOutput values.
 // You can construct a concrete instance of `GetConnectionsConnectionIpsecConfigArrayInput` via:
 //
@@ -2549,6 +2844,12 @@ func (i GetConnectionsConnectionIpsecConfigArray) ToGetConnectionsConnectionIpse
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsConnectionIpsecConfigArrayOutput)
 }
 
+func (i GetConnectionsConnectionIpsecConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectionsConnectionIpsecConfig] {
+	return pulumix.Output[[]GetConnectionsConnectionIpsecConfig]{
+		OutputState: i.ToGetConnectionsConnectionIpsecConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetConnectionsConnectionIpsecConfigOutput struct{ *pulumi.OutputState }
 
 func (GetConnectionsConnectionIpsecConfigOutput) ElementType() reflect.Type {
@@ -2561,6 +2862,12 @@ func (o GetConnectionsConnectionIpsecConfigOutput) ToGetConnectionsConnectionIps
 
 func (o GetConnectionsConnectionIpsecConfigOutput) ToGetConnectionsConnectionIpsecConfigOutputWithContext(ctx context.Context) GetConnectionsConnectionIpsecConfigOutput {
 	return o
+}
+
+func (o GetConnectionsConnectionIpsecConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectionsConnectionIpsecConfig] {
+	return pulumix.Output[GetConnectionsConnectionIpsecConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication algorithm of phase-two negotiation.
@@ -2595,6 +2902,12 @@ func (o GetConnectionsConnectionIpsecConfigArrayOutput) ToGetConnectionsConnecti
 
 func (o GetConnectionsConnectionIpsecConfigArrayOutput) ToGetConnectionsConnectionIpsecConfigArrayOutputWithContext(ctx context.Context) GetConnectionsConnectionIpsecConfigArrayOutput {
 	return o
+}
+
+func (o GetConnectionsConnectionIpsecConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectionsConnectionIpsecConfig] {
+	return pulumix.Output[[]GetConnectionsConnectionIpsecConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetConnectionsConnectionIpsecConfigArrayOutput) Index(i pulumi.IntInput) GetConnectionsConnectionIpsecConfigOutput {
@@ -2656,6 +2969,12 @@ func (i GetConnectionsConnectionVcoHealthCheckArgs) ToGetConnectionsConnectionVc
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsConnectionVcoHealthCheckOutput)
 }
 
+func (i GetConnectionsConnectionVcoHealthCheckArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectionsConnectionVcoHealthCheck] {
+	return pulumix.Output[GetConnectionsConnectionVcoHealthCheck]{
+		OutputState: i.ToGetConnectionsConnectionVcoHealthCheckOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetConnectionsConnectionVcoHealthCheckArrayInput is an input type that accepts GetConnectionsConnectionVcoHealthCheckArray and GetConnectionsConnectionVcoHealthCheckArrayOutput values.
 // You can construct a concrete instance of `GetConnectionsConnectionVcoHealthCheckArrayInput` via:
 //
@@ -2681,6 +3000,12 @@ func (i GetConnectionsConnectionVcoHealthCheckArray) ToGetConnectionsConnectionV
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsConnectionVcoHealthCheckArrayOutput)
 }
 
+func (i GetConnectionsConnectionVcoHealthCheckArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectionsConnectionVcoHealthCheck] {
+	return pulumix.Output[[]GetConnectionsConnectionVcoHealthCheck]{
+		OutputState: i.ToGetConnectionsConnectionVcoHealthCheckArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetConnectionsConnectionVcoHealthCheckOutput struct{ *pulumi.OutputState }
 
 func (GetConnectionsConnectionVcoHealthCheckOutput) ElementType() reflect.Type {
@@ -2693,6 +3018,12 @@ func (o GetConnectionsConnectionVcoHealthCheckOutput) ToGetConnectionsConnection
 
 func (o GetConnectionsConnectionVcoHealthCheckOutput) ToGetConnectionsConnectionVcoHealthCheckOutputWithContext(ctx context.Context) GetConnectionsConnectionVcoHealthCheckOutput {
 	return o
+}
+
+func (o GetConnectionsConnectionVcoHealthCheckOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectionsConnectionVcoHealthCheck] {
+	return pulumix.Output[GetConnectionsConnectionVcoHealthCheck]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The destination ip address.
@@ -2737,6 +3068,12 @@ func (o GetConnectionsConnectionVcoHealthCheckArrayOutput) ToGetConnectionsConne
 
 func (o GetConnectionsConnectionVcoHealthCheckArrayOutput) ToGetConnectionsConnectionVcoHealthCheckArrayOutputWithContext(ctx context.Context) GetConnectionsConnectionVcoHealthCheckArrayOutput {
 	return o
+}
+
+func (o GetConnectionsConnectionVcoHealthCheckArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectionsConnectionVcoHealthCheck] {
+	return pulumix.Output[[]GetConnectionsConnectionVcoHealthCheck]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetConnectionsConnectionVcoHealthCheckArrayOutput) Index(i pulumi.IntInput) GetConnectionsConnectionVcoHealthCheckOutput {
@@ -2802,6 +3139,12 @@ func (i GetConnectionsConnectionVpnBgpConfigArgs) ToGetConnectionsConnectionVpnB
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsConnectionVpnBgpConfigOutput)
 }
 
+func (i GetConnectionsConnectionVpnBgpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectionsConnectionVpnBgpConfig] {
+	return pulumix.Output[GetConnectionsConnectionVpnBgpConfig]{
+		OutputState: i.ToGetConnectionsConnectionVpnBgpConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetConnectionsConnectionVpnBgpConfigArrayInput is an input type that accepts GetConnectionsConnectionVpnBgpConfigArray and GetConnectionsConnectionVpnBgpConfigArrayOutput values.
 // You can construct a concrete instance of `GetConnectionsConnectionVpnBgpConfigArrayInput` via:
 //
@@ -2827,6 +3170,12 @@ func (i GetConnectionsConnectionVpnBgpConfigArray) ToGetConnectionsConnectionVpn
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsConnectionVpnBgpConfigArrayOutput)
 }
 
+func (i GetConnectionsConnectionVpnBgpConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectionsConnectionVpnBgpConfig] {
+	return pulumix.Output[[]GetConnectionsConnectionVpnBgpConfig]{
+		OutputState: i.ToGetConnectionsConnectionVpnBgpConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetConnectionsConnectionVpnBgpConfigOutput struct{ *pulumi.OutputState }
 
 func (GetConnectionsConnectionVpnBgpConfigOutput) ElementType() reflect.Type {
@@ -2839,6 +3188,12 @@ func (o GetConnectionsConnectionVpnBgpConfigOutput) ToGetConnectionsConnectionVp
 
 func (o GetConnectionsConnectionVpnBgpConfigOutput) ToGetConnectionsConnectionVpnBgpConfigOutputWithContext(ctx context.Context) GetConnectionsConnectionVpnBgpConfigOutput {
 	return o
+}
+
+func (o GetConnectionsConnectionVpnBgpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectionsConnectionVpnBgpConfig] {
+	return pulumix.Output[GetConnectionsConnectionVpnBgpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication keys for BGP routing protocols.
@@ -2888,6 +3243,12 @@ func (o GetConnectionsConnectionVpnBgpConfigArrayOutput) ToGetConnectionsConnect
 
 func (o GetConnectionsConnectionVpnBgpConfigArrayOutput) ToGetConnectionsConnectionVpnBgpConfigArrayOutputWithContext(ctx context.Context) GetConnectionsConnectionVpnBgpConfigArrayOutput {
 	return o
+}
+
+func (o GetConnectionsConnectionVpnBgpConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectionsConnectionVpnBgpConfig] {
+	return pulumix.Output[[]GetConnectionsConnectionVpnBgpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetConnectionsConnectionVpnBgpConfigArrayOutput) Index(i pulumi.IntInput) GetConnectionsConnectionVpnBgpConfigOutput {
@@ -2949,6 +3310,12 @@ func (i GetCustomerGatewaysGatewayArgs) ToGetCustomerGatewaysGatewayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetCustomerGatewaysGatewayOutput)
 }
 
+func (i GetCustomerGatewaysGatewayArgs) ToOutput(ctx context.Context) pulumix.Output[GetCustomerGatewaysGateway] {
+	return pulumix.Output[GetCustomerGatewaysGateway]{
+		OutputState: i.ToGetCustomerGatewaysGatewayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetCustomerGatewaysGatewayArrayInput is an input type that accepts GetCustomerGatewaysGatewayArray and GetCustomerGatewaysGatewayArrayOutput values.
 // You can construct a concrete instance of `GetCustomerGatewaysGatewayArrayInput` via:
 //
@@ -2974,6 +3341,12 @@ func (i GetCustomerGatewaysGatewayArray) ToGetCustomerGatewaysGatewayArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetCustomerGatewaysGatewayArrayOutput)
 }
 
+func (i GetCustomerGatewaysGatewayArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCustomerGatewaysGateway] {
+	return pulumix.Output[[]GetCustomerGatewaysGateway]{
+		OutputState: i.ToGetCustomerGatewaysGatewayArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetCustomerGatewaysGatewayOutput struct{ *pulumi.OutputState }
 
 func (GetCustomerGatewaysGatewayOutput) ElementType() reflect.Type {
@@ -2986,6 +3359,12 @@ func (o GetCustomerGatewaysGatewayOutput) ToGetCustomerGatewaysGatewayOutput() G
 
 func (o GetCustomerGatewaysGatewayOutput) ToGetCustomerGatewaysGatewayOutputWithContext(ctx context.Context) GetCustomerGatewaysGatewayOutput {
 	return o
+}
+
+func (o GetCustomerGatewaysGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[GetCustomerGatewaysGateway] {
+	return pulumix.Output[GetCustomerGatewaysGateway]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The autonomous system number of the local data center gateway device of the VPN customer gateway.
@@ -3030,6 +3409,12 @@ func (o GetCustomerGatewaysGatewayArrayOutput) ToGetCustomerGatewaysGatewayArray
 
 func (o GetCustomerGatewaysGatewayArrayOutput) ToGetCustomerGatewaysGatewayArrayOutputWithContext(ctx context.Context) GetCustomerGatewaysGatewayArrayOutput {
 	return o
+}
+
+func (o GetCustomerGatewaysGatewayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCustomerGatewaysGateway] {
+	return pulumix.Output[[]GetCustomerGatewaysGateway]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetCustomerGatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetCustomerGatewaysGatewayOutput {
@@ -3103,6 +3488,12 @@ func (i GetGatewayVcoRoutesRouteArgs) ToGetGatewayVcoRoutesRouteOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayVcoRoutesRouteOutput)
 }
 
+func (i GetGatewayVcoRoutesRouteArgs) ToOutput(ctx context.Context) pulumix.Output[GetGatewayVcoRoutesRoute] {
+	return pulumix.Output[GetGatewayVcoRoutesRoute]{
+		OutputState: i.ToGetGatewayVcoRoutesRouteOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGatewayVcoRoutesRouteArrayInput is an input type that accepts GetGatewayVcoRoutesRouteArray and GetGatewayVcoRoutesRouteArrayOutput values.
 // You can construct a concrete instance of `GetGatewayVcoRoutesRouteArrayInput` via:
 //
@@ -3128,6 +3519,12 @@ func (i GetGatewayVcoRoutesRouteArray) ToGetGatewayVcoRoutesRouteArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayVcoRoutesRouteArrayOutput)
 }
 
+func (i GetGatewayVcoRoutesRouteArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewayVcoRoutesRoute] {
+	return pulumix.Output[[]GetGatewayVcoRoutesRoute]{
+		OutputState: i.ToGetGatewayVcoRoutesRouteArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGatewayVcoRoutesRouteOutput struct{ *pulumi.OutputState }
 
 func (GetGatewayVcoRoutesRouteOutput) ElementType() reflect.Type {
@@ -3140,6 +3537,12 @@ func (o GetGatewayVcoRoutesRouteOutput) ToGetGatewayVcoRoutesRouteOutput() GetGa
 
 func (o GetGatewayVcoRoutesRouteOutput) ToGetGatewayVcoRoutesRouteOutputWithContext(ctx context.Context) GetGatewayVcoRoutesRouteOutput {
 	return o
+}
+
+func (o GetGatewayVcoRoutesRouteOutput) ToOutput(ctx context.Context) pulumix.Output[GetGatewayVcoRoutesRoute] {
+	return pulumix.Output[GetGatewayVcoRoutesRoute]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of autonomous system numbers through which BGP routing entries pass.
@@ -3199,6 +3602,12 @@ func (o GetGatewayVcoRoutesRouteArrayOutput) ToGetGatewayVcoRoutesRouteArrayOutp
 
 func (o GetGatewayVcoRoutesRouteArrayOutput) ToGetGatewayVcoRoutesRouteArrayOutputWithContext(ctx context.Context) GetGatewayVcoRoutesRouteArrayOutput {
 	return o
+}
+
+func (o GetGatewayVcoRoutesRouteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewayVcoRoutesRoute] {
+	return pulumix.Output[[]GetGatewayVcoRoutesRoute]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGatewayVcoRoutesRouteArrayOutput) Index(i pulumi.IntInput) GetGatewayVcoRoutesRouteOutput {
@@ -3300,6 +3709,12 @@ func (i GetGatewayVpnAttachmentsAttachmentArgs) ToGetGatewayVpnAttachmentsAttach
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayVpnAttachmentsAttachmentOutput)
 }
 
+func (i GetGatewayVpnAttachmentsAttachmentArgs) ToOutput(ctx context.Context) pulumix.Output[GetGatewayVpnAttachmentsAttachment] {
+	return pulumix.Output[GetGatewayVpnAttachmentsAttachment]{
+		OutputState: i.ToGetGatewayVpnAttachmentsAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGatewayVpnAttachmentsAttachmentArrayInput is an input type that accepts GetGatewayVpnAttachmentsAttachmentArray and GetGatewayVpnAttachmentsAttachmentArrayOutput values.
 // You can construct a concrete instance of `GetGatewayVpnAttachmentsAttachmentArrayInput` via:
 //
@@ -3325,6 +3740,12 @@ func (i GetGatewayVpnAttachmentsAttachmentArray) ToGetGatewayVpnAttachmentsAttac
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayVpnAttachmentsAttachmentArrayOutput)
 }
 
+func (i GetGatewayVpnAttachmentsAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewayVpnAttachmentsAttachment] {
+	return pulumix.Output[[]GetGatewayVpnAttachmentsAttachment]{
+		OutputState: i.ToGetGatewayVpnAttachmentsAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGatewayVpnAttachmentsAttachmentOutput struct{ *pulumi.OutputState }
 
 func (GetGatewayVpnAttachmentsAttachmentOutput) ElementType() reflect.Type {
@@ -3337,6 +3758,12 @@ func (o GetGatewayVpnAttachmentsAttachmentOutput) ToGetGatewayVpnAttachmentsAtta
 
 func (o GetGatewayVpnAttachmentsAttachmentOutput) ToGetGatewayVpnAttachmentsAttachmentOutputWithContext(ctx context.Context) GetGatewayVpnAttachmentsAttachmentOutput {
 	return o
+}
+
+func (o GetGatewayVpnAttachmentsAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[GetGatewayVpnAttachmentsAttachment] {
+	return pulumix.Output[GetGatewayVpnAttachmentsAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configurations of the BGP routing protocol.
@@ -3441,6 +3868,12 @@ func (o GetGatewayVpnAttachmentsAttachmentArrayOutput) ToGetGatewayVpnAttachment
 	return o
 }
 
+func (o GetGatewayVpnAttachmentsAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewayVpnAttachmentsAttachment] {
+	return pulumix.Output[[]GetGatewayVpnAttachmentsAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetGatewayVpnAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) GetGatewayVpnAttachmentsAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayVpnAttachmentsAttachment {
 		return vs[0].([]GetGatewayVpnAttachmentsAttachment)[vs[1].(int)]
@@ -3492,6 +3925,12 @@ func (i GetGatewayVpnAttachmentsAttachmentBgpConfigArgs) ToGetGatewayVpnAttachme
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayVpnAttachmentsAttachmentBgpConfigOutput)
 }
 
+func (i GetGatewayVpnAttachmentsAttachmentBgpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetGatewayVpnAttachmentsAttachmentBgpConfig] {
+	return pulumix.Output[GetGatewayVpnAttachmentsAttachmentBgpConfig]{
+		OutputState: i.ToGetGatewayVpnAttachmentsAttachmentBgpConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGatewayVpnAttachmentsAttachmentBgpConfigArrayInput is an input type that accepts GetGatewayVpnAttachmentsAttachmentBgpConfigArray and GetGatewayVpnAttachmentsAttachmentBgpConfigArrayOutput values.
 // You can construct a concrete instance of `GetGatewayVpnAttachmentsAttachmentBgpConfigArrayInput` via:
 //
@@ -3517,6 +3956,12 @@ func (i GetGatewayVpnAttachmentsAttachmentBgpConfigArray) ToGetGatewayVpnAttachm
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayVpnAttachmentsAttachmentBgpConfigArrayOutput)
 }
 
+func (i GetGatewayVpnAttachmentsAttachmentBgpConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewayVpnAttachmentsAttachmentBgpConfig] {
+	return pulumix.Output[[]GetGatewayVpnAttachmentsAttachmentBgpConfig]{
+		OutputState: i.ToGetGatewayVpnAttachmentsAttachmentBgpConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGatewayVpnAttachmentsAttachmentBgpConfigOutput struct{ *pulumi.OutputState }
 
 func (GetGatewayVpnAttachmentsAttachmentBgpConfigOutput) ElementType() reflect.Type {
@@ -3529,6 +3974,12 @@ func (o GetGatewayVpnAttachmentsAttachmentBgpConfigOutput) ToGetGatewayVpnAttach
 
 func (o GetGatewayVpnAttachmentsAttachmentBgpConfigOutput) ToGetGatewayVpnAttachmentsAttachmentBgpConfigOutputWithContext(ctx context.Context) GetGatewayVpnAttachmentsAttachmentBgpConfigOutput {
 	return o
+}
+
+func (o GetGatewayVpnAttachmentsAttachmentBgpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetGatewayVpnAttachmentsAttachmentBgpConfig] {
+	return pulumix.Output[GetGatewayVpnAttachmentsAttachmentBgpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ASN on the Alibaba Cloud side.
@@ -3563,6 +4014,12 @@ func (o GetGatewayVpnAttachmentsAttachmentBgpConfigArrayOutput) ToGetGatewayVpnA
 
 func (o GetGatewayVpnAttachmentsAttachmentBgpConfigArrayOutput) ToGetGatewayVpnAttachmentsAttachmentBgpConfigArrayOutputWithContext(ctx context.Context) GetGatewayVpnAttachmentsAttachmentBgpConfigArrayOutput {
 	return o
+}
+
+func (o GetGatewayVpnAttachmentsAttachmentBgpConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewayVpnAttachmentsAttachmentBgpConfig] {
+	return pulumix.Output[[]GetGatewayVpnAttachmentsAttachmentBgpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGatewayVpnAttachmentsAttachmentBgpConfigArrayOutput) Index(i pulumi.IntInput) GetGatewayVpnAttachmentsAttachmentBgpConfigOutput {
@@ -3628,6 +4085,12 @@ func (i GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArgs) ToGetGatewayVpn
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput)
 }
 
+func (i GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetGatewayVpnAttachmentsAttachmentHealthCheckConfig] {
+	return pulumix.Output[GetGatewayVpnAttachmentsAttachmentHealthCheckConfig]{
+		OutputState: i.ToGetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArrayInput is an input type that accepts GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArray and GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArrayOutput values.
 // You can construct a concrete instance of `GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArrayInput` via:
 //
@@ -3653,6 +4116,12 @@ func (i GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArray) ToGetGatewayVp
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArrayOutput)
 }
 
+func (i GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewayVpnAttachmentsAttachmentHealthCheckConfig] {
+	return pulumix.Output[[]GetGatewayVpnAttachmentsAttachmentHealthCheckConfig]{
+		OutputState: i.ToGetGatewayVpnAttachmentsAttachmentHealthCheckConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput struct{ *pulumi.OutputState }
 
 func (GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput) ElementType() reflect.Type {
@@ -3665,6 +4134,12 @@ func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput) ToGetGatewayV
 
 func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput) ToGetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutputWithContext(ctx context.Context) GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput {
 	return o
+}
+
+func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetGatewayVpnAttachmentsAttachmentHealthCheckConfig] {
+	return pulumix.Output[GetGatewayVpnAttachmentsAttachmentHealthCheckConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The destination IP address.
@@ -3714,6 +4189,12 @@ func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArrayOutput) ToGetGat
 
 func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArrayOutput) ToGetGatewayVpnAttachmentsAttachmentHealthCheckConfigArrayOutputWithContext(ctx context.Context) GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArrayOutput {
 	return o
+}
+
+func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewayVpnAttachmentsAttachmentHealthCheckConfig] {
+	return pulumix.Output[[]GetGatewayVpnAttachmentsAttachmentHealthCheckConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArrayOutput) Index(i pulumi.IntInput) GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput {
@@ -3787,6 +4268,12 @@ func (i GetGatewayVpnAttachmentsAttachmentIkeConfigArgs) ToGetGatewayVpnAttachme
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayVpnAttachmentsAttachmentIkeConfigOutput)
 }
 
+func (i GetGatewayVpnAttachmentsAttachmentIkeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetGatewayVpnAttachmentsAttachmentIkeConfig] {
+	return pulumix.Output[GetGatewayVpnAttachmentsAttachmentIkeConfig]{
+		OutputState: i.ToGetGatewayVpnAttachmentsAttachmentIkeConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGatewayVpnAttachmentsAttachmentIkeConfigArrayInput is an input type that accepts GetGatewayVpnAttachmentsAttachmentIkeConfigArray and GetGatewayVpnAttachmentsAttachmentIkeConfigArrayOutput values.
 // You can construct a concrete instance of `GetGatewayVpnAttachmentsAttachmentIkeConfigArrayInput` via:
 //
@@ -3812,6 +4299,12 @@ func (i GetGatewayVpnAttachmentsAttachmentIkeConfigArray) ToGetGatewayVpnAttachm
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayVpnAttachmentsAttachmentIkeConfigArrayOutput)
 }
 
+func (i GetGatewayVpnAttachmentsAttachmentIkeConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewayVpnAttachmentsAttachmentIkeConfig] {
+	return pulumix.Output[[]GetGatewayVpnAttachmentsAttachmentIkeConfig]{
+		OutputState: i.ToGetGatewayVpnAttachmentsAttachmentIkeConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGatewayVpnAttachmentsAttachmentIkeConfigOutput struct{ *pulumi.OutputState }
 
 func (GetGatewayVpnAttachmentsAttachmentIkeConfigOutput) ElementType() reflect.Type {
@@ -3824,6 +4317,12 @@ func (o GetGatewayVpnAttachmentsAttachmentIkeConfigOutput) ToGetGatewayVpnAttach
 
 func (o GetGatewayVpnAttachmentsAttachmentIkeConfigOutput) ToGetGatewayVpnAttachmentsAttachmentIkeConfigOutputWithContext(ctx context.Context) GetGatewayVpnAttachmentsAttachmentIkeConfigOutput {
 	return o
+}
+
+func (o GetGatewayVpnAttachmentsAttachmentIkeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetGatewayVpnAttachmentsAttachmentIkeConfig] {
+	return pulumix.Output[GetGatewayVpnAttachmentsAttachmentIkeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IKE authentication algorithm.
@@ -3885,6 +4384,12 @@ func (o GetGatewayVpnAttachmentsAttachmentIkeConfigArrayOutput) ToGetGatewayVpnA
 	return o
 }
 
+func (o GetGatewayVpnAttachmentsAttachmentIkeConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewayVpnAttachmentsAttachmentIkeConfig] {
+	return pulumix.Output[[]GetGatewayVpnAttachmentsAttachmentIkeConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetGatewayVpnAttachmentsAttachmentIkeConfigArrayOutput) Index(i pulumi.IntInput) GetGatewayVpnAttachmentsAttachmentIkeConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayVpnAttachmentsAttachmentIkeConfig {
 		return vs[0].([]GetGatewayVpnAttachmentsAttachmentIkeConfig)[vs[1].(int)]
@@ -3936,6 +4441,12 @@ func (i GetGatewayVpnAttachmentsAttachmentIpsecConfigArgs) ToGetGatewayVpnAttach
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayVpnAttachmentsAttachmentIpsecConfigOutput)
 }
 
+func (i GetGatewayVpnAttachmentsAttachmentIpsecConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetGatewayVpnAttachmentsAttachmentIpsecConfig] {
+	return pulumix.Output[GetGatewayVpnAttachmentsAttachmentIpsecConfig]{
+		OutputState: i.ToGetGatewayVpnAttachmentsAttachmentIpsecConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGatewayVpnAttachmentsAttachmentIpsecConfigArrayInput is an input type that accepts GetGatewayVpnAttachmentsAttachmentIpsecConfigArray and GetGatewayVpnAttachmentsAttachmentIpsecConfigArrayOutput values.
 // You can construct a concrete instance of `GetGatewayVpnAttachmentsAttachmentIpsecConfigArrayInput` via:
 //
@@ -3961,6 +4472,12 @@ func (i GetGatewayVpnAttachmentsAttachmentIpsecConfigArray) ToGetGatewayVpnAttac
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayVpnAttachmentsAttachmentIpsecConfigArrayOutput)
 }
 
+func (i GetGatewayVpnAttachmentsAttachmentIpsecConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewayVpnAttachmentsAttachmentIpsecConfig] {
+	return pulumix.Output[[]GetGatewayVpnAttachmentsAttachmentIpsecConfig]{
+		OutputState: i.ToGetGatewayVpnAttachmentsAttachmentIpsecConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGatewayVpnAttachmentsAttachmentIpsecConfigOutput struct{ *pulumi.OutputState }
 
 func (GetGatewayVpnAttachmentsAttachmentIpsecConfigOutput) ElementType() reflect.Type {
@@ -3973,6 +4490,12 @@ func (o GetGatewayVpnAttachmentsAttachmentIpsecConfigOutput) ToGetGatewayVpnAtta
 
 func (o GetGatewayVpnAttachmentsAttachmentIpsecConfigOutput) ToGetGatewayVpnAttachmentsAttachmentIpsecConfigOutputWithContext(ctx context.Context) GetGatewayVpnAttachmentsAttachmentIpsecConfigOutput {
 	return o
+}
+
+func (o GetGatewayVpnAttachmentsAttachmentIpsecConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetGatewayVpnAttachmentsAttachmentIpsecConfig] {
+	return pulumix.Output[GetGatewayVpnAttachmentsAttachmentIpsecConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IPsec authentication algorithm.
@@ -4007,6 +4530,12 @@ func (o GetGatewayVpnAttachmentsAttachmentIpsecConfigArrayOutput) ToGetGatewayVp
 
 func (o GetGatewayVpnAttachmentsAttachmentIpsecConfigArrayOutput) ToGetGatewayVpnAttachmentsAttachmentIpsecConfigArrayOutputWithContext(ctx context.Context) GetGatewayVpnAttachmentsAttachmentIpsecConfigArrayOutput {
 	return o
+}
+
+func (o GetGatewayVpnAttachmentsAttachmentIpsecConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewayVpnAttachmentsAttachmentIpsecConfig] {
+	return pulumix.Output[[]GetGatewayVpnAttachmentsAttachmentIpsecConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGatewayVpnAttachmentsAttachmentIpsecConfigArrayOutput) Index(i pulumi.IntInput) GetGatewayVpnAttachmentsAttachmentIpsecConfigOutput {
@@ -4108,6 +4637,12 @@ func (i GetGatewaysGatewayArgs) ToGetGatewaysGatewayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayOutput)
 }
 
+func (i GetGatewaysGatewayArgs) ToOutput(ctx context.Context) pulumix.Output[GetGatewaysGateway] {
+	return pulumix.Output[GetGatewaysGateway]{
+		OutputState: i.ToGetGatewaysGatewayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGatewaysGatewayArrayInput is an input type that accepts GetGatewaysGatewayArray and GetGatewaysGatewayArrayOutput values.
 // You can construct a concrete instance of `GetGatewaysGatewayArrayInput` via:
 //
@@ -4133,6 +4668,12 @@ func (i GetGatewaysGatewayArray) ToGetGatewaysGatewayArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayArrayOutput)
 }
 
+func (i GetGatewaysGatewayArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewaysGateway] {
+	return pulumix.Output[[]GetGatewaysGateway]{
+		OutputState: i.ToGetGatewaysGatewayArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGatewaysGatewayOutput struct{ *pulumi.OutputState }
 
 func (GetGatewaysGatewayOutput) ElementType() reflect.Type {
@@ -4145,6 +4686,12 @@ func (o GetGatewaysGatewayOutput) ToGetGatewaysGatewayOutput() GetGatewaysGatewa
 
 func (o GetGatewaysGatewayOutput) ToGetGatewaysGatewayOutputWithContext(ctx context.Context) GetGatewaysGatewayOutput {
 	return o
+}
+
+func (o GetGatewaysGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[GetGatewaysGateway] {
+	return pulumix.Output[GetGatewaysGateway]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to automatically propagate BGP routes to the VPC. Valid values: `true`, `false`.
@@ -4239,6 +4786,12 @@ func (o GetGatewaysGatewayArrayOutput) ToGetGatewaysGatewayArrayOutput() GetGate
 
 func (o GetGatewaysGatewayArrayOutput) ToGetGatewaysGatewayArrayOutputWithContext(ctx context.Context) GetGatewaysGatewayArrayOutput {
 	return o
+}
+
+func (o GetGatewaysGatewayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewaysGateway] {
+	return pulumix.Output[[]GetGatewaysGateway]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetGatewaysGatewayOutput {

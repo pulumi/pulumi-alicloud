@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Sae
     /// <summary>
     /// Provides a Serverless App Engine (SAE) Application resource.
     /// 
-    /// For information about Serverless App Engine (SAE) Application and how to use it, see [What is Application](https://help.aliyun.com/document_detail/97792.html).
+    /// For information about Serverless App Engine (SAE) Application and how to use it, see [What is Application](https://www.alibabacloud.com/help/en/sae/latest/createapplication).
     /// 
-    /// &gt; **NOTE:** Available in v1.161.0+.
+    /// &gt; **NOTE:** Available since v1.161.0.
     /// 
     /// ## Example Usage
     /// 
@@ -25,46 +25,70 @@ namespace Pulumi.AliCloud.Sae
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testacc";
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         VpcName = "tf_testacc",
-    ///         CidrBlock = "172.16.0.0/12",
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var vsw = new AliCloud.Vpc.Switch("vsw", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
     ///     {
-    ///         VpcId = vpc.Id,
-    ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
     ///     var defaultNamespace = new AliCloud.Sae.Namespace("defaultNamespace", new()
     ///     {
-    ///         NamespaceDescription = name,
-    ///         NamespaceId = "cn-hangzhou:tfacctest",
+    ///         NamespaceId = Output.Tuple(defaultRegions, defaultRandomInteger.Result).Apply(values =&gt;
+    ///         {
+    ///             var defaultRegions = values.Item1;
+    ///             var result = values.Item2;
+    ///             return $"{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:example{result}";
+    ///         }),
     ///         NamespaceName = name,
+    ///         NamespaceDescription = name,
+    ///         EnableMicroRegistration = false,
     ///     });
     /// 
     ///     var defaultApplication = new AliCloud.Sae.Application("defaultApplication", new()
     ///     {
-    ///         AppDescription = "tf-testaccDescription",
-    ///         AppName = "tf-testaccAppName",
+    ///         AppDescription = name,
+    ///         AppName = name,
     ///         NamespaceId = defaultNamespace.Id,
-    ///         ImageUrl = "registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
+    ///         ImageUrl = $"registry-vpc.{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}.aliyuncs.com/sae-demo-image/consumer:1.0",
     ///         PackageType = "Image",
-    ///         VpcId = vsw.VpcId,
-    ///         VswitchId = vsw.Id,
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///         VpcId = defaultNetwork.Id,
+    ///         VswitchId = defaultSwitch.Id,
     ///         Timezone = "Asia/Beijing",
     ///         Replicas = 5,
     ///         Cpu = 500,

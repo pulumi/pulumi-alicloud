@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Dcdn Kv Namespace resource.
@@ -168,6 +169,12 @@ func (i *KvNamespace) ToKvNamespaceOutputWithContext(ctx context.Context) KvName
 	return pulumi.ToOutputWithContext(ctx, i).(KvNamespaceOutput)
 }
 
+func (i *KvNamespace) ToOutput(ctx context.Context) pulumix.Output[*KvNamespace] {
+	return pulumix.Output[*KvNamespace]{
+		OutputState: i.ToKvNamespaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KvNamespaceArrayInput is an input type that accepts KvNamespaceArray and KvNamespaceArrayOutput values.
 // You can construct a concrete instance of `KvNamespaceArrayInput` via:
 //
@@ -191,6 +198,12 @@ func (i KvNamespaceArray) ToKvNamespaceArrayOutput() KvNamespaceArrayOutput {
 
 func (i KvNamespaceArray) ToKvNamespaceArrayOutputWithContext(ctx context.Context) KvNamespaceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KvNamespaceArrayOutput)
+}
+
+func (i KvNamespaceArray) ToOutput(ctx context.Context) pulumix.Output[[]*KvNamespace] {
+	return pulumix.Output[[]*KvNamespace]{
+		OutputState: i.ToKvNamespaceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // KvNamespaceMapInput is an input type that accepts KvNamespaceMap and KvNamespaceMapOutput values.
@@ -218,6 +231,12 @@ func (i KvNamespaceMap) ToKvNamespaceMapOutputWithContext(ctx context.Context) K
 	return pulumi.ToOutputWithContext(ctx, i).(KvNamespaceMapOutput)
 }
 
+func (i KvNamespaceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KvNamespace] {
+	return pulumix.Output[map[string]*KvNamespace]{
+		OutputState: i.ToKvNamespaceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KvNamespaceOutput struct{ *pulumi.OutputState }
 
 func (KvNamespaceOutput) ElementType() reflect.Type {
@@ -230,6 +249,12 @@ func (o KvNamespaceOutput) ToKvNamespaceOutput() KvNamespaceOutput {
 
 func (o KvNamespaceOutput) ToKvNamespaceOutputWithContext(ctx context.Context) KvNamespaceOutput {
 	return o
+}
+
+func (o KvNamespaceOutput) ToOutput(ctx context.Context) pulumix.Output[*KvNamespace] {
+	return pulumix.Output[*KvNamespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Namespace description information
@@ -261,6 +286,12 @@ func (o KvNamespaceArrayOutput) ToKvNamespaceArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o KvNamespaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KvNamespace] {
+	return pulumix.Output[[]*KvNamespace]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KvNamespaceArrayOutput) Index(i pulumi.IntInput) KvNamespaceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KvNamespace {
 		return vs[0].([]*KvNamespace)[vs[1].(int)]
@@ -279,6 +310,12 @@ func (o KvNamespaceMapOutput) ToKvNamespaceMapOutput() KvNamespaceMapOutput {
 
 func (o KvNamespaceMapOutput) ToKvNamespaceMapOutputWithContext(ctx context.Context) KvNamespaceMapOutput {
 	return o
+}
+
+func (o KvNamespaceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KvNamespace] {
+	return pulumix.Output[map[string]*KvNamespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KvNamespaceMapOutput) MapIndex(k pulumi.StringInput) KvNamespaceOutput {

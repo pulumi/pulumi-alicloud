@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the server load balancers of the current Alibaba Cloud user.
@@ -225,6 +226,12 @@ func (o GetApplicationLoadBalancersResultOutput) ToGetApplicationLoadBalancersRe
 
 func (o GetApplicationLoadBalancersResultOutput) ToGetApplicationLoadBalancersResultOutputWithContext(ctx context.Context) GetApplicationLoadBalancersResultOutput {
 	return o
+}
+
+func (o GetApplicationLoadBalancersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationLoadBalancersResult] {
+	return pulumix.Output[GetApplicationLoadBalancersResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP address that the SLB instance uses to provide services.

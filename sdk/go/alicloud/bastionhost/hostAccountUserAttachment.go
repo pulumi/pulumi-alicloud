@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Bastion Host Host Account Attachment resource to add list host accounts into one user.
@@ -270,6 +271,12 @@ func (i *HostAccountUserAttachment) ToHostAccountUserAttachmentOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(HostAccountUserAttachmentOutput)
 }
 
+func (i *HostAccountUserAttachment) ToOutput(ctx context.Context) pulumix.Output[*HostAccountUserAttachment] {
+	return pulumix.Output[*HostAccountUserAttachment]{
+		OutputState: i.ToHostAccountUserAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HostAccountUserAttachmentArrayInput is an input type that accepts HostAccountUserAttachmentArray and HostAccountUserAttachmentArrayOutput values.
 // You can construct a concrete instance of `HostAccountUserAttachmentArrayInput` via:
 //
@@ -293,6 +300,12 @@ func (i HostAccountUserAttachmentArray) ToHostAccountUserAttachmentArrayOutput()
 
 func (i HostAccountUserAttachmentArray) ToHostAccountUserAttachmentArrayOutputWithContext(ctx context.Context) HostAccountUserAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostAccountUserAttachmentArrayOutput)
+}
+
+func (i HostAccountUserAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*HostAccountUserAttachment] {
+	return pulumix.Output[[]*HostAccountUserAttachment]{
+		OutputState: i.ToHostAccountUserAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // HostAccountUserAttachmentMapInput is an input type that accepts HostAccountUserAttachmentMap and HostAccountUserAttachmentMapOutput values.
@@ -320,6 +333,12 @@ func (i HostAccountUserAttachmentMap) ToHostAccountUserAttachmentMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(HostAccountUserAttachmentMapOutput)
 }
 
+func (i HostAccountUserAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostAccountUserAttachment] {
+	return pulumix.Output[map[string]*HostAccountUserAttachment]{
+		OutputState: i.ToHostAccountUserAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HostAccountUserAttachmentOutput struct{ *pulumi.OutputState }
 
 func (HostAccountUserAttachmentOutput) ElementType() reflect.Type {
@@ -332,6 +351,12 @@ func (o HostAccountUserAttachmentOutput) ToHostAccountUserAttachmentOutput() Hos
 
 func (o HostAccountUserAttachmentOutput) ToHostAccountUserAttachmentOutputWithContext(ctx context.Context) HostAccountUserAttachmentOutput {
 	return o
+}
+
+func (o HostAccountUserAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*HostAccountUserAttachment] {
+	return pulumix.Output[*HostAccountUserAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list IDs of the host account.
@@ -368,6 +393,12 @@ func (o HostAccountUserAttachmentArrayOutput) ToHostAccountUserAttachmentArrayOu
 	return o
 }
 
+func (o HostAccountUserAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HostAccountUserAttachment] {
+	return pulumix.Output[[]*HostAccountUserAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HostAccountUserAttachmentArrayOutput) Index(i pulumi.IntInput) HostAccountUserAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HostAccountUserAttachment {
 		return vs[0].([]*HostAccountUserAttachment)[vs[1].(int)]
@@ -386,6 +417,12 @@ func (o HostAccountUserAttachmentMapOutput) ToHostAccountUserAttachmentMapOutput
 
 func (o HostAccountUserAttachmentMapOutput) ToHostAccountUserAttachmentMapOutputWithContext(ctx context.Context) HostAccountUserAttachmentMapOutput {
 	return o
+}
+
+func (o HostAccountUserAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostAccountUserAttachment] {
+	return pulumix.Output[map[string]*HostAccountUserAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HostAccountUserAttachmentMapOutput) MapIndex(k pulumi.StringInput) HostAccountUserAttachmentOutput {

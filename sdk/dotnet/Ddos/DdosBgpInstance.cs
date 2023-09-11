@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// &gt; **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
     /// 
-    /// &gt; **NOTE:** Available in 1.183.0+ .
+    /// &gt; **NOTE:** Available since v1.183.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,10 +28,12 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var instance = new AliCloud.Ddos.DdosBgpInstance("instance", new()
     ///     {
-    ///         Bandwidth = -1,
     ///         BaseBandwidth = 20,
+    ///         Bandwidth = -1,
     ///         IpCount = 100,
     ///         IpType = "IPv4",
     ///         NormalBandwidth = 100,

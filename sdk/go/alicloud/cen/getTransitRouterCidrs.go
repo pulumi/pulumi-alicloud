@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cen Transit Router Cidrs of the current Alibaba Cloud user.
@@ -135,6 +136,12 @@ func (o GetTransitRouterCidrsResultOutput) ToGetTransitRouterCidrsResultOutput()
 
 func (o GetTransitRouterCidrsResultOutput) ToGetTransitRouterCidrsResultOutputWithContext(ctx context.Context) GetTransitRouterCidrsResultOutput {
 	return o
+}
+
+func (o GetTransitRouterCidrsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterCidrsResult] {
+	return pulumix.Output[GetTransitRouterCidrsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTransitRouterCidrsResultOutput) Cidrs() GetTransitRouterCidrsCidrArrayOutput {

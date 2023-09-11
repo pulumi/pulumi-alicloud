@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a CEN transit router route table propagation resource.[What is Cen Transit Router Route Table Propagation](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-enabletransitrouterroutetablepropagation)
@@ -258,6 +259,12 @@ func (i *TransitRouterRouteTablePropagation) ToTransitRouterRouteTablePropagatio
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterRouteTablePropagationOutput)
 }
 
+func (i *TransitRouterRouteTablePropagation) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterRouteTablePropagation] {
+	return pulumix.Output[*TransitRouterRouteTablePropagation]{
+		OutputState: i.ToTransitRouterRouteTablePropagationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TransitRouterRouteTablePropagationArrayInput is an input type that accepts TransitRouterRouteTablePropagationArray and TransitRouterRouteTablePropagationArrayOutput values.
 // You can construct a concrete instance of `TransitRouterRouteTablePropagationArrayInput` via:
 //
@@ -281,6 +288,12 @@ func (i TransitRouterRouteTablePropagationArray) ToTransitRouterRouteTablePropag
 
 func (i TransitRouterRouteTablePropagationArray) ToTransitRouterRouteTablePropagationArrayOutputWithContext(ctx context.Context) TransitRouterRouteTablePropagationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterRouteTablePropagationArrayOutput)
+}
+
+func (i TransitRouterRouteTablePropagationArray) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterRouteTablePropagation] {
+	return pulumix.Output[[]*TransitRouterRouteTablePropagation]{
+		OutputState: i.ToTransitRouterRouteTablePropagationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TransitRouterRouteTablePropagationMapInput is an input type that accepts TransitRouterRouteTablePropagationMap and TransitRouterRouteTablePropagationMapOutput values.
@@ -308,6 +321,12 @@ func (i TransitRouterRouteTablePropagationMap) ToTransitRouterRouteTablePropagat
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterRouteTablePropagationMapOutput)
 }
 
+func (i TransitRouterRouteTablePropagationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterRouteTablePropagation] {
+	return pulumix.Output[map[string]*TransitRouterRouteTablePropagation]{
+		OutputState: i.ToTransitRouterRouteTablePropagationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TransitRouterRouteTablePropagationOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterRouteTablePropagationOutput) ElementType() reflect.Type {
@@ -320,6 +339,12 @@ func (o TransitRouterRouteTablePropagationOutput) ToTransitRouterRouteTablePropa
 
 func (o TransitRouterRouteTablePropagationOutput) ToTransitRouterRouteTablePropagationOutputWithContext(ctx context.Context) TransitRouterRouteTablePropagationOutput {
 	return o
+}
+
+func (o TransitRouterRouteTablePropagationOutput) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterRouteTablePropagation] {
+	return pulumix.Output[*TransitRouterRouteTablePropagation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The dry run.
@@ -358,6 +383,12 @@ func (o TransitRouterRouteTablePropagationArrayOutput) ToTransitRouterRouteTable
 	return o
 }
 
+func (o TransitRouterRouteTablePropagationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterRouteTablePropagation] {
+	return pulumix.Output[[]*TransitRouterRouteTablePropagation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TransitRouterRouteTablePropagationArrayOutput) Index(i pulumi.IntInput) TransitRouterRouteTablePropagationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TransitRouterRouteTablePropagation {
 		return vs[0].([]*TransitRouterRouteTablePropagation)[vs[1].(int)]
@@ -376,6 +407,12 @@ func (o TransitRouterRouteTablePropagationMapOutput) ToTransitRouterRouteTablePr
 
 func (o TransitRouterRouteTablePropagationMapOutput) ToTransitRouterRouteTablePropagationMapOutputWithContext(ctx context.Context) TransitRouterRouteTablePropagationMapOutput {
 	return o
+}
+
+func (o TransitRouterRouteTablePropagationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterRouteTablePropagation] {
+	return pulumix.Output[map[string]*TransitRouterRouteTablePropagation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransitRouterRouteTablePropagationMapOutput) MapIndex(k pulumi.StringInput) TransitRouterRouteTablePropagationOutput {

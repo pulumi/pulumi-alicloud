@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -78,6 +79,12 @@ func (i GetIndustrialPidLoopsLoopArgs) ToGetIndustrialPidLoopsLoopOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetIndustrialPidLoopsLoopOutput)
 }
 
+func (i GetIndustrialPidLoopsLoopArgs) ToOutput(ctx context.Context) pulumix.Output[GetIndustrialPidLoopsLoop] {
+	return pulumix.Output[GetIndustrialPidLoopsLoop]{
+		OutputState: i.ToGetIndustrialPidLoopsLoopOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetIndustrialPidLoopsLoopArrayInput is an input type that accepts GetIndustrialPidLoopsLoopArray and GetIndustrialPidLoopsLoopArrayOutput values.
 // You can construct a concrete instance of `GetIndustrialPidLoopsLoopArrayInput` via:
 //
@@ -103,6 +110,12 @@ func (i GetIndustrialPidLoopsLoopArray) ToGetIndustrialPidLoopsLoopArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetIndustrialPidLoopsLoopArrayOutput)
 }
 
+func (i GetIndustrialPidLoopsLoopArray) ToOutput(ctx context.Context) pulumix.Output[[]GetIndustrialPidLoopsLoop] {
+	return pulumix.Output[[]GetIndustrialPidLoopsLoop]{
+		OutputState: i.ToGetIndustrialPidLoopsLoopArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetIndustrialPidLoopsLoopOutput struct{ *pulumi.OutputState }
 
 func (GetIndustrialPidLoopsLoopOutput) ElementType() reflect.Type {
@@ -115,6 +128,12 @@ func (o GetIndustrialPidLoopsLoopOutput) ToGetIndustrialPidLoopsLoopOutput() Get
 
 func (o GetIndustrialPidLoopsLoopOutput) ToGetIndustrialPidLoopsLoopOutputWithContext(ctx context.Context) GetIndustrialPidLoopsLoopOutput {
 	return o
+}
+
+func (o GetIndustrialPidLoopsLoopOutput) ToOutput(ctx context.Context) pulumix.Output[GetIndustrialPidLoopsLoop] {
+	return pulumix.Output[GetIndustrialPidLoopsLoop]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Pid Loop.
@@ -179,6 +198,12 @@ func (o GetIndustrialPidLoopsLoopArrayOutput) ToGetIndustrialPidLoopsLoopArrayOu
 	return o
 }
 
+func (o GetIndustrialPidLoopsLoopArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetIndustrialPidLoopsLoop] {
+	return pulumix.Output[[]GetIndustrialPidLoopsLoop]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetIndustrialPidLoopsLoopArrayOutput) Index(i pulumi.IntInput) GetIndustrialPidLoopsLoopOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIndustrialPidLoopsLoop {
 		return vs[0].([]GetIndustrialPidLoopsLoop)[vs[1].(int)]
@@ -234,6 +259,12 @@ func (i GetIndustrialPidOrganizationsOrganizationArgs) ToGetIndustrialPidOrganiz
 	return pulumi.ToOutputWithContext(ctx, i).(GetIndustrialPidOrganizationsOrganizationOutput)
 }
 
+func (i GetIndustrialPidOrganizationsOrganizationArgs) ToOutput(ctx context.Context) pulumix.Output[GetIndustrialPidOrganizationsOrganization] {
+	return pulumix.Output[GetIndustrialPidOrganizationsOrganization]{
+		OutputState: i.ToGetIndustrialPidOrganizationsOrganizationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetIndustrialPidOrganizationsOrganizationArrayInput is an input type that accepts GetIndustrialPidOrganizationsOrganizationArray and GetIndustrialPidOrganizationsOrganizationArrayOutput values.
 // You can construct a concrete instance of `GetIndustrialPidOrganizationsOrganizationArrayInput` via:
 //
@@ -259,6 +290,12 @@ func (i GetIndustrialPidOrganizationsOrganizationArray) ToGetIndustrialPidOrgani
 	return pulumi.ToOutputWithContext(ctx, i).(GetIndustrialPidOrganizationsOrganizationArrayOutput)
 }
 
+func (i GetIndustrialPidOrganizationsOrganizationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetIndustrialPidOrganizationsOrganization] {
+	return pulumix.Output[[]GetIndustrialPidOrganizationsOrganization]{
+		OutputState: i.ToGetIndustrialPidOrganizationsOrganizationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetIndustrialPidOrganizationsOrganizationOutput struct{ *pulumi.OutputState }
 
 func (GetIndustrialPidOrganizationsOrganizationOutput) ElementType() reflect.Type {
@@ -271,6 +308,12 @@ func (o GetIndustrialPidOrganizationsOrganizationOutput) ToGetIndustrialPidOrgan
 
 func (o GetIndustrialPidOrganizationsOrganizationOutput) ToGetIndustrialPidOrganizationsOrganizationOutputWithContext(ctx context.Context) GetIndustrialPidOrganizationsOrganizationOutput {
 	return o
+}
+
+func (o GetIndustrialPidOrganizationsOrganizationOutput) ToOutput(ctx context.Context) pulumix.Output[GetIndustrialPidOrganizationsOrganization] {
+	return pulumix.Output[GetIndustrialPidOrganizationsOrganization]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Pid Organization.
@@ -310,6 +353,12 @@ func (o GetIndustrialPidOrganizationsOrganizationArrayOutput) ToGetIndustrialPid
 
 func (o GetIndustrialPidOrganizationsOrganizationArrayOutput) ToGetIndustrialPidOrganizationsOrganizationArrayOutputWithContext(ctx context.Context) GetIndustrialPidOrganizationsOrganizationArrayOutput {
 	return o
+}
+
+func (o GetIndustrialPidOrganizationsOrganizationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetIndustrialPidOrganizationsOrganization] {
+	return pulumix.Output[[]GetIndustrialPidOrganizationsOrganization]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetIndustrialPidOrganizationsOrganizationArrayOutput) Index(i pulumi.IntInput) GetIndustrialPidOrganizationsOrganizationOutput {
@@ -367,6 +416,12 @@ func (i GetIndustrialPidProjectsProjectArgs) ToGetIndustrialPidProjectsProjectOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetIndustrialPidProjectsProjectOutput)
 }
 
+func (i GetIndustrialPidProjectsProjectArgs) ToOutput(ctx context.Context) pulumix.Output[GetIndustrialPidProjectsProject] {
+	return pulumix.Output[GetIndustrialPidProjectsProject]{
+		OutputState: i.ToGetIndustrialPidProjectsProjectOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetIndustrialPidProjectsProjectArrayInput is an input type that accepts GetIndustrialPidProjectsProjectArray and GetIndustrialPidProjectsProjectArrayOutput values.
 // You can construct a concrete instance of `GetIndustrialPidProjectsProjectArrayInput` via:
 //
@@ -392,6 +447,12 @@ func (i GetIndustrialPidProjectsProjectArray) ToGetIndustrialPidProjectsProjectA
 	return pulumi.ToOutputWithContext(ctx, i).(GetIndustrialPidProjectsProjectArrayOutput)
 }
 
+func (i GetIndustrialPidProjectsProjectArray) ToOutput(ctx context.Context) pulumix.Output[[]GetIndustrialPidProjectsProject] {
+	return pulumix.Output[[]GetIndustrialPidProjectsProject]{
+		OutputState: i.ToGetIndustrialPidProjectsProjectArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetIndustrialPidProjectsProjectOutput struct{ *pulumi.OutputState }
 
 func (GetIndustrialPidProjectsProjectOutput) ElementType() reflect.Type {
@@ -404,6 +465,12 @@ func (o GetIndustrialPidProjectsProjectOutput) ToGetIndustrialPidProjectsProject
 
 func (o GetIndustrialPidProjectsProjectOutput) ToGetIndustrialPidProjectsProjectOutputWithContext(ctx context.Context) GetIndustrialPidProjectsProjectOutput {
 	return o
+}
+
+func (o GetIndustrialPidProjectsProjectOutput) ToOutput(ctx context.Context) pulumix.Output[GetIndustrialPidProjectsProject] {
+	return pulumix.Output[GetIndustrialPidProjectsProject]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Pid Project.
@@ -443,6 +510,12 @@ func (o GetIndustrialPidProjectsProjectArrayOutput) ToGetIndustrialPidProjectsPr
 
 func (o GetIndustrialPidProjectsProjectArrayOutput) ToGetIndustrialPidProjectsProjectArrayOutputWithContext(ctx context.Context) GetIndustrialPidProjectsProjectArrayOutput {
 	return o
+}
+
+func (o GetIndustrialPidProjectsProjectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetIndustrialPidProjectsProject] {
+	return pulumix.Output[[]GetIndustrialPidProjectsProject]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetIndustrialPidProjectsProjectArrayOutput) Index(i pulumi.IntInput) GetIndustrialPidProjectsProjectOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides details of the Rds specifications of current Alibaba Cloud users.
@@ -172,6 +173,12 @@ func (o GetClassDetailsResultOutput) ToGetClassDetailsResultOutput() GetClassDet
 
 func (o GetClassDetailsResultOutput) ToGetClassDetailsResultOutputWithContext(ctx context.Context) GetClassDetailsResultOutput {
 	return o
+}
+
+func (o GetClassDetailsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetClassDetailsResult] {
+	return pulumix.Output[GetClassDetailsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The RDS edition of the instance. Valid values:

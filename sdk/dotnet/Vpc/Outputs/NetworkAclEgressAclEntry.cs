@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
     public sealed class NetworkAclEgressAclEntry
     {
         /// <summary>
-        /// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+        /// The description of the outbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
         /// </summary>
         public readonly string? Description;
         /// <summary>
@@ -29,8 +29,6 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// Authorization policy. Value:
         /// - accept: Allow.
         /// - drop: Refused.
-        /// - accept: Allow.
-        /// - drop: Refused.
         /// </summary>
         public readonly string? Policy;
         /// <summary>
@@ -39,12 +37,6 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         public readonly string? Port;
         /// <summary>
         /// The protocol type. Value:
-        /// - icmp: Network Control Message Protocol.
-        /// - gre: Generic Routing Encapsulation Protocol.
-        /// - tcp: Transmission Control Protocol.
-        /// - udp: User Datagram Protocol.
-        /// - all: Supports all protocols.
-        /// 
         /// - icmp: Network Control Message Protocol.
         /// - gre: Generic Routing Encapsulation Protocol.
         /// - tcp: Transmission Control Protocol.

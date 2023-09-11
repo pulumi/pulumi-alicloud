@@ -410,29 +410,6 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource will help you to manager Container Registry Enterprise Edition instances.
-
-        For information about Container Registry Enterprise Edition instances and how to use it, see [Create a Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm)
-
-        > **NOTE:** Available in v1.124.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        my_instance = alicloud.cr.RegistryEnterpriseInstance("my-instance",
-            instance_name="test",
-            instance_type="Advanced",
-            payment_type="Subscription",
-            period=1,
-            renew_period=1,
-            renewal_status="AutoRenewal")
-        ```
-
         ## Import
 
         Container Registry Enterprise Edition instance can be imported using the `id`, e.g.
@@ -461,29 +438,6 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                  args: RegistryEnterpriseInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource will help you to manager Container Registry Enterprise Edition instances.
-
-        For information about Container Registry Enterprise Edition instances and how to use it, see [Create a Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm)
-
-        > **NOTE:** Available in v1.124.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        my_instance = alicloud.cr.RegistryEnterpriseInstance("my-instance",
-            instance_name="test",
-            instance_type="Advanced",
-            payment_type="Subscription",
-            period=1,
-            renew_period=1,
-            renewal_status="AutoRenewal")
-        ```
-
         ## Import
 
         Container Registry Enterprise Edition instance can be imported using the `id`, e.g.

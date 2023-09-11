@@ -194,22 +194,14 @@ class NetworkAclEgressAclEntry(dict):
                  port: Optional[str] = None,
                  protocol: Optional[str] = None):
         """
-        :param str description: The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+        :param str description: The description of the outbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
         :param str destination_cidr_ip: The network of the destination address.
         :param str network_acl_entry_name: Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
         :param str policy: Authorization policy. Value:
                - accept: Allow.
                - drop: Refused.
-               - accept: Allow.
-               - drop: Refused.
         :param str port: The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
         :param str protocol: The protocol type. Value:
-               - icmp: Network Control Message Protocol.
-               - gre: Generic Routing Encapsulation Protocol.
-               - tcp: Transmission Control Protocol.
-               - udp: User Datagram Protocol.
-               - all: Supports all protocols.
-               
                - icmp: Network Control Message Protocol.
                - gre: Generic Routing Encapsulation Protocol.
                - tcp: Transmission Control Protocol.
@@ -233,7 +225,7 @@ class NetworkAclEgressAclEntry(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+        The description of the outbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
         """
         return pulumi.get(self, "description")
 
@@ -260,8 +252,6 @@ class NetworkAclEgressAclEntry(dict):
         Authorization policy. Value:
         - accept: Allow.
         - drop: Refused.
-        - accept: Allow.
-        - drop: Refused.
         """
         return pulumi.get(self, "policy")
 
@@ -278,12 +268,6 @@ class NetworkAclEgressAclEntry(dict):
     def protocol(self) -> Optional[str]:
         """
         The protocol type. Value:
-        - icmp: Network Control Message Protocol.
-        - gre: Generic Routing Encapsulation Protocol.
-        - tcp: Transmission Control Protocol.
-        - udp: User Datagram Protocol.
-        - all: Supports all protocols.
-
         - icmp: Network Control Message Protocol.
         - gre: Generic Routing Encapsulation Protocol.
         - tcp: Transmission Control Protocol.
@@ -542,21 +526,13 @@ class NetworkAclIngressAclEntry(dict):
                  protocol: Optional[str] = None,
                  source_cidr_ip: Optional[str] = None):
         """
-        :param str description: The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
-        :param str network_acl_entry_name: Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+        :param str description: Description of the inbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+        :param str network_acl_entry_name: The name of the inbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
         :param str policy: Authorization policy. Value:
                - accept: Allow.
                - drop: Refused.
-               - accept: Allow.
-               - drop: Refused.
-        :param str port: The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+        :param str port: The source port range of the inbound rule.When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
         :param str protocol: The protocol type. Value:
-               - icmp: Network Control Message Protocol.
-               - gre: Generic Routing Encapsulation Protocol.
-               - tcp: Transmission Control Protocol.
-               - udp: User Datagram Protocol.
-               - all: Supports all protocols.
-               
                - icmp: Network Control Message Protocol.
                - gre: Generic Routing Encapsulation Protocol.
                - tcp: Transmission Control Protocol.
@@ -581,7 +557,7 @@ class NetworkAclIngressAclEntry(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+        Description of the inbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
         """
         return pulumi.get(self, "description")
 
@@ -589,7 +565,7 @@ class NetworkAclIngressAclEntry(dict):
     @pulumi.getter(name="networkAclEntryName")
     def network_acl_entry_name(self) -> Optional[str]:
         """
-        Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+        The name of the inbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
         """
         return pulumi.get(self, "network_acl_entry_name")
 
@@ -600,8 +576,6 @@ class NetworkAclIngressAclEntry(dict):
         Authorization policy. Value:
         - accept: Allow.
         - drop: Refused.
-        - accept: Allow.
-        - drop: Refused.
         """
         return pulumi.get(self, "policy")
 
@@ -609,7 +583,7 @@ class NetworkAclIngressAclEntry(dict):
     @pulumi.getter
     def port(self) -> Optional[str]:
         """
-        The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+        The source port range of the inbound rule.When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
         """
         return pulumi.get(self, "port")
 
@@ -618,12 +592,6 @@ class NetworkAclIngressAclEntry(dict):
     def protocol(self) -> Optional[str]:
         """
         The protocol type. Value:
-        - icmp: Network Control Message Protocol.
-        - gre: Generic Routing Encapsulation Protocol.
-        - tcp: Transmission Control Protocol.
-        - udp: User Datagram Protocol.
-        - all: Supports all protocols.
-
         - icmp: Network Control Message Protocol.
         - gre: Generic Routing Encapsulation Protocol.
         - tcp: Transmission Control Protocol.
@@ -669,7 +637,7 @@ class NetworkAclResource(dict):
         """
         :param str resource_id: The ID of the associated resource.
         :param str resource_type: The type of the associated resource.
-        :param str status: The state of the network ACL.
+        :param str status: The status of the associated resource.
         """
         pulumi.set(__self__, "resource_id", resource_id)
         pulumi.set(__self__, "resource_type", resource_type)
@@ -696,7 +664,7 @@ class NetworkAclResource(dict):
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
-        The state of the network ACL.
+        The status of the associated resource.
         """
         return pulumi.get(self, "status")
 

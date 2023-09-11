@@ -10,13 +10,14 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Eflo Subnet resource.
 //
-// For information about Eflo Subnet and how to use it, see [What is Subnet](https://help.aliyun.com/document_detail/604977.html).
+// For information about Eflo Subnet and how to use it, see [What is Subnet](https://www.alibabacloud.com/help/en/pai/user-guide/overview-of-intelligent-computing-lingjun).
 //
-// > **NOTE:** Available in v1.204.0+.
+// > **NOTE:** Available since v1.204.0.
 //
 // ## Example Usage
 //
@@ -31,11 +32,17 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eflo"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			defaultZones, err := alicloud.GetZones(ctx, nil, nil)
 //			if err != nil {
 //				return err
@@ -46,14 +53,14 @@ import (
 //			}
 //			defaultVpd, err := eflo.NewVpd(ctx, "defaultVpd", &eflo.VpdArgs{
 //				Cidr:            pulumi.String("10.0.0.0/8"),
-//				VpdName:         pulumi.Any(_var.Name),
+//				VpdName:         pulumi.String(name),
 //				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = eflo.NewSubnet(ctx, "defaultSubnet", &eflo.SubnetArgs{
-//				SubnetName: pulumi.Any(_var.Name),
+//				SubnetName: pulumi.String(name),
 //				ZoneId:     *pulumi.String(defaultZones.Zones[0].Id),
 //				Cidr:       pulumi.String("10.0.0.0/16"),
 //				VpdId:      defaultVpd.ID(),
@@ -79,7 +86,7 @@ import (
 type Subnet struct {
 	pulumi.CustomResourceState
 
-	// CIDR network segment
+	// CIDR network segment.
 	Cidr pulumi.StringOutput `pulumi:"cidr"`
 	// The creation time of the resource.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -102,7 +109,7 @@ type Subnet struct {
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// The Eflo VPD ID.
 	VpdId pulumi.StringOutput `pulumi:"vpdId"`
-	// The zone ID  of the resource
+	// The zone ID  of the resource.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -148,7 +155,7 @@ func GetSubnet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Subnet resources.
 type subnetState struct {
-	// CIDR network segment
+	// CIDR network segment.
 	Cidr *string `pulumi:"cidr"`
 	// The creation time of the resource.
 	CreateTime *string `pulumi:"createTime"`
@@ -171,12 +178,12 @@ type subnetState struct {
 	Type *string `pulumi:"type"`
 	// The Eflo VPD ID.
 	VpdId *string `pulumi:"vpdId"`
-	// The zone ID  of the resource
+	// The zone ID  of the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type SubnetState struct {
-	// CIDR network segment
+	// CIDR network segment.
 	Cidr pulumi.StringPtrInput
 	// The creation time of the resource.
 	CreateTime pulumi.StringPtrInput
@@ -199,7 +206,7 @@ type SubnetState struct {
 	Type pulumi.StringPtrInput
 	// The Eflo VPD ID.
 	VpdId pulumi.StringPtrInput
-	// The zone ID  of the resource
+	// The zone ID  of the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -208,7 +215,7 @@ func (SubnetState) ElementType() reflect.Type {
 }
 
 type subnetArgs struct {
-	// CIDR network segment
+	// CIDR network segment.
 	Cidr string `pulumi:"cidr"`
 	// The Subnet name.
 	SubnetName string `pulumi:"subnetName"`
@@ -219,13 +226,13 @@ type subnetArgs struct {
 	Type *string `pulumi:"type"`
 	// The Eflo VPD ID.
 	VpdId string `pulumi:"vpdId"`
-	// The zone ID  of the resource
+	// The zone ID  of the resource.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Subnet resource.
 type SubnetArgs struct {
-	// CIDR network segment
+	// CIDR network segment.
 	Cidr pulumi.StringInput
 	// The Subnet name.
 	SubnetName pulumi.StringInput
@@ -236,7 +243,7 @@ type SubnetArgs struct {
 	Type pulumi.StringPtrInput
 	// The Eflo VPD ID.
 	VpdId pulumi.StringInput
-	// The zone ID  of the resource
+	// The zone ID  of the resource.
 	ZoneId pulumi.StringInput
 }
 
@@ -261,6 +268,12 @@ func (i *Subnet) ToSubnetOutput() SubnetOutput {
 
 func (i *Subnet) ToSubnetOutputWithContext(ctx context.Context) SubnetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetOutput)
+}
+
+func (i *Subnet) ToOutput(ctx context.Context) pulumix.Output[*Subnet] {
+	return pulumix.Output[*Subnet]{
+		OutputState: i.ToSubnetOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SubnetArrayInput is an input type that accepts SubnetArray and SubnetArrayOutput values.
@@ -288,6 +301,12 @@ func (i SubnetArray) ToSubnetArrayOutputWithContext(ctx context.Context) SubnetA
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetArrayOutput)
 }
 
+func (i SubnetArray) ToOutput(ctx context.Context) pulumix.Output[[]*Subnet] {
+	return pulumix.Output[[]*Subnet]{
+		OutputState: i.ToSubnetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SubnetMapInput is an input type that accepts SubnetMap and SubnetMapOutput values.
 // You can construct a concrete instance of `SubnetMapInput` via:
 //
@@ -313,6 +332,12 @@ func (i SubnetMap) ToSubnetMapOutputWithContext(ctx context.Context) SubnetMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetMapOutput)
 }
 
+func (i SubnetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Subnet] {
+	return pulumix.Output[map[string]*Subnet]{
+		OutputState: i.ToSubnetMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SubnetOutput struct{ *pulumi.OutputState }
 
 func (SubnetOutput) ElementType() reflect.Type {
@@ -327,7 +352,13 @@ func (o SubnetOutput) ToSubnetOutputWithContext(ctx context.Context) SubnetOutpu
 	return o
 }
 
-// CIDR network segment
+func (o SubnetOutput) ToOutput(ctx context.Context) pulumix.Output[*Subnet] {
+	return pulumix.Output[*Subnet]{
+		OutputState: o.OutputState,
+	}
+}
+
+// CIDR network segment.
 func (o SubnetOutput) Cidr() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.Cidr }).(pulumi.StringOutput)
 }
@@ -380,7 +411,7 @@ func (o SubnetOutput) VpdId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.VpdId }).(pulumi.StringOutput)
 }
 
-// The zone ID  of the resource
+// The zone ID  of the resource.
 func (o SubnetOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
@@ -397,6 +428,12 @@ func (o SubnetArrayOutput) ToSubnetArrayOutput() SubnetArrayOutput {
 
 func (o SubnetArrayOutput) ToSubnetArrayOutputWithContext(ctx context.Context) SubnetArrayOutput {
 	return o
+}
+
+func (o SubnetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Subnet] {
+	return pulumix.Output[[]*Subnet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubnetArrayOutput) Index(i pulumi.IntInput) SubnetOutput {
@@ -417,6 +454,12 @@ func (o SubnetMapOutput) ToSubnetMapOutput() SubnetMapOutput {
 
 func (o SubnetMapOutput) ToSubnetMapOutputWithContext(ctx context.Context) SubnetMapOutput {
 	return o
+}
+
+func (o SubnetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Subnet] {
+	return pulumix.Output[map[string]*Subnet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubnetMapOutput) MapIndex(k pulumi.StringInput) SubnetOutput {

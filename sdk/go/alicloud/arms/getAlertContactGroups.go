@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Arms Alert Contact Groups of the current Alibaba Cloud user.
@@ -129,6 +130,12 @@ func (o GetAlertContactGroupsResultOutput) ToGetAlertContactGroupsResultOutput()
 
 func (o GetAlertContactGroupsResultOutput) ToGetAlertContactGroupsResultOutputWithContext(ctx context.Context) GetAlertContactGroupsResultOutput {
 	return o
+}
+
+func (o GetAlertContactGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAlertContactGroupsResult] {
+	return pulumix.Output[GetAlertContactGroupsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAlertContactGroupsResultOutput) AlertContactGroupName() pulumi.StringPtrOutput {

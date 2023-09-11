@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Express Connect Virtual Physical Connection resource.
@@ -387,6 +388,12 @@ func (i *VirtualPhysicalConnection) ToVirtualPhysicalConnectionOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualPhysicalConnectionOutput)
 }
 
+func (i *VirtualPhysicalConnection) ToOutput(ctx context.Context) pulumix.Output[*VirtualPhysicalConnection] {
+	return pulumix.Output[*VirtualPhysicalConnection]{
+		OutputState: i.ToVirtualPhysicalConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VirtualPhysicalConnectionArrayInput is an input type that accepts VirtualPhysicalConnectionArray and VirtualPhysicalConnectionArrayOutput values.
 // You can construct a concrete instance of `VirtualPhysicalConnectionArrayInput` via:
 //
@@ -410,6 +417,12 @@ func (i VirtualPhysicalConnectionArray) ToVirtualPhysicalConnectionArrayOutput()
 
 func (i VirtualPhysicalConnectionArray) ToVirtualPhysicalConnectionArrayOutputWithContext(ctx context.Context) VirtualPhysicalConnectionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualPhysicalConnectionArrayOutput)
+}
+
+func (i VirtualPhysicalConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]*VirtualPhysicalConnection] {
+	return pulumix.Output[[]*VirtualPhysicalConnection]{
+		OutputState: i.ToVirtualPhysicalConnectionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // VirtualPhysicalConnectionMapInput is an input type that accepts VirtualPhysicalConnectionMap and VirtualPhysicalConnectionMapOutput values.
@@ -437,6 +450,12 @@ func (i VirtualPhysicalConnectionMap) ToVirtualPhysicalConnectionMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualPhysicalConnectionMapOutput)
 }
 
+func (i VirtualPhysicalConnectionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VirtualPhysicalConnection] {
+	return pulumix.Output[map[string]*VirtualPhysicalConnection]{
+		OutputState: i.ToVirtualPhysicalConnectionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VirtualPhysicalConnectionOutput struct{ *pulumi.OutputState }
 
 func (VirtualPhysicalConnectionOutput) ElementType() reflect.Type {
@@ -449,6 +468,12 @@ func (o VirtualPhysicalConnectionOutput) ToVirtualPhysicalConnectionOutput() Vir
 
 func (o VirtualPhysicalConnectionOutput) ToVirtualPhysicalConnectionOutputWithContext(ctx context.Context) VirtualPhysicalConnectionOutput {
 	return o
+}
+
+func (o VirtualPhysicalConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualPhysicalConnection] {
+	return pulumix.Output[*VirtualPhysicalConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the access point of the physical connection.
@@ -602,6 +627,12 @@ func (o VirtualPhysicalConnectionArrayOutput) ToVirtualPhysicalConnectionArrayOu
 	return o
 }
 
+func (o VirtualPhysicalConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VirtualPhysicalConnection] {
+	return pulumix.Output[[]*VirtualPhysicalConnection]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VirtualPhysicalConnectionArrayOutput) Index(i pulumi.IntInput) VirtualPhysicalConnectionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VirtualPhysicalConnection {
 		return vs[0].([]*VirtualPhysicalConnection)[vs[1].(int)]
@@ -620,6 +651,12 @@ func (o VirtualPhysicalConnectionMapOutput) ToVirtualPhysicalConnectionMapOutput
 
 func (o VirtualPhysicalConnectionMapOutput) ToVirtualPhysicalConnectionMapOutputWithContext(ctx context.Context) VirtualPhysicalConnectionMapOutput {
 	return o
+}
+
+func (o VirtualPhysicalConnectionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VirtualPhysicalConnection] {
+	return pulumix.Output[map[string]*VirtualPhysicalConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualPhysicalConnectionMapOutput) MapIndex(k pulumi.StringInput) VirtualPhysicalConnectionOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Resource Manager Policy Version resource.
@@ -214,6 +215,12 @@ func (i *PolicyVersion) ToPolicyVersionOutputWithContext(ctx context.Context) Po
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyVersionOutput)
 }
 
+func (i *PolicyVersion) ToOutput(ctx context.Context) pulumix.Output[*PolicyVersion] {
+	return pulumix.Output[*PolicyVersion]{
+		OutputState: i.ToPolicyVersionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PolicyVersionArrayInput is an input type that accepts PolicyVersionArray and PolicyVersionArrayOutput values.
 // You can construct a concrete instance of `PolicyVersionArrayInput` via:
 //
@@ -237,6 +244,12 @@ func (i PolicyVersionArray) ToPolicyVersionArrayOutput() PolicyVersionArrayOutpu
 
 func (i PolicyVersionArray) ToPolicyVersionArrayOutputWithContext(ctx context.Context) PolicyVersionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyVersionArrayOutput)
+}
+
+func (i PolicyVersionArray) ToOutput(ctx context.Context) pulumix.Output[[]*PolicyVersion] {
+	return pulumix.Output[[]*PolicyVersion]{
+		OutputState: i.ToPolicyVersionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PolicyVersionMapInput is an input type that accepts PolicyVersionMap and PolicyVersionMapOutput values.
@@ -264,6 +277,12 @@ func (i PolicyVersionMap) ToPolicyVersionMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyVersionMapOutput)
 }
 
+func (i PolicyVersionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PolicyVersion] {
+	return pulumix.Output[map[string]*PolicyVersion]{
+		OutputState: i.ToPolicyVersionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PolicyVersionOutput struct{ *pulumi.OutputState }
 
 func (PolicyVersionOutput) ElementType() reflect.Type {
@@ -276,6 +295,12 @@ func (o PolicyVersionOutput) ToPolicyVersionOutput() PolicyVersionOutput {
 
 func (o PolicyVersionOutput) ToPolicyVersionOutputWithContext(ctx context.Context) PolicyVersionOutput {
 	return o
+}
+
+func (o PolicyVersionOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyVersion] {
+	return pulumix.Output[*PolicyVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies whether to set the policy version as the default version. Default to `false`.
@@ -311,6 +336,12 @@ func (o PolicyVersionArrayOutput) ToPolicyVersionArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o PolicyVersionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PolicyVersion] {
+	return pulumix.Output[[]*PolicyVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PolicyVersionArrayOutput) Index(i pulumi.IntInput) PolicyVersionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PolicyVersion {
 		return vs[0].([]*PolicyVersion)[vs[1].(int)]
@@ -329,6 +360,12 @@ func (o PolicyVersionMapOutput) ToPolicyVersionMapOutput() PolicyVersionMapOutpu
 
 func (o PolicyVersionMapOutput) ToPolicyVersionMapOutputWithContext(ctx context.Context) PolicyVersionMapOutput {
 	return o
+}
+
+func (o PolicyVersionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PolicyVersion] {
+	return pulumix.Output[map[string]*PolicyVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PolicyVersionMapOutput) MapIndex(k pulumi.StringInput) PolicyVersionOutput {

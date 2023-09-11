@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/bss-openapi/latest/describepricingmodule#doc-api-BssOpenApi-DescribePricingModule)
@@ -134,6 +135,12 @@ func (o GetOpenApiPricingModulesResultOutput) ToGetOpenApiPricingModulesResultOu
 
 func (o GetOpenApiPricingModulesResultOutput) ToGetOpenApiPricingModulesResultOutputWithContext(ctx context.Context) GetOpenApiPricingModulesResultOutput {
 	return o
+}
+
+func (o GetOpenApiPricingModulesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetOpenApiPricingModulesResult] {
+	return pulumix.Output[GetOpenApiPricingModulesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

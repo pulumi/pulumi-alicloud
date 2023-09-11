@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Dbfs Auto Snap Shot Policy resource.
@@ -224,6 +225,12 @@ func (i *AutoSnapShotPolicy) ToAutoSnapShotPolicyOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AutoSnapShotPolicyOutput)
 }
 
+func (i *AutoSnapShotPolicy) ToOutput(ctx context.Context) pulumix.Output[*AutoSnapShotPolicy] {
+	return pulumix.Output[*AutoSnapShotPolicy]{
+		OutputState: i.ToAutoSnapShotPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AutoSnapShotPolicyArrayInput is an input type that accepts AutoSnapShotPolicyArray and AutoSnapShotPolicyArrayOutput values.
 // You can construct a concrete instance of `AutoSnapShotPolicyArrayInput` via:
 //
@@ -247,6 +254,12 @@ func (i AutoSnapShotPolicyArray) ToAutoSnapShotPolicyArrayOutput() AutoSnapShotP
 
 func (i AutoSnapShotPolicyArray) ToAutoSnapShotPolicyArrayOutputWithContext(ctx context.Context) AutoSnapShotPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AutoSnapShotPolicyArrayOutput)
+}
+
+func (i AutoSnapShotPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*AutoSnapShotPolicy] {
+	return pulumix.Output[[]*AutoSnapShotPolicy]{
+		OutputState: i.ToAutoSnapShotPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AutoSnapShotPolicyMapInput is an input type that accepts AutoSnapShotPolicyMap and AutoSnapShotPolicyMapOutput values.
@@ -274,6 +287,12 @@ func (i AutoSnapShotPolicyMap) ToAutoSnapShotPolicyMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AutoSnapShotPolicyMapOutput)
 }
 
+func (i AutoSnapShotPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AutoSnapShotPolicy] {
+	return pulumix.Output[map[string]*AutoSnapShotPolicy]{
+		OutputState: i.ToAutoSnapShotPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AutoSnapShotPolicyOutput struct{ *pulumi.OutputState }
 
 func (AutoSnapShotPolicyOutput) ElementType() reflect.Type {
@@ -286,6 +305,12 @@ func (o AutoSnapShotPolicyOutput) ToAutoSnapShotPolicyOutput() AutoSnapShotPolic
 
 func (o AutoSnapShotPolicyOutput) ToAutoSnapShotPolicyOutputWithContext(ctx context.Context) AutoSnapShotPolicyOutput {
 	return o
+}
+
+func (o AutoSnapShotPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoSnapShotPolicy] {
+	return pulumix.Output[*AutoSnapShotPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The number of database file systems set by the automatic snapshot policy.
@@ -352,6 +377,12 @@ func (o AutoSnapShotPolicyArrayOutput) ToAutoSnapShotPolicyArrayOutputWithContex
 	return o
 }
 
+func (o AutoSnapShotPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AutoSnapShotPolicy] {
+	return pulumix.Output[[]*AutoSnapShotPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AutoSnapShotPolicyArrayOutput) Index(i pulumi.IntInput) AutoSnapShotPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AutoSnapShotPolicy {
 		return vs[0].([]*AutoSnapShotPolicy)[vs[1].(int)]
@@ -370,6 +401,12 @@ func (o AutoSnapShotPolicyMapOutput) ToAutoSnapShotPolicyMapOutput() AutoSnapSho
 
 func (o AutoSnapShotPolicyMapOutput) ToAutoSnapShotPolicyMapOutputWithContext(ctx context.Context) AutoSnapShotPolicyMapOutput {
 	return o
+}
+
+func (o AutoSnapShotPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AutoSnapShotPolicy] {
+	return pulumix.Output[map[string]*AutoSnapShotPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutoSnapShotPolicyMapOutput) MapIndex(k pulumi.StringInput) AutoSnapShotPolicyOutput {

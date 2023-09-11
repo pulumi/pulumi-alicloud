@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -58,6 +59,12 @@ func (i AlarmEscalationsCriticalArgs) ToAlarmEscalationsCriticalOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AlarmEscalationsCriticalOutput)
 }
 
+func (i AlarmEscalationsCriticalArgs) ToOutput(ctx context.Context) pulumix.Output[AlarmEscalationsCritical] {
+	return pulumix.Output[AlarmEscalationsCritical]{
+		OutputState: i.ToAlarmEscalationsCriticalOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AlarmEscalationsCriticalArgs) ToAlarmEscalationsCriticalPtrOutput() AlarmEscalationsCriticalPtrOutput {
 	return i.ToAlarmEscalationsCriticalPtrOutputWithContext(context.Background())
 }
@@ -99,6 +106,12 @@ func (i *alarmEscalationsCriticalPtrType) ToAlarmEscalationsCriticalPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(AlarmEscalationsCriticalPtrOutput)
 }
 
+func (i *alarmEscalationsCriticalPtrType) ToOutput(ctx context.Context) pulumix.Output[*AlarmEscalationsCritical] {
+	return pulumix.Output[*AlarmEscalationsCritical]{
+		OutputState: i.ToAlarmEscalationsCriticalPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlarmEscalationsCriticalOutput struct{ *pulumi.OutputState }
 
 func (AlarmEscalationsCriticalOutput) ElementType() reflect.Type {
@@ -121,6 +134,12 @@ func (o AlarmEscalationsCriticalOutput) ToAlarmEscalationsCriticalPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlarmEscalationsCritical) *AlarmEscalationsCritical {
 		return &v
 	}).(AlarmEscalationsCriticalPtrOutput)
+}
+
+func (o AlarmEscalationsCriticalOutput) ToOutput(ctx context.Context) pulumix.Output[AlarmEscalationsCritical] {
+	return pulumix.Output[AlarmEscalationsCritical]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
@@ -155,6 +174,12 @@ func (o AlarmEscalationsCriticalPtrOutput) ToAlarmEscalationsCriticalPtrOutput()
 
 func (o AlarmEscalationsCriticalPtrOutput) ToAlarmEscalationsCriticalPtrOutputWithContext(ctx context.Context) AlarmEscalationsCriticalPtrOutput {
 	return o
+}
+
+func (o AlarmEscalationsCriticalPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlarmEscalationsCritical] {
+	return pulumix.Output[*AlarmEscalationsCritical]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlarmEscalationsCriticalPtrOutput) Elem() AlarmEscalationsCriticalOutput {
@@ -252,6 +277,12 @@ func (i AlarmEscalationsInfoArgs) ToAlarmEscalationsInfoOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AlarmEscalationsInfoOutput)
 }
 
+func (i AlarmEscalationsInfoArgs) ToOutput(ctx context.Context) pulumix.Output[AlarmEscalationsInfo] {
+	return pulumix.Output[AlarmEscalationsInfo]{
+		OutputState: i.ToAlarmEscalationsInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AlarmEscalationsInfoArgs) ToAlarmEscalationsInfoPtrOutput() AlarmEscalationsInfoPtrOutput {
 	return i.ToAlarmEscalationsInfoPtrOutputWithContext(context.Background())
 }
@@ -293,6 +324,12 @@ func (i *alarmEscalationsInfoPtrType) ToAlarmEscalationsInfoPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(AlarmEscalationsInfoPtrOutput)
 }
 
+func (i *alarmEscalationsInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*AlarmEscalationsInfo] {
+	return pulumix.Output[*AlarmEscalationsInfo]{
+		OutputState: i.ToAlarmEscalationsInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlarmEscalationsInfoOutput struct{ *pulumi.OutputState }
 
 func (AlarmEscalationsInfoOutput) ElementType() reflect.Type {
@@ -315,6 +352,12 @@ func (o AlarmEscalationsInfoOutput) ToAlarmEscalationsInfoPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlarmEscalationsInfo) *AlarmEscalationsInfo {
 		return &v
 	}).(AlarmEscalationsInfoPtrOutput)
+}
+
+func (o AlarmEscalationsInfoOutput) ToOutput(ctx context.Context) pulumix.Output[AlarmEscalationsInfo] {
+	return pulumix.Output[AlarmEscalationsInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
@@ -349,6 +392,12 @@ func (o AlarmEscalationsInfoPtrOutput) ToAlarmEscalationsInfoPtrOutput() AlarmEs
 
 func (o AlarmEscalationsInfoPtrOutput) ToAlarmEscalationsInfoPtrOutputWithContext(ctx context.Context) AlarmEscalationsInfoPtrOutput {
 	return o
+}
+
+func (o AlarmEscalationsInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlarmEscalationsInfo] {
+	return pulumix.Output[*AlarmEscalationsInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlarmEscalationsInfoPtrOutput) Elem() AlarmEscalationsInfoOutput {
@@ -446,6 +495,12 @@ func (i AlarmEscalationsWarnArgs) ToAlarmEscalationsWarnOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AlarmEscalationsWarnOutput)
 }
 
+func (i AlarmEscalationsWarnArgs) ToOutput(ctx context.Context) pulumix.Output[AlarmEscalationsWarn] {
+	return pulumix.Output[AlarmEscalationsWarn]{
+		OutputState: i.ToAlarmEscalationsWarnOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AlarmEscalationsWarnArgs) ToAlarmEscalationsWarnPtrOutput() AlarmEscalationsWarnPtrOutput {
 	return i.ToAlarmEscalationsWarnPtrOutputWithContext(context.Background())
 }
@@ -487,6 +542,12 @@ func (i *alarmEscalationsWarnPtrType) ToAlarmEscalationsWarnPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(AlarmEscalationsWarnPtrOutput)
 }
 
+func (i *alarmEscalationsWarnPtrType) ToOutput(ctx context.Context) pulumix.Output[*AlarmEscalationsWarn] {
+	return pulumix.Output[*AlarmEscalationsWarn]{
+		OutputState: i.ToAlarmEscalationsWarnPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlarmEscalationsWarnOutput struct{ *pulumi.OutputState }
 
 func (AlarmEscalationsWarnOutput) ElementType() reflect.Type {
@@ -509,6 +570,12 @@ func (o AlarmEscalationsWarnOutput) ToAlarmEscalationsWarnPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlarmEscalationsWarn) *AlarmEscalationsWarn {
 		return &v
 	}).(AlarmEscalationsWarnPtrOutput)
+}
+
+func (o AlarmEscalationsWarnOutput) ToOutput(ctx context.Context) pulumix.Output[AlarmEscalationsWarn] {
+	return pulumix.Output[AlarmEscalationsWarn]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
@@ -543,6 +610,12 @@ func (o AlarmEscalationsWarnPtrOutput) ToAlarmEscalationsWarnPtrOutput() AlarmEs
 
 func (o AlarmEscalationsWarnPtrOutput) ToAlarmEscalationsWarnPtrOutputWithContext(ctx context.Context) AlarmEscalationsWarnPtrOutput {
 	return o
+}
+
+func (o AlarmEscalationsWarnPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlarmEscalationsWarn] {
+	return pulumix.Output[*AlarmEscalationsWarn]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlarmEscalationsWarnPtrOutput) Elem() AlarmEscalationsWarnOutput {
@@ -640,6 +713,12 @@ func (i AlarmPrometheusArgs) ToAlarmPrometheusOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AlarmPrometheusOutput)
 }
 
+func (i AlarmPrometheusArgs) ToOutput(ctx context.Context) pulumix.Output[AlarmPrometheus] {
+	return pulumix.Output[AlarmPrometheus]{
+		OutputState: i.ToAlarmPrometheusOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AlarmPrometheusArrayInput is an input type that accepts AlarmPrometheusArray and AlarmPrometheusArrayOutput values.
 // You can construct a concrete instance of `AlarmPrometheusArrayInput` via:
 //
@@ -665,6 +744,12 @@ func (i AlarmPrometheusArray) ToAlarmPrometheusArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AlarmPrometheusArrayOutput)
 }
 
+func (i AlarmPrometheusArray) ToOutput(ctx context.Context) pulumix.Output[[]AlarmPrometheus] {
+	return pulumix.Output[[]AlarmPrometheus]{
+		OutputState: i.ToAlarmPrometheusArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlarmPrometheusOutput struct{ *pulumi.OutputState }
 
 func (AlarmPrometheusOutput) ElementType() reflect.Type {
@@ -677,6 +762,12 @@ func (o AlarmPrometheusOutput) ToAlarmPrometheusOutput() AlarmPrometheusOutput {
 
 func (o AlarmPrometheusOutput) ToAlarmPrometheusOutputWithContext(ctx context.Context) AlarmPrometheusOutput {
 	return o
+}
+
+func (o AlarmPrometheusOutput) ToOutput(ctx context.Context) pulumix.Output[AlarmPrometheus] {
+	return pulumix.Output[AlarmPrometheus]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
@@ -711,6 +802,12 @@ func (o AlarmPrometheusArrayOutput) ToAlarmPrometheusArrayOutput() AlarmPromethe
 
 func (o AlarmPrometheusArrayOutput) ToAlarmPrometheusArrayOutputWithContext(ctx context.Context) AlarmPrometheusArrayOutput {
 	return o
+}
+
+func (o AlarmPrometheusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AlarmPrometheus] {
+	return pulumix.Output[[]AlarmPrometheus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlarmPrometheusArrayOutput) Index(i pulumi.IntInput) AlarmPrometheusOutput {
@@ -756,6 +853,12 @@ func (i DynamicTagGroupMatchExpressArgs) ToDynamicTagGroupMatchExpressOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(DynamicTagGroupMatchExpressOutput)
 }
 
+func (i DynamicTagGroupMatchExpressArgs) ToOutput(ctx context.Context) pulumix.Output[DynamicTagGroupMatchExpress] {
+	return pulumix.Output[DynamicTagGroupMatchExpress]{
+		OutputState: i.ToDynamicTagGroupMatchExpressOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DynamicTagGroupMatchExpressArrayInput is an input type that accepts DynamicTagGroupMatchExpressArray and DynamicTagGroupMatchExpressArrayOutput values.
 // You can construct a concrete instance of `DynamicTagGroupMatchExpressArrayInput` via:
 //
@@ -781,6 +884,12 @@ func (i DynamicTagGroupMatchExpressArray) ToDynamicTagGroupMatchExpressArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DynamicTagGroupMatchExpressArrayOutput)
 }
 
+func (i DynamicTagGroupMatchExpressArray) ToOutput(ctx context.Context) pulumix.Output[[]DynamicTagGroupMatchExpress] {
+	return pulumix.Output[[]DynamicTagGroupMatchExpress]{
+		OutputState: i.ToDynamicTagGroupMatchExpressArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DynamicTagGroupMatchExpressOutput struct{ *pulumi.OutputState }
 
 func (DynamicTagGroupMatchExpressOutput) ElementType() reflect.Type {
@@ -793,6 +902,12 @@ func (o DynamicTagGroupMatchExpressOutput) ToDynamicTagGroupMatchExpressOutput()
 
 func (o DynamicTagGroupMatchExpressOutput) ToDynamicTagGroupMatchExpressOutputWithContext(ctx context.Context) DynamicTagGroupMatchExpressOutput {
 	return o
+}
+
+func (o DynamicTagGroupMatchExpressOutput) ToOutput(ctx context.Context) pulumix.Output[DynamicTagGroupMatchExpress] {
+	return pulumix.Output[DynamicTagGroupMatchExpress]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
@@ -817,6 +932,12 @@ func (o DynamicTagGroupMatchExpressArrayOutput) ToDynamicTagGroupMatchExpressArr
 
 func (o DynamicTagGroupMatchExpressArrayOutput) ToDynamicTagGroupMatchExpressArrayOutputWithContext(ctx context.Context) DynamicTagGroupMatchExpressArrayOutput {
 	return o
+}
+
+func (o DynamicTagGroupMatchExpressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DynamicTagGroupMatchExpress] {
+	return pulumix.Output[[]DynamicTagGroupMatchExpress]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DynamicTagGroupMatchExpressArrayOutput) Index(i pulumi.IntInput) DynamicTagGroupMatchExpressOutput {
@@ -874,6 +995,12 @@ func (i EventRuleEventPatternArgs) ToEventRuleEventPatternOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(EventRuleEventPatternOutput)
 }
 
+func (i EventRuleEventPatternArgs) ToOutput(ctx context.Context) pulumix.Output[EventRuleEventPattern] {
+	return pulumix.Output[EventRuleEventPattern]{
+		OutputState: i.ToEventRuleEventPatternOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EventRuleEventPatternArgs) ToEventRuleEventPatternPtrOutput() EventRuleEventPatternPtrOutput {
 	return i.ToEventRuleEventPatternPtrOutputWithContext(context.Background())
 }
@@ -915,6 +1042,12 @@ func (i *eventRuleEventPatternPtrType) ToEventRuleEventPatternPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(EventRuleEventPatternPtrOutput)
 }
 
+func (i *eventRuleEventPatternPtrType) ToOutput(ctx context.Context) pulumix.Output[*EventRuleEventPattern] {
+	return pulumix.Output[*EventRuleEventPattern]{
+		OutputState: i.ToEventRuleEventPatternPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EventRuleEventPatternOutput struct{ *pulumi.OutputState }
 
 func (EventRuleEventPatternOutput) ElementType() reflect.Type {
@@ -937,6 +1070,12 @@ func (o EventRuleEventPatternOutput) ToEventRuleEventPatternPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventRuleEventPattern) *EventRuleEventPattern {
 		return &v
 	}).(EventRuleEventPatternPtrOutput)
+}
+
+func (o EventRuleEventPatternOutput) ToOutput(ctx context.Context) pulumix.Output[EventRuleEventPattern] {
+	return pulumix.Output[EventRuleEventPattern]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of the event-triggered alert rule. Valid values:
@@ -976,6 +1115,12 @@ func (o EventRuleEventPatternPtrOutput) ToEventRuleEventPatternPtrOutput() Event
 
 func (o EventRuleEventPatternPtrOutput) ToEventRuleEventPatternPtrOutputWithContext(ctx context.Context) EventRuleEventPatternPtrOutput {
 	return o
+}
+
+func (o EventRuleEventPatternPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EventRuleEventPattern] {
+	return pulumix.Output[*EventRuleEventPattern]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EventRuleEventPatternPtrOutput) Elem() EventRuleEventPatternOutput {
@@ -1079,6 +1224,12 @@ func (i GroupMetricRuleEscalationsArgs) ToGroupMetricRuleEscalationsOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleEscalationsOutput)
 }
 
+func (i GroupMetricRuleEscalationsArgs) ToOutput(ctx context.Context) pulumix.Output[GroupMetricRuleEscalations] {
+	return pulumix.Output[GroupMetricRuleEscalations]{
+		OutputState: i.ToGroupMetricRuleEscalationsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GroupMetricRuleEscalationsArgs) ToGroupMetricRuleEscalationsPtrOutput() GroupMetricRuleEscalationsPtrOutput {
 	return i.ToGroupMetricRuleEscalationsPtrOutputWithContext(context.Background())
 }
@@ -1120,6 +1271,12 @@ func (i *groupMetricRuleEscalationsPtrType) ToGroupMetricRuleEscalationsPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleEscalationsPtrOutput)
 }
 
+func (i *groupMetricRuleEscalationsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GroupMetricRuleEscalations] {
+	return pulumix.Output[*GroupMetricRuleEscalations]{
+		OutputState: i.ToGroupMetricRuleEscalationsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GroupMetricRuleEscalationsOutput struct{ *pulumi.OutputState }
 
 func (GroupMetricRuleEscalationsOutput) ElementType() reflect.Type {
@@ -1142,6 +1299,12 @@ func (o GroupMetricRuleEscalationsOutput) ToGroupMetricRuleEscalationsPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupMetricRuleEscalations) *GroupMetricRuleEscalations {
 		return &v
 	}).(GroupMetricRuleEscalationsPtrOutput)
+}
+
+func (o GroupMetricRuleEscalationsOutput) ToOutput(ctx context.Context) pulumix.Output[GroupMetricRuleEscalations] {
+	return pulumix.Output[GroupMetricRuleEscalations]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The critical level. See `critical` below.
@@ -1171,6 +1334,12 @@ func (o GroupMetricRuleEscalationsPtrOutput) ToGroupMetricRuleEscalationsPtrOutp
 
 func (o GroupMetricRuleEscalationsPtrOutput) ToGroupMetricRuleEscalationsPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsPtrOutput {
 	return o
+}
+
+func (o GroupMetricRuleEscalationsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupMetricRuleEscalations] {
+	return pulumix.Output[*GroupMetricRuleEscalations]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GroupMetricRuleEscalationsPtrOutput) Elem() GroupMetricRuleEscalationsOutput {
@@ -1258,6 +1427,12 @@ func (i GroupMetricRuleEscalationsCriticalArgs) ToGroupMetricRuleEscalationsCrit
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleEscalationsCriticalOutput)
 }
 
+func (i GroupMetricRuleEscalationsCriticalArgs) ToOutput(ctx context.Context) pulumix.Output[GroupMetricRuleEscalationsCritical] {
+	return pulumix.Output[GroupMetricRuleEscalationsCritical]{
+		OutputState: i.ToGroupMetricRuleEscalationsCriticalOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GroupMetricRuleEscalationsCriticalArgs) ToGroupMetricRuleEscalationsCriticalPtrOutput() GroupMetricRuleEscalationsCriticalPtrOutput {
 	return i.ToGroupMetricRuleEscalationsCriticalPtrOutputWithContext(context.Background())
 }
@@ -1299,6 +1474,12 @@ func (i *groupMetricRuleEscalationsCriticalPtrType) ToGroupMetricRuleEscalations
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleEscalationsCriticalPtrOutput)
 }
 
+func (i *groupMetricRuleEscalationsCriticalPtrType) ToOutput(ctx context.Context) pulumix.Output[*GroupMetricRuleEscalationsCritical] {
+	return pulumix.Output[*GroupMetricRuleEscalationsCritical]{
+		OutputState: i.ToGroupMetricRuleEscalationsCriticalPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GroupMetricRuleEscalationsCriticalOutput struct{ *pulumi.OutputState }
 
 func (GroupMetricRuleEscalationsCriticalOutput) ElementType() reflect.Type {
@@ -1321,6 +1502,12 @@ func (o GroupMetricRuleEscalationsCriticalOutput) ToGroupMetricRuleEscalationsCr
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupMetricRuleEscalationsCritical) *GroupMetricRuleEscalationsCritical {
 		return &v
 	}).(GroupMetricRuleEscalationsCriticalPtrOutput)
+}
+
+func (o GroupMetricRuleEscalationsCriticalOutput) ToOutput(ctx context.Context) pulumix.Output[GroupMetricRuleEscalationsCritical] {
+	return pulumix.Output[GroupMetricRuleEscalationsCritical]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The comparison operator of the threshold for critical-level alerts.
@@ -1355,6 +1542,12 @@ func (o GroupMetricRuleEscalationsCriticalPtrOutput) ToGroupMetricRuleEscalation
 
 func (o GroupMetricRuleEscalationsCriticalPtrOutput) ToGroupMetricRuleEscalationsCriticalPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsCriticalPtrOutput {
 	return o
+}
+
+func (o GroupMetricRuleEscalationsCriticalPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupMetricRuleEscalationsCritical] {
+	return pulumix.Output[*GroupMetricRuleEscalationsCritical]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GroupMetricRuleEscalationsCriticalPtrOutput) Elem() GroupMetricRuleEscalationsCriticalOutput {
@@ -1452,6 +1645,12 @@ func (i GroupMetricRuleEscalationsInfoArgs) ToGroupMetricRuleEscalationsInfoOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleEscalationsInfoOutput)
 }
 
+func (i GroupMetricRuleEscalationsInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GroupMetricRuleEscalationsInfo] {
+	return pulumix.Output[GroupMetricRuleEscalationsInfo]{
+		OutputState: i.ToGroupMetricRuleEscalationsInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GroupMetricRuleEscalationsInfoArgs) ToGroupMetricRuleEscalationsInfoPtrOutput() GroupMetricRuleEscalationsInfoPtrOutput {
 	return i.ToGroupMetricRuleEscalationsInfoPtrOutputWithContext(context.Background())
 }
@@ -1493,6 +1692,12 @@ func (i *groupMetricRuleEscalationsInfoPtrType) ToGroupMetricRuleEscalationsInfo
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleEscalationsInfoPtrOutput)
 }
 
+func (i *groupMetricRuleEscalationsInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*GroupMetricRuleEscalationsInfo] {
+	return pulumix.Output[*GroupMetricRuleEscalationsInfo]{
+		OutputState: i.ToGroupMetricRuleEscalationsInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GroupMetricRuleEscalationsInfoOutput struct{ *pulumi.OutputState }
 
 func (GroupMetricRuleEscalationsInfoOutput) ElementType() reflect.Type {
@@ -1515,6 +1720,12 @@ func (o GroupMetricRuleEscalationsInfoOutput) ToGroupMetricRuleEscalationsInfoPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupMetricRuleEscalationsInfo) *GroupMetricRuleEscalationsInfo {
 		return &v
 	}).(GroupMetricRuleEscalationsInfoPtrOutput)
+}
+
+func (o GroupMetricRuleEscalationsInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GroupMetricRuleEscalationsInfo] {
+	return pulumix.Output[GroupMetricRuleEscalationsInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The comparison operator of the threshold for critical-level alerts.
@@ -1549,6 +1760,12 @@ func (o GroupMetricRuleEscalationsInfoPtrOutput) ToGroupMetricRuleEscalationsInf
 
 func (o GroupMetricRuleEscalationsInfoPtrOutput) ToGroupMetricRuleEscalationsInfoPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsInfoPtrOutput {
 	return o
+}
+
+func (o GroupMetricRuleEscalationsInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupMetricRuleEscalationsInfo] {
+	return pulumix.Output[*GroupMetricRuleEscalationsInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GroupMetricRuleEscalationsInfoPtrOutput) Elem() GroupMetricRuleEscalationsInfoOutput {
@@ -1646,6 +1863,12 @@ func (i GroupMetricRuleEscalationsWarnArgs) ToGroupMetricRuleEscalationsWarnOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleEscalationsWarnOutput)
 }
 
+func (i GroupMetricRuleEscalationsWarnArgs) ToOutput(ctx context.Context) pulumix.Output[GroupMetricRuleEscalationsWarn] {
+	return pulumix.Output[GroupMetricRuleEscalationsWarn]{
+		OutputState: i.ToGroupMetricRuleEscalationsWarnOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GroupMetricRuleEscalationsWarnArgs) ToGroupMetricRuleEscalationsWarnPtrOutput() GroupMetricRuleEscalationsWarnPtrOutput {
 	return i.ToGroupMetricRuleEscalationsWarnPtrOutputWithContext(context.Background())
 }
@@ -1687,6 +1910,12 @@ func (i *groupMetricRuleEscalationsWarnPtrType) ToGroupMetricRuleEscalationsWarn
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleEscalationsWarnPtrOutput)
 }
 
+func (i *groupMetricRuleEscalationsWarnPtrType) ToOutput(ctx context.Context) pulumix.Output[*GroupMetricRuleEscalationsWarn] {
+	return pulumix.Output[*GroupMetricRuleEscalationsWarn]{
+		OutputState: i.ToGroupMetricRuleEscalationsWarnPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GroupMetricRuleEscalationsWarnOutput struct{ *pulumi.OutputState }
 
 func (GroupMetricRuleEscalationsWarnOutput) ElementType() reflect.Type {
@@ -1709,6 +1938,12 @@ func (o GroupMetricRuleEscalationsWarnOutput) ToGroupMetricRuleEscalationsWarnPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupMetricRuleEscalationsWarn) *GroupMetricRuleEscalationsWarn {
 		return &v
 	}).(GroupMetricRuleEscalationsWarnPtrOutput)
+}
+
+func (o GroupMetricRuleEscalationsWarnOutput) ToOutput(ctx context.Context) pulumix.Output[GroupMetricRuleEscalationsWarn] {
+	return pulumix.Output[GroupMetricRuleEscalationsWarn]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The comparison operator of the threshold for critical-level alerts.
@@ -1743,6 +1978,12 @@ func (o GroupMetricRuleEscalationsWarnPtrOutput) ToGroupMetricRuleEscalationsWar
 
 func (o GroupMetricRuleEscalationsWarnPtrOutput) ToGroupMetricRuleEscalationsWarnPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsWarnPtrOutput {
 	return o
+}
+
+func (o GroupMetricRuleEscalationsWarnPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupMetricRuleEscalationsWarn] {
+	return pulumix.Output[*GroupMetricRuleEscalationsWarn]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GroupMetricRuleEscalationsWarnPtrOutput) Elem() GroupMetricRuleEscalationsWarnOutput {
@@ -1844,6 +2085,12 @@ func (i GroupMetricRuleTargetArgs) ToGroupMetricRuleTargetOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleTargetOutput)
 }
 
+func (i GroupMetricRuleTargetArgs) ToOutput(ctx context.Context) pulumix.Output[GroupMetricRuleTarget] {
+	return pulumix.Output[GroupMetricRuleTarget]{
+		OutputState: i.ToGroupMetricRuleTargetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GroupMetricRuleTargetArrayInput is an input type that accepts GroupMetricRuleTargetArray and GroupMetricRuleTargetArrayOutput values.
 // You can construct a concrete instance of `GroupMetricRuleTargetArrayInput` via:
 //
@@ -1869,6 +2116,12 @@ func (i GroupMetricRuleTargetArray) ToGroupMetricRuleTargetArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleTargetArrayOutput)
 }
 
+func (i GroupMetricRuleTargetArray) ToOutput(ctx context.Context) pulumix.Output[[]GroupMetricRuleTarget] {
+	return pulumix.Output[[]GroupMetricRuleTarget]{
+		OutputState: i.ToGroupMetricRuleTargetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GroupMetricRuleTargetOutput struct{ *pulumi.OutputState }
 
 func (GroupMetricRuleTargetOutput) ElementType() reflect.Type {
@@ -1881,6 +2134,12 @@ func (o GroupMetricRuleTargetOutput) ToGroupMetricRuleTargetOutput() GroupMetric
 
 func (o GroupMetricRuleTargetOutput) ToGroupMetricRuleTargetOutputWithContext(ctx context.Context) GroupMetricRuleTargetOutput {
 	return o
+}
+
+func (o GroupMetricRuleTargetOutput) ToOutput(ctx context.Context) pulumix.Output[GroupMetricRuleTarget] {
+	return pulumix.Output[GroupMetricRuleTarget]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Alibaba Cloud Resource Name (ARN) of the resource.
@@ -1917,6 +2176,12 @@ func (o GroupMetricRuleTargetArrayOutput) ToGroupMetricRuleTargetArrayOutput() G
 
 func (o GroupMetricRuleTargetArrayOutput) ToGroupMetricRuleTargetArrayOutputWithContext(ctx context.Context) GroupMetricRuleTargetArrayOutput {
 	return o
+}
+
+func (o GroupMetricRuleTargetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GroupMetricRuleTarget] {
+	return pulumix.Output[[]GroupMetricRuleTarget]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GroupMetricRuleTargetArrayOutput) Index(i pulumi.IntInput) GroupMetricRuleTargetOutput {
@@ -1962,6 +2227,12 @@ func (i HybridMonitorSlsTaskAttachLabelArgs) ToHybridMonitorSlsTaskAttachLabelOu
 	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskAttachLabelOutput)
 }
 
+func (i HybridMonitorSlsTaskAttachLabelArgs) ToOutput(ctx context.Context) pulumix.Output[HybridMonitorSlsTaskAttachLabel] {
+	return pulumix.Output[HybridMonitorSlsTaskAttachLabel]{
+		OutputState: i.ToHybridMonitorSlsTaskAttachLabelOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HybridMonitorSlsTaskAttachLabelArrayInput is an input type that accepts HybridMonitorSlsTaskAttachLabelArray and HybridMonitorSlsTaskAttachLabelArrayOutput values.
 // You can construct a concrete instance of `HybridMonitorSlsTaskAttachLabelArrayInput` via:
 //
@@ -1987,6 +2258,12 @@ func (i HybridMonitorSlsTaskAttachLabelArray) ToHybridMonitorSlsTaskAttachLabelA
 	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskAttachLabelArrayOutput)
 }
 
+func (i HybridMonitorSlsTaskAttachLabelArray) ToOutput(ctx context.Context) pulumix.Output[[]HybridMonitorSlsTaskAttachLabel] {
+	return pulumix.Output[[]HybridMonitorSlsTaskAttachLabel]{
+		OutputState: i.ToHybridMonitorSlsTaskAttachLabelArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HybridMonitorSlsTaskAttachLabelOutput struct{ *pulumi.OutputState }
 
 func (HybridMonitorSlsTaskAttachLabelOutput) ElementType() reflect.Type {
@@ -1999,6 +2276,12 @@ func (o HybridMonitorSlsTaskAttachLabelOutput) ToHybridMonitorSlsTaskAttachLabel
 
 func (o HybridMonitorSlsTaskAttachLabelOutput) ToHybridMonitorSlsTaskAttachLabelOutputWithContext(ctx context.Context) HybridMonitorSlsTaskAttachLabelOutput {
 	return o
+}
+
+func (o HybridMonitorSlsTaskAttachLabelOutput) ToOutput(ctx context.Context) pulumix.Output[HybridMonitorSlsTaskAttachLabel] {
+	return pulumix.Output[HybridMonitorSlsTaskAttachLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The tag key of the metric.
@@ -2023,6 +2306,12 @@ func (o HybridMonitorSlsTaskAttachLabelArrayOutput) ToHybridMonitorSlsTaskAttach
 
 func (o HybridMonitorSlsTaskAttachLabelArrayOutput) ToHybridMonitorSlsTaskAttachLabelArrayOutputWithContext(ctx context.Context) HybridMonitorSlsTaskAttachLabelArrayOutput {
 	return o
+}
+
+func (o HybridMonitorSlsTaskAttachLabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HybridMonitorSlsTaskAttachLabel] {
+	return pulumix.Output[[]HybridMonitorSlsTaskAttachLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HybridMonitorSlsTaskAttachLabelArrayOutput) Index(i pulumi.IntInput) HybridMonitorSlsTaskAttachLabelOutput {
@@ -2076,6 +2365,12 @@ func (i HybridMonitorSlsTaskSlsProcessConfigArgs) ToHybridMonitorSlsTaskSlsProce
 	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigOutput)
 }
 
+func (i HybridMonitorSlsTaskSlsProcessConfigArgs) ToOutput(ctx context.Context) pulumix.Output[HybridMonitorSlsTaskSlsProcessConfig] {
+	return pulumix.Output[HybridMonitorSlsTaskSlsProcessConfig]{
+		OutputState: i.ToHybridMonitorSlsTaskSlsProcessConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HybridMonitorSlsTaskSlsProcessConfigArgs) ToHybridMonitorSlsTaskSlsProcessConfigPtrOutput() HybridMonitorSlsTaskSlsProcessConfigPtrOutput {
 	return i.ToHybridMonitorSlsTaskSlsProcessConfigPtrOutputWithContext(context.Background())
 }
@@ -2117,6 +2412,12 @@ func (i *hybridMonitorSlsTaskSlsProcessConfigPtrType) ToHybridMonitorSlsTaskSlsP
 	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigPtrOutput)
 }
 
+func (i *hybridMonitorSlsTaskSlsProcessConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*HybridMonitorSlsTaskSlsProcessConfig] {
+	return pulumix.Output[*HybridMonitorSlsTaskSlsProcessConfig]{
+		OutputState: i.ToHybridMonitorSlsTaskSlsProcessConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HybridMonitorSlsTaskSlsProcessConfigOutput struct{ *pulumi.OutputState }
 
 func (HybridMonitorSlsTaskSlsProcessConfigOutput) ElementType() reflect.Type {
@@ -2139,6 +2440,12 @@ func (o HybridMonitorSlsTaskSlsProcessConfigOutput) ToHybridMonitorSlsTaskSlsPro
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HybridMonitorSlsTaskSlsProcessConfig) *HybridMonitorSlsTaskSlsProcessConfig {
 		return &v
 	}).(HybridMonitorSlsTaskSlsProcessConfigPtrOutput)
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigOutput) ToOutput(ctx context.Context) pulumix.Output[HybridMonitorSlsTaskSlsProcessConfig] {
+	return pulumix.Output[HybridMonitorSlsTaskSlsProcessConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The extended field that specifies the result of basic operations that are performed on aggregation results.
@@ -2181,6 +2488,12 @@ func (o HybridMonitorSlsTaskSlsProcessConfigPtrOutput) ToHybridMonitorSlsTaskSls
 
 func (o HybridMonitorSlsTaskSlsProcessConfigPtrOutput) ToHybridMonitorSlsTaskSlsProcessConfigPtrOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigPtrOutput {
 	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HybridMonitorSlsTaskSlsProcessConfig] {
+	return pulumix.Output[*HybridMonitorSlsTaskSlsProcessConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HybridMonitorSlsTaskSlsProcessConfigPtrOutput) Elem() HybridMonitorSlsTaskSlsProcessConfigOutput {
@@ -2270,6 +2583,12 @@ func (i HybridMonitorSlsTaskSlsProcessConfigExpressArgs) ToHybridMonitorSlsTaskS
 	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigExpressOutput)
 }
 
+func (i HybridMonitorSlsTaskSlsProcessConfigExpressArgs) ToOutput(ctx context.Context) pulumix.Output[HybridMonitorSlsTaskSlsProcessConfigExpress] {
+	return pulumix.Output[HybridMonitorSlsTaskSlsProcessConfigExpress]{
+		OutputState: i.ToHybridMonitorSlsTaskSlsProcessConfigExpressOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HybridMonitorSlsTaskSlsProcessConfigExpressArrayInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigExpressArray and HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput values.
 // You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigExpressArrayInput` via:
 //
@@ -2295,6 +2614,12 @@ func (i HybridMonitorSlsTaskSlsProcessConfigExpressArray) ToHybridMonitorSlsTask
 	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput)
 }
 
+func (i HybridMonitorSlsTaskSlsProcessConfigExpressArray) ToOutput(ctx context.Context) pulumix.Output[[]HybridMonitorSlsTaskSlsProcessConfigExpress] {
+	return pulumix.Output[[]HybridMonitorSlsTaskSlsProcessConfigExpress]{
+		OutputState: i.ToHybridMonitorSlsTaskSlsProcessConfigExpressArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HybridMonitorSlsTaskSlsProcessConfigExpressOutput struct{ *pulumi.OutputState }
 
 func (HybridMonitorSlsTaskSlsProcessConfigExpressOutput) ElementType() reflect.Type {
@@ -2307,6 +2632,12 @@ func (o HybridMonitorSlsTaskSlsProcessConfigExpressOutput) ToHybridMonitorSlsTas
 
 func (o HybridMonitorSlsTaskSlsProcessConfigExpressOutput) ToHybridMonitorSlsTaskSlsProcessConfigExpressOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigExpressOutput {
 	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigExpressOutput) ToOutput(ctx context.Context) pulumix.Output[HybridMonitorSlsTaskSlsProcessConfigExpress] {
+	return pulumix.Output[HybridMonitorSlsTaskSlsProcessConfigExpress]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The alias of the aggregation result.
@@ -2331,6 +2662,12 @@ func (o HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput) ToHybridMonitorS
 
 func (o HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput) ToHybridMonitorSlsTaskSlsProcessConfigExpressArrayOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput {
 	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HybridMonitorSlsTaskSlsProcessConfigExpress] {
+	return pulumix.Output[[]HybridMonitorSlsTaskSlsProcessConfigExpress]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput) Index(i pulumi.IntInput) HybridMonitorSlsTaskSlsProcessConfigExpressOutput {
@@ -2376,6 +2713,12 @@ func (i HybridMonitorSlsTaskSlsProcessConfigFilterArgs) ToHybridMonitorSlsTaskSl
 	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigFilterOutput)
 }
 
+func (i HybridMonitorSlsTaskSlsProcessConfigFilterArgs) ToOutput(ctx context.Context) pulumix.Output[HybridMonitorSlsTaskSlsProcessConfigFilter] {
+	return pulumix.Output[HybridMonitorSlsTaskSlsProcessConfigFilter]{
+		OutputState: i.ToHybridMonitorSlsTaskSlsProcessConfigFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HybridMonitorSlsTaskSlsProcessConfigFilterArgs) ToHybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput() HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput {
 	return i.ToHybridMonitorSlsTaskSlsProcessConfigFilterPtrOutputWithContext(context.Background())
 }
@@ -2417,6 +2760,12 @@ func (i *hybridMonitorSlsTaskSlsProcessConfigFilterPtrType) ToHybridMonitorSlsTa
 	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput)
 }
 
+func (i *hybridMonitorSlsTaskSlsProcessConfigFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*HybridMonitorSlsTaskSlsProcessConfigFilter] {
+	return pulumix.Output[*HybridMonitorSlsTaskSlsProcessConfigFilter]{
+		OutputState: i.ToHybridMonitorSlsTaskSlsProcessConfigFilterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HybridMonitorSlsTaskSlsProcessConfigFilterOutput struct{ *pulumi.OutputState }
 
 func (HybridMonitorSlsTaskSlsProcessConfigFilterOutput) ElementType() reflect.Type {
@@ -2439,6 +2788,12 @@ func (o HybridMonitorSlsTaskSlsProcessConfigFilterOutput) ToHybridMonitorSlsTask
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HybridMonitorSlsTaskSlsProcessConfigFilter) *HybridMonitorSlsTaskSlsProcessConfigFilter {
 		return &v
 	}).(HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput)
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigFilterOutput) ToOutput(ctx context.Context) pulumix.Output[HybridMonitorSlsTaskSlsProcessConfigFilter] {
+	return pulumix.Output[HybridMonitorSlsTaskSlsProcessConfigFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The conditions that are used to filter logs imported from Log Service. See `filters` below.
@@ -2465,6 +2820,12 @@ func (o HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput) ToHybridMonitorSlsT
 
 func (o HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput) ToHybridMonitorSlsTaskSlsProcessConfigFilterPtrOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput {
 	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HybridMonitorSlsTaskSlsProcessConfigFilter] {
+	return pulumix.Output[*HybridMonitorSlsTaskSlsProcessConfigFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput) Elem() HybridMonitorSlsTaskSlsProcessConfigFilterOutput {
@@ -2538,6 +2899,12 @@ func (i HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs) ToHybridMonitorSls
 	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput)
 }
 
+func (i HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs) ToOutput(ctx context.Context) pulumix.Output[HybridMonitorSlsTaskSlsProcessConfigFilterFilter] {
+	return pulumix.Output[HybridMonitorSlsTaskSlsProcessConfigFilterFilter]{
+		OutputState: i.ToHybridMonitorSlsTaskSlsProcessConfigFilterFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigFilterFilterArray and HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput values.
 // You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayInput` via:
 //
@@ -2563,6 +2930,12 @@ func (i HybridMonitorSlsTaskSlsProcessConfigFilterFilterArray) ToHybridMonitorSl
 	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput)
 }
 
+func (i HybridMonitorSlsTaskSlsProcessConfigFilterFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]HybridMonitorSlsTaskSlsProcessConfigFilterFilter] {
+	return pulumix.Output[[]HybridMonitorSlsTaskSlsProcessConfigFilterFilter]{
+		OutputState: i.ToHybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput struct{ *pulumi.OutputState }
 
 func (HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput) ElementType() reflect.Type {
@@ -2575,6 +2948,12 @@ func (o HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput) ToHybridMonitorS
 
 func (o HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput) ToHybridMonitorSlsTaskSlsProcessConfigFilterFilterOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput {
 	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput) ToOutput(ctx context.Context) pulumix.Output[HybridMonitorSlsTaskSlsProcessConfigFilterFilter] {
+	return pulumix.Output[HybridMonitorSlsTaskSlsProcessConfigFilterFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The method that is used to filter logs imported from Log Service. Valid values: `>`, `>=`, `=`, `<=`, `<`, `!=`, `contain`, `notContain`.
@@ -2604,6 +2983,12 @@ func (o HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput) ToHybridMon
 
 func (o HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput) ToHybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput {
 	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HybridMonitorSlsTaskSlsProcessConfigFilterFilter] {
+	return pulumix.Output[[]HybridMonitorSlsTaskSlsProcessConfigFilterFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput) Index(i pulumi.IntInput) HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput {
@@ -2649,6 +3034,12 @@ func (i HybridMonitorSlsTaskSlsProcessConfigGroupByArgs) ToHybridMonitorSlsTaskS
 	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigGroupByOutput)
 }
 
+func (i HybridMonitorSlsTaskSlsProcessConfigGroupByArgs) ToOutput(ctx context.Context) pulumix.Output[HybridMonitorSlsTaskSlsProcessConfigGroupBy] {
+	return pulumix.Output[HybridMonitorSlsTaskSlsProcessConfigGroupBy]{
+		OutputState: i.ToHybridMonitorSlsTaskSlsProcessConfigGroupByOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HybridMonitorSlsTaskSlsProcessConfigGroupByArrayInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigGroupByArray and HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput values.
 // You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigGroupByArrayInput` via:
 //
@@ -2674,6 +3065,12 @@ func (i HybridMonitorSlsTaskSlsProcessConfigGroupByArray) ToHybridMonitorSlsTask
 	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput)
 }
 
+func (i HybridMonitorSlsTaskSlsProcessConfigGroupByArray) ToOutput(ctx context.Context) pulumix.Output[[]HybridMonitorSlsTaskSlsProcessConfigGroupBy] {
+	return pulumix.Output[[]HybridMonitorSlsTaskSlsProcessConfigGroupBy]{
+		OutputState: i.ToHybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HybridMonitorSlsTaskSlsProcessConfigGroupByOutput struct{ *pulumi.OutputState }
 
 func (HybridMonitorSlsTaskSlsProcessConfigGroupByOutput) ElementType() reflect.Type {
@@ -2686,6 +3083,12 @@ func (o HybridMonitorSlsTaskSlsProcessConfigGroupByOutput) ToHybridMonitorSlsTas
 
 func (o HybridMonitorSlsTaskSlsProcessConfigGroupByOutput) ToHybridMonitorSlsTaskSlsProcessConfigGroupByOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigGroupByOutput {
 	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigGroupByOutput) ToOutput(ctx context.Context) pulumix.Output[HybridMonitorSlsTaskSlsProcessConfigGroupBy] {
+	return pulumix.Output[HybridMonitorSlsTaskSlsProcessConfigGroupBy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The alias of the aggregation result.
@@ -2710,6 +3113,12 @@ func (o HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput) ToHybridMonitorS
 
 func (o HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput) ToHybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput {
 	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HybridMonitorSlsTaskSlsProcessConfigGroupBy] {
+	return pulumix.Output[[]HybridMonitorSlsTaskSlsProcessConfigGroupBy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput) Index(i pulumi.IntInput) HybridMonitorSlsTaskSlsProcessConfigGroupByOutput {
@@ -2771,6 +3180,12 @@ func (i HybridMonitorSlsTaskSlsProcessConfigStatisticArgs) ToHybridMonitorSlsTas
 	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigStatisticOutput)
 }
 
+func (i HybridMonitorSlsTaskSlsProcessConfigStatisticArgs) ToOutput(ctx context.Context) pulumix.Output[HybridMonitorSlsTaskSlsProcessConfigStatistic] {
+	return pulumix.Output[HybridMonitorSlsTaskSlsProcessConfigStatistic]{
+		OutputState: i.ToHybridMonitorSlsTaskSlsProcessConfigStatisticOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HybridMonitorSlsTaskSlsProcessConfigStatisticArrayInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigStatisticArray and HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput values.
 // You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigStatisticArrayInput` via:
 //
@@ -2796,6 +3211,12 @@ func (i HybridMonitorSlsTaskSlsProcessConfigStatisticArray) ToHybridMonitorSlsTa
 	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput)
 }
 
+func (i HybridMonitorSlsTaskSlsProcessConfigStatisticArray) ToOutput(ctx context.Context) pulumix.Output[[]HybridMonitorSlsTaskSlsProcessConfigStatistic] {
+	return pulumix.Output[[]HybridMonitorSlsTaskSlsProcessConfigStatistic]{
+		OutputState: i.ToHybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HybridMonitorSlsTaskSlsProcessConfigStatisticOutput struct{ *pulumi.OutputState }
 
 func (HybridMonitorSlsTaskSlsProcessConfigStatisticOutput) ElementType() reflect.Type {
@@ -2808,6 +3229,12 @@ func (o HybridMonitorSlsTaskSlsProcessConfigStatisticOutput) ToHybridMonitorSlsT
 
 func (o HybridMonitorSlsTaskSlsProcessConfigStatisticOutput) ToHybridMonitorSlsTaskSlsProcessConfigStatisticOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigStatisticOutput {
 	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigStatisticOutput) ToOutput(ctx context.Context) pulumix.Output[HybridMonitorSlsTaskSlsProcessConfigStatistic] {
+	return pulumix.Output[HybridMonitorSlsTaskSlsProcessConfigStatistic]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The alias of the aggregation result.
@@ -2849,6 +3276,12 @@ func (o HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput) ToHybridMonito
 
 func (o HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput) ToHybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutputWithContext(ctx context.Context) HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput {
 	return o
+}
+
+func (o HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HybridMonitorSlsTaskSlsProcessConfigStatistic] {
+	return pulumix.Output[[]HybridMonitorSlsTaskSlsProcessConfigStatistic]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput) Index(i pulumi.IntInput) HybridMonitorSlsTaskSlsProcessConfigStatisticOutput {
@@ -2894,6 +3327,12 @@ func (i MetricRuleBlackListMetricArgs) ToMetricRuleBlackListMetricOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleBlackListMetricOutput)
 }
 
+func (i MetricRuleBlackListMetricArgs) ToOutput(ctx context.Context) pulumix.Output[MetricRuleBlackListMetric] {
+	return pulumix.Output[MetricRuleBlackListMetric]{
+		OutputState: i.ToMetricRuleBlackListMetricOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MetricRuleBlackListMetricArrayInput is an input type that accepts MetricRuleBlackListMetricArray and MetricRuleBlackListMetricArrayOutput values.
 // You can construct a concrete instance of `MetricRuleBlackListMetricArrayInput` via:
 //
@@ -2919,6 +3358,12 @@ func (i MetricRuleBlackListMetricArray) ToMetricRuleBlackListMetricArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleBlackListMetricArrayOutput)
 }
 
+func (i MetricRuleBlackListMetricArray) ToOutput(ctx context.Context) pulumix.Output[[]MetricRuleBlackListMetric] {
+	return pulumix.Output[[]MetricRuleBlackListMetric]{
+		OutputState: i.ToMetricRuleBlackListMetricArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MetricRuleBlackListMetricOutput struct{ *pulumi.OutputState }
 
 func (MetricRuleBlackListMetricOutput) ElementType() reflect.Type {
@@ -2931,6 +3376,12 @@ func (o MetricRuleBlackListMetricOutput) ToMetricRuleBlackListMetricOutput() Met
 
 func (o MetricRuleBlackListMetricOutput) ToMetricRuleBlackListMetricOutputWithContext(ctx context.Context) MetricRuleBlackListMetricOutput {
 	return o
+}
+
+func (o MetricRuleBlackListMetricOutput) ToOutput(ctx context.Context) pulumix.Output[MetricRuleBlackListMetric] {
+	return pulumix.Output[MetricRuleBlackListMetric]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the monitoring indicator.
@@ -2955,6 +3406,12 @@ func (o MetricRuleBlackListMetricArrayOutput) ToMetricRuleBlackListMetricArrayOu
 
 func (o MetricRuleBlackListMetricArrayOutput) ToMetricRuleBlackListMetricArrayOutputWithContext(ctx context.Context) MetricRuleBlackListMetricArrayOutput {
 	return o
+}
+
+func (o MetricRuleBlackListMetricArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MetricRuleBlackListMetric] {
+	return pulumix.Output[[]MetricRuleBlackListMetric]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetricRuleBlackListMetricArrayOutput) Index(i pulumi.IntInput) MetricRuleBlackListMetricOutput {
@@ -3024,6 +3481,12 @@ func (i MetricRuleTemplateAlertTemplateArgs) ToMetricRuleTemplateAlertTemplateOu
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateOutput)
 }
 
+func (i MetricRuleTemplateAlertTemplateArgs) ToOutput(ctx context.Context) pulumix.Output[MetricRuleTemplateAlertTemplate] {
+	return pulumix.Output[MetricRuleTemplateAlertTemplate]{
+		OutputState: i.ToMetricRuleTemplateAlertTemplateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MetricRuleTemplateAlertTemplateArrayInput is an input type that accepts MetricRuleTemplateAlertTemplateArray and MetricRuleTemplateAlertTemplateArrayOutput values.
 // You can construct a concrete instance of `MetricRuleTemplateAlertTemplateArrayInput` via:
 //
@@ -3049,6 +3512,12 @@ func (i MetricRuleTemplateAlertTemplateArray) ToMetricRuleTemplateAlertTemplateA
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateArrayOutput)
 }
 
+func (i MetricRuleTemplateAlertTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]MetricRuleTemplateAlertTemplate] {
+	return pulumix.Output[[]MetricRuleTemplateAlertTemplate]{
+		OutputState: i.ToMetricRuleTemplateAlertTemplateArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MetricRuleTemplateAlertTemplateOutput struct{ *pulumi.OutputState }
 
 func (MetricRuleTemplateAlertTemplateOutput) ElementType() reflect.Type {
@@ -3061,6 +3530,12 @@ func (o MetricRuleTemplateAlertTemplateOutput) ToMetricRuleTemplateAlertTemplate
 
 func (o MetricRuleTemplateAlertTemplateOutput) ToMetricRuleTemplateAlertTemplateOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateOutput {
 	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[MetricRuleTemplateAlertTemplate] {
+	return pulumix.Output[MetricRuleTemplateAlertTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iotEdge`, `kvstoreSharding`, `kvstoreSplitrw`, `kvstoreStandard`, `memcache`, `mns`, `mongodb`, `mongodbCluster`, `mongodbSharding`, `mqTopic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
@@ -3113,6 +3588,12 @@ func (o MetricRuleTemplateAlertTemplateArrayOutput) ToMetricRuleTemplateAlertTem
 	return o
 }
 
+func (o MetricRuleTemplateAlertTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MetricRuleTemplateAlertTemplate] {
+	return pulumix.Output[[]MetricRuleTemplateAlertTemplate]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MetricRuleTemplateAlertTemplateArrayOutput) Index(i pulumi.IntInput) MetricRuleTemplateAlertTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricRuleTemplateAlertTemplate {
 		return vs[0].([]MetricRuleTemplateAlertTemplate)[vs[1].(int)]
@@ -3160,6 +3641,12 @@ func (i MetricRuleTemplateAlertTemplateEscalationsArgs) ToMetricRuleTemplateAler
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateEscalationsOutput)
 }
 
+func (i MetricRuleTemplateAlertTemplateEscalationsArgs) ToOutput(ctx context.Context) pulumix.Output[MetricRuleTemplateAlertTemplateEscalations] {
+	return pulumix.Output[MetricRuleTemplateAlertTemplateEscalations]{
+		OutputState: i.ToMetricRuleTemplateAlertTemplateEscalationsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MetricRuleTemplateAlertTemplateEscalationsArgs) ToMetricRuleTemplateAlertTemplateEscalationsPtrOutput() MetricRuleTemplateAlertTemplateEscalationsPtrOutput {
 	return i.ToMetricRuleTemplateAlertTemplateEscalationsPtrOutputWithContext(context.Background())
 }
@@ -3201,6 +3688,12 @@ func (i *metricRuleTemplateAlertTemplateEscalationsPtrType) ToMetricRuleTemplate
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateEscalationsPtrOutput)
 }
 
+func (i *metricRuleTemplateAlertTemplateEscalationsPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetricRuleTemplateAlertTemplateEscalations] {
+	return pulumix.Output[*MetricRuleTemplateAlertTemplateEscalations]{
+		OutputState: i.ToMetricRuleTemplateAlertTemplateEscalationsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MetricRuleTemplateAlertTemplateEscalationsOutput struct{ *pulumi.OutputState }
 
 func (MetricRuleTemplateAlertTemplateEscalationsOutput) ElementType() reflect.Type {
@@ -3223,6 +3716,12 @@ func (o MetricRuleTemplateAlertTemplateEscalationsOutput) ToMetricRuleTemplateAl
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricRuleTemplateAlertTemplateEscalations) *MetricRuleTemplateAlertTemplateEscalations {
 		return &v
 	}).(MetricRuleTemplateAlertTemplateEscalationsPtrOutput)
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsOutput) ToOutput(ctx context.Context) pulumix.Output[MetricRuleTemplateAlertTemplateEscalations] {
+	return pulumix.Output[MetricRuleTemplateAlertTemplateEscalations]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The condition for triggering critical-level alerts. See `critical` below.
@@ -3258,6 +3757,12 @@ func (o MetricRuleTemplateAlertTemplateEscalationsPtrOutput) ToMetricRuleTemplat
 
 func (o MetricRuleTemplateAlertTemplateEscalationsPtrOutput) ToMetricRuleTemplateAlertTemplateEscalationsPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsPtrOutput {
 	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricRuleTemplateAlertTemplateEscalations] {
+	return pulumix.Output[*MetricRuleTemplateAlertTemplateEscalations]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetricRuleTemplateAlertTemplateEscalationsPtrOutput) Elem() MetricRuleTemplateAlertTemplateEscalationsOutput {
@@ -3345,6 +3850,12 @@ func (i MetricRuleTemplateAlertTemplateEscalationsCriticalArgs) ToMetricRuleTemp
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateEscalationsCriticalOutput)
 }
 
+func (i MetricRuleTemplateAlertTemplateEscalationsCriticalArgs) ToOutput(ctx context.Context) pulumix.Output[MetricRuleTemplateAlertTemplateEscalationsCritical] {
+	return pulumix.Output[MetricRuleTemplateAlertTemplateEscalationsCritical]{
+		OutputState: i.ToMetricRuleTemplateAlertTemplateEscalationsCriticalOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MetricRuleTemplateAlertTemplateEscalationsCriticalArgs) ToMetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput() MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput {
 	return i.ToMetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutputWithContext(context.Background())
 }
@@ -3386,6 +3897,12 @@ func (i *metricRuleTemplateAlertTemplateEscalationsCriticalPtrType) ToMetricRule
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput)
 }
 
+func (i *metricRuleTemplateAlertTemplateEscalationsCriticalPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetricRuleTemplateAlertTemplateEscalationsCritical] {
+	return pulumix.Output[*MetricRuleTemplateAlertTemplateEscalationsCritical]{
+		OutputState: i.ToMetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MetricRuleTemplateAlertTemplateEscalationsCriticalOutput struct{ *pulumi.OutputState }
 
 func (MetricRuleTemplateAlertTemplateEscalationsCriticalOutput) ElementType() reflect.Type {
@@ -3408,6 +3925,12 @@ func (o MetricRuleTemplateAlertTemplateEscalationsCriticalOutput) ToMetricRuleTe
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricRuleTemplateAlertTemplateEscalationsCritical) *MetricRuleTemplateAlertTemplateEscalationsCritical {
 		return &v
 	}).(MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput)
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsCriticalOutput) ToOutput(ctx context.Context) pulumix.Output[MetricRuleTemplateAlertTemplateEscalationsCritical] {
+	return pulumix.Output[MetricRuleTemplateAlertTemplateEscalationsCritical]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
@@ -3442,6 +3965,12 @@ func (o MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput) ToMetricRul
 
 func (o MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput) ToMetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput {
 	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricRuleTemplateAlertTemplateEscalationsCritical] {
+	return pulumix.Output[*MetricRuleTemplateAlertTemplateEscalationsCritical]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput) Elem() MetricRuleTemplateAlertTemplateEscalationsCriticalOutput {
@@ -3539,6 +4068,12 @@ func (i MetricRuleTemplateAlertTemplateEscalationsInfoArgs) ToMetricRuleTemplate
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateEscalationsInfoOutput)
 }
 
+func (i MetricRuleTemplateAlertTemplateEscalationsInfoArgs) ToOutput(ctx context.Context) pulumix.Output[MetricRuleTemplateAlertTemplateEscalationsInfo] {
+	return pulumix.Output[MetricRuleTemplateAlertTemplateEscalationsInfo]{
+		OutputState: i.ToMetricRuleTemplateAlertTemplateEscalationsInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MetricRuleTemplateAlertTemplateEscalationsInfoArgs) ToMetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput() MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput {
 	return i.ToMetricRuleTemplateAlertTemplateEscalationsInfoPtrOutputWithContext(context.Background())
 }
@@ -3580,6 +4115,12 @@ func (i *metricRuleTemplateAlertTemplateEscalationsInfoPtrType) ToMetricRuleTemp
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput)
 }
 
+func (i *metricRuleTemplateAlertTemplateEscalationsInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetricRuleTemplateAlertTemplateEscalationsInfo] {
+	return pulumix.Output[*MetricRuleTemplateAlertTemplateEscalationsInfo]{
+		OutputState: i.ToMetricRuleTemplateAlertTemplateEscalationsInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MetricRuleTemplateAlertTemplateEscalationsInfoOutput struct{ *pulumi.OutputState }
 
 func (MetricRuleTemplateAlertTemplateEscalationsInfoOutput) ElementType() reflect.Type {
@@ -3602,6 +4143,12 @@ func (o MetricRuleTemplateAlertTemplateEscalationsInfoOutput) ToMetricRuleTempla
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricRuleTemplateAlertTemplateEscalationsInfo) *MetricRuleTemplateAlertTemplateEscalationsInfo {
 		return &v
 	}).(MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput)
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsInfoOutput) ToOutput(ctx context.Context) pulumix.Output[MetricRuleTemplateAlertTemplateEscalationsInfo] {
+	return pulumix.Output[MetricRuleTemplateAlertTemplateEscalationsInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
@@ -3636,6 +4183,12 @@ func (o MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput) ToMetricRuleTem
 
 func (o MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput) ToMetricRuleTemplateAlertTemplateEscalationsInfoPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput {
 	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricRuleTemplateAlertTemplateEscalationsInfo] {
+	return pulumix.Output[*MetricRuleTemplateAlertTemplateEscalationsInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput) Elem() MetricRuleTemplateAlertTemplateEscalationsInfoOutput {
@@ -3733,6 +4286,12 @@ func (i MetricRuleTemplateAlertTemplateEscalationsWarnArgs) ToMetricRuleTemplate
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateEscalationsWarnOutput)
 }
 
+func (i MetricRuleTemplateAlertTemplateEscalationsWarnArgs) ToOutput(ctx context.Context) pulumix.Output[MetricRuleTemplateAlertTemplateEscalationsWarn] {
+	return pulumix.Output[MetricRuleTemplateAlertTemplateEscalationsWarn]{
+		OutputState: i.ToMetricRuleTemplateAlertTemplateEscalationsWarnOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MetricRuleTemplateAlertTemplateEscalationsWarnArgs) ToMetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput() MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput {
 	return i.ToMetricRuleTemplateAlertTemplateEscalationsWarnPtrOutputWithContext(context.Background())
 }
@@ -3774,6 +4333,12 @@ func (i *metricRuleTemplateAlertTemplateEscalationsWarnPtrType) ToMetricRuleTemp
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput)
 }
 
+func (i *metricRuleTemplateAlertTemplateEscalationsWarnPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetricRuleTemplateAlertTemplateEscalationsWarn] {
+	return pulumix.Output[*MetricRuleTemplateAlertTemplateEscalationsWarn]{
+		OutputState: i.ToMetricRuleTemplateAlertTemplateEscalationsWarnPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MetricRuleTemplateAlertTemplateEscalationsWarnOutput struct{ *pulumi.OutputState }
 
 func (MetricRuleTemplateAlertTemplateEscalationsWarnOutput) ElementType() reflect.Type {
@@ -3796,6 +4361,12 @@ func (o MetricRuleTemplateAlertTemplateEscalationsWarnOutput) ToMetricRuleTempla
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricRuleTemplateAlertTemplateEscalationsWarn) *MetricRuleTemplateAlertTemplateEscalationsWarn {
 		return &v
 	}).(MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput)
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsWarnOutput) ToOutput(ctx context.Context) pulumix.Output[MetricRuleTemplateAlertTemplateEscalationsWarn] {
+	return pulumix.Output[MetricRuleTemplateAlertTemplateEscalationsWarn]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
@@ -3830,6 +4401,12 @@ func (o MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput) ToMetricRuleTem
 
 func (o MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput) ToMetricRuleTemplateAlertTemplateEscalationsWarnPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput {
 	return o
+}
+
+func (o MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricRuleTemplateAlertTemplateEscalationsWarn] {
+	return pulumix.Output[*MetricRuleTemplateAlertTemplateEscalationsWarn]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput) Elem() MetricRuleTemplateAlertTemplateEscalationsWarnOutput {
@@ -3927,6 +4504,12 @@ func (i MonitorGroupInstancesInstanceArgs) ToMonitorGroupInstancesInstanceOutput
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorGroupInstancesInstanceOutput)
 }
 
+func (i MonitorGroupInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[MonitorGroupInstancesInstance] {
+	return pulumix.Output[MonitorGroupInstancesInstance]{
+		OutputState: i.ToMonitorGroupInstancesInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MonitorGroupInstancesInstanceArrayInput is an input type that accepts MonitorGroupInstancesInstanceArray and MonitorGroupInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `MonitorGroupInstancesInstanceArrayInput` via:
 //
@@ -3952,6 +4535,12 @@ func (i MonitorGroupInstancesInstanceArray) ToMonitorGroupInstancesInstanceArray
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorGroupInstancesInstanceArrayOutput)
 }
 
+func (i MonitorGroupInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]MonitorGroupInstancesInstance] {
+	return pulumix.Output[[]MonitorGroupInstancesInstance]{
+		OutputState: i.ToMonitorGroupInstancesInstanceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MonitorGroupInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (MonitorGroupInstancesInstanceOutput) ElementType() reflect.Type {
@@ -3964,6 +4553,12 @@ func (o MonitorGroupInstancesInstanceOutput) ToMonitorGroupInstancesInstanceOutp
 
 func (o MonitorGroupInstancesInstanceOutput) ToMonitorGroupInstancesInstanceOutputWithContext(ctx context.Context) MonitorGroupInstancesInstanceOutput {
 	return o
+}
+
+func (o MonitorGroupInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[MonitorGroupInstancesInstance] {
+	return pulumix.Output[MonitorGroupInstancesInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The category of instance.
@@ -3998,6 +4593,12 @@ func (o MonitorGroupInstancesInstanceArrayOutput) ToMonitorGroupInstancesInstanc
 
 func (o MonitorGroupInstancesInstanceArrayOutput) ToMonitorGroupInstancesInstanceArrayOutputWithContext(ctx context.Context) MonitorGroupInstancesInstanceArrayOutput {
 	return o
+}
+
+func (o MonitorGroupInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MonitorGroupInstancesInstance] {
+	return pulumix.Output[[]MonitorGroupInstancesInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MonitorGroupInstancesInstanceArrayOutput) Index(i pulumi.IntInput) MonitorGroupInstancesInstanceOutput {
@@ -4043,6 +4644,12 @@ func (i SiteMonitorIspCityArgs) ToSiteMonitorIspCityOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SiteMonitorIspCityOutput)
 }
 
+func (i SiteMonitorIspCityArgs) ToOutput(ctx context.Context) pulumix.Output[SiteMonitorIspCity] {
+	return pulumix.Output[SiteMonitorIspCity]{
+		OutputState: i.ToSiteMonitorIspCityOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SiteMonitorIspCityArrayInput is an input type that accepts SiteMonitorIspCityArray and SiteMonitorIspCityArrayOutput values.
 // You can construct a concrete instance of `SiteMonitorIspCityArrayInput` via:
 //
@@ -4068,6 +4675,12 @@ func (i SiteMonitorIspCityArray) ToSiteMonitorIspCityArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(SiteMonitorIspCityArrayOutput)
 }
 
+func (i SiteMonitorIspCityArray) ToOutput(ctx context.Context) pulumix.Output[[]SiteMonitorIspCity] {
+	return pulumix.Output[[]SiteMonitorIspCity]{
+		OutputState: i.ToSiteMonitorIspCityArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SiteMonitorIspCityOutput struct{ *pulumi.OutputState }
 
 func (SiteMonitorIspCityOutput) ElementType() reflect.Type {
@@ -4080,6 +4693,12 @@ func (o SiteMonitorIspCityOutput) ToSiteMonitorIspCityOutput() SiteMonitorIspCit
 
 func (o SiteMonitorIspCityOutput) ToSiteMonitorIspCityOutputWithContext(ctx context.Context) SiteMonitorIspCityOutput {
 	return o
+}
+
+func (o SiteMonitorIspCityOutput) ToOutput(ctx context.Context) pulumix.Output[SiteMonitorIspCity] {
+	return pulumix.Output[SiteMonitorIspCity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the city.
@@ -4104,6 +4723,12 @@ func (o SiteMonitorIspCityArrayOutput) ToSiteMonitorIspCityArrayOutput() SiteMon
 
 func (o SiteMonitorIspCityArrayOutput) ToSiteMonitorIspCityArrayOutputWithContext(ctx context.Context) SiteMonitorIspCityArrayOutput {
 	return o
+}
+
+func (o SiteMonitorIspCityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SiteMonitorIspCity] {
+	return pulumix.Output[[]SiteMonitorIspCity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SiteMonitorIspCityArrayOutput) Index(i pulumi.IntInput) SiteMonitorIspCityOutput {
@@ -4157,6 +4782,12 @@ func (i SlsGroupSlsGroupConfigArgs) ToSlsGroupSlsGroupConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(SlsGroupSlsGroupConfigOutput)
 }
 
+func (i SlsGroupSlsGroupConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SlsGroupSlsGroupConfig] {
+	return pulumix.Output[SlsGroupSlsGroupConfig]{
+		OutputState: i.ToSlsGroupSlsGroupConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SlsGroupSlsGroupConfigArrayInput is an input type that accepts SlsGroupSlsGroupConfigArray and SlsGroupSlsGroupConfigArrayOutput values.
 // You can construct a concrete instance of `SlsGroupSlsGroupConfigArrayInput` via:
 //
@@ -4182,6 +4813,12 @@ func (i SlsGroupSlsGroupConfigArray) ToSlsGroupSlsGroupConfigArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(SlsGroupSlsGroupConfigArrayOutput)
 }
 
+func (i SlsGroupSlsGroupConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]SlsGroupSlsGroupConfig] {
+	return pulumix.Output[[]SlsGroupSlsGroupConfig]{
+		OutputState: i.ToSlsGroupSlsGroupConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SlsGroupSlsGroupConfigOutput struct{ *pulumi.OutputState }
 
 func (SlsGroupSlsGroupConfigOutput) ElementType() reflect.Type {
@@ -4194,6 +4831,12 @@ func (o SlsGroupSlsGroupConfigOutput) ToSlsGroupSlsGroupConfigOutput() SlsGroupS
 
 func (o SlsGroupSlsGroupConfigOutput) ToSlsGroupSlsGroupConfigOutputWithContext(ctx context.Context) SlsGroupSlsGroupConfigOutput {
 	return o
+}
+
+func (o SlsGroupSlsGroupConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SlsGroupSlsGroupConfig] {
+	return pulumix.Output[SlsGroupSlsGroupConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the Log Store.
@@ -4228,6 +4871,12 @@ func (o SlsGroupSlsGroupConfigArrayOutput) ToSlsGroupSlsGroupConfigArrayOutput()
 
 func (o SlsGroupSlsGroupConfigArrayOutput) ToSlsGroupSlsGroupConfigArrayOutputWithContext(ctx context.Context) SlsGroupSlsGroupConfigArrayOutput {
 	return o
+}
+
+func (o SlsGroupSlsGroupConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SlsGroupSlsGroupConfig] {
+	return pulumix.Output[[]SlsGroupSlsGroupConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SlsGroupSlsGroupConfigArrayOutput) Index(i pulumi.IntInput) SlsGroupSlsGroupConfigOutput {
@@ -4285,6 +4934,12 @@ func (i GetAlarmContactGroupsGroupArgs) ToGetAlarmContactGroupsGroupOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmContactGroupsGroupOutput)
 }
 
+func (i GetAlarmContactGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetAlarmContactGroupsGroup] {
+	return pulumix.Output[GetAlarmContactGroupsGroup]{
+		OutputState: i.ToGetAlarmContactGroupsGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAlarmContactGroupsGroupArrayInput is an input type that accepts GetAlarmContactGroupsGroupArray and GetAlarmContactGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetAlarmContactGroupsGroupArrayInput` via:
 //
@@ -4310,6 +4965,12 @@ func (i GetAlarmContactGroupsGroupArray) ToGetAlarmContactGroupsGroupArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmContactGroupsGroupArrayOutput)
 }
 
+func (i GetAlarmContactGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAlarmContactGroupsGroup] {
+	return pulumix.Output[[]GetAlarmContactGroupsGroup]{
+		OutputState: i.ToGetAlarmContactGroupsGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAlarmContactGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetAlarmContactGroupsGroupOutput) ElementType() reflect.Type {
@@ -4322,6 +4983,12 @@ func (o GetAlarmContactGroupsGroupOutput) ToGetAlarmContactGroupsGroupOutput() G
 
 func (o GetAlarmContactGroupsGroupOutput) ToGetAlarmContactGroupsGroupOutputWithContext(ctx context.Context) GetAlarmContactGroupsGroupOutput {
 	return o
+}
+
+func (o GetAlarmContactGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetAlarmContactGroupsGroup] {
+	return pulumix.Output[GetAlarmContactGroupsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of Alarm Contact Group.
@@ -4361,6 +5028,12 @@ func (o GetAlarmContactGroupsGroupArrayOutput) ToGetAlarmContactGroupsGroupArray
 
 func (o GetAlarmContactGroupsGroupArrayOutput) ToGetAlarmContactGroupsGroupArrayOutputWithContext(ctx context.Context) GetAlarmContactGroupsGroupArrayOutput {
 	return o
+}
+
+func (o GetAlarmContactGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAlarmContactGroupsGroup] {
+	return pulumix.Output[[]GetAlarmContactGroupsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAlarmContactGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetAlarmContactGroupsGroupOutput {
@@ -4448,6 +5121,12 @@ func (i GetAlarmContactsContactArgs) ToGetAlarmContactsContactOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmContactsContactOutput)
 }
 
+func (i GetAlarmContactsContactArgs) ToOutput(ctx context.Context) pulumix.Output[GetAlarmContactsContact] {
+	return pulumix.Output[GetAlarmContactsContact]{
+		OutputState: i.ToGetAlarmContactsContactOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAlarmContactsContactArrayInput is an input type that accepts GetAlarmContactsContactArray and GetAlarmContactsContactArrayOutput values.
 // You can construct a concrete instance of `GetAlarmContactsContactArrayInput` via:
 //
@@ -4473,6 +5152,12 @@ func (i GetAlarmContactsContactArray) ToGetAlarmContactsContactArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmContactsContactArrayOutput)
 }
 
+func (i GetAlarmContactsContactArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAlarmContactsContact] {
+	return pulumix.Output[[]GetAlarmContactsContact]{
+		OutputState: i.ToGetAlarmContactsContactArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAlarmContactsContactOutput struct{ *pulumi.OutputState }
 
 func (GetAlarmContactsContactOutput) ElementType() reflect.Type {
@@ -4485,6 +5170,12 @@ func (o GetAlarmContactsContactOutput) ToGetAlarmContactsContactOutput() GetAlar
 
 func (o GetAlarmContactsContactOutput) ToGetAlarmContactsContactOutputWithContext(ctx context.Context) GetAlarmContactsContactOutput {
 	return o
+}
+
+func (o GetAlarmContactsContactOutput) ToOutput(ctx context.Context) pulumix.Output[GetAlarmContactsContact] {
+	return pulumix.Output[GetAlarmContactsContact]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the alarm contact.
@@ -4565,6 +5256,12 @@ func (o GetAlarmContactsContactArrayOutput) ToGetAlarmContactsContactArrayOutput
 	return o
 }
 
+func (o GetAlarmContactsContactArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAlarmContactsContact] {
+	return pulumix.Output[[]GetAlarmContactsContact]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetAlarmContactsContactArrayOutput) Index(i pulumi.IntInput) GetAlarmContactsContactOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlarmContactsContact {
 		return vs[0].([]GetAlarmContactsContact)[vs[1].(int)]
@@ -4624,6 +5321,12 @@ func (i GetDynamicTagGroupsGroupArgs) ToGetDynamicTagGroupsGroupOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetDynamicTagGroupsGroupOutput)
 }
 
+func (i GetDynamicTagGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetDynamicTagGroupsGroup] {
+	return pulumix.Output[GetDynamicTagGroupsGroup]{
+		OutputState: i.ToGetDynamicTagGroupsGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDynamicTagGroupsGroupArrayInput is an input type that accepts GetDynamicTagGroupsGroupArray and GetDynamicTagGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetDynamicTagGroupsGroupArrayInput` via:
 //
@@ -4649,6 +5352,12 @@ func (i GetDynamicTagGroupsGroupArray) ToGetDynamicTagGroupsGroupArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetDynamicTagGroupsGroupArrayOutput)
 }
 
+func (i GetDynamicTagGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDynamicTagGroupsGroup] {
+	return pulumix.Output[[]GetDynamicTagGroupsGroup]{
+		OutputState: i.ToGetDynamicTagGroupsGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDynamicTagGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetDynamicTagGroupsGroupOutput) ElementType() reflect.Type {
@@ -4661,6 +5370,12 @@ func (o GetDynamicTagGroupsGroupOutput) ToGetDynamicTagGroupsGroupOutput() GetDy
 
 func (o GetDynamicTagGroupsGroupOutput) ToGetDynamicTagGroupsGroupOutputWithContext(ctx context.Context) GetDynamicTagGroupsGroupOutput {
 	return o
+}
+
+func (o GetDynamicTagGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetDynamicTagGroupsGroup] {
+	return pulumix.Output[GetDynamicTagGroupsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the tag rule.
@@ -4707,6 +5422,12 @@ func (o GetDynamicTagGroupsGroupArrayOutput) ToGetDynamicTagGroupsGroupArrayOutp
 	return o
 }
 
+func (o GetDynamicTagGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDynamicTagGroupsGroup] {
+	return pulumix.Output[[]GetDynamicTagGroupsGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetDynamicTagGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetDynamicTagGroupsGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDynamicTagGroupsGroup {
 		return vs[0].([]GetDynamicTagGroupsGroup)[vs[1].(int)]
@@ -4750,6 +5471,12 @@ func (i GetDynamicTagGroupsGroupMatchExpressArgs) ToGetDynamicTagGroupsGroupMatc
 	return pulumi.ToOutputWithContext(ctx, i).(GetDynamicTagGroupsGroupMatchExpressOutput)
 }
 
+func (i GetDynamicTagGroupsGroupMatchExpressArgs) ToOutput(ctx context.Context) pulumix.Output[GetDynamicTagGroupsGroupMatchExpress] {
+	return pulumix.Output[GetDynamicTagGroupsGroupMatchExpress]{
+		OutputState: i.ToGetDynamicTagGroupsGroupMatchExpressOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDynamicTagGroupsGroupMatchExpressArrayInput is an input type that accepts GetDynamicTagGroupsGroupMatchExpressArray and GetDynamicTagGroupsGroupMatchExpressArrayOutput values.
 // You can construct a concrete instance of `GetDynamicTagGroupsGroupMatchExpressArrayInput` via:
 //
@@ -4775,6 +5502,12 @@ func (i GetDynamicTagGroupsGroupMatchExpressArray) ToGetDynamicTagGroupsGroupMat
 	return pulumi.ToOutputWithContext(ctx, i).(GetDynamicTagGroupsGroupMatchExpressArrayOutput)
 }
 
+func (i GetDynamicTagGroupsGroupMatchExpressArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDynamicTagGroupsGroupMatchExpress] {
+	return pulumix.Output[[]GetDynamicTagGroupsGroupMatchExpress]{
+		OutputState: i.ToGetDynamicTagGroupsGroupMatchExpressArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDynamicTagGroupsGroupMatchExpressOutput struct{ *pulumi.OutputState }
 
 func (GetDynamicTagGroupsGroupMatchExpressOutput) ElementType() reflect.Type {
@@ -4787,6 +5520,12 @@ func (o GetDynamicTagGroupsGroupMatchExpressOutput) ToGetDynamicTagGroupsGroupMa
 
 func (o GetDynamicTagGroupsGroupMatchExpressOutput) ToGetDynamicTagGroupsGroupMatchExpressOutputWithContext(ctx context.Context) GetDynamicTagGroupsGroupMatchExpressOutput {
 	return o
+}
+
+func (o GetDynamicTagGroupsGroupMatchExpressOutput) ToOutput(ctx context.Context) pulumix.Output[GetDynamicTagGroupsGroupMatchExpress] {
+	return pulumix.Output[GetDynamicTagGroupsGroupMatchExpress]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
@@ -4811,6 +5550,12 @@ func (o GetDynamicTagGroupsGroupMatchExpressArrayOutput) ToGetDynamicTagGroupsGr
 
 func (o GetDynamicTagGroupsGroupMatchExpressArrayOutput) ToGetDynamicTagGroupsGroupMatchExpressArrayOutputWithContext(ctx context.Context) GetDynamicTagGroupsGroupMatchExpressArrayOutput {
 	return o
+}
+
+func (o GetDynamicTagGroupsGroupMatchExpressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDynamicTagGroupsGroupMatchExpress] {
+	return pulumix.Output[[]GetDynamicTagGroupsGroupMatchExpress]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDynamicTagGroupsGroupMatchExpressArrayOutput) Index(i pulumi.IntInput) GetDynamicTagGroupsGroupMatchExpressOutput {
@@ -4880,6 +5625,12 @@ func (i GetEventRulesRuleArgs) ToGetEventRulesRuleOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetEventRulesRuleOutput)
 }
 
+func (i GetEventRulesRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetEventRulesRule] {
+	return pulumix.Output[GetEventRulesRule]{
+		OutputState: i.ToGetEventRulesRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetEventRulesRuleArrayInput is an input type that accepts GetEventRulesRuleArray and GetEventRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetEventRulesRuleArrayInput` via:
 //
@@ -4905,6 +5656,12 @@ func (i GetEventRulesRuleArray) ToGetEventRulesRuleArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetEventRulesRuleArrayOutput)
 }
 
+func (i GetEventRulesRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEventRulesRule] {
+	return pulumix.Output[[]GetEventRulesRule]{
+		OutputState: i.ToGetEventRulesRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetEventRulesRuleOutput struct{ *pulumi.OutputState }
 
 func (GetEventRulesRuleOutput) ElementType() reflect.Type {
@@ -4917,6 +5674,12 @@ func (o GetEventRulesRuleOutput) ToGetEventRulesRuleOutput() GetEventRulesRuleOu
 
 func (o GetEventRulesRuleOutput) ToGetEventRulesRuleOutputWithContext(ctx context.Context) GetEventRulesRuleOutput {
 	return o
+}
+
+func (o GetEventRulesRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetEventRulesRule] {
+	return pulumix.Output[GetEventRulesRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the rule.
@@ -4971,6 +5734,12 @@ func (o GetEventRulesRuleArrayOutput) ToGetEventRulesRuleArrayOutput() GetEventR
 
 func (o GetEventRulesRuleArrayOutput) ToGetEventRulesRuleArrayOutputWithContext(ctx context.Context) GetEventRulesRuleArrayOutput {
 	return o
+}
+
+func (o GetEventRulesRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEventRulesRule] {
+	return pulumix.Output[[]GetEventRulesRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetEventRulesRuleArrayOutput) Index(i pulumi.IntInput) GetEventRulesRuleOutput {
@@ -5032,6 +5801,12 @@ func (i GetEventRulesRuleEventPatternArgs) ToGetEventRulesRuleEventPatternOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetEventRulesRuleEventPatternOutput)
 }
 
+func (i GetEventRulesRuleEventPatternArgs) ToOutput(ctx context.Context) pulumix.Output[GetEventRulesRuleEventPattern] {
+	return pulumix.Output[GetEventRulesRuleEventPattern]{
+		OutputState: i.ToGetEventRulesRuleEventPatternOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetEventRulesRuleEventPatternArrayInput is an input type that accepts GetEventRulesRuleEventPatternArray and GetEventRulesRuleEventPatternArrayOutput values.
 // You can construct a concrete instance of `GetEventRulesRuleEventPatternArrayInput` via:
 //
@@ -5057,6 +5832,12 @@ func (i GetEventRulesRuleEventPatternArray) ToGetEventRulesRuleEventPatternArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetEventRulesRuleEventPatternArrayOutput)
 }
 
+func (i GetEventRulesRuleEventPatternArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEventRulesRuleEventPattern] {
+	return pulumix.Output[[]GetEventRulesRuleEventPattern]{
+		OutputState: i.ToGetEventRulesRuleEventPatternArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetEventRulesRuleEventPatternOutput struct{ *pulumi.OutputState }
 
 func (GetEventRulesRuleEventPatternOutput) ElementType() reflect.Type {
@@ -5069,6 +5850,12 @@ func (o GetEventRulesRuleEventPatternOutput) ToGetEventRulesRuleEventPatternOutp
 
 func (o GetEventRulesRuleEventPatternOutput) ToGetEventRulesRuleEventPatternOutputWithContext(ctx context.Context) GetEventRulesRuleEventPatternOutput {
 	return o
+}
+
+func (o GetEventRulesRuleEventPatternOutput) ToOutput(ctx context.Context) pulumix.Output[GetEventRulesRuleEventPattern] {
+	return pulumix.Output[GetEventRulesRuleEventPattern]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of event types.
@@ -5117,6 +5904,12 @@ func (o GetEventRulesRuleEventPatternArrayOutput) ToGetEventRulesRuleEventPatter
 	return o
 }
 
+func (o GetEventRulesRuleEventPatternArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEventRulesRuleEventPattern] {
+	return pulumix.Output[[]GetEventRulesRuleEventPattern]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetEventRulesRuleEventPatternArrayOutput) Index(i pulumi.IntInput) GetEventRulesRuleEventPatternOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventRulesRuleEventPattern {
 		return vs[0].([]GetEventRulesRuleEventPattern)[vs[1].(int)]
@@ -5160,6 +5953,12 @@ func (i GetEventRulesRuleEventPatternKeywordFilterArgs) ToGetEventRulesRuleEvent
 	return pulumi.ToOutputWithContext(ctx, i).(GetEventRulesRuleEventPatternKeywordFilterOutput)
 }
 
+func (i GetEventRulesRuleEventPatternKeywordFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetEventRulesRuleEventPatternKeywordFilter] {
+	return pulumix.Output[GetEventRulesRuleEventPatternKeywordFilter]{
+		OutputState: i.ToGetEventRulesRuleEventPatternKeywordFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetEventRulesRuleEventPatternKeywordFilterArrayInput is an input type that accepts GetEventRulesRuleEventPatternKeywordFilterArray and GetEventRulesRuleEventPatternKeywordFilterArrayOutput values.
 // You can construct a concrete instance of `GetEventRulesRuleEventPatternKeywordFilterArrayInput` via:
 //
@@ -5185,6 +5984,12 @@ func (i GetEventRulesRuleEventPatternKeywordFilterArray) ToGetEventRulesRuleEven
 	return pulumi.ToOutputWithContext(ctx, i).(GetEventRulesRuleEventPatternKeywordFilterArrayOutput)
 }
 
+func (i GetEventRulesRuleEventPatternKeywordFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEventRulesRuleEventPatternKeywordFilter] {
+	return pulumix.Output[[]GetEventRulesRuleEventPatternKeywordFilter]{
+		OutputState: i.ToGetEventRulesRuleEventPatternKeywordFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetEventRulesRuleEventPatternKeywordFilterOutput struct{ *pulumi.OutputState }
 
 func (GetEventRulesRuleEventPatternKeywordFilterOutput) ElementType() reflect.Type {
@@ -5197,6 +6002,12 @@ func (o GetEventRulesRuleEventPatternKeywordFilterOutput) ToGetEventRulesRuleEve
 
 func (o GetEventRulesRuleEventPatternKeywordFilterOutput) ToGetEventRulesRuleEventPatternKeywordFilterOutputWithContext(ctx context.Context) GetEventRulesRuleEventPatternKeywordFilterOutput {
 	return o
+}
+
+func (o GetEventRulesRuleEventPatternKeywordFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetEventRulesRuleEventPatternKeywordFilter] {
+	return pulumix.Output[GetEventRulesRuleEventPatternKeywordFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The keywords that are used to match events.
@@ -5221,6 +6032,12 @@ func (o GetEventRulesRuleEventPatternKeywordFilterArrayOutput) ToGetEventRulesRu
 
 func (o GetEventRulesRuleEventPatternKeywordFilterArrayOutput) ToGetEventRulesRuleEventPatternKeywordFilterArrayOutputWithContext(ctx context.Context) GetEventRulesRuleEventPatternKeywordFilterArrayOutput {
 	return o
+}
+
+func (o GetEventRulesRuleEventPatternKeywordFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEventRulesRuleEventPatternKeywordFilter] {
+	return pulumix.Output[[]GetEventRulesRuleEventPatternKeywordFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetEventRulesRuleEventPatternKeywordFilterArrayOutput) Index(i pulumi.IntInput) GetEventRulesRuleEventPatternKeywordFilterOutput {
@@ -5334,6 +6151,12 @@ func (i GetGroupMetricRulesRuleArgs) ToGetGroupMetricRulesRuleOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMetricRulesRuleOutput)
 }
 
+func (i GetGroupMetricRulesRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupMetricRulesRule] {
+	return pulumix.Output[GetGroupMetricRulesRule]{
+		OutputState: i.ToGetGroupMetricRulesRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGroupMetricRulesRuleArrayInput is an input type that accepts GetGroupMetricRulesRuleArray and GetGroupMetricRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetGroupMetricRulesRuleArrayInput` via:
 //
@@ -5359,6 +6182,12 @@ func (i GetGroupMetricRulesRuleArray) ToGetGroupMetricRulesRuleArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMetricRulesRuleArrayOutput)
 }
 
+func (i GetGroupMetricRulesRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMetricRulesRule] {
+	return pulumix.Output[[]GetGroupMetricRulesRule]{
+		OutputState: i.ToGetGroupMetricRulesRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGroupMetricRulesRuleOutput struct{ *pulumi.OutputState }
 
 func (GetGroupMetricRulesRuleOutput) ElementType() reflect.Type {
@@ -5371,6 +6200,12 @@ func (o GetGroupMetricRulesRuleOutput) ToGetGroupMetricRulesRuleOutput() GetGrou
 
 func (o GetGroupMetricRulesRuleOutput) ToGetGroupMetricRulesRuleOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleOutput {
 	return o
+}
+
+func (o GetGroupMetricRulesRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupMetricRulesRule] {
+	return pulumix.Output[GetGroupMetricRulesRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Alarm contact group.
@@ -5482,6 +6317,12 @@ func (o GetGroupMetricRulesRuleArrayOutput) ToGetGroupMetricRulesRuleArrayOutput
 	return o
 }
 
+func (o GetGroupMetricRulesRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMetricRulesRule] {
+	return pulumix.Output[[]GetGroupMetricRulesRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetGroupMetricRulesRuleArrayOutput) Index(i pulumi.IntInput) GetGroupMetricRulesRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupMetricRulesRule {
 		return vs[0].([]GetGroupMetricRulesRule)[vs[1].(int)]
@@ -5529,6 +6370,12 @@ func (i GetGroupMetricRulesRuleEscalationArgs) ToGetGroupMetricRulesRuleEscalati
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMetricRulesRuleEscalationOutput)
 }
 
+func (i GetGroupMetricRulesRuleEscalationArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupMetricRulesRuleEscalation] {
+	return pulumix.Output[GetGroupMetricRulesRuleEscalation]{
+		OutputState: i.ToGetGroupMetricRulesRuleEscalationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGroupMetricRulesRuleEscalationArrayInput is an input type that accepts GetGroupMetricRulesRuleEscalationArray and GetGroupMetricRulesRuleEscalationArrayOutput values.
 // You can construct a concrete instance of `GetGroupMetricRulesRuleEscalationArrayInput` via:
 //
@@ -5554,6 +6401,12 @@ func (i GetGroupMetricRulesRuleEscalationArray) ToGetGroupMetricRulesRuleEscalat
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMetricRulesRuleEscalationArrayOutput)
 }
 
+func (i GetGroupMetricRulesRuleEscalationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMetricRulesRuleEscalation] {
+	return pulumix.Output[[]GetGroupMetricRulesRuleEscalation]{
+		OutputState: i.ToGetGroupMetricRulesRuleEscalationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGroupMetricRulesRuleEscalationOutput struct{ *pulumi.OutputState }
 
 func (GetGroupMetricRulesRuleEscalationOutput) ElementType() reflect.Type {
@@ -5566,6 +6419,12 @@ func (o GetGroupMetricRulesRuleEscalationOutput) ToGetGroupMetricRulesRuleEscala
 
 func (o GetGroupMetricRulesRuleEscalationOutput) ToGetGroupMetricRulesRuleEscalationOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationOutput {
 	return o
+}
+
+func (o GetGroupMetricRulesRuleEscalationOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupMetricRulesRuleEscalation] {
+	return pulumix.Output[GetGroupMetricRulesRuleEscalation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The critical level.
@@ -5597,6 +6456,12 @@ func (o GetGroupMetricRulesRuleEscalationArrayOutput) ToGetGroupMetricRulesRuleE
 
 func (o GetGroupMetricRulesRuleEscalationArrayOutput) ToGetGroupMetricRulesRuleEscalationArrayOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationArrayOutput {
 	return o
+}
+
+func (o GetGroupMetricRulesRuleEscalationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMetricRulesRuleEscalation] {
+	return pulumix.Output[[]GetGroupMetricRulesRuleEscalation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGroupMetricRulesRuleEscalationArrayOutput) Index(i pulumi.IntInput) GetGroupMetricRulesRuleEscalationOutput {
@@ -5650,6 +6515,12 @@ func (i GetGroupMetricRulesRuleEscalationCriticalArgs) ToGetGroupMetricRulesRule
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMetricRulesRuleEscalationCriticalOutput)
 }
 
+func (i GetGroupMetricRulesRuleEscalationCriticalArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupMetricRulesRuleEscalationCritical] {
+	return pulumix.Output[GetGroupMetricRulesRuleEscalationCritical]{
+		OutputState: i.ToGetGroupMetricRulesRuleEscalationCriticalOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGroupMetricRulesRuleEscalationCriticalArrayInput is an input type that accepts GetGroupMetricRulesRuleEscalationCriticalArray and GetGroupMetricRulesRuleEscalationCriticalArrayOutput values.
 // You can construct a concrete instance of `GetGroupMetricRulesRuleEscalationCriticalArrayInput` via:
 //
@@ -5675,6 +6546,12 @@ func (i GetGroupMetricRulesRuleEscalationCriticalArray) ToGetGroupMetricRulesRul
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMetricRulesRuleEscalationCriticalArrayOutput)
 }
 
+func (i GetGroupMetricRulesRuleEscalationCriticalArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMetricRulesRuleEscalationCritical] {
+	return pulumix.Output[[]GetGroupMetricRulesRuleEscalationCritical]{
+		OutputState: i.ToGetGroupMetricRulesRuleEscalationCriticalArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGroupMetricRulesRuleEscalationCriticalOutput struct{ *pulumi.OutputState }
 
 func (GetGroupMetricRulesRuleEscalationCriticalOutput) ElementType() reflect.Type {
@@ -5687,6 +6564,12 @@ func (o GetGroupMetricRulesRuleEscalationCriticalOutput) ToGetGroupMetricRulesRu
 
 func (o GetGroupMetricRulesRuleEscalationCriticalOutput) ToGetGroupMetricRulesRuleEscalationCriticalOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationCriticalOutput {
 	return o
+}
+
+func (o GetGroupMetricRulesRuleEscalationCriticalOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupMetricRulesRuleEscalationCritical] {
+	return pulumix.Output[GetGroupMetricRulesRuleEscalationCritical]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The comparison operator of the threshold for warn-level alerts.
@@ -5721,6 +6604,12 @@ func (o GetGroupMetricRulesRuleEscalationCriticalArrayOutput) ToGetGroupMetricRu
 
 func (o GetGroupMetricRulesRuleEscalationCriticalArrayOutput) ToGetGroupMetricRulesRuleEscalationCriticalArrayOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationCriticalArrayOutput {
 	return o
+}
+
+func (o GetGroupMetricRulesRuleEscalationCriticalArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMetricRulesRuleEscalationCritical] {
+	return pulumix.Output[[]GetGroupMetricRulesRuleEscalationCritical]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGroupMetricRulesRuleEscalationCriticalArrayOutput) Index(i pulumi.IntInput) GetGroupMetricRulesRuleEscalationCriticalOutput {
@@ -5774,6 +6663,12 @@ func (i GetGroupMetricRulesRuleEscalationInfoArgs) ToGetGroupMetricRulesRuleEsca
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMetricRulesRuleEscalationInfoOutput)
 }
 
+func (i GetGroupMetricRulesRuleEscalationInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupMetricRulesRuleEscalationInfo] {
+	return pulumix.Output[GetGroupMetricRulesRuleEscalationInfo]{
+		OutputState: i.ToGetGroupMetricRulesRuleEscalationInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGroupMetricRulesRuleEscalationInfoArrayInput is an input type that accepts GetGroupMetricRulesRuleEscalationInfoArray and GetGroupMetricRulesRuleEscalationInfoArrayOutput values.
 // You can construct a concrete instance of `GetGroupMetricRulesRuleEscalationInfoArrayInput` via:
 //
@@ -5799,6 +6694,12 @@ func (i GetGroupMetricRulesRuleEscalationInfoArray) ToGetGroupMetricRulesRuleEsc
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMetricRulesRuleEscalationInfoArrayOutput)
 }
 
+func (i GetGroupMetricRulesRuleEscalationInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMetricRulesRuleEscalationInfo] {
+	return pulumix.Output[[]GetGroupMetricRulesRuleEscalationInfo]{
+		OutputState: i.ToGetGroupMetricRulesRuleEscalationInfoArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGroupMetricRulesRuleEscalationInfoOutput struct{ *pulumi.OutputState }
 
 func (GetGroupMetricRulesRuleEscalationInfoOutput) ElementType() reflect.Type {
@@ -5811,6 +6712,12 @@ func (o GetGroupMetricRulesRuleEscalationInfoOutput) ToGetGroupMetricRulesRuleEs
 
 func (o GetGroupMetricRulesRuleEscalationInfoOutput) ToGetGroupMetricRulesRuleEscalationInfoOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationInfoOutput {
 	return o
+}
+
+func (o GetGroupMetricRulesRuleEscalationInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupMetricRulesRuleEscalationInfo] {
+	return pulumix.Output[GetGroupMetricRulesRuleEscalationInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The comparison operator of the threshold for warn-level alerts.
@@ -5845,6 +6752,12 @@ func (o GetGroupMetricRulesRuleEscalationInfoArrayOutput) ToGetGroupMetricRulesR
 
 func (o GetGroupMetricRulesRuleEscalationInfoArrayOutput) ToGetGroupMetricRulesRuleEscalationInfoArrayOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationInfoArrayOutput {
 	return o
+}
+
+func (o GetGroupMetricRulesRuleEscalationInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMetricRulesRuleEscalationInfo] {
+	return pulumix.Output[[]GetGroupMetricRulesRuleEscalationInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGroupMetricRulesRuleEscalationInfoArrayOutput) Index(i pulumi.IntInput) GetGroupMetricRulesRuleEscalationInfoOutput {
@@ -5898,6 +6811,12 @@ func (i GetGroupMetricRulesRuleEscalationWarnArgs) ToGetGroupMetricRulesRuleEsca
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMetricRulesRuleEscalationWarnOutput)
 }
 
+func (i GetGroupMetricRulesRuleEscalationWarnArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupMetricRulesRuleEscalationWarn] {
+	return pulumix.Output[GetGroupMetricRulesRuleEscalationWarn]{
+		OutputState: i.ToGetGroupMetricRulesRuleEscalationWarnOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGroupMetricRulesRuleEscalationWarnArrayInput is an input type that accepts GetGroupMetricRulesRuleEscalationWarnArray and GetGroupMetricRulesRuleEscalationWarnArrayOutput values.
 // You can construct a concrete instance of `GetGroupMetricRulesRuleEscalationWarnArrayInput` via:
 //
@@ -5923,6 +6842,12 @@ func (i GetGroupMetricRulesRuleEscalationWarnArray) ToGetGroupMetricRulesRuleEsc
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMetricRulesRuleEscalationWarnArrayOutput)
 }
 
+func (i GetGroupMetricRulesRuleEscalationWarnArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMetricRulesRuleEscalationWarn] {
+	return pulumix.Output[[]GetGroupMetricRulesRuleEscalationWarn]{
+		OutputState: i.ToGetGroupMetricRulesRuleEscalationWarnArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGroupMetricRulesRuleEscalationWarnOutput struct{ *pulumi.OutputState }
 
 func (GetGroupMetricRulesRuleEscalationWarnOutput) ElementType() reflect.Type {
@@ -5935,6 +6860,12 @@ func (o GetGroupMetricRulesRuleEscalationWarnOutput) ToGetGroupMetricRulesRuleEs
 
 func (o GetGroupMetricRulesRuleEscalationWarnOutput) ToGetGroupMetricRulesRuleEscalationWarnOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationWarnOutput {
 	return o
+}
+
+func (o GetGroupMetricRulesRuleEscalationWarnOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupMetricRulesRuleEscalationWarn] {
+	return pulumix.Output[GetGroupMetricRulesRuleEscalationWarn]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The comparison operator of the threshold for warn-level alerts.
@@ -5969,6 +6900,12 @@ func (o GetGroupMetricRulesRuleEscalationWarnArrayOutput) ToGetGroupMetricRulesR
 
 func (o GetGroupMetricRulesRuleEscalationWarnArrayOutput) ToGetGroupMetricRulesRuleEscalationWarnArrayOutputWithContext(ctx context.Context) GetGroupMetricRulesRuleEscalationWarnArrayOutput {
 	return o
+}
+
+func (o GetGroupMetricRulesRuleEscalationWarnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMetricRulesRuleEscalationWarn] {
+	return pulumix.Output[[]GetGroupMetricRulesRuleEscalationWarn]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGroupMetricRulesRuleEscalationWarnArrayOutput) Index(i pulumi.IntInput) GetGroupMetricRulesRuleEscalationWarnOutput {
@@ -6018,6 +6955,12 @@ func (i GetHybridMonitorDatasDataArgs) ToGetHybridMonitorDatasDataOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorDatasDataOutput)
 }
 
+func (i GetHybridMonitorDatasDataArgs) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorDatasData] {
+	return pulumix.Output[GetHybridMonitorDatasData]{
+		OutputState: i.ToGetHybridMonitorDatasDataOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetHybridMonitorDatasDataArrayInput is an input type that accepts GetHybridMonitorDatasDataArray and GetHybridMonitorDatasDataArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorDatasDataArrayInput` via:
 //
@@ -6043,6 +6986,12 @@ func (i GetHybridMonitorDatasDataArray) ToGetHybridMonitorDatasDataArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorDatasDataArrayOutput)
 }
 
+func (i GetHybridMonitorDatasDataArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorDatasData] {
+	return pulumix.Output[[]GetHybridMonitorDatasData]{
+		OutputState: i.ToGetHybridMonitorDatasDataArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetHybridMonitorDatasDataOutput struct{ *pulumi.OutputState }
 
 func (GetHybridMonitorDatasDataOutput) ElementType() reflect.Type {
@@ -6055,6 +7004,12 @@ func (o GetHybridMonitorDatasDataOutput) ToGetHybridMonitorDatasDataOutput() Get
 
 func (o GetHybridMonitorDatasDataOutput) ToGetHybridMonitorDatasDataOutputWithContext(ctx context.Context) GetHybridMonitorDatasDataOutput {
 	return o
+}
+
+func (o GetHybridMonitorDatasDataOutput) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorDatasData] {
+	return pulumix.Output[GetHybridMonitorDatasData]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The label of the time dimension.
@@ -6084,6 +7039,12 @@ func (o GetHybridMonitorDatasDataArrayOutput) ToGetHybridMonitorDatasDataArrayOu
 
 func (o GetHybridMonitorDatasDataArrayOutput) ToGetHybridMonitorDatasDataArrayOutputWithContext(ctx context.Context) GetHybridMonitorDatasDataArrayOutput {
 	return o
+}
+
+func (o GetHybridMonitorDatasDataArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorDatasData] {
+	return pulumix.Output[[]GetHybridMonitorDatasData]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHybridMonitorDatasDataArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorDatasDataOutput {
@@ -6129,6 +7090,12 @@ func (i GetHybridMonitorDatasDataLabelArgs) ToGetHybridMonitorDatasDataLabelOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorDatasDataLabelOutput)
 }
 
+func (i GetHybridMonitorDatasDataLabelArgs) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorDatasDataLabel] {
+	return pulumix.Output[GetHybridMonitorDatasDataLabel]{
+		OutputState: i.ToGetHybridMonitorDatasDataLabelOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetHybridMonitorDatasDataLabelArrayInput is an input type that accepts GetHybridMonitorDatasDataLabelArray and GetHybridMonitorDatasDataLabelArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorDatasDataLabelArrayInput` via:
 //
@@ -6154,6 +7121,12 @@ func (i GetHybridMonitorDatasDataLabelArray) ToGetHybridMonitorDatasDataLabelArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorDatasDataLabelArrayOutput)
 }
 
+func (i GetHybridMonitorDatasDataLabelArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorDatasDataLabel] {
+	return pulumix.Output[[]GetHybridMonitorDatasDataLabel]{
+		OutputState: i.ToGetHybridMonitorDatasDataLabelArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetHybridMonitorDatasDataLabelOutput struct{ *pulumi.OutputState }
 
 func (GetHybridMonitorDatasDataLabelOutput) ElementType() reflect.Type {
@@ -6166,6 +7139,12 @@ func (o GetHybridMonitorDatasDataLabelOutput) ToGetHybridMonitorDatasDataLabelOu
 
 func (o GetHybridMonitorDatasDataLabelOutput) ToGetHybridMonitorDatasDataLabelOutputWithContext(ctx context.Context) GetHybridMonitorDatasDataLabelOutput {
 	return o
+}
+
+func (o GetHybridMonitorDatasDataLabelOutput) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorDatasDataLabel] {
+	return pulumix.Output[GetHybridMonitorDatasDataLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Label key.
@@ -6190,6 +7169,12 @@ func (o GetHybridMonitorDatasDataLabelArrayOutput) ToGetHybridMonitorDatasDataLa
 
 func (o GetHybridMonitorDatasDataLabelArrayOutput) ToGetHybridMonitorDatasDataLabelArrayOutputWithContext(ctx context.Context) GetHybridMonitorDatasDataLabelArrayOutput {
 	return o
+}
+
+func (o GetHybridMonitorDatasDataLabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorDatasDataLabel] {
+	return pulumix.Output[[]GetHybridMonitorDatasDataLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHybridMonitorDatasDataLabelArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorDatasDataLabelOutput {
@@ -6235,6 +7220,12 @@ func (i GetHybridMonitorDatasDataValueArgs) ToGetHybridMonitorDatasDataValueOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorDatasDataValueOutput)
 }
 
+func (i GetHybridMonitorDatasDataValueArgs) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorDatasDataValue] {
+	return pulumix.Output[GetHybridMonitorDatasDataValue]{
+		OutputState: i.ToGetHybridMonitorDatasDataValueOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetHybridMonitorDatasDataValueArrayInput is an input type that accepts GetHybridMonitorDatasDataValueArray and GetHybridMonitorDatasDataValueArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorDatasDataValueArrayInput` via:
 //
@@ -6260,6 +7251,12 @@ func (i GetHybridMonitorDatasDataValueArray) ToGetHybridMonitorDatasDataValueArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorDatasDataValueArrayOutput)
 }
 
+func (i GetHybridMonitorDatasDataValueArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorDatasDataValue] {
+	return pulumix.Output[[]GetHybridMonitorDatasDataValue]{
+		OutputState: i.ToGetHybridMonitorDatasDataValueArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetHybridMonitorDatasDataValueOutput struct{ *pulumi.OutputState }
 
 func (GetHybridMonitorDatasDataValueOutput) ElementType() reflect.Type {
@@ -6272,6 +7269,12 @@ func (o GetHybridMonitorDatasDataValueOutput) ToGetHybridMonitorDatasDataValueOu
 
 func (o GetHybridMonitorDatasDataValueOutput) ToGetHybridMonitorDatasDataValueOutputWithContext(ctx context.Context) GetHybridMonitorDatasDataValueOutput {
 	return o
+}
+
+func (o GetHybridMonitorDatasDataValueOutput) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorDatasDataValue] {
+	return pulumix.Output[GetHybridMonitorDatasDataValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp that indicates the time when the metric value is collected. Unit: seconds.
@@ -6296,6 +7299,12 @@ func (o GetHybridMonitorDatasDataValueArrayOutput) ToGetHybridMonitorDatasDataVa
 
 func (o GetHybridMonitorDatasDataValueArrayOutput) ToGetHybridMonitorDatasDataValueArrayOutputWithContext(ctx context.Context) GetHybridMonitorDatasDataValueArrayOutput {
 	return o
+}
+
+func (o GetHybridMonitorDatasDataValueArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorDatasDataValue] {
+	return pulumix.Output[[]GetHybridMonitorDatasDataValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHybridMonitorDatasDataValueArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorDatasDataValueOutput {
@@ -6357,6 +7366,12 @@ func (i GetHybridMonitorFcTasksTaskArgs) ToGetHybridMonitorFcTasksTaskOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorFcTasksTaskOutput)
 }
 
+func (i GetHybridMonitorFcTasksTaskArgs) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorFcTasksTask] {
+	return pulumix.Output[GetHybridMonitorFcTasksTask]{
+		OutputState: i.ToGetHybridMonitorFcTasksTaskOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetHybridMonitorFcTasksTaskArrayInput is an input type that accepts GetHybridMonitorFcTasksTaskArray and GetHybridMonitorFcTasksTaskArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorFcTasksTaskArrayInput` via:
 //
@@ -6382,6 +7397,12 @@ func (i GetHybridMonitorFcTasksTaskArray) ToGetHybridMonitorFcTasksTaskArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorFcTasksTaskArrayOutput)
 }
 
+func (i GetHybridMonitorFcTasksTaskArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorFcTasksTask] {
+	return pulumix.Output[[]GetHybridMonitorFcTasksTask]{
+		OutputState: i.ToGetHybridMonitorFcTasksTaskArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetHybridMonitorFcTasksTaskOutput struct{ *pulumi.OutputState }
 
 func (GetHybridMonitorFcTasksTaskOutput) ElementType() reflect.Type {
@@ -6394,6 +7415,12 @@ func (o GetHybridMonitorFcTasksTaskOutput) ToGetHybridMonitorFcTasksTaskOutput()
 
 func (o GetHybridMonitorFcTasksTaskOutput) ToGetHybridMonitorFcTasksTaskOutputWithContext(ctx context.Context) GetHybridMonitorFcTasksTaskOutput {
 	return o
+}
+
+func (o GetHybridMonitorFcTasksTaskOutput) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorFcTasksTask] {
+	return pulumix.Output[GetHybridMonitorFcTasksTask]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Create the timestamp of the monitoring task. Unit: milliseconds.
@@ -6438,6 +7465,12 @@ func (o GetHybridMonitorFcTasksTaskArrayOutput) ToGetHybridMonitorFcTasksTaskArr
 
 func (o GetHybridMonitorFcTasksTaskArrayOutput) ToGetHybridMonitorFcTasksTaskArrayOutputWithContext(ctx context.Context) GetHybridMonitorFcTasksTaskArrayOutput {
 	return o
+}
+
+func (o GetHybridMonitorFcTasksTaskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorFcTasksTask] {
+	return pulumix.Output[[]GetHybridMonitorFcTasksTask]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHybridMonitorFcTasksTaskArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorFcTasksTaskOutput {
@@ -6581,6 +7614,12 @@ func (i GetHybridMonitorSlsTasksTaskArgs) ToGetHybridMonitorSlsTasksTaskOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskOutput)
 }
 
+func (i GetHybridMonitorSlsTasksTaskArgs) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorSlsTasksTask] {
+	return pulumix.Output[GetHybridMonitorSlsTasksTask]{
+		OutputState: i.ToGetHybridMonitorSlsTasksTaskOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetHybridMonitorSlsTasksTaskArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskArray and GetHybridMonitorSlsTasksTaskArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskArrayInput` via:
 //
@@ -6606,6 +7645,12 @@ func (i GetHybridMonitorSlsTasksTaskArray) ToGetHybridMonitorSlsTasksTaskArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskArrayOutput)
 }
 
+func (i GetHybridMonitorSlsTasksTaskArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorSlsTasksTask] {
+	return pulumix.Output[[]GetHybridMonitorSlsTasksTask]{
+		OutputState: i.ToGetHybridMonitorSlsTasksTaskArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetHybridMonitorSlsTasksTaskOutput struct{ *pulumi.OutputState }
 
 func (GetHybridMonitorSlsTasksTaskOutput) ElementType() reflect.Type {
@@ -6618,6 +7663,12 @@ func (o GetHybridMonitorSlsTasksTaskOutput) ToGetHybridMonitorSlsTasksTaskOutput
 
 func (o GetHybridMonitorSlsTasksTaskOutput) ToGetHybridMonitorSlsTasksTaskOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskOutput {
 	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskOutput) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorSlsTasksTask] {
+	return pulumix.Output[GetHybridMonitorSlsTasksTask]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The tags of the metric import task.
@@ -6772,6 +7823,12 @@ func (o GetHybridMonitorSlsTasksTaskArrayOutput) ToGetHybridMonitorSlsTasksTaskA
 	return o
 }
 
+func (o GetHybridMonitorSlsTasksTaskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorSlsTasksTask] {
+	return pulumix.Output[[]GetHybridMonitorSlsTasksTask]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetHybridMonitorSlsTasksTaskArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorSlsTasksTaskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHybridMonitorSlsTasksTask {
 		return vs[0].([]GetHybridMonitorSlsTasksTask)[vs[1].(int)]
@@ -6815,6 +7872,12 @@ func (i GetHybridMonitorSlsTasksTaskAttachLabelArgs) ToGetHybridMonitorSlsTasksT
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskAttachLabelOutput)
 }
 
+func (i GetHybridMonitorSlsTasksTaskAttachLabelArgs) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorSlsTasksTaskAttachLabel] {
+	return pulumix.Output[GetHybridMonitorSlsTasksTaskAttachLabel]{
+		OutputState: i.ToGetHybridMonitorSlsTasksTaskAttachLabelOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetHybridMonitorSlsTasksTaskAttachLabelArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskAttachLabelArray and GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskAttachLabelArrayInput` via:
 //
@@ -6840,6 +7903,12 @@ func (i GetHybridMonitorSlsTasksTaskAttachLabelArray) ToGetHybridMonitorSlsTasks
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput)
 }
 
+func (i GetHybridMonitorSlsTasksTaskAttachLabelArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorSlsTasksTaskAttachLabel] {
+	return pulumix.Output[[]GetHybridMonitorSlsTasksTaskAttachLabel]{
+		OutputState: i.ToGetHybridMonitorSlsTasksTaskAttachLabelArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetHybridMonitorSlsTasksTaskAttachLabelOutput struct{ *pulumi.OutputState }
 
 func (GetHybridMonitorSlsTasksTaskAttachLabelOutput) ElementType() reflect.Type {
@@ -6852,6 +7921,12 @@ func (o GetHybridMonitorSlsTasksTaskAttachLabelOutput) ToGetHybridMonitorSlsTask
 
 func (o GetHybridMonitorSlsTasksTaskAttachLabelOutput) ToGetHybridMonitorSlsTasksTaskAttachLabelOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskAttachLabelOutput {
 	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskAttachLabelOutput) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorSlsTasksTaskAttachLabel] {
+	return pulumix.Output[GetHybridMonitorSlsTasksTaskAttachLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the instance.
@@ -6876,6 +7951,12 @@ func (o GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput) ToGetHybridMonitorSl
 
 func (o GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput) ToGetHybridMonitorSlsTasksTaskAttachLabelArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput {
 	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorSlsTasksTaskAttachLabel] {
+	return pulumix.Output[[]GetHybridMonitorSlsTasksTaskAttachLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorSlsTasksTaskAttachLabelOutput {
@@ -6925,6 +8006,12 @@ func (i GetHybridMonitorSlsTasksTaskMatchExpressArgs) ToGetHybridMonitorSlsTasks
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskMatchExpressOutput)
 }
 
+func (i GetHybridMonitorSlsTasksTaskMatchExpressArgs) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorSlsTasksTaskMatchExpress] {
+	return pulumix.Output[GetHybridMonitorSlsTasksTaskMatchExpress]{
+		OutputState: i.ToGetHybridMonitorSlsTasksTaskMatchExpressOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetHybridMonitorSlsTasksTaskMatchExpressArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskMatchExpressArray and GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskMatchExpressArrayInput` via:
 //
@@ -6950,6 +8037,12 @@ func (i GetHybridMonitorSlsTasksTaskMatchExpressArray) ToGetHybridMonitorSlsTask
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput)
 }
 
+func (i GetHybridMonitorSlsTasksTaskMatchExpressArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorSlsTasksTaskMatchExpress] {
+	return pulumix.Output[[]GetHybridMonitorSlsTasksTaskMatchExpress]{
+		OutputState: i.ToGetHybridMonitorSlsTasksTaskMatchExpressArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetHybridMonitorSlsTasksTaskMatchExpressOutput struct{ *pulumi.OutputState }
 
 func (GetHybridMonitorSlsTasksTaskMatchExpressOutput) ElementType() reflect.Type {
@@ -6962,6 +8055,12 @@ func (o GetHybridMonitorSlsTasksTaskMatchExpressOutput) ToGetHybridMonitorSlsTas
 
 func (o GetHybridMonitorSlsTasksTaskMatchExpressOutput) ToGetHybridMonitorSlsTasksTaskMatchExpressOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskMatchExpressOutput {
 	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskMatchExpressOutput) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorSlsTasksTaskMatchExpress] {
+	return pulumix.Output[GetHybridMonitorSlsTasksTaskMatchExpress]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The function that is used to aggregate log data within a statistical period.
@@ -6991,6 +8090,12 @@ func (o GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput) ToGetHybridMonitorS
 
 func (o GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput) ToGetHybridMonitorSlsTasksTaskMatchExpressArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput {
 	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorSlsTasksTaskMatchExpress] {
+	return pulumix.Output[[]GetHybridMonitorSlsTasksTaskMatchExpress]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorSlsTasksTaskMatchExpressOutput {
@@ -7044,6 +8149,12 @@ func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigArgs) ToGetHybridMonitorSlsT
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput)
 }
 
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfig] {
+	return pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfig]{
+		OutputState: i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigArray and GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayInput` via:
 //
@@ -7069,6 +8180,12 @@ func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigArray) ToGetHybridMonitorSls
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput)
 }
 
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfig] {
+	return pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfig]{
+		OutputState: i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput struct{ *pulumi.OutputState }
 
 func (GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput) ElementType() reflect.Type {
@@ -7081,6 +8198,12 @@ func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput) ToGetHybridMonitorSl
 
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput {
 	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfig] {
+	return pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The extended field that specifies the result of basic operations that are performed on aggregation results.
@@ -7123,6 +8246,12 @@ func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput) ToGetHybridMoni
 
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput {
 	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfig] {
+	return pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput {
@@ -7168,6 +8297,12 @@ func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArgs) ToGetHybridMoni
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput)
 }
 
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArgs) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress] {
+	return pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress]{
+		OutputState: i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArray and GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayInput` via:
 //
@@ -7193,6 +8328,12 @@ func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArray) ToGetHybridMon
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput)
 }
 
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress] {
+	return pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress]{
+		OutputState: i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput struct{ *pulumi.OutputState }
 
 func (GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput) ElementType() reflect.Type {
@@ -7205,6 +8346,12 @@ func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput) ToGetHybridMo
 
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput {
 	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress] {
+	return pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
@@ -7229,6 +8376,12 @@ func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput) ToGetHyb
 
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput {
 	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress] {
+	return pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput {
@@ -7274,6 +8427,12 @@ func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArgs) ToGetHybridMonit
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput)
 }
 
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter] {
+	return pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter]{
+		OutputState: i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArray and GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayInput` via:
 //
@@ -7299,6 +8458,12 @@ func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArray) ToGetHybridMoni
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput)
 }
 
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter] {
+	return pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter]{
+		OutputState: i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput struct{ *pulumi.OutputState }
 
 func (GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput) ElementType() reflect.Type {
@@ -7311,6 +8476,12 @@ func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput) ToGetHybridMon
 
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput {
 	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter] {
+	return pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The conditions that are used to filter logs imported from Log Service.
@@ -7337,6 +8508,12 @@ func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput) ToGetHybr
 
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput {
 	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter] {
+	return pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput {
@@ -7386,6 +8563,12 @@ func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArgs) ToGetHybri
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput)
 }
 
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter] {
+	return pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter]{
+		OutputState: i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArray and GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayInput` via:
 //
@@ -7411,6 +8594,12 @@ func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArray) ToGetHybr
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput)
 }
 
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter] {
+	return pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter]{
+		OutputState: i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput struct{ *pulumi.OutputState }
 
 func (GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput) ElementType() reflect.Type {
@@ -7423,6 +8612,12 @@ func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput) ToGetHyb
 
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput {
 	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter] {
+	return pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The method that is used to filter logs imported from Log Service.
@@ -7452,6 +8647,12 @@ func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput) ToG
 
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput {
 	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter] {
+	return pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput {
@@ -7497,6 +8698,12 @@ func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArgs) ToGetHybridMoni
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput)
 }
 
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArgs) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy] {
+	return pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy]{
+		OutputState: i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArray and GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayInput` via:
 //
@@ -7522,6 +8729,12 @@ func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArray) ToGetHybridMon
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput)
 }
 
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy] {
+	return pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy]{
+		OutputState: i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput struct{ *pulumi.OutputState }
 
 func (GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput) ElementType() reflect.Type {
@@ -7534,6 +8747,12 @@ func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput) ToGetHybridMo
 
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput {
 	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy] {
+	return pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
@@ -7558,6 +8777,12 @@ func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput) ToGetHyb
 
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput {
 	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy] {
+	return pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput {
@@ -7615,6 +8840,12 @@ func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArgs) ToGetHybridMo
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput)
 }
 
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArgs) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic] {
+	return pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic]{
+		OutputState: i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArray and GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayInput` via:
 //
@@ -7640,6 +8871,12 @@ func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArray) ToGetHybridM
 	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput)
 }
 
+func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic] {
+	return pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic]{
+		OutputState: i.ToGetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput struct{ *pulumi.OutputState }
 
 func (GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput) ElementType() reflect.Type {
@@ -7652,6 +8889,12 @@ func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput) ToGetHybrid
 
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput {
 	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic] {
+	return pulumix.Output[GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
@@ -7691,6 +8934,12 @@ func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput) ToGetH
 
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput) ToGetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutputWithContext(ctx context.Context) GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput {
 	return o
+}
+
+func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic] {
+	return pulumix.Output[[]GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput {
@@ -7782,6 +9031,12 @@ func (i GetMetricRuleBlackListsListArgs) ToGetMetricRuleBlackListsListOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleBlackListsListOutput)
 }
 
+func (i GetMetricRuleBlackListsListArgs) ToOutput(ctx context.Context) pulumix.Output[GetMetricRuleBlackListsList] {
+	return pulumix.Output[GetMetricRuleBlackListsList]{
+		OutputState: i.ToGetMetricRuleBlackListsListOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetMetricRuleBlackListsListArrayInput is an input type that accepts GetMetricRuleBlackListsListArray and GetMetricRuleBlackListsListArrayOutput values.
 // You can construct a concrete instance of `GetMetricRuleBlackListsListArrayInput` via:
 //
@@ -7807,6 +9062,12 @@ func (i GetMetricRuleBlackListsListArray) ToGetMetricRuleBlackListsListArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleBlackListsListArrayOutput)
 }
 
+func (i GetMetricRuleBlackListsListArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMetricRuleBlackListsList] {
+	return pulumix.Output[[]GetMetricRuleBlackListsList]{
+		OutputState: i.ToGetMetricRuleBlackListsListArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetMetricRuleBlackListsListOutput struct{ *pulumi.OutputState }
 
 func (GetMetricRuleBlackListsListOutput) ElementType() reflect.Type {
@@ -7819,6 +9080,12 @@ func (o GetMetricRuleBlackListsListOutput) ToGetMetricRuleBlackListsListOutput()
 
 func (o GetMetricRuleBlackListsListOutput) ToGetMetricRuleBlackListsListOutputWithContext(ctx context.Context) GetMetricRuleBlackListsListOutput {
 	return o
+}
+
+func (o GetMetricRuleBlackListsListOutput) ToOutput(ctx context.Context) pulumix.Output[GetMetricRuleBlackListsList] {
+	return pulumix.Output[GetMetricRuleBlackListsList]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
@@ -7904,6 +9171,12 @@ func (o GetMetricRuleBlackListsListArrayOutput) ToGetMetricRuleBlackListsListArr
 	return o
 }
 
+func (o GetMetricRuleBlackListsListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMetricRuleBlackListsList] {
+	return pulumix.Output[[]GetMetricRuleBlackListsList]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetMetricRuleBlackListsListArrayOutput) Index(i pulumi.IntInput) GetMetricRuleBlackListsListOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetricRuleBlackListsList {
 		return vs[0].([]GetMetricRuleBlackListsList)[vs[1].(int)]
@@ -7947,6 +9220,12 @@ func (i GetMetricRuleBlackListsListMetricArgs) ToGetMetricRuleBlackListsListMetr
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleBlackListsListMetricOutput)
 }
 
+func (i GetMetricRuleBlackListsListMetricArgs) ToOutput(ctx context.Context) pulumix.Output[GetMetricRuleBlackListsListMetric] {
+	return pulumix.Output[GetMetricRuleBlackListsListMetric]{
+		OutputState: i.ToGetMetricRuleBlackListsListMetricOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetMetricRuleBlackListsListMetricArrayInput is an input type that accepts GetMetricRuleBlackListsListMetricArray and GetMetricRuleBlackListsListMetricArrayOutput values.
 // You can construct a concrete instance of `GetMetricRuleBlackListsListMetricArrayInput` via:
 //
@@ -7972,6 +9251,12 @@ func (i GetMetricRuleBlackListsListMetricArray) ToGetMetricRuleBlackListsListMet
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleBlackListsListMetricArrayOutput)
 }
 
+func (i GetMetricRuleBlackListsListMetricArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMetricRuleBlackListsListMetric] {
+	return pulumix.Output[[]GetMetricRuleBlackListsListMetric]{
+		OutputState: i.ToGetMetricRuleBlackListsListMetricArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetMetricRuleBlackListsListMetricOutput struct{ *pulumi.OutputState }
 
 func (GetMetricRuleBlackListsListMetricOutput) ElementType() reflect.Type {
@@ -7984,6 +9269,12 @@ func (o GetMetricRuleBlackListsListMetricOutput) ToGetMetricRuleBlackListsListMe
 
 func (o GetMetricRuleBlackListsListMetricOutput) ToGetMetricRuleBlackListsListMetricOutputWithContext(ctx context.Context) GetMetricRuleBlackListsListMetricOutput {
 	return o
+}
+
+func (o GetMetricRuleBlackListsListMetricOutput) ToOutput(ctx context.Context) pulumix.Output[GetMetricRuleBlackListsListMetric] {
+	return pulumix.Output[GetMetricRuleBlackListsListMetric]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the monitoring indicator.
@@ -8008,6 +9299,12 @@ func (o GetMetricRuleBlackListsListMetricArrayOutput) ToGetMetricRuleBlackListsL
 
 func (o GetMetricRuleBlackListsListMetricArrayOutput) ToGetMetricRuleBlackListsListMetricArrayOutputWithContext(ctx context.Context) GetMetricRuleBlackListsListMetricArrayOutput {
 	return o
+}
+
+func (o GetMetricRuleBlackListsListMetricArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMetricRuleBlackListsListMetric] {
+	return pulumix.Output[[]GetMetricRuleBlackListsListMetric]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMetricRuleBlackListsListMetricArrayOutput) Index(i pulumi.IntInput) GetMetricRuleBlackListsListMetricOutput {
@@ -8077,6 +9374,12 @@ func (i GetMetricRuleTemplatesTemplateArgs) ToGetMetricRuleTemplatesTemplateOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateOutput)
 }
 
+func (i GetMetricRuleTemplatesTemplateArgs) ToOutput(ctx context.Context) pulumix.Output[GetMetricRuleTemplatesTemplate] {
+	return pulumix.Output[GetMetricRuleTemplatesTemplate]{
+		OutputState: i.ToGetMetricRuleTemplatesTemplateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetMetricRuleTemplatesTemplateArrayInput is an input type that accepts GetMetricRuleTemplatesTemplateArray and GetMetricRuleTemplatesTemplateArrayOutput values.
 // You can construct a concrete instance of `GetMetricRuleTemplatesTemplateArrayInput` via:
 //
@@ -8102,6 +9405,12 @@ func (i GetMetricRuleTemplatesTemplateArray) ToGetMetricRuleTemplatesTemplateArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateArrayOutput)
 }
 
+func (i GetMetricRuleTemplatesTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMetricRuleTemplatesTemplate] {
+	return pulumix.Output[[]GetMetricRuleTemplatesTemplate]{
+		OutputState: i.ToGetMetricRuleTemplatesTemplateArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetMetricRuleTemplatesTemplateOutput struct{ *pulumi.OutputState }
 
 func (GetMetricRuleTemplatesTemplateOutput) ElementType() reflect.Type {
@@ -8114,6 +9423,12 @@ func (o GetMetricRuleTemplatesTemplateOutput) ToGetMetricRuleTemplatesTemplateOu
 
 func (o GetMetricRuleTemplatesTemplateOutput) ToGetMetricRuleTemplatesTemplateOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateOutput {
 	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[GetMetricRuleTemplatesTemplate] {
+	return pulumix.Output[GetMetricRuleTemplatesTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The details of alert rules that are generated based on the alert template.
@@ -8167,6 +9482,12 @@ func (o GetMetricRuleTemplatesTemplateArrayOutput) ToGetMetricRuleTemplatesTempl
 
 func (o GetMetricRuleTemplatesTemplateArrayOutput) ToGetMetricRuleTemplatesTemplateArrayOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateArrayOutput {
 	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMetricRuleTemplatesTemplate] {
+	return pulumix.Output[[]GetMetricRuleTemplatesTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMetricRuleTemplatesTemplateArrayOutput) Index(i pulumi.IntInput) GetMetricRuleTemplatesTemplateOutput {
@@ -8230,6 +9551,12 @@ func (i GetMetricRuleTemplatesTemplateAlertTemplateArgs) ToGetMetricRuleTemplate
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateAlertTemplateOutput)
 }
 
+func (i GetMetricRuleTemplatesTemplateAlertTemplateArgs) ToOutput(ctx context.Context) pulumix.Output[GetMetricRuleTemplatesTemplateAlertTemplate] {
+	return pulumix.Output[GetMetricRuleTemplatesTemplateAlertTemplate]{
+		OutputState: i.ToGetMetricRuleTemplatesTemplateAlertTemplateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetMetricRuleTemplatesTemplateAlertTemplateArrayInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateArray and GetMetricRuleTemplatesTemplateAlertTemplateArrayOutput values.
 // You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateArrayInput` via:
 //
@@ -8255,6 +9582,12 @@ func (i GetMetricRuleTemplatesTemplateAlertTemplateArray) ToGetMetricRuleTemplat
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateAlertTemplateArrayOutput)
 }
 
+func (i GetMetricRuleTemplatesTemplateAlertTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMetricRuleTemplatesTemplateAlertTemplate] {
+	return pulumix.Output[[]GetMetricRuleTemplatesTemplateAlertTemplate]{
+		OutputState: i.ToGetMetricRuleTemplatesTemplateAlertTemplateArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetMetricRuleTemplatesTemplateAlertTemplateOutput struct{ *pulumi.OutputState }
 
 func (GetMetricRuleTemplatesTemplateAlertTemplateOutput) ElementType() reflect.Type {
@@ -8267,6 +9600,12 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateOutput) ToGetMetricRuleTempla
 
 func (o GetMetricRuleTemplatesTemplateAlertTemplateOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateOutput {
 	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[GetMetricRuleTemplatesTemplateAlertTemplate] {
+	return pulumix.Output[GetMetricRuleTemplatesTemplateAlertTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iotEdge`, `kvstoreSharding`, `kvstoreSplitrw`, `kvstoreStandard`, `memcache`, `mns`, `mongodb`, `mongodbCluster`, `mongodbSharding`, `mqTopic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
@@ -8319,6 +9658,12 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateArrayOutput) ToGetMetricRuleT
 	return o
 }
 
+func (o GetMetricRuleTemplatesTemplateAlertTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMetricRuleTemplatesTemplateAlertTemplate] {
+	return pulumix.Output[[]GetMetricRuleTemplatesTemplateAlertTemplate]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetMetricRuleTemplatesTemplateAlertTemplateArrayOutput) Index(i pulumi.IntInput) GetMetricRuleTemplatesTemplateAlertTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetricRuleTemplatesTemplateAlertTemplate {
 		return vs[0].([]GetMetricRuleTemplatesTemplateAlertTemplate)[vs[1].(int)]
@@ -8366,6 +9711,12 @@ func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationArgs) ToGetMetricRu
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput)
 }
 
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationArgs) ToOutput(ctx context.Context) pulumix.Output[GetMetricRuleTemplatesTemplateAlertTemplateEscalation] {
+	return pulumix.Output[GetMetricRuleTemplatesTemplateAlertTemplateEscalation]{
+		OutputState: i.ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationArray and GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput values.
 // You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayInput` via:
 //
@@ -8391,6 +9742,12 @@ func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationArray) ToGetMetricR
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput)
 }
 
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMetricRuleTemplatesTemplateAlertTemplateEscalation] {
+	return pulumix.Output[[]GetMetricRuleTemplatesTemplateAlertTemplateEscalation]{
+		OutputState: i.ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput struct{ *pulumi.OutputState }
 
 func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput) ElementType() reflect.Type {
@@ -8403,6 +9760,12 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput) ToGetMetric
 
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput {
 	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput) ToOutput(ctx context.Context) pulumix.Output[GetMetricRuleTemplatesTemplateAlertTemplateEscalation] {
+	return pulumix.Output[GetMetricRuleTemplatesTemplateAlertTemplateEscalation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The condition for triggering critical-level alerts.
@@ -8438,6 +9801,12 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput) ToGetM
 
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput {
 	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMetricRuleTemplatesTemplateAlertTemplateEscalation] {
+	return pulumix.Output[[]GetMetricRuleTemplatesTemplateAlertTemplateEscalation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput) Index(i pulumi.IntInput) GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput {
@@ -8493,6 +9862,12 @@ func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArgs) ToGet
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput)
 }
 
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArgs) ToOutput(ctx context.Context) pulumix.Output[GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical] {
+	return pulumix.Output[GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical]{
+		OutputState: i.ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArray and GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput values.
 // You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayInput` via:
 //
@@ -8518,6 +9893,12 @@ func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArray) ToGe
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput)
 }
 
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical] {
+	return pulumix.Output[[]GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical]{
+		OutputState: i.ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput struct{ *pulumi.OutputState }
 
 func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput) ElementType() reflect.Type {
@@ -8530,6 +9911,12 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput) ToG
 
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput {
 	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput) ToOutput(ctx context.Context) pulumix.Output[GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical] {
+	return pulumix.Output[GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
@@ -8567,6 +9954,12 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput
 
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput {
 	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical] {
+	return pulumix.Output[[]GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput) Index(i pulumi.IntInput) GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput {
@@ -8622,6 +10015,12 @@ func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArgs) ToGetMetr
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput)
 }
 
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo] {
+	return pulumix.Output[GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo]{
+		OutputState: i.ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArray and GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput values.
 // You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayInput` via:
 //
@@ -8647,6 +10046,12 @@ func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArray) ToGetMet
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput)
 }
 
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo] {
+	return pulumix.Output[[]GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo]{
+		OutputState: i.ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput struct{ *pulumi.OutputState }
 
 func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput) ElementType() reflect.Type {
@@ -8659,6 +10064,12 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput) ToGetMe
 
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput {
 	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo] {
+	return pulumix.Output[GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
@@ -8694,6 +10105,12 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput) To
 
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput {
 	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo] {
+	return pulumix.Output[[]GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput) Index(i pulumi.IntInput) GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput {
@@ -8749,6 +10166,12 @@ func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArgs) ToGetMetr
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput)
 }
 
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArgs) ToOutput(ctx context.Context) pulumix.Output[GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn] {
+	return pulumix.Output[GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn]{
+		OutputState: i.ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArray and GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput values.
 // You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayInput` via:
 //
@@ -8774,6 +10197,12 @@ func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArray) ToGetMet
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput)
 }
 
+func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn] {
+	return pulumix.Output[[]GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn]{
+		OutputState: i.ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput struct{ *pulumi.OutputState }
 
 func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput) ElementType() reflect.Type {
@@ -8786,6 +10215,12 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput) ToGetMe
 
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput {
 	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput) ToOutput(ctx context.Context) pulumix.Output[GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn] {
+	return pulumix.Output[GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
@@ -8821,6 +10256,12 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput) To
 
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput) ToGetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutputWithContext(ctx context.Context) GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput {
 	return o
+}
+
+func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn] {
+	return pulumix.Output[[]GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput) Index(i pulumi.IntInput) GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput {
@@ -8860,6 +10301,12 @@ func (i GetMonitorGroupInstancesInstanceArgs) ToGetMonitorGroupInstancesInstance
 	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorGroupInstancesInstanceOutput)
 }
 
+func (i GetMonitorGroupInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetMonitorGroupInstancesInstance] {
+	return pulumix.Output[GetMonitorGroupInstancesInstance]{
+		OutputState: i.ToGetMonitorGroupInstancesInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetMonitorGroupInstancesInstanceArrayInput is an input type that accepts GetMonitorGroupInstancesInstanceArray and GetMonitorGroupInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetMonitorGroupInstancesInstanceArrayInput` via:
 //
@@ -8885,6 +10332,12 @@ func (i GetMonitorGroupInstancesInstanceArray) ToGetMonitorGroupInstancesInstanc
 	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorGroupInstancesInstanceArrayOutput)
 }
 
+func (i GetMonitorGroupInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMonitorGroupInstancesInstance] {
+	return pulumix.Output[[]GetMonitorGroupInstancesInstance]{
+		OutputState: i.ToGetMonitorGroupInstancesInstanceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetMonitorGroupInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetMonitorGroupInstancesInstanceOutput) ElementType() reflect.Type {
@@ -8897,6 +10350,12 @@ func (o GetMonitorGroupInstancesInstanceOutput) ToGetMonitorGroupInstancesInstan
 
 func (o GetMonitorGroupInstancesInstanceOutput) ToGetMonitorGroupInstancesInstanceOutputWithContext(ctx context.Context) GetMonitorGroupInstancesInstanceOutput {
 	return o
+}
+
+func (o GetMonitorGroupInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetMonitorGroupInstancesInstance] {
+	return pulumix.Output[GetMonitorGroupInstancesInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMonitorGroupInstancesInstanceOutput) Instances() GetMonitorGroupInstancesInstanceInstanceArrayOutput {
@@ -8917,6 +10376,12 @@ func (o GetMonitorGroupInstancesInstanceArrayOutput) ToGetMonitorGroupInstancesI
 
 func (o GetMonitorGroupInstancesInstanceArrayOutput) ToGetMonitorGroupInstancesInstanceArrayOutputWithContext(ctx context.Context) GetMonitorGroupInstancesInstanceArrayOutput {
 	return o
+}
+
+func (o GetMonitorGroupInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMonitorGroupInstancesInstance] {
+	return pulumix.Output[[]GetMonitorGroupInstancesInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMonitorGroupInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetMonitorGroupInstancesInstanceOutput {
@@ -8962,6 +10427,12 @@ func (i GetMonitorGroupInstancesInstanceInstanceArgs) ToGetMonitorGroupInstances
 	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorGroupInstancesInstanceInstanceOutput)
 }
 
+func (i GetMonitorGroupInstancesInstanceInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetMonitorGroupInstancesInstanceInstance] {
+	return pulumix.Output[GetMonitorGroupInstancesInstanceInstance]{
+		OutputState: i.ToGetMonitorGroupInstancesInstanceInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetMonitorGroupInstancesInstanceInstanceArrayInput is an input type that accepts GetMonitorGroupInstancesInstanceInstanceArray and GetMonitorGroupInstancesInstanceInstanceArrayOutput values.
 // You can construct a concrete instance of `GetMonitorGroupInstancesInstanceInstanceArrayInput` via:
 //
@@ -8987,6 +10458,12 @@ func (i GetMonitorGroupInstancesInstanceInstanceArray) ToGetMonitorGroupInstance
 	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorGroupInstancesInstanceInstanceArrayOutput)
 }
 
+func (i GetMonitorGroupInstancesInstanceInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMonitorGroupInstancesInstanceInstance] {
+	return pulumix.Output[[]GetMonitorGroupInstancesInstanceInstance]{
+		OutputState: i.ToGetMonitorGroupInstancesInstanceInstanceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetMonitorGroupInstancesInstanceInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetMonitorGroupInstancesInstanceInstanceOutput) ElementType() reflect.Type {
@@ -8999,6 +10476,12 @@ func (o GetMonitorGroupInstancesInstanceInstanceOutput) ToGetMonitorGroupInstanc
 
 func (o GetMonitorGroupInstancesInstanceInstanceOutput) ToGetMonitorGroupInstancesInstanceInstanceOutputWithContext(ctx context.Context) GetMonitorGroupInstancesInstanceInstanceOutput {
 	return o
+}
+
+func (o GetMonitorGroupInstancesInstanceInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetMonitorGroupInstancesInstanceInstance] {
+	return pulumix.Output[GetMonitorGroupInstancesInstanceInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMonitorGroupInstancesInstanceInstanceOutput) Category() pulumi.StringOutput {
@@ -9029,6 +10512,12 @@ func (o GetMonitorGroupInstancesInstanceInstanceArrayOutput) ToGetMonitorGroupIn
 
 func (o GetMonitorGroupInstancesInstanceInstanceArrayOutput) ToGetMonitorGroupInstancesInstanceInstanceArrayOutputWithContext(ctx context.Context) GetMonitorGroupInstancesInstanceInstanceArrayOutput {
 	return o
+}
+
+func (o GetMonitorGroupInstancesInstanceInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMonitorGroupInstancesInstanceInstance] {
+	return pulumix.Output[[]GetMonitorGroupInstancesInstanceInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMonitorGroupInstancesInstanceInstanceArrayOutput) Index(i pulumi.IntInput) GetMonitorGroupInstancesInstanceInstanceOutput {
@@ -9114,6 +10603,12 @@ func (i GetMonitorGroupsGroupArgs) ToGetMonitorGroupsGroupOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorGroupsGroupOutput)
 }
 
+func (i GetMonitorGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetMonitorGroupsGroup] {
+	return pulumix.Output[GetMonitorGroupsGroup]{
+		OutputState: i.ToGetMonitorGroupsGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetMonitorGroupsGroupArrayInput is an input type that accepts GetMonitorGroupsGroupArray and GetMonitorGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetMonitorGroupsGroupArrayInput` via:
 //
@@ -9139,6 +10634,12 @@ func (i GetMonitorGroupsGroupArray) ToGetMonitorGroupsGroupArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorGroupsGroupArrayOutput)
 }
 
+func (i GetMonitorGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMonitorGroupsGroup] {
+	return pulumix.Output[[]GetMonitorGroupsGroup]{
+		OutputState: i.ToGetMonitorGroupsGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetMonitorGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetMonitorGroupsGroupOutput) ElementType() reflect.Type {
@@ -9151,6 +10652,12 @@ func (o GetMonitorGroupsGroupOutput) ToGetMonitorGroupsGroupOutput() GetMonitorG
 
 func (o GetMonitorGroupsGroupOutput) ToGetMonitorGroupsGroupOutputWithContext(ctx context.Context) GetMonitorGroupsGroupOutput {
 	return o
+}
+
+func (o GetMonitorGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetMonitorGroupsGroup] {
+	return pulumix.Output[GetMonitorGroupsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL of the Kubernetes cluster from which the application group is synchronized.
@@ -9227,6 +10734,12 @@ func (o GetMonitorGroupsGroupArrayOutput) ToGetMonitorGroupsGroupArrayOutputWith
 	return o
 }
 
+func (o GetMonitorGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMonitorGroupsGroup] {
+	return pulumix.Output[[]GetMonitorGroupsGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetMonitorGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetMonitorGroupsGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMonitorGroupsGroup {
 		return vs[0].([]GetMonitorGroupsGroup)[vs[1].(int)]
@@ -9290,6 +10803,12 @@ func (i GetNamespacesNamespaceArgs) ToGetNamespacesNamespaceOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetNamespacesNamespaceOutput)
 }
 
+func (i GetNamespacesNamespaceArgs) ToOutput(ctx context.Context) pulumix.Output[GetNamespacesNamespace] {
+	return pulumix.Output[GetNamespacesNamespace]{
+		OutputState: i.ToGetNamespacesNamespaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetNamespacesNamespaceArrayInput is an input type that accepts GetNamespacesNamespaceArray and GetNamespacesNamespaceArrayOutput values.
 // You can construct a concrete instance of `GetNamespacesNamespaceArrayInput` via:
 //
@@ -9315,6 +10834,12 @@ func (i GetNamespacesNamespaceArray) ToGetNamespacesNamespaceArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetNamespacesNamespaceArrayOutput)
 }
 
+func (i GetNamespacesNamespaceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetNamespacesNamespace] {
+	return pulumix.Output[[]GetNamespacesNamespace]{
+		OutputState: i.ToGetNamespacesNamespaceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetNamespacesNamespaceOutput struct{ *pulumi.OutputState }
 
 func (GetNamespacesNamespaceOutput) ElementType() reflect.Type {
@@ -9327,6 +10852,12 @@ func (o GetNamespacesNamespaceOutput) ToGetNamespacesNamespaceOutput() GetNamesp
 
 func (o GetNamespacesNamespaceOutput) ToGetNamespacesNamespaceOutputWithContext(ctx context.Context) GetNamespacesNamespaceOutput {
 	return o
+}
+
+func (o GetNamespacesNamespaceOutput) ToOutput(ctx context.Context) pulumix.Output[GetNamespacesNamespace] {
+	return pulumix.Output[GetNamespacesNamespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Create the timestamp of the indicator warehouse.
@@ -9376,6 +10907,12 @@ func (o GetNamespacesNamespaceArrayOutput) ToGetNamespacesNamespaceArrayOutput()
 
 func (o GetNamespacesNamespaceArrayOutput) ToGetNamespacesNamespaceArrayOutputWithContext(ctx context.Context) GetNamespacesNamespaceArrayOutput {
 	return o
+}
+
+func (o GetNamespacesNamespaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetNamespacesNamespace] {
+	return pulumix.Output[[]GetNamespacesNamespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetNamespacesNamespaceArrayOutput) Index(i pulumi.IntInput) GetNamespacesNamespaceOutput {
@@ -9433,6 +10970,12 @@ func (i GetSlsGroupsGroupArgs) ToGetSlsGroupsGroupOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetSlsGroupsGroupOutput)
 }
 
+func (i GetSlsGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetSlsGroupsGroup] {
+	return pulumix.Output[GetSlsGroupsGroup]{
+		OutputState: i.ToGetSlsGroupsGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetSlsGroupsGroupArrayInput is an input type that accepts GetSlsGroupsGroupArray and GetSlsGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetSlsGroupsGroupArrayInput` via:
 //
@@ -9458,6 +11001,12 @@ func (i GetSlsGroupsGroupArray) ToGetSlsGroupsGroupArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetSlsGroupsGroupArrayOutput)
 }
 
+func (i GetSlsGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSlsGroupsGroup] {
+	return pulumix.Output[[]GetSlsGroupsGroup]{
+		OutputState: i.ToGetSlsGroupsGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetSlsGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetSlsGroupsGroupOutput) ElementType() reflect.Type {
@@ -9470,6 +11019,12 @@ func (o GetSlsGroupsGroupOutput) ToGetSlsGroupsGroupOutput() GetSlsGroupsGroupOu
 
 func (o GetSlsGroupsGroupOutput) ToGetSlsGroupsGroupOutputWithContext(ctx context.Context) GetSlsGroupsGroupOutput {
 	return o
+}
+
+func (o GetSlsGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetSlsGroupsGroup] {
+	return pulumix.Output[GetSlsGroupsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation time of the resource.
@@ -9509,6 +11064,12 @@ func (o GetSlsGroupsGroupArrayOutput) ToGetSlsGroupsGroupArrayOutput() GetSlsGro
 
 func (o GetSlsGroupsGroupArrayOutput) ToGetSlsGroupsGroupArrayOutputWithContext(ctx context.Context) GetSlsGroupsGroupArrayOutput {
 	return o
+}
+
+func (o GetSlsGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSlsGroupsGroup] {
+	return pulumix.Output[[]GetSlsGroupsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSlsGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetSlsGroupsGroupOutput {
@@ -9562,6 +11123,12 @@ func (i GetSlsGroupsGroupSlsGroupConfigArgs) ToGetSlsGroupsGroupSlsGroupConfigOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetSlsGroupsGroupSlsGroupConfigOutput)
 }
 
+func (i GetSlsGroupsGroupSlsGroupConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetSlsGroupsGroupSlsGroupConfig] {
+	return pulumix.Output[GetSlsGroupsGroupSlsGroupConfig]{
+		OutputState: i.ToGetSlsGroupsGroupSlsGroupConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetSlsGroupsGroupSlsGroupConfigArrayInput is an input type that accepts GetSlsGroupsGroupSlsGroupConfigArray and GetSlsGroupsGroupSlsGroupConfigArrayOutput values.
 // You can construct a concrete instance of `GetSlsGroupsGroupSlsGroupConfigArrayInput` via:
 //
@@ -9587,6 +11154,12 @@ func (i GetSlsGroupsGroupSlsGroupConfigArray) ToGetSlsGroupsGroupSlsGroupConfigA
 	return pulumi.ToOutputWithContext(ctx, i).(GetSlsGroupsGroupSlsGroupConfigArrayOutput)
 }
 
+func (i GetSlsGroupsGroupSlsGroupConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSlsGroupsGroupSlsGroupConfig] {
+	return pulumix.Output[[]GetSlsGroupsGroupSlsGroupConfig]{
+		OutputState: i.ToGetSlsGroupsGroupSlsGroupConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetSlsGroupsGroupSlsGroupConfigOutput struct{ *pulumi.OutputState }
 
 func (GetSlsGroupsGroupSlsGroupConfigOutput) ElementType() reflect.Type {
@@ -9599,6 +11172,12 @@ func (o GetSlsGroupsGroupSlsGroupConfigOutput) ToGetSlsGroupsGroupSlsGroupConfig
 
 func (o GetSlsGroupsGroupSlsGroupConfigOutput) ToGetSlsGroupsGroupSlsGroupConfigOutputWithContext(ctx context.Context) GetSlsGroupsGroupSlsGroupConfigOutput {
 	return o
+}
+
+func (o GetSlsGroupsGroupSlsGroupConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetSlsGroupsGroupSlsGroupConfig] {
+	return pulumix.Output[GetSlsGroupsGroupSlsGroupConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the Log Store.
@@ -9633,6 +11212,12 @@ func (o GetSlsGroupsGroupSlsGroupConfigArrayOutput) ToGetSlsGroupsGroupSlsGroupC
 
 func (o GetSlsGroupsGroupSlsGroupConfigArrayOutput) ToGetSlsGroupsGroupSlsGroupConfigArrayOutputWithContext(ctx context.Context) GetSlsGroupsGroupSlsGroupConfigArrayOutput {
 	return o
+}
+
+func (o GetSlsGroupsGroupSlsGroupConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSlsGroupsGroupSlsGroupConfig] {
+	return pulumix.Output[[]GetSlsGroupsGroupSlsGroupConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSlsGroupsGroupSlsGroupConfigArrayOutput) Index(i pulumi.IntInput) GetSlsGroupsGroupSlsGroupConfigOutput {

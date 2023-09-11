@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Msc Sub Subscription resource.
@@ -242,6 +243,12 @@ func (i *MscSubSubscription) ToMscSubSubscriptionOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(MscSubSubscriptionOutput)
 }
 
+func (i *MscSubSubscription) ToOutput(ctx context.Context) pulumix.Output[*MscSubSubscription] {
+	return pulumix.Output[*MscSubSubscription]{
+		OutputState: i.ToMscSubSubscriptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MscSubSubscriptionArrayInput is an input type that accepts MscSubSubscriptionArray and MscSubSubscriptionArrayOutput values.
 // You can construct a concrete instance of `MscSubSubscriptionArrayInput` via:
 //
@@ -265,6 +272,12 @@ func (i MscSubSubscriptionArray) ToMscSubSubscriptionArrayOutput() MscSubSubscri
 
 func (i MscSubSubscriptionArray) ToMscSubSubscriptionArrayOutputWithContext(ctx context.Context) MscSubSubscriptionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MscSubSubscriptionArrayOutput)
+}
+
+func (i MscSubSubscriptionArray) ToOutput(ctx context.Context) pulumix.Output[[]*MscSubSubscription] {
+	return pulumix.Output[[]*MscSubSubscription]{
+		OutputState: i.ToMscSubSubscriptionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MscSubSubscriptionMapInput is an input type that accepts MscSubSubscriptionMap and MscSubSubscriptionMapOutput values.
@@ -292,6 +305,12 @@ func (i MscSubSubscriptionMap) ToMscSubSubscriptionMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(MscSubSubscriptionMapOutput)
 }
 
+func (i MscSubSubscriptionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MscSubSubscription] {
+	return pulumix.Output[map[string]*MscSubSubscription]{
+		OutputState: i.ToMscSubSubscriptionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MscSubSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (MscSubSubscriptionOutput) ElementType() reflect.Type {
@@ -304,6 +323,12 @@ func (o MscSubSubscriptionOutput) ToMscSubSubscriptionOutput() MscSubSubscriptio
 
 func (o MscSubSubscriptionOutput) ToMscSubSubscriptionOutputWithContext(ctx context.Context) MscSubSubscriptionOutput {
 	return o
+}
+
+func (o MscSubSubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[*MscSubSubscription] {
+	return pulumix.Output[*MscSubSubscription]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The channel the Subscription.
@@ -373,6 +398,12 @@ func (o MscSubSubscriptionArrayOutput) ToMscSubSubscriptionArrayOutputWithContex
 	return o
 }
 
+func (o MscSubSubscriptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MscSubSubscription] {
+	return pulumix.Output[[]*MscSubSubscription]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MscSubSubscriptionArrayOutput) Index(i pulumi.IntInput) MscSubSubscriptionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MscSubSubscription {
 		return vs[0].([]*MscSubSubscription)[vs[1].(int)]
@@ -391,6 +422,12 @@ func (o MscSubSubscriptionMapOutput) ToMscSubSubscriptionMapOutput() MscSubSubsc
 
 func (o MscSubSubscriptionMapOutput) ToMscSubSubscriptionMapOutputWithContext(ctx context.Context) MscSubSubscriptionMapOutput {
 	return o
+}
+
+func (o MscSubSubscriptionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MscSubSubscription] {
+	return pulumix.Output[map[string]*MscSubSubscription]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MscSubSubscriptionMapOutput) MapIndex(k pulumi.StringInput) MscSubSubscriptionOutput {

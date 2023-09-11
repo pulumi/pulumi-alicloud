@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Mhub Apps of the current Alibaba Cloud user.
@@ -149,6 +150,12 @@ func (o GetAppsResultOutput) ToGetAppsResultOutput() GetAppsResultOutput {
 
 func (o GetAppsResultOutput) ToGetAppsResultOutputWithContext(ctx context.Context) GetAppsResultOutput {
 	return o
+}
+
+func (o GetAppsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppsResult] {
+	return pulumix.Output[GetAppsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppsResultOutput) Apps() GetAppsAppArrayOutput {

@@ -335,9 +335,9 @@ class DedicatedHostGroup(pulumi.CustomResource):
         """
         Provides a ApsaraDB for MyBase Dedicated Host Group resource.
 
-        For information about ApsaraDB for MyBase Dedicated Host Group and how to use it, see [What is Dedicated Host Group](https://www.alibabacloud.com/help/doc-detail/141455.htm).
+        For information about ApsaraDB for MyBase Dedicated Host Group and how to use it, see [What is Dedicated Host Group](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/creatededicatedhostgroup).
 
-        > **NOTE:** Available in v1.132.0+.
+        > **NOTE:** Available since v1.132.0.
 
         ## Example Usage
 
@@ -347,18 +347,22 @@ class DedicatedHostGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name="tf_test_foo",
-            cidr_block="172.16.0.0/12")
-        default = alicloud.cddc.DedicatedHostGroup("default",
-            engine="MongoDB",
-            vpc_id=vpc.id,
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_dedicated_host_group = alicloud.cddc.DedicatedHostGroup("defaultDedicatedHostGroup",
+            engine="MySQL",
+            vpc_id=default_network.id,
             cpu_allocation_ratio=101,
             mem_allocation_ratio=50,
             disk_allocation_ratio=200,
             allocation_policy="Evenly",
             host_replace_policy="Manual",
-            dedicated_host_group_desc="tf-testaccDesc")
+            dedicated_host_group_desc=name)
         ```
 
         ## Import
@@ -391,9 +395,9 @@ class DedicatedHostGroup(pulumi.CustomResource):
         """
         Provides a ApsaraDB for MyBase Dedicated Host Group resource.
 
-        For information about ApsaraDB for MyBase Dedicated Host Group and how to use it, see [What is Dedicated Host Group](https://www.alibabacloud.com/help/doc-detail/141455.htm).
+        For information about ApsaraDB for MyBase Dedicated Host Group and how to use it, see [What is Dedicated Host Group](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/creatededicatedhostgroup).
 
-        > **NOTE:** Available in v1.132.0+.
+        > **NOTE:** Available since v1.132.0.
 
         ## Example Usage
 
@@ -403,18 +407,22 @@ class DedicatedHostGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name="tf_test_foo",
-            cidr_block="172.16.0.0/12")
-        default = alicloud.cddc.DedicatedHostGroup("default",
-            engine="MongoDB",
-            vpc_id=vpc.id,
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_dedicated_host_group = alicloud.cddc.DedicatedHostGroup("defaultDedicatedHostGroup",
+            engine="MySQL",
+            vpc_id=default_network.id,
             cpu_allocation_ratio=101,
             mem_allocation_ratio=50,
             disk_allocation_ratio=200,
             allocation_policy="Evenly",
             host_replace_policy="Manual",
-            dedicated_host_group_desc="tf-testaccDesc")
+            dedicated_host_group_desc=name)
         ```
 
         ## Import

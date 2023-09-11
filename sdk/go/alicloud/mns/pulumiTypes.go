@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -70,6 +71,12 @@ func (i GetQueuesQueueArgs) ToGetQueuesQueueOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetQueuesQueueOutput)
 }
 
+func (i GetQueuesQueueArgs) ToOutput(ctx context.Context) pulumix.Output[GetQueuesQueue] {
+	return pulumix.Output[GetQueuesQueue]{
+		OutputState: i.ToGetQueuesQueueOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetQueuesQueueArrayInput is an input type that accepts GetQueuesQueueArray and GetQueuesQueueArrayOutput values.
 // You can construct a concrete instance of `GetQueuesQueueArrayInput` via:
 //
@@ -95,6 +102,12 @@ func (i GetQueuesQueueArray) ToGetQueuesQueueArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetQueuesQueueArrayOutput)
 }
 
+func (i GetQueuesQueueArray) ToOutput(ctx context.Context) pulumix.Output[[]GetQueuesQueue] {
+	return pulumix.Output[[]GetQueuesQueue]{
+		OutputState: i.ToGetQueuesQueueArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetQueuesQueueOutput struct{ *pulumi.OutputState }
 
 func (GetQueuesQueueOutput) ElementType() reflect.Type {
@@ -107,6 +120,12 @@ func (o GetQueuesQueueOutput) ToGetQueuesQueueOutput() GetQueuesQueueOutput {
 
 func (o GetQueuesQueueOutput) ToGetQueuesQueueOutputWithContext(ctx context.Context) GetQueuesQueueOutput {
 	return o
+}
+
+func (o GetQueuesQueueOutput) ToOutput(ctx context.Context) pulumix.Output[GetQueuesQueue] {
+	return pulumix.Output[GetQueuesQueue]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This attribute defines the length of time, in seconds, after which every message sent to the queue is dequeued.
@@ -156,6 +175,12 @@ func (o GetQueuesQueueArrayOutput) ToGetQueuesQueueArrayOutput() GetQueuesQueueA
 
 func (o GetQueuesQueueArrayOutput) ToGetQueuesQueueArrayOutputWithContext(ctx context.Context) GetQueuesQueueArrayOutput {
 	return o
+}
+
+func (o GetQueuesQueueArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetQueuesQueue] {
+	return pulumix.Output[[]GetQueuesQueue]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetQueuesQueueArrayOutput) Index(i pulumi.IntInput) GetQueuesQueueOutput {
@@ -221,6 +246,12 @@ func (i GetTopicSubscriptionsSubscriptionArgs) ToGetTopicSubscriptionsSubscripti
 	return pulumi.ToOutputWithContext(ctx, i).(GetTopicSubscriptionsSubscriptionOutput)
 }
 
+func (i GetTopicSubscriptionsSubscriptionArgs) ToOutput(ctx context.Context) pulumix.Output[GetTopicSubscriptionsSubscription] {
+	return pulumix.Output[GetTopicSubscriptionsSubscription]{
+		OutputState: i.ToGetTopicSubscriptionsSubscriptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTopicSubscriptionsSubscriptionArrayInput is an input type that accepts GetTopicSubscriptionsSubscriptionArray and GetTopicSubscriptionsSubscriptionArrayOutput values.
 // You can construct a concrete instance of `GetTopicSubscriptionsSubscriptionArrayInput` via:
 //
@@ -246,6 +277,12 @@ func (i GetTopicSubscriptionsSubscriptionArray) ToGetTopicSubscriptionsSubscript
 	return pulumi.ToOutputWithContext(ctx, i).(GetTopicSubscriptionsSubscriptionArrayOutput)
 }
 
+func (i GetTopicSubscriptionsSubscriptionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTopicSubscriptionsSubscription] {
+	return pulumix.Output[[]GetTopicSubscriptionsSubscription]{
+		OutputState: i.ToGetTopicSubscriptionsSubscriptionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTopicSubscriptionsSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (GetTopicSubscriptionsSubscriptionOutput) ElementType() reflect.Type {
@@ -258,6 +295,12 @@ func (o GetTopicSubscriptionsSubscriptionOutput) ToGetTopicSubscriptionsSubscrip
 
 func (o GetTopicSubscriptionsSubscriptionOutput) ToGetTopicSubscriptionsSubscriptionOutputWithContext(ctx context.Context) GetTopicSubscriptionsSubscriptionOutput {
 	return o
+}
+
+func (o GetTopicSubscriptionsSubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[GetTopicSubscriptionsSubscription] {
+	return pulumix.Output[GetTopicSubscriptionsSubscription]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describe the terminal address of the message received in this subscription.
@@ -307,6 +350,12 @@ func (o GetTopicSubscriptionsSubscriptionArrayOutput) ToGetTopicSubscriptionsSub
 
 func (o GetTopicSubscriptionsSubscriptionArrayOutput) ToGetTopicSubscriptionsSubscriptionArrayOutputWithContext(ctx context.Context) GetTopicSubscriptionsSubscriptionArrayOutput {
 	return o
+}
+
+func (o GetTopicSubscriptionsSubscriptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTopicSubscriptionsSubscription] {
+	return pulumix.Output[[]GetTopicSubscriptionsSubscription]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTopicSubscriptionsSubscriptionArrayOutput) Index(i pulumi.IntInput) GetTopicSubscriptionsSubscriptionOutput {
@@ -360,6 +409,12 @@ func (i GetTopicsTopicArgs) ToGetTopicsTopicOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetTopicsTopicOutput)
 }
 
+func (i GetTopicsTopicArgs) ToOutput(ctx context.Context) pulumix.Output[GetTopicsTopic] {
+	return pulumix.Output[GetTopicsTopic]{
+		OutputState: i.ToGetTopicsTopicOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTopicsTopicArrayInput is an input type that accepts GetTopicsTopicArray and GetTopicsTopicArrayOutput values.
 // You can construct a concrete instance of `GetTopicsTopicArrayInput` via:
 //
@@ -385,6 +440,12 @@ func (i GetTopicsTopicArray) ToGetTopicsTopicArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetTopicsTopicArrayOutput)
 }
 
+func (i GetTopicsTopicArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTopicsTopic] {
+	return pulumix.Output[[]GetTopicsTopic]{
+		OutputState: i.ToGetTopicsTopicArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTopicsTopicOutput struct{ *pulumi.OutputState }
 
 func (GetTopicsTopicOutput) ElementType() reflect.Type {
@@ -397,6 +458,12 @@ func (o GetTopicsTopicOutput) ToGetTopicsTopicOutput() GetTopicsTopicOutput {
 
 func (o GetTopicsTopicOutput) ToGetTopicsTopicOutputWithContext(ctx context.Context) GetTopicsTopicOutput {
 	return o
+}
+
+func (o GetTopicsTopicOutput) ToOutput(ctx context.Context) pulumix.Output[GetTopicsTopic] {
+	return pulumix.Output[GetTopicsTopic]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The id of the topic. The value is set to `name`.
@@ -431,6 +498,12 @@ func (o GetTopicsTopicArrayOutput) ToGetTopicsTopicArrayOutput() GetTopicsTopicA
 
 func (o GetTopicsTopicArrayOutput) ToGetTopicsTopicArrayOutputWithContext(ctx context.Context) GetTopicsTopicArrayOutput {
 	return o
+}
+
+func (o GetTopicsTopicArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTopicsTopic] {
+	return pulumix.Output[[]GetTopicsTopic]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTopicsTopicArrayOutput) Index(i pulumi.IntInput) GetTopicsTopicOutput {

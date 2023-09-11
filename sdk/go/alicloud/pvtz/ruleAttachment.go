@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Private Zone Rule Attachment resource.
@@ -127,6 +128,12 @@ func (i *RuleAttachment) ToRuleAttachmentOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(RuleAttachmentOutput)
 }
 
+func (i *RuleAttachment) ToOutput(ctx context.Context) pulumix.Output[*RuleAttachment] {
+	return pulumix.Output[*RuleAttachment]{
+		OutputState: i.ToRuleAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RuleAttachmentArrayInput is an input type that accepts RuleAttachmentArray and RuleAttachmentArrayOutput values.
 // You can construct a concrete instance of `RuleAttachmentArrayInput` via:
 //
@@ -150,6 +157,12 @@ func (i RuleAttachmentArray) ToRuleAttachmentArrayOutput() RuleAttachmentArrayOu
 
 func (i RuleAttachmentArray) ToRuleAttachmentArrayOutputWithContext(ctx context.Context) RuleAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RuleAttachmentArrayOutput)
+}
+
+func (i RuleAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*RuleAttachment] {
+	return pulumix.Output[[]*RuleAttachment]{
+		OutputState: i.ToRuleAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RuleAttachmentMapInput is an input type that accepts RuleAttachmentMap and RuleAttachmentMapOutput values.
@@ -177,6 +190,12 @@ func (i RuleAttachmentMap) ToRuleAttachmentMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(RuleAttachmentMapOutput)
 }
 
+func (i RuleAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RuleAttachment] {
+	return pulumix.Output[map[string]*RuleAttachment]{
+		OutputState: i.ToRuleAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuleAttachmentOutput struct{ *pulumi.OutputState }
 
 func (RuleAttachmentOutput) ElementType() reflect.Type {
@@ -189,6 +208,12 @@ func (o RuleAttachmentOutput) ToRuleAttachmentOutput() RuleAttachmentOutput {
 
 func (o RuleAttachmentOutput) ToRuleAttachmentOutputWithContext(ctx context.Context) RuleAttachmentOutput {
 	return o
+}
+
+func (o RuleAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*RuleAttachment] {
+	return pulumix.Output[*RuleAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the rule.
@@ -215,6 +240,12 @@ func (o RuleAttachmentArrayOutput) ToRuleAttachmentArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o RuleAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RuleAttachment] {
+	return pulumix.Output[[]*RuleAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RuleAttachmentArrayOutput) Index(i pulumi.IntInput) RuleAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RuleAttachment {
 		return vs[0].([]*RuleAttachment)[vs[1].(int)]
@@ -233,6 +264,12 @@ func (o RuleAttachmentMapOutput) ToRuleAttachmentMapOutput() RuleAttachmentMapOu
 
 func (o RuleAttachmentMapOutput) ToRuleAttachmentMapOutputWithContext(ctx context.Context) RuleAttachmentMapOutput {
 	return o
+}
+
+func (o RuleAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RuleAttachment] {
+	return pulumix.Output[map[string]*RuleAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuleAttachmentMapOutput) MapIndex(k pulumi.StringInput) RuleAttachmentOutput {

@@ -339,7 +339,13 @@ class DomainRedirect(dict):
         :param int keepalive_requests: Number of long connections,  default: `60`. range :60-1000.
         :param int keepalive_timeout: Long connection over time, default: `15`. Range: 1-60.
         :param int read_timeout: Read timeout duration. **Unit**: seconds, **Value range**: 5~1800.
-        :param Sequence['DomainRedirectRequestHeaderArgs'] request_headers: The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is `[{" k ":"_key_"," v ":"_value_"}]`. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.See the following `Block RequestHeaders`.
+        :param Sequence['DomainRedirectRequestHeaderArgs'] request_headers: The traffic tag field and value of the domain name which used to mark the traffic processed by WAF. 
+               It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
+               and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
+               when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
+               to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
+               custom header field already exists in the request, the system will overwrite the value of the custom field in the
+               request with the set traffic tag value. See `request_headers` below.
         :param bool retry: Back to Source Retry. default: true, retry 3 times by default.
         :param bool sni_enabled: Whether to enable back-to-source SNI. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
                - **true**: indicates that the back-to-source SNI is enabled.
@@ -447,7 +453,13 @@ class DomainRedirect(dict):
     @pulumi.getter(name="requestHeaders")
     def request_headers(self) -> Optional[Sequence['outputs.DomainRedirectRequestHeader']]:
         """
-        The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is `[{" k ":"_key_"," v ":"_value_"}]`. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.See the following `Block RequestHeaders`.
+        The traffic tag field and value of the domain name which used to mark the traffic processed by WAF. 
+        It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
+        and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
+        when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
+        to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
+        custom header field already exists in the request, the system will overwrite the value of the custom field in the
+        request with the set traffic tag value. See `request_headers` below.
         """
         return pulumi.get(self, "request_headers")
 

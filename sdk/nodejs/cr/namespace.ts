@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * This resource will help you to manager Container Registry namespaces.
+ * This resource will help you to manager Container Registry namespaces, see [What is Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace).
  *
- * > **NOTE:** Available in v1.34.0+.
+ * > **NOTE:** Available since v1.34.0.
  *
  * > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
  *
@@ -19,7 +19,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const my_namespace = new alicloud.cr.Namespace("my-namespace", {
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const example = new alicloud.cr.Namespace("example", {
  *     autoCreate: false,
  *     defaultVisibility: "PUBLIC",
  * });

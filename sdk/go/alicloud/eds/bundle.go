@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECD Bundle resource.
@@ -100,11 +101,11 @@ type Bundle struct {
 	// The language. Valid values: `zh-CN`, `zh-HK`, `en-US`, `ja-JP`.
 	Language pulumi.StringPtrOutput `pulumi:"language"`
 	// The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
-	RootDiskPerformanceLevel pulumi.StringPtrOutput `pulumi:"rootDiskPerformanceLevel"`
+	RootDiskPerformanceLevel pulumi.StringOutput `pulumi:"rootDiskPerformanceLevel"`
 	// The root disk size gib.
 	RootDiskSizeGib pulumi.IntOutput `pulumi:"rootDiskSizeGib"`
 	// The user disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
-	UserDiskPerformanceLevel pulumi.StringPtrOutput `pulumi:"userDiskPerformanceLevel"`
+	UserDiskPerformanceLevel pulumi.StringOutput `pulumi:"userDiskPerformanceLevel"`
 	// The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
 	// - The size of the data disk that supports the setting corresponds to the specification. For more information, see [Overview of Desktop Specifications](https://help.aliyun.com/document_detail/188609.htm?spm=a2c4g.11186623.0.0.6406297bE0U5DG).
 	// - The data disk size (user_disk_size_gib) set in the template must be greater than the data disk size (data_disk_size) in the mirror.
@@ -272,6 +273,12 @@ func (i *Bundle) ToBundleOutputWithContext(ctx context.Context) BundleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BundleOutput)
 }
 
+func (i *Bundle) ToOutput(ctx context.Context) pulumix.Output[*Bundle] {
+	return pulumix.Output[*Bundle]{
+		OutputState: i.ToBundleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BundleArrayInput is an input type that accepts BundleArray and BundleArrayOutput values.
 // You can construct a concrete instance of `BundleArrayInput` via:
 //
@@ -295,6 +302,12 @@ func (i BundleArray) ToBundleArrayOutput() BundleArrayOutput {
 
 func (i BundleArray) ToBundleArrayOutputWithContext(ctx context.Context) BundleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BundleArrayOutput)
+}
+
+func (i BundleArray) ToOutput(ctx context.Context) pulumix.Output[[]*Bundle] {
+	return pulumix.Output[[]*Bundle]{
+		OutputState: i.ToBundleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BundleMapInput is an input type that accepts BundleMap and BundleMapOutput values.
@@ -322,6 +335,12 @@ func (i BundleMap) ToBundleMapOutputWithContext(ctx context.Context) BundleMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(BundleMapOutput)
 }
 
+func (i BundleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Bundle] {
+	return pulumix.Output[map[string]*Bundle]{
+		OutputState: i.ToBundleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BundleOutput struct{ *pulumi.OutputState }
 
 func (BundleOutput) ElementType() reflect.Type {
@@ -334,6 +353,12 @@ func (o BundleOutput) ToBundleOutput() BundleOutput {
 
 func (o BundleOutput) ToBundleOutputWithContext(ctx context.Context) BundleOutput {
 	return o
+}
+
+func (o BundleOutput) ToOutput(ctx context.Context) pulumix.Output[*Bundle] {
+	return pulumix.Output[*Bundle]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the bundle.
@@ -362,8 +387,8 @@ func (o BundleOutput) Language() pulumi.StringPtrOutput {
 }
 
 // The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
-func (o BundleOutput) RootDiskPerformanceLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Bundle) pulumi.StringPtrOutput { return v.RootDiskPerformanceLevel }).(pulumi.StringPtrOutput)
+func (o BundleOutput) RootDiskPerformanceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bundle) pulumi.StringOutput { return v.RootDiskPerformanceLevel }).(pulumi.StringOutput)
 }
 
 // The root disk size gib.
@@ -372,8 +397,8 @@ func (o BundleOutput) RootDiskSizeGib() pulumi.IntOutput {
 }
 
 // The user disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
-func (o BundleOutput) UserDiskPerformanceLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Bundle) pulumi.StringPtrOutput { return v.UserDiskPerformanceLevel }).(pulumi.StringPtrOutput)
+func (o BundleOutput) UserDiskPerformanceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bundle) pulumi.StringOutput { return v.UserDiskPerformanceLevel }).(pulumi.StringOutput)
 }
 
 // The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
@@ -397,6 +422,12 @@ func (o BundleArrayOutput) ToBundleArrayOutputWithContext(ctx context.Context) B
 	return o
 }
 
+func (o BundleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Bundle] {
+	return pulumix.Output[[]*Bundle]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BundleArrayOutput) Index(i pulumi.IntInput) BundleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Bundle {
 		return vs[0].([]*Bundle)[vs[1].(int)]
@@ -415,6 +446,12 @@ func (o BundleMapOutput) ToBundleMapOutput() BundleMapOutput {
 
 func (o BundleMapOutput) ToBundleMapOutputWithContext(ctx context.Context) BundleMapOutput {
 	return o
+}
+
+func (o BundleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Bundle] {
+	return pulumix.Output[map[string]*Bundle]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BundleMapOutput) MapIndex(k pulumi.StringInput) BundleOutput {

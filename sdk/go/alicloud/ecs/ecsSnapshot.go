@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECS Snapshot resource.
@@ -351,6 +352,12 @@ func (i *EcsSnapshot) ToEcsSnapshotOutputWithContext(ctx context.Context) EcsSna
 	return pulumi.ToOutputWithContext(ctx, i).(EcsSnapshotOutput)
 }
 
+func (i *EcsSnapshot) ToOutput(ctx context.Context) pulumix.Output[*EcsSnapshot] {
+	return pulumix.Output[*EcsSnapshot]{
+		OutputState: i.ToEcsSnapshotOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EcsSnapshotArrayInput is an input type that accepts EcsSnapshotArray and EcsSnapshotArrayOutput values.
 // You can construct a concrete instance of `EcsSnapshotArrayInput` via:
 //
@@ -374,6 +381,12 @@ func (i EcsSnapshotArray) ToEcsSnapshotArrayOutput() EcsSnapshotArrayOutput {
 
 func (i EcsSnapshotArray) ToEcsSnapshotArrayOutputWithContext(ctx context.Context) EcsSnapshotArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsSnapshotArrayOutput)
+}
+
+func (i EcsSnapshotArray) ToOutput(ctx context.Context) pulumix.Output[[]*EcsSnapshot] {
+	return pulumix.Output[[]*EcsSnapshot]{
+		OutputState: i.ToEcsSnapshotArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EcsSnapshotMapInput is an input type that accepts EcsSnapshotMap and EcsSnapshotMapOutput values.
@@ -401,6 +414,12 @@ func (i EcsSnapshotMap) ToEcsSnapshotMapOutputWithContext(ctx context.Context) E
 	return pulumi.ToOutputWithContext(ctx, i).(EcsSnapshotMapOutput)
 }
 
+func (i EcsSnapshotMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsSnapshot] {
+	return pulumix.Output[map[string]*EcsSnapshot]{
+		OutputState: i.ToEcsSnapshotMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EcsSnapshotOutput struct{ *pulumi.OutputState }
 
 func (EcsSnapshotOutput) ElementType() reflect.Type {
@@ -413,6 +432,12 @@ func (o EcsSnapshotOutput) ToEcsSnapshotOutput() EcsSnapshotOutput {
 
 func (o EcsSnapshotOutput) ToEcsSnapshotOutputWithContext(ctx context.Context) EcsSnapshotOutput {
 	return o
+}
+
+func (o EcsSnapshotOutput) ToOutput(ctx context.Context) pulumix.Output[*EcsSnapshot] {
+	return pulumix.Output[*EcsSnapshot]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The category of the snapshot. Valid Values: `standard` and `flash`.
@@ -493,6 +518,12 @@ func (o EcsSnapshotArrayOutput) ToEcsSnapshotArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o EcsSnapshotArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EcsSnapshot] {
+	return pulumix.Output[[]*EcsSnapshot]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EcsSnapshotArrayOutput) Index(i pulumi.IntInput) EcsSnapshotOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsSnapshot {
 		return vs[0].([]*EcsSnapshot)[vs[1].(int)]
@@ -511,6 +542,12 @@ func (o EcsSnapshotMapOutput) ToEcsSnapshotMapOutput() EcsSnapshotMapOutput {
 
 func (o EcsSnapshotMapOutput) ToEcsSnapshotMapOutputWithContext(ctx context.Context) EcsSnapshotMapOutput {
 	return o
+}
+
+func (o EcsSnapshotMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsSnapshot] {
+	return pulumix.Output[map[string]*EcsSnapshot]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EcsSnapshotMapOutput) MapIndex(k pulumi.StringInput) EcsSnapshotOutput {

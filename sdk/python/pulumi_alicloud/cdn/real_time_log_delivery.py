@@ -188,9 +188,9 @@ class RealTimeLogDelivery(pulumi.CustomResource):
         """
         Provides a CDN Real Time Log Delivery resource.
 
-        For information about CDN Real Time Log Delivery and how to use it, see [What is Real Time Log Delivery](https://www.alibabacloud.com/help/doc-detail/100456.htm).
+        For information about CDN Real Time Log Delivery and how to use it, see [What is Real Time Log Delivery](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-createrealtimelogdelivery).
 
-        > **NOTE:** Available in v1.134.0+.
+        > **NOTE:** Available since v1.134.0.
 
         ## Example Usage
 
@@ -199,12 +199,35 @@ class RealTimeLogDelivery(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example = alicloud.cdn.RealTimeLogDelivery("example",
-            domain="example_value",
-            logstore="example_value",
-            project="example_value",
-            sls_region="cn-hanghzou")
+        default_domain_new = alicloud.cdn.DomainNew("defaultDomainNew",
+            scope="overseas",
+            domain_name="mycdndomain.alicloud-provider.cn",
+            cdn_type="web",
+            sources=[alicloud.cdn.DomainNewSourceArgs(
+                type="ipaddr",
+                content="1.1.3.1",
+                priority=20,
+                port=80,
+                weight=15,
+            )])
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_project = alicloud.log.Project("defaultProject", description="terraform-example")
+        default_store = alicloud.log.Store("defaultStore",
+            project=default_project.name,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        default_regions = alicloud.get_regions(current=True)
+        default_real_time_log_delivery = alicloud.cdn.RealTimeLogDelivery("defaultRealTimeLogDelivery",
+            domain=default_domain_new.domain_name,
+            logstore=default_project.name,
+            project=default_store.name,
+            sls_region=default_regions.regions[0].id)
         ```
 
         ## Import
@@ -233,9 +256,9 @@ class RealTimeLogDelivery(pulumi.CustomResource):
         """
         Provides a CDN Real Time Log Delivery resource.
 
-        For information about CDN Real Time Log Delivery and how to use it, see [What is Real Time Log Delivery](https://www.alibabacloud.com/help/doc-detail/100456.htm).
+        For information about CDN Real Time Log Delivery and how to use it, see [What is Real Time Log Delivery](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-createrealtimelogdelivery).
 
-        > **NOTE:** Available in v1.134.0+.
+        > **NOTE:** Available since v1.134.0.
 
         ## Example Usage
 
@@ -244,12 +267,35 @@ class RealTimeLogDelivery(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example = alicloud.cdn.RealTimeLogDelivery("example",
-            domain="example_value",
-            logstore="example_value",
-            project="example_value",
-            sls_region="cn-hanghzou")
+        default_domain_new = alicloud.cdn.DomainNew("defaultDomainNew",
+            scope="overseas",
+            domain_name="mycdndomain.alicloud-provider.cn",
+            cdn_type="web",
+            sources=[alicloud.cdn.DomainNewSourceArgs(
+                type="ipaddr",
+                content="1.1.3.1",
+                priority=20,
+                port=80,
+                weight=15,
+            )])
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_project = alicloud.log.Project("defaultProject", description="terraform-example")
+        default_store = alicloud.log.Store("defaultStore",
+            project=default_project.name,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        default_regions = alicloud.get_regions(current=True)
+        default_real_time_log_delivery = alicloud.cdn.RealTimeLogDelivery("defaultRealTimeLogDelivery",
+            domain=default_domain_new.domain_name,
+            logstore=default_project.name,
+            project=default_store.name,
+            sls_region=default_regions.regions[0].id)
         ```
 
         ## Import

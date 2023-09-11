@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource will help you to manage a Edge Kubernetes Cluster in Alibaba Cloud Kubernetes Service, see [What is edge kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-an-ack-edge-cluster).
@@ -835,6 +836,12 @@ func (i *EdgeKubernetes) ToEdgeKubernetesOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesOutput)
 }
 
+func (i *EdgeKubernetes) ToOutput(ctx context.Context) pulumix.Output[*EdgeKubernetes] {
+	return pulumix.Output[*EdgeKubernetes]{
+		OutputState: i.ToEdgeKubernetesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EdgeKubernetesArrayInput is an input type that accepts EdgeKubernetesArray and EdgeKubernetesArrayOutput values.
 // You can construct a concrete instance of `EdgeKubernetesArrayInput` via:
 //
@@ -858,6 +865,12 @@ func (i EdgeKubernetesArray) ToEdgeKubernetesArrayOutput() EdgeKubernetesArrayOu
 
 func (i EdgeKubernetesArray) ToEdgeKubernetesArrayOutputWithContext(ctx context.Context) EdgeKubernetesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesArrayOutput)
+}
+
+func (i EdgeKubernetesArray) ToOutput(ctx context.Context) pulumix.Output[[]*EdgeKubernetes] {
+	return pulumix.Output[[]*EdgeKubernetes]{
+		OutputState: i.ToEdgeKubernetesArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EdgeKubernetesMapInput is an input type that accepts EdgeKubernetesMap and EdgeKubernetesMapOutput values.
@@ -885,6 +898,12 @@ func (i EdgeKubernetesMap) ToEdgeKubernetesMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesMapOutput)
 }
 
+func (i EdgeKubernetesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EdgeKubernetes] {
+	return pulumix.Output[map[string]*EdgeKubernetes]{
+		OutputState: i.ToEdgeKubernetesMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeKubernetesOutput struct{ *pulumi.OutputState }
 
 func (EdgeKubernetesOutput) ElementType() reflect.Type {
@@ -897,6 +916,12 @@ func (o EdgeKubernetesOutput) ToEdgeKubernetesOutput() EdgeKubernetesOutput {
 
 func (o EdgeKubernetesOutput) ToEdgeKubernetesOutputWithContext(ctx context.Context) EdgeKubernetesOutput {
 	return o
+}
+
+func (o EdgeKubernetesOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeKubernetes] {
+	return pulumix.Output[*EdgeKubernetes]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The addon you want to install in cluster. See `addons` below.
@@ -1166,6 +1191,12 @@ func (o EdgeKubernetesArrayOutput) ToEdgeKubernetesArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o EdgeKubernetesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EdgeKubernetes] {
+	return pulumix.Output[[]*EdgeKubernetes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EdgeKubernetesArrayOutput) Index(i pulumi.IntInput) EdgeKubernetesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EdgeKubernetes {
 		return vs[0].([]*EdgeKubernetes)[vs[1].(int)]
@@ -1184,6 +1215,12 @@ func (o EdgeKubernetesMapOutput) ToEdgeKubernetesMapOutput() EdgeKubernetesMapOu
 
 func (o EdgeKubernetesMapOutput) ToEdgeKubernetesMapOutputWithContext(ctx context.Context) EdgeKubernetesMapOutput {
 	return o
+}
+
+func (o EdgeKubernetesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EdgeKubernetes] {
+	return pulumix.Output[map[string]*EdgeKubernetes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeKubernetesMapOutput) MapIndex(k pulumi.StringInput) EdgeKubernetesOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a MongoDB Audit Policy resource.
@@ -212,6 +213,12 @@ func (i *AuditPolicy) ToAuditPolicyOutputWithContext(ctx context.Context) AuditP
 	return pulumi.ToOutputWithContext(ctx, i).(AuditPolicyOutput)
 }
 
+func (i *AuditPolicy) ToOutput(ctx context.Context) pulumix.Output[*AuditPolicy] {
+	return pulumix.Output[*AuditPolicy]{
+		OutputState: i.ToAuditPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuditPolicyArrayInput is an input type that accepts AuditPolicyArray and AuditPolicyArrayOutput values.
 // You can construct a concrete instance of `AuditPolicyArrayInput` via:
 //
@@ -235,6 +242,12 @@ func (i AuditPolicyArray) ToAuditPolicyArrayOutput() AuditPolicyArrayOutput {
 
 func (i AuditPolicyArray) ToAuditPolicyArrayOutputWithContext(ctx context.Context) AuditPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuditPolicyArrayOutput)
+}
+
+func (i AuditPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*AuditPolicy] {
+	return pulumix.Output[[]*AuditPolicy]{
+		OutputState: i.ToAuditPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AuditPolicyMapInput is an input type that accepts AuditPolicyMap and AuditPolicyMapOutput values.
@@ -262,6 +275,12 @@ func (i AuditPolicyMap) ToAuditPolicyMapOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AuditPolicyMapOutput)
 }
 
+func (i AuditPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuditPolicy] {
+	return pulumix.Output[map[string]*AuditPolicy]{
+		OutputState: i.ToAuditPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AuditPolicyOutput struct{ *pulumi.OutputState }
 
 func (AuditPolicyOutput) ElementType() reflect.Type {
@@ -274,6 +293,12 @@ func (o AuditPolicyOutput) ToAuditPolicyOutput() AuditPolicyOutput {
 
 func (o AuditPolicyOutput) ToAuditPolicyOutputWithContext(ctx context.Context) AuditPolicyOutput {
 	return o
+}
+
+func (o AuditPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditPolicy] {
+	return pulumix.Output[*AuditPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The status of the audit log. Valid values: `disabled`, `enable`.
@@ -305,6 +330,12 @@ func (o AuditPolicyArrayOutput) ToAuditPolicyArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o AuditPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AuditPolicy] {
+	return pulumix.Output[[]*AuditPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditPolicyArrayOutput) Index(i pulumi.IntInput) AuditPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuditPolicy {
 		return vs[0].([]*AuditPolicy)[vs[1].(int)]
@@ -323,6 +354,12 @@ func (o AuditPolicyMapOutput) ToAuditPolicyMapOutput() AuditPolicyMapOutput {
 
 func (o AuditPolicyMapOutput) ToAuditPolicyMapOutputWithContext(ctx context.Context) AuditPolicyMapOutput {
 	return o
+}
+
+func (o AuditPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuditPolicy] {
+	return pulumix.Output[map[string]*AuditPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditPolicyMapOutput) MapIndex(k pulumi.StringInput) AuditPolicyOutput {

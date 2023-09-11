@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Hbr Hana Backup Plans of the current Alibaba Cloud user.
@@ -139,6 +140,12 @@ func (o GetHanaBackupPlansResultOutput) ToGetHanaBackupPlansResultOutput() GetHa
 
 func (o GetHanaBackupPlansResultOutput) ToGetHanaBackupPlansResultOutputWithContext(ctx context.Context) GetHanaBackupPlansResultOutput {
 	return o
+}
+
+func (o GetHanaBackupPlansResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetHanaBackupPlansResult] {
+	return pulumix.Output[GetHanaBackupPlansResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHanaBackupPlansResultOutput) ClusterId() pulumi.StringOutput {

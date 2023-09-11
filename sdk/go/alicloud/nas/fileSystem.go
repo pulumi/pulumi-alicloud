@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Nas File System resource.
@@ -401,6 +402,12 @@ func (i *FileSystem) ToFileSystemOutputWithContext(ctx context.Context) FileSyst
 	return pulumi.ToOutputWithContext(ctx, i).(FileSystemOutput)
 }
 
+func (i *FileSystem) ToOutput(ctx context.Context) pulumix.Output[*FileSystem] {
+	return pulumix.Output[*FileSystem]{
+		OutputState: i.ToFileSystemOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FileSystemArrayInput is an input type that accepts FileSystemArray and FileSystemArrayOutput values.
 // You can construct a concrete instance of `FileSystemArrayInput` via:
 //
@@ -424,6 +431,12 @@ func (i FileSystemArray) ToFileSystemArrayOutput() FileSystemArrayOutput {
 
 func (i FileSystemArray) ToFileSystemArrayOutputWithContext(ctx context.Context) FileSystemArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FileSystemArrayOutput)
+}
+
+func (i FileSystemArray) ToOutput(ctx context.Context) pulumix.Output[[]*FileSystem] {
+	return pulumix.Output[[]*FileSystem]{
+		OutputState: i.ToFileSystemArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // FileSystemMapInput is an input type that accepts FileSystemMap and FileSystemMapOutput values.
@@ -451,6 +464,12 @@ func (i FileSystemMap) ToFileSystemMapOutputWithContext(ctx context.Context) Fil
 	return pulumi.ToOutputWithContext(ctx, i).(FileSystemMapOutput)
 }
 
+func (i FileSystemMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FileSystem] {
+	return pulumix.Output[map[string]*FileSystem]{
+		OutputState: i.ToFileSystemMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FileSystemOutput struct{ *pulumi.OutputState }
 
 func (FileSystemOutput) ElementType() reflect.Type {
@@ -463,6 +482,12 @@ func (o FileSystemOutput) ToFileSystemOutput() FileSystemOutput {
 
 func (o FileSystemOutput) ToFileSystemOutputWithContext(ctx context.Context) FileSystemOutput {
 	return o
+}
+
+func (o FileSystemOutput) ToOutput(ctx context.Context) pulumix.Output[*FileSystem] {
+	return pulumix.Output[*FileSystem]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The capacity of the file system. The `capacity` is required when the `fileSystemType` is `extreme`.
@@ -545,6 +570,12 @@ func (o FileSystemArrayOutput) ToFileSystemArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o FileSystemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FileSystem] {
+	return pulumix.Output[[]*FileSystem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FileSystemArrayOutput) Index(i pulumi.IntInput) FileSystemOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FileSystem {
 		return vs[0].([]*FileSystem)[vs[1].(int)]
@@ -563,6 +594,12 @@ func (o FileSystemMapOutput) ToFileSystemMapOutput() FileSystemMapOutput {
 
 func (o FileSystemMapOutput) ToFileSystemMapOutputWithContext(ctx context.Context) FileSystemMapOutput {
 	return o
+}
+
+func (o FileSystemMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FileSystem] {
+	return pulumix.Output[map[string]*FileSystem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FileSystemMapOutput) MapIndex(k pulumi.StringInput) FileSystemOutput {

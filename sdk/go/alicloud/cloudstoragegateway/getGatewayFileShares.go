@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cloud Storage Gateway Gateway File Shares of the current Alibaba Cloud user.
@@ -131,6 +132,12 @@ func (o GetGatewayFileSharesResultOutput) ToGetGatewayFileSharesResultOutput() G
 
 func (o GetGatewayFileSharesResultOutput) ToGetGatewayFileSharesResultOutputWithContext(ctx context.Context) GetGatewayFileSharesResultOutput {
 	return o
+}
+
+func (o GetGatewayFileSharesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGatewayFileSharesResult] {
+	return pulumix.Output[GetGatewayFileSharesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGatewayFileSharesResultOutput) GatewayId() pulumi.StringOutput {

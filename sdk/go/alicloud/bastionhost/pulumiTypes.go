@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -90,6 +91,12 @@ func (i InstanceAdAuthServerArgs) ToInstanceAdAuthServerOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceAdAuthServerOutput)
 }
 
+func (i InstanceAdAuthServerArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceAdAuthServer] {
+	return pulumix.Output[InstanceAdAuthServer]{
+		OutputState: i.ToInstanceAdAuthServerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceAdAuthServerArrayInput is an input type that accepts InstanceAdAuthServerArray and InstanceAdAuthServerArrayOutput values.
 // You can construct a concrete instance of `InstanceAdAuthServerArrayInput` via:
 //
@@ -115,6 +122,12 @@ func (i InstanceAdAuthServerArray) ToInstanceAdAuthServerArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceAdAuthServerArrayOutput)
 }
 
+func (i InstanceAdAuthServerArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceAdAuthServer] {
+	return pulumix.Output[[]InstanceAdAuthServer]{
+		OutputState: i.ToInstanceAdAuthServerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceAdAuthServerOutput struct{ *pulumi.OutputState }
 
 func (InstanceAdAuthServerOutput) ElementType() reflect.Type {
@@ -127,6 +140,12 @@ func (o InstanceAdAuthServerOutput) ToInstanceAdAuthServerOutput() InstanceAdAut
 
 func (o InstanceAdAuthServerOutput) ToInstanceAdAuthServerOutputWithContext(ctx context.Context) InstanceAdAuthServerOutput {
 	return o
+}
+
+func (o InstanceAdAuthServerOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceAdAuthServer] {
+	return pulumix.Output[InstanceAdAuthServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The username of the account that is used for the AD server.
@@ -201,6 +220,12 @@ func (o InstanceAdAuthServerArrayOutput) ToInstanceAdAuthServerArrayOutput() Ins
 
 func (o InstanceAdAuthServerArrayOutput) ToInstanceAdAuthServerArrayOutputWithContext(ctx context.Context) InstanceAdAuthServerArrayOutput {
 	return o
+}
+
+func (o InstanceAdAuthServerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceAdAuthServer] {
+	return pulumix.Output[[]InstanceAdAuthServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceAdAuthServerArrayOutput) Index(i pulumi.IntInput) InstanceAdAuthServerOutput {
@@ -286,6 +311,12 @@ func (i InstanceLdapAuthServerArgs) ToInstanceLdapAuthServerOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceLdapAuthServerOutput)
 }
 
+func (i InstanceLdapAuthServerArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceLdapAuthServer] {
+	return pulumix.Output[InstanceLdapAuthServer]{
+		OutputState: i.ToInstanceLdapAuthServerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceLdapAuthServerArrayInput is an input type that accepts InstanceLdapAuthServerArray and InstanceLdapAuthServerArrayOutput values.
 // You can construct a concrete instance of `InstanceLdapAuthServerArrayInput` via:
 //
@@ -311,6 +342,12 @@ func (i InstanceLdapAuthServerArray) ToInstanceLdapAuthServerArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceLdapAuthServerArrayOutput)
 }
 
+func (i InstanceLdapAuthServerArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceLdapAuthServer] {
+	return pulumix.Output[[]InstanceLdapAuthServer]{
+		OutputState: i.ToInstanceLdapAuthServerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceLdapAuthServerOutput struct{ *pulumi.OutputState }
 
 func (InstanceLdapAuthServerOutput) ElementType() reflect.Type {
@@ -323,6 +360,12 @@ func (o InstanceLdapAuthServerOutput) ToInstanceLdapAuthServerOutput() InstanceL
 
 func (o InstanceLdapAuthServerOutput) ToInstanceLdapAuthServerOutputWithContext(ctx context.Context) InstanceLdapAuthServerOutput {
 	return o
+}
+
+func (o InstanceLdapAuthServerOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceLdapAuthServer] {
+	return pulumix.Output[InstanceLdapAuthServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The username of the account that is used for the LDAP server.
@@ -399,6 +442,12 @@ func (o InstanceLdapAuthServerArrayOutput) ToInstanceLdapAuthServerArrayOutputWi
 	return o
 }
 
+func (o InstanceLdapAuthServerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceLdapAuthServer] {
+	return pulumix.Output[[]InstanceLdapAuthServer]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceLdapAuthServerArrayOutput) Index(i pulumi.IntInput) InstanceLdapAuthServerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceLdapAuthServer {
 		return vs[0].([]InstanceLdapAuthServer)[vs[1].(int)]
@@ -466,6 +515,12 @@ func (i GetHostAccountsAccountArgs) ToGetHostAccountsAccountOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetHostAccountsAccountOutput)
 }
 
+func (i GetHostAccountsAccountArgs) ToOutput(ctx context.Context) pulumix.Output[GetHostAccountsAccount] {
+	return pulumix.Output[GetHostAccountsAccount]{
+		OutputState: i.ToGetHostAccountsAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetHostAccountsAccountArrayInput is an input type that accepts GetHostAccountsAccountArray and GetHostAccountsAccountArrayOutput values.
 // You can construct a concrete instance of `GetHostAccountsAccountArrayInput` via:
 //
@@ -491,6 +546,12 @@ func (i GetHostAccountsAccountArray) ToGetHostAccountsAccountArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetHostAccountsAccountArrayOutput)
 }
 
+func (i GetHostAccountsAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHostAccountsAccount] {
+	return pulumix.Output[[]GetHostAccountsAccount]{
+		OutputState: i.ToGetHostAccountsAccountArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetHostAccountsAccountOutput struct{ *pulumi.OutputState }
 
 func (GetHostAccountsAccountOutput) ElementType() reflect.Type {
@@ -503,6 +564,12 @@ func (o GetHostAccountsAccountOutput) ToGetHostAccountsAccountOutput() GetHostAc
 
 func (o GetHostAccountsAccountOutput) ToGetHostAccountsAccountOutputWithContext(ctx context.Context) GetHostAccountsAccountOutput {
 	return o
+}
+
+func (o GetHostAccountsAccountOutput) ToOutput(ctx context.Context) pulumix.Output[GetHostAccountsAccount] {
+	return pulumix.Output[GetHostAccountsAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to set a new password.
@@ -557,6 +624,12 @@ func (o GetHostAccountsAccountArrayOutput) ToGetHostAccountsAccountArrayOutput()
 
 func (o GetHostAccountsAccountArrayOutput) ToGetHostAccountsAccountArrayOutputWithContext(ctx context.Context) GetHostAccountsAccountArrayOutput {
 	return o
+}
+
+func (o GetHostAccountsAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHostAccountsAccount] {
+	return pulumix.Output[[]GetHostAccountsAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHostAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetHostAccountsAccountOutput {
@@ -614,6 +687,12 @@ func (i GetHostGroupsGroupArgs) ToGetHostGroupsGroupOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetHostGroupsGroupOutput)
 }
 
+func (i GetHostGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetHostGroupsGroup] {
+	return pulumix.Output[GetHostGroupsGroup]{
+		OutputState: i.ToGetHostGroupsGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetHostGroupsGroupArrayInput is an input type that accepts GetHostGroupsGroupArray and GetHostGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetHostGroupsGroupArrayInput` via:
 //
@@ -639,6 +718,12 @@ func (i GetHostGroupsGroupArray) ToGetHostGroupsGroupArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetHostGroupsGroupArrayOutput)
 }
 
+func (i GetHostGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHostGroupsGroup] {
+	return pulumix.Output[[]GetHostGroupsGroup]{
+		OutputState: i.ToGetHostGroupsGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetHostGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetHostGroupsGroupOutput) ElementType() reflect.Type {
@@ -651,6 +736,12 @@ func (o GetHostGroupsGroupOutput) ToGetHostGroupsGroupOutput() GetHostGroupsGrou
 
 func (o GetHostGroupsGroupOutput) ToGetHostGroupsGroupOutputWithContext(ctx context.Context) GetHostGroupsGroupOutput {
 	return o
+}
+
+func (o GetHostGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetHostGroupsGroup] {
+	return pulumix.Output[GetHostGroupsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specify the New Host Group of Notes, Supports up to 500 Characters.
@@ -690,6 +781,12 @@ func (o GetHostGroupsGroupArrayOutput) ToGetHostGroupsGroupArrayOutput() GetHost
 
 func (o GetHostGroupsGroupArrayOutput) ToGetHostGroupsGroupArrayOutputWithContext(ctx context.Context) GetHostGroupsGroupArrayOutput {
 	return o
+}
+
+func (o GetHostGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHostGroupsGroup] {
+	return pulumix.Output[[]GetHostGroupsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHostGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetHostGroupsGroupOutput {
@@ -747,6 +844,12 @@ func (i GetHostShareKeysKeyArgs) ToGetHostShareKeysKeyOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetHostShareKeysKeyOutput)
 }
 
+func (i GetHostShareKeysKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GetHostShareKeysKey] {
+	return pulumix.Output[GetHostShareKeysKey]{
+		OutputState: i.ToGetHostShareKeysKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetHostShareKeysKeyArrayInput is an input type that accepts GetHostShareKeysKeyArray and GetHostShareKeysKeyArrayOutput values.
 // You can construct a concrete instance of `GetHostShareKeysKeyArrayInput` via:
 //
@@ -772,6 +875,12 @@ func (i GetHostShareKeysKeyArray) ToGetHostShareKeysKeyArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetHostShareKeysKeyArrayOutput)
 }
 
+func (i GetHostShareKeysKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHostShareKeysKey] {
+	return pulumix.Output[[]GetHostShareKeysKey]{
+		OutputState: i.ToGetHostShareKeysKeyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetHostShareKeysKeyOutput struct{ *pulumi.OutputState }
 
 func (GetHostShareKeysKeyOutput) ElementType() reflect.Type {
@@ -784,6 +893,12 @@ func (o GetHostShareKeysKeyOutput) ToGetHostShareKeysKeyOutput() GetHostShareKey
 
 func (o GetHostShareKeysKeyOutput) ToGetHostShareKeysKeyOutputWithContext(ctx context.Context) GetHostShareKeysKeyOutput {
 	return o
+}
+
+func (o GetHostShareKeysKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GetHostShareKeysKey] {
+	return pulumix.Output[GetHostShareKeysKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The first ID of the resource.
@@ -823,6 +938,12 @@ func (o GetHostShareKeysKeyArrayOutput) ToGetHostShareKeysKeyArrayOutput() GetHo
 
 func (o GetHostShareKeysKeyArrayOutput) ToGetHostShareKeysKeyArrayOutputWithContext(ctx context.Context) GetHostShareKeysKeyArrayOutput {
 	return o
+}
+
+func (o GetHostShareKeysKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHostShareKeysKey] {
+	return pulumix.Output[[]GetHostShareKeysKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHostShareKeysKeyArrayOutput) Index(i pulumi.IntInput) GetHostShareKeysKeyOutput {
@@ -908,6 +1029,12 @@ func (i GetHostsHostArgs) ToGetHostsHostOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetHostsHostOutput)
 }
 
+func (i GetHostsHostArgs) ToOutput(ctx context.Context) pulumix.Output[GetHostsHost] {
+	return pulumix.Output[GetHostsHost]{
+		OutputState: i.ToGetHostsHostOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetHostsHostArrayInput is an input type that accepts GetHostsHostArray and GetHostsHostArrayOutput values.
 // You can construct a concrete instance of `GetHostsHostArrayInput` via:
 //
@@ -933,6 +1060,12 @@ func (i GetHostsHostArray) ToGetHostsHostArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetHostsHostArrayOutput)
 }
 
+func (i GetHostsHostArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHostsHost] {
+	return pulumix.Output[[]GetHostsHost]{
+		OutputState: i.ToGetHostsHostArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetHostsHostOutput struct{ *pulumi.OutputState }
 
 func (GetHostsHostOutput) ElementType() reflect.Type {
@@ -945,6 +1078,12 @@ func (o GetHostsHostOutput) ToGetHostsHostOutput() GetHostsHostOutput {
 
 func (o GetHostsHostOutput) ToGetHostsHostOutputWithContext(ctx context.Context) GetHostsHostOutput {
 	return o
+}
+
+func (o GetHostsHostOutput) ToOutput(ctx context.Context) pulumix.Output[GetHostsHost] {
+	return pulumix.Output[GetHostsHost]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
@@ -1021,6 +1160,12 @@ func (o GetHostsHostArrayOutput) ToGetHostsHostArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o GetHostsHostArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHostsHost] {
+	return pulumix.Output[[]GetHostsHost]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetHostsHostArrayOutput) Index(i pulumi.IntInput) GetHostsHostOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostsHost {
 		return vs[0].([]GetHostsHost)[vs[1].(int)]
@@ -1068,6 +1213,12 @@ func (i GetHostsHostProtocolArgs) ToGetHostsHostProtocolOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetHostsHostProtocolOutput)
 }
 
+func (i GetHostsHostProtocolArgs) ToOutput(ctx context.Context) pulumix.Output[GetHostsHostProtocol] {
+	return pulumix.Output[GetHostsHostProtocol]{
+		OutputState: i.ToGetHostsHostProtocolOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetHostsHostProtocolArrayInput is an input type that accepts GetHostsHostProtocolArray and GetHostsHostProtocolArrayOutput values.
 // You can construct a concrete instance of `GetHostsHostProtocolArrayInput` via:
 //
@@ -1093,6 +1244,12 @@ func (i GetHostsHostProtocolArray) ToGetHostsHostProtocolArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetHostsHostProtocolArrayOutput)
 }
 
+func (i GetHostsHostProtocolArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHostsHostProtocol] {
+	return pulumix.Output[[]GetHostsHostProtocol]{
+		OutputState: i.ToGetHostsHostProtocolArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetHostsHostProtocolOutput struct{ *pulumi.OutputState }
 
 func (GetHostsHostProtocolOutput) ElementType() reflect.Type {
@@ -1105,6 +1262,12 @@ func (o GetHostsHostProtocolOutput) ToGetHostsHostProtocolOutput() GetHostsHostP
 
 func (o GetHostsHostProtocolOutput) ToGetHostsHostProtocolOutputWithContext(ctx context.Context) GetHostsHostProtocolOutput {
 	return o
+}
+
+func (o GetHostsHostProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[GetHostsHostProtocol] {
+	return pulumix.Output[GetHostsHostProtocol]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Host fingerprint information, it is possible to uniquely identify a host.
@@ -1134,6 +1297,12 @@ func (o GetHostsHostProtocolArrayOutput) ToGetHostsHostProtocolArrayOutput() Get
 
 func (o GetHostsHostProtocolArrayOutput) ToGetHostsHostProtocolArrayOutputWithContext(ctx context.Context) GetHostsHostProtocolArrayOutput {
 	return o
+}
+
+func (o GetHostsHostProtocolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHostsHostProtocol] {
+	return pulumix.Output[[]GetHostsHostProtocol]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHostsHostProtocolArrayOutput) Index(i pulumi.IntInput) GetHostsHostProtocolOutput {
@@ -1253,6 +1422,12 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
 }
 
+func (i GetInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
+	return pulumix.Output[GetInstancesInstance]{
+		OutputState: i.ToGetInstancesInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
@@ -1278,6 +1453,12 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
+func (i GetInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
+	return pulumix.Output[[]GetInstancesInstance]{
+		OutputState: i.ToGetInstancesInstanceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
@@ -1290,6 +1471,12 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesI
 
 func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
 	return o
+}
+
+func (o GetInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
+	return pulumix.Output[GetInstancesInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The instance's remark.
@@ -1380,6 +1567,12 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithCo
 	return o
 }
 
+func (o GetInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
+	return pulumix.Output[[]GetInstancesInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
 		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
@@ -1435,6 +1628,12 @@ func (i GetUserGroupsGroupArgs) ToGetUserGroupsGroupOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetUserGroupsGroupOutput)
 }
 
+func (i GetUserGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetUserGroupsGroup] {
+	return pulumix.Output[GetUserGroupsGroup]{
+		OutputState: i.ToGetUserGroupsGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetUserGroupsGroupArrayInput is an input type that accepts GetUserGroupsGroupArray and GetUserGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetUserGroupsGroupArrayInput` via:
 //
@@ -1460,6 +1659,12 @@ func (i GetUserGroupsGroupArray) ToGetUserGroupsGroupArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetUserGroupsGroupArrayOutput)
 }
 
+func (i GetUserGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetUserGroupsGroup] {
+	return pulumix.Output[[]GetUserGroupsGroup]{
+		OutputState: i.ToGetUserGroupsGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetUserGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetUserGroupsGroupOutput) ElementType() reflect.Type {
@@ -1472,6 +1677,12 @@ func (o GetUserGroupsGroupOutput) ToGetUserGroupsGroupOutput() GetUserGroupsGrou
 
 func (o GetUserGroupsGroupOutput) ToGetUserGroupsGroupOutputWithContext(ctx context.Context) GetUserGroupsGroupOutput {
 	return o
+}
+
+func (o GetUserGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetUserGroupsGroup] {
+	return pulumix.Output[GetUserGroupsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specify the New Group of Remark Information. Supports up to 500 Characters.
@@ -1511,6 +1722,12 @@ func (o GetUserGroupsGroupArrayOutput) ToGetUserGroupsGroupArrayOutput() GetUser
 
 func (o GetUserGroupsGroupArrayOutput) ToGetUserGroupsGroupArrayOutputWithContext(ctx context.Context) GetUserGroupsGroupArrayOutput {
 	return o
+}
+
+func (o GetUserGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetUserGroupsGroup] {
+	return pulumix.Output[[]GetUserGroupsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetUserGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetUserGroupsGroupOutput {
@@ -1596,6 +1813,12 @@ func (i GetUsersUserArgs) ToGetUsersUserOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserOutput)
 }
 
+func (i GetUsersUserArgs) ToOutput(ctx context.Context) pulumix.Output[GetUsersUser] {
+	return pulumix.Output[GetUsersUser]{
+		OutputState: i.ToGetUsersUserOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetUsersUserArrayInput is an input type that accepts GetUsersUserArray and GetUsersUserArrayOutput values.
 // You can construct a concrete instance of `GetUsersUserArrayInput` via:
 //
@@ -1621,6 +1844,12 @@ func (i GetUsersUserArray) ToGetUsersUserArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserArrayOutput)
 }
 
+func (i GetUsersUserArray) ToOutput(ctx context.Context) pulumix.Output[[]GetUsersUser] {
+	return pulumix.Output[[]GetUsersUser]{
+		OutputState: i.ToGetUsersUserArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetUsersUserOutput struct{ *pulumi.OutputState }
 
 func (GetUsersUserOutput) ElementType() reflect.Type {
@@ -1633,6 +1862,12 @@ func (o GetUsersUserOutput) ToGetUsersUserOutput() GetUsersUserOutput {
 
 func (o GetUsersUserOutput) ToGetUsersUserOutputWithContext(ctx context.Context) GetUsersUserOutput {
 	return o
+}
+
+func (o GetUsersUserOutput) ToOutput(ctx context.Context) pulumix.Output[GetUsersUser] {
+	return pulumix.Output[GetUsersUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
@@ -1707,6 +1942,12 @@ func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutput() GetUsersUserArrayOu
 
 func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutputWithContext(ctx context.Context) GetUsersUserArrayOutput {
 	return o
+}
+
+func (o GetUsersUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetUsersUser] {
+	return pulumix.Output[[]GetUsersUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {

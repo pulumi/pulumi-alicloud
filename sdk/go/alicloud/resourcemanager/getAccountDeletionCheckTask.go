@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Using this data source can open Resource Manager Account Deletion Check Task.
@@ -118,6 +119,12 @@ func (o GetAccountDeletionCheckTaskResultOutput) ToGetAccountDeletionCheckTaskRe
 
 func (o GetAccountDeletionCheckTaskResultOutput) ToGetAccountDeletionCheckTaskResultOutputWithContext(ctx context.Context) GetAccountDeletionCheckTaskResultOutput {
 	return o
+}
+
+func (o GetAccountDeletionCheckTaskResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountDeletionCheckTaskResult] {
+	return pulumix.Output[GetAccountDeletionCheckTaskResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The check items that you can choose to ignore for the member deletion. Each element contains the following attributes:

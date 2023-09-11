@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cen Transit Router Vpn Attachments of the current Alibaba Cloud user.
@@ -127,6 +128,12 @@ func (o GetTransitRouterVpnAttachmentsResultOutput) ToGetTransitRouterVpnAttachm
 
 func (o GetTransitRouterVpnAttachmentsResultOutput) ToGetTransitRouterVpnAttachmentsResultOutputWithContext(ctx context.Context) GetTransitRouterVpnAttachmentsResultOutput {
 	return o
+}
+
+func (o GetTransitRouterVpnAttachmentsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterVpnAttachmentsResult] {
+	return pulumix.Output[GetTransitRouterVpnAttachmentsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTransitRouterVpnAttachmentsResultOutput) Attachments() GetTransitRouterVpnAttachmentsAttachmentArrayOutput {

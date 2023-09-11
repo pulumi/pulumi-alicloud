@@ -81,12 +81,12 @@ public final class ContainerGroupContainer {
      */
     private @Nullable List<ContainerGroupContainerReadinessProbe> readinessProbes;
     /**
-     * @return (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+     * @return Indicates whether the container passed the readiness probe.
      * 
      */
     private @Nullable Boolean ready;
     /**
-     * @return (Available since v1.208.0) The number of times that the container restarted.
+     * @return The number of times that the container restarted.
      * 
      */
     private @Nullable Integer restartCount;
@@ -187,14 +187,14 @@ public final class ContainerGroupContainer {
         return this.readinessProbes == null ? List.of() : this.readinessProbes;
     }
     /**
-     * @return (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+     * @return Indicates whether the container passed the readiness probe.
      * 
      */
     public Optional<Boolean> ready() {
         return Optional.ofNullable(this.ready);
     }
     /**
-     * @return (Available since v1.208.0) The number of times that the container restarted.
+     * @return The number of times that the container restarted.
      * 
      */
     public Optional<Integer> restartCount() {

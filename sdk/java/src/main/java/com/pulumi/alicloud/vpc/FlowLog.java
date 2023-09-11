@@ -22,78 +22,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Vpc Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/flow-logs-overview).
  * 
- * &gt; **NOTE:** Available in v1.117.0+.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.resourcemanager.ResourceGroup;
- * import com.pulumi.alicloud.resourcemanager.ResourceGroupArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.log.Project;
- * import com.pulumi.alicloud.log.Store;
- * import com.pulumi.alicloud.log.StoreArgs;
- * import com.pulumi.alicloud.vpc.FlowLog;
- * import com.pulumi.alicloud.vpc.FlowLogArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc-example&#34;);
- *         var defaultRg = new ResourceGroup(&#34;defaultRg&#34;, ResourceGroupArgs.builder()        
- *             .resourceGroupName(name)
- *             .displayName(&#34;tf-testAcc-rg78&#34;)
- *             .build());
- * 
- *         var defaultVpc = new Network(&#34;defaultVpc&#34;, NetworkArgs.builder()        
- *             .vpcName(String.format(&#34;%s1&#34;, name))
- *             .cidrBlock(&#34;10.0.0.0/8&#34;)
- *             .build());
- * 
- *         var modifyRG = new ResourceGroup(&#34;modifyRG&#34;, ResourceGroupArgs.builder()        
- *             .displayName(&#34;tf-testAcc-rg405&#34;)
- *             .resourceGroupName(String.format(&#34;%s2&#34;, name))
- *             .build());
- * 
- *         var defaultProject = new Project(&#34;defaultProject&#34;);
- * 
- *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
- *             .project(defaultProject.name())
- *             .build());
- * 
- *         var defaultFlowLog = new FlowLog(&#34;defaultFlowLog&#34;, FlowLogArgs.builder()        
- *             .flowLogName(name)
- *             .logStoreName(defaultStore.name())
- *             .description(&#34;tf-testAcc-flowlog&#34;)
- *             .trafficPaths(&#34;all&#34;)
- *             .projectName(defaultProject.name())
- *             .resourceType(&#34;VPC&#34;)
- *             .resourceGroupId(defaultRg.id())
- *             .resourceId(defaultVpc.id())
- *             .aggregationInterval(&#34;1&#34;)
- *             .trafficType(&#34;All&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
+ * &gt; **NOTE:** Available since v1.117.0.
  * 
  * ## Import
  * 

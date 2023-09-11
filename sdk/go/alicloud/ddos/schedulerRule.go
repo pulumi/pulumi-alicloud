@@ -10,11 +10,12 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Provides a DdosCoo Scheduler Rule resource. For information about DdosCoo Scheduler Rule and how to use it, see[What is DdosCoo Scheduler Rule](https://www.alibabacloud.com/help/en/doc-detail/157481.htm).
+// Provides a DdosCoo Scheduler Rule resource. For information about DdosCoo Scheduler Rule and how to use it, see[What is DdosCoo Scheduler Rule](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createschedulerrule).
 //
-// > **NOTE:** Available in 1.86.0+
+// > **NOTE:** Available since v1.86.0.
 //
 // ## Example Usage
 //
@@ -27,13 +28,19 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := ddos.NewSchedulerRule(ctx, "example", &ddos.SchedulerRuleArgs{
-//				RuleName: pulumi.String("tf-testacc7929727"),
+//				RuleName: pulumi.String(name),
 //				RuleType: pulumi.Int(3),
 //				Rules: ddos.SchedulerRuleRuleArray{
 //					&ddos.SchedulerRuleRuleArgs{
@@ -86,7 +93,7 @@ type SchedulerRule struct {
 	// `3`: globalization acceleration.
 	// `6`: Cloud product interaction.
 	RuleType pulumi.IntOutput `pulumi:"ruleType"`
-	// The information about the scheduling rules. See the following `Block rules`.
+	// The information about the scheduling rules. See `rules` below.
 	Rules SchedulerRuleRuleArrayOutput `pulumi:"rules"`
 }
 
@@ -142,7 +149,7 @@ type schedulerRuleState struct {
 	// `3`: globalization acceleration.
 	// `6`: Cloud product interaction.
 	RuleType *int `pulumi:"ruleType"`
-	// The information about the scheduling rules. See the following `Block rules`.
+	// The information about the scheduling rules. See `rules` below.
 	Rules []SchedulerRuleRule `pulumi:"rules"`
 }
 
@@ -160,7 +167,7 @@ type SchedulerRuleState struct {
 	// `3`: globalization acceleration.
 	// `6`: Cloud product interaction.
 	RuleType pulumi.IntPtrInput
-	// The information about the scheduling rules. See the following `Block rules`.
+	// The information about the scheduling rules. See `rules` below.
 	Rules SchedulerRuleRuleArrayInput
 }
 
@@ -180,7 +187,7 @@ type schedulerRuleArgs struct {
 	// `3`: globalization acceleration.
 	// `6`: Cloud product interaction.
 	RuleType int `pulumi:"ruleType"`
-	// The information about the scheduling rules. See the following `Block rules`.
+	// The information about the scheduling rules. See `rules` below.
 	Rules []SchedulerRuleRule `pulumi:"rules"`
 }
 
@@ -197,7 +204,7 @@ type SchedulerRuleArgs struct {
 	// `3`: globalization acceleration.
 	// `6`: Cloud product interaction.
 	RuleType pulumi.IntInput
-	// The information about the scheduling rules. See the following `Block rules`.
+	// The information about the scheduling rules. See `rules` below.
 	Rules SchedulerRuleRuleArrayInput
 }
 
@@ -222,6 +229,12 @@ func (i *SchedulerRule) ToSchedulerRuleOutput() SchedulerRuleOutput {
 
 func (i *SchedulerRule) ToSchedulerRuleOutputWithContext(ctx context.Context) SchedulerRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulerRuleOutput)
+}
+
+func (i *SchedulerRule) ToOutput(ctx context.Context) pulumix.Output[*SchedulerRule] {
+	return pulumix.Output[*SchedulerRule]{
+		OutputState: i.ToSchedulerRuleOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SchedulerRuleArrayInput is an input type that accepts SchedulerRuleArray and SchedulerRuleArrayOutput values.
@@ -249,6 +262,12 @@ func (i SchedulerRuleArray) ToSchedulerRuleArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulerRuleArrayOutput)
 }
 
+func (i SchedulerRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*SchedulerRule] {
+	return pulumix.Output[[]*SchedulerRule]{
+		OutputState: i.ToSchedulerRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SchedulerRuleMapInput is an input type that accepts SchedulerRuleMap and SchedulerRuleMapOutput values.
 // You can construct a concrete instance of `SchedulerRuleMapInput` via:
 //
@@ -274,6 +293,12 @@ func (i SchedulerRuleMap) ToSchedulerRuleMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulerRuleMapOutput)
 }
 
+func (i SchedulerRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SchedulerRule] {
+	return pulumix.Output[map[string]*SchedulerRule]{
+		OutputState: i.ToSchedulerRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SchedulerRuleOutput struct{ *pulumi.OutputState }
 
 func (SchedulerRuleOutput) ElementType() reflect.Type {
@@ -286,6 +311,12 @@ func (o SchedulerRuleOutput) ToSchedulerRuleOutput() SchedulerRuleOutput {
 
 func (o SchedulerRuleOutput) ToSchedulerRuleOutputWithContext(ctx context.Context) SchedulerRuleOutput {
 	return o
+}
+
+func (o SchedulerRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*SchedulerRule] {
+	return pulumix.Output[*SchedulerRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The cname is the traffic scheduler corresponding to rules.
@@ -316,7 +347,7 @@ func (o SchedulerRuleOutput) RuleType() pulumi.IntOutput {
 	return o.ApplyT(func(v *SchedulerRule) pulumi.IntOutput { return v.RuleType }).(pulumi.IntOutput)
 }
 
-// The information about the scheduling rules. See the following `Block rules`.
+// The information about the scheduling rules. See `rules` below.
 func (o SchedulerRuleOutput) Rules() SchedulerRuleRuleArrayOutput {
 	return o.ApplyT(func(v *SchedulerRule) SchedulerRuleRuleArrayOutput { return v.Rules }).(SchedulerRuleRuleArrayOutput)
 }
@@ -333,6 +364,12 @@ func (o SchedulerRuleArrayOutput) ToSchedulerRuleArrayOutput() SchedulerRuleArra
 
 func (o SchedulerRuleArrayOutput) ToSchedulerRuleArrayOutputWithContext(ctx context.Context) SchedulerRuleArrayOutput {
 	return o
+}
+
+func (o SchedulerRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SchedulerRule] {
+	return pulumix.Output[[]*SchedulerRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SchedulerRuleArrayOutput) Index(i pulumi.IntInput) SchedulerRuleOutput {
@@ -353,6 +390,12 @@ func (o SchedulerRuleMapOutput) ToSchedulerRuleMapOutput() SchedulerRuleMapOutpu
 
 func (o SchedulerRuleMapOutput) ToSchedulerRuleMapOutputWithContext(ctx context.Context) SchedulerRuleMapOutput {
 	return o
+}
+
+func (o SchedulerRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SchedulerRule] {
+	return pulumix.Output[map[string]*SchedulerRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SchedulerRuleMapOutput) MapIndex(k pulumi.StringInput) SchedulerRuleOutput {

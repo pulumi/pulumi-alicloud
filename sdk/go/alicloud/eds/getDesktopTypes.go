@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
@@ -133,6 +134,12 @@ func (o GetDesktopTypesResultOutput) ToGetDesktopTypesResultOutput() GetDesktopT
 
 func (o GetDesktopTypesResultOutput) ToGetDesktopTypesResultOutputWithContext(ctx context.Context) GetDesktopTypesResultOutput {
 	return o
+}
+
+func (o GetDesktopTypesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDesktopTypesResult] {
+	return pulumix.Output[GetDesktopTypesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDesktopTypesResultOutput) CpuCount() pulumi.IntPtrOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
@@ -125,6 +126,12 @@ func (o GetMailAddressesResultOutput) ToGetMailAddressesResultOutput() GetMailAd
 
 func (o GetMailAddressesResultOutput) ToGetMailAddressesResultOutputWithContext(ctx context.Context) GetMailAddressesResultOutput {
 	return o
+}
+
+func (o GetMailAddressesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMailAddressesResult] {
+	return pulumix.Output[GetMailAddressesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMailAddressesResultOutput) Addresses() GetMailAddressesAddressArrayOutput {

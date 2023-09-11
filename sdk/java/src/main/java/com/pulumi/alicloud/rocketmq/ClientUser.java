@@ -20,9 +20,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Sag ClientUser resource. This topic describes how to manage accounts as an administrator. After you configure the network, you can create multiple accounts and distribute them to end users so that clients can access Alibaba Cloud.
  * 
- * For information about Sag ClientUser and how to use it, see [What is Sag ClientUser](https://www.alibabacloud.com/help/doc-detail/108326.htm).
+ * For information about Sag ClientUser and how to use it, see [What is Sag ClientUser](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createsmartaccessgatewayclientuser).
  * 
- * &gt; **NOTE:** Available in 1.65.0+
+ * &gt; **NOTE:** Available since v1.65.0.
  * 
  * &gt; **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
  * 
@@ -50,13 +50,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var sagId = config.get(&#34;sagId&#34;).orElse(&#34;sag-9bifkfaz4fg***&#34;);
  *         var default_ = new ClientUser(&#34;default&#34;, ClientUserArgs.builder()        
+ *             .sagId(sagId)
  *             .bandwidth(&#34;20&#34;)
+ *             .userMail(&#34;tf-example@abc.com&#34;)
+ *             .userName(name)
+ *             .password(&#34;example1234&#34;)
  *             .clientIp(&#34;192.1.10.0&#34;)
- *             .password(&#34;xxxxxxx&#34;)
- *             .sagId(&#34;sag-xxxxx&#34;)
- *             .userMail(&#34;tftest-xxxxx@test.com&#34;)
- *             .userName(&#34;th-username-xxxxx&#34;)
  *             .build());
  * 
  *     }
@@ -102,15 +105,31 @@ public class ClientUser extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> clientIp() {
         return Codegen.optional(this.clientIp);
     }
+    /**
+     * The password of the KMS Encryption.
+     * 
+     */
     @Export(name="kmsEncryptedPassword", type=String.class, parameters={})
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
+    /**
+     * @return The password of the KMS Encryption.
+     * 
+     */
     public Output<Optional<String>> kmsEncryptedPassword() {
         return Codegen.optional(this.kmsEncryptedPassword);
     }
+    /**
+     * The context of the KMS Encryption.
+     * 
+     */
     @Export(name="kmsEncryptionContext", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> kmsEncryptionContext;
 
+    /**
+     * @return The context of the KMS Encryption.
+     * 
+     */
     public Output<Optional<Map<String,Object>>> kmsEncryptionContext() {
         return Codegen.optional(this.kmsEncryptionContext);
     }

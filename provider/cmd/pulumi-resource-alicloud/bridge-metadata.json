@@ -4771,6 +4771,23 @@
                                 "expiration": {
                                     "maxItemsOne": false
                                 },
+                                "filter": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "not": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "tag": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "noncurrent_version_expiration": {
                                     "maxItemsOne": false
                                 },
@@ -9861,6 +9878,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "host_instance_infos": {
+                                    "maxItemsOne": false
+                                },
                                 "parameters": {
                                     "maxItemsOne": false
                                 },
@@ -23336,10 +23356,11 @@
                 "peerNextHopInstanceId": "peer_next_hop_instance_id"
             },
             "alicloud:cloudfirewall/instance:Instance": {
+                "accountNumber": "account_number",
                 "bandWidth": "band_width",
+                "cfwAccount": "cfw_account",
                 "cfwLog": "cfw_log",
                 "cfwLogStorage": "cfw_log_storage",
-                "cfwService": "cfw_service",
                 "createTime": "create_time",
                 "endTime": "end_time",
                 "fwVpcNumber": "fw_vpc_number",
@@ -23349,6 +23370,7 @@
                 "paymentType": "payment_type",
                 "releaseTime": "release_time",
                 "renewPeriod": "renew_period",
+                "renewalDuration": "renewal_duration",
                 "renewalDurationUnit": "renewal_duration_unit",
                 "renewalStatus": "renewal_status"
             },
@@ -32965,7 +32987,6 @@
             "alicloud:hbr/vault:Vault": {
                 "encryptType": "encrypt_type",
                 "kmsKeyId": "kms_key_id",
-                "redundancyType": "redundancy_type",
                 "vaultName": "vault_name",
                 "vaultStorageClass": "vault_storage_class",
                 "vaultType": "vault_type"
@@ -35266,6 +35287,10 @@
                 "createdBeforeDate": "created_before_date",
                 "expiredObjectDeleteMarker": "expired_object_delete_marker"
             },
+            "alicloud:oss/BucketLifecycleRuleFilter:BucketLifecycleRuleFilter": {
+                "objectSizeGreaterThan": "object_size_greater_than",
+                "objectSizeLessThan": "object_size_less_than"
+            },
             "alicloud:oss/BucketLifecycleRuleNoncurrentVersionTransition:BucketLifecycleRuleNoncurrentVersionTransition": {
                 "isAccessTime": "is_access_time",
                 "returnToStdWhenVisit": "return_to_std_when_visit",
@@ -36814,6 +36839,8 @@
                 "engineVersion": "engine_version",
                 "expireTime": "expire_time",
                 "guardInstanceId": "guard_instance_id",
+                "haMode": "ha_mode",
+                "hostInstanceInfos": "host_instance_infos",
                 "instanceStorage": "instance_storage",
                 "instanceType": "instance_type",
                 "keyUsage": "key_usage",
@@ -36835,11 +36862,21 @@
                 "sslCreateTime": "ssl_create_time",
                 "sslEnabled": "ssl_enabled",
                 "sslExpireTime": "ssl_expire_time",
+                "syncMode": "sync_mode",
                 "tempInstanceId": "temp_instance_id",
                 "vpcId": "vpc_id",
                 "vswitchId": "vswitch_id",
                 "zoneIdSlaveA": "zone_id_slave_a",
                 "zoneIdSlaveB": "zone_id_slave_b"
+            },
+            "alicloud:rds/getInstancesInstanceHostInstanceInfo:getInstancesInstanceHostInstanceInfo": {
+                "dataSyncTime": "data_sync_time",
+                "logSyncTime": "log_sync_time",
+                "nodeId": "node_id",
+                "nodeType": "node_type",
+                "regionId": "region_id",
+                "syncStatus": "sync_status",
+                "zoneId": "zone_id"
             },
             "alicloud:rds/getInstancesInstanceParameter:getInstancesInstanceParameter": {
                 "checkingCode": "checking_code",

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
@@ -117,6 +118,12 @@ func (o GetInstanceMembersResultOutput) ToGetInstanceMembersResultOutput() GetIn
 
 func (o GetInstanceMembersResultOutput) ToGetInstanceMembersResultOutputWithContext(ctx context.Context) GetInstanceMembersResultOutput {
 	return o
+}
+
+func (o GetInstanceMembersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceMembersResult] {
+	return pulumix.Output[GetInstanceMembersResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceMembersResultOutput) CurrentPage() pulumi.StringPtrOutput {

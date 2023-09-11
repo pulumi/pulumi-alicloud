@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Hbr Backup Jobs of the current Alibaba Cloud user.
@@ -185,6 +186,12 @@ func (o GetBackupJobsResultOutput) ToGetBackupJobsResultOutput() GetBackupJobsRe
 
 func (o GetBackupJobsResultOutput) ToGetBackupJobsResultOutputWithContext(ctx context.Context) GetBackupJobsResultOutput {
 	return o
+}
+
+func (o GetBackupJobsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBackupJobsResult] {
+	return pulumix.Output[GetBackupJobsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetBackupJobsResultOutput) Filters() GetBackupJobsFilterArrayOutput {

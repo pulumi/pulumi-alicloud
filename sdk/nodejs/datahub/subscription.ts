@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * The subscription is the basic unit of resource usage in Datahub Service under Publish/Subscribe model. You can manage the relationships between user and topics by using subscriptions. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
+ * The subscription is the basic unit of resource usage in Datahub Service under Publish/Subscribe model. You can manage the relationships between user and topics by using subscriptions. [Refer to details](https://www.alibabacloud.com/help/en/datahub/latest/nerbcz).
+ *
+ * > **NOTE:** Available since v1.19.0.
  *
  * ## Example Usage
  *
@@ -15,10 +17,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.datahub.Subscription("example", {
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform_example";
+ * const exampleProject = new alicloud.datahub.Project("exampleProject", {comment: "created by terraform"});
+ * const exampleTopic = new alicloud.datahub.Topic("exampleTopic", {
+ *     projectName: exampleProject.name,
+ *     recordType: "BLOB",
+ *     shardCount: 3,
+ *     lifeCycle: 7,
  *     comment: "created by terraform",
- *     projectName: "tf_datahub_project",
- *     topicName: "tf_datahub_topic",
+ * });
+ * const exampleSubscription = new alicloud.datahub.Subscription("exampleSubscription", {
+ *     projectName: exampleProject.name,
+ *     topicName: exampleTopic.name,
+ *     comment: "created by terraform",
  * });
  * ```
  *

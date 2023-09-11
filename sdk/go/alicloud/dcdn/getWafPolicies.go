@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
@@ -120,6 +121,12 @@ func (o GetWafPoliciesResultOutput) ToGetWafPoliciesResultOutput() GetWafPolicie
 
 func (o GetWafPoliciesResultOutput) ToGetWafPoliciesResultOutputWithContext(ctx context.Context) GetWafPoliciesResultOutput {
 	return o
+}
+
+func (o GetWafPoliciesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetWafPoliciesResult] {
+	return pulumix.Output[GetWafPoliciesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

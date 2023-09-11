@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Private Link Vpc Endpoint resource.
@@ -207,6 +208,12 @@ func (i *VpcEndpoint) ToVpcEndpointOutputWithContext(ctx context.Context) VpcEnd
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointOutput)
 }
 
+func (i *VpcEndpoint) ToOutput(ctx context.Context) pulumix.Output[*VpcEndpoint] {
+	return pulumix.Output[*VpcEndpoint]{
+		OutputState: i.ToVpcEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VpcEndpointArrayInput is an input type that accepts VpcEndpointArray and VpcEndpointArrayOutput values.
 // You can construct a concrete instance of `VpcEndpointArrayInput` via:
 //
@@ -230,6 +237,12 @@ func (i VpcEndpointArray) ToVpcEndpointArrayOutput() VpcEndpointArrayOutput {
 
 func (i VpcEndpointArray) ToVpcEndpointArrayOutputWithContext(ctx context.Context) VpcEndpointArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointArrayOutput)
+}
+
+func (i VpcEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]*VpcEndpoint] {
+	return pulumix.Output[[]*VpcEndpoint]{
+		OutputState: i.ToVpcEndpointArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // VpcEndpointMapInput is an input type that accepts VpcEndpointMap and VpcEndpointMapOutput values.
@@ -257,6 +270,12 @@ func (i VpcEndpointMap) ToVpcEndpointMapOutputWithContext(ctx context.Context) V
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointMapOutput)
 }
 
+func (i VpcEndpointMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VpcEndpoint] {
+	return pulumix.Output[map[string]*VpcEndpoint]{
+		OutputState: i.ToVpcEndpointMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VpcEndpointOutput struct{ *pulumi.OutputState }
 
 func (VpcEndpointOutput) ElementType() reflect.Type {
@@ -269,6 +288,12 @@ func (o VpcEndpointOutput) ToVpcEndpointOutput() VpcEndpointOutput {
 
 func (o VpcEndpointOutput) ToVpcEndpointOutputWithContext(ctx context.Context) VpcEndpointOutput {
 	return o
+}
+
+func (o VpcEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*VpcEndpoint] {
+	return pulumix.Output[*VpcEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Bandwidth.
@@ -345,6 +370,12 @@ func (o VpcEndpointArrayOutput) ToVpcEndpointArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o VpcEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VpcEndpoint] {
+	return pulumix.Output[[]*VpcEndpoint]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VpcEndpointArrayOutput) Index(i pulumi.IntInput) VpcEndpointOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VpcEndpoint {
 		return vs[0].([]*VpcEndpoint)[vs[1].(int)]
@@ -363,6 +394,12 @@ func (o VpcEndpointMapOutput) ToVpcEndpointMapOutput() VpcEndpointMapOutput {
 
 func (o VpcEndpointMapOutput) ToVpcEndpointMapOutputWithContext(ctx context.Context) VpcEndpointMapOutput {
 	return o
+}
+
+func (o VpcEndpointMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VpcEndpoint] {
+	return pulumix.Output[map[string]*VpcEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VpcEndpointMapOutput) MapIndex(k pulumi.StringInput) VpcEndpointOutput {

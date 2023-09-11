@@ -10,13 +10,14 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Ddos Basic defense threshold resource.
 //
 // For information about Ddos Basic Antiddos and how to use it, see [What is Defense Threshold](https://www.alibabacloud.com/help/en/ddos-protection/latest/modifydefensethreshold).
 //
-// > **NOTE:** Available in v1.168.0+.
+// > **NOTE:** Available since v1.168.0.
 //
 // ## Example Usage
 //
@@ -30,13 +31,19 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ecs.NewEipAddress(ctx, "default", &ecs.EipAddressArgs{
-//				AddressName:        pulumi.Any(_var.Name),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
+//				AddressName:        pulumi.String(name),
 //				Isp:                pulumi.String("BGP"),
 //				InternetChargeType: pulumi.String("PayByBandwidth"),
 //				PaymentType:        pulumi.String("PayAsYouGo"),
@@ -44,8 +51,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ddos.NewBasicDefenseThreshold(ctx, "example", &ddos.BasicDefenseThresholdArgs{
-//				InstanceId:   _default.ID(),
+//			_, err = ddos.NewBasicDefenseThreshold(ctx, "defaultBasicDefenseThreshold", &ddos.BasicDefenseThresholdArgs{
+//				InstanceId:   defaultEipAddress.ID(),
 //				DdosType:     pulumi.String("defense"),
 //				InstanceType: pulumi.String("eip"),
 //				Bps:          pulumi.Int(390),
@@ -234,6 +241,12 @@ func (i *BasicDefenseThreshold) ToBasicDefenseThresholdOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(BasicDefenseThresholdOutput)
 }
 
+func (i *BasicDefenseThreshold) ToOutput(ctx context.Context) pulumix.Output[*BasicDefenseThreshold] {
+	return pulumix.Output[*BasicDefenseThreshold]{
+		OutputState: i.ToBasicDefenseThresholdOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BasicDefenseThresholdArrayInput is an input type that accepts BasicDefenseThresholdArray and BasicDefenseThresholdArrayOutput values.
 // You can construct a concrete instance of `BasicDefenseThresholdArrayInput` via:
 //
@@ -257,6 +270,12 @@ func (i BasicDefenseThresholdArray) ToBasicDefenseThresholdArrayOutput() BasicDe
 
 func (i BasicDefenseThresholdArray) ToBasicDefenseThresholdArrayOutputWithContext(ctx context.Context) BasicDefenseThresholdArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BasicDefenseThresholdArrayOutput)
+}
+
+func (i BasicDefenseThresholdArray) ToOutput(ctx context.Context) pulumix.Output[[]*BasicDefenseThreshold] {
+	return pulumix.Output[[]*BasicDefenseThreshold]{
+		OutputState: i.ToBasicDefenseThresholdArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BasicDefenseThresholdMapInput is an input type that accepts BasicDefenseThresholdMap and BasicDefenseThresholdMapOutput values.
@@ -284,6 +303,12 @@ func (i BasicDefenseThresholdMap) ToBasicDefenseThresholdMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(BasicDefenseThresholdMapOutput)
 }
 
+func (i BasicDefenseThresholdMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BasicDefenseThreshold] {
+	return pulumix.Output[map[string]*BasicDefenseThreshold]{
+		OutputState: i.ToBasicDefenseThresholdMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BasicDefenseThresholdOutput struct{ *pulumi.OutputState }
 
 func (BasicDefenseThresholdOutput) ElementType() reflect.Type {
@@ -296,6 +321,12 @@ func (o BasicDefenseThresholdOutput) ToBasicDefenseThresholdOutput() BasicDefens
 
 func (o BasicDefenseThresholdOutput) ToBasicDefenseThresholdOutputWithContext(ctx context.Context) BasicDefenseThresholdOutput {
 	return o
+}
+
+func (o BasicDefenseThresholdOutput) ToOutput(ctx context.Context) pulumix.Output[*BasicDefenseThreshold] {
+	return pulumix.Output[*BasicDefenseThreshold]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
@@ -357,6 +388,12 @@ func (o BasicDefenseThresholdArrayOutput) ToBasicDefenseThresholdArrayOutputWith
 	return o
 }
 
+func (o BasicDefenseThresholdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BasicDefenseThreshold] {
+	return pulumix.Output[[]*BasicDefenseThreshold]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BasicDefenseThresholdArrayOutput) Index(i pulumi.IntInput) BasicDefenseThresholdOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BasicDefenseThreshold {
 		return vs[0].([]*BasicDefenseThreshold)[vs[1].(int)]
@@ -375,6 +412,12 @@ func (o BasicDefenseThresholdMapOutput) ToBasicDefenseThresholdMapOutput() Basic
 
 func (o BasicDefenseThresholdMapOutput) ToBasicDefenseThresholdMapOutputWithContext(ctx context.Context) BasicDefenseThresholdMapOutput {
 	return o
+}
+
+func (o BasicDefenseThresholdMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BasicDefenseThreshold] {
+	return pulumix.Output[map[string]*BasicDefenseThreshold]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BasicDefenseThresholdMapOutput) MapIndex(k pulumi.StringInput) BasicDefenseThresholdOutput {

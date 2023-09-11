@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of KMS Secret Versions in an Alibaba Cloud account according to the specified filters.
@@ -130,6 +131,12 @@ func (o GetSecretVersionsResultOutput) ToGetSecretVersionsResultOutput() GetSecr
 
 func (o GetSecretVersionsResultOutput) ToGetSecretVersionsResultOutputWithContext(ctx context.Context) GetSecretVersionsResultOutput {
 	return o
+}
+
+func (o GetSecretVersionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretVersionsResult] {
+	return pulumix.Output[GetSecretVersionsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSecretVersionsResultOutput) EnableDetails() pulumi.BoolPtrOutput {

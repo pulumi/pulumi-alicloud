@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -50,6 +51,12 @@ func (i AddressBookEcsTagArgs) ToAddressBookEcsTagOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AddressBookEcsTagOutput)
 }
 
+func (i AddressBookEcsTagArgs) ToOutput(ctx context.Context) pulumix.Output[AddressBookEcsTag] {
+	return pulumix.Output[AddressBookEcsTag]{
+		OutputState: i.ToAddressBookEcsTagOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AddressBookEcsTagArrayInput is an input type that accepts AddressBookEcsTagArray and AddressBookEcsTagArrayOutput values.
 // You can construct a concrete instance of `AddressBookEcsTagArrayInput` via:
 //
@@ -75,6 +82,12 @@ func (i AddressBookEcsTagArray) ToAddressBookEcsTagArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AddressBookEcsTagArrayOutput)
 }
 
+func (i AddressBookEcsTagArray) ToOutput(ctx context.Context) pulumix.Output[[]AddressBookEcsTag] {
+	return pulumix.Output[[]AddressBookEcsTag]{
+		OutputState: i.ToAddressBookEcsTagArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AddressBookEcsTagOutput struct{ *pulumi.OutputState }
 
 func (AddressBookEcsTagOutput) ElementType() reflect.Type {
@@ -87,6 +100,12 @@ func (o AddressBookEcsTagOutput) ToAddressBookEcsTagOutput() AddressBookEcsTagOu
 
 func (o AddressBookEcsTagOutput) ToAddressBookEcsTagOutputWithContext(ctx context.Context) AddressBookEcsTagOutput {
 	return o
+}
+
+func (o AddressBookEcsTagOutput) ToOutput(ctx context.Context) pulumix.Output[AddressBookEcsTag] {
+	return pulumix.Output[AddressBookEcsTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The key of ECS tag that to be matched.
@@ -113,6 +132,12 @@ func (o AddressBookEcsTagArrayOutput) ToAddressBookEcsTagArrayOutputWithContext(
 	return o
 }
 
+func (o AddressBookEcsTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AddressBookEcsTag] {
+	return pulumix.Output[[]AddressBookEcsTag]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AddressBookEcsTagArrayOutput) Index(i pulumi.IntInput) AddressBookEcsTagOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AddressBookEcsTag {
 		return vs[0].([]AddressBookEcsTag)[vs[1].(int)]
@@ -127,8 +152,9 @@ type FirewallVpcFirewallCenLocalVpc struct {
 	// The list of network segments protected by the VPC firewall.
 	DefendCidrLists []string `pulumi:"defendCidrLists"`
 	// List of elastic network cards.
-	EniLists        []FirewallVpcFirewallCenLocalVpcEniList `pulumi:"eniLists"`
-	ManualVswitchId *string                                 `pulumi:"manualVswitchId"`
+	EniLists []FirewallVpcFirewallCenLocalVpcEniList `pulumi:"eniLists"`
+	// The ID of the vSwitch specified when the routing mode is manual mode.
+	ManualVswitchId *string `pulumi:"manualVswitchId"`
 	// The ID of the VPC instance that created the VPC firewall.
 	NetworkInstanceId string `pulumi:"networkInstanceId"`
 	// The name of the network instance.
@@ -174,8 +200,9 @@ type FirewallVpcFirewallCenLocalVpcArgs struct {
 	// The list of network segments protected by the VPC firewall.
 	DefendCidrLists pulumi.StringArrayInput `pulumi:"defendCidrLists"`
 	// List of elastic network cards.
-	EniLists        FirewallVpcFirewallCenLocalVpcEniListArrayInput `pulumi:"eniLists"`
-	ManualVswitchId pulumi.StringPtrInput                           `pulumi:"manualVswitchId"`
+	EniLists FirewallVpcFirewallCenLocalVpcEniListArrayInput `pulumi:"eniLists"`
+	// The ID of the vSwitch specified when the routing mode is manual mode.
+	ManualVswitchId pulumi.StringPtrInput `pulumi:"manualVswitchId"`
 	// The ID of the VPC instance that created the VPC firewall.
 	NetworkInstanceId pulumi.StringInput `pulumi:"networkInstanceId"`
 	// The name of the network instance.
@@ -212,6 +239,12 @@ func (i FirewallVpcFirewallCenLocalVpcArgs) ToFirewallVpcFirewallCenLocalVpcOutp
 
 func (i FirewallVpcFirewallCenLocalVpcArgs) ToFirewallVpcFirewallCenLocalVpcOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallCenLocalVpcOutput)
+}
+
+func (i FirewallVpcFirewallCenLocalVpcArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallVpcFirewallCenLocalVpc] {
+	return pulumix.Output[FirewallVpcFirewallCenLocalVpc]{
+		OutputState: i.ToFirewallVpcFirewallCenLocalVpcOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i FirewallVpcFirewallCenLocalVpcArgs) ToFirewallVpcFirewallCenLocalVpcPtrOutput() FirewallVpcFirewallCenLocalVpcPtrOutput {
@@ -255,6 +288,12 @@ func (i *firewallVpcFirewallCenLocalVpcPtrType) ToFirewallVpcFirewallCenLocalVpc
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallCenLocalVpcPtrOutput)
 }
 
+func (i *firewallVpcFirewallCenLocalVpcPtrType) ToOutput(ctx context.Context) pulumix.Output[*FirewallVpcFirewallCenLocalVpc] {
+	return pulumix.Output[*FirewallVpcFirewallCenLocalVpc]{
+		OutputState: i.ToFirewallVpcFirewallCenLocalVpcPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FirewallVpcFirewallCenLocalVpcOutput struct{ *pulumi.OutputState }
 
 func (FirewallVpcFirewallCenLocalVpcOutput) ElementType() reflect.Type {
@@ -279,6 +318,12 @@ func (o FirewallVpcFirewallCenLocalVpcOutput) ToFirewallVpcFirewallCenLocalVpcPt
 	}).(FirewallVpcFirewallCenLocalVpcPtrOutput)
 }
 
+func (o FirewallVpcFirewallCenLocalVpcOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallVpcFirewallCenLocalVpc] {
+	return pulumix.Output[FirewallVpcFirewallCenLocalVpc]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The connection ID of the network instance.
 func (o FirewallVpcFirewallCenLocalVpcOutput) AttachmentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpc) *string { return v.AttachmentId }).(pulumi.StringPtrOutput)
@@ -299,6 +344,7 @@ func (o FirewallVpcFirewallCenLocalVpcOutput) EniLists() FirewallVpcFirewallCenL
 	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpc) []FirewallVpcFirewallCenLocalVpcEniList { return v.EniLists }).(FirewallVpcFirewallCenLocalVpcEniListArrayOutput)
 }
 
+// The ID of the vSwitch specified when the routing mode is manual mode.
 func (o FirewallVpcFirewallCenLocalVpcOutput) ManualVswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpc) *string { return v.ManualVswitchId }).(pulumi.StringPtrOutput)
 }
@@ -379,6 +425,12 @@ func (o FirewallVpcFirewallCenLocalVpcPtrOutput) ToFirewallVpcFirewallCenLocalVp
 	return o
 }
 
+func (o FirewallVpcFirewallCenLocalVpcPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallVpcFirewallCenLocalVpc] {
+	return pulumix.Output[*FirewallVpcFirewallCenLocalVpc]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FirewallVpcFirewallCenLocalVpcPtrOutput) Elem() FirewallVpcFirewallCenLocalVpcOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallCenLocalVpc) FirewallVpcFirewallCenLocalVpc {
 		if v != nil {
@@ -429,6 +481,7 @@ func (o FirewallVpcFirewallCenLocalVpcPtrOutput) EniLists() FirewallVpcFirewallC
 	}).(FirewallVpcFirewallCenLocalVpcEniListArrayOutput)
 }
 
+// The ID of the vSwitch specified when the routing mode is manual mode.
 func (o FirewallVpcFirewallCenLocalVpcPtrOutput) ManualVswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallCenLocalVpc) *string {
 		if v == nil {
@@ -595,6 +648,12 @@ func (i FirewallVpcFirewallCenLocalVpcEniListArgs) ToFirewallVpcFirewallCenLocal
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallCenLocalVpcEniListOutput)
 }
 
+func (i FirewallVpcFirewallCenLocalVpcEniListArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallVpcFirewallCenLocalVpcEniList] {
+	return pulumix.Output[FirewallVpcFirewallCenLocalVpcEniList]{
+		OutputState: i.ToFirewallVpcFirewallCenLocalVpcEniListOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FirewallVpcFirewallCenLocalVpcEniListArrayInput is an input type that accepts FirewallVpcFirewallCenLocalVpcEniListArray and FirewallVpcFirewallCenLocalVpcEniListArrayOutput values.
 // You can construct a concrete instance of `FirewallVpcFirewallCenLocalVpcEniListArrayInput` via:
 //
@@ -620,6 +679,12 @@ func (i FirewallVpcFirewallCenLocalVpcEniListArray) ToFirewallVpcFirewallCenLoca
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallCenLocalVpcEniListArrayOutput)
 }
 
+func (i FirewallVpcFirewallCenLocalVpcEniListArray) ToOutput(ctx context.Context) pulumix.Output[[]FirewallVpcFirewallCenLocalVpcEniList] {
+	return pulumix.Output[[]FirewallVpcFirewallCenLocalVpcEniList]{
+		OutputState: i.ToFirewallVpcFirewallCenLocalVpcEniListArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FirewallVpcFirewallCenLocalVpcEniListOutput struct{ *pulumi.OutputState }
 
 func (FirewallVpcFirewallCenLocalVpcEniListOutput) ElementType() reflect.Type {
@@ -632,6 +697,12 @@ func (o FirewallVpcFirewallCenLocalVpcEniListOutput) ToFirewallVpcFirewallCenLoc
 
 func (o FirewallVpcFirewallCenLocalVpcEniListOutput) ToFirewallVpcFirewallCenLocalVpcEniListOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcEniListOutput {
 	return o
+}
+
+func (o FirewallVpcFirewallCenLocalVpcEniListOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallVpcFirewallCenLocalVpcEniList] {
+	return pulumix.Output[FirewallVpcFirewallCenLocalVpcEniList]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the instance of the ENI in the VPC.
@@ -656,6 +727,12 @@ func (o FirewallVpcFirewallCenLocalVpcEniListArrayOutput) ToFirewallVpcFirewallC
 
 func (o FirewallVpcFirewallCenLocalVpcEniListArrayOutput) ToFirewallVpcFirewallCenLocalVpcEniListArrayOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcEniListArrayOutput {
 	return o
+}
+
+func (o FirewallVpcFirewallCenLocalVpcEniListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FirewallVpcFirewallCenLocalVpcEniList] {
+	return pulumix.Output[[]FirewallVpcFirewallCenLocalVpcEniList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FirewallVpcFirewallCenLocalVpcEniListArrayOutput) Index(i pulumi.IntInput) FirewallVpcFirewallCenLocalVpcEniListOutput {
@@ -701,6 +778,12 @@ func (i FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs) ToFirewallVpcFirewal
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput)
 }
 
+func (i FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallVpcFirewallCenLocalVpcVpcCidrTableList] {
+	return pulumix.Output[FirewallVpcFirewallCenLocalVpcVpcCidrTableList]{
+		OutputState: i.ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayInput is an input type that accepts FirewallVpcFirewallCenLocalVpcVpcCidrTableListArray and FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput values.
 // You can construct a concrete instance of `FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayInput` via:
 //
@@ -726,6 +809,12 @@ func (i FirewallVpcFirewallCenLocalVpcVpcCidrTableListArray) ToFirewallVpcFirewa
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput)
 }
 
+func (i FirewallVpcFirewallCenLocalVpcVpcCidrTableListArray) ToOutput(ctx context.Context) pulumix.Output[[]FirewallVpcFirewallCenLocalVpcVpcCidrTableList] {
+	return pulumix.Output[[]FirewallVpcFirewallCenLocalVpcVpcCidrTableList]{
+		OutputState: i.ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput struct{ *pulumi.OutputState }
 
 func (FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput) ElementType() reflect.Type {
@@ -738,6 +827,12 @@ func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput) ToFirewallVpcFirew
 
 func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput) ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput {
 	return o
+}
+
+func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallVpcFirewallCenLocalVpcVpcCidrTableList] {
+	return pulumix.Output[FirewallVpcFirewallCenLocalVpcVpcCidrTableList]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of route entries in the VPC.
@@ -764,6 +859,12 @@ func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput) ToFirewallVpc
 
 func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput) ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput {
 	return o
+}
+
+func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FirewallVpcFirewallCenLocalVpcVpcCidrTableList] {
+	return pulumix.Output[[]FirewallVpcFirewallCenLocalVpcVpcCidrTableList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput) Index(i pulumi.IntInput) FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput {
@@ -809,6 +910,12 @@ func (i FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs) ToFire
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput)
 }
 
+func (i FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList] {
+	return pulumix.Output[FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList]{
+		OutputState: i.ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayInput is an input type that accepts FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArray and FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput values.
 // You can construct a concrete instance of `FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayInput` via:
 //
@@ -834,6 +941,12 @@ func (i FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArray) ToFir
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput)
 }
 
+func (i FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArray) ToOutput(ctx context.Context) pulumix.Output[[]FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList] {
+	return pulumix.Output[[]FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList]{
+		OutputState: i.ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput struct{ *pulumi.OutputState }
 
 func (FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput) ElementType() reflect.Type {
@@ -846,6 +959,12 @@ func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput) ToFi
 
 func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput) ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput {
 	return o
+}
+
+func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList] {
+	return pulumix.Output[FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The target network segment of the VPC.
@@ -874,6 +993,12 @@ func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput)
 	return o
 }
 
+func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList] {
+	return pulumix.Output[[]FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput) Index(i pulumi.IntInput) FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList {
 		return vs[0].([]FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList)[vs[1].(int)]
@@ -881,19 +1006,19 @@ func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput)
 }
 
 type FirewallVpcFirewallLocalVpc struct {
-	// The ID of the instance of the Eni in the local VPC.
+	// The ID of the instance of the ENI in the peer VPC.
 	EniId *string `pulumi:"eniId"`
-	// The private IP address of the elastic network card in the local VPC.
+	// The private IP address of the elastic network card in the peer VPC.
 	EniPrivateIpAddress *string `pulumi:"eniPrivateIpAddress"`
-	// The network segment list of the local VPC.See the following `Block LocalVpcCidrTableList`.
+	// The network segment list of the local VPC. See `localVpcCidrTableList` below.
 	LocalVpcCidrTableLists []FirewallVpcFirewallLocalVpcLocalVpcCidrTableList `pulumi:"localVpcCidrTableLists"`
 	// The region ID of the local VPC.
 	RegionNo string `pulumi:"regionNo"`
-	// The ID of the router interface in the local VPC.
+	// The ID of the router interface in the peer VPC.
 	RouterInterfaceId *string `pulumi:"routerInterfaceId"`
 	// The ID of the local VPC instance.
 	VpcId string `pulumi:"vpcId"`
-	// The instance name of the local VPC.
+	// The instance name of the peer VPC.
 	VpcName *string `pulumi:"vpcName"`
 }
 
@@ -909,19 +1034,19 @@ type FirewallVpcFirewallLocalVpcInput interface {
 }
 
 type FirewallVpcFirewallLocalVpcArgs struct {
-	// The ID of the instance of the Eni in the local VPC.
+	// The ID of the instance of the ENI in the peer VPC.
 	EniId pulumi.StringPtrInput `pulumi:"eniId"`
-	// The private IP address of the elastic network card in the local VPC.
+	// The private IP address of the elastic network card in the peer VPC.
 	EniPrivateIpAddress pulumi.StringPtrInput `pulumi:"eniPrivateIpAddress"`
-	// The network segment list of the local VPC.See the following `Block LocalVpcCidrTableList`.
+	// The network segment list of the local VPC. See `localVpcCidrTableList` below.
 	LocalVpcCidrTableLists FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayInput `pulumi:"localVpcCidrTableLists"`
 	// The region ID of the local VPC.
 	RegionNo pulumi.StringInput `pulumi:"regionNo"`
-	// The ID of the router interface in the local VPC.
+	// The ID of the router interface in the peer VPC.
 	RouterInterfaceId pulumi.StringPtrInput `pulumi:"routerInterfaceId"`
 	// The ID of the local VPC instance.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// The instance name of the local VPC.
+	// The instance name of the peer VPC.
 	VpcName pulumi.StringPtrInput `pulumi:"vpcName"`
 }
 
@@ -935,6 +1060,12 @@ func (i FirewallVpcFirewallLocalVpcArgs) ToFirewallVpcFirewallLocalVpcOutput() F
 
 func (i FirewallVpcFirewallLocalVpcArgs) ToFirewallVpcFirewallLocalVpcOutputWithContext(ctx context.Context) FirewallVpcFirewallLocalVpcOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallLocalVpcOutput)
+}
+
+func (i FirewallVpcFirewallLocalVpcArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallVpcFirewallLocalVpc] {
+	return pulumix.Output[FirewallVpcFirewallLocalVpc]{
+		OutputState: i.ToFirewallVpcFirewallLocalVpcOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i FirewallVpcFirewallLocalVpcArgs) ToFirewallVpcFirewallLocalVpcPtrOutput() FirewallVpcFirewallLocalVpcPtrOutput {
@@ -978,6 +1109,12 @@ func (i *firewallVpcFirewallLocalVpcPtrType) ToFirewallVpcFirewallLocalVpcPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallLocalVpcPtrOutput)
 }
 
+func (i *firewallVpcFirewallLocalVpcPtrType) ToOutput(ctx context.Context) pulumix.Output[*FirewallVpcFirewallLocalVpc] {
+	return pulumix.Output[*FirewallVpcFirewallLocalVpc]{
+		OutputState: i.ToFirewallVpcFirewallLocalVpcPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FirewallVpcFirewallLocalVpcOutput struct{ *pulumi.OutputState }
 
 func (FirewallVpcFirewallLocalVpcOutput) ElementType() reflect.Type {
@@ -1002,17 +1139,23 @@ func (o FirewallVpcFirewallLocalVpcOutput) ToFirewallVpcFirewallLocalVpcPtrOutpu
 	}).(FirewallVpcFirewallLocalVpcPtrOutput)
 }
 
-// The ID of the instance of the Eni in the local VPC.
+func (o FirewallVpcFirewallLocalVpcOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallVpcFirewallLocalVpc] {
+	return pulumix.Output[FirewallVpcFirewallLocalVpc]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The ID of the instance of the ENI in the peer VPC.
 func (o FirewallVpcFirewallLocalVpcOutput) EniId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallLocalVpc) *string { return v.EniId }).(pulumi.StringPtrOutput)
 }
 
-// The private IP address of the elastic network card in the local VPC.
+// The private IP address of the elastic network card in the peer VPC.
 func (o FirewallVpcFirewallLocalVpcOutput) EniPrivateIpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallLocalVpc) *string { return v.EniPrivateIpAddress }).(pulumi.StringPtrOutput)
 }
 
-// The network segment list of the local VPC.See the following `Block LocalVpcCidrTableList`.
+// The network segment list of the local VPC. See `localVpcCidrTableList` below.
 func (o FirewallVpcFirewallLocalVpcOutput) LocalVpcCidrTableLists() FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallLocalVpc) []FirewallVpcFirewallLocalVpcLocalVpcCidrTableList {
 		return v.LocalVpcCidrTableLists
@@ -1024,7 +1167,7 @@ func (o FirewallVpcFirewallLocalVpcOutput) RegionNo() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallLocalVpc) string { return v.RegionNo }).(pulumi.StringOutput)
 }
 
-// The ID of the router interface in the local VPC.
+// The ID of the router interface in the peer VPC.
 func (o FirewallVpcFirewallLocalVpcOutput) RouterInterfaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallLocalVpc) *string { return v.RouterInterfaceId }).(pulumi.StringPtrOutput)
 }
@@ -1034,7 +1177,7 @@ func (o FirewallVpcFirewallLocalVpcOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallLocalVpc) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The instance name of the local VPC.
+// The instance name of the peer VPC.
 func (o FirewallVpcFirewallLocalVpcOutput) VpcName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallLocalVpc) *string { return v.VpcName }).(pulumi.StringPtrOutput)
 }
@@ -1053,6 +1196,12 @@ func (o FirewallVpcFirewallLocalVpcPtrOutput) ToFirewallVpcFirewallLocalVpcPtrOu
 	return o
 }
 
+func (o FirewallVpcFirewallLocalVpcPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallVpcFirewallLocalVpc] {
+	return pulumix.Output[*FirewallVpcFirewallLocalVpc]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FirewallVpcFirewallLocalVpcPtrOutput) Elem() FirewallVpcFirewallLocalVpcOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallLocalVpc) FirewallVpcFirewallLocalVpc {
 		if v != nil {
@@ -1063,7 +1212,7 @@ func (o FirewallVpcFirewallLocalVpcPtrOutput) Elem() FirewallVpcFirewallLocalVpc
 	}).(FirewallVpcFirewallLocalVpcOutput)
 }
 
-// The ID of the instance of the Eni in the local VPC.
+// The ID of the instance of the ENI in the peer VPC.
 func (o FirewallVpcFirewallLocalVpcPtrOutput) EniId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallLocalVpc) *string {
 		if v == nil {
@@ -1073,7 +1222,7 @@ func (o FirewallVpcFirewallLocalVpcPtrOutput) EniId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The private IP address of the elastic network card in the local VPC.
+// The private IP address of the elastic network card in the peer VPC.
 func (o FirewallVpcFirewallLocalVpcPtrOutput) EniPrivateIpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallLocalVpc) *string {
 		if v == nil {
@@ -1083,7 +1232,7 @@ func (o FirewallVpcFirewallLocalVpcPtrOutput) EniPrivateIpAddress() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// The network segment list of the local VPC.See the following `Block LocalVpcCidrTableList`.
+// The network segment list of the local VPC. See `localVpcCidrTableList` below.
 func (o FirewallVpcFirewallLocalVpcPtrOutput) LocalVpcCidrTableLists() FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallLocalVpc) []FirewallVpcFirewallLocalVpcLocalVpcCidrTableList {
 		if v == nil {
@@ -1103,7 +1252,7 @@ func (o FirewallVpcFirewallLocalVpcPtrOutput) RegionNo() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The ID of the router interface in the local VPC.
+// The ID of the router interface in the peer VPC.
 func (o FirewallVpcFirewallLocalVpcPtrOutput) RouterInterfaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallLocalVpc) *string {
 		if v == nil {
@@ -1123,7 +1272,7 @@ func (o FirewallVpcFirewallLocalVpcPtrOutput) VpcId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The instance name of the local VPC.
+// The instance name of the peer VPC.
 func (o FirewallVpcFirewallLocalVpcPtrOutput) VpcName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallLocalVpc) *string {
 		if v == nil {
@@ -1134,7 +1283,7 @@ func (o FirewallVpcFirewallLocalVpcPtrOutput) VpcName() pulumi.StringPtrOutput {
 }
 
 type FirewallVpcFirewallLocalVpcLocalVpcCidrTableList struct {
-	// The list of route entries of the local VPC.See the following `Block LocalRouteEntryList`.
+	// The list of route entries of the local VPC. See `localRouteEntryList` below.
 	LocalRouteEntryLists []FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList `pulumi:"localRouteEntryLists"`
 	// The ID of the route table of the local VPC.
 	LocalRouteTableId string `pulumi:"localRouteTableId"`
@@ -1152,7 +1301,7 @@ type FirewallVpcFirewallLocalVpcLocalVpcCidrTableListInput interface {
 }
 
 type FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs struct {
-	// The list of route entries of the local VPC.See the following `Block LocalRouteEntryList`.
+	// The list of route entries of the local VPC. See `localRouteEntryList` below.
 	LocalRouteEntryLists FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayInput `pulumi:"localRouteEntryLists"`
 	// The ID of the route table of the local VPC.
 	LocalRouteTableId pulumi.StringInput `pulumi:"localRouteTableId"`
@@ -1168,6 +1317,12 @@ func (i FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs) ToFirewallVpcFirew
 
 func (i FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs) ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutputWithContext(ctx context.Context) FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput)
+}
+
+func (i FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallVpcFirewallLocalVpcLocalVpcCidrTableList] {
+	return pulumix.Output[FirewallVpcFirewallLocalVpcLocalVpcCidrTableList]{
+		OutputState: i.ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutputWithContext(ctx).OutputState,
+	}
 }
 
 // FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayInput is an input type that accepts FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArray and FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput values.
@@ -1195,6 +1350,12 @@ func (i FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArray) ToFirewallVpcFire
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput)
 }
 
+func (i FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArray) ToOutput(ctx context.Context) pulumix.Output[[]FirewallVpcFirewallLocalVpcLocalVpcCidrTableList] {
+	return pulumix.Output[[]FirewallVpcFirewallLocalVpcLocalVpcCidrTableList]{
+		OutputState: i.ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput struct{ *pulumi.OutputState }
 
 func (FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput) ElementType() reflect.Type {
@@ -1209,7 +1370,13 @@ func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput) ToFirewallVpcFir
 	return o
 }
 
-// The list of route entries of the local VPC.See the following `Block LocalRouteEntryList`.
+func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallVpcFirewallLocalVpcLocalVpcCidrTableList] {
+	return pulumix.Output[FirewallVpcFirewallLocalVpcLocalVpcCidrTableList]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The list of route entries of the local VPC. See `localRouteEntryList` below.
 func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput) LocalRouteEntryLists() FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallLocalVpcLocalVpcCidrTableList) []FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList {
 		return v.LocalRouteEntryLists
@@ -1233,6 +1400,12 @@ func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput) ToFirewallV
 
 func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput) ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutputWithContext(ctx context.Context) FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput {
 	return o
+}
+
+func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FirewallVpcFirewallLocalVpcLocalVpcCidrTableList] {
+	return pulumix.Output[[]FirewallVpcFirewallLocalVpcLocalVpcCidrTableList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput) Index(i pulumi.IntInput) FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput {
@@ -1278,6 +1451,12 @@ func (i FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs)
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput)
 }
 
+func (i FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList] {
+	return pulumix.Output[FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList]{
+		OutputState: i.ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayInput is an input type that accepts FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArray and FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput values.
 // You can construct a concrete instance of `FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayInput` via:
 //
@@ -1303,6 +1482,12 @@ func (i FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArray
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput)
 }
 
+func (i FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArray) ToOutput(ctx context.Context) pulumix.Output[[]FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList] {
+	return pulumix.Output[[]FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList]{
+		OutputState: i.ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput struct{ *pulumi.OutputState }
 
 func (FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput) ElementType() reflect.Type {
@@ -1315,6 +1500,12 @@ func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutpu
 
 func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput) ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutputWithContext(ctx context.Context) FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput {
 	return o
+}
+
+func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList] {
+	return pulumix.Output[FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The target network segment of the local VPC.
@@ -1345,6 +1536,12 @@ func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArray
 	return o
 }
 
+func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList] {
+	return pulumix.Output[[]FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput) Index(i pulumi.IntInput) FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList {
 		return vs[0].([]FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList)[vs[1].(int)]
@@ -1352,19 +1549,19 @@ func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArray
 }
 
 type FirewallVpcFirewallPeerVpc struct {
-	// The ID of the instance of the Eni in the local VPC.
+	// The ID of the instance of the ENI in the peer VPC.
 	EniId *string `pulumi:"eniId"`
-	// The private IP address of the elastic network card in the local VPC.
+	// The private IP address of the elastic network card in the peer VPC.
 	EniPrivateIpAddress *string `pulumi:"eniPrivateIpAddress"`
-	// The network segment list of the peer VPC.See the following `Block PeerVpcCidrTableList`.
+	// The network segment list of the peer VPC. See `peerVpcCidrTableList` below.
 	PeerVpcCidrTableLists []FirewallVpcFirewallPeerVpcPeerVpcCidrTableList `pulumi:"peerVpcCidrTableLists"`
-	// The region ID of the local VPC.
+	// The region ID of the peer VPC.
 	RegionNo string `pulumi:"regionNo"`
-	// The ID of the router interface in the local VPC.
+	// The ID of the router interface in the peer VPC.
 	RouterInterfaceId *string `pulumi:"routerInterfaceId"`
-	// The ID of the local VPC instance.
+	// The ID of the peer VPC instance.
 	VpcId string `pulumi:"vpcId"`
-	// The instance name of the local VPC.
+	// The instance name of the peer VPC.
 	VpcName *string `pulumi:"vpcName"`
 }
 
@@ -1380,19 +1577,19 @@ type FirewallVpcFirewallPeerVpcInput interface {
 }
 
 type FirewallVpcFirewallPeerVpcArgs struct {
-	// The ID of the instance of the Eni in the local VPC.
+	// The ID of the instance of the ENI in the peer VPC.
 	EniId pulumi.StringPtrInput `pulumi:"eniId"`
-	// The private IP address of the elastic network card in the local VPC.
+	// The private IP address of the elastic network card in the peer VPC.
 	EniPrivateIpAddress pulumi.StringPtrInput `pulumi:"eniPrivateIpAddress"`
-	// The network segment list of the peer VPC.See the following `Block PeerVpcCidrTableList`.
+	// The network segment list of the peer VPC. See `peerVpcCidrTableList` below.
 	PeerVpcCidrTableLists FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayInput `pulumi:"peerVpcCidrTableLists"`
-	// The region ID of the local VPC.
+	// The region ID of the peer VPC.
 	RegionNo pulumi.StringInput `pulumi:"regionNo"`
-	// The ID of the router interface in the local VPC.
+	// The ID of the router interface in the peer VPC.
 	RouterInterfaceId pulumi.StringPtrInput `pulumi:"routerInterfaceId"`
-	// The ID of the local VPC instance.
+	// The ID of the peer VPC instance.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// The instance name of the local VPC.
+	// The instance name of the peer VPC.
 	VpcName pulumi.StringPtrInput `pulumi:"vpcName"`
 }
 
@@ -1406,6 +1603,12 @@ func (i FirewallVpcFirewallPeerVpcArgs) ToFirewallVpcFirewallPeerVpcOutput() Fir
 
 func (i FirewallVpcFirewallPeerVpcArgs) ToFirewallVpcFirewallPeerVpcOutputWithContext(ctx context.Context) FirewallVpcFirewallPeerVpcOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallPeerVpcOutput)
+}
+
+func (i FirewallVpcFirewallPeerVpcArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallVpcFirewallPeerVpc] {
+	return pulumix.Output[FirewallVpcFirewallPeerVpc]{
+		OutputState: i.ToFirewallVpcFirewallPeerVpcOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i FirewallVpcFirewallPeerVpcArgs) ToFirewallVpcFirewallPeerVpcPtrOutput() FirewallVpcFirewallPeerVpcPtrOutput {
@@ -1449,6 +1652,12 @@ func (i *firewallVpcFirewallPeerVpcPtrType) ToFirewallVpcFirewallPeerVpcPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallPeerVpcPtrOutput)
 }
 
+func (i *firewallVpcFirewallPeerVpcPtrType) ToOutput(ctx context.Context) pulumix.Output[*FirewallVpcFirewallPeerVpc] {
+	return pulumix.Output[*FirewallVpcFirewallPeerVpc]{
+		OutputState: i.ToFirewallVpcFirewallPeerVpcPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FirewallVpcFirewallPeerVpcOutput struct{ *pulumi.OutputState }
 
 func (FirewallVpcFirewallPeerVpcOutput) ElementType() reflect.Type {
@@ -1473,39 +1682,45 @@ func (o FirewallVpcFirewallPeerVpcOutput) ToFirewallVpcFirewallPeerVpcPtrOutputW
 	}).(FirewallVpcFirewallPeerVpcPtrOutput)
 }
 
-// The ID of the instance of the Eni in the local VPC.
+func (o FirewallVpcFirewallPeerVpcOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallVpcFirewallPeerVpc] {
+	return pulumix.Output[FirewallVpcFirewallPeerVpc]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The ID of the instance of the ENI in the peer VPC.
 func (o FirewallVpcFirewallPeerVpcOutput) EniId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallPeerVpc) *string { return v.EniId }).(pulumi.StringPtrOutput)
 }
 
-// The private IP address of the elastic network card in the local VPC.
+// The private IP address of the elastic network card in the peer VPC.
 func (o FirewallVpcFirewallPeerVpcOutput) EniPrivateIpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallPeerVpc) *string { return v.EniPrivateIpAddress }).(pulumi.StringPtrOutput)
 }
 
-// The network segment list of the peer VPC.See the following `Block PeerVpcCidrTableList`.
+// The network segment list of the peer VPC. See `peerVpcCidrTableList` below.
 func (o FirewallVpcFirewallPeerVpcOutput) PeerVpcCidrTableLists() FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallPeerVpc) []FirewallVpcFirewallPeerVpcPeerVpcCidrTableList {
 		return v.PeerVpcCidrTableLists
 	}).(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput)
 }
 
-// The region ID of the local VPC.
+// The region ID of the peer VPC.
 func (o FirewallVpcFirewallPeerVpcOutput) RegionNo() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallPeerVpc) string { return v.RegionNo }).(pulumi.StringOutput)
 }
 
-// The ID of the router interface in the local VPC.
+// The ID of the router interface in the peer VPC.
 func (o FirewallVpcFirewallPeerVpcOutput) RouterInterfaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallPeerVpc) *string { return v.RouterInterfaceId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the local VPC instance.
+// The ID of the peer VPC instance.
 func (o FirewallVpcFirewallPeerVpcOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallPeerVpc) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The instance name of the local VPC.
+// The instance name of the peer VPC.
 func (o FirewallVpcFirewallPeerVpcOutput) VpcName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallPeerVpc) *string { return v.VpcName }).(pulumi.StringPtrOutput)
 }
@@ -1524,6 +1739,12 @@ func (o FirewallVpcFirewallPeerVpcPtrOutput) ToFirewallVpcFirewallPeerVpcPtrOutp
 	return o
 }
 
+func (o FirewallVpcFirewallPeerVpcPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallVpcFirewallPeerVpc] {
+	return pulumix.Output[*FirewallVpcFirewallPeerVpc]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FirewallVpcFirewallPeerVpcPtrOutput) Elem() FirewallVpcFirewallPeerVpcOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallPeerVpc) FirewallVpcFirewallPeerVpc {
 		if v != nil {
@@ -1534,7 +1755,7 @@ func (o FirewallVpcFirewallPeerVpcPtrOutput) Elem() FirewallVpcFirewallPeerVpcOu
 	}).(FirewallVpcFirewallPeerVpcOutput)
 }
 
-// The ID of the instance of the Eni in the local VPC.
+// The ID of the instance of the ENI in the peer VPC.
 func (o FirewallVpcFirewallPeerVpcPtrOutput) EniId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallPeerVpc) *string {
 		if v == nil {
@@ -1544,7 +1765,7 @@ func (o FirewallVpcFirewallPeerVpcPtrOutput) EniId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The private IP address of the elastic network card in the local VPC.
+// The private IP address of the elastic network card in the peer VPC.
 func (o FirewallVpcFirewallPeerVpcPtrOutput) EniPrivateIpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallPeerVpc) *string {
 		if v == nil {
@@ -1554,7 +1775,7 @@ func (o FirewallVpcFirewallPeerVpcPtrOutput) EniPrivateIpAddress() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// The network segment list of the peer VPC.See the following `Block PeerVpcCidrTableList`.
+// The network segment list of the peer VPC. See `peerVpcCidrTableList` below.
 func (o FirewallVpcFirewallPeerVpcPtrOutput) PeerVpcCidrTableLists() FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallPeerVpc) []FirewallVpcFirewallPeerVpcPeerVpcCidrTableList {
 		if v == nil {
@@ -1564,7 +1785,7 @@ func (o FirewallVpcFirewallPeerVpcPtrOutput) PeerVpcCidrTableLists() FirewallVpc
 	}).(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput)
 }
 
-// The region ID of the local VPC.
+// The region ID of the peer VPC.
 func (o FirewallVpcFirewallPeerVpcPtrOutput) RegionNo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallPeerVpc) *string {
 		if v == nil {
@@ -1574,7 +1795,7 @@ func (o FirewallVpcFirewallPeerVpcPtrOutput) RegionNo() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The ID of the router interface in the local VPC.
+// The ID of the router interface in the peer VPC.
 func (o FirewallVpcFirewallPeerVpcPtrOutput) RouterInterfaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallPeerVpc) *string {
 		if v == nil {
@@ -1584,7 +1805,7 @@ func (o FirewallVpcFirewallPeerVpcPtrOutput) RouterInterfaceId() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// The ID of the local VPC instance.
+// The ID of the peer VPC instance.
 func (o FirewallVpcFirewallPeerVpcPtrOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallPeerVpc) *string {
 		if v == nil {
@@ -1594,7 +1815,7 @@ func (o FirewallVpcFirewallPeerVpcPtrOutput) VpcId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The instance name of the local VPC.
+// The instance name of the peer VPC.
 func (o FirewallVpcFirewallPeerVpcPtrOutput) VpcName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallPeerVpc) *string {
 		if v == nil {
@@ -1605,7 +1826,7 @@ func (o FirewallVpcFirewallPeerVpcPtrOutput) VpcName() pulumi.StringPtrOutput {
 }
 
 type FirewallVpcFirewallPeerVpcPeerVpcCidrTableList struct {
-	// Peer VPC route entry list information.See the following `Block PeerRouteEntryList`.
+	// Peer VPC route entry list information. See `peerRouteEntryList` below.
 	PeerRouteEntryLists []FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList `pulumi:"peerRouteEntryLists"`
 	// The ID of the route table of the peer VPC.
 	PeerRouteTableId string `pulumi:"peerRouteTableId"`
@@ -1623,7 +1844,7 @@ type FirewallVpcFirewallPeerVpcPeerVpcCidrTableListInput interface {
 }
 
 type FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs struct {
-	// Peer VPC route entry list information.See the following `Block PeerRouteEntryList`.
+	// Peer VPC route entry list information. See `peerRouteEntryList` below.
 	PeerRouteEntryLists FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayInput `pulumi:"peerRouteEntryLists"`
 	// The ID of the route table of the peer VPC.
 	PeerRouteTableId pulumi.StringInput `pulumi:"peerRouteTableId"`
@@ -1639,6 +1860,12 @@ func (i FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs) ToFirewallVpcFirewal
 
 func (i FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs) ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutputWithContext(ctx context.Context) FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput)
+}
+
+func (i FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallVpcFirewallPeerVpcPeerVpcCidrTableList] {
+	return pulumix.Output[FirewallVpcFirewallPeerVpcPeerVpcCidrTableList]{
+		OutputState: i.ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutputWithContext(ctx).OutputState,
+	}
 }
 
 // FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayInput is an input type that accepts FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArray and FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput values.
@@ -1666,6 +1893,12 @@ func (i FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArray) ToFirewallVpcFirewa
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput)
 }
 
+func (i FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArray) ToOutput(ctx context.Context) pulumix.Output[[]FirewallVpcFirewallPeerVpcPeerVpcCidrTableList] {
+	return pulumix.Output[[]FirewallVpcFirewallPeerVpcPeerVpcCidrTableList]{
+		OutputState: i.ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput struct{ *pulumi.OutputState }
 
 func (FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput) ElementType() reflect.Type {
@@ -1680,7 +1913,13 @@ func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput) ToFirewallVpcFirew
 	return o
 }
 
-// Peer VPC route entry list information.See the following `Block PeerRouteEntryList`.
+func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallVpcFirewallPeerVpcPeerVpcCidrTableList] {
+	return pulumix.Output[FirewallVpcFirewallPeerVpcPeerVpcCidrTableList]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Peer VPC route entry list information. See `peerRouteEntryList` below.
 func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput) PeerRouteEntryLists() FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallPeerVpcPeerVpcCidrTableList) []FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList {
 		return v.PeerRouteEntryLists
@@ -1704,6 +1943,12 @@ func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput) ToFirewallVpc
 
 func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput) ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutputWithContext(ctx context.Context) FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput {
 	return o
+}
+
+func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FirewallVpcFirewallPeerVpcPeerVpcCidrTableList] {
+	return pulumix.Output[[]FirewallVpcFirewallPeerVpcPeerVpcCidrTableList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput) Index(i pulumi.IntInput) FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput {
@@ -1749,6 +1994,12 @@ func (i FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs) To
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput)
 }
 
+func (i FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList] {
+	return pulumix.Output[FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList]{
+		OutputState: i.ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayInput is an input type that accepts FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray and FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput values.
 // You can construct a concrete instance of `FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayInput` via:
 //
@@ -1774,6 +2025,12 @@ func (i FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray) T
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput)
 }
 
+func (i FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray) ToOutput(ctx context.Context) pulumix.Output[[]FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList] {
+	return pulumix.Output[[]FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList]{
+		OutputState: i.ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput struct{ *pulumi.OutputState }
 
 func (FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput) ElementType() reflect.Type {
@@ -1786,6 +2043,12 @@ func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput) 
 
 func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput) ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutputWithContext(ctx context.Context) FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput {
 	return o
+}
+
+func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList] {
+	return pulumix.Output[FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The target network segment of the peer VPC.
@@ -1814,6 +2077,12 @@ func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOut
 
 func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput) ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutputWithContext(ctx context.Context) FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput {
 	return o
+}
+
+func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList] {
+	return pulumix.Output[[]FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput) Index(i pulumi.IntInput) FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput {
@@ -1887,6 +2156,12 @@ func (i GetAddressBooksBookArgs) ToGetAddressBooksBookOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetAddressBooksBookOutput)
 }
 
+func (i GetAddressBooksBookArgs) ToOutput(ctx context.Context) pulumix.Output[GetAddressBooksBook] {
+	return pulumix.Output[GetAddressBooksBook]{
+		OutputState: i.ToGetAddressBooksBookOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAddressBooksBookArrayInput is an input type that accepts GetAddressBooksBookArray and GetAddressBooksBookArrayOutput values.
 // You can construct a concrete instance of `GetAddressBooksBookArrayInput` via:
 //
@@ -1912,6 +2187,12 @@ func (i GetAddressBooksBookArray) ToGetAddressBooksBookArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetAddressBooksBookArrayOutput)
 }
 
+func (i GetAddressBooksBookArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAddressBooksBook] {
+	return pulumix.Output[[]GetAddressBooksBook]{
+		OutputState: i.ToGetAddressBooksBookArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAddressBooksBookOutput struct{ *pulumi.OutputState }
 
 func (GetAddressBooksBookOutput) ElementType() reflect.Type {
@@ -1924,6 +2205,12 @@ func (o GetAddressBooksBookOutput) ToGetAddressBooksBookOutput() GetAddressBooks
 
 func (o GetAddressBooksBookOutput) ToGetAddressBooksBookOutputWithContext(ctx context.Context) GetAddressBooksBookOutput {
 	return o
+}
+
+func (o GetAddressBooksBookOutput) ToOutput(ctx context.Context) pulumix.Output[GetAddressBooksBook] {
+	return pulumix.Output[GetAddressBooksBook]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The addresses in the Address Book.
@@ -1985,6 +2272,12 @@ func (o GetAddressBooksBookArrayOutput) ToGetAddressBooksBookArrayOutputWithCont
 	return o
 }
 
+func (o GetAddressBooksBookArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAddressBooksBook] {
+	return pulumix.Output[[]GetAddressBooksBook]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetAddressBooksBookArrayOutput) Index(i pulumi.IntInput) GetAddressBooksBookOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAddressBooksBook {
 		return vs[0].([]GetAddressBooksBook)[vs[1].(int)]
@@ -2028,6 +2321,12 @@ func (i GetAddressBooksBookEcsTagArgs) ToGetAddressBooksBookEcsTagOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetAddressBooksBookEcsTagOutput)
 }
 
+func (i GetAddressBooksBookEcsTagArgs) ToOutput(ctx context.Context) pulumix.Output[GetAddressBooksBookEcsTag] {
+	return pulumix.Output[GetAddressBooksBookEcsTag]{
+		OutputState: i.ToGetAddressBooksBookEcsTagOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAddressBooksBookEcsTagArrayInput is an input type that accepts GetAddressBooksBookEcsTagArray and GetAddressBooksBookEcsTagArrayOutput values.
 // You can construct a concrete instance of `GetAddressBooksBookEcsTagArrayInput` via:
 //
@@ -2053,6 +2352,12 @@ func (i GetAddressBooksBookEcsTagArray) ToGetAddressBooksBookEcsTagArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetAddressBooksBookEcsTagArrayOutput)
 }
 
+func (i GetAddressBooksBookEcsTagArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAddressBooksBookEcsTag] {
+	return pulumix.Output[[]GetAddressBooksBookEcsTag]{
+		OutputState: i.ToGetAddressBooksBookEcsTagArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAddressBooksBookEcsTagOutput struct{ *pulumi.OutputState }
 
 func (GetAddressBooksBookEcsTagOutput) ElementType() reflect.Type {
@@ -2065,6 +2370,12 @@ func (o GetAddressBooksBookEcsTagOutput) ToGetAddressBooksBookEcsTagOutput() Get
 
 func (o GetAddressBooksBookEcsTagOutput) ToGetAddressBooksBookEcsTagOutputWithContext(ctx context.Context) GetAddressBooksBookEcsTagOutput {
 	return o
+}
+
+func (o GetAddressBooksBookEcsTagOutput) ToOutput(ctx context.Context) pulumix.Output[GetAddressBooksBookEcsTag] {
+	return pulumix.Output[GetAddressBooksBookEcsTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The key of ECS tag that to be matched.
@@ -2089,6 +2400,12 @@ func (o GetAddressBooksBookEcsTagArrayOutput) ToGetAddressBooksBookEcsTagArrayOu
 
 func (o GetAddressBooksBookEcsTagArrayOutput) ToGetAddressBooksBookEcsTagArrayOutputWithContext(ctx context.Context) GetAddressBooksBookEcsTagArrayOutput {
 	return o
+}
+
+func (o GetAddressBooksBookEcsTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAddressBooksBookEcsTag] {
+	return pulumix.Output[[]GetAddressBooksBookEcsTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAddressBooksBookEcsTagArrayOutput) Index(i pulumi.IntInput) GetAddressBooksBookEcsTagOutput {
@@ -2206,6 +2523,12 @@ func (i GetControlPoliciesPolicyArgs) ToGetControlPoliciesPolicyOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetControlPoliciesPolicyOutput)
 }
 
+func (i GetControlPoliciesPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GetControlPoliciesPolicy] {
+	return pulumix.Output[GetControlPoliciesPolicy]{
+		OutputState: i.ToGetControlPoliciesPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetControlPoliciesPolicyArrayInput is an input type that accepts GetControlPoliciesPolicyArray and GetControlPoliciesPolicyArrayOutput values.
 // You can construct a concrete instance of `GetControlPoliciesPolicyArrayInput` via:
 //
@@ -2231,6 +2554,12 @@ func (i GetControlPoliciesPolicyArray) ToGetControlPoliciesPolicyArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetControlPoliciesPolicyArrayOutput)
 }
 
+func (i GetControlPoliciesPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetControlPoliciesPolicy] {
+	return pulumix.Output[[]GetControlPoliciesPolicy]{
+		OutputState: i.ToGetControlPoliciesPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetControlPoliciesPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetControlPoliciesPolicyOutput) ElementType() reflect.Type {
@@ -2243,6 +2572,12 @@ func (o GetControlPoliciesPolicyOutput) ToGetControlPoliciesPolicyOutput() GetCo
 
 func (o GetControlPoliciesPolicyOutput) ToGetControlPoliciesPolicyOutputWithContext(ctx context.Context) GetControlPoliciesPolicyOutput {
 	return o
+}
+
+func (o GetControlPoliciesPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GetControlPoliciesPolicy] {
+	return pulumix.Output[GetControlPoliciesPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
@@ -2374,6 +2709,12 @@ func (o GetControlPoliciesPolicyArrayOutput) ToGetControlPoliciesPolicyArrayOutp
 	return o
 }
 
+func (o GetControlPoliciesPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetControlPoliciesPolicy] {
+	return pulumix.Output[[]GetControlPoliciesPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetControlPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetControlPoliciesPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlPoliciesPolicy {
 		return vs[0].([]GetControlPoliciesPolicy)[vs[1].(int)]
@@ -2435,6 +2776,12 @@ func (i GetInstanceMembersMemberArgs) ToGetInstanceMembersMemberOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceMembersMemberOutput)
 }
 
+func (i GetInstanceMembersMemberArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceMembersMember] {
+	return pulumix.Output[GetInstanceMembersMember]{
+		OutputState: i.ToGetInstanceMembersMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstanceMembersMemberArrayInput is an input type that accepts GetInstanceMembersMemberArray and GetInstanceMembersMemberArrayOutput values.
 // You can construct a concrete instance of `GetInstanceMembersMemberArrayInput` via:
 //
@@ -2460,6 +2807,12 @@ func (i GetInstanceMembersMemberArray) ToGetInstanceMembersMemberArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceMembersMemberArrayOutput)
 }
 
+func (i GetInstanceMembersMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceMembersMember] {
+	return pulumix.Output[[]GetInstanceMembersMember]{
+		OutputState: i.ToGetInstanceMembersMemberArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstanceMembersMemberOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceMembersMemberOutput) ElementType() reflect.Type {
@@ -2472,6 +2825,12 @@ func (o GetInstanceMembersMemberOutput) ToGetInstanceMembersMemberOutput() GetIn
 
 func (o GetInstanceMembersMemberOutput) ToGetInstanceMembersMemberOutputWithContext(ctx context.Context) GetInstanceMembersMemberOutput {
 	return o
+}
+
+func (o GetInstanceMembersMemberOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceMembersMember] {
+	return pulumix.Output[GetInstanceMembersMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // When the cloud firewall member account was added.> use second-level timestamp format.
@@ -2520,6 +2879,12 @@ func (o GetInstanceMembersMemberArrayOutput) ToGetInstanceMembersMemberArrayOutp
 
 func (o GetInstanceMembersMemberArrayOutput) ToGetInstanceMembersMemberArrayOutputWithContext(ctx context.Context) GetInstanceMembersMemberArrayOutput {
 	return o
+}
+
+func (o GetInstanceMembersMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceMembersMember] {
+	return pulumix.Output[[]GetInstanceMembersMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceMembersMemberArrayOutput) Index(i pulumi.IntInput) GetInstanceMembersMemberOutput {
@@ -2589,6 +2954,12 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
 }
 
+func (i GetInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
+	return pulumix.Output[GetInstancesInstance]{
+		OutputState: i.ToGetInstancesInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
@@ -2614,6 +2985,12 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
+func (i GetInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
+	return pulumix.Output[[]GetInstancesInstance]{
+		OutputState: i.ToGetInstancesInstanceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
@@ -2626,6 +3003,12 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesI
 
 func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
 	return o
+}
+
+func (o GetInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
+	return pulumix.Output[GetInstancesInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Creation time of the resource.
@@ -2680,6 +3063,12 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutput() Get
 
 func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
 	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
+	return pulumix.Output[[]GetInstancesInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
@@ -2749,6 +3138,12 @@ func (i GetVpcFirewallCensCenArgs) ToGetVpcFirewallCensCenOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallCensCenOutput)
 }
 
+func (i GetVpcFirewallCensCenArgs) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallCensCen] {
+	return pulumix.Output[GetVpcFirewallCensCen]{
+		OutputState: i.ToGetVpcFirewallCensCenOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetVpcFirewallCensCenArrayInput is an input type that accepts GetVpcFirewallCensCenArray and GetVpcFirewallCensCenArrayOutput values.
 // You can construct a concrete instance of `GetVpcFirewallCensCenArrayInput` via:
 //
@@ -2774,6 +3169,12 @@ func (i GetVpcFirewallCensCenArray) ToGetVpcFirewallCensCenArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallCensCenArrayOutput)
 }
 
+func (i GetVpcFirewallCensCenArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallCensCen] {
+	return pulumix.Output[[]GetVpcFirewallCensCen]{
+		OutputState: i.ToGetVpcFirewallCensCenArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetVpcFirewallCensCenOutput struct{ *pulumi.OutputState }
 
 func (GetVpcFirewallCensCenOutput) ElementType() reflect.Type {
@@ -2786,6 +3187,12 @@ func (o GetVpcFirewallCensCenOutput) ToGetVpcFirewallCensCenOutput() GetVpcFirew
 
 func (o GetVpcFirewallCensCenOutput) ToGetVpcFirewallCensCenOutputWithContext(ctx context.Context) GetVpcFirewallCensCenOutput {
 	return o
+}
+
+func (o GetVpcFirewallCensCenOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallCensCen] {
+	return pulumix.Output[GetVpcFirewallCensCen]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the CEN instance.
@@ -2840,6 +3247,12 @@ func (o GetVpcFirewallCensCenArrayOutput) ToGetVpcFirewallCensCenArrayOutput() G
 
 func (o GetVpcFirewallCensCenArrayOutput) ToGetVpcFirewallCensCenArrayOutputWithContext(ctx context.Context) GetVpcFirewallCensCenArrayOutput {
 	return o
+}
+
+func (o GetVpcFirewallCensCenArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallCensCen] {
+	return pulumix.Output[[]GetVpcFirewallCensCen]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetVpcFirewallCensCenArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallCensCenOutput {
@@ -2935,6 +3348,12 @@ func (i GetVpcFirewallCensCenLocalVpcArgs) ToGetVpcFirewallCensCenLocalVpcOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallCensCenLocalVpcOutput)
 }
 
+func (i GetVpcFirewallCensCenLocalVpcArgs) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallCensCenLocalVpc] {
+	return pulumix.Output[GetVpcFirewallCensCenLocalVpc]{
+		OutputState: i.ToGetVpcFirewallCensCenLocalVpcOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetVpcFirewallCensCenLocalVpcArrayInput is an input type that accepts GetVpcFirewallCensCenLocalVpcArray and GetVpcFirewallCensCenLocalVpcArrayOutput values.
 // You can construct a concrete instance of `GetVpcFirewallCensCenLocalVpcArrayInput` via:
 //
@@ -2960,6 +3379,12 @@ func (i GetVpcFirewallCensCenLocalVpcArray) ToGetVpcFirewallCensCenLocalVpcArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallCensCenLocalVpcArrayOutput)
 }
 
+func (i GetVpcFirewallCensCenLocalVpcArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallCensCenLocalVpc] {
+	return pulumix.Output[[]GetVpcFirewallCensCenLocalVpc]{
+		OutputState: i.ToGetVpcFirewallCensCenLocalVpcArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetVpcFirewallCensCenLocalVpcOutput struct{ *pulumi.OutputState }
 
 func (GetVpcFirewallCensCenLocalVpcOutput) ElementType() reflect.Type {
@@ -2972,6 +3397,12 @@ func (o GetVpcFirewallCensCenLocalVpcOutput) ToGetVpcFirewallCensCenLocalVpcOutp
 
 func (o GetVpcFirewallCensCenLocalVpcOutput) ToGetVpcFirewallCensCenLocalVpcOutputWithContext(ctx context.Context) GetVpcFirewallCensCenLocalVpcOutput {
 	return o
+}
+
+func (o GetVpcFirewallCensCenLocalVpcOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallCensCenLocalVpc] {
+	return pulumix.Output[GetVpcFirewallCensCenLocalVpc]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetVpcFirewallCensCenLocalVpcOutput) AttachmentId() pulumi.StringOutput {
@@ -3070,6 +3501,12 @@ func (o GetVpcFirewallCensCenLocalVpcArrayOutput) ToGetVpcFirewallCensCenLocalVp
 	return o
 }
 
+func (o GetVpcFirewallCensCenLocalVpcArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallCensCenLocalVpc] {
+	return pulumix.Output[[]GetVpcFirewallCensCenLocalVpc]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetVpcFirewallCensCenLocalVpcArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallCensCenLocalVpcOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcFirewallCensCenLocalVpc {
 		return vs[0].([]GetVpcFirewallCensCenLocalVpc)[vs[1].(int)]
@@ -3109,6 +3546,12 @@ func (i GetVpcFirewallCensCenLocalVpcEniListArgs) ToGetVpcFirewallCensCenLocalVp
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallCensCenLocalVpcEniListOutput)
 }
 
+func (i GetVpcFirewallCensCenLocalVpcEniListArgs) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallCensCenLocalVpcEniList] {
+	return pulumix.Output[GetVpcFirewallCensCenLocalVpcEniList]{
+		OutputState: i.ToGetVpcFirewallCensCenLocalVpcEniListOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetVpcFirewallCensCenLocalVpcEniListArrayInput is an input type that accepts GetVpcFirewallCensCenLocalVpcEniListArray and GetVpcFirewallCensCenLocalVpcEniListArrayOutput values.
 // You can construct a concrete instance of `GetVpcFirewallCensCenLocalVpcEniListArrayInput` via:
 //
@@ -3134,6 +3577,12 @@ func (i GetVpcFirewallCensCenLocalVpcEniListArray) ToGetVpcFirewallCensCenLocalV
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallCensCenLocalVpcEniListArrayOutput)
 }
 
+func (i GetVpcFirewallCensCenLocalVpcEniListArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallCensCenLocalVpcEniList] {
+	return pulumix.Output[[]GetVpcFirewallCensCenLocalVpcEniList]{
+		OutputState: i.ToGetVpcFirewallCensCenLocalVpcEniListArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetVpcFirewallCensCenLocalVpcEniListOutput struct{ *pulumi.OutputState }
 
 func (GetVpcFirewallCensCenLocalVpcEniListOutput) ElementType() reflect.Type {
@@ -3146,6 +3595,12 @@ func (o GetVpcFirewallCensCenLocalVpcEniListOutput) ToGetVpcFirewallCensCenLocal
 
 func (o GetVpcFirewallCensCenLocalVpcEniListOutput) ToGetVpcFirewallCensCenLocalVpcEniListOutputWithContext(ctx context.Context) GetVpcFirewallCensCenLocalVpcEniListOutput {
 	return o
+}
+
+func (o GetVpcFirewallCensCenLocalVpcEniListOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallCensCenLocalVpcEniList] {
+	return pulumix.Output[GetVpcFirewallCensCenLocalVpcEniList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetVpcFirewallCensCenLocalVpcEniListOutput) EniId() pulumi.StringOutput {
@@ -3168,6 +3623,12 @@ func (o GetVpcFirewallCensCenLocalVpcEniListArrayOutput) ToGetVpcFirewallCensCen
 
 func (o GetVpcFirewallCensCenLocalVpcEniListArrayOutput) ToGetVpcFirewallCensCenLocalVpcEniListArrayOutputWithContext(ctx context.Context) GetVpcFirewallCensCenLocalVpcEniListArrayOutput {
 	return o
+}
+
+func (o GetVpcFirewallCensCenLocalVpcEniListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallCensCenLocalVpcEniList] {
+	return pulumix.Output[[]GetVpcFirewallCensCenLocalVpcEniList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetVpcFirewallCensCenLocalVpcEniListArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallCensCenLocalVpcEniListOutput {
@@ -3213,6 +3674,12 @@ func (i GetVpcFirewallCensCenLocalVpcVpcCidrTableListArgs) ToGetVpcFirewallCensC
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput)
 }
 
+func (i GetVpcFirewallCensCenLocalVpcVpcCidrTableListArgs) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallCensCenLocalVpcVpcCidrTableList] {
+	return pulumix.Output[GetVpcFirewallCensCenLocalVpcVpcCidrTableList]{
+		OutputState: i.ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayInput is an input type that accepts GetVpcFirewallCensCenLocalVpcVpcCidrTableListArray and GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput values.
 // You can construct a concrete instance of `GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayInput` via:
 //
@@ -3238,6 +3705,12 @@ func (i GetVpcFirewallCensCenLocalVpcVpcCidrTableListArray) ToGetVpcFirewallCens
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput)
 }
 
+func (i GetVpcFirewallCensCenLocalVpcVpcCidrTableListArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallCensCenLocalVpcVpcCidrTableList] {
+	return pulumix.Output[[]GetVpcFirewallCensCenLocalVpcVpcCidrTableList]{
+		OutputState: i.ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput struct{ *pulumi.OutputState }
 
 func (GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput) ElementType() reflect.Type {
@@ -3250,6 +3723,12 @@ func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput) ToGetVpcFirewallCen
 
 func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput) ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListOutputWithContext(ctx context.Context) GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput {
 	return o
+}
+
+func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallCensCenLocalVpcVpcCidrTableList] {
+	return pulumix.Output[GetVpcFirewallCensCenLocalVpcVpcCidrTableList]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of route entries in the VPC.
@@ -3276,6 +3755,12 @@ func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput) ToGetVpcFirewa
 
 func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput) ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutputWithContext(ctx context.Context) GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput {
 	return o
+}
+
+func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallCensCenLocalVpcVpcCidrTableList] {
+	return pulumix.Output[[]GetVpcFirewallCensCenLocalVpcVpcCidrTableList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput {
@@ -3321,6 +3806,12 @@ func (i GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArgs) ToGetVp
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput)
 }
 
+func (i GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArgs) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList] {
+	return pulumix.Output[GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList]{
+		OutputState: i.ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayInput is an input type that accepts GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArray and GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput values.
 // You can construct a concrete instance of `GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayInput` via:
 //
@@ -3346,6 +3837,12 @@ func (i GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArray) ToGetV
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput)
 }
 
+func (i GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList] {
+	return pulumix.Output[[]GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList]{
+		OutputState: i.ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput struct{ *pulumi.OutputState }
 
 func (GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput) ElementType() reflect.Type {
@@ -3358,6 +3855,12 @@ func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput) ToGet
 
 func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput) ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutputWithContext(ctx context.Context) GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput {
 	return o
+}
+
+func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList] {
+	return pulumix.Output[GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The target network segment of the VPC.
@@ -3382,6 +3885,12 @@ func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput) 
 
 func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput) ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutputWithContext(ctx context.Context) GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput {
 	return o
+}
+
+func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList] {
+	return pulumix.Output[[]GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput {
@@ -3515,6 +4024,12 @@ func (i GetVpcFirewallControlPoliciesPolicyArgs) ToGetVpcFirewallControlPolicies
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallControlPoliciesPolicyOutput)
 }
 
+func (i GetVpcFirewallControlPoliciesPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallControlPoliciesPolicy] {
+	return pulumix.Output[GetVpcFirewallControlPoliciesPolicy]{
+		OutputState: i.ToGetVpcFirewallControlPoliciesPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetVpcFirewallControlPoliciesPolicyArrayInput is an input type that accepts GetVpcFirewallControlPoliciesPolicyArray and GetVpcFirewallControlPoliciesPolicyArrayOutput values.
 // You can construct a concrete instance of `GetVpcFirewallControlPoliciesPolicyArrayInput` via:
 //
@@ -3540,6 +4055,12 @@ func (i GetVpcFirewallControlPoliciesPolicyArray) ToGetVpcFirewallControlPolicie
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallControlPoliciesPolicyArrayOutput)
 }
 
+func (i GetVpcFirewallControlPoliciesPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallControlPoliciesPolicy] {
+	return pulumix.Output[[]GetVpcFirewallControlPoliciesPolicy]{
+		OutputState: i.ToGetVpcFirewallControlPoliciesPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetVpcFirewallControlPoliciesPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetVpcFirewallControlPoliciesPolicyOutput) ElementType() reflect.Type {
@@ -3552,6 +4073,12 @@ func (o GetVpcFirewallControlPoliciesPolicyOutput) ToGetVpcFirewallControlPolici
 
 func (o GetVpcFirewallControlPoliciesPolicyOutput) ToGetVpcFirewallControlPoliciesPolicyOutputWithContext(ctx context.Context) GetVpcFirewallControlPoliciesPolicyOutput {
 	return o
+}
+
+func (o GetVpcFirewallControlPoliciesPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallControlPoliciesPolicy] {
+	return pulumix.Output[GetVpcFirewallControlPoliciesPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
@@ -3688,6 +4215,12 @@ func (o GetVpcFirewallControlPoliciesPolicyArrayOutput) ToGetVpcFirewallControlP
 	return o
 }
 
+func (o GetVpcFirewallControlPoliciesPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallControlPoliciesPolicy] {
+	return pulumix.Output[[]GetVpcFirewallControlPoliciesPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetVpcFirewallControlPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallControlPoliciesPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcFirewallControlPoliciesPolicy {
 		return vs[0].([]GetVpcFirewallControlPoliciesPolicy)[vs[1].(int)]
@@ -3759,6 +4292,12 @@ func (i GetVpcFirewallsFirewallArgs) ToGetVpcFirewallsFirewallOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallOutput)
 }
 
+func (i GetVpcFirewallsFirewallArgs) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallsFirewall] {
+	return pulumix.Output[GetVpcFirewallsFirewall]{
+		OutputState: i.ToGetVpcFirewallsFirewallOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetVpcFirewallsFirewallArrayInput is an input type that accepts GetVpcFirewallsFirewallArray and GetVpcFirewallsFirewallArrayOutput values.
 // You can construct a concrete instance of `GetVpcFirewallsFirewallArrayInput` via:
 //
@@ -3784,6 +4323,12 @@ func (i GetVpcFirewallsFirewallArray) ToGetVpcFirewallsFirewallArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallArrayOutput)
 }
 
+func (i GetVpcFirewallsFirewallArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallsFirewall] {
+	return pulumix.Output[[]GetVpcFirewallsFirewall]{
+		OutputState: i.ToGetVpcFirewallsFirewallArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetVpcFirewallsFirewallOutput struct{ *pulumi.OutputState }
 
 func (GetVpcFirewallsFirewallOutput) ElementType() reflect.Type {
@@ -3796,6 +4341,12 @@ func (o GetVpcFirewallsFirewallOutput) ToGetVpcFirewallsFirewallOutput() GetVpcF
 
 func (o GetVpcFirewallsFirewallOutput) ToGetVpcFirewallsFirewallOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallOutput {
 	return o
+}
+
+func (o GetVpcFirewallsFirewallOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallsFirewall] {
+	return pulumix.Output[GetVpcFirewallsFirewall]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Bandwidth specifications for high-speed channels. Unit: Mbps.
@@ -3857,6 +4408,12 @@ func (o GetVpcFirewallsFirewallArrayOutput) ToGetVpcFirewallsFirewallArrayOutput
 	return o
 }
 
+func (o GetVpcFirewallsFirewallArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallsFirewall] {
+	return pulumix.Output[[]GetVpcFirewallsFirewall]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetVpcFirewallsFirewallArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallsFirewallOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcFirewallsFirewall {
 		return vs[0].([]GetVpcFirewallsFirewall)[vs[1].(int)]
@@ -3914,6 +4471,12 @@ func (i GetVpcFirewallsFirewallLocalVpcArgs) ToGetVpcFirewallsFirewallLocalVpcOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallLocalVpcOutput)
 }
 
+func (i GetVpcFirewallsFirewallLocalVpcArgs) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallsFirewallLocalVpc] {
+	return pulumix.Output[GetVpcFirewallsFirewallLocalVpc]{
+		OutputState: i.ToGetVpcFirewallsFirewallLocalVpcOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetVpcFirewallsFirewallLocalVpcArrayInput is an input type that accepts GetVpcFirewallsFirewallLocalVpcArray and GetVpcFirewallsFirewallLocalVpcArrayOutput values.
 // You can construct a concrete instance of `GetVpcFirewallsFirewallLocalVpcArrayInput` via:
 //
@@ -3939,6 +4502,12 @@ func (i GetVpcFirewallsFirewallLocalVpcArray) ToGetVpcFirewallsFirewallLocalVpcA
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallLocalVpcArrayOutput)
 }
 
+func (i GetVpcFirewallsFirewallLocalVpcArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallsFirewallLocalVpc] {
+	return pulumix.Output[[]GetVpcFirewallsFirewallLocalVpc]{
+		OutputState: i.ToGetVpcFirewallsFirewallLocalVpcArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetVpcFirewallsFirewallLocalVpcOutput struct{ *pulumi.OutputState }
 
 func (GetVpcFirewallsFirewallLocalVpcOutput) ElementType() reflect.Type {
@@ -3951,6 +4520,12 @@ func (o GetVpcFirewallsFirewallLocalVpcOutput) ToGetVpcFirewallsFirewallLocalVpc
 
 func (o GetVpcFirewallsFirewallLocalVpcOutput) ToGetVpcFirewallsFirewallLocalVpcOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallLocalVpcOutput {
 	return o
+}
+
+func (o GetVpcFirewallsFirewallLocalVpcOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallsFirewallLocalVpc] {
+	return pulumix.Output[GetVpcFirewallsFirewallLocalVpc]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetVpcFirewallsFirewallLocalVpcOutput) EniId() pulumi.StringOutput {
@@ -4001,6 +4576,12 @@ func (o GetVpcFirewallsFirewallLocalVpcArrayOutput) ToGetVpcFirewallsFirewallLoc
 	return o
 }
 
+func (o GetVpcFirewallsFirewallLocalVpcArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallsFirewallLocalVpc] {
+	return pulumix.Output[[]GetVpcFirewallsFirewallLocalVpc]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetVpcFirewallsFirewallLocalVpcArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallsFirewallLocalVpcOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcFirewallsFirewallLocalVpc {
 		return vs[0].([]GetVpcFirewallsFirewallLocalVpc)[vs[1].(int)]
@@ -4044,6 +4625,12 @@ func (i GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArgs) ToGetVpcFirewa
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput)
 }
 
+func (i GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArgs) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList] {
+	return pulumix.Output[GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList]{
+		OutputState: i.ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayInput is an input type that accepts GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArray and GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput values.
 // You can construct a concrete instance of `GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayInput` via:
 //
@@ -4069,6 +4656,12 @@ func (i GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArray) ToGetVpcFirew
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput)
 }
 
+func (i GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList] {
+	return pulumix.Output[[]GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList]{
+		OutputState: i.ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput struct{ *pulumi.OutputState }
 
 func (GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput) ElementType() reflect.Type {
@@ -4081,6 +4674,12 @@ func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput) ToGetVpcFire
 
 func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput) ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput {
 	return o
+}
+
+func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList] {
+	return pulumix.Output[GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of route entries of the local VPC.
@@ -4107,6 +4706,12 @@ func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput) ToGetVp
 
 func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput) ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput {
 	return o
+}
+
+func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList] {
+	return pulumix.Output[[]GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput {
@@ -4152,6 +4757,12 @@ func (i GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListA
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput)
 }
 
+func (i GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList] {
+	return pulumix.Output[GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList]{
+		OutputState: i.ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayInput is an input type that accepts GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArray and GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput values.
 // You can construct a concrete instance of `GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayInput` via:
 //
@@ -4177,6 +4788,12 @@ func (i GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListA
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput)
 }
 
+func (i GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList] {
+	return pulumix.Output[[]GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList]{
+		OutputState: i.ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput struct{ *pulumi.OutputState }
 
 func (GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput) ElementType() reflect.Type {
@@ -4189,6 +4806,12 @@ func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListO
 
 func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput) ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput {
 	return o
+}
+
+func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList] {
+	return pulumix.Output[GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The target network segment of the local VPC.
@@ -4217,6 +4840,12 @@ func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListA
 
 func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput) ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput {
 	return o
+}
+
+func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList] {
+	return pulumix.Output[[]GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput {
@@ -4276,6 +4905,12 @@ func (i GetVpcFirewallsFirewallPeerVpcArgs) ToGetVpcFirewallsFirewallPeerVpcOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallPeerVpcOutput)
 }
 
+func (i GetVpcFirewallsFirewallPeerVpcArgs) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallsFirewallPeerVpc] {
+	return pulumix.Output[GetVpcFirewallsFirewallPeerVpc]{
+		OutputState: i.ToGetVpcFirewallsFirewallPeerVpcOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetVpcFirewallsFirewallPeerVpcArrayInput is an input type that accepts GetVpcFirewallsFirewallPeerVpcArray and GetVpcFirewallsFirewallPeerVpcArrayOutput values.
 // You can construct a concrete instance of `GetVpcFirewallsFirewallPeerVpcArrayInput` via:
 //
@@ -4301,6 +4936,12 @@ func (i GetVpcFirewallsFirewallPeerVpcArray) ToGetVpcFirewallsFirewallPeerVpcArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallPeerVpcArrayOutput)
 }
 
+func (i GetVpcFirewallsFirewallPeerVpcArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallsFirewallPeerVpc] {
+	return pulumix.Output[[]GetVpcFirewallsFirewallPeerVpc]{
+		OutputState: i.ToGetVpcFirewallsFirewallPeerVpcArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetVpcFirewallsFirewallPeerVpcOutput struct{ *pulumi.OutputState }
 
 func (GetVpcFirewallsFirewallPeerVpcOutput) ElementType() reflect.Type {
@@ -4313,6 +4954,12 @@ func (o GetVpcFirewallsFirewallPeerVpcOutput) ToGetVpcFirewallsFirewallPeerVpcOu
 
 func (o GetVpcFirewallsFirewallPeerVpcOutput) ToGetVpcFirewallsFirewallPeerVpcOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallPeerVpcOutput {
 	return o
+}
+
+func (o GetVpcFirewallsFirewallPeerVpcOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallsFirewallPeerVpc] {
+	return pulumix.Output[GetVpcFirewallsFirewallPeerVpc]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetVpcFirewallsFirewallPeerVpcOutput) EniId() pulumi.StringOutput {
@@ -4363,6 +5010,12 @@ func (o GetVpcFirewallsFirewallPeerVpcArrayOutput) ToGetVpcFirewallsFirewallPeer
 	return o
 }
 
+func (o GetVpcFirewallsFirewallPeerVpcArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallsFirewallPeerVpc] {
+	return pulumix.Output[[]GetVpcFirewallsFirewallPeerVpc]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetVpcFirewallsFirewallPeerVpcArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallsFirewallPeerVpcOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcFirewallsFirewallPeerVpc {
 		return vs[0].([]GetVpcFirewallsFirewallPeerVpc)[vs[1].(int)]
@@ -4406,6 +5059,12 @@ func (i GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArgs) ToGetVpcFirewall
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput)
 }
 
+func (i GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArgs) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList] {
+	return pulumix.Output[GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList]{
+		OutputState: i.ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayInput is an input type that accepts GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArray and GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput values.
 // You can construct a concrete instance of `GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayInput` via:
 //
@@ -4431,6 +5090,12 @@ func (i GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArray) ToGetVpcFirewal
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput)
 }
 
+func (i GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList] {
+	return pulumix.Output[[]GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList]{
+		OutputState: i.ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput struct{ *pulumi.OutputState }
 
 func (GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput) ElementType() reflect.Type {
@@ -4443,6 +5108,12 @@ func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput) ToGetVpcFirewa
 
 func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput) ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput {
 	return o
+}
+
+func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList] {
+	return pulumix.Output[GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Peer VPC route entry list information.
@@ -4469,6 +5140,12 @@ func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput) ToGetVpcF
 
 func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput) ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput {
 	return o
+}
+
+func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList] {
+	return pulumix.Output[[]GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput {
@@ -4514,6 +5191,12 @@ func (i GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput)
 }
 
+func (i GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList] {
+	return pulumix.Output[GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList]{
+		OutputState: i.ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayInput is an input type that accepts GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray and GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput values.
 // You can construct a concrete instance of `GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayInput` via:
 //
@@ -4539,6 +5222,12 @@ func (i GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArra
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput)
 }
 
+func (i GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList] {
+	return pulumix.Output[[]GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList]{
+		OutputState: i.ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput struct{ *pulumi.OutputState }
 
 func (GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput) ElementType() reflect.Type {
@@ -4551,6 +5240,12 @@ func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutp
 
 func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput) ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput {
 	return o
+}
+
+func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList] {
+	return pulumix.Output[GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The target network segment of the peer VPC.
@@ -4579,6 +5274,12 @@ func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArra
 
 func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput) ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput {
 	return o
+}
+
+func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList] {
+	return pulumix.Output[[]GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput {

@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.CR
     /// <summary>
     /// Provides a CR Chart Namespace resource.
     /// 
-    /// For information about CR Chart Namespace and how to use it, see [What is Chart Namespace](https://www.alibabacloud.com/help/doc-detail/145313.htm).
+    /// For information about CR Chart Namespace and how to use it, see [What is Chart Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createchartnamespace).
     /// 
-    /// &gt; **NOTE:** Available in v1.149.0+.
+    /// &gt; **NOTE:** Available since v1.149.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,18 +28,22 @@ namespace Pulumi.AliCloud.CR
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "example-name";
+    ///     var exampleRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance", new()
     ///     {
     ///         PaymentType = "Subscription",
     ///         Period = 1,
+    ///         RenewPeriod = 0,
+    ///         RenewalStatus = "ManualRenewal",
     ///         InstanceType = "Advanced",
-    ///         InstanceName = "name",
+    ///         InstanceName = name,
     ///     });
     /// 
-    ///     var defaultChartNamespace = new AliCloud.CR.ChartNamespace("defaultChartNamespace", new()
+    ///     var exampleChartNamespace = new AliCloud.CR.ChartNamespace("exampleChartNamespace", new()
     ///     {
-    ///         InstanceId = defaultRegistryEnterpriseInstance.Id,
-    ///         NamespaceName = "name",
+    ///         InstanceId = exampleRegistryEnterpriseInstance.Id,
+    ///         NamespaceName = name,
     ///     });
     /// 
     /// });

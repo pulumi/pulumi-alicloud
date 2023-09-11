@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Config Compliance Pack resource.
@@ -251,6 +252,12 @@ func (i *CompliancePack) ToCompliancePackOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(CompliancePackOutput)
 }
 
+func (i *CompliancePack) ToOutput(ctx context.Context) pulumix.Output[*CompliancePack] {
+	return pulumix.Output[*CompliancePack]{
+		OutputState: i.ToCompliancePackOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CompliancePackArrayInput is an input type that accepts CompliancePackArray and CompliancePackArrayOutput values.
 // You can construct a concrete instance of `CompliancePackArrayInput` via:
 //
@@ -274,6 +281,12 @@ func (i CompliancePackArray) ToCompliancePackArrayOutput() CompliancePackArrayOu
 
 func (i CompliancePackArray) ToCompliancePackArrayOutputWithContext(ctx context.Context) CompliancePackArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CompliancePackArrayOutput)
+}
+
+func (i CompliancePackArray) ToOutput(ctx context.Context) pulumix.Output[[]*CompliancePack] {
+	return pulumix.Output[[]*CompliancePack]{
+		OutputState: i.ToCompliancePackArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CompliancePackMapInput is an input type that accepts CompliancePackMap and CompliancePackMapOutput values.
@@ -301,6 +314,12 @@ func (i CompliancePackMap) ToCompliancePackMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(CompliancePackMapOutput)
 }
 
+func (i CompliancePackMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CompliancePack] {
+	return pulumix.Output[map[string]*CompliancePack]{
+		OutputState: i.ToCompliancePackMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CompliancePackOutput struct{ *pulumi.OutputState }
 
 func (CompliancePackOutput) ElementType() reflect.Type {
@@ -313,6 +332,12 @@ func (o CompliancePackOutput) ToCompliancePackOutput() CompliancePackOutput {
 
 func (o CompliancePackOutput) ToCompliancePackOutputWithContext(ctx context.Context) CompliancePackOutput {
 	return o
+}
+
+func (o CompliancePackOutput) ToOutput(ctx context.Context) pulumix.Output[*CompliancePack] {
+	return pulumix.Output[*CompliancePack]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Compliance Package Name. . **NOTE:** the `compliancePackName` supports modification since V1.146.0.
@@ -366,6 +391,12 @@ func (o CompliancePackArrayOutput) ToCompliancePackArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o CompliancePackArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CompliancePack] {
+	return pulumix.Output[[]*CompliancePack]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CompliancePackArrayOutput) Index(i pulumi.IntInput) CompliancePackOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CompliancePack {
 		return vs[0].([]*CompliancePack)[vs[1].(int)]
@@ -384,6 +415,12 @@ func (o CompliancePackMapOutput) ToCompliancePackMapOutput() CompliancePackMapOu
 
 func (o CompliancePackMapOutput) ToCompliancePackMapOutputWithContext(ctx context.Context) CompliancePackMapOutput {
 	return o
+}
+
+func (o CompliancePackMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CompliancePack] {
+	return pulumix.Output[map[string]*CompliancePack]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CompliancePackMapOutput) MapIndex(k pulumi.StringInput) CompliancePackOutput {

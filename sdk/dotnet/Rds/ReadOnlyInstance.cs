@@ -192,6 +192,16 @@ namespace Pulumi.AliCloud.Rds
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
+        /// The instance configuration type. Valid values:
+        /// - Up
+        /// - Down
+        /// - TempUpgrade
+        /// - Serverless
+        /// </summary>
+        [Output("direction")]
+        public Output<string?> Direction { get; private set; } = null!;
+
+        /// <summary>
         /// The method to change.  Default value: Immediate. Valid values:
         /// - Immediate: The change immediately takes effect.
         /// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -532,6 +542,16 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
+        /// The instance configuration type. Valid values:
+        /// - Up
+        /// - Down
+        /// - TempUpgrade
+        /// - Serverless
+        /// </summary>
+        [Input("direction")]
+        public Input<string>? Direction { get; set; }
+
+        /// <summary>
         /// The method to change.  Default value: Immediate. Valid values:
         /// - Immediate: The change immediately takes effect.
         /// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -844,6 +864,16 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// The instance configuration type. Valid values:
+        /// - Up
+        /// - Down
+        /// - TempUpgrade
+        /// - Serverless
+        /// </summary>
+        [Input("direction")]
+        public Input<string>? Direction { get; set; }
 
         /// <summary>
         /// The method to change.  Default value: Immediate. Valid values:

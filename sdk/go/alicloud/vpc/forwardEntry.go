@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a forward resource.
@@ -323,6 +324,12 @@ func (i *ForwardEntry) ToForwardEntryOutputWithContext(ctx context.Context) Forw
 	return pulumi.ToOutputWithContext(ctx, i).(ForwardEntryOutput)
 }
 
+func (i *ForwardEntry) ToOutput(ctx context.Context) pulumix.Output[*ForwardEntry] {
+	return pulumix.Output[*ForwardEntry]{
+		OutputState: i.ToForwardEntryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ForwardEntryArrayInput is an input type that accepts ForwardEntryArray and ForwardEntryArrayOutput values.
 // You can construct a concrete instance of `ForwardEntryArrayInput` via:
 //
@@ -346,6 +353,12 @@ func (i ForwardEntryArray) ToForwardEntryArrayOutput() ForwardEntryArrayOutput {
 
 func (i ForwardEntryArray) ToForwardEntryArrayOutputWithContext(ctx context.Context) ForwardEntryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ForwardEntryArrayOutput)
+}
+
+func (i ForwardEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]*ForwardEntry] {
+	return pulumix.Output[[]*ForwardEntry]{
+		OutputState: i.ToForwardEntryArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ForwardEntryMapInput is an input type that accepts ForwardEntryMap and ForwardEntryMapOutput values.
@@ -373,6 +386,12 @@ func (i ForwardEntryMap) ToForwardEntryMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ForwardEntryMapOutput)
 }
 
+func (i ForwardEntryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ForwardEntry] {
+	return pulumix.Output[map[string]*ForwardEntry]{
+		OutputState: i.ToForwardEntryMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ForwardEntryOutput struct{ *pulumi.OutputState }
 
 func (ForwardEntryOutput) ElementType() reflect.Type {
@@ -385,6 +404,12 @@ func (o ForwardEntryOutput) ToForwardEntryOutput() ForwardEntryOutput {
 
 func (o ForwardEntryOutput) ToForwardEntryOutputWithContext(ctx context.Context) ForwardEntryOutput {
 	return o
+}
+
+func (o ForwardEntryOutput) ToOutput(ctx context.Context) pulumix.Output[*ForwardEntry] {
+	return pulumix.Output[*ForwardEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The external ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
@@ -460,6 +485,12 @@ func (o ForwardEntryArrayOutput) ToForwardEntryArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o ForwardEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ForwardEntry] {
+	return pulumix.Output[[]*ForwardEntry]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ForwardEntryArrayOutput) Index(i pulumi.IntInput) ForwardEntryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ForwardEntry {
 		return vs[0].([]*ForwardEntry)[vs[1].(int)]
@@ -478,6 +509,12 @@ func (o ForwardEntryMapOutput) ToForwardEntryMapOutput() ForwardEntryMapOutput {
 
 func (o ForwardEntryMapOutput) ToForwardEntryMapOutputWithContext(ctx context.Context) ForwardEntryMapOutput {
 	return o
+}
+
+func (o ForwardEntryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ForwardEntry] {
+	return pulumix.Output[map[string]*ForwardEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ForwardEntryMapOutput) MapIndex(k pulumi.StringInput) ForwardEntryOutput {

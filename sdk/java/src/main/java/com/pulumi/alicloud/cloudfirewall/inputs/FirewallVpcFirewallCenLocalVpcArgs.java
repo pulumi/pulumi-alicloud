@@ -78,9 +78,17 @@ public final class FirewallVpcFirewallCenLocalVpcArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.eniLists);
     }
 
+    /**
+     * The ID of the vSwitch specified when the routing mode is manual mode.
+     * 
+     */
     @Import(name="manualVswitchId")
     private @Nullable Output<String> manualVswitchId;
 
+    /**
+     * @return The ID of the vSwitch specified when the routing mode is manual mode.
+     * 
+     */
     public Optional<Output<String>> manualVswitchId() {
         return Optional.ofNullable(this.manualVswitchId);
     }
@@ -409,11 +417,23 @@ public final class FirewallVpcFirewallCenLocalVpcArgs extends com.pulumi.resourc
             return eniLists(List.of(eniLists));
         }
 
+        /**
+         * @param manualVswitchId The ID of the vSwitch specified when the routing mode is manual mode.
+         * 
+         * @return builder
+         * 
+         */
         public Builder manualVswitchId(@Nullable Output<String> manualVswitchId) {
             $.manualVswitchId = manualVswitchId;
             return this;
         }
 
+        /**
+         * @param manualVswitchId The ID of the vSwitch specified when the routing mode is manual mode.
+         * 
+         * @return builder
+         * 
+         */
         public Builder manualVswitchId(String manualVswitchId) {
             return manualVswitchId(Output.of(manualVswitchId));
         }

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -50,6 +51,12 @@ func (i DbInstanceEndpointNodeItemArgs) ToDbInstanceEndpointNodeItemOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstanceEndpointNodeItemOutput)
 }
 
+func (i DbInstanceEndpointNodeItemArgs) ToOutput(ctx context.Context) pulumix.Output[DbInstanceEndpointNodeItem] {
+	return pulumix.Output[DbInstanceEndpointNodeItem]{
+		OutputState: i.ToDbInstanceEndpointNodeItemOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DbInstanceEndpointNodeItemArrayInput is an input type that accepts DbInstanceEndpointNodeItemArray and DbInstanceEndpointNodeItemArrayOutput values.
 // You can construct a concrete instance of `DbInstanceEndpointNodeItemArrayInput` via:
 //
@@ -75,6 +82,12 @@ func (i DbInstanceEndpointNodeItemArray) ToDbInstanceEndpointNodeItemArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstanceEndpointNodeItemArrayOutput)
 }
 
+func (i DbInstanceEndpointNodeItemArray) ToOutput(ctx context.Context) pulumix.Output[[]DbInstanceEndpointNodeItem] {
+	return pulumix.Output[[]DbInstanceEndpointNodeItem]{
+		OutputState: i.ToDbInstanceEndpointNodeItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DbInstanceEndpointNodeItemOutput struct{ *pulumi.OutputState }
 
 func (DbInstanceEndpointNodeItemOutput) ElementType() reflect.Type {
@@ -87,6 +100,12 @@ func (o DbInstanceEndpointNodeItemOutput) ToDbInstanceEndpointNodeItemOutput() D
 
 func (o DbInstanceEndpointNodeItemOutput) ToDbInstanceEndpointNodeItemOutputWithContext(ctx context.Context) DbInstanceEndpointNodeItemOutput {
 	return o
+}
+
+func (o DbInstanceEndpointNodeItemOutput) ToOutput(ctx context.Context) pulumix.Output[DbInstanceEndpointNodeItem] {
+	return pulumix.Output[DbInstanceEndpointNodeItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the node.
@@ -111,6 +130,12 @@ func (o DbInstanceEndpointNodeItemArrayOutput) ToDbInstanceEndpointNodeItemArray
 
 func (o DbInstanceEndpointNodeItemArrayOutput) ToDbInstanceEndpointNodeItemArrayOutputWithContext(ctx context.Context) DbInstanceEndpointNodeItemArrayOutput {
 	return o
+}
+
+func (o DbInstanceEndpointNodeItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DbInstanceEndpointNodeItem] {
+	return pulumix.Output[[]DbInstanceEndpointNodeItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DbInstanceEndpointNodeItemArrayOutput) Index(i pulumi.IntInput) DbInstanceEndpointNodeItemOutput {
@@ -156,6 +181,12 @@ func (i DdrInstanceParameterArgs) ToDdrInstanceParameterOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DdrInstanceParameterOutput)
 }
 
+func (i DdrInstanceParameterArgs) ToOutput(ctx context.Context) pulumix.Output[DdrInstanceParameter] {
+	return pulumix.Output[DdrInstanceParameter]{
+		OutputState: i.ToDdrInstanceParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DdrInstanceParameterArrayInput is an input type that accepts DdrInstanceParameterArray and DdrInstanceParameterArrayOutput values.
 // You can construct a concrete instance of `DdrInstanceParameterArrayInput` via:
 //
@@ -181,6 +212,12 @@ func (i DdrInstanceParameterArray) ToDdrInstanceParameterArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(DdrInstanceParameterArrayOutput)
 }
 
+func (i DdrInstanceParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]DdrInstanceParameter] {
+	return pulumix.Output[[]DdrInstanceParameter]{
+		OutputState: i.ToDdrInstanceParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DdrInstanceParameterOutput struct{ *pulumi.OutputState }
 
 func (DdrInstanceParameterOutput) ElementType() reflect.Type {
@@ -193,6 +230,12 @@ func (o DdrInstanceParameterOutput) ToDdrInstanceParameterOutput() DdrInstancePa
 
 func (o DdrInstanceParameterOutput) ToDdrInstanceParameterOutputWithContext(ctx context.Context) DdrInstanceParameterOutput {
 	return o
+}
+
+func (o DdrInstanceParameterOutput) ToOutput(ctx context.Context) pulumix.Output[DdrInstanceParameter] {
+	return pulumix.Output[DdrInstanceParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The parameter name.
@@ -217,6 +260,12 @@ func (o DdrInstanceParameterArrayOutput) ToDdrInstanceParameterArrayOutput() Ddr
 
 func (o DdrInstanceParameterArrayOutput) ToDdrInstanceParameterArrayOutputWithContext(ctx context.Context) DdrInstanceParameterArrayOutput {
 	return o
+}
+
+func (o DdrInstanceParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DdrInstanceParameter] {
+	return pulumix.Output[[]DdrInstanceParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DdrInstanceParameterArrayOutput) Index(i pulumi.IntInput) DdrInstanceParameterOutput {
@@ -296,6 +345,12 @@ func (i DdrInstancePgHbaConfArgs) ToDdrInstancePgHbaConfOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DdrInstancePgHbaConfOutput)
 }
 
+func (i DdrInstancePgHbaConfArgs) ToOutput(ctx context.Context) pulumix.Output[DdrInstancePgHbaConf] {
+	return pulumix.Output[DdrInstancePgHbaConf]{
+		OutputState: i.ToDdrInstancePgHbaConfOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DdrInstancePgHbaConfArrayInput is an input type that accepts DdrInstancePgHbaConfArray and DdrInstancePgHbaConfArrayOutput values.
 // You can construct a concrete instance of `DdrInstancePgHbaConfArrayInput` via:
 //
@@ -321,6 +376,12 @@ func (i DdrInstancePgHbaConfArray) ToDdrInstancePgHbaConfArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(DdrInstancePgHbaConfArrayOutput)
 }
 
+func (i DdrInstancePgHbaConfArray) ToOutput(ctx context.Context) pulumix.Output[[]DdrInstancePgHbaConf] {
+	return pulumix.Output[[]DdrInstancePgHbaConf]{
+		OutputState: i.ToDdrInstancePgHbaConfArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DdrInstancePgHbaConfOutput struct{ *pulumi.OutputState }
 
 func (DdrInstancePgHbaConfOutput) ElementType() reflect.Type {
@@ -333,6 +394,12 @@ func (o DdrInstancePgHbaConfOutput) ToDdrInstancePgHbaConfOutput() DdrInstancePg
 
 func (o DdrInstancePgHbaConfOutput) ToDdrInstancePgHbaConfOutputWithContext(ctx context.Context) DdrInstancePgHbaConfOutput {
 	return o
+}
+
+func (o DdrInstancePgHbaConfOutput) ToOutput(ctx context.Context) pulumix.Output[DdrInstancePgHbaConf] {
+	return pulumix.Output[DdrInstancePgHbaConf]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
@@ -394,6 +461,12 @@ func (o DdrInstancePgHbaConfArrayOutput) ToDdrInstancePgHbaConfArrayOutputWithCo
 	return o
 }
 
+func (o DdrInstancePgHbaConfArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DdrInstancePgHbaConf] {
+	return pulumix.Output[[]DdrInstancePgHbaConf]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DdrInstancePgHbaConfArrayOutput) Index(i pulumi.IntInput) DdrInstancePgHbaConfOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DdrInstancePgHbaConf {
 		return vs[0].([]DdrInstancePgHbaConf)[vs[1].(int)]
@@ -445,6 +518,12 @@ func (i InstanceBabelfishConfigArgs) ToInstanceBabelfishConfigOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceBabelfishConfigOutput)
 }
 
+func (i InstanceBabelfishConfigArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceBabelfishConfig] {
+	return pulumix.Output[InstanceBabelfishConfig]{
+		OutputState: i.ToInstanceBabelfishConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceBabelfishConfigArrayInput is an input type that accepts InstanceBabelfishConfigArray and InstanceBabelfishConfigArrayOutput values.
 // You can construct a concrete instance of `InstanceBabelfishConfigArrayInput` via:
 //
@@ -470,6 +549,12 @@ func (i InstanceBabelfishConfigArray) ToInstanceBabelfishConfigArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceBabelfishConfigArrayOutput)
 }
 
+func (i InstanceBabelfishConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceBabelfishConfig] {
+	return pulumix.Output[[]InstanceBabelfishConfig]{
+		OutputState: i.ToInstanceBabelfishConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceBabelfishConfigOutput struct{ *pulumi.OutputState }
 
 func (InstanceBabelfishConfigOutput) ElementType() reflect.Type {
@@ -482,6 +567,12 @@ func (o InstanceBabelfishConfigOutput) ToInstanceBabelfishConfigOutput() Instanc
 
 func (o InstanceBabelfishConfigOutput) ToInstanceBabelfishConfigOutputWithContext(ctx context.Context) InstanceBabelfishConfigOutput {
 	return o
+}
+
+func (o InstanceBabelfishConfigOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceBabelfishConfig] {
+	return pulumix.Output[InstanceBabelfishConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // specifies whether to enable the Babelfish for the instance. If you set this parameter to **true**, you enable Babelfish for the instance. If you leave this parameter empty, you disable Babelfish for the instance.
@@ -516,6 +607,12 @@ func (o InstanceBabelfishConfigArrayOutput) ToInstanceBabelfishConfigArrayOutput
 
 func (o InstanceBabelfishConfigArrayOutput) ToInstanceBabelfishConfigArrayOutputWithContext(ctx context.Context) InstanceBabelfishConfigArrayOutput {
 	return o
+}
+
+func (o InstanceBabelfishConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceBabelfishConfig] {
+	return pulumix.Output[[]InstanceBabelfishConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceBabelfishConfigArrayOutput) Index(i pulumi.IntInput) InstanceBabelfishConfigOutput {
@@ -561,6 +658,12 @@ func (i InstanceParameterArgs) ToInstanceParameterOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceParameterOutput)
 }
 
+func (i InstanceParameterArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceParameter] {
+	return pulumix.Output[InstanceParameter]{
+		OutputState: i.ToInstanceParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceParameterArrayInput is an input type that accepts InstanceParameterArray and InstanceParameterArrayOutput values.
 // You can construct a concrete instance of `InstanceParameterArrayInput` via:
 //
@@ -586,6 +689,12 @@ func (i InstanceParameterArray) ToInstanceParameterArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceParameterArrayOutput)
 }
 
+func (i InstanceParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceParameter] {
+	return pulumix.Output[[]InstanceParameter]{
+		OutputState: i.ToInstanceParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceParameterOutput struct{ *pulumi.OutputState }
 
 func (InstanceParameterOutput) ElementType() reflect.Type {
@@ -598,6 +707,12 @@ func (o InstanceParameterOutput) ToInstanceParameterOutput() InstanceParameterOu
 
 func (o InstanceParameterOutput) ToInstanceParameterOutputWithContext(ctx context.Context) InstanceParameterOutput {
 	return o
+}
+
+func (o InstanceParameterOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceParameter] {
+	return pulumix.Output[InstanceParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The parameter name.
@@ -622,6 +737,12 @@ func (o InstanceParameterArrayOutput) ToInstanceParameterArrayOutput() InstanceP
 
 func (o InstanceParameterArrayOutput) ToInstanceParameterArrayOutputWithContext(ctx context.Context) InstanceParameterArrayOutput {
 	return o
+}
+
+func (o InstanceParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceParameter] {
+	return pulumix.Output[[]InstanceParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceParameterArrayOutput) Index(i pulumi.IntInput) InstanceParameterOutput {
@@ -701,6 +822,12 @@ func (i InstancePgHbaConfArgs) ToInstancePgHbaConfOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(InstancePgHbaConfOutput)
 }
 
+func (i InstancePgHbaConfArgs) ToOutput(ctx context.Context) pulumix.Output[InstancePgHbaConf] {
+	return pulumix.Output[InstancePgHbaConf]{
+		OutputState: i.ToInstancePgHbaConfOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstancePgHbaConfArrayInput is an input type that accepts InstancePgHbaConfArray and InstancePgHbaConfArrayOutput values.
 // You can construct a concrete instance of `InstancePgHbaConfArrayInput` via:
 //
@@ -726,6 +853,12 @@ func (i InstancePgHbaConfArray) ToInstancePgHbaConfArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(InstancePgHbaConfArrayOutput)
 }
 
+func (i InstancePgHbaConfArray) ToOutput(ctx context.Context) pulumix.Output[[]InstancePgHbaConf] {
+	return pulumix.Output[[]InstancePgHbaConf]{
+		OutputState: i.ToInstancePgHbaConfArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstancePgHbaConfOutput struct{ *pulumi.OutputState }
 
 func (InstancePgHbaConfOutput) ElementType() reflect.Type {
@@ -738,6 +871,12 @@ func (o InstancePgHbaConfOutput) ToInstancePgHbaConfOutput() InstancePgHbaConfOu
 
 func (o InstancePgHbaConfOutput) ToInstancePgHbaConfOutputWithContext(ctx context.Context) InstancePgHbaConfOutput {
 	return o
+}
+
+func (o InstancePgHbaConfOutput) ToOutput(ctx context.Context) pulumix.Output[InstancePgHbaConf] {
+	return pulumix.Output[InstancePgHbaConf]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
@@ -797,6 +936,12 @@ func (o InstancePgHbaConfArrayOutput) ToInstancePgHbaConfArrayOutput() InstanceP
 
 func (o InstancePgHbaConfArrayOutput) ToInstancePgHbaConfArrayOutputWithContext(ctx context.Context) InstancePgHbaConfArrayOutput {
 	return o
+}
+
+func (o InstancePgHbaConfArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstancePgHbaConf] {
+	return pulumix.Output[[]InstancePgHbaConf]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstancePgHbaConfArrayOutput) Index(i pulumi.IntInput) InstancePgHbaConfOutput {
@@ -876,6 +1021,12 @@ func (i InstanceServerlessConfigArgs) ToInstanceServerlessConfigOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceServerlessConfigOutput)
 }
 
+func (i InstanceServerlessConfigArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceServerlessConfig] {
+	return pulumix.Output[InstanceServerlessConfig]{
+		OutputState: i.ToInstanceServerlessConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceServerlessConfigArrayInput is an input type that accepts InstanceServerlessConfigArray and InstanceServerlessConfigArrayOutput values.
 // You can construct a concrete instance of `InstanceServerlessConfigArrayInput` via:
 //
@@ -901,6 +1052,12 @@ func (i InstanceServerlessConfigArray) ToInstanceServerlessConfigArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceServerlessConfigArrayOutput)
 }
 
+func (i InstanceServerlessConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceServerlessConfig] {
+	return pulumix.Output[[]InstanceServerlessConfig]{
+		OutputState: i.ToInstanceServerlessConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceServerlessConfigOutput struct{ *pulumi.OutputState }
 
 func (InstanceServerlessConfigOutput) ElementType() reflect.Type {
@@ -913,6 +1070,12 @@ func (o InstanceServerlessConfigOutput) ToInstanceServerlessConfigOutput() Insta
 
 func (o InstanceServerlessConfigOutput) ToInstanceServerlessConfigOutputWithContext(ctx context.Context) InstanceServerlessConfigOutput {
 	return o
+}
+
+func (o InstanceServerlessConfigOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceServerlessConfig] {
+	return pulumix.Output[InstanceServerlessConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
@@ -962,6 +1125,12 @@ func (o InstanceServerlessConfigArrayOutput) ToInstanceServerlessConfigArrayOutp
 	return o
 }
 
+func (o InstanceServerlessConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceServerlessConfig] {
+	return pulumix.Output[[]InstanceServerlessConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceServerlessConfigArrayOutput) Index(i pulumi.IntInput) InstanceServerlessConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceServerlessConfig {
 		return vs[0].([]InstanceServerlessConfig)[vs[1].(int)]
@@ -1005,6 +1174,12 @@ func (i RdsCloneDbInstanceParameterArgs) ToRdsCloneDbInstanceParameterOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(RdsCloneDbInstanceParameterOutput)
 }
 
+func (i RdsCloneDbInstanceParameterArgs) ToOutput(ctx context.Context) pulumix.Output[RdsCloneDbInstanceParameter] {
+	return pulumix.Output[RdsCloneDbInstanceParameter]{
+		OutputState: i.ToRdsCloneDbInstanceParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RdsCloneDbInstanceParameterArrayInput is an input type that accepts RdsCloneDbInstanceParameterArray and RdsCloneDbInstanceParameterArrayOutput values.
 // You can construct a concrete instance of `RdsCloneDbInstanceParameterArrayInput` via:
 //
@@ -1030,6 +1205,12 @@ func (i RdsCloneDbInstanceParameterArray) ToRdsCloneDbInstanceParameterArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(RdsCloneDbInstanceParameterArrayOutput)
 }
 
+func (i RdsCloneDbInstanceParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]RdsCloneDbInstanceParameter] {
+	return pulumix.Output[[]RdsCloneDbInstanceParameter]{
+		OutputState: i.ToRdsCloneDbInstanceParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RdsCloneDbInstanceParameterOutput struct{ *pulumi.OutputState }
 
 func (RdsCloneDbInstanceParameterOutput) ElementType() reflect.Type {
@@ -1042,6 +1223,12 @@ func (o RdsCloneDbInstanceParameterOutput) ToRdsCloneDbInstanceParameterOutput()
 
 func (o RdsCloneDbInstanceParameterOutput) ToRdsCloneDbInstanceParameterOutputWithContext(ctx context.Context) RdsCloneDbInstanceParameterOutput {
 	return o
+}
+
+func (o RdsCloneDbInstanceParameterOutput) ToOutput(ctx context.Context) pulumix.Output[RdsCloneDbInstanceParameter] {
+	return pulumix.Output[RdsCloneDbInstanceParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The parameters name.
@@ -1066,6 +1253,12 @@ func (o RdsCloneDbInstanceParameterArrayOutput) ToRdsCloneDbInstanceParameterArr
 
 func (o RdsCloneDbInstanceParameterArrayOutput) ToRdsCloneDbInstanceParameterArrayOutputWithContext(ctx context.Context) RdsCloneDbInstanceParameterArrayOutput {
 	return o
+}
+
+func (o RdsCloneDbInstanceParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RdsCloneDbInstanceParameter] {
+	return pulumix.Output[[]RdsCloneDbInstanceParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RdsCloneDbInstanceParameterArrayOutput) Index(i pulumi.IntInput) RdsCloneDbInstanceParameterOutput {
@@ -1145,6 +1338,12 @@ func (i RdsCloneDbInstancePgHbaConfArgs) ToRdsCloneDbInstancePgHbaConfOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(RdsCloneDbInstancePgHbaConfOutput)
 }
 
+func (i RdsCloneDbInstancePgHbaConfArgs) ToOutput(ctx context.Context) pulumix.Output[RdsCloneDbInstancePgHbaConf] {
+	return pulumix.Output[RdsCloneDbInstancePgHbaConf]{
+		OutputState: i.ToRdsCloneDbInstancePgHbaConfOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RdsCloneDbInstancePgHbaConfArrayInput is an input type that accepts RdsCloneDbInstancePgHbaConfArray and RdsCloneDbInstancePgHbaConfArrayOutput values.
 // You can construct a concrete instance of `RdsCloneDbInstancePgHbaConfArrayInput` via:
 //
@@ -1170,6 +1369,12 @@ func (i RdsCloneDbInstancePgHbaConfArray) ToRdsCloneDbInstancePgHbaConfArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(RdsCloneDbInstancePgHbaConfArrayOutput)
 }
 
+func (i RdsCloneDbInstancePgHbaConfArray) ToOutput(ctx context.Context) pulumix.Output[[]RdsCloneDbInstancePgHbaConf] {
+	return pulumix.Output[[]RdsCloneDbInstancePgHbaConf]{
+		OutputState: i.ToRdsCloneDbInstancePgHbaConfArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RdsCloneDbInstancePgHbaConfOutput struct{ *pulumi.OutputState }
 
 func (RdsCloneDbInstancePgHbaConfOutput) ElementType() reflect.Type {
@@ -1182,6 +1387,12 @@ func (o RdsCloneDbInstancePgHbaConfOutput) ToRdsCloneDbInstancePgHbaConfOutput()
 
 func (o RdsCloneDbInstancePgHbaConfOutput) ToRdsCloneDbInstancePgHbaConfOutputWithContext(ctx context.Context) RdsCloneDbInstancePgHbaConfOutput {
 	return o
+}
+
+func (o RdsCloneDbInstancePgHbaConfOutput) ToOutput(ctx context.Context) pulumix.Output[RdsCloneDbInstancePgHbaConf] {
+	return pulumix.Output[RdsCloneDbInstancePgHbaConf]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
@@ -1241,6 +1452,12 @@ func (o RdsCloneDbInstancePgHbaConfArrayOutput) ToRdsCloneDbInstancePgHbaConfArr
 
 func (o RdsCloneDbInstancePgHbaConfArrayOutput) ToRdsCloneDbInstancePgHbaConfArrayOutputWithContext(ctx context.Context) RdsCloneDbInstancePgHbaConfArrayOutput {
 	return o
+}
+
+func (o RdsCloneDbInstancePgHbaConfArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RdsCloneDbInstancePgHbaConf] {
+	return pulumix.Output[[]RdsCloneDbInstancePgHbaConf]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RdsCloneDbInstancePgHbaConfArrayOutput) Index(i pulumi.IntInput) RdsCloneDbInstancePgHbaConfOutput {
@@ -1320,6 +1537,12 @@ func (i RdsCloneDbInstanceServerlessConfigArgs) ToRdsCloneDbInstanceServerlessCo
 	return pulumi.ToOutputWithContext(ctx, i).(RdsCloneDbInstanceServerlessConfigOutput)
 }
 
+func (i RdsCloneDbInstanceServerlessConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RdsCloneDbInstanceServerlessConfig] {
+	return pulumix.Output[RdsCloneDbInstanceServerlessConfig]{
+		OutputState: i.ToRdsCloneDbInstanceServerlessConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RdsCloneDbInstanceServerlessConfigArrayInput is an input type that accepts RdsCloneDbInstanceServerlessConfigArray and RdsCloneDbInstanceServerlessConfigArrayOutput values.
 // You can construct a concrete instance of `RdsCloneDbInstanceServerlessConfigArrayInput` via:
 //
@@ -1345,6 +1568,12 @@ func (i RdsCloneDbInstanceServerlessConfigArray) ToRdsCloneDbInstanceServerlessC
 	return pulumi.ToOutputWithContext(ctx, i).(RdsCloneDbInstanceServerlessConfigArrayOutput)
 }
 
+func (i RdsCloneDbInstanceServerlessConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]RdsCloneDbInstanceServerlessConfig] {
+	return pulumix.Output[[]RdsCloneDbInstanceServerlessConfig]{
+		OutputState: i.ToRdsCloneDbInstanceServerlessConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RdsCloneDbInstanceServerlessConfigOutput struct{ *pulumi.OutputState }
 
 func (RdsCloneDbInstanceServerlessConfigOutput) ElementType() reflect.Type {
@@ -1357,6 +1586,12 @@ func (o RdsCloneDbInstanceServerlessConfigOutput) ToRdsCloneDbInstanceServerless
 
 func (o RdsCloneDbInstanceServerlessConfigOutput) ToRdsCloneDbInstanceServerlessConfigOutputWithContext(ctx context.Context) RdsCloneDbInstanceServerlessConfigOutput {
 	return o
+}
+
+func (o RdsCloneDbInstanceServerlessConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RdsCloneDbInstanceServerlessConfig] {
+	return pulumix.Output[RdsCloneDbInstanceServerlessConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
@@ -1406,6 +1641,12 @@ func (o RdsCloneDbInstanceServerlessConfigArrayOutput) ToRdsCloneDbInstanceServe
 	return o
 }
 
+func (o RdsCloneDbInstanceServerlessConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RdsCloneDbInstanceServerlessConfig] {
+	return pulumix.Output[[]RdsCloneDbInstanceServerlessConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RdsCloneDbInstanceServerlessConfigArrayOutput) Index(i pulumi.IntInput) RdsCloneDbInstanceServerlessConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RdsCloneDbInstanceServerlessConfig {
 		return vs[0].([]RdsCloneDbInstanceServerlessConfig)[vs[1].(int)]
@@ -1449,6 +1690,12 @@ func (i RdsDbProxyReadOnlyInstanceWeightArgs) ToRdsDbProxyReadOnlyInstanceWeight
 	return pulumi.ToOutputWithContext(ctx, i).(RdsDbProxyReadOnlyInstanceWeightOutput)
 }
 
+func (i RdsDbProxyReadOnlyInstanceWeightArgs) ToOutput(ctx context.Context) pulumix.Output[RdsDbProxyReadOnlyInstanceWeight] {
+	return pulumix.Output[RdsDbProxyReadOnlyInstanceWeight]{
+		OutputState: i.ToRdsDbProxyReadOnlyInstanceWeightOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RdsDbProxyReadOnlyInstanceWeightArrayInput is an input type that accepts RdsDbProxyReadOnlyInstanceWeightArray and RdsDbProxyReadOnlyInstanceWeightArrayOutput values.
 // You can construct a concrete instance of `RdsDbProxyReadOnlyInstanceWeightArrayInput` via:
 //
@@ -1474,6 +1721,12 @@ func (i RdsDbProxyReadOnlyInstanceWeightArray) ToRdsDbProxyReadOnlyInstanceWeigh
 	return pulumi.ToOutputWithContext(ctx, i).(RdsDbProxyReadOnlyInstanceWeightArrayOutput)
 }
 
+func (i RdsDbProxyReadOnlyInstanceWeightArray) ToOutput(ctx context.Context) pulumix.Output[[]RdsDbProxyReadOnlyInstanceWeight] {
+	return pulumix.Output[[]RdsDbProxyReadOnlyInstanceWeight]{
+		OutputState: i.ToRdsDbProxyReadOnlyInstanceWeightArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RdsDbProxyReadOnlyInstanceWeightOutput struct{ *pulumi.OutputState }
 
 func (RdsDbProxyReadOnlyInstanceWeightOutput) ElementType() reflect.Type {
@@ -1486,6 +1739,12 @@ func (o RdsDbProxyReadOnlyInstanceWeightOutput) ToRdsDbProxyReadOnlyInstanceWeig
 
 func (o RdsDbProxyReadOnlyInstanceWeightOutput) ToRdsDbProxyReadOnlyInstanceWeightOutputWithContext(ctx context.Context) RdsDbProxyReadOnlyInstanceWeightOutput {
 	return o
+}
+
+func (o RdsDbProxyReadOnlyInstanceWeightOutput) ToOutput(ctx context.Context) pulumix.Output[RdsDbProxyReadOnlyInstanceWeight] {
+	return pulumix.Output[RdsDbProxyReadOnlyInstanceWeight]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Id of the instance and its read-only instances that can run database.
@@ -1510,6 +1769,12 @@ func (o RdsDbProxyReadOnlyInstanceWeightArrayOutput) ToRdsDbProxyReadOnlyInstanc
 
 func (o RdsDbProxyReadOnlyInstanceWeightArrayOutput) ToRdsDbProxyReadOnlyInstanceWeightArrayOutputWithContext(ctx context.Context) RdsDbProxyReadOnlyInstanceWeightArrayOutput {
 	return o
+}
+
+func (o RdsDbProxyReadOnlyInstanceWeightArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RdsDbProxyReadOnlyInstanceWeight] {
+	return pulumix.Output[[]RdsDbProxyReadOnlyInstanceWeight]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RdsDbProxyReadOnlyInstanceWeightArrayOutput) Index(i pulumi.IntInput) RdsDbProxyReadOnlyInstanceWeightOutput {
@@ -1555,6 +1820,12 @@ func (i RdsParameterGroupParamDetailArgs) ToRdsParameterGroupParamDetailOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(RdsParameterGroupParamDetailOutput)
 }
 
+func (i RdsParameterGroupParamDetailArgs) ToOutput(ctx context.Context) pulumix.Output[RdsParameterGroupParamDetail] {
+	return pulumix.Output[RdsParameterGroupParamDetail]{
+		OutputState: i.ToRdsParameterGroupParamDetailOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RdsParameterGroupParamDetailArrayInput is an input type that accepts RdsParameterGroupParamDetailArray and RdsParameterGroupParamDetailArrayOutput values.
 // You can construct a concrete instance of `RdsParameterGroupParamDetailArrayInput` via:
 //
@@ -1580,6 +1851,12 @@ func (i RdsParameterGroupParamDetailArray) ToRdsParameterGroupParamDetailArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(RdsParameterGroupParamDetailArrayOutput)
 }
 
+func (i RdsParameterGroupParamDetailArray) ToOutput(ctx context.Context) pulumix.Output[[]RdsParameterGroupParamDetail] {
+	return pulumix.Output[[]RdsParameterGroupParamDetail]{
+		OutputState: i.ToRdsParameterGroupParamDetailArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RdsParameterGroupParamDetailOutput struct{ *pulumi.OutputState }
 
 func (RdsParameterGroupParamDetailOutput) ElementType() reflect.Type {
@@ -1592,6 +1869,12 @@ func (o RdsParameterGroupParamDetailOutput) ToRdsParameterGroupParamDetailOutput
 
 func (o RdsParameterGroupParamDetailOutput) ToRdsParameterGroupParamDetailOutputWithContext(ctx context.Context) RdsParameterGroupParamDetailOutput {
 	return o
+}
+
+func (o RdsParameterGroupParamDetailOutput) ToOutput(ctx context.Context) pulumix.Output[RdsParameterGroupParamDetail] {
+	return pulumix.Output[RdsParameterGroupParamDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of a parameter.
@@ -1616,6 +1899,12 @@ func (o RdsParameterGroupParamDetailArrayOutput) ToRdsParameterGroupParamDetailA
 
 func (o RdsParameterGroupParamDetailArrayOutput) ToRdsParameterGroupParamDetailArrayOutputWithContext(ctx context.Context) RdsParameterGroupParamDetailArrayOutput {
 	return o
+}
+
+func (o RdsParameterGroupParamDetailArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RdsParameterGroupParamDetail] {
+	return pulumix.Output[[]RdsParameterGroupParamDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RdsParameterGroupParamDetailArrayOutput) Index(i pulumi.IntInput) RdsParameterGroupParamDetailOutput {
@@ -1661,6 +1950,12 @@ func (i RdsUpgradeDbInstanceParameterArgs) ToRdsUpgradeDbInstanceParameterOutput
 	return pulumi.ToOutputWithContext(ctx, i).(RdsUpgradeDbInstanceParameterOutput)
 }
 
+func (i RdsUpgradeDbInstanceParameterArgs) ToOutput(ctx context.Context) pulumix.Output[RdsUpgradeDbInstanceParameter] {
+	return pulumix.Output[RdsUpgradeDbInstanceParameter]{
+		OutputState: i.ToRdsUpgradeDbInstanceParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RdsUpgradeDbInstanceParameterArrayInput is an input type that accepts RdsUpgradeDbInstanceParameterArray and RdsUpgradeDbInstanceParameterArrayOutput values.
 // You can construct a concrete instance of `RdsUpgradeDbInstanceParameterArrayInput` via:
 //
@@ -1686,6 +1981,12 @@ func (i RdsUpgradeDbInstanceParameterArray) ToRdsUpgradeDbInstanceParameterArray
 	return pulumi.ToOutputWithContext(ctx, i).(RdsUpgradeDbInstanceParameterArrayOutput)
 }
 
+func (i RdsUpgradeDbInstanceParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]RdsUpgradeDbInstanceParameter] {
+	return pulumix.Output[[]RdsUpgradeDbInstanceParameter]{
+		OutputState: i.ToRdsUpgradeDbInstanceParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RdsUpgradeDbInstanceParameterOutput struct{ *pulumi.OutputState }
 
 func (RdsUpgradeDbInstanceParameterOutput) ElementType() reflect.Type {
@@ -1698,6 +1999,12 @@ func (o RdsUpgradeDbInstanceParameterOutput) ToRdsUpgradeDbInstanceParameterOutp
 
 func (o RdsUpgradeDbInstanceParameterOutput) ToRdsUpgradeDbInstanceParameterOutputWithContext(ctx context.Context) RdsUpgradeDbInstanceParameterOutput {
 	return o
+}
+
+func (o RdsUpgradeDbInstanceParameterOutput) ToOutput(ctx context.Context) pulumix.Output[RdsUpgradeDbInstanceParameter] {
+	return pulumix.Output[RdsUpgradeDbInstanceParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The parameter name.
@@ -1722,6 +2029,12 @@ func (o RdsUpgradeDbInstanceParameterArrayOutput) ToRdsUpgradeDbInstanceParamete
 
 func (o RdsUpgradeDbInstanceParameterArrayOutput) ToRdsUpgradeDbInstanceParameterArrayOutputWithContext(ctx context.Context) RdsUpgradeDbInstanceParameterArrayOutput {
 	return o
+}
+
+func (o RdsUpgradeDbInstanceParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RdsUpgradeDbInstanceParameter] {
+	return pulumix.Output[[]RdsUpgradeDbInstanceParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RdsUpgradeDbInstanceParameterArrayOutput) Index(i pulumi.IntInput) RdsUpgradeDbInstanceParameterOutput {
@@ -1801,6 +2114,12 @@ func (i RdsUpgradeDbInstancePgHbaConfArgs) ToRdsUpgradeDbInstancePgHbaConfOutput
 	return pulumi.ToOutputWithContext(ctx, i).(RdsUpgradeDbInstancePgHbaConfOutput)
 }
 
+func (i RdsUpgradeDbInstancePgHbaConfArgs) ToOutput(ctx context.Context) pulumix.Output[RdsUpgradeDbInstancePgHbaConf] {
+	return pulumix.Output[RdsUpgradeDbInstancePgHbaConf]{
+		OutputState: i.ToRdsUpgradeDbInstancePgHbaConfOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RdsUpgradeDbInstancePgHbaConfArrayInput is an input type that accepts RdsUpgradeDbInstancePgHbaConfArray and RdsUpgradeDbInstancePgHbaConfArrayOutput values.
 // You can construct a concrete instance of `RdsUpgradeDbInstancePgHbaConfArrayInput` via:
 //
@@ -1826,6 +2145,12 @@ func (i RdsUpgradeDbInstancePgHbaConfArray) ToRdsUpgradeDbInstancePgHbaConfArray
 	return pulumi.ToOutputWithContext(ctx, i).(RdsUpgradeDbInstancePgHbaConfArrayOutput)
 }
 
+func (i RdsUpgradeDbInstancePgHbaConfArray) ToOutput(ctx context.Context) pulumix.Output[[]RdsUpgradeDbInstancePgHbaConf] {
+	return pulumix.Output[[]RdsUpgradeDbInstancePgHbaConf]{
+		OutputState: i.ToRdsUpgradeDbInstancePgHbaConfArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RdsUpgradeDbInstancePgHbaConfOutput struct{ *pulumi.OutputState }
 
 func (RdsUpgradeDbInstancePgHbaConfOutput) ElementType() reflect.Type {
@@ -1838,6 +2163,12 @@ func (o RdsUpgradeDbInstancePgHbaConfOutput) ToRdsUpgradeDbInstancePgHbaConfOutp
 
 func (o RdsUpgradeDbInstancePgHbaConfOutput) ToRdsUpgradeDbInstancePgHbaConfOutputWithContext(ctx context.Context) RdsUpgradeDbInstancePgHbaConfOutput {
 	return o
+}
+
+func (o RdsUpgradeDbInstancePgHbaConfOutput) ToOutput(ctx context.Context) pulumix.Output[RdsUpgradeDbInstancePgHbaConf] {
+	return pulumix.Output[RdsUpgradeDbInstancePgHbaConf]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
@@ -1899,6 +2230,12 @@ func (o RdsUpgradeDbInstancePgHbaConfArrayOutput) ToRdsUpgradeDbInstancePgHbaCon
 	return o
 }
 
+func (o RdsUpgradeDbInstancePgHbaConfArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RdsUpgradeDbInstancePgHbaConf] {
+	return pulumix.Output[[]RdsUpgradeDbInstancePgHbaConf]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RdsUpgradeDbInstancePgHbaConfArrayOutput) Index(i pulumi.IntInput) RdsUpgradeDbInstancePgHbaConfOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RdsUpgradeDbInstancePgHbaConf {
 		return vs[0].([]RdsUpgradeDbInstancePgHbaConf)[vs[1].(int)]
@@ -1942,6 +2279,12 @@ func (i ReadOnlyInstanceParameterArgs) ToReadOnlyInstanceParameterOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ReadOnlyInstanceParameterOutput)
 }
 
+func (i ReadOnlyInstanceParameterArgs) ToOutput(ctx context.Context) pulumix.Output[ReadOnlyInstanceParameter] {
+	return pulumix.Output[ReadOnlyInstanceParameter]{
+		OutputState: i.ToReadOnlyInstanceParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ReadOnlyInstanceParameterArrayInput is an input type that accepts ReadOnlyInstanceParameterArray and ReadOnlyInstanceParameterArrayOutput values.
 // You can construct a concrete instance of `ReadOnlyInstanceParameterArrayInput` via:
 //
@@ -1967,6 +2310,12 @@ func (i ReadOnlyInstanceParameterArray) ToReadOnlyInstanceParameterArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ReadOnlyInstanceParameterArrayOutput)
 }
 
+func (i ReadOnlyInstanceParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]ReadOnlyInstanceParameter] {
+	return pulumix.Output[[]ReadOnlyInstanceParameter]{
+		OutputState: i.ToReadOnlyInstanceParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ReadOnlyInstanceParameterOutput struct{ *pulumi.OutputState }
 
 func (ReadOnlyInstanceParameterOutput) ElementType() reflect.Type {
@@ -1979,6 +2328,12 @@ func (o ReadOnlyInstanceParameterOutput) ToReadOnlyInstanceParameterOutput() Rea
 
 func (o ReadOnlyInstanceParameterOutput) ToReadOnlyInstanceParameterOutputWithContext(ctx context.Context) ReadOnlyInstanceParameterOutput {
 	return o
+}
+
+func (o ReadOnlyInstanceParameterOutput) ToOutput(ctx context.Context) pulumix.Output[ReadOnlyInstanceParameter] {
+	return pulumix.Output[ReadOnlyInstanceParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The parameter name.
@@ -2003,6 +2358,12 @@ func (o ReadOnlyInstanceParameterArrayOutput) ToReadOnlyInstanceParameterArrayOu
 
 func (o ReadOnlyInstanceParameterArrayOutput) ToReadOnlyInstanceParameterArrayOutputWithContext(ctx context.Context) ReadOnlyInstanceParameterArrayOutput {
 	return o
+}
+
+func (o ReadOnlyInstanceParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReadOnlyInstanceParameter] {
+	return pulumix.Output[[]ReadOnlyInstanceParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReadOnlyInstanceParameterArrayOutput) Index(i pulumi.IntInput) ReadOnlyInstanceParameterOutput {
@@ -2068,6 +2429,12 @@ func (i GetAccountsAccountArgs) ToGetAccountsAccountOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountOutput)
 }
 
+func (i GetAccountsAccountArgs) ToOutput(ctx context.Context) pulumix.Output[GetAccountsAccount] {
+	return pulumix.Output[GetAccountsAccount]{
+		OutputState: i.ToGetAccountsAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAccountsAccountArrayInput is an input type that accepts GetAccountsAccountArray and GetAccountsAccountArrayOutput values.
 // You can construct a concrete instance of `GetAccountsAccountArrayInput` via:
 //
@@ -2093,6 +2460,12 @@ func (i GetAccountsAccountArray) ToGetAccountsAccountArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountArrayOutput)
 }
 
+func (i GetAccountsAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAccountsAccount] {
+	return pulumix.Output[[]GetAccountsAccount]{
+		OutputState: i.ToGetAccountsAccountArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAccountsAccountOutput struct{ *pulumi.OutputState }
 
 func (GetAccountsAccountOutput) ElementType() reflect.Type {
@@ -2105,6 +2478,12 @@ func (o GetAccountsAccountOutput) ToGetAccountsAccountOutput() GetAccountsAccoun
 
 func (o GetAccountsAccountOutput) ToGetAccountsAccountOutputWithContext(ctx context.Context) GetAccountsAccountOutput {
 	return o
+}
+
+func (o GetAccountsAccountOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountsAccount] {
+	return pulumix.Output[GetAccountsAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Database description.
@@ -2156,6 +2535,12 @@ func (o GetAccountsAccountArrayOutput) ToGetAccountsAccountArrayOutputWithContex
 	return o
 }
 
+func (o GetAccountsAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAccountsAccount] {
+	return pulumix.Output[[]GetAccountsAccount]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetAccountsAccountOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountsAccount {
 		return vs[0].([]GetAccountsAccount)[vs[1].(int)]
@@ -2203,6 +2588,12 @@ func (i GetAccountsAccountDatabasePrivilegeArgs) ToGetAccountsAccountDatabasePri
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountDatabasePrivilegeOutput)
 }
 
+func (i GetAccountsAccountDatabasePrivilegeArgs) ToOutput(ctx context.Context) pulumix.Output[GetAccountsAccountDatabasePrivilege] {
+	return pulumix.Output[GetAccountsAccountDatabasePrivilege]{
+		OutputState: i.ToGetAccountsAccountDatabasePrivilegeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAccountsAccountDatabasePrivilegeArrayInput is an input type that accepts GetAccountsAccountDatabasePrivilegeArray and GetAccountsAccountDatabasePrivilegeArrayOutput values.
 // You can construct a concrete instance of `GetAccountsAccountDatabasePrivilegeArrayInput` via:
 //
@@ -2228,6 +2619,12 @@ func (i GetAccountsAccountDatabasePrivilegeArray) ToGetAccountsAccountDatabasePr
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountDatabasePrivilegeArrayOutput)
 }
 
+func (i GetAccountsAccountDatabasePrivilegeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAccountsAccountDatabasePrivilege] {
+	return pulumix.Output[[]GetAccountsAccountDatabasePrivilege]{
+		OutputState: i.ToGetAccountsAccountDatabasePrivilegeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAccountsAccountDatabasePrivilegeOutput struct{ *pulumi.OutputState }
 
 func (GetAccountsAccountDatabasePrivilegeOutput) ElementType() reflect.Type {
@@ -2240,6 +2637,12 @@ func (o GetAccountsAccountDatabasePrivilegeOutput) ToGetAccountsAccountDatabaseP
 
 func (o GetAccountsAccountDatabasePrivilegeOutput) ToGetAccountsAccountDatabasePrivilegeOutputWithContext(ctx context.Context) GetAccountsAccountDatabasePrivilegeOutput {
 	return o
+}
+
+func (o GetAccountsAccountDatabasePrivilegeOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountsAccountDatabasePrivilege] {
+	return pulumix.Output[GetAccountsAccountDatabasePrivilege]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of permission for the account.
@@ -2269,6 +2672,12 @@ func (o GetAccountsAccountDatabasePrivilegeArrayOutput) ToGetAccountsAccountData
 
 func (o GetAccountsAccountDatabasePrivilegeArrayOutput) ToGetAccountsAccountDatabasePrivilegeArrayOutputWithContext(ctx context.Context) GetAccountsAccountDatabasePrivilegeArrayOutput {
 	return o
+}
+
+func (o GetAccountsAccountDatabasePrivilegeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAccountsAccountDatabasePrivilege] {
+	return pulumix.Output[[]GetAccountsAccountDatabasePrivilege]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAccountsAccountDatabasePrivilegeArrayOutput) Index(i pulumi.IntInput) GetAccountsAccountDatabasePrivilegeOutput {
@@ -2318,6 +2727,12 @@ func (i GetCollationTimeZonesCollationTimeZoneArgs) ToGetCollationTimeZonesColla
 	return pulumi.ToOutputWithContext(ctx, i).(GetCollationTimeZonesCollationTimeZoneOutput)
 }
 
+func (i GetCollationTimeZonesCollationTimeZoneArgs) ToOutput(ctx context.Context) pulumix.Output[GetCollationTimeZonesCollationTimeZone] {
+	return pulumix.Output[GetCollationTimeZonesCollationTimeZone]{
+		OutputState: i.ToGetCollationTimeZonesCollationTimeZoneOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetCollationTimeZonesCollationTimeZoneArrayInput is an input type that accepts GetCollationTimeZonesCollationTimeZoneArray and GetCollationTimeZonesCollationTimeZoneArrayOutput values.
 // You can construct a concrete instance of `GetCollationTimeZonesCollationTimeZoneArrayInput` via:
 //
@@ -2343,6 +2758,12 @@ func (i GetCollationTimeZonesCollationTimeZoneArray) ToGetCollationTimeZonesColl
 	return pulumi.ToOutputWithContext(ctx, i).(GetCollationTimeZonesCollationTimeZoneArrayOutput)
 }
 
+func (i GetCollationTimeZonesCollationTimeZoneArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCollationTimeZonesCollationTimeZone] {
+	return pulumix.Output[[]GetCollationTimeZonesCollationTimeZone]{
+		OutputState: i.ToGetCollationTimeZonesCollationTimeZoneArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetCollationTimeZonesCollationTimeZoneOutput struct{ *pulumi.OutputState }
 
 func (GetCollationTimeZonesCollationTimeZoneOutput) ElementType() reflect.Type {
@@ -2355,6 +2776,12 @@ func (o GetCollationTimeZonesCollationTimeZoneOutput) ToGetCollationTimeZonesCol
 
 func (o GetCollationTimeZonesCollationTimeZoneOutput) ToGetCollationTimeZonesCollationTimeZoneOutputWithContext(ctx context.Context) GetCollationTimeZonesCollationTimeZoneOutput {
 	return o
+}
+
+func (o GetCollationTimeZonesCollationTimeZoneOutput) ToOutput(ctx context.Context) pulumix.Output[GetCollationTimeZonesCollationTimeZone] {
+	return pulumix.Output[GetCollationTimeZonesCollationTimeZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The code of the instance type.
@@ -2384,6 +2811,12 @@ func (o GetCollationTimeZonesCollationTimeZoneArrayOutput) ToGetCollationTimeZon
 
 func (o GetCollationTimeZonesCollationTimeZoneArrayOutput) ToGetCollationTimeZonesCollationTimeZoneArrayOutputWithContext(ctx context.Context) GetCollationTimeZonesCollationTimeZoneArrayOutput {
 	return o
+}
+
+func (o GetCollationTimeZonesCollationTimeZoneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCollationTimeZonesCollationTimeZone] {
+	return pulumix.Output[[]GetCollationTimeZonesCollationTimeZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetCollationTimeZonesCollationTimeZoneArrayOutput) Index(i pulumi.IntInput) GetCollationTimeZonesCollationTimeZoneOutput {
@@ -2531,6 +2964,12 @@ func (i GetCrossRegionBackupsBackupArgs) ToGetCrossRegionBackupsBackupOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetCrossRegionBackupsBackupOutput)
 }
 
+func (i GetCrossRegionBackupsBackupArgs) ToOutput(ctx context.Context) pulumix.Output[GetCrossRegionBackupsBackup] {
+	return pulumix.Output[GetCrossRegionBackupsBackup]{
+		OutputState: i.ToGetCrossRegionBackupsBackupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetCrossRegionBackupsBackupArrayInput is an input type that accepts GetCrossRegionBackupsBackupArray and GetCrossRegionBackupsBackupArrayOutput values.
 // You can construct a concrete instance of `GetCrossRegionBackupsBackupArrayInput` via:
 //
@@ -2556,6 +2995,12 @@ func (i GetCrossRegionBackupsBackupArray) ToGetCrossRegionBackupsBackupArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetCrossRegionBackupsBackupArrayOutput)
 }
 
+func (i GetCrossRegionBackupsBackupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCrossRegionBackupsBackup] {
+	return pulumix.Output[[]GetCrossRegionBackupsBackup]{
+		OutputState: i.ToGetCrossRegionBackupsBackupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetCrossRegionBackupsBackupOutput struct{ *pulumi.OutputState }
 
 func (GetCrossRegionBackupsBackupOutput) ElementType() reflect.Type {
@@ -2568,6 +3013,12 @@ func (o GetCrossRegionBackupsBackupOutput) ToGetCrossRegionBackupsBackupOutput()
 
 func (o GetCrossRegionBackupsBackupOutput) ToGetCrossRegionBackupsBackupOutputWithContext(ctx context.Context) GetCrossRegionBackupsBackupOutput {
 	return o
+}
+
+func (o GetCrossRegionBackupsBackupOutput) ToOutput(ctx context.Context) pulumix.Output[GetCrossRegionBackupsBackup] {
+	return pulumix.Output[GetCrossRegionBackupsBackup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time when the cross-region data backup file was generated.
@@ -2705,6 +3156,12 @@ func (o GetCrossRegionBackupsBackupArrayOutput) ToGetCrossRegionBackupsBackupArr
 	return o
 }
 
+func (o GetCrossRegionBackupsBackupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCrossRegionBackupsBackup] {
+	return pulumix.Output[[]GetCrossRegionBackupsBackup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetCrossRegionBackupsBackupArrayOutput) Index(i pulumi.IntInput) GetCrossRegionBackupsBackupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCrossRegionBackupsBackup {
 		return vs[0].([]GetCrossRegionBackupsBackup)[vs[1].(int)]
@@ -2744,6 +3201,12 @@ func (i GetCrossRegionsRegionArgs) ToGetCrossRegionsRegionOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetCrossRegionsRegionOutput)
 }
 
+func (i GetCrossRegionsRegionArgs) ToOutput(ctx context.Context) pulumix.Output[GetCrossRegionsRegion] {
+	return pulumix.Output[GetCrossRegionsRegion]{
+		OutputState: i.ToGetCrossRegionsRegionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetCrossRegionsRegionArrayInput is an input type that accepts GetCrossRegionsRegionArray and GetCrossRegionsRegionArrayOutput values.
 // You can construct a concrete instance of `GetCrossRegionsRegionArrayInput` via:
 //
@@ -2769,6 +3232,12 @@ func (i GetCrossRegionsRegionArray) ToGetCrossRegionsRegionArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetCrossRegionsRegionArrayOutput)
 }
 
+func (i GetCrossRegionsRegionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCrossRegionsRegion] {
+	return pulumix.Output[[]GetCrossRegionsRegion]{
+		OutputState: i.ToGetCrossRegionsRegionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetCrossRegionsRegionOutput struct{ *pulumi.OutputState }
 
 func (GetCrossRegionsRegionOutput) ElementType() reflect.Type {
@@ -2781,6 +3250,12 @@ func (o GetCrossRegionsRegionOutput) ToGetCrossRegionsRegionOutput() GetCrossReg
 
 func (o GetCrossRegionsRegionOutput) ToGetCrossRegionsRegionOutputWithContext(ctx context.Context) GetCrossRegionsRegionOutput {
 	return o
+}
+
+func (o GetCrossRegionsRegionOutput) ToOutput(ctx context.Context) pulumix.Output[GetCrossRegionsRegion] {
+	return pulumix.Output[GetCrossRegionsRegion]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID of the region.
@@ -2800,6 +3275,12 @@ func (o GetCrossRegionsRegionArrayOutput) ToGetCrossRegionsRegionArrayOutput() G
 
 func (o GetCrossRegionsRegionArrayOutput) ToGetCrossRegionsRegionArrayOutputWithContext(ctx context.Context) GetCrossRegionsRegionArrayOutput {
 	return o
+}
+
+func (o GetCrossRegionsRegionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCrossRegionsRegion] {
+	return pulumix.Output[[]GetCrossRegionsRegion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetCrossRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetCrossRegionsRegionOutput {
@@ -2873,6 +3354,12 @@ func (i GetInstanceClassInfosInfoArgs) ToGetInstanceClassInfosInfoOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceClassInfosInfoOutput)
 }
 
+func (i GetInstanceClassInfosInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceClassInfosInfo] {
+	return pulumix.Output[GetInstanceClassInfosInfo]{
+		OutputState: i.ToGetInstanceClassInfosInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstanceClassInfosInfoArrayInput is an input type that accepts GetInstanceClassInfosInfoArray and GetInstanceClassInfosInfoArrayOutput values.
 // You can construct a concrete instance of `GetInstanceClassInfosInfoArrayInput` via:
 //
@@ -2898,6 +3385,12 @@ func (i GetInstanceClassInfosInfoArray) ToGetInstanceClassInfosInfoArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceClassInfosInfoArrayOutput)
 }
 
+func (i GetInstanceClassInfosInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceClassInfosInfo] {
+	return pulumix.Output[[]GetInstanceClassInfosInfo]{
+		OutputState: i.ToGetInstanceClassInfosInfoArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstanceClassInfosInfoOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceClassInfosInfoOutput) ElementType() reflect.Type {
@@ -2910,6 +3403,12 @@ func (o GetInstanceClassInfosInfoOutput) ToGetInstanceClassInfosInfoOutput() Get
 
 func (o GetInstanceClassInfosInfoOutput) ToGetInstanceClassInfosInfoOutputWithContext(ctx context.Context) GetInstanceClassInfosInfoOutput {
 	return o
+}
+
+func (o GetInstanceClassInfosInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceClassInfosInfo] {
+	return pulumix.Output[GetInstanceClassInfosInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The code of the instance type.
@@ -2971,6 +3470,12 @@ func (o GetInstanceClassInfosInfoArrayOutput) ToGetInstanceClassInfosInfoArrayOu
 	return o
 }
 
+func (o GetInstanceClassInfosInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceClassInfosInfo] {
+	return pulumix.Output[[]GetInstanceClassInfosInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetInstanceClassInfosInfoArrayOutput) Index(i pulumi.IntInput) GetInstanceClassInfosInfoOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceClassInfosInfo {
 		return vs[0].([]GetInstanceClassInfosInfo)[vs[1].(int)]
@@ -3020,6 +3525,12 @@ func (i GetInstanceClassesInstanceClassArgs) ToGetInstanceClassesInstanceClassOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceClassesInstanceClassOutput)
 }
 
+func (i GetInstanceClassesInstanceClassArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceClassesInstanceClass] {
+	return pulumix.Output[GetInstanceClassesInstanceClass]{
+		OutputState: i.ToGetInstanceClassesInstanceClassOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstanceClassesInstanceClassArrayInput is an input type that accepts GetInstanceClassesInstanceClassArray and GetInstanceClassesInstanceClassArrayOutput values.
 // You can construct a concrete instance of `GetInstanceClassesInstanceClassArrayInput` via:
 //
@@ -3045,6 +3556,12 @@ func (i GetInstanceClassesInstanceClassArray) ToGetInstanceClassesInstanceClassA
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceClassesInstanceClassArrayOutput)
 }
 
+func (i GetInstanceClassesInstanceClassArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceClassesInstanceClass] {
+	return pulumix.Output[[]GetInstanceClassesInstanceClass]{
+		OutputState: i.ToGetInstanceClassesInstanceClassArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstanceClassesInstanceClassOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceClassesInstanceClassOutput) ElementType() reflect.Type {
@@ -3057,6 +3574,12 @@ func (o GetInstanceClassesInstanceClassOutput) ToGetInstanceClassesInstanceClass
 
 func (o GetInstanceClassesInstanceClassOutput) ToGetInstanceClassesInstanceClassOutputWithContext(ctx context.Context) GetInstanceClassesInstanceClassOutput {
 	return o
+}
+
+func (o GetInstanceClassesInstanceClassOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceClassesInstanceClass] {
+	return pulumix.Output[GetInstanceClassesInstanceClass]{
+		OutputState: o.OutputState,
+	}
 }
 
 // DB Instance available class.
@@ -3092,6 +3615,12 @@ func (o GetInstanceClassesInstanceClassArrayOutput) ToGetInstanceClassesInstance
 
 func (o GetInstanceClassesInstanceClassArrayOutput) ToGetInstanceClassesInstanceClassArrayOutputWithContext(ctx context.Context) GetInstanceClassesInstanceClassArrayOutput {
 	return o
+}
+
+func (o GetInstanceClassesInstanceClassArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceClassesInstanceClass] {
+	return pulumix.Output[[]GetInstanceClassesInstanceClass]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceClassesInstanceClassArrayOutput) Index(i pulumi.IntInput) GetInstanceClassesInstanceClassOutput {
@@ -3141,6 +3670,12 @@ func (i GetInstanceClassesInstanceClassStorageRangeArgs) ToGetInstanceClassesIns
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceClassesInstanceClassStorageRangeOutput)
 }
 
+func (i GetInstanceClassesInstanceClassStorageRangeArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceClassesInstanceClassStorageRange] {
+	return pulumix.Output[GetInstanceClassesInstanceClassStorageRange]{
+		OutputState: i.ToGetInstanceClassesInstanceClassStorageRangeOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstanceClassesInstanceClassStorageRangeOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceClassesInstanceClassStorageRangeOutput) ElementType() reflect.Type {
@@ -3153,6 +3688,12 @@ func (o GetInstanceClassesInstanceClassStorageRangeOutput) ToGetInstanceClassesI
 
 func (o GetInstanceClassesInstanceClassStorageRangeOutput) ToGetInstanceClassesInstanceClassStorageRangeOutputWithContext(ctx context.Context) GetInstanceClassesInstanceClassStorageRangeOutput {
 	return o
+}
+
+func (o GetInstanceClassesInstanceClassStorageRangeOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceClassesInstanceClassStorageRange] {
+	return pulumix.Output[GetInstanceClassesInstanceClassStorageRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 // DB Instance available storage max value.
@@ -3207,6 +3748,12 @@ func (i GetInstanceClassesInstanceClassZoneIdArgs) ToGetInstanceClassesInstanceC
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceClassesInstanceClassZoneIdOutput)
 }
 
+func (i GetInstanceClassesInstanceClassZoneIdArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceClassesInstanceClassZoneId] {
+	return pulumix.Output[GetInstanceClassesInstanceClassZoneId]{
+		OutputState: i.ToGetInstanceClassesInstanceClassZoneIdOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstanceClassesInstanceClassZoneIdArrayInput is an input type that accepts GetInstanceClassesInstanceClassZoneIdArray and GetInstanceClassesInstanceClassZoneIdArrayOutput values.
 // You can construct a concrete instance of `GetInstanceClassesInstanceClassZoneIdArrayInput` via:
 //
@@ -3232,6 +3779,12 @@ func (i GetInstanceClassesInstanceClassZoneIdArray) ToGetInstanceClassesInstance
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceClassesInstanceClassZoneIdArrayOutput)
 }
 
+func (i GetInstanceClassesInstanceClassZoneIdArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceClassesInstanceClassZoneId] {
+	return pulumix.Output[[]GetInstanceClassesInstanceClassZoneId]{
+		OutputState: i.ToGetInstanceClassesInstanceClassZoneIdArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstanceClassesInstanceClassZoneIdOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceClassesInstanceClassZoneIdOutput) ElementType() reflect.Type {
@@ -3244,6 +3797,12 @@ func (o GetInstanceClassesInstanceClassZoneIdOutput) ToGetInstanceClassesInstanc
 
 func (o GetInstanceClassesInstanceClassZoneIdOutput) ToGetInstanceClassesInstanceClassZoneIdOutputWithContext(ctx context.Context) GetInstanceClassesInstanceClassZoneIdOutput {
 	return o
+}
+
+func (o GetInstanceClassesInstanceClassZoneIdOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceClassesInstanceClassZoneId] {
+	return pulumix.Output[GetInstanceClassesInstanceClassZoneId]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Zone to launch the DB instance
@@ -3268,6 +3827,12 @@ func (o GetInstanceClassesInstanceClassZoneIdArrayOutput) ToGetInstanceClassesIn
 
 func (o GetInstanceClassesInstanceClassZoneIdArrayOutput) ToGetInstanceClassesInstanceClassZoneIdArrayOutputWithContext(ctx context.Context) GetInstanceClassesInstanceClassZoneIdArrayOutput {
 	return o
+}
+
+func (o GetInstanceClassesInstanceClassZoneIdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceClassesInstanceClassZoneId] {
+	return pulumix.Output[[]GetInstanceClassesInstanceClassZoneId]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceClassesInstanceClassZoneIdArrayOutput) Index(i pulumi.IntInput) GetInstanceClassesInstanceClassZoneIdOutput {
@@ -3321,6 +3886,12 @@ func (i GetInstanceEnginesInstanceEngineArgs) ToGetInstanceEnginesInstanceEngine
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnginesInstanceEngineOutput)
 }
 
+func (i GetInstanceEnginesInstanceEngineArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceEnginesInstanceEngine] {
+	return pulumix.Output[GetInstanceEnginesInstanceEngine]{
+		OutputState: i.ToGetInstanceEnginesInstanceEngineOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstanceEnginesInstanceEngineArrayInput is an input type that accepts GetInstanceEnginesInstanceEngineArray and GetInstanceEnginesInstanceEngineArrayOutput values.
 // You can construct a concrete instance of `GetInstanceEnginesInstanceEngineArrayInput` via:
 //
@@ -3346,6 +3917,12 @@ func (i GetInstanceEnginesInstanceEngineArray) ToGetInstanceEnginesInstanceEngin
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnginesInstanceEngineArrayOutput)
 }
 
+func (i GetInstanceEnginesInstanceEngineArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceEnginesInstanceEngine] {
+	return pulumix.Output[[]GetInstanceEnginesInstanceEngine]{
+		OutputState: i.ToGetInstanceEnginesInstanceEngineArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstanceEnginesInstanceEngineOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceEnginesInstanceEngineOutput) ElementType() reflect.Type {
@@ -3358,6 +3935,12 @@ func (o GetInstanceEnginesInstanceEngineOutput) ToGetInstanceEnginesInstanceEngi
 
 func (o GetInstanceEnginesInstanceEngineOutput) ToGetInstanceEnginesInstanceEngineOutputWithContext(ctx context.Context) GetInstanceEnginesInstanceEngineOutput {
 	return o
+}
+
+func (o GetInstanceEnginesInstanceEngineOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceEnginesInstanceEngine] {
+	return pulumix.Output[GetInstanceEnginesInstanceEngine]{
+		OutputState: o.OutputState,
+	}
 }
 
 // DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
@@ -3392,6 +3975,12 @@ func (o GetInstanceEnginesInstanceEngineArrayOutput) ToGetInstanceEnginesInstanc
 
 func (o GetInstanceEnginesInstanceEngineArrayOutput) ToGetInstanceEnginesInstanceEngineArrayOutputWithContext(ctx context.Context) GetInstanceEnginesInstanceEngineArrayOutput {
 	return o
+}
+
+func (o GetInstanceEnginesInstanceEngineArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceEnginesInstanceEngine] {
+	return pulumix.Output[[]GetInstanceEnginesInstanceEngine]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceEnginesInstanceEngineArrayOutput) Index(i pulumi.IntInput) GetInstanceEnginesInstanceEngineOutput {
@@ -3437,6 +4026,12 @@ func (i GetInstanceEnginesInstanceEngineZoneIdArgs) ToGetInstanceEnginesInstance
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnginesInstanceEngineZoneIdOutput)
 }
 
+func (i GetInstanceEnginesInstanceEngineZoneIdArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceEnginesInstanceEngineZoneId] {
+	return pulumix.Output[GetInstanceEnginesInstanceEngineZoneId]{
+		OutputState: i.ToGetInstanceEnginesInstanceEngineZoneIdOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstanceEnginesInstanceEngineZoneIdArrayInput is an input type that accepts GetInstanceEnginesInstanceEngineZoneIdArray and GetInstanceEnginesInstanceEngineZoneIdArrayOutput values.
 // You can construct a concrete instance of `GetInstanceEnginesInstanceEngineZoneIdArrayInput` via:
 //
@@ -3462,6 +4057,12 @@ func (i GetInstanceEnginesInstanceEngineZoneIdArray) ToGetInstanceEnginesInstanc
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnginesInstanceEngineZoneIdArrayOutput)
 }
 
+func (i GetInstanceEnginesInstanceEngineZoneIdArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceEnginesInstanceEngineZoneId] {
+	return pulumix.Output[[]GetInstanceEnginesInstanceEngineZoneId]{
+		OutputState: i.ToGetInstanceEnginesInstanceEngineZoneIdArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstanceEnginesInstanceEngineZoneIdOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceEnginesInstanceEngineZoneIdOutput) ElementType() reflect.Type {
@@ -3474,6 +4075,12 @@ func (o GetInstanceEnginesInstanceEngineZoneIdOutput) ToGetInstanceEnginesInstan
 
 func (o GetInstanceEnginesInstanceEngineZoneIdOutput) ToGetInstanceEnginesInstanceEngineZoneIdOutputWithContext(ctx context.Context) GetInstanceEnginesInstanceEngineZoneIdOutput {
 	return o
+}
+
+func (o GetInstanceEnginesInstanceEngineZoneIdOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceEnginesInstanceEngineZoneId] {
+	return pulumix.Output[GetInstanceEnginesInstanceEngineZoneId]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Zone to launch the DB instance
@@ -3500,6 +4107,12 @@ func (o GetInstanceEnginesInstanceEngineZoneIdArrayOutput) ToGetInstanceEnginesI
 	return o
 }
 
+func (o GetInstanceEnginesInstanceEngineZoneIdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceEnginesInstanceEngineZoneId] {
+	return pulumix.Output[[]GetInstanceEnginesInstanceEngineZoneId]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetInstanceEnginesInstanceEngineZoneIdArrayOutput) Index(i pulumi.IntInput) GetInstanceEnginesInstanceEngineZoneIdOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceEnginesInstanceEngineZoneId {
 		return vs[0].([]GetInstanceEnginesInstanceEngineZoneId)[vs[1].(int)]
@@ -3522,7 +4135,8 @@ type GetInstancesInstance struct {
 	// Billing method. Value options: `Postpaid` for Pay-As-You-Go and `Prepaid` for subscription.
 	ChargeType string `pulumi:"chargeType"`
 	// (Available in 1.124.1+) The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
-	ClientCaCert           string `pulumi:"clientCaCert"`
+	ClientCaCert string `pulumi:"clientCaCert"`
+	// (Available in 1.124.1+) The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. This parameter is not supported now.
 	ClientCaCertExpireTime string `pulumi:"clientCaCertExpireTime"`
 	// (Available in 1.124.1+) The certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
 	ClientCertRevocationList string `pulumi:"clientCertRevocationList"`
@@ -3562,6 +4176,10 @@ type GetInstancesInstance struct {
 	ExpireTime string `pulumi:"expireTime"`
 	// If a disaster recovery instance is attached to the current instance, the ID of the disaster recovery instance applies.
 	GuardInstanceId string `pulumi:"guardInstanceId"`
+	// (Available since v1.209.1) The high availability mode of the instance.
+	HaMode string `pulumi:"haMode"`
+	// (Available since v1.209.1) An array that consists of the information of the primary and secondary instances.
+	HostInstanceInfos []GetInstancesInstanceHostInstanceInfo `pulumi:"hostInstanceInfos"`
 	// The ID of the RDS instance.
 	Id string `pulumi:"id"`
 	// (Available in 1.70.3+) User-defined DB instance storage space.
@@ -3595,7 +4213,7 @@ type GetInstancesInstance struct {
 	Port string `pulumi:"port"`
 	// A list of IDs of read-only instances attached to the primary instance.
 	ReadonlyInstanceIds []string `pulumi:"readonlyInstanceIds"`
-	// Region ID the instance belongs to.
+	// The region ID of the instance.
 	RegionId string `pulumi:"regionId"`
 	// (Available in 1.124.1+) The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
 	// - cert
@@ -3631,6 +4249,8 @@ type GetInstancesInstance struct {
 	SslExpireTime string `pulumi:"sslExpireTime"`
 	// Status of the instance.
 	Status string `pulumi:"status"`
+	// (Available since v1.209.1) The data replication mode of the instance.
+	SyncMode string `pulumi:"syncMode"`
 	// If a temporary instance is attached to the current instance, the ID of the temporary instance applies.
 	TempInstanceId string `pulumi:"tempInstanceId"`
 	// Used to retrieve instances belong to specified VPC.
@@ -3670,7 +4290,8 @@ type GetInstancesInstanceArgs struct {
 	// Billing method. Value options: `Postpaid` for Pay-As-You-Go and `Prepaid` for subscription.
 	ChargeType pulumi.StringInput `pulumi:"chargeType"`
 	// (Available in 1.124.1+) The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
-	ClientCaCert           pulumi.StringInput `pulumi:"clientCaCert"`
+	ClientCaCert pulumi.StringInput `pulumi:"clientCaCert"`
+	// (Available in 1.124.1+) The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. This parameter is not supported now.
 	ClientCaCertExpireTime pulumi.StringInput `pulumi:"clientCaCertExpireTime"`
 	// (Available in 1.124.1+) The certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
 	ClientCertRevocationList pulumi.StringInput `pulumi:"clientCertRevocationList"`
@@ -3710,6 +4331,10 @@ type GetInstancesInstanceArgs struct {
 	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
 	// If a disaster recovery instance is attached to the current instance, the ID of the disaster recovery instance applies.
 	GuardInstanceId pulumi.StringInput `pulumi:"guardInstanceId"`
+	// (Available since v1.209.1) The high availability mode of the instance.
+	HaMode pulumi.StringInput `pulumi:"haMode"`
+	// (Available since v1.209.1) An array that consists of the information of the primary and secondary instances.
+	HostInstanceInfos GetInstancesInstanceHostInstanceInfoArrayInput `pulumi:"hostInstanceInfos"`
 	// The ID of the RDS instance.
 	Id pulumi.StringInput `pulumi:"id"`
 	// (Available in 1.70.3+) User-defined DB instance storage space.
@@ -3743,7 +4368,7 @@ type GetInstancesInstanceArgs struct {
 	Port pulumi.StringInput `pulumi:"port"`
 	// A list of IDs of read-only instances attached to the primary instance.
 	ReadonlyInstanceIds pulumi.StringArrayInput `pulumi:"readonlyInstanceIds"`
-	// Region ID the instance belongs to.
+	// The region ID of the instance.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
 	// (Available in 1.124.1+) The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
 	// - cert
@@ -3779,6 +4404,8 @@ type GetInstancesInstanceArgs struct {
 	SslExpireTime pulumi.StringInput `pulumi:"sslExpireTime"`
 	// Status of the instance.
 	Status pulumi.StringInput `pulumi:"status"`
+	// (Available since v1.209.1) The data replication mode of the instance.
+	SyncMode pulumi.StringInput `pulumi:"syncMode"`
 	// If a temporary instance is attached to the current instance, the ID of the temporary instance applies.
 	TempInstanceId pulumi.StringInput `pulumi:"tempInstanceId"`
 	// Used to retrieve instances belong to specified VPC.
@@ -3801,6 +4428,12 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutput() GetInstancesIns
 
 func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
+}
+
+func (i GetInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
+	return pulumix.Output[GetInstancesInstance]{
+		OutputState: i.ToGetInstancesInstanceOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
@@ -3828,6 +4461,12 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
+func (i GetInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
+	return pulumix.Output[[]GetInstancesInstance]{
+		OutputState: i.ToGetInstancesInstanceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
@@ -3840,6 +4479,12 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesI
 
 func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
 	return o
+}
+
+func (o GetInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
+	return pulumix.Output[GetInstancesInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Available in 1.124.1+) The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
@@ -3873,6 +4518,7 @@ func (o GetInstancesInstanceOutput) ClientCaCert() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ClientCaCert }).(pulumi.StringOutput)
 }
 
+// (Available in 1.124.1+) The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. This parameter is not supported now.
 func (o GetInstancesInstanceOutput) ClientCaCertExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ClientCaCertExpireTime }).(pulumi.StringOutput)
 }
@@ -3966,6 +4612,16 @@ func (o GetInstancesInstanceOutput) GuardInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.GuardInstanceId }).(pulumi.StringOutput)
 }
 
+// (Available since v1.209.1) The high availability mode of the instance.
+func (o GetInstancesInstanceOutput) HaMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.HaMode }).(pulumi.StringOutput)
+}
+
+// (Available since v1.209.1) An array that consists of the information of the primary and secondary instances.
+func (o GetInstancesInstanceOutput) HostInstanceInfos() GetInstancesInstanceHostInstanceInfoArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceHostInstanceInfo { return v.HostInstanceInfos }).(GetInstancesInstanceHostInstanceInfoArrayOutput)
+}
+
 // The ID of the RDS instance.
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
@@ -4044,7 +4700,7 @@ func (o GetInstancesInstanceOutput) ReadonlyInstanceIds() pulumi.StringArrayOutp
 	return o.ApplyT(func(v GetInstancesInstance) []string { return v.ReadonlyInstanceIds }).(pulumi.StringArrayOutput)
 }
 
-// Region ID the instance belongs to.
+// The region ID of the instance.
 func (o GetInstancesInstanceOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.RegionId }).(pulumi.StringOutput)
 }
@@ -4116,6 +4772,11 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// (Available since v1.209.1) The data replication mode of the instance.
+func (o GetInstancesInstanceOutput) SyncMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SyncMode }).(pulumi.StringOutput)
+}
+
 // If a temporary instance is attached to the current instance, the ID of the temporary instance applies.
 func (o GetInstancesInstanceOutput) TempInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.TempInstanceId }).(pulumi.StringOutput)
@@ -4155,10 +4816,191 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithCo
 	return o
 }
 
+func (o GetInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
+	return pulumix.Output[[]GetInstancesInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
 		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
 	}).(GetInstancesInstanceOutput)
+}
+
+type GetInstancesInstanceHostInstanceInfo struct {
+	// The time when the secondary instance completed the synchronization of data from the primary instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	DataSyncTime string `pulumi:"dataSyncTime"`
+	// The time when the secondary instance received logs from the primary instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	LogSyncTime string `pulumi:"logSyncTime"`
+	// The ID of the instance.
+	NodeId string `pulumi:"nodeId"`
+	// The type of the node.
+	NodeType string `pulumi:"nodeType"`
+	// The region ID of the instance.
+	RegionId string `pulumi:"regionId"`
+	// The synchronization status.
+	SyncStatus string `pulumi:"syncStatus"`
+	// The ID of the zone.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetInstancesInstanceHostInstanceInfoInput is an input type that accepts GetInstancesInstanceHostInstanceInfoArgs and GetInstancesInstanceHostInstanceInfoOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceHostInstanceInfoInput` via:
+//
+//	GetInstancesInstanceHostInstanceInfoArgs{...}
+type GetInstancesInstanceHostInstanceInfoInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceHostInstanceInfoOutput() GetInstancesInstanceHostInstanceInfoOutput
+	ToGetInstancesInstanceHostInstanceInfoOutputWithContext(context.Context) GetInstancesInstanceHostInstanceInfoOutput
+}
+
+type GetInstancesInstanceHostInstanceInfoArgs struct {
+	// The time when the secondary instance completed the synchronization of data from the primary instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	DataSyncTime pulumi.StringInput `pulumi:"dataSyncTime"`
+	// The time when the secondary instance received logs from the primary instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	LogSyncTime pulumi.StringInput `pulumi:"logSyncTime"`
+	// The ID of the instance.
+	NodeId pulumi.StringInput `pulumi:"nodeId"`
+	// The type of the node.
+	NodeType pulumi.StringInput `pulumi:"nodeType"`
+	// The region ID of the instance.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The synchronization status.
+	SyncStatus pulumi.StringInput `pulumi:"syncStatus"`
+	// The ID of the zone.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetInstancesInstanceHostInstanceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceHostInstanceInfo)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceHostInstanceInfoArgs) ToGetInstancesInstanceHostInstanceInfoOutput() GetInstancesInstanceHostInstanceInfoOutput {
+	return i.ToGetInstancesInstanceHostInstanceInfoOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceHostInstanceInfoArgs) ToGetInstancesInstanceHostInstanceInfoOutputWithContext(ctx context.Context) GetInstancesInstanceHostInstanceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceHostInstanceInfoOutput)
+}
+
+func (i GetInstancesInstanceHostInstanceInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstanceHostInstanceInfo] {
+	return pulumix.Output[GetInstancesInstanceHostInstanceInfo]{
+		OutputState: i.ToGetInstancesInstanceHostInstanceInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetInstancesInstanceHostInstanceInfoArrayInput is an input type that accepts GetInstancesInstanceHostInstanceInfoArray and GetInstancesInstanceHostInstanceInfoArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceHostInstanceInfoArrayInput` via:
+//
+//	GetInstancesInstanceHostInstanceInfoArray{ GetInstancesInstanceHostInstanceInfoArgs{...} }
+type GetInstancesInstanceHostInstanceInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceHostInstanceInfoArrayOutput() GetInstancesInstanceHostInstanceInfoArrayOutput
+	ToGetInstancesInstanceHostInstanceInfoArrayOutputWithContext(context.Context) GetInstancesInstanceHostInstanceInfoArrayOutput
+}
+
+type GetInstancesInstanceHostInstanceInfoArray []GetInstancesInstanceHostInstanceInfoInput
+
+func (GetInstancesInstanceHostInstanceInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceHostInstanceInfo)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceHostInstanceInfoArray) ToGetInstancesInstanceHostInstanceInfoArrayOutput() GetInstancesInstanceHostInstanceInfoArrayOutput {
+	return i.ToGetInstancesInstanceHostInstanceInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceHostInstanceInfoArray) ToGetInstancesInstanceHostInstanceInfoArrayOutputWithContext(ctx context.Context) GetInstancesInstanceHostInstanceInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceHostInstanceInfoArrayOutput)
+}
+
+func (i GetInstancesInstanceHostInstanceInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstanceHostInstanceInfo] {
+	return pulumix.Output[[]GetInstancesInstanceHostInstanceInfo]{
+		OutputState: i.ToGetInstancesInstanceHostInstanceInfoArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetInstancesInstanceHostInstanceInfoOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceHostInstanceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceHostInstanceInfo)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceHostInstanceInfoOutput) ToGetInstancesInstanceHostInstanceInfoOutput() GetInstancesInstanceHostInstanceInfoOutput {
+	return o
+}
+
+func (o GetInstancesInstanceHostInstanceInfoOutput) ToGetInstancesInstanceHostInstanceInfoOutputWithContext(ctx context.Context) GetInstancesInstanceHostInstanceInfoOutput {
+	return o
+}
+
+func (o GetInstancesInstanceHostInstanceInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstanceHostInstanceInfo] {
+	return pulumix.Output[GetInstancesInstanceHostInstanceInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The time when the secondary instance completed the synchronization of data from the primary instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+func (o GetInstancesInstanceHostInstanceInfoOutput) DataSyncTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceHostInstanceInfo) string { return v.DataSyncTime }).(pulumi.StringOutput)
+}
+
+// The time when the secondary instance received logs from the primary instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+func (o GetInstancesInstanceHostInstanceInfoOutput) LogSyncTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceHostInstanceInfo) string { return v.LogSyncTime }).(pulumi.StringOutput)
+}
+
+// The ID of the instance.
+func (o GetInstancesInstanceHostInstanceInfoOutput) NodeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceHostInstanceInfo) string { return v.NodeId }).(pulumi.StringOutput)
+}
+
+// The type of the node.
+func (o GetInstancesInstanceHostInstanceInfoOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceHostInstanceInfo) string { return v.NodeType }).(pulumi.StringOutput)
+}
+
+// The region ID of the instance.
+func (o GetInstancesInstanceHostInstanceInfoOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceHostInstanceInfo) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The synchronization status.
+func (o GetInstancesInstanceHostInstanceInfoOutput) SyncStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceHostInstanceInfo) string { return v.SyncStatus }).(pulumi.StringOutput)
+}
+
+// The ID of the zone.
+func (o GetInstancesInstanceHostInstanceInfoOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceHostInstanceInfo) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetInstancesInstanceHostInstanceInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceHostInstanceInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceHostInstanceInfo)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceHostInstanceInfoArrayOutput) ToGetInstancesInstanceHostInstanceInfoArrayOutput() GetInstancesInstanceHostInstanceInfoArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceHostInstanceInfoArrayOutput) ToGetInstancesInstanceHostInstanceInfoArrayOutputWithContext(ctx context.Context) GetInstancesInstanceHostInstanceInfoArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceHostInstanceInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstanceHostInstanceInfo] {
+	return pulumix.Output[[]GetInstancesInstanceHostInstanceInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetInstancesInstanceHostInstanceInfoArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceHostInstanceInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstanceHostInstanceInfo {
+		return vs[0].([]GetInstancesInstanceHostInstanceInfo)[vs[1].(int)]
+	}).(GetInstancesInstanceHostInstanceInfoOutput)
 }
 
 type GetInstancesInstanceParameter struct {
@@ -4214,6 +5056,12 @@ func (i GetInstancesInstanceParameterArgs) ToGetInstancesInstanceParameterOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceParameterOutput)
 }
 
+func (i GetInstancesInstanceParameterArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstanceParameter] {
+	return pulumix.Output[GetInstancesInstanceParameter]{
+		OutputState: i.ToGetInstancesInstanceParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstancesInstanceParameterArrayInput is an input type that accepts GetInstancesInstanceParameterArray and GetInstancesInstanceParameterArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceParameterArrayInput` via:
 //
@@ -4239,6 +5087,12 @@ func (i GetInstancesInstanceParameterArray) ToGetInstancesInstanceParameterArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceParameterArrayOutput)
 }
 
+func (i GetInstancesInstanceParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstanceParameter] {
+	return pulumix.Output[[]GetInstancesInstanceParameter]{
+		OutputState: i.ToGetInstancesInstanceParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstancesInstanceParameterOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceParameterOutput) ElementType() reflect.Type {
@@ -4251,6 +5105,12 @@ func (o GetInstancesInstanceParameterOutput) ToGetInstancesInstanceParameterOutp
 
 func (o GetInstancesInstanceParameterOutput) ToGetInstancesInstanceParameterOutputWithContext(ctx context.Context) GetInstancesInstanceParameterOutput {
 	return o
+}
+
+func (o GetInstancesInstanceParameterOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstanceParameter] {
+	return pulumix.Output[GetInstancesInstanceParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The value range of the parameter.
@@ -4295,6 +5155,12 @@ func (o GetInstancesInstanceParameterArrayOutput) ToGetInstancesInstanceParamete
 
 func (o GetInstancesInstanceParameterArrayOutput) ToGetInstancesInstanceParameterArrayOutputWithContext(ctx context.Context) GetInstancesInstanceParameterArrayOutput {
 	return o
+}
+
+func (o GetInstancesInstanceParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstanceParameter] {
+	return pulumix.Output[[]GetInstancesInstanceParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstancesInstanceParameterArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceParameterOutput {
@@ -4356,6 +5222,12 @@ func (i GetModifyParameterLogsLogArgs) ToGetModifyParameterLogsLogOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetModifyParameterLogsLogOutput)
 }
 
+func (i GetModifyParameterLogsLogArgs) ToOutput(ctx context.Context) pulumix.Output[GetModifyParameterLogsLog] {
+	return pulumix.Output[GetModifyParameterLogsLog]{
+		OutputState: i.ToGetModifyParameterLogsLogOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetModifyParameterLogsLogArrayInput is an input type that accepts GetModifyParameterLogsLogArray and GetModifyParameterLogsLogArrayOutput values.
 // You can construct a concrete instance of `GetModifyParameterLogsLogArrayInput` via:
 //
@@ -4381,6 +5253,12 @@ func (i GetModifyParameterLogsLogArray) ToGetModifyParameterLogsLogArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetModifyParameterLogsLogArrayOutput)
 }
 
+func (i GetModifyParameterLogsLogArray) ToOutput(ctx context.Context) pulumix.Output[[]GetModifyParameterLogsLog] {
+	return pulumix.Output[[]GetModifyParameterLogsLog]{
+		OutputState: i.ToGetModifyParameterLogsLogArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetModifyParameterLogsLogOutput struct{ *pulumi.OutputState }
 
 func (GetModifyParameterLogsLogOutput) ElementType() reflect.Type {
@@ -4393,6 +5271,12 @@ func (o GetModifyParameterLogsLogOutput) ToGetModifyParameterLogsLogOutput() Get
 
 func (o GetModifyParameterLogsLogOutput) ToGetModifyParameterLogsLogOutputWithContext(ctx context.Context) GetModifyParameterLogsLogOutput {
 	return o
+}
+
+func (o GetModifyParameterLogsLogOutput) ToOutput(ctx context.Context) pulumix.Output[GetModifyParameterLogsLog] {
+	return pulumix.Output[GetModifyParameterLogsLog]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time when the parameter was reconfigured. This value is a UNIX timestamp. Unit: milliseconds.
@@ -4434,6 +5318,12 @@ func (o GetModifyParameterLogsLogArrayOutput) ToGetModifyParameterLogsLogArrayOu
 
 func (o GetModifyParameterLogsLogArrayOutput) ToGetModifyParameterLogsLogArrayOutputWithContext(ctx context.Context) GetModifyParameterLogsLogArrayOutput {
 	return o
+}
+
+func (o GetModifyParameterLogsLogArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetModifyParameterLogsLog] {
+	return pulumix.Output[[]GetModifyParameterLogsLog]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetModifyParameterLogsLogArrayOutput) Index(i pulumi.IntInput) GetModifyParameterLogsLogOutput {
@@ -4591,6 +5481,12 @@ func (i GetRdsBackupsBackupArgs) ToGetRdsBackupsBackupOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRdsBackupsBackupOutput)
 }
 
+func (i GetRdsBackupsBackupArgs) ToOutput(ctx context.Context) pulumix.Output[GetRdsBackupsBackup] {
+	return pulumix.Output[GetRdsBackupsBackup]{
+		OutputState: i.ToGetRdsBackupsBackupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRdsBackupsBackupArrayInput is an input type that accepts GetRdsBackupsBackupArray and GetRdsBackupsBackupArrayOutput values.
 // You can construct a concrete instance of `GetRdsBackupsBackupArrayInput` via:
 //
@@ -4616,6 +5512,12 @@ func (i GetRdsBackupsBackupArray) ToGetRdsBackupsBackupArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetRdsBackupsBackupArrayOutput)
 }
 
+func (i GetRdsBackupsBackupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRdsBackupsBackup] {
+	return pulumix.Output[[]GetRdsBackupsBackup]{
+		OutputState: i.ToGetRdsBackupsBackupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRdsBackupsBackupOutput struct{ *pulumi.OutputState }
 
 func (GetRdsBackupsBackupOutput) ElementType() reflect.Type {
@@ -4628,6 +5530,12 @@ func (o GetRdsBackupsBackupOutput) ToGetRdsBackupsBackupOutput() GetRdsBackupsBa
 
 func (o GetRdsBackupsBackupOutput) ToGetRdsBackupsBackupOutputWithContext(ctx context.Context) GetRdsBackupsBackupOutput {
 	return o
+}
+
+func (o GetRdsBackupsBackupOutput) ToOutput(ctx context.Context) pulumix.Output[GetRdsBackupsBackup] {
+	return pulumix.Output[GetRdsBackupsBackup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The backup download url.
@@ -4767,6 +5675,12 @@ func (o GetRdsBackupsBackupArrayOutput) ToGetRdsBackupsBackupArrayOutputWithCont
 	return o
 }
 
+func (o GetRdsBackupsBackupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRdsBackupsBackup] {
+	return pulumix.Output[[]GetRdsBackupsBackup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetRdsBackupsBackupArrayOutput) Index(i pulumi.IntInput) GetRdsBackupsBackupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRdsBackupsBackup {
 		return vs[0].([]GetRdsBackupsBackup)[vs[1].(int)]
@@ -4822,6 +5736,12 @@ func (i GetRdsParameterGroupsGroupArgs) ToGetRdsParameterGroupsGroupOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetRdsParameterGroupsGroupOutput)
 }
 
+func (i GetRdsParameterGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetRdsParameterGroupsGroup] {
+	return pulumix.Output[GetRdsParameterGroupsGroup]{
+		OutputState: i.ToGetRdsParameterGroupsGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRdsParameterGroupsGroupArrayInput is an input type that accepts GetRdsParameterGroupsGroupArray and GetRdsParameterGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetRdsParameterGroupsGroupArrayInput` via:
 //
@@ -4847,6 +5767,12 @@ func (i GetRdsParameterGroupsGroupArray) ToGetRdsParameterGroupsGroupArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetRdsParameterGroupsGroupArrayOutput)
 }
 
+func (i GetRdsParameterGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRdsParameterGroupsGroup] {
+	return pulumix.Output[[]GetRdsParameterGroupsGroup]{
+		OutputState: i.ToGetRdsParameterGroupsGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRdsParameterGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetRdsParameterGroupsGroupOutput) ElementType() reflect.Type {
@@ -4859,6 +5785,12 @@ func (o GetRdsParameterGroupsGroupOutput) ToGetRdsParameterGroupsGroupOutput() G
 
 func (o GetRdsParameterGroupsGroupOutput) ToGetRdsParameterGroupsGroupOutputWithContext(ctx context.Context) GetRdsParameterGroupsGroupOutput {
 	return o
+}
+
+func (o GetRdsParameterGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetRdsParameterGroupsGroup] {
+	return pulumix.Output[GetRdsParameterGroupsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRdsParameterGroupsGroupOutput) Engine() pulumi.StringOutput {
@@ -4915,6 +5847,12 @@ func (o GetRdsParameterGroupsGroupArrayOutput) ToGetRdsParameterGroupsGroupArray
 	return o
 }
 
+func (o GetRdsParameterGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRdsParameterGroupsGroup] {
+	return pulumix.Output[[]GetRdsParameterGroupsGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetRdsParameterGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetRdsParameterGroupsGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRdsParameterGroupsGroup {
 		return vs[0].([]GetRdsParameterGroupsGroup)[vs[1].(int)]
@@ -4954,6 +5892,12 @@ func (i GetRdsParameterGroupsGroupParamDetailArgs) ToGetRdsParameterGroupsGroupP
 	return pulumi.ToOutputWithContext(ctx, i).(GetRdsParameterGroupsGroupParamDetailOutput)
 }
 
+func (i GetRdsParameterGroupsGroupParamDetailArgs) ToOutput(ctx context.Context) pulumix.Output[GetRdsParameterGroupsGroupParamDetail] {
+	return pulumix.Output[GetRdsParameterGroupsGroupParamDetail]{
+		OutputState: i.ToGetRdsParameterGroupsGroupParamDetailOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRdsParameterGroupsGroupParamDetailArrayInput is an input type that accepts GetRdsParameterGroupsGroupParamDetailArray and GetRdsParameterGroupsGroupParamDetailArrayOutput values.
 // You can construct a concrete instance of `GetRdsParameterGroupsGroupParamDetailArrayInput` via:
 //
@@ -4979,6 +5923,12 @@ func (i GetRdsParameterGroupsGroupParamDetailArray) ToGetRdsParameterGroupsGroup
 	return pulumi.ToOutputWithContext(ctx, i).(GetRdsParameterGroupsGroupParamDetailArrayOutput)
 }
 
+func (i GetRdsParameterGroupsGroupParamDetailArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRdsParameterGroupsGroupParamDetail] {
+	return pulumix.Output[[]GetRdsParameterGroupsGroupParamDetail]{
+		OutputState: i.ToGetRdsParameterGroupsGroupParamDetailArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRdsParameterGroupsGroupParamDetailOutput struct{ *pulumi.OutputState }
 
 func (GetRdsParameterGroupsGroupParamDetailOutput) ElementType() reflect.Type {
@@ -4991,6 +5941,12 @@ func (o GetRdsParameterGroupsGroupParamDetailOutput) ToGetRdsParameterGroupsGrou
 
 func (o GetRdsParameterGroupsGroupParamDetailOutput) ToGetRdsParameterGroupsGroupParamDetailOutputWithContext(ctx context.Context) GetRdsParameterGroupsGroupParamDetailOutput {
 	return o
+}
+
+func (o GetRdsParameterGroupsGroupParamDetailOutput) ToOutput(ctx context.Context) pulumix.Output[GetRdsParameterGroupsGroupParamDetail] {
+	return pulumix.Output[GetRdsParameterGroupsGroupParamDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRdsParameterGroupsGroupParamDetailOutput) ParamName() pulumi.StringOutput {
@@ -5013,6 +5969,12 @@ func (o GetRdsParameterGroupsGroupParamDetailArrayOutput) ToGetRdsParameterGroup
 
 func (o GetRdsParameterGroupsGroupParamDetailArrayOutput) ToGetRdsParameterGroupsGroupParamDetailArrayOutputWithContext(ctx context.Context) GetRdsParameterGroupsGroupParamDetailArrayOutput {
 	return o
+}
+
+func (o GetRdsParameterGroupsGroupParamDetailArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRdsParameterGroupsGroupParamDetail] {
+	return pulumix.Output[[]GetRdsParameterGroupsGroupParamDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRdsParameterGroupsGroupParamDetailArrayOutput) Index(i pulumi.IntInput) GetRdsParameterGroupsGroupParamDetailOutput {
@@ -5078,6 +6040,12 @@ func (i GetSlotsSlotArgs) ToGetSlotsSlotOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetSlotsSlotOutput)
 }
 
+func (i GetSlotsSlotArgs) ToOutput(ctx context.Context) pulumix.Output[GetSlotsSlot] {
+	return pulumix.Output[GetSlotsSlot]{
+		OutputState: i.ToGetSlotsSlotOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetSlotsSlotArrayInput is an input type that accepts GetSlotsSlotArray and GetSlotsSlotArrayOutput values.
 // You can construct a concrete instance of `GetSlotsSlotArrayInput` via:
 //
@@ -5103,6 +6071,12 @@ func (i GetSlotsSlotArray) ToGetSlotsSlotArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetSlotsSlotArrayOutput)
 }
 
+func (i GetSlotsSlotArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSlotsSlot] {
+	return pulumix.Output[[]GetSlotsSlot]{
+		OutputState: i.ToGetSlotsSlotArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetSlotsSlotOutput struct{ *pulumi.OutputState }
 
 func (GetSlotsSlotOutput) ElementType() reflect.Type {
@@ -5115,6 +6089,12 @@ func (o GetSlotsSlotOutput) ToGetSlotsSlotOutput() GetSlotsSlotOutput {
 
 func (o GetSlotsSlotOutput) ToGetSlotsSlotOutputWithContext(ctx context.Context) GetSlotsSlotOutput {
 	return o
+}
+
+func (o GetSlotsSlotOutput) ToOutput(ctx context.Context) pulumix.Output[GetSlotsSlot] {
+	return pulumix.Output[GetSlotsSlot]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the database where Replication Slot is located.
@@ -5166,6 +6146,12 @@ func (o GetSlotsSlotArrayOutput) ToGetSlotsSlotArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o GetSlotsSlotArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSlotsSlot] {
+	return pulumix.Output[[]GetSlotsSlot]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetSlotsSlotArrayOutput) Index(i pulumi.IntInput) GetSlotsSlotOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSlotsSlot {
 		return vs[0].([]GetSlotsSlot)[vs[1].(int)]
@@ -5209,6 +6195,12 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneOutput)
 }
 
+func (i GetZonesZoneArgs) ToOutput(ctx context.Context) pulumix.Output[GetZonesZone] {
+	return pulumix.Output[GetZonesZone]{
+		OutputState: i.ToGetZonesZoneOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
@@ -5234,6 +6226,12 @@ func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
 }
 
+func (i GetZonesZoneArray) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZone] {
+	return pulumix.Output[[]GetZonesZone]{
+		OutputState: i.ToGetZonesZoneArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneOutput) ElementType() reflect.Type {
@@ -5246,6 +6244,12 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutput() GetZonesZoneOutput {
 
 func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
 	return o
+}
+
+func (o GetZonesZoneOutput) ToOutput(ctx context.Context) pulumix.Output[GetZonesZone] {
+	return pulumix.Output[GetZonesZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID of the zone.
@@ -5270,6 +6274,12 @@ func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOu
 
 func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
 	return o
+}
+
+func (o GetZonesZoneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZone] {
+	return pulumix.Output[[]GetZonesZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
@@ -5332,6 +6342,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEnginesInstanceEngineZoneIdArrayInput)(nil)).Elem(), GetInstanceEnginesInstanceEngineZoneIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceHostInstanceInfoInput)(nil)).Elem(), GetInstancesInstanceHostInstanceInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceHostInstanceInfoArrayInput)(nil)).Elem(), GetInstancesInstanceHostInstanceInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceParameterInput)(nil)).Elem(), GetInstancesInstanceParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceParameterArrayInput)(nil)).Elem(), GetInstancesInstanceParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetModifyParameterLogsLogInput)(nil)).Elem(), GetModifyParameterLogsLogArgs{})
@@ -5399,6 +6411,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceEnginesInstanceEngineZoneIdArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceHostInstanceInfoOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceHostInstanceInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceParameterOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceParameterArrayOutput{})
 	pulumi.RegisterOutputType(GetModifyParameterLogsLogOutput{})

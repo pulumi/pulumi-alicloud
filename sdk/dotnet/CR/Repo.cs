@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CR
 {
     /// <summary>
-    /// This resource will help you to manager Container Registry repositories.
+    /// This resource will help you to manager Container Registry repositories, see [What is Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository).
     /// 
-    /// &gt; **NOTE:** Available in v1.35.0+.
+    /// &gt; **NOTE:** Available since v1.35.0.
     /// 
     /// &gt; **NOTE:** You need to set your registry password in Container Registry console before use this resource.
     /// 
@@ -28,15 +28,17 @@ namespace Pulumi.AliCloud.CR
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_namespace = new AliCloud.CR.Namespace("my-namespace", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var exampleNamespace = new AliCloud.CR.Namespace("exampleNamespace", new()
     ///     {
     ///         AutoCreate = false,
     ///         DefaultVisibility = "PUBLIC",
     ///     });
     /// 
-    ///     var my_repo = new AliCloud.CR.Repo("my-repo", new()
+    ///     var exampleRepo = new AliCloud.CR.Repo("exampleRepo", new()
     ///     {
-    ///         Namespace = my_namespace.Name,
+    ///         Namespace = exampleNamespace.Name,
     ///         Summary = "this is summary of my new repo",
     ///         RepoType = "PUBLIC",
     ///         Detail = "this is a public repo",

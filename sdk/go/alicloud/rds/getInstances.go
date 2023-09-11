@@ -9,10 +9,13 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
 // Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+//
+// > **NOTE:** Available since v1.7.0+
 //
 // ## Example Usage
 //
@@ -174,6 +177,12 @@ func (o GetInstancesResultOutput) ToGetInstancesResultOutput() GetInstancesResul
 
 func (o GetInstancesResultOutput) ToGetInstancesResultOutputWithContext(ctx context.Context) GetInstancesResultOutput {
 	return o
+}
+
+func (o GetInstancesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstancesResult] {
+	return pulumix.Output[GetInstancesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // `Standard` for standard access mode and `Safe` for high security access mode.

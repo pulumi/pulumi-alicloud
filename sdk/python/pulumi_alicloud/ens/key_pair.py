@@ -100,9 +100,9 @@ class KeyPair(pulumi.CustomResource):
         """
         Provides a ENS Key Pair resource.
 
-        For information about ENS Key Pair and how to use it, see [What is Key Pair](https://help.aliyun.com/product/62684.html).
+        For information about ENS Key Pair and how to use it, see [What is Key Pair](https://www.alibabacloud.com/help/en/ens/latest/createkeypair).
 
-        > **NOTE:** Available in v1.133.0+.
+        > **NOTE:** Available since v1.133.0.
 
         ## Example Usage
 
@@ -112,9 +112,13 @@ class KeyPair(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         example = alicloud.ens.KeyPair("example",
-            key_pair_name="example_value",
-            version="example_value")
+            key_pair_name=name,
+            version="2017-11-10")
         ```
 
         ## Import
@@ -139,9 +143,9 @@ class KeyPair(pulumi.CustomResource):
         """
         Provides a ENS Key Pair resource.
 
-        For information about ENS Key Pair and how to use it, see [What is Key Pair](https://help.aliyun.com/product/62684.html).
+        For information about ENS Key Pair and how to use it, see [What is Key Pair](https://www.alibabacloud.com/help/en/ens/latest/createkeypair).
 
-        > **NOTE:** Available in v1.133.0+.
+        > **NOTE:** Available since v1.133.0.
 
         ## Example Usage
 
@@ -151,9 +155,13 @@ class KeyPair(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         example = alicloud.ens.KeyPair("example",
-            key_pair_name="example_value",
-            version="example_value")
+            key_pair_name=name,
+            version="2017-11-10")
         ```
 
         ## Import

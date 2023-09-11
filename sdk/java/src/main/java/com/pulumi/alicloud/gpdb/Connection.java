@@ -17,27 +17,29 @@ import javax.annotation.Nullable;
 /**
  * Provides a connection resource to allocate an Internet connection string for instance.
  * 
- * &gt; **NOTE:**  Available in 1.48.0+
+ * &gt; **NOTE:** Available since v1.48.0.
  * 
  * &gt; **NOTE:** Each instance will allocate a intranet connection string automatically and its prefix is instance ID.
  *  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
  * 
  * ## Example Usage
- * 
  * ```java
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.gpdb.GpdbFunctions;
+ * import com.pulumi.alicloud.gpdb.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.gpdb.Instance;
  * import com.pulumi.alicloud.gpdb.InstanceArgs;
+ * import com.pulumi.alicloud.gpdb.inputs.InstanceIpWhitelistArgs;
  * import com.pulumi.alicloud.gpdb.Connection;
  * import com.pulumi.alicloud.gpdb.ConnectionArgs;
  * import java.util.List;
@@ -54,34 +56,49 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;Gpdb&#34;);
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;gpdbConnectionBasic&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(creation)
- *             .build());
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ * 
+ *         final var defaultZones = GpdbFunctions.getZones();
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
  *             .build());
  * 
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .vswitchId(defaultSwitch.id())
- *             .engine(&#34;gpdb&#34;)
- *             .engineVersion(&#34;4.3&#34;)
- *             .instanceClass(&#34;gpdb.group.segsdx2&#34;)
- *             .instanceGroupCount(&#34;2&#34;)
+ *             .dbInstanceCategory(&#34;HighAvailability&#34;)
+ *             .dbInstanceClass(&#34;gpdb.group.segsdx1&#34;)
+ *             .dbInstanceMode(&#34;StorageElastic&#34;)
  *             .description(name)
+ *             .engine(&#34;gpdb&#34;)
+ *             .engineVersion(&#34;6.0&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *             .instanceNetworkType(&#34;VPC&#34;)
+ *             .instanceSpec(&#34;2C16G&#34;)
+ *             .masterNodeNum(1)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .privateIpAddress(&#34;1.1.1.1&#34;)
+ *             .segStorageType(&#34;cloud_essd&#34;)
+ *             .segNodeNum(4)
+ *             .storageSize(50)
+ *             .vpcId(defaultNetwork.id())
+ *             .vswitchId(defaultSwitch.id())
+ *             .ipWhitelists(InstanceIpWhitelistArgs.builder()
+ *                 .securityIpList(&#34;127.0.0.1&#34;)
+ *                 .build())
  *             .build());
  * 
  *         var defaultConnection = new Connection(&#34;defaultConnection&#34;, ConnectionArgs.builder()        
  *             .instanceId(defaultInstance.id())
- *             .connectionPrefix(&#34;testAbc&#34;)
+ *             .connectionPrefix(&#34;exampelcon&#34;)
  *             .build());
  * 
  *     }

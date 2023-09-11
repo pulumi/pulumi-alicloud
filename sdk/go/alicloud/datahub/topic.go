@@ -10,16 +10,17 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// The topic is the basic unit of Datahub data source and is used to define one kind of data or stream. It contains a set of subscriptions. You can manage the datahub source of an application by using topics. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
+// The topic is the basic unit of Datahub data source and is used to define one kind of data or stream. It contains a set of subscriptions. You can manage the datahub source of an application by using topics. [Refer to details](https://www.alibabacloud.com/help/en/datahub/latest/nerbcz).
+//
+// > **NOTE:** Available since v1.19.0.
 //
 // ## Example Usage
 //
 // # Basic Usage
 //
-// - BLob Topic
-//
 // ```go
 // package main
 //
@@ -27,53 +28,46 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/datahub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := datahub.NewTopic(ctx, "example", &datahub.TopicArgs{
-//				Comment:     pulumi.String("created by terraform"),
-//				LifeCycle:   pulumi.Int(7),
-//				ProjectName: pulumi.String("tf_datahub_project"),
-//				RecordType:  pulumi.String("BLOB"),
-//				ShardCount:  pulumi.Int(3),
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			example, err := datahub.NewProject(ctx, "example", &datahub.ProjectArgs{
+//				Comment: pulumi.String("created by terraform"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// - Tuple Topic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/datahub"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := datahub.NewTopic(ctx, "example", &datahub.TopicArgs{
-//				Comment:     pulumi.String("created by terraform"),
+//			_, err = datahub.NewTopic(ctx, "exampleBlob", &datahub.TopicArgs{
+//				ProjectName: example.Name,
+//				RecordType:  pulumi.String("BLOB"),
+//				ShardCount:  pulumi.Int(3),
 //				LifeCycle:   pulumi.Int(7),
-//				ProjectName: pulumi.String("tf_datahub_project"),
+//				Comment:     pulumi.String("created by terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datahub.NewTopic(ctx, "exampleTuple", &datahub.TopicArgs{
+//				ProjectName: example.Name,
+//				RecordType:  pulumi.String("TUPLE"),
 //				RecordSchema: pulumi.AnyMap{
 //					"bigint_field":    pulumi.Any("BIGINT"),
-//					"boolean_field":   pulumi.Any("BOOLEAN"),
-//					"double_field":    pulumi.Any("DOUBLE"),
-//					"string_field":    pulumi.Any("STRING"),
 //					"timestamp_field": pulumi.Any("TIMESTAMP"),
+//					"string_field":    pulumi.Any("STRING"),
+//					"double_field":    pulumi.Any("DOUBLE"),
+//					"boolean_field":   pulumi.Any("BOOLEAN"),
 //				},
-//				RecordType: pulumi.String("TUPLE"),
 //				ShardCount: pulumi.Int(3),
+//				LifeCycle:  pulumi.Int(7),
+//				Comment:    pulumi.String("created by terraform"),
 //			})
 //			if err != nil {
 //				return err
@@ -287,6 +281,12 @@ func (i *Topic) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TopicOutput)
 }
 
+func (i *Topic) ToOutput(ctx context.Context) pulumix.Output[*Topic] {
+	return pulumix.Output[*Topic]{
+		OutputState: i.ToTopicOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TopicArrayInput is an input type that accepts TopicArray and TopicArrayOutput values.
 // You can construct a concrete instance of `TopicArrayInput` via:
 //
@@ -310,6 +310,12 @@ func (i TopicArray) ToTopicArrayOutput() TopicArrayOutput {
 
 func (i TopicArray) ToTopicArrayOutputWithContext(ctx context.Context) TopicArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TopicArrayOutput)
+}
+
+func (i TopicArray) ToOutput(ctx context.Context) pulumix.Output[[]*Topic] {
+	return pulumix.Output[[]*Topic]{
+		OutputState: i.ToTopicArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TopicMapInput is an input type that accepts TopicMap and TopicMapOutput values.
@@ -337,6 +343,12 @@ func (i TopicMap) ToTopicMapOutputWithContext(ctx context.Context) TopicMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(TopicMapOutput)
 }
 
+func (i TopicMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Topic] {
+	return pulumix.Output[map[string]*Topic]{
+		OutputState: i.ToTopicMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TopicOutput struct{ *pulumi.OutputState }
 
 func (TopicOutput) ElementType() reflect.Type {
@@ -349,6 +361,12 @@ func (o TopicOutput) ToTopicOutput() TopicOutput {
 
 func (o TopicOutput) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 	return o
+}
+
+func (o TopicOutput) ToOutput(ctx context.Context) pulumix.Output[*Topic] {
+	return pulumix.Output[*Topic]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Comment of the datahub topic. It cannot be longer than 255 characters.
@@ -417,6 +435,12 @@ func (o TopicArrayOutput) ToTopicArrayOutputWithContext(ctx context.Context) Top
 	return o
 }
 
+func (o TopicArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Topic] {
+	return pulumix.Output[[]*Topic]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TopicArrayOutput) Index(i pulumi.IntInput) TopicOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Topic {
 		return vs[0].([]*Topic)[vs[1].(int)]
@@ -435,6 +459,12 @@ func (o TopicMapOutput) ToTopicMapOutput() TopicMapOutput {
 
 func (o TopicMapOutput) ToTopicMapOutputWithContext(ctx context.Context) TopicMapOutput {
 	return o
+}
+
+func (o TopicMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Topic] {
+	return pulumix.Output[map[string]*Topic]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TopicMapOutput) MapIndex(k pulumi.StringInput) TopicOutput {

@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ChainChainConfigRouter {
     /**
-     * @return Source node.
+     * @return Source node. See `from` below.
      * 
      */
     private @Nullable List<ChainChainConfigRouterFrom> froms;
     /**
-     * @return Destination node.
+     * @return Destination node. See `to` below.
      * 
      */
     private @Nullable List<ChainChainConfigRouterTo> tos;
 
     private ChainChainConfigRouter() {}
     /**
-     * @return Source node.
+     * @return Source node. See `from` below.
      * 
      */
     public List<ChainChainConfigRouterFrom> froms() {
         return this.froms == null ? List.of() : this.froms;
     }
     /**
-     * @return Destination node.
+     * @return Destination node. See `to` below.
      * 
      */
     public List<ChainChainConfigRouterTo> tos() {

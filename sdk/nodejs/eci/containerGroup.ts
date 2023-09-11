@@ -21,15 +21,30 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.eci.ContainerGroup("example", {
- *     containerGroupName: "tf-eci-gruop",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.eci.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.0.0.0/8",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.1.0.0/16",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneIds?.[0]),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultContainerGroup = new alicloud.eci.ContainerGroup("defaultContainerGroup", {
+ *     containerGroupName: name,
  *     cpu: 8,
  *     memory: 16,
  *     restartPolicy: "OnFailure",
- *     securityGroupId: alicloud_security_group.group.id,
- *     vswitchId: data.alicloud_vpcs["default"].vpcs[0].vswitch_ids[0],
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     vswitchId: defaultSwitch.id,
  *     tags: {
- *         TF: "create",
+ *         Created: "TF",
+ *         For: "example",
  *     },
  *     containers: [
  *         {
@@ -43,7 +58,7 @@ import * as utilities from "../utilities";
  *                 "sleep 9999",
  *             ],
  *             volumeMounts: [{
- *                 mountPath: "/tmp/test",
+ *                 mountPath: "/tmp/example",
  *                 readOnly: false,
  *                 name: "empty1",
  *             }],
@@ -52,7 +67,7 @@ import * as utilities from "../utilities";
  *                 protocol: "TCP",
  *             }],
  *             environmentVars: [{
- *                 key: "test",
+ *                 key: "name",
  *                 value: "nginx",
  *             }],
  *             livenessProbes: [{

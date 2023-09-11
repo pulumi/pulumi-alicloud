@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DCDN Er resource.
@@ -183,6 +184,12 @@ func (i *Er) ToErOutputWithContext(ctx context.Context) ErOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ErOutput)
 }
 
+func (i *Er) ToOutput(ctx context.Context) pulumix.Output[*Er] {
+	return pulumix.Output[*Er]{
+		OutputState: i.ToErOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ErArrayInput is an input type that accepts ErArray and ErArrayOutput values.
 // You can construct a concrete instance of `ErArrayInput` via:
 //
@@ -206,6 +213,12 @@ func (i ErArray) ToErArrayOutput() ErArrayOutput {
 
 func (i ErArray) ToErArrayOutputWithContext(ctx context.Context) ErArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ErArrayOutput)
+}
+
+func (i ErArray) ToOutput(ctx context.Context) pulumix.Output[[]*Er] {
+	return pulumix.Output[[]*Er]{
+		OutputState: i.ToErArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ErMapInput is an input type that accepts ErMap and ErMapOutput values.
@@ -233,6 +246,12 @@ func (i ErMap) ToErMapOutputWithContext(ctx context.Context) ErMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ErMapOutput)
 }
 
+func (i ErMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Er] {
+	return pulumix.Output[map[string]*Er]{
+		OutputState: i.ToErMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErOutput struct{ *pulumi.OutputState }
 
 func (ErOutput) ElementType() reflect.Type {
@@ -245,6 +264,12 @@ func (o ErOutput) ToErOutput() ErOutput {
 
 func (o ErOutput) ToErOutputWithContext(ctx context.Context) ErOutput {
 	return o
+}
+
+func (o ErOutput) ToOutput(ctx context.Context) pulumix.Output[*Er] {
+	return pulumix.Output[*Er]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Routine The description of the routine.
@@ -276,6 +301,12 @@ func (o ErArrayOutput) ToErArrayOutputWithContext(ctx context.Context) ErArrayOu
 	return o
 }
 
+func (o ErArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Er] {
+	return pulumix.Output[[]*Er]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ErArrayOutput) Index(i pulumi.IntInput) ErOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Er {
 		return vs[0].([]*Er)[vs[1].(int)]
@@ -294,6 +325,12 @@ func (o ErMapOutput) ToErMapOutput() ErMapOutput {
 
 func (o ErMapOutput) ToErMapOutputWithContext(ctx context.Context) ErMapOutput {
 	return o
+}
+
+func (o ErMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Er] {
+	return pulumix.Output[map[string]*Er]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErMapOutput) MapIndex(k pulumi.StringInput) ErOutput {

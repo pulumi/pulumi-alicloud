@@ -49,14 +49,14 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IP ADDRESS whitelist for the instance group list. See the following `Block db_instance_ip_array`.
+     * IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
      * 
      */
     @Import(name="dbInstanceIpArrays")
     private @Nullable Output<List<DbInstanceDbInstanceIpArrayArgs>> dbInstanceIpArrays;
 
     /**
-     * @return IP ADDRESS whitelist for the instance group list. See the following `Block db_instance_ip_array`.
+     * @return IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
      * 
      */
     public Optional<Output<List<DbInstanceDbInstanceIpArrayArgs>>> dbInstanceIpArrays() {
@@ -276,7 +276,7 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceIpArrays IP ADDRESS whitelist for the instance group list. See the following `Block db_instance_ip_array`.
+         * @param dbInstanceIpArrays IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceIpArrays IP ADDRESS whitelist for the instance group list. See the following `Block db_instance_ip_array`.
+         * @param dbInstanceIpArrays IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceIpArrays IP ADDRESS whitelist for the instance group list. See the following `Block db_instance_ip_array`.
+         * @param dbInstanceIpArrays IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
          * 
          * @return builder
          * 

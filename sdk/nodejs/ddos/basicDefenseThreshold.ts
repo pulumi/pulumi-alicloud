@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Ddos Basic Antiddos and how to use it, see [What is Defense Threshold](https://www.alibabacloud.com/help/en/ddos-protection/latest/modifydefensethreshold).
  *
- * > **NOTE:** Available in v1.168.0+.
+ * > **NOTE:** Available since v1.168.0.
  *
  * ## Example Usage
  *
@@ -19,14 +19,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.ecs.EipAddress("default", {
- *     addressName: _var.name,
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {
+ *     addressName: name,
  *     isp: "BGP",
  *     internetChargeType: "PayByBandwidth",
  *     paymentType: "PayAsYouGo",
  * });
- * const example = new alicloud.ddos.BasicDefenseThreshold("example", {
- *     instanceId: _default.id,
+ * const defaultBasicDefenseThreshold = new alicloud.ddos.BasicDefenseThreshold("defaultBasicDefenseThreshold", {
+ *     instanceId: defaultEipAddress.id,
  *     ddosType: "defense",
  *     instanceType: "eip",
  *     bps: 390,

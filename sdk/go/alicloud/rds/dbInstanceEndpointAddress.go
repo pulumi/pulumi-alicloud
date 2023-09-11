@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provide RDS cluster instance endpoint public connection resources.
@@ -171,6 +172,12 @@ func (i *DbInstanceEndpointAddress) ToDbInstanceEndpointAddressOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstanceEndpointAddressOutput)
 }
 
+func (i *DbInstanceEndpointAddress) ToOutput(ctx context.Context) pulumix.Output[*DbInstanceEndpointAddress] {
+	return pulumix.Output[*DbInstanceEndpointAddress]{
+		OutputState: i.ToDbInstanceEndpointAddressOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DbInstanceEndpointAddressArrayInput is an input type that accepts DbInstanceEndpointAddressArray and DbInstanceEndpointAddressArrayOutput values.
 // You can construct a concrete instance of `DbInstanceEndpointAddressArrayInput` via:
 //
@@ -194,6 +201,12 @@ func (i DbInstanceEndpointAddressArray) ToDbInstanceEndpointAddressArrayOutput()
 
 func (i DbInstanceEndpointAddressArray) ToDbInstanceEndpointAddressArrayOutputWithContext(ctx context.Context) DbInstanceEndpointAddressArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstanceEndpointAddressArrayOutput)
+}
+
+func (i DbInstanceEndpointAddressArray) ToOutput(ctx context.Context) pulumix.Output[[]*DbInstanceEndpointAddress] {
+	return pulumix.Output[[]*DbInstanceEndpointAddress]{
+		OutputState: i.ToDbInstanceEndpointAddressArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DbInstanceEndpointAddressMapInput is an input type that accepts DbInstanceEndpointAddressMap and DbInstanceEndpointAddressMapOutput values.
@@ -221,6 +234,12 @@ func (i DbInstanceEndpointAddressMap) ToDbInstanceEndpointAddressMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstanceEndpointAddressMapOutput)
 }
 
+func (i DbInstanceEndpointAddressMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbInstanceEndpointAddress] {
+	return pulumix.Output[map[string]*DbInstanceEndpointAddress]{
+		OutputState: i.ToDbInstanceEndpointAddressMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DbInstanceEndpointAddressOutput struct{ *pulumi.OutputState }
 
 func (DbInstanceEndpointAddressOutput) ElementType() reflect.Type {
@@ -233,6 +252,12 @@ func (o DbInstanceEndpointAddressOutput) ToDbInstanceEndpointAddressOutput() DbI
 
 func (o DbInstanceEndpointAddressOutput) ToDbInstanceEndpointAddressOutputWithContext(ctx context.Context) DbInstanceEndpointAddressOutput {
 	return o
+}
+
+func (o DbInstanceEndpointAddressOutput) ToOutput(ctx context.Context) pulumix.Output[*DbInstanceEndpointAddress] {
+	return pulumix.Output[*DbInstanceEndpointAddress]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The endpoint of the instance.
@@ -284,6 +309,12 @@ func (o DbInstanceEndpointAddressArrayOutput) ToDbInstanceEndpointAddressArrayOu
 	return o
 }
 
+func (o DbInstanceEndpointAddressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DbInstanceEndpointAddress] {
+	return pulumix.Output[[]*DbInstanceEndpointAddress]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DbInstanceEndpointAddressArrayOutput) Index(i pulumi.IntInput) DbInstanceEndpointAddressOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DbInstanceEndpointAddress {
 		return vs[0].([]*DbInstanceEndpointAddress)[vs[1].(int)]
@@ -302,6 +333,12 @@ func (o DbInstanceEndpointAddressMapOutput) ToDbInstanceEndpointAddressMapOutput
 
 func (o DbInstanceEndpointAddressMapOutput) ToDbInstanceEndpointAddressMapOutputWithContext(ctx context.Context) DbInstanceEndpointAddressMapOutput {
 	return o
+}
+
+func (o DbInstanceEndpointAddressMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbInstanceEndpointAddress] {
+	return pulumix.Output[map[string]*DbInstanceEndpointAddress]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DbInstanceEndpointAddressMapOutput) MapIndex(k pulumi.StringInput) DbInstanceEndpointAddressOutput {

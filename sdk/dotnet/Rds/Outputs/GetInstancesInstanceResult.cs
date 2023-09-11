@@ -39,6 +39,9 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// (Available in 1.124.1+) The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
         /// </summary>
         public readonly string ClientCaCert;
+        /// <summary>
+        /// (Available in 1.124.1+) The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. This parameter is not supported now.
+        /// </summary>
         public readonly string ClientCaCertExpireTime;
         /// <summary>
         /// (Available in 1.124.1+) The certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
@@ -113,6 +116,14 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// </summary>
         public readonly string GuardInstanceId;
         /// <summary>
+        /// (Available since v1.209.1) The high availability mode of the instance.
+        /// </summary>
+        public readonly string HaMode;
+        /// <summary>
+        /// (Available since v1.209.1) An array that consists of the information of the primary and secondary instances.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceHostInstanceInfoResult> HostInstanceInfos;
+        /// <summary>
         /// The ID of the RDS instance.
         /// </summary>
         public readonly string Id;
@@ -176,7 +187,7 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ReadonlyInstanceIds;
         /// <summary>
-        /// Region ID the instance belongs to.
+        /// The region ID of the instance.
         /// </summary>
         public readonly string RegionId;
         /// <summary>
@@ -235,6 +246,10 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// Status of the instance.
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// (Available since v1.209.1) The data replication mode of the instance.
+        /// </summary>
+        public readonly string SyncMode;
         /// <summary>
         /// If a temporary instance is attached to the current instance, the ID of the temporary instance applies.
         /// </summary>
@@ -304,6 +319,10 @@ namespace Pulumi.AliCloud.Rds.Outputs
 
             string guardInstanceId,
 
+            string haMode,
+
+            ImmutableArray<Outputs.GetInstancesInstanceHostInstanceInfoResult> hostInstanceInfos,
+
             string id,
 
             int instanceStorage,
@@ -358,6 +377,8 @@ namespace Pulumi.AliCloud.Rds.Outputs
 
             string status,
 
+            string syncMode,
+
             string tempInstanceId,
 
             string vpcId,
@@ -391,6 +412,8 @@ namespace Pulumi.AliCloud.Rds.Outputs
             EngineVersion = engineVersion;
             ExpireTime = expireTime;
             GuardInstanceId = guardInstanceId;
+            HaMode = haMode;
+            HostInstanceInfos = hostInstanceInfos;
             Id = id;
             InstanceStorage = instanceStorage;
             InstanceType = instanceType;
@@ -418,6 +441,7 @@ namespace Pulumi.AliCloud.Rds.Outputs
             SslEnabled = sslEnabled;
             SslExpireTime = sslExpireTime;
             Status = status;
+            SyncMode = syncMode;
             TempInstanceId = tempInstanceId;
             VpcId = vpcId;
             VswitchId = vswitchId;

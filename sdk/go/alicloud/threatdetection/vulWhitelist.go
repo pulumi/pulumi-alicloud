@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Threat Detection Vul Whitelist resource.
@@ -164,6 +165,12 @@ func (i *VulWhitelist) ToVulWhitelistOutputWithContext(ctx context.Context) VulW
 	return pulumi.ToOutputWithContext(ctx, i).(VulWhitelistOutput)
 }
 
+func (i *VulWhitelist) ToOutput(ctx context.Context) pulumix.Output[*VulWhitelist] {
+	return pulumix.Output[*VulWhitelist]{
+		OutputState: i.ToVulWhitelistOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VulWhitelistArrayInput is an input type that accepts VulWhitelistArray and VulWhitelistArrayOutput values.
 // You can construct a concrete instance of `VulWhitelistArrayInput` via:
 //
@@ -187,6 +194,12 @@ func (i VulWhitelistArray) ToVulWhitelistArrayOutput() VulWhitelistArrayOutput {
 
 func (i VulWhitelistArray) ToVulWhitelistArrayOutputWithContext(ctx context.Context) VulWhitelistArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VulWhitelistArrayOutput)
+}
+
+func (i VulWhitelistArray) ToOutput(ctx context.Context) pulumix.Output[[]*VulWhitelist] {
+	return pulumix.Output[[]*VulWhitelist]{
+		OutputState: i.ToVulWhitelistArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // VulWhitelistMapInput is an input type that accepts VulWhitelistMap and VulWhitelistMapOutput values.
@@ -214,6 +227,12 @@ func (i VulWhitelistMap) ToVulWhitelistMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(VulWhitelistMapOutput)
 }
 
+func (i VulWhitelistMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VulWhitelist] {
+	return pulumix.Output[map[string]*VulWhitelist]{
+		OutputState: i.ToVulWhitelistMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VulWhitelistOutput struct{ *pulumi.OutputState }
 
 func (VulWhitelistOutput) ElementType() reflect.Type {
@@ -226,6 +245,12 @@ func (o VulWhitelistOutput) ToVulWhitelistOutput() VulWhitelistOutput {
 
 func (o VulWhitelistOutput) ToVulWhitelistOutputWithContext(ctx context.Context) VulWhitelistOutput {
 	return o
+}
+
+func (o VulWhitelistOutput) ToOutput(ctx context.Context) pulumix.Output[*VulWhitelist] {
+	return pulumix.Output[*VulWhitelist]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Reason for adding whitelist.
@@ -257,6 +282,12 @@ func (o VulWhitelistArrayOutput) ToVulWhitelistArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o VulWhitelistArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VulWhitelist] {
+	return pulumix.Output[[]*VulWhitelist]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VulWhitelistArrayOutput) Index(i pulumi.IntInput) VulWhitelistOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VulWhitelist {
 		return vs[0].([]*VulWhitelist)[vs[1].(int)]
@@ -275,6 +306,12 @@ func (o VulWhitelistMapOutput) ToVulWhitelistMapOutput() VulWhitelistMapOutput {
 
 func (o VulWhitelistMapOutput) ToVulWhitelistMapOutputWithContext(ctx context.Context) VulWhitelistMapOutput {
 	return o
+}
+
+func (o VulWhitelistMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VulWhitelist] {
+	return pulumix.Output[map[string]*VulWhitelist]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VulWhitelistMapOutput) MapIndex(k pulumi.StringInput) VulWhitelistOutput {

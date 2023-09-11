@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -118,6 +119,12 @@ func (o GetPlaintextResultOutput) ToGetPlaintextResultOutput() GetPlaintextResul
 
 func (o GetPlaintextResultOutput) ToGetPlaintextResultOutputWithContext(ctx context.Context) GetPlaintextResultOutput {
 	return o
+}
+
+func (o GetPlaintextResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPlaintextResult] {
+	return pulumix.Output[GetPlaintextResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPlaintextResultOutput) CiphertextBlob() pulumi.StringOutput {

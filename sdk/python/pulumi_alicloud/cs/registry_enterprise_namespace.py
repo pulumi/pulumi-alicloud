@@ -165,9 +165,9 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
         """
         This resource will help you to manager Container Registry Enterprise Edition namespaces.
 
-        For information about Container Registry Enterprise Edition namespaces and how to use it, see [Create a Namespace](https://www.alibabacloud.com/help/doc-detail/145483.htm)
+        For information about Container Registry Enterprise Edition namespaces and how to use it, see [Create a Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace)
 
-        > **NOTE:** Available in v1.86.0+.
+        > **NOTE:** Available since v1.86.0.
 
         > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
 
@@ -179,10 +179,21 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        my_namespace = alicloud.cs.RegistryEnterpriseNamespace("my-namespace",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example-name"
+        example_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance",
+            payment_type="Subscription",
+            period=1,
+            renew_period=0,
+            renewal_status="ManualRenewal",
+            instance_type="Advanced",
+            instance_name=name)
+        example_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace",
+            instance_id=example_registry_enterprise_instance.id,
             auto_create=False,
-            default_visibility="PUBLIC",
-            instance_id="cri-xxx")
+            default_visibility="PUBLIC")
         ```
 
         ## Import
@@ -209,9 +220,9 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
         """
         This resource will help you to manager Container Registry Enterprise Edition namespaces.
 
-        For information about Container Registry Enterprise Edition namespaces and how to use it, see [Create a Namespace](https://www.alibabacloud.com/help/doc-detail/145483.htm)
+        For information about Container Registry Enterprise Edition namespaces and how to use it, see [Create a Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace)
 
-        > **NOTE:** Available in v1.86.0+.
+        > **NOTE:** Available since v1.86.0.
 
         > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
 
@@ -223,10 +234,21 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        my_namespace = alicloud.cs.RegistryEnterpriseNamespace("my-namespace",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example-name"
+        example_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance",
+            payment_type="Subscription",
+            period=1,
+            renew_period=0,
+            renewal_status="ManualRenewal",
+            instance_type="Advanced",
+            instance_name=name)
+        example_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace",
+            instance_id=example_registry_enterprise_instance.id,
             auto_create=False,
-            default_visibility="PUBLIC",
-            instance_id="cri-xxx")
+            default_visibility="PUBLIC")
         ```
 
         ## Import

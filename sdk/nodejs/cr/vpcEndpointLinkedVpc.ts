@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a CR Vpc Endpoint Linked Vpc resource.
  *
- * For information about CR Vpc Endpoint Linked Vpc and how to use it, see [What is Vpc Endpoint Linked Vpc](https://www.alibabacloud.com/help/en/container-registry/latest/api-doc-cr-2018-12-01-api-doc-createinstancevpcendpointlinkedvpc).
+ * For information about CR Vpc Endpoint Linked Vpc and how to use it, see [What is Vpc Endpoint Linked Vpc](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createinstancevpcendpointlinkedvpc).
  *
- * > **NOTE:** Available in v1.199.0+.
+ * > **NOTE:** Available since v1.199.0.
  *
  * ## Example Usage
  *
@@ -19,12 +19,35 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.cr.VpcEndpointLinkedVpc("default", {
- *     enableCreateDnsRecordInPvzt: true,
- *     instanceId: "your_cr_instance_id",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", {
+ *     paymentType: "Subscription",
+ *     period: 1,
+ *     renewPeriod: 0,
+ *     renewalStatus: "ManualRenewal",
+ *     instanceType: "Advanced",
+ *     instanceName: name,
+ * });
+ * const defaultVpcEndpointLinkedVpc = new alicloud.cr.VpcEndpointLinkedVpc("defaultVpcEndpointLinkedVpc", {
+ *     instanceId: defaultRegistryEnterpriseInstance.id,
+ *     vpcId: defaultNetwork.id,
+ *     vswitchId: defaultSwitch.id,
  *     moduleName: "Registry",
- *     vpcId: "your_vpc_id",
- *     vswitchId: "your_vswitch_id",
+ *     enableCreateDnsRecordInPvzt: true,
  * });
  * ```
  *

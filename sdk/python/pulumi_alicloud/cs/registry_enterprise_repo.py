@@ -246,9 +246,9 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
         """
         This resource will help you to manager Container Registry Enterprise Edition repositories.
 
-        For information about Container Registry Enterprise Edition repository and how to use it, see [Create a Repository](https://www.alibabacloud.com/help/doc-detail/145291.htm)
+        For information about Container Registry Enterprise Edition repository and how to use it, see [Create a Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository)
 
-        > **NOTE:** Available in v1.86.0+.
+        > **NOTE:** Available since v1.86.0.
 
         > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
 
@@ -260,13 +260,24 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        my_namespace = alicloud.cs.RegistryEnterpriseNamespace("my-namespace",
-            instance_id="cri-xxx",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance",
+            payment_type="Subscription",
+            period=1,
+            renew_period=0,
+            renewal_status="ManualRenewal",
+            instance_type="Advanced",
+            instance_name=name)
+        example_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace",
+            instance_id=example_registry_enterprise_instance.id,
             auto_create=False,
             default_visibility="PUBLIC")
-        my_repo = alicloud.cs.RegistryEnterpriseRepo("my-repo",
-            instance_id=my_namespace.instance_id,
-            namespace=my_namespace.name,
+        example_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("exampleRegistryEnterpriseRepo",
+            instance_id=example_registry_enterprise_instance.id,
+            namespace=example_registry_enterprise_namespace.name,
             summary="this is summary of my new repo",
             repo_type="PUBLIC",
             detail="this is a public repo")
@@ -298,9 +309,9 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
         """
         This resource will help you to manager Container Registry Enterprise Edition repositories.
 
-        For information about Container Registry Enterprise Edition repository and how to use it, see [Create a Repository](https://www.alibabacloud.com/help/doc-detail/145291.htm)
+        For information about Container Registry Enterprise Edition repository and how to use it, see [Create a Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository)
 
-        > **NOTE:** Available in v1.86.0+.
+        > **NOTE:** Available since v1.86.0.
 
         > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
 
@@ -312,13 +323,24 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        my_namespace = alicloud.cs.RegistryEnterpriseNamespace("my-namespace",
-            instance_id="cri-xxx",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance",
+            payment_type="Subscription",
+            period=1,
+            renew_period=0,
+            renewal_status="ManualRenewal",
+            instance_type="Advanced",
+            instance_name=name)
+        example_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace",
+            instance_id=example_registry_enterprise_instance.id,
             auto_create=False,
             default_visibility="PUBLIC")
-        my_repo = alicloud.cs.RegistryEnterpriseRepo("my-repo",
-            instance_id=my_namespace.instance_id,
-            namespace=my_namespace.name,
+        example_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("exampleRegistryEnterpriseRepo",
+            instance_id=example_registry_enterprise_instance.id,
+            namespace=example_registry_enterprise_namespace.name,
             summary="this is summary of my new repo",
             repo_type="PUBLIC",
             detail="this is a public repo")

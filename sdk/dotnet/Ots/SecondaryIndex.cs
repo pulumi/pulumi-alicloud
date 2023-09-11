@@ -28,13 +28,13 @@ namespace Pulumi.AliCloud.Ots
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraformtest";
-    ///     var pks = config.GetObject&lt;dynamic&gt;("pks") ?? new[]
+    ///     var pks = config.GetObject&lt;string[]&gt;("pks") ?? new[]
     ///     {
     ///         "pk1",
     ///         "pk2",
     ///         "pk3",
     ///     };
-    ///     var definedCols = config.GetObject&lt;dynamic&gt;("definedCols") ?? new[]
+    ///     var definedCols = config.GetObject&lt;string[]&gt;("definedCols") ?? new[]
     ///     {
     ///         "col1",
     ///         "col2",

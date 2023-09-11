@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Nlb Listeners of the current Alibaba Cloud user.
@@ -89,6 +90,12 @@ func (o GetListenersResultOutput) ToGetListenersResultOutput() GetListenersResul
 
 func (o GetListenersResultOutput) ToGetListenersResultOutputWithContext(ctx context.Context) GetListenersResultOutput {
 	return o
+}
+
+func (o GetListenersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetListenersResult] {
+	return pulumix.Output[GetListenersResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

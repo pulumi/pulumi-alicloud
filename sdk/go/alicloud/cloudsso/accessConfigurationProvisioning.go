@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud SSO Access Configuration Provisioning resource.
@@ -163,6 +164,12 @@ func (i *AccessConfigurationProvisioning) ToAccessConfigurationProvisioningOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(AccessConfigurationProvisioningOutput)
 }
 
+func (i *AccessConfigurationProvisioning) ToOutput(ctx context.Context) pulumix.Output[*AccessConfigurationProvisioning] {
+	return pulumix.Output[*AccessConfigurationProvisioning]{
+		OutputState: i.ToAccessConfigurationProvisioningOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccessConfigurationProvisioningArrayInput is an input type that accepts AccessConfigurationProvisioningArray and AccessConfigurationProvisioningArrayOutput values.
 // You can construct a concrete instance of `AccessConfigurationProvisioningArrayInput` via:
 //
@@ -186,6 +193,12 @@ func (i AccessConfigurationProvisioningArray) ToAccessConfigurationProvisioningA
 
 func (i AccessConfigurationProvisioningArray) ToAccessConfigurationProvisioningArrayOutputWithContext(ctx context.Context) AccessConfigurationProvisioningArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessConfigurationProvisioningArrayOutput)
+}
+
+func (i AccessConfigurationProvisioningArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessConfigurationProvisioning] {
+	return pulumix.Output[[]*AccessConfigurationProvisioning]{
+		OutputState: i.ToAccessConfigurationProvisioningArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AccessConfigurationProvisioningMapInput is an input type that accepts AccessConfigurationProvisioningMap and AccessConfigurationProvisioningMapOutput values.
@@ -213,6 +226,12 @@ func (i AccessConfigurationProvisioningMap) ToAccessConfigurationProvisioningMap
 	return pulumi.ToOutputWithContext(ctx, i).(AccessConfigurationProvisioningMapOutput)
 }
 
+func (i AccessConfigurationProvisioningMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessConfigurationProvisioning] {
+	return pulumix.Output[map[string]*AccessConfigurationProvisioning]{
+		OutputState: i.ToAccessConfigurationProvisioningMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessConfigurationProvisioningOutput struct{ *pulumi.OutputState }
 
 func (AccessConfigurationProvisioningOutput) ElementType() reflect.Type {
@@ -225,6 +244,12 @@ func (o AccessConfigurationProvisioningOutput) ToAccessConfigurationProvisioning
 
 func (o AccessConfigurationProvisioningOutput) ToAccessConfigurationProvisioningOutputWithContext(ctx context.Context) AccessConfigurationProvisioningOutput {
 	return o
+}
+
+func (o AccessConfigurationProvisioningOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessConfigurationProvisioning] {
+	return pulumix.Output[*AccessConfigurationProvisioning]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Access configuration ID.
@@ -266,6 +291,12 @@ func (o AccessConfigurationProvisioningArrayOutput) ToAccessConfigurationProvisi
 	return o
 }
 
+func (o AccessConfigurationProvisioningArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessConfigurationProvisioning] {
+	return pulumix.Output[[]*AccessConfigurationProvisioning]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccessConfigurationProvisioningArrayOutput) Index(i pulumi.IntInput) AccessConfigurationProvisioningOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessConfigurationProvisioning {
 		return vs[0].([]*AccessConfigurationProvisioning)[vs[1].(int)]
@@ -284,6 +315,12 @@ func (o AccessConfigurationProvisioningMapOutput) ToAccessConfigurationProvision
 
 func (o AccessConfigurationProvisioningMapOutput) ToAccessConfigurationProvisioningMapOutputWithContext(ctx context.Context) AccessConfigurationProvisioningMapOutput {
 	return o
+}
+
+func (o AccessConfigurationProvisioningMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessConfigurationProvisioning] {
+	return pulumix.Output[map[string]*AccessConfigurationProvisioning]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessConfigurationProvisioningMapOutput) MapIndex(k pulumi.StringInput) AccessConfigurationProvisioningOutput {

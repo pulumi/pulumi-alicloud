@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -271,6 +272,12 @@ func (i *ZoneRecord) ToZoneRecordOutputWithContext(ctx context.Context) ZoneReco
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneRecordOutput)
 }
 
+func (i *ZoneRecord) ToOutput(ctx context.Context) pulumix.Output[*ZoneRecord] {
+	return pulumix.Output[*ZoneRecord]{
+		OutputState: i.ToZoneRecordOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ZoneRecordArrayInput is an input type that accepts ZoneRecordArray and ZoneRecordArrayOutput values.
 // You can construct a concrete instance of `ZoneRecordArrayInput` via:
 //
@@ -294,6 +301,12 @@ func (i ZoneRecordArray) ToZoneRecordArrayOutput() ZoneRecordArrayOutput {
 
 func (i ZoneRecordArray) ToZoneRecordArrayOutputWithContext(ctx context.Context) ZoneRecordArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneRecordArrayOutput)
+}
+
+func (i ZoneRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneRecord] {
+	return pulumix.Output[[]*ZoneRecord]{
+		OutputState: i.ToZoneRecordArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ZoneRecordMapInput is an input type that accepts ZoneRecordMap and ZoneRecordMapOutput values.
@@ -321,6 +334,12 @@ func (i ZoneRecordMap) ToZoneRecordMapOutputWithContext(ctx context.Context) Zon
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneRecordMapOutput)
 }
 
+func (i ZoneRecordMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneRecord] {
+	return pulumix.Output[map[string]*ZoneRecord]{
+		OutputState: i.ToZoneRecordMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ZoneRecordOutput struct{ *pulumi.OutputState }
 
 func (ZoneRecordOutput) ElementType() reflect.Type {
@@ -333,6 +352,12 @@ func (o ZoneRecordOutput) ToZoneRecordOutput() ZoneRecordOutput {
 
 func (o ZoneRecordOutput) ToZoneRecordOutputWithContext(ctx context.Context) ZoneRecordOutput {
 	return o
+}
+
+func (o ZoneRecordOutput) ToOutput(ctx context.Context) pulumix.Output[*ZoneRecord] {
+	return pulumix.Output[*ZoneRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 // User language.
@@ -412,6 +437,12 @@ func (o ZoneRecordArrayOutput) ToZoneRecordArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o ZoneRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneRecord] {
+	return pulumix.Output[[]*ZoneRecord]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ZoneRecordArrayOutput) Index(i pulumi.IntInput) ZoneRecordOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ZoneRecord {
 		return vs[0].([]*ZoneRecord)[vs[1].(int)]
@@ -430,6 +461,12 @@ func (o ZoneRecordMapOutput) ToZoneRecordMapOutput() ZoneRecordMapOutput {
 
 func (o ZoneRecordMapOutput) ToZoneRecordMapOutputWithContext(ctx context.Context) ZoneRecordMapOutput {
 	return o
+}
+
+func (o ZoneRecordMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneRecord] {
+	return pulumix.Output[map[string]*ZoneRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ZoneRecordMapOutput) MapIndex(k pulumi.StringInput) ZoneRecordOutput {

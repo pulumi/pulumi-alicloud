@@ -18,6 +18,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceArgs Empty = new InstanceArgs();
 
     /**
+     * The number of multi account. It will be ignored when `cfw_account = false`.
+     * 
+     */
+    @Import(name="accountNumber")
+    private @Nullable Output<Integer> accountNumber;
+
+    /**
+     * @return The number of multi account. It will be ignored when `cfw_account = false`.
+     * 
+     */
+    public Optional<Output<Integer>> accountNumber() {
+        return Optional.ofNullable(this.accountNumber);
+    }
+
+    /**
      * Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
      * 
      */
@@ -30,6 +45,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<Integer> bandWidth() {
         return this.bandWidth;
+    }
+
+    /**
+     * Whether to use multi-account. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="cfwAccount")
+    private @Nullable Output<Boolean> cfwAccount;
+
+    /**
+     * @return Whether to use multi-account. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> cfwAccount() {
+        return Optional.ofNullable(this.cfwAccount);
     }
 
     /**
@@ -48,44 +78,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The log storage capacity.
+     * The log storage capacity. It will be ignored when `cfw_log = false`.
      * 
      */
-    @Import(name="cfwLogStorage", required=true)
-    private Output<Integer> cfwLogStorage;
+    @Import(name="cfwLogStorage")
+    private @Nullable Output<Integer> cfwLogStorage;
 
     /**
-     * @return The log storage capacity.
+     * @return The log storage capacity. It will be ignored when `cfw_log = false`.
      * 
      */
-    public Output<Integer> cfwLogStorage() {
-        return this.cfwLogStorage;
+    public Optional<Output<Integer>> cfwLogStorage() {
+        return Optional.ofNullable(this.cfwLogStorage);
     }
 
     /**
-     * Whether to use expert service. Valid values: `true`, `false`.
-     * 
-     */
-    @Import(name="cfwService", required=true)
-    private Output<Boolean> cfwService;
-
-    /**
-     * @return Whether to use expert service. Valid values: `true`, `false`.
-     * 
-     */
-    public Output<Boolean> cfwService() {
-        return this.cfwService;
-    }
-
-    /**
-     * The number of protected VPCs. Valid values between 2 and 500.
+     * The number of protected VPCs. It will be ignored when `spec = &#34;premium_version&#34;`. Valid values between 2 and 500.
      * 
      */
     @Import(name="fwVpcNumber")
     private @Nullable Output<Integer> fwVpcNumber;
 
     /**
-     * @return The number of protected VPCs. Valid values between 2 and 500.
+     * @return The number of protected VPCs. It will be ignored when `spec = &#34;premium_version&#34;`. Valid values between 2 and 500.
      * 
      */
     public Optional<Output<Integer>> fwVpcNumber() {
@@ -138,14 +153,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+     * The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
      * 
      */
     @Import(name="modifyType")
     private @Nullable Output<String> modifyType;
 
     /**
-     * @return The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+     * @return The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
      * 
      */
     public Optional<Output<String>> modifyType() {
@@ -183,29 +198,67 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+     * Automatic renewal period. Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
+     * 
+     * @deprecated
+     * Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
      * 
      */
+    @Deprecated /* Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead. */
     @Import(name="renewPeriod")
     private @Nullable Output<Integer> renewPeriod;
 
     /**
-     * @return Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+     * @return Automatic renewal period. Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
+     * 
+     * @deprecated
+     * Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
      * 
      */
+    @Deprecated /* Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead. */
     public Optional<Output<Integer>> renewPeriod() {
         return Optional.ofNullable(this.renewPeriod);
     }
 
     /**
-     * Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+     * Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+     * 
+     */
+    @Import(name="renewalDuration")
+    private @Nullable Output<Integer> renewalDuration;
+
+    /**
+     * @return Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+     * 
+     */
+    public Optional<Output<Integer>> renewalDuration() {
+        return Optional.ofNullable(this.renewalDuration);
+    }
+
+    /**
+     * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+     * 
+     */
+    @Import(name="renewalDurationUnit")
+    private @Nullable Output<String> renewalDurationUnit;
+
+    /**
+     * @return Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+     * 
+     */
+    public Optional<Output<String>> renewalDurationUnit() {
+        return Optional.ofNullable(this.renewalDurationUnit);
+    }
+
+    /**
+     * Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
      * 
      */
     @Import(name="renewalStatus")
     private @Nullable Output<String> renewalStatus;
 
     /**
-     * @return Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+     * @return Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
      * 
      */
     public Optional<Output<String>> renewalStatus() {
@@ -230,10 +283,11 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private InstanceArgs() {}
 
     private InstanceArgs(InstanceArgs $) {
+        this.accountNumber = $.accountNumber;
         this.bandWidth = $.bandWidth;
+        this.cfwAccount = $.cfwAccount;
         this.cfwLog = $.cfwLog;
         this.cfwLogStorage = $.cfwLogStorage;
-        this.cfwService = $.cfwService;
         this.fwVpcNumber = $.fwVpcNumber;
         this.instanceCount = $.instanceCount;
         this.ipNumber = $.ipNumber;
@@ -242,6 +296,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.paymentType = $.paymentType;
         this.period = $.period;
         this.renewPeriod = $.renewPeriod;
+        this.renewalDuration = $.renewalDuration;
+        this.renewalDurationUnit = $.renewalDurationUnit;
         this.renewalStatus = $.renewalStatus;
         this.spec = $.spec;
     }
@@ -262,6 +318,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(InstanceArgs defaults) {
             $ = new InstanceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accountNumber The number of multi account. It will be ignored when `cfw_account = false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountNumber(@Nullable Output<Integer> accountNumber) {
+            $.accountNumber = accountNumber;
+            return this;
+        }
+
+        /**
+         * @param accountNumber The number of multi account. It will be ignored when `cfw_account = false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountNumber(Integer accountNumber) {
+            return accountNumber(Output.of(accountNumber));
         }
 
         /**
@@ -286,6 +363,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param cfwAccount Whether to use multi-account. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cfwAccount(@Nullable Output<Boolean> cfwAccount) {
+            $.cfwAccount = cfwAccount;
+            return this;
+        }
+
+        /**
+         * @param cfwAccount Whether to use multi-account. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cfwAccount(Boolean cfwAccount) {
+            return cfwAccount(Output.of(cfwAccount));
+        }
+
+        /**
          * @param cfwLog Whether to use log audit. Valid values: `true`, `false`.
          * 
          * @return builder
@@ -307,18 +405,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cfwLogStorage The log storage capacity.
+         * @param cfwLogStorage The log storage capacity. It will be ignored when `cfw_log = false`.
          * 
          * @return builder
          * 
          */
-        public Builder cfwLogStorage(Output<Integer> cfwLogStorage) {
+        public Builder cfwLogStorage(@Nullable Output<Integer> cfwLogStorage) {
             $.cfwLogStorage = cfwLogStorage;
             return this;
         }
 
         /**
-         * @param cfwLogStorage The log storage capacity.
+         * @param cfwLogStorage The log storage capacity. It will be ignored when `cfw_log = false`.
          * 
          * @return builder
          * 
@@ -328,28 +426,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cfwService Whether to use expert service. Valid values: `true`, `false`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder cfwService(Output<Boolean> cfwService) {
-            $.cfwService = cfwService;
-            return this;
-        }
-
-        /**
-         * @param cfwService Whether to use expert service. Valid values: `true`, `false`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder cfwService(Boolean cfwService) {
-            return cfwService(Output.of(cfwService));
-        }
-
-        /**
-         * @param fwVpcNumber The number of protected VPCs. Valid values between 2 and 500.
+         * @param fwVpcNumber The number of protected VPCs. It will be ignored when `spec = &#34;premium_version&#34;`. Valid values between 2 and 500.
          * 
          * @return builder
          * 
@@ -360,7 +437,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fwVpcNumber The number of protected VPCs. Valid values between 2 and 500.
+         * @param fwVpcNumber The number of protected VPCs. It will be ignored when `spec = &#34;premium_version&#34;`. Valid values between 2 and 500.
          * 
          * @return builder
          * 
@@ -433,7 +510,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifyType The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+         * @param modifyType The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
          * 
          * @return builder
          * 
@@ -444,7 +521,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifyType The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+         * @param modifyType The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
          * 
          * @return builder
          * 
@@ -496,28 +573,78 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewPeriod Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+         * @param renewPeriod Automatic renewal period. Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
+         * 
          */
+        @Deprecated /* Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead. */
         public Builder renewPeriod(@Nullable Output<Integer> renewPeriod) {
             $.renewPeriod = renewPeriod;
             return this;
         }
 
         /**
-         * @param renewPeriod Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+         * @param renewPeriod Automatic renewal period. Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
+         * 
          */
+        @Deprecated /* Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead. */
         public Builder renewPeriod(Integer renewPeriod) {
             return renewPeriod(Output.of(renewPeriod));
         }
 
         /**
-         * @param renewalStatus Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+         * @param renewalDuration Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder renewalDuration(@Nullable Output<Integer> renewalDuration) {
+            $.renewalDuration = renewalDuration;
+            return this;
+        }
+
+        /**
+         * @param renewalDuration Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder renewalDuration(Integer renewalDuration) {
+            return renewalDuration(Output.of(renewalDuration));
+        }
+
+        /**
+         * @param renewalDurationUnit Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder renewalDurationUnit(@Nullable Output<String> renewalDurationUnit) {
+            $.renewalDurationUnit = renewalDurationUnit;
+            return this;
+        }
+
+        /**
+         * @param renewalDurationUnit Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder renewalDurationUnit(String renewalDurationUnit) {
+            return renewalDurationUnit(Output.of(renewalDurationUnit));
+        }
+
+        /**
+         * @param renewalStatus Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
          * 
          * @return builder
          * 
@@ -528,7 +655,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalStatus Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+         * @param renewalStatus Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
          * 
          * @return builder
          * 
@@ -561,8 +688,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         public InstanceArgs build() {
             $.bandWidth = Objects.requireNonNull($.bandWidth, "expected parameter 'bandWidth' to be non-null");
             $.cfwLog = Objects.requireNonNull($.cfwLog, "expected parameter 'cfwLog' to be non-null");
-            $.cfwLogStorage = Objects.requireNonNull($.cfwLogStorage, "expected parameter 'cfwLogStorage' to be non-null");
-            $.cfwService = Objects.requireNonNull($.cfwService, "expected parameter 'cfwService' to be non-null");
             $.ipNumber = Objects.requireNonNull($.ipNumber, "expected parameter 'ipNumber' to be non-null");
             $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
             $.period = Objects.requireNonNull($.period, "expected parameter 'period' to be non-null");

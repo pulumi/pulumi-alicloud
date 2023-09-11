@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource provides a site monitor resource and it can be used to monitor public endpoints and websites.
@@ -234,6 +235,12 @@ func (i *SiteMonitor) ToSiteMonitorOutputWithContext(ctx context.Context) SiteMo
 	return pulumi.ToOutputWithContext(ctx, i).(SiteMonitorOutput)
 }
 
+func (i *SiteMonitor) ToOutput(ctx context.Context) pulumix.Output[*SiteMonitor] {
+	return pulumix.Output[*SiteMonitor]{
+		OutputState: i.ToSiteMonitorOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SiteMonitorArrayInput is an input type that accepts SiteMonitorArray and SiteMonitorArrayOutput values.
 // You can construct a concrete instance of `SiteMonitorArrayInput` via:
 //
@@ -257,6 +264,12 @@ func (i SiteMonitorArray) ToSiteMonitorArrayOutput() SiteMonitorArrayOutput {
 
 func (i SiteMonitorArray) ToSiteMonitorArrayOutputWithContext(ctx context.Context) SiteMonitorArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SiteMonitorArrayOutput)
+}
+
+func (i SiteMonitorArray) ToOutput(ctx context.Context) pulumix.Output[[]*SiteMonitor] {
+	return pulumix.Output[[]*SiteMonitor]{
+		OutputState: i.ToSiteMonitorArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SiteMonitorMapInput is an input type that accepts SiteMonitorMap and SiteMonitorMapOutput values.
@@ -284,6 +297,12 @@ func (i SiteMonitorMap) ToSiteMonitorMapOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(SiteMonitorMapOutput)
 }
 
+func (i SiteMonitorMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SiteMonitor] {
+	return pulumix.Output[map[string]*SiteMonitor]{
+		OutputState: i.ToSiteMonitorMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SiteMonitorOutput struct{ *pulumi.OutputState }
 
 func (SiteMonitorOutput) ElementType() reflect.Type {
@@ -296,6 +315,12 @@ func (o SiteMonitorOutput) ToSiteMonitorOutput() SiteMonitorOutput {
 
 func (o SiteMonitorOutput) ToSiteMonitorOutputWithContext(ctx context.Context) SiteMonitorOutput {
 	return o
+}
+
+func (o SiteMonitorOutput) ToOutput(ctx context.Context) pulumix.Output[*SiteMonitor] {
+	return pulumix.Output[*SiteMonitor]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL or IP address monitored by the site monitoring task.
@@ -362,6 +387,12 @@ func (o SiteMonitorArrayOutput) ToSiteMonitorArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o SiteMonitorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SiteMonitor] {
+	return pulumix.Output[[]*SiteMonitor]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SiteMonitorArrayOutput) Index(i pulumi.IntInput) SiteMonitorOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SiteMonitor {
 		return vs[0].([]*SiteMonitor)[vs[1].(int)]
@@ -380,6 +411,12 @@ func (o SiteMonitorMapOutput) ToSiteMonitorMapOutput() SiteMonitorMapOutput {
 
 func (o SiteMonitorMapOutput) ToSiteMonitorMapOutputWithContext(ctx context.Context) SiteMonitorMapOutput {
 	return o
+}
+
+func (o SiteMonitorMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SiteMonitor] {
+	return pulumix.Output[map[string]*SiteMonitor]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SiteMonitorMapOutput) MapIndex(k pulumi.StringInput) SiteMonitorOutput {

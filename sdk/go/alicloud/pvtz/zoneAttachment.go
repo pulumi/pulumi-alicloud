@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -316,6 +317,12 @@ func (i *ZoneAttachment) ToZoneAttachmentOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneAttachmentOutput)
 }
 
+func (i *ZoneAttachment) ToOutput(ctx context.Context) pulumix.Output[*ZoneAttachment] {
+	return pulumix.Output[*ZoneAttachment]{
+		OutputState: i.ToZoneAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ZoneAttachmentArrayInput is an input type that accepts ZoneAttachmentArray and ZoneAttachmentArrayOutput values.
 // You can construct a concrete instance of `ZoneAttachmentArrayInput` via:
 //
@@ -339,6 +346,12 @@ func (i ZoneAttachmentArray) ToZoneAttachmentArrayOutput() ZoneAttachmentArrayOu
 
 func (i ZoneAttachmentArray) ToZoneAttachmentArrayOutputWithContext(ctx context.Context) ZoneAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneAttachmentArrayOutput)
+}
+
+func (i ZoneAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneAttachment] {
+	return pulumix.Output[[]*ZoneAttachment]{
+		OutputState: i.ToZoneAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ZoneAttachmentMapInput is an input type that accepts ZoneAttachmentMap and ZoneAttachmentMapOutput values.
@@ -366,6 +379,12 @@ func (i ZoneAttachmentMap) ToZoneAttachmentMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneAttachmentMapOutput)
 }
 
+func (i ZoneAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneAttachment] {
+	return pulumix.Output[map[string]*ZoneAttachment]{
+		OutputState: i.ToZoneAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ZoneAttachmentOutput struct{ *pulumi.OutputState }
 
 func (ZoneAttachmentOutput) ElementType() reflect.Type {
@@ -378,6 +397,12 @@ func (o ZoneAttachmentOutput) ToZoneAttachmentOutput() ZoneAttachmentOutput {
 
 func (o ZoneAttachmentOutput) ToZoneAttachmentOutputWithContext(ctx context.Context) ZoneAttachmentOutput {
 	return o
+}
+
+func (o ZoneAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*ZoneAttachment] {
+	return pulumix.Output[*ZoneAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The language of code.
@@ -419,6 +444,12 @@ func (o ZoneAttachmentArrayOutput) ToZoneAttachmentArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o ZoneAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneAttachment] {
+	return pulumix.Output[[]*ZoneAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ZoneAttachmentArrayOutput) Index(i pulumi.IntInput) ZoneAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ZoneAttachment {
 		return vs[0].([]*ZoneAttachment)[vs[1].(int)]
@@ -437,6 +468,12 @@ func (o ZoneAttachmentMapOutput) ToZoneAttachmentMapOutput() ZoneAttachmentMapOu
 
 func (o ZoneAttachmentMapOutput) ToZoneAttachmentMapOutputWithContext(ctx context.Context) ZoneAttachmentMapOutput {
 	return o
+}
+
+func (o ZoneAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneAttachment] {
+	return pulumix.Output[map[string]*ZoneAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ZoneAttachmentMapOutput) MapIndex(k pulumi.StringInput) ZoneAttachmentOutput {

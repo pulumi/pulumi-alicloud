@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECD Simple Office Site resource.
@@ -271,6 +272,12 @@ func (i *SimpleOfficeSite) ToSimpleOfficeSiteOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SimpleOfficeSiteOutput)
 }
 
+func (i *SimpleOfficeSite) ToOutput(ctx context.Context) pulumix.Output[*SimpleOfficeSite] {
+	return pulumix.Output[*SimpleOfficeSite]{
+		OutputState: i.ToSimpleOfficeSiteOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SimpleOfficeSiteArrayInput is an input type that accepts SimpleOfficeSiteArray and SimpleOfficeSiteArrayOutput values.
 // You can construct a concrete instance of `SimpleOfficeSiteArrayInput` via:
 //
@@ -294,6 +301,12 @@ func (i SimpleOfficeSiteArray) ToSimpleOfficeSiteArrayOutput() SimpleOfficeSiteA
 
 func (i SimpleOfficeSiteArray) ToSimpleOfficeSiteArrayOutputWithContext(ctx context.Context) SimpleOfficeSiteArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SimpleOfficeSiteArrayOutput)
+}
+
+func (i SimpleOfficeSiteArray) ToOutput(ctx context.Context) pulumix.Output[[]*SimpleOfficeSite] {
+	return pulumix.Output[[]*SimpleOfficeSite]{
+		OutputState: i.ToSimpleOfficeSiteArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SimpleOfficeSiteMapInput is an input type that accepts SimpleOfficeSiteMap and SimpleOfficeSiteMapOutput values.
@@ -321,6 +334,12 @@ func (i SimpleOfficeSiteMap) ToSimpleOfficeSiteMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SimpleOfficeSiteMapOutput)
 }
 
+func (i SimpleOfficeSiteMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SimpleOfficeSite] {
+	return pulumix.Output[map[string]*SimpleOfficeSite]{
+		OutputState: i.ToSimpleOfficeSiteMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SimpleOfficeSiteOutput struct{ *pulumi.OutputState }
 
 func (SimpleOfficeSiteOutput) ElementType() reflect.Type {
@@ -333,6 +352,12 @@ func (o SimpleOfficeSiteOutput) ToSimpleOfficeSiteOutput() SimpleOfficeSiteOutpu
 
 func (o SimpleOfficeSiteOutput) ToSimpleOfficeSiteOutputWithContext(ctx context.Context) SimpleOfficeSiteOutput {
 	return o
+}
+
+func (o SimpleOfficeSiteOutput) ToOutput(ctx context.Context) pulumix.Output[*SimpleOfficeSite] {
+	return pulumix.Output[*SimpleOfficeSite]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
@@ -413,6 +438,12 @@ func (o SimpleOfficeSiteArrayOutput) ToSimpleOfficeSiteArrayOutputWithContext(ct
 	return o
 }
 
+func (o SimpleOfficeSiteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SimpleOfficeSite] {
+	return pulumix.Output[[]*SimpleOfficeSite]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SimpleOfficeSiteArrayOutput) Index(i pulumi.IntInput) SimpleOfficeSiteOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SimpleOfficeSite {
 		return vs[0].([]*SimpleOfficeSite)[vs[1].(int)]
@@ -431,6 +462,12 @@ func (o SimpleOfficeSiteMapOutput) ToSimpleOfficeSiteMapOutput() SimpleOfficeSit
 
 func (o SimpleOfficeSiteMapOutput) ToSimpleOfficeSiteMapOutputWithContext(ctx context.Context) SimpleOfficeSiteMapOutput {
 	return o
+}
+
+func (o SimpleOfficeSiteMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SimpleOfficeSite] {
+	return pulumix.Output[map[string]*SimpleOfficeSite]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SimpleOfficeSiteMapOutput) MapIndex(k pulumi.StringInput) SimpleOfficeSiteOutput {

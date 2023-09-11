@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a CR Vpc Endpoint Linked Vpc resource.
  * 
- * For information about CR Vpc Endpoint Linked Vpc and how to use it, see [What is Vpc Endpoint Linked Vpc](https://www.alibabacloud.com/help/en/container-registry/latest/api-doc-cr-2018-12-01-api-doc-createinstancevpcendpointlinkedvpc).
+ * For information about CR Vpc Endpoint Linked Vpc and how to use it, see [What is Vpc Endpoint Linked Vpc](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createinstancevpcendpointlinkedvpc).
  * 
- * &gt; **NOTE:** Available in v1.199.0+.
+ * &gt; **NOTE:** Available since v1.199.0.
  * 
  * ## Example Usage
  * 
@@ -31,6 +31,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.cr.RegistryEnterpriseInstance;
+ * import com.pulumi.alicloud.cr.RegistryEnterpriseInstanceArgs;
  * import com.pulumi.alicloud.cr.VpcEndpointLinkedVpc;
  * import com.pulumi.alicloud.cr.VpcEndpointLinkedVpcArgs;
  * import java.util.List;
@@ -46,12 +54,39 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new VpcEndpointLinkedVpc(&#34;default&#34;, VpcEndpointLinkedVpcArgs.builder()        
- *             .enableCreateDnsRecordInPvzt(true)
- *             .instanceId(&#34;your_cr_instance_id&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultRegistryEnterpriseInstance = new RegistryEnterpriseInstance(&#34;defaultRegistryEnterpriseInstance&#34;, RegistryEnterpriseInstanceArgs.builder()        
+ *             .paymentType(&#34;Subscription&#34;)
+ *             .period(1)
+ *             .renewPeriod(0)
+ *             .renewalStatus(&#34;ManualRenewal&#34;)
+ *             .instanceType(&#34;Advanced&#34;)
+ *             .instanceName(name)
+ *             .build());
+ * 
+ *         var defaultVpcEndpointLinkedVpc = new VpcEndpointLinkedVpc(&#34;defaultVpcEndpointLinkedVpc&#34;, VpcEndpointLinkedVpcArgs.builder()        
+ *             .instanceId(defaultRegistryEnterpriseInstance.id())
+ *             .vpcId(defaultNetwork.id())
+ *             .vswitchId(defaultSwitch.id())
  *             .moduleName(&#34;Registry&#34;)
- *             .vpcId(&#34;your_vpc_id&#34;)
- *             .vswitchId(&#34;your_vswitch_id&#34;)
+ *             .enableCreateDnsRecordInPvzt(true)
  *             .build());
  * 
  *     }

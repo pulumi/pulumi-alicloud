@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Monitor Service Sls Group resource.
@@ -137,6 +138,12 @@ func (i *SlsGroup) ToSlsGroupOutputWithContext(ctx context.Context) SlsGroupOutp
 	return pulumi.ToOutputWithContext(ctx, i).(SlsGroupOutput)
 }
 
+func (i *SlsGroup) ToOutput(ctx context.Context) pulumix.Output[*SlsGroup] {
+	return pulumix.Output[*SlsGroup]{
+		OutputState: i.ToSlsGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SlsGroupArrayInput is an input type that accepts SlsGroupArray and SlsGroupArrayOutput values.
 // You can construct a concrete instance of `SlsGroupArrayInput` via:
 //
@@ -160,6 +167,12 @@ func (i SlsGroupArray) ToSlsGroupArrayOutput() SlsGroupArrayOutput {
 
 func (i SlsGroupArray) ToSlsGroupArrayOutputWithContext(ctx context.Context) SlsGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SlsGroupArrayOutput)
+}
+
+func (i SlsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*SlsGroup] {
+	return pulumix.Output[[]*SlsGroup]{
+		OutputState: i.ToSlsGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SlsGroupMapInput is an input type that accepts SlsGroupMap and SlsGroupMapOutput values.
@@ -187,6 +200,12 @@ func (i SlsGroupMap) ToSlsGroupMapOutputWithContext(ctx context.Context) SlsGrou
 	return pulumi.ToOutputWithContext(ctx, i).(SlsGroupMapOutput)
 }
 
+func (i SlsGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SlsGroup] {
+	return pulumix.Output[map[string]*SlsGroup]{
+		OutputState: i.ToSlsGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SlsGroupOutput struct{ *pulumi.OutputState }
 
 func (SlsGroupOutput) ElementType() reflect.Type {
@@ -199,6 +218,12 @@ func (o SlsGroupOutput) ToSlsGroupOutput() SlsGroupOutput {
 
 func (o SlsGroupOutput) ToSlsGroupOutputWithContext(ctx context.Context) SlsGroupOutput {
 	return o
+}
+
+func (o SlsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*SlsGroup] {
+	return pulumix.Output[*SlsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Config of the Sls Group. You can specify up to 25 Config. See `slsGroupConfig` below.
@@ -230,6 +255,12 @@ func (o SlsGroupArrayOutput) ToSlsGroupArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o SlsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SlsGroup] {
+	return pulumix.Output[[]*SlsGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SlsGroupArrayOutput) Index(i pulumi.IntInput) SlsGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SlsGroup {
 		return vs[0].([]*SlsGroup)[vs[1].(int)]
@@ -248,6 +279,12 @@ func (o SlsGroupMapOutput) ToSlsGroupMapOutput() SlsGroupMapOutput {
 
 func (o SlsGroupMapOutput) ToSlsGroupMapOutputWithContext(ctx context.Context) SlsGroupMapOutput {
 	return o
+}
+
+func (o SlsGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SlsGroup] {
+	return pulumix.Output[map[string]*SlsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SlsGroupMapOutput) MapIndex(k pulumi.StringInput) SlsGroupOutput {

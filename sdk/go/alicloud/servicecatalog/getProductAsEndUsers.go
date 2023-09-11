@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **DEPRECATED:** It has been deprecated from version `1.197.0`.
@@ -122,6 +123,12 @@ func (o GetProductAsEndUsersResultOutput) ToGetProductAsEndUsersResultOutput() G
 
 func (o GetProductAsEndUsersResultOutput) ToGetProductAsEndUsersResultOutputWithContext(ctx context.Context) GetProductAsEndUsersResultOutput {
 	return o
+}
+
+func (o GetProductAsEndUsersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetProductAsEndUsersResult] {
+	return pulumix.Output[GetProductAsEndUsersResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.CS
     /// <summary>
     /// This resource will help you to manager Container Registry Enterprise Edition repositories.
     /// 
-    /// For information about Container Registry Enterprise Edition repository and how to use it, see [Create a Repository](https://www.alibabacloud.com/help/doc-detail/145291.htm)
+    /// For information about Container Registry Enterprise Edition repository and how to use it, see [Create a Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository)
     /// 
-    /// &gt; **NOTE:** Available in v1.86.0+.
+    /// &gt; **NOTE:** Available since v1.86.0.
     /// 
     /// &gt; **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
     /// 
@@ -30,17 +30,29 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_namespace = new AliCloud.CS.RegistryEnterpriseNamespace("my-namespace", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var exampleRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance", new()
     ///     {
-    ///         InstanceId = "cri-xxx",
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         RenewPeriod = 0,
+    ///         RenewalStatus = "ManualRenewal",
+    ///         InstanceType = "Advanced",
+    ///         InstanceName = name,
+    ///     });
+    /// 
+    ///     var exampleRegistryEnterpriseNamespace = new AliCloud.CS.RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace", new()
+    ///     {
+    ///         InstanceId = exampleRegistryEnterpriseInstance.Id,
     ///         AutoCreate = false,
     ///         DefaultVisibility = "PUBLIC",
     ///     });
     /// 
-    ///     var my_repo = new AliCloud.CS.RegistryEnterpriseRepo("my-repo", new()
+    ///     var exampleRegistryEnterpriseRepo = new AliCloud.CS.RegistryEnterpriseRepo("exampleRegistryEnterpriseRepo", new()
     ///     {
-    ///         InstanceId = my_namespace.InstanceId,
-    ///         Namespace = my_namespace.Name,
+    ///         InstanceId = exampleRegistryEnterpriseInstance.Id,
+    ///         Namespace = exampleRegistryEnterpriseNamespace.Name,
     ///         Summary = "this is summary of my new repo",
     ///         RepoType = "PUBLIC",
     ///         Detail = "this is a public repo",

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudauth Face Config resource.
@@ -162,6 +163,12 @@ func (i *FaceConfig) ToFaceConfigOutputWithContext(ctx context.Context) FaceConf
 	return pulumi.ToOutputWithContext(ctx, i).(FaceConfigOutput)
 }
 
+func (i *FaceConfig) ToOutput(ctx context.Context) pulumix.Output[*FaceConfig] {
+	return pulumix.Output[*FaceConfig]{
+		OutputState: i.ToFaceConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FaceConfigArrayInput is an input type that accepts FaceConfigArray and FaceConfigArrayOutput values.
 // You can construct a concrete instance of `FaceConfigArrayInput` via:
 //
@@ -185,6 +192,12 @@ func (i FaceConfigArray) ToFaceConfigArrayOutput() FaceConfigArrayOutput {
 
 func (i FaceConfigArray) ToFaceConfigArrayOutputWithContext(ctx context.Context) FaceConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FaceConfigArrayOutput)
+}
+
+func (i FaceConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*FaceConfig] {
+	return pulumix.Output[[]*FaceConfig]{
+		OutputState: i.ToFaceConfigArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // FaceConfigMapInput is an input type that accepts FaceConfigMap and FaceConfigMapOutput values.
@@ -212,6 +225,12 @@ func (i FaceConfigMap) ToFaceConfigMapOutputWithContext(ctx context.Context) Fac
 	return pulumi.ToOutputWithContext(ctx, i).(FaceConfigMapOutput)
 }
 
+func (i FaceConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FaceConfig] {
+	return pulumix.Output[map[string]*FaceConfig]{
+		OutputState: i.ToFaceConfigMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FaceConfigOutput struct{ *pulumi.OutputState }
 
 func (FaceConfigOutput) ElementType() reflect.Type {
@@ -224,6 +243,12 @@ func (o FaceConfigOutput) ToFaceConfigOutput() FaceConfigOutput {
 
 func (o FaceConfigOutput) ToFaceConfigOutputWithContext(ctx context.Context) FaceConfigOutput {
 	return o
+}
+
+func (o FaceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*FaceConfig] {
+	return pulumix.Output[*FaceConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Scene name.
@@ -255,6 +280,12 @@ func (o FaceConfigArrayOutput) ToFaceConfigArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o FaceConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FaceConfig] {
+	return pulumix.Output[[]*FaceConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FaceConfigArrayOutput) Index(i pulumi.IntInput) FaceConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FaceConfig {
 		return vs[0].([]*FaceConfig)[vs[1].(int)]
@@ -273,6 +304,12 @@ func (o FaceConfigMapOutput) ToFaceConfigMapOutput() FaceConfigMapOutput {
 
 func (o FaceConfigMapOutput) ToFaceConfigMapOutputWithContext(ctx context.Context) FaceConfigMapOutput {
 	return o
+}
+
+func (o FaceConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FaceConfig] {
+	return pulumix.Output[map[string]*FaceConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FaceConfigMapOutput) MapIndex(k pulumi.StringInput) FaceConfigOutput {

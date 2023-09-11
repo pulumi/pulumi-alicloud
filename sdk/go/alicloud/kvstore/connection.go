@@ -10,11 +10,12 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Operate the public network ip of the specified resource. How to use it, see [What is Resource Alicloud KVStore Connection](https://www.alibabacloud.com/help/doc-detail/125795.htm).
 //
-// > **NOTE:** Available in v1.101.0+.
+// > **NOTE:** Available since v1.101.0.
 //
 // ## Example Usage
 //
@@ -26,15 +27,72 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kvstore.NewConnection(ctx, "default", &kvstore.ConnectionArgs{
-//				ConnectionStringPrefix: pulumi.String("allocatetestupdate"),
-//				InstanceId:             pulumi.String("r-abc123456"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := kvstore.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := kvstore.NewInstance(ctx, "defaultInstance", &kvstore.InstanceArgs{
+//				DbInstanceName:  pulumi.String(name),
+//				VswitchId:       defaultSwitch.ID(),
+//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Ids[0]),
+//				ZoneId:          *pulumi.String(defaultZones.Zones[0].Id),
+//				InstanceClass:   pulumi.String("redis.master.large.default"),
+//				InstanceType:    pulumi.String("Redis"),
+//				EngineVersion:   pulumi.String("5.0"),
+//				SecurityIps: pulumi.StringArray{
+//					pulumi.String("10.23.12.24"),
+//				},
+//				Config: pulumi.AnyMap{
+//					"appendonly":             pulumi.Any("yes"),
+//					"lazyfree-lazy-eviction": pulumi.Any("yes"),
+//				},
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kvstore.NewConnection(ctx, "defaultConnection", &kvstore.ConnectionArgs{
+//				ConnectionStringPrefix: pulumi.String("exampleconnection"),
+//				InstanceId:             defaultInstance.ID(),
 //				Port:                   pulumi.String("6370"),
 //			})
 //			if err != nil {
@@ -174,6 +232,12 @@ func (i *Connection) ToConnectionOutputWithContext(ctx context.Context) Connecti
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOutput)
 }
 
+func (i *Connection) ToOutput(ctx context.Context) pulumix.Output[*Connection] {
+	return pulumix.Output[*Connection]{
+		OutputState: i.ToConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ConnectionArrayInput is an input type that accepts ConnectionArray and ConnectionArrayOutput values.
 // You can construct a concrete instance of `ConnectionArrayInput` via:
 //
@@ -197,6 +261,12 @@ func (i ConnectionArray) ToConnectionArrayOutput() ConnectionArrayOutput {
 
 func (i ConnectionArray) ToConnectionArrayOutputWithContext(ctx context.Context) ConnectionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionArrayOutput)
+}
+
+func (i ConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]*Connection] {
+	return pulumix.Output[[]*Connection]{
+		OutputState: i.ToConnectionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ConnectionMapInput is an input type that accepts ConnectionMap and ConnectionMapOutput values.
@@ -224,6 +294,12 @@ func (i ConnectionMap) ToConnectionMapOutputWithContext(ctx context.Context) Con
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionMapOutput)
 }
 
+func (i ConnectionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Connection] {
+	return pulumix.Output[map[string]*Connection]{
+		OutputState: i.ToConnectionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectionOutput struct{ *pulumi.OutputState }
 
 func (ConnectionOutput) ElementType() reflect.Type {
@@ -236,6 +312,12 @@ func (o ConnectionOutput) ToConnectionOutput() ConnectionOutput {
 
 func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput {
 	return o
+}
+
+func (o ConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*Connection] {
+	return pulumix.Output[*Connection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The public connection string of KVStore DBInstance.
@@ -272,6 +354,12 @@ func (o ConnectionArrayOutput) ToConnectionArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o ConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Connection] {
+	return pulumix.Output[[]*Connection]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConnectionArrayOutput) Index(i pulumi.IntInput) ConnectionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Connection {
 		return vs[0].([]*Connection)[vs[1].(int)]
@@ -290,6 +378,12 @@ func (o ConnectionMapOutput) ToConnectionMapOutput() ConnectionMapOutput {
 
 func (o ConnectionMapOutput) ToConnectionMapOutputWithContext(ctx context.Context) ConnectionMapOutput {
 	return o
+}
+
+func (o ConnectionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Connection] {
+	return pulumix.Output[map[string]*Connection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionMapOutput) MapIndex(k pulumi.StringInput) ConnectionOutput {

@@ -10,93 +10,14 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Vpc Flow Log resource. While it uses vpc.FlowLog to build a vpc flow log resource, it will be active by default.
 //
 // For information about Vpc Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/flow-logs-overview).
 //
-// > **NOTE:** Available in v1.117.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-testacc-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultRg, err := resourcemanager.NewResourceGroup(ctx, "defaultRg", &resourcemanager.ResourceGroupArgs{
-//				ResourceGroupName: pulumi.String(name),
-//				DisplayName:       pulumi.String("tf-testAcc-rg78"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultVpc, err := vpc.NewNetwork(ctx, "defaultVpc", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(fmt.Sprintf("%v1", name)),
-//				CidrBlock: pulumi.String("10.0.0.0/8"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = resourcemanager.NewResourceGroup(ctx, "modifyRG", &resourcemanager.ResourceGroupArgs{
-//				DisplayName:       pulumi.String("tf-testAcc-rg405"),
-//				ResourceGroupName: pulumi.String(fmt.Sprintf("%v2", name)),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultProject, err := log.NewProject(ctx, "defaultProject", nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultStore, err := log.NewStore(ctx, "defaultStore", &log.StoreArgs{
-//				Project: defaultProject.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vpc.NewFlowLog(ctx, "defaultFlowLog", &vpc.FlowLogArgs{
-//				FlowLogName:  pulumi.String(name),
-//				LogStoreName: defaultStore.Name,
-//				Description:  pulumi.String("tf-testAcc-flowlog"),
-//				TrafficPaths: pulumi.StringArray{
-//					pulumi.String("all"),
-//				},
-//				ProjectName:         defaultProject.Name,
-//				ResourceType:        pulumi.String("VPC"),
-//				ResourceGroupId:     defaultRg.ID(),
-//				ResourceId:          defaultVpc.ID(),
-//				AggregationInterval: pulumi.String("1"),
-//				TrafficType:         pulumi.String("All"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// > **NOTE:** Available since v1.117.0.
 //
 // ## Import
 //
@@ -334,6 +255,12 @@ func (i *FlowLog) ToFlowLogOutputWithContext(ctx context.Context) FlowLogOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(FlowLogOutput)
 }
 
+func (i *FlowLog) ToOutput(ctx context.Context) pulumix.Output[*FlowLog] {
+	return pulumix.Output[*FlowLog]{
+		OutputState: i.ToFlowLogOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FlowLogArrayInput is an input type that accepts FlowLogArray and FlowLogArrayOutput values.
 // You can construct a concrete instance of `FlowLogArrayInput` via:
 //
@@ -357,6 +284,12 @@ func (i FlowLogArray) ToFlowLogArrayOutput() FlowLogArrayOutput {
 
 func (i FlowLogArray) ToFlowLogArrayOutputWithContext(ctx context.Context) FlowLogArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlowLogArrayOutput)
+}
+
+func (i FlowLogArray) ToOutput(ctx context.Context) pulumix.Output[[]*FlowLog] {
+	return pulumix.Output[[]*FlowLog]{
+		OutputState: i.ToFlowLogArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // FlowLogMapInput is an input type that accepts FlowLogMap and FlowLogMapOutput values.
@@ -384,6 +317,12 @@ func (i FlowLogMap) ToFlowLogMapOutputWithContext(ctx context.Context) FlowLogMa
 	return pulumi.ToOutputWithContext(ctx, i).(FlowLogMapOutput)
 }
 
+func (i FlowLogMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FlowLog] {
+	return pulumix.Output[map[string]*FlowLog]{
+		OutputState: i.ToFlowLogMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FlowLogOutput struct{ *pulumi.OutputState }
 
 func (FlowLogOutput) ElementType() reflect.Type {
@@ -396,6 +335,12 @@ func (o FlowLogOutput) ToFlowLogOutput() FlowLogOutput {
 
 func (o FlowLogOutput) ToFlowLogOutputWithContext(ctx context.Context) FlowLogOutput {
 	return o
+}
+
+func (o FlowLogOutput) ToOutput(ctx context.Context) pulumix.Output[*FlowLog] {
+	return pulumix.Output[*FlowLog]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Data aggregation interval.
@@ -487,6 +432,12 @@ func (o FlowLogArrayOutput) ToFlowLogArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o FlowLogArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FlowLog] {
+	return pulumix.Output[[]*FlowLog]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FlowLogArrayOutput) Index(i pulumi.IntInput) FlowLogOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FlowLog {
 		return vs[0].([]*FlowLog)[vs[1].(int)]
@@ -505,6 +456,12 @@ func (o FlowLogMapOutput) ToFlowLogMapOutput() FlowLogMapOutput {
 
 func (o FlowLogMapOutput) ToFlowLogMapOutputWithContext(ctx context.Context) FlowLogMapOutput {
 	return o
+}
+
+func (o FlowLogMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FlowLog] {
+	return pulumix.Output[map[string]*FlowLog]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FlowLogMapOutput) MapIndex(k pulumi.StringInput) FlowLogOutput {

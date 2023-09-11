@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about KVStore Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/doc-detail/95973.htm).
  *
- * > **NOTE:** Available in 1.66.0+
+ * > **NOTE:** Available since v1.66.0.
  *
  * ## Example Usage
  *
@@ -20,29 +20,41 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const creation = config.get("creation") || "KVStore";
- * const name = config.get("name") || "kvstoreinstancevpc";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: creation,
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.kvstore.getZones({});
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  * });
  * const defaultInstance = new alicloud.kvstore.Instance("defaultInstance", {
- *     instanceClass: "redis.master.small.default",
- *     instanceName: name,
+ *     dbInstanceName: name,
  *     vswitchId: defaultSwitch.id,
- *     privateIp: "172.16.0.10",
- *     securityIps: ["10.0.0.1"],
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     instanceClass: "redis.master.large.default",
  *     instanceType: "Redis",
- *     engineVersion: "4.0",
+ *     engineVersion: "5.0",
+ *     securityIps: ["10.23.12.24"],
+ *     config: {
+ *         appendonly: "yes",
+ *         "lazyfree-lazy-eviction": "yes",
+ *     },
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
  * });
- * const example = new alicloud.kvstore.Account("example", {
- *     accountName: "tftestnormal",
+ * const defaultAccount = new alicloud.kvstore.Account("defaultAccount", {
+ *     accountName: "tfexamplename",
  *     accountPassword: "YourPassword_123",
  *     instanceId: defaultInstance.id,
  * });

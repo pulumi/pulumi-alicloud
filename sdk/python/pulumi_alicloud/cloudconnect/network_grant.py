@@ -132,9 +132,9 @@ class NetworkGrant(pulumi.CustomResource):
         """
         Provides a Cloud Connect Network Grant resource. If the CEN instance to be attached belongs to another account, authorization by the CEN instance is required.
 
-        For information about Cloud Connect Network Grant and how to use it, see [What is Cloud Connect Network Grant](https://www.alibabacloud.com/help/doc-detail/94543.htm).
+        For information about Cloud Connect Network Grant and how to use it, see [What is Cloud Connect Network Grant](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/grantinstancetocbn).
 
-        > **NOTE:** Available in 1.63.0+
+        > **NOTE:** Available since v1.63.0.
 
         > **NOTE:** Only the following regions support create Cloud Connect Network Grant. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
@@ -146,22 +146,39 @@ class NetworkGrant(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        ccn_account = alicloud.Provider("ccnAccount")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        cen_uid = config.get_float("cenUid")
+        if cen_uid is None:
+            cen_uid = 123456789
+        default = alicloud.Provider("default", region="cn-shanghai")
+        # Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
         cen_account = alicloud.Provider("cenAccount",
             region="cn-hangzhou",
-            access_key="xxxxxx",
-            secret_key="xxxxxx")
-        cen = alicloud.cen.Instance("cen", opts=pulumi.ResourceOptions(provider=alicloud["cen_account"]))
-        ccn = alicloud.cloudconnect.Network("ccn", is_default=True,
-        opts=pulumi.ResourceOptions(provider=alicloud["ccn_account"]))
-        default = alicloud.cloudconnect.NetworkGrant("default",
-            ccn_id=ccn.id,
+            assume_role=alicloud.ProviderAssumeRoleArgs(
+                role_arn=f"acs:ram::{cen_uid}:role/terraform-example-assume-role",
+            ))
+        # Method 2: Use the target cen account's access_key, secret_key
+        # provider "alicloud" {
+        #   region     = "cn-hangzhou"
+        #   access_key = "access_key"
+        #   secret_key = "secret_key"
+        #   alias      = "cen_account"
+        # }
+        default_network = alicloud.cloudconnect.Network("defaultNetwork",
+            description=name,
+            cidr_block="192.168.0.0/24",
+            is_default=True,
+            opts=pulumi.ResourceOptions(provider=alicloud["default"]))
+        cen = alicloud.cen.Instance("cen", cen_instance_name=name,
+        opts=pulumi.ResourceOptions(provider=alicloud["cen_account"]))
+        default_network_grant = alicloud.cloudconnect.NetworkGrant("defaultNetworkGrant",
+            ccn_id=default_network.id,
             cen_id=cen.id,
-            cen_uid="xxxxxx",
-            opts=pulumi.ResourceOptions(depends_on=[
-                    ccn,
-                    cen,
-                ]))
+            cen_uid=cen_uid,
+            opts=pulumi.ResourceOptions(provider=alicloud["default"]))
         ```
 
         ## Import
@@ -187,9 +204,9 @@ class NetworkGrant(pulumi.CustomResource):
         """
         Provides a Cloud Connect Network Grant resource. If the CEN instance to be attached belongs to another account, authorization by the CEN instance is required.
 
-        For information about Cloud Connect Network Grant and how to use it, see [What is Cloud Connect Network Grant](https://www.alibabacloud.com/help/doc-detail/94543.htm).
+        For information about Cloud Connect Network Grant and how to use it, see [What is Cloud Connect Network Grant](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/grantinstancetocbn).
 
-        > **NOTE:** Available in 1.63.0+
+        > **NOTE:** Available since v1.63.0.
 
         > **NOTE:** Only the following regions support create Cloud Connect Network Grant. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
@@ -201,22 +218,39 @@ class NetworkGrant(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        ccn_account = alicloud.Provider("ccnAccount")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        cen_uid = config.get_float("cenUid")
+        if cen_uid is None:
+            cen_uid = 123456789
+        default = alicloud.Provider("default", region="cn-shanghai")
+        # Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
         cen_account = alicloud.Provider("cenAccount",
             region="cn-hangzhou",
-            access_key="xxxxxx",
-            secret_key="xxxxxx")
-        cen = alicloud.cen.Instance("cen", opts=pulumi.ResourceOptions(provider=alicloud["cen_account"]))
-        ccn = alicloud.cloudconnect.Network("ccn", is_default=True,
-        opts=pulumi.ResourceOptions(provider=alicloud["ccn_account"]))
-        default = alicloud.cloudconnect.NetworkGrant("default",
-            ccn_id=ccn.id,
+            assume_role=alicloud.ProviderAssumeRoleArgs(
+                role_arn=f"acs:ram::{cen_uid}:role/terraform-example-assume-role",
+            ))
+        # Method 2: Use the target cen account's access_key, secret_key
+        # provider "alicloud" {
+        #   region     = "cn-hangzhou"
+        #   access_key = "access_key"
+        #   secret_key = "secret_key"
+        #   alias      = "cen_account"
+        # }
+        default_network = alicloud.cloudconnect.Network("defaultNetwork",
+            description=name,
+            cidr_block="192.168.0.0/24",
+            is_default=True,
+            opts=pulumi.ResourceOptions(provider=alicloud["default"]))
+        cen = alicloud.cen.Instance("cen", cen_instance_name=name,
+        opts=pulumi.ResourceOptions(provider=alicloud["cen_account"]))
+        default_network_grant = alicloud.cloudconnect.NetworkGrant("defaultNetworkGrant",
+            ccn_id=default_network.id,
             cen_id=cen.id,
-            cen_uid="xxxxxx",
-            opts=pulumi.ResourceOptions(depends_on=[
-                    ccn,
-                    cen,
-                ]))
+            cen_uid=cen_uid,
+            opts=pulumi.ResourceOptions(provider=alicloud["default"]))
         ```
 
         ## Import

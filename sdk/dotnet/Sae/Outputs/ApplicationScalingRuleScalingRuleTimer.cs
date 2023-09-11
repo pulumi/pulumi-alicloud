@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly string? Period;
         /// <summary>
-        /// Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+        /// Resilient Scaling Strategy Trigger Timing. See `schedules` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ApplicationScalingRuleScalingRuleTimerSchedule> Schedules;
 

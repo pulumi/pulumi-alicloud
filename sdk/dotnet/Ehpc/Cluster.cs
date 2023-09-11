@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ehpc
     /// 
     /// For information about Ehpc Cluster and how to use it, see [What is Cluster](https://www.alibabacloud.com/help/e-hpc/latest/createcluster).
     /// 
-    /// &gt; **NOTE:** Available in v1.173.0+.
+    /// &gt; **NOTE:** Available since v1.173.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,40 +28,11 @@ namespace Pulumi.AliCloud.Ehpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
-    ///     });
-    /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
-    ///     {
-    ///         NameRegex = "default-NODELETING",
-    ///     });
-    /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
-    ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///     });
-    /// 
-    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
-    ///     {
-    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///     });
-    /// 
-    ///     var config = new Config();
-    ///     var storageType = config.Get("storageType") ?? "Performance";
-    ///     var defaultFileSystem = new AliCloud.Nas.FileSystem("defaultFileSystem", new()
-    ///     {
-    ///         StorageType = storageType,
-    ///         ProtocolType = "NFS",
-    ///     });
-    /// 
-    ///     var defaultMountTarget = new AliCloud.Nas.MountTarget("defaultMountTarget", new()
-    ///     {
-    ///         FileSystemId = defaultFileSystem.Id,
-    ///         AccessGroupName = "DEFAULT_VPC_GROUP_NAME",
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
     ///     });
     /// 
     ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
@@ -70,11 +41,43 @@ namespace Pulumi.AliCloud.Ehpc
     ///         Owners = "system",
     ///     });
     /// 
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.0.0.0/8",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.1.0.0/16",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultFileSystem = new AliCloud.Nas.FileSystem("defaultFileSystem", new()
+    ///     {
+    ///         StorageType = "Performance",
+    ///         ProtocolType = "NFS",
+    ///     });
+    /// 
+    ///     var defaultMountTarget = new AliCloud.Nas.MountTarget("defaultMountTarget", new()
+    ///     {
+    ///         FileSystemId = defaultFileSystem.Id,
+    ///         AccessGroupName = "DEFAULT_VPC_GROUP_NAME",
+    ///         VswitchId = defaultSwitch.Id,
+    ///     });
+    /// 
     ///     var defaultCluster = new AliCloud.Ehpc.Cluster("defaultCluster", new()
     ///     {
-    ///         ClusterName = "example_value",
+    ///         ClusterName = name,
     ///         DeployMode = "Simple",
-    ///         Description = "example_description",
+    ///         Description = name,
     ///         HaEnable = false,
     ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
     ///         ImageOwnerAlias = "system",
@@ -90,8 +93,8 @@ namespace Pulumi.AliCloud.Ehpc
     ///         OsTag = "CentOS_7.6_64",
     ///         SchedulerType = "pbs",
     ///         Password = "your-password123",
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VswitchId = defaultSwitch.Id,
+    ///         VpcId = defaultNetwork.Id,
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
@@ -116,13 +119,13 @@ namespace Pulumi.AliCloud.Ehpc
         public Output<string> AccountType { get; private set; } = null!;
 
         /// <summary>
-        /// The additional volumes. See the following `Block additional_volumes`.
+        /// The additional volumes. See `additional_volumes` below.
         /// </summary>
         [Output("additionalVolumes")]
         public Output<ImmutableArray<Outputs.ClusterAdditionalVolume>> AdditionalVolumes { get; private set; } = null!;
 
         /// <summary>
-        /// The application. See the following `Block application`.
+        /// The application. See `application` below.
         /// </summary>
         [Output("applications")]
         public Output<ImmutableArray<Outputs.ClusterApplication>> Applications { get; private set; } = null!;
@@ -322,7 +325,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Output<string?> Plugin { get; private set; } = null!;
 
         /// <summary>
-        /// The post install script. See the following `Block post_install_script`.
+        /// The post install script. See `post_install_script` below.
         /// </summary>
         [Output("postInstallScripts")]
         public Output<ImmutableArray<Outputs.ClusterPostInstallScript>> PostInstallScripts { get; private set; } = null!;
@@ -533,7 +536,7 @@ namespace Pulumi.AliCloud.Ehpc
         private InputList<Inputs.ClusterAdditionalVolumeArgs>? _additionalVolumes;
 
         /// <summary>
-        /// The additional volumes. See the following `Block additional_volumes`.
+        /// The additional volumes. See `additional_volumes` below.
         /// </summary>
         public InputList<Inputs.ClusterAdditionalVolumeArgs> AdditionalVolumes
         {
@@ -545,7 +548,7 @@ namespace Pulumi.AliCloud.Ehpc
         private InputList<Inputs.ClusterApplicationArgs>? _applications;
 
         /// <summary>
-        /// The application. See the following `Block application`.
+        /// The application. See `application` below.
         /// </summary>
         public InputList<Inputs.ClusterApplicationArgs> Applications
         {
@@ -761,7 +764,7 @@ namespace Pulumi.AliCloud.Ehpc
         private InputList<Inputs.ClusterPostInstallScriptArgs>? _postInstallScripts;
 
         /// <summary>
-        /// The post install script. See the following `Block post_install_script`.
+        /// The post install script. See `post_install_script` below.
         /// </summary>
         public InputList<Inputs.ClusterPostInstallScriptArgs> PostInstallScripts
         {
@@ -933,7 +936,7 @@ namespace Pulumi.AliCloud.Ehpc
         private InputList<Inputs.ClusterAdditionalVolumeGetArgs>? _additionalVolumes;
 
         /// <summary>
-        /// The additional volumes. See the following `Block additional_volumes`.
+        /// The additional volumes. See `additional_volumes` below.
         /// </summary>
         public InputList<Inputs.ClusterAdditionalVolumeGetArgs> AdditionalVolumes
         {
@@ -945,7 +948,7 @@ namespace Pulumi.AliCloud.Ehpc
         private InputList<Inputs.ClusterApplicationGetArgs>? _applications;
 
         /// <summary>
-        /// The application. See the following `Block application`.
+        /// The application. See `application` below.
         /// </summary>
         public InputList<Inputs.ClusterApplicationGetArgs> Applications
         {
@@ -1161,7 +1164,7 @@ namespace Pulumi.AliCloud.Ehpc
         private InputList<Inputs.ClusterPostInstallScriptGetArgs>? _postInstallScripts;
 
         /// <summary>
-        /// The post install script. See the following `Block post_install_script`.
+        /// The post install script. See `post_install_script` below.
         /// </summary>
         public InputList<Inputs.ClusterPostInstallScriptGetArgs> PostInstallScripts
         {

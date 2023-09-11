@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DTS Synchronization Job resource.
@@ -570,6 +571,12 @@ func (i *SynchronizationJob) ToSynchronizationJobOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(SynchronizationJobOutput)
 }
 
+func (i *SynchronizationJob) ToOutput(ctx context.Context) pulumix.Output[*SynchronizationJob] {
+	return pulumix.Output[*SynchronizationJob]{
+		OutputState: i.ToSynchronizationJobOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SynchronizationJobArrayInput is an input type that accepts SynchronizationJobArray and SynchronizationJobArrayOutput values.
 // You can construct a concrete instance of `SynchronizationJobArrayInput` via:
 //
@@ -593,6 +600,12 @@ func (i SynchronizationJobArray) ToSynchronizationJobArrayOutput() Synchronizati
 
 func (i SynchronizationJobArray) ToSynchronizationJobArrayOutputWithContext(ctx context.Context) SynchronizationJobArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SynchronizationJobArrayOutput)
+}
+
+func (i SynchronizationJobArray) ToOutput(ctx context.Context) pulumix.Output[[]*SynchronizationJob] {
+	return pulumix.Output[[]*SynchronizationJob]{
+		OutputState: i.ToSynchronizationJobArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SynchronizationJobMapInput is an input type that accepts SynchronizationJobMap and SynchronizationJobMapOutput values.
@@ -620,6 +633,12 @@ func (i SynchronizationJobMap) ToSynchronizationJobMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(SynchronizationJobMapOutput)
 }
 
+func (i SynchronizationJobMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SynchronizationJob] {
+	return pulumix.Output[map[string]*SynchronizationJob]{
+		OutputState: i.ToSynchronizationJobMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SynchronizationJobOutput struct{ *pulumi.OutputState }
 
 func (SynchronizationJobOutput) ElementType() reflect.Type {
@@ -632,6 +651,12 @@ func (o SynchronizationJobOutput) ToSynchronizationJobOutput() SynchronizationJo
 
 func (o SynchronizationJobOutput) ToSynchronizationJobOutputWithContext(ctx context.Context) SynchronizationJobOutput {
 	return o
+}
+
+func (o SynchronizationJobOutput) ToOutput(ctx context.Context) pulumix.Output[*SynchronizationJob] {
+	return pulumix.Output[*SynchronizationJob]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
@@ -848,6 +873,12 @@ func (o SynchronizationJobArrayOutput) ToSynchronizationJobArrayOutputWithContex
 	return o
 }
 
+func (o SynchronizationJobArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SynchronizationJob] {
+	return pulumix.Output[[]*SynchronizationJob]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SynchronizationJobArrayOutput) Index(i pulumi.IntInput) SynchronizationJobOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SynchronizationJob {
 		return vs[0].([]*SynchronizationJob)[vs[1].(int)]
@@ -866,6 +897,12 @@ func (o SynchronizationJobMapOutput) ToSynchronizationJobMapOutput() Synchroniza
 
 func (o SynchronizationJobMapOutput) ToSynchronizationJobMapOutputWithContext(ctx context.Context) SynchronizationJobMapOutput {
 	return o
+}
+
+func (o SynchronizationJobMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SynchronizationJob] {
+	return pulumix.Output[map[string]*SynchronizationJob]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SynchronizationJobMapOutput) MapIndex(k pulumi.StringInput) SynchronizationJobOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Resource Manager Shared Target resource.
@@ -133,6 +134,12 @@ func (i *SharedTarget) ToSharedTargetOutputWithContext(ctx context.Context) Shar
 	return pulumi.ToOutputWithContext(ctx, i).(SharedTargetOutput)
 }
 
+func (i *SharedTarget) ToOutput(ctx context.Context) pulumix.Output[*SharedTarget] {
+	return pulumix.Output[*SharedTarget]{
+		OutputState: i.ToSharedTargetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SharedTargetArrayInput is an input type that accepts SharedTargetArray and SharedTargetArrayOutput values.
 // You can construct a concrete instance of `SharedTargetArrayInput` via:
 //
@@ -156,6 +163,12 @@ func (i SharedTargetArray) ToSharedTargetArrayOutput() SharedTargetArrayOutput {
 
 func (i SharedTargetArray) ToSharedTargetArrayOutputWithContext(ctx context.Context) SharedTargetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SharedTargetArrayOutput)
+}
+
+func (i SharedTargetArray) ToOutput(ctx context.Context) pulumix.Output[[]*SharedTarget] {
+	return pulumix.Output[[]*SharedTarget]{
+		OutputState: i.ToSharedTargetArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SharedTargetMapInput is an input type that accepts SharedTargetMap and SharedTargetMapOutput values.
@@ -183,6 +196,12 @@ func (i SharedTargetMap) ToSharedTargetMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(SharedTargetMapOutput)
 }
 
+func (i SharedTargetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SharedTarget] {
+	return pulumix.Output[map[string]*SharedTarget]{
+		OutputState: i.ToSharedTargetMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SharedTargetOutput struct{ *pulumi.OutputState }
 
 func (SharedTargetOutput) ElementType() reflect.Type {
@@ -195,6 +214,12 @@ func (o SharedTargetOutput) ToSharedTargetOutput() SharedTargetOutput {
 
 func (o SharedTargetOutput) ToSharedTargetOutputWithContext(ctx context.Context) SharedTargetOutput {
 	return o
+}
+
+func (o SharedTargetOutput) ToOutput(ctx context.Context) pulumix.Output[*SharedTarget] {
+	return pulumix.Output[*SharedTarget]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource share ID of resource manager.
@@ -226,6 +251,12 @@ func (o SharedTargetArrayOutput) ToSharedTargetArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o SharedTargetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SharedTarget] {
+	return pulumix.Output[[]*SharedTarget]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SharedTargetArrayOutput) Index(i pulumi.IntInput) SharedTargetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SharedTarget {
 		return vs[0].([]*SharedTarget)[vs[1].(int)]
@@ -244,6 +275,12 @@ func (o SharedTargetMapOutput) ToSharedTargetMapOutput() SharedTargetMapOutput {
 
 func (o SharedTargetMapOutput) ToSharedTargetMapOutputWithContext(ctx context.Context) SharedTargetMapOutput {
 	return o
+}
+
+func (o SharedTargetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SharedTarget] {
+	return pulumix.Output[map[string]*SharedTarget]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SharedTargetMapOutput) MapIndex(k pulumi.StringInput) SharedTargetOutput {

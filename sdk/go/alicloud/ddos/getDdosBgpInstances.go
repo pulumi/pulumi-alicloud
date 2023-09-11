@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
@@ -119,6 +120,12 @@ func (o GetDdosBgpInstancesResultOutput) ToGetDdosBgpInstancesResultOutput() Get
 
 func (o GetDdosBgpInstancesResultOutput) ToGetDdosBgpInstancesResultOutputWithContext(ctx context.Context) GetDdosBgpInstancesResultOutput {
 	return o
+}
+
+func (o GetDdosBgpInstancesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDdosBgpInstancesResult] {
+	return pulumix.Output[GetDdosBgpInstancesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

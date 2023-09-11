@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a CDN Fc Trigger resource.
@@ -235,6 +236,12 @@ func (i *FcTrigger) ToFcTriggerOutputWithContext(ctx context.Context) FcTriggerO
 	return pulumi.ToOutputWithContext(ctx, i).(FcTriggerOutput)
 }
 
+func (i *FcTrigger) ToOutput(ctx context.Context) pulumix.Output[*FcTrigger] {
+	return pulumix.Output[*FcTrigger]{
+		OutputState: i.ToFcTriggerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FcTriggerArrayInput is an input type that accepts FcTriggerArray and FcTriggerArrayOutput values.
 // You can construct a concrete instance of `FcTriggerArrayInput` via:
 //
@@ -258,6 +265,12 @@ func (i FcTriggerArray) ToFcTriggerArrayOutput() FcTriggerArrayOutput {
 
 func (i FcTriggerArray) ToFcTriggerArrayOutputWithContext(ctx context.Context) FcTriggerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FcTriggerArrayOutput)
+}
+
+func (i FcTriggerArray) ToOutput(ctx context.Context) pulumix.Output[[]*FcTrigger] {
+	return pulumix.Output[[]*FcTrigger]{
+		OutputState: i.ToFcTriggerArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // FcTriggerMapInput is an input type that accepts FcTriggerMap and FcTriggerMapOutput values.
@@ -285,6 +298,12 @@ func (i FcTriggerMap) ToFcTriggerMapOutputWithContext(ctx context.Context) FcTri
 	return pulumi.ToOutputWithContext(ctx, i).(FcTriggerMapOutput)
 }
 
+func (i FcTriggerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FcTrigger] {
+	return pulumix.Output[map[string]*FcTrigger]{
+		OutputState: i.ToFcTriggerMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FcTriggerOutput struct{ *pulumi.OutputState }
 
 func (FcTriggerOutput) ElementType() reflect.Type {
@@ -297,6 +316,12 @@ func (o FcTriggerOutput) ToFcTriggerOutput() FcTriggerOutput {
 
 func (o FcTriggerOutput) ToFcTriggerOutputWithContext(ctx context.Context) FcTriggerOutput {
 	return o
+}
+
+func (o FcTriggerOutput) ToOutput(ctx context.Context) pulumix.Output[*FcTrigger] {
+	return pulumix.Output[*FcTrigger]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the Event.
@@ -348,6 +373,12 @@ func (o FcTriggerArrayOutput) ToFcTriggerArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o FcTriggerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FcTrigger] {
+	return pulumix.Output[[]*FcTrigger]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FcTriggerArrayOutput) Index(i pulumi.IntInput) FcTriggerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FcTrigger {
 		return vs[0].([]*FcTrigger)[vs[1].(int)]
@@ -366,6 +397,12 @@ func (o FcTriggerMapOutput) ToFcTriggerMapOutput() FcTriggerMapOutput {
 
 func (o FcTriggerMapOutput) ToFcTriggerMapOutputWithContext(ctx context.Context) FcTriggerMapOutput {
 	return o
+}
+
+func (o FcTriggerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FcTrigger] {
+	return pulumix.Output[map[string]*FcTrigger]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FcTriggerMapOutput) MapIndex(k pulumi.StringInput) FcTriggerOutput {

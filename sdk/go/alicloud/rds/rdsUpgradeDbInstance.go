@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a RDS Upgrade DB Instance resource.
@@ -1082,6 +1083,12 @@ func (i *RdsUpgradeDbInstance) ToRdsUpgradeDbInstanceOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RdsUpgradeDbInstanceOutput)
 }
 
+func (i *RdsUpgradeDbInstance) ToOutput(ctx context.Context) pulumix.Output[*RdsUpgradeDbInstance] {
+	return pulumix.Output[*RdsUpgradeDbInstance]{
+		OutputState: i.ToRdsUpgradeDbInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RdsUpgradeDbInstanceArrayInput is an input type that accepts RdsUpgradeDbInstanceArray and RdsUpgradeDbInstanceArrayOutput values.
 // You can construct a concrete instance of `RdsUpgradeDbInstanceArrayInput` via:
 //
@@ -1105,6 +1112,12 @@ func (i RdsUpgradeDbInstanceArray) ToRdsUpgradeDbInstanceArrayOutput() RdsUpgrad
 
 func (i RdsUpgradeDbInstanceArray) ToRdsUpgradeDbInstanceArrayOutputWithContext(ctx context.Context) RdsUpgradeDbInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RdsUpgradeDbInstanceArrayOutput)
+}
+
+func (i RdsUpgradeDbInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*RdsUpgradeDbInstance] {
+	return pulumix.Output[[]*RdsUpgradeDbInstance]{
+		OutputState: i.ToRdsUpgradeDbInstanceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RdsUpgradeDbInstanceMapInput is an input type that accepts RdsUpgradeDbInstanceMap and RdsUpgradeDbInstanceMapOutput values.
@@ -1132,6 +1145,12 @@ func (i RdsUpgradeDbInstanceMap) ToRdsUpgradeDbInstanceMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RdsUpgradeDbInstanceMapOutput)
 }
 
+func (i RdsUpgradeDbInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RdsUpgradeDbInstance] {
+	return pulumix.Output[map[string]*RdsUpgradeDbInstance]{
+		OutputState: i.ToRdsUpgradeDbInstanceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RdsUpgradeDbInstanceOutput struct{ *pulumi.OutputState }
 
 func (RdsUpgradeDbInstanceOutput) ElementType() reflect.Type {
@@ -1144,6 +1163,12 @@ func (o RdsUpgradeDbInstanceOutput) ToRdsUpgradeDbInstanceOutput() RdsUpgradeDbI
 
 func (o RdsUpgradeDbInstanceOutput) ToRdsUpgradeDbInstanceOutputWithContext(ctx context.Context) RdsUpgradeDbInstanceOutput {
 	return o
+}
+
+func (o RdsUpgradeDbInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*RdsUpgradeDbInstance] {
+	return pulumix.Output[*RdsUpgradeDbInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
@@ -1498,6 +1523,12 @@ func (o RdsUpgradeDbInstanceArrayOutput) ToRdsUpgradeDbInstanceArrayOutputWithCo
 	return o
 }
 
+func (o RdsUpgradeDbInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RdsUpgradeDbInstance] {
+	return pulumix.Output[[]*RdsUpgradeDbInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RdsUpgradeDbInstanceArrayOutput) Index(i pulumi.IntInput) RdsUpgradeDbInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RdsUpgradeDbInstance {
 		return vs[0].([]*RdsUpgradeDbInstance)[vs[1].(int)]
@@ -1516,6 +1547,12 @@ func (o RdsUpgradeDbInstanceMapOutput) ToRdsUpgradeDbInstanceMapOutput() RdsUpgr
 
 func (o RdsUpgradeDbInstanceMapOutput) ToRdsUpgradeDbInstanceMapOutputWithContext(ctx context.Context) RdsUpgradeDbInstanceMapOutput {
 	return o
+}
+
+func (o RdsUpgradeDbInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RdsUpgradeDbInstance] {
+	return pulumix.Output[map[string]*RdsUpgradeDbInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RdsUpgradeDbInstanceMapOutput) MapIndex(k pulumi.StringInput) RdsUpgradeDbInstanceOutput {

@@ -22,7 +22,7 @@ class LoadBalancerInternetArgs:
         """
         The set of arguments for constructing a LoadBalancerInternet resource.
         :param pulumi.Input[str] app_id: The target application ID that needs to be bound to the SLB.
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerInternetInternetArgs']]] internets: The bound private network SLB. See the following `Block internet`.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerInternetInternetArgs']]] internets: The bound private network SLB. See `internet` below.
         :param pulumi.Input[str] internet_slb_id: The internet SLB ID.
         """
         pulumi.set(__self__, "app_id", app_id)
@@ -46,7 +46,7 @@ class LoadBalancerInternetArgs:
     @pulumi.getter
     def internets(self) -> pulumi.Input[Sequence[pulumi.Input['LoadBalancerInternetInternetArgs']]]:
         """
-        The bound private network SLB. See the following `Block internet`.
+        The bound private network SLB. See `internet` below.
         """
         return pulumi.get(self, "internets")
 
@@ -79,7 +79,7 @@ class _LoadBalancerInternetState:
         :param pulumi.Input[str] app_id: The target application ID that needs to be bound to the SLB.
         :param pulumi.Input[str] internet_ip: Use designated public network SLBs that have been purchased to support non-shared instances.
         :param pulumi.Input[str] internet_slb_id: The internet SLB ID.
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerInternetInternetArgs']]] internets: The bound private network SLB. See the following `Block internet`.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerInternetInternetArgs']]] internets: The bound private network SLB. See `internet` below.
         """
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
@@ -130,7 +130,7 @@ class _LoadBalancerInternetState:
     @pulumi.getter
     def internets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerInternetInternetArgs']]]]:
         """
-        The bound private network SLB. See the following `Block internet`.
+        The bound private network SLB. See `internet` below.
         """
         return pulumi.get(self, "internets")
 
@@ -151,9 +151,9 @@ class LoadBalancerInternet(pulumi.CustomResource):
         """
         Provides an Alicloud Serverless App Engine (SAE) Application Load Balancer Attachment resource.
 
-        For information about Serverless App Engine (SAE) Load Balancer Internet Attachment and how to use it, see [sae.LoadBalancerInternet](https://help.aliyun.com/document_detail/126360.html).
+        For information about Serverless App Engine (SAE) Load Balancer Internet Attachment and how to use it, see [sae.LoadBalancerInternet](https://www.alibabacloud.com/help/en/sae/latest/bindslb).
 
-        > **NOTE:** Available in v1.164.0+.
+        > **NOTE:** Available since v1.164.0.
 
         ## Example Usage
 
@@ -162,15 +162,58 @@ class LoadBalancerInternet(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example = alicloud.sae.LoadBalancerInternet("example",
-            app_id="your_application_id",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_namespace = alicloud.sae.Namespace("defaultNamespace",
+            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
+            namespace_name=name,
+            namespace_description=name,
+            enable_micro_registration=False)
+        default_application = alicloud.sae.Application("defaultApplication",
+            app_description=name,
+            app_name=name,
+            namespace_id=default_namespace.id,
+            image_url="registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
+            package_type="Image",
+            jdk="Open JDK 8",
+            security_group_id=default_security_group.id,
+            vpc_id=default_network.id,
+            vswitch_id=default_switch.id,
+            timezone="Asia/Beijing",
+            replicas=5,
+            cpu=500,
+            memory=2048)
+        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+            load_balancer_name=name,
+            vswitch_id=default_switch.id,
+            load_balancer_spec="slb.s2.small",
+            address_type="internet")
+        default_load_balancer_internet = alicloud.sae.LoadBalancerInternet("defaultLoadBalancerInternet",
+            app_id=default_application.id,
+            internet_slb_id=default_application_load_balancer.id,
             internets=[alicloud.sae.LoadBalancerInternetInternetArgs(
-                port=80,
                 protocol="TCP",
+                port=80,
                 target_port=8080,
-            )],
-            internet_slb_id="your_internet_slb_id")
+            )])
         ```
 
         ## Import
@@ -185,7 +228,7 @@ class LoadBalancerInternet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: The target application ID that needs to be bound to the SLB.
         :param pulumi.Input[str] internet_slb_id: The internet SLB ID.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerInternetInternetArgs']]]] internets: The bound private network SLB. See the following `Block internet`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerInternetInternetArgs']]]] internets: The bound private network SLB. See `internet` below.
         """
         ...
     @overload
@@ -196,9 +239,9 @@ class LoadBalancerInternet(pulumi.CustomResource):
         """
         Provides an Alicloud Serverless App Engine (SAE) Application Load Balancer Attachment resource.
 
-        For information about Serverless App Engine (SAE) Load Balancer Internet Attachment and how to use it, see [sae.LoadBalancerInternet](https://help.aliyun.com/document_detail/126360.html).
+        For information about Serverless App Engine (SAE) Load Balancer Internet Attachment and how to use it, see [sae.LoadBalancerInternet](https://www.alibabacloud.com/help/en/sae/latest/bindslb).
 
-        > **NOTE:** Available in v1.164.0+.
+        > **NOTE:** Available since v1.164.0.
 
         ## Example Usage
 
@@ -207,15 +250,58 @@ class LoadBalancerInternet(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example = alicloud.sae.LoadBalancerInternet("example",
-            app_id="your_application_id",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_namespace = alicloud.sae.Namespace("defaultNamespace",
+            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
+            namespace_name=name,
+            namespace_description=name,
+            enable_micro_registration=False)
+        default_application = alicloud.sae.Application("defaultApplication",
+            app_description=name,
+            app_name=name,
+            namespace_id=default_namespace.id,
+            image_url="registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
+            package_type="Image",
+            jdk="Open JDK 8",
+            security_group_id=default_security_group.id,
+            vpc_id=default_network.id,
+            vswitch_id=default_switch.id,
+            timezone="Asia/Beijing",
+            replicas=5,
+            cpu=500,
+            memory=2048)
+        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+            load_balancer_name=name,
+            vswitch_id=default_switch.id,
+            load_balancer_spec="slb.s2.small",
+            address_type="internet")
+        default_load_balancer_internet = alicloud.sae.LoadBalancerInternet("defaultLoadBalancerInternet",
+            app_id=default_application.id,
+            internet_slb_id=default_application_load_balancer.id,
             internets=[alicloud.sae.LoadBalancerInternetInternetArgs(
-                port=80,
                 protocol="TCP",
+                port=80,
                 target_port=8080,
-            )],
-            internet_slb_id="your_internet_slb_id")
+            )])
         ```
 
         ## Import
@@ -285,7 +371,7 @@ class LoadBalancerInternet(pulumi.CustomResource):
         :param pulumi.Input[str] app_id: The target application ID that needs to be bound to the SLB.
         :param pulumi.Input[str] internet_ip: Use designated public network SLBs that have been purchased to support non-shared instances.
         :param pulumi.Input[str] internet_slb_id: The internet SLB ID.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerInternetInternetArgs']]]] internets: The bound private network SLB. See the following `Block internet`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerInternetInternetArgs']]]] internets: The bound private network SLB. See `internet` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -325,7 +411,7 @@ class LoadBalancerInternet(pulumi.CustomResource):
     @pulumi.getter
     def internets(self) -> pulumi.Output[Sequence['outputs.LoadBalancerInternetInternet']]:
         """
-        The bound private network SLB. See the following `Block internet`.
+        The bound private network SLB. See `internet` below.
         """
         return pulumi.get(self, "internets")
 

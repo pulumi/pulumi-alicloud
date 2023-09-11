@@ -16,9 +16,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a CDN Real Time Log Delivery resource.
  * 
- * For information about CDN Real Time Log Delivery and how to use it, see [What is Real Time Log Delivery](https://www.alibabacloud.com/help/doc-detail/100456.htm).
+ * For information about CDN Real Time Log Delivery and how to use it, see [What is Real Time Log Delivery](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-createrealtimelogdelivery).
  * 
- * &gt; **NOTE:** Available in v1.134.0+.
+ * &gt; **NOTE:** Available since v1.134.0.
  * 
  * ## Example Usage
  * 
@@ -29,6 +29,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cdn.DomainNew;
+ * import com.pulumi.alicloud.cdn.DomainNewArgs;
+ * import com.pulumi.alicloud.cdn.inputs.DomainNewSourceArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
+ * import com.pulumi.alicloud.log.Store;
+ * import com.pulumi.alicloud.log.StoreArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.cdn.RealTimeLogDelivery;
  * import com.pulumi.alicloud.cdn.RealTimeLogDeliveryArgs;
  * import java.util.List;
@@ -44,11 +55,45 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new RealTimeLogDelivery(&#34;example&#34;, RealTimeLogDeliveryArgs.builder()        
- *             .domain(&#34;example_value&#34;)
- *             .logstore(&#34;example_value&#34;)
- *             .project(&#34;example_value&#34;)
- *             .slsRegion(&#34;cn-hanghzou&#34;)
+ *         var defaultDomainNew = new DomainNew(&#34;defaultDomainNew&#34;, DomainNewArgs.builder()        
+ *             .scope(&#34;overseas&#34;)
+ *             .domainName(&#34;mycdndomain.alicloud-provider.cn&#34;)
+ *             .cdnType(&#34;web&#34;)
+ *             .sources(DomainNewSourceArgs.builder()
+ *                 .type(&#34;ipaddr&#34;)
+ *                 .content(&#34;1.1.3.1&#34;)
+ *                 .priority(20)
+ *                 .port(80)
+ *                 .weight(15)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
+ *             .description(&#34;terraform-example&#34;)
+ *             .build());
+ * 
+ *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
+ *             .project(defaultProject.name())
+ *             .shardCount(3)
+ *             .autoSplit(true)
+ *             .maxSplitShardCount(60)
+ *             .appendMeta(true)
+ *             .build());
+ * 
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         var defaultRealTimeLogDelivery = new RealTimeLogDelivery(&#34;defaultRealTimeLogDelivery&#34;, RealTimeLogDeliveryArgs.builder()        
+ *             .domain(defaultDomainNew.domainName())
+ *             .logstore(defaultProject.name())
+ *             .project(defaultStore.name())
+ *             .slsRegion(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
  *             .build());
  * 
  *     }

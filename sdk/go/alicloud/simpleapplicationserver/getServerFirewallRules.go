@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Simple Application Server Firewall Rules of the current Alibaba Cloud user.
@@ -117,6 +118,12 @@ func (o GetServerFirewallRulesResultOutput) ToGetServerFirewallRulesResultOutput
 
 func (o GetServerFirewallRulesResultOutput) ToGetServerFirewallRulesResultOutputWithContext(ctx context.Context) GetServerFirewallRulesResultOutput {
 	return o
+}
+
+func (o GetServerFirewallRulesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServerFirewallRulesResult] {
+	return pulumix.Output[GetServerFirewallRulesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

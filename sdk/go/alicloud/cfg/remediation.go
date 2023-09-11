@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Config Remediation resource.
@@ -270,6 +271,12 @@ func (i *Remediation) ToRemediationOutputWithContext(ctx context.Context) Remedi
 	return pulumi.ToOutputWithContext(ctx, i).(RemediationOutput)
 }
 
+func (i *Remediation) ToOutput(ctx context.Context) pulumix.Output[*Remediation] {
+	return pulumix.Output[*Remediation]{
+		OutputState: i.ToRemediationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RemediationArrayInput is an input type that accepts RemediationArray and RemediationArrayOutput values.
 // You can construct a concrete instance of `RemediationArrayInput` via:
 //
@@ -293,6 +300,12 @@ func (i RemediationArray) ToRemediationArrayOutput() RemediationArrayOutput {
 
 func (i RemediationArray) ToRemediationArrayOutputWithContext(ctx context.Context) RemediationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RemediationArrayOutput)
+}
+
+func (i RemediationArray) ToOutput(ctx context.Context) pulumix.Output[[]*Remediation] {
+	return pulumix.Output[[]*Remediation]{
+		OutputState: i.ToRemediationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RemediationMapInput is an input type that accepts RemediationMap and RemediationMapOutput values.
@@ -320,6 +333,12 @@ func (i RemediationMap) ToRemediationMapOutputWithContext(ctx context.Context) R
 	return pulumi.ToOutputWithContext(ctx, i).(RemediationMapOutput)
 }
 
+func (i RemediationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Remediation] {
+	return pulumix.Output[map[string]*Remediation]{
+		OutputState: i.ToRemediationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RemediationOutput struct{ *pulumi.OutputState }
 
 func (RemediationOutput) ElementType() reflect.Type {
@@ -332,6 +351,12 @@ func (o RemediationOutput) ToRemediationOutput() RemediationOutput {
 
 func (o RemediationOutput) ToRemediationOutputWithContext(ctx context.Context) RemediationOutput {
 	return o
+}
+
+func (o RemediationOutput) ToOutput(ctx context.Context) pulumix.Output[*Remediation] {
+	return pulumix.Output[*Remediation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Rule ID.
@@ -385,6 +410,12 @@ func (o RemediationArrayOutput) ToRemediationArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o RemediationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Remediation] {
+	return pulumix.Output[[]*Remediation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RemediationArrayOutput) Index(i pulumi.IntInput) RemediationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Remediation {
 		return vs[0].([]*Remediation)[vs[1].(int)]
@@ -403,6 +434,12 @@ func (o RemediationMapOutput) ToRemediationMapOutput() RemediationMapOutput {
 
 func (o RemediationMapOutput) ToRemediationMapOutputWithContext(ctx context.Context) RemediationMapOutput {
 	return o
+}
+
+func (o RemediationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Remediation] {
+	return pulumix.Output[map[string]*Remediation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RemediationMapOutput) MapIndex(k pulumi.StringInput) RemediationOutput {

@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Click House Account resource.
  * 
- * For information about Click House Account and how to use it, see [What is Account](https://www.alibabacloud.com/product/clickhouse).
+ * For information about Click House Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/clickhouse/latest/api-clickhouse-2019-11-11-createaccount).
  * 
- * &gt; **NOTE:** Available in v1.134.0+.
+ * &gt; **NOTE:** Available since v1.134.0.
  * 
  * ## Example Usage
  * 
@@ -33,9 +33,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
  * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.clickhouse.DbCluster;
  * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
  * import com.pulumi.alicloud.clickhouse.Account;
@@ -54,39 +55,41 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;testaccountname&#34;);
- *         final var pwd = config.get(&#34;pwd&#34;).orElse(&#34;Tf-testpwd&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var defaultRegions = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;default-NODELETING&#34;)
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
  *             .build());
  * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
  *             .zoneId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].zoneIds()[0].zoneId()))
  *             .build());
  * 
  *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        
- *             .dbClusterVersion(&#34;20.3.10.75&#34;)
+ *             .dbClusterVersion(&#34;22.8.5.29&#34;)
  *             .category(&#34;Basic&#34;)
  *             .dbClusterClass(&#34;S8&#34;)
  *             .dbClusterNetworkType(&#34;vpc&#34;)
- *             .dbClusterDescription(name)
- *             .dbNodeGroupCount(1)
+ *             .dbNodeGroupCount(&#34;1&#34;)
  *             .paymentType(&#34;PayAsYouGo&#34;)
  *             .dbNodeStorage(&#34;500&#34;)
  *             .storageType(&#34;cloud_essd&#34;)
- *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.vswitches()[0].id()))
+ *             .vswitchId(defaultSwitch.id())
+ *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         var defaultAccount = new Account(&#34;defaultAccount&#34;, AccountArgs.builder()        
  *             .dbClusterId(defaultDbCluster.id())
- *             .accountDescription(&#34;your_description&#34;)
- *             .accountName(name)
- *             .accountPassword(pwd)
+ *             .accountDescription(&#34;tf-example-description&#34;)
+ *             .accountName(&#34;examplename&#34;)
+ *             .accountPassword(&#34;Example1234&#34;)
  *             .build());
  * 
  *     }

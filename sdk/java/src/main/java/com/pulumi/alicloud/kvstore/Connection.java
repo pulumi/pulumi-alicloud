@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 /**
  * Operate the public network ip of the specified resource. How to use it, see [What is Resource Alicloud KVStore Connection](https://www.alibabacloud.com/help/doc-detail/125795.htm).
  * 
- * &gt; **NOTE:** Available in v1.101.0+.
+ * &gt; **NOTE:** Available since v1.101.0.
  * 
  * ## Example Usage
  * 
@@ -27,6 +27,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+ * import com.pulumi.alicloud.kvstore.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.kvstore.Instance;
+ * import com.pulumi.alicloud.kvstore.InstanceArgs;
  * import com.pulumi.alicloud.kvstore.Connection;
  * import com.pulumi.alicloud.kvstore.ConnectionArgs;
  * import java.util.List;
@@ -42,9 +52,48 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Connection(&#34;default&#34;, ConnectionArgs.builder()        
- *             .connectionStringPrefix(&#34;allocatetestupdate&#34;)
- *             .instanceId(&#34;r-abc123456&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultZones = KvstoreFunctions.getZones();
+ * 
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .status(&#34;OK&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .dbInstanceName(name)
+ *             .vswitchId(defaultSwitch.id())
+ *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .instanceClass(&#34;redis.master.large.default&#34;)
+ *             .instanceType(&#34;Redis&#34;)
+ *             .engineVersion(&#34;5.0&#34;)
+ *             .securityIps(&#34;10.23.12.24&#34;)
+ *             .config(Map.ofEntries(
+ *                 Map.entry(&#34;appendonly&#34;, &#34;yes&#34;),
+ *                 Map.entry(&#34;lazyfree-lazy-eviction&#34;, &#34;yes&#34;)
+ *             ))
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *             ))
+ *             .build());
+ * 
+ *         var defaultConnection = new Connection(&#34;defaultConnection&#34;, ConnectionArgs.builder()        
+ *             .connectionStringPrefix(&#34;exampleconnection&#34;)
+ *             .instanceId(defaultInstance.id())
  *             .port(&#34;6370&#34;)
  *             .build());
  * 

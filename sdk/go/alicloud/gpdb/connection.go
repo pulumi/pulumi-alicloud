@@ -10,15 +10,102 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a connection resource to allocate an Internet connection string for instance.
 //
-// > **NOTE:**  Available in 1.48.0+
+// > **NOTE:** Available since v1.48.0.
 //
 // > **NOTE:** Each instance will allocate a intranet connection string automatically and its prefix is instance ID.
 //
 //	To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/gpdb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultZones, err := gpdb.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := gpdb.NewInstance(ctx, "defaultInstance", &gpdb.InstanceArgs{
+//				DbInstanceCategory:  pulumi.String("HighAvailability"),
+//				DbInstanceClass:     pulumi.String("gpdb.group.segsdx1"),
+//				DbInstanceMode:      pulumi.String("StorageElastic"),
+//				Description:         pulumi.String(name),
+//				Engine:              pulumi.String("gpdb"),
+//				EngineVersion:       pulumi.String("6.0"),
+//				ZoneId:              *pulumi.String(defaultZones.Ids[0]),
+//				InstanceNetworkType: pulumi.String("VPC"),
+//				InstanceSpec:        pulumi.String("2C16G"),
+//				MasterNodeNum:       pulumi.Int(1),
+//				PaymentType:         pulumi.String("PayAsYouGo"),
+//				PrivateIpAddress:    pulumi.String("1.1.1.1"),
+//				SegStorageType:      pulumi.String("cloud_essd"),
+//				SegNodeNum:          pulumi.Int(4),
+//				StorageSize:         pulumi.Int(50),
+//				VpcId:               defaultNetwork.ID(),
+//				VswitchId:           defaultSwitch.ID(),
+//				IpWhitelists: gpdb.InstanceIpWhitelistArray{
+//					&gpdb.InstanceIpWhitelistArgs{
+//						SecurityIpList: pulumi.String("127.0.0.1"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gpdb.NewConnection(ctx, "defaultConnection", &gpdb.ConnectionArgs{
+//				InstanceId:       defaultInstance.ID(),
+//				ConnectionPrefix: pulumi.String("exampelcon"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -148,6 +235,12 @@ func (i *Connection) ToConnectionOutputWithContext(ctx context.Context) Connecti
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOutput)
 }
 
+func (i *Connection) ToOutput(ctx context.Context) pulumix.Output[*Connection] {
+	return pulumix.Output[*Connection]{
+		OutputState: i.ToConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ConnectionArrayInput is an input type that accepts ConnectionArray and ConnectionArrayOutput values.
 // You can construct a concrete instance of `ConnectionArrayInput` via:
 //
@@ -171,6 +264,12 @@ func (i ConnectionArray) ToConnectionArrayOutput() ConnectionArrayOutput {
 
 func (i ConnectionArray) ToConnectionArrayOutputWithContext(ctx context.Context) ConnectionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionArrayOutput)
+}
+
+func (i ConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]*Connection] {
+	return pulumix.Output[[]*Connection]{
+		OutputState: i.ToConnectionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ConnectionMapInput is an input type that accepts ConnectionMap and ConnectionMapOutput values.
@@ -198,6 +297,12 @@ func (i ConnectionMap) ToConnectionMapOutputWithContext(ctx context.Context) Con
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionMapOutput)
 }
 
+func (i ConnectionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Connection] {
+	return pulumix.Output[map[string]*Connection]{
+		OutputState: i.ToConnectionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectionOutput struct{ *pulumi.OutputState }
 
 func (ConnectionOutput) ElementType() reflect.Type {
@@ -210,6 +315,12 @@ func (o ConnectionOutput) ToConnectionOutput() ConnectionOutput {
 
 func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput {
 	return o
+}
+
+func (o ConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*Connection] {
+	return pulumix.Output[*Connection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + '-tf'.
@@ -251,6 +362,12 @@ func (o ConnectionArrayOutput) ToConnectionArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o ConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Connection] {
+	return pulumix.Output[[]*Connection]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConnectionArrayOutput) Index(i pulumi.IntInput) ConnectionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Connection {
 		return vs[0].([]*Connection)[vs[1].(int)]
@@ -269,6 +386,12 @@ func (o ConnectionMapOutput) ToConnectionMapOutput() ConnectionMapOutput {
 
 func (o ConnectionMapOutput) ToConnectionMapOutputWithContext(ctx context.Context) ConnectionMapOutput {
 	return o
+}
+
+func (o ConnectionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Connection] {
+	return pulumix.Output[map[string]*Connection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionMapOutput) MapIndex(k pulumi.StringInput) ConnectionOutput {

@@ -25,8 +25,8 @@ class DomainArgs:
         The set of arguments for constructing a Domain resource.
         :param pulumi.Input[str] domain: The name of the domain name to query.
         :param pulumi.Input[str] instance_id: WAF instance ID
-        :param pulumi.Input['DomainListenArgs'] listen: Configure listening information. See the following `Block Listen`.
-        :param pulumi.Input['DomainRedirectArgs'] redirect: Configure forwarding information. See the following `Block Redirect`.
+        :param pulumi.Input['DomainListenArgs'] listen: Configure listening information. See `listen` below.
+        :param pulumi.Input['DomainRedirectArgs'] redirect: Configure forwarding information. See `redirect` below.
         :param pulumi.Input[str] access_type: The access type of the WAF instance. Value: **share** (default): CNAME access.
         """
         pulumi.set(__self__, "domain", domain)
@@ -64,7 +64,7 @@ class DomainArgs:
     @pulumi.getter
     def listen(self) -> pulumi.Input['DomainListenArgs']:
         """
-        Configure listening information. See the following `Block Listen`.
+        Configure listening information. See `listen` below.
         """
         return pulumi.get(self, "listen")
 
@@ -76,7 +76,7 @@ class DomainArgs:
     @pulumi.getter
     def redirect(self) -> pulumi.Input['DomainRedirectArgs']:
         """
-        Configure forwarding information. See the following `Block Redirect`.
+        Configure forwarding information. See `redirect` below.
         """
         return pulumi.get(self, "redirect")
 
@@ -112,8 +112,8 @@ class _DomainState:
         :param pulumi.Input[str] access_type: The access type of the WAF instance. Value: **share** (default): CNAME access.
         :param pulumi.Input[str] domain: The name of the domain name to query.
         :param pulumi.Input[str] instance_id: WAF instance ID
-        :param pulumi.Input['DomainListenArgs'] listen: Configure listening information. See the following `Block Listen`.
-        :param pulumi.Input['DomainRedirectArgs'] redirect: Configure forwarding information. See the following `Block Redirect`.
+        :param pulumi.Input['DomainListenArgs'] listen: Configure listening information. See `listen` below.
+        :param pulumi.Input['DomainRedirectArgs'] redirect: Configure forwarding information. See `redirect` below.
         :param pulumi.Input[str] resource_manager_resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the resource.
         """
@@ -172,7 +172,7 @@ class _DomainState:
     @pulumi.getter
     def listen(self) -> Optional[pulumi.Input['DomainListenArgs']]:
         """
-        Configure listening information. See the following `Block Listen`.
+        Configure listening information. See `listen` below.
         """
         return pulumi.get(self, "listen")
 
@@ -184,7 +184,7 @@ class _DomainState:
     @pulumi.getter
     def redirect(self) -> Optional[pulumi.Input['DomainRedirectArgs']]:
         """
-        Configure forwarding information. See the following `Block Redirect`.
+        Configure forwarding information. See `redirect` below.
         """
         return pulumi.get(self, "redirect")
 
@@ -233,7 +233,7 @@ class Domain(pulumi.CustomResource):
 
         For information about Wafv3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-doc-waf-openapi-2021-10-01-api-doc-createdomain).
 
-        > **NOTE:** Available in v1.200.0+.
+        > **NOTE:** Available since v1.200.0.
 
         ## Import
 
@@ -248,8 +248,8 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] access_type: The access type of the WAF instance. Value: **share** (default): CNAME access.
         :param pulumi.Input[str] domain: The name of the domain name to query.
         :param pulumi.Input[str] instance_id: WAF instance ID
-        :param pulumi.Input[pulumi.InputType['DomainListenArgs']] listen: Configure listening information. See the following `Block Listen`.
-        :param pulumi.Input[pulumi.InputType['DomainRedirectArgs']] redirect: Configure forwarding information. See the following `Block Redirect`.
+        :param pulumi.Input[pulumi.InputType['DomainListenArgs']] listen: Configure listening information. See `listen` below.
+        :param pulumi.Input[pulumi.InputType['DomainRedirectArgs']] redirect: Configure forwarding information. See `redirect` below.
         """
         ...
     @overload
@@ -262,7 +262,7 @@ class Domain(pulumi.CustomResource):
 
         For information about Wafv3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-doc-waf-openapi-2021-10-01-api-doc-createdomain).
 
-        > **NOTE:** Available in v1.200.0+.
+        > **NOTE:** Available since v1.200.0.
 
         ## Import
 
@@ -343,8 +343,8 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] access_type: The access type of the WAF instance. Value: **share** (default): CNAME access.
         :param pulumi.Input[str] domain: The name of the domain name to query.
         :param pulumi.Input[str] instance_id: WAF instance ID
-        :param pulumi.Input[pulumi.InputType['DomainListenArgs']] listen: Configure listening information. See the following `Block Listen`.
-        :param pulumi.Input[pulumi.InputType['DomainRedirectArgs']] redirect: Configure forwarding information. See the following `Block Redirect`.
+        :param pulumi.Input[pulumi.InputType['DomainListenArgs']] listen: Configure listening information. See `listen` below.
+        :param pulumi.Input[pulumi.InputType['DomainRedirectArgs']] redirect: Configure forwarding information. See `redirect` below.
         :param pulumi.Input[str] resource_manager_resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the resource.
         """
@@ -389,7 +389,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter
     def listen(self) -> pulumi.Output['outputs.DomainListen']:
         """
-        Configure listening information. See the following `Block Listen`.
+        Configure listening information. See `listen` below.
         """
         return pulumi.get(self, "listen")
 
@@ -397,7 +397,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter
     def redirect(self) -> pulumi.Output['outputs.DomainRedirect']:
         """
-        Configure forwarding information. See the following `Block Redirect`.
+        Configure forwarding information. See `redirect` below.
         """
         return pulumi.get(self, "redirect")
 

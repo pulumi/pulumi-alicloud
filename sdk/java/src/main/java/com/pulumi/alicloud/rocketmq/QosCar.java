@@ -19,9 +19,9 @@ import javax.annotation.Nullable;
  * Provides a Sag qos car resource.
  * You need to create a QoS car to set priorities, rate limits, and quintuple rules for different messages.
  * 
- * For information about Sag Qos Car and how to use it, see [What is Qos Car](https://www.alibabacloud.com/help/doc-detail/140065.htm).
+ * For information about Sag Qos Car and how to use it, see [What is Qos Car](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createqoscar).
  * 
- * &gt; **NOTE:** Available in 1.60.0+
+ * &gt; **NOTE:** Available since v1.60.0.
  * 
  * &gt; **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
  * 
@@ -50,11 +50,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
  *         var defaultQos = new Qos(&#34;defaultQos&#34;);
  * 
  *         var defaultQosCar = new QosCar(&#34;defaultQosCar&#34;, QosCarArgs.builder()        
  *             .qosId(defaultQos.id())
- *             .description(&#34;tf-testSagQosCarDescription&#34;)
+ *             .description(name)
  *             .priority(&#34;1&#34;)
  *             .limitType(&#34;Absolute&#34;)
  *             .minBandwidthAbs(&#34;10&#34;)

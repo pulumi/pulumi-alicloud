@@ -63,14 +63,14 @@ public final class ApplicationScalingRuleScalingRuleTimerArgs extends com.pulumi
     }
 
     /**
-     * Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+     * Resilient Scaling Strategy Trigger Timing. See `schedules` below.
      * 
      */
     @Import(name="schedules")
     private @Nullable Output<List<ApplicationScalingRuleScalingRuleTimerScheduleArgs>> schedules;
 
     /**
-     * @return Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+     * @return Resilient Scaling Strategy Trigger Timing. See `schedules` below.
      * 
      */
     public Optional<Output<List<ApplicationScalingRuleScalingRuleTimerScheduleArgs>>> schedules() {
@@ -168,7 +168,7 @@ public final class ApplicationScalingRuleScalingRuleTimerArgs extends com.pulumi
         }
 
         /**
-         * @param schedules Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+         * @param schedules Resilient Scaling Strategy Trigger Timing. See `schedules` below.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class ApplicationScalingRuleScalingRuleTimerArgs extends com.pulumi
         }
 
         /**
-         * @param schedules Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+         * @param schedules Resilient Scaling Strategy Trigger Timing. See `schedules` below.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class ApplicationScalingRuleScalingRuleTimerArgs extends com.pulumi
         }
 
         /**
-         * @param schedules Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+         * @param schedules Resilient Scaling Strategy Trigger Timing. See `schedules` below.
          * 
          * @return builder
          * 

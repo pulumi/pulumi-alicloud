@@ -10,11 +10,12 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// This resource will help you to manager Container Registry namespaces.
+// This resource will help you to manager Container Registry namespaces, see [What is Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace).
 //
-// > **NOTE:** Available in v1.34.0+.
+// > **NOTE:** Available since v1.34.0.
 //
 // > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
 //
@@ -29,12 +30,18 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cr.NewNamespace(ctx, "my-namespace", &cr.NamespaceArgs{
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := cr.NewNamespace(ctx, "example", &cr.NamespaceArgs{
 //				AutoCreate:        pulumi.Bool(false),
 //				DefaultVisibility: pulumi.String("PUBLIC"),
 //			})
@@ -166,6 +173,12 @@ func (i *Namespace) ToNamespaceOutputWithContext(ctx context.Context) NamespaceO
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceOutput)
 }
 
+func (i *Namespace) ToOutput(ctx context.Context) pulumix.Output[*Namespace] {
+	return pulumix.Output[*Namespace]{
+		OutputState: i.ToNamespaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NamespaceArrayInput is an input type that accepts NamespaceArray and NamespaceArrayOutput values.
 // You can construct a concrete instance of `NamespaceArrayInput` via:
 //
@@ -189,6 +202,12 @@ func (i NamespaceArray) ToNamespaceArrayOutput() NamespaceArrayOutput {
 
 func (i NamespaceArray) ToNamespaceArrayOutputWithContext(ctx context.Context) NamespaceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceArrayOutput)
+}
+
+func (i NamespaceArray) ToOutput(ctx context.Context) pulumix.Output[[]*Namespace] {
+	return pulumix.Output[[]*Namespace]{
+		OutputState: i.ToNamespaceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NamespaceMapInput is an input type that accepts NamespaceMap and NamespaceMapOutput values.
@@ -216,6 +235,12 @@ func (i NamespaceMap) ToNamespaceMapOutputWithContext(ctx context.Context) Names
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceMapOutput)
 }
 
+func (i NamespaceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Namespace] {
+	return pulumix.Output[map[string]*Namespace]{
+		OutputState: i.ToNamespaceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NamespaceOutput struct{ *pulumi.OutputState }
 
 func (NamespaceOutput) ElementType() reflect.Type {
@@ -228,6 +253,12 @@ func (o NamespaceOutput) ToNamespaceOutput() NamespaceOutput {
 
 func (o NamespaceOutput) ToNamespaceOutputWithContext(ctx context.Context) NamespaceOutput {
 	return o
+}
+
+func (o NamespaceOutput) ToOutput(ctx context.Context) pulumix.Output[*Namespace] {
+	return pulumix.Output[*Namespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
@@ -259,6 +290,12 @@ func (o NamespaceArrayOutput) ToNamespaceArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o NamespaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Namespace] {
+	return pulumix.Output[[]*Namespace]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NamespaceArrayOutput) Index(i pulumi.IntInput) NamespaceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Namespace {
 		return vs[0].([]*Namespace)[vs[1].(int)]
@@ -277,6 +314,12 @@ func (o NamespaceMapOutput) ToNamespaceMapOutput() NamespaceMapOutput {
 
 func (o NamespaceMapOutput) ToNamespaceMapOutputWithContext(ctx context.Context) NamespaceMapOutput {
 	return o
+}
+
+func (o NamespaceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Namespace] {
+	return pulumix.Output[map[string]*Namespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NamespaceMapOutput) MapIndex(k pulumi.StringInput) NamespaceOutput {

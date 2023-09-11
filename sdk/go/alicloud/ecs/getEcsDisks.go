@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ecs Disks of the current Alibaba Cloud user.
@@ -252,6 +253,12 @@ func (o GetEcsDisksResultOutput) ToGetEcsDisksResultOutput() GetEcsDisksResultOu
 
 func (o GetEcsDisksResultOutput) ToGetEcsDisksResultOutputWithContext(ctx context.Context) GetEcsDisksResultOutput {
 	return o
+}
+
+func (o GetEcsDisksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEcsDisksResult] {
+	return pulumix.Output[GetEcsDisksResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetEcsDisksResultOutput) AdditionalAttributes() pulumi.StringArrayOutput {

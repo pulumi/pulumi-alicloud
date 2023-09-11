@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Imp App Templates of the current Alibaba Cloud user.
@@ -124,6 +125,12 @@ func (o GetAppTemplatesResultOutput) ToGetAppTemplatesResultOutput() GetAppTempl
 
 func (o GetAppTemplatesResultOutput) ToGetAppTemplatesResultOutputWithContext(ctx context.Context) GetAppTemplatesResultOutput {
 	return o
+}
+
+func (o GetAppTemplatesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppTemplatesResult] {
+	return pulumix.Output[GetAppTemplatesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

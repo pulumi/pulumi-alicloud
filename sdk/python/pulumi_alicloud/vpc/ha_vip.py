@@ -25,8 +25,11 @@ class HAVipArgs:
         The set of arguments for constructing a HAVip resource.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of the HaVip, the field can't be changed.
         :param pulumi.Input[str] description: The description of the HaVip instance.
+        :param pulumi.Input[str] ha_vip_name: The name of the HAVIP.
         :param pulumi.Input[str] havip_name: The name of the HaVip instance.
         :param pulumi.Input[str] ip_address: The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the HAVIP belongs.
+        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
         """
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         if description is not None:
@@ -72,6 +75,9 @@ class HAVipArgs:
     @property
     @pulumi.getter(name="haVipName")
     def ha_vip_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the HAVIP.
+        """
         return pulumi.get(self, "ha_vip_name")
 
     @ha_vip_name.setter
@@ -108,6 +114,9 @@ class HAVipArgs:
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group to which the HAVIP belongs.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
@@ -117,6 +126,9 @@ class HAVipArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The list of tags.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -144,10 +156,20 @@ class _HAVipState:
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering HAVip resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] associated_eip_addresses: The elastic IP address (EIP) associated with the HAVIP.
+        :param pulumi.Input[str] associated_instance_type: The type of the instance with which the HAVIP is associated. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] associated_instances: The ID of the instance with which the HAVIP is associated.
+        :param pulumi.Input[str] create_time: The time when the HAVIP was created.
         :param pulumi.Input[str] description: The description of the HaVip instance.
+        :param pulumi.Input[str] ha_vip_id: The ID of the HAVIP.
+        :param pulumi.Input[str] ha_vip_name: The name of the HAVIP.
         :param pulumi.Input[str] havip_name: The name of the HaVip instance.
         :param pulumi.Input[str] ip_address: The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
+        :param pulumi.Input[str] master_instance_id: The ID of the active instance that is associated with the HAVIP.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the HAVIP belongs.
         :param pulumi.Input[str] status: (Available in v1.120.0+) The status of the HaVip instance.
+        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC to which the HAVIP belongs.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of the HaVip, the field can't be changed.
         """
         if associated_eip_addresses is not None:
@@ -187,6 +209,9 @@ class _HAVipState:
     @property
     @pulumi.getter(name="associatedEipAddresses")
     def associated_eip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The elastic IP address (EIP) associated with the HAVIP.
+        """
         return pulumi.get(self, "associated_eip_addresses")
 
     @associated_eip_addresses.setter
@@ -196,6 +221,9 @@ class _HAVipState:
     @property
     @pulumi.getter(name="associatedInstanceType")
     def associated_instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the instance with which the HAVIP is associated. Valid values:
+        """
         return pulumi.get(self, "associated_instance_type")
 
     @associated_instance_type.setter
@@ -205,6 +233,9 @@ class _HAVipState:
     @property
     @pulumi.getter(name="associatedInstances")
     def associated_instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of the instance with which the HAVIP is associated.
+        """
         return pulumi.get(self, "associated_instances")
 
     @associated_instances.setter
@@ -214,6 +245,9 @@ class _HAVipState:
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the HAVIP was created.
+        """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -235,6 +269,9 @@ class _HAVipState:
     @property
     @pulumi.getter(name="haVipId")
     def ha_vip_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the HAVIP.
+        """
         return pulumi.get(self, "ha_vip_id")
 
     @ha_vip_id.setter
@@ -244,6 +281,9 @@ class _HAVipState:
     @property
     @pulumi.getter(name="haVipName")
     def ha_vip_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the HAVIP.
+        """
         return pulumi.get(self, "ha_vip_name")
 
     @ha_vip_name.setter
@@ -280,6 +320,9 @@ class _HAVipState:
     @property
     @pulumi.getter(name="masterInstanceId")
     def master_instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the active instance that is associated with the HAVIP.
+        """
         return pulumi.get(self, "master_instance_id")
 
     @master_instance_id.setter
@@ -289,6 +332,9 @@ class _HAVipState:
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group to which the HAVIP belongs.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
@@ -310,6 +356,9 @@ class _HAVipState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The list of tags.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -319,6 +368,9 @@ class _HAVipState:
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VPC to which the HAVIP belongs.
+        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -360,9 +412,22 @@ class HAVip(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo = alicloud.vpc.HAVip("foo",
-            description="test_havip",
-            vswitch_id="vsw-fakeid")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=example_network.id,
+            zone_id=default.zones[0].id)
+        example_ha_vip = alicloud.vpc.HAVip("exampleHAVip",
+            vswitch_id=example_switch.id,
+            description=name)
         ```
 
         ## Import
@@ -376,8 +441,11 @@ class HAVip(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the HaVip instance.
+        :param pulumi.Input[str] ha_vip_name: The name of the HAVIP.
         :param pulumi.Input[str] havip_name: The name of the HaVip instance.
         :param pulumi.Input[str] ip_address: The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the HAVIP belongs.
+        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of the HaVip, the field can't be changed.
         """
         ...
@@ -395,9 +463,22 @@ class HAVip(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo = alicloud.vpc.HAVip("foo",
-            description="test_havip",
-            vswitch_id="vsw-fakeid")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=example_network.id,
+            zone_id=default.zones[0].id)
+        example_ha_vip = alicloud.vpc.HAVip("exampleHAVip",
+            vswitch_id=example_switch.id,
+            description=name)
         ```
 
         ## Import
@@ -491,10 +572,20 @@ class HAVip(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] associated_eip_addresses: The elastic IP address (EIP) associated with the HAVIP.
+        :param pulumi.Input[str] associated_instance_type: The type of the instance with which the HAVIP is associated. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] associated_instances: The ID of the instance with which the HAVIP is associated.
+        :param pulumi.Input[str] create_time: The time when the HAVIP was created.
         :param pulumi.Input[str] description: The description of the HaVip instance.
+        :param pulumi.Input[str] ha_vip_id: The ID of the HAVIP.
+        :param pulumi.Input[str] ha_vip_name: The name of the HAVIP.
         :param pulumi.Input[str] havip_name: The name of the HaVip instance.
         :param pulumi.Input[str] ip_address: The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
+        :param pulumi.Input[str] master_instance_id: The ID of the active instance that is associated with the HAVIP.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the HAVIP belongs.
         :param pulumi.Input[str] status: (Available in v1.120.0+) The status of the HaVip instance.
+        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC to which the HAVIP belongs.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of the HaVip, the field can't be changed.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -521,21 +612,33 @@ class HAVip(pulumi.CustomResource):
     @property
     @pulumi.getter(name="associatedEipAddresses")
     def associated_eip_addresses(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The elastic IP address (EIP) associated with the HAVIP.
+        """
         return pulumi.get(self, "associated_eip_addresses")
 
     @property
     @pulumi.getter(name="associatedInstanceType")
     def associated_instance_type(self) -> pulumi.Output[str]:
+        """
+        The type of the instance with which the HAVIP is associated. Valid values:
+        """
         return pulumi.get(self, "associated_instance_type")
 
     @property
     @pulumi.getter(name="associatedInstances")
     def associated_instances(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The ID of the instance with which the HAVIP is associated.
+        """
         return pulumi.get(self, "associated_instances")
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
+        """
+        The time when the HAVIP was created.
+        """
         return pulumi.get(self, "create_time")
 
     @property
@@ -549,11 +652,17 @@ class HAVip(pulumi.CustomResource):
     @property
     @pulumi.getter(name="haVipId")
     def ha_vip_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the HAVIP.
+        """
         return pulumi.get(self, "ha_vip_id")
 
     @property
     @pulumi.getter(name="haVipName")
     def ha_vip_name(self) -> pulumi.Output[str]:
+        """
+        The name of the HAVIP.
+        """
         return pulumi.get(self, "ha_vip_name")
 
     @property
@@ -578,11 +687,17 @@ class HAVip(pulumi.CustomResource):
     @property
     @pulumi.getter(name="masterInstanceId")
     def master_instance_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the active instance that is associated with the HAVIP.
+        """
         return pulumi.get(self, "master_instance_id")
 
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the resource group to which the HAVIP belongs.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @property
@@ -596,11 +711,17 @@ class HAVip(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        The list of tags.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the VPC to which the HAVIP belongs.
+        """
         return pulumi.get(self, "vpc_id")
 
     @property

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.oss.inputs;
 
 import com.pulumi.alicloud.oss.inputs.BucketLifecycleRuleAbortMultipartUploadArgs;
 import com.pulumi.alicloud.oss.inputs.BucketLifecycleRuleExpirationArgs;
+import com.pulumi.alicloud.oss.inputs.BucketLifecycleRuleFilterArgs;
 import com.pulumi.alicloud.oss.inputs.BucketLifecycleRuleNoncurrentVersionExpirationArgs;
 import com.pulumi.alicloud.oss.inputs.BucketLifecycleRuleNoncurrentVersionTransitionArgs;
 import com.pulumi.alicloud.oss.inputs.BucketLifecycleRuleTransitionArgs;
@@ -70,6 +71,25 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Configuration block used to identify objects that a Lifecycle rule applies to. See `filter` below.
+     * 
+     * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+     * 
+     */
+    @Import(name="filter")
+    private @Nullable Output<BucketLifecycleRuleFilterArgs> filter;
+
+    /**
+     * @return Configuration block used to identify objects that a Lifecycle rule applies to. See `filter` below.
+     * 
+     * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+     * 
+     */
+    public Optional<Output<BucketLifecycleRuleFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+
+    /**
      * Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
      * 
      */
@@ -115,14 +135,14 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+     * The prefix in the names of the objects to which the lifecycle rule does not apply.
      * 
      */
     @Import(name="prefix")
     private @Nullable Output<String> prefix;
 
     /**
-     * @return Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+     * @return The prefix in the names of the objects to which the lifecycle rule does not apply.
      * 
      */
     public Optional<Output<String>> prefix() {
@@ -132,16 +152,12 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
     /**
      * Key-value map of resource tags. All of these tags must exist in the object&#39;s tag set in order for the rule to apply.
      * 
-     * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
-     * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
      * @return Key-value map of resource tags. All of these tags must exist in the object&#39;s tag set in order for the rule to apply.
-     * 
-     * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -169,6 +185,7 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         this.abortMultipartUploads = $.abortMultipartUploads;
         this.enabled = $.enabled;
         this.expirations = $.expirations;
+        this.filter = $.filter;
         this.id = $.id;
         this.noncurrentVersionExpirations = $.noncurrentVersionExpirations;
         this.noncurrentVersionTransitions = $.noncurrentVersionTransitions;
@@ -279,6 +296,31 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param filter Configuration block used to identify objects that a Lifecycle rule applies to. See `filter` below.
+         * 
+         * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(@Nullable Output<BucketLifecycleRuleFilterArgs> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        /**
+         * @param filter Configuration block used to identify objects that a Lifecycle rule applies to. See `filter` below.
+         * 
+         * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(BucketLifecycleRuleFilterArgs filter) {
+            return filter(Output.of(filter));
+        }
+
+        /**
          * @param id Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
          * 
          * @return builder
@@ -362,7 +404,7 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param prefix Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+         * @param prefix The prefix in the names of the objects to which the lifecycle rule does not apply.
          * 
          * @return builder
          * 
@@ -373,7 +415,7 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param prefix Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+         * @param prefix The prefix in the names of the objects to which the lifecycle rule does not apply.
          * 
          * @return builder
          * 
@@ -385,8 +427,6 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         /**
          * @param tags Key-value map of resource tags. All of these tags must exist in the object&#39;s tag set in order for the rule to apply.
          * 
-         * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
-         * 
          * @return builder
          * 
          */
@@ -397,8 +437,6 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
 
         /**
          * @param tags Key-value map of resource tags. All of these tags must exist in the object&#39;s tag set in order for the rule to apply.
-         * 
-         * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
          * 
          * @return builder
          * 

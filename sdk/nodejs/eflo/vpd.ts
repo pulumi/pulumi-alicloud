@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Eflo Vpd resource.
  *
- * For information about Eflo Vpd and how to use it, see [What is Vpd](https://help.aliyun.com/document_detail/604976.html).
+ * For information about Eflo Vpd and how to use it, see [What is Vpd](https://www.alibabacloud.com/help/en/pai/user-guide/overview-of-intelligent-computing-lingjun).
  *
- * > **NOTE:** Available in v1.201.0+.
+ * > **NOTE:** Available since v1.201.0.
  *
  * ## Example Usage
  *
@@ -19,9 +19,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.eflo.Vpd("default", {
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultVpd = new alicloud.eflo.Vpd("defaultVpd", {
  *     cidr: "10.0.0.0/8",
- *     vpdName: "RMC-Terraform-Test",
+ *     vpdName: name,
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
  * });
  * ```
  *
@@ -62,7 +66,7 @@ export class Vpd extends pulumi.CustomResource {
     }
 
     /**
-     * CIDR network segment
+     * CIDR network segment.
      */
     public readonly cidr!: pulumi.Output<string>;
     /**
@@ -74,7 +78,7 @@ export class Vpd extends pulumi.CustomResource {
      */
     public /*out*/ readonly gmtModified!: pulumi.Output<string>;
     /**
-     * The Resource group id
+     * The Resource group id.
      */
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
     /**
@@ -130,7 +134,7 @@ export class Vpd extends pulumi.CustomResource {
  */
 export interface VpdState {
     /**
-     * CIDR network segment
+     * CIDR network segment.
      */
     cidr?: pulumi.Input<string>;
     /**
@@ -142,7 +146,7 @@ export interface VpdState {
      */
     gmtModified?: pulumi.Input<string>;
     /**
-     * The Resource group id
+     * The Resource group id.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -160,11 +164,11 @@ export interface VpdState {
  */
 export interface VpdArgs {
     /**
-     * CIDR network segment
+     * CIDR network segment.
      */
     cidr: pulumi.Input<string>;
     /**
-     * The Resource group id
+     * The Resource group id.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**

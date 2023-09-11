@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
@@ -117,6 +118,12 @@ func (o GetHpcClustersResultOutput) ToGetHpcClustersResultOutput() GetHpcCluster
 
 func (o GetHpcClustersResultOutput) ToGetHpcClustersResultOutputWithContext(ctx context.Context) GetHpcClustersResultOutput {
 	return o
+}
+
+func (o GetHpcClustersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetHpcClustersResult] {
+	return pulumix.Output[GetHpcClustersResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHpcClustersResultOutput) Clusters() GetHpcClustersClusterArrayOutput {

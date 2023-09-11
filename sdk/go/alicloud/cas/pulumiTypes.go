@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -108,6 +109,12 @@ func (i GetCertificatesCertificateArgs) ToGetCertificatesCertificateOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatesCertificateOutput)
 }
 
+func (i GetCertificatesCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[GetCertificatesCertificate] {
+	return pulumix.Output[GetCertificatesCertificate]{
+		OutputState: i.ToGetCertificatesCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetCertificatesCertificateArrayInput is an input type that accepts GetCertificatesCertificateArray and GetCertificatesCertificateArrayOutput values.
 // You can construct a concrete instance of `GetCertificatesCertificateArrayInput` via:
 //
@@ -133,6 +140,12 @@ func (i GetCertificatesCertificateArray) ToGetCertificatesCertificateArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatesCertificateArrayOutput)
 }
 
+func (i GetCertificatesCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCertificatesCertificate] {
+	return pulumix.Output[[]GetCertificatesCertificate]{
+		OutputState: i.ToGetCertificatesCertificateArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetCertificatesCertificateOutput struct{ *pulumi.OutputState }
 
 func (GetCertificatesCertificateOutput) ElementType() reflect.Type {
@@ -145,6 +158,12 @@ func (o GetCertificatesCertificateOutput) ToGetCertificatesCertificateOutput() G
 
 func (o GetCertificatesCertificateOutput) ToGetCertificatesCertificateOutputWithContext(ctx context.Context) GetCertificatesCertificateOutput {
 	return o
+}
+
+func (o GetCertificatesCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[GetCertificatesCertificate] {
+	return pulumix.Output[GetCertificatesCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The cert is buy from aliyun or not.
@@ -246,6 +265,12 @@ func (o GetCertificatesCertificateArrayOutput) ToGetCertificatesCertificateArray
 
 func (o GetCertificatesCertificateArrayOutput) ToGetCertificatesCertificateArrayOutputWithContext(ctx context.Context) GetCertificatesCertificateArrayOutput {
 	return o
+}
+
+func (o GetCertificatesCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCertificatesCertificate] {
+	return pulumix.Output[[]GetCertificatesCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) GetCertificatesCertificateOutput {
@@ -355,6 +380,12 @@ func (i GetServiceCertificatesCertificateArgs) ToGetServiceCertificatesCertifica
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceCertificatesCertificateOutput)
 }
 
+func (i GetServiceCertificatesCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[GetServiceCertificatesCertificate] {
+	return pulumix.Output[GetServiceCertificatesCertificate]{
+		OutputState: i.ToGetServiceCertificatesCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetServiceCertificatesCertificateArrayInput is an input type that accepts GetServiceCertificatesCertificateArray and GetServiceCertificatesCertificateArrayOutput values.
 // You can construct a concrete instance of `GetServiceCertificatesCertificateArrayInput` via:
 //
@@ -380,6 +411,12 @@ func (i GetServiceCertificatesCertificateArray) ToGetServiceCertificatesCertific
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceCertificatesCertificateArrayOutput)
 }
 
+func (i GetServiceCertificatesCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceCertificatesCertificate] {
+	return pulumix.Output[[]GetServiceCertificatesCertificate]{
+		OutputState: i.ToGetServiceCertificatesCertificateArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetServiceCertificatesCertificateOutput struct{ *pulumi.OutputState }
 
 func (GetServiceCertificatesCertificateOutput) ElementType() reflect.Type {
@@ -392,6 +429,12 @@ func (o GetServiceCertificatesCertificateOutput) ToGetServiceCertificatesCertifi
 
 func (o GetServiceCertificatesCertificateOutput) ToGetServiceCertificatesCertificateOutputWithContext(ctx context.Context) GetServiceCertificatesCertificateOutput {
 	return o
+}
+
+func (o GetServiceCertificatesCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceCertificatesCertificate] {
+	return pulumix.Output[GetServiceCertificatesCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The cert is buy from aliyun or not.
@@ -496,6 +539,12 @@ func (o GetServiceCertificatesCertificateArrayOutput) ToGetServiceCertificatesCe
 
 func (o GetServiceCertificatesCertificateArrayOutput) ToGetServiceCertificatesCertificateArrayOutputWithContext(ctx context.Context) GetServiceCertificatesCertificateArrayOutput {
 	return o
+}
+
+func (o GetServiceCertificatesCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceCertificatesCertificate] {
+	return pulumix.Output[[]GetServiceCertificatesCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetServiceCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) GetServiceCertificatesCertificateOutput {

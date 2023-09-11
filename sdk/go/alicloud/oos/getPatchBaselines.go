@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.
@@ -100,6 +101,12 @@ func (o GetPatchBaselinesResultOutput) ToGetPatchBaselinesResultOutput() GetPatc
 
 func (o GetPatchBaselinesResultOutput) ToGetPatchBaselinesResultOutputWithContext(ctx context.Context) GetPatchBaselinesResultOutput {
 	return o
+}
+
+func (o GetPatchBaselinesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPatchBaselinesResult] {
+	return pulumix.Output[GetPatchBaselinesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPatchBaselinesResultOutput) Baselines() GetPatchBaselinesBaselineArrayOutput {

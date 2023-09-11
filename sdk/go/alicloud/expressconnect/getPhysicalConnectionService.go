@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Using this data source can enable outbound traffic for an Express Connect circuit automatically. If the service has been opened, it will return opened.
@@ -107,6 +108,12 @@ func (o GetPhysicalConnectionServiceResultOutput) ToGetPhysicalConnectionService
 
 func (o GetPhysicalConnectionServiceResultOutput) ToGetPhysicalConnectionServiceResultOutputWithContext(ctx context.Context) GetPhysicalConnectionServiceResultOutput {
 	return o
+}
+
+func (o GetPhysicalConnectionServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPhysicalConnectionServiceResult] {
+	return pulumix.Output[GetPhysicalConnectionServiceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPhysicalConnectionServiceResultOutput) Enable() pulumi.StringPtrOutput {

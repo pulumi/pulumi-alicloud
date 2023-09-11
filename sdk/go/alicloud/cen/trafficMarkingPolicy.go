@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Enterprise Network (CEN) Traffic Marking Policy resource.
@@ -227,6 +228,12 @@ func (i *TrafficMarkingPolicy) ToTrafficMarkingPolicyOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(TrafficMarkingPolicyOutput)
 }
 
+func (i *TrafficMarkingPolicy) ToOutput(ctx context.Context) pulumix.Output[*TrafficMarkingPolicy] {
+	return pulumix.Output[*TrafficMarkingPolicy]{
+		OutputState: i.ToTrafficMarkingPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TrafficMarkingPolicyArrayInput is an input type that accepts TrafficMarkingPolicyArray and TrafficMarkingPolicyArrayOutput values.
 // You can construct a concrete instance of `TrafficMarkingPolicyArrayInput` via:
 //
@@ -250,6 +257,12 @@ func (i TrafficMarkingPolicyArray) ToTrafficMarkingPolicyArrayOutput() TrafficMa
 
 func (i TrafficMarkingPolicyArray) ToTrafficMarkingPolicyArrayOutputWithContext(ctx context.Context) TrafficMarkingPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TrafficMarkingPolicyArrayOutput)
+}
+
+func (i TrafficMarkingPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*TrafficMarkingPolicy] {
+	return pulumix.Output[[]*TrafficMarkingPolicy]{
+		OutputState: i.ToTrafficMarkingPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TrafficMarkingPolicyMapInput is an input type that accepts TrafficMarkingPolicyMap and TrafficMarkingPolicyMapOutput values.
@@ -277,6 +290,12 @@ func (i TrafficMarkingPolicyMap) ToTrafficMarkingPolicyMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(TrafficMarkingPolicyMapOutput)
 }
 
+func (i TrafficMarkingPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TrafficMarkingPolicy] {
+	return pulumix.Output[map[string]*TrafficMarkingPolicy]{
+		OutputState: i.ToTrafficMarkingPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TrafficMarkingPolicyOutput struct{ *pulumi.OutputState }
 
 func (TrafficMarkingPolicyOutput) ElementType() reflect.Type {
@@ -289,6 +308,12 @@ func (o TrafficMarkingPolicyOutput) ToTrafficMarkingPolicyOutput() TrafficMarkin
 
 func (o TrafficMarkingPolicyOutput) ToTrafficMarkingPolicyOutputWithContext(ctx context.Context) TrafficMarkingPolicyOutput {
 	return o
+}
+
+func (o TrafficMarkingPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*TrafficMarkingPolicy] {
+	return pulumix.Output[*TrafficMarkingPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
@@ -345,6 +370,12 @@ func (o TrafficMarkingPolicyArrayOutput) ToTrafficMarkingPolicyArrayOutputWithCo
 	return o
 }
 
+func (o TrafficMarkingPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TrafficMarkingPolicy] {
+	return pulumix.Output[[]*TrafficMarkingPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TrafficMarkingPolicyArrayOutput) Index(i pulumi.IntInput) TrafficMarkingPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TrafficMarkingPolicy {
 		return vs[0].([]*TrafficMarkingPolicy)[vs[1].(int)]
@@ -363,6 +394,12 @@ func (o TrafficMarkingPolicyMapOutput) ToTrafficMarkingPolicyMapOutput() Traffic
 
 func (o TrafficMarkingPolicyMapOutput) ToTrafficMarkingPolicyMapOutputWithContext(ctx context.Context) TrafficMarkingPolicyMapOutput {
 	return o
+}
+
+func (o TrafficMarkingPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TrafficMarkingPolicy] {
+	return pulumix.Output[map[string]*TrafficMarkingPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrafficMarkingPolicyMapOutput) MapIndex(k pulumi.StringInput) TrafficMarkingPolicyOutput {

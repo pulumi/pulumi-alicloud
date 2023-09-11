@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
@@ -127,6 +128,12 @@ func (o GetAutoSnapshotPoliciesResultOutput) ToGetAutoSnapshotPoliciesResultOutp
 
 func (o GetAutoSnapshotPoliciesResultOutput) ToGetAutoSnapshotPoliciesResultOutputWithContext(ctx context.Context) GetAutoSnapshotPoliciesResultOutput {
 	return o
+}
+
+func (o GetAutoSnapshotPoliciesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAutoSnapshotPoliciesResult] {
+	return pulumix.Output[GetAutoSnapshotPoliciesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

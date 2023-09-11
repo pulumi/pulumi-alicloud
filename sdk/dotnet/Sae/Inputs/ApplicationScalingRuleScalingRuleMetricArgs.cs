@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Sae.Inputs
     public sealed class ApplicationScalingRuleScalingRuleMetricArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Maximum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+        /// Maximum number of instances applied.
         /// </summary>
         [Input("maxReplicas")]
         public Input<int>? MaxReplicas { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Sae.Inputs
         private InputList<Inputs.ApplicationScalingRuleScalingRuleMetricMetricArgs>? _metrics;
 
         /// <summary>
-        /// Indicator rule configuration. See the following `Block metrics`.
+        /// Indicator rule configuration. See `metrics` below.
         /// </summary>
         public InputList<Inputs.ApplicationScalingRuleScalingRuleMetricMetricArgs> Metrics
         {
@@ -31,19 +31,19 @@ namespace Pulumi.AliCloud.Sae.Inputs
         }
 
         /// <summary>
-        /// Minimum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+        /// Minimum number of instances applied.
         /// </summary>
         [Input("minReplicas")]
         public Input<int>? MinReplicas { get; set; }
 
         /// <summary>
-        /// Apply shrink rules. See the following `Block scale_down_rules`.
+        /// Apply shrink rules. See `scale_down_rules` below.
         /// </summary>
         [Input("scaleDownRules")]
         public Input<Inputs.ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs>? ScaleDownRules { get; set; }
 
         /// <summary>
-        /// Apply expansion rules. See the following `Block scale_up_rules`.
+        /// Apply expansion rules. See `scale_up_rules` below.
         /// </summary>
         [Input("scaleUpRules")]
         public Input<Inputs.ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs>? ScaleUpRules { get; set; }

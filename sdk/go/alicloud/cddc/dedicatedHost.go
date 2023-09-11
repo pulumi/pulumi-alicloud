@@ -10,90 +10,9 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Provides a ApsaraDB for MyBase Dedicated Host resource.
-//
-// For information about ApsaraDB for MyBase Dedicated Host and how to use it, see [What is Dedicated Host](https://www.alibabacloud.com/help/doc-detail/210864.html).
-//
-// > **NOTE:** Available in v1.147.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cddc"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultZones, err := cddc.GetZones(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultHostEcsLevelInfos, err := cddc.GetHostEcsLevelInfos(ctx, &cddc.GetHostEcsLevelInfosArgs{
-//				DbType:      "mysql",
-//				ZoneId:      defaultZones.Ids[0],
-//				StorageType: "cloud_essd",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultDedicatedHostGroup, err := cddc.NewDedicatedHostGroup(ctx, "defaultDedicatedHostGroup", &cddc.DedicatedHostGroupArgs{
-//				Engine:                 pulumi.String("MySQL"),
-//				VpcId:                  *pulumi.String(defaultNetworks.Ids[0]),
-//				CpuAllocationRatio:     pulumi.Int(101),
-//				MemAllocationRatio:     pulumi.Int(50),
-//				DiskAllocationRatio:    pulumi.Int(200),
-//				AllocationPolicy:       pulumi.String("Evenly"),
-//				HostReplacePolicy:      pulumi.String("Manual"),
-//				DedicatedHostGroupDesc: pulumi.String("example_value"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cddc.NewDedicatedHost(ctx, "defaultDedicatedHost", &cddc.DedicatedHostArgs{
-//				HostName:             pulumi.String("example_value"),
-//				DedicatedHostGroupId: defaultDedicatedHostGroup.ID(),
-//				HostClass:            *pulumi.String(defaultHostEcsLevelInfos.Infos[0].ResClassCode),
-//				ZoneId:               *pulumi.String(defaultZones.Ids[0]),
-//				VswitchId:            *pulumi.String(defaultSwitches.Ids[0]),
-//				PaymentType:          pulumi.String("Subscription"),
-//				Tags: pulumi.AnyMap{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("CDDC_DEDICATED"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ApsaraDB for MyBase Dedicated Host can be imported using the id, e.g.
@@ -356,6 +275,12 @@ func (i *DedicatedHost) ToDedicatedHostOutputWithContext(ctx context.Context) De
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHostOutput)
 }
 
+func (i *DedicatedHost) ToOutput(ctx context.Context) pulumix.Output[*DedicatedHost] {
+	return pulumix.Output[*DedicatedHost]{
+		OutputState: i.ToDedicatedHostOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DedicatedHostArrayInput is an input type that accepts DedicatedHostArray and DedicatedHostArrayOutput values.
 // You can construct a concrete instance of `DedicatedHostArrayInput` via:
 //
@@ -379,6 +304,12 @@ func (i DedicatedHostArray) ToDedicatedHostArrayOutput() DedicatedHostArrayOutpu
 
 func (i DedicatedHostArray) ToDedicatedHostArrayOutputWithContext(ctx context.Context) DedicatedHostArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHostArrayOutput)
+}
+
+func (i DedicatedHostArray) ToOutput(ctx context.Context) pulumix.Output[[]*DedicatedHost] {
+	return pulumix.Output[[]*DedicatedHost]{
+		OutputState: i.ToDedicatedHostArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DedicatedHostMapInput is an input type that accepts DedicatedHostMap and DedicatedHostMapOutput values.
@@ -406,6 +337,12 @@ func (i DedicatedHostMap) ToDedicatedHostMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHostMapOutput)
 }
 
+func (i DedicatedHostMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DedicatedHost] {
+	return pulumix.Output[map[string]*DedicatedHost]{
+		OutputState: i.ToDedicatedHostMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DedicatedHostOutput struct{ *pulumi.OutputState }
 
 func (DedicatedHostOutput) ElementType() reflect.Type {
@@ -418,6 +355,12 @@ func (o DedicatedHostOutput) ToDedicatedHostOutput() DedicatedHostOutput {
 
 func (o DedicatedHostOutput) ToDedicatedHostOutputWithContext(ctx context.Context) DedicatedHostOutput {
 	return o
+}
+
+func (o DedicatedHostOutput) ToOutput(ctx context.Context) pulumix.Output[*DedicatedHost] {
+	return pulumix.Output[*DedicatedHost]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
@@ -512,6 +455,12 @@ func (o DedicatedHostArrayOutput) ToDedicatedHostArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o DedicatedHostArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DedicatedHost] {
+	return pulumix.Output[[]*DedicatedHost]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DedicatedHostArrayOutput) Index(i pulumi.IntInput) DedicatedHostOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DedicatedHost {
 		return vs[0].([]*DedicatedHost)[vs[1].(int)]
@@ -530,6 +479,12 @@ func (o DedicatedHostMapOutput) ToDedicatedHostMapOutput() DedicatedHostMapOutpu
 
 func (o DedicatedHostMapOutput) ToDedicatedHostMapOutputWithContext(ctx context.Context) DedicatedHostMapOutput {
 	return o
+}
+
+func (o DedicatedHostMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DedicatedHost] {
+	return pulumix.Output[map[string]*DedicatedHost]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DedicatedHostMapOutput) MapIndex(k pulumi.StringInput) DedicatedHostOutput {

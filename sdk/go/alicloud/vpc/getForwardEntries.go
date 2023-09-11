@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
@@ -222,6 +223,12 @@ func (o GetForwardEntriesResultOutput) ToGetForwardEntriesResultOutput() GetForw
 
 func (o GetForwardEntriesResultOutput) ToGetForwardEntriesResultOutputWithContext(ctx context.Context) GetForwardEntriesResultOutput {
 	return o
+}
+
+func (o GetForwardEntriesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetForwardEntriesResult] {
+	return pulumix.Output[GetForwardEntriesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of Forward Entries. Each element contains the following attributes:

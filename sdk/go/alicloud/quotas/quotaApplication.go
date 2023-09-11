@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -311,6 +312,12 @@ func (i *QuotaApplication) ToQuotaApplicationOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaApplicationOutput)
 }
 
+func (i *QuotaApplication) ToOutput(ctx context.Context) pulumix.Output[*QuotaApplication] {
+	return pulumix.Output[*QuotaApplication]{
+		OutputState: i.ToQuotaApplicationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // QuotaApplicationArrayInput is an input type that accepts QuotaApplicationArray and QuotaApplicationArrayOutput values.
 // You can construct a concrete instance of `QuotaApplicationArrayInput` via:
 //
@@ -334,6 +341,12 @@ func (i QuotaApplicationArray) ToQuotaApplicationArrayOutput() QuotaApplicationA
 
 func (i QuotaApplicationArray) ToQuotaApplicationArrayOutputWithContext(ctx context.Context) QuotaApplicationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaApplicationArrayOutput)
+}
+
+func (i QuotaApplicationArray) ToOutput(ctx context.Context) pulumix.Output[[]*QuotaApplication] {
+	return pulumix.Output[[]*QuotaApplication]{
+		OutputState: i.ToQuotaApplicationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // QuotaApplicationMapInput is an input type that accepts QuotaApplicationMap and QuotaApplicationMapOutput values.
@@ -361,6 +374,12 @@ func (i QuotaApplicationMap) ToQuotaApplicationMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaApplicationMapOutput)
 }
 
+func (i QuotaApplicationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*QuotaApplication] {
+	return pulumix.Output[map[string]*QuotaApplication]{
+		OutputState: i.ToQuotaApplicationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type QuotaApplicationOutput struct{ *pulumi.OutputState }
 
 func (QuotaApplicationOutput) ElementType() reflect.Type {
@@ -373,6 +392,12 @@ func (o QuotaApplicationOutput) ToQuotaApplicationOutput() QuotaApplicationOutpu
 
 func (o QuotaApplicationOutput) ToQuotaApplicationOutputWithContext(ctx context.Context) QuotaApplicationOutput {
 	return o
+}
+
+func (o QuotaApplicationOutput) ToOutput(ctx context.Context) pulumix.Output[*QuotaApplication] {
+	return pulumix.Output[*QuotaApplication]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The approve value of the quota application.
@@ -491,6 +516,12 @@ func (o QuotaApplicationArrayOutput) ToQuotaApplicationArrayOutputWithContext(ct
 	return o
 }
 
+func (o QuotaApplicationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*QuotaApplication] {
+	return pulumix.Output[[]*QuotaApplication]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o QuotaApplicationArrayOutput) Index(i pulumi.IntInput) QuotaApplicationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *QuotaApplication {
 		return vs[0].([]*QuotaApplication)[vs[1].(int)]
@@ -509,6 +540,12 @@ func (o QuotaApplicationMapOutput) ToQuotaApplicationMapOutput() QuotaApplicatio
 
 func (o QuotaApplicationMapOutput) ToQuotaApplicationMapOutputWithContext(ctx context.Context) QuotaApplicationMapOutput {
 	return o
+}
+
+func (o QuotaApplicationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*QuotaApplication] {
+	return pulumix.Output[map[string]*QuotaApplication]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QuotaApplicationMapOutput) MapIndex(k pulumi.StringInput) QuotaApplicationOutput {

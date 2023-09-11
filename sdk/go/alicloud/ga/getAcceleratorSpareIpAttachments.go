@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ga Accelerator Spare Ip Attachments of the current Alibaba Cloud user.
@@ -122,6 +123,12 @@ func (o GetAcceleratorSpareIpAttachmentsResultOutput) ToGetAcceleratorSpareIpAtt
 
 func (o GetAcceleratorSpareIpAttachmentsResultOutput) ToGetAcceleratorSpareIpAttachmentsResultOutputWithContext(ctx context.Context) GetAcceleratorSpareIpAttachmentsResultOutput {
 	return o
+}
+
+func (o GetAcceleratorSpareIpAttachmentsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAcceleratorSpareIpAttachmentsResult] {
+	return pulumix.Output[GetAcceleratorSpareIpAttachmentsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAcceleratorSpareIpAttachmentsResultOutput) AcceleratorId() pulumi.StringOutput {

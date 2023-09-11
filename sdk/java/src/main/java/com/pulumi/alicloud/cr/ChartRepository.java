@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a CR Chart Repository resource.
  * 
- * For information about CR Chart Repository and how to use it, see [What is Chart Repository](https://www.alibabacloud.com/help/doc-detail/145318.htm).
+ * For information about CR Chart Repository and how to use it, see [What is Chart Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createchartrepository).
  * 
- * &gt; **NOTE:** Available in v1.149.0+.
+ * &gt; **NOTE:** Available since v1.149.0.
  * 
  * ## Example Usage
  * 
@@ -49,22 +49,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultRegistryEnterpriseInstance = new RegistryEnterpriseInstance(&#34;defaultRegistryEnterpriseInstance&#34;, RegistryEnterpriseInstanceArgs.builder()        
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         var exampleRegistryEnterpriseInstance = new RegistryEnterpriseInstance(&#34;exampleRegistryEnterpriseInstance&#34;, RegistryEnterpriseInstanceArgs.builder()        
  *             .paymentType(&#34;Subscription&#34;)
  *             .period(1)
+ *             .renewPeriod(0)
+ *             .renewalStatus(&#34;ManualRenewal&#34;)
  *             .instanceType(&#34;Advanced&#34;)
- *             .instanceName(&#34;name&#34;)
+ *             .instanceName(name)
  *             .build());
  * 
- *         var defaultChartNamespace = new ChartNamespace(&#34;defaultChartNamespace&#34;, ChartNamespaceArgs.builder()        
- *             .instanceId(defaultRegistryEnterpriseInstance.id())
- *             .namespaceName(&#34;name&#34;)
+ *         var exampleChartNamespace = new ChartNamespace(&#34;exampleChartNamespace&#34;, ChartNamespaceArgs.builder()        
+ *             .instanceId(exampleRegistryEnterpriseInstance.id())
+ *             .namespaceName(name)
  *             .build());
  * 
- *         var defaultChartRepository = new ChartRepository(&#34;defaultChartRepository&#34;, ChartRepositoryArgs.builder()        
- *             .repoNamespaceName(defaultChartNamespace.namespaceName())
- *             .instanceId(local.instance())
- *             .repoName(&#34;repo_name&#34;)
+ *         var exampleChartRepository = new ChartRepository(&#34;exampleChartRepository&#34;, ChartRepositoryArgs.builder()        
+ *             .repoNamespaceName(exampleChartNamespace.namespaceName())
+ *             .instanceId(exampleChartNamespace.instanceId())
+ *             .repoName(name)
  *             .build());
  * 
  *     }

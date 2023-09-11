@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the apis of the current Alibaba Cloud user.
@@ -129,6 +130,12 @@ func (o GetApisResultOutput) ToGetApisResultOutput() GetApisResultOutput {
 
 func (o GetApisResultOutput) ToGetApisResultOutputWithContext(ctx context.Context) GetApisResultOutput {
 	return o
+}
+
+func (o GetApisResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetApisResult] {
+	return pulumix.Output[GetApisResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Deprecated: Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.

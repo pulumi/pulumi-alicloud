@@ -28,6 +28,8 @@ class ClientUserArgs:
         :param pulumi.Input[str] sag_id: The ID of the SAG instance created for the SAG APP.
         :param pulumi.Input[str] user_mail: The email address of the user. The administrator uses this address to send the account information for logging on to the APP to the user.
         :param pulumi.Input[str] client_ip: The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
+        :param pulumi.Input[str] kms_encrypted_password: The password of the KMS Encryption.
+        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: The context of the KMS Encryption.
         :param pulumi.Input[str] password: The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
         :param pulumi.Input[str] user_name: The user name. User names in the same SAG APP must be unique.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
         """
@@ -96,6 +98,9 @@ class ClientUserArgs:
     @property
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password of the KMS Encryption.
+        """
         return pulumi.get(self, "kms_encrypted_password")
 
     @kms_encrypted_password.setter
@@ -105,6 +110,9 @@ class ClientUserArgs:
     @property
     @pulumi.getter(name="kmsEncryptionContext")
     def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The context of the KMS Encryption.
+        """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
@@ -151,6 +159,8 @@ class _ClientUserState:
         Input properties used for looking up and filtering ClientUser resources.
         :param pulumi.Input[int] bandwidth: The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
         :param pulumi.Input[str] client_ip: The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
+        :param pulumi.Input[str] kms_encrypted_password: The password of the KMS Encryption.
+        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: The context of the KMS Encryption.
         :param pulumi.Input[str] password: The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
         :param pulumi.Input[str] sag_id: The ID of the SAG instance created for the SAG APP.
         :param pulumi.Input[str] user_mail: The email address of the user. The administrator uses this address to send the account information for logging on to the APP to the user.
@@ -200,6 +210,9 @@ class _ClientUserState:
     @property
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password of the KMS Encryption.
+        """
         return pulumi.get(self, "kms_encrypted_password")
 
     @kms_encrypted_password.setter
@@ -209,6 +222,9 @@ class _ClientUserState:
     @property
     @pulumi.getter(name="kmsEncryptionContext")
     def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The context of the KMS Encryption.
+        """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
@@ -281,9 +297,9 @@ class ClientUser(pulumi.CustomResource):
         """
         Provides a Sag ClientUser resource. This topic describes how to manage accounts as an administrator. After you configure the network, you can create multiple accounts and distribute them to end users so that clients can access Alibaba Cloud.
 
-        For information about Sag ClientUser and how to use it, see [What is Sag ClientUser](https://www.alibabacloud.com/help/doc-detail/108326.htm).
+        For information about Sag ClientUser and how to use it, see [What is Sag ClientUser](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createsmartaccessgatewayclientuser).
 
-        > **NOTE:** Available in 1.65.0+
+        > **NOTE:** Available since v1.65.0.
 
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
@@ -295,13 +311,20 @@ class ClientUser(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        sag_id = config.get("sagId")
+        if sag_id is None:
+            sag_id = "sag-9bifkfaz4fg***"
         default = alicloud.rocketmq.ClientUser("default",
+            sag_id=sag_id,
             bandwidth=20,
-            client_ip="192.1.10.0",
-            password="xxxxxxx",
-            sag_id="sag-xxxxx",
-            user_mail="tftest-xxxxx@test.com",
-            user_name="th-username-xxxxx")
+            user_mail="tf-example@abc.com",
+            user_name=name,
+            password="example1234",
+            client_ip="192.1.10.0")
         ```
 
         ## Import
@@ -316,6 +339,8 @@ class ClientUser(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bandwidth: The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
         :param pulumi.Input[str] client_ip: The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
+        :param pulumi.Input[str] kms_encrypted_password: The password of the KMS Encryption.
+        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: The context of the KMS Encryption.
         :param pulumi.Input[str] password: The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
         :param pulumi.Input[str] sag_id: The ID of the SAG instance created for the SAG APP.
         :param pulumi.Input[str] user_mail: The email address of the user. The administrator uses this address to send the account information for logging on to the APP to the user.
@@ -330,9 +355,9 @@ class ClientUser(pulumi.CustomResource):
         """
         Provides a Sag ClientUser resource. This topic describes how to manage accounts as an administrator. After you configure the network, you can create multiple accounts and distribute them to end users so that clients can access Alibaba Cloud.
 
-        For information about Sag ClientUser and how to use it, see [What is Sag ClientUser](https://www.alibabacloud.com/help/doc-detail/108326.htm).
+        For information about Sag ClientUser and how to use it, see [What is Sag ClientUser](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createsmartaccessgatewayclientuser).
 
-        > **NOTE:** Available in 1.65.0+
+        > **NOTE:** Available since v1.65.0.
 
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
@@ -344,13 +369,20 @@ class ClientUser(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        sag_id = config.get("sagId")
+        if sag_id is None:
+            sag_id = "sag-9bifkfaz4fg***"
         default = alicloud.rocketmq.ClientUser("default",
+            sag_id=sag_id,
             bandwidth=20,
-            client_ip="192.1.10.0",
-            password="xxxxxxx",
-            sag_id="sag-xxxxx",
-            user_mail="tftest-xxxxx@test.com",
-            user_name="th-username-xxxxx")
+            user_mail="tf-example@abc.com",
+            user_name=name,
+            password="example1234",
+            client_ip="192.1.10.0")
         ```
 
         ## Import
@@ -434,6 +466,8 @@ class ClientUser(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bandwidth: The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
         :param pulumi.Input[str] client_ip: The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
+        :param pulumi.Input[str] kms_encrypted_password: The password of the KMS Encryption.
+        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: The context of the KMS Encryption.
         :param pulumi.Input[str] password: The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
         :param pulumi.Input[str] sag_id: The ID of the SAG instance created for the SAG APP.
         :param pulumi.Input[str] user_mail: The email address of the user. The administrator uses this address to send the account information for logging on to the APP to the user.
@@ -472,11 +506,17 @@ class ClientUser(pulumi.CustomResource):
     @property
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> pulumi.Output[Optional[str]]:
+        """
+        The password of the KMS Encryption.
+        """
         return pulumi.get(self, "kms_encrypted_password")
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
     def kms_encryption_context(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        The context of the KMS Encryption.
+        """
         return pulumi.get(self, "kms_encryption_context")
 
     @property

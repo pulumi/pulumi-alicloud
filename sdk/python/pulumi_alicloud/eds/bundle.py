@@ -28,7 +28,7 @@ class BundleArgs:
         :param pulumi.Input[str] desktop_type: The desktop type. You can call `eds_get_desktop_types` to query desktop type.
         :param pulumi.Input[str] image_id: The ID of the image.
         :param pulumi.Input[int] root_disk_size_gib: The root disk size gib.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] user_disk_size_gibs: The size of the data disk. Currently, only one data disk can be set. Unit: GiB. 
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] user_disk_size_gibs: The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
                - The size of the data disk that supports the setting corresponds to the specification. For more information, see [Overview of Desktop Specifications](https://help.aliyun.com/document_detail/188609.htm?spm=a2c4g.11186623.0.0.6406297bE0U5DG).
                - The data disk size (user_disk_size_gib) set in the template must be greater than the data disk size (data_disk_size) in the mirror.
         :param pulumi.Input[str] bundle_name: The name of the bundle.
@@ -92,7 +92,7 @@ class BundleArgs:
     @pulumi.getter(name="userDiskSizeGibs")
     def user_disk_size_gibs(self) -> pulumi.Input[Sequence[pulumi.Input[int]]]:
         """
-        The size of the data disk. Currently, only one data disk can be set. Unit: GiB. 
+        The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
         - The size of the data disk that supports the setting corresponds to the specification. For more information, see [Overview of Desktop Specifications](https://help.aliyun.com/document_detail/188609.htm?spm=a2c4g.11186623.0.0.6406297bE0U5DG).
         - The data disk size (user_disk_size_gib) set in the template must be greater than the data disk size (data_disk_size) in the mirror.
         """
@@ -185,7 +185,7 @@ class _BundleState:
         :param pulumi.Input[str] root_disk_performance_level: The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
         :param pulumi.Input[int] root_disk_size_gib: The root disk size gib.
         :param pulumi.Input[str] user_disk_performance_level: The user disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] user_disk_size_gibs: The size of the data disk. Currently, only one data disk can be set. Unit: GiB. 
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] user_disk_size_gibs: The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
                - The size of the data disk that supports the setting corresponds to the specification. For more information, see [Overview of Desktop Specifications](https://help.aliyun.com/document_detail/188609.htm?spm=a2c4g.11186623.0.0.6406297bE0U5DG).
                - The data disk size (user_disk_size_gib) set in the template must be greater than the data disk size (data_disk_size) in the mirror.
         """
@@ -308,7 +308,7 @@ class _BundleState:
     @pulumi.getter(name="userDiskSizeGibs")
     def user_disk_size_gibs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
-        The size of the data disk. Currently, only one data disk can be set. Unit: GiB. 
+        The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
         - The size of the data disk that supports the setting corresponds to the specification. For more information, see [Overview of Desktop Specifications](https://help.aliyun.com/document_detail/188609.htm?spm=a2c4g.11186623.0.0.6406297bE0U5DG).
         - The data disk size (user_disk_size_gib) set in the template must be greater than the data disk size (data_disk_size) in the mirror.
         """
@@ -388,7 +388,7 @@ class Bundle(pulumi.CustomResource):
         :param pulumi.Input[str] root_disk_performance_level: The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
         :param pulumi.Input[int] root_disk_size_gib: The root disk size gib.
         :param pulumi.Input[str] user_disk_performance_level: The user disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] user_disk_size_gibs: The size of the data disk. Currently, only one data disk can be set. Unit: GiB. 
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] user_disk_size_gibs: The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
                - The size of the data disk that supports the setting corresponds to the specification. For more information, see [Overview of Desktop Specifications](https://help.aliyun.com/document_detail/188609.htm?spm=a2c4g.11186623.0.0.6406297bE0U5DG).
                - The data disk size (user_disk_size_gib) set in the template must be greater than the data disk size (data_disk_size) in the mirror.
         """
@@ -526,7 +526,7 @@ class Bundle(pulumi.CustomResource):
         :param pulumi.Input[str] root_disk_performance_level: The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
         :param pulumi.Input[int] root_disk_size_gib: The root disk size gib.
         :param pulumi.Input[str] user_disk_performance_level: The user disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] user_disk_size_gibs: The size of the data disk. Currently, only one data disk can be set. Unit: GiB. 
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] user_disk_size_gibs: The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
                - The size of the data disk that supports the setting corresponds to the specification. For more information, see [Overview of Desktop Specifications](https://help.aliyun.com/document_detail/188609.htm?spm=a2c4g.11186623.0.0.6406297bE0U5DG).
                - The data disk size (user_disk_size_gib) set in the template must be greater than the data disk size (data_disk_size) in the mirror.
         """
@@ -587,7 +587,7 @@ class Bundle(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rootDiskPerformanceLevel")
-    def root_disk_performance_level(self) -> pulumi.Output[Optional[str]]:
+    def root_disk_performance_level(self) -> pulumi.Output[str]:
         """
         The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
         """
@@ -603,7 +603,7 @@ class Bundle(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userDiskPerformanceLevel")
-    def user_disk_performance_level(self) -> pulumi.Output[Optional[str]]:
+    def user_disk_performance_level(self) -> pulumi.Output[str]:
         """
         The user disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
         """
@@ -613,7 +613,7 @@ class Bundle(pulumi.CustomResource):
     @pulumi.getter(name="userDiskSizeGibs")
     def user_disk_size_gibs(self) -> pulumi.Output[Sequence[int]]:
         """
-        The size of the data disk. Currently, only one data disk can be set. Unit: GiB. 
+        The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
         - The size of the data disk that supports the setting corresponds to the specification. For more information, see [Overview of Desktop Specifications](https://help.aliyun.com/document_detail/188609.htm?spm=a2c4g.11186623.0.0.6406297bE0U5DG).
         - The data disk size (user_disk_size_gib) set in the template must be greater than the data disk size (data_disk_size) in the mirror.
         """

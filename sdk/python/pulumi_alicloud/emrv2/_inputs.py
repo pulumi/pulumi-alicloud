@@ -167,7 +167,7 @@ class ClusterBootstrapScriptArgs:
         """
         :param pulumi.Input[str] execution_fail_strategy: The bootstrap scripts execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ .
         :param pulumi.Input[str] execution_moment: The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
-        :param pulumi.Input['ClusterBootstrapScriptNodeSelectorArgs'] node_selector: The bootstrap scripts execution target.
+        :param pulumi.Input['ClusterBootstrapScriptNodeSelectorArgs'] node_selector: The bootstrap scripts execution target. See `node_selector` below.
         :param pulumi.Input[str] script_args: The bootstrap script args, e.g. "--a=b".
         :param pulumi.Input[str] script_name: The bootstrap script name.
         :param pulumi.Input[str] script_path: The bootstrap script path, e.g. "oss://bucket/path".
@@ -210,7 +210,7 @@ class ClusterBootstrapScriptArgs:
     @pulumi.getter(name="nodeSelector")
     def node_selector(self) -> pulumi.Input['ClusterBootstrapScriptNodeSelectorArgs']:
         """
-        The bootstrap scripts execution target.
+        The bootstrap scripts execution target. See `node_selector` below.
         """
         return pulumi.get(self, "node_selector")
 
@@ -486,19 +486,19 @@ class ClusterNodeGroupArgs:
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  with_public_ip: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupDataDiskArgs']]] data_disks: Host Ecs data disks information in this node group.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupDataDiskArgs']]] data_disks: Host Ecs data disks information in this node group. See `data_disks` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Host Ecs instance types.
         :param pulumi.Input[int] node_count: Host Ecs number in this node group.
-        :param pulumi.Input[str] node_group_name: The configuration effected which node group name of emr cluster.
+        :param pulumi.Input[str] node_group_name: The node group name of emr cluster.
         :param pulumi.Input[str] node_group_type: The node group type of emr cluster, supported value: MASTER, CORE or TASK.
-        :param pulumi.Input['ClusterNodeGroupSystemDiskArgs'] system_disk: Host Ecs system disk information in this node group.
+        :param pulumi.Input['ClusterNodeGroupSystemDiskArgs'] system_disk: Host Ecs system disk information in this node group. See `system_disk` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_security_group_ids: Additional security Group IDS for Cluster, you can also specify this key for each node group.
-        :param pulumi.Input['ClusterNodeGroupCostOptimizedConfigArgs'] cost_optimized_config: The detail cost optimized configuration of emr cluster.
+        :param pulumi.Input['ClusterNodeGroupCostOptimizedConfigArgs'] cost_optimized_config: The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below.
         :param pulumi.Input[bool] graceful_shutdown: Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
         :param pulumi.Input[str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupSpotBidPriceArgs']]] spot_bid_prices: The spot bid prices of a PayAsYouGo instance.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupSpotBidPriceArgs']]] spot_bid_prices: The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
         :param pulumi.Input[bool] spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
-        :param pulumi.Input['ClusterNodeGroupSubscriptionConfigArgs'] subscription_config: The detail configuration of subscription payment type.
+        :param pulumi.Input['ClusterNodeGroupSubscriptionConfigArgs'] subscription_config: The detail configuration of subscription payment type. See `subscription_config` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: Global vSwitch ids, you can also specify it in node group.
         :param pulumi.Input[bool] with_public_ip: Whether the node has a public IP address enabled.
         """
@@ -531,7 +531,7 @@ class ClusterNodeGroupArgs:
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupDataDiskArgs']]]:
         """
-        Host Ecs data disks information in this node group.
+        Host Ecs data disks information in this node group. See `data_disks` below.
         """
         return pulumi.get(self, "data_disks")
 
@@ -567,7 +567,7 @@ class ClusterNodeGroupArgs:
     @pulumi.getter(name="nodeGroupName")
     def node_group_name(self) -> pulumi.Input[str]:
         """
-        The configuration effected which node group name of emr cluster.
+        The node group name of emr cluster.
         """
         return pulumi.get(self, "node_group_name")
 
@@ -591,7 +591,7 @@ class ClusterNodeGroupArgs:
     @pulumi.getter(name="systemDisk")
     def system_disk(self) -> pulumi.Input['ClusterNodeGroupSystemDiskArgs']:
         """
-        Host Ecs system disk information in this node group.
+        Host Ecs system disk information in this node group. See `system_disk` below.
         """
         return pulumi.get(self, "system_disk")
 
@@ -615,7 +615,7 @@ class ClusterNodeGroupArgs:
     @pulumi.getter(name="costOptimizedConfig")
     def cost_optimized_config(self) -> Optional[pulumi.Input['ClusterNodeGroupCostOptimizedConfigArgs']]:
         """
-        The detail cost optimized configuration of emr cluster.
+        The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below.
         """
         return pulumi.get(self, "cost_optimized_config")
 
@@ -651,7 +651,7 @@ class ClusterNodeGroupArgs:
     @pulumi.getter(name="spotBidPrices")
     def spot_bid_prices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupSpotBidPriceArgs']]]]:
         """
-        The spot bid prices of a PayAsYouGo instance.
+        The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
         """
         return pulumi.get(self, "spot_bid_prices")
 
@@ -675,7 +675,7 @@ class ClusterNodeGroupArgs:
     @pulumi.getter(name="subscriptionConfig")
     def subscription_config(self) -> Optional[pulumi.Input['ClusterNodeGroupSubscriptionConfigArgs']]:
         """
-        The detail configuration of subscription payment type.
+        The detail configuration of subscription payment type. See `subscription_config` below.
         """
         return pulumi.get(self, "subscription_config")
 

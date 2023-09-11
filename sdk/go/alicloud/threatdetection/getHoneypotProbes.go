@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotprobe)
@@ -165,6 +166,12 @@ func (o GetHoneypotProbesResultOutput) ToGetHoneypotProbesResultOutput() GetHone
 
 func (o GetHoneypotProbesResultOutput) ToGetHoneypotProbesResultOutputWithContext(ctx context.Context) GetHoneypotProbesResultOutput {
 	return o
+}
+
+func (o GetHoneypotProbesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetHoneypotProbesResult] {
+	return pulumix.Output[GetHoneypotProbesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Probe name.

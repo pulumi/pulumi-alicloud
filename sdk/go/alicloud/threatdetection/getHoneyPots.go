@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypot)
@@ -138,6 +139,12 @@ func (o GetHoneyPotsResultOutput) ToGetHoneyPotsResultOutput() GetHoneyPotsResul
 
 func (o GetHoneyPotsResultOutput) ToGetHoneyPotsResultOutputWithContext(ctx context.Context) GetHoneyPotsResultOutput {
 	return o
+}
+
+func (o GetHoneyPotsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetHoneyPotsResult] {
+	return pulumix.Output[GetHoneyPotsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Honeypot ID.

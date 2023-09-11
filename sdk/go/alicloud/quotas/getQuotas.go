@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Quotas Quotas of the current Alibaba Cloud user.
@@ -151,6 +152,12 @@ func (o GetQuotasResultOutput) ToGetQuotasResultOutput() GetQuotasResultOutput {
 
 func (o GetQuotasResultOutput) ToGetQuotasResultOutputWithContext(ctx context.Context) GetQuotasResultOutput {
 	return o
+}
+
+func (o GetQuotasResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetQuotasResult] {
+	return pulumix.Output[GetQuotasResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetQuotasResultOutput) Dimensions() GetQuotasDimensionArrayOutput {

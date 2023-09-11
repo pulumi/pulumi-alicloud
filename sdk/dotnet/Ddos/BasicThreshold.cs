@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// For information about Ddos Basic Threshold and how to use it, see [What is Threshold](https://www.alibabacloud.com/help/en/ddos-protection/latest/describe-ip-ddosthreshold).
     /// 
-    /// &gt; **NOTE:** Available in v1.183.0+.
+    /// &gt; **NOTE:** Available since v1.183.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,6 +28,8 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "Instance",
@@ -40,35 +42,37 @@ namespace Pulumi.AliCloud.Ddos
     ///         MemorySize = 2,
     ///     });
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
-    ///         NameRegex = "default-NODELETING",
+    ///         Owners = "system",
+    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
     ///     {
     ///         Description = "New security group",
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///     });
-    /// 
-    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
-    ///     {
-    ///         Owners = "system",
-    ///         NameRegex = "^centos_8",
-    ///         MostRecent = true,
+    ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
     ///     var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new()
     ///     {
     ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         InstanceName = @var.Name,
-    ///         HostName = "tf-testAcc",
+    ///         InstanceName = name,
+    ///         HostName = name,
     ///         InternetMaxBandwidthOut = 10,
     ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
     ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
@@ -76,7 +80,7 @@ namespace Pulumi.AliCloud.Ddos
     ///         {
     ///             defaultSecurityGroup.Id,
     ///         },
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         VswitchId = defaultSwitch.Id,
     ///     });
     /// 
     ///     var example = new AliCloud.Ddos.BasicThreshold("example", new()

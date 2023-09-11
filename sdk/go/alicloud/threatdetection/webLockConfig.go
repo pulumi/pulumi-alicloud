@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Threat Detection Web Lock Config resource.
@@ -245,6 +246,12 @@ func (i *WebLockConfig) ToWebLockConfigOutputWithContext(ctx context.Context) We
 	return pulumi.ToOutputWithContext(ctx, i).(WebLockConfigOutput)
 }
 
+func (i *WebLockConfig) ToOutput(ctx context.Context) pulumix.Output[*WebLockConfig] {
+	return pulumix.Output[*WebLockConfig]{
+		OutputState: i.ToWebLockConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WebLockConfigArrayInput is an input type that accepts WebLockConfigArray and WebLockConfigArrayOutput values.
 // You can construct a concrete instance of `WebLockConfigArrayInput` via:
 //
@@ -268,6 +275,12 @@ func (i WebLockConfigArray) ToWebLockConfigArrayOutput() WebLockConfigArrayOutpu
 
 func (i WebLockConfigArray) ToWebLockConfigArrayOutputWithContext(ctx context.Context) WebLockConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebLockConfigArrayOutput)
+}
+
+func (i WebLockConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*WebLockConfig] {
+	return pulumix.Output[[]*WebLockConfig]{
+		OutputState: i.ToWebLockConfigArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // WebLockConfigMapInput is an input type that accepts WebLockConfigMap and WebLockConfigMapOutput values.
@@ -295,6 +308,12 @@ func (i WebLockConfigMap) ToWebLockConfigMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(WebLockConfigMapOutput)
 }
 
+func (i WebLockConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebLockConfig] {
+	return pulumix.Output[map[string]*WebLockConfig]{
+		OutputState: i.ToWebLockConfigMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebLockConfigOutput struct{ *pulumi.OutputState }
 
 func (WebLockConfigOutput) ElementType() reflect.Type {
@@ -307,6 +326,12 @@ func (o WebLockConfigOutput) ToWebLockConfigOutput() WebLockConfigOutput {
 
 func (o WebLockConfigOutput) ToWebLockConfigOutputWithContext(ctx context.Context) WebLockConfigOutput {
 	return o
+}
+
+func (o WebLockConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*WebLockConfig] {
+	return pulumix.Output[*WebLockConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Protection mode. Value:-**block**: Intercept-**audit**: Alarm
@@ -368,6 +393,12 @@ func (o WebLockConfigArrayOutput) ToWebLockConfigArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o WebLockConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WebLockConfig] {
+	return pulumix.Output[[]*WebLockConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WebLockConfigArrayOutput) Index(i pulumi.IntInput) WebLockConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WebLockConfig {
 		return vs[0].([]*WebLockConfig)[vs[1].(int)]
@@ -386,6 +417,12 @@ func (o WebLockConfigMapOutput) ToWebLockConfigMapOutput() WebLockConfigMapOutpu
 
 func (o WebLockConfigMapOutput) ToWebLockConfigMapOutputWithContext(ctx context.Context) WebLockConfigMapOutput {
 	return o
+}
+
+func (o WebLockConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebLockConfig] {
+	return pulumix.Output[map[string]*WebLockConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WebLockConfigMapOutput) MapIndex(k pulumi.StringInput) WebLockConfigOutput {

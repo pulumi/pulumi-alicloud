@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworkAclEgressAclEntry {
     /**
-     * @return The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * @return The description of the outbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     private @Nullable String description;
@@ -28,8 +28,6 @@ public final class NetworkAclEgressAclEntry {
     private @Nullable String networkAclEntryName;
     /**
      * @return Authorization policy. Value:
-     * - accept: Allow.
-     * - drop: Refused.
      * - accept: Allow.
      * - drop: Refused.
      * 
@@ -48,18 +46,12 @@ public final class NetworkAclEgressAclEntry {
      * - udp: User Datagram Protocol.
      * - all: Supports all protocols.
      * 
-     * - icmp: Network Control Message Protocol.
-     * - gre: Generic Routing Encapsulation Protocol.
-     * - tcp: Transmission Control Protocol.
-     * - udp: User Datagram Protocol.
-     * - all: Supports all protocols.
-     * 
      */
     private @Nullable String protocol;
 
     private NetworkAclEgressAclEntry() {}
     /**
-     * @return The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * @return The description of the outbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     public Optional<String> description() {
@@ -83,8 +75,6 @@ public final class NetworkAclEgressAclEntry {
      * @return Authorization policy. Value:
      * - accept: Allow.
      * - drop: Refused.
-     * - accept: Allow.
-     * - drop: Refused.
      * 
      */
     public Optional<String> policy() {
@@ -99,12 +89,6 @@ public final class NetworkAclEgressAclEntry {
     }
     /**
      * @return The protocol type. Value:
-     * - icmp: Network Control Message Protocol.
-     * - gre: Generic Routing Encapsulation Protocol.
-     * - tcp: Transmission Control Protocol.
-     * - udp: User Datagram Protocol.
-     * - all: Supports all protocols.
-     * 
      * - icmp: Network Control Message Protocol.
      * - gre: Generic Routing Encapsulation Protocol.
      * - tcp: Transmission Control Protocol.

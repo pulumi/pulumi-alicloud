@@ -10,11 +10,12 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An ECI Image Cache can help user to solve the time-consuming problem of image pull. For information about Alicloud ECI Image Cache and how to use it, see [What is Resource Alicloud ECI Image Cache](https://www.alibabacloud.com/help/doc-detail/146891.htm).
 //
-// > **NOTE:** Available in v1.89.0+.
+// > **NOTE:** Available since v1.89.0.
 //
 // > **NOTE:** Each image cache corresponds to a snapshot, and the user does not delete the snapshot directly, otherwise the cache will fail.
 //
@@ -27,21 +28,77 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eci"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := eci.NewImageCache(ctx, "example", &eci.ImageCacheArgs{
-//				EipInstanceId:  pulumi.String("eip-uf60c7cqb2pcrkgxhxxxx"),
-//				ImageCacheName: pulumi.String("tf-test"),
-//				Images: pulumi.StringArray{
-//					pulumi.String("registry.cn-beijing.aliyuncs.com/sceneplatform/sae-image-xxxx:latest"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := eci.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.0.0.0/8"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.1.0.0/16"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].ZoneIds[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
+//				Isp:         pulumi.String("BGP"),
+//				AddressName: pulumi.String(name),
+//				Netmode:     pulumi.String("public"),
+//				Bandwidth:   pulumi.String("1"),
+//				SecurityProtectionTypes: pulumi.StringArray{
+//					pulumi.String("AntiDDoS_Enhanced"),
 //				},
-//				SecurityGroupId: pulumi.String("sg-2zeef68b66fxxxx"),
-//				VswitchId:       pulumi.String("vsw-2zef9k7ng82xxxx"),
+//				PaymentType: pulumi.String("PayAsYouGo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eci.NewImageCache(ctx, "defaultImageCache", &eci.ImageCacheArgs{
+//				ImageCacheName: pulumi.String(name),
+//				Images: pulumi.StringArray{
+//					pulumi.String(fmt.Sprintf("registry-vpc.%v.aliyuncs.com/eci_open/nginx:alpine", defaultRegions.Regions[0].Id)),
+//				},
+//				SecurityGroupId: defaultSecurityGroup.ID(),
+//				VswitchId:       defaultSwitch.ID(),
+//				EipInstanceId:   defaultEipAddress.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -72,7 +129,7 @@ type ImageCache struct {
 	ImageCacheName pulumi.StringOutput `pulumi:"imageCacheName"`
 	// The size of the image cache. Default to `20`. Unit: GiB.
 	ImageCacheSize pulumi.IntPtrOutput `pulumi:"imageCacheSize"`
-	// The Image Registry parameters about the image to be cached.
+	// The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
 	ImageRegistryCredentials ImageCacheImageRegistryCredentialArrayOutput `pulumi:"imageRegistryCredentials"`
 	// The images to be cached. The image name must be versioned.
 	Images pulumi.StringArrayOutput `pulumi:"images"`
@@ -140,7 +197,7 @@ type imageCacheState struct {
 	ImageCacheName *string `pulumi:"imageCacheName"`
 	// The size of the image cache. Default to `20`. Unit: GiB.
 	ImageCacheSize *int `pulumi:"imageCacheSize"`
-	// The Image Registry parameters about the image to be cached.
+	// The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
 	ImageRegistryCredentials []ImageCacheImageRegistryCredential `pulumi:"imageRegistryCredentials"`
 	// The images to be cached. The image name must be versioned.
 	Images []string `pulumi:"images"`
@@ -167,7 +224,7 @@ type ImageCacheState struct {
 	ImageCacheName pulumi.StringPtrInput
 	// The size of the image cache. Default to `20`. Unit: GiB.
 	ImageCacheSize pulumi.IntPtrInput
-	// The Image Registry parameters about the image to be cached.
+	// The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
 	ImageRegistryCredentials ImageCacheImageRegistryCredentialArrayInput
 	// The images to be cached. The image name must be versioned.
 	Images pulumi.StringArrayInput
@@ -196,7 +253,7 @@ type imageCacheArgs struct {
 	ImageCacheName string `pulumi:"imageCacheName"`
 	// The size of the image cache. Default to `20`. Unit: GiB.
 	ImageCacheSize *int `pulumi:"imageCacheSize"`
-	// The Image Registry parameters about the image to be cached.
+	// The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
 	ImageRegistryCredentials []ImageCacheImageRegistryCredential `pulumi:"imageRegistryCredentials"`
 	// The images to be cached. The image name must be versioned.
 	Images []string `pulumi:"images"`
@@ -220,7 +277,7 @@ type ImageCacheArgs struct {
 	ImageCacheName pulumi.StringInput
 	// The size of the image cache. Default to `20`. Unit: GiB.
 	ImageCacheSize pulumi.IntPtrInput
-	// The Image Registry parameters about the image to be cached.
+	// The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
 	ImageRegistryCredentials ImageCacheImageRegistryCredentialArrayInput
 	// The images to be cached. The image name must be versioned.
 	Images pulumi.StringArrayInput
@@ -259,6 +316,12 @@ func (i *ImageCache) ToImageCacheOutputWithContext(ctx context.Context) ImageCac
 	return pulumi.ToOutputWithContext(ctx, i).(ImageCacheOutput)
 }
 
+func (i *ImageCache) ToOutput(ctx context.Context) pulumix.Output[*ImageCache] {
+	return pulumix.Output[*ImageCache]{
+		OutputState: i.ToImageCacheOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ImageCacheArrayInput is an input type that accepts ImageCacheArray and ImageCacheArrayOutput values.
 // You can construct a concrete instance of `ImageCacheArrayInput` via:
 //
@@ -282,6 +345,12 @@ func (i ImageCacheArray) ToImageCacheArrayOutput() ImageCacheArrayOutput {
 
 func (i ImageCacheArray) ToImageCacheArrayOutputWithContext(ctx context.Context) ImageCacheArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageCacheArrayOutput)
+}
+
+func (i ImageCacheArray) ToOutput(ctx context.Context) pulumix.Output[[]*ImageCache] {
+	return pulumix.Output[[]*ImageCache]{
+		OutputState: i.ToImageCacheArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ImageCacheMapInput is an input type that accepts ImageCacheMap and ImageCacheMapOutput values.
@@ -309,6 +378,12 @@ func (i ImageCacheMap) ToImageCacheMapOutputWithContext(ctx context.Context) Ima
 	return pulumi.ToOutputWithContext(ctx, i).(ImageCacheMapOutput)
 }
 
+func (i ImageCacheMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImageCache] {
+	return pulumix.Output[map[string]*ImageCache]{
+		OutputState: i.ToImageCacheMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ImageCacheOutput struct{ *pulumi.OutputState }
 
 func (ImageCacheOutput) ElementType() reflect.Type {
@@ -321,6 +396,12 @@ func (o ImageCacheOutput) ToImageCacheOutput() ImageCacheOutput {
 
 func (o ImageCacheOutput) ToImageCacheOutputWithContext(ctx context.Context) ImageCacheOutput {
 	return o
+}
+
+func (o ImageCacheOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageCache] {
+	return pulumix.Output[*ImageCache]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the container group job that is used to create the image cache.
@@ -343,7 +424,7 @@ func (o ImageCacheOutput) ImageCacheSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ImageCache) pulumi.IntPtrOutput { return v.ImageCacheSize }).(pulumi.IntPtrOutput)
 }
 
-// The Image Registry parameters about the image to be cached.
+// The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
 func (o ImageCacheOutput) ImageRegistryCredentials() ImageCacheImageRegistryCredentialArrayOutput {
 	return o.ApplyT(func(v *ImageCache) ImageCacheImageRegistryCredentialArrayOutput { return v.ImageRegistryCredentials }).(ImageCacheImageRegistryCredentialArrayOutput)
 }
@@ -397,6 +478,12 @@ func (o ImageCacheArrayOutput) ToImageCacheArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o ImageCacheArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ImageCache] {
+	return pulumix.Output[[]*ImageCache]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ImageCacheArrayOutput) Index(i pulumi.IntInput) ImageCacheOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ImageCache {
 		return vs[0].([]*ImageCache)[vs[1].(int)]
@@ -415,6 +502,12 @@ func (o ImageCacheMapOutput) ToImageCacheMapOutput() ImageCacheMapOutput {
 
 func (o ImageCacheMapOutput) ToImageCacheMapOutputWithContext(ctx context.Context) ImageCacheMapOutput {
 	return o
+}
+
+func (o ImageCacheMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImageCache] {
+	return pulumix.Output[map[string]*ImageCache]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ImageCacheMapOutput) MapIndex(k pulumi.StringInput) ImageCacheOutput {

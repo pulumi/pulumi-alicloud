@@ -10,13 +10,14 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a GPDB DB Instance Plan resource.
 //
-// For information about GPDB DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/zh/analyticdb-for-postgresql/latest/createdbinstanceplan).
+// For information about GPDB DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/createdbinstanceplan).
 //
-// > **NOTE:** Available in v1.189.0+.
+// > **NOTE:** Available since v1.189.0.
 //
 // ## Import
 //
@@ -34,7 +35,7 @@ type DbInstancePlan struct {
 	DbInstanceId pulumi.StringOutput `pulumi:"dbInstanceId"`
 	// The name of the Plan.
 	DbInstancePlanName pulumi.StringOutput `pulumi:"dbInstancePlanName"`
-	// The plan config. See the following `Block planConfig`.
+	// The plan config. See `planConfig` below.
 	PlanConfigs DbInstancePlanPlanConfigArrayOutput `pulumi:"planConfigs"`
 	// The description of the Plan.
 	PlanDesc pulumi.StringOutput `pulumi:"planDesc"`
@@ -101,7 +102,7 @@ type dbInstancePlanState struct {
 	DbInstanceId *string `pulumi:"dbInstanceId"`
 	// The name of the Plan.
 	DbInstancePlanName *string `pulumi:"dbInstancePlanName"`
-	// The plan config. See the following `Block planConfig`.
+	// The plan config. See `planConfig` below.
 	PlanConfigs []DbInstancePlanPlanConfig `pulumi:"planConfigs"`
 	// The description of the Plan.
 	PlanDesc *string `pulumi:"planDesc"`
@@ -124,7 +125,7 @@ type DbInstancePlanState struct {
 	DbInstanceId pulumi.StringPtrInput
 	// The name of the Plan.
 	DbInstancePlanName pulumi.StringPtrInput
-	// The plan config. See the following `Block planConfig`.
+	// The plan config. See `planConfig` below.
 	PlanConfigs DbInstancePlanPlanConfigArrayInput
 	// The description of the Plan.
 	PlanDesc pulumi.StringPtrInput
@@ -151,7 +152,7 @@ type dbInstancePlanArgs struct {
 	DbInstanceId string `pulumi:"dbInstanceId"`
 	// The name of the Plan.
 	DbInstancePlanName string `pulumi:"dbInstancePlanName"`
-	// The plan config. See the following `Block planConfig`.
+	// The plan config. See `planConfig` below.
 	PlanConfigs []DbInstancePlanPlanConfig `pulumi:"planConfigs"`
 	// The description of the Plan.
 	PlanDesc *string `pulumi:"planDesc"`
@@ -173,7 +174,7 @@ type DbInstancePlanArgs struct {
 	DbInstanceId pulumi.StringInput
 	// The name of the Plan.
 	DbInstancePlanName pulumi.StringInput
-	// The plan config. See the following `Block planConfig`.
+	// The plan config. See `planConfig` below.
 	PlanConfigs DbInstancePlanPlanConfigArrayInput
 	// The description of the Plan.
 	PlanDesc pulumi.StringPtrInput
@@ -212,6 +213,12 @@ func (i *DbInstancePlan) ToDbInstancePlanOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanOutput)
 }
 
+func (i *DbInstancePlan) ToOutput(ctx context.Context) pulumix.Output[*DbInstancePlan] {
+	return pulumix.Output[*DbInstancePlan]{
+		OutputState: i.ToDbInstancePlanOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DbInstancePlanArrayInput is an input type that accepts DbInstancePlanArray and DbInstancePlanArrayOutput values.
 // You can construct a concrete instance of `DbInstancePlanArrayInput` via:
 //
@@ -235,6 +242,12 @@ func (i DbInstancePlanArray) ToDbInstancePlanArrayOutput() DbInstancePlanArrayOu
 
 func (i DbInstancePlanArray) ToDbInstancePlanArrayOutputWithContext(ctx context.Context) DbInstancePlanArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanArrayOutput)
+}
+
+func (i DbInstancePlanArray) ToOutput(ctx context.Context) pulumix.Output[[]*DbInstancePlan] {
+	return pulumix.Output[[]*DbInstancePlan]{
+		OutputState: i.ToDbInstancePlanArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DbInstancePlanMapInput is an input type that accepts DbInstancePlanMap and DbInstancePlanMapOutput values.
@@ -262,6 +275,12 @@ func (i DbInstancePlanMap) ToDbInstancePlanMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanMapOutput)
 }
 
+func (i DbInstancePlanMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbInstancePlan] {
+	return pulumix.Output[map[string]*DbInstancePlan]{
+		OutputState: i.ToDbInstancePlanMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DbInstancePlanOutput struct{ *pulumi.OutputState }
 
 func (DbInstancePlanOutput) ElementType() reflect.Type {
@@ -276,6 +295,12 @@ func (o DbInstancePlanOutput) ToDbInstancePlanOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o DbInstancePlanOutput) ToOutput(ctx context.Context) pulumix.Output[*DbInstancePlan] {
+	return pulumix.Output[*DbInstancePlan]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ID of the Database instance.
 func (o DbInstancePlanOutput) DbInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbInstancePlan) pulumi.StringOutput { return v.DbInstanceId }).(pulumi.StringOutput)
@@ -286,7 +311,7 @@ func (o DbInstancePlanOutput) DbInstancePlanName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbInstancePlan) pulumi.StringOutput { return v.DbInstancePlanName }).(pulumi.StringOutput)
 }
 
-// The plan config. See the following `Block planConfig`.
+// The plan config. See `planConfig` below.
 func (o DbInstancePlanOutput) PlanConfigs() DbInstancePlanPlanConfigArrayOutput {
 	return o.ApplyT(func(v *DbInstancePlan) DbInstancePlanPlanConfigArrayOutput { return v.PlanConfigs }).(DbInstancePlanPlanConfigArrayOutput)
 }
@@ -340,6 +365,12 @@ func (o DbInstancePlanArrayOutput) ToDbInstancePlanArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o DbInstancePlanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DbInstancePlan] {
+	return pulumix.Output[[]*DbInstancePlan]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DbInstancePlanArrayOutput) Index(i pulumi.IntInput) DbInstancePlanOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DbInstancePlan {
 		return vs[0].([]*DbInstancePlan)[vs[1].(int)]
@@ -358,6 +389,12 @@ func (o DbInstancePlanMapOutput) ToDbInstancePlanMapOutput() DbInstancePlanMapOu
 
 func (o DbInstancePlanMapOutput) ToDbInstancePlanMapOutputWithContext(ctx context.Context) DbInstancePlanMapOutput {
 	return o
+}
+
+func (o DbInstancePlanMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbInstancePlan] {
+	return pulumix.Output[map[string]*DbInstancePlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DbInstancePlanMapOutput) MapIndex(k pulumi.StringInput) DbInstancePlanOutput {

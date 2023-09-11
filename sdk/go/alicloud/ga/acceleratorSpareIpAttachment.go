@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Global Accelerator (GA) Accelerator Spare Ip Attachment resource.
@@ -203,6 +204,12 @@ func (i *AcceleratorSpareIpAttachment) ToAcceleratorSpareIpAttachmentOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorSpareIpAttachmentOutput)
 }
 
+func (i *AcceleratorSpareIpAttachment) ToOutput(ctx context.Context) pulumix.Output[*AcceleratorSpareIpAttachment] {
+	return pulumix.Output[*AcceleratorSpareIpAttachment]{
+		OutputState: i.ToAcceleratorSpareIpAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AcceleratorSpareIpAttachmentArrayInput is an input type that accepts AcceleratorSpareIpAttachmentArray and AcceleratorSpareIpAttachmentArrayOutput values.
 // You can construct a concrete instance of `AcceleratorSpareIpAttachmentArrayInput` via:
 //
@@ -226,6 +233,12 @@ func (i AcceleratorSpareIpAttachmentArray) ToAcceleratorSpareIpAttachmentArrayOu
 
 func (i AcceleratorSpareIpAttachmentArray) ToAcceleratorSpareIpAttachmentArrayOutputWithContext(ctx context.Context) AcceleratorSpareIpAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorSpareIpAttachmentArrayOutput)
+}
+
+func (i AcceleratorSpareIpAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*AcceleratorSpareIpAttachment] {
+	return pulumix.Output[[]*AcceleratorSpareIpAttachment]{
+		OutputState: i.ToAcceleratorSpareIpAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AcceleratorSpareIpAttachmentMapInput is an input type that accepts AcceleratorSpareIpAttachmentMap and AcceleratorSpareIpAttachmentMapOutput values.
@@ -253,6 +266,12 @@ func (i AcceleratorSpareIpAttachmentMap) ToAcceleratorSpareIpAttachmentMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorSpareIpAttachmentMapOutput)
 }
 
+func (i AcceleratorSpareIpAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AcceleratorSpareIpAttachment] {
+	return pulumix.Output[map[string]*AcceleratorSpareIpAttachment]{
+		OutputState: i.ToAcceleratorSpareIpAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AcceleratorSpareIpAttachmentOutput struct{ *pulumi.OutputState }
 
 func (AcceleratorSpareIpAttachmentOutput) ElementType() reflect.Type {
@@ -265,6 +284,12 @@ func (o AcceleratorSpareIpAttachmentOutput) ToAcceleratorSpareIpAttachmentOutput
 
 func (o AcceleratorSpareIpAttachmentOutput) ToAcceleratorSpareIpAttachmentOutputWithContext(ctx context.Context) AcceleratorSpareIpAttachmentOutput {
 	return o
+}
+
+func (o AcceleratorSpareIpAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*AcceleratorSpareIpAttachment] {
+	return pulumix.Output[*AcceleratorSpareIpAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the global acceleration instance.
@@ -301,6 +326,12 @@ func (o AcceleratorSpareIpAttachmentArrayOutput) ToAcceleratorSpareIpAttachmentA
 	return o
 }
 
+func (o AcceleratorSpareIpAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AcceleratorSpareIpAttachment] {
+	return pulumix.Output[[]*AcceleratorSpareIpAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AcceleratorSpareIpAttachmentArrayOutput) Index(i pulumi.IntInput) AcceleratorSpareIpAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AcceleratorSpareIpAttachment {
 		return vs[0].([]*AcceleratorSpareIpAttachment)[vs[1].(int)]
@@ -319,6 +350,12 @@ func (o AcceleratorSpareIpAttachmentMapOutput) ToAcceleratorSpareIpAttachmentMap
 
 func (o AcceleratorSpareIpAttachmentMapOutput) ToAcceleratorSpareIpAttachmentMapOutputWithContext(ctx context.Context) AcceleratorSpareIpAttachmentMapOutput {
 	return o
+}
+
+func (o AcceleratorSpareIpAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AcceleratorSpareIpAttachment] {
+	return pulumix.Output[map[string]*AcceleratorSpareIpAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AcceleratorSpareIpAttachmentMapOutput) MapIndex(k pulumi.StringInput) AcceleratorSpareIpAttachmentOutput {

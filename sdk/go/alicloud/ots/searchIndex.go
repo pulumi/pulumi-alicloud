@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an OTS search index resource.
@@ -319,6 +320,12 @@ func (i *SearchIndex) ToSearchIndexOutputWithContext(ctx context.Context) Search
 	return pulumi.ToOutputWithContext(ctx, i).(SearchIndexOutput)
 }
 
+func (i *SearchIndex) ToOutput(ctx context.Context) pulumix.Output[*SearchIndex] {
+	return pulumix.Output[*SearchIndex]{
+		OutputState: i.ToSearchIndexOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SearchIndexArrayInput is an input type that accepts SearchIndexArray and SearchIndexArrayOutput values.
 // You can construct a concrete instance of `SearchIndexArrayInput` via:
 //
@@ -342,6 +349,12 @@ func (i SearchIndexArray) ToSearchIndexArrayOutput() SearchIndexArrayOutput {
 
 func (i SearchIndexArray) ToSearchIndexArrayOutputWithContext(ctx context.Context) SearchIndexArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SearchIndexArrayOutput)
+}
+
+func (i SearchIndexArray) ToOutput(ctx context.Context) pulumix.Output[[]*SearchIndex] {
+	return pulumix.Output[[]*SearchIndex]{
+		OutputState: i.ToSearchIndexArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SearchIndexMapInput is an input type that accepts SearchIndexMap and SearchIndexMapOutput values.
@@ -369,6 +382,12 @@ func (i SearchIndexMap) ToSearchIndexMapOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(SearchIndexMapOutput)
 }
 
+func (i SearchIndexMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SearchIndex] {
+	return pulumix.Output[map[string]*SearchIndex]{
+		OutputState: i.ToSearchIndexMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SearchIndexOutput struct{ *pulumi.OutputState }
 
 func (SearchIndexOutput) ElementType() reflect.Type {
@@ -381,6 +400,12 @@ func (o SearchIndexOutput) ToSearchIndexOutput() SearchIndexOutput {
 
 func (o SearchIndexOutput) ToSearchIndexOutputWithContext(ctx context.Context) SearchIndexOutput {
 	return o
+}
+
+func (o SearchIndexOutput) ToOutput(ctx context.Context) pulumix.Output[*SearchIndex] {
+	return pulumix.Output[*SearchIndex]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The search index create time.
@@ -443,6 +468,12 @@ func (o SearchIndexArrayOutput) ToSearchIndexArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o SearchIndexArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SearchIndex] {
+	return pulumix.Output[[]*SearchIndex]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SearchIndexArrayOutput) Index(i pulumi.IntInput) SearchIndexOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SearchIndex {
 		return vs[0].([]*SearchIndex)[vs[1].(int)]
@@ -461,6 +492,12 @@ func (o SearchIndexMapOutput) ToSearchIndexMapOutput() SearchIndexMapOutput {
 
 func (o SearchIndexMapOutput) ToSearchIndexMapOutputWithContext(ctx context.Context) SearchIndexMapOutput {
 	return o
+}
+
+func (o SearchIndexMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SearchIndex] {
+	return pulumix.Output[map[string]*SearchIndex]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SearchIndexMapOutput) MapIndex(k pulumi.StringInput) SearchIndexOutput {

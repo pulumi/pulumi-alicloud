@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Config Aggregate Compliance Packs of the current Alibaba Cloud user.
@@ -136,6 +137,12 @@ func (o GetAggregateCompliancePacksResultOutput) ToGetAggregateCompliancePacksRe
 
 func (o GetAggregateCompliancePacksResultOutput) ToGetAggregateCompliancePacksResultOutputWithContext(ctx context.Context) GetAggregateCompliancePacksResultOutput {
 	return o
+}
+
+func (o GetAggregateCompliancePacksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAggregateCompliancePacksResult] {
+	return pulumix.Output[GetAggregateCompliancePacksResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAggregateCompliancePacksResultOutput) AggregatorId() pulumi.StringOutput {

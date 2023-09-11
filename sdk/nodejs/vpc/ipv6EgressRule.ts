@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about VPC Ipv6 Egress Rule and how to use it, see [What is Ipv6 Egress Rule](https://www.alibabacloud.com/help/doc-detail/102200.htm).
  *
- * > **NOTE:** Available in v1.142.0+.
+ * > **NOTE:** Available since v1.142.0.
  *
  * ## Example Usage
  *
@@ -21,27 +21,66 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
+ *     systemDiskCategory: "cloud_efficiency",
+ *     cpuCoreCount: 4,
+ *     minimumEniIpv6AddressQuantity: 1,
+ * }));
+ * const defaultImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
+ *     owners: "system",
+ * });
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
  *     vpcName: name,
  *     enableIpv6: true,
+ *     cidrBlock: "172.16.0.0/12",
  * });
- * const exampleIpv6Gateway = new alicloud.vpc.Ipv6Gateway("exampleIpv6Gateway", {
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/21",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: name,
+ *     ipv6CidrBlockMask: 64,
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {
+ *     description: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     ipv6AddressCount: 1,
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     systemDiskCategory: "cloud_efficiency",
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     instanceName: name,
+ *     vswitchId: defaultSwitch.id,
+ *     internetMaxBandwidthOut: 10,
+ *     securityGroups: [defaultSecurityGroup.id],
+ * });
+ * const defaultIpv6Gateway = new alicloud.vpc.Ipv6Gateway("defaultIpv6Gateway", {
  *     ipv6GatewayName: name,
  *     vpcId: defaultNetwork.id,
  * });
- * const defaultInstances = alicloud.ecs.getInstances({
- *     nameRegex: "ecs_with_ipv6_address",
- *     status: "Running",
- * });
- * const defaultIpv6Addresses = defaultInstances.then(defaultInstances => alicloud.vpc.getIpv6Addresses({
- *     associatedInstanceId: defaultInstances.instances?.[0]?.id,
+ * const defaultIpv6Addresses = alicloud.vpc.getIpv6AddressesOutput({
+ *     associatedInstanceId: defaultInstance.id,
  *     status: "Available",
- * }));
- * const exampleIpv6EgressRule = new alicloud.vpc.Ipv6EgressRule("exampleIpv6EgressRule", {
- *     instanceId: defaultIpv6Addresses.then(defaultIpv6Addresses => defaultIpv6Addresses.ids?.[0]),
- *     ipv6EgressRuleName: "example_value",
- *     description: "example_value",
- *     ipv6GatewayId: exampleIpv6Gateway.id,
+ * });
+ * const defaultIpv6InternetBandwidth = new alicloud.vpc.Ipv6InternetBandwidth("defaultIpv6InternetBandwidth", {
+ *     ipv6AddressId: defaultIpv6Addresses.apply(defaultIpv6Addresses => defaultIpv6Addresses.addresses?.[0]?.id),
+ *     ipv6GatewayId: defaultIpv6Gateway.ipv6GatewayId,
+ *     internetChargeType: "PayByBandwidth",
+ *     bandwidth: 20,
+ * });
+ * const defaultIpv6EgressRule = new alicloud.vpc.Ipv6EgressRule("defaultIpv6EgressRule", {
+ *     instanceId: defaultIpv6InternetBandwidth.ipv6AddressId,
+ *     ipv6EgressRuleName: name,
+ *     description: name,
+ *     ipv6GatewayId: defaultIpv6InternetBandwidth.ipv6GatewayId,
  *     instanceType: "Ipv6Address",
  * });
  * ```

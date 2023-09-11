@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a NLB Server Group Server Attachment resource.
@@ -266,6 +267,12 @@ func (i *ServerGroupServerAttachment) ToServerGroupServerAttachmentOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupServerAttachmentOutput)
 }
 
+func (i *ServerGroupServerAttachment) ToOutput(ctx context.Context) pulumix.Output[*ServerGroupServerAttachment] {
+	return pulumix.Output[*ServerGroupServerAttachment]{
+		OutputState: i.ToServerGroupServerAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServerGroupServerAttachmentArrayInput is an input type that accepts ServerGroupServerAttachmentArray and ServerGroupServerAttachmentArrayOutput values.
 // You can construct a concrete instance of `ServerGroupServerAttachmentArrayInput` via:
 //
@@ -289,6 +296,12 @@ func (i ServerGroupServerAttachmentArray) ToServerGroupServerAttachmentArrayOutp
 
 func (i ServerGroupServerAttachmentArray) ToServerGroupServerAttachmentArrayOutputWithContext(ctx context.Context) ServerGroupServerAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupServerAttachmentArrayOutput)
+}
+
+func (i ServerGroupServerAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServerGroupServerAttachment] {
+	return pulumix.Output[[]*ServerGroupServerAttachment]{
+		OutputState: i.ToServerGroupServerAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ServerGroupServerAttachmentMapInput is an input type that accepts ServerGroupServerAttachmentMap and ServerGroupServerAttachmentMapOutput values.
@@ -316,6 +329,12 @@ func (i ServerGroupServerAttachmentMap) ToServerGroupServerAttachmentMapOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupServerAttachmentMapOutput)
 }
 
+func (i ServerGroupServerAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServerGroupServerAttachment] {
+	return pulumix.Output[map[string]*ServerGroupServerAttachment]{
+		OutputState: i.ToServerGroupServerAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServerGroupServerAttachmentOutput struct{ *pulumi.OutputState }
 
 func (ServerGroupServerAttachmentOutput) ElementType() reflect.Type {
@@ -328,6 +347,12 @@ func (o ServerGroupServerAttachmentOutput) ToServerGroupServerAttachmentOutput()
 
 func (o ServerGroupServerAttachmentOutput) ToServerGroupServerAttachmentOutputWithContext(ctx context.Context) ServerGroupServerAttachmentOutput {
 	return o
+}
+
+func (o ServerGroupServerAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerGroupServerAttachment] {
+	return pulumix.Output[*ServerGroupServerAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
@@ -391,6 +416,12 @@ func (o ServerGroupServerAttachmentArrayOutput) ToServerGroupServerAttachmentArr
 	return o
 }
 
+func (o ServerGroupServerAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServerGroupServerAttachment] {
+	return pulumix.Output[[]*ServerGroupServerAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServerGroupServerAttachmentArrayOutput) Index(i pulumi.IntInput) ServerGroupServerAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServerGroupServerAttachment {
 		return vs[0].([]*ServerGroupServerAttachment)[vs[1].(int)]
@@ -409,6 +440,12 @@ func (o ServerGroupServerAttachmentMapOutput) ToServerGroupServerAttachmentMapOu
 
 func (o ServerGroupServerAttachmentMapOutput) ToServerGroupServerAttachmentMapOutputWithContext(ctx context.Context) ServerGroupServerAttachmentMapOutput {
 	return o
+}
+
+func (o ServerGroupServerAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServerGroupServerAttachment] {
+	return pulumix.Output[map[string]*ServerGroupServerAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServerGroupServerAttachmentMapOutput) MapIndex(k pulumi.StringInput) ServerGroupServerAttachmentOutput {

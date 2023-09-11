@@ -10,13 +10,14 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an Alicloud Serverless App Engine (SAE) Application Load Balancer Attachment resource.
 //
-// For information about Serverless App Engine (SAE) Load Balancer Internet Attachment and how to use it, see [sae.LoadBalancerInternet](https://help.aliyun.com/document_detail/126360.html).
+// For information about Serverless App Engine (SAE) Load Balancer Internet Attachment and how to use it, see [sae.LoadBalancerInternet](https://www.alibabacloud.com/help/en/sae/latest/bindslb).
 //
-// > **NOTE:** Available in v1.164.0+.
+// > **NOTE:** Available since v1.164.0.
 //
 // ## Example Usage
 //
@@ -27,23 +28,115 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sae.NewLoadBalancerInternet(ctx, "example", &sae.LoadBalancerInternetArgs{
-//				AppId: pulumi.String("your_application_id"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNamespace, err := sae.NewNamespace(ctx, "defaultNamespace", &sae.NamespaceArgs{
+//				NamespaceId: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("%v:example%v", defaultRegions.Regions[0].Id, result), nil
+//				}).(pulumi.StringOutput),
+//				NamespaceName:           pulumi.String(name),
+//				NamespaceDescription:    pulumi.String(name),
+//				EnableMicroRegistration: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultApplication, err := sae.NewApplication(ctx, "defaultApplication", &sae.ApplicationArgs{
+//				AppDescription:  pulumi.String(name),
+//				AppName:         pulumi.String(name),
+//				NamespaceId:     defaultNamespace.ID(),
+//				ImageUrl:        pulumi.String("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5"),
+//				PackageType:     pulumi.String("Image"),
+//				Jdk:             pulumi.String("Open JDK 8"),
+//				SecurityGroupId: defaultSecurityGroup.ID(),
+//				VpcId:           defaultNetwork.ID(),
+//				VswitchId:       defaultSwitch.ID(),
+//				Timezone:        pulumi.String("Asia/Beijing"),
+//				Replicas:        pulumi.Int(5),
+//				Cpu:             pulumi.Int(500),
+//				Memory:          pulumi.Int(2048),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "defaultApplicationLoadBalancer", &slb.ApplicationLoadBalancerArgs{
+//				LoadBalancerName: pulumi.String(name),
+//				VswitchId:        defaultSwitch.ID(),
+//				LoadBalancerSpec: pulumi.String("slb.s2.small"),
+//				AddressType:      pulumi.String("internet"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sae.NewLoadBalancerInternet(ctx, "defaultLoadBalancerInternet", &sae.LoadBalancerInternetArgs{
+//				AppId:         defaultApplication.ID(),
+//				InternetSlbId: defaultApplicationLoadBalancer.ID(),
 //				Internets: sae.LoadBalancerInternetInternetArray{
 //					&sae.LoadBalancerInternetInternetArgs{
-//						Port:       pulumi.Int(80),
 //						Protocol:   pulumi.String("TCP"),
+//						Port:       pulumi.Int(80),
 //						TargetPort: pulumi.Int(8080),
 //					},
 //				},
-//				InternetSlbId: pulumi.String("your_internet_slb_id"),
 //			})
 //			if err != nil {
 //				return err
@@ -72,7 +165,7 @@ type LoadBalancerInternet struct {
 	InternetIp pulumi.StringOutput `pulumi:"internetIp"`
 	// The internet SLB ID.
 	InternetSlbId pulumi.StringPtrOutput `pulumi:"internetSlbId"`
-	// The bound private network SLB. See the following `Block internet`.
+	// The bound private network SLB. See `internet` below.
 	Internets LoadBalancerInternetInternetArrayOutput `pulumi:"internets"`
 }
 
@@ -118,7 +211,7 @@ type loadBalancerInternetState struct {
 	InternetIp *string `pulumi:"internetIp"`
 	// The internet SLB ID.
 	InternetSlbId *string `pulumi:"internetSlbId"`
-	// The bound private network SLB. See the following `Block internet`.
+	// The bound private network SLB. See `internet` below.
 	Internets []LoadBalancerInternetInternet `pulumi:"internets"`
 }
 
@@ -129,7 +222,7 @@ type LoadBalancerInternetState struct {
 	InternetIp pulumi.StringPtrInput
 	// The internet SLB ID.
 	InternetSlbId pulumi.StringPtrInput
-	// The bound private network SLB. See the following `Block internet`.
+	// The bound private network SLB. See `internet` below.
 	Internets LoadBalancerInternetInternetArrayInput
 }
 
@@ -142,7 +235,7 @@ type loadBalancerInternetArgs struct {
 	AppId string `pulumi:"appId"`
 	// The internet SLB ID.
 	InternetSlbId *string `pulumi:"internetSlbId"`
-	// The bound private network SLB. See the following `Block internet`.
+	// The bound private network SLB. See `internet` below.
 	Internets []LoadBalancerInternetInternet `pulumi:"internets"`
 }
 
@@ -152,7 +245,7 @@ type LoadBalancerInternetArgs struct {
 	AppId pulumi.StringInput
 	// The internet SLB ID.
 	InternetSlbId pulumi.StringPtrInput
-	// The bound private network SLB. See the following `Block internet`.
+	// The bound private network SLB. See `internet` below.
 	Internets LoadBalancerInternetInternetArrayInput
 }
 
@@ -177,6 +270,12 @@ func (i *LoadBalancerInternet) ToLoadBalancerInternetOutput() LoadBalancerIntern
 
 func (i *LoadBalancerInternet) ToLoadBalancerInternetOutputWithContext(ctx context.Context) LoadBalancerInternetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerInternetOutput)
+}
+
+func (i *LoadBalancerInternet) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerInternet] {
+	return pulumix.Output[*LoadBalancerInternet]{
+		OutputState: i.ToLoadBalancerInternetOutputWithContext(ctx).OutputState,
+	}
 }
 
 // LoadBalancerInternetArrayInput is an input type that accepts LoadBalancerInternetArray and LoadBalancerInternetArrayOutput values.
@@ -204,6 +303,12 @@ func (i LoadBalancerInternetArray) ToLoadBalancerInternetArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerInternetArrayOutput)
 }
 
+func (i LoadBalancerInternetArray) ToOutput(ctx context.Context) pulumix.Output[[]*LoadBalancerInternet] {
+	return pulumix.Output[[]*LoadBalancerInternet]{
+		OutputState: i.ToLoadBalancerInternetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LoadBalancerInternetMapInput is an input type that accepts LoadBalancerInternetMap and LoadBalancerInternetMapOutput values.
 // You can construct a concrete instance of `LoadBalancerInternetMapInput` via:
 //
@@ -229,6 +334,12 @@ func (i LoadBalancerInternetMap) ToLoadBalancerInternetMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerInternetMapOutput)
 }
 
+func (i LoadBalancerInternetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LoadBalancerInternet] {
+	return pulumix.Output[map[string]*LoadBalancerInternet]{
+		OutputState: i.ToLoadBalancerInternetMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LoadBalancerInternetOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerInternetOutput) ElementType() reflect.Type {
@@ -241,6 +352,12 @@ func (o LoadBalancerInternetOutput) ToLoadBalancerInternetOutput() LoadBalancerI
 
 func (o LoadBalancerInternetOutput) ToLoadBalancerInternetOutputWithContext(ctx context.Context) LoadBalancerInternetOutput {
 	return o
+}
+
+func (o LoadBalancerInternetOutput) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerInternet] {
+	return pulumix.Output[*LoadBalancerInternet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The target application ID that needs to be bound to the SLB.
@@ -258,7 +375,7 @@ func (o LoadBalancerInternetOutput) InternetSlbId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerInternet) pulumi.StringPtrOutput { return v.InternetSlbId }).(pulumi.StringPtrOutput)
 }
 
-// The bound private network SLB. See the following `Block internet`.
+// The bound private network SLB. See `internet` below.
 func (o LoadBalancerInternetOutput) Internets() LoadBalancerInternetInternetArrayOutput {
 	return o.ApplyT(func(v *LoadBalancerInternet) LoadBalancerInternetInternetArrayOutput { return v.Internets }).(LoadBalancerInternetInternetArrayOutput)
 }
@@ -275,6 +392,12 @@ func (o LoadBalancerInternetArrayOutput) ToLoadBalancerInternetArrayOutput() Loa
 
 func (o LoadBalancerInternetArrayOutput) ToLoadBalancerInternetArrayOutputWithContext(ctx context.Context) LoadBalancerInternetArrayOutput {
 	return o
+}
+
+func (o LoadBalancerInternetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LoadBalancerInternet] {
+	return pulumix.Output[[]*LoadBalancerInternet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LoadBalancerInternetArrayOutput) Index(i pulumi.IntInput) LoadBalancerInternetOutput {
@@ -295,6 +418,12 @@ func (o LoadBalancerInternetMapOutput) ToLoadBalancerInternetMapOutput() LoadBal
 
 func (o LoadBalancerInternetMapOutput) ToLoadBalancerInternetMapOutputWithContext(ctx context.Context) LoadBalancerInternetMapOutput {
 	return o
+}
+
+func (o LoadBalancerInternetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LoadBalancerInternet] {
+	return pulumix.Output[map[string]*LoadBalancerInternet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LoadBalancerInternetMapOutput) MapIndex(k pulumi.StringInput) LoadBalancerInternetOutput {

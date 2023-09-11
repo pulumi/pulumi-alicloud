@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -62,6 +63,12 @@ func (i DispatchRuleGroupRuleArgs) ToDispatchRuleGroupRuleOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleGroupRuleOutput)
 }
 
+func (i DispatchRuleGroupRuleArgs) ToOutput(ctx context.Context) pulumix.Output[DispatchRuleGroupRule] {
+	return pulumix.Output[DispatchRuleGroupRule]{
+		OutputState: i.ToDispatchRuleGroupRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DispatchRuleGroupRuleArrayInput is an input type that accepts DispatchRuleGroupRuleArray and DispatchRuleGroupRuleArrayOutput values.
 // You can construct a concrete instance of `DispatchRuleGroupRuleArrayInput` via:
 //
@@ -87,6 +94,12 @@ func (i DispatchRuleGroupRuleArray) ToDispatchRuleGroupRuleArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleGroupRuleArrayOutput)
 }
 
+func (i DispatchRuleGroupRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]DispatchRuleGroupRule] {
+	return pulumix.Output[[]DispatchRuleGroupRule]{
+		OutputState: i.ToDispatchRuleGroupRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DispatchRuleGroupRuleOutput struct{ *pulumi.OutputState }
 
 func (DispatchRuleGroupRuleOutput) ElementType() reflect.Type {
@@ -99,6 +112,12 @@ func (o DispatchRuleGroupRuleOutput) ToDispatchRuleGroupRuleOutput() DispatchRul
 
 func (o DispatchRuleGroupRuleOutput) ToDispatchRuleGroupRuleOutputWithContext(ctx context.Context) DispatchRuleGroupRuleOutput {
 	return o
+}
+
+func (o DispatchRuleGroupRuleOutput) ToOutput(ctx context.Context) pulumix.Output[DispatchRuleGroupRule] {
+	return pulumix.Output[DispatchRuleGroupRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the group rule.
@@ -140,6 +159,12 @@ func (o DispatchRuleGroupRuleArrayOutput) ToDispatchRuleGroupRuleArrayOutputWith
 	return o
 }
 
+func (o DispatchRuleGroupRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DispatchRuleGroupRule] {
+	return pulumix.Output[[]DispatchRuleGroupRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DispatchRuleGroupRuleArrayOutput) Index(i pulumi.IntInput) DispatchRuleGroupRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DispatchRuleGroupRule {
 		return vs[0].([]DispatchRuleGroupRule)[vs[1].(int)]
@@ -179,6 +204,12 @@ func (i DispatchRuleLabelMatchExpressionGridArgs) ToDispatchRuleLabelMatchExpres
 	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleLabelMatchExpressionGridOutput)
 }
 
+func (i DispatchRuleLabelMatchExpressionGridArgs) ToOutput(ctx context.Context) pulumix.Output[DispatchRuleLabelMatchExpressionGrid] {
+	return pulumix.Output[DispatchRuleLabelMatchExpressionGrid]{
+		OutputState: i.ToDispatchRuleLabelMatchExpressionGridOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DispatchRuleLabelMatchExpressionGridArrayInput is an input type that accepts DispatchRuleLabelMatchExpressionGridArray and DispatchRuleLabelMatchExpressionGridArrayOutput values.
 // You can construct a concrete instance of `DispatchRuleLabelMatchExpressionGridArrayInput` via:
 //
@@ -204,6 +235,12 @@ func (i DispatchRuleLabelMatchExpressionGridArray) ToDispatchRuleLabelMatchExpre
 	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleLabelMatchExpressionGridArrayOutput)
 }
 
+func (i DispatchRuleLabelMatchExpressionGridArray) ToOutput(ctx context.Context) pulumix.Output[[]DispatchRuleLabelMatchExpressionGrid] {
+	return pulumix.Output[[]DispatchRuleLabelMatchExpressionGrid]{
+		OutputState: i.ToDispatchRuleLabelMatchExpressionGridArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DispatchRuleLabelMatchExpressionGridOutput struct{ *pulumi.OutputState }
 
 func (DispatchRuleLabelMatchExpressionGridOutput) ElementType() reflect.Type {
@@ -216,6 +253,12 @@ func (o DispatchRuleLabelMatchExpressionGridOutput) ToDispatchRuleLabelMatchExpr
 
 func (o DispatchRuleLabelMatchExpressionGridOutput) ToDispatchRuleLabelMatchExpressionGridOutputWithContext(ctx context.Context) DispatchRuleLabelMatchExpressionGridOutput {
 	return o
+}
+
+func (o DispatchRuleLabelMatchExpressionGridOutput) ToOutput(ctx context.Context) pulumix.Output[DispatchRuleLabelMatchExpressionGrid] {
+	return pulumix.Output[DispatchRuleLabelMatchExpressionGrid]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Sets the dispatch rule. See `labelMatchExpressionGroups` below.
@@ -237,6 +280,12 @@ func (o DispatchRuleLabelMatchExpressionGridArrayOutput) ToDispatchRuleLabelMatc
 
 func (o DispatchRuleLabelMatchExpressionGridArrayOutput) ToDispatchRuleLabelMatchExpressionGridArrayOutputWithContext(ctx context.Context) DispatchRuleLabelMatchExpressionGridArrayOutput {
 	return o
+}
+
+func (o DispatchRuleLabelMatchExpressionGridArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DispatchRuleLabelMatchExpressionGrid] {
+	return pulumix.Output[[]DispatchRuleLabelMatchExpressionGrid]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DispatchRuleLabelMatchExpressionGridArrayOutput) Index(i pulumi.IntInput) DispatchRuleLabelMatchExpressionGridOutput {
@@ -278,6 +327,12 @@ func (i DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs) ToDis
 	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput)
 }
 
+func (i DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs) ToOutput(ctx context.Context) pulumix.Output[DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup] {
+	return pulumix.Output[DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup]{
+		OutputState: i.ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayInput is an input type that accepts DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray and DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput values.
 // You can construct a concrete instance of `DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayInput` via:
 //
@@ -303,6 +358,12 @@ func (i DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray) ToDi
 	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput)
 }
 
+func (i DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup] {
+	return pulumix.Output[[]DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup]{
+		OutputState: i.ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput struct{ *pulumi.OutputState }
 
 func (DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput) ElementType() reflect.Type {
@@ -315,6 +376,12 @@ func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput) ToD
 
 func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput) ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutputWithContext(ctx context.Context) DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput {
 	return o
+}
+
+func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput) ToOutput(ctx context.Context) pulumix.Output[DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup] {
+	return pulumix.Output[DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Sets the dispatch rule. See `labelMatchExpressions` below.
@@ -336,6 +403,12 @@ func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput
 
 func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput) ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutputWithContext(ctx context.Context) DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput {
 	return o
+}
+
+func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup] {
+	return pulumix.Output[[]DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput) Index(i pulumi.IntInput) DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput {
@@ -405,6 +478,12 @@ func (i DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchE
 	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput)
 }
 
+func (i DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs) ToOutput(ctx context.Context) pulumix.Output[DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression] {
+	return pulumix.Output[DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression]{
+		OutputState: i.ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayInput is an input type that accepts DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray and DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput values.
 // You can construct a concrete instance of `DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayInput` via:
 //
@@ -430,6 +509,12 @@ func (i DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchE
 	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput)
 }
 
+func (i DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray) ToOutput(ctx context.Context) pulumix.Output[[]DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression] {
+	return pulumix.Output[[]DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression]{
+		OutputState: i.ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput struct{ *pulumi.OutputState }
 
 func (DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput) ElementType() reflect.Type {
@@ -442,6 +527,12 @@ func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchE
 
 func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput) ToDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutputWithContext(ctx context.Context) DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput {
 	return o
+}
+
+func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput) ToOutput(ctx context.Context) pulumix.Output[DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression] {
+	return pulumix.Output[DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The key of the tag of the dispatch rule. Valud values:
@@ -489,6 +580,12 @@ func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchE
 	return o
 }
 
+func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression] {
+	return pulumix.Output[[]DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput) Index(i pulumi.IntInput) DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression {
 		return vs[0].([]DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression)[vs[1].(int)]
@@ -532,6 +629,12 @@ func (i DispatchRuleNotifyRuleArgs) ToDispatchRuleNotifyRuleOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleNotifyRuleOutput)
 }
 
+func (i DispatchRuleNotifyRuleArgs) ToOutput(ctx context.Context) pulumix.Output[DispatchRuleNotifyRule] {
+	return pulumix.Output[DispatchRuleNotifyRule]{
+		OutputState: i.ToDispatchRuleNotifyRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DispatchRuleNotifyRuleArrayInput is an input type that accepts DispatchRuleNotifyRuleArray and DispatchRuleNotifyRuleArrayOutput values.
 // You can construct a concrete instance of `DispatchRuleNotifyRuleArrayInput` via:
 //
@@ -557,6 +660,12 @@ func (i DispatchRuleNotifyRuleArray) ToDispatchRuleNotifyRuleArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleNotifyRuleArrayOutput)
 }
 
+func (i DispatchRuleNotifyRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]DispatchRuleNotifyRule] {
+	return pulumix.Output[[]DispatchRuleNotifyRule]{
+		OutputState: i.ToDispatchRuleNotifyRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DispatchRuleNotifyRuleOutput struct{ *pulumi.OutputState }
 
 func (DispatchRuleNotifyRuleOutput) ElementType() reflect.Type {
@@ -569,6 +678,12 @@ func (o DispatchRuleNotifyRuleOutput) ToDispatchRuleNotifyRuleOutput() DispatchR
 
 func (o DispatchRuleNotifyRuleOutput) ToDispatchRuleNotifyRuleOutputWithContext(ctx context.Context) DispatchRuleNotifyRuleOutput {
 	return o
+}
+
+func (o DispatchRuleNotifyRuleOutput) ToOutput(ctx context.Context) pulumix.Output[DispatchRuleNotifyRule] {
+	return pulumix.Output[DispatchRuleNotifyRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
@@ -593,6 +708,12 @@ func (o DispatchRuleNotifyRuleArrayOutput) ToDispatchRuleNotifyRuleArrayOutput()
 
 func (o DispatchRuleNotifyRuleArrayOutput) ToDispatchRuleNotifyRuleArrayOutputWithContext(ctx context.Context) DispatchRuleNotifyRuleArrayOutput {
 	return o
+}
+
+func (o DispatchRuleNotifyRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DispatchRuleNotifyRule] {
+	return pulumix.Output[[]DispatchRuleNotifyRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DispatchRuleNotifyRuleArrayOutput) Index(i pulumi.IntInput) DispatchRuleNotifyRuleOutput {
@@ -642,6 +763,12 @@ func (i DispatchRuleNotifyRuleNotifyObjectArgs) ToDispatchRuleNotifyRuleNotifyOb
 	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleNotifyRuleNotifyObjectOutput)
 }
 
+func (i DispatchRuleNotifyRuleNotifyObjectArgs) ToOutput(ctx context.Context) pulumix.Output[DispatchRuleNotifyRuleNotifyObject] {
+	return pulumix.Output[DispatchRuleNotifyRuleNotifyObject]{
+		OutputState: i.ToDispatchRuleNotifyRuleNotifyObjectOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DispatchRuleNotifyRuleNotifyObjectArrayInput is an input type that accepts DispatchRuleNotifyRuleNotifyObjectArray and DispatchRuleNotifyRuleNotifyObjectArrayOutput values.
 // You can construct a concrete instance of `DispatchRuleNotifyRuleNotifyObjectArrayInput` via:
 //
@@ -667,6 +794,12 @@ func (i DispatchRuleNotifyRuleNotifyObjectArray) ToDispatchRuleNotifyRuleNotifyO
 	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleNotifyRuleNotifyObjectArrayOutput)
 }
 
+func (i DispatchRuleNotifyRuleNotifyObjectArray) ToOutput(ctx context.Context) pulumix.Output[[]DispatchRuleNotifyRuleNotifyObject] {
+	return pulumix.Output[[]DispatchRuleNotifyRuleNotifyObject]{
+		OutputState: i.ToDispatchRuleNotifyRuleNotifyObjectArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DispatchRuleNotifyRuleNotifyObjectOutput struct{ *pulumi.OutputState }
 
 func (DispatchRuleNotifyRuleNotifyObjectOutput) ElementType() reflect.Type {
@@ -679,6 +812,12 @@ func (o DispatchRuleNotifyRuleNotifyObjectOutput) ToDispatchRuleNotifyRuleNotify
 
 func (o DispatchRuleNotifyRuleNotifyObjectOutput) ToDispatchRuleNotifyRuleNotifyObjectOutputWithContext(ctx context.Context) DispatchRuleNotifyRuleNotifyObjectOutput {
 	return o
+}
+
+func (o DispatchRuleNotifyRuleNotifyObjectOutput) ToOutput(ctx context.Context) pulumix.Output[DispatchRuleNotifyRuleNotifyObject] {
+	return pulumix.Output[DispatchRuleNotifyRuleNotifyObject]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the contact or contact group.
@@ -708,6 +847,12 @@ func (o DispatchRuleNotifyRuleNotifyObjectArrayOutput) ToDispatchRuleNotifyRuleN
 
 func (o DispatchRuleNotifyRuleNotifyObjectArrayOutput) ToDispatchRuleNotifyRuleNotifyObjectArrayOutputWithContext(ctx context.Context) DispatchRuleNotifyRuleNotifyObjectArrayOutput {
 	return o
+}
+
+func (o DispatchRuleNotifyRuleNotifyObjectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DispatchRuleNotifyRuleNotifyObject] {
+	return pulumix.Output[[]DispatchRuleNotifyRuleNotifyObject]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DispatchRuleNotifyRuleNotifyObjectArrayOutput) Index(i pulumi.IntInput) DispatchRuleNotifyRuleNotifyObjectOutput {
@@ -753,6 +898,12 @@ func (i PrometheusAlertRuleAnnotationArgs) ToPrometheusAlertRuleAnnotationOutput
 	return pulumi.ToOutputWithContext(ctx, i).(PrometheusAlertRuleAnnotationOutput)
 }
 
+func (i PrometheusAlertRuleAnnotationArgs) ToOutput(ctx context.Context) pulumix.Output[PrometheusAlertRuleAnnotation] {
+	return pulumix.Output[PrometheusAlertRuleAnnotation]{
+		OutputState: i.ToPrometheusAlertRuleAnnotationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrometheusAlertRuleAnnotationArrayInput is an input type that accepts PrometheusAlertRuleAnnotationArray and PrometheusAlertRuleAnnotationArrayOutput values.
 // You can construct a concrete instance of `PrometheusAlertRuleAnnotationArrayInput` via:
 //
@@ -778,6 +929,12 @@ func (i PrometheusAlertRuleAnnotationArray) ToPrometheusAlertRuleAnnotationArray
 	return pulumi.ToOutputWithContext(ctx, i).(PrometheusAlertRuleAnnotationArrayOutput)
 }
 
+func (i PrometheusAlertRuleAnnotationArray) ToOutput(ctx context.Context) pulumix.Output[[]PrometheusAlertRuleAnnotation] {
+	return pulumix.Output[[]PrometheusAlertRuleAnnotation]{
+		OutputState: i.ToPrometheusAlertRuleAnnotationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrometheusAlertRuleAnnotationOutput struct{ *pulumi.OutputState }
 
 func (PrometheusAlertRuleAnnotationOutput) ElementType() reflect.Type {
@@ -790,6 +947,12 @@ func (o PrometheusAlertRuleAnnotationOutput) ToPrometheusAlertRuleAnnotationOutp
 
 func (o PrometheusAlertRuleAnnotationOutput) ToPrometheusAlertRuleAnnotationOutputWithContext(ctx context.Context) PrometheusAlertRuleAnnotationOutput {
 	return o
+}
+
+func (o PrometheusAlertRuleAnnotationOutput) ToOutput(ctx context.Context) pulumix.Output[PrometheusAlertRuleAnnotation] {
+	return pulumix.Output[PrometheusAlertRuleAnnotation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the annotation.
@@ -814,6 +977,12 @@ func (o PrometheusAlertRuleAnnotationArrayOutput) ToPrometheusAlertRuleAnnotatio
 
 func (o PrometheusAlertRuleAnnotationArrayOutput) ToPrometheusAlertRuleAnnotationArrayOutputWithContext(ctx context.Context) PrometheusAlertRuleAnnotationArrayOutput {
 	return o
+}
+
+func (o PrometheusAlertRuleAnnotationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrometheusAlertRuleAnnotation] {
+	return pulumix.Output[[]PrometheusAlertRuleAnnotation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrometheusAlertRuleAnnotationArrayOutput) Index(i pulumi.IntInput) PrometheusAlertRuleAnnotationOutput {
@@ -859,6 +1028,12 @@ func (i PrometheusAlertRuleLabelArgs) ToPrometheusAlertRuleLabelOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(PrometheusAlertRuleLabelOutput)
 }
 
+func (i PrometheusAlertRuleLabelArgs) ToOutput(ctx context.Context) pulumix.Output[PrometheusAlertRuleLabel] {
+	return pulumix.Output[PrometheusAlertRuleLabel]{
+		OutputState: i.ToPrometheusAlertRuleLabelOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrometheusAlertRuleLabelArrayInput is an input type that accepts PrometheusAlertRuleLabelArray and PrometheusAlertRuleLabelArrayOutput values.
 // You can construct a concrete instance of `PrometheusAlertRuleLabelArrayInput` via:
 //
@@ -884,6 +1059,12 @@ func (i PrometheusAlertRuleLabelArray) ToPrometheusAlertRuleLabelArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(PrometheusAlertRuleLabelArrayOutput)
 }
 
+func (i PrometheusAlertRuleLabelArray) ToOutput(ctx context.Context) pulumix.Output[[]PrometheusAlertRuleLabel] {
+	return pulumix.Output[[]PrometheusAlertRuleLabel]{
+		OutputState: i.ToPrometheusAlertRuleLabelArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrometheusAlertRuleLabelOutput struct{ *pulumi.OutputState }
 
 func (PrometheusAlertRuleLabelOutput) ElementType() reflect.Type {
@@ -896,6 +1077,12 @@ func (o PrometheusAlertRuleLabelOutput) ToPrometheusAlertRuleLabelOutput() Prome
 
 func (o PrometheusAlertRuleLabelOutput) ToPrometheusAlertRuleLabelOutputWithContext(ctx context.Context) PrometheusAlertRuleLabelOutput {
 	return o
+}
+
+func (o PrometheusAlertRuleLabelOutput) ToOutput(ctx context.Context) pulumix.Output[PrometheusAlertRuleLabel] {
+	return pulumix.Output[PrometheusAlertRuleLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the label.
@@ -920,6 +1107,12 @@ func (o PrometheusAlertRuleLabelArrayOutput) ToPrometheusAlertRuleLabelArrayOutp
 
 func (o PrometheusAlertRuleLabelArrayOutput) ToPrometheusAlertRuleLabelArrayOutputWithContext(ctx context.Context) PrometheusAlertRuleLabelArrayOutput {
 	return o
+}
+
+func (o PrometheusAlertRuleLabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrometheusAlertRuleLabel] {
+	return pulumix.Output[[]PrometheusAlertRuleLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrometheusAlertRuleLabelArrayOutput) Index(i pulumi.IntInput) PrometheusAlertRuleLabelOutput {
@@ -977,6 +1170,12 @@ func (i GetAlertContactGroupsGroupArgs) ToGetAlertContactGroupsGroupOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetAlertContactGroupsGroupOutput)
 }
 
+func (i GetAlertContactGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetAlertContactGroupsGroup] {
+	return pulumix.Output[GetAlertContactGroupsGroup]{
+		OutputState: i.ToGetAlertContactGroupsGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAlertContactGroupsGroupArrayInput is an input type that accepts GetAlertContactGroupsGroupArray and GetAlertContactGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetAlertContactGroupsGroupArrayInput` via:
 //
@@ -1002,6 +1201,12 @@ func (i GetAlertContactGroupsGroupArray) ToGetAlertContactGroupsGroupArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetAlertContactGroupsGroupArrayOutput)
 }
 
+func (i GetAlertContactGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAlertContactGroupsGroup] {
+	return pulumix.Output[[]GetAlertContactGroupsGroup]{
+		OutputState: i.ToGetAlertContactGroupsGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAlertContactGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetAlertContactGroupsGroupOutput) ElementType() reflect.Type {
@@ -1014,6 +1219,12 @@ func (o GetAlertContactGroupsGroupOutput) ToGetAlertContactGroupsGroupOutput() G
 
 func (o GetAlertContactGroupsGroupOutput) ToGetAlertContactGroupsGroupOutputWithContext(ctx context.Context) GetAlertContactGroupsGroupOutput {
 	return o
+}
+
+func (o GetAlertContactGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetAlertContactGroupsGroup] {
+	return pulumix.Output[GetAlertContactGroupsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The first ID of the resource.
@@ -1053,6 +1264,12 @@ func (o GetAlertContactGroupsGroupArrayOutput) ToGetAlertContactGroupsGroupArray
 
 func (o GetAlertContactGroupsGroupArrayOutput) ToGetAlertContactGroupsGroupArrayOutputWithContext(ctx context.Context) GetAlertContactGroupsGroupArrayOutput {
 	return o
+}
+
+func (o GetAlertContactGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAlertContactGroupsGroup] {
+	return pulumix.Output[[]GetAlertContactGroupsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAlertContactGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetAlertContactGroupsGroupOutput {
@@ -1126,6 +1343,12 @@ func (i GetAlertContactsContactArgs) ToGetAlertContactsContactOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetAlertContactsContactOutput)
 }
 
+func (i GetAlertContactsContactArgs) ToOutput(ctx context.Context) pulumix.Output[GetAlertContactsContact] {
+	return pulumix.Output[GetAlertContactsContact]{
+		OutputState: i.ToGetAlertContactsContactOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAlertContactsContactArrayInput is an input type that accepts GetAlertContactsContactArray and GetAlertContactsContactArrayOutput values.
 // You can construct a concrete instance of `GetAlertContactsContactArrayInput` via:
 //
@@ -1151,6 +1374,12 @@ func (i GetAlertContactsContactArray) ToGetAlertContactsContactArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetAlertContactsContactArrayOutput)
 }
 
+func (i GetAlertContactsContactArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAlertContactsContact] {
+	return pulumix.Output[[]GetAlertContactsContact]{
+		OutputState: i.ToGetAlertContactsContactArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAlertContactsContactOutput struct{ *pulumi.OutputState }
 
 func (GetAlertContactsContactOutput) ElementType() reflect.Type {
@@ -1163,6 +1392,12 @@ func (o GetAlertContactsContactOutput) ToGetAlertContactsContactOutput() GetAler
 
 func (o GetAlertContactsContactOutput) ToGetAlertContactsContactOutputWithContext(ctx context.Context) GetAlertContactsContactOutput {
 	return o
+}
+
+func (o GetAlertContactsContactOutput) ToOutput(ctx context.Context) pulumix.Output[GetAlertContactsContact] {
+	return pulumix.Output[GetAlertContactsContact]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Contact ID.
@@ -1222,6 +1457,12 @@ func (o GetAlertContactsContactArrayOutput) ToGetAlertContactsContactArrayOutput
 
 func (o GetAlertContactsContactArrayOutput) ToGetAlertContactsContactArrayOutputWithContext(ctx context.Context) GetAlertContactsContactArrayOutput {
 	return o
+}
+
+func (o GetAlertContactsContactArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAlertContactsContact] {
+	return pulumix.Output[[]GetAlertContactsContact]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAlertContactsContactArrayOutput) Index(i pulumi.IntInput) GetAlertContactsContactOutput {
@@ -1289,6 +1530,12 @@ func (i GetDispatchRulesRuleArgs) ToGetDispatchRulesRuleOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleOutput)
 }
 
+func (i GetDispatchRulesRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetDispatchRulesRule] {
+	return pulumix.Output[GetDispatchRulesRule]{
+		OutputState: i.ToGetDispatchRulesRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDispatchRulesRuleArrayInput is an input type that accepts GetDispatchRulesRuleArray and GetDispatchRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetDispatchRulesRuleArrayInput` via:
 //
@@ -1314,6 +1561,12 @@ func (i GetDispatchRulesRuleArray) ToGetDispatchRulesRuleArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleArrayOutput)
 }
 
+func (i GetDispatchRulesRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDispatchRulesRule] {
+	return pulumix.Output[[]GetDispatchRulesRule]{
+		OutputState: i.ToGetDispatchRulesRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDispatchRulesRuleOutput struct{ *pulumi.OutputState }
 
 func (GetDispatchRulesRuleOutput) ElementType() reflect.Type {
@@ -1326,6 +1579,12 @@ func (o GetDispatchRulesRuleOutput) ToGetDispatchRulesRuleOutput() GetDispatchRu
 
 func (o GetDispatchRulesRuleOutput) ToGetDispatchRulesRuleOutputWithContext(ctx context.Context) GetDispatchRulesRuleOutput {
 	return o
+}
+
+func (o GetDispatchRulesRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetDispatchRulesRule] {
+	return pulumix.Output[GetDispatchRulesRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Dispatch rule ID.
@@ -1383,6 +1642,12 @@ func (o GetDispatchRulesRuleArrayOutput) ToGetDispatchRulesRuleArrayOutputWithCo
 	return o
 }
 
+func (o GetDispatchRulesRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDispatchRulesRule] {
+	return pulumix.Output[[]GetDispatchRulesRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetDispatchRulesRuleArrayOutput) Index(i pulumi.IntInput) GetDispatchRulesRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDispatchRulesRule {
 		return vs[0].([]GetDispatchRulesRule)[vs[1].(int)]
@@ -1436,6 +1701,12 @@ func (i GetDispatchRulesRuleGroupRuleArgs) ToGetDispatchRulesRuleGroupRuleOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleGroupRuleOutput)
 }
 
+func (i GetDispatchRulesRuleGroupRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetDispatchRulesRuleGroupRule] {
+	return pulumix.Output[GetDispatchRulesRuleGroupRule]{
+		OutputState: i.ToGetDispatchRulesRuleGroupRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDispatchRulesRuleGroupRuleArrayInput is an input type that accepts GetDispatchRulesRuleGroupRuleArray and GetDispatchRulesRuleGroupRuleArrayOutput values.
 // You can construct a concrete instance of `GetDispatchRulesRuleGroupRuleArrayInput` via:
 //
@@ -1461,6 +1732,12 @@ func (i GetDispatchRulesRuleGroupRuleArray) ToGetDispatchRulesRuleGroupRuleArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleGroupRuleArrayOutput)
 }
 
+func (i GetDispatchRulesRuleGroupRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDispatchRulesRuleGroupRule] {
+	return pulumix.Output[[]GetDispatchRulesRuleGroupRule]{
+		OutputState: i.ToGetDispatchRulesRuleGroupRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDispatchRulesRuleGroupRuleOutput struct{ *pulumi.OutputState }
 
 func (GetDispatchRulesRuleGroupRuleOutput) ElementType() reflect.Type {
@@ -1473,6 +1750,12 @@ func (o GetDispatchRulesRuleGroupRuleOutput) ToGetDispatchRulesRuleGroupRuleOutp
 
 func (o GetDispatchRulesRuleGroupRuleOutput) ToGetDispatchRulesRuleGroupRuleOutputWithContext(ctx context.Context) GetDispatchRulesRuleGroupRuleOutput {
 	return o
+}
+
+func (o GetDispatchRulesRuleGroupRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetDispatchRulesRuleGroupRule] {
+	return pulumix.Output[GetDispatchRulesRuleGroupRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDispatchRulesRuleGroupRuleOutput) GroupId() pulumi.IntOutput {
@@ -1511,6 +1794,12 @@ func (o GetDispatchRulesRuleGroupRuleArrayOutput) ToGetDispatchRulesRuleGroupRul
 
 func (o GetDispatchRulesRuleGroupRuleArrayOutput) ToGetDispatchRulesRuleGroupRuleArrayOutputWithContext(ctx context.Context) GetDispatchRulesRuleGroupRuleArrayOutput {
 	return o
+}
+
+func (o GetDispatchRulesRuleGroupRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDispatchRulesRuleGroupRule] {
+	return pulumix.Output[[]GetDispatchRulesRuleGroupRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDispatchRulesRuleGroupRuleArrayOutput) Index(i pulumi.IntInput) GetDispatchRulesRuleGroupRuleOutput {
@@ -1552,6 +1841,12 @@ func (i GetDispatchRulesRuleLabelMatchExpressionGridArgs) ToGetDispatchRulesRule
 	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleLabelMatchExpressionGridOutput)
 }
 
+func (i GetDispatchRulesRuleLabelMatchExpressionGridArgs) ToOutput(ctx context.Context) pulumix.Output[GetDispatchRulesRuleLabelMatchExpressionGrid] {
+	return pulumix.Output[GetDispatchRulesRuleLabelMatchExpressionGrid]{
+		OutputState: i.ToGetDispatchRulesRuleLabelMatchExpressionGridOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDispatchRulesRuleLabelMatchExpressionGridArrayInput is an input type that accepts GetDispatchRulesRuleLabelMatchExpressionGridArray and GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput values.
 // You can construct a concrete instance of `GetDispatchRulesRuleLabelMatchExpressionGridArrayInput` via:
 //
@@ -1577,6 +1872,12 @@ func (i GetDispatchRulesRuleLabelMatchExpressionGridArray) ToGetDispatchRulesRul
 	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput)
 }
 
+func (i GetDispatchRulesRuleLabelMatchExpressionGridArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDispatchRulesRuleLabelMatchExpressionGrid] {
+	return pulumix.Output[[]GetDispatchRulesRuleLabelMatchExpressionGrid]{
+		OutputState: i.ToGetDispatchRulesRuleLabelMatchExpressionGridArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDispatchRulesRuleLabelMatchExpressionGridOutput struct{ *pulumi.OutputState }
 
 func (GetDispatchRulesRuleLabelMatchExpressionGridOutput) ElementType() reflect.Type {
@@ -1589,6 +1890,12 @@ func (o GetDispatchRulesRuleLabelMatchExpressionGridOutput) ToGetDispatchRulesRu
 
 func (o GetDispatchRulesRuleLabelMatchExpressionGridOutput) ToGetDispatchRulesRuleLabelMatchExpressionGridOutputWithContext(ctx context.Context) GetDispatchRulesRuleLabelMatchExpressionGridOutput {
 	return o
+}
+
+func (o GetDispatchRulesRuleLabelMatchExpressionGridOutput) ToOutput(ctx context.Context) pulumix.Output[GetDispatchRulesRuleLabelMatchExpressionGrid] {
+	return pulumix.Output[GetDispatchRulesRuleLabelMatchExpressionGrid]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Sets the dispatch rule.
@@ -1610,6 +1917,12 @@ func (o GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput) ToGetDispatchRu
 
 func (o GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput) ToGetDispatchRulesRuleLabelMatchExpressionGridArrayOutputWithContext(ctx context.Context) GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput {
 	return o
+}
+
+func (o GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDispatchRulesRuleLabelMatchExpressionGrid] {
+	return pulumix.Output[[]GetDispatchRulesRuleLabelMatchExpressionGrid]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput) Index(i pulumi.IntInput) GetDispatchRulesRuleLabelMatchExpressionGridOutput {
@@ -1651,6 +1964,12 @@ func (i GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArg
 	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput)
 }
 
+func (i GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup] {
+	return pulumix.Output[GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup]{
+		OutputState: i.ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayInput is an input type that accepts GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray and GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput values.
 // You can construct a concrete instance of `GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayInput` via:
 //
@@ -1676,6 +1995,12 @@ func (i GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput)
 }
 
+func (i GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup] {
+	return pulumix.Output[[]GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup]{
+		OutputState: i.ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput struct{ *pulumi.OutputState }
 
 func (GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput) ElementType() reflect.Type {
@@ -1688,6 +2013,12 @@ func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOut
 
 func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput) ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutputWithContext(ctx context.Context) GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput {
 	return o
+}
+
+func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup] {
+	return pulumix.Output[GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Sets the dispatch rule.
@@ -1709,6 +2040,12 @@ func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArr
 
 func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput) ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutputWithContext(ctx context.Context) GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput {
 	return o
+}
+
+func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup] {
+	return pulumix.Output[[]GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput) Index(i pulumi.IntInput) GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput {
@@ -1758,6 +2095,12 @@ func (i GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLab
 	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput)
 }
 
+func (i GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs) ToOutput(ctx context.Context) pulumix.Output[GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression] {
+	return pulumix.Output[GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression]{
+		OutputState: i.ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayInput is an input type that accepts GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray and GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput values.
 // You can construct a concrete instance of `GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayInput` via:
 //
@@ -1783,6 +2126,12 @@ func (i GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLab
 	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput)
 }
 
+func (i GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression] {
+	return pulumix.Output[[]GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression]{
+		OutputState: i.ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput struct{ *pulumi.OutputState }
 
 func (GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput) ElementType() reflect.Type {
@@ -1795,6 +2144,12 @@ func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLab
 
 func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput) ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutputWithContext(ctx context.Context) GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput {
 	return o
+}
+
+func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput) ToOutput(ctx context.Context) pulumix.Output[GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression] {
+	return pulumix.Output[GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The key of the tag of the dispatch rule.
@@ -1830,6 +2185,12 @@ func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLab
 
 func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput) ToGetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutputWithContext(ctx context.Context) GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput {
 	return o
+}
+
+func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression] {
+	return pulumix.Output[[]GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput) Index(i pulumi.IntInput) GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput {
@@ -1875,6 +2236,12 @@ func (i GetDispatchRulesRuleNotifyRuleArgs) ToGetDispatchRulesRuleNotifyRuleOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleNotifyRuleOutput)
 }
 
+func (i GetDispatchRulesRuleNotifyRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetDispatchRulesRuleNotifyRule] {
+	return pulumix.Output[GetDispatchRulesRuleNotifyRule]{
+		OutputState: i.ToGetDispatchRulesRuleNotifyRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDispatchRulesRuleNotifyRuleArrayInput is an input type that accepts GetDispatchRulesRuleNotifyRuleArray and GetDispatchRulesRuleNotifyRuleArrayOutput values.
 // You can construct a concrete instance of `GetDispatchRulesRuleNotifyRuleArrayInput` via:
 //
@@ -1900,6 +2267,12 @@ func (i GetDispatchRulesRuleNotifyRuleArray) ToGetDispatchRulesRuleNotifyRuleArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleNotifyRuleArrayOutput)
 }
 
+func (i GetDispatchRulesRuleNotifyRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDispatchRulesRuleNotifyRule] {
+	return pulumix.Output[[]GetDispatchRulesRuleNotifyRule]{
+		OutputState: i.ToGetDispatchRulesRuleNotifyRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDispatchRulesRuleNotifyRuleOutput struct{ *pulumi.OutputState }
 
 func (GetDispatchRulesRuleNotifyRuleOutput) ElementType() reflect.Type {
@@ -1912,6 +2285,12 @@ func (o GetDispatchRulesRuleNotifyRuleOutput) ToGetDispatchRulesRuleNotifyRuleOu
 
 func (o GetDispatchRulesRuleNotifyRuleOutput) ToGetDispatchRulesRuleNotifyRuleOutputWithContext(ctx context.Context) GetDispatchRulesRuleNotifyRuleOutput {
 	return o
+}
+
+func (o GetDispatchRulesRuleNotifyRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetDispatchRulesRuleNotifyRule] {
+	return pulumix.Output[GetDispatchRulesRuleNotifyRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The notification method.
@@ -1938,6 +2317,12 @@ func (o GetDispatchRulesRuleNotifyRuleArrayOutput) ToGetDispatchRulesRuleNotifyR
 
 func (o GetDispatchRulesRuleNotifyRuleArrayOutput) ToGetDispatchRulesRuleNotifyRuleArrayOutputWithContext(ctx context.Context) GetDispatchRulesRuleNotifyRuleArrayOutput {
 	return o
+}
+
+func (o GetDispatchRulesRuleNotifyRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDispatchRulesRuleNotifyRule] {
+	return pulumix.Output[[]GetDispatchRulesRuleNotifyRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDispatchRulesRuleNotifyRuleArrayOutput) Index(i pulumi.IntInput) GetDispatchRulesRuleNotifyRuleOutput {
@@ -1987,6 +2372,12 @@ func (i GetDispatchRulesRuleNotifyRuleNotifyObjectArgs) ToGetDispatchRulesRuleNo
 	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleNotifyRuleNotifyObjectOutput)
 }
 
+func (i GetDispatchRulesRuleNotifyRuleNotifyObjectArgs) ToOutput(ctx context.Context) pulumix.Output[GetDispatchRulesRuleNotifyRuleNotifyObject] {
+	return pulumix.Output[GetDispatchRulesRuleNotifyRuleNotifyObject]{
+		OutputState: i.ToGetDispatchRulesRuleNotifyRuleNotifyObjectOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDispatchRulesRuleNotifyRuleNotifyObjectArrayInput is an input type that accepts GetDispatchRulesRuleNotifyRuleNotifyObjectArray and GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput values.
 // You can construct a concrete instance of `GetDispatchRulesRuleNotifyRuleNotifyObjectArrayInput` via:
 //
@@ -2012,6 +2403,12 @@ func (i GetDispatchRulesRuleNotifyRuleNotifyObjectArray) ToGetDispatchRulesRuleN
 	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput)
 }
 
+func (i GetDispatchRulesRuleNotifyRuleNotifyObjectArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDispatchRulesRuleNotifyRuleNotifyObject] {
+	return pulumix.Output[[]GetDispatchRulesRuleNotifyRuleNotifyObject]{
+		OutputState: i.ToGetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDispatchRulesRuleNotifyRuleNotifyObjectOutput struct{ *pulumi.OutputState }
 
 func (GetDispatchRulesRuleNotifyRuleNotifyObjectOutput) ElementType() reflect.Type {
@@ -2024,6 +2421,12 @@ func (o GetDispatchRulesRuleNotifyRuleNotifyObjectOutput) ToGetDispatchRulesRule
 
 func (o GetDispatchRulesRuleNotifyRuleNotifyObjectOutput) ToGetDispatchRulesRuleNotifyRuleNotifyObjectOutputWithContext(ctx context.Context) GetDispatchRulesRuleNotifyRuleNotifyObjectOutput {
 	return o
+}
+
+func (o GetDispatchRulesRuleNotifyRuleNotifyObjectOutput) ToOutput(ctx context.Context) pulumix.Output[GetDispatchRulesRuleNotifyRuleNotifyObject] {
+	return pulumix.Output[GetDispatchRulesRuleNotifyRuleNotifyObject]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the contact or contact group.
@@ -2053,6 +2456,12 @@ func (o GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput) ToGetDispatchRule
 
 func (o GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput) ToGetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutputWithContext(ctx context.Context) GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput {
 	return o
+}
+
+func (o GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDispatchRulesRuleNotifyRuleNotifyObject] {
+	return pulumix.Output[[]GetDispatchRulesRuleNotifyRuleNotifyObject]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput) Index(i pulumi.IntInput) GetDispatchRulesRuleNotifyRuleNotifyObjectOutput {
@@ -2126,6 +2535,12 @@ func (i GetIntegrationExportersIntegrationExporterArgs) ToGetIntegrationExporter
 	return pulumi.ToOutputWithContext(ctx, i).(GetIntegrationExportersIntegrationExporterOutput)
 }
 
+func (i GetIntegrationExportersIntegrationExporterArgs) ToOutput(ctx context.Context) pulumix.Output[GetIntegrationExportersIntegrationExporter] {
+	return pulumix.Output[GetIntegrationExportersIntegrationExporter]{
+		OutputState: i.ToGetIntegrationExportersIntegrationExporterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetIntegrationExportersIntegrationExporterArrayInput is an input type that accepts GetIntegrationExportersIntegrationExporterArray and GetIntegrationExportersIntegrationExporterArrayOutput values.
 // You can construct a concrete instance of `GetIntegrationExportersIntegrationExporterArrayInput` via:
 //
@@ -2151,6 +2566,12 @@ func (i GetIntegrationExportersIntegrationExporterArray) ToGetIntegrationExporte
 	return pulumi.ToOutputWithContext(ctx, i).(GetIntegrationExportersIntegrationExporterArrayOutput)
 }
 
+func (i GetIntegrationExportersIntegrationExporterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetIntegrationExportersIntegrationExporter] {
+	return pulumix.Output[[]GetIntegrationExportersIntegrationExporter]{
+		OutputState: i.ToGetIntegrationExportersIntegrationExporterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetIntegrationExportersIntegrationExporterOutput struct{ *pulumi.OutputState }
 
 func (GetIntegrationExportersIntegrationExporterOutput) ElementType() reflect.Type {
@@ -2163,6 +2584,12 @@ func (o GetIntegrationExportersIntegrationExporterOutput) ToGetIntegrationExport
 
 func (o GetIntegrationExportersIntegrationExporterOutput) ToGetIntegrationExportersIntegrationExporterOutputWithContext(ctx context.Context) GetIntegrationExportersIntegrationExporterOutput {
 	return o
+}
+
+func (o GetIntegrationExportersIntegrationExporterOutput) ToOutput(ctx context.Context) pulumix.Output[GetIntegrationExportersIntegrationExporter] {
+	return pulumix.Output[GetIntegrationExportersIntegrationExporter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Prometheus instance.
@@ -2222,6 +2649,12 @@ func (o GetIntegrationExportersIntegrationExporterArrayOutput) ToGetIntegrationE
 
 func (o GetIntegrationExportersIntegrationExporterArrayOutput) ToGetIntegrationExportersIntegrationExporterArrayOutputWithContext(ctx context.Context) GetIntegrationExportersIntegrationExporterArrayOutput {
 	return o
+}
+
+func (o GetIntegrationExportersIntegrationExporterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetIntegrationExportersIntegrationExporter] {
+	return pulumix.Output[[]GetIntegrationExportersIntegrationExporter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetIntegrationExportersIntegrationExporterArrayOutput) Index(i pulumi.IntInput) GetIntegrationExportersIntegrationExporterOutput {
@@ -2303,6 +2736,12 @@ func (i GetPrometheisPrometheiArgs) ToGetPrometheisPrometheiOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheisPrometheiOutput)
 }
 
+func (i GetPrometheisPrometheiArgs) ToOutput(ctx context.Context) pulumix.Output[GetPrometheisPromethei] {
+	return pulumix.Output[GetPrometheisPromethei]{
+		OutputState: i.ToGetPrometheisPrometheiOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetPrometheisPrometheiArrayInput is an input type that accepts GetPrometheisPrometheiArray and GetPrometheisPrometheiArrayOutput values.
 // You can construct a concrete instance of `GetPrometheisPrometheiArrayInput` via:
 //
@@ -2328,6 +2767,12 @@ func (i GetPrometheisPrometheiArray) ToGetPrometheisPrometheiArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheisPrometheiArrayOutput)
 }
 
+func (i GetPrometheisPrometheiArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPrometheisPromethei] {
+	return pulumix.Output[[]GetPrometheisPromethei]{
+		OutputState: i.ToGetPrometheisPrometheiArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPrometheisPrometheiOutput struct{ *pulumi.OutputState }
 
 func (GetPrometheisPrometheiOutput) ElementType() reflect.Type {
@@ -2340,6 +2785,12 @@ func (o GetPrometheisPrometheiOutput) ToGetPrometheisPrometheiOutput() GetPromet
 
 func (o GetPrometheisPrometheiOutput) ToGetPrometheisPrometheiOutputWithContext(ctx context.Context) GetPrometheisPrometheiOutput {
 	return o
+}
+
+func (o GetPrometheisPrometheiOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrometheisPromethei] {
+	return pulumix.Output[GetPrometheisPromethei]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the cluster.
@@ -2409,6 +2860,12 @@ func (o GetPrometheisPrometheiArrayOutput) ToGetPrometheisPrometheiArrayOutput()
 
 func (o GetPrometheisPrometheiArrayOutput) ToGetPrometheisPrometheiArrayOutputWithContext(ctx context.Context) GetPrometheisPrometheiArrayOutput {
 	return o
+}
+
+func (o GetPrometheisPrometheiArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPrometheisPromethei] {
+	return pulumix.Output[[]GetPrometheisPromethei]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrometheisPrometheiArrayOutput) Index(i pulumi.IntInput) GetPrometheisPrometheiOutput {
@@ -2498,6 +2955,12 @@ func (i GetPrometheusAlertRulesRuleArgs) ToGetPrometheusAlertRulesRuleOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheusAlertRulesRuleOutput)
 }
 
+func (i GetPrometheusAlertRulesRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetPrometheusAlertRulesRule] {
+	return pulumix.Output[GetPrometheusAlertRulesRule]{
+		OutputState: i.ToGetPrometheusAlertRulesRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetPrometheusAlertRulesRuleArrayInput is an input type that accepts GetPrometheusAlertRulesRuleArray and GetPrometheusAlertRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetPrometheusAlertRulesRuleArrayInput` via:
 //
@@ -2523,6 +2986,12 @@ func (i GetPrometheusAlertRulesRuleArray) ToGetPrometheusAlertRulesRuleArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheusAlertRulesRuleArrayOutput)
 }
 
+func (i GetPrometheusAlertRulesRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPrometheusAlertRulesRule] {
+	return pulumix.Output[[]GetPrometheusAlertRulesRule]{
+		OutputState: i.ToGetPrometheusAlertRulesRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPrometheusAlertRulesRuleOutput struct{ *pulumi.OutputState }
 
 func (GetPrometheusAlertRulesRuleOutput) ElementType() reflect.Type {
@@ -2535,6 +3004,12 @@ func (o GetPrometheusAlertRulesRuleOutput) ToGetPrometheusAlertRulesRuleOutput()
 
 func (o GetPrometheusAlertRulesRuleOutput) ToGetPrometheusAlertRulesRuleOutputWithContext(ctx context.Context) GetPrometheusAlertRulesRuleOutput {
 	return o
+}
+
+func (o GetPrometheusAlertRulesRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrometheusAlertRulesRule] {
+	return pulumix.Output[GetPrometheusAlertRulesRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The annotations of the alert rule.
@@ -2616,6 +3091,12 @@ func (o GetPrometheusAlertRulesRuleArrayOutput) ToGetPrometheusAlertRulesRuleArr
 	return o
 }
 
+func (o GetPrometheusAlertRulesRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPrometheusAlertRulesRule] {
+	return pulumix.Output[[]GetPrometheusAlertRulesRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetPrometheusAlertRulesRuleArrayOutput) Index(i pulumi.IntInput) GetPrometheusAlertRulesRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrometheusAlertRulesRule {
 		return vs[0].([]GetPrometheusAlertRulesRule)[vs[1].(int)]
@@ -2659,6 +3140,12 @@ func (i GetPrometheusAlertRulesRuleAnnotationArgs) ToGetPrometheusAlertRulesRule
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheusAlertRulesRuleAnnotationOutput)
 }
 
+func (i GetPrometheusAlertRulesRuleAnnotationArgs) ToOutput(ctx context.Context) pulumix.Output[GetPrometheusAlertRulesRuleAnnotation] {
+	return pulumix.Output[GetPrometheusAlertRulesRuleAnnotation]{
+		OutputState: i.ToGetPrometheusAlertRulesRuleAnnotationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetPrometheusAlertRulesRuleAnnotationArrayInput is an input type that accepts GetPrometheusAlertRulesRuleAnnotationArray and GetPrometheusAlertRulesRuleAnnotationArrayOutput values.
 // You can construct a concrete instance of `GetPrometheusAlertRulesRuleAnnotationArrayInput` via:
 //
@@ -2684,6 +3171,12 @@ func (i GetPrometheusAlertRulesRuleAnnotationArray) ToGetPrometheusAlertRulesRul
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheusAlertRulesRuleAnnotationArrayOutput)
 }
 
+func (i GetPrometheusAlertRulesRuleAnnotationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPrometheusAlertRulesRuleAnnotation] {
+	return pulumix.Output[[]GetPrometheusAlertRulesRuleAnnotation]{
+		OutputState: i.ToGetPrometheusAlertRulesRuleAnnotationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPrometheusAlertRulesRuleAnnotationOutput struct{ *pulumi.OutputState }
 
 func (GetPrometheusAlertRulesRuleAnnotationOutput) ElementType() reflect.Type {
@@ -2696,6 +3189,12 @@ func (o GetPrometheusAlertRulesRuleAnnotationOutput) ToGetPrometheusAlertRulesRu
 
 func (o GetPrometheusAlertRulesRuleAnnotationOutput) ToGetPrometheusAlertRulesRuleAnnotationOutputWithContext(ctx context.Context) GetPrometheusAlertRulesRuleAnnotationOutput {
 	return o
+}
+
+func (o GetPrometheusAlertRulesRuleAnnotationOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrometheusAlertRulesRuleAnnotation] {
+	return pulumix.Output[GetPrometheusAlertRulesRuleAnnotation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the label.
@@ -2720,6 +3219,12 @@ func (o GetPrometheusAlertRulesRuleAnnotationArrayOutput) ToGetPrometheusAlertRu
 
 func (o GetPrometheusAlertRulesRuleAnnotationArrayOutput) ToGetPrometheusAlertRulesRuleAnnotationArrayOutputWithContext(ctx context.Context) GetPrometheusAlertRulesRuleAnnotationArrayOutput {
 	return o
+}
+
+func (o GetPrometheusAlertRulesRuleAnnotationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPrometheusAlertRulesRuleAnnotation] {
+	return pulumix.Output[[]GetPrometheusAlertRulesRuleAnnotation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrometheusAlertRulesRuleAnnotationArrayOutput) Index(i pulumi.IntInput) GetPrometheusAlertRulesRuleAnnotationOutput {
@@ -2765,6 +3270,12 @@ func (i GetPrometheusAlertRulesRuleLabelArgs) ToGetPrometheusAlertRulesRuleLabel
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheusAlertRulesRuleLabelOutput)
 }
 
+func (i GetPrometheusAlertRulesRuleLabelArgs) ToOutput(ctx context.Context) pulumix.Output[GetPrometheusAlertRulesRuleLabel] {
+	return pulumix.Output[GetPrometheusAlertRulesRuleLabel]{
+		OutputState: i.ToGetPrometheusAlertRulesRuleLabelOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetPrometheusAlertRulesRuleLabelArrayInput is an input type that accepts GetPrometheusAlertRulesRuleLabelArray and GetPrometheusAlertRulesRuleLabelArrayOutput values.
 // You can construct a concrete instance of `GetPrometheusAlertRulesRuleLabelArrayInput` via:
 //
@@ -2790,6 +3301,12 @@ func (i GetPrometheusAlertRulesRuleLabelArray) ToGetPrometheusAlertRulesRuleLabe
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheusAlertRulesRuleLabelArrayOutput)
 }
 
+func (i GetPrometheusAlertRulesRuleLabelArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPrometheusAlertRulesRuleLabel] {
+	return pulumix.Output[[]GetPrometheusAlertRulesRuleLabel]{
+		OutputState: i.ToGetPrometheusAlertRulesRuleLabelArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPrometheusAlertRulesRuleLabelOutput struct{ *pulumi.OutputState }
 
 func (GetPrometheusAlertRulesRuleLabelOutput) ElementType() reflect.Type {
@@ -2802,6 +3319,12 @@ func (o GetPrometheusAlertRulesRuleLabelOutput) ToGetPrometheusAlertRulesRuleLab
 
 func (o GetPrometheusAlertRulesRuleLabelOutput) ToGetPrometheusAlertRulesRuleLabelOutputWithContext(ctx context.Context) GetPrometheusAlertRulesRuleLabelOutput {
 	return o
+}
+
+func (o GetPrometheusAlertRulesRuleLabelOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrometheusAlertRulesRuleLabel] {
+	return pulumix.Output[GetPrometheusAlertRulesRuleLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the label.
@@ -2826,6 +3349,12 @@ func (o GetPrometheusAlertRulesRuleLabelArrayOutput) ToGetPrometheusAlertRulesRu
 
 func (o GetPrometheusAlertRulesRuleLabelArrayOutput) ToGetPrometheusAlertRulesRuleLabelArrayOutputWithContext(ctx context.Context) GetPrometheusAlertRulesRuleLabelArrayOutput {
 	return o
+}
+
+func (o GetPrometheusAlertRulesRuleLabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPrometheusAlertRulesRuleLabel] {
+	return pulumix.Output[[]GetPrometheusAlertRulesRuleLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrometheusAlertRulesRuleLabelArrayOutput) Index(i pulumi.IntInput) GetPrometheusAlertRulesRuleLabelOutput {
@@ -2879,6 +3408,12 @@ func (i GetRemoteWritesRemoteWriteArgs) ToGetRemoteWritesRemoteWriteOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetRemoteWritesRemoteWriteOutput)
 }
 
+func (i GetRemoteWritesRemoteWriteArgs) ToOutput(ctx context.Context) pulumix.Output[GetRemoteWritesRemoteWrite] {
+	return pulumix.Output[GetRemoteWritesRemoteWrite]{
+		OutputState: i.ToGetRemoteWritesRemoteWriteOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRemoteWritesRemoteWriteArrayInput is an input type that accepts GetRemoteWritesRemoteWriteArray and GetRemoteWritesRemoteWriteArrayOutput values.
 // You can construct a concrete instance of `GetRemoteWritesRemoteWriteArrayInput` via:
 //
@@ -2904,6 +3439,12 @@ func (i GetRemoteWritesRemoteWriteArray) ToGetRemoteWritesRemoteWriteArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetRemoteWritesRemoteWriteArrayOutput)
 }
 
+func (i GetRemoteWritesRemoteWriteArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRemoteWritesRemoteWrite] {
+	return pulumix.Output[[]GetRemoteWritesRemoteWrite]{
+		OutputState: i.ToGetRemoteWritesRemoteWriteArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRemoteWritesRemoteWriteOutput struct{ *pulumi.OutputState }
 
 func (GetRemoteWritesRemoteWriteOutput) ElementType() reflect.Type {
@@ -2916,6 +3457,12 @@ func (o GetRemoteWritesRemoteWriteOutput) ToGetRemoteWritesRemoteWriteOutput() G
 
 func (o GetRemoteWritesRemoteWriteOutput) ToGetRemoteWritesRemoteWriteOutputWithContext(ctx context.Context) GetRemoteWritesRemoteWriteOutput {
 	return o
+}
+
+func (o GetRemoteWritesRemoteWriteOutput) ToOutput(ctx context.Context) pulumix.Output[GetRemoteWritesRemoteWrite] {
+	return pulumix.Output[GetRemoteWritesRemoteWrite]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Prometheus instance.
@@ -2950,6 +3497,12 @@ func (o GetRemoteWritesRemoteWriteArrayOutput) ToGetRemoteWritesRemoteWriteArray
 
 func (o GetRemoteWritesRemoteWriteArrayOutput) ToGetRemoteWritesRemoteWriteArrayOutputWithContext(ctx context.Context) GetRemoteWritesRemoteWriteArrayOutput {
 	return o
+}
+
+func (o GetRemoteWritesRemoteWriteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRemoteWritesRemoteWrite] {
+	return pulumix.Output[[]GetRemoteWritesRemoteWrite]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRemoteWritesRemoteWriteArrayOutput) Index(i pulumi.IntInput) GetRemoteWritesRemoteWriteOutput {

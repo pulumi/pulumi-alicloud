@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Cloud Firewall Vpc Firewall Cen available to the user.[What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describevpcfirewallcenlist)
@@ -159,6 +160,12 @@ func (o GetVpcFirewallCensResultOutput) ToGetVpcFirewallCensResultOutput() GetVp
 
 func (o GetVpcFirewallCensResultOutput) ToGetVpcFirewallCensResultOutputWithContext(ctx context.Context) GetVpcFirewallCensResultOutput {
 	return o
+}
+
+func (o GetVpcFirewallCensResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallCensResult] {
+	return pulumix.Output[GetVpcFirewallCensResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the CEN instance.

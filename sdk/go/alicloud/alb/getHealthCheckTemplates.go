@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Alb Health Check Templates of the current Alibaba Cloud user.
@@ -133,6 +134,12 @@ func (o GetHealthCheckTemplatesResultOutput) ToGetHealthCheckTemplatesResultOutp
 
 func (o GetHealthCheckTemplatesResultOutput) ToGetHealthCheckTemplatesResultOutputWithContext(ctx context.Context) GetHealthCheckTemplatesResultOutput {
 	return o
+}
+
+func (o GetHealthCheckTemplatesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetHealthCheckTemplatesResult] {
+	return pulumix.Output[GetHealthCheckTemplatesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHealthCheckTemplatesResultOutput) HealthCheckTemplateIds() pulumi.StringArrayOutput {

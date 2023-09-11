@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
@@ -134,6 +135,12 @@ func (o GetSlsGroupsResultOutput) ToGetSlsGroupsResultOutput() GetSlsGroupsResul
 
 func (o GetSlsGroupsResultOutput) ToGetSlsGroupsResultOutputWithContext(ctx context.Context) GetSlsGroupsResultOutput {
 	return o
+}
+
+func (o GetSlsGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSlsGroupsResult] {
+	return pulumix.Output[GetSlsGroupsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSlsGroupsResultOutput) Groups() GetSlsGroupsGroupArrayOutput {

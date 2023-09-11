@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
@@ -122,6 +123,12 @@ func (o GetLogConfigsResultOutput) ToGetLogConfigsResultOutput() GetLogConfigsRe
 
 func (o GetLogConfigsResultOutput) ToGetLogConfigsResultOutputWithContext(ctx context.Context) GetLogConfigsResultOutput {
 	return o
+}
+
+func (o GetLogConfigsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetLogConfigsResult] {
+	return pulumix.Output[GetLogConfigsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetLogConfigsResultOutput) Configs() GetLogConfigsConfigArrayOutput {

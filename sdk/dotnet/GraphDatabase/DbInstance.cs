@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.GraphDatabase
     /// <summary>
     /// Provides a Graph Database Db Instance resource.
     /// 
-    /// For information about Graph Database Db Instance and how to use it, see [What is Db Instance](https://help.aliyun.com/document_detail/102865.html).
+    /// For information about Graph Database Db Instance and how to use it, see [What is Db Instance](https://www.alibabacloud.com/help/en/graph-compute/latest/placeholder).
     /// 
-    /// &gt; **NOTE:** Available in v1.136.0+.
+    /// &gt; **NOTE:** Available since v1.136.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,16 +28,18 @@ namespace Pulumi.AliCloud.GraphDatabase
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var example = new AliCloud.GraphDatabase.DbInstance("example", new()
     ///     {
-    ///         DbInstanceCategory = "HA",
-    ///         DbInstanceDescription = "example_value",
-    ///         DbInstanceNetworkType = "vpc",
-    ///         DbInstanceStorageType = "cloud_ssd",
     ///         DbNodeClass = "gdb.r.2xlarge",
-    ///         DbNodeStorage = "example_value",
+    ///         DbInstanceNetworkType = "vpc",
     ///         DbVersion = "1.0",
+    ///         DbInstanceCategory = "HA",
+    ///         DbInstanceStorageType = "cloud_ssd",
+    ///         DbNodeStorage = 50,
     ///         PaymentType = "PayAsYouGo",
+    ///         DbInstanceDescription = name,
     ///     });
     /// 
     /// });
@@ -73,7 +75,7 @@ namespace Pulumi.AliCloud.GraphDatabase
         public Output<string?> DbInstanceDescription { get; private set; } = null!;
 
         /// <summary>
-        /// IP ADDRESS whitelist for the instance group list. See the following `Block db_instance_ip_array`.
+        /// IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
         /// </summary>
         [Output("dbInstanceIpArrays")]
         public Output<ImmutableArray<Outputs.DbInstanceDbInstanceIpArray>> DbInstanceIpArrays { get; private set; } = null!;
@@ -206,7 +208,7 @@ namespace Pulumi.AliCloud.GraphDatabase
         private InputList<Inputs.DbInstanceDbInstanceIpArrayArgs>? _dbInstanceIpArrays;
 
         /// <summary>
-        /// IP ADDRESS whitelist for the instance group list. See the following `Block db_instance_ip_array`.
+        /// IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
         /// </summary>
         public InputList<Inputs.DbInstanceDbInstanceIpArrayArgs> DbInstanceIpArrays
         {
@@ -298,7 +300,7 @@ namespace Pulumi.AliCloud.GraphDatabase
         private InputList<Inputs.DbInstanceDbInstanceIpArrayGetArgs>? _dbInstanceIpArrays;
 
         /// <summary>
-        /// IP ADDRESS whitelist for the instance group list. See the following `Block db_instance_ip_array`.
+        /// IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
         /// </summary>
         public InputList<Inputs.DbInstanceDbInstanceIpArrayGetArgs> DbInstanceIpArrays
         {

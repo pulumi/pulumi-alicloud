@@ -10,13 +10,14 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Connect Network Grant resource. If the CEN instance to be attached belongs to another account, authorization by the CEN instance is required.
 //
-// For information about Cloud Connect Network Grant and how to use it, see [What is Cloud Connect Network Grant](https://www.alibabacloud.com/help/doc-detail/94543.htm).
+// For information about Cloud Connect Network Grant and how to use it, see [What is Cloud Connect Network Grant](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/grantinstancetocbn).
 //
-// > **NOTE:** Available in 1.63.0+
+// > **NOTE:** Available since v1.63.0.
 //
 // > **NOTE:** Only the following regions support create Cloud Connect Network Grant. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 //
@@ -29,45 +30,61 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudconnect"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := alicloud.NewProvider(ctx, "ccnAccount", nil)
-//			if err != nil {
-//				return err
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
 //			}
-//			_, err = alicloud.NewProvider(ctx, "cenAccount", &alicloud.ProviderArgs{
-//				Region:    pulumi.String("cn-hangzhou"),
-//				AccessKey: pulumi.String("xxxxxx"),
-//				SecretKey: pulumi.String("xxxxxx"),
+//			cenUid := float64(123456789)
+//			if param := cfg.GetFloat64("cenUid"); param != 0 {
+//				cenUid = param
+//			}
+//			_, err := alicloud.NewProvider(ctx, "default", &alicloud.ProviderArgs{
+//				Region: pulumi.String("cn-shanghai"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			cen, err := cen.NewInstance(ctx, "cen", nil, pulumi.Provider(alicloud.Cen_account))
+//			_, err = alicloud.NewProvider(ctx, "cenAccount", &alicloud.ProviderArgs{
+//				Region: pulumi.String("cn-hangzhou"),
+//				AssumeRole: &alicloud.ProviderAssumeRoleArgs{
+//					RoleArn: pulumi.String(fmt.Sprintf("acs:ram::%v:role/terraform-example-assume-role", cenUid)),
+//				},
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			ccn, err := cloudconnect.NewNetwork(ctx, "ccn", &cloudconnect.NetworkArgs{
-//				IsDefault: pulumi.Bool(true),
-//			}, pulumi.Provider(alicloud.Ccn_account))
+//			defaultNetwork, err := cloudconnect.NewNetwork(ctx, "defaultNetwork", &cloudconnect.NetworkArgs{
+//				Description: pulumi.String(name),
+//				CidrBlock:   pulumi.String("192.168.0.0/24"),
+//				IsDefault:   pulumi.Bool(true),
+//			}, pulumi.Provider(alicloud.Default))
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudconnect.NewNetworkGrant(ctx, "default", &cloudconnect.NetworkGrantArgs{
-//				CcnId:  ccn.ID(),
+//			cen, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String(name),
+//			}, pulumi.Provider(alicloud.Cen_account))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudconnect.NewNetworkGrant(ctx, "defaultNetworkGrant", &cloudconnect.NetworkGrantArgs{
+//				CcnId:  defaultNetwork.ID(),
 //				CenId:  cen.ID(),
-//				CenUid: pulumi.String("xxxxxx"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				ccn,
-//				cen,
-//			}))
+//				CenUid: pulumi.Float64(cenUid),
+//			}, pulumi.Provider(alicloud.Default))
 //			if err != nil {
 //				return err
 //			}
@@ -199,6 +216,12 @@ func (i *NetworkGrant) ToNetworkGrantOutputWithContext(ctx context.Context) Netw
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkGrantOutput)
 }
 
+func (i *NetworkGrant) ToOutput(ctx context.Context) pulumix.Output[*NetworkGrant] {
+	return pulumix.Output[*NetworkGrant]{
+		OutputState: i.ToNetworkGrantOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NetworkGrantArrayInput is an input type that accepts NetworkGrantArray and NetworkGrantArrayOutput values.
 // You can construct a concrete instance of `NetworkGrantArrayInput` via:
 //
@@ -222,6 +245,12 @@ func (i NetworkGrantArray) ToNetworkGrantArrayOutput() NetworkGrantArrayOutput {
 
 func (i NetworkGrantArray) ToNetworkGrantArrayOutputWithContext(ctx context.Context) NetworkGrantArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkGrantArrayOutput)
+}
+
+func (i NetworkGrantArray) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkGrant] {
+	return pulumix.Output[[]*NetworkGrant]{
+		OutputState: i.ToNetworkGrantArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NetworkGrantMapInput is an input type that accepts NetworkGrantMap and NetworkGrantMapOutput values.
@@ -249,6 +278,12 @@ func (i NetworkGrantMap) ToNetworkGrantMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkGrantMapOutput)
 }
 
+func (i NetworkGrantMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkGrant] {
+	return pulumix.Output[map[string]*NetworkGrant]{
+		OutputState: i.ToNetworkGrantMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NetworkGrantOutput struct{ *pulumi.OutputState }
 
 func (NetworkGrantOutput) ElementType() reflect.Type {
@@ -261,6 +296,12 @@ func (o NetworkGrantOutput) ToNetworkGrantOutput() NetworkGrantOutput {
 
 func (o NetworkGrantOutput) ToNetworkGrantOutputWithContext(ctx context.Context) NetworkGrantOutput {
 	return o
+}
+
+func (o NetworkGrantOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkGrant] {
+	return pulumix.Output[*NetworkGrant]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the CCN instance.
@@ -292,6 +333,12 @@ func (o NetworkGrantArrayOutput) ToNetworkGrantArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o NetworkGrantArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkGrant] {
+	return pulumix.Output[[]*NetworkGrant]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkGrantArrayOutput) Index(i pulumi.IntInput) NetworkGrantOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkGrant {
 		return vs[0].([]*NetworkGrant)[vs[1].(int)]
@@ -310,6 +357,12 @@ func (o NetworkGrantMapOutput) ToNetworkGrantMapOutput() NetworkGrantMapOutput {
 
 func (o NetworkGrantMapOutput) ToNetworkGrantMapOutputWithContext(ctx context.Context) NetworkGrantMapOutput {
 	return o
+}
+
+func (o NetworkGrantMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkGrant] {
+	return pulumix.Output[map[string]*NetworkGrant]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkGrantMapOutput) MapIndex(k pulumi.StringInput) NetworkGrantOutput {

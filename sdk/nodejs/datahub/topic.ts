@@ -5,45 +5,41 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * The topic is the basic unit of Datahub data source and is used to define one kind of data or stream. It contains a set of subscriptions. You can manage the datahub source of an application by using topics. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
+ * The topic is the basic unit of Datahub data source and is used to define one kind of data or stream. It contains a set of subscriptions. You can manage the datahub source of an application by using topics. [Refer to details](https://www.alibabacloud.com/help/en/datahub/latest/nerbcz).
+ *
+ * > **NOTE:** Available since v1.19.0.
  *
  * ## Example Usage
  *
  * Basic Usage
  *
- * - BLob Topic
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.datahub.Topic("example", {
- *     comment: "created by terraform",
- *     lifeCycle: 7,
- *     projectName: "tf_datahub_project",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const example = new alicloud.datahub.Project("example", {comment: "created by terraform"});
+ * const exampleBlob = new alicloud.datahub.Topic("exampleBlob", {
+ *     projectName: example.name,
  *     recordType: "BLOB",
  *     shardCount: 3,
- * });
- * ```
- * - Tuple Topic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.datahub.Topic("example", {
- *     comment: "created by terraform",
  *     lifeCycle: 7,
- *     projectName: "tf_datahub_project",
+ *     comment: "created by terraform",
+ * });
+ * const exampleTuple = new alicloud.datahub.Topic("exampleTuple", {
+ *     projectName: example.name,
+ *     recordType: "TUPLE",
  *     recordSchema: {
  *         bigint_field: "BIGINT",
- *         boolean_field: "BOOLEAN",
- *         double_field: "DOUBLE",
- *         string_field: "STRING",
  *         timestamp_field: "TIMESTAMP",
+ *         string_field: "STRING",
+ *         double_field: "DOUBLE",
+ *         boolean_field: "BOOLEAN",
  *     },
- *     recordType: "TUPLE",
  *     shardCount: 3,
+ *     lifeCycle: 7,
+ *     comment: "created by terraform",
  * });
  * ```
  *

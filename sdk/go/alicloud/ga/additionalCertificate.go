@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Global Accelerator (GA) Additional Certificate resource.
@@ -32,7 +33,7 @@ type AdditionalCertificate struct {
 
 	// The ID of the GA instance.
 	AcceleratorId pulumi.StringOutput `pulumi:"acceleratorId"`
-	// The Certificate ID.
+	// The Certificate ID. **NOTE:** From version 1.209.1, `certificateId` can be modified.
 	CertificateId pulumi.StringOutput `pulumi:"certificateId"`
 	// The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
 	Domain pulumi.StringOutput `pulumi:"domain"`
@@ -84,7 +85,7 @@ func GetAdditionalCertificate(ctx *pulumi.Context,
 type additionalCertificateState struct {
 	// The ID of the GA instance.
 	AcceleratorId *string `pulumi:"acceleratorId"`
-	// The Certificate ID.
+	// The Certificate ID. **NOTE:** From version 1.209.1, `certificateId` can be modified.
 	CertificateId *string `pulumi:"certificateId"`
 	// The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
 	Domain *string `pulumi:"domain"`
@@ -95,7 +96,7 @@ type additionalCertificateState struct {
 type AdditionalCertificateState struct {
 	// The ID of the GA instance.
 	AcceleratorId pulumi.StringPtrInput
-	// The Certificate ID.
+	// The Certificate ID. **NOTE:** From version 1.209.1, `certificateId` can be modified.
 	CertificateId pulumi.StringPtrInput
 	// The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
 	Domain pulumi.StringPtrInput
@@ -110,7 +111,7 @@ func (AdditionalCertificateState) ElementType() reflect.Type {
 type additionalCertificateArgs struct {
 	// The ID of the GA instance.
 	AcceleratorId string `pulumi:"acceleratorId"`
-	// The Certificate ID.
+	// The Certificate ID. **NOTE:** From version 1.209.1, `certificateId` can be modified.
 	CertificateId string `pulumi:"certificateId"`
 	// The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
 	Domain string `pulumi:"domain"`
@@ -122,7 +123,7 @@ type additionalCertificateArgs struct {
 type AdditionalCertificateArgs struct {
 	// The ID of the GA instance.
 	AcceleratorId pulumi.StringInput
-	// The Certificate ID.
+	// The Certificate ID. **NOTE:** From version 1.209.1, `certificateId` can be modified.
 	CertificateId pulumi.StringInput
 	// The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
 	Domain pulumi.StringInput
@@ -153,6 +154,12 @@ func (i *AdditionalCertificate) ToAdditionalCertificateOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AdditionalCertificateOutput)
 }
 
+func (i *AdditionalCertificate) ToOutput(ctx context.Context) pulumix.Output[*AdditionalCertificate] {
+	return pulumix.Output[*AdditionalCertificate]{
+		OutputState: i.ToAdditionalCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AdditionalCertificateArrayInput is an input type that accepts AdditionalCertificateArray and AdditionalCertificateArrayOutput values.
 // You can construct a concrete instance of `AdditionalCertificateArrayInput` via:
 //
@@ -176,6 +183,12 @@ func (i AdditionalCertificateArray) ToAdditionalCertificateArrayOutput() Additio
 
 func (i AdditionalCertificateArray) ToAdditionalCertificateArrayOutputWithContext(ctx context.Context) AdditionalCertificateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AdditionalCertificateArrayOutput)
+}
+
+func (i AdditionalCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]*AdditionalCertificate] {
+	return pulumix.Output[[]*AdditionalCertificate]{
+		OutputState: i.ToAdditionalCertificateArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AdditionalCertificateMapInput is an input type that accepts AdditionalCertificateMap and AdditionalCertificateMapOutput values.
@@ -203,6 +216,12 @@ func (i AdditionalCertificateMap) ToAdditionalCertificateMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(AdditionalCertificateMapOutput)
 }
 
+func (i AdditionalCertificateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AdditionalCertificate] {
+	return pulumix.Output[map[string]*AdditionalCertificate]{
+		OutputState: i.ToAdditionalCertificateMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AdditionalCertificateOutput struct{ *pulumi.OutputState }
 
 func (AdditionalCertificateOutput) ElementType() reflect.Type {
@@ -217,12 +236,18 @@ func (o AdditionalCertificateOutput) ToAdditionalCertificateOutputWithContext(ct
 	return o
 }
 
+func (o AdditionalCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*AdditionalCertificate] {
+	return pulumix.Output[*AdditionalCertificate]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ID of the GA instance.
 func (o AdditionalCertificateOutput) AcceleratorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AdditionalCertificate) pulumi.StringOutput { return v.AcceleratorId }).(pulumi.StringOutput)
 }
 
-// The Certificate ID.
+// The Certificate ID. **NOTE:** From version 1.209.1, `certificateId` can be modified.
 func (o AdditionalCertificateOutput) CertificateId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AdditionalCertificate) pulumi.StringOutput { return v.CertificateId }).(pulumi.StringOutput)
 }
@@ -251,6 +276,12 @@ func (o AdditionalCertificateArrayOutput) ToAdditionalCertificateArrayOutputWith
 	return o
 }
 
+func (o AdditionalCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AdditionalCertificate] {
+	return pulumix.Output[[]*AdditionalCertificate]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AdditionalCertificateArrayOutput) Index(i pulumi.IntInput) AdditionalCertificateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AdditionalCertificate {
 		return vs[0].([]*AdditionalCertificate)[vs[1].(int)]
@@ -269,6 +300,12 @@ func (o AdditionalCertificateMapOutput) ToAdditionalCertificateMapOutput() Addit
 
 func (o AdditionalCertificateMapOutput) ToAdditionalCertificateMapOutputWithContext(ctx context.Context) AdditionalCertificateMapOutput {
 	return o
+}
+
+func (o AdditionalCertificateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AdditionalCertificate] {
+	return pulumix.Output[map[string]*AdditionalCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AdditionalCertificateMapOutput) MapIndex(k pulumi.StringInput) AdditionalCertificateOutput {

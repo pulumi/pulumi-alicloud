@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Vpc Traffic Mirror Sessions of the current Alibaba Cloud user.
@@ -228,6 +229,12 @@ func (o GetTrafficMirrorSessionsResultOutput) ToGetTrafficMirrorSessionsResultOu
 
 func (o GetTrafficMirrorSessionsResultOutput) ToGetTrafficMirrorSessionsResultOutputWithContext(ctx context.Context) GetTrafficMirrorSessionsResultOutput {
 	return o
+}
+
+func (o GetTrafficMirrorSessionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTrafficMirrorSessionsResult] {
+	return pulumix.Output[GetTrafficMirrorSessionsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTrafficMirrorSessionsResultOutput) Enabled() pulumi.BoolPtrOutput {

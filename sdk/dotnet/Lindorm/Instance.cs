@@ -18,6 +18,54 @@ namespace Pulumi.AliCloud.Lindorm
     /// 
     /// &gt; **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines, or the number of nodes at the same time.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var region = "cn-hangzhou";
+    /// 
+    ///     var zoneId = "cn-hangzhou-h";
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = zoneId,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Lindorm.Instance("defaultInstance", new()
+    ///     {
+    ///         DiskCategory = "cloud_efficiency",
+    ///         PaymentType = "PayAsYouGo",
+    ///         ZoneId = zoneId,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         VpcId = defaultNetwork.Id,
+    ///         InstanceName = name,
+    ///         TableEngineSpecification = "lindorm.g.4xlarge",
+    ///         TableEngineNodeCount = 2,
+    ///         InstanceStorage = "1920",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Lindorm Instance can be imported using the id, e.g.

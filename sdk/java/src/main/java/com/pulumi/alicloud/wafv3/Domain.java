@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Wafv3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-doc-waf-openapi-2021-10-01-api-doc-createdomain).
  * 
- * &gt; **NOTE:** Available in v1.200.0+.
+ * &gt; **NOTE:** Available since v1.200.0.
  * 
  * ## Import
  * 
@@ -77,28 +77,28 @@ public class Domain extends com.pulumi.resources.CustomResource {
         return this.instanceId;
     }
     /**
-     * Configure listening information. See the following `Block Listen`.
+     * Configure listening information. See `listen` below.
      * 
      */
     @Export(name="listen", type=DomainListen.class, parameters={})
     private Output<DomainListen> listen;
 
     /**
-     * @return Configure listening information. See the following `Block Listen`.
+     * @return Configure listening information. See `listen` below.
      * 
      */
     public Output<DomainListen> listen() {
         return this.listen;
     }
     /**
-     * Configure forwarding information. See the following `Block Redirect`.
+     * Configure forwarding information. See `redirect` below.
      * 
      */
     @Export(name="redirect", type=DomainRedirect.class, parameters={})
     private Output<DomainRedirect> redirect;
 
     /**
-     * @return Configure forwarding information. See the following `Block Redirect`.
+     * @return Configure forwarding information. See `redirect` below.
      * 
      */
     public Output<DomainRedirect> redirect() {

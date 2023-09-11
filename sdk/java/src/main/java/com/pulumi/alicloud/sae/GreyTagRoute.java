@@ -20,9 +20,138 @@ import javax.annotation.Nullable;
 /**
  * Provides a Serverless App Engine (SAE) GreyTagRoute resource.
  * 
- * For information about Serverless App Engine (SAE) GreyTagRoute and how to use it, see [What is GreyTagRoute](https://help.aliyun.com/document_detail/97792.html).
+ * For information about Serverless App Engine (SAE) GreyTagRoute and how to use it, see [What is GreyTagRoute](https://www.alibabacloud.com/help/en/sae/latest/create-grey-tag-route).
  * 
- * &gt; **NOTE:** Available in v1.160.0+.
+ * &gt; **NOTE:** Available since v1.160.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.sae.Namespace;
+ * import com.pulumi.alicloud.sae.NamespaceArgs;
+ * import com.pulumi.alicloud.sae.Application;
+ * import com.pulumi.alicloud.sae.ApplicationArgs;
+ * import com.pulumi.alicloud.sae.GreyTagRoute;
+ * import com.pulumi.alicloud.sae.GreyTagRouteArgs;
+ * import com.pulumi.alicloud.sae.inputs.GreyTagRouteScRuleArgs;
+ * import com.pulumi.alicloud.sae.inputs.GreyTagRouteDubboRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
+ *             .namespaceId(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s:example%s&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),result)))
+ *             .namespaceName(name)
+ *             .namespaceDescription(name)
+ *             .enableMicroRegistration(false)
+ *             .build());
+ * 
+ *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
+ *             .appDescription(name)
+ *             .appName(name)
+ *             .namespaceId(defaultNamespace.id())
+ *             .imageUrl(String.format(&#34;registry-vpc.%s.aliyuncs.com/sae-demo-image/consumer:1.0&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id())))
+ *             .packageType(&#34;Image&#34;)
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .vpcId(defaultNetwork.id())
+ *             .vswitchId(defaultSwitch.id())
+ *             .timezone(&#34;Asia/Beijing&#34;)
+ *             .replicas(&#34;5&#34;)
+ *             .cpu(&#34;500&#34;)
+ *             .memory(&#34;2048&#34;)
+ *             .build());
+ * 
+ *         var defaultGreyTagRoute = new GreyTagRoute(&#34;defaultGreyTagRoute&#34;, GreyTagRouteArgs.builder()        
+ *             .greyTagRouteName(name)
+ *             .description(name)
+ *             .appId(defaultApplication.id())
+ *             .scRules(GreyTagRouteScRuleArgs.builder()
+ *                 .items(GreyTagRouteScRuleItemArgs.builder()
+ *                     .type(&#34;param&#34;)
+ *                     .name(&#34;tfexample&#34;)
+ *                     .operator(&#34;rawvalue&#34;)
+ *                     .value(&#34;example&#34;)
+ *                     .cond(&#34;==&#34;)
+ *                     .build())
+ *                 .path(&#34;/tf/example&#34;)
+ *                 .condition(&#34;AND&#34;)
+ *                 .build())
+ *             .dubboRules(GreyTagRouteDubboRuleArgs.builder()
+ *                 .items(GreyTagRouteDubboRuleItemArgs.builder()
+ *                     .cond(&#34;==&#34;)
+ *                     .expr(&#34;.key1&#34;)
+ *                     .index(&#34;1&#34;)
+ *                     .operator(&#34;rawvalue&#34;)
+ *                     .value(&#34;value1&#34;)
+ *                     .build())
+ *                 .condition(&#34;OR&#34;)
+ *                 .group(&#34;DUBBO&#34;)
+ *                 .methodName(&#34;example&#34;)
+ *                 .serviceName(&#34;com.example.service&#34;)
+ *                 .version(&#34;1.0.0&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -64,14 +193,14 @@ public class GreyTagRoute extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The grayscale rule created for Dubbo Application. The details see Block `dubbo_rules`.
+     * The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
      * 
      */
     @Export(name="dubboRules", type=List.class, parameters={GreyTagRouteDubboRule.class})
     private Output</* @Nullable */ List<GreyTagRouteDubboRule>> dubboRules;
 
     /**
-     * @return The grayscale rule created for Dubbo Application. The details see Block `dubbo_rules`.
+     * @return The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
      * 
      */
     public Output<Optional<List<GreyTagRouteDubboRule>>> dubboRules() {
@@ -92,14 +221,14 @@ public class GreyTagRoute extends com.pulumi.resources.CustomResource {
         return this.greyTagRouteName;
     }
     /**
-     * The grayscale rule created for SpringCloud Application. The details see Block `sc_rules`.
+     * The grayscale rule created for SpringCloud Application. See `sc_rules` below.
      * 
      */
     @Export(name="scRules", type=List.class, parameters={GreyTagRouteScRule.class})
     private Output</* @Nullable */ List<GreyTagRouteScRule>> scRules;
 
     /**
-     * @return The grayscale rule created for SpringCloud Application. The details see Block `sc_rules`.
+     * @return The grayscale rule created for SpringCloud Application. See `sc_rules` below.
      * 
      */
     public Output<Optional<List<GreyTagRouteScRule>>> scRules() {

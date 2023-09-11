@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Sae
     /// <summary>
     /// Provides a Serverless App Engine (SAE) Application Scaling Rule resource.
     /// 
-    /// For information about Serverless App Engine (SAE) Application Scaling Rule and how to use it, see [What is Application Scaling Rule](https://help.aliyun.com/document_detail/134120.html).
+    /// For information about Serverless App Engine (SAE) Application Scaling Rule and how to use it, see [What is Application Scaling Rule](https://www.alibabacloud.com/help/en/sae/latest/create-application-scaling-rule).
     /// 
-    /// &gt; **NOTE:** Available in v1.159.0+.
+    /// &gt; **NOTE:** Available since v1.159.0.
     /// 
     /// ## Example Usage
     /// 
@@ -25,52 +25,86 @@ namespace Pulumi.AliCloud.Sae
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
-    ///         NameRegex = "default-NODELETING",
+    ///         Current = true,
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
     ///     var defaultNamespace = new AliCloud.Sae.Namespace("defaultNamespace", new()
     ///     {
-    ///         NamespaceDescription = "example_value",
-    ///         NamespaceId = "example_value",
-    ///         NamespaceName = "example_value",
+    ///         NamespaceId = Output.Tuple(defaultRegions, defaultRandomInteger.Result).Apply(values =&gt;
+    ///         {
+    ///             var defaultRegions = values.Item1;
+    ///             var result = values.Item2;
+    ///             return $"{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:example{result}";
+    ///         }),
+    ///         NamespaceName = name,
+    ///         NamespaceDescription = name,
+    ///         EnableMicroRegistration = false,
     ///     });
     /// 
     ///     var defaultApplication = new AliCloud.Sae.Application("defaultApplication", new()
     ///     {
-    ///         AppDescription = "example_value",
-    ///         AppName = "example_value",
-    ///         NamespaceId = defaultNamespace.NamespaceId,
-    ///         ImageUrl = "registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
+    ///         AppDescription = name,
+    ///         AppName = name,
+    ///         NamespaceId = defaultNamespace.Id,
+    ///         ImageUrl = $"registry-vpc.{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}.aliyuncs.com/sae-demo-image/consumer:1.0",
     ///         PackageType = "Image",
-    ///         Jdk = "Open JDK 8",
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         Timezone = "Asia/Shanghai",
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///         VpcId = defaultNetwork.Id,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         Timezone = "Asia/Beijing",
     ///         Replicas = 5,
     ///         Cpu = 500,
     ///         Memory = 2048,
     ///     });
     /// 
-    ///     var example = new AliCloud.Sae.ApplicationScalingRule("example", new()
+    ///     var defaultApplicationScalingRule = new AliCloud.Sae.ApplicationScalingRule("defaultApplicationScalingRule", new()
     ///     {
     ///         AppId = defaultApplication.Id,
-    ///         ScalingRuleName = "example-value",
+    ///         ScalingRuleName = name,
     ///         ScalingRuleEnable = true,
     ///         ScalingRuleType = "mix",
+    ///         MinReadyInstances = 3,
+    ///         MinReadyInstanceRatio = -1,
     ///         ScalingRuleTimer = new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleTimerArgs
     ///         {
-    ///             BeginDate = "2022-02-25",
-    ///             EndDate = "2022-03-25",
     ///             Period = "* * *",
     ///             Schedules = new[]
     ///             {
@@ -164,7 +198,7 @@ namespace Pulumi.AliCloud.Sae
         public Output<bool> ScalingRuleEnable { get; private set; } = null!;
 
         /// <summary>
-        /// Monitor the configuration of the indicator elasticity strategy. See the following `Block scaling_rule_metric`.
+        /// Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
         /// </summary>
         [Output("scalingRuleMetric")]
         public Output<Outputs.ApplicationScalingRuleScalingRuleMetric?> ScalingRuleMetric { get; private set; } = null!;
@@ -176,7 +210,7 @@ namespace Pulumi.AliCloud.Sae
         public Output<string> ScalingRuleName { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration of Timing Resilient Policies. See the following `Block scaling_rule_timer`.
+        /// Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
         /// </summary>
         [Output("scalingRuleTimer")]
         public Output<Outputs.ApplicationScalingRuleScalingRuleTimer?> ScalingRuleTimer { get; private set; } = null!;
@@ -258,7 +292,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<bool>? ScalingRuleEnable { get; set; }
 
         /// <summary>
-        /// Monitor the configuration of the indicator elasticity strategy. See the following `Block scaling_rule_metric`.
+        /// Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
         /// </summary>
         [Input("scalingRuleMetric")]
         public Input<Inputs.ApplicationScalingRuleScalingRuleMetricArgs>? ScalingRuleMetric { get; set; }
@@ -270,7 +304,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<string> ScalingRuleName { get; set; } = null!;
 
         /// <summary>
-        /// Configuration of Timing Resilient Policies. See the following `Block scaling_rule_timer`.
+        /// Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
         /// </summary>
         [Input("scalingRuleTimer")]
         public Input<Inputs.ApplicationScalingRuleScalingRuleTimerArgs>? ScalingRuleTimer { get; set; }
@@ -314,7 +348,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<bool>? ScalingRuleEnable { get; set; }
 
         /// <summary>
-        /// Monitor the configuration of the indicator elasticity strategy. See the following `Block scaling_rule_metric`.
+        /// Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
         /// </summary>
         [Input("scalingRuleMetric")]
         public Input<Inputs.ApplicationScalingRuleScalingRuleMetricGetArgs>? ScalingRuleMetric { get; set; }
@@ -326,7 +360,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? ScalingRuleName { get; set; }
 
         /// <summary>
-        /// Configuration of Timing Resilient Policies. See the following `Block scaling_rule_timer`.
+        /// Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
         /// </summary>
         [Input("scalingRuleTimer")]
         public Input<Inputs.ApplicationScalingRuleScalingRuleTimerGetArgs>? ScalingRuleTimer { get; set; }

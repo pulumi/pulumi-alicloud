@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ddos
 {
     /// <summary>
-    /// BGP-Line Anti-DDoS instance resource. "Ddoscoo" is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/doc-detail/69319.htm).
+    /// BGP-Line Anti-DDoS instance resource. "Ddoscoo" is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-describeinstances).
     /// 
     /// &gt; **NOTE:** The product region only support cn-hangzhou.
     /// 
     /// &gt; **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
     /// 
-    /// &gt; **NOTE:** Available in 1.37.0+ .
+    /// &gt; **NOTE:** Available since v1.37.0.
     /// 
     /// ## Example Usage
     /// 
@@ -30,15 +30,17 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var newInstance = new AliCloud.Ddos.DdosCooInstance("newInstance", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = new AliCloud.Ddos.DdosCooInstance("default", new()
     ///     {
     ///         Bandwidth = "30",
     ///         BaseBandwidth = "30",
+    ///         ServiceBandwidth = "100",
+    ///         PortCount = "50",
     ///         DomainCount = "50",
     ///         Period = 1,
-    ///         PortCount = "50",
     ///         ProductType = "ddoscoo",
-    ///         ServiceBandwidth = "100",
     ///     });
     /// 
     /// });

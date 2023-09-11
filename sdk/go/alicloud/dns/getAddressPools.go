@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Alidns Address Pools of the current Alibaba Cloud user.
@@ -136,6 +137,12 @@ func (o GetAddressPoolsResultOutput) ToGetAddressPoolsResultOutput() GetAddressP
 
 func (o GetAddressPoolsResultOutput) ToGetAddressPoolsResultOutputWithContext(ctx context.Context) GetAddressPoolsResultOutput {
 	return o
+}
+
+func (o GetAddressPoolsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAddressPoolsResult] {
+	return pulumix.Output[GetAddressPoolsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAddressPoolsResultOutput) EnableDetails() pulumi.BoolPtrOutput {

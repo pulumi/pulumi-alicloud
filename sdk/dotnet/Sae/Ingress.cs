@@ -25,11 +25,23 @@ namespace Pulumi.AliCloud.Sae
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "example_value";
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
@@ -37,60 +49,80 @@ namespace Pulumi.AliCloud.Sae
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         CidrBlock = "172.16.0.0/12",
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
     ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
     ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/21",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
-    ///     var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("defaultLoadBalancer", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
     ///     {
-    ///         Specification = "slb.s2.small",
-    ///         VswitchId = data.Alicloud_vswitches.Default.Ids[0],
+    ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
-    ///     var namespaceId = config.Get("namespaceId") ?? "cn-hangzhou:yourname";
     ///     var defaultNamespace = new AliCloud.Sae.Namespace("defaultNamespace", new()
     ///     {
-    ///         NamespaceId = namespaceId,
+    ///         NamespaceId = Output.Tuple(defaultRegions, defaultRandomInteger.Result).Apply(values =&gt;
+    ///         {
+    ///             var defaultRegions = values.Item1;
+    ///             var result = values.Item2;
+    ///             return $"{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:example{result}";
+    ///         }),
     ///         NamespaceName = name,
     ///         NamespaceDescription = name,
+    ///         EnableMicroRegistration = false,
     ///     });
     /// 
     ///     var defaultApplication = new AliCloud.Sae.Application("defaultApplication", new()
     ///     {
-    ///         AppDescription = "your_app_description",
-    ///         AppName = "your_app_name",
-    ///         NamespaceId = "your_namespace_id",
-    ///         PackageUrl = "your_package_url",
-    ///         PackageType = "your_package_url",
-    ///         Jdk = "jdk_specifications",
-    ///         VswitchId = data.Alicloud_vswitches.Default.Ids[0],
-    ///         Replicas = "your_replicas",
-    ///         Cpu = "cpu_specifications",
-    ///         Memory = "memory_specifications",
+    ///         AppDescription = name,
+    ///         AppName = name,
+    ///         NamespaceId = defaultNamespace.Id,
+    ///         ImageUrl = $"registry-vpc.{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}.aliyuncs.com/sae-demo-image/consumer:1.0",
+    ///         PackageType = "Image",
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///         VpcId = defaultNetwork.Id,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         Timezone = "Asia/Beijing",
+    ///         Replicas = 5,
+    ///         Cpu = 500,
+    ///         Memory = 2048,
+    ///     });
+    /// 
+    ///     var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", new()
+    ///     {
+    ///         LoadBalancerName = name,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         LoadBalancerSpec = "slb.s2.small",
+    ///         AddressType = "intranet",
     ///     });
     /// 
     ///     var defaultIngress = new AliCloud.Sae.Ingress("defaultIngress", new()
     ///     {
-    ///         SlbId = defaultLoadBalancer.Id,
+    ///         SlbId = defaultApplicationLoadBalancer.Id,
     ///         NamespaceId = defaultNamespace.Id,
-    ///         ListenerPort = "your_listener_port",
+    ///         ListenerPort = 80,
     ///         Rules = new[]
     ///         {
     ///             new AliCloud.Sae.Inputs.IngressRuleArgs
     ///             {
     ///                 AppId = defaultApplication.Id,
-    ///                 ContainerPort = "your_container_port",
-    ///                 Domain = "your_domain",
-    ///                 AppName = "your_name",
-    ///                 Path = "your_path",
+    ///                 ContainerPort = 443,
+    ///                 Domain = "www.alicloud.com",
+    ///                 AppName = defaultApplication.AppName,
+    ///                 Path = "/",
     ///             },
+    ///         },
+    ///         DefaultRule = new AliCloud.Sae.Inputs.IngressDefaultRuleArgs
+    ///         {
+    ///             AppId = defaultApplication.Id,
+    ///             ContainerPort = 443,
     ///         },
     ///     });
     /// 

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Mongodb Serverless Instances of the current Alibaba Cloud user.
@@ -172,6 +173,12 @@ func (o GetServerlessInstancesResultOutput) ToGetServerlessInstancesResultOutput
 
 func (o GetServerlessInstancesResultOutput) ToGetServerlessInstancesResultOutputWithContext(ctx context.Context) GetServerlessInstancesResultOutput {
 	return o
+}
+
+func (o GetServerlessInstancesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServerlessInstancesResult] {
+	return pulumix.Output[GetServerlessInstancesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetServerlessInstancesResultOutput) DbInstanceClass() pulumi.StringPtrOutput {

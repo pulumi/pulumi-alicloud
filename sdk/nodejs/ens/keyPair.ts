@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a ENS Key Pair resource.
  *
- * For information about ENS Key Pair and how to use it, see [What is Key Pair](https://help.aliyun.com/product/62684.html).
+ * For information about ENS Key Pair and how to use it, see [What is Key Pair](https://www.alibabacloud.com/help/en/ens/latest/createkeypair).
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *
@@ -19,9 +19,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
  * const example = new alicloud.ens.KeyPair("example", {
- *     keyPairName: "example_value",
- *     version: "example_value",
+ *     keyPairName: name,
+ *     version: "2017-11-10",
  * });
  * ```
  *

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (i InstanceSlbConnAddrArgs) ToInstanceSlbConnAddrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceSlbConnAddrOutput)
 }
 
+func (i InstanceSlbConnAddrArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceSlbConnAddr] {
+	return pulumix.Output[InstanceSlbConnAddr]{
+		OutputState: i.ToInstanceSlbConnAddrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceSlbConnAddrArrayInput is an input type that accepts InstanceSlbConnAddrArray and InstanceSlbConnAddrArrayOutput values.
 // You can construct a concrete instance of `InstanceSlbConnAddrArrayInput` via:
 //
@@ -73,6 +80,12 @@ func (i InstanceSlbConnAddrArray) ToInstanceSlbConnAddrArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceSlbConnAddrArrayOutput)
 }
 
+func (i InstanceSlbConnAddrArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceSlbConnAddr] {
+	return pulumix.Output[[]InstanceSlbConnAddr]{
+		OutputState: i.ToInstanceSlbConnAddrArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceSlbConnAddrOutput struct{ *pulumi.OutputState }
 
 func (InstanceSlbConnAddrOutput) ElementType() reflect.Type {
@@ -85,6 +98,12 @@ func (o InstanceSlbConnAddrOutput) ToInstanceSlbConnAddrOutput() InstanceSlbConn
 
 func (o InstanceSlbConnAddrOutput) ToInstanceSlbConnAddrOutputWithContext(ctx context.Context) InstanceSlbConnAddrOutput {
 	return o
+}
+
+func (o InstanceSlbConnAddrOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceSlbConnAddr] {
+	return pulumix.Output[InstanceSlbConnAddr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceSlbConnAddrOutput) ConnAddr() pulumi.StringPtrOutput {
@@ -111,6 +130,12 @@ func (o InstanceSlbConnAddrArrayOutput) ToInstanceSlbConnAddrArrayOutput() Insta
 
 func (o InstanceSlbConnAddrArrayOutput) ToInstanceSlbConnAddrArrayOutputWithContext(ctx context.Context) InstanceSlbConnAddrArrayOutput {
 	return o
+}
+
+func (o InstanceSlbConnAddrArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceSlbConnAddr] {
+	return pulumix.Output[[]InstanceSlbConnAddr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceSlbConnAddrArrayOutput) Index(i pulumi.IntInput) InstanceSlbConnAddrOutput {
@@ -154,6 +179,12 @@ func (i InstanceUiProxyConnAddrArgs) ToInstanceUiProxyConnAddrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceUiProxyConnAddrOutput)
 }
 
+func (i InstanceUiProxyConnAddrArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceUiProxyConnAddr] {
+	return pulumix.Output[InstanceUiProxyConnAddr]{
+		OutputState: i.ToInstanceUiProxyConnAddrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceUiProxyConnAddrArrayInput is an input type that accepts InstanceUiProxyConnAddrArray and InstanceUiProxyConnAddrArrayOutput values.
 // You can construct a concrete instance of `InstanceUiProxyConnAddrArrayInput` via:
 //
@@ -179,6 +210,12 @@ func (i InstanceUiProxyConnAddrArray) ToInstanceUiProxyConnAddrArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceUiProxyConnAddrArrayOutput)
 }
 
+func (i InstanceUiProxyConnAddrArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceUiProxyConnAddr] {
+	return pulumix.Output[[]InstanceUiProxyConnAddr]{
+		OutputState: i.ToInstanceUiProxyConnAddrArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceUiProxyConnAddrOutput struct{ *pulumi.OutputState }
 
 func (InstanceUiProxyConnAddrOutput) ElementType() reflect.Type {
@@ -191,6 +228,12 @@ func (o InstanceUiProxyConnAddrOutput) ToInstanceUiProxyConnAddrOutput() Instanc
 
 func (o InstanceUiProxyConnAddrOutput) ToInstanceUiProxyConnAddrOutputWithContext(ctx context.Context) InstanceUiProxyConnAddrOutput {
 	return o
+}
+
+func (o InstanceUiProxyConnAddrOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceUiProxyConnAddr] {
+	return pulumix.Output[InstanceUiProxyConnAddr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceUiProxyConnAddrOutput) ConnAddr() pulumi.StringPtrOutput {
@@ -217,6 +260,12 @@ func (o InstanceUiProxyConnAddrArrayOutput) ToInstanceUiProxyConnAddrArrayOutput
 
 func (o InstanceUiProxyConnAddrArrayOutput) ToInstanceUiProxyConnAddrArrayOutputWithContext(ctx context.Context) InstanceUiProxyConnAddrArrayOutput {
 	return o
+}
+
+func (o InstanceUiProxyConnAddrArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceUiProxyConnAddr] {
+	return pulumix.Output[[]InstanceUiProxyConnAddr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceUiProxyConnAddrArrayOutput) Index(i pulumi.IntInput) InstanceUiProxyConnAddrOutput {
@@ -260,6 +309,12 @@ func (i InstanceZkConnAddrArgs) ToInstanceZkConnAddrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceZkConnAddrOutput)
 }
 
+func (i InstanceZkConnAddrArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceZkConnAddr] {
+	return pulumix.Output[InstanceZkConnAddr]{
+		OutputState: i.ToInstanceZkConnAddrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceZkConnAddrArrayInput is an input type that accepts InstanceZkConnAddrArray and InstanceZkConnAddrArrayOutput values.
 // You can construct a concrete instance of `InstanceZkConnAddrArrayInput` via:
 //
@@ -285,6 +340,12 @@ func (i InstanceZkConnAddrArray) ToInstanceZkConnAddrArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceZkConnAddrArrayOutput)
 }
 
+func (i InstanceZkConnAddrArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceZkConnAddr] {
+	return pulumix.Output[[]InstanceZkConnAddr]{
+		OutputState: i.ToInstanceZkConnAddrArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceZkConnAddrOutput struct{ *pulumi.OutputState }
 
 func (InstanceZkConnAddrOutput) ElementType() reflect.Type {
@@ -297,6 +358,12 @@ func (o InstanceZkConnAddrOutput) ToInstanceZkConnAddrOutput() InstanceZkConnAdd
 
 func (o InstanceZkConnAddrOutput) ToInstanceZkConnAddrOutputWithContext(ctx context.Context) InstanceZkConnAddrOutput {
 	return o
+}
+
+func (o InstanceZkConnAddrOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceZkConnAddr] {
+	return pulumix.Output[InstanceZkConnAddr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceZkConnAddrOutput) ConnAddr() pulumi.StringPtrOutput {
@@ -323,6 +390,12 @@ func (o InstanceZkConnAddrArrayOutput) ToInstanceZkConnAddrArrayOutput() Instanc
 
 func (o InstanceZkConnAddrArrayOutput) ToInstanceZkConnAddrArrayOutputWithContext(ctx context.Context) InstanceZkConnAddrArrayOutput {
 	return o
+}
+
+func (o InstanceZkConnAddrArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceZkConnAddr] {
+	return pulumix.Output[[]InstanceZkConnAddr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceZkConnAddrArrayOutput) Index(i pulumi.IntInput) InstanceZkConnAddrOutput {
@@ -396,6 +469,12 @@ func (i GetInstanceTypesCoreInstanceTypeArgs) ToGetInstanceTypesCoreInstanceType
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesCoreInstanceTypeOutput)
 }
 
+func (i GetInstanceTypesCoreInstanceTypeArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceTypesCoreInstanceType] {
+	return pulumix.Output[GetInstanceTypesCoreInstanceType]{
+		OutputState: i.ToGetInstanceTypesCoreInstanceTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstanceTypesCoreInstanceTypeArrayInput is an input type that accepts GetInstanceTypesCoreInstanceTypeArray and GetInstanceTypesCoreInstanceTypeArrayOutput values.
 // You can construct a concrete instance of `GetInstanceTypesCoreInstanceTypeArrayInput` via:
 //
@@ -421,6 +500,12 @@ func (i GetInstanceTypesCoreInstanceTypeArray) ToGetInstanceTypesCoreInstanceTyp
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesCoreInstanceTypeArrayOutput)
 }
 
+func (i GetInstanceTypesCoreInstanceTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceTypesCoreInstanceType] {
+	return pulumix.Output[[]GetInstanceTypesCoreInstanceType]{
+		OutputState: i.ToGetInstanceTypesCoreInstanceTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstanceTypesCoreInstanceTypeOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceTypesCoreInstanceTypeOutput) ElementType() reflect.Type {
@@ -433,6 +518,12 @@ func (o GetInstanceTypesCoreInstanceTypeOutput) ToGetInstanceTypesCoreInstanceTy
 
 func (o GetInstanceTypesCoreInstanceTypeOutput) ToGetInstanceTypesCoreInstanceTypeOutputWithContext(ctx context.Context) GetInstanceTypesCoreInstanceTypeOutput {
 	return o
+}
+
+func (o GetInstanceTypesCoreInstanceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceTypesCoreInstanceType] {
+	return pulumix.Output[GetInstanceTypesCoreInstanceType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the category, single or cluster.
@@ -494,6 +585,12 @@ func (o GetInstanceTypesCoreInstanceTypeArrayOutput) ToGetInstanceTypesCoreInsta
 	return o
 }
 
+func (o GetInstanceTypesCoreInstanceTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceTypesCoreInstanceType] {
+	return pulumix.Output[[]GetInstanceTypesCoreInstanceType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetInstanceTypesCoreInstanceTypeArrayOutput) Index(i pulumi.IntInput) GetInstanceTypesCoreInstanceTypeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypesCoreInstanceType {
 		return vs[0].([]GetInstanceTypesCoreInstanceType)[vs[1].(int)]
@@ -541,6 +638,12 @@ func (i GetInstanceTypesMasterInstanceTypeArgs) ToGetInstanceTypesMasterInstance
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesMasterInstanceTypeOutput)
 }
 
+func (i GetInstanceTypesMasterInstanceTypeArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceTypesMasterInstanceType] {
+	return pulumix.Output[GetInstanceTypesMasterInstanceType]{
+		OutputState: i.ToGetInstanceTypesMasterInstanceTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstanceTypesMasterInstanceTypeArrayInput is an input type that accepts GetInstanceTypesMasterInstanceTypeArray and GetInstanceTypesMasterInstanceTypeArrayOutput values.
 // You can construct a concrete instance of `GetInstanceTypesMasterInstanceTypeArrayInput` via:
 //
@@ -566,6 +669,12 @@ func (i GetInstanceTypesMasterInstanceTypeArray) ToGetInstanceTypesMasterInstanc
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesMasterInstanceTypeArrayOutput)
 }
 
+func (i GetInstanceTypesMasterInstanceTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceTypesMasterInstanceType] {
+	return pulumix.Output[[]GetInstanceTypesMasterInstanceType]{
+		OutputState: i.ToGetInstanceTypesMasterInstanceTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstanceTypesMasterInstanceTypeOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceTypesMasterInstanceTypeOutput) ElementType() reflect.Type {
@@ -578,6 +687,12 @@ func (o GetInstanceTypesMasterInstanceTypeOutput) ToGetInstanceTypesMasterInstan
 
 func (o GetInstanceTypesMasterInstanceTypeOutput) ToGetInstanceTypesMasterInstanceTypeOutputWithContext(ctx context.Context) GetInstanceTypesMasterInstanceTypeOutput {
 	return o
+}
+
+func (o GetInstanceTypesMasterInstanceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceTypesMasterInstanceType] {
+	return pulumix.Output[GetInstanceTypesMasterInstanceType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cpu size of the instance type.
@@ -607,6 +722,12 @@ func (o GetInstanceTypesMasterInstanceTypeArrayOutput) ToGetInstanceTypesMasterI
 
 func (o GetInstanceTypesMasterInstanceTypeArrayOutput) ToGetInstanceTypesMasterInstanceTypeArrayOutputWithContext(ctx context.Context) GetInstanceTypesMasterInstanceTypeArrayOutput {
 	return o
+}
+
+func (o GetInstanceTypesMasterInstanceTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceTypesMasterInstanceType] {
+	return pulumix.Output[[]GetInstanceTypesMasterInstanceType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceTypesMasterInstanceTypeArrayOutput) Index(i pulumi.IntInput) GetInstanceTypesMasterInstanceTypeOutput {
@@ -656,6 +777,12 @@ func (i GetInstanceTypesTypeArgs) ToGetInstanceTypesTypeOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesTypeOutput)
 }
 
+func (i GetInstanceTypesTypeArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceTypesType] {
+	return pulumix.Output[GetInstanceTypesType]{
+		OutputState: i.ToGetInstanceTypesTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstanceTypesTypeArrayInput is an input type that accepts GetInstanceTypesTypeArray and GetInstanceTypesTypeArrayOutput values.
 // You can construct a concrete instance of `GetInstanceTypesTypeArrayInput` via:
 //
@@ -681,6 +808,12 @@ func (i GetInstanceTypesTypeArray) ToGetInstanceTypesTypeArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesTypeArrayOutput)
 }
 
+func (i GetInstanceTypesTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceTypesType] {
+	return pulumix.Output[[]GetInstanceTypesType]{
+		OutputState: i.ToGetInstanceTypesTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstanceTypesTypeOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceTypesTypeOutput) ElementType() reflect.Type {
@@ -693,6 +826,12 @@ func (o GetInstanceTypesTypeOutput) ToGetInstanceTypesTypeOutput() GetInstanceTy
 
 func (o GetInstanceTypesTypeOutput) ToGetInstanceTypesTypeOutputWithContext(ctx context.Context) GetInstanceTypesTypeOutput {
 	return o
+}
+
+func (o GetInstanceTypesTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceTypesType] {
+	return pulumix.Output[GetInstanceTypesType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cpu size of the instance type.
@@ -722,6 +861,12 @@ func (o GetInstanceTypesTypeArrayOutput) ToGetInstanceTypesTypeArrayOutput() Get
 
 func (o GetInstanceTypesTypeArrayOutput) ToGetInstanceTypesTypeArrayOutputWithContext(ctx context.Context) GetInstanceTypesTypeArrayOutput {
 	return o
+}
+
+func (o GetInstanceTypesTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceTypesType] {
+	return pulumix.Output[[]GetInstanceTypesType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceTypesTypeArrayOutput) Index(i pulumi.IntInput) GetInstanceTypesTypeOutput {
@@ -847,6 +992,12 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
 }
 
+func (i GetInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
+	return pulumix.Output[GetInstancesInstance]{
+		OutputState: i.ToGetInstancesInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
@@ -872,6 +1023,12 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
+func (i GetInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
+	return pulumix.Output[[]GetInstancesInstance]{
+		OutputState: i.ToGetInstancesInstanceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
@@ -884,6 +1041,12 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesI
 
 func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
 	return o
+}
+
+func (o GetInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
+	return pulumix.Output[GetInstancesInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Backup Status of the instance.
@@ -1010,6 +1173,12 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithCo
 	return o
 }
 
+func (o GetInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
+	return pulumix.Output[[]GetInstancesInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
 		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
@@ -1053,6 +1222,12 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneOutput)
 }
 
+func (i GetZonesZoneArgs) ToOutput(ctx context.Context) pulumix.Output[GetZonesZone] {
+	return pulumix.Output[GetZonesZone]{
+		OutputState: i.ToGetZonesZoneOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
@@ -1078,6 +1253,12 @@ func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
 }
 
+func (i GetZonesZoneArray) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZone] {
+	return pulumix.Output[[]GetZonesZone]{
+		OutputState: i.ToGetZonesZoneArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneOutput) ElementType() reflect.Type {
@@ -1090,6 +1271,12 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutput() GetZonesZoneOutput {
 
 func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
 	return o
+}
+
+func (o GetZonesZoneOutput) ToOutput(ctx context.Context) pulumix.Output[GetZonesZone] {
+	return pulumix.Output[GetZonesZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID of the zone.
@@ -1114,6 +1301,12 @@ func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOu
 
 func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
 	return o
+}
+
+func (o GetZonesZoneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZone] {
+	return pulumix.Output[[]GetZonesZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {

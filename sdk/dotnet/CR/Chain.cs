@@ -12,9 +12,286 @@ namespace Pulumi.AliCloud.CR
     /// <summary>
     /// Provides a CR Chain resource.
     /// 
-    /// For information about CR Chain and how to use it, see [What is Chain](https://www.alibabacloud.com/help/en/doc-detail/357808.html).
+    /// For information about CR Chain and how to use it, see [What is Chain](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createchain).
     /// 
-    /// &gt; **NOTE:** Available in v1.161.0+.
+    /// &gt; **NOTE:** Available since v1.161.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", new()
+    ///     {
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         RenewPeriod = 0,
+    ///         RenewalStatus = "ManualRenewal",
+    ///         InstanceType = "Advanced",
+    ///         InstanceName = name,
+    ///     });
+    /// 
+    ///     var defaultRegistryEnterpriseNamespace = new AliCloud.CS.RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace", new()
+    ///     {
+    ///         InstanceId = defaultRegistryEnterpriseInstance.Id,
+    ///         AutoCreate = false,
+    ///         DefaultVisibility = "PUBLIC",
+    ///     });
+    /// 
+    ///     var defaultRegistryEnterpriseRepo = new AliCloud.CS.RegistryEnterpriseRepo("defaultRegistryEnterpriseRepo", new()
+    ///     {
+    ///         InstanceId = defaultRegistryEnterpriseInstance.Id,
+    ///         Namespace = defaultRegistryEnterpriseNamespace.Name,
+    ///         Summary = "this is summary of my new repo",
+    ///         RepoType = "PUBLIC",
+    ///         Detail = "this is a public repo",
+    ///     });
+    /// 
+    ///     var defaultChain = new AliCloud.CR.Chain("defaultChain", new()
+    ///     {
+    ///         ChainName = name,
+    ///         Description = name,
+    ///         InstanceId = defaultRegistryEnterpriseNamespace.InstanceId,
+    ///         RepoName = defaultRegistryEnterpriseRepo.Name,
+    ///         RepoNamespaceName = defaultRegistryEnterpriseNamespace.Name,
+    ///         ChainConfigs = new[]
+    ///         {
+    ///             new AliCloud.CR.Inputs.ChainChainConfigArgs
+    ///             {
+    ///                 Routers = new[]
+    ///                 {
+    ///                     new AliCloud.CR.Inputs.ChainChainConfigRouterArgs
+    ///                     {
+    ///                         Froms = new[]
+    ///                         {
+    ///                             new AliCloud.CR.Inputs.ChainChainConfigRouterFromArgs
+    ///                             {
+    ///                                 NodeName = "DOCKER_IMAGE_BUILD",
+    ///                             },
+    ///                         },
+    ///                         Tos = new[]
+    ///                         {
+    ///                             new AliCloud.CR.Inputs.ChainChainConfigRouterToArgs
+    ///                             {
+    ///                                 NodeName = "DOCKER_IMAGE_PUSH",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new AliCloud.CR.Inputs.ChainChainConfigRouterArgs
+    ///                     {
+    ///                         Froms = new[]
+    ///                         {
+    ///                             new AliCloud.CR.Inputs.ChainChainConfigRouterFromArgs
+    ///                             {
+    ///                                 NodeName = "DOCKER_IMAGE_PUSH",
+    ///                             },
+    ///                         },
+    ///                         Tos = new[]
+    ///                         {
+    ///                             new AliCloud.CR.Inputs.ChainChainConfigRouterToArgs
+    ///                             {
+    ///                                 NodeName = "VULNERABILITY_SCANNING",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new AliCloud.CR.Inputs.ChainChainConfigRouterArgs
+    ///                     {
+    ///                         Froms = new[]
+    ///                         {
+    ///                             new AliCloud.CR.Inputs.ChainChainConfigRouterFromArgs
+    ///                             {
+    ///                                 NodeName = "VULNERABILITY_SCANNING",
+    ///                             },
+    ///                         },
+    ///                         Tos = new[]
+    ///                         {
+    ///                             new AliCloud.CR.Inputs.ChainChainConfigRouterToArgs
+    ///                             {
+    ///                                 NodeName = "ACTIVATE_REPLICATION",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new AliCloud.CR.Inputs.ChainChainConfigRouterArgs
+    ///                     {
+    ///                         Froms = new[]
+    ///                         {
+    ///                             new AliCloud.CR.Inputs.ChainChainConfigRouterFromArgs
+    ///                             {
+    ///                                 NodeName = "ACTIVATE_REPLICATION",
+    ///                             },
+    ///                         },
+    ///                         Tos = new[]
+    ///                         {
+    ///                             new AliCloud.CR.Inputs.ChainChainConfigRouterToArgs
+    ///                             {
+    ///                                 NodeName = "TRIGGER",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new AliCloud.CR.Inputs.ChainChainConfigRouterArgs
+    ///                     {
+    ///                         Froms = new[]
+    ///                         {
+    ///                             new AliCloud.CR.Inputs.ChainChainConfigRouterFromArgs
+    ///                             {
+    ///                                 NodeName = "VULNERABILITY_SCANNING",
+    ///                             },
+    ///                         },
+    ///                         Tos = new[]
+    ///                         {
+    ///                             new AliCloud.CR.Inputs.ChainChainConfigRouterToArgs
+    ///                             {
+    ///                                 NodeName = "SNAPSHOT",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new AliCloud.CR.Inputs.ChainChainConfigRouterArgs
+    ///                     {
+    ///                         Froms = new[]
+    ///                         {
+    ///                             new AliCloud.CR.Inputs.ChainChainConfigRouterFromArgs
+    ///                             {
+    ///                                 NodeName = "SNAPSHOT",
+    ///                             },
+    ///                         },
+    ///                         Tos = new[]
+    ///                         {
+    ///                             new AliCloud.CR.Inputs.ChainChainConfigRouterToArgs
+    ///                             {
+    ///                                 NodeName = "TRIGGER_SNAPSHOT",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Nodes = new[]
+    ///                 {
+    ///                     new AliCloud.CR.Inputs.ChainChainConfigNodeArgs
+    ///                     {
+    ///                         Enable = true,
+    ///                         NodeName = "DOCKER_IMAGE_BUILD",
+    ///                         NodeConfigs = new[]
+    ///                         {
+    ///                             new AliCloud.CR.Inputs.ChainChainConfigNodeNodeConfigArgs
+    ///                             {
+    ///                                 DenyPolicies = new[]
+    ///                                 {
+    ///                                     null,
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new AliCloud.CR.Inputs.ChainChainConfigNodeArgs
+    ///                     {
+    ///                         Enable = true,
+    ///                         NodeName = "DOCKER_IMAGE_PUSH",
+    ///                         NodeConfigs = new[]
+    ///                         {
+    ///                             new AliCloud.CR.Inputs.ChainChainConfigNodeNodeConfigArgs
+    ///                             {
+    ///                                 DenyPolicies = new[]
+    ///                                 {
+    ///                                     null,
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new AliCloud.CR.Inputs.ChainChainConfigNodeArgs
+    ///                     {
+    ///                         Enable = true,
+    ///                         NodeName = "VULNERABILITY_SCANNING",
+    ///                         NodeConfigs = new[]
+    ///                         {
+    ///                             new AliCloud.CR.Inputs.ChainChainConfigNodeNodeConfigArgs
+    ///                             {
+    ///                                 DenyPolicies = new[]
+    ///                                 {
+    ///                                     new AliCloud.CR.Inputs.ChainChainConfigNodeNodeConfigDenyPolicyArgs
+    ///                                     {
+    ///                                         IssueLevel = "MEDIUM",
+    ///                                         IssueCount = "1",
+    ///                                         Action = "BLOCK_DELETE_TAG",
+    ///                                         Logic = "AND",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new AliCloud.CR.Inputs.ChainChainConfigNodeArgs
+    ///                     {
+    ///                         Enable = true,
+    ///                         NodeName = "ACTIVATE_REPLICATION",
+    ///                         NodeConfigs = new[]
+    ///                         {
+    ///                             new AliCloud.CR.Inputs.ChainChainConfigNodeNodeConfigArgs
+    ///                             {
+    ///                                 DenyPolicies = new[]
+    ///                                 {
+    ///                                     null,
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new AliCloud.CR.Inputs.ChainChainConfigNodeArgs
+    ///                     {
+    ///                         Enable = true,
+    ///                         NodeName = "TRIGGER",
+    ///                         NodeConfigs = new[]
+    ///                         {
+    ///                             new AliCloud.CR.Inputs.ChainChainConfigNodeNodeConfigArgs
+    ///                             {
+    ///                                 DenyPolicies = new[]
+    ///                                 {
+    ///                                     null,
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new AliCloud.CR.Inputs.ChainChainConfigNodeArgs
+    ///                     {
+    ///                         Enable = false,
+    ///                         NodeName = "SNAPSHOT",
+    ///                         NodeConfigs = new[]
+    ///                         {
+    ///                             new AliCloud.CR.Inputs.ChainChainConfigNodeNodeConfigArgs
+    ///                             {
+    ///                                 DenyPolicies = new[]
+    ///                                 {
+    ///                                     null,
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new AliCloud.CR.Inputs.ChainChainConfigNodeArgs
+    ///                     {
+    ///                         Enable = false,
+    ///                         NodeName = "TRIGGER_SNAPSHOT",
+    ///                         NodeConfigs = new[]
+    ///                         {
+    ///                             new AliCloud.CR.Inputs.ChainChainConfigNodeNodeConfigArgs
+    ///                             {
+    ///                                 DenyPolicies = new[]
+    ///                                 {
+    ///                                     null,
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -28,7 +305,7 @@ namespace Pulumi.AliCloud.CR
     public partial class Chain : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+        /// The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         /// </summary>
         [Output("chainConfigs")]
         public Output<ImmutableArray<Outputs.ChainChainConfig>> ChainConfigs { get; private set; } = null!;
@@ -119,7 +396,7 @@ namespace Pulumi.AliCloud.CR
         private InputList<Inputs.ChainChainConfigArgs>? _chainConfigs;
 
         /// <summary>
-        /// The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+        /// The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         /// </summary>
         public InputList<Inputs.ChainChainConfigArgs> ChainConfigs
         {
@@ -169,7 +446,7 @@ namespace Pulumi.AliCloud.CR
         private InputList<Inputs.ChainChainConfigGetArgs>? _chainConfigs;
 
         /// <summary>
-        /// The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+        /// The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         /// </summary>
         public InputList<Inputs.ChainChainConfigGetArgs> ChainConfigs
         {

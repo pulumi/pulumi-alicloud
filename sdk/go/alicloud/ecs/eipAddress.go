@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -402,6 +403,12 @@ func (i *EipAddress) ToEipAddressOutputWithContext(ctx context.Context) EipAddre
 	return pulumi.ToOutputWithContext(ctx, i).(EipAddressOutput)
 }
 
+func (i *EipAddress) ToOutput(ctx context.Context) pulumix.Output[*EipAddress] {
+	return pulumix.Output[*EipAddress]{
+		OutputState: i.ToEipAddressOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EipAddressArrayInput is an input type that accepts EipAddressArray and EipAddressArrayOutput values.
 // You can construct a concrete instance of `EipAddressArrayInput` via:
 //
@@ -425,6 +432,12 @@ func (i EipAddressArray) ToEipAddressArrayOutput() EipAddressArrayOutput {
 
 func (i EipAddressArray) ToEipAddressArrayOutputWithContext(ctx context.Context) EipAddressArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EipAddressArrayOutput)
+}
+
+func (i EipAddressArray) ToOutput(ctx context.Context) pulumix.Output[[]*EipAddress] {
+	return pulumix.Output[[]*EipAddress]{
+		OutputState: i.ToEipAddressArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EipAddressMapInput is an input type that accepts EipAddressMap and EipAddressMapOutput values.
@@ -452,6 +465,12 @@ func (i EipAddressMap) ToEipAddressMapOutputWithContext(ctx context.Context) Eip
 	return pulumi.ToOutputWithContext(ctx, i).(EipAddressMapOutput)
 }
 
+func (i EipAddressMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EipAddress] {
+	return pulumix.Output[map[string]*EipAddress]{
+		OutputState: i.ToEipAddressMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EipAddressOutput struct{ *pulumi.OutputState }
 
 func (EipAddressOutput) ElementType() reflect.Type {
@@ -464,6 +483,12 @@ func (o EipAddressOutput) ToEipAddressOutput() EipAddressOutput {
 
 func (o EipAddressOutput) ToEipAddressOutputWithContext(ctx context.Context) EipAddressOutput {
 	return o
+}
+
+func (o EipAddressOutput) ToOutput(ctx context.Context) pulumix.Output[*EipAddress] {
+	return pulumix.Output[*EipAddress]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Special activity ID. This parameter is not required.
@@ -619,6 +644,12 @@ func (o EipAddressArrayOutput) ToEipAddressArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o EipAddressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EipAddress] {
+	return pulumix.Output[[]*EipAddress]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EipAddressArrayOutput) Index(i pulumi.IntInput) EipAddressOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EipAddress {
 		return vs[0].([]*EipAddress)[vs[1].(int)]
@@ -637,6 +668,12 @@ func (o EipAddressMapOutput) ToEipAddressMapOutput() EipAddressMapOutput {
 
 func (o EipAddressMapOutput) ToEipAddressMapOutputWithContext(ctx context.Context) EipAddressMapOutput {
 	return o
+}
+
+func (o EipAddressMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EipAddress] {
+	return pulumix.Output[map[string]*EipAddress]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EipAddressMapOutput) MapIndex(k pulumi.StringInput) EipAddressOutput {

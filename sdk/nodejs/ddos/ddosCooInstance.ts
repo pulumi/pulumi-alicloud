@@ -5,13 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * BGP-Line Anti-DDoS instance resource. "Ddoscoo" is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/doc-detail/69319.htm).
+ * BGP-Line Anti-DDoS instance resource. "Ddoscoo" is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-describeinstances).
  *
  * > **NOTE:** The product region only support cn-hangzhou.
  *
  * > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
  *
- * > **NOTE:** Available in 1.37.0+ .
+ * > **NOTE:** Available since v1.37.0.
  *
  * ## Example Usage
  *
@@ -21,14 +21,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const newInstance = new alicloud.ddos.DdosCooInstance("newInstance", {
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = new alicloud.ddos.DdosCooInstance("default", {
  *     bandwidth: "30",
  *     baseBandwidth: "30",
+ *     serviceBandwidth: "100",
+ *     portCount: "50",
  *     domainCount: "50",
  *     period: 1,
- *     portCount: "50",
  *     productType: "ddoscoo",
- *     serviceBandwidth: "100",
  * });
  * ```
  *

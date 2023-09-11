@@ -10,13 +10,14 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Serverless App Engine (SAE) Namespace resource.
 //
 // For information about SAE Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/sae/latest/createnamespace).
 //
-// > **NOTE:** Available in v1.129.0+.
+// > **NOTE:** Available since v1.129.0.
 //
 // ## Example Usage
 //
@@ -27,17 +28,43 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sae.NewNamespace(ctx, "example", &sae.NamespaceArgs{
-//				NamespaceDescription: pulumi.String("your_description"),
-//				NamespaceId:          pulumi.String("cn-hangzhou:yourname"),
-//				NamespaceName:        pulumi.String("example_value"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sae.NewNamespace(ctx, "example", &sae.NamespaceArgs{
+//				NamespaceId: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("%v:example%v", defaultRegions.Regions[0].Id, result), nil
+//				}).(pulumi.StringOutput),
+//				NamespaceName:           pulumi.String(name),
+//				NamespaceDescription:    pulumi.String(name),
+//				EnableMicroRegistration: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -184,6 +211,12 @@ func (i *Namespace) ToNamespaceOutputWithContext(ctx context.Context) NamespaceO
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceOutput)
 }
 
+func (i *Namespace) ToOutput(ctx context.Context) pulumix.Output[*Namespace] {
+	return pulumix.Output[*Namespace]{
+		OutputState: i.ToNamespaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NamespaceArrayInput is an input type that accepts NamespaceArray and NamespaceArrayOutput values.
 // You can construct a concrete instance of `NamespaceArrayInput` via:
 //
@@ -207,6 +240,12 @@ func (i NamespaceArray) ToNamespaceArrayOutput() NamespaceArrayOutput {
 
 func (i NamespaceArray) ToNamespaceArrayOutputWithContext(ctx context.Context) NamespaceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceArrayOutput)
+}
+
+func (i NamespaceArray) ToOutput(ctx context.Context) pulumix.Output[[]*Namespace] {
+	return pulumix.Output[[]*Namespace]{
+		OutputState: i.ToNamespaceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NamespaceMapInput is an input type that accepts NamespaceMap and NamespaceMapOutput values.
@@ -234,6 +273,12 @@ func (i NamespaceMap) ToNamespaceMapOutputWithContext(ctx context.Context) Names
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceMapOutput)
 }
 
+func (i NamespaceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Namespace] {
+	return pulumix.Output[map[string]*Namespace]{
+		OutputState: i.ToNamespaceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NamespaceOutput struct{ *pulumi.OutputState }
 
 func (NamespaceOutput) ElementType() reflect.Type {
@@ -246,6 +291,12 @@ func (o NamespaceOutput) ToNamespaceOutput() NamespaceOutput {
 
 func (o NamespaceOutput) ToNamespaceOutputWithContext(ctx context.Context) NamespaceOutput {
 	return o
+}
+
+func (o NamespaceOutput) ToOutput(ctx context.Context) pulumix.Output[*Namespace] {
+	return pulumix.Output[*Namespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enableMicroRegistration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
@@ -287,6 +338,12 @@ func (o NamespaceArrayOutput) ToNamespaceArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o NamespaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Namespace] {
+	return pulumix.Output[[]*Namespace]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NamespaceArrayOutput) Index(i pulumi.IntInput) NamespaceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Namespace {
 		return vs[0].([]*Namespace)[vs[1].(int)]
@@ -305,6 +362,12 @@ func (o NamespaceMapOutput) ToNamespaceMapOutput() NamespaceMapOutput {
 
 func (o NamespaceMapOutput) ToNamespaceMapOutputWithContext(ctx context.Context) NamespaceMapOutput {
 	return o
+}
+
+func (o NamespaceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Namespace] {
+	return pulumix.Output[map[string]*Namespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NamespaceMapOutput) MapIndex(k pulumi.StringInput) NamespaceOutput {

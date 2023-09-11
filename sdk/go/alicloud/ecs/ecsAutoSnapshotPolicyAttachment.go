@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECS Auto Snapshot Policy Attachment resource.
@@ -203,6 +204,12 @@ func (i *EcsAutoSnapshotPolicyAttachment) ToEcsAutoSnapshotPolicyAttachmentOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(EcsAutoSnapshotPolicyAttachmentOutput)
 }
 
+func (i *EcsAutoSnapshotPolicyAttachment) ToOutput(ctx context.Context) pulumix.Output[*EcsAutoSnapshotPolicyAttachment] {
+	return pulumix.Output[*EcsAutoSnapshotPolicyAttachment]{
+		OutputState: i.ToEcsAutoSnapshotPolicyAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EcsAutoSnapshotPolicyAttachmentArrayInput is an input type that accepts EcsAutoSnapshotPolicyAttachmentArray and EcsAutoSnapshotPolicyAttachmentArrayOutput values.
 // You can construct a concrete instance of `EcsAutoSnapshotPolicyAttachmentArrayInput` via:
 //
@@ -226,6 +233,12 @@ func (i EcsAutoSnapshotPolicyAttachmentArray) ToEcsAutoSnapshotPolicyAttachmentA
 
 func (i EcsAutoSnapshotPolicyAttachmentArray) ToEcsAutoSnapshotPolicyAttachmentArrayOutputWithContext(ctx context.Context) EcsAutoSnapshotPolicyAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsAutoSnapshotPolicyAttachmentArrayOutput)
+}
+
+func (i EcsAutoSnapshotPolicyAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*EcsAutoSnapshotPolicyAttachment] {
+	return pulumix.Output[[]*EcsAutoSnapshotPolicyAttachment]{
+		OutputState: i.ToEcsAutoSnapshotPolicyAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EcsAutoSnapshotPolicyAttachmentMapInput is an input type that accepts EcsAutoSnapshotPolicyAttachmentMap and EcsAutoSnapshotPolicyAttachmentMapOutput values.
@@ -253,6 +266,12 @@ func (i EcsAutoSnapshotPolicyAttachmentMap) ToEcsAutoSnapshotPolicyAttachmentMap
 	return pulumi.ToOutputWithContext(ctx, i).(EcsAutoSnapshotPolicyAttachmentMapOutput)
 }
 
+func (i EcsAutoSnapshotPolicyAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsAutoSnapshotPolicyAttachment] {
+	return pulumix.Output[map[string]*EcsAutoSnapshotPolicyAttachment]{
+		OutputState: i.ToEcsAutoSnapshotPolicyAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EcsAutoSnapshotPolicyAttachmentOutput struct{ *pulumi.OutputState }
 
 func (EcsAutoSnapshotPolicyAttachmentOutput) ElementType() reflect.Type {
@@ -265,6 +284,12 @@ func (o EcsAutoSnapshotPolicyAttachmentOutput) ToEcsAutoSnapshotPolicyAttachment
 
 func (o EcsAutoSnapshotPolicyAttachmentOutput) ToEcsAutoSnapshotPolicyAttachmentOutputWithContext(ctx context.Context) EcsAutoSnapshotPolicyAttachmentOutput {
 	return o
+}
+
+func (o EcsAutoSnapshotPolicyAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*EcsAutoSnapshotPolicyAttachment] {
+	return pulumix.Output[*EcsAutoSnapshotPolicyAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The auto snapshot policy id.
@@ -291,6 +316,12 @@ func (o EcsAutoSnapshotPolicyAttachmentArrayOutput) ToEcsAutoSnapshotPolicyAttac
 	return o
 }
 
+func (o EcsAutoSnapshotPolicyAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EcsAutoSnapshotPolicyAttachment] {
+	return pulumix.Output[[]*EcsAutoSnapshotPolicyAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EcsAutoSnapshotPolicyAttachmentArrayOutput) Index(i pulumi.IntInput) EcsAutoSnapshotPolicyAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsAutoSnapshotPolicyAttachment {
 		return vs[0].([]*EcsAutoSnapshotPolicyAttachment)[vs[1].(int)]
@@ -309,6 +340,12 @@ func (o EcsAutoSnapshotPolicyAttachmentMapOutput) ToEcsAutoSnapshotPolicyAttachm
 
 func (o EcsAutoSnapshotPolicyAttachmentMapOutput) ToEcsAutoSnapshotPolicyAttachmentMapOutputWithContext(ctx context.Context) EcsAutoSnapshotPolicyAttachmentMapOutput {
 	return o
+}
+
+func (o EcsAutoSnapshotPolicyAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsAutoSnapshotPolicyAttachment] {
+	return pulumix.Output[map[string]*EcsAutoSnapshotPolicyAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EcsAutoSnapshotPolicyAttachmentMapOutput) MapIndex(k pulumi.StringInput) EcsAutoSnapshotPolicyAttachmentOutput {

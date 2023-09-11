@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Cloud Firewall Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/product/90174.htm).
  * 
- * &gt; **NOTE:** Available in v1.139.0+.
+ * &gt; **NOTE:** Available since v1.139.0.
  * 
  * ## Example Usage
  * 
@@ -49,12 +49,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
  *             .bandWidth(10)
- *             .cfwLog(false)
+ *             .cfwLog(true)
  *             .cfwLogStorage(1000)
- *             .cfwService(false)
  *             .ipNumber(20)
  *             .paymentType(&#34;Subscription&#34;)
- *             .period(6)
+ *             .period(1)
  *             .spec(&#34;premium_version&#34;)
  *             .build());
  * 
@@ -74,6 +73,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cloudfirewall/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
+     * The number of multi account. It will be ignored when `cfw_account = false`.
+     * 
+     */
+    @Export(name="accountNumber", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> accountNumber;
+
+    /**
+     * @return The number of multi account. It will be ignored when `cfw_account = false`.
+     * 
+     */
+    public Output<Optional<Integer>> accountNumber() {
+        return Codegen.optional(this.accountNumber);
+    }
+    /**
      * Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
      * 
      */
@@ -86,6 +99,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> bandWidth() {
         return this.bandWidth;
+    }
+    /**
+     * Whether to use multi-account. Valid values: `true`, `false`.
+     * 
+     */
+    @Export(name="cfwAccount", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> cfwAccount;
+
+    /**
+     * @return Whether to use multi-account. Valid values: `true`, `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> cfwAccount() {
+        return Codegen.optional(this.cfwAccount);
     }
     /**
      * Whether to use log audit. Valid values: `true`, `false`.
@@ -102,32 +129,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.cfwLog;
     }
     /**
-     * The log storage capacity.
+     * The log storage capacity. It will be ignored when `cfw_log = false`.
      * 
      */
     @Export(name="cfwLogStorage", type=Integer.class, parameters={})
-    private Output<Integer> cfwLogStorage;
+    private Output</* @Nullable */ Integer> cfwLogStorage;
 
     /**
-     * @return The log storage capacity.
+     * @return The log storage capacity. It will be ignored when `cfw_log = false`.
      * 
      */
-    public Output<Integer> cfwLogStorage() {
-        return this.cfwLogStorage;
-    }
-    /**
-     * Whether to use expert service. Valid values: `true`, `false`.
-     * 
-     */
-    @Export(name="cfwService", type=Boolean.class, parameters={})
-    private Output<Boolean> cfwService;
-
-    /**
-     * @return Whether to use expert service. Valid values: `true`, `false`.
-     * 
-     */
-    public Output<Boolean> cfwService() {
-        return this.cfwService;
+    public Output<Optional<Integer>> cfwLogStorage() {
+        return Codegen.optional(this.cfwLogStorage);
     }
     /**
      * The creation time.
@@ -158,14 +171,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.endTime;
     }
     /**
-     * The number of protected VPCs. Valid values between 2 and 500.
+     * The number of protected VPCs. It will be ignored when `spec = &#34;premium_version&#34;`. Valid values between 2 and 500.
      * 
      */
     @Export(name="fwVpcNumber", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> fwVpcNumber;
 
     /**
-     * @return The number of protected VPCs. Valid values between 2 and 500.
+     * @return The number of protected VPCs. It will be ignored when `spec = &#34;premium_version&#34;`. Valid values between 2 and 500.
      * 
      */
     public Output<Optional<Integer>> fwVpcNumber() {
@@ -214,14 +227,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.logistics);
     }
     /**
-     * The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+     * The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
      * 
      */
     @Export(name="modifyType", type=String.class, parameters={})
     private Output</* @Nullable */ String> modifyType;
 
     /**
-     * @return The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+     * @return The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
      * 
      */
     public Output<Optional<String>> modifyType() {
@@ -270,42 +283,60 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.releaseTime;
     }
     /**
-     * Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+     * Automatic renewal period. Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
+     * 
+     * @deprecated
+     * Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
      * 
      */
+    @Deprecated /* Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead. */
     @Export(name="renewPeriod", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> renewPeriod;
+    private Output<Integer> renewPeriod;
 
     /**
-     * @return Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+     * @return Automatic renewal period. Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
      * 
      */
-    public Output<Optional<Integer>> renewPeriod() {
-        return Codegen.optional(this.renewPeriod);
+    public Output<Integer> renewPeriod() {
+        return this.renewPeriod;
     }
     /**
-     * Automatic renewal period unit. Valid values: `Month`,`Year`.
+     * Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+     * 
+     */
+    @Export(name="renewalDuration", type=Integer.class, parameters={})
+    private Output<Integer> renewalDuration;
+
+    /**
+     * @return Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+     * 
+     */
+    public Output<Integer> renewalDuration() {
+        return this.renewalDuration;
+    }
+    /**
+     * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
      * 
      */
     @Export(name="renewalDurationUnit", type=String.class, parameters={})
-    private Output<String> renewalDurationUnit;
+    private Output</* @Nullable */ String> renewalDurationUnit;
 
     /**
-     * @return Automatic renewal period unit. Valid values: `Month`,`Year`.
+     * @return Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
      * 
      */
-    public Output<String> renewalDurationUnit() {
-        return this.renewalDurationUnit;
+    public Output<Optional<String>> renewalDurationUnit() {
+        return Codegen.optional(this.renewalDurationUnit);
     }
     /**
-     * Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+     * Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
      * 
      */
     @Export(name="renewalStatus", type=String.class, parameters={})
     private Output<String> renewalStatus;
 
     /**
-     * @return Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+     * @return Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
      * 
      */
     public Output<String> renewalStatus() {

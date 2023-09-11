@@ -29,6 +29,9 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         /// List of elastic network cards.
         /// </summary>
         public readonly ImmutableArray<Outputs.FirewallVpcFirewallCenLocalVpcEniList> EniLists;
+        /// <summary>
+        /// The ID of the vSwitch specified when the routing mode is manual mode.
+        /// </summary>
         public readonly string? ManualVswitchId;
         /// <summary>
         /// The ID of the VPC instance that created the VPC firewall.

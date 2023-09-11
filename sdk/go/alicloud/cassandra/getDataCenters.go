@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `cassandra.getDataCenters` data source provides a collection of Cassandra Data Centers available in Alicloud account.
@@ -122,6 +123,12 @@ func (o GetDataCentersResultOutput) ToGetDataCentersResultOutput() GetDataCenter
 
 func (o GetDataCentersResultOutput) ToGetDataCentersResultOutputWithContext(ctx context.Context) GetDataCentersResultOutput {
 	return o
+}
+
+func (o GetDataCentersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDataCentersResult] {
+	return pulumix.Output[GetDataCentersResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of Cassandra data centers. Its every element contains the following attributes:

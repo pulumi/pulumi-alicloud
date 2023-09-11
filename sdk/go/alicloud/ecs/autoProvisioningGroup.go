@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECS auto provisioning group resource which is a solution that uses preemptive instances and payAsYouGo instances to rapidly deploy clusters.
@@ -406,6 +407,12 @@ func (i *AutoProvisioningGroup) ToAutoProvisioningGroupOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AutoProvisioningGroupOutput)
 }
 
+func (i *AutoProvisioningGroup) ToOutput(ctx context.Context) pulumix.Output[*AutoProvisioningGroup] {
+	return pulumix.Output[*AutoProvisioningGroup]{
+		OutputState: i.ToAutoProvisioningGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AutoProvisioningGroupArrayInput is an input type that accepts AutoProvisioningGroupArray and AutoProvisioningGroupArrayOutput values.
 // You can construct a concrete instance of `AutoProvisioningGroupArrayInput` via:
 //
@@ -429,6 +436,12 @@ func (i AutoProvisioningGroupArray) ToAutoProvisioningGroupArrayOutput() AutoPro
 
 func (i AutoProvisioningGroupArray) ToAutoProvisioningGroupArrayOutputWithContext(ctx context.Context) AutoProvisioningGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AutoProvisioningGroupArrayOutput)
+}
+
+func (i AutoProvisioningGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*AutoProvisioningGroup] {
+	return pulumix.Output[[]*AutoProvisioningGroup]{
+		OutputState: i.ToAutoProvisioningGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AutoProvisioningGroupMapInput is an input type that accepts AutoProvisioningGroupMap and AutoProvisioningGroupMapOutput values.
@@ -456,6 +469,12 @@ func (i AutoProvisioningGroupMap) ToAutoProvisioningGroupMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(AutoProvisioningGroupMapOutput)
 }
 
+func (i AutoProvisioningGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AutoProvisioningGroup] {
+	return pulumix.Output[map[string]*AutoProvisioningGroup]{
+		OutputState: i.ToAutoProvisioningGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AutoProvisioningGroupOutput struct{ *pulumi.OutputState }
 
 func (AutoProvisioningGroupOutput) ElementType() reflect.Type {
@@ -468,6 +487,12 @@ func (o AutoProvisioningGroupOutput) ToAutoProvisioningGroupOutput() AutoProvisi
 
 func (o AutoProvisioningGroupOutput) ToAutoProvisioningGroupOutputWithContext(ctx context.Context) AutoProvisioningGroupOutput {
 	return o
+}
+
+func (o AutoProvisioningGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoProvisioningGroup] {
+	return pulumix.Output[*AutoProvisioningGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
@@ -586,6 +611,12 @@ func (o AutoProvisioningGroupArrayOutput) ToAutoProvisioningGroupArrayOutputWith
 	return o
 }
 
+func (o AutoProvisioningGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AutoProvisioningGroup] {
+	return pulumix.Output[[]*AutoProvisioningGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AutoProvisioningGroupArrayOutput) Index(i pulumi.IntInput) AutoProvisioningGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AutoProvisioningGroup {
 		return vs[0].([]*AutoProvisioningGroup)[vs[1].(int)]
@@ -604,6 +635,12 @@ func (o AutoProvisioningGroupMapOutput) ToAutoProvisioningGroupMapOutput() AutoP
 
 func (o AutoProvisioningGroupMapOutput) ToAutoProvisioningGroupMapOutputWithContext(ctx context.Context) AutoProvisioningGroupMapOutput {
 	return o
+}
+
+func (o AutoProvisioningGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AutoProvisioningGroup] {
+	return pulumix.Output[map[string]*AutoProvisioningGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutoProvisioningGroupMapOutput) MapIndex(k pulumi.StringInput) AutoProvisioningGroupOutput {

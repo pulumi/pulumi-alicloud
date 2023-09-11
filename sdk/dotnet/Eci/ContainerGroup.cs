@@ -28,17 +28,41 @@ namespace Pulumi.AliCloud.Eci
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.Eci.ContainerGroup("example", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.Eci.GetZones.Invoke();
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         ContainerGroupName = "tf-eci-gruop",
+    ///         VpcName = name,
+    ///         CidrBlock = "10.0.0.0/8",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.1.0.0/16",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneIds[0]),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultContainerGroup = new AliCloud.Eci.ContainerGroup("defaultContainerGroup", new()
+    ///     {
+    ///         ContainerGroupName = name,
     ///         Cpu = 8,
     ///         Memory = 16,
     ///         RestartPolicy = "OnFailure",
-    ///         SecurityGroupId = alicloud_security_group.Group.Id,
-    ///         VswitchId = data.Alicloud_vpcs.Default.Vpcs[0].Vswitch_ids[0],
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///         VswitchId = defaultSwitch.Id,
     ///         Tags = 
     ///         {
-    ///             { "TF", "create" },
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
     ///         },
     ///         Containers = new[]
     ///         {
@@ -58,7 +82,7 @@ namespace Pulumi.AliCloud.Eci
     ///                 {
     ///                     new AliCloud.Eci.Inputs.ContainerGroupContainerVolumeMountArgs
     ///                     {
-    ///                         MountPath = "/tmp/test",
+    ///                         MountPath = "/tmp/example",
     ///                         ReadOnly = false,
     ///                         Name = "empty1",
     ///                     },
@@ -75,7 +99,7 @@ namespace Pulumi.AliCloud.Eci
     ///                 {
     ///                     new AliCloud.Eci.Inputs.ContainerGroupContainerEnvironmentVarArgs
     ///                     {
-    ///                         Key = "test",
+    ///                         Key = "name",
     ///                         Value = "nginx",
     ///                     },
     ///                 },

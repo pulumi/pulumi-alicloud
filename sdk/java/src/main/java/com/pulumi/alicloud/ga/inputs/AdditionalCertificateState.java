@@ -31,14 +31,14 @@ public final class AdditionalCertificateState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The Certificate ID.
+     * The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
      * 
      */
     @Import(name="certificateId")
     private @Nullable Output<String> certificateId;
 
     /**
-     * @return The Certificate ID.
+     * @return The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
      * 
      */
     public Optional<Output<String>> certificateId() {
@@ -124,7 +124,7 @@ public final class AdditionalCertificateState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param certificateId The Certificate ID.
+         * @param certificateId The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class AdditionalCertificateState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param certificateId The Certificate ID.
+         * @param certificateId The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
          * 
          * @return builder
          * 

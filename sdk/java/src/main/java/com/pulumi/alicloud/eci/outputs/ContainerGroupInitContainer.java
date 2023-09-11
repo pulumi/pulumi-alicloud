@@ -69,12 +69,12 @@ public final class ContainerGroupInitContainer {
      */
     private @Nullable List<ContainerGroupInitContainerPort> ports;
     /**
-     * @return (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+     * @return Indicates whether the container passed the readiness probe.
      * 
      */
     private @Nullable Boolean ready;
     /**
-     * @return (Available since v1.208.0) The number of times that the container restarted.
+     * @return The number of times that the container restarted.
      * 
      */
     private @Nullable Integer restartCount;
@@ -161,14 +161,14 @@ public final class ContainerGroupInitContainer {
         return this.ports == null ? List.of() : this.ports;
     }
     /**
-     * @return (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+     * @return Indicates whether the container passed the readiness probe.
      * 
      */
     public Optional<Boolean> ready() {
         return Optional.ofNullable(this.ready);
     }
     /**
-     * @return (Available since v1.208.0) The number of times that the container restarted.
+     * @return The number of times that the container restarted.
      * 
      */
     public Optional<Integer> restartCount() {

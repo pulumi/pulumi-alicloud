@@ -43,8 +43,10 @@ class ChainChainConfig(dict):
                  nodes: Optional[Sequence['outputs.ChainChainConfigNode']] = None,
                  routers: Optional[Sequence['outputs.ChainChainConfigRouter']] = None):
         """
-        :param Sequence['ChainChainConfigNodeArgs'] nodes: Each node in the delivery chain.
-        :param Sequence['ChainChainConfigRouterArgs'] routers: Execution sequence relationship between delivery chain nodes.
+        :param Sequence['ChainChainConfigNodeArgs'] nodes: Each node in the delivery chain. See `nodes` below.
+               
+               > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
+        :param Sequence['ChainChainConfigRouterArgs'] routers: Execution sequence relationship between delivery chain nodes. See `routers` below.
         """
         if nodes is not None:
             pulumi.set(__self__, "nodes", nodes)
@@ -55,7 +57,9 @@ class ChainChainConfig(dict):
     @pulumi.getter
     def nodes(self) -> Optional[Sequence['outputs.ChainChainConfigNode']]:
         """
-        Each node in the delivery chain.
+        Each node in the delivery chain. See `nodes` below.
+
+        > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
         """
         return pulumi.get(self, "nodes")
 
@@ -63,7 +67,7 @@ class ChainChainConfig(dict):
     @pulumi.getter
     def routers(self) -> Optional[Sequence['outputs.ChainChainConfigRouter']]:
         """
-        Execution sequence relationship between delivery chain nodes.
+        Execution sequence relationship between delivery chain nodes. See `routers` below.
         """
         return pulumi.get(self, "routers")
 
@@ -95,8 +99,8 @@ class ChainChainConfigNode(dict):
                  node_name: Optional[str] = None):
         """
         :param bool enable: Whether to enable the delivery chain node. Valid values: `true`, `false`.
-        :param Sequence['ChainChainConfigNodeNodeConfigArgs'] node_configs: The configuration of delivery chain node.
-        :param str node_name: The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+        :param Sequence['ChainChainConfigNodeNodeConfigArgs'] node_configs: The configuration of delivery chain node. See `node_config` below.
+        :param str node_name: The name of delivery chain node.
         """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
@@ -117,7 +121,7 @@ class ChainChainConfigNode(dict):
     @pulumi.getter(name="nodeConfigs")
     def node_configs(self) -> Optional[Sequence['outputs.ChainChainConfigNodeNodeConfig']]:
         """
-        The configuration of delivery chain node.
+        The configuration of delivery chain node. See `node_config` below.
         """
         return pulumi.get(self, "node_configs")
 
@@ -125,7 +129,7 @@ class ChainChainConfigNode(dict):
     @pulumi.getter(name="nodeName")
     def node_name(self) -> Optional[str]:
         """
-        The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+        The name of delivery chain node.
         """
         return pulumi.get(self, "node_name")
 
@@ -152,7 +156,7 @@ class ChainChainConfigNodeNodeConfig(dict):
     def __init__(__self__, *,
                  deny_policies: Optional[Sequence['outputs.ChainChainConfigNodeNodeConfigDenyPolicy']] = None):
         """
-        :param Sequence['ChainChainConfigNodeNodeConfigDenyPolicyArgs'] deny_policies: Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
+        :param Sequence['ChainChainConfigNodeNodeConfigDenyPolicyArgs'] deny_policies: Blocking rules for scanning nodes in delivery chain nodes. See `deny_policy` below. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
         """
         if deny_policies is not None:
             pulumi.set(__self__, "deny_policies", deny_policies)
@@ -161,7 +165,7 @@ class ChainChainConfigNodeNodeConfig(dict):
     @pulumi.getter(name="denyPolicies")
     def deny_policies(self) -> Optional[Sequence['outputs.ChainChainConfigNodeNodeConfigDenyPolicy']]:
         """
-        Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
+        Blocking rules for scanning nodes in delivery chain nodes. See `deny_policy` below. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
         """
         return pulumi.get(self, "deny_policies")
 
@@ -194,8 +198,6 @@ class ChainChainConfigNodeNodeConfigDenyPolicy(dict):
                  logic: Optional[str] = None):
         """
         :param str action: The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
-               
-               > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
         :param str issue_count: The count of scanning vulnerabilities that triggers blocking.
         :param str issue_level: The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
         :param str logic: The logic of trigger blocking. Valid values: `AND`, `OR`.
@@ -214,8 +216,6 @@ class ChainChainConfigNodeNodeConfigDenyPolicy(dict):
     def action(self) -> Optional[str]:
         """
         The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
-
-        > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
         """
         return pulumi.get(self, "action")
 
@@ -250,8 +250,8 @@ class ChainChainConfigRouter(dict):
                  froms: Optional[Sequence['outputs.ChainChainConfigRouterFrom']] = None,
                  tos: Optional[Sequence['outputs.ChainChainConfigRouterTo']] = None):
         """
-        :param Sequence['ChainChainConfigRouterFromArgs'] froms: Source node.
-        :param Sequence['ChainChainConfigRouterToArgs'] tos: Destination node.
+        :param Sequence['ChainChainConfigRouterFromArgs'] froms: Source node. See `from` below.
+        :param Sequence['ChainChainConfigRouterToArgs'] tos: Destination node. See `to` below.
         """
         if froms is not None:
             pulumi.set(__self__, "froms", froms)
@@ -262,7 +262,7 @@ class ChainChainConfigRouter(dict):
     @pulumi.getter
     def froms(self) -> Optional[Sequence['outputs.ChainChainConfigRouterFrom']]:
         """
-        Source node.
+        Source node. See `from` below.
         """
         return pulumi.get(self, "froms")
 
@@ -270,7 +270,7 @@ class ChainChainConfigRouter(dict):
     @pulumi.getter
     def tos(self) -> Optional[Sequence['outputs.ChainChainConfigRouterTo']]:
         """
-        Destination node.
+        Destination node. See `to` below.
         """
         return pulumi.get(self, "tos")
 

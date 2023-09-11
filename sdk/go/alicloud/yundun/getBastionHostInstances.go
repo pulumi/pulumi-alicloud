@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetBastionHostInstances(ctx *pulumi.Context, args *GetBastionHostInstancesArgs, opts ...pulumi.InvokeOption) (*GetBastionHostInstancesResult, error) {
@@ -79,6 +80,12 @@ func (o GetBastionHostInstancesResultOutput) ToGetBastionHostInstancesResultOutp
 
 func (o GetBastionHostInstancesResultOutput) ToGetBastionHostInstancesResultOutputWithContext(ctx context.Context) GetBastionHostInstancesResultOutput {
 	return o
+}
+
+func (o GetBastionHostInstancesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBastionHostInstancesResult] {
+	return pulumix.Output[GetBastionHostInstancesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetBastionHostInstancesResultOutput) DescriptionRegex() pulumi.StringPtrOutput {

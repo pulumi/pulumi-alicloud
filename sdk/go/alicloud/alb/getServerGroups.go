@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Alb Server Groups of the current Alibaba Cloud user.
@@ -160,6 +161,12 @@ func (o GetServerGroupsResultOutput) ToGetServerGroupsResultOutput() GetServerGr
 
 func (o GetServerGroupsResultOutput) ToGetServerGroupsResultOutputWithContext(ctx context.Context) GetServerGroupsResultOutput {
 	return o
+}
+
+func (o GetServerGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServerGroupsResult] {
+	return pulumix.Output[GetServerGroupsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetServerGroupsResultOutput) EnableDetails() pulumi.BoolPtrOutput {

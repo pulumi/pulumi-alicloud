@@ -37,14 +37,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The additional volumes. See the following `Block additional_volumes`.
+     * The additional volumes. See `additional_volumes` below.
      * 
      */
     @Import(name="additionalVolumes")
     private @Nullable Output<List<ClusterAdditionalVolumeArgs>> additionalVolumes;
 
     /**
-     * @return The additional volumes. See the following `Block additional_volumes`.
+     * @return The additional volumes. See `additional_volumes` below.
      * 
      */
     public Optional<Output<List<ClusterAdditionalVolumeArgs>>> additionalVolumes() {
@@ -52,14 +52,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The application. See the following `Block application`.
+     * The application. See `application` below.
      * 
      */
     @Import(name="applications")
     private @Nullable Output<List<ClusterApplicationArgs>> applications;
 
     /**
-     * @return The application. See the following `Block application`.
+     * @return The application. See `application` below.
      * 
      */
     public Optional<Output<List<ClusterApplicationArgs>>> applications() {
@@ -548,14 +548,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The post install script. See the following `Block post_install_script`.
+     * The post install script. See `post_install_script` below.
      * 
      */
     @Import(name="postInstallScripts")
     private @Nullable Output<List<ClusterPostInstallScriptArgs>> postInstallScripts;
 
     /**
-     * @return The post install script. See the following `Block post_install_script`.
+     * @return The post install script. See `post_install_script` below.
      * 
      */
     public Optional<Output<List<ClusterPostInstallScriptArgs>>> postInstallScripts() {
@@ -1014,7 +1014,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalVolumes The additional volumes. See the following `Block additional_volumes`.
+         * @param additionalVolumes The additional volumes. See `additional_volumes` below.
          * 
          * @return builder
          * 
@@ -1025,7 +1025,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalVolumes The additional volumes. See the following `Block additional_volumes`.
+         * @param additionalVolumes The additional volumes. See `additional_volumes` below.
          * 
          * @return builder
          * 
@@ -1035,7 +1035,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalVolumes The additional volumes. See the following `Block additional_volumes`.
+         * @param additionalVolumes The additional volumes. See `additional_volumes` below.
          * 
          * @return builder
          * 
@@ -1045,7 +1045,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applications The application. See the following `Block application`.
+         * @param applications The application. See `application` below.
          * 
          * @return builder
          * 
@@ -1056,7 +1056,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applications The application. See the following `Block application`.
+         * @param applications The application. See `application` below.
          * 
          * @return builder
          * 
@@ -1066,7 +1066,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applications The application. See the following `Block application`.
+         * @param applications The application. See `application` below.
          * 
          * @return builder
          * 
@@ -1743,7 +1743,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param postInstallScripts The post install script. See the following `Block post_install_script`.
+         * @param postInstallScripts The post install script. See `post_install_script` below.
          * 
          * @return builder
          * 
@@ -1754,7 +1754,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param postInstallScripts The post install script. See the following `Block post_install_script`.
+         * @param postInstallScripts The post install script. See `post_install_script` below.
          * 
          * @return builder
          * 
@@ -1764,7 +1764,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param postInstallScripts The post install script. See the following `Block post_install_script`.
+         * @param postInstallScripts The post install script. See `post_install_script` below.
          * 
          * @return builder
          * 

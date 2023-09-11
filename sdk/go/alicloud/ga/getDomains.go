@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
@@ -104,6 +105,12 @@ func (o GetDomainsResultOutput) ToGetDomainsResultOutput() GetDomainsResultOutpu
 
 func (o GetDomainsResultOutput) ToGetDomainsResultOutputWithContext(ctx context.Context) GetDomainsResultOutput {
 	return o
+}
+
+func (o GetDomainsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainsResult] {
+	return pulumix.Output[GetDomainsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the global acceleration instance.

@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Serverless App Engine (SAE) Config Map resource.
  *
- * For information about Serverless App Engine (SAE) Config Map and how to use it, see [What is Config Map](https://help.aliyun.com/document_detail/97792.html).
+ * For information about Serverless App Engine (SAE) Config Map and how to use it, see [What is Config Map](https://www.alibabacloud.com/help/en/sae/latest/create-configmap).
  *
- * > **NOTE:** Available in v1.130.0+.
+ * > **NOTE:** Available since v1.130.0.
  *
  * ## Example Usage
  *
@@ -18,20 +18,29 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const configMapName = config.get("configMapName") || "examplename";
- * const exampleNamespace = new alicloud.sae.Namespace("exampleNamespace", {
- *     namespaceId: "cn-hangzhou:yourname",
- *     namespaceName: "example_value",
- *     namespaceDescription: "your_description",
+ * const name = config.get("name") || "tf-example";
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
  * });
- * const exampleConfigMap = new alicloud.sae.ConfigMap("exampleConfigMap", {
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultNamespace = new alicloud.sae.Namespace("defaultNamespace", {
+ *     namespaceId: pulumi.all([defaultRegions, defaultRandomInteger.result]).apply(([defaultRegions, result]) => `${defaultRegions.regions?.[0]?.id}:example${result}`),
+ *     namespaceName: name,
+ *     namespaceDescription: name,
+ *     enableMicroRegistration: false,
+ * });
+ * const defaultConfigMap = new alicloud.sae.ConfigMap("defaultConfigMap", {
  *     data: JSON.stringify({
  *         "env.home": "/root",
  *         "env.shell": "/bin/sh",
  *     }),
- *     namespaceId: exampleNamespace.namespaceId,
+ *     namespaceId: defaultNamespace.namespaceId,
  * });
  * ```
  *

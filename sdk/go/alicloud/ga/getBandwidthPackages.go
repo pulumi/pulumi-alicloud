@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Global Accelerator (GA) Bandwidth Packages of the current Alibaba Cloud user.
@@ -132,6 +133,12 @@ func (o GetBandwidthPackagesResultOutput) ToGetBandwidthPackagesResultOutput() G
 
 func (o GetBandwidthPackagesResultOutput) ToGetBandwidthPackagesResultOutputWithContext(ctx context.Context) GetBandwidthPackagesResultOutput {
 	return o
+}
+
+func (o GetBandwidthPackagesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBandwidthPackagesResult] {
+	return pulumix.Output[GetBandwidthPackagesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetBandwidthPackagesResultOutput) EnableDetails() pulumi.BoolPtrOutput {

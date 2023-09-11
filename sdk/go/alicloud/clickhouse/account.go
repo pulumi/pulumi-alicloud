@@ -10,13 +10,14 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Click House Account resource.
 //
-// For information about Click House Account and how to use it, see [What is Account](https://www.alibabacloud.com/product/clickhouse).
+// For information about Click House Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/clickhouse/latest/api-clickhouse-2019-11-11-createaccount).
 //
-// > **NOTE:** Available in v1.134.0+.
+// > **NOTE:** Available since v1.134.0.
 //
 // ## Example Usage
 //
@@ -37,13 +38,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "testaccountname"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
-//			}
-//			pwd := "Tf-testpwd"
-//			if param := cfg.Get("pwd"); param != "" {
-//				pwd = param
 //			}
 //			defaultRegions, err := clickhouse.GetRegions(ctx, &clickhouse.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
@@ -51,39 +48,42 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
-//			}, nil)
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultRegions.Regions[0].ZoneIds[0].ZoneId),
-//			}, nil)
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultRegions.Regions[0].ZoneIds[0].ZoneId),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultDbCluster, err := clickhouse.NewDbCluster(ctx, "defaultDbCluster", &clickhouse.DbClusterArgs{
-//				DbClusterVersion:     pulumi.String("20.3.10.75"),
+//				DbClusterVersion:     pulumi.String("22.8.5.29"),
 //				Category:             pulumi.String("Basic"),
 //				DbClusterClass:       pulumi.String("S8"),
 //				DbClusterNetworkType: pulumi.String("vpc"),
-//				DbClusterDescription: pulumi.String(name),
 //				DbNodeGroupCount:     pulumi.Int(1),
 //				PaymentType:          pulumi.String("PayAsYouGo"),
 //				DbNodeStorage:        pulumi.String("500"),
 //				StorageType:          pulumi.String("cloud_essd"),
-//				VswitchId:            *pulumi.String(defaultSwitches.Vswitches[0].Id),
+//				VswitchId:            defaultSwitch.ID(),
+//				VpcId:                defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = clickhouse.NewAccount(ctx, "defaultAccount", &clickhouse.AccountArgs{
 //				DbClusterId:        defaultDbCluster.ID(),
-//				AccountDescription: pulumi.String("your_description"),
-//				AccountName:        pulumi.String(name),
-//				AccountPassword:    pulumi.String(pwd),
+//				AccountDescription: pulumi.String("tf-example-description"),
+//				AccountName:        pulumi.String("examplename"),
+//				AccountPassword:    pulumi.String("Example1234"),
 //			})
 //			if err != nil {
 //				return err
@@ -298,6 +298,12 @@ func (i *Account) ToAccountOutputWithContext(ctx context.Context) AccountOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(AccountOutput)
 }
 
+func (i *Account) ToOutput(ctx context.Context) pulumix.Output[*Account] {
+	return pulumix.Output[*Account]{
+		OutputState: i.ToAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccountArrayInput is an input type that accepts AccountArray and AccountArrayOutput values.
 // You can construct a concrete instance of `AccountArrayInput` via:
 //
@@ -321,6 +327,12 @@ func (i AccountArray) ToAccountArrayOutput() AccountArrayOutput {
 
 func (i AccountArray) ToAccountArrayOutputWithContext(ctx context.Context) AccountArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountArrayOutput)
+}
+
+func (i AccountArray) ToOutput(ctx context.Context) pulumix.Output[[]*Account] {
+	return pulumix.Output[[]*Account]{
+		OutputState: i.ToAccountArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AccountMapInput is an input type that accepts AccountMap and AccountMapOutput values.
@@ -348,6 +360,12 @@ func (i AccountMap) ToAccountMapOutputWithContext(ctx context.Context) AccountMa
 	return pulumi.ToOutputWithContext(ctx, i).(AccountMapOutput)
 }
 
+func (i AccountMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Account] {
+	return pulumix.Output[map[string]*Account]{
+		OutputState: i.ToAccountMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccountOutput struct{ *pulumi.OutputState }
 
 func (AccountOutput) ElementType() reflect.Type {
@@ -360,6 +378,12 @@ func (o AccountOutput) ToAccountOutput() AccountOutput {
 
 func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOutput {
 	return o
+}
+
+func (o AccountOutput) ToOutput(ctx context.Context) pulumix.Output[*Account] {
+	return pulumix.Output[*Account]{
+		OutputState: o.OutputState,
+	}
 }
 
 // In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
@@ -436,6 +460,12 @@ func (o AccountArrayOutput) ToAccountArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o AccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Account] {
+	return pulumix.Output[[]*Account]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccountArrayOutput) Index(i pulumi.IntInput) AccountOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Account {
 		return vs[0].([]*Account)[vs[1].(int)]
@@ -454,6 +484,12 @@ func (o AccountMapOutput) ToAccountMapOutput() AccountMapOutput {
 
 func (o AccountMapOutput) ToAccountMapOutputWithContext(ctx context.Context) AccountMapOutput {
 	return o
+}
+
+func (o AccountMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Account] {
+	return pulumix.Output[map[string]*Account]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccountMapOutput) MapIndex(k pulumi.StringInput) AccountOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides available scheduled task resources.
@@ -127,6 +128,12 @@ func (o GetScheduledTasksResultOutput) ToGetScheduledTasksResultOutput() GetSche
 
 func (o GetScheduledTasksResultOutput) ToGetScheduledTasksResultOutputWithContext(ctx context.Context) GetScheduledTasksResultOutput {
 	return o
+}
+
+func (o GetScheduledTasksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetScheduledTasksResult] {
+	return pulumix.Output[GetScheduledTasksResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

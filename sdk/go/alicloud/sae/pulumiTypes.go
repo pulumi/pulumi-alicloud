@@ -9,20 +9,21 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
 
 type ApplicationScalingRuleScalingRuleMetric struct {
-	// Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+	// Maximum number of instances applied.
 	MaxReplicas *int `pulumi:"maxReplicas"`
-	// Indicator rule configuration. See the following `Block metrics`.
+	// Indicator rule configuration. See `metrics` below.
 	Metrics []ApplicationScalingRuleScalingRuleMetricMetric `pulumi:"metrics"`
-	// Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+	// Minimum number of instances applied.
 	MinReplicas *int `pulumi:"minReplicas"`
-	// Apply shrink rules. See the following `Block scaleDownRules`.
+	// Apply shrink rules. See `scaleDownRules` below.
 	ScaleDownRules *ApplicationScalingRuleScalingRuleMetricScaleDownRules `pulumi:"scaleDownRules"`
-	// Apply expansion rules. See the following `Block scaleUpRules`.
+	// Apply expansion rules. See `scaleUpRules` below.
 	ScaleUpRules *ApplicationScalingRuleScalingRuleMetricScaleUpRules `pulumi:"scaleUpRules"`
 }
 
@@ -38,15 +39,15 @@ type ApplicationScalingRuleScalingRuleMetricInput interface {
 }
 
 type ApplicationScalingRuleScalingRuleMetricArgs struct {
-	// Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+	// Maximum number of instances applied.
 	MaxReplicas pulumi.IntPtrInput `pulumi:"maxReplicas"`
-	// Indicator rule configuration. See the following `Block metrics`.
+	// Indicator rule configuration. See `metrics` below.
 	Metrics ApplicationScalingRuleScalingRuleMetricMetricArrayInput `pulumi:"metrics"`
-	// Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+	// Minimum number of instances applied.
 	MinReplicas pulumi.IntPtrInput `pulumi:"minReplicas"`
-	// Apply shrink rules. See the following `Block scaleDownRules`.
+	// Apply shrink rules. See `scaleDownRules` below.
 	ScaleDownRules ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrInput `pulumi:"scaleDownRules"`
-	// Apply expansion rules. See the following `Block scaleUpRules`.
+	// Apply expansion rules. See `scaleUpRules` below.
 	ScaleUpRules ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrInput `pulumi:"scaleUpRules"`
 }
 
@@ -60,6 +61,12 @@ func (i ApplicationScalingRuleScalingRuleMetricArgs) ToApplicationScalingRuleSca
 
 func (i ApplicationScalingRuleScalingRuleMetricArgs) ToApplicationScalingRuleScalingRuleMetricOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleMetricOutput)
+}
+
+func (i ApplicationScalingRuleScalingRuleMetricArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationScalingRuleScalingRuleMetric] {
+	return pulumix.Output[ApplicationScalingRuleScalingRuleMetric]{
+		OutputState: i.ToApplicationScalingRuleScalingRuleMetricOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i ApplicationScalingRuleScalingRuleMetricArgs) ToApplicationScalingRuleScalingRuleMetricPtrOutput() ApplicationScalingRuleScalingRuleMetricPtrOutput {
@@ -103,6 +110,12 @@ func (i *applicationScalingRuleScalingRuleMetricPtrType) ToApplicationScalingRul
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleMetricPtrOutput)
 }
 
+func (i *applicationScalingRuleScalingRuleMetricPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationScalingRuleScalingRuleMetric] {
+	return pulumix.Output[*ApplicationScalingRuleScalingRuleMetric]{
+		OutputState: i.ToApplicationScalingRuleScalingRuleMetricPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApplicationScalingRuleScalingRuleMetricOutput struct{ *pulumi.OutputState }
 
 func (ApplicationScalingRuleScalingRuleMetricOutput) ElementType() reflect.Type {
@@ -127,31 +140,37 @@ func (o ApplicationScalingRuleScalingRuleMetricOutput) ToApplicationScalingRuleS
 	}).(ApplicationScalingRuleScalingRuleMetricPtrOutput)
 }
 
-// Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+func (o ApplicationScalingRuleScalingRuleMetricOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationScalingRuleScalingRuleMetric] {
+	return pulumix.Output[ApplicationScalingRuleScalingRuleMetric]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Maximum number of instances applied.
 func (o ApplicationScalingRuleScalingRuleMetricOutput) MaxReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetric) *int { return v.MaxReplicas }).(pulumi.IntPtrOutput)
 }
 
-// Indicator rule configuration. See the following `Block metrics`.
+// Indicator rule configuration. See `metrics` below.
 func (o ApplicationScalingRuleScalingRuleMetricOutput) Metrics() ApplicationScalingRuleScalingRuleMetricMetricArrayOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetric) []ApplicationScalingRuleScalingRuleMetricMetric {
 		return v.Metrics
 	}).(ApplicationScalingRuleScalingRuleMetricMetricArrayOutput)
 }
 
-// Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+// Minimum number of instances applied.
 func (o ApplicationScalingRuleScalingRuleMetricOutput) MinReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetric) *int { return v.MinReplicas }).(pulumi.IntPtrOutput)
 }
 
-// Apply shrink rules. See the following `Block scaleDownRules`.
+// Apply shrink rules. See `scaleDownRules` below.
 func (o ApplicationScalingRuleScalingRuleMetricOutput) ScaleDownRules() ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetric) *ApplicationScalingRuleScalingRuleMetricScaleDownRules {
 		return v.ScaleDownRules
 	}).(ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput)
 }
 
-// Apply expansion rules. See the following `Block scaleUpRules`.
+// Apply expansion rules. See `scaleUpRules` below.
 func (o ApplicationScalingRuleScalingRuleMetricOutput) ScaleUpRules() ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetric) *ApplicationScalingRuleScalingRuleMetricScaleUpRules {
 		return v.ScaleUpRules
@@ -172,6 +191,12 @@ func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) ToApplicationScalingRu
 	return o
 }
 
+func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationScalingRuleScalingRuleMetric] {
+	return pulumix.Output[*ApplicationScalingRuleScalingRuleMetric]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) Elem() ApplicationScalingRuleScalingRuleMetricOutput {
 	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetric) ApplicationScalingRuleScalingRuleMetric {
 		if v != nil {
@@ -182,7 +207,7 @@ func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) Elem() ApplicationScal
 	}).(ApplicationScalingRuleScalingRuleMetricOutput)
 }
 
-// Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+// Maximum number of instances applied.
 func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) MaxReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetric) *int {
 		if v == nil {
@@ -192,7 +217,7 @@ func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) MaxReplicas() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-// Indicator rule configuration. See the following `Block metrics`.
+// Indicator rule configuration. See `metrics` below.
 func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) Metrics() ApplicationScalingRuleScalingRuleMetricMetricArrayOutput {
 	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetric) []ApplicationScalingRuleScalingRuleMetricMetric {
 		if v == nil {
@@ -202,7 +227,7 @@ func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) Metrics() ApplicationS
 	}).(ApplicationScalingRuleScalingRuleMetricMetricArrayOutput)
 }
 
-// Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+// Minimum number of instances applied.
 func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) MinReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetric) *int {
 		if v == nil {
@@ -212,7 +237,7 @@ func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) MinReplicas() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-// Apply shrink rules. See the following `Block scaleDownRules`.
+// Apply shrink rules. See `scaleDownRules` below.
 func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) ScaleDownRules() ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput {
 	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetric) *ApplicationScalingRuleScalingRuleMetricScaleDownRules {
 		if v == nil {
@@ -222,7 +247,7 @@ func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) ScaleDownRules() Appli
 	}).(ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput)
 }
 
-// Apply expansion rules. See the following `Block scaleUpRules`.
+// Apply expansion rules. See `scaleUpRules` below.
 func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) ScaleUpRules() ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput {
 	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetric) *ApplicationScalingRuleScalingRuleMetricScaleUpRules {
 		if v == nil {
@@ -305,6 +330,12 @@ func (i ApplicationScalingRuleScalingRuleMetricMetricArgs) ToApplicationScalingR
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleMetricMetricOutput)
 }
 
+func (i ApplicationScalingRuleScalingRuleMetricMetricArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationScalingRuleScalingRuleMetricMetric] {
+	return pulumix.Output[ApplicationScalingRuleScalingRuleMetricMetric]{
+		OutputState: i.ToApplicationScalingRuleScalingRuleMetricMetricOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ApplicationScalingRuleScalingRuleMetricMetricArrayInput is an input type that accepts ApplicationScalingRuleScalingRuleMetricMetricArray and ApplicationScalingRuleScalingRuleMetricMetricArrayOutput values.
 // You can construct a concrete instance of `ApplicationScalingRuleScalingRuleMetricMetricArrayInput` via:
 //
@@ -330,6 +361,12 @@ func (i ApplicationScalingRuleScalingRuleMetricMetricArray) ToApplicationScaling
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleMetricMetricArrayOutput)
 }
 
+func (i ApplicationScalingRuleScalingRuleMetricMetricArray) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationScalingRuleScalingRuleMetricMetric] {
+	return pulumix.Output[[]ApplicationScalingRuleScalingRuleMetricMetric]{
+		OutputState: i.ToApplicationScalingRuleScalingRuleMetricMetricArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApplicationScalingRuleScalingRuleMetricMetricOutput struct{ *pulumi.OutputState }
 
 func (ApplicationScalingRuleScalingRuleMetricMetricOutput) ElementType() reflect.Type {
@@ -342,6 +379,12 @@ func (o ApplicationScalingRuleScalingRuleMetricMetricOutput) ToApplicationScalin
 
 func (o ApplicationScalingRuleScalingRuleMetricMetricOutput) ToApplicationScalingRuleScalingRuleMetricMetricOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricMetricOutput {
 	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricMetricOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationScalingRuleScalingRuleMetricMetric] {
+	return pulumix.Output[ApplicationScalingRuleScalingRuleMetricMetric]{
+		OutputState: o.OutputState,
+	}
 }
 
 // According to different `metricType`, set the target value of the corresponding monitoring index.
@@ -398,6 +441,12 @@ func (o ApplicationScalingRuleScalingRuleMetricMetricArrayOutput) ToApplicationS
 	return o
 }
 
+func (o ApplicationScalingRuleScalingRuleMetricMetricArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationScalingRuleScalingRuleMetricMetric] {
+	return pulumix.Output[[]ApplicationScalingRuleScalingRuleMetricMetric]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ApplicationScalingRuleScalingRuleMetricMetricArrayOutput) Index(i pulumi.IntInput) ApplicationScalingRuleScalingRuleMetricMetricOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationScalingRuleScalingRuleMetricMetric {
 		return vs[0].([]ApplicationScalingRuleScalingRuleMetricMetric)[vs[1].(int)]
@@ -445,6 +494,12 @@ func (i ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs) ToApplication
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput)
 }
 
+func (i ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationScalingRuleScalingRuleMetricScaleDownRules] {
+	return pulumix.Output[ApplicationScalingRuleScalingRuleMetricScaleDownRules]{
+		OutputState: i.ToApplicationScalingRuleScalingRuleMetricScaleDownRulesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs) ToApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput() ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput {
 	return i.ToApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutputWithContext(context.Background())
 }
@@ -486,6 +541,12 @@ func (i *applicationScalingRuleScalingRuleMetricScaleDownRulesPtrType) ToApplica
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput)
 }
 
+func (i *applicationScalingRuleScalingRuleMetricScaleDownRulesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationScalingRuleScalingRuleMetricScaleDownRules] {
+	return pulumix.Output[*ApplicationScalingRuleScalingRuleMetricScaleDownRules]{
+		OutputState: i.ToApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput struct{ *pulumi.OutputState }
 
 func (ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput) ElementType() reflect.Type {
@@ -508,6 +569,12 @@ func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput) ToApplicati
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationScalingRuleScalingRuleMetricScaleDownRules) *ApplicationScalingRuleScalingRuleMetricScaleDownRules {
 		return &v
 	}).(ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput)
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationScalingRuleScalingRuleMetricScaleDownRules] {
+	return pulumix.Output[ApplicationScalingRuleScalingRuleMetricScaleDownRules]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether shrinkage is prohibited.
@@ -539,6 +606,12 @@ func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput) ToApplic
 
 func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput) ToApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput {
 	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationScalingRuleScalingRuleMetricScaleDownRules] {
+	return pulumix.Output[*ApplicationScalingRuleScalingRuleMetricScaleDownRules]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput) Elem() ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput {
@@ -622,6 +695,12 @@ func (i ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs) ToApplicationSc
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput)
 }
 
+func (i ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationScalingRuleScalingRuleMetricScaleUpRules] {
+	return pulumix.Output[ApplicationScalingRuleScalingRuleMetricScaleUpRules]{
+		OutputState: i.ToApplicationScalingRuleScalingRuleMetricScaleUpRulesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs) ToApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput() ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput {
 	return i.ToApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutputWithContext(context.Background())
 }
@@ -663,6 +742,12 @@ func (i *applicationScalingRuleScalingRuleMetricScaleUpRulesPtrType) ToApplicati
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput)
 }
 
+func (i *applicationScalingRuleScalingRuleMetricScaleUpRulesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationScalingRuleScalingRuleMetricScaleUpRules] {
+	return pulumix.Output[*ApplicationScalingRuleScalingRuleMetricScaleUpRules]{
+		OutputState: i.ToApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput struct{ *pulumi.OutputState }
 
 func (ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput) ElementType() reflect.Type {
@@ -685,6 +770,12 @@ func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput) ToApplication
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationScalingRuleScalingRuleMetricScaleUpRules) *ApplicationScalingRuleScalingRuleMetricScaleUpRules {
 		return &v
 	}).(ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput)
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationScalingRuleScalingRuleMetricScaleUpRules] {
+	return pulumix.Output[ApplicationScalingRuleScalingRuleMetricScaleUpRules]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether shrinkage is prohibited.
@@ -714,6 +805,12 @@ func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput) ToApplicat
 
 func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput) ToApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput {
 	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationScalingRuleScalingRuleMetricScaleUpRules] {
+	return pulumix.Output[*ApplicationScalingRuleScalingRuleMetricScaleUpRules]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput) Elem() ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput {
@@ -763,7 +860,7 @@ type ApplicationScalingRuleScalingRuleTimer struct {
 	EndDate *string `pulumi:"endDate"`
 	// The period in which a timed elastic scaling strategy is executed.
 	Period *string `pulumi:"period"`
-	// Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+	// Resilient Scaling Strategy Trigger Timing. See `schedules` below.
 	Schedules []ApplicationScalingRuleScalingRuleTimerSchedule `pulumi:"schedules"`
 }
 
@@ -785,7 +882,7 @@ type ApplicationScalingRuleScalingRuleTimerArgs struct {
 	EndDate pulumi.StringPtrInput `pulumi:"endDate"`
 	// The period in which a timed elastic scaling strategy is executed.
 	Period pulumi.StringPtrInput `pulumi:"period"`
-	// Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+	// Resilient Scaling Strategy Trigger Timing. See `schedules` below.
 	Schedules ApplicationScalingRuleScalingRuleTimerScheduleArrayInput `pulumi:"schedules"`
 }
 
@@ -799,6 +896,12 @@ func (i ApplicationScalingRuleScalingRuleTimerArgs) ToApplicationScalingRuleScal
 
 func (i ApplicationScalingRuleScalingRuleTimerArgs) ToApplicationScalingRuleScalingRuleTimerOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleTimerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleTimerOutput)
+}
+
+func (i ApplicationScalingRuleScalingRuleTimerArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationScalingRuleScalingRuleTimer] {
+	return pulumix.Output[ApplicationScalingRuleScalingRuleTimer]{
+		OutputState: i.ToApplicationScalingRuleScalingRuleTimerOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i ApplicationScalingRuleScalingRuleTimerArgs) ToApplicationScalingRuleScalingRuleTimerPtrOutput() ApplicationScalingRuleScalingRuleTimerPtrOutput {
@@ -842,6 +945,12 @@ func (i *applicationScalingRuleScalingRuleTimerPtrType) ToApplicationScalingRule
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleTimerPtrOutput)
 }
 
+func (i *applicationScalingRuleScalingRuleTimerPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationScalingRuleScalingRuleTimer] {
+	return pulumix.Output[*ApplicationScalingRuleScalingRuleTimer]{
+		OutputState: i.ToApplicationScalingRuleScalingRuleTimerPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApplicationScalingRuleScalingRuleTimerOutput struct{ *pulumi.OutputState }
 
 func (ApplicationScalingRuleScalingRuleTimerOutput) ElementType() reflect.Type {
@@ -866,6 +975,12 @@ func (o ApplicationScalingRuleScalingRuleTimerOutput) ToApplicationScalingRuleSc
 	}).(ApplicationScalingRuleScalingRuleTimerPtrOutput)
 }
 
+func (o ApplicationScalingRuleScalingRuleTimerOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationScalingRuleScalingRuleTimer] {
+	return pulumix.Output[ApplicationScalingRuleScalingRuleTimer]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The Start date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
 func (o ApplicationScalingRuleScalingRuleTimerOutput) BeginDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimer) *string { return v.BeginDate }).(pulumi.StringPtrOutput)
@@ -881,7 +996,7 @@ func (o ApplicationScalingRuleScalingRuleTimerOutput) Period() pulumi.StringPtrO
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimer) *string { return v.Period }).(pulumi.StringPtrOutput)
 }
 
-// Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+// Resilient Scaling Strategy Trigger Timing. See `schedules` below.
 func (o ApplicationScalingRuleScalingRuleTimerOutput) Schedules() ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimer) []ApplicationScalingRuleScalingRuleTimerSchedule {
 		return v.Schedules
@@ -900,6 +1015,12 @@ func (o ApplicationScalingRuleScalingRuleTimerPtrOutput) ToApplicationScalingRul
 
 func (o ApplicationScalingRuleScalingRuleTimerPtrOutput) ToApplicationScalingRuleScalingRuleTimerPtrOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleTimerPtrOutput {
 	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleTimerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationScalingRuleScalingRuleTimer] {
+	return pulumix.Output[*ApplicationScalingRuleScalingRuleTimer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationScalingRuleScalingRuleTimerPtrOutput) Elem() ApplicationScalingRuleScalingRuleTimerOutput {
@@ -942,7 +1063,7 @@ func (o ApplicationScalingRuleScalingRuleTimerPtrOutput) Period() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+// Resilient Scaling Strategy Trigger Timing. See `schedules` below.
 func (o ApplicationScalingRuleScalingRuleTimerPtrOutput) Schedules() ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput {
 	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleTimer) []ApplicationScalingRuleScalingRuleTimerSchedule {
 		if v == nil {
@@ -997,6 +1118,12 @@ func (i ApplicationScalingRuleScalingRuleTimerScheduleArgs) ToApplicationScaling
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleTimerScheduleOutput)
 }
 
+func (i ApplicationScalingRuleScalingRuleTimerScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationScalingRuleScalingRuleTimerSchedule] {
+	return pulumix.Output[ApplicationScalingRuleScalingRuleTimerSchedule]{
+		OutputState: i.ToApplicationScalingRuleScalingRuleTimerScheduleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ApplicationScalingRuleScalingRuleTimerScheduleArrayInput is an input type that accepts ApplicationScalingRuleScalingRuleTimerScheduleArray and ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput values.
 // You can construct a concrete instance of `ApplicationScalingRuleScalingRuleTimerScheduleArrayInput` via:
 //
@@ -1022,6 +1149,12 @@ func (i ApplicationScalingRuleScalingRuleTimerScheduleArray) ToApplicationScalin
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput)
 }
 
+func (i ApplicationScalingRuleScalingRuleTimerScheduleArray) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationScalingRuleScalingRuleTimerSchedule] {
+	return pulumix.Output[[]ApplicationScalingRuleScalingRuleTimerSchedule]{
+		OutputState: i.ToApplicationScalingRuleScalingRuleTimerScheduleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApplicationScalingRuleScalingRuleTimerScheduleOutput struct{ *pulumi.OutputState }
 
 func (ApplicationScalingRuleScalingRuleTimerScheduleOutput) ElementType() reflect.Type {
@@ -1034,6 +1167,12 @@ func (o ApplicationScalingRuleScalingRuleTimerScheduleOutput) ToApplicationScali
 
 func (o ApplicationScalingRuleScalingRuleTimerScheduleOutput) ToApplicationScalingRuleScalingRuleTimerScheduleOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleTimerScheduleOutput {
 	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleTimerScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationScalingRuleScalingRuleTimerSchedule] {
+	return pulumix.Output[ApplicationScalingRuleScalingRuleTimerSchedule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Trigger point in time. When supporting format: minutes, for example: `08:00`.
@@ -1070,6 +1209,12 @@ func (o ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput) ToApplication
 	return o
 }
 
+func (o ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationScalingRuleScalingRuleTimerSchedule] {
+	return pulumix.Output[[]ApplicationScalingRuleScalingRuleTimerSchedule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput) Index(i pulumi.IntInput) ApplicationScalingRuleScalingRuleTimerScheduleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationScalingRuleScalingRuleTimerSchedule {
 		return vs[0].([]ApplicationScalingRuleScalingRuleTimerSchedule)[vs[1].(int)]
@@ -1081,7 +1226,7 @@ type GreyTagRouteDubboRule struct {
 	Condition *string `pulumi:"condition"`
 	// The service group.
 	Group *string `pulumi:"group"`
-	// A list of conditions items. The details see Block `dubboRulesItems`.
+	// A list of conditions items. See `items` below.
 	Items []GreyTagRouteDubboRuleItem `pulumi:"items"`
 	// The method name
 	MethodName *string `pulumi:"methodName"`
@@ -1107,7 +1252,7 @@ type GreyTagRouteDubboRuleArgs struct {
 	Condition pulumi.StringPtrInput `pulumi:"condition"`
 	// The service group.
 	Group pulumi.StringPtrInput `pulumi:"group"`
-	// A list of conditions items. The details see Block `dubboRulesItems`.
+	// A list of conditions items. See `items` below.
 	Items GreyTagRouteDubboRuleItemArrayInput `pulumi:"items"`
 	// The method name
 	MethodName pulumi.StringPtrInput `pulumi:"methodName"`
@@ -1127,6 +1272,12 @@ func (i GreyTagRouteDubboRuleArgs) ToGreyTagRouteDubboRuleOutput() GreyTagRouteD
 
 func (i GreyTagRouteDubboRuleArgs) ToGreyTagRouteDubboRuleOutputWithContext(ctx context.Context) GreyTagRouteDubboRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GreyTagRouteDubboRuleOutput)
+}
+
+func (i GreyTagRouteDubboRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GreyTagRouteDubboRule] {
+	return pulumix.Output[GreyTagRouteDubboRule]{
+		OutputState: i.ToGreyTagRouteDubboRuleOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GreyTagRouteDubboRuleArrayInput is an input type that accepts GreyTagRouteDubboRuleArray and GreyTagRouteDubboRuleArrayOutput values.
@@ -1154,6 +1305,12 @@ func (i GreyTagRouteDubboRuleArray) ToGreyTagRouteDubboRuleArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GreyTagRouteDubboRuleArrayOutput)
 }
 
+func (i GreyTagRouteDubboRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GreyTagRouteDubboRule] {
+	return pulumix.Output[[]GreyTagRouteDubboRule]{
+		OutputState: i.ToGreyTagRouteDubboRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GreyTagRouteDubboRuleOutput struct{ *pulumi.OutputState }
 
 func (GreyTagRouteDubboRuleOutput) ElementType() reflect.Type {
@@ -1168,6 +1325,12 @@ func (o GreyTagRouteDubboRuleOutput) ToGreyTagRouteDubboRuleOutputWithContext(ct
 	return o
 }
 
+func (o GreyTagRouteDubboRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GreyTagRouteDubboRule] {
+	return pulumix.Output[GreyTagRouteDubboRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The Conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
 func (o GreyTagRouteDubboRuleOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteDubboRule) *string { return v.Condition }).(pulumi.StringPtrOutput)
@@ -1178,7 +1341,7 @@ func (o GreyTagRouteDubboRuleOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteDubboRule) *string { return v.Group }).(pulumi.StringPtrOutput)
 }
 
-// A list of conditions items. The details see Block `dubboRulesItems`.
+// A list of conditions items. See `items` below.
 func (o GreyTagRouteDubboRuleOutput) Items() GreyTagRouteDubboRuleItemArrayOutput {
 	return o.ApplyT(func(v GreyTagRouteDubboRule) []GreyTagRouteDubboRuleItem { return v.Items }).(GreyTagRouteDubboRuleItemArrayOutput)
 }
@@ -1212,6 +1375,12 @@ func (o GreyTagRouteDubboRuleArrayOutput) ToGreyTagRouteDubboRuleArrayOutputWith
 	return o
 }
 
+func (o GreyTagRouteDubboRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GreyTagRouteDubboRule] {
+	return pulumix.Output[[]GreyTagRouteDubboRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GreyTagRouteDubboRuleArrayOutput) Index(i pulumi.IntInput) GreyTagRouteDubboRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GreyTagRouteDubboRule {
 		return vs[0].([]GreyTagRouteDubboRule)[vs[1].(int)]
@@ -1225,7 +1394,7 @@ type GreyTagRouteDubboRuleItem struct {
 	Expr *string `pulumi:"expr"`
 	// The parameter number.
 	Index *int `pulumi:"index"`
-	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
 	Operator *string `pulumi:"operator"`
 	// The value of the parameter.
 	Value *string `pulumi:"value"`
@@ -1249,7 +1418,7 @@ type GreyTagRouteDubboRuleItemArgs struct {
 	Expr pulumi.StringPtrInput `pulumi:"expr"`
 	// The parameter number.
 	Index pulumi.IntPtrInput `pulumi:"index"`
-	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The value of the parameter.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -1265,6 +1434,12 @@ func (i GreyTagRouteDubboRuleItemArgs) ToGreyTagRouteDubboRuleItemOutput() GreyT
 
 func (i GreyTagRouteDubboRuleItemArgs) ToGreyTagRouteDubboRuleItemOutputWithContext(ctx context.Context) GreyTagRouteDubboRuleItemOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GreyTagRouteDubboRuleItemOutput)
+}
+
+func (i GreyTagRouteDubboRuleItemArgs) ToOutput(ctx context.Context) pulumix.Output[GreyTagRouteDubboRuleItem] {
+	return pulumix.Output[GreyTagRouteDubboRuleItem]{
+		OutputState: i.ToGreyTagRouteDubboRuleItemOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GreyTagRouteDubboRuleItemArrayInput is an input type that accepts GreyTagRouteDubboRuleItemArray and GreyTagRouteDubboRuleItemArrayOutput values.
@@ -1292,6 +1467,12 @@ func (i GreyTagRouteDubboRuleItemArray) ToGreyTagRouteDubboRuleItemArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GreyTagRouteDubboRuleItemArrayOutput)
 }
 
+func (i GreyTagRouteDubboRuleItemArray) ToOutput(ctx context.Context) pulumix.Output[[]GreyTagRouteDubboRuleItem] {
+	return pulumix.Output[[]GreyTagRouteDubboRuleItem]{
+		OutputState: i.ToGreyTagRouteDubboRuleItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GreyTagRouteDubboRuleItemOutput struct{ *pulumi.OutputState }
 
 func (GreyTagRouteDubboRuleItemOutput) ElementType() reflect.Type {
@@ -1304,6 +1485,12 @@ func (o GreyTagRouteDubboRuleItemOutput) ToGreyTagRouteDubboRuleItemOutput() Gre
 
 func (o GreyTagRouteDubboRuleItemOutput) ToGreyTagRouteDubboRuleItemOutputWithContext(ctx context.Context) GreyTagRouteDubboRuleItemOutput {
 	return o
+}
+
+func (o GreyTagRouteDubboRuleItemOutput) ToOutput(ctx context.Context) pulumix.Output[GreyTagRouteDubboRuleItem] {
+	return pulumix.Output[GreyTagRouteDubboRuleItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
@@ -1321,7 +1508,7 @@ func (o GreyTagRouteDubboRuleItemOutput) Index() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteDubboRuleItem) *int { return v.Index }).(pulumi.IntPtrOutput)
 }
 
-// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
 func (o GreyTagRouteDubboRuleItemOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteDubboRuleItem) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
@@ -1345,6 +1532,12 @@ func (o GreyTagRouteDubboRuleItemArrayOutput) ToGreyTagRouteDubboRuleItemArrayOu
 	return o
 }
 
+func (o GreyTagRouteDubboRuleItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GreyTagRouteDubboRuleItem] {
+	return pulumix.Output[[]GreyTagRouteDubboRuleItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GreyTagRouteDubboRuleItemArrayOutput) Index(i pulumi.IntInput) GreyTagRouteDubboRuleItemOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GreyTagRouteDubboRuleItem {
 		return vs[0].([]GreyTagRouteDubboRuleItem)[vs[1].(int)]
@@ -1354,7 +1547,7 @@ func (o GreyTagRouteDubboRuleItemArrayOutput) Index(i pulumi.IntInput) GreyTagRo
 type GreyTagRouteScRule struct {
 	// The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
 	Condition *string `pulumi:"condition"`
-	// A list of conditions items. The details see Block `scRulesItems`.
+	// A list of conditions items.See `items` below.
 	Items []GreyTagRouteScRuleItem `pulumi:"items"`
 	// The path corresponding to the grayscale rule.
 	Path *string `pulumi:"path"`
@@ -1374,7 +1567,7 @@ type GreyTagRouteScRuleInput interface {
 type GreyTagRouteScRuleArgs struct {
 	// The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
 	Condition pulumi.StringPtrInput `pulumi:"condition"`
-	// A list of conditions items. The details see Block `scRulesItems`.
+	// A list of conditions items.See `items` below.
 	Items GreyTagRouteScRuleItemArrayInput `pulumi:"items"`
 	// The path corresponding to the grayscale rule.
 	Path pulumi.StringPtrInput `pulumi:"path"`
@@ -1390,6 +1583,12 @@ func (i GreyTagRouteScRuleArgs) ToGreyTagRouteScRuleOutput() GreyTagRouteScRuleO
 
 func (i GreyTagRouteScRuleArgs) ToGreyTagRouteScRuleOutputWithContext(ctx context.Context) GreyTagRouteScRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GreyTagRouteScRuleOutput)
+}
+
+func (i GreyTagRouteScRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GreyTagRouteScRule] {
+	return pulumix.Output[GreyTagRouteScRule]{
+		OutputState: i.ToGreyTagRouteScRuleOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GreyTagRouteScRuleArrayInput is an input type that accepts GreyTagRouteScRuleArray and GreyTagRouteScRuleArrayOutput values.
@@ -1417,6 +1616,12 @@ func (i GreyTagRouteScRuleArray) ToGreyTagRouteScRuleArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GreyTagRouteScRuleArrayOutput)
 }
 
+func (i GreyTagRouteScRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GreyTagRouteScRule] {
+	return pulumix.Output[[]GreyTagRouteScRule]{
+		OutputState: i.ToGreyTagRouteScRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GreyTagRouteScRuleOutput struct{ *pulumi.OutputState }
 
 func (GreyTagRouteScRuleOutput) ElementType() reflect.Type {
@@ -1431,12 +1636,18 @@ func (o GreyTagRouteScRuleOutput) ToGreyTagRouteScRuleOutputWithContext(ctx cont
 	return o
 }
 
+func (o GreyTagRouteScRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GreyTagRouteScRule] {
+	return pulumix.Output[GreyTagRouteScRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
 func (o GreyTagRouteScRuleOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteScRule) *string { return v.Condition }).(pulumi.StringPtrOutput)
 }
 
-// A list of conditions items. The details see Block `scRulesItems`.
+// A list of conditions items.See `items` below.
 func (o GreyTagRouteScRuleOutput) Items() GreyTagRouteScRuleItemArrayOutput {
 	return o.ApplyT(func(v GreyTagRouteScRule) []GreyTagRouteScRuleItem { return v.Items }).(GreyTagRouteScRuleItemArrayOutput)
 }
@@ -1460,6 +1671,12 @@ func (o GreyTagRouteScRuleArrayOutput) ToGreyTagRouteScRuleArrayOutputWithContex
 	return o
 }
 
+func (o GreyTagRouteScRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GreyTagRouteScRule] {
+	return pulumix.Output[[]GreyTagRouteScRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GreyTagRouteScRuleArrayOutput) Index(i pulumi.IntInput) GreyTagRouteScRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GreyTagRouteScRule {
 		return vs[0].([]GreyTagRouteScRule)[vs[1].(int)]
@@ -1471,7 +1688,7 @@ type GreyTagRouteScRuleItem struct {
 	Cond *string `pulumi:"cond"`
 	// The name of the parameter.
 	Name *string `pulumi:"name"`
-	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
 	Operator *string `pulumi:"operator"`
 	// The compare types. Valid values: `param`, `cookie`, `header`.
 	Type *string `pulumi:"type"`
@@ -1495,7 +1712,7 @@ type GreyTagRouteScRuleItemArgs struct {
 	Cond pulumi.StringPtrInput `pulumi:"cond"`
 	// The name of the parameter.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The compare types. Valid values: `param`, `cookie`, `header`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -1513,6 +1730,12 @@ func (i GreyTagRouteScRuleItemArgs) ToGreyTagRouteScRuleItemOutput() GreyTagRout
 
 func (i GreyTagRouteScRuleItemArgs) ToGreyTagRouteScRuleItemOutputWithContext(ctx context.Context) GreyTagRouteScRuleItemOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GreyTagRouteScRuleItemOutput)
+}
+
+func (i GreyTagRouteScRuleItemArgs) ToOutput(ctx context.Context) pulumix.Output[GreyTagRouteScRuleItem] {
+	return pulumix.Output[GreyTagRouteScRuleItem]{
+		OutputState: i.ToGreyTagRouteScRuleItemOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GreyTagRouteScRuleItemArrayInput is an input type that accepts GreyTagRouteScRuleItemArray and GreyTagRouteScRuleItemArrayOutput values.
@@ -1540,6 +1763,12 @@ func (i GreyTagRouteScRuleItemArray) ToGreyTagRouteScRuleItemArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GreyTagRouteScRuleItemArrayOutput)
 }
 
+func (i GreyTagRouteScRuleItemArray) ToOutput(ctx context.Context) pulumix.Output[[]GreyTagRouteScRuleItem] {
+	return pulumix.Output[[]GreyTagRouteScRuleItem]{
+		OutputState: i.ToGreyTagRouteScRuleItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GreyTagRouteScRuleItemOutput struct{ *pulumi.OutputState }
 
 func (GreyTagRouteScRuleItemOutput) ElementType() reflect.Type {
@@ -1554,6 +1783,12 @@ func (o GreyTagRouteScRuleItemOutput) ToGreyTagRouteScRuleItemOutputWithContext(
 	return o
 }
 
+func (o GreyTagRouteScRuleItemOutput) ToOutput(ctx context.Context) pulumix.Output[GreyTagRouteScRuleItem] {
+	return pulumix.Output[GreyTagRouteScRuleItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
 func (o GreyTagRouteScRuleItemOutput) Cond() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteScRuleItem) *string { return v.Cond }).(pulumi.StringPtrOutput)
@@ -1564,7 +1799,7 @@ func (o GreyTagRouteScRuleItemOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteScRuleItem) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
 func (o GreyTagRouteScRuleItemOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteScRuleItem) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
@@ -1591,6 +1826,12 @@ func (o GreyTagRouteScRuleItemArrayOutput) ToGreyTagRouteScRuleItemArrayOutput()
 
 func (o GreyTagRouteScRuleItemArrayOutput) ToGreyTagRouteScRuleItemArrayOutputWithContext(ctx context.Context) GreyTagRouteScRuleItemArrayOutput {
 	return o
+}
+
+func (o GreyTagRouteScRuleItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GreyTagRouteScRuleItem] {
+	return pulumix.Output[[]GreyTagRouteScRuleItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GreyTagRouteScRuleItemArrayOutput) Index(i pulumi.IntInput) GreyTagRouteScRuleItemOutput {
@@ -1640,6 +1881,12 @@ func (i IngressDefaultRuleArgs) ToIngressDefaultRuleOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(IngressDefaultRuleOutput)
 }
 
+func (i IngressDefaultRuleArgs) ToOutput(ctx context.Context) pulumix.Output[IngressDefaultRule] {
+	return pulumix.Output[IngressDefaultRule]{
+		OutputState: i.ToIngressDefaultRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IngressDefaultRuleArgs) ToIngressDefaultRulePtrOutput() IngressDefaultRulePtrOutput {
 	return i.ToIngressDefaultRulePtrOutputWithContext(context.Background())
 }
@@ -1681,6 +1928,12 @@ func (i *ingressDefaultRulePtrType) ToIngressDefaultRulePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(IngressDefaultRulePtrOutput)
 }
 
+func (i *ingressDefaultRulePtrType) ToOutput(ctx context.Context) pulumix.Output[*IngressDefaultRule] {
+	return pulumix.Output[*IngressDefaultRule]{
+		OutputState: i.ToIngressDefaultRulePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IngressDefaultRuleOutput struct{ *pulumi.OutputState }
 
 func (IngressDefaultRuleOutput) ElementType() reflect.Type {
@@ -1703,6 +1956,12 @@ func (o IngressDefaultRuleOutput) ToIngressDefaultRulePtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v IngressDefaultRule) *IngressDefaultRule {
 		return &v
 	}).(IngressDefaultRulePtrOutput)
+}
+
+func (o IngressDefaultRuleOutput) ToOutput(ctx context.Context) pulumix.Output[IngressDefaultRule] {
+	return pulumix.Output[IngressDefaultRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Target application ID.
@@ -1732,6 +1991,12 @@ func (o IngressDefaultRulePtrOutput) ToIngressDefaultRulePtrOutput() IngressDefa
 
 func (o IngressDefaultRulePtrOutput) ToIngressDefaultRulePtrOutputWithContext(ctx context.Context) IngressDefaultRulePtrOutput {
 	return o
+}
+
+func (o IngressDefaultRulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IngressDefaultRule] {
+	return pulumix.Output[*IngressDefaultRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IngressDefaultRulePtrOutput) Elem() IngressDefaultRuleOutput {
@@ -1831,6 +2096,12 @@ func (i IngressRuleArgs) ToIngressRuleOutputWithContext(ctx context.Context) Ing
 	return pulumi.ToOutputWithContext(ctx, i).(IngressRuleOutput)
 }
 
+func (i IngressRuleArgs) ToOutput(ctx context.Context) pulumix.Output[IngressRule] {
+	return pulumix.Output[IngressRule]{
+		OutputState: i.ToIngressRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IngressRuleArrayInput is an input type that accepts IngressRuleArray and IngressRuleArrayOutput values.
 // You can construct a concrete instance of `IngressRuleArrayInput` via:
 //
@@ -1856,6 +2127,12 @@ func (i IngressRuleArray) ToIngressRuleArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(IngressRuleArrayOutput)
 }
 
+func (i IngressRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]IngressRule] {
+	return pulumix.Output[[]IngressRule]{
+		OutputState: i.ToIngressRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IngressRuleOutput struct{ *pulumi.OutputState }
 
 func (IngressRuleOutput) ElementType() reflect.Type {
@@ -1868,6 +2145,12 @@ func (o IngressRuleOutput) ToIngressRuleOutput() IngressRuleOutput {
 
 func (o IngressRuleOutput) ToIngressRuleOutputWithContext(ctx context.Context) IngressRuleOutput {
 	return o
+}
+
+func (o IngressRuleOutput) ToOutput(ctx context.Context) pulumix.Output[IngressRule] {
+	return pulumix.Output[IngressRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Target application ID.
@@ -1917,6 +2200,12 @@ func (o IngressRuleArrayOutput) ToIngressRuleArrayOutput() IngressRuleArrayOutpu
 
 func (o IngressRuleArrayOutput) ToIngressRuleArrayOutputWithContext(ctx context.Context) IngressRuleArrayOutput {
 	return o
+}
+
+func (o IngressRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IngressRule] {
+	return pulumix.Output[[]IngressRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IngressRuleArrayOutput) Index(i pulumi.IntInput) IngressRuleOutput {
@@ -1970,6 +2259,12 @@ func (i LoadBalancerInternetInternetArgs) ToLoadBalancerInternetInternetOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerInternetInternetOutput)
 }
 
+func (i LoadBalancerInternetInternetArgs) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerInternetInternet] {
+	return pulumix.Output[LoadBalancerInternetInternet]{
+		OutputState: i.ToLoadBalancerInternetInternetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LoadBalancerInternetInternetArrayInput is an input type that accepts LoadBalancerInternetInternetArray and LoadBalancerInternetInternetArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerInternetInternetArrayInput` via:
 //
@@ -1995,6 +2290,12 @@ func (i LoadBalancerInternetInternetArray) ToLoadBalancerInternetInternetArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerInternetInternetArrayOutput)
 }
 
+func (i LoadBalancerInternetInternetArray) ToOutput(ctx context.Context) pulumix.Output[[]LoadBalancerInternetInternet] {
+	return pulumix.Output[[]LoadBalancerInternetInternet]{
+		OutputState: i.ToLoadBalancerInternetInternetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LoadBalancerInternetInternetOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerInternetInternetOutput) ElementType() reflect.Type {
@@ -2007,6 +2308,12 @@ func (o LoadBalancerInternetInternetOutput) ToLoadBalancerInternetInternetOutput
 
 func (o LoadBalancerInternetInternetOutput) ToLoadBalancerInternetInternetOutputWithContext(ctx context.Context) LoadBalancerInternetInternetOutput {
 	return o
+}
+
+func (o LoadBalancerInternetInternetOutput) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerInternetInternet] {
+	return pulumix.Output[LoadBalancerInternetInternet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The SSL certificate. `httpsCertId` is required when HTTPS is selected
@@ -2041,6 +2348,12 @@ func (o LoadBalancerInternetInternetArrayOutput) ToLoadBalancerInternetInternetA
 
 func (o LoadBalancerInternetInternetArrayOutput) ToLoadBalancerInternetInternetArrayOutputWithContext(ctx context.Context) LoadBalancerInternetInternetArrayOutput {
 	return o
+}
+
+func (o LoadBalancerInternetInternetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LoadBalancerInternetInternet] {
+	return pulumix.Output[[]LoadBalancerInternetInternet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LoadBalancerInternetInternetArrayOutput) Index(i pulumi.IntInput) LoadBalancerInternetInternetOutput {
@@ -2094,6 +2407,12 @@ func (i LoadBalancerIntranetIntranetArgs) ToLoadBalancerIntranetIntranetOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerIntranetIntranetOutput)
 }
 
+func (i LoadBalancerIntranetIntranetArgs) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerIntranetIntranet] {
+	return pulumix.Output[LoadBalancerIntranetIntranet]{
+		OutputState: i.ToLoadBalancerIntranetIntranetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LoadBalancerIntranetIntranetArrayInput is an input type that accepts LoadBalancerIntranetIntranetArray and LoadBalancerIntranetIntranetArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerIntranetIntranetArrayInput` via:
 //
@@ -2119,6 +2438,12 @@ func (i LoadBalancerIntranetIntranetArray) ToLoadBalancerIntranetIntranetArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerIntranetIntranetArrayOutput)
 }
 
+func (i LoadBalancerIntranetIntranetArray) ToOutput(ctx context.Context) pulumix.Output[[]LoadBalancerIntranetIntranet] {
+	return pulumix.Output[[]LoadBalancerIntranetIntranet]{
+		OutputState: i.ToLoadBalancerIntranetIntranetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LoadBalancerIntranetIntranetOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerIntranetIntranetOutput) ElementType() reflect.Type {
@@ -2131,6 +2456,12 @@ func (o LoadBalancerIntranetIntranetOutput) ToLoadBalancerIntranetIntranetOutput
 
 func (o LoadBalancerIntranetIntranetOutput) ToLoadBalancerIntranetIntranetOutputWithContext(ctx context.Context) LoadBalancerIntranetIntranetOutput {
 	return o
+}
+
+func (o LoadBalancerIntranetIntranetOutput) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerIntranetIntranet] {
+	return pulumix.Output[LoadBalancerIntranetIntranet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The SSL certificate. `httpsCertId` is required when HTTPS is selected
@@ -2165,6 +2496,12 @@ func (o LoadBalancerIntranetIntranetArrayOutput) ToLoadBalancerIntranetIntranetA
 
 func (o LoadBalancerIntranetIntranetArrayOutput) ToLoadBalancerIntranetIntranetArrayOutputWithContext(ctx context.Context) LoadBalancerIntranetIntranetArrayOutput {
 	return o
+}
+
+func (o LoadBalancerIntranetIntranetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LoadBalancerIntranetIntranet] {
+	return pulumix.Output[[]LoadBalancerIntranetIntranet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LoadBalancerIntranetIntranetArrayOutput) Index(i pulumi.IntInput) LoadBalancerIntranetIntranetOutput {
@@ -2234,6 +2571,12 @@ func (i GetApplicationScalingRulesRuleArgs) ToGetApplicationScalingRulesRuleOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleOutput)
 }
 
+func (i GetApplicationScalingRulesRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetApplicationScalingRulesRule] {
+	return pulumix.Output[GetApplicationScalingRulesRule]{
+		OutputState: i.ToGetApplicationScalingRulesRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetApplicationScalingRulesRuleArrayInput is an input type that accepts GetApplicationScalingRulesRuleArray and GetApplicationScalingRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleArrayInput` via:
 //
@@ -2259,6 +2602,12 @@ func (i GetApplicationScalingRulesRuleArray) ToGetApplicationScalingRulesRuleArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleArrayOutput)
 }
 
+func (i GetApplicationScalingRulesRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationScalingRulesRule] {
+	return pulumix.Output[[]GetApplicationScalingRulesRule]{
+		OutputState: i.ToGetApplicationScalingRulesRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetApplicationScalingRulesRuleOutput struct{ *pulumi.OutputState }
 
 func (GetApplicationScalingRulesRuleOutput) ElementType() reflect.Type {
@@ -2271,6 +2620,12 @@ func (o GetApplicationScalingRulesRuleOutput) ToGetApplicationScalingRulesRuleOu
 
 func (o GetApplicationScalingRulesRuleOutput) ToGetApplicationScalingRulesRuleOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleOutput {
 	return o
+}
+
+func (o GetApplicationScalingRulesRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationScalingRulesRule] {
+	return pulumix.Output[GetApplicationScalingRulesRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Application.
@@ -2329,6 +2684,12 @@ func (o GetApplicationScalingRulesRuleArrayOutput) ToGetApplicationScalingRulesR
 
 func (o GetApplicationScalingRulesRuleArrayOutput) ToGetApplicationScalingRulesRuleArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleArrayOutput {
 	return o
+}
+
+func (o GetApplicationScalingRulesRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationScalingRulesRule] {
+	return pulumix.Output[[]GetApplicationScalingRulesRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetApplicationScalingRulesRuleArrayOutput) Index(i pulumi.IntInput) GetApplicationScalingRulesRuleOutput {
@@ -2390,6 +2751,12 @@ func (i GetApplicationScalingRulesRuleScalingRuleMetricArgs) ToGetApplicationSca
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricOutput)
 }
 
+func (i GetApplicationScalingRulesRuleScalingRuleMetricArgs) ToOutput(ctx context.Context) pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetric] {
+	return pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetric]{
+		OutputState: i.ToGetApplicationScalingRulesRuleScalingRuleMetricOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetApplicationScalingRulesRuleScalingRuleMetricArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricArray and GetApplicationScalingRulesRuleScalingRuleMetricArrayOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricArrayInput` via:
 //
@@ -2415,6 +2782,12 @@ func (i GetApplicationScalingRulesRuleScalingRuleMetricArray) ToGetApplicationSc
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricArrayOutput)
 }
 
+func (i GetApplicationScalingRulesRuleScalingRuleMetricArray) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetric] {
+	return pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetric]{
+		OutputState: i.ToGetApplicationScalingRulesRuleScalingRuleMetricArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetApplicationScalingRulesRuleScalingRuleMetricOutput struct{ *pulumi.OutputState }
 
 func (GetApplicationScalingRulesRuleScalingRuleMetricOutput) ElementType() reflect.Type {
@@ -2427,6 +2800,12 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricOutput) ToGetApplicationS
 
 func (o GetApplicationScalingRulesRuleScalingRuleMetricOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricOutput {
 	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetric] {
+	return pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetric]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The maximum number of instances.
@@ -2481,6 +2860,12 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricArrayOutput) ToGetApplica
 	return o
 }
 
+func (o GetApplicationScalingRulesRuleScalingRuleMetricArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetric] {
+	return pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetric]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetApplicationScalingRulesRuleScalingRuleMetricArrayOutput) Index(i pulumi.IntInput) GetApplicationScalingRulesRuleScalingRuleMetricOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationScalingRulesRuleScalingRuleMetric {
 		return vs[0].([]GetApplicationScalingRulesRuleScalingRuleMetric)[vs[1].(int)]
@@ -2524,6 +2909,12 @@ func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricArgs) ToGetApplicat
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput)
 }
 
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricArgs) ToOutput(ctx context.Context) pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricMetric] {
+	return pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricMetric]{
+		OutputState: i.ToGetApplicationScalingRulesRuleScalingRuleMetricMetricOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricArray and GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayInput` via:
 //
@@ -2549,6 +2940,12 @@ func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricArray) ToGetApplica
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput)
 }
 
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricArray) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricMetric] {
+	return pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricMetric]{
+		OutputState: i.ToGetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput struct{ *pulumi.OutputState }
 
 func (GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput) ElementType() reflect.Type {
@@ -2561,6 +2958,12 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput) ToGetApplic
 
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput {
 	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricMetric] {
+	return pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricMetric]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The target value of the monitoring indicator.
@@ -2587,6 +2990,12 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput) ToGetA
 
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput {
 	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricMetric] {
+	return pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricMetric]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput) Index(i pulumi.IntInput) GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput {
@@ -2656,6 +3065,12 @@ func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArgs) ToGetA
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput)
 }
 
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArgs) ToOutput(ctx context.Context) pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus] {
+	return pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus]{
+		OutputState: i.ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArray and GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayInput` via:
 //
@@ -2681,6 +3096,12 @@ func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArray) ToGet
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput)
 }
 
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus] {
+	return pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus]{
+		OutputState: i.ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput struct{ *pulumi.OutputState }
 
 func (GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) ElementType() reflect.Type {
@@ -2693,6 +3114,12 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) ToGe
 
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput {
 	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus] {
+	return pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The current monitoring indicator elasticity list.
@@ -2753,6 +3180,12 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput)
 	return o
 }
 
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus] {
+	return pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput) Index(i pulumi.IntInput) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus {
 		return vs[0].([]GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus)[vs[1].(int)]
@@ -2800,6 +3233,12 @@ func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetri
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput)
 }
 
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArgs) ToOutput(ctx context.Context) pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric] {
+	return pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric]{
+		OutputState: i.ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArray and GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayInput` via:
 //
@@ -2825,6 +3264,12 @@ func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetri
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput)
 }
 
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArray) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric] {
+	return pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric]{
+		OutputState: i.ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput struct{ *pulumi.OutputState }
 
 func (GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput) ElementType() reflect.Type {
@@ -2837,6 +3282,12 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetri
 
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput {
 	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric] {
+	return pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The current value.
@@ -2872,6 +3323,12 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetri
 
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput {
 	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric] {
+	return pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput) Index(i pulumi.IntInput) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput {
@@ -2921,6 +3378,12 @@ func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMet
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput)
 }
 
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArgs) ToOutput(ctx context.Context) pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric] {
+	return pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric]{
+		OutputState: i.ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArray and GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayInput` via:
 //
@@ -2946,6 +3409,12 @@ func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMet
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput)
 }
 
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArray) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric] {
+	return pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric]{
+		OutputState: i.ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput struct{ *pulumi.OutputState }
 
 func (GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput) ElementType() reflect.Type {
@@ -2958,6 +3427,12 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMet
 
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput {
 	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric] {
+	return pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the trigger condition.
@@ -2993,6 +3468,12 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMet
 
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput {
 	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric] {
+	return pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput) Index(i pulumi.IntInput) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput {
@@ -3042,6 +3523,12 @@ func (i GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArgs) ToGetA
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput)
 }
 
+func (i GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule] {
+	return pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule]{
+		OutputState: i.ToGetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArray and GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayInput` via:
 //
@@ -3067,6 +3554,12 @@ func (i GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArray) ToGet
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput)
 }
 
+func (i GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule] {
+	return pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule]{
+		OutputState: i.ToGetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput struct{ *pulumi.OutputState }
 
 func (GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput) ElementType() reflect.Type {
@@ -3079,6 +3572,12 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput) ToGe
 
 func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput {
 	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule] {
+	return pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether shrinkage is prohibited. The values are described as follows:
@@ -3110,6 +3609,12 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput)
 
 func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput {
 	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule] {
+	return pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput) Index(i pulumi.IntInput) GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput {
@@ -3159,6 +3664,12 @@ func (i GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArgs) ToGetApp
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput)
 }
 
+func (i GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule] {
+	return pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule]{
+		OutputState: i.ToGetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArray and GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayInput` via:
 //
@@ -3184,6 +3695,12 @@ func (i GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArray) ToGetAp
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput)
 }
 
+func (i GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule] {
+	return pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule]{
+		OutputState: i.ToGetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput struct{ *pulumi.OutputState }
 
 func (GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput) ElementType() reflect.Type {
@@ -3196,6 +3713,12 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput) ToGetA
 
 func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput {
 	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule] {
+	return pulumix.Output[GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether shrinkage is prohibited. The values are described as follows:
@@ -3227,6 +3750,12 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput) T
 
 func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput {
 	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule] {
+	return pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput) Index(i pulumi.IntInput) GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput {
@@ -3280,6 +3809,12 @@ func (i GetApplicationScalingRulesRuleScalingRuleTimerArgs) ToGetApplicationScal
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleTimerOutput)
 }
 
+func (i GetApplicationScalingRulesRuleScalingRuleTimerArgs) ToOutput(ctx context.Context) pulumix.Output[GetApplicationScalingRulesRuleScalingRuleTimer] {
+	return pulumix.Output[GetApplicationScalingRulesRuleScalingRuleTimer]{
+		OutputState: i.ToGetApplicationScalingRulesRuleScalingRuleTimerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetApplicationScalingRulesRuleScalingRuleTimerArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleTimerArray and GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleTimerArrayInput` via:
 //
@@ -3305,6 +3840,12 @@ func (i GetApplicationScalingRulesRuleScalingRuleTimerArray) ToGetApplicationSca
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput)
 }
 
+func (i GetApplicationScalingRulesRuleScalingRuleTimerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleTimer] {
+	return pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleTimer]{
+		OutputState: i.ToGetApplicationScalingRulesRuleScalingRuleTimerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetApplicationScalingRulesRuleScalingRuleTimerOutput struct{ *pulumi.OutputState }
 
 func (GetApplicationScalingRulesRuleScalingRuleTimerOutput) ElementType() reflect.Type {
@@ -3317,6 +3858,12 @@ func (o GetApplicationScalingRulesRuleScalingRuleTimerOutput) ToGetApplicationSc
 
 func (o GetApplicationScalingRulesRuleScalingRuleTimerOutput) ToGetApplicationScalingRulesRuleScalingRuleTimerOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleTimerOutput {
 	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleTimerOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationScalingRulesRuleScalingRuleTimer] {
+	return pulumix.Output[GetApplicationScalingRulesRuleScalingRuleTimer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The short-term start date of the timed elastic scaling strategy.
@@ -3353,6 +3900,12 @@ func (o GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput) ToGetApplicat
 
 func (o GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleTimerArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput {
 	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleTimer] {
+	return pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleTimer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput) Index(i pulumi.IntInput) GetApplicationScalingRulesRuleScalingRuleTimerOutput {
@@ -3406,6 +3959,12 @@ func (i GetApplicationScalingRulesRuleScalingRuleTimerScheduleArgs) ToGetApplica
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput)
 }
 
+func (i GetApplicationScalingRulesRuleScalingRuleTimerScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[GetApplicationScalingRulesRuleScalingRuleTimerSchedule] {
+	return pulumix.Output[GetApplicationScalingRulesRuleScalingRuleTimerSchedule]{
+		OutputState: i.ToGetApplicationScalingRulesRuleScalingRuleTimerScheduleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleTimerScheduleArray and GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayInput` via:
 //
@@ -3431,6 +3990,12 @@ func (i GetApplicationScalingRulesRuleScalingRuleTimerScheduleArray) ToGetApplic
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput)
 }
 
+func (i GetApplicationScalingRulesRuleScalingRuleTimerScheduleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleTimerSchedule] {
+	return pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleTimerSchedule]{
+		OutputState: i.ToGetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput struct{ *pulumi.OutputState }
 
 func (GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput) ElementType() reflect.Type {
@@ -3443,6 +4008,12 @@ func (o GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput) ToGetAppli
 
 func (o GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput) ToGetApplicationScalingRulesRuleScalingRuleTimerScheduleOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput {
 	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationScalingRulesRuleScalingRuleTimerSchedule] {
+	return pulumix.Output[GetApplicationScalingRulesRuleScalingRuleTimerSchedule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time point. Format: `hours:minutes`.
@@ -3477,6 +4048,12 @@ func (o GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput) ToGet
 
 func (o GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput {
 	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleTimerSchedule] {
+	return pulumix.Output[[]GetApplicationScalingRulesRuleScalingRuleTimerSchedule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput) Index(i pulumi.IntInput) GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput {
@@ -3722,6 +4299,12 @@ func (i GetApplicationsApplicationArgs) ToGetApplicationsApplicationOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationsApplicationOutput)
 }
 
+func (i GetApplicationsApplicationArgs) ToOutput(ctx context.Context) pulumix.Output[GetApplicationsApplication] {
+	return pulumix.Output[GetApplicationsApplication]{
+		OutputState: i.ToGetApplicationsApplicationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetApplicationsApplicationArrayInput is an input type that accepts GetApplicationsApplicationArray and GetApplicationsApplicationArrayOutput values.
 // You can construct a concrete instance of `GetApplicationsApplicationArrayInput` via:
 //
@@ -3747,6 +4330,12 @@ func (i GetApplicationsApplicationArray) ToGetApplicationsApplicationArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationsApplicationArrayOutput)
 }
 
+func (i GetApplicationsApplicationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationsApplication] {
+	return pulumix.Output[[]GetApplicationsApplication]{
+		OutputState: i.ToGetApplicationsApplicationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetApplicationsApplicationOutput struct{ *pulumi.OutputState }
 
 func (GetApplicationsApplicationOutput) ElementType() reflect.Type {
@@ -3759,6 +4348,12 @@ func (o GetApplicationsApplicationOutput) ToGetApplicationsApplicationOutput() G
 
 func (o GetApplicationsApplicationOutput) ToGetApplicationsApplicationOutputWithContext(ctx context.Context) GetApplicationsApplicationOutput {
 	return o
+}
+
+func (o GetApplicationsApplicationOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationsApplication] {
+	return pulumix.Output[GetApplicationsApplication]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ARN of the RAM role required when pulling images across accounts.
@@ -4043,6 +4638,12 @@ func (o GetApplicationsApplicationArrayOutput) ToGetApplicationsApplicationArray
 	return o
 }
 
+func (o GetApplicationsApplicationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationsApplication] {
+	return pulumix.Output[[]GetApplicationsApplication]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetApplicationsApplicationArrayOutput) Index(i pulumi.IntInput) GetApplicationsApplicationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationsApplication {
 		return vs[0].([]GetApplicationsApplication)[vs[1].(int)]
@@ -4086,6 +4687,12 @@ func (i GetApplicationsApplicationMountDescArgs) ToGetApplicationsApplicationMou
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationsApplicationMountDescOutput)
 }
 
+func (i GetApplicationsApplicationMountDescArgs) ToOutput(ctx context.Context) pulumix.Output[GetApplicationsApplicationMountDesc] {
+	return pulumix.Output[GetApplicationsApplicationMountDesc]{
+		OutputState: i.ToGetApplicationsApplicationMountDescOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetApplicationsApplicationMountDescArrayInput is an input type that accepts GetApplicationsApplicationMountDescArray and GetApplicationsApplicationMountDescArrayOutput values.
 // You can construct a concrete instance of `GetApplicationsApplicationMountDescArrayInput` via:
 //
@@ -4111,6 +4718,12 @@ func (i GetApplicationsApplicationMountDescArray) ToGetApplicationsApplicationMo
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationsApplicationMountDescArrayOutput)
 }
 
+func (i GetApplicationsApplicationMountDescArray) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationsApplicationMountDesc] {
+	return pulumix.Output[[]GetApplicationsApplicationMountDesc]{
+		OutputState: i.ToGetApplicationsApplicationMountDescArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetApplicationsApplicationMountDescOutput struct{ *pulumi.OutputState }
 
 func (GetApplicationsApplicationMountDescOutput) ElementType() reflect.Type {
@@ -4123,6 +4736,12 @@ func (o GetApplicationsApplicationMountDescOutput) ToGetApplicationsApplicationM
 
 func (o GetApplicationsApplicationMountDescOutput) ToGetApplicationsApplicationMountDescOutputWithContext(ctx context.Context) GetApplicationsApplicationMountDescOutput {
 	return o
+}
+
+func (o GetApplicationsApplicationMountDescOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationsApplicationMountDesc] {
+	return pulumix.Output[GetApplicationsApplicationMountDesc]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Container mount path.
@@ -4147,6 +4766,12 @@ func (o GetApplicationsApplicationMountDescArrayOutput) ToGetApplicationsApplica
 
 func (o GetApplicationsApplicationMountDescArrayOutput) ToGetApplicationsApplicationMountDescArrayOutputWithContext(ctx context.Context) GetApplicationsApplicationMountDescArrayOutput {
 	return o
+}
+
+func (o GetApplicationsApplicationMountDescArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationsApplicationMountDesc] {
+	return pulumix.Output[[]GetApplicationsApplicationMountDesc]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetApplicationsApplicationMountDescArrayOutput) Index(i pulumi.IntInput) GetApplicationsApplicationMountDescOutput {
@@ -4200,6 +4825,12 @@ func (i GetApplicationsApplicationOssMountDetailArgs) ToGetApplicationsApplicati
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationsApplicationOssMountDetailOutput)
 }
 
+func (i GetApplicationsApplicationOssMountDetailArgs) ToOutput(ctx context.Context) pulumix.Output[GetApplicationsApplicationOssMountDetail] {
+	return pulumix.Output[GetApplicationsApplicationOssMountDetail]{
+		OutputState: i.ToGetApplicationsApplicationOssMountDetailOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetApplicationsApplicationOssMountDetailArrayInput is an input type that accepts GetApplicationsApplicationOssMountDetailArray and GetApplicationsApplicationOssMountDetailArrayOutput values.
 // You can construct a concrete instance of `GetApplicationsApplicationOssMountDetailArrayInput` via:
 //
@@ -4225,6 +4856,12 @@ func (i GetApplicationsApplicationOssMountDetailArray) ToGetApplicationsApplicat
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationsApplicationOssMountDetailArrayOutput)
 }
 
+func (i GetApplicationsApplicationOssMountDetailArray) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationsApplicationOssMountDetail] {
+	return pulumix.Output[[]GetApplicationsApplicationOssMountDetail]{
+		OutputState: i.ToGetApplicationsApplicationOssMountDetailArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetApplicationsApplicationOssMountDetailOutput struct{ *pulumi.OutputState }
 
 func (GetApplicationsApplicationOssMountDetailOutput) ElementType() reflect.Type {
@@ -4237,6 +4874,12 @@ func (o GetApplicationsApplicationOssMountDetailOutput) ToGetApplicationsApplica
 
 func (o GetApplicationsApplicationOssMountDetailOutput) ToGetApplicationsApplicationOssMountDetailOutputWithContext(ctx context.Context) GetApplicationsApplicationOssMountDetailOutput {
 	return o
+}
+
+func (o GetApplicationsApplicationOssMountDetailOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationsApplicationOssMountDetail] {
+	return pulumix.Output[GetApplicationsApplicationOssMountDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the bucket.
@@ -4271,6 +4914,12 @@ func (o GetApplicationsApplicationOssMountDetailArrayOutput) ToGetApplicationsAp
 
 func (o GetApplicationsApplicationOssMountDetailArrayOutput) ToGetApplicationsApplicationOssMountDetailArrayOutputWithContext(ctx context.Context) GetApplicationsApplicationOssMountDetailArrayOutput {
 	return o
+}
+
+func (o GetApplicationsApplicationOssMountDetailArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationsApplicationOssMountDetail] {
+	return pulumix.Output[[]GetApplicationsApplicationOssMountDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetApplicationsApplicationOssMountDetailArrayOutput) Index(i pulumi.IntInput) GetApplicationsApplicationOssMountDetailOutput {
@@ -4336,6 +4985,12 @@ func (i GetConfigMapsMapArgs) ToGetConfigMapsMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetConfigMapsMapOutput)
 }
 
+func (i GetConfigMapsMapArgs) ToOutput(ctx context.Context) pulumix.Output[GetConfigMapsMap] {
+	return pulumix.Output[GetConfigMapsMap]{
+		OutputState: i.ToGetConfigMapsMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetConfigMapsMapArrayInput is an input type that accepts GetConfigMapsMapArray and GetConfigMapsMapArrayOutput values.
 // You can construct a concrete instance of `GetConfigMapsMapArrayInput` via:
 //
@@ -4361,6 +5016,12 @@ func (i GetConfigMapsMapArray) ToGetConfigMapsMapArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetConfigMapsMapArrayOutput)
 }
 
+func (i GetConfigMapsMapArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConfigMapsMap] {
+	return pulumix.Output[[]GetConfigMapsMap]{
+		OutputState: i.ToGetConfigMapsMapArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetConfigMapsMapOutput struct{ *pulumi.OutputState }
 
 func (GetConfigMapsMapOutput) ElementType() reflect.Type {
@@ -4373,6 +5034,12 @@ func (o GetConfigMapsMapOutput) ToGetConfigMapsMapOutput() GetConfigMapsMapOutpu
 
 func (o GetConfigMapsMapOutput) ToGetConfigMapsMapOutputWithContext(ctx context.Context) GetConfigMapsMapOutput {
 	return o
+}
+
+func (o GetConfigMapsMapOutput) ToOutput(ctx context.Context) pulumix.Output[GetConfigMapsMap] {
+	return pulumix.Output[GetConfigMapsMap]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The first ID of the resource.
@@ -4422,6 +5089,12 @@ func (o GetConfigMapsMapArrayOutput) ToGetConfigMapsMapArrayOutput() GetConfigMa
 
 func (o GetConfigMapsMapArrayOutput) ToGetConfigMapsMapArrayOutputWithContext(ctx context.Context) GetConfigMapsMapArrayOutput {
 	return o
+}
+
+func (o GetConfigMapsMapArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConfigMapsMap] {
+	return pulumix.Output[[]GetConfigMapsMap]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetConfigMapsMapArrayOutput) Index(i pulumi.IntInput) GetConfigMapsMapOutput {
@@ -4479,6 +5152,12 @@ func (i GetGreyTagRoutesRouteArgs) ToGetGreyTagRoutesRouteOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetGreyTagRoutesRouteOutput)
 }
 
+func (i GetGreyTagRoutesRouteArgs) ToOutput(ctx context.Context) pulumix.Output[GetGreyTagRoutesRoute] {
+	return pulumix.Output[GetGreyTagRoutesRoute]{
+		OutputState: i.ToGetGreyTagRoutesRouteOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGreyTagRoutesRouteArrayInput is an input type that accepts GetGreyTagRoutesRouteArray and GetGreyTagRoutesRouteArrayOutput values.
 // You can construct a concrete instance of `GetGreyTagRoutesRouteArrayInput` via:
 //
@@ -4504,6 +5183,12 @@ func (i GetGreyTagRoutesRouteArray) ToGetGreyTagRoutesRouteArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetGreyTagRoutesRouteArrayOutput)
 }
 
+func (i GetGreyTagRoutesRouteArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGreyTagRoutesRoute] {
+	return pulumix.Output[[]GetGreyTagRoutesRoute]{
+		OutputState: i.ToGetGreyTagRoutesRouteArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGreyTagRoutesRouteOutput struct{ *pulumi.OutputState }
 
 func (GetGreyTagRoutesRouteOutput) ElementType() reflect.Type {
@@ -4516,6 +5201,12 @@ func (o GetGreyTagRoutesRouteOutput) ToGetGreyTagRoutesRouteOutput() GetGreyTagR
 
 func (o GetGreyTagRoutesRouteOutput) ToGetGreyTagRoutesRouteOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteOutput {
 	return o
+}
+
+func (o GetGreyTagRoutesRouteOutput) ToOutput(ctx context.Context) pulumix.Output[GetGreyTagRoutesRoute] {
+	return pulumix.Output[GetGreyTagRoutesRoute]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of GreyTagRoute.
@@ -4555,6 +5246,12 @@ func (o GetGreyTagRoutesRouteArrayOutput) ToGetGreyTagRoutesRouteArrayOutput() G
 
 func (o GetGreyTagRoutesRouteArrayOutput) ToGetGreyTagRoutesRouteArrayOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteArrayOutput {
 	return o
+}
+
+func (o GetGreyTagRoutesRouteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGreyTagRoutesRoute] {
+	return pulumix.Output[[]GetGreyTagRoutesRoute]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGreyTagRoutesRouteArrayOutput) Index(i pulumi.IntInput) GetGreyTagRoutesRouteOutput {
@@ -4616,6 +5313,12 @@ func (i GetGreyTagRoutesRouteDubboRuleArgs) ToGetGreyTagRoutesRouteDubboRuleOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetGreyTagRoutesRouteDubboRuleOutput)
 }
 
+func (i GetGreyTagRoutesRouteDubboRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetGreyTagRoutesRouteDubboRule] {
+	return pulumix.Output[GetGreyTagRoutesRouteDubboRule]{
+		OutputState: i.ToGetGreyTagRoutesRouteDubboRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGreyTagRoutesRouteDubboRuleArrayInput is an input type that accepts GetGreyTagRoutesRouteDubboRuleArray and GetGreyTagRoutesRouteDubboRuleArrayOutput values.
 // You can construct a concrete instance of `GetGreyTagRoutesRouteDubboRuleArrayInput` via:
 //
@@ -4641,6 +5344,12 @@ func (i GetGreyTagRoutesRouteDubboRuleArray) ToGetGreyTagRoutesRouteDubboRuleArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetGreyTagRoutesRouteDubboRuleArrayOutput)
 }
 
+func (i GetGreyTagRoutesRouteDubboRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGreyTagRoutesRouteDubboRule] {
+	return pulumix.Output[[]GetGreyTagRoutesRouteDubboRule]{
+		OutputState: i.ToGetGreyTagRoutesRouteDubboRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGreyTagRoutesRouteDubboRuleOutput struct{ *pulumi.OutputState }
 
 func (GetGreyTagRoutesRouteDubboRuleOutput) ElementType() reflect.Type {
@@ -4653,6 +5362,12 @@ func (o GetGreyTagRoutesRouteDubboRuleOutput) ToGetGreyTagRoutesRouteDubboRuleOu
 
 func (o GetGreyTagRoutesRouteDubboRuleOutput) ToGetGreyTagRoutesRouteDubboRuleOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteDubboRuleOutput {
 	return o
+}
+
+func (o GetGreyTagRoutesRouteDubboRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetGreyTagRoutesRouteDubboRule] {
+	return pulumix.Output[GetGreyTagRoutesRouteDubboRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Conditional Patterns for Grayscale Rules.
@@ -4697,6 +5412,12 @@ func (o GetGreyTagRoutesRouteDubboRuleArrayOutput) ToGetGreyTagRoutesRouteDubboR
 
 func (o GetGreyTagRoutesRouteDubboRuleArrayOutput) ToGetGreyTagRoutesRouteDubboRuleArrayOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteDubboRuleArrayOutput {
 	return o
+}
+
+func (o GetGreyTagRoutesRouteDubboRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGreyTagRoutesRouteDubboRule] {
+	return pulumix.Output[[]GetGreyTagRoutesRouteDubboRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGreyTagRoutesRouteDubboRuleArrayOutput) Index(i pulumi.IntInput) GetGreyTagRoutesRouteDubboRuleOutput {
@@ -4754,6 +5475,12 @@ func (i GetGreyTagRoutesRouteDubboRuleItemArgs) ToGetGreyTagRoutesRouteDubboRule
 	return pulumi.ToOutputWithContext(ctx, i).(GetGreyTagRoutesRouteDubboRuleItemOutput)
 }
 
+func (i GetGreyTagRoutesRouteDubboRuleItemArgs) ToOutput(ctx context.Context) pulumix.Output[GetGreyTagRoutesRouteDubboRuleItem] {
+	return pulumix.Output[GetGreyTagRoutesRouteDubboRuleItem]{
+		OutputState: i.ToGetGreyTagRoutesRouteDubboRuleItemOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGreyTagRoutesRouteDubboRuleItemArrayInput is an input type that accepts GetGreyTagRoutesRouteDubboRuleItemArray and GetGreyTagRoutesRouteDubboRuleItemArrayOutput values.
 // You can construct a concrete instance of `GetGreyTagRoutesRouteDubboRuleItemArrayInput` via:
 //
@@ -4779,6 +5506,12 @@ func (i GetGreyTagRoutesRouteDubboRuleItemArray) ToGetGreyTagRoutesRouteDubboRul
 	return pulumi.ToOutputWithContext(ctx, i).(GetGreyTagRoutesRouteDubboRuleItemArrayOutput)
 }
 
+func (i GetGreyTagRoutesRouteDubboRuleItemArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGreyTagRoutesRouteDubboRuleItem] {
+	return pulumix.Output[[]GetGreyTagRoutesRouteDubboRuleItem]{
+		OutputState: i.ToGetGreyTagRoutesRouteDubboRuleItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGreyTagRoutesRouteDubboRuleItemOutput struct{ *pulumi.OutputState }
 
 func (GetGreyTagRoutesRouteDubboRuleItemOutput) ElementType() reflect.Type {
@@ -4791,6 +5524,12 @@ func (o GetGreyTagRoutesRouteDubboRuleItemOutput) ToGetGreyTagRoutesRouteDubboRu
 
 func (o GetGreyTagRoutesRouteDubboRuleItemOutput) ToGetGreyTagRoutesRouteDubboRuleItemOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteDubboRuleItemOutput {
 	return o
+}
+
+func (o GetGreyTagRoutesRouteDubboRuleItemOutput) ToOutput(ctx context.Context) pulumix.Output[GetGreyTagRoutesRouteDubboRuleItem] {
+	return pulumix.Output[GetGreyTagRoutesRouteDubboRuleItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The comparison operator.
@@ -4830,6 +5569,12 @@ func (o GetGreyTagRoutesRouteDubboRuleItemArrayOutput) ToGetGreyTagRoutesRouteDu
 
 func (o GetGreyTagRoutesRouteDubboRuleItemArrayOutput) ToGetGreyTagRoutesRouteDubboRuleItemArrayOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteDubboRuleItemArrayOutput {
 	return o
+}
+
+func (o GetGreyTagRoutesRouteDubboRuleItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGreyTagRoutesRouteDubboRuleItem] {
+	return pulumix.Output[[]GetGreyTagRoutesRouteDubboRuleItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGreyTagRoutesRouteDubboRuleItemArrayOutput) Index(i pulumi.IntInput) GetGreyTagRoutesRouteDubboRuleItemOutput {
@@ -4879,6 +5624,12 @@ func (i GetGreyTagRoutesRouteScRuleArgs) ToGetGreyTagRoutesRouteScRuleOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetGreyTagRoutesRouteScRuleOutput)
 }
 
+func (i GetGreyTagRoutesRouteScRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetGreyTagRoutesRouteScRule] {
+	return pulumix.Output[GetGreyTagRoutesRouteScRule]{
+		OutputState: i.ToGetGreyTagRoutesRouteScRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGreyTagRoutesRouteScRuleArrayInput is an input type that accepts GetGreyTagRoutesRouteScRuleArray and GetGreyTagRoutesRouteScRuleArrayOutput values.
 // You can construct a concrete instance of `GetGreyTagRoutesRouteScRuleArrayInput` via:
 //
@@ -4904,6 +5655,12 @@ func (i GetGreyTagRoutesRouteScRuleArray) ToGetGreyTagRoutesRouteScRuleArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetGreyTagRoutesRouteScRuleArrayOutput)
 }
 
+func (i GetGreyTagRoutesRouteScRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGreyTagRoutesRouteScRule] {
+	return pulumix.Output[[]GetGreyTagRoutesRouteScRule]{
+		OutputState: i.ToGetGreyTagRoutesRouteScRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGreyTagRoutesRouteScRuleOutput struct{ *pulumi.OutputState }
 
 func (GetGreyTagRoutesRouteScRuleOutput) ElementType() reflect.Type {
@@ -4916,6 +5673,12 @@ func (o GetGreyTagRoutesRouteScRuleOutput) ToGetGreyTagRoutesRouteScRuleOutput()
 
 func (o GetGreyTagRoutesRouteScRuleOutput) ToGetGreyTagRoutesRouteScRuleOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteScRuleOutput {
 	return o
+}
+
+func (o GetGreyTagRoutesRouteScRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetGreyTagRoutesRouteScRule] {
+	return pulumix.Output[GetGreyTagRoutesRouteScRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Conditional Patterns for Grayscale Rules.
@@ -4945,6 +5708,12 @@ func (o GetGreyTagRoutesRouteScRuleArrayOutput) ToGetGreyTagRoutesRouteScRuleArr
 
 func (o GetGreyTagRoutesRouteScRuleArrayOutput) ToGetGreyTagRoutesRouteScRuleArrayOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteScRuleArrayOutput {
 	return o
+}
+
+func (o GetGreyTagRoutesRouteScRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGreyTagRoutesRouteScRule] {
+	return pulumix.Output[[]GetGreyTagRoutesRouteScRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGreyTagRoutesRouteScRuleArrayOutput) Index(i pulumi.IntInput) GetGreyTagRoutesRouteScRuleOutput {
@@ -5002,6 +5771,12 @@ func (i GetGreyTagRoutesRouteScRuleItemArgs) ToGetGreyTagRoutesRouteScRuleItemOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetGreyTagRoutesRouteScRuleItemOutput)
 }
 
+func (i GetGreyTagRoutesRouteScRuleItemArgs) ToOutput(ctx context.Context) pulumix.Output[GetGreyTagRoutesRouteScRuleItem] {
+	return pulumix.Output[GetGreyTagRoutesRouteScRuleItem]{
+		OutputState: i.ToGetGreyTagRoutesRouteScRuleItemOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGreyTagRoutesRouteScRuleItemArrayInput is an input type that accepts GetGreyTagRoutesRouteScRuleItemArray and GetGreyTagRoutesRouteScRuleItemArrayOutput values.
 // You can construct a concrete instance of `GetGreyTagRoutesRouteScRuleItemArrayInput` via:
 //
@@ -5027,6 +5802,12 @@ func (i GetGreyTagRoutesRouteScRuleItemArray) ToGetGreyTagRoutesRouteScRuleItemA
 	return pulumi.ToOutputWithContext(ctx, i).(GetGreyTagRoutesRouteScRuleItemArrayOutput)
 }
 
+func (i GetGreyTagRoutesRouteScRuleItemArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGreyTagRoutesRouteScRuleItem] {
+	return pulumix.Output[[]GetGreyTagRoutesRouteScRuleItem]{
+		OutputState: i.ToGetGreyTagRoutesRouteScRuleItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGreyTagRoutesRouteScRuleItemOutput struct{ *pulumi.OutputState }
 
 func (GetGreyTagRoutesRouteScRuleItemOutput) ElementType() reflect.Type {
@@ -5039,6 +5820,12 @@ func (o GetGreyTagRoutesRouteScRuleItemOutput) ToGetGreyTagRoutesRouteScRuleItem
 
 func (o GetGreyTagRoutesRouteScRuleItemOutput) ToGetGreyTagRoutesRouteScRuleItemOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteScRuleItemOutput {
 	return o
+}
+
+func (o GetGreyTagRoutesRouteScRuleItemOutput) ToOutput(ctx context.Context) pulumix.Output[GetGreyTagRoutesRouteScRuleItem] {
+	return pulumix.Output[GetGreyTagRoutesRouteScRuleItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The comparison operator.
@@ -5078,6 +5865,12 @@ func (o GetGreyTagRoutesRouteScRuleItemArrayOutput) ToGetGreyTagRoutesRouteScRul
 
 func (o GetGreyTagRoutesRouteScRuleItemArrayOutput) ToGetGreyTagRoutesRouteScRuleItemArrayOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteScRuleItemArrayOutput {
 	return o
+}
+
+func (o GetGreyTagRoutesRouteScRuleItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGreyTagRoutesRouteScRuleItem] {
+	return pulumix.Output[[]GetGreyTagRoutesRouteScRuleItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGreyTagRoutesRouteScRuleItemArrayOutput) Index(i pulumi.IntInput) GetGreyTagRoutesRouteScRuleItemOutput {
@@ -5147,6 +5940,12 @@ func (i GetIngressesIngressArgs) ToGetIngressesIngressOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetIngressesIngressOutput)
 }
 
+func (i GetIngressesIngressArgs) ToOutput(ctx context.Context) pulumix.Output[GetIngressesIngress] {
+	return pulumix.Output[GetIngressesIngress]{
+		OutputState: i.ToGetIngressesIngressOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetIngressesIngressArrayInput is an input type that accepts GetIngressesIngressArray and GetIngressesIngressArrayOutput values.
 // You can construct a concrete instance of `GetIngressesIngressArrayInput` via:
 //
@@ -5172,6 +5971,12 @@ func (i GetIngressesIngressArray) ToGetIngressesIngressArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetIngressesIngressArrayOutput)
 }
 
+func (i GetIngressesIngressArray) ToOutput(ctx context.Context) pulumix.Output[[]GetIngressesIngress] {
+	return pulumix.Output[[]GetIngressesIngress]{
+		OutputState: i.ToGetIngressesIngressArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetIngressesIngressOutput struct{ *pulumi.OutputState }
 
 func (GetIngressesIngressOutput) ElementType() reflect.Type {
@@ -5184,6 +5989,12 @@ func (o GetIngressesIngressOutput) ToGetIngressesIngressOutput() GetIngressesIng
 
 func (o GetIngressesIngressOutput) ToGetIngressesIngressOutputWithContext(ctx context.Context) GetIngressesIngressOutput {
 	return o
+}
+
+func (o GetIngressesIngressOutput) ToOutput(ctx context.Context) pulumix.Output[GetIngressesIngress] {
+	return pulumix.Output[GetIngressesIngress]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cert Id.
@@ -5238,6 +6049,12 @@ func (o GetIngressesIngressArrayOutput) ToGetIngressesIngressArrayOutput() GetIn
 
 func (o GetIngressesIngressArrayOutput) ToGetIngressesIngressArrayOutputWithContext(ctx context.Context) GetIngressesIngressArrayOutput {
 	return o
+}
+
+func (o GetIngressesIngressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetIngressesIngress] {
+	return pulumix.Output[[]GetIngressesIngress]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetIngressesIngressArrayOutput) Index(i pulumi.IntInput) GetIngressesIngressOutput {
@@ -5303,6 +6120,12 @@ func (i GetInstanceSpecificationsSpecificationArgs) ToGetInstanceSpecificationsS
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSpecificationsSpecificationOutput)
 }
 
+func (i GetInstanceSpecificationsSpecificationArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceSpecificationsSpecification] {
+	return pulumix.Output[GetInstanceSpecificationsSpecification]{
+		OutputState: i.ToGetInstanceSpecificationsSpecificationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstanceSpecificationsSpecificationArrayInput is an input type that accepts GetInstanceSpecificationsSpecificationArray and GetInstanceSpecificationsSpecificationArrayOutput values.
 // You can construct a concrete instance of `GetInstanceSpecificationsSpecificationArrayInput` via:
 //
@@ -5328,6 +6151,12 @@ func (i GetInstanceSpecificationsSpecificationArray) ToGetInstanceSpecifications
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSpecificationsSpecificationArrayOutput)
 }
 
+func (i GetInstanceSpecificationsSpecificationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceSpecificationsSpecification] {
+	return pulumix.Output[[]GetInstanceSpecificationsSpecification]{
+		OutputState: i.ToGetInstanceSpecificationsSpecificationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstanceSpecificationsSpecificationOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceSpecificationsSpecificationOutput) ElementType() reflect.Type {
@@ -5340,6 +6169,12 @@ func (o GetInstanceSpecificationsSpecificationOutput) ToGetInstanceSpecification
 
 func (o GetInstanceSpecificationsSpecificationOutput) ToGetInstanceSpecificationsSpecificationOutputWithContext(ctx context.Context) GetInstanceSpecificationsSpecificationOutput {
 	return o
+}
+
+func (o GetInstanceSpecificationsSpecificationOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceSpecificationsSpecification] {
+	return pulumix.Output[GetInstanceSpecificationsSpecification]{
+		OutputState: o.OutputState,
+	}
 }
 
 // CPU Size, Specifications for Micronucleus.
@@ -5389,6 +6224,12 @@ func (o GetInstanceSpecificationsSpecificationArrayOutput) ToGetInstanceSpecific
 
 func (o GetInstanceSpecificationsSpecificationArrayOutput) ToGetInstanceSpecificationsSpecificationArrayOutputWithContext(ctx context.Context) GetInstanceSpecificationsSpecificationArrayOutput {
 	return o
+}
+
+func (o GetInstanceSpecificationsSpecificationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceSpecificationsSpecification] {
+	return pulumix.Output[[]GetInstanceSpecificationsSpecification]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceSpecificationsSpecificationArrayOutput) Index(i pulumi.IntInput) GetInstanceSpecificationsSpecificationOutput {
@@ -5442,6 +6283,12 @@ func (i GetNamespacesNamespaceArgs) ToGetNamespacesNamespaceOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetNamespacesNamespaceOutput)
 }
 
+func (i GetNamespacesNamespaceArgs) ToOutput(ctx context.Context) pulumix.Output[GetNamespacesNamespace] {
+	return pulumix.Output[GetNamespacesNamespace]{
+		OutputState: i.ToGetNamespacesNamespaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetNamespacesNamespaceArrayInput is an input type that accepts GetNamespacesNamespaceArray and GetNamespacesNamespaceArrayOutput values.
 // You can construct a concrete instance of `GetNamespacesNamespaceArrayInput` via:
 //
@@ -5467,6 +6314,12 @@ func (i GetNamespacesNamespaceArray) ToGetNamespacesNamespaceArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetNamespacesNamespaceArrayOutput)
 }
 
+func (i GetNamespacesNamespaceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetNamespacesNamespace] {
+	return pulumix.Output[[]GetNamespacesNamespace]{
+		OutputState: i.ToGetNamespacesNamespaceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetNamespacesNamespaceOutput struct{ *pulumi.OutputState }
 
 func (GetNamespacesNamespaceOutput) ElementType() reflect.Type {
@@ -5479,6 +6332,12 @@ func (o GetNamespacesNamespaceOutput) ToGetNamespacesNamespaceOutput() GetNamesp
 
 func (o GetNamespacesNamespaceOutput) ToGetNamespacesNamespaceOutputWithContext(ctx context.Context) GetNamespacesNamespaceOutput {
 	return o
+}
+
+func (o GetNamespacesNamespaceOutput) ToOutput(ctx context.Context) pulumix.Output[GetNamespacesNamespace] {
+	return pulumix.Output[GetNamespacesNamespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Namespace.
@@ -5513,6 +6372,12 @@ func (o GetNamespacesNamespaceArrayOutput) ToGetNamespacesNamespaceArrayOutput()
 
 func (o GetNamespacesNamespaceArrayOutput) ToGetNamespacesNamespaceArrayOutputWithContext(ctx context.Context) GetNamespacesNamespaceArrayOutput {
 	return o
+}
+
+func (o GetNamespacesNamespaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetNamespacesNamespace] {
+	return pulumix.Output[[]GetNamespacesNamespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetNamespacesNamespaceArrayOutput) Index(i pulumi.IntInput) GetNamespacesNamespaceOutput {

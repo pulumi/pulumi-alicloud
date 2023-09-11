@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `polardb.getEndpoints` data source provides a collection of PolarDB endpoints available in Alibaba Cloud account.
@@ -116,6 +117,12 @@ func (o GetEndpointsResultOutput) ToGetEndpointsResultOutput() GetEndpointsResul
 
 func (o GetEndpointsResultOutput) ToGetEndpointsResultOutputWithContext(ctx context.Context) GetEndpointsResultOutput {
 	return o
+}
+
+func (o GetEndpointsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEndpointsResult] {
+	return pulumix.Output[GetEndpointsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetEndpointsResultOutput) DbClusterId() pulumi.StringOutput {

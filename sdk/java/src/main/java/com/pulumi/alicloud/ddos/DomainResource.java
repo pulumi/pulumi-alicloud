@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Anti-DDoS Pro Domain Resource resource.
  * 
- * For information about Anti-DDoS Pro Domain Resource and how to use it, see [What is Domain Resource](https://www.alibabacloud.com/help/en/doc-detail/157463.htm).
+ * For information about Anti-DDoS Pro Domain Resource and how to use it, see [What is Domain Resource](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createwebrule).
  * 
  * &gt; **NOTE:** Available since v1.123.0.
  * 
@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ddos.DdosCooInstance;
+ * import com.pulumi.alicloud.ddos.DdosCooInstanceArgs;
  * import com.pulumi.alicloud.ddos.DomainResource;
  * import com.pulumi.alicloud.ddos.DomainResourceArgs;
  * import com.pulumi.alicloud.ddos.inputs.DomainResourceProxyTypeArgs;
@@ -50,16 +52,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new DomainResource(&#34;example&#34;, DomainResourceArgs.builder()        
- *             .domain(&#34;tftestacc1234.abc&#34;)
- *             .httpsExt(&#34;{\&#34;Http2\&#34;:1,\&#34;Http2https\&#34;:0，\&#34;Https2http\&#34;:0}&#34;)
- *             .instanceIds(&#34;ddoscoo-cn-6ja1rl4j****&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var domain = config.get(&#34;domain&#34;).orElse(&#34;tf-example.alibaba.com&#34;);
+ *         var defaultDdosCooInstance = new DdosCooInstance(&#34;defaultDdosCooInstance&#34;, DdosCooInstanceArgs.builder()        
+ *             .bandwidth(&#34;30&#34;)
+ *             .baseBandwidth(&#34;30&#34;)
+ *             .serviceBandwidth(&#34;100&#34;)
+ *             .portCount(&#34;50&#34;)
+ *             .domainCount(&#34;50&#34;)
+ *             .period(&#34;1&#34;)
+ *             .productType(&#34;ddoscoo&#34;)
+ *             .build());
+ * 
+ *         var defaultDomainResource = new DomainResource(&#34;defaultDomainResource&#34;, DomainResourceArgs.builder()        
+ *             .domain(domain)
+ *             .rsType(0)
+ *             .instanceIds(defaultDdosCooInstance.id())
+ *             .realServers(&#34;177.167.32.11&#34;)
+ *             .httpsExt(&#34;{\&#34;Http2\&#34;:1,\&#34;Http2https\&#34;:0,\&#34;Https2http\&#34;:0}&#34;)
  *             .proxyTypes(DomainResourceProxyTypeArgs.builder()
  *                 .proxyPorts(443)
  *                 .proxyType(&#34;https&#34;)
  *                 .build())
- *             .realServers(&#34;177.167.32.11&#34;)
- *             .rsType(0)
  *             .build());
  * 
  *     }

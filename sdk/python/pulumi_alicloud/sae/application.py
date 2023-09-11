@@ -1922,9 +1922,9 @@ class Application(pulumi.CustomResource):
         """
         Provides a Serverless App Engine (SAE) Application resource.
 
-        For information about Serverless App Engine (SAE) Application and how to use it, see [What is Application](https://help.aliyun.com/document_detail/97792.html).
+        For information about Serverless App Engine (SAE) Application and how to use it, see [What is Application](https://www.alibabacloud.com/help/en/sae/latest/createapplication).
 
-        > **NOTE:** Available in v1.161.0+.
+        > **NOTE:** Available since v1.161.0.
 
         ## Example Usage
 
@@ -1933,32 +1933,40 @@ class Application(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testacc"
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name="tf_testacc",
-            cidr_block="172.16.0.0/12")
-        vsw = alicloud.vpc.Switch("vsw",
-            vpc_id=vpc.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_namespace = alicloud.sae.Namespace("defaultNamespace",
+            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
+            namespace_name=name,
             namespace_description=name,
-            namespace_id="cn-hangzhou:tfacctest",
-            namespace_name=name)
+            enable_micro_registration=False)
         default_application = alicloud.sae.Application("defaultApplication",
-            app_description="tf-testaccDescription",
-            app_name="tf-testaccAppName",
+            app_description=name,
+            app_name=name,
             namespace_id=default_namespace.id,
-            image_url="registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
+            image_url=f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
             package_type="Image",
-            vpc_id=vsw.vpc_id,
-            vswitch_id=vsw.id,
+            security_group_id=default_security_group.id,
+            vpc_id=default_network.id,
+            vswitch_id=default_switch.id,
             timezone="Asia/Beijing",
             replicas=5,
             cpu=500,
@@ -2044,9 +2052,9 @@ class Application(pulumi.CustomResource):
         """
         Provides a Serverless App Engine (SAE) Application resource.
 
-        For information about Serverless App Engine (SAE) Application and how to use it, see [What is Application](https://help.aliyun.com/document_detail/97792.html).
+        For information about Serverless App Engine (SAE) Application and how to use it, see [What is Application](https://www.alibabacloud.com/help/en/sae/latest/createapplication).
 
-        > **NOTE:** Available in v1.161.0+.
+        > **NOTE:** Available since v1.161.0.
 
         ## Example Usage
 
@@ -2055,32 +2063,40 @@ class Application(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testacc"
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name="tf_testacc",
-            cidr_block="172.16.0.0/12")
-        vsw = alicloud.vpc.Switch("vsw",
-            vpc_id=vpc.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_namespace = alicloud.sae.Namespace("defaultNamespace",
+            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
+            namespace_name=name,
             namespace_description=name,
-            namespace_id="cn-hangzhou:tfacctest",
-            namespace_name=name)
+            enable_micro_registration=False)
         default_application = alicloud.sae.Application("defaultApplication",
-            app_description="tf-testaccDescription",
-            app_name="tf-testaccAppName",
+            app_description=name,
+            app_name=name,
             namespace_id=default_namespace.id,
-            image_url="registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
+            image_url=f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
             package_type="Image",
-            vpc_id=vsw.vpc_id,
-            vswitch_id=vsw.id,
+            security_group_id=default_security_group.id,
+            vpc_id=default_network.id,
+            vswitch_id=default_switch.id,
             timezone="Asia/Beijing",
             replicas=5,
             cpu=500,

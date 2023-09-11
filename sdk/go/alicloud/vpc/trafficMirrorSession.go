@@ -10,13 +10,14 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPC Traffic Mirror Session resource. Traffic mirroring session.
 //
 // For information about VPC Traffic Mirror Session and how to use it, see [What is Traffic Mirror Session](https://www.alibabacloud.com/help/en/doc-detail/261364.htm).
 //
-// > **NOTE:** Available in v1.142.0+.
+// > **NOTE:** Available since v1.142.0.
 //
 // ## Example Usage
 //
@@ -31,11 +32,17 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
 //				InstanceTypeFamily: pulumi.StringRef("ecs.g7"),
 //			}, nil)
@@ -49,23 +56,25 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
-//			}, nil)
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
-//			}, nil)
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			vswitchId := defaultSwitches.Ids[0]
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-//				Description: pulumi.String("New security group"),
-//				VpcId:       *pulumi.String(defaultNetworks.Ids[0]),
+//				Description: pulumi.String(name),
+//				VpcId:       defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -84,14 +93,14 @@ import (
 //				_ := index
 //				__res, err := ecs.NewInstance(ctx, fmt.Sprintf("defaultInstance-%v", key0), &ecs.InstanceArgs{
 //					AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
-//					InstanceName:     pulumi.String("example_value"),
-//					HostName:         pulumi.String("tf-testAcc"),
+//					InstanceName:     pulumi.String(name),
+//					HostName:         pulumi.String(name),
 //					ImageId:          *pulumi.String(defaultImages.Images[0].Id),
 //					InstanceType:     *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //					SecurityGroups: pulumi.StringArray{
 //						defaultSecurityGroup.ID(),
 //					},
-//					VswitchId:          *pulumi.String(vswitchId),
+//					VswitchId:          defaultSwitch.ID(),
 //					SystemDiskCategory: pulumi.String("cloud_essd"),
 //				})
 //				if err != nil {
@@ -104,8 +113,8 @@ import (
 //				key0 := index
 //				_ := index
 //				__res, err := ecs.NewEcsNetworkInterface(ctx, fmt.Sprintf("defaultEcsNetworkInterface-%v", key0), &ecs.EcsNetworkInterfaceArgs{
-//					NetworkInterfaceName: pulumi.String("example_value"),
-//					VswitchId:            *pulumi.String(vswitchId),
+//					NetworkInterfaceName: pulumi.String(name),
+//					VswitchId:            defaultSwitch.ID(),
 //					SecurityGroupIds: pulumi.StringArray{
 //						defaultSecurityGroup.ID(),
 //					},
@@ -118,10 +127,10 @@ import (
 //			var defaultEcsNetworkInterfaceAttachment []*ecs.EcsNetworkInterfaceAttachment
 //			for index := 0; index < 2; index++ {
 //				key0 := index
-//				_ := index
+//				val0 := index
 //				__res, err := ecs.NewEcsNetworkInterfaceAttachment(ctx, fmt.Sprintf("defaultEcsNetworkInterfaceAttachment-%v", key0), &ecs.EcsNetworkInterfaceAttachmentArgs{
-//					InstanceId:         "TODO: element",
-//					NetworkInterfaceId: "TODO: element",
+//					InstanceId:         defaultInstance[val0].ID(),
+//					NetworkInterfaceId: defaultEcsNetworkInterface[val0].ID(),
 //				})
 //				if err != nil {
 //					return err
@@ -129,8 +138,8 @@ import (
 //				defaultEcsNetworkInterfaceAttachment = append(defaultEcsNetworkInterfaceAttachment, __res)
 //			}
 //			defaultTrafficMirrorFilter, err := vpc.NewTrafficMirrorFilter(ctx, "defaultTrafficMirrorFilter", &vpc.TrafficMirrorFilterArgs{
-//				TrafficMirrorFilterName:        pulumi.String("example_value"),
-//				TrafficMirrorFilterDescription: pulumi.String("example_value"),
+//				TrafficMirrorFilterName:        pulumi.String(name),
+//				TrafficMirrorFilterDescription: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -138,8 +147,8 @@ import (
 //			_, err = vpc.NewTrafficMirrorSession(ctx, "defaultTrafficMirrorSession", &vpc.TrafficMirrorSessionArgs{
 //				Priority:                        pulumi.Int(1),
 //				VirtualNetworkId:                pulumi.Int(10),
-//				TrafficMirrorSessionDescription: pulumi.String("example_value"),
-//				TrafficMirrorSessionName:        pulumi.String("example_value"),
+//				TrafficMirrorSessionDescription: pulumi.String(name),
+//				TrafficMirrorSessionName:        pulumi.String(name),
 //				TrafficMirrorTargetId:           defaultEcsNetworkInterfaceAttachment[0].NetworkInterfaceId,
 //				TrafficMirrorSourceIds: pulumi.StringArray{
 //					defaultEcsNetworkInterfaceAttachment[1].NetworkInterfaceId,
@@ -400,6 +409,12 @@ func (i *TrafficMirrorSession) ToTrafficMirrorSessionOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorSessionOutput)
 }
 
+func (i *TrafficMirrorSession) ToOutput(ctx context.Context) pulumix.Output[*TrafficMirrorSession] {
+	return pulumix.Output[*TrafficMirrorSession]{
+		OutputState: i.ToTrafficMirrorSessionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TrafficMirrorSessionArrayInput is an input type that accepts TrafficMirrorSessionArray and TrafficMirrorSessionArrayOutput values.
 // You can construct a concrete instance of `TrafficMirrorSessionArrayInput` via:
 //
@@ -423,6 +438,12 @@ func (i TrafficMirrorSessionArray) ToTrafficMirrorSessionArrayOutput() TrafficMi
 
 func (i TrafficMirrorSessionArray) ToTrafficMirrorSessionArrayOutputWithContext(ctx context.Context) TrafficMirrorSessionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorSessionArrayOutput)
+}
+
+func (i TrafficMirrorSessionArray) ToOutput(ctx context.Context) pulumix.Output[[]*TrafficMirrorSession] {
+	return pulumix.Output[[]*TrafficMirrorSession]{
+		OutputState: i.ToTrafficMirrorSessionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TrafficMirrorSessionMapInput is an input type that accepts TrafficMirrorSessionMap and TrafficMirrorSessionMapOutput values.
@@ -450,6 +471,12 @@ func (i TrafficMirrorSessionMap) ToTrafficMirrorSessionMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorSessionMapOutput)
 }
 
+func (i TrafficMirrorSessionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TrafficMirrorSession] {
+	return pulumix.Output[map[string]*TrafficMirrorSession]{
+		OutputState: i.ToTrafficMirrorSessionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TrafficMirrorSessionOutput struct{ *pulumi.OutputState }
 
 func (TrafficMirrorSessionOutput) ElementType() reflect.Type {
@@ -462,6 +489,12 @@ func (o TrafficMirrorSessionOutput) ToTrafficMirrorSessionOutput() TrafficMirror
 
 func (o TrafficMirrorSessionOutput) ToTrafficMirrorSessionOutputWithContext(ctx context.Context) TrafficMirrorSessionOutput {
 	return o
+}
+
+func (o TrafficMirrorSessionOutput) ToOutput(ctx context.Context) pulumix.Output[*TrafficMirrorSession] {
+	return pulumix.Output[*TrafficMirrorSession]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to PreCheck only this request, value:
@@ -550,6 +583,12 @@ func (o TrafficMirrorSessionArrayOutput) ToTrafficMirrorSessionArrayOutputWithCo
 	return o
 }
 
+func (o TrafficMirrorSessionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TrafficMirrorSession] {
+	return pulumix.Output[[]*TrafficMirrorSession]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TrafficMirrorSessionArrayOutput) Index(i pulumi.IntInput) TrafficMirrorSessionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TrafficMirrorSession {
 		return vs[0].([]*TrafficMirrorSession)[vs[1].(int)]
@@ -568,6 +607,12 @@ func (o TrafficMirrorSessionMapOutput) ToTrafficMirrorSessionMapOutput() Traffic
 
 func (o TrafficMirrorSessionMapOutput) ToTrafficMirrorSessionMapOutputWithContext(ctx context.Context) TrafficMirrorSessionMapOutput {
 	return o
+}
+
+func (o TrafficMirrorSessionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TrafficMirrorSession] {
+	return pulumix.Output[map[string]*TrafficMirrorSession]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrafficMirrorSessionMapOutput) MapIndex(k pulumi.StringInput) TrafficMirrorSessionOutput {

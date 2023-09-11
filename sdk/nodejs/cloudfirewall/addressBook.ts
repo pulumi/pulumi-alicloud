@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Firewall Address Book resource.
  *
- * For information about Cloud Firewall Address Book and how to use it, see [What is Address Book](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describeaddressbook).
+ * For information about Cloud Firewall Address Book and how to use it, see [What is Address Book](https://www.alibabacloud.com/help/en/cloud-firewall/developer-reference/api-cloudfw-2017-12-07-addaddressbook).
  *
- * > **NOTE:** Available in v1.178.0+.
+ * > **NOTE:** Available since v1.178.0.
  *
  * ## Example Usage
  *
@@ -83,7 +83,7 @@ export class AddressBook extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * A list of ECS tags. See the following `Block ecsTags`.
+     * A list of ECS tags. See `ecsTags` below.
      */
     public readonly ecsTags!: pulumi.Output<outputs.cloudfirewall.AddressBookEcsTag[] | undefined>;
     /**
@@ -91,19 +91,17 @@ export class AddressBook extends pulumi.CustomResource {
      */
     public readonly groupName!: pulumi.Output<string>;
     /**
-     * The type of the Address Book. Valid values:  `ip`, `tag`.
+     * The type of the Address Book. Valid values: `ip`, `tag`.
      */
     public readonly groupType!: pulumi.Output<string>;
     /**
-     * The language of the content within the request and response. Valid values: `en`, `zh`.
+     * The language of the content within the request and response. Valid values: `zh`, `en`.
      */
     public readonly lang!: pulumi.Output<string | undefined>;
     /**
-     * The logical relation among the ECS tags that to be matched. Valid values:
-     * - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-     * - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+     * The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
      */
-    public readonly tagRelation!: pulumi.Output<string | undefined>;
+    public readonly tagRelation!: pulumi.Output<string>;
 
     /**
      * Create a AddressBook resource with the given unique name, arguments, and options.
@@ -168,7 +166,7 @@ export interface AddressBookState {
      */
     description?: pulumi.Input<string>;
     /**
-     * A list of ECS tags. See the following `Block ecsTags`.
+     * A list of ECS tags. See `ecsTags` below.
      */
     ecsTags?: pulumi.Input<pulumi.Input<inputs.cloudfirewall.AddressBookEcsTag>[]>;
     /**
@@ -176,17 +174,15 @@ export interface AddressBookState {
      */
     groupName?: pulumi.Input<string>;
     /**
-     * The type of the Address Book. Valid values:  `ip`, `tag`.
+     * The type of the Address Book. Valid values: `ip`, `tag`.
      */
     groupType?: pulumi.Input<string>;
     /**
-     * The language of the content within the request and response. Valid values: `en`, `zh`.
+     * The language of the content within the request and response. Valid values: `zh`, `en`.
      */
     lang?: pulumi.Input<string>;
     /**
-     * The logical relation among the ECS tags that to be matched. Valid values:
-     * - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-     * - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+     * The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
      */
     tagRelation?: pulumi.Input<string>;
 }
@@ -208,7 +204,7 @@ export interface AddressBookArgs {
      */
     description: pulumi.Input<string>;
     /**
-     * A list of ECS tags. See the following `Block ecsTags`.
+     * A list of ECS tags. See `ecsTags` below.
      */
     ecsTags?: pulumi.Input<pulumi.Input<inputs.cloudfirewall.AddressBookEcsTag>[]>;
     /**
@@ -216,17 +212,15 @@ export interface AddressBookArgs {
      */
     groupName: pulumi.Input<string>;
     /**
-     * The type of the Address Book. Valid values:  `ip`, `tag`.
+     * The type of the Address Book. Valid values: `ip`, `tag`.
      */
     groupType: pulumi.Input<string>;
     /**
-     * The language of the content within the request and response. Valid values: `en`, `zh`.
+     * The language of the content within the request and response. Valid values: `zh`, `en`.
      */
     lang?: pulumi.Input<string>;
     /**
-     * The logical relation among the ECS tags that to be matched. Valid values:
-     * - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-     * - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+     * The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
      */
     tagRelation?: pulumi.Input<string>;
 }

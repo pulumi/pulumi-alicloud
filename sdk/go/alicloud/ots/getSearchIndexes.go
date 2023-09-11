@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the ots search index of the current Alibaba Cloud user.
@@ -102,6 +103,12 @@ func (o GetSearchIndexesResultOutput) ToGetSearchIndexesResultOutput() GetSearch
 
 func (o GetSearchIndexesResultOutput) ToGetSearchIndexesResultOutputWithContext(ctx context.Context) GetSearchIndexesResultOutput {
 	return o
+}
+
+func (o GetSearchIndexesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSearchIndexesResult] {
+	return pulumix.Output[GetSearchIndexesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

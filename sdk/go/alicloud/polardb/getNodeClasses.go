@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the PolarDB node classes resource available info of Alibaba Cloud.
@@ -140,6 +141,12 @@ func (o GetNodeClassesResultOutput) ToGetNodeClassesResultOutput() GetNodeClasse
 
 func (o GetNodeClassesResultOutput) ToGetNodeClassesResultOutputWithContext(ctx context.Context) GetNodeClassesResultOutput {
 	return o
+}
+
+func (o GetNodeClassesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNodeClassesResult] {
+	return pulumix.Output[GetNodeClassesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetNodeClassesResultOutput) Category() pulumi.StringPtrOutput {

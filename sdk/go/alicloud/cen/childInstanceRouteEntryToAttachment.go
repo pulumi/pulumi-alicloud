@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cen Child Instance Route Entry To Attachment resource.
@@ -286,6 +287,12 @@ func (i *ChildInstanceRouteEntryToAttachment) ToChildInstanceRouteEntryToAttachm
 	return pulumi.ToOutputWithContext(ctx, i).(ChildInstanceRouteEntryToAttachmentOutput)
 }
 
+func (i *ChildInstanceRouteEntryToAttachment) ToOutput(ctx context.Context) pulumix.Output[*ChildInstanceRouteEntryToAttachment] {
+	return pulumix.Output[*ChildInstanceRouteEntryToAttachment]{
+		OutputState: i.ToChildInstanceRouteEntryToAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ChildInstanceRouteEntryToAttachmentArrayInput is an input type that accepts ChildInstanceRouteEntryToAttachmentArray and ChildInstanceRouteEntryToAttachmentArrayOutput values.
 // You can construct a concrete instance of `ChildInstanceRouteEntryToAttachmentArrayInput` via:
 //
@@ -309,6 +316,12 @@ func (i ChildInstanceRouteEntryToAttachmentArray) ToChildInstanceRouteEntryToAtt
 
 func (i ChildInstanceRouteEntryToAttachmentArray) ToChildInstanceRouteEntryToAttachmentArrayOutputWithContext(ctx context.Context) ChildInstanceRouteEntryToAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ChildInstanceRouteEntryToAttachmentArrayOutput)
+}
+
+func (i ChildInstanceRouteEntryToAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*ChildInstanceRouteEntryToAttachment] {
+	return pulumix.Output[[]*ChildInstanceRouteEntryToAttachment]{
+		OutputState: i.ToChildInstanceRouteEntryToAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ChildInstanceRouteEntryToAttachmentMapInput is an input type that accepts ChildInstanceRouteEntryToAttachmentMap and ChildInstanceRouteEntryToAttachmentMapOutput values.
@@ -336,6 +349,12 @@ func (i ChildInstanceRouteEntryToAttachmentMap) ToChildInstanceRouteEntryToAttac
 	return pulumi.ToOutputWithContext(ctx, i).(ChildInstanceRouteEntryToAttachmentMapOutput)
 }
 
+func (i ChildInstanceRouteEntryToAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ChildInstanceRouteEntryToAttachment] {
+	return pulumix.Output[map[string]*ChildInstanceRouteEntryToAttachment]{
+		OutputState: i.ToChildInstanceRouteEntryToAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ChildInstanceRouteEntryToAttachmentOutput struct{ *pulumi.OutputState }
 
 func (ChildInstanceRouteEntryToAttachmentOutput) ElementType() reflect.Type {
@@ -348,6 +367,12 @@ func (o ChildInstanceRouteEntryToAttachmentOutput) ToChildInstanceRouteEntryToAt
 
 func (o ChildInstanceRouteEntryToAttachmentOutput) ToChildInstanceRouteEntryToAttachmentOutputWithContext(ctx context.Context) ChildInstanceRouteEntryToAttachmentOutput {
 	return o
+}
+
+func (o ChildInstanceRouteEntryToAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*ChildInstanceRouteEntryToAttachment] {
+	return pulumix.Output[*ChildInstanceRouteEntryToAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the CEN instance.
@@ -399,6 +424,12 @@ func (o ChildInstanceRouteEntryToAttachmentArrayOutput) ToChildInstanceRouteEntr
 	return o
 }
 
+func (o ChildInstanceRouteEntryToAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ChildInstanceRouteEntryToAttachment] {
+	return pulumix.Output[[]*ChildInstanceRouteEntryToAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ChildInstanceRouteEntryToAttachmentArrayOutput) Index(i pulumi.IntInput) ChildInstanceRouteEntryToAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ChildInstanceRouteEntryToAttachment {
 		return vs[0].([]*ChildInstanceRouteEntryToAttachment)[vs[1].(int)]
@@ -417,6 +448,12 @@ func (o ChildInstanceRouteEntryToAttachmentMapOutput) ToChildInstanceRouteEntryT
 
 func (o ChildInstanceRouteEntryToAttachmentMapOutput) ToChildInstanceRouteEntryToAttachmentMapOutputWithContext(ctx context.Context) ChildInstanceRouteEntryToAttachmentMapOutput {
 	return o
+}
+
+func (o ChildInstanceRouteEntryToAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ChildInstanceRouteEntryToAttachment] {
+	return pulumix.Output[map[string]*ChildInstanceRouteEntryToAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ChildInstanceRouteEntryToAttachmentMapOutput) MapIndex(k pulumi.StringInput) ChildInstanceRouteEntryToAttachmentOutput {

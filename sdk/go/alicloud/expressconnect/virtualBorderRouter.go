@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Express Connect Virtual Border Router resource.
@@ -378,6 +379,12 @@ func (i *VirtualBorderRouter) ToVirtualBorderRouterOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualBorderRouterOutput)
 }
 
+func (i *VirtualBorderRouter) ToOutput(ctx context.Context) pulumix.Output[*VirtualBorderRouter] {
+	return pulumix.Output[*VirtualBorderRouter]{
+		OutputState: i.ToVirtualBorderRouterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VirtualBorderRouterArrayInput is an input type that accepts VirtualBorderRouterArray and VirtualBorderRouterArrayOutput values.
 // You can construct a concrete instance of `VirtualBorderRouterArrayInput` via:
 //
@@ -401,6 +408,12 @@ func (i VirtualBorderRouterArray) ToVirtualBorderRouterArrayOutput() VirtualBord
 
 func (i VirtualBorderRouterArray) ToVirtualBorderRouterArrayOutputWithContext(ctx context.Context) VirtualBorderRouterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualBorderRouterArrayOutput)
+}
+
+func (i VirtualBorderRouterArray) ToOutput(ctx context.Context) pulumix.Output[[]*VirtualBorderRouter] {
+	return pulumix.Output[[]*VirtualBorderRouter]{
+		OutputState: i.ToVirtualBorderRouterArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // VirtualBorderRouterMapInput is an input type that accepts VirtualBorderRouterMap and VirtualBorderRouterMapOutput values.
@@ -428,6 +441,12 @@ func (i VirtualBorderRouterMap) ToVirtualBorderRouterMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualBorderRouterMapOutput)
 }
 
+func (i VirtualBorderRouterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VirtualBorderRouter] {
+	return pulumix.Output[map[string]*VirtualBorderRouter]{
+		OutputState: i.ToVirtualBorderRouterMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VirtualBorderRouterOutput struct{ *pulumi.OutputState }
 
 func (VirtualBorderRouterOutput) ElementType() reflect.Type {
@@ -440,6 +459,12 @@ func (o VirtualBorderRouterOutput) ToVirtualBorderRouterOutput() VirtualBorderRo
 
 func (o VirtualBorderRouterOutput) ToVirtualBorderRouterOutputWithContext(ctx context.Context) VirtualBorderRouterOutput {
 	return o
+}
+
+func (o VirtualBorderRouterOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualBorderRouter] {
+	return pulumix.Output[*VirtualBorderRouter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The associated physical connections.
@@ -561,6 +586,12 @@ func (o VirtualBorderRouterArrayOutput) ToVirtualBorderRouterArrayOutputWithCont
 	return o
 }
 
+func (o VirtualBorderRouterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VirtualBorderRouter] {
+	return pulumix.Output[[]*VirtualBorderRouter]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VirtualBorderRouterArrayOutput) Index(i pulumi.IntInput) VirtualBorderRouterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VirtualBorderRouter {
 		return vs[0].([]*VirtualBorderRouter)[vs[1].(int)]
@@ -579,6 +610,12 @@ func (o VirtualBorderRouterMapOutput) ToVirtualBorderRouterMapOutput() VirtualBo
 
 func (o VirtualBorderRouterMapOutput) ToVirtualBorderRouterMapOutputWithContext(ctx context.Context) VirtualBorderRouterMapOutput {
 	return o
+}
+
+func (o VirtualBorderRouterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VirtualBorderRouter] {
+	return pulumix.Output[map[string]*VirtualBorderRouter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualBorderRouterMapOutput) MapIndex(k pulumi.StringInput) VirtualBorderRouterOutput {

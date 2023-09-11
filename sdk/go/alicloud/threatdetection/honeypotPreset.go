@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Threat Detection Honeypot Preset resource.
@@ -203,6 +204,12 @@ func (i *HoneypotPreset) ToHoneypotPresetOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(HoneypotPresetOutput)
 }
 
+func (i *HoneypotPreset) ToOutput(ctx context.Context) pulumix.Output[*HoneypotPreset] {
+	return pulumix.Output[*HoneypotPreset]{
+		OutputState: i.ToHoneypotPresetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HoneypotPresetArrayInput is an input type that accepts HoneypotPresetArray and HoneypotPresetArrayOutput values.
 // You can construct a concrete instance of `HoneypotPresetArrayInput` via:
 //
@@ -226,6 +233,12 @@ func (i HoneypotPresetArray) ToHoneypotPresetArrayOutput() HoneypotPresetArrayOu
 
 func (i HoneypotPresetArray) ToHoneypotPresetArrayOutputWithContext(ctx context.Context) HoneypotPresetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HoneypotPresetArrayOutput)
+}
+
+func (i HoneypotPresetArray) ToOutput(ctx context.Context) pulumix.Output[[]*HoneypotPreset] {
+	return pulumix.Output[[]*HoneypotPreset]{
+		OutputState: i.ToHoneypotPresetArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // HoneypotPresetMapInput is an input type that accepts HoneypotPresetMap and HoneypotPresetMapOutput values.
@@ -253,6 +266,12 @@ func (i HoneypotPresetMap) ToHoneypotPresetMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(HoneypotPresetMapOutput)
 }
 
+func (i HoneypotPresetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HoneypotPreset] {
+	return pulumix.Output[map[string]*HoneypotPreset]{
+		OutputState: i.ToHoneypotPresetMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HoneypotPresetOutput struct{ *pulumi.OutputState }
 
 func (HoneypotPresetOutput) ElementType() reflect.Type {
@@ -265,6 +284,12 @@ func (o HoneypotPresetOutput) ToHoneypotPresetOutput() HoneypotPresetOutput {
 
 func (o HoneypotPresetOutput) ToHoneypotPresetOutputWithContext(ctx context.Context) HoneypotPresetOutput {
 	return o
+}
+
+func (o HoneypotPresetOutput) ToOutput(ctx context.Context) pulumix.Output[*HoneypotPreset] {
+	return pulumix.Output[*HoneypotPreset]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Honeypot mirror name
@@ -306,6 +331,12 @@ func (o HoneypotPresetArrayOutput) ToHoneypotPresetArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o HoneypotPresetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HoneypotPreset] {
+	return pulumix.Output[[]*HoneypotPreset]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HoneypotPresetArrayOutput) Index(i pulumi.IntInput) HoneypotPresetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HoneypotPreset {
 		return vs[0].([]*HoneypotPreset)[vs[1].(int)]
@@ -324,6 +355,12 @@ func (o HoneypotPresetMapOutput) ToHoneypotPresetMapOutput() HoneypotPresetMapOu
 
 func (o HoneypotPresetMapOutput) ToHoneypotPresetMapOutputWithContext(ctx context.Context) HoneypotPresetMapOutput {
 	return o
+}
+
+func (o HoneypotPresetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HoneypotPreset] {
+	return pulumix.Output[map[string]*HoneypotPreset]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HoneypotPresetMapOutput) MapIndex(k pulumi.StringInput) HoneypotPresetOutput {

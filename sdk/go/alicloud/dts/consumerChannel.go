@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DTS Consumer Channel resource.
@@ -316,6 +317,12 @@ func (i *ConsumerChannel) ToConsumerChannelOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumerChannelOutput)
 }
 
+func (i *ConsumerChannel) ToOutput(ctx context.Context) pulumix.Output[*ConsumerChannel] {
+	return pulumix.Output[*ConsumerChannel]{
+		OutputState: i.ToConsumerChannelOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ConsumerChannelArrayInput is an input type that accepts ConsumerChannelArray and ConsumerChannelArrayOutput values.
 // You can construct a concrete instance of `ConsumerChannelArrayInput` via:
 //
@@ -339,6 +346,12 @@ func (i ConsumerChannelArray) ToConsumerChannelArrayOutput() ConsumerChannelArra
 
 func (i ConsumerChannelArray) ToConsumerChannelArrayOutputWithContext(ctx context.Context) ConsumerChannelArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumerChannelArrayOutput)
+}
+
+func (i ConsumerChannelArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConsumerChannel] {
+	return pulumix.Output[[]*ConsumerChannel]{
+		OutputState: i.ToConsumerChannelArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ConsumerChannelMapInput is an input type that accepts ConsumerChannelMap and ConsumerChannelMapOutput values.
@@ -366,6 +379,12 @@ func (i ConsumerChannelMap) ToConsumerChannelMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumerChannelMapOutput)
 }
 
+func (i ConsumerChannelMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConsumerChannel] {
+	return pulumix.Output[map[string]*ConsumerChannel]{
+		OutputState: i.ToConsumerChannelMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConsumerChannelOutput struct{ *pulumi.OutputState }
 
 func (ConsumerChannelOutput) ElementType() reflect.Type {
@@ -378,6 +397,12 @@ func (o ConsumerChannelOutput) ToConsumerChannelOutput() ConsumerChannelOutput {
 
 func (o ConsumerChannelOutput) ToConsumerChannelOutputWithContext(ctx context.Context) ConsumerChannelOutput {
 	return o
+}
+
+func (o ConsumerChannelOutput) ToOutput(ctx context.Context) pulumix.Output[*ConsumerChannel] {
+	return pulumix.Output[*ConsumerChannel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the consumer group.
@@ -419,6 +444,12 @@ func (o ConsumerChannelArrayOutput) ToConsumerChannelArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o ConsumerChannelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConsumerChannel] {
+	return pulumix.Output[[]*ConsumerChannel]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConsumerChannelArrayOutput) Index(i pulumi.IntInput) ConsumerChannelOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConsumerChannel {
 		return vs[0].([]*ConsumerChannel)[vs[1].(int)]
@@ -437,6 +468,12 @@ func (o ConsumerChannelMapOutput) ToConsumerChannelMapOutput() ConsumerChannelMa
 
 func (o ConsumerChannelMapOutput) ToConsumerChannelMapOutputWithContext(ctx context.Context) ConsumerChannelMapOutput {
 	return o
+}
+
+func (o ConsumerChannelMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConsumerChannel] {
+	return pulumix.Output[map[string]*ConsumerChannel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConsumerChannelMapOutput) MapIndex(k pulumi.StringInput) ConsumerChannelOutput {

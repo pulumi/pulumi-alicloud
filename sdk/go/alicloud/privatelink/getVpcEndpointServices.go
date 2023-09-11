@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
@@ -137,6 +138,12 @@ func (o GetVpcEndpointServicesResultOutput) ToGetVpcEndpointServicesResultOutput
 
 func (o GetVpcEndpointServicesResultOutput) ToGetVpcEndpointServicesResultOutputWithContext(ctx context.Context) GetVpcEndpointServicesResultOutput {
 	return o
+}
+
+func (o GetVpcEndpointServicesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcEndpointServicesResult] {
+	return pulumix.Output[GetVpcEndpointServicesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetVpcEndpointServicesResultOutput) AutoAcceptConnection() pulumi.BoolPtrOutput {

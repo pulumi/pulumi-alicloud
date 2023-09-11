@@ -48,6 +48,9 @@ namespace Pulumi.AliCloud.CloudFirewall.Inputs
             set => _eniLists = value;
         }
 
+        /// <summary>
+        /// The ID of the vSwitch specified when the routing mode is manual mode.
+        /// </summary>
         [Input("manualVswitchId")]
         public Input<string>? ManualVswitchId { get; set; }
 

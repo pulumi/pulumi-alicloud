@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -1196,6 +1197,12 @@ func (i *ManagedKubernetes) ToManagedKubernetesOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesOutput)
 }
 
+func (i *ManagedKubernetes) ToOutput(ctx context.Context) pulumix.Output[*ManagedKubernetes] {
+	return pulumix.Output[*ManagedKubernetes]{
+		OutputState: i.ToManagedKubernetesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ManagedKubernetesArrayInput is an input type that accepts ManagedKubernetesArray and ManagedKubernetesArrayOutput values.
 // You can construct a concrete instance of `ManagedKubernetesArrayInput` via:
 //
@@ -1219,6 +1226,12 @@ func (i ManagedKubernetesArray) ToManagedKubernetesArrayOutput() ManagedKubernet
 
 func (i ManagedKubernetesArray) ToManagedKubernetesArrayOutputWithContext(ctx context.Context) ManagedKubernetesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesArrayOutput)
+}
+
+func (i ManagedKubernetesArray) ToOutput(ctx context.Context) pulumix.Output[[]*ManagedKubernetes] {
+	return pulumix.Output[[]*ManagedKubernetes]{
+		OutputState: i.ToManagedKubernetesArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ManagedKubernetesMapInput is an input type that accepts ManagedKubernetesMap and ManagedKubernetesMapOutput values.
@@ -1246,6 +1259,12 @@ func (i ManagedKubernetesMap) ToManagedKubernetesMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesMapOutput)
 }
 
+func (i ManagedKubernetesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ManagedKubernetes] {
+	return pulumix.Output[map[string]*ManagedKubernetes]{
+		OutputState: i.ToManagedKubernetesMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedKubernetesOutput struct{ *pulumi.OutputState }
 
 func (ManagedKubernetesOutput) ElementType() reflect.Type {
@@ -1258,6 +1277,12 @@ func (o ManagedKubernetesOutput) ToManagedKubernetesOutput() ManagedKubernetesOu
 
 func (o ManagedKubernetesOutput) ToManagedKubernetesOutputWithContext(ctx context.Context) ManagedKubernetesOutput {
 	return o
+}
+
+func (o ManagedKubernetesOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedKubernetes] {
+	return pulumix.Output[*ManagedKubernetes]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The addon you want to install in cluster. Detailed below.
@@ -1735,6 +1760,12 @@ func (o ManagedKubernetesArrayOutput) ToManagedKubernetesArrayOutputWithContext(
 	return o
 }
 
+func (o ManagedKubernetesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ManagedKubernetes] {
+	return pulumix.Output[[]*ManagedKubernetes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ManagedKubernetesArrayOutput) Index(i pulumi.IntInput) ManagedKubernetesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ManagedKubernetes {
 		return vs[0].([]*ManagedKubernetes)[vs[1].(int)]
@@ -1753,6 +1784,12 @@ func (o ManagedKubernetesMapOutput) ToManagedKubernetesMapOutput() ManagedKubern
 
 func (o ManagedKubernetesMapOutput) ToManagedKubernetesMapOutputWithContext(ctx context.Context) ManagedKubernetesMapOutput {
 	return o
+}
+
+func (o ManagedKubernetesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ManagedKubernetes] {
+	return pulumix.Output[map[string]*ManagedKubernetes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedKubernetesMapOutput) MapIndex(k pulumi.StringInput) ManagedKubernetesOutput {

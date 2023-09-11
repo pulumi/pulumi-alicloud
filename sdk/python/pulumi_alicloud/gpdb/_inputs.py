@@ -26,10 +26,10 @@ class DbInstancePlanPlanConfigArgs:
                  scale_in: Optional[pulumi.Input['DbInstancePlanPlanConfigScaleInArgs']] = None,
                  scale_out: Optional[pulumi.Input['DbInstancePlanPlanConfigScaleOutArgs']] = None):
         """
-        :param pulumi.Input['DbInstancePlanPlanConfigPauseArgs'] pause: Pause instance plan config. See the following `Block pause`.
-        :param pulumi.Input['DbInstancePlanPlanConfigResumeArgs'] resume: Resume instance plan config. See the following `Block resume`.
-        :param pulumi.Input['DbInstancePlanPlanConfigScaleInArgs'] scale_in: Scale In instance plan config. See the following `Block scale_in`.
-        :param pulumi.Input['DbInstancePlanPlanConfigScaleOutArgs'] scale_out: Scale out instance plan config. See the following `Block scale_out`.
+        :param pulumi.Input['DbInstancePlanPlanConfigPauseArgs'] pause: Pause instance plan config. See `pause` below.
+        :param pulumi.Input['DbInstancePlanPlanConfigResumeArgs'] resume: Resume instance plan config. See `resume` below.
+        :param pulumi.Input['DbInstancePlanPlanConfigScaleInArgs'] scale_in: Scale In instance plan config. See `scale_in` below.
+        :param pulumi.Input['DbInstancePlanPlanConfigScaleOutArgs'] scale_out: Scale out instance plan config. See `scale_out` below.
         """
         if pause is not None:
             pulumi.set(__self__, "pause", pause)
@@ -44,7 +44,7 @@ class DbInstancePlanPlanConfigArgs:
     @pulumi.getter
     def pause(self) -> Optional[pulumi.Input['DbInstancePlanPlanConfigPauseArgs']]:
         """
-        Pause instance plan config. See the following `Block pause`.
+        Pause instance plan config. See `pause` below.
         """
         return pulumi.get(self, "pause")
 
@@ -56,7 +56,7 @@ class DbInstancePlanPlanConfigArgs:
     @pulumi.getter
     def resume(self) -> Optional[pulumi.Input['DbInstancePlanPlanConfigResumeArgs']]:
         """
-        Resume instance plan config. See the following `Block resume`.
+        Resume instance plan config. See `resume` below.
         """
         return pulumi.get(self, "resume")
 
@@ -68,7 +68,7 @@ class DbInstancePlanPlanConfigArgs:
     @pulumi.getter(name="scaleIn")
     def scale_in(self) -> Optional[pulumi.Input['DbInstancePlanPlanConfigScaleInArgs']]:
         """
-        Scale In instance plan config. See the following `Block scale_in`.
+        Scale In instance plan config. See `scale_in` below.
         """
         return pulumi.get(self, "scale_in")
 
@@ -80,7 +80,7 @@ class DbInstancePlanPlanConfigArgs:
     @pulumi.getter(name="scaleOut")
     def scale_out(self) -> Optional[pulumi.Input['DbInstancePlanPlanConfigScaleOutArgs']]:
         """
-        Scale out instance plan config. See the following `Block scale_out`.
+        Scale out instance plan config. See `scale_out` below.
         """
         return pulumi.get(self, "scale_out")
 

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an Alicloud Function Compute custom domain resource.
@@ -313,6 +314,12 @@ func (i *CustomDomain) ToCustomDomainOutputWithContext(ctx context.Context) Cust
 	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainOutput)
 }
 
+func (i *CustomDomain) ToOutput(ctx context.Context) pulumix.Output[*CustomDomain] {
+	return pulumix.Output[*CustomDomain]{
+		OutputState: i.ToCustomDomainOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CustomDomainArrayInput is an input type that accepts CustomDomainArray and CustomDomainArrayOutput values.
 // You can construct a concrete instance of `CustomDomainArrayInput` via:
 //
@@ -336,6 +343,12 @@ func (i CustomDomainArray) ToCustomDomainArrayOutput() CustomDomainArrayOutput {
 
 func (i CustomDomainArray) ToCustomDomainArrayOutputWithContext(ctx context.Context) CustomDomainArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainArrayOutput)
+}
+
+func (i CustomDomainArray) ToOutput(ctx context.Context) pulumix.Output[[]*CustomDomain] {
+	return pulumix.Output[[]*CustomDomain]{
+		OutputState: i.ToCustomDomainArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CustomDomainMapInput is an input type that accepts CustomDomainMap and CustomDomainMapOutput values.
@@ -363,6 +376,12 @@ func (i CustomDomainMap) ToCustomDomainMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainMapOutput)
 }
 
+func (i CustomDomainMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomDomain] {
+	return pulumix.Output[map[string]*CustomDomain]{
+		OutputState: i.ToCustomDomainMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CustomDomainOutput struct{ *pulumi.OutputState }
 
 func (CustomDomainOutput) ElementType() reflect.Type {
@@ -375,6 +394,12 @@ func (o CustomDomainOutput) ToCustomDomainOutput() CustomDomainOutput {
 
 func (o CustomDomainOutput) ToCustomDomainOutputWithContext(ctx context.Context) CustomDomainOutput {
 	return o
+}
+
+func (o CustomDomainOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomDomain] {
+	return pulumix.Output[*CustomDomain]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account id.
@@ -431,6 +456,12 @@ func (o CustomDomainArrayOutput) ToCustomDomainArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o CustomDomainArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CustomDomain] {
+	return pulumix.Output[[]*CustomDomain]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CustomDomainArrayOutput) Index(i pulumi.IntInput) CustomDomainOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CustomDomain {
 		return vs[0].([]*CustomDomain)[vs[1].(int)]
@@ -449,6 +480,12 @@ func (o CustomDomainMapOutput) ToCustomDomainMapOutput() CustomDomainMapOutput {
 
 func (o CustomDomainMapOutput) ToCustomDomainMapOutputWithContext(ctx context.Context) CustomDomainMapOutput {
 	return o
+}
+
+func (o CustomDomainMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomDomain] {
+	return pulumix.Output[map[string]*CustomDomain]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomDomainMapOutput) MapIndex(k pulumi.StringInput) CustomDomainOutput {

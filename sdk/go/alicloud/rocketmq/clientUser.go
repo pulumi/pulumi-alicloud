@@ -10,13 +10,14 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sag ClientUser resource. This topic describes how to manage accounts as an administrator. After you configure the network, you can create multiple accounts and distribute them to end users so that clients can access Alibaba Cloud.
 //
-// For information about Sag ClientUser and how to use it, see [What is Sag ClientUser](https://www.alibabacloud.com/help/doc-detail/108326.htm).
+// For information about Sag ClientUser and how to use it, see [What is Sag ClientUser](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createsmartaccessgatewayclientuser).
 //
-// > **NOTE:** Available in 1.65.0+
+// > **NOTE:** Available since v1.65.0.
 //
 // > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 //
@@ -31,18 +32,28 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			sagId := "sag-9bifkfaz4fg***"
+//			if param := cfg.Get("sagId"); param != "" {
+//				sagId = param
+//			}
 //			_, err := rocketmq.NewClientUser(ctx, "default", &rocketmq.ClientUserArgs{
+//				SagId:     pulumi.String(sagId),
 //				Bandwidth: pulumi.Int(20),
+//				UserMail:  pulumi.String("tf-example@abc.com"),
+//				UserName:  pulumi.String(name),
+//				Password:  pulumi.String("example1234"),
 //				ClientIp:  pulumi.String("192.1.10.0"),
-//				Password:  pulumi.String("xxxxxxx"),
-//				SagId:     pulumi.String("sag-xxxxx"),
-//				UserMail:  pulumi.String("tftest-xxxxx@test.com"),
-//				UserName:  pulumi.String("th-username-xxxxx"),
 //			})
 //			if err != nil {
 //				return err
@@ -68,9 +79,11 @@ type ClientUser struct {
 	// The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
-	ClientIp             pulumi.StringPtrOutput `pulumi:"clientIp"`
+	ClientIp pulumi.StringPtrOutput `pulumi:"clientIp"`
+	// The password of the KMS Encryption.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
-	KmsEncryptionContext pulumi.MapOutput       `pulumi:"kmsEncryptionContext"`
+	// The context of the KMS Encryption.
+	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
 	// The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// The ID of the SAG instance created for the SAG APP.
@@ -123,8 +136,10 @@ type clientUserState struct {
 	// The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
 	Bandwidth *int `pulumi:"bandwidth"`
 	// The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
-	ClientIp             *string                `pulumi:"clientIp"`
-	KmsEncryptedPassword *string                `pulumi:"kmsEncryptedPassword"`
+	ClientIp *string `pulumi:"clientIp"`
+	// The password of the KMS Encryption.
+	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
+	// The context of the KMS Encryption.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
 	Password *string `pulumi:"password"`
@@ -140,8 +155,10 @@ type ClientUserState struct {
 	// The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
 	Bandwidth pulumi.IntPtrInput
 	// The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
-	ClientIp             pulumi.StringPtrInput
+	ClientIp pulumi.StringPtrInput
+	// The password of the KMS Encryption.
 	KmsEncryptedPassword pulumi.StringPtrInput
+	// The context of the KMS Encryption.
 	KmsEncryptionContext pulumi.MapInput
 	// The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
 	Password pulumi.StringPtrInput
@@ -161,8 +178,10 @@ type clientUserArgs struct {
 	// The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
 	Bandwidth int `pulumi:"bandwidth"`
 	// The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
-	ClientIp             *string                `pulumi:"clientIp"`
-	KmsEncryptedPassword *string                `pulumi:"kmsEncryptedPassword"`
+	ClientIp *string `pulumi:"clientIp"`
+	// The password of the KMS Encryption.
+	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
+	// The context of the KMS Encryption.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
 	Password *string `pulumi:"password"`
@@ -179,8 +198,10 @@ type ClientUserArgs struct {
 	// The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
 	Bandwidth pulumi.IntInput
 	// The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
-	ClientIp             pulumi.StringPtrInput
+	ClientIp pulumi.StringPtrInput
+	// The password of the KMS Encryption.
 	KmsEncryptedPassword pulumi.StringPtrInput
+	// The context of the KMS Encryption.
 	KmsEncryptionContext pulumi.MapInput
 	// The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
 	Password pulumi.StringPtrInput
@@ -215,6 +236,12 @@ func (i *ClientUser) ToClientUserOutputWithContext(ctx context.Context) ClientUs
 	return pulumi.ToOutputWithContext(ctx, i).(ClientUserOutput)
 }
 
+func (i *ClientUser) ToOutput(ctx context.Context) pulumix.Output[*ClientUser] {
+	return pulumix.Output[*ClientUser]{
+		OutputState: i.ToClientUserOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ClientUserArrayInput is an input type that accepts ClientUserArray and ClientUserArrayOutput values.
 // You can construct a concrete instance of `ClientUserArrayInput` via:
 //
@@ -238,6 +265,12 @@ func (i ClientUserArray) ToClientUserArrayOutput() ClientUserArrayOutput {
 
 func (i ClientUserArray) ToClientUserArrayOutputWithContext(ctx context.Context) ClientUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClientUserArrayOutput)
+}
+
+func (i ClientUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*ClientUser] {
+	return pulumix.Output[[]*ClientUser]{
+		OutputState: i.ToClientUserArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ClientUserMapInput is an input type that accepts ClientUserMap and ClientUserMapOutput values.
@@ -265,6 +298,12 @@ func (i ClientUserMap) ToClientUserMapOutputWithContext(ctx context.Context) Cli
 	return pulumi.ToOutputWithContext(ctx, i).(ClientUserMapOutput)
 }
 
+func (i ClientUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClientUser] {
+	return pulumix.Output[map[string]*ClientUser]{
+		OutputState: i.ToClientUserMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ClientUserOutput struct{ *pulumi.OutputState }
 
 func (ClientUserOutput) ElementType() reflect.Type {
@@ -279,6 +318,12 @@ func (o ClientUserOutput) ToClientUserOutputWithContext(ctx context.Context) Cli
 	return o
 }
 
+func (o ClientUserOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientUser] {
+	return pulumix.Output[*ClientUser]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
 func (o ClientUserOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v *ClientUser) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
@@ -289,10 +334,12 @@ func (o ClientUserOutput) ClientIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientUser) pulumi.StringPtrOutput { return v.ClientIp }).(pulumi.StringPtrOutput)
 }
 
+// The password of the KMS Encryption.
 func (o ClientUserOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientUser) pulumi.StringPtrOutput { return v.KmsEncryptedPassword }).(pulumi.StringPtrOutput)
 }
 
+// The context of the KMS Encryption.
 func (o ClientUserOutput) KmsEncryptionContext() pulumi.MapOutput {
 	return o.ApplyT(func(v *ClientUser) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
 }
@@ -331,6 +378,12 @@ func (o ClientUserArrayOutput) ToClientUserArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o ClientUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ClientUser] {
+	return pulumix.Output[[]*ClientUser]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ClientUserArrayOutput) Index(i pulumi.IntInput) ClientUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClientUser {
 		return vs[0].([]*ClientUser)[vs[1].(int)]
@@ -349,6 +402,12 @@ func (o ClientUserMapOutput) ToClientUserMapOutput() ClientUserMapOutput {
 
 func (o ClientUserMapOutput) ToClientUserMapOutputWithContext(ctx context.Context) ClientUserMapOutput {
 	return o
+}
+
+func (o ClientUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClientUser] {
+	return pulumix.Output[map[string]*ClientUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClientUserMapOutput) MapIndex(k pulumi.StringInput) ClientUserOutput {

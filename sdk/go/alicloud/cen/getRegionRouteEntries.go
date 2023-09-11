@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides CEN Regional Route Entries available to the user.
@@ -109,6 +110,12 @@ func (o GetRegionRouteEntriesResultOutput) ToGetRegionRouteEntriesResultOutput()
 
 func (o GetRegionRouteEntriesResultOutput) ToGetRegionRouteEntriesResultOutputWithContext(ctx context.Context) GetRegionRouteEntriesResultOutput {
 	return o
+}
+
+func (o GetRegionRouteEntriesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRegionRouteEntriesResult] {
+	return pulumix.Output[GetRegionRouteEntriesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of CEN Route Entries. Each element contains the following attributes:

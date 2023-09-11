@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about VPC Ipv6 Egress Rule and how to use it, see [What is Ipv6 Egress Rule](https://www.alibabacloud.com/help/doc-detail/102200.htm).
  * 
- * &gt; **NOTE:** Available in v1.142.0+.
+ * &gt; **NOTE:** Available since v1.142.0.
  * 
  * ## Example Usage
  * 
@@ -30,14 +30,25 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
  * import com.pulumi.alicloud.vpc.Ipv6Gateway;
  * import com.pulumi.alicloud.vpc.Ipv6GatewayArgs;
- * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
  * import com.pulumi.alicloud.vpc.VpcFunctions;
  * import com.pulumi.alicloud.vpc.inputs.GetIpv6AddressesArgs;
+ * import com.pulumi.alicloud.vpc.Ipv6InternetBandwidth;
+ * import com.pulumi.alicloud.vpc.Ipv6InternetBandwidthArgs;
  * import com.pulumi.alicloud.vpc.Ipv6EgressRule;
  * import com.pulumi.alicloud.vpc.Ipv6EgressRuleArgs;
  * import java.util.List;
@@ -55,31 +66,76 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .cpuCoreCount(4)
+ *             .minimumEniIpv6AddressQuantity(1)
+ *             .build());
+ * 
+ *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .mostRecent(true)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
  *             .vpcName(name)
  *             .enableIpv6(&#34;true&#34;)
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
  *             .build());
  * 
- *         var exampleIpv6Gateway = new Ipv6Gateway(&#34;exampleIpv6Gateway&#34;, Ipv6GatewayArgs.builder()        
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(name)
+ *             .ipv6CidrBlockMask(&#34;64&#34;)
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .description(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .ipv6AddressCount(1)
+ *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceName(name)
+ *             .vswitchId(defaultSwitch.id())
+ *             .internetMaxBandwidthOut(10)
+ *             .securityGroups(defaultSecurityGroup.id())
+ *             .build());
+ * 
+ *         var defaultIpv6Gateway = new Ipv6Gateway(&#34;defaultIpv6Gateway&#34;, Ipv6GatewayArgs.builder()        
  *             .ipv6GatewayName(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         final var defaultInstances = EcsFunctions.getInstances(GetInstancesArgs.builder()
- *             .nameRegex(&#34;ecs_with_ipv6_address&#34;)
- *             .status(&#34;Running&#34;)
- *             .build());
- * 
  *         final var defaultIpv6Addresses = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
- *             .associatedInstanceId(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()))
+ *             .associatedInstanceId(defaultInstance.id())
  *             .status(&#34;Available&#34;)
  *             .build());
  * 
- *         var exampleIpv6EgressRule = new Ipv6EgressRule(&#34;exampleIpv6EgressRule&#34;, Ipv6EgressRuleArgs.builder()        
- *             .instanceId(defaultIpv6Addresses.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.ids()[0]))
- *             .ipv6EgressRuleName(&#34;example_value&#34;)
- *             .description(&#34;example_value&#34;)
- *             .ipv6GatewayId(exampleIpv6Gateway.id())
+ *         var defaultIpv6InternetBandwidth = new Ipv6InternetBandwidth(&#34;defaultIpv6InternetBandwidth&#34;, Ipv6InternetBandwidthArgs.builder()        
+ *             .ipv6AddressId(defaultIpv6Addresses.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult).applyValue(defaultIpv6Addresses -&gt; defaultIpv6Addresses.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id())))
+ *             .ipv6GatewayId(defaultIpv6Gateway.ipv6GatewayId())
+ *             .internetChargeType(&#34;PayByBandwidth&#34;)
+ *             .bandwidth(&#34;20&#34;)
+ *             .build());
+ * 
+ *         var defaultIpv6EgressRule = new Ipv6EgressRule(&#34;defaultIpv6EgressRule&#34;, Ipv6EgressRuleArgs.builder()        
+ *             .instanceId(defaultIpv6InternetBandwidth.ipv6AddressId())
+ *             .ipv6EgressRuleName(name)
+ *             .description(name)
+ *             .ipv6GatewayId(defaultIpv6InternetBandwidth.ipv6GatewayId())
  *             .instanceType(&#34;Ipv6Address&#34;)
  *             .build());
  * 

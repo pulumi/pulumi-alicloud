@@ -13,26 +13,30 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ChainChainConfig {
     /**
-     * @return Each node in the delivery chain.
+     * @return Each node in the delivery chain. See `nodes` below.
+     * 
+     * &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
      * 
      */
     private @Nullable List<ChainChainConfigNode> nodes;
     /**
-     * @return Execution sequence relationship between delivery chain nodes.
+     * @return Execution sequence relationship between delivery chain nodes. See `routers` below.
      * 
      */
     private @Nullable List<ChainChainConfigRouter> routers;
 
     private ChainChainConfig() {}
     /**
-     * @return Each node in the delivery chain.
+     * @return Each node in the delivery chain. See `nodes` below.
+     * 
+     * &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
      * 
      */
     public List<ChainChainConfigNode> nodes() {
         return this.nodes == null ? List.of() : this.nodes;
     }
     /**
-     * @return Execution sequence relationship between delivery chain nodes.
+     * @return Execution sequence relationship between delivery chain nodes. See `routers` below.
      * 
      */
     public List<ChainChainConfigRouter> routers() {

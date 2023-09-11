@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Fnf Schedules of the current Alibaba Cloud user.
@@ -128,6 +129,12 @@ func (o GetSchedulesResultOutput) ToGetSchedulesResultOutput() GetSchedulesResul
 
 func (o GetSchedulesResultOutput) ToGetSchedulesResultOutputWithContext(ctx context.Context) GetSchedulesResultOutput {
 	return o
+}
+
+func (o GetSchedulesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSchedulesResult] {
+	return pulumix.Output[GetSchedulesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSchedulesResultOutput) FlowName() pulumi.StringOutput {

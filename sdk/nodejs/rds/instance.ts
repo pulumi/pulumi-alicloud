@@ -182,6 +182,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
+     * The instance configuration type. Valid values:
+     * - Up
+     * - Down
+     * - TempUpgrade
+     * - Serverless
+     */
+    public readonly direction!: pulumi.Output<string | undefined>;
+    /**
      * The method to update the engine version and change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.
      * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -446,9 +454,9 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tcpConnectionType!: pulumi.Output<string>;
     /**
-     * The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+     * The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
      */
-    public readonly tdeStatus!: pulumi.Output<string | undefined>;
+    public readonly tdeStatus!: pulumi.Output<string>;
     /**
      * Whether to upgrade a minor version of the kernel. Valid values:
      * - true: upgrade
@@ -534,6 +542,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["dbIsIgnoreCase"] = state ? state.dbIsIgnoreCase : undefined;
             resourceInputs["dbTimeZone"] = state ? state.dbTimeZone : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["direction"] = state ? state.direction : undefined;
             resourceInputs["effectiveTime"] = state ? state.effectiveTime : undefined;
             resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
             resourceInputs["engine"] = state ? state.engine : undefined;
@@ -621,6 +630,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["dbIsIgnoreCase"] = args ? args.dbIsIgnoreCase : undefined;
             resourceInputs["dbTimeZone"] = args ? args.dbTimeZone : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["direction"] = args ? args.direction : undefined;
             resourceInputs["effectiveTime"] = args ? args.effectiveTime : undefined;
             resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
             resourceInputs["engine"] = args ? args.engine : undefined;
@@ -826,6 +836,14 @@ export interface InstanceState {
      * > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
      */
     deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * The instance configuration type. Valid values:
+     * - Up
+     * - Down
+     * - TempUpgrade
+     * - Serverless
+     */
+    direction?: pulumi.Input<string>;
     /**
      * The method to update the engine version and change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.
@@ -1091,7 +1109,7 @@ export interface InstanceState {
      */
     tcpConnectionType?: pulumi.Input<string>;
     /**
-     * The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+     * The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
      */
     tdeStatus?: pulumi.Input<string>;
     /**
@@ -1275,6 +1293,14 @@ export interface InstanceArgs {
      * > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
      */
     deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * The instance configuration type. Valid values:
+     * - Up
+     * - Down
+     * - TempUpgrade
+     * - Serverless
+     */
+    direction?: pulumi.Input<string>;
     /**
      * The method to update the engine version and change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.
@@ -1532,7 +1558,7 @@ export interface InstanceArgs {
      */
     tcpConnectionType?: pulumi.Input<string>;
     /**
-     * The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+     * The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
      */
     tdeStatus?: pulumi.Input<string>;
     /**

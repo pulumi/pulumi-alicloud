@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Config Aggregate Deliveries of the current Alibaba Cloud user.
@@ -126,6 +127,12 @@ func (o GetAggregateDeliveriesResultOutput) ToGetAggregateDeliveriesResultOutput
 
 func (o GetAggregateDeliveriesResultOutput) ToGetAggregateDeliveriesResultOutputWithContext(ctx context.Context) GetAggregateDeliveriesResultOutput {
 	return o
+}
+
+func (o GetAggregateDeliveriesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAggregateDeliveriesResult] {
+	return pulumix.Output[GetAggregateDeliveriesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAggregateDeliveriesResultOutput) AggregatorId() pulumi.StringOutput {

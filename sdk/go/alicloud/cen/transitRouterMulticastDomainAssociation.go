@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Enterprise Network (CEN) Transit Router Multicast Domain Association resource.
@@ -239,6 +240,12 @@ func (i *TransitRouterMulticastDomainAssociation) ToTransitRouterMulticastDomain
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterMulticastDomainAssociationOutput)
 }
 
+func (i *TransitRouterMulticastDomainAssociation) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterMulticastDomainAssociation] {
+	return pulumix.Output[*TransitRouterMulticastDomainAssociation]{
+		OutputState: i.ToTransitRouterMulticastDomainAssociationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TransitRouterMulticastDomainAssociationArrayInput is an input type that accepts TransitRouterMulticastDomainAssociationArray and TransitRouterMulticastDomainAssociationArrayOutput values.
 // You can construct a concrete instance of `TransitRouterMulticastDomainAssociationArrayInput` via:
 //
@@ -262,6 +269,12 @@ func (i TransitRouterMulticastDomainAssociationArray) ToTransitRouterMulticastDo
 
 func (i TransitRouterMulticastDomainAssociationArray) ToTransitRouterMulticastDomainAssociationArrayOutputWithContext(ctx context.Context) TransitRouterMulticastDomainAssociationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterMulticastDomainAssociationArrayOutput)
+}
+
+func (i TransitRouterMulticastDomainAssociationArray) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterMulticastDomainAssociation] {
+	return pulumix.Output[[]*TransitRouterMulticastDomainAssociation]{
+		OutputState: i.ToTransitRouterMulticastDomainAssociationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TransitRouterMulticastDomainAssociationMapInput is an input type that accepts TransitRouterMulticastDomainAssociationMap and TransitRouterMulticastDomainAssociationMapOutput values.
@@ -289,6 +302,12 @@ func (i TransitRouterMulticastDomainAssociationMap) ToTransitRouterMulticastDoma
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterMulticastDomainAssociationMapOutput)
 }
 
+func (i TransitRouterMulticastDomainAssociationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterMulticastDomainAssociation] {
+	return pulumix.Output[map[string]*TransitRouterMulticastDomainAssociation]{
+		OutputState: i.ToTransitRouterMulticastDomainAssociationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TransitRouterMulticastDomainAssociationOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterMulticastDomainAssociationOutput) ElementType() reflect.Type {
@@ -301,6 +320,12 @@ func (o TransitRouterMulticastDomainAssociationOutput) ToTransitRouterMulticastD
 
 func (o TransitRouterMulticastDomainAssociationOutput) ToTransitRouterMulticastDomainAssociationOutputWithContext(ctx context.Context) TransitRouterMulticastDomainAssociationOutput {
 	return o
+}
+
+func (o TransitRouterMulticastDomainAssociationOutput) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterMulticastDomainAssociation] {
+	return pulumix.Output[*TransitRouterMulticastDomainAssociation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The status of the Transit Router Multicast Domain Association.
@@ -341,6 +366,12 @@ func (o TransitRouterMulticastDomainAssociationArrayOutput) ToTransitRouterMulti
 	return o
 }
 
+func (o TransitRouterMulticastDomainAssociationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterMulticastDomainAssociation] {
+	return pulumix.Output[[]*TransitRouterMulticastDomainAssociation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TransitRouterMulticastDomainAssociationArrayOutput) Index(i pulumi.IntInput) TransitRouterMulticastDomainAssociationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TransitRouterMulticastDomainAssociation {
 		return vs[0].([]*TransitRouterMulticastDomainAssociation)[vs[1].(int)]
@@ -359,6 +390,12 @@ func (o TransitRouterMulticastDomainAssociationMapOutput) ToTransitRouterMultica
 
 func (o TransitRouterMulticastDomainAssociationMapOutput) ToTransitRouterMulticastDomainAssociationMapOutputWithContext(ctx context.Context) TransitRouterMulticastDomainAssociationMapOutput {
 	return o
+}
+
+func (o TransitRouterMulticastDomainAssociationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterMulticastDomainAssociation] {
+	return pulumix.Output[map[string]*TransitRouterMulticastDomainAssociation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransitRouterMulticastDomainAssociationMapOutput) MapIndex(k pulumi.StringInput) TransitRouterMulticastDomainAssociationOutput {

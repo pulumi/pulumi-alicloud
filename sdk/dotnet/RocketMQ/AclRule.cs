@@ -12,11 +12,44 @@ namespace Pulumi.AliCloud.RocketMQ
     /// <summary>
     /// Provides a Sag Acl Rule resource. This topic describes how to configure an access control list (ACL) rule for a target Smart Access Gateway instance to permit or deny access to or from specified IP addresses in the ACL rule.
     /// 
-    /// For information about Sag Acl Rule and how to use it, see [What is access control list (ACL) rule](https://www.alibabacloud.com/help/doc-detail/111483.htm).
+    /// For information about Sag Acl Rule and how to use it, see [What is access control list (ACL) rule](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/addaclrule).
     /// 
-    /// &gt; **NOTE:** Available in 1.60.0+
+    /// &gt; **NOTE:** Available since v1.60.0.
     /// 
     /// &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var defaultAcl = new AliCloud.RocketMQ.Acl("defaultAcl");
+    /// 
+    ///     var defaultAclRule = new AliCloud.RocketMQ.AclRule("defaultAclRule", new()
+    ///     {
+    ///         AclId = defaultAcl.Id,
+    ///         Description = name,
+    ///         Policy = "accept",
+    ///         IpProtocol = "ALL",
+    ///         Direction = "in",
+    ///         SourceCidr = "10.10.1.0/24",
+    ///         SourcePortRange = "-1/-1",
+    ///         DestCidr = "192.168.1.0/24",
+    ///         DestPortRange = "-1/-1",
+    ///         Priority = 1,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

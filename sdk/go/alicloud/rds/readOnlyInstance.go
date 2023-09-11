@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an RDS readonly instance resource, see [What is DB Readonly Instance](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createreadonlydbinstance).
@@ -162,6 +163,12 @@ type ReadOnlyInstance struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	// The instance configuration type. Valid values:
+	// - Up
+	// - Down
+	// - TempUpgrade
+	// - Serverless
+	Direction pulumi.StringPtrOutput `pulumi:"direction"`
 	// The method to change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -342,6 +349,12 @@ type readOnlyInstanceState struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// The instance configuration type. Valid values:
+	// - Up
+	// - Down
+	// - TempUpgrade
+	// - Serverless
+	Direction *string `pulumi:"direction"`
 	// The method to change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -481,6 +494,12 @@ type ReadOnlyInstanceState struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	DeletionProtection pulumi.BoolPtrInput
+	// The instance configuration type. Valid values:
+	// - Up
+	// - Down
+	// - TempUpgrade
+	// - Serverless
+	Direction pulumi.StringPtrInput
 	// The method to change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -622,6 +641,12 @@ type readOnlyInstanceArgs struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// The instance configuration type. Valid values:
+	// - Up
+	// - Down
+	// - TempUpgrade
+	// - Serverless
+	Direction *string `pulumi:"direction"`
 	// The method to change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -756,6 +781,12 @@ type ReadOnlyInstanceArgs struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	DeletionProtection pulumi.BoolPtrInput
+	// The instance configuration type. Valid values:
+	// - Up
+	// - Down
+	// - TempUpgrade
+	// - Serverless
+	Direction pulumi.StringPtrInput
 	// The method to change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -866,6 +897,12 @@ func (i *ReadOnlyInstance) ToReadOnlyInstanceOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ReadOnlyInstanceOutput)
 }
 
+func (i *ReadOnlyInstance) ToOutput(ctx context.Context) pulumix.Output[*ReadOnlyInstance] {
+	return pulumix.Output[*ReadOnlyInstance]{
+		OutputState: i.ToReadOnlyInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ReadOnlyInstanceArrayInput is an input type that accepts ReadOnlyInstanceArray and ReadOnlyInstanceArrayOutput values.
 // You can construct a concrete instance of `ReadOnlyInstanceArrayInput` via:
 //
@@ -889,6 +926,12 @@ func (i ReadOnlyInstanceArray) ToReadOnlyInstanceArrayOutput() ReadOnlyInstanceA
 
 func (i ReadOnlyInstanceArray) ToReadOnlyInstanceArrayOutputWithContext(ctx context.Context) ReadOnlyInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReadOnlyInstanceArrayOutput)
+}
+
+func (i ReadOnlyInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*ReadOnlyInstance] {
+	return pulumix.Output[[]*ReadOnlyInstance]{
+		OutputState: i.ToReadOnlyInstanceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ReadOnlyInstanceMapInput is an input type that accepts ReadOnlyInstanceMap and ReadOnlyInstanceMapOutput values.
@@ -916,6 +959,12 @@ func (i ReadOnlyInstanceMap) ToReadOnlyInstanceMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ReadOnlyInstanceMapOutput)
 }
 
+func (i ReadOnlyInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ReadOnlyInstance] {
+	return pulumix.Output[map[string]*ReadOnlyInstance]{
+		OutputState: i.ToReadOnlyInstanceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ReadOnlyInstanceOutput struct{ *pulumi.OutputState }
 
 func (ReadOnlyInstanceOutput) ElementType() reflect.Type {
@@ -928,6 +977,12 @@ func (o ReadOnlyInstanceOutput) ToReadOnlyInstanceOutput() ReadOnlyInstanceOutpu
 
 func (o ReadOnlyInstanceOutput) ToReadOnlyInstanceOutputWithContext(ctx context.Context) ReadOnlyInstanceOutput {
 	return o
+}
+
+func (o ReadOnlyInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*ReadOnlyInstance] {
+	return pulumix.Output[*ReadOnlyInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
@@ -1014,6 +1069,15 @@ func (o ReadOnlyInstanceOutput) DbInstanceStorageType() pulumi.StringOutput {
 // - false: no delete protect.
 func (o ReadOnlyInstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
+}
+
+// The instance configuration type. Valid values:
+// - Up
+// - Down
+// - TempUpgrade
+// - Serverless
+func (o ReadOnlyInstanceOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringPtrOutput { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
 // The method to change.  Default value: Immediate. Valid values:
@@ -1203,6 +1267,12 @@ func (o ReadOnlyInstanceArrayOutput) ToReadOnlyInstanceArrayOutputWithContext(ct
 	return o
 }
 
+func (o ReadOnlyInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ReadOnlyInstance] {
+	return pulumix.Output[[]*ReadOnlyInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ReadOnlyInstanceArrayOutput) Index(i pulumi.IntInput) ReadOnlyInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ReadOnlyInstance {
 		return vs[0].([]*ReadOnlyInstance)[vs[1].(int)]
@@ -1221,6 +1291,12 @@ func (o ReadOnlyInstanceMapOutput) ToReadOnlyInstanceMapOutput() ReadOnlyInstanc
 
 func (o ReadOnlyInstanceMapOutput) ToReadOnlyInstanceMapOutputWithContext(ctx context.Context) ReadOnlyInstanceMapOutput {
 	return o
+}
+
+func (o ReadOnlyInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ReadOnlyInstance] {
+	return pulumix.Output[map[string]*ReadOnlyInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReadOnlyInstanceMapOutput) MapIndex(k pulumi.StringInput) ReadOnlyInstanceOutput {

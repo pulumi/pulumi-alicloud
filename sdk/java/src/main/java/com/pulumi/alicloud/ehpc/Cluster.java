@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Ehpc Cluster and how to use it, see [What is Cluster](https://www.alibabacloud.com/help/e-hpc/latest/createcluster).
  * 
- * &gt; **NOTE:** Available in v1.173.0+.
+ * &gt; **NOTE:** Available since v1.173.0.
  * 
  * ## Example Usage
  * 
@@ -38,16 +38,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.nas.FileSystem;
  * import com.pulumi.alicloud.nas.FileSystemArgs;
  * import com.pulumi.alicloud.nas.MountTarget;
  * import com.pulumi.alicloud.nas.MountTargetArgs;
- * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.ehpc.Cluster;
  * import com.pulumi.alicloud.ehpc.ClusterArgs;
  * import java.util.List;
@@ -64,33 +65,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
- *             .build());
- * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;default-NODELETING&#34;)
- *             .build());
- * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .build());
- * 
- *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .build());
- * 
- *         final var storageType = config.get(&#34;storageType&#34;).orElse(&#34;Performance&#34;);
- *         var defaultFileSystem = new FileSystem(&#34;defaultFileSystem&#34;, FileSystemArgs.builder()        
- *             .storageType(storageType)
- *             .protocolType(&#34;NFS&#34;)
- *             .build());
- * 
- *         var defaultMountTarget = new MountTarget(&#34;defaultMountTarget&#34;, MountTargetArgs.builder()        
- *             .fileSystemId(defaultFileSystem.id())
- *             .accessGroupName(&#34;DEFAULT_VPC_GROUP_NAME&#34;)
- *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
  *             .build());
  * 
  *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
@@ -98,10 +75,37 @@ import javax.annotation.Nullable;
  *             .owners(&#34;system&#34;)
  *             .build());
  * 
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.1.0.0/16&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultFileSystem = new FileSystem(&#34;defaultFileSystem&#34;, FileSystemArgs.builder()        
+ *             .storageType(&#34;Performance&#34;)
+ *             .protocolType(&#34;NFS&#34;)
+ *             .build());
+ * 
+ *         var defaultMountTarget = new MountTarget(&#34;defaultMountTarget&#34;, MountTargetArgs.builder()        
+ *             .fileSystemId(defaultFileSystem.id())
+ *             .accessGroupName(&#34;DEFAULT_VPC_GROUP_NAME&#34;)
+ *             .vswitchId(defaultSwitch.id())
+ *             .build());
+ * 
  *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
- *             .clusterName(&#34;example_value&#34;)
+ *             .clusterName(name)
  *             .deployMode(&#34;Simple&#34;)
- *             .description(&#34;example_description&#34;)
+ *             .description(name)
  *             .haEnable(false)
  *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
  *             .imageOwnerAlias(&#34;system&#34;)
@@ -117,8 +121,8 @@ import javax.annotation.Nullable;
  *             .osTag(&#34;CentOS_7.6_64&#34;)
  *             .schedulerType(&#34;pbs&#34;)
  *             .password(&#34;your-password123&#34;)
- *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vswitchId(defaultSwitch.id())
+ *             .vpcId(defaultNetwork.id())
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
@@ -152,28 +156,28 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.accountType;
     }
     /**
-     * The additional volumes. See the following `Block additional_volumes`.
+     * The additional volumes. See `additional_volumes` below.
      * 
      */
     @Export(name="additionalVolumes", type=List.class, parameters={ClusterAdditionalVolume.class})
     private Output</* @Nullable */ List<ClusterAdditionalVolume>> additionalVolumes;
 
     /**
-     * @return The additional volumes. See the following `Block additional_volumes`.
+     * @return The additional volumes. See `additional_volumes` below.
      * 
      */
     public Output<Optional<List<ClusterAdditionalVolume>>> additionalVolumes() {
         return Codegen.optional(this.additionalVolumes);
     }
     /**
-     * The application. See the following `Block application`.
+     * The application. See `application` below.
      * 
      */
     @Export(name="applications", type=List.class, parameters={ClusterApplication.class})
     private Output<List<ClusterApplication>> applications;
 
     /**
-     * @return The application. See the following `Block application`.
+     * @return The application. See `application` below.
      * 
      */
     public Output<List<ClusterApplication>> applications() {
@@ -630,14 +634,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.plugin);
     }
     /**
-     * The post install script. See the following `Block post_install_script`.
+     * The post install script. See `post_install_script` below.
      * 
      */
     @Export(name="postInstallScripts", type=List.class, parameters={ClusterPostInstallScript.class})
     private Output</* @Nullable */ List<ClusterPostInstallScript>> postInstallScripts;
 
     /**
-     * @return The post install script. See the following `Block post_install_script`.
+     * @return The post install script. See `post_install_script` below.
      * 
      */
     public Output<Optional<List<ClusterPostInstallScript>>> postInstallScripts() {

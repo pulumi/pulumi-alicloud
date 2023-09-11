@@ -151,7 +151,7 @@ class BgpIp(pulumi.CustomResource):
 
         For information about Ddos Bgp Ip and how to use it, see [What is Ip](https://www.alibabacloud.com/help/en/ddos-protection/latest/addip).
 
-        > **NOTE:** Available in v1.180.0+.
+        > **NOTE:** Available since v1.180.0.
 
         ## Example Usage
 
@@ -161,11 +161,21 @@ class BgpIp(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=var["name"])
-        default_ddos_bgp_instances = alicloud.ddos.get_ddos_bgp_instances()
+        instance = alicloud.ddos.DdosBgpInstance("instance",
+            base_bandwidth=20,
+            bandwidth=-1,
+            ip_count=100,
+            ip_type="IPv4",
+            normal_bandwidth=100,
+            type="Enterprise")
+        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=name)
         default_bgp_ip = alicloud.ddos.BgpIp("defaultBgpIp",
-            instance_id=default_ddos_bgp_instances.ids[0],
+            instance_id=instance.id,
             ip=default_eip_address.ip_address,
             resource_group_id=default_resource_groups.groups[0].id)
         ```
@@ -195,7 +205,7 @@ class BgpIp(pulumi.CustomResource):
 
         For information about Ddos Bgp Ip and how to use it, see [What is Ip](https://www.alibabacloud.com/help/en/ddos-protection/latest/addip).
 
-        > **NOTE:** Available in v1.180.0+.
+        > **NOTE:** Available since v1.180.0.
 
         ## Example Usage
 
@@ -205,11 +215,21 @@ class BgpIp(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=var["name"])
-        default_ddos_bgp_instances = alicloud.ddos.get_ddos_bgp_instances()
+        instance = alicloud.ddos.DdosBgpInstance("instance",
+            base_bandwidth=20,
+            bandwidth=-1,
+            ip_count=100,
+            ip_type="IPv4",
+            normal_bandwidth=100,
+            type="Enterprise")
+        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=name)
         default_bgp_ip = alicloud.ddos.BgpIp("defaultBgpIp",
-            instance_id=default_ddos_bgp_instances.ids[0],
+            instance_id=instance.id,
             ip=default_eip_address.ip_address,
             resource_group_id=default_resource_groups.groups[0].id)
         ```

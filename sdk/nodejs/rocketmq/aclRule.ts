@@ -7,11 +7,36 @@ import * as utilities from "../utilities";
 /**
  * Provides a Sag Acl Rule resource. This topic describes how to configure an access control list (ACL) rule for a target Smart Access Gateway instance to permit or deny access to or from specified IP addresses in the ACL rule.
  *
- * For information about Sag Acl Rule and how to use it, see [What is access control list (ACL) rule](https://www.alibabacloud.com/help/doc-detail/111483.htm).
+ * For information about Sag Acl Rule and how to use it, see [What is access control list (ACL) rule](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/addaclrule).
  *
- * > **NOTE:** Available in 1.60.0+
+ * > **NOTE:** Available since v1.60.0.
  *
  * > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const defaultAcl = new alicloud.rocketmq.Acl("defaultAcl", {});
+ * const defaultAclRule = new alicloud.rocketmq.AclRule("defaultAclRule", {
+ *     aclId: defaultAcl.id,
+ *     description: name,
+ *     policy: "accept",
+ *     ipProtocol: "ALL",
+ *     direction: "in",
+ *     sourceCidr: "10.10.1.0/24",
+ *     sourcePortRange: "-1/-1",
+ *     destCidr: "192.168.1.0/24",
+ *     destPortRange: "-1/-1",
+ *     priority: 1,
+ * });
+ * ```
  *
  * ## Import
  *

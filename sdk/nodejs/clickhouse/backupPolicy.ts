@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Click House Backup Policy resource.
  *
- * For information about Click House Backup Policy and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/doc-detail/208840.html).
+ * For information about Click House Backup Policy and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/en/clickhouse/latest/api-clickhouse-2019-11-11-createbackuppolicy).
  *
- * > **NOTE:** Available in v1.147.0+.
+ * > **NOTE:** Available since v1.147.0.
  *
  * > **NOTE:** Only the cloud database ClickHouse cluster version `20.3` supports data backup.
  *
@@ -21,30 +21,35 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const defaultRegions = alicloud.clickhouse.getRegions({
  *     current: true,
  * });
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultRegions]).then(([defaultNetworks, defaultRegions]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultRegions.regions?.[0]?.zoneIds?.[0]?.zoneId,
- * }));
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.zoneIds?.[0]?.zoneId),
+ * });
  * const defaultDbCluster = new alicloud.clickhouse.DbCluster("defaultDbCluster", {
- *     dbClusterVersion: "20.3.10.75",
+ *     dbClusterVersion: "22.8.5.29",
  *     status: "Running",
  *     category: "Basic",
  *     dbClusterClass: "S8",
  *     dbClusterNetworkType: "vpc",
- *     dbClusterDescription: _var.name,
  *     dbNodeGroupCount: 1,
  *     paymentType: "PayAsYouGo",
  *     dbNodeStorage: "500",
  *     storageType: "cloud_essd",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.vswitches?.[0]?.id),
+ *     vswitchId: defaultSwitch.id,
+ *     vpcId: defaultNetwork.id,
  * });
- * const example = new alicloud.clickhouse.BackupPolicy("example", {
+ * const defaultBackupPolicy = new alicloud.clickhouse.BackupPolicy("defaultBackupPolicy", {
  *     dbClusterId: defaultDbCluster.id,
  *     preferredBackupPeriods: [
  *         "Monday",

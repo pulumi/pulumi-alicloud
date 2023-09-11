@@ -16,9 +16,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Connect Network Grant resource. If the CEN instance to be attached belongs to another account, authorization by the CEN instance is required.
  * 
- * For information about Cloud Connect Network Grant and how to use it, see [What is Cloud Connect Network Grant](https://www.alibabacloud.com/help/doc-detail/94543.htm).
+ * For information about Cloud Connect Network Grant and how to use it, see [What is Cloud Connect Network Grant](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/grantinstancetocbn).
  * 
- * &gt; **NOTE:** Available in 1.63.0+
+ * &gt; **NOTE:** Available since v1.63.0.
  * 
  * &gt; **NOTE:** Only the following regions support create Cloud Connect Network Grant. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
  * 
@@ -33,10 +33,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.Provider;
  * import com.pulumi.alicloud.ProviderArgs;
- * import com.pulumi.alicloud.cen.Instance;
- * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.inputs.ProviderAssumeRoleArgs;
  * import com.pulumi.alicloud.cloudconnect.Network;
  * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
  * import com.pulumi.alicloud.cloudconnect.NetworkGrant;
  * import com.pulumi.alicloud.cloudconnect.NetworkGrantArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -53,32 +54,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ccnAccount = new Provider(&#34;ccnAccount&#34;);
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var cenUid = config.get(&#34;cenUid&#34;).orElse(123456789);
+ *         var default_ = new Provider(&#34;default&#34;, ProviderArgs.builder()        
+ *             .region(&#34;cn-shanghai&#34;)
+ *             .build());
  * 
  *         var cenAccount = new Provider(&#34;cenAccount&#34;, ProviderArgs.builder()        
  *             .region(&#34;cn-hangzhou&#34;)
- *             .accessKey(&#34;xxxxxx&#34;)
- *             .secretKey(&#34;xxxxxx&#34;)
+ *             .assumeRole(ProviderAssumeRoleArgs.builder()
+ *                 .roleArn(String.format(&#34;acs:ram::%s:role/terraform-example-assume-role&#34;, cenUid))
+ *                 .build())
  *             .build());
  * 
- *         var cen = new Instance(&#34;cen&#34;, InstanceArgs.Empty, CustomResourceOptions.builder()
- *             .provider(alicloud.cen_account())
- *             .build());
- * 
- *         var ccn = new Network(&#34;ccn&#34;, NetworkArgs.builder()        
- *             .isDefault(&#34;true&#34;)
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .description(name)
+ *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+ *             .isDefault(true)
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.ccn_account())
+ *                 .provider(alicloud.default())
  *                 .build());
  * 
- *         var default_ = new NetworkGrant(&#34;default&#34;, NetworkGrantArgs.builder()        
- *             .ccnId(ccn.id())
- *             .cenId(cen.id())
- *             .cenUid(&#34;xxxxxx&#34;)
+ *         var cen = new Instance(&#34;cen&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(name)
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     ccn,
- *                     cen)
+ *                 .provider(alicloud.cen_account())
+ *                 .build());
+ * 
+ *         var defaultNetworkGrant = new NetworkGrant(&#34;defaultNetworkGrant&#34;, NetworkGrantArgs.builder()        
+ *             .ccnId(defaultNetwork.id())
+ *             .cenId(cen.id())
+ *             .cenUid(cenUid)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.default())
  *                 .build());
  * 
  *     }

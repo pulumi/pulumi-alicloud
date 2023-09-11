@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Eflo Subnet resource.
  * 
- * For information about Eflo Subnet and how to use it, see [What is Subnet](https://help.aliyun.com/document_detail/604977.html).
+ * For information about Eflo Subnet and how to use it, see [What is Subnet](https://www.alibabacloud.com/help/en/pai/user-guide/overview-of-intelligent-computing-lingjun).
  * 
- * &gt; **NOTE:** Available in v1.204.0+.
+ * &gt; **NOTE:** Available since v1.204.0.
  * 
  * ## Example Usage
  * 
@@ -51,18 +51,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var defaultZones = AlicloudFunctions.getZones();
  * 
  *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         var defaultVpd = new Vpd(&#34;defaultVpd&#34;, VpdArgs.builder()        
  *             .cidr(&#34;10.0.0.0/8&#34;)
- *             .vpdName(var_.name())
+ *             .vpdName(name)
  *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
  *             .build());
  * 
  *         var defaultSubnet = new Subnet(&#34;defaultSubnet&#34;, SubnetArgs.builder()        
- *             .subnetName(var_.name())
+ *             .subnetName(name)
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .cidr(&#34;10.0.0.0/16&#34;)
  *             .vpdId(defaultVpd.id())
@@ -84,14 +86,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:eflo/subnet:Subnet")
 public class Subnet extends com.pulumi.resources.CustomResource {
     /**
-     * CIDR network segment
+     * CIDR network segment.
      * 
      */
     @Export(name="cidr", type=String.class, parameters={})
     private Output<String> cidr;
 
     /**
-     * @return CIDR network segment
+     * @return CIDR network segment.
      * 
      */
     public Output<String> cidr() {
@@ -230,14 +232,14 @@ public class Subnet extends com.pulumi.resources.CustomResource {
         return this.vpdId;
     }
     /**
-     * The zone ID  of the resource
+     * The zone ID  of the resource.
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The zone ID  of the resource
+     * @return The zone ID  of the resource.
      * 
      */
     public Output<String> zoneId() {

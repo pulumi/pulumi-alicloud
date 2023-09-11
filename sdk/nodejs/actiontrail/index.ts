@@ -12,7 +12,8 @@ utilities.lazyLoad(exports, ["getConsumerGroups","getConsumerGroupsOutput"], () 
 
 export { GetGlobalEventsStorageRegionResult } from "./getGlobalEventsStorageRegion";
 export const getGlobalEventsStorageRegion: typeof import("./getGlobalEventsStorageRegion").getGlobalEventsStorageRegion = null as any;
-utilities.lazyLoad(exports, ["getGlobalEventsStorageRegion"], () => require("./getGlobalEventsStorageRegion"));
+export const getGlobalEventsStorageRegionOutput: typeof import("./getGlobalEventsStorageRegion").getGlobalEventsStorageRegionOutput = null as any;
+utilities.lazyLoad(exports, ["getGlobalEventsStorageRegion","getGlobalEventsStorageRegionOutput"], () => require("./getGlobalEventsStorageRegion"));
 
 export { GetHistoryDeliveryJobsArgs, GetHistoryDeliveryJobsResult, GetHistoryDeliveryJobsOutputArgs } from "./getHistoryDeliveryJobs";
 export const getHistoryDeliveryJobs: typeof import("./getHistoryDeliveryJobs").getHistoryDeliveryJobs = null as any;

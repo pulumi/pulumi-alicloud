@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECS Snapshot Group resource.
@@ -310,6 +311,12 @@ func (i *EcsSnapshotGroup) ToEcsSnapshotGroupOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(EcsSnapshotGroupOutput)
 }
 
+func (i *EcsSnapshotGroup) ToOutput(ctx context.Context) pulumix.Output[*EcsSnapshotGroup] {
+	return pulumix.Output[*EcsSnapshotGroup]{
+		OutputState: i.ToEcsSnapshotGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EcsSnapshotGroupArrayInput is an input type that accepts EcsSnapshotGroupArray and EcsSnapshotGroupArrayOutput values.
 // You can construct a concrete instance of `EcsSnapshotGroupArrayInput` via:
 //
@@ -333,6 +340,12 @@ func (i EcsSnapshotGroupArray) ToEcsSnapshotGroupArrayOutput() EcsSnapshotGroupA
 
 func (i EcsSnapshotGroupArray) ToEcsSnapshotGroupArrayOutputWithContext(ctx context.Context) EcsSnapshotGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsSnapshotGroupArrayOutput)
+}
+
+func (i EcsSnapshotGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*EcsSnapshotGroup] {
+	return pulumix.Output[[]*EcsSnapshotGroup]{
+		OutputState: i.ToEcsSnapshotGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EcsSnapshotGroupMapInput is an input type that accepts EcsSnapshotGroupMap and EcsSnapshotGroupMapOutput values.
@@ -360,6 +373,12 @@ func (i EcsSnapshotGroupMap) ToEcsSnapshotGroupMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(EcsSnapshotGroupMapOutput)
 }
 
+func (i EcsSnapshotGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsSnapshotGroup] {
+	return pulumix.Output[map[string]*EcsSnapshotGroup]{
+		OutputState: i.ToEcsSnapshotGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EcsSnapshotGroupOutput struct{ *pulumi.OutputState }
 
 func (EcsSnapshotGroupOutput) ElementType() reflect.Type {
@@ -372,6 +391,12 @@ func (o EcsSnapshotGroupOutput) ToEcsSnapshotGroupOutput() EcsSnapshotGroupOutpu
 
 func (o EcsSnapshotGroupOutput) ToEcsSnapshotGroupOutputWithContext(ctx context.Context) EcsSnapshotGroupOutput {
 	return o
+}
+
+func (o EcsSnapshotGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*EcsSnapshotGroup] {
+	return pulumix.Output[*EcsSnapshotGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the snapshot-consistent group. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -438,6 +463,12 @@ func (o EcsSnapshotGroupArrayOutput) ToEcsSnapshotGroupArrayOutputWithContext(ct
 	return o
 }
 
+func (o EcsSnapshotGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EcsSnapshotGroup] {
+	return pulumix.Output[[]*EcsSnapshotGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EcsSnapshotGroupArrayOutput) Index(i pulumi.IntInput) EcsSnapshotGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsSnapshotGroup {
 		return vs[0].([]*EcsSnapshotGroup)[vs[1].(int)]
@@ -456,6 +487,12 @@ func (o EcsSnapshotGroupMapOutput) ToEcsSnapshotGroupMapOutput() EcsSnapshotGrou
 
 func (o EcsSnapshotGroupMapOutput) ToEcsSnapshotGroupMapOutputWithContext(ctx context.Context) EcsSnapshotGroupMapOutput {
 	return o
+}
+
+func (o EcsSnapshotGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsSnapshotGroup] {
+	return pulumix.Output[map[string]*EcsSnapshotGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EcsSnapshotGroupMapOutput) MapIndex(k pulumi.StringInput) EcsSnapshotGroupOutput {

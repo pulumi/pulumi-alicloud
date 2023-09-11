@@ -102,7 +102,7 @@ export class Bundle extends pulumi.CustomResource {
     /**
      * The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
      */
-    public readonly rootDiskPerformanceLevel!: pulumi.Output<string | undefined>;
+    public readonly rootDiskPerformanceLevel!: pulumi.Output<string>;
     /**
      * The root disk size gib.
      */
@@ -110,9 +110,9 @@ export class Bundle extends pulumi.CustomResource {
     /**
      * The user disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
      */
-    public readonly userDiskPerformanceLevel!: pulumi.Output<string | undefined>;
+    public readonly userDiskPerformanceLevel!: pulumi.Output<string>;
     /**
-     * The size of the data disk. Currently, only one data disk can be set. Unit: GiB. 
+     * The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
      * - The size of the data disk that supports the setting corresponds to the specification. For more information, see [Overview of Desktop Specifications](https://help.aliyun.com/document_detail/188609.htm?spm=a2c4g.11186623.0.0.6406297bE0U5DG).
      * - The data disk size (user_disk_size_gib) set in the template must be greater than the data disk size (data_disk_size) in the mirror.
      */
@@ -206,7 +206,7 @@ export interface BundleState {
      */
     userDiskPerformanceLevel?: pulumi.Input<string>;
     /**
-     * The size of the data disk. Currently, only one data disk can be set. Unit: GiB. 
+     * The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
      * - The size of the data disk that supports the setting corresponds to the specification. For more information, see [Overview of Desktop Specifications](https://help.aliyun.com/document_detail/188609.htm?spm=a2c4g.11186623.0.0.6406297bE0U5DG).
      * - The data disk size (user_disk_size_gib) set in the template must be greater than the data disk size (data_disk_size) in the mirror.
      */
@@ -250,7 +250,7 @@ export interface BundleArgs {
      */
     userDiskPerformanceLevel?: pulumi.Input<string>;
     /**
-     * The size of the data disk. Currently, only one data disk can be set. Unit: GiB. 
+     * The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
      * - The size of the data disk that supports the setting corresponds to the specification. For more information, see [Overview of Desktop Specifications](https://help.aliyun.com/document_detail/188609.htm?spm=a2c4g.11186623.0.0.6406297bE0U5DG).
      * - The data disk size (user_disk_size_gib) set in the template must be greater than the data disk size (data_disk_size) in the mirror.
      */

@@ -39,14 +39,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The detail cost optimized configuration of emr cluster.
+     * The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below.
      * 
      */
     @Import(name="costOptimizedConfig")
     private @Nullable Output<ClusterNodeGroupCostOptimizedConfigArgs> costOptimizedConfig;
 
     /**
-     * @return The detail cost optimized configuration of emr cluster.
+     * @return The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below.
      * 
      */
     public Optional<Output<ClusterNodeGroupCostOptimizedConfigArgs>> costOptimizedConfig() {
@@ -54,14 +54,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Host Ecs data disks information in this node group.
+     * Host Ecs data disks information in this node group. See `data_disks` below.
      * 
      */
     @Import(name="dataDisks", required=true)
     private Output<List<ClusterNodeGroupDataDiskArgs>> dataDisks;
 
     /**
-     * @return Host Ecs data disks information in this node group.
+     * @return Host Ecs data disks information in this node group. See `data_disks` below.
      * 
      */
     public Output<List<ClusterNodeGroupDataDiskArgs>> dataDisks() {
@@ -114,14 +114,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The configuration effected which node group name of emr cluster.
+     * The node group name of emr cluster.
      * 
      */
     @Import(name="nodeGroupName", required=true)
     private Output<String> nodeGroupName;
 
     /**
-     * @return The configuration effected which node group name of emr cluster.
+     * @return The node group name of emr cluster.
      * 
      */
     public Output<String> nodeGroupName() {
@@ -159,14 +159,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The spot bid prices of a PayAsYouGo instance.
+     * The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
      * 
      */
     @Import(name="spotBidPrices")
     private @Nullable Output<List<ClusterNodeGroupSpotBidPriceArgs>> spotBidPrices;
 
     /**
-     * @return The spot bid prices of a PayAsYouGo instance.
+     * @return The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
      * 
      */
     public Optional<Output<List<ClusterNodeGroupSpotBidPriceArgs>>> spotBidPrices() {
@@ -189,14 +189,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The detail configuration of subscription payment type.
+     * The detail configuration of subscription payment type. See `subscription_config` below.
      * 
      */
     @Import(name="subscriptionConfig")
     private @Nullable Output<ClusterNodeGroupSubscriptionConfigArgs> subscriptionConfig;
 
     /**
-     * @return The detail configuration of subscription payment type.
+     * @return The detail configuration of subscription payment type. See `subscription_config` below.
      * 
      */
     public Optional<Output<ClusterNodeGroupSubscriptionConfigArgs>> subscriptionConfig() {
@@ -204,14 +204,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Host Ecs system disk information in this node group.
+     * Host Ecs system disk information in this node group. See `system_disk` below.
      * 
      */
     @Import(name="systemDisk", required=true)
     private Output<ClusterNodeGroupSystemDiskArgs> systemDisk;
 
     /**
-     * @return Host Ecs system disk information in this node group.
+     * @return Host Ecs system disk information in this node group. See `system_disk` below.
      * 
      */
     public Output<ClusterNodeGroupSystemDiskArgs> systemDisk() {
@@ -318,7 +318,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param costOptimizedConfig The detail cost optimized configuration of emr cluster.
+         * @param costOptimizedConfig The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param costOptimizedConfig The detail cost optimized configuration of emr cluster.
+         * @param costOptimizedConfig The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below.
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dataDisks Host Ecs data disks information in this node group.
+         * @param dataDisks Host Ecs data disks information in this node group. See `data_disks` below.
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dataDisks Host Ecs data disks information in this node group.
+         * @param dataDisks Host Ecs data disks information in this node group. See `data_disks` below.
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dataDisks Host Ecs data disks information in this node group.
+         * @param dataDisks Host Ecs data disks information in this node group. See `data_disks` below.
          * 
          * @return builder
          * 
@@ -443,7 +443,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodeGroupName The configuration effected which node group name of emr cluster.
+         * @param nodeGroupName The node group name of emr cluster.
          * 
          * @return builder
          * 
@@ -454,7 +454,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodeGroupName The configuration effected which node group name of emr cluster.
+         * @param nodeGroupName The node group name of emr cluster.
          * 
          * @return builder
          * 
@@ -506,7 +506,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param spotBidPrices The spot bid prices of a PayAsYouGo instance.
+         * @param spotBidPrices The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
          * 
          * @return builder
          * 
@@ -517,7 +517,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param spotBidPrices The spot bid prices of a PayAsYouGo instance.
+         * @param spotBidPrices The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
          * 
          * @return builder
          * 
@@ -527,7 +527,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param spotBidPrices The spot bid prices of a PayAsYouGo instance.
+         * @param spotBidPrices The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
          * 
          * @return builder
          * 
@@ -558,7 +558,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subscriptionConfig The detail configuration of subscription payment type.
+         * @param subscriptionConfig The detail configuration of subscription payment type. See `subscription_config` below.
          * 
          * @return builder
          * 
@@ -569,7 +569,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subscriptionConfig The detail configuration of subscription payment type.
+         * @param subscriptionConfig The detail configuration of subscription payment type. See `subscription_config` below.
          * 
          * @return builder
          * 
@@ -579,7 +579,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param systemDisk Host Ecs system disk information in this node group.
+         * @param systemDisk Host Ecs system disk information in this node group. See `system_disk` below.
          * 
          * @return builder
          * 
@@ -590,7 +590,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param systemDisk Host Ecs system disk information in this node group.
+         * @param systemDisk Host Ecs system disk information in this node group. See `system_disk` below.
          * 
          * @return builder
          * 

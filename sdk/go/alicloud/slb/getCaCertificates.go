@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the CA certificate list.
@@ -123,6 +124,12 @@ func (o GetCaCertificatesResultOutput) ToGetCaCertificatesResultOutput() GetCaCe
 
 func (o GetCaCertificatesResultOutput) ToGetCaCertificatesResultOutputWithContext(ctx context.Context) GetCaCertificatesResultOutput {
 	return o
+}
+
+func (o GetCaCertificatesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCaCertificatesResult] {
+	return pulumix.Output[GetCaCertificatesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of SLB ca certificates. Each element contains the following attributes:

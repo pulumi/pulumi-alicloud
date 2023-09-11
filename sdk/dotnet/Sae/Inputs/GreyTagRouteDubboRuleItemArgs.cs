@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Sae.Inputs
         public Input<int>? Index { get; set; }
 
         /// <summary>
-        /// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`
+        /// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
         /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }

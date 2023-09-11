@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Elastic Desktop Service (ECD) Policy Group resource.
@@ -345,6 +346,12 @@ func (i *EcdPolicyGroup) ToEcdPolicyGroupOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(EcdPolicyGroupOutput)
 }
 
+func (i *EcdPolicyGroup) ToOutput(ctx context.Context) pulumix.Output[*EcdPolicyGroup] {
+	return pulumix.Output[*EcdPolicyGroup]{
+		OutputState: i.ToEcdPolicyGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EcdPolicyGroupArrayInput is an input type that accepts EcdPolicyGroupArray and EcdPolicyGroupArrayOutput values.
 // You can construct a concrete instance of `EcdPolicyGroupArrayInput` via:
 //
@@ -368,6 +375,12 @@ func (i EcdPolicyGroupArray) ToEcdPolicyGroupArrayOutput() EcdPolicyGroupArrayOu
 
 func (i EcdPolicyGroupArray) ToEcdPolicyGroupArrayOutputWithContext(ctx context.Context) EcdPolicyGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcdPolicyGroupArrayOutput)
+}
+
+func (i EcdPolicyGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*EcdPolicyGroup] {
+	return pulumix.Output[[]*EcdPolicyGroup]{
+		OutputState: i.ToEcdPolicyGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EcdPolicyGroupMapInput is an input type that accepts EcdPolicyGroupMap and EcdPolicyGroupMapOutput values.
@@ -395,6 +408,12 @@ func (i EcdPolicyGroupMap) ToEcdPolicyGroupMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(EcdPolicyGroupMapOutput)
 }
 
+func (i EcdPolicyGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcdPolicyGroup] {
+	return pulumix.Output[map[string]*EcdPolicyGroup]{
+		OutputState: i.ToEcdPolicyGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EcdPolicyGroupOutput struct{ *pulumi.OutputState }
 
 func (EcdPolicyGroupOutput) ElementType() reflect.Type {
@@ -407,6 +426,12 @@ func (o EcdPolicyGroupOutput) ToEcdPolicyGroupOutput() EcdPolicyGroupOutput {
 
 func (o EcdPolicyGroupOutput) ToEcdPolicyGroupOutputWithContext(ctx context.Context) EcdPolicyGroupOutput {
 	return o
+}
+
+func (o EcdPolicyGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*EcdPolicyGroup] {
+	return pulumix.Output[*EcdPolicyGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The rule of authorize access rule. See `authorizeAccessPolicyRules` below.
@@ -527,6 +552,12 @@ func (o EcdPolicyGroupArrayOutput) ToEcdPolicyGroupArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o EcdPolicyGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EcdPolicyGroup] {
+	return pulumix.Output[[]*EcdPolicyGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EcdPolicyGroupArrayOutput) Index(i pulumi.IntInput) EcdPolicyGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcdPolicyGroup {
 		return vs[0].([]*EcdPolicyGroup)[vs[1].(int)]
@@ -545,6 +576,12 @@ func (o EcdPolicyGroupMapOutput) ToEcdPolicyGroupMapOutput() EcdPolicyGroupMapOu
 
 func (o EcdPolicyGroupMapOutput) ToEcdPolicyGroupMapOutputWithContext(ctx context.Context) EcdPolicyGroupMapOutput {
 	return o
+}
+
+func (o EcdPolicyGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcdPolicyGroup] {
+	return pulumix.Output[map[string]*EcdPolicyGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EcdPolicyGroupMapOutput) MapIndex(k pulumi.StringInput) EcdPolicyGroupOutput {

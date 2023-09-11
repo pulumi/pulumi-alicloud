@@ -48,14 +48,14 @@ public final class LoadBalancerIntranetArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The bound private network SLB. See the following `Block intranet`.
+     * The bound private network SLB. See `intranet` below.
      * 
      */
     @Import(name="intranets", required=true)
     private Output<List<LoadBalancerIntranetIntranetArgs>> intranets;
 
     /**
-     * @return The bound private network SLB. See the following `Block intranet`.
+     * @return The bound private network SLB. See `intranet` below.
      * 
      */
     public Output<List<LoadBalancerIntranetIntranetArgs>> intranets() {
@@ -131,7 +131,7 @@ public final class LoadBalancerIntranetArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param intranets The bound private network SLB. See the following `Block intranet`.
+         * @param intranets The bound private network SLB. See `intranet` below.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class LoadBalancerIntranetArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param intranets The bound private network SLB. See the following `Block intranet`.
+         * @param intranets The bound private network SLB. See `intranet` below.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class LoadBalancerIntranetArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param intranets The bound private network SLB. See the following `Block intranet`.
+         * @param intranets The bound private network SLB. See `intranet` below.
          * 
          * @return builder
          * 

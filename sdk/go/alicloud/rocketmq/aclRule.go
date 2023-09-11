@@ -10,15 +10,63 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sag Acl Rule resource. This topic describes how to configure an access control list (ACL) rule for a target Smart Access Gateway instance to permit or deny access to or from specified IP addresses in the ACL rule.
 //
-// For information about Sag Acl Rule and how to use it, see [What is access control list (ACL) rule](https://www.alibabacloud.com/help/doc-detail/111483.htm).
+// For information about Sag Acl Rule and how to use it, see [What is access control list (ACL) rule](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/addaclrule).
 //
-// > **NOTE:** Available in 1.60.0+
+// > **NOTE:** Available since v1.60.0.
 //
 // > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultAcl, err := rocketmq.NewAcl(ctx, "defaultAcl", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rocketmq.NewAclRule(ctx, "defaultAclRule", &rocketmq.AclRuleArgs{
+//				AclId:           defaultAcl.ID(),
+//				Description:     pulumi.String(name),
+//				Policy:          pulumi.String("accept"),
+//				IpProtocol:      pulumi.String("ALL"),
+//				Direction:       pulumi.String("in"),
+//				SourceCidr:      pulumi.String("10.10.1.0/24"),
+//				SourcePortRange: pulumi.String("-1/-1"),
+//				DestCidr:        pulumi.String("192.168.1.0/24"),
+//				DestPortRange:   pulumi.String("-1/-1"),
+//				Priority:        pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -227,6 +275,12 @@ func (i *AclRule) ToAclRuleOutputWithContext(ctx context.Context) AclRuleOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(AclRuleOutput)
 }
 
+func (i *AclRule) ToOutput(ctx context.Context) pulumix.Output[*AclRule] {
+	return pulumix.Output[*AclRule]{
+		OutputState: i.ToAclRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AclRuleArrayInput is an input type that accepts AclRuleArray and AclRuleArrayOutput values.
 // You can construct a concrete instance of `AclRuleArrayInput` via:
 //
@@ -250,6 +304,12 @@ func (i AclRuleArray) ToAclRuleArrayOutput() AclRuleArrayOutput {
 
 func (i AclRuleArray) ToAclRuleArrayOutputWithContext(ctx context.Context) AclRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclRuleArrayOutput)
+}
+
+func (i AclRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*AclRule] {
+	return pulumix.Output[[]*AclRule]{
+		OutputState: i.ToAclRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AclRuleMapInput is an input type that accepts AclRuleMap and AclRuleMapOutput values.
@@ -277,6 +337,12 @@ func (i AclRuleMap) ToAclRuleMapOutputWithContext(ctx context.Context) AclRuleMa
 	return pulumi.ToOutputWithContext(ctx, i).(AclRuleMapOutput)
 }
 
+func (i AclRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AclRule] {
+	return pulumix.Output[map[string]*AclRule]{
+		OutputState: i.ToAclRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AclRuleOutput struct{ *pulumi.OutputState }
 
 func (AclRuleOutput) ElementType() reflect.Type {
@@ -289,6 +355,12 @@ func (o AclRuleOutput) ToAclRuleOutput() AclRuleOutput {
 
 func (o AclRuleOutput) ToAclRuleOutputWithContext(ctx context.Context) AclRuleOutput {
 	return o
+}
+
+func (o AclRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*AclRule] {
+	return pulumix.Output[*AclRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the ACL.
@@ -355,6 +427,12 @@ func (o AclRuleArrayOutput) ToAclRuleArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o AclRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AclRule] {
+	return pulumix.Output[[]*AclRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AclRuleArrayOutput) Index(i pulumi.IntInput) AclRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AclRule {
 		return vs[0].([]*AclRule)[vs[1].(int)]
@@ -373,6 +451,12 @@ func (o AclRuleMapOutput) ToAclRuleMapOutput() AclRuleMapOutput {
 
 func (o AclRuleMapOutput) ToAclRuleMapOutputWithContext(ctx context.Context) AclRuleMapOutput {
 	return o
+}
+
+func (o AclRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AclRule] {
+	return pulumix.Output[map[string]*AclRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AclRuleMapOutput) MapIndex(k pulumi.StringInput) AclRuleOutput {

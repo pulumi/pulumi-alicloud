@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
@@ -140,6 +141,12 @@ func (o GetTransitRouterPrefixListAssociationsResultOutput) ToGetTransitRouterPr
 
 func (o GetTransitRouterPrefixListAssociationsResultOutput) ToGetTransitRouterPrefixListAssociationsResultOutputWithContext(ctx context.Context) GetTransitRouterPrefixListAssociationsResultOutput {
 	return o
+}
+
+func (o GetTransitRouterPrefixListAssociationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterPrefixListAssociationsResult] {
+	return pulumix.Output[GetTransitRouterPrefixListAssociationsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTransitRouterPrefixListAssociationsResultOutput) Associations() GetTransitRouterPrefixListAssociationsAssociationArrayOutput {

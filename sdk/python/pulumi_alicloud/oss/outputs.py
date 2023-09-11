@@ -16,6 +16,9 @@ __all__ = [
     'BucketLifecycleRule',
     'BucketLifecycleRuleAbortMultipartUpload',
     'BucketLifecycleRuleExpiration',
+    'BucketLifecycleRuleFilter',
+    'BucketLifecycleRuleFilterNot',
+    'BucketLifecycleRuleFilterNotTag',
     'BucketLifecycleRuleNoncurrentVersionExpiration',
     'BucketLifecycleRuleNoncurrentVersionTransition',
     'BucketLifecycleRuleTransition',
@@ -184,6 +187,7 @@ class BucketLifecycleRule(dict):
                  enabled: bool,
                  abort_multipart_uploads: Optional[Sequence['outputs.BucketLifecycleRuleAbortMultipartUpload']] = None,
                  expirations: Optional[Sequence['outputs.BucketLifecycleRuleExpiration']] = None,
+                 filter: Optional['outputs.BucketLifecycleRuleFilter'] = None,
                  id: Optional[str] = None,
                  noncurrent_version_expirations: Optional[Sequence['outputs.BucketLifecycleRuleNoncurrentVersionExpiration']] = None,
                  noncurrent_version_transitions: Optional[Sequence['outputs.BucketLifecycleRuleNoncurrentVersionTransition']] = None,
@@ -194,13 +198,14 @@ class BucketLifecycleRule(dict):
         :param bool enabled: Specifies lifecycle rule status.
         :param Sequence['BucketLifecycleRuleAbortMultipartUploadArgs'] abort_multipart_uploads: Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abort_multipart_upload` below.
         :param Sequence['BucketLifecycleRuleExpirationArgs'] expirations: Specifies a period in the object's expire. See `expiration` below.
+        :param 'BucketLifecycleRuleFilterArgs' filter: Configuration block used to identify objects that a Lifecycle rule applies to. See `filter` below.
+               
+               `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
         :param str id: Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
         :param Sequence['BucketLifecycleRuleNoncurrentVersionExpirationArgs'] noncurrent_version_expirations: Specifies when noncurrent object versions expire. See `noncurrent_version_expiration` below.
         :param Sequence['BucketLifecycleRuleNoncurrentVersionTransitionArgs'] noncurrent_version_transitions: Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
-        :param str prefix: Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+        :param str prefix: The prefix in the names of the objects to which the lifecycle rule does not apply.
         :param Mapping[str, Any] tags: Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
-               
-               `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
         :param Sequence['BucketLifecycleRuleTransitionArgs'] transitions: Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -208,6 +213,8 @@ class BucketLifecycleRule(dict):
             pulumi.set(__self__, "abort_multipart_uploads", abort_multipart_uploads)
         if expirations is not None:
             pulumi.set(__self__, "expirations", expirations)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if noncurrent_version_expirations is not None:
@@ -247,6 +254,16 @@ class BucketLifecycleRule(dict):
 
     @property
     @pulumi.getter
+    def filter(self) -> Optional['outputs.BucketLifecycleRuleFilter']:
+        """
+        Configuration block used to identify objects that a Lifecycle rule applies to. See `filter` below.
+
+        `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+        """
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
     def id(self) -> Optional[str]:
         """
         Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
@@ -273,7 +290,7 @@ class BucketLifecycleRule(dict):
     @pulumi.getter
     def prefix(self) -> Optional[str]:
         """
-        Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+        The prefix in the names of the objects to which the lifecycle rule does not apply.
         """
         return pulumi.get(self, "prefix")
 
@@ -282,8 +299,6 @@ class BucketLifecycleRule(dict):
     def tags(self) -> Optional[Mapping[str, Any]]:
         """
         Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
-
-        `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
         """
         return pulumi.get(self, "tags")
 
@@ -428,6 +443,130 @@ class BucketLifecycleRuleExpiration(dict):
         `NOTE`: One and only one of "date", "days", "created_before_date" and "expired_object_delete_marker" can be specified in one expiration configuration.
         """
         return pulumi.get(self, "expired_object_delete_marker")
+
+
+@pulumi.output_type
+class BucketLifecycleRuleFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "not":
+            suggest = "not_"
+        elif key == "objectSizeGreaterThan":
+            suggest = "object_size_greater_than"
+        elif key == "objectSizeLessThan":
+            suggest = "object_size_less_than"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketLifecycleRuleFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketLifecycleRuleFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketLifecycleRuleFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 not_: Optional['outputs.BucketLifecycleRuleFilterNot'] = None,
+                 object_size_greater_than: Optional[int] = None,
+                 object_size_less_than: Optional[int] = None):
+        """
+        :param 'BucketLifecycleRuleFilterNotArgs' not_: The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
+        :param int object_size_greater_than: Minimum object size (in bytes) to which the rule applies.
+        :param int object_size_less_than: Maximum object size (in bytes) to which the rule applies.
+        """
+        if not_ is not None:
+            pulumi.set(__self__, "not_", not_)
+        if object_size_greater_than is not None:
+            pulumi.set(__self__, "object_size_greater_than", object_size_greater_than)
+        if object_size_less_than is not None:
+            pulumi.set(__self__, "object_size_less_than", object_size_less_than)
+
+    @property
+    @pulumi.getter(name="not")
+    def not_(self) -> Optional['outputs.BucketLifecycleRuleFilterNot']:
+        """
+        The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
+        """
+        return pulumi.get(self, "not_")
+
+    @property
+    @pulumi.getter(name="objectSizeGreaterThan")
+    def object_size_greater_than(self) -> Optional[int]:
+        """
+        Minimum object size (in bytes) to which the rule applies.
+        """
+        return pulumi.get(self, "object_size_greater_than")
+
+    @property
+    @pulumi.getter(name="objectSizeLessThan")
+    def object_size_less_than(self) -> Optional[int]:
+        """
+        Maximum object size (in bytes) to which the rule applies.
+        """
+        return pulumi.get(self, "object_size_less_than")
+
+
+@pulumi.output_type
+class BucketLifecycleRuleFilterNot(dict):
+    def __init__(__self__, *,
+                 prefix: Optional[str] = None,
+                 tag: Optional['outputs.BucketLifecycleRuleFilterNotTag'] = None):
+        """
+        :param str prefix: Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+        :param 'BucketLifecycleRuleFilterNotTagArgs' tag: The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
+        """
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional['outputs.BucketLifecycleRuleFilterNotTag']:
+        """
+        The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
+        """
+        return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class BucketLifecycleRuleFilterNotTag(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: The key of the tag that is specified for the objects.
+        :param str value: The value of the tag that is specified for the objects.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The key of the tag that is specified for the objects.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the tag that is specified for the objects.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Monitor Service Monitor Group Instances resource.
@@ -190,6 +191,12 @@ func (i *MonitorGroupInstances) ToMonitorGroupInstancesOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorGroupInstancesOutput)
 }
 
+func (i *MonitorGroupInstances) ToOutput(ctx context.Context) pulumix.Output[*MonitorGroupInstances] {
+	return pulumix.Output[*MonitorGroupInstances]{
+		OutputState: i.ToMonitorGroupInstancesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MonitorGroupInstancesArrayInput is an input type that accepts MonitorGroupInstancesArray and MonitorGroupInstancesArrayOutput values.
 // You can construct a concrete instance of `MonitorGroupInstancesArrayInput` via:
 //
@@ -213,6 +220,12 @@ func (i MonitorGroupInstancesArray) ToMonitorGroupInstancesArrayOutput() Monitor
 
 func (i MonitorGroupInstancesArray) ToMonitorGroupInstancesArrayOutputWithContext(ctx context.Context) MonitorGroupInstancesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorGroupInstancesArrayOutput)
+}
+
+func (i MonitorGroupInstancesArray) ToOutput(ctx context.Context) pulumix.Output[[]*MonitorGroupInstances] {
+	return pulumix.Output[[]*MonitorGroupInstances]{
+		OutputState: i.ToMonitorGroupInstancesArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MonitorGroupInstancesMapInput is an input type that accepts MonitorGroupInstancesMap and MonitorGroupInstancesMapOutput values.
@@ -240,6 +253,12 @@ func (i MonitorGroupInstancesMap) ToMonitorGroupInstancesMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorGroupInstancesMapOutput)
 }
 
+func (i MonitorGroupInstancesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MonitorGroupInstances] {
+	return pulumix.Output[map[string]*MonitorGroupInstances]{
+		OutputState: i.ToMonitorGroupInstancesMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MonitorGroupInstancesOutput struct{ *pulumi.OutputState }
 
 func (MonitorGroupInstancesOutput) ElementType() reflect.Type {
@@ -252,6 +271,12 @@ func (o MonitorGroupInstancesOutput) ToMonitorGroupInstancesOutput() MonitorGrou
 
 func (o MonitorGroupInstancesOutput) ToMonitorGroupInstancesOutputWithContext(ctx context.Context) MonitorGroupInstancesOutput {
 	return o
+}
+
+func (o MonitorGroupInstancesOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitorGroupInstances] {
+	return pulumix.Output[*MonitorGroupInstances]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The id of Cms Group.
@@ -278,6 +303,12 @@ func (o MonitorGroupInstancesArrayOutput) ToMonitorGroupInstancesArrayOutputWith
 	return o
 }
 
+func (o MonitorGroupInstancesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MonitorGroupInstances] {
+	return pulumix.Output[[]*MonitorGroupInstances]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MonitorGroupInstancesArrayOutput) Index(i pulumi.IntInput) MonitorGroupInstancesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MonitorGroupInstances {
 		return vs[0].([]*MonitorGroupInstances)[vs[1].(int)]
@@ -296,6 +327,12 @@ func (o MonitorGroupInstancesMapOutput) ToMonitorGroupInstancesMapOutput() Monit
 
 func (o MonitorGroupInstancesMapOutput) ToMonitorGroupInstancesMapOutputWithContext(ctx context.Context) MonitorGroupInstancesMapOutput {
 	return o
+}
+
+func (o MonitorGroupInstancesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MonitorGroupInstances] {
+	return pulumix.Output[map[string]*MonitorGroupInstances]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MonitorGroupInstancesMapOutput) MapIndex(k pulumi.StringInput) MonitorGroupInstancesOutput {

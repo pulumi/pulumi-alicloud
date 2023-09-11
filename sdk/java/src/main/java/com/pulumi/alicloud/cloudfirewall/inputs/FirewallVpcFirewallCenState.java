@@ -47,14 +47,14 @@ public final class FirewallVpcFirewallCenState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+     * The language type of the requested and received messages. Valid values:
      * 
      */
     @Import(name="lang")
     private @Nullable Output<String> lang;
 
     /**
-     * @return The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+     * @return The language type of the requested and received messages. Valid values:
      * 
      */
     public Optional<Output<String>> lang() {
@@ -62,14 +62,14 @@ public final class FirewallVpcFirewallCenState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The details of the VPC.See the following `Block LocalVpc`.
+     * The details of the VPC. See `local_vpc` below.
      * 
      */
     @Import(name="localVpc")
     private @Nullable Output<FirewallVpcFirewallCenLocalVpcArgs> localVpc;
 
     /**
-     * @return The details of the VPC.See the following `Block LocalVpc`.
+     * @return The details of the VPC. See `local_vpc` below.
      * 
      */
     public Optional<Output<FirewallVpcFirewallCenLocalVpcArgs>> localVpc() {
@@ -92,14 +92,14 @@ public final class FirewallVpcFirewallCenState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Firewall switch status
+     * Firewall switch status.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Firewall switch status
+     * @return Firewall switch status.
      * 
      */
     public Optional<Output<String>> status() {
@@ -226,7 +226,7 @@ public final class FirewallVpcFirewallCenState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param lang The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+         * @param lang The language type of the requested and received messages. Valid values:
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class FirewallVpcFirewallCenState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param lang The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+         * @param lang The language type of the requested and received messages. Valid values:
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class FirewallVpcFirewallCenState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param localVpc The details of the VPC.See the following `Block LocalVpc`.
+         * @param localVpc The details of the VPC. See `local_vpc` below.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class FirewallVpcFirewallCenState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param localVpc The details of the VPC.See the following `Block LocalVpc`.
+         * @param localVpc The details of the VPC. See `local_vpc` below.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class FirewallVpcFirewallCenState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param status Firewall switch status
+         * @param status Firewall switch status.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class FirewallVpcFirewallCenState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param status Firewall switch status
+         * @param status Firewall switch status.
          * 
          * @return builder
          * 

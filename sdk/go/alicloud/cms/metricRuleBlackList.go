@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Monitor Service Metric Rule Black List resource.
@@ -350,6 +351,12 @@ func (i *MetricRuleBlackList) ToMetricRuleBlackListOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleBlackListOutput)
 }
 
+func (i *MetricRuleBlackList) ToOutput(ctx context.Context) pulumix.Output[*MetricRuleBlackList] {
+	return pulumix.Output[*MetricRuleBlackList]{
+		OutputState: i.ToMetricRuleBlackListOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MetricRuleBlackListArrayInput is an input type that accepts MetricRuleBlackListArray and MetricRuleBlackListArrayOutput values.
 // You can construct a concrete instance of `MetricRuleBlackListArrayInput` via:
 //
@@ -373,6 +380,12 @@ func (i MetricRuleBlackListArray) ToMetricRuleBlackListArrayOutput() MetricRuleB
 
 func (i MetricRuleBlackListArray) ToMetricRuleBlackListArrayOutputWithContext(ctx context.Context) MetricRuleBlackListArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleBlackListArrayOutput)
+}
+
+func (i MetricRuleBlackListArray) ToOutput(ctx context.Context) pulumix.Output[[]*MetricRuleBlackList] {
+	return pulumix.Output[[]*MetricRuleBlackList]{
+		OutputState: i.ToMetricRuleBlackListArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MetricRuleBlackListMapInput is an input type that accepts MetricRuleBlackListMap and MetricRuleBlackListMapOutput values.
@@ -400,6 +413,12 @@ func (i MetricRuleBlackListMap) ToMetricRuleBlackListMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleBlackListMapOutput)
 }
 
+func (i MetricRuleBlackListMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetricRuleBlackList] {
+	return pulumix.Output[map[string]*MetricRuleBlackList]{
+		OutputState: i.ToMetricRuleBlackListMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MetricRuleBlackListOutput struct{ *pulumi.OutputState }
 
 func (MetricRuleBlackListOutput) ElementType() reflect.Type {
@@ -412,6 +431,12 @@ func (o MetricRuleBlackListOutput) ToMetricRuleBlackListOutput() MetricRuleBlack
 
 func (o MetricRuleBlackListOutput) ToMetricRuleBlackListOutputWithContext(ctx context.Context) MetricRuleBlackListOutput {
 	return o
+}
+
+func (o MetricRuleBlackListOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricRuleBlackList] {
+	return pulumix.Output[*MetricRuleBlackList]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
@@ -498,6 +523,12 @@ func (o MetricRuleBlackListArrayOutput) ToMetricRuleBlackListArrayOutputWithCont
 	return o
 }
 
+func (o MetricRuleBlackListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MetricRuleBlackList] {
+	return pulumix.Output[[]*MetricRuleBlackList]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MetricRuleBlackListArrayOutput) Index(i pulumi.IntInput) MetricRuleBlackListOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MetricRuleBlackList {
 		return vs[0].([]*MetricRuleBlackList)[vs[1].(int)]
@@ -516,6 +547,12 @@ func (o MetricRuleBlackListMapOutput) ToMetricRuleBlackListMapOutput() MetricRul
 
 func (o MetricRuleBlackListMapOutput) ToMetricRuleBlackListMapOutputWithContext(ctx context.Context) MetricRuleBlackListMapOutput {
 	return o
+}
+
+func (o MetricRuleBlackListMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetricRuleBlackList] {
+	return pulumix.Output[map[string]*MetricRuleBlackList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetricRuleBlackListMapOutput) MapIndex(k pulumi.StringInput) MetricRuleBlackListOutput {

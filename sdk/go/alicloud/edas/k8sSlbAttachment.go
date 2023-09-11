@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Binds SLBs to an EDAS k8s application.
@@ -124,6 +125,12 @@ func (i *K8sSlbAttachment) ToK8sSlbAttachmentOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(K8sSlbAttachmentOutput)
 }
 
+func (i *K8sSlbAttachment) ToOutput(ctx context.Context) pulumix.Output[*K8sSlbAttachment] {
+	return pulumix.Output[*K8sSlbAttachment]{
+		OutputState: i.ToK8sSlbAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // K8sSlbAttachmentArrayInput is an input type that accepts K8sSlbAttachmentArray and K8sSlbAttachmentArrayOutput values.
 // You can construct a concrete instance of `K8sSlbAttachmentArrayInput` via:
 //
@@ -147,6 +154,12 @@ func (i K8sSlbAttachmentArray) ToK8sSlbAttachmentArrayOutput() K8sSlbAttachmentA
 
 func (i K8sSlbAttachmentArray) ToK8sSlbAttachmentArrayOutputWithContext(ctx context.Context) K8sSlbAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(K8sSlbAttachmentArrayOutput)
+}
+
+func (i K8sSlbAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*K8sSlbAttachment] {
+	return pulumix.Output[[]*K8sSlbAttachment]{
+		OutputState: i.ToK8sSlbAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // K8sSlbAttachmentMapInput is an input type that accepts K8sSlbAttachmentMap and K8sSlbAttachmentMapOutput values.
@@ -174,6 +187,12 @@ func (i K8sSlbAttachmentMap) ToK8sSlbAttachmentMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(K8sSlbAttachmentMapOutput)
 }
 
+func (i K8sSlbAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*K8sSlbAttachment] {
+	return pulumix.Output[map[string]*K8sSlbAttachment]{
+		OutputState: i.ToK8sSlbAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type K8sSlbAttachmentOutput struct{ *pulumi.OutputState }
 
 func (K8sSlbAttachmentOutput) ElementType() reflect.Type {
@@ -186,6 +205,12 @@ func (o K8sSlbAttachmentOutput) ToK8sSlbAttachmentOutput() K8sSlbAttachmentOutpu
 
 func (o K8sSlbAttachmentOutput) ToK8sSlbAttachmentOutputWithContext(ctx context.Context) K8sSlbAttachmentOutput {
 	return o
+}
+
+func (o K8sSlbAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*K8sSlbAttachment] {
+	return pulumix.Output[*K8sSlbAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the EDAS k8s application to which you want to bind SLB instances.
@@ -212,6 +237,12 @@ func (o K8sSlbAttachmentArrayOutput) ToK8sSlbAttachmentArrayOutputWithContext(ct
 	return o
 }
 
+func (o K8sSlbAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*K8sSlbAttachment] {
+	return pulumix.Output[[]*K8sSlbAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o K8sSlbAttachmentArrayOutput) Index(i pulumi.IntInput) K8sSlbAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *K8sSlbAttachment {
 		return vs[0].([]*K8sSlbAttachment)[vs[1].(int)]
@@ -230,6 +261,12 @@ func (o K8sSlbAttachmentMapOutput) ToK8sSlbAttachmentMapOutput() K8sSlbAttachmen
 
 func (o K8sSlbAttachmentMapOutput) ToK8sSlbAttachmentMapOutputWithContext(ctx context.Context) K8sSlbAttachmentMapOutput {
 	return o
+}
+
+func (o K8sSlbAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*K8sSlbAttachment] {
+	return pulumix.Output[map[string]*K8sSlbAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o K8sSlbAttachmentMapOutput) MapIndex(k pulumi.StringInput) K8sSlbAttachmentOutput {

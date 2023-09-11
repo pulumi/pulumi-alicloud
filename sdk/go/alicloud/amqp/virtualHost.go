@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a RabbitMQ (AMQP) Virtual Host resource.
@@ -168,6 +169,12 @@ func (i *VirtualHost) ToVirtualHostOutputWithContext(ctx context.Context) Virtua
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualHostOutput)
 }
 
+func (i *VirtualHost) ToOutput(ctx context.Context) pulumix.Output[*VirtualHost] {
+	return pulumix.Output[*VirtualHost]{
+		OutputState: i.ToVirtualHostOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VirtualHostArrayInput is an input type that accepts VirtualHostArray and VirtualHostArrayOutput values.
 // You can construct a concrete instance of `VirtualHostArrayInput` via:
 //
@@ -191,6 +198,12 @@ func (i VirtualHostArray) ToVirtualHostArrayOutput() VirtualHostArrayOutput {
 
 func (i VirtualHostArray) ToVirtualHostArrayOutputWithContext(ctx context.Context) VirtualHostArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualHostArrayOutput)
+}
+
+func (i VirtualHostArray) ToOutput(ctx context.Context) pulumix.Output[[]*VirtualHost] {
+	return pulumix.Output[[]*VirtualHost]{
+		OutputState: i.ToVirtualHostArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // VirtualHostMapInput is an input type that accepts VirtualHostMap and VirtualHostMapOutput values.
@@ -218,6 +231,12 @@ func (i VirtualHostMap) ToVirtualHostMapOutputWithContext(ctx context.Context) V
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualHostMapOutput)
 }
 
+func (i VirtualHostMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VirtualHost] {
+	return pulumix.Output[map[string]*VirtualHost]{
+		OutputState: i.ToVirtualHostMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VirtualHostOutput struct{ *pulumi.OutputState }
 
 func (VirtualHostOutput) ElementType() reflect.Type {
@@ -230,6 +249,12 @@ func (o VirtualHostOutput) ToVirtualHostOutput() VirtualHostOutput {
 
 func (o VirtualHostOutput) ToVirtualHostOutputWithContext(ctx context.Context) VirtualHostOutput {
 	return o
+}
+
+func (o VirtualHostOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualHost] {
+	return pulumix.Output[*VirtualHost]{
+		OutputState: o.OutputState,
+	}
 }
 
 // InstanceId.
@@ -256,6 +281,12 @@ func (o VirtualHostArrayOutput) ToVirtualHostArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o VirtualHostArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VirtualHost] {
+	return pulumix.Output[[]*VirtualHost]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VirtualHostArrayOutput) Index(i pulumi.IntInput) VirtualHostOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VirtualHost {
 		return vs[0].([]*VirtualHost)[vs[1].(int)]
@@ -274,6 +305,12 @@ func (o VirtualHostMapOutput) ToVirtualHostMapOutput() VirtualHostMapOutput {
 
 func (o VirtualHostMapOutput) ToVirtualHostMapOutputWithContext(ctx context.Context) VirtualHostMapOutput {
 	return o
+}
+
+func (o VirtualHostMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VirtualHost] {
+	return pulumix.Output[map[string]*VirtualHost]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualHostMapOutput) MapIndex(k pulumi.StringInput) VirtualHostOutput {

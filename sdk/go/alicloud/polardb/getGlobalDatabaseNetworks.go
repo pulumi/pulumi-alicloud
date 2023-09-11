@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the PolarDB Global Database Networks of the current Alibaba Cloud user.
@@ -143,6 +144,12 @@ func (o GetGlobalDatabaseNetworksResultOutput) ToGetGlobalDatabaseNetworksResult
 
 func (o GetGlobalDatabaseNetworksResultOutput) ToGetGlobalDatabaseNetworksResultOutputWithContext(ctx context.Context) GetGlobalDatabaseNetworksResultOutput {
 	return o
+}
+
+func (o GetGlobalDatabaseNetworksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGlobalDatabaseNetworksResult] {
+	return pulumix.Output[GetGlobalDatabaseNetworksResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGlobalDatabaseNetworksResultOutput) DbClusterId() pulumi.StringPtrOutput {

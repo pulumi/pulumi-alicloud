@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECS Network Interface resource.
@@ -420,6 +421,12 @@ func (i *EcsNetworkInterface) ToEcsNetworkInterfaceOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(EcsNetworkInterfaceOutput)
 }
 
+func (i *EcsNetworkInterface) ToOutput(ctx context.Context) pulumix.Output[*EcsNetworkInterface] {
+	return pulumix.Output[*EcsNetworkInterface]{
+		OutputState: i.ToEcsNetworkInterfaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EcsNetworkInterfaceArrayInput is an input type that accepts EcsNetworkInterfaceArray and EcsNetworkInterfaceArrayOutput values.
 // You can construct a concrete instance of `EcsNetworkInterfaceArrayInput` via:
 //
@@ -443,6 +450,12 @@ func (i EcsNetworkInterfaceArray) ToEcsNetworkInterfaceArrayOutput() EcsNetworkI
 
 func (i EcsNetworkInterfaceArray) ToEcsNetworkInterfaceArrayOutputWithContext(ctx context.Context) EcsNetworkInterfaceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsNetworkInterfaceArrayOutput)
+}
+
+func (i EcsNetworkInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]*EcsNetworkInterface] {
+	return pulumix.Output[[]*EcsNetworkInterface]{
+		OutputState: i.ToEcsNetworkInterfaceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EcsNetworkInterfaceMapInput is an input type that accepts EcsNetworkInterfaceMap and EcsNetworkInterfaceMapOutput values.
@@ -470,6 +483,12 @@ func (i EcsNetworkInterfaceMap) ToEcsNetworkInterfaceMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(EcsNetworkInterfaceMapOutput)
 }
 
+func (i EcsNetworkInterfaceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsNetworkInterface] {
+	return pulumix.Output[map[string]*EcsNetworkInterface]{
+		OutputState: i.ToEcsNetworkInterfaceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EcsNetworkInterfaceOutput struct{ *pulumi.OutputState }
 
 func (EcsNetworkInterfaceOutput) ElementType() reflect.Type {
@@ -482,6 +501,12 @@ func (o EcsNetworkInterfaceOutput) ToEcsNetworkInterfaceOutput() EcsNetworkInter
 
 func (o EcsNetworkInterfaceOutput) ToEcsNetworkInterfaceOutputWithContext(ctx context.Context) EcsNetworkInterfaceOutput {
 	return o
+}
+
+func (o EcsNetworkInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[*EcsNetworkInterface] {
+	return pulumix.Output[*EcsNetworkInterface]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -603,6 +628,12 @@ func (o EcsNetworkInterfaceArrayOutput) ToEcsNetworkInterfaceArrayOutputWithCont
 	return o
 }
 
+func (o EcsNetworkInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EcsNetworkInterface] {
+	return pulumix.Output[[]*EcsNetworkInterface]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EcsNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) EcsNetworkInterfaceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsNetworkInterface {
 		return vs[0].([]*EcsNetworkInterface)[vs[1].(int)]
@@ -621,6 +652,12 @@ func (o EcsNetworkInterfaceMapOutput) ToEcsNetworkInterfaceMapOutput() EcsNetwor
 
 func (o EcsNetworkInterfaceMapOutput) ToEcsNetworkInterfaceMapOutputWithContext(ctx context.Context) EcsNetworkInterfaceMapOutput {
 	return o
+}
+
+func (o EcsNetworkInterfaceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsNetworkInterface] {
+	return pulumix.Output[map[string]*EcsNetworkInterface]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EcsNetworkInterfaceMapOutput) MapIndex(k pulumi.StringInput) EcsNetworkInterfaceOutput {

@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cdn
     /// <summary>
     /// Provides a CDN Domain resource. CDN domain name.
     /// 
-    /// For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/alibaba-cloud-cdn/latest/api-doc-cdn-2018-05-10-api-doc-addcdndomain).
+    /// For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addcdndomain).
     /// 
-    /// &gt; **NOTE:** Available in v1.34.0+.
+    /// &gt; **NOTE:** Available since v1.34.0.
     /// 
     /// ## Example Usage
     /// 
@@ -29,11 +29,11 @@ namespace Pulumi.AliCloud.Cdn
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var domainName = config.Get("domainName") ?? "mycdndomain.alicloud-provider.cn";
     ///     var @default = new AliCloud.Cdn.DomainNew("default", new()
     ///     {
-    ///         Scope = "domestic",
-    ///         DomainName = name,
+    ///         Scope = "overseas",
+    ///         DomainName = domainName,
     ///         CdnType = "web",
     ///         Sources = new[]
     ///         {
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Cdn
         public Output<string> CdnType { get; private set; } = null!;
 
         /// <summary>
-        /// Certificate configuration. See the following `Block CertificateConfig`.
+        /// Certificate configuration. See `certificate_config` below.
         /// </summary>
         [Output("certificateConfig")]
         public Output<Outputs.DomainNewCertificateConfig> CertificateConfig { get; private set; } = null!;
@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.Cdn
         public Output<string> Scope { get; private set; } = null!;
 
         /// <summary>
-        /// The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+        /// The source address list of the accelerated domain. Defaults to null. See `sources` below.
         /// </summary>
         [Output("sources")]
         public Output<ImmutableArray<Outputs.DomainNewSource>> Sources { get; private set; } = null!;
@@ -179,7 +179,7 @@ namespace Pulumi.AliCloud.Cdn
         public Input<string> CdnType { get; set; } = null!;
 
         /// <summary>
-        /// Certificate configuration. See the following `Block CertificateConfig`.
+        /// Certificate configuration. See `certificate_config` below.
         /// </summary>
         [Input("certificateConfig")]
         public Input<Inputs.DomainNewCertificateConfigArgs>? CertificateConfig { get; set; }
@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.Cdn
         private InputList<Inputs.DomainNewSourceArgs>? _sources;
 
         /// <summary>
-        /// The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+        /// The source address list of the accelerated domain. Defaults to null. See `sources` below.
         /// </summary>
         public InputList<Inputs.DomainNewSourceArgs> Sources
         {
@@ -251,7 +251,7 @@ namespace Pulumi.AliCloud.Cdn
         public Input<string>? CdnType { get; set; }
 
         /// <summary>
-        /// Certificate configuration. See the following `Block CertificateConfig`.
+        /// Certificate configuration. See `certificate_config` below.
         /// </summary>
         [Input("certificateConfig")]
         public Input<Inputs.DomainNewCertificateConfigGetArgs>? CertificateConfig { get; set; }
@@ -294,7 +294,7 @@ namespace Pulumi.AliCloud.Cdn
         private InputList<Inputs.DomainNewSourceGetArgs>? _sources;
 
         /// <summary>
-        /// The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+        /// The source address list of the accelerated domain. Defaults to null. See `sources` below.
         /// </summary>
         public InputList<Inputs.DomainNewSourceGetArgs> Sources
         {

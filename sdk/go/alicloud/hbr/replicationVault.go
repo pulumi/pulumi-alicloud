@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Hybrid Backup Recovery (HBR) Replication Vault resource.
@@ -227,6 +228,12 @@ func (i *ReplicationVault) ToReplicationVaultOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationVaultOutput)
 }
 
+func (i *ReplicationVault) ToOutput(ctx context.Context) pulumix.Output[*ReplicationVault] {
+	return pulumix.Output[*ReplicationVault]{
+		OutputState: i.ToReplicationVaultOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ReplicationVaultArrayInput is an input type that accepts ReplicationVaultArray and ReplicationVaultArrayOutput values.
 // You can construct a concrete instance of `ReplicationVaultArrayInput` via:
 //
@@ -250,6 +257,12 @@ func (i ReplicationVaultArray) ToReplicationVaultArrayOutput() ReplicationVaultA
 
 func (i ReplicationVaultArray) ToReplicationVaultArrayOutputWithContext(ctx context.Context) ReplicationVaultArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationVaultArrayOutput)
+}
+
+func (i ReplicationVaultArray) ToOutput(ctx context.Context) pulumix.Output[[]*ReplicationVault] {
+	return pulumix.Output[[]*ReplicationVault]{
+		OutputState: i.ToReplicationVaultArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ReplicationVaultMapInput is an input type that accepts ReplicationVaultMap and ReplicationVaultMapOutput values.
@@ -277,6 +290,12 @@ func (i ReplicationVaultMap) ToReplicationVaultMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationVaultMapOutput)
 }
 
+func (i ReplicationVaultMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ReplicationVault] {
+	return pulumix.Output[map[string]*ReplicationVault]{
+		OutputState: i.ToReplicationVaultMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ReplicationVaultOutput struct{ *pulumi.OutputState }
 
 func (ReplicationVaultOutput) ElementType() reflect.Type {
@@ -289,6 +308,12 @@ func (o ReplicationVaultOutput) ToReplicationVaultOutput() ReplicationVaultOutpu
 
 func (o ReplicationVaultOutput) ToReplicationVaultOutputWithContext(ctx context.Context) ReplicationVaultOutput {
 	return o
+}
+
+func (o ReplicationVaultOutput) ToOutput(ctx context.Context) pulumix.Output[*ReplicationVault] {
+	return pulumix.Output[*ReplicationVault]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the backup vault. The description must be 0 to 255 characters in length.
@@ -335,6 +360,12 @@ func (o ReplicationVaultArrayOutput) ToReplicationVaultArrayOutputWithContext(ct
 	return o
 }
 
+func (o ReplicationVaultArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ReplicationVault] {
+	return pulumix.Output[[]*ReplicationVault]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ReplicationVaultArrayOutput) Index(i pulumi.IntInput) ReplicationVaultOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ReplicationVault {
 		return vs[0].([]*ReplicationVault)[vs[1].(int)]
@@ -353,6 +384,12 @@ func (o ReplicationVaultMapOutput) ToReplicationVaultMapOutput() ReplicationVaul
 
 func (o ReplicationVaultMapOutput) ToReplicationVaultMapOutputWithContext(ctx context.Context) ReplicationVaultMapOutput {
 	return o
+}
+
+func (o ReplicationVaultMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ReplicationVault] {
+	return pulumix.Output[map[string]*ReplicationVault]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReplicationVaultMapOutput) MapIndex(k pulumi.StringInput) ReplicationVaultOutput {

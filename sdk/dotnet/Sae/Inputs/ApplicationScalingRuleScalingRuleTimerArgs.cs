@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Sae.Inputs
         private InputList<Inputs.ApplicationScalingRuleScalingRuleTimerScheduleArgs>? _schedules;
 
         /// <summary>
-        /// Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+        /// Resilient Scaling Strategy Trigger Timing. See `schedules` below.
         /// </summary>
         public InputList<Inputs.ApplicationScalingRuleScalingRuleTimerScheduleArgs> Schedules
         {

@@ -214,9 +214,9 @@ class Repo(pulumi.CustomResource):
                  summary: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource will help you to manager Container Registry repositories.
+        This resource will help you to manager Container Registry repositories, see [What is Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository).
 
-        > **NOTE:** Available in v1.35.0+.
+        > **NOTE:** Available since v1.35.0.
 
         > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
 
@@ -228,11 +228,15 @@ class Repo(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        my_namespace = alicloud.cr.Namespace("my-namespace",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example_namespace = alicloud.cr.Namespace("exampleNamespace",
             auto_create=False,
             default_visibility="PUBLIC")
-        my_repo = alicloud.cr.Repo("my-repo",
-            namespace=my_namespace.name,
+        example_repo = alicloud.cr.Repo("exampleRepo",
+            namespace=example_namespace.name,
             summary="this is summary of my new repo",
             repo_type="PUBLIC",
             detail="this is a public repo")
@@ -261,9 +265,9 @@ class Repo(pulumi.CustomResource):
                  args: RepoArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource will help you to manager Container Registry repositories.
+        This resource will help you to manager Container Registry repositories, see [What is Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository).
 
-        > **NOTE:** Available in v1.35.0+.
+        > **NOTE:** Available since v1.35.0.
 
         > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
 
@@ -275,11 +279,15 @@ class Repo(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        my_namespace = alicloud.cr.Namespace("my-namespace",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example_namespace = alicloud.cr.Namespace("exampleNamespace",
             auto_create=False,
             default_visibility="PUBLIC")
-        my_repo = alicloud.cr.Repo("my-repo",
-            namespace=my_namespace.name,
+        example_repo = alicloud.cr.Repo("exampleRepo",
+            namespace=example_namespace.name,
             summary="this is summary of my new repo",
             repo_type="PUBLIC",
             detail="this is a public repo")

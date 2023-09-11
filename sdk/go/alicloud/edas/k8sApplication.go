@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create an EDAS k8s application.For information about EDAS K8s Application and how to use it, see [What is EDAS K8s Application](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertk8sapplication).
@@ -465,6 +466,12 @@ func (i *K8sApplication) ToK8sApplicationOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(K8sApplicationOutput)
 }
 
+func (i *K8sApplication) ToOutput(ctx context.Context) pulumix.Output[*K8sApplication] {
+	return pulumix.Output[*K8sApplication]{
+		OutputState: i.ToK8sApplicationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // K8sApplicationArrayInput is an input type that accepts K8sApplicationArray and K8sApplicationArrayOutput values.
 // You can construct a concrete instance of `K8sApplicationArrayInput` via:
 //
@@ -488,6 +495,12 @@ func (i K8sApplicationArray) ToK8sApplicationArrayOutput() K8sApplicationArrayOu
 
 func (i K8sApplicationArray) ToK8sApplicationArrayOutputWithContext(ctx context.Context) K8sApplicationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(K8sApplicationArrayOutput)
+}
+
+func (i K8sApplicationArray) ToOutput(ctx context.Context) pulumix.Output[[]*K8sApplication] {
+	return pulumix.Output[[]*K8sApplication]{
+		OutputState: i.ToK8sApplicationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // K8sApplicationMapInput is an input type that accepts K8sApplicationMap and K8sApplicationMapOutput values.
@@ -515,6 +528,12 @@ func (i K8sApplicationMap) ToK8sApplicationMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(K8sApplicationMapOutput)
 }
 
+func (i K8sApplicationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*K8sApplication] {
+	return pulumix.Output[map[string]*K8sApplication]{
+		OutputState: i.ToK8sApplicationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type K8sApplicationOutput struct{ *pulumi.OutputState }
 
 func (K8sApplicationOutput) ElementType() reflect.Type {
@@ -527,6 +546,12 @@ func (o K8sApplicationOutput) ToK8sApplicationOutput() K8sApplicationOutput {
 
 func (o K8sApplicationOutput) ToK8sApplicationOutputWithContext(ctx context.Context) K8sApplicationOutput {
 	return o
+}
+
+func (o K8sApplicationOutput) ToOutput(ctx context.Context) pulumix.Output[*K8sApplication] {
+	return pulumix.Output[*K8sApplication]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the application
@@ -708,6 +733,12 @@ func (o K8sApplicationArrayOutput) ToK8sApplicationArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o K8sApplicationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*K8sApplication] {
+	return pulumix.Output[[]*K8sApplication]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o K8sApplicationArrayOutput) Index(i pulumi.IntInput) K8sApplicationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *K8sApplication {
 		return vs[0].([]*K8sApplication)[vs[1].(int)]
@@ -726,6 +757,12 @@ func (o K8sApplicationMapOutput) ToK8sApplicationMapOutput() K8sApplicationMapOu
 
 func (o K8sApplicationMapOutput) ToK8sApplicationMapOutputWithContext(ctx context.Context) K8sApplicationMapOutput {
 	return o
+}
+
+func (o K8sApplicationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*K8sApplication] {
+	return pulumix.Output[map[string]*K8sApplication]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o K8sApplicationMapOutput) MapIndex(k pulumi.StringInput) K8sApplicationOutput {

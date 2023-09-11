@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Vpc Peer Connection Accepter and how to use it, see [What is Peer Connection Accepter](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/AcceptVpcPeerConnection).
  *
- * > **NOTE:** Available in v1.196.0+.
+ * > **NOTE:** Available since v1.196.0.
  *
  * ## Example Usage
  *
@@ -19,28 +19,43 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultAccount = alicloud.getAccount({});
  * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const acceptingRegion = config.get("acceptingRegion") || "cn-beijing";
- * const local = new alicloud.Provider("local", {region: "hangzhou"});
- * const accepting = new alicloud.Provider("accepting", {region: acceptingRegion});
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
+ * const acceptingAccountAccessKey = config.get("acceptingAccountAccessKey") || "access_key";
+ * const acceptingAccountSecretKey = config.get("acceptingAccountSecretKey") || "secret_key";
+ * const local = new alicloud.Provider("local", {region: "cn-hangzhou"});
+ * const accepting = new alicloud.Provider("accepting", {
+ *     region: acceptingRegion,
+ *     accessKey: acceptingAccountAccessKey,
+ *     secretKey: acceptingAccountSecretKey,
  * });
- * const defaultone = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
- * });
- * const defaultPeerConnection = new alicloud.vpc.PeerConnection("defaultPeerConnection", {
- *     peerConnectionName: "example_value",
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
- *     acceptingAliUid: defaultAccount.then(defaultAccount => defaultAccount.id),
- *     acceptingRegionId: acceptingRegion,
- *     acceptingVpcId: defaultone.then(defaultone => defaultone.ids?.[0]),
- *     description: "example_value",
+ * const localNetwork = new alicloud.vpc.Network("localNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
  * }, {
  *     provider: alicloud.local,
  * });
- * const defaultPeerConnectionAccepter = new alicloud.vpc.PeerConnectionAccepter("defaultPeerConnectionAccepter", {instanceId: defaultPeerConnection.id});
+ * const acceptingNetwork = new alicloud.vpc.Network("acceptingNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/16",
+ * }, {
+ *     provider: alicloud.accepting,
+ * });
+ * const acceptingAccount = alicloud.getAccount({});
+ * const defaultPeerConnection = new alicloud.vpc.PeerConnection("defaultPeerConnection", {
+ *     peerConnectionName: name,
+ *     vpcId: localNetwork.id,
+ *     acceptingAliUid: acceptingAccount.then(acceptingAccount => acceptingAccount.id),
+ *     acceptingRegionId: acceptingRegion,
+ *     acceptingVpcId: acceptingNetwork.id,
+ *     description: name,
+ * }, {
+ *     provider: alicloud.local,
+ * });
+ * const defaultPeerConnectionAccepter = new alicloud.vpc.PeerConnectionAccepter("defaultPeerConnectionAccepter", {instanceId: defaultPeerConnection.id}, {
+ *     provider: alicloud.accepting,
+ * });
  * ```
  *
  * ## Import

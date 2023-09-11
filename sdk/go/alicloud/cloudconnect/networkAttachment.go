@@ -10,13 +10,14 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Connect Network Attachment resource. This topic describes how to associate a Smart Access Gateway (SAG) instance with a network instance. You must associate an SAG instance with a network instance if you want to connect the SAG to Alibaba Cloud. You can connect an SAG to Alibaba Cloud through a leased line, the Internet, or the active and standby links.
 //
-// For information about Cloud Connect Network Attachment and how to use it, see [What is Cloud Connect Network Attachment](https://www.alibabacloud.com/help/doc-detail/124230.htm).
+// For information about Cloud Connect Network Attachment and how to use it, see [What is Cloud Connect Network Attachment](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/bindsmartaccessgateway).
 //
-// > **NOTE:** Available in 1.64.0+
+// > **NOTE:** Available since v1.64.0.
 //
 // > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 //
@@ -31,23 +32,33 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudconnect"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ccn, err := cloudconnect.NewNetwork(ctx, "ccn", &cloudconnect.NetworkArgs{
-//				IsDefault: pulumi.Bool(true),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			sagId := "sag-9bifkf***"
+//			if param := cfg.Get("sagId"); param != "" {
+//				sagId = param
+//			}
+//			defaultNetwork, err := cloudconnect.NewNetwork(ctx, "defaultNetwork", &cloudconnect.NetworkArgs{
+//				Description: pulumi.String(name),
+//				CidrBlock:   pulumi.String("192.168.0.0/24"),
+//				IsDefault:   pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudconnect.NewNetworkAttachment(ctx, "default", &cloudconnect.NetworkAttachmentArgs{
-//				CcnId: ccn.ID(),
-//				SagId: pulumi.String("sag-xxxxx"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				ccn,
-//			}))
+//			_, err = cloudconnect.NewNetworkAttachment(ctx, "defaultNetworkAttachment", &cloudconnect.NetworkAttachmentArgs{
+//				CcnId: defaultNetwork.ID(),
+//				SagId: pulumi.String(sagId),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -166,6 +177,12 @@ func (i *NetworkAttachment) ToNetworkAttachmentOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAttachmentOutput)
 }
 
+func (i *NetworkAttachment) ToOutput(ctx context.Context) pulumix.Output[*NetworkAttachment] {
+	return pulumix.Output[*NetworkAttachment]{
+		OutputState: i.ToNetworkAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NetworkAttachmentArrayInput is an input type that accepts NetworkAttachmentArray and NetworkAttachmentArrayOutput values.
 // You can construct a concrete instance of `NetworkAttachmentArrayInput` via:
 //
@@ -189,6 +206,12 @@ func (i NetworkAttachmentArray) ToNetworkAttachmentArrayOutput() NetworkAttachme
 
 func (i NetworkAttachmentArray) ToNetworkAttachmentArrayOutputWithContext(ctx context.Context) NetworkAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAttachmentArrayOutput)
+}
+
+func (i NetworkAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkAttachment] {
+	return pulumix.Output[[]*NetworkAttachment]{
+		OutputState: i.ToNetworkAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NetworkAttachmentMapInput is an input type that accepts NetworkAttachmentMap and NetworkAttachmentMapOutput values.
@@ -216,6 +239,12 @@ func (i NetworkAttachmentMap) ToNetworkAttachmentMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAttachmentMapOutput)
 }
 
+func (i NetworkAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkAttachment] {
+	return pulumix.Output[map[string]*NetworkAttachment]{
+		OutputState: i.ToNetworkAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NetworkAttachmentOutput struct{ *pulumi.OutputState }
 
 func (NetworkAttachmentOutput) ElementType() reflect.Type {
@@ -228,6 +257,12 @@ func (o NetworkAttachmentOutput) ToNetworkAttachmentOutput() NetworkAttachmentOu
 
 func (o NetworkAttachmentOutput) ToNetworkAttachmentOutputWithContext(ctx context.Context) NetworkAttachmentOutput {
 	return o
+}
+
+func (o NetworkAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkAttachment] {
+	return pulumix.Output[*NetworkAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the CCN instance.
@@ -254,6 +289,12 @@ func (o NetworkAttachmentArrayOutput) ToNetworkAttachmentArrayOutputWithContext(
 	return o
 }
 
+func (o NetworkAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkAttachment] {
+	return pulumix.Output[[]*NetworkAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkAttachmentArrayOutput) Index(i pulumi.IntInput) NetworkAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkAttachment {
 		return vs[0].([]*NetworkAttachment)[vs[1].(int)]
@@ -272,6 +313,12 @@ func (o NetworkAttachmentMapOutput) ToNetworkAttachmentMapOutput() NetworkAttach
 
 func (o NetworkAttachmentMapOutput) ToNetworkAttachmentMapOutputWithContext(ctx context.Context) NetworkAttachmentMapOutput {
 	return o
+}
+
+func (o NetworkAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkAttachment] {
+	return pulumix.Output[map[string]*NetworkAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkAttachmentMapOutput) MapIndex(k pulumi.StringInput) NetworkAttachmentOutput {

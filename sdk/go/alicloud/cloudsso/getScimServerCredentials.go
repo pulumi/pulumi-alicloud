@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cloud Sso Scim Server Credentials of the current Alibaba Cloud user.
@@ -124,6 +125,12 @@ func (o GetScimServerCredentialsResultOutput) ToGetScimServerCredentialsResultOu
 
 func (o GetScimServerCredentialsResultOutput) ToGetScimServerCredentialsResultOutputWithContext(ctx context.Context) GetScimServerCredentialsResultOutput {
 	return o
+}
+
+func (o GetScimServerCredentialsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetScimServerCredentialsResult] {
+	return pulumix.Output[GetScimServerCredentialsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetScimServerCredentialsResultOutput) Credentials() GetScimServerCredentialsCredentialArrayOutput {

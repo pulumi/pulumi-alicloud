@@ -34,6 +34,10 @@ public final class FirewallVpcFirewallCenLocalVpc {
      * 
      */
     private @Nullable List<FirewallVpcFirewallCenLocalVpcEniList> eniLists;
+    /**
+     * @return The ID of the vSwitch specified when the routing mode is manual mode.
+     * 
+     */
     private @Nullable String manualVswitchId;
     /**
      * @return The ID of the VPC instance that created the VPC firewall.
@@ -125,6 +129,10 @@ public final class FirewallVpcFirewallCenLocalVpc {
     public List<FirewallVpcFirewallCenLocalVpcEniList> eniLists() {
         return this.eniLists == null ? List.of() : this.eniLists;
     }
+    /**
+     * @return The ID of the vSwitch specified when the routing mode is manual mode.
+     * 
+     */
     public Optional<String> manualVswitchId() {
         return Optional.ofNullable(this.manualVswitchId);
     }

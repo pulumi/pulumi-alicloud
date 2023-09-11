@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
@@ -133,6 +134,12 @@ func (o GetDdosBgpIpsResultOutput) ToGetDdosBgpIpsResultOutput() GetDdosBgpIpsRe
 
 func (o GetDdosBgpIpsResultOutput) ToGetDdosBgpIpsResultOutputWithContext(ctx context.Context) GetDdosBgpIpsResultOutput {
 	return o
+}
+
+func (o GetDdosBgpIpsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDdosBgpIpsResult] {
+	return pulumix.Output[GetDdosBgpIpsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

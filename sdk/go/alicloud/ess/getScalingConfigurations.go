@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides available scaling configuration resources.
@@ -124,6 +125,12 @@ func (o GetScalingConfigurationsResultOutput) ToGetScalingConfigurationsResultOu
 
 func (o GetScalingConfigurationsResultOutput) ToGetScalingConfigurationsResultOutputWithContext(ctx context.Context) GetScalingConfigurationsResultOutput {
 	return o
+}
+
+func (o GetScalingConfigurationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetScalingConfigurationsResult] {
+	return pulumix.Output[GetScalingConfigurationsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of scaling rules. Each element contains the following attributes:

@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Ddos
     /// <summary>
     /// Provides a Anti-DDoS Pro Port resource.
     /// 
-    /// For information about Anti-DDoS Pro Port and how to use it, see [What is Port](https://www.alibabacloud.com/help/en/doc-detail/157482.htm).
+    /// For information about Anti-DDoS Pro Port and how to use it, see [What is Port](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createport).
     /// 
-    /// &gt; **NOTE:** Available in v1.123.0+.
+    /// &gt; **NOTE:** Available since v1.123.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,19 +28,24 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleDdosCooInstance = new AliCloud.Ddos.DdosCooInstance("exampleDdosCooInstance", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultDdosCooInstance = new AliCloud.Ddos.DdosCooInstance("defaultDdosCooInstance", new()
     ///     {
     ///         Bandwidth = "30",
     ///         BaseBandwidth = "30",
     ///         ServiceBandwidth = "100",
     ///         PortCount = "50",
     ///         DomainCount = "50",
+    ///         Period = 1,
+    ///         ProductType = "ddoscoo",
     ///     });
     /// 
-    ///     var examplePort = new AliCloud.Ddos.Port("examplePort", new()
+    ///     var defaultPort = new AliCloud.Ddos.Port("defaultPort", new()
     ///     {
-    ///         InstanceId = exampleDdosCooInstance.Id,
+    ///         InstanceId = defaultDdosCooInstance.Id,
     ///         FrontendPort = "7001",
+    ///         BackendPort = "7002",
     ///         FrontendProtocol = "tcp",
     ///         RealServers = new[]
     ///         {

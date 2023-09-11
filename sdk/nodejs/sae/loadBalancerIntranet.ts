@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an Alicloud Serverless App Engine (SAE) Application Load Balancer Attachment resource.
  *
- * For information about Serverless App Engine (SAE) Load Balancer Intranet Attachment and how to use it, see [alicloud.sae.LoadBalancerIntranet](https://help.aliyun.com/document_detail/126360.html).
+ * For information about Serverless App Engine (SAE) Load Balancer Intranet Attachment and how to use it, see [alicloud.sae.LoadBalancerIntranet](https://www.alibabacloud.com/help/en/sae/latest/bindslb).
  *
- * > **NOTE:** Available in v1.165.0+.
+ * > **NOTE:** Available since v1.165.0.
  *
  * ## Example Usage
  *
@@ -20,15 +20,66 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const example = new alicloud.sae.LoadBalancerIntranet("example", {
- *     appId: "your_application_id",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultNamespace = new alicloud.sae.Namespace("defaultNamespace", {
+ *     namespaceId: pulumi.all([defaultRegions, defaultRandomInteger.result]).apply(([defaultRegions, result]) => `${defaultRegions.regions?.[0]?.id}:example${result}`),
+ *     namespaceName: name,
+ *     namespaceDescription: name,
+ *     enableMicroRegistration: false,
+ * });
+ * const defaultApplication = new alicloud.sae.Application("defaultApplication", {
+ *     appDescription: name,
+ *     appName: name,
+ *     namespaceId: defaultNamespace.id,
+ *     imageUrl: "registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
+ *     packageType: "Image",
+ *     jdk: "Open JDK 8",
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     vpcId: defaultNetwork.id,
+ *     vswitchId: defaultSwitch.id,
+ *     timezone: "Asia/Beijing",
+ *     replicas: 5,
+ *     cpu: 500,
+ *     memory: 2048,
+ * });
+ * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
+ *     loadBalancerName: name,
+ *     vswitchId: defaultSwitch.id,
+ *     loadBalancerSpec: "slb.s2.small",
+ *     addressType: "intranet",
+ * });
+ * const defaultLoadBalancerIntranet = new alicloud.sae.LoadBalancerIntranet("defaultLoadBalancerIntranet", {
+ *     appId: defaultApplication.id,
+ *     intranetSlbId: defaultApplicationLoadBalancer.id,
  *     intranets: [{
- *         port: 80,
  *         protocol: "TCP",
+ *         port: 80,
  *         targetPort: 8080,
  *     }],
- *     intranetSlbId: "intranet_slb_id",
  * });
  * ```
  *
@@ -81,7 +132,7 @@ export class LoadBalancerIntranet extends pulumi.CustomResource {
      */
     public readonly intranetSlbId!: pulumi.Output<string | undefined>;
     /**
-     * The bound private network SLB. See the following `Block intranet`.
+     * The bound private network SLB. See `intranet` below.
      */
     public readonly intranets!: pulumi.Output<outputs.sae.LoadBalancerIntranetIntranet[]>;
 
@@ -137,7 +188,7 @@ export interface LoadBalancerIntranetState {
      */
     intranetSlbId?: pulumi.Input<string>;
     /**
-     * The bound private network SLB. See the following `Block intranet`.
+     * The bound private network SLB. See `intranet` below.
      */
     intranets?: pulumi.Input<pulumi.Input<inputs.sae.LoadBalancerIntranetIntranet>[]>;
 }
@@ -155,7 +206,7 @@ export interface LoadBalancerIntranetArgs {
      */
     intranetSlbId?: pulumi.Input<string>;
     /**
-     * The bound private network SLB. See the following `Block intranet`.
+     * The bound private network SLB. See `intranet` below.
      */
     intranets: pulumi.Input<pulumi.Input<inputs.sae.LoadBalancerIntranetIntranet>[]>;
 }

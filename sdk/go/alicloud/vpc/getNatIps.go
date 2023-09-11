@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Vpc Nat Ips of the current Alibaba Cloud user.
@@ -195,6 +196,12 @@ func (o GetNatIpsResultOutput) ToGetNatIpsResultOutput() GetNatIpsResultOutput {
 
 func (o GetNatIpsResultOutput) ToGetNatIpsResultOutputWithContext(ctx context.Context) GetNatIpsResultOutput {
 	return o
+}
+
+func (o GetNatIpsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNatIpsResult] {
+	return pulumix.Output[GetNatIpsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

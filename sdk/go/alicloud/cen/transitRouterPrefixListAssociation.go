@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Enterprise Network (CEN) Transit Router Prefix List Association resource.
@@ -248,6 +249,12 @@ func (i *TransitRouterPrefixListAssociation) ToTransitRouterPrefixListAssociatio
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterPrefixListAssociationOutput)
 }
 
+func (i *TransitRouterPrefixListAssociation) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterPrefixListAssociation] {
+	return pulumix.Output[*TransitRouterPrefixListAssociation]{
+		OutputState: i.ToTransitRouterPrefixListAssociationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TransitRouterPrefixListAssociationArrayInput is an input type that accepts TransitRouterPrefixListAssociationArray and TransitRouterPrefixListAssociationArrayOutput values.
 // You can construct a concrete instance of `TransitRouterPrefixListAssociationArrayInput` via:
 //
@@ -271,6 +278,12 @@ func (i TransitRouterPrefixListAssociationArray) ToTransitRouterPrefixListAssoci
 
 func (i TransitRouterPrefixListAssociationArray) ToTransitRouterPrefixListAssociationArrayOutputWithContext(ctx context.Context) TransitRouterPrefixListAssociationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterPrefixListAssociationArrayOutput)
+}
+
+func (i TransitRouterPrefixListAssociationArray) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterPrefixListAssociation] {
+	return pulumix.Output[[]*TransitRouterPrefixListAssociation]{
+		OutputState: i.ToTransitRouterPrefixListAssociationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TransitRouterPrefixListAssociationMapInput is an input type that accepts TransitRouterPrefixListAssociationMap and TransitRouterPrefixListAssociationMapOutput values.
@@ -298,6 +311,12 @@ func (i TransitRouterPrefixListAssociationMap) ToTransitRouterPrefixListAssociat
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterPrefixListAssociationMapOutput)
 }
 
+func (i TransitRouterPrefixListAssociationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterPrefixListAssociation] {
+	return pulumix.Output[map[string]*TransitRouterPrefixListAssociation]{
+		OutputState: i.ToTransitRouterPrefixListAssociationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TransitRouterPrefixListAssociationOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterPrefixListAssociationOutput) ElementType() reflect.Type {
@@ -310,6 +329,12 @@ func (o TransitRouterPrefixListAssociationOutput) ToTransitRouterPrefixListAssoc
 
 func (o TransitRouterPrefixListAssociationOutput) ToTransitRouterPrefixListAssociationOutputWithContext(ctx context.Context) TransitRouterPrefixListAssociationOutput {
 	return o
+}
+
+func (o TransitRouterPrefixListAssociationOutput) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterPrefixListAssociation] {
+	return pulumix.Output[*TransitRouterPrefixListAssociation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the next hop. **NOTE:** If `nextHop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
@@ -361,6 +386,12 @@ func (o TransitRouterPrefixListAssociationArrayOutput) ToTransitRouterPrefixList
 	return o
 }
 
+func (o TransitRouterPrefixListAssociationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterPrefixListAssociation] {
+	return pulumix.Output[[]*TransitRouterPrefixListAssociation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TransitRouterPrefixListAssociationArrayOutput) Index(i pulumi.IntInput) TransitRouterPrefixListAssociationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TransitRouterPrefixListAssociation {
 		return vs[0].([]*TransitRouterPrefixListAssociation)[vs[1].(int)]
@@ -379,6 +410,12 @@ func (o TransitRouterPrefixListAssociationMapOutput) ToTransitRouterPrefixListAs
 
 func (o TransitRouterPrefixListAssociationMapOutput) ToTransitRouterPrefixListAssociationMapOutputWithContext(ctx context.Context) TransitRouterPrefixListAssociationMapOutput {
 	return o
+}
+
+func (o TransitRouterPrefixListAssociationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterPrefixListAssociation] {
+	return pulumix.Output[map[string]*TransitRouterPrefixListAssociation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransitRouterPrefixListAssociationMapOutput) MapIndex(k pulumi.StringInput) TransitRouterPrefixListAssociationOutput {

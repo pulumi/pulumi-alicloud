@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
  *
- * > **NOTE:** Available in 1.183.0+ .
+ * > **NOTE:** Available since v1.183.0.
  *
  * ## Example Usage
  *
@@ -19,9 +19,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const instance = new alicloud.ddos.DdosBgpInstance("instance", {
- *     bandwidth: -1,
  *     baseBandwidth: 20,
+ *     bandwidth: -1,
  *     ipCount: 100,
  *     ipType: "IPv4",
  *     normalBandwidth: 100,

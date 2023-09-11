@@ -16,14 +16,14 @@ public final class VpdArgs extends com.pulumi.resources.ResourceArgs {
     public static final VpdArgs Empty = new VpdArgs();
 
     /**
-     * CIDR network segment
+     * CIDR network segment.
      * 
      */
     @Import(name="cidr", required=true)
     private Output<String> cidr;
 
     /**
-     * @return CIDR network segment
+     * @return CIDR network segment.
      * 
      */
     public Output<String> cidr() {
@@ -31,14 +31,14 @@ public final class VpdArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Resource group id
+     * The Resource group id.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The Resource group id
+     * @return The Resource group id.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -87,7 +87,7 @@ public final class VpdArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cidr CIDR network segment
+         * @param cidr CIDR network segment.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class VpdArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cidr CIDR network segment
+         * @param cidr CIDR network segment.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class VpdArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The Resource group id
+         * @param resourceGroupId The Resource group id.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class VpdArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The Resource group id
+         * @param resourceGroupId The Resource group id.
          * 
          * @return builder
          * 

@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Anti-DDoS Pro Port resource.
  *
- * For information about Anti-DDoS Pro Port and how to use it, see [What is Port](https://www.alibabacloud.com/help/en/doc-detail/157482.htm).
+ * For information about Anti-DDoS Pro Port and how to use it, see [What is Port](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createport).
  *
- * > **NOTE:** Available in v1.123.0+.
+ * > **NOTE:** Available since v1.123.0.
  *
  * ## Example Usage
  *
@@ -19,16 +19,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleDdosCooInstance = new alicloud.ddos.DdosCooInstance("exampleDdosCooInstance", {
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultDdosCooInstance = new alicloud.ddos.DdosCooInstance("defaultDdosCooInstance", {
  *     bandwidth: "30",
  *     baseBandwidth: "30",
  *     serviceBandwidth: "100",
  *     portCount: "50",
  *     domainCount: "50",
+ *     period: 1,
+ *     productType: "ddoscoo",
  * });
- * const examplePort = new alicloud.ddos.Port("examplePort", {
- *     instanceId: exampleDdosCooInstance.id,
+ * const defaultPort = new alicloud.ddos.Port("defaultPort", {
+ *     instanceId: defaultDdosCooInstance.id,
  *     frontendPort: "7001",
+ *     backendPort: "7002",
  *     frontendProtocol: "tcp",
  *     realServers: [
  *         "1.1.1.1",

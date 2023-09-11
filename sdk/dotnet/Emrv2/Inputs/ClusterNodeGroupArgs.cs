@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         }
 
         /// <summary>
-        /// The detail cost optimized configuration of emr cluster.
+        /// The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below.
         /// </summary>
         [Input("costOptimizedConfig")]
         public Input<Inputs.ClusterNodeGroupCostOptimizedConfigArgs>? CostOptimizedConfig { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         private InputList<Inputs.ClusterNodeGroupDataDiskArgs>? _dataDisks;
 
         /// <summary>
-        /// Host Ecs data disks information in this node group.
+        /// Host Ecs data disks information in this node group. See `data_disks` below.
         /// </summary>
         public InputList<Inputs.ClusterNodeGroupDataDiskArgs> DataDisks
         {
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         public Input<int> NodeCount { get; set; } = null!;
 
         /// <summary>
-        /// The configuration effected which node group name of emr cluster.
+        /// The node group name of emr cluster.
         /// </summary>
         [Input("nodeGroupName", required: true)]
         public Input<string> NodeGroupName { get; set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         private InputList<Inputs.ClusterNodeGroupSpotBidPriceArgs>? _spotBidPrices;
 
         /// <summary>
-        /// The spot bid prices of a PayAsYouGo instance.
+        /// The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
         /// </summary>
         public InputList<Inputs.ClusterNodeGroupSpotBidPriceArgs> SpotBidPrices
         {
@@ -103,13 +103,13 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         public Input<bool>? SpotInstanceRemedy { get; set; }
 
         /// <summary>
-        /// The detail configuration of subscription payment type.
+        /// The detail configuration of subscription payment type. See `subscription_config` below.
         /// </summary>
         [Input("subscriptionConfig")]
         public Input<Inputs.ClusterNodeGroupSubscriptionConfigArgs>? SubscriptionConfig { get; set; }
 
         /// <summary>
-        /// Host Ecs system disk information in this node group.
+        /// Host Ecs system disk information in this node group. See `system_disk` below.
         /// </summary>
         [Input("systemDisk", required: true)]
         public Input<Inputs.ClusterNodeGroupSystemDiskArgs> SystemDisk { get; set; } = null!;

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -60,6 +61,12 @@ func (i GetNetworksNetworkArgs) ToGetNetworksNetworkOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksNetworkOutput)
 }
 
+func (i GetNetworksNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[GetNetworksNetwork] {
+	return pulumix.Output[GetNetworksNetwork]{
+		OutputState: i.ToGetNetworksNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetNetworksNetworkArrayInput is an input type that accepts GetNetworksNetworkArray and GetNetworksNetworkArrayOutput values.
 // You can construct a concrete instance of `GetNetworksNetworkArrayInput` via:
 //
@@ -85,6 +92,12 @@ func (i GetNetworksNetworkArray) ToGetNetworksNetworkArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksNetworkArrayOutput)
 }
 
+func (i GetNetworksNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]GetNetworksNetwork] {
+	return pulumix.Output[[]GetNetworksNetwork]{
+		OutputState: i.ToGetNetworksNetworkArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetNetworksNetworkOutput struct{ *pulumi.OutputState }
 
 func (GetNetworksNetworkOutput) ElementType() reflect.Type {
@@ -97,6 +110,12 @@ func (o GetNetworksNetworkOutput) ToGetNetworksNetworkOutput() GetNetworksNetwor
 
 func (o GetNetworksNetworkOutput) ToGetNetworksNetworkOutputWithContext(ctx context.Context) GetNetworksNetworkOutput {
 	return o
+}
+
+func (o GetNetworksNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[GetNetworksNetwork] {
+	return pulumix.Output[GetNetworksNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 // CidrBlock of the CCN instance.
@@ -135,6 +154,12 @@ func (o GetNetworksNetworkArrayOutput) ToGetNetworksNetworkArrayOutput() GetNetw
 
 func (o GetNetworksNetworkArrayOutput) ToGetNetworksNetworkArrayOutputWithContext(ctx context.Context) GetNetworksNetworkArrayOutput {
 	return o
+}
+
+func (o GetNetworksNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetNetworksNetwork] {
+	return pulumix.Output[[]GetNetworksNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetNetworksNetworkArrayOutput) Index(i pulumi.IntInput) GetNetworksNetworkOutput {

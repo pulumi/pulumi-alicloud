@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -82,6 +83,12 @@ func (i GetDeviceGroupsGroupArgs) ToGetDeviceGroupsGroupOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceGroupsGroupOutput)
 }
 
+func (i GetDeviceGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetDeviceGroupsGroup] {
+	return pulumix.Output[GetDeviceGroupsGroup]{
+		OutputState: i.ToGetDeviceGroupsGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDeviceGroupsGroupArrayInput is an input type that accepts GetDeviceGroupsGroupArray and GetDeviceGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetDeviceGroupsGroupArrayInput` via:
 //
@@ -107,6 +114,12 @@ func (i GetDeviceGroupsGroupArray) ToGetDeviceGroupsGroupArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceGroupsGroupArrayOutput)
 }
 
+func (i GetDeviceGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceGroupsGroup] {
+	return pulumix.Output[[]GetDeviceGroupsGroup]{
+		OutputState: i.ToGetDeviceGroupsGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDeviceGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetDeviceGroupsGroupOutput) ElementType() reflect.Type {
@@ -119,6 +132,12 @@ func (o GetDeviceGroupsGroupOutput) ToGetDeviceGroupsGroupOutput() GetDeviceGrou
 
 func (o GetDeviceGroupsGroupOutput) ToGetDeviceGroupsGroupOutputWithContext(ctx context.Context) GetDeviceGroupsGroupOutput {
 	return o
+}
+
+func (o GetDeviceGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeviceGroupsGroup] {
+	return pulumix.Output[GetDeviceGroupsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Group CreateTime.
@@ -183,6 +202,12 @@ func (o GetDeviceGroupsGroupArrayOutput) ToGetDeviceGroupsGroupArrayOutput() Get
 
 func (o GetDeviceGroupsGroupArrayOutput) ToGetDeviceGroupsGroupArrayOutputWithContext(ctx context.Context) GetDeviceGroupsGroupArrayOutput {
 	return o
+}
+
+func (o GetDeviceGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceGroupsGroup] {
+	return pulumix.Output[[]GetDeviceGroupsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDeviceGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetDeviceGroupsGroupOutput {

@@ -13,7 +13,8 @@ namespace Pulumi.AliCloud.Dms
     /// Provides a DMS Enterprise Instance resource.
     /// 
     /// &gt; **NOTE:** API users must first register in DMS.
-    /// **NOTE:** Available in 1.81.0+.
+    /// 
+    /// &gt; **NOTE:** Available since v1.81.0.
     /// 
     /// ## Example Usage
     /// 
@@ -25,23 +26,104 @@ namespace Pulumi.AliCloud.Dms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Dms.EnterpriseInstance("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var current = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
-    ///         DatabasePassword = "Yourpassword123",
-    ///         DatabaseUser = "your_user_name",
-    ///         DbaUid = "1182725234xxxxxxx",
-    ///         EcsRegion = "cn-shanghai",
-    ///         EnvType = "test",
-    ///         ExportTimeout = 600,
-    ///         Host = "rm-uf648hgsxxxxxx.mysql.rds.aliyuncs.com",
-    ///         InstanceName = "your_alias_name",
-    ///         InstanceSource = "RDS",
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultUserTenants = AliCloud.Dms.GetUserTenants.Invoke(new()
+    ///     {
+    ///         Status = "ACTIVE",
+    ///     });
+    /// 
+    ///     var defaultZones = AliCloud.Rds.GetZones.Invoke(new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceChargeType = "PostPaid",
+    ///         Category = "HighAvailability",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///     });
+    /// 
+    ///     var defaultInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     {
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         Category = "HighAvailability",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         InstanceChargeType = "PostPaid",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Rds.Instance("defaultInstance", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         InstanceType = defaultInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///         InstanceStorage = defaultInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         VswitchId = defaultSwitch.Id,
+    ///         InstanceName = name,
+    ///         SecurityIps = new[]
+    ///         {
+    ///             "100.104.5.0/24",
+    ///             "192.168.0.6",
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultAccount = new AliCloud.Rds.Account("defaultAccount", new()
+    ///     {
+    ///         DbInstanceId = defaultInstance.Id,
+    ///         AccountName = "tfexamplename",
+    ///         AccountPassword = "Example12345",
+    ///         AccountType = "Normal",
+    ///     });
+    /// 
+    ///     var defaultEnterpriseInstance = new AliCloud.Dms.EnterpriseInstance("defaultEnterpriseInstance", new()
+    ///     {
+    ///         Tid = defaultUserTenants.Apply(getUserTenantsResult =&gt; getUserTenantsResult.Ids[0]),
     ///         InstanceType = "MySQL",
+    ///         InstanceSource = "RDS",
     ///         NetworkType = "VPC",
+    ///         EnvType = "dev",
+    ///         Host = defaultInstance.ConnectionString,
     ///         Port = 3306,
-    ///         QueryTimeout = 60,
+    ///         DatabaseUser = defaultAccount.AccountName,
+    ///         DatabasePassword = defaultAccount.AccountPassword,
+    ///         InstanceName = name,
+    ///         DbaUid = current.Apply(getAccountResult =&gt; getAccountResult.Id),
     ///         SafeRule = "自由操作",
-    ///         Tid = 12345,
+    ///         QueryTimeout = 60,
+    ///         ExportTimeout = 600,
+    ///         EcsRegion = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
     ///     });
     /// 
     /// });

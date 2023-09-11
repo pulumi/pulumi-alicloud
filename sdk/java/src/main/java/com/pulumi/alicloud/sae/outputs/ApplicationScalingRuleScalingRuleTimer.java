@@ -29,7 +29,7 @@ public final class ApplicationScalingRuleScalingRuleTimer {
      */
     private @Nullable String period;
     /**
-     * @return Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+     * @return Resilient Scaling Strategy Trigger Timing. See `schedules` below.
      * 
      */
     private @Nullable List<ApplicationScalingRuleScalingRuleTimerSchedule> schedules;
@@ -57,7 +57,7 @@ public final class ApplicationScalingRuleScalingRuleTimer {
         return Optional.ofNullable(this.period);
     }
     /**
-     * @return Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+     * @return Resilient Scaling Strategy Trigger Timing. See `schedules` below.
      * 
      */
     public List<ApplicationScalingRuleScalingRuleTimerSchedule> schedules() {

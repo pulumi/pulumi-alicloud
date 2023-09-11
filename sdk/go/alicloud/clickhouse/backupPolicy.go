@@ -10,13 +10,14 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Click House Backup Policy resource.
 //
-// For information about Click House Backup Policy and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/doc-detail/208840.html).
+// For information about Click House Backup Policy and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/en/clickhouse/latest/api-clickhouse-2019-11-11-createbackuppolicy).
 //
-// > **NOTE:** Available in v1.147.0+.
+// > **NOTE:** Available since v1.147.0.
 //
 // > **NOTE:** Only the cloud database ClickHouse cluster version `20.3` supports data backup.
 //
@@ -32,47 +33,56 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/clickhouse"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			defaultRegions, err := clickhouse.GetRegions(ctx, &clickhouse.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultRegions.Regions[0].ZoneIds[0].ZoneId),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultDbCluster, err := clickhouse.NewDbCluster(ctx, "defaultDbCluster", &clickhouse.DbClusterArgs{
-//				DbClusterVersion:     pulumi.String("20.3.10.75"),
-//				Status:               pulumi.String("Running"),
-//				Category:             pulumi.String("Basic"),
-//				DbClusterClass:       pulumi.String("S8"),
-//				DbClusterNetworkType: pulumi.String("vpc"),
-//				DbClusterDescription: pulumi.Any(_var.Name),
-//				DbNodeGroupCount:     pulumi.Int(1),
-//				PaymentType:          pulumi.String("PayAsYouGo"),
-//				DbNodeStorage:        pulumi.String("500"),
-//				StorageType:          pulumi.String("cloud_essd"),
-//				VswitchId:            *pulumi.String(defaultSwitches.Vswitches[0].Id),
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = clickhouse.NewBackupPolicy(ctx, "example", &clickhouse.BackupPolicyArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultRegions.Regions[0].ZoneIds[0].ZoneId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultDbCluster, err := clickhouse.NewDbCluster(ctx, "defaultDbCluster", &clickhouse.DbClusterArgs{
+//				DbClusterVersion:     pulumi.String("22.8.5.29"),
+//				Status:               pulumi.String("Running"),
+//				Category:             pulumi.String("Basic"),
+//				DbClusterClass:       pulumi.String("S8"),
+//				DbClusterNetworkType: pulumi.String("vpc"),
+//				DbNodeGroupCount:     pulumi.Int(1),
+//				PaymentType:          pulumi.String("PayAsYouGo"),
+//				DbNodeStorage:        pulumi.String("500"),
+//				StorageType:          pulumi.String("cloud_essd"),
+//				VswitchId:            defaultSwitch.ID(),
+//				VpcId:                defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = clickhouse.NewBackupPolicy(ctx, "defaultBackupPolicy", &clickhouse.BackupPolicyArgs{
 //				DbClusterId: defaultDbCluster.ID(),
 //				PreferredBackupPeriods: pulumi.StringArray{
 //					pulumi.String("Monday"),
@@ -228,6 +238,12 @@ func (i *BackupPolicy) ToBackupPolicyOutputWithContext(ctx context.Context) Back
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyOutput)
 }
 
+func (i *BackupPolicy) ToOutput(ctx context.Context) pulumix.Output[*BackupPolicy] {
+	return pulumix.Output[*BackupPolicy]{
+		OutputState: i.ToBackupPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BackupPolicyArrayInput is an input type that accepts BackupPolicyArray and BackupPolicyArrayOutput values.
 // You can construct a concrete instance of `BackupPolicyArrayInput` via:
 //
@@ -251,6 +267,12 @@ func (i BackupPolicyArray) ToBackupPolicyArrayOutput() BackupPolicyArrayOutput {
 
 func (i BackupPolicyArray) ToBackupPolicyArrayOutputWithContext(ctx context.Context) BackupPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyArrayOutput)
+}
+
+func (i BackupPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*BackupPolicy] {
+	return pulumix.Output[[]*BackupPolicy]{
+		OutputState: i.ToBackupPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BackupPolicyMapInput is an input type that accepts BackupPolicyMap and BackupPolicyMapOutput values.
@@ -278,6 +300,12 @@ func (i BackupPolicyMap) ToBackupPolicyMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyMapOutput)
 }
 
+func (i BackupPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackupPolicy] {
+	return pulumix.Output[map[string]*BackupPolicy]{
+		OutputState: i.ToBackupPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackupPolicyOutput struct{ *pulumi.OutputState }
 
 func (BackupPolicyOutput) ElementType() reflect.Type {
@@ -290,6 +318,12 @@ func (o BackupPolicyOutput) ToBackupPolicyOutput() BackupPolicyOutput {
 
 func (o BackupPolicyOutput) ToBackupPolicyOutputWithContext(ctx context.Context) BackupPolicyOutput {
 	return o
+}
+
+func (o BackupPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupPolicy] {
+	return pulumix.Output[*BackupPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Data backup days. Valid values: `7` to `730`.
@@ -331,6 +365,12 @@ func (o BackupPolicyArrayOutput) ToBackupPolicyArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o BackupPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BackupPolicy] {
+	return pulumix.Output[[]*BackupPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackupPolicyArrayOutput) Index(i pulumi.IntInput) BackupPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BackupPolicy {
 		return vs[0].([]*BackupPolicy)[vs[1].(int)]
@@ -349,6 +389,12 @@ func (o BackupPolicyMapOutput) ToBackupPolicyMapOutput() BackupPolicyMapOutput {
 
 func (o BackupPolicyMapOutput) ToBackupPolicyMapOutputWithContext(ctx context.Context) BackupPolicyMapOutput {
 	return o
+}
+
+func (o BackupPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackupPolicy] {
+	return pulumix.Output[map[string]*BackupPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackupPolicyMapOutput) MapIndex(k pulumi.StringInput) BackupPolicyOutput {

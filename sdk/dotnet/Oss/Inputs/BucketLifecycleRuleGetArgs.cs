@@ -43,6 +43,14 @@ namespace Pulumi.AliCloud.Oss.Inputs
         }
 
         /// <summary>
+        /// Configuration block used to identify objects that a Lifecycle rule applies to. See `filter` below.
+        /// 
+        /// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+        /// </summary>
+        [Input("filter")]
+        public Input<Inputs.BucketLifecycleRuleFilterGetArgs>? Filter { get; set; }
+
+        /// <summary>
         /// Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
         /// </summary>
         [Input("id")]
@@ -73,7 +81,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
         }
 
         /// <summary>
-        /// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+        /// The prefix in the names of the objects to which the lifecycle rule does not apply.
         /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
@@ -83,8 +91,6 @@ namespace Pulumi.AliCloud.Oss.Inputs
 
         /// <summary>
         /// Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
-        /// 
-        /// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
         /// </summary>
         public InputMap<object> Tags
         {

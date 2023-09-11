@@ -38,3 +38,23 @@ export interface GetGlobalEventsStorageRegionResult {
     readonly id: string;
     readonly storageRegion: string;
 }
+/**
+ * This data source provides the Actiontrail Global Events Storage Region of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.201.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.actiontrail.getGlobalEventsStorageRegion({});
+ * export const alicloudActiontrailGlobalEventsStorageRegion1 = _default.then(_default => _default.storageRegion);
+ * ```
+ */
+export function getGlobalEventsStorageRegionOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalEventsStorageRegionResult> {
+    return pulumi.output(getGlobalEventsStorageRegion(opts))
+}

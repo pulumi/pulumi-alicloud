@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Click House Account resource.
  *
- * For information about Click House Account and how to use it, see [What is Account](https://www.alibabacloud.com/product/clickhouse).
+ * For information about Click House Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/clickhouse/latest/api-clickhouse-2019-11-11-createaccount).
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *
@@ -20,35 +20,37 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "testaccountname";
- * const pwd = config.get("pwd") || "Tf-testpwd";
+ * const name = config.get("name") || "tf-example";
  * const defaultRegions = alicloud.clickhouse.getRegions({
  *     current: true,
  * });
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultRegions]).then(([defaultNetworks, defaultRegions]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultRegions.regions?.[0]?.zoneIds?.[0]?.zoneId,
- * }));
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.zoneIds?.[0]?.zoneId),
+ * });
  * const defaultDbCluster = new alicloud.clickhouse.DbCluster("defaultDbCluster", {
- *     dbClusterVersion: "20.3.10.75",
+ *     dbClusterVersion: "22.8.5.29",
  *     category: "Basic",
  *     dbClusterClass: "S8",
  *     dbClusterNetworkType: "vpc",
- *     dbClusterDescription: name,
  *     dbNodeGroupCount: 1,
  *     paymentType: "PayAsYouGo",
  *     dbNodeStorage: "500",
  *     storageType: "cloud_essd",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.vswitches?.[0]?.id),
+ *     vswitchId: defaultSwitch.id,
+ *     vpcId: defaultNetwork.id,
  * });
  * const defaultAccount = new alicloud.clickhouse.Account("defaultAccount", {
  *     dbClusterId: defaultDbCluster.id,
- *     accountDescription: "your_description",
- *     accountName: name,
- *     accountPassword: pwd,
+ *     accountDescription: "tf-example-description",
+ *     accountName: "examplename",
+ *     accountPassword: "Example1234",
  * });
  * ```
  *

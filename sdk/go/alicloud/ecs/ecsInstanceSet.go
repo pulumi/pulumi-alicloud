@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECS Instance Set resource.
@@ -670,6 +671,12 @@ func (i *EcsInstanceSet) ToEcsInstanceSetOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(EcsInstanceSetOutput)
 }
 
+func (i *EcsInstanceSet) ToOutput(ctx context.Context) pulumix.Output[*EcsInstanceSet] {
+	return pulumix.Output[*EcsInstanceSet]{
+		OutputState: i.ToEcsInstanceSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EcsInstanceSetArrayInput is an input type that accepts EcsInstanceSetArray and EcsInstanceSetArrayOutput values.
 // You can construct a concrete instance of `EcsInstanceSetArrayInput` via:
 //
@@ -693,6 +700,12 @@ func (i EcsInstanceSetArray) ToEcsInstanceSetArrayOutput() EcsInstanceSetArrayOu
 
 func (i EcsInstanceSetArray) ToEcsInstanceSetArrayOutputWithContext(ctx context.Context) EcsInstanceSetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsInstanceSetArrayOutput)
+}
+
+func (i EcsInstanceSetArray) ToOutput(ctx context.Context) pulumix.Output[[]*EcsInstanceSet] {
+	return pulumix.Output[[]*EcsInstanceSet]{
+		OutputState: i.ToEcsInstanceSetArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EcsInstanceSetMapInput is an input type that accepts EcsInstanceSetMap and EcsInstanceSetMapOutput values.
@@ -720,6 +733,12 @@ func (i EcsInstanceSetMap) ToEcsInstanceSetMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(EcsInstanceSetMapOutput)
 }
 
+func (i EcsInstanceSetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsInstanceSet] {
+	return pulumix.Output[map[string]*EcsInstanceSet]{
+		OutputState: i.ToEcsInstanceSetMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EcsInstanceSetOutput struct{ *pulumi.OutputState }
 
 func (EcsInstanceSetOutput) ElementType() reflect.Type {
@@ -732,6 +751,12 @@ func (o EcsInstanceSetOutput) ToEcsInstanceSetOutput() EcsInstanceSetOutput {
 
 func (o EcsInstanceSetOutput) ToEcsInstanceSetOutputWithContext(ctx context.Context) EcsInstanceSetOutput {
 	return o
+}
+
+func (o EcsInstanceSetOutput) ToOutput(ctx context.Context) pulumix.Output[*EcsInstanceSet] {
+	return pulumix.Output[*EcsInstanceSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The number of instances that you want to create. Valid values: `1` to `100`.
@@ -977,6 +1002,12 @@ func (o EcsInstanceSetArrayOutput) ToEcsInstanceSetArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o EcsInstanceSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EcsInstanceSet] {
+	return pulumix.Output[[]*EcsInstanceSet]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EcsInstanceSetArrayOutput) Index(i pulumi.IntInput) EcsInstanceSetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsInstanceSet {
 		return vs[0].([]*EcsInstanceSet)[vs[1].(int)]
@@ -995,6 +1026,12 @@ func (o EcsInstanceSetMapOutput) ToEcsInstanceSetMapOutput() EcsInstanceSetMapOu
 
 func (o EcsInstanceSetMapOutput) ToEcsInstanceSetMapOutputWithContext(ctx context.Context) EcsInstanceSetMapOutput {
 	return o
+}
+
+func (o EcsInstanceSetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsInstanceSet] {
+	return pulumix.Output[map[string]*EcsInstanceSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EcsInstanceSetMapOutput) MapIndex(k pulumi.StringInput) EcsInstanceSetOutput {

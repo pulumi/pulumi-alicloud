@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Enterprise Network (CEN) Transit Router Vpn Attachment resource.
@@ -331,6 +332,12 @@ func (i *TransitRouterVpnAttachment) ToTransitRouterVpnAttachmentOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterVpnAttachmentOutput)
 }
 
+func (i *TransitRouterVpnAttachment) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterVpnAttachment] {
+	return pulumix.Output[*TransitRouterVpnAttachment]{
+		OutputState: i.ToTransitRouterVpnAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TransitRouterVpnAttachmentArrayInput is an input type that accepts TransitRouterVpnAttachmentArray and TransitRouterVpnAttachmentArrayOutput values.
 // You can construct a concrete instance of `TransitRouterVpnAttachmentArrayInput` via:
 //
@@ -354,6 +361,12 @@ func (i TransitRouterVpnAttachmentArray) ToTransitRouterVpnAttachmentArrayOutput
 
 func (i TransitRouterVpnAttachmentArray) ToTransitRouterVpnAttachmentArrayOutputWithContext(ctx context.Context) TransitRouterVpnAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterVpnAttachmentArrayOutput)
+}
+
+func (i TransitRouterVpnAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterVpnAttachment] {
+	return pulumix.Output[[]*TransitRouterVpnAttachment]{
+		OutputState: i.ToTransitRouterVpnAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TransitRouterVpnAttachmentMapInput is an input type that accepts TransitRouterVpnAttachmentMap and TransitRouterVpnAttachmentMapOutput values.
@@ -381,6 +394,12 @@ func (i TransitRouterVpnAttachmentMap) ToTransitRouterVpnAttachmentMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterVpnAttachmentMapOutput)
 }
 
+func (i TransitRouterVpnAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterVpnAttachment] {
+	return pulumix.Output[map[string]*TransitRouterVpnAttachment]{
+		OutputState: i.ToTransitRouterVpnAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TransitRouterVpnAttachmentOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterVpnAttachmentOutput) ElementType() reflect.Type {
@@ -393,6 +412,12 @@ func (o TransitRouterVpnAttachmentOutput) ToTransitRouterVpnAttachmentOutput() T
 
 func (o TransitRouterVpnAttachmentOutput) ToTransitRouterVpnAttachmentOutputWithContext(ctx context.Context) TransitRouterVpnAttachmentOutput {
 	return o
+}
+
+func (o TransitRouterVpnAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterVpnAttachment] {
+	return pulumix.Output[*TransitRouterVpnAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to allow the forwarding router instance to automatically publish routing entries to IPsec connections.
@@ -461,6 +486,12 @@ func (o TransitRouterVpnAttachmentArrayOutput) ToTransitRouterVpnAttachmentArray
 	return o
 }
 
+func (o TransitRouterVpnAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterVpnAttachment] {
+	return pulumix.Output[[]*TransitRouterVpnAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TransitRouterVpnAttachmentArrayOutput) Index(i pulumi.IntInput) TransitRouterVpnAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TransitRouterVpnAttachment {
 		return vs[0].([]*TransitRouterVpnAttachment)[vs[1].(int)]
@@ -479,6 +510,12 @@ func (o TransitRouterVpnAttachmentMapOutput) ToTransitRouterVpnAttachmentMapOutp
 
 func (o TransitRouterVpnAttachmentMapOutput) ToTransitRouterVpnAttachmentMapOutputWithContext(ctx context.Context) TransitRouterVpnAttachmentMapOutput {
 	return o
+}
+
+func (o TransitRouterVpnAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterVpnAttachment] {
+	return pulumix.Output[map[string]*TransitRouterVpnAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransitRouterVpnAttachmentMapOutput) MapIndex(k pulumi.StringInput) TransitRouterVpnAttachmentOutput {

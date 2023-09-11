@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DTS Migration Instance resource.
@@ -269,6 +270,12 @@ func (i *MigrationInstance) ToMigrationInstanceOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(MigrationInstanceOutput)
 }
 
+func (i *MigrationInstance) ToOutput(ctx context.Context) pulumix.Output[*MigrationInstance] {
+	return pulumix.Output[*MigrationInstance]{
+		OutputState: i.ToMigrationInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MigrationInstanceArrayInput is an input type that accepts MigrationInstanceArray and MigrationInstanceArrayOutput values.
 // You can construct a concrete instance of `MigrationInstanceArrayInput` via:
 //
@@ -292,6 +299,12 @@ func (i MigrationInstanceArray) ToMigrationInstanceArrayOutput() MigrationInstan
 
 func (i MigrationInstanceArray) ToMigrationInstanceArrayOutputWithContext(ctx context.Context) MigrationInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MigrationInstanceArrayOutput)
+}
+
+func (i MigrationInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*MigrationInstance] {
+	return pulumix.Output[[]*MigrationInstance]{
+		OutputState: i.ToMigrationInstanceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MigrationInstanceMapInput is an input type that accepts MigrationInstanceMap and MigrationInstanceMapOutput values.
@@ -319,6 +332,12 @@ func (i MigrationInstanceMap) ToMigrationInstanceMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(MigrationInstanceMapOutput)
 }
 
+func (i MigrationInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MigrationInstance] {
+	return pulumix.Output[map[string]*MigrationInstance]{
+		OutputState: i.ToMigrationInstanceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MigrationInstanceOutput struct{ *pulumi.OutputState }
 
 func (MigrationInstanceOutput) ElementType() reflect.Type {
@@ -331,6 +350,12 @@ func (o MigrationInstanceOutput) ToMigrationInstanceOutput() MigrationInstanceOu
 
 func (o MigrationInstanceOutput) ToMigrationInstanceOutputWithContext(ctx context.Context) MigrationInstanceOutput {
 	return o
+}
+
+func (o MigrationInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*MigrationInstance] {
+	return pulumix.Output[*MigrationInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
@@ -407,6 +432,12 @@ func (o MigrationInstanceArrayOutput) ToMigrationInstanceArrayOutputWithContext(
 	return o
 }
 
+func (o MigrationInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MigrationInstance] {
+	return pulumix.Output[[]*MigrationInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MigrationInstanceArrayOutput) Index(i pulumi.IntInput) MigrationInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MigrationInstance {
 		return vs[0].([]*MigrationInstance)[vs[1].(int)]
@@ -425,6 +456,12 @@ func (o MigrationInstanceMapOutput) ToMigrationInstanceMapOutput() MigrationInst
 
 func (o MigrationInstanceMapOutput) ToMigrationInstanceMapOutputWithContext(ctx context.Context) MigrationInstanceMapOutput {
 	return o
+}
+
+func (o MigrationInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MigrationInstance] {
+	return pulumix.Output[map[string]*MigrationInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MigrationInstanceMapOutput) MapIndex(k pulumi.StringInput) MigrationInstanceOutput {

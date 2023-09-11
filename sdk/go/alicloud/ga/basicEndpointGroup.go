@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Global Accelerator (GA) Basic Endpoint Group resource.
@@ -272,6 +273,12 @@ func (i *BasicEndpointGroup) ToBasicEndpointGroupOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(BasicEndpointGroupOutput)
 }
 
+func (i *BasicEndpointGroup) ToOutput(ctx context.Context) pulumix.Output[*BasicEndpointGroup] {
+	return pulumix.Output[*BasicEndpointGroup]{
+		OutputState: i.ToBasicEndpointGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BasicEndpointGroupArrayInput is an input type that accepts BasicEndpointGroupArray and BasicEndpointGroupArrayOutput values.
 // You can construct a concrete instance of `BasicEndpointGroupArrayInput` via:
 //
@@ -295,6 +302,12 @@ func (i BasicEndpointGroupArray) ToBasicEndpointGroupArrayOutput() BasicEndpoint
 
 func (i BasicEndpointGroupArray) ToBasicEndpointGroupArrayOutputWithContext(ctx context.Context) BasicEndpointGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BasicEndpointGroupArrayOutput)
+}
+
+func (i BasicEndpointGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*BasicEndpointGroup] {
+	return pulumix.Output[[]*BasicEndpointGroup]{
+		OutputState: i.ToBasicEndpointGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BasicEndpointGroupMapInput is an input type that accepts BasicEndpointGroupMap and BasicEndpointGroupMapOutput values.
@@ -322,6 +335,12 @@ func (i BasicEndpointGroupMap) ToBasicEndpointGroupMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(BasicEndpointGroupMapOutput)
 }
 
+func (i BasicEndpointGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BasicEndpointGroup] {
+	return pulumix.Output[map[string]*BasicEndpointGroup]{
+		OutputState: i.ToBasicEndpointGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BasicEndpointGroupOutput struct{ *pulumi.OutputState }
 
 func (BasicEndpointGroupOutput) ElementType() reflect.Type {
@@ -334,6 +353,12 @@ func (o BasicEndpointGroupOutput) ToBasicEndpointGroupOutput() BasicEndpointGrou
 
 func (o BasicEndpointGroupOutput) ToBasicEndpointGroupOutputWithContext(ctx context.Context) BasicEndpointGroupOutput {
 	return o
+}
+
+func (o BasicEndpointGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*BasicEndpointGroup] {
+	return pulumix.Output[*BasicEndpointGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the basic GA instance.
@@ -390,6 +415,12 @@ func (o BasicEndpointGroupArrayOutput) ToBasicEndpointGroupArrayOutputWithContex
 	return o
 }
 
+func (o BasicEndpointGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BasicEndpointGroup] {
+	return pulumix.Output[[]*BasicEndpointGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BasicEndpointGroupArrayOutput) Index(i pulumi.IntInput) BasicEndpointGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BasicEndpointGroup {
 		return vs[0].([]*BasicEndpointGroup)[vs[1].(int)]
@@ -408,6 +439,12 @@ func (o BasicEndpointGroupMapOutput) ToBasicEndpointGroupMapOutput() BasicEndpoi
 
 func (o BasicEndpointGroupMapOutput) ToBasicEndpointGroupMapOutputWithContext(ctx context.Context) BasicEndpointGroupMapOutput {
 	return o
+}
+
+func (o BasicEndpointGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BasicEndpointGroup] {
+	return pulumix.Output[map[string]*BasicEndpointGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BasicEndpointGroupMapOutput) MapIndex(k pulumi.StringInput) BasicEndpointGroupOutput {

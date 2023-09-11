@@ -10,12 +10,14 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DMS Enterprise Instance resource.
 //
 // > **NOTE:** API users must first register in DMS.
-// **NOTE:** Available in 1.81.0+.
+//
+// > **NOTE:** Available since v1.81.0.
 //
 // ## Example Usage
 //
@@ -24,29 +26,127 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dms"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dms.NewEnterpriseInstance(ctx, "default", &dms.EnterpriseInstanceArgs{
-//				DatabasePassword: pulumi.String("Yourpassword123"),
-//				DatabaseUser:     pulumi.String("your_user_name"),
-//				DbaUid:           pulumi.Int("1182725234xxxxxxx"),
-//				EcsRegion:        pulumi.String("cn-shanghai"),
-//				EnvType:          pulumi.String("test"),
-//				ExportTimeout:    pulumi.Int(600),
-//				Host:             pulumi.String("rm-uf648hgsxxxxxx.mysql.rds.aliyuncs.com"),
-//				InstanceName:     pulumi.String("your_alias_name"),
-//				InstanceSource:   pulumi.String("RDS"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			current, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultUserTenants, err := dms.GetUserTenants(ctx, &dms.GetUserTenantsArgs{
+//				Status: pulumi.StringRef("ACTIVE"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultZones, err := rds.GetZones(ctx, &rds.GetZonesArgs{
+//				Engine:                pulumi.StringRef("MySQL"),
+//				EngineVersion:         pulumi.StringRef("8.0"),
+//				InstanceChargeType:    pulumi.StringRef("PostPaid"),
+//				Category:              pulumi.StringRef("HighAvailability"),
+//				DbInstanceStorageType: pulumi.StringRef("cloud_essd"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceClasses, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
+//				ZoneId:                pulumi.StringRef(defaultZones.Zones[0].Id),
+//				Engine:                pulumi.StringRef("MySQL"),
+//				EngineVersion:         pulumi.StringRef("8.0"),
+//				Category:              pulumi.StringRef("HighAvailability"),
+//				DbInstanceStorageType: pulumi.StringRef("cloud_essd"),
+//				InstanceChargeType:    pulumi.StringRef("PostPaid"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := rds.NewInstance(ctx, "defaultInstance", &rds.InstanceArgs{
+//				Engine:                pulumi.String("MySQL"),
+//				EngineVersion:         pulumi.String("8.0"),
+//				DbInstanceStorageType: pulumi.String("cloud_essd"),
+//				InstanceType:          *pulumi.String(defaultInstanceClasses.InstanceClasses[0].InstanceClass),
+//				InstanceStorage:       *pulumi.String(defaultInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				VswitchId:             defaultSwitch.ID(),
+//				InstanceName:          pulumi.String(name),
+//				SecurityIps: pulumi.StringArray{
+//					pulumi.String("100.104.5.0/24"),
+//					pulumi.String("192.168.0.6"),
+//				},
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAccount, err := rds.NewAccount(ctx, "defaultAccount", &rds.AccountArgs{
+//				DbInstanceId:    defaultInstance.ID(),
+//				AccountName:     pulumi.String("tfexamplename"),
+//				AccountPassword: pulumi.String("Example12345"),
+//				AccountType:     pulumi.String("Normal"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dms.NewEnterpriseInstance(ctx, "defaultEnterpriseInstance", &dms.EnterpriseInstanceArgs{
+//				Tid:              *pulumi.String(defaultUserTenants.Ids[0]),
 //				InstanceType:     pulumi.String("MySQL"),
+//				InstanceSource:   pulumi.String("RDS"),
 //				NetworkType:      pulumi.String("VPC"),
+//				EnvType:          pulumi.String("dev"),
+//				Host:             defaultInstance.ConnectionString,
 //				Port:             pulumi.Int(3306),
-//				QueryTimeout:     pulumi.Int(60),
+//				DatabaseUser:     defaultAccount.AccountName,
+//				DatabasePassword: defaultAccount.AccountPassword,
+//				InstanceName:     pulumi.String(name),
+//				DbaUid:           *pulumi.String(current.Id),
 //				SafeRule:         pulumi.String("自由操作"),
-//				Tid:              pulumi.Int(12345),
+//				QueryTimeout:     pulumi.Int(60),
+//				ExportTimeout:    pulumi.Int(600),
+//				EcsRegion:        *pulumi.String(defaultRegions.Regions[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -477,6 +577,12 @@ func (i *EnterpriseInstance) ToEnterpriseInstanceOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseInstanceOutput)
 }
 
+func (i *EnterpriseInstance) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseInstance] {
+	return pulumix.Output[*EnterpriseInstance]{
+		OutputState: i.ToEnterpriseInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnterpriseInstanceArrayInput is an input type that accepts EnterpriseInstanceArray and EnterpriseInstanceArrayOutput values.
 // You can construct a concrete instance of `EnterpriseInstanceArrayInput` via:
 //
@@ -500,6 +606,12 @@ func (i EnterpriseInstanceArray) ToEnterpriseInstanceArrayOutput() EnterpriseIns
 
 func (i EnterpriseInstanceArray) ToEnterpriseInstanceArrayOutputWithContext(ctx context.Context) EnterpriseInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseInstanceArrayOutput)
+}
+
+func (i EnterpriseInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*EnterpriseInstance] {
+	return pulumix.Output[[]*EnterpriseInstance]{
+		OutputState: i.ToEnterpriseInstanceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EnterpriseInstanceMapInput is an input type that accepts EnterpriseInstanceMap and EnterpriseInstanceMapOutput values.
@@ -527,6 +639,12 @@ func (i EnterpriseInstanceMap) ToEnterpriseInstanceMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseInstanceMapOutput)
 }
 
+func (i EnterpriseInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnterpriseInstance] {
+	return pulumix.Output[map[string]*EnterpriseInstance]{
+		OutputState: i.ToEnterpriseInstanceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseInstanceOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseInstanceOutput) ElementType() reflect.Type {
@@ -539,6 +657,12 @@ func (o EnterpriseInstanceOutput) ToEnterpriseInstanceOutput() EnterpriseInstanc
 
 func (o EnterpriseInstanceOutput) ToEnterpriseInstanceOutputWithContext(ctx context.Context) EnterpriseInstanceOutput {
 	return o
+}
+
+func (o EnterpriseInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseInstance] {
+	return pulumix.Output[*EnterpriseInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cross-database query datalink name.
@@ -704,6 +828,12 @@ func (o EnterpriseInstanceArrayOutput) ToEnterpriseInstanceArrayOutputWithContex
 	return o
 }
 
+func (o EnterpriseInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EnterpriseInstance] {
+	return pulumix.Output[[]*EnterpriseInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseInstanceArrayOutput) Index(i pulumi.IntInput) EnterpriseInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EnterpriseInstance {
 		return vs[0].([]*EnterpriseInstance)[vs[1].(int)]
@@ -722,6 +852,12 @@ func (o EnterpriseInstanceMapOutput) ToEnterpriseInstanceMapOutput() EnterpriseI
 
 func (o EnterpriseInstanceMapOutput) ToEnterpriseInstanceMapOutputWithContext(ctx context.Context) EnterpriseInstanceMapOutput {
 	return o
+}
+
+func (o EnterpriseInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnterpriseInstance] {
+	return pulumix.Output[map[string]*EnterpriseInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseInstanceMapOutput) MapIndex(k pulumi.StringInput) EnterpriseInstanceOutput {

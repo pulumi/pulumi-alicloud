@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cms Dynamic Tag Groups of the current Alibaba Cloud user.
@@ -148,6 +149,12 @@ func (o GetDynamicTagGroupsResultOutput) ToGetDynamicTagGroupsResultOutput() Get
 
 func (o GetDynamicTagGroupsResultOutput) ToGetDynamicTagGroupsResultOutputWithContext(ctx context.Context) GetDynamicTagGroupsResultOutput {
 	return o
+}
+
+func (o GetDynamicTagGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDynamicTagGroupsResult] {
+	return pulumix.Output[GetDynamicTagGroupsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDynamicTagGroupsResultOutput) Groups() GetDynamicTagGroupsGroupArrayOutput {

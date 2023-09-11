@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Hbr Ecs File Backup Clients of the current Alibaba Cloud user.
@@ -129,6 +130,12 @@ func (o GetEcsBackupClientsResultOutput) ToGetEcsBackupClientsResultOutput() Get
 
 func (o GetEcsBackupClientsResultOutput) ToGetEcsBackupClientsResultOutputWithContext(ctx context.Context) GetEcsBackupClientsResultOutput {
 	return o
+}
+
+func (o GetEcsBackupClientsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEcsBackupClientsResult] {
+	return pulumix.Output[GetEcsBackupClientsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetEcsBackupClientsResultOutput) Clients() GetEcsBackupClientsClientArrayOutput {

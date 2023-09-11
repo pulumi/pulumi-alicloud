@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
     public sealed class FirewallVpcFirewallLocalVpc
     {
         /// <summary>
-        /// The ID of the instance of the Eni in the local VPC.
+        /// The ID of the instance of the ENI in the peer VPC.
         /// </summary>
         public readonly string? EniId;
         /// <summary>
-        /// The private IP address of the elastic network card in the local VPC.
+        /// The private IP address of the elastic network card in the peer VPC.
         /// </summary>
         public readonly string? EniPrivateIpAddress;
         /// <summary>
-        /// The network segment list of the local VPC.See the following `Block LocalVpcCidrTableList`.
+        /// The network segment list of the local VPC. See `local_vpc_cidr_table_list` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableList> LocalVpcCidrTableLists;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         /// </summary>
         public readonly string RegionNo;
         /// <summary>
-        /// The ID of the router interface in the local VPC.
+        /// The ID of the router interface in the peer VPC.
         /// </summary>
         public readonly string? RouterInterfaceId;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         /// </summary>
         public readonly string VpcId;
         /// <summary>
-        /// The instance name of the local VPC.
+        /// The instance name of the peer VPC.
         /// </summary>
         public readonly string? VpcName;
 

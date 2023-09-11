@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create an Alidns Instance resource.
@@ -217,6 +218,12 @@ func (i *AlidnsInstance) ToAlidnsInstanceOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AlidnsInstanceOutput)
 }
 
+func (i *AlidnsInstance) ToOutput(ctx context.Context) pulumix.Output[*AlidnsInstance] {
+	return pulumix.Output[*AlidnsInstance]{
+		OutputState: i.ToAlidnsInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AlidnsInstanceArrayInput is an input type that accepts AlidnsInstanceArray and AlidnsInstanceArrayOutput values.
 // You can construct a concrete instance of `AlidnsInstanceArrayInput` via:
 //
@@ -240,6 +247,12 @@ func (i AlidnsInstanceArray) ToAlidnsInstanceArrayOutput() AlidnsInstanceArrayOu
 
 func (i AlidnsInstanceArray) ToAlidnsInstanceArrayOutputWithContext(ctx context.Context) AlidnsInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlidnsInstanceArrayOutput)
+}
+
+func (i AlidnsInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*AlidnsInstance] {
+	return pulumix.Output[[]*AlidnsInstance]{
+		OutputState: i.ToAlidnsInstanceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AlidnsInstanceMapInput is an input type that accepts AlidnsInstanceMap and AlidnsInstanceMapOutput values.
@@ -267,6 +280,12 @@ func (i AlidnsInstanceMap) ToAlidnsInstanceMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AlidnsInstanceMapOutput)
 }
 
+func (i AlidnsInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AlidnsInstance] {
+	return pulumix.Output[map[string]*AlidnsInstance]{
+		OutputState: i.ToAlidnsInstanceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlidnsInstanceOutput struct{ *pulumi.OutputState }
 
 func (AlidnsInstanceOutput) ElementType() reflect.Type {
@@ -279,6 +298,12 @@ func (o AlidnsInstanceOutput) ToAlidnsInstanceOutput() AlidnsInstanceOutput {
 
 func (o AlidnsInstanceOutput) ToAlidnsInstanceOutputWithContext(ctx context.Context) AlidnsInstanceOutput {
 	return o
+}
+
+func (o AlidnsInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*AlidnsInstance] {
+	return pulumix.Output[*AlidnsInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Alidns security level. Valid values: `no`, `basic`, `advanced`.
@@ -335,6 +360,12 @@ func (o AlidnsInstanceArrayOutput) ToAlidnsInstanceArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o AlidnsInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AlidnsInstance] {
+	return pulumix.Output[[]*AlidnsInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AlidnsInstanceArrayOutput) Index(i pulumi.IntInput) AlidnsInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AlidnsInstance {
 		return vs[0].([]*AlidnsInstance)[vs[1].(int)]
@@ -353,6 +384,12 @@ func (o AlidnsInstanceMapOutput) ToAlidnsInstanceMapOutput() AlidnsInstanceMapOu
 
 func (o AlidnsInstanceMapOutput) ToAlidnsInstanceMapOutputWithContext(ctx context.Context) AlidnsInstanceMapOutput {
 	return o
+}
+
+func (o AlidnsInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AlidnsInstance] {
+	return pulumix.Output[map[string]*AlidnsInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlidnsInstanceMapOutput) MapIndex(k pulumi.StringInput) AlidnsInstanceOutput {

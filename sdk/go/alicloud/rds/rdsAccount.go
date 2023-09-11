@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a RDS Account resource.
@@ -396,6 +397,12 @@ func (i *RdsAccount) ToRdsAccountOutputWithContext(ctx context.Context) RdsAccou
 	return pulumi.ToOutputWithContext(ctx, i).(RdsAccountOutput)
 }
 
+func (i *RdsAccount) ToOutput(ctx context.Context) pulumix.Output[*RdsAccount] {
+	return pulumix.Output[*RdsAccount]{
+		OutputState: i.ToRdsAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RdsAccountArrayInput is an input type that accepts RdsAccountArray and RdsAccountArrayOutput values.
 // You can construct a concrete instance of `RdsAccountArrayInput` via:
 //
@@ -419,6 +426,12 @@ func (i RdsAccountArray) ToRdsAccountArrayOutput() RdsAccountArrayOutput {
 
 func (i RdsAccountArray) ToRdsAccountArrayOutputWithContext(ctx context.Context) RdsAccountArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RdsAccountArrayOutput)
+}
+
+func (i RdsAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]*RdsAccount] {
+	return pulumix.Output[[]*RdsAccount]{
+		OutputState: i.ToRdsAccountArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RdsAccountMapInput is an input type that accepts RdsAccountMap and RdsAccountMapOutput values.
@@ -446,6 +459,12 @@ func (i RdsAccountMap) ToRdsAccountMapOutputWithContext(ctx context.Context) Rds
 	return pulumi.ToOutputWithContext(ctx, i).(RdsAccountMapOutput)
 }
 
+func (i RdsAccountMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RdsAccount] {
+	return pulumix.Output[map[string]*RdsAccount]{
+		OutputState: i.ToRdsAccountMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RdsAccountOutput struct{ *pulumi.OutputState }
 
 func (RdsAccountOutput) ElementType() reflect.Type {
@@ -458,6 +477,12 @@ func (o RdsAccountOutput) ToRdsAccountOutput() RdsAccountOutput {
 
 func (o RdsAccountOutput) ToRdsAccountOutputWithContext(ctx context.Context) RdsAccountOutput {
 	return o
+}
+
+func (o RdsAccountOutput) ToOutput(ctx context.Context) pulumix.Output[*RdsAccount] {
+	return pulumix.Output[*RdsAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
@@ -558,6 +583,12 @@ func (o RdsAccountArrayOutput) ToRdsAccountArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o RdsAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RdsAccount] {
+	return pulumix.Output[[]*RdsAccount]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RdsAccountArrayOutput) Index(i pulumi.IntInput) RdsAccountOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RdsAccount {
 		return vs[0].([]*RdsAccount)[vs[1].(int)]
@@ -576,6 +607,12 @@ func (o RdsAccountMapOutput) ToRdsAccountMapOutput() RdsAccountMapOutput {
 
 func (o RdsAccountMapOutput) ToRdsAccountMapOutputWithContext(ctx context.Context) RdsAccountMapOutput {
 	return o
+}
+
+func (o RdsAccountMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RdsAccount] {
+	return pulumix.Output[map[string]*RdsAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RdsAccountMapOutput) MapIndex(k pulumi.StringInput) RdsAccountOutput {

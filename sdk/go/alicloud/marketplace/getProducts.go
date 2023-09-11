@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Market product items of Alibaba Cloud.
@@ -124,6 +125,12 @@ func (o GetProductsResultOutput) ToGetProductsResultOutput() GetProductsResultOu
 
 func (o GetProductsResultOutput) ToGetProductsResultOutputWithContext(ctx context.Context) GetProductsResultOutput {
 	return o
+}
+
+func (o GetProductsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetProductsResult] {
+	return pulumix.Output[GetProductsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The category id of the product.

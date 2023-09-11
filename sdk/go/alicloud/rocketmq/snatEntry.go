@@ -10,13 +10,14 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sag SnatEntry resource. This topic describes how to add a SNAT entry to enable the SNAT function. The SNAT function can hide internal IP addresses and resolve private IP address conflicts. With this function, on-premises sites can access internal IP addresses, but cannot be accessed by internal IP addresses. If you do not add a SNAT entry, on-premises sites can access each other only when all related IP addresses do not conflict.
 //
-// For information about Sag SnatEntry and how to use it, see [What is Sag SnatEntry](https://www.alibabacloud.com/help/doc-detail/124231.htm).
+// For information about Sag SnatEntry and how to use it, see [What is Sag SnatEntry](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/addsnatentry).
 //
-// > **NOTE:** Available in 1.61.0+
+// > **NOTE:** Available since v1.61.0.
 //
 // > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 //
@@ -31,14 +32,20 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			sagId := "sag-9bifk***"
+//			if param := cfg.Get("sagId"); param != "" {
+//				sagId = param
+//			}
 //			_, err := rocketmq.NewSnatEntry(ctx, "default", &rocketmq.SnatEntryArgs{
+//				SagId:     pulumi.String(sagId),
 //				CidrBlock: pulumi.String("192.168.7.0/24"),
-//				SagId:     pulumi.String("sag-3rb1t3iagy3w0zgwy9"),
 //				SnatIp:    pulumi.String("192.0.0.2"),
 //			})
 //			if err != nil {
@@ -172,6 +179,12 @@ func (i *SnatEntry) ToSnatEntryOutputWithContext(ctx context.Context) SnatEntryO
 	return pulumi.ToOutputWithContext(ctx, i).(SnatEntryOutput)
 }
 
+func (i *SnatEntry) ToOutput(ctx context.Context) pulumix.Output[*SnatEntry] {
+	return pulumix.Output[*SnatEntry]{
+		OutputState: i.ToSnatEntryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SnatEntryArrayInput is an input type that accepts SnatEntryArray and SnatEntryArrayOutput values.
 // You can construct a concrete instance of `SnatEntryArrayInput` via:
 //
@@ -195,6 +208,12 @@ func (i SnatEntryArray) ToSnatEntryArrayOutput() SnatEntryArrayOutput {
 
 func (i SnatEntryArray) ToSnatEntryArrayOutputWithContext(ctx context.Context) SnatEntryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SnatEntryArrayOutput)
+}
+
+func (i SnatEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]*SnatEntry] {
+	return pulumix.Output[[]*SnatEntry]{
+		OutputState: i.ToSnatEntryArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SnatEntryMapInput is an input type that accepts SnatEntryMap and SnatEntryMapOutput values.
@@ -222,6 +241,12 @@ func (i SnatEntryMap) ToSnatEntryMapOutputWithContext(ctx context.Context) SnatE
 	return pulumi.ToOutputWithContext(ctx, i).(SnatEntryMapOutput)
 }
 
+func (i SnatEntryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SnatEntry] {
+	return pulumix.Output[map[string]*SnatEntry]{
+		OutputState: i.ToSnatEntryMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SnatEntryOutput struct{ *pulumi.OutputState }
 
 func (SnatEntryOutput) ElementType() reflect.Type {
@@ -234,6 +259,12 @@ func (o SnatEntryOutput) ToSnatEntryOutput() SnatEntryOutput {
 
 func (o SnatEntryOutput) ToSnatEntryOutputWithContext(ctx context.Context) SnatEntryOutput {
 	return o
+}
+
+func (o SnatEntryOutput) ToOutput(ctx context.Context) pulumix.Output[*SnatEntry] {
+	return pulumix.Output[*SnatEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The destination CIDR block.
@@ -265,6 +296,12 @@ func (o SnatEntryArrayOutput) ToSnatEntryArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o SnatEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SnatEntry] {
+	return pulumix.Output[[]*SnatEntry]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SnatEntryArrayOutput) Index(i pulumi.IntInput) SnatEntryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SnatEntry {
 		return vs[0].([]*SnatEntry)[vs[1].(int)]
@@ -283,6 +320,12 @@ func (o SnatEntryMapOutput) ToSnatEntryMapOutput() SnatEntryMapOutput {
 
 func (o SnatEntryMapOutput) ToSnatEntryMapOutputWithContext(ctx context.Context) SnatEntryMapOutput {
 	return o
+}
+
+func (o SnatEntryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SnatEntry] {
+	return pulumix.Output[map[string]*SnatEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SnatEntryMapOutput) MapIndex(k pulumi.StringInput) SnatEntryOutput {

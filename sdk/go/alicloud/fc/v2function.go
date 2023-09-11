@@ -10,237 +10,37 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Provides a FCV2 Function resource. Function is the unit of system scheduling and operation. Functions must be subordinate to services. All functions under the same service share some identical settings, such as service authorization and log configuration.
-//
-// For information about FCV2 Function and how to use it, see [What is Function](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-fc-function).
-//
-// > **NOTE:** Available since v1.208.0.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultProject, err := log.NewProject(ctx, "defaultProject", &log.ProjectArgs{
-//				Description: pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultStore, err := log.NewStore(ctx, "defaultStore", &log.StoreArgs{
-//				Project:         defaultProject.Name,
-//				RetentionPeriod: pulumi.Int(3000),
-//				ShardCount:      pulumi.Int(1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
-//				Document: pulumi.String(`  {
-//	      "Statement": [
-//	        {
-//	          "Action": "sts:AssumeRole",
-//	          "Effect": "Allow",
-//	          "Principal": {
-//	            "Service": [
-//	              "fc.aliyuncs.com"
-//	            ]
-//	          }
-//	        }
-//	      ],
-//	      "Version": "1"
-//	  }
-//
-// `),
-//
-//				Description: pulumi.String(name),
-//				Force:       pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ram.NewRolePolicyAttachment(ctx, "defaultRolePolicyAttachment", &ram.RolePolicyAttachmentArgs{
-//				RoleName:   defaultRole.Name,
-//				PolicyName: pulumi.String("AliyunLogFullAccess"),
-//				PolicyType: pulumi.String("System"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultService, err := fc.NewService(ctx, "defaultService", &fc.ServiceArgs{
-//				Description: pulumi.String(name),
-//				LogConfig: &fc.ServiceLogConfigArgs{
-//					Project:  defaultProject.Name,
-//					Logstore: defaultStore.Name,
-//				},
-//				Role: defaultRole.Arn,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = fc.NewV2Function(ctx, "defaultV2Function", &fc.V2FunctionArgs{
-//				FunctionName:          pulumi.String(name),
-//				MemorySize:            pulumi.Int(1024),
-//				Runtime:               pulumi.String("custom.debian10"),
-//				Description:           pulumi.String(name),
-//				ServiceName:           defaultService.Name,
-//				Initializer:           pulumi.String("index.initializer"),
-//				InitializationTimeout: pulumi.Int(10),
-//				Timeout:               pulumi.Int(60),
-//				Handler:               pulumi.String("index.handler"),
-//				InstanceType:          pulumi.String("e1"),
-//				InstanceLifecycleConfig: &fc.V2FunctionInstanceLifecycleConfigArgs{
-//					PreFreeze: &fc.V2FunctionInstanceLifecycleConfigPreFreezeArgs{
-//						Handler: pulumi.String("index.prefreeze"),
-//						Timeout: pulumi.Int(30),
-//					},
-//					PreStop: &fc.V2FunctionInstanceLifecycleConfigPreStopArgs{
-//						Handler: pulumi.String("index.prestop"),
-//						Timeout: pulumi.Int(30),
-//					},
-//				},
-//				Code: &fc.V2FunctionCodeArgs{
-//					OssBucketName: pulumi.String("code-sample-cn-hangzhou"),
-//					OssObjectName: pulumi.String("quick-start-sample-codes/quick-start-sample-codes-nodejs/RocketMQ-producer-nodejs14-event/code.zip"),
-//				},
-//				CustomDns: &fc.V2FunctionCustomDnsArgs{
-//					NameServers: pulumi.StringArray{
-//						pulumi.String("223.5.5.5"),
-//					},
-//					Searches: pulumi.StringArray{
-//						pulumi.String("mydomain.com"),
-//					},
-//					DnsOptions: fc.V2FunctionCustomDnsDnsOptionArray{
-//						&fc.V2FunctionCustomDnsDnsOptionArgs{
-//							Name:  pulumi.String(name),
-//							Value: pulumi.String("1"),
-//						},
-//					},
-//				},
-//				DiskSize:            pulumi.Int(512),
-//				InstanceConcurrency: pulumi.Int(10),
-//				Layers: pulumi.StringArray{
-//					pulumi.String("d3fc5de8d120687be2bfab761518d5de#Nodejs-Aliyun-SDK#2"),
-//					pulumi.String("d3fc5de8d120687be2bfab761518d5de#Python39#2"),
-//				},
-//				Cpu: pulumi.Float64(1),
-//				CustomHealthCheckConfig: &fc.V2FunctionCustomHealthCheckConfigArgs{
-//					HttpGetUrl:          pulumi.String("/healthcheck"),
-//					InitialDelaySeconds: pulumi.Int(3),
-//					PeriodSeconds:       pulumi.Int(3),
-//					TimeoutSeconds:      pulumi.Int(3),
-//					FailureThreshold:    pulumi.Int(1),
-//					SuccessThreshold:    pulumi.Int(1),
-//				},
-//				CaPort: pulumi.Int(9000),
-//				CustomRuntimeConfig: &fc.V2FunctionCustomRuntimeConfigArgs{
-//					Commands: pulumi.StringArray{
-//						pulumi.String("npm"),
-//					},
-//					Args: pulumi.StringArray{
-//						pulumi.String("run"),
-//						pulumi.String("start"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// FCV2 Function can be imported using the id, e.g.
-//
-// ```sh
-//
-//	$ pulumi import alicloud:fc/v2Function:V2Function example <service_name>:<function_name>
-//
-// ```
 type V2Function struct {
 	pulumi.CustomResourceState
 
-	// The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
-	CaPort pulumi.IntOutput `pulumi:"caPort"`
-	// Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
-	Code V2FunctionCodePtrOutput `pulumi:"code"`
-	// crc64 of function code.
-	CodeChecksum pulumi.StringOutput `pulumi:"codeChecksum"`
-	// The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
-	Cpu pulumi.Float64PtrOutput `pulumi:"cpu"`
-	// create time of function.
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Custom-container runtime related function configuration. See `customContainerConfig` below.
-	CustomContainerConfig V2FunctionCustomContainerConfigPtrOutput `pulumi:"customContainerConfig"`
-	// Function custom DNS configuration. See `customDns` below.
-	CustomDns V2FunctionCustomDnsPtrOutput `pulumi:"customDns"`
-	// Custom runtime/container Custom health check configuration. See `customHealthCheckConfig` below.
+	CaPort                  pulumi.IntOutput                           `pulumi:"caPort"`
+	Code                    V2FunctionCodePtrOutput                    `pulumi:"code"`
+	CodeChecksum            pulumi.StringOutput                        `pulumi:"codeChecksum"`
+	Cpu                     pulumi.Float64PtrOutput                    `pulumi:"cpu"`
+	CreateTime              pulumi.StringOutput                        `pulumi:"createTime"`
+	CustomContainerConfig   V2FunctionCustomContainerConfigPtrOutput   `pulumi:"customContainerConfig"`
+	CustomDns               V2FunctionCustomDnsPtrOutput               `pulumi:"customDns"`
 	CustomHealthCheckConfig V2FunctionCustomHealthCheckConfigPtrOutput `pulumi:"customHealthCheckConfig"`
-	// Detailed configuration of Custom Runtime function. See `customRuntimeConfig` below.
-	CustomRuntimeConfig V2FunctionCustomRuntimeConfigPtrOutput `pulumi:"customRuntimeConfig"`
-	// description of function.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
-	DiskSize pulumi.IntPtrOutput `pulumi:"diskSize"`
-	// The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
-	EnvironmentVariables pulumi.MapOutput `pulumi:"environmentVariables"`
-	// function name.
-	FunctionName pulumi.StringOutput `pulumi:"functionName"`
-	// The GPU memory specification of the function, in MB, is a multiple of 1024MB.
-	GpuMemorySize pulumi.IntPtrOutput `pulumi:"gpuMemorySize"`
-	// entry point of function.
-	Handler pulumi.StringOutput `pulumi:"handler"`
-	// max running time of initializer.
-	InitializationTimeout pulumi.IntOutput `pulumi:"initializationTimeout"`
-	// initializer entry point of function.
-	Initializer pulumi.StringPtrOutput `pulumi:"initializer"`
-	// The maximum concurrency allowed for a single function instance.
-	InstanceConcurrency pulumi.IntOutput `pulumi:"instanceConcurrency"`
-	// Instance lifecycle configuration. See `instanceLifecycleConfig` below.
+	CustomRuntimeConfig     V2FunctionCustomRuntimeConfigPtrOutput     `pulumi:"customRuntimeConfig"`
+	Description             pulumi.StringPtrOutput                     `pulumi:"description"`
+	DiskSize                pulumi.IntPtrOutput                        `pulumi:"diskSize"`
+	EnvironmentVariables    pulumi.MapOutput                           `pulumi:"environmentVariables"`
+	FunctionName            pulumi.StringOutput                        `pulumi:"functionName"`
+	GpuMemorySize           pulumi.IntPtrOutput                        `pulumi:"gpuMemorySize"`
+	Handler                 pulumi.StringOutput                        `pulumi:"handler"`
+	InitializationTimeout   pulumi.IntOutput                           `pulumi:"initializationTimeout"`
+	Initializer             pulumi.StringPtrOutput                     `pulumi:"initializer"`
+	InstanceConcurrency     pulumi.IntOutput                           `pulumi:"instanceConcurrency"`
 	InstanceLifecycleConfig V2FunctionInstanceLifecycleConfigPtrOutput `pulumi:"instanceLifecycleConfig"`
-	// The instance type of the function. Valid values:
-	// - **e1**: Elastic instance.
-	// - **c1**: performance instance.
-	// - **fc.gpu.tesla.1**: the T4 card type of the Tesla series of GPU instances.
-	// - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
-	// - **g1**: Same as **fc.gpu.tesla.1**.
-	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
-	// List of layers.
-	// > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
-	Layers pulumi.StringArrayOutput `pulumi:"layers"`
-	// memory size needed by function.
-	MemorySize pulumi.IntOutput `pulumi:"memorySize"`
-	// runtime of function code.
-	Runtime pulumi.StringOutput `pulumi:"runtime"`
-	// The name of the function Service.
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// max running time of function.
-	Timeout pulumi.IntOutput `pulumi:"timeout"`
+	InstanceType            pulumi.StringOutput                        `pulumi:"instanceType"`
+	Layers                  pulumi.StringArrayOutput                   `pulumi:"layers"`
+	MemorySize              pulumi.IntOutput                           `pulumi:"memorySize"`
+	Runtime                 pulumi.StringOutput                        `pulumi:"runtime"`
+	ServiceName             pulumi.StringOutput                        `pulumi:"serviceName"`
+	Timeout                 pulumi.IntOutput                           `pulumi:"timeout"`
 }
 
 // NewV2Function registers a new resource with the given unique name, arguments, and options.
@@ -285,121 +85,59 @@ func GetV2Function(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering V2Function resources.
 type v2functionState struct {
-	// The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
-	CaPort *int `pulumi:"caPort"`
-	// Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
-	Code *V2FunctionCode `pulumi:"code"`
-	// crc64 of function code.
-	CodeChecksum *string `pulumi:"codeChecksum"`
-	// The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
-	Cpu *float64 `pulumi:"cpu"`
-	// create time of function.
-	CreateTime *string `pulumi:"createTime"`
-	// Custom-container runtime related function configuration. See `customContainerConfig` below.
-	CustomContainerConfig *V2FunctionCustomContainerConfig `pulumi:"customContainerConfig"`
-	// Function custom DNS configuration. See `customDns` below.
-	CustomDns *V2FunctionCustomDns `pulumi:"customDns"`
-	// Custom runtime/container Custom health check configuration. See `customHealthCheckConfig` below.
+	CaPort                  *int                               `pulumi:"caPort"`
+	Code                    *V2FunctionCode                    `pulumi:"code"`
+	CodeChecksum            *string                            `pulumi:"codeChecksum"`
+	Cpu                     *float64                           `pulumi:"cpu"`
+	CreateTime              *string                            `pulumi:"createTime"`
+	CustomContainerConfig   *V2FunctionCustomContainerConfig   `pulumi:"customContainerConfig"`
+	CustomDns               *V2FunctionCustomDns               `pulumi:"customDns"`
 	CustomHealthCheckConfig *V2FunctionCustomHealthCheckConfig `pulumi:"customHealthCheckConfig"`
-	// Detailed configuration of Custom Runtime function. See `customRuntimeConfig` below.
-	CustomRuntimeConfig *V2FunctionCustomRuntimeConfig `pulumi:"customRuntimeConfig"`
-	// description of function.
-	Description *string `pulumi:"description"`
-	// The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
-	DiskSize *int `pulumi:"diskSize"`
-	// The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
-	EnvironmentVariables map[string]interface{} `pulumi:"environmentVariables"`
-	// function name.
-	FunctionName *string `pulumi:"functionName"`
-	// The GPU memory specification of the function, in MB, is a multiple of 1024MB.
-	GpuMemorySize *int `pulumi:"gpuMemorySize"`
-	// entry point of function.
-	Handler *string `pulumi:"handler"`
-	// max running time of initializer.
-	InitializationTimeout *int `pulumi:"initializationTimeout"`
-	// initializer entry point of function.
-	Initializer *string `pulumi:"initializer"`
-	// The maximum concurrency allowed for a single function instance.
-	InstanceConcurrency *int `pulumi:"instanceConcurrency"`
-	// Instance lifecycle configuration. See `instanceLifecycleConfig` below.
+	CustomRuntimeConfig     *V2FunctionCustomRuntimeConfig     `pulumi:"customRuntimeConfig"`
+	Description             *string                            `pulumi:"description"`
+	DiskSize                *int                               `pulumi:"diskSize"`
+	EnvironmentVariables    map[string]interface{}             `pulumi:"environmentVariables"`
+	FunctionName            *string                            `pulumi:"functionName"`
+	GpuMemorySize           *int                               `pulumi:"gpuMemorySize"`
+	Handler                 *string                            `pulumi:"handler"`
+	InitializationTimeout   *int                               `pulumi:"initializationTimeout"`
+	Initializer             *string                            `pulumi:"initializer"`
+	InstanceConcurrency     *int                               `pulumi:"instanceConcurrency"`
 	InstanceLifecycleConfig *V2FunctionInstanceLifecycleConfig `pulumi:"instanceLifecycleConfig"`
-	// The instance type of the function. Valid values:
-	// - **e1**: Elastic instance.
-	// - **c1**: performance instance.
-	// - **fc.gpu.tesla.1**: the T4 card type of the Tesla series of GPU instances.
-	// - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
-	// - **g1**: Same as **fc.gpu.tesla.1**.
-	InstanceType *string `pulumi:"instanceType"`
-	// List of layers.
-	// > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
-	Layers []string `pulumi:"layers"`
-	// memory size needed by function.
-	MemorySize *int `pulumi:"memorySize"`
-	// runtime of function code.
-	Runtime *string `pulumi:"runtime"`
-	// The name of the function Service.
-	ServiceName *string `pulumi:"serviceName"`
-	// max running time of function.
-	Timeout *int `pulumi:"timeout"`
+	InstanceType            *string                            `pulumi:"instanceType"`
+	Layers                  []string                           `pulumi:"layers"`
+	MemorySize              *int                               `pulumi:"memorySize"`
+	Runtime                 *string                            `pulumi:"runtime"`
+	ServiceName             *string                            `pulumi:"serviceName"`
+	Timeout                 *int                               `pulumi:"timeout"`
 }
 
 type V2FunctionState struct {
-	// The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
-	CaPort pulumi.IntPtrInput
-	// Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
-	Code V2FunctionCodePtrInput
-	// crc64 of function code.
-	CodeChecksum pulumi.StringPtrInput
-	// The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
-	Cpu pulumi.Float64PtrInput
-	// create time of function.
-	CreateTime pulumi.StringPtrInput
-	// Custom-container runtime related function configuration. See `customContainerConfig` below.
-	CustomContainerConfig V2FunctionCustomContainerConfigPtrInput
-	// Function custom DNS configuration. See `customDns` below.
-	CustomDns V2FunctionCustomDnsPtrInput
-	// Custom runtime/container Custom health check configuration. See `customHealthCheckConfig` below.
+	CaPort                  pulumi.IntPtrInput
+	Code                    V2FunctionCodePtrInput
+	CodeChecksum            pulumi.StringPtrInput
+	Cpu                     pulumi.Float64PtrInput
+	CreateTime              pulumi.StringPtrInput
+	CustomContainerConfig   V2FunctionCustomContainerConfigPtrInput
+	CustomDns               V2FunctionCustomDnsPtrInput
 	CustomHealthCheckConfig V2FunctionCustomHealthCheckConfigPtrInput
-	// Detailed configuration of Custom Runtime function. See `customRuntimeConfig` below.
-	CustomRuntimeConfig V2FunctionCustomRuntimeConfigPtrInput
-	// description of function.
-	Description pulumi.StringPtrInput
-	// The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
-	DiskSize pulumi.IntPtrInput
-	// The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
-	EnvironmentVariables pulumi.MapInput
-	// function name.
-	FunctionName pulumi.StringPtrInput
-	// The GPU memory specification of the function, in MB, is a multiple of 1024MB.
-	GpuMemorySize pulumi.IntPtrInput
-	// entry point of function.
-	Handler pulumi.StringPtrInput
-	// max running time of initializer.
-	InitializationTimeout pulumi.IntPtrInput
-	// initializer entry point of function.
-	Initializer pulumi.StringPtrInput
-	// The maximum concurrency allowed for a single function instance.
-	InstanceConcurrency pulumi.IntPtrInput
-	// Instance lifecycle configuration. See `instanceLifecycleConfig` below.
+	CustomRuntimeConfig     V2FunctionCustomRuntimeConfigPtrInput
+	Description             pulumi.StringPtrInput
+	DiskSize                pulumi.IntPtrInput
+	EnvironmentVariables    pulumi.MapInput
+	FunctionName            pulumi.StringPtrInput
+	GpuMemorySize           pulumi.IntPtrInput
+	Handler                 pulumi.StringPtrInput
+	InitializationTimeout   pulumi.IntPtrInput
+	Initializer             pulumi.StringPtrInput
+	InstanceConcurrency     pulumi.IntPtrInput
 	InstanceLifecycleConfig V2FunctionInstanceLifecycleConfigPtrInput
-	// The instance type of the function. Valid values:
-	// - **e1**: Elastic instance.
-	// - **c1**: performance instance.
-	// - **fc.gpu.tesla.1**: the T4 card type of the Tesla series of GPU instances.
-	// - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
-	// - **g1**: Same as **fc.gpu.tesla.1**.
-	InstanceType pulumi.StringPtrInput
-	// List of layers.
-	// > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
-	Layers pulumi.StringArrayInput
-	// memory size needed by function.
-	MemorySize pulumi.IntPtrInput
-	// runtime of function code.
-	Runtime pulumi.StringPtrInput
-	// The name of the function Service.
-	ServiceName pulumi.StringPtrInput
-	// max running time of function.
-	Timeout pulumi.IntPtrInput
+	InstanceType            pulumi.StringPtrInput
+	Layers                  pulumi.StringArrayInput
+	MemorySize              pulumi.IntPtrInput
+	Runtime                 pulumi.StringPtrInput
+	ServiceName             pulumi.StringPtrInput
+	Timeout                 pulumi.IntPtrInput
 }
 
 func (V2FunctionState) ElementType() reflect.Type {
@@ -407,118 +145,58 @@ func (V2FunctionState) ElementType() reflect.Type {
 }
 
 type v2functionArgs struct {
-	// The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
-	CaPort *int `pulumi:"caPort"`
-	// Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
-	Code *V2FunctionCode `pulumi:"code"`
-	// crc64 of function code.
-	CodeChecksum *string `pulumi:"codeChecksum"`
-	// The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
-	Cpu *float64 `pulumi:"cpu"`
-	// Custom-container runtime related function configuration. See `customContainerConfig` below.
-	CustomContainerConfig *V2FunctionCustomContainerConfig `pulumi:"customContainerConfig"`
-	// Function custom DNS configuration. See `customDns` below.
-	CustomDns *V2FunctionCustomDns `pulumi:"customDns"`
-	// Custom runtime/container Custom health check configuration. See `customHealthCheckConfig` below.
+	CaPort                  *int                               `pulumi:"caPort"`
+	Code                    *V2FunctionCode                    `pulumi:"code"`
+	CodeChecksum            *string                            `pulumi:"codeChecksum"`
+	Cpu                     *float64                           `pulumi:"cpu"`
+	CustomContainerConfig   *V2FunctionCustomContainerConfig   `pulumi:"customContainerConfig"`
+	CustomDns               *V2FunctionCustomDns               `pulumi:"customDns"`
 	CustomHealthCheckConfig *V2FunctionCustomHealthCheckConfig `pulumi:"customHealthCheckConfig"`
-	// Detailed configuration of Custom Runtime function. See `customRuntimeConfig` below.
-	CustomRuntimeConfig *V2FunctionCustomRuntimeConfig `pulumi:"customRuntimeConfig"`
-	// description of function.
-	Description *string `pulumi:"description"`
-	// The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
-	DiskSize *int `pulumi:"diskSize"`
-	// The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
-	EnvironmentVariables map[string]interface{} `pulumi:"environmentVariables"`
-	// function name.
-	FunctionName string `pulumi:"functionName"`
-	// The GPU memory specification of the function, in MB, is a multiple of 1024MB.
-	GpuMemorySize *int `pulumi:"gpuMemorySize"`
-	// entry point of function.
-	Handler string `pulumi:"handler"`
-	// max running time of initializer.
-	InitializationTimeout *int `pulumi:"initializationTimeout"`
-	// initializer entry point of function.
-	Initializer *string `pulumi:"initializer"`
-	// The maximum concurrency allowed for a single function instance.
-	InstanceConcurrency *int `pulumi:"instanceConcurrency"`
-	// Instance lifecycle configuration. See `instanceLifecycleConfig` below.
+	CustomRuntimeConfig     *V2FunctionCustomRuntimeConfig     `pulumi:"customRuntimeConfig"`
+	Description             *string                            `pulumi:"description"`
+	DiskSize                *int                               `pulumi:"diskSize"`
+	EnvironmentVariables    map[string]interface{}             `pulumi:"environmentVariables"`
+	FunctionName            string                             `pulumi:"functionName"`
+	GpuMemorySize           *int                               `pulumi:"gpuMemorySize"`
+	Handler                 string                             `pulumi:"handler"`
+	InitializationTimeout   *int                               `pulumi:"initializationTimeout"`
+	Initializer             *string                            `pulumi:"initializer"`
+	InstanceConcurrency     *int                               `pulumi:"instanceConcurrency"`
 	InstanceLifecycleConfig *V2FunctionInstanceLifecycleConfig `pulumi:"instanceLifecycleConfig"`
-	// The instance type of the function. Valid values:
-	// - **e1**: Elastic instance.
-	// - **c1**: performance instance.
-	// - **fc.gpu.tesla.1**: the T4 card type of the Tesla series of GPU instances.
-	// - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
-	// - **g1**: Same as **fc.gpu.tesla.1**.
-	InstanceType *string `pulumi:"instanceType"`
-	// List of layers.
-	// > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
-	Layers []string `pulumi:"layers"`
-	// memory size needed by function.
-	MemorySize *int `pulumi:"memorySize"`
-	// runtime of function code.
-	Runtime string `pulumi:"runtime"`
-	// The name of the function Service.
-	ServiceName string `pulumi:"serviceName"`
-	// max running time of function.
-	Timeout *int `pulumi:"timeout"`
+	InstanceType            *string                            `pulumi:"instanceType"`
+	Layers                  []string                           `pulumi:"layers"`
+	MemorySize              *int                               `pulumi:"memorySize"`
+	Runtime                 string                             `pulumi:"runtime"`
+	ServiceName             string                             `pulumi:"serviceName"`
+	Timeout                 *int                               `pulumi:"timeout"`
 }
 
 // The set of arguments for constructing a V2Function resource.
 type V2FunctionArgs struct {
-	// The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
-	CaPort pulumi.IntPtrInput
-	// Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
-	Code V2FunctionCodePtrInput
-	// crc64 of function code.
-	CodeChecksum pulumi.StringPtrInput
-	// The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
-	Cpu pulumi.Float64PtrInput
-	// Custom-container runtime related function configuration. See `customContainerConfig` below.
-	CustomContainerConfig V2FunctionCustomContainerConfigPtrInput
-	// Function custom DNS configuration. See `customDns` below.
-	CustomDns V2FunctionCustomDnsPtrInput
-	// Custom runtime/container Custom health check configuration. See `customHealthCheckConfig` below.
+	CaPort                  pulumi.IntPtrInput
+	Code                    V2FunctionCodePtrInput
+	CodeChecksum            pulumi.StringPtrInput
+	Cpu                     pulumi.Float64PtrInput
+	CustomContainerConfig   V2FunctionCustomContainerConfigPtrInput
+	CustomDns               V2FunctionCustomDnsPtrInput
 	CustomHealthCheckConfig V2FunctionCustomHealthCheckConfigPtrInput
-	// Detailed configuration of Custom Runtime function. See `customRuntimeConfig` below.
-	CustomRuntimeConfig V2FunctionCustomRuntimeConfigPtrInput
-	// description of function.
-	Description pulumi.StringPtrInput
-	// The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
-	DiskSize pulumi.IntPtrInput
-	// The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
-	EnvironmentVariables pulumi.MapInput
-	// function name.
-	FunctionName pulumi.StringInput
-	// The GPU memory specification of the function, in MB, is a multiple of 1024MB.
-	GpuMemorySize pulumi.IntPtrInput
-	// entry point of function.
-	Handler pulumi.StringInput
-	// max running time of initializer.
-	InitializationTimeout pulumi.IntPtrInput
-	// initializer entry point of function.
-	Initializer pulumi.StringPtrInput
-	// The maximum concurrency allowed for a single function instance.
-	InstanceConcurrency pulumi.IntPtrInput
-	// Instance lifecycle configuration. See `instanceLifecycleConfig` below.
+	CustomRuntimeConfig     V2FunctionCustomRuntimeConfigPtrInput
+	Description             pulumi.StringPtrInput
+	DiskSize                pulumi.IntPtrInput
+	EnvironmentVariables    pulumi.MapInput
+	FunctionName            pulumi.StringInput
+	GpuMemorySize           pulumi.IntPtrInput
+	Handler                 pulumi.StringInput
+	InitializationTimeout   pulumi.IntPtrInput
+	Initializer             pulumi.StringPtrInput
+	InstanceConcurrency     pulumi.IntPtrInput
 	InstanceLifecycleConfig V2FunctionInstanceLifecycleConfigPtrInput
-	// The instance type of the function. Valid values:
-	// - **e1**: Elastic instance.
-	// - **c1**: performance instance.
-	// - **fc.gpu.tesla.1**: the T4 card type of the Tesla series of GPU instances.
-	// - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
-	// - **g1**: Same as **fc.gpu.tesla.1**.
-	InstanceType pulumi.StringPtrInput
-	// List of layers.
-	// > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
-	Layers pulumi.StringArrayInput
-	// memory size needed by function.
-	MemorySize pulumi.IntPtrInput
-	// runtime of function code.
-	Runtime pulumi.StringInput
-	// The name of the function Service.
-	ServiceName pulumi.StringInput
-	// max running time of function.
-	Timeout pulumi.IntPtrInput
+	InstanceType            pulumi.StringPtrInput
+	Layers                  pulumi.StringArrayInput
+	MemorySize              pulumi.IntPtrInput
+	Runtime                 pulumi.StringInput
+	ServiceName             pulumi.StringInput
+	Timeout                 pulumi.IntPtrInput
 }
 
 func (V2FunctionArgs) ElementType() reflect.Type {
@@ -542,6 +220,12 @@ func (i *V2Function) ToV2FunctionOutput() V2FunctionOutput {
 
 func (i *V2Function) ToV2FunctionOutputWithContext(ctx context.Context) V2FunctionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionOutput)
+}
+
+func (i *V2Function) ToOutput(ctx context.Context) pulumix.Output[*V2Function] {
+	return pulumix.Output[*V2Function]{
+		OutputState: i.ToV2FunctionOutputWithContext(ctx).OutputState,
+	}
 }
 
 // V2FunctionArrayInput is an input type that accepts V2FunctionArray and V2FunctionArrayOutput values.
@@ -569,6 +253,12 @@ func (i V2FunctionArray) ToV2FunctionArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionArrayOutput)
 }
 
+func (i V2FunctionArray) ToOutput(ctx context.Context) pulumix.Output[[]*V2Function] {
+	return pulumix.Output[[]*V2Function]{
+		OutputState: i.ToV2FunctionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // V2FunctionMapInput is an input type that accepts V2FunctionMap and V2FunctionMapOutput values.
 // You can construct a concrete instance of `V2FunctionMapInput` via:
 //
@@ -594,6 +284,12 @@ func (i V2FunctionMap) ToV2FunctionMapOutputWithContext(ctx context.Context) V2F
 	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionMapOutput)
 }
 
+func (i V2FunctionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*V2Function] {
+	return pulumix.Output[map[string]*V2Function]{
+		OutputState: i.ToV2FunctionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type V2FunctionOutput struct{ *pulumi.OutputState }
 
 func (V2FunctionOutput) ElementType() reflect.Type {
@@ -608,133 +304,108 @@ func (o V2FunctionOutput) ToV2FunctionOutputWithContext(ctx context.Context) V2F
 	return o
 }
 
-// The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
+func (o V2FunctionOutput) ToOutput(ctx context.Context) pulumix.Output[*V2Function] {
+	return pulumix.Output[*V2Function]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o V2FunctionOutput) CaPort() pulumi.IntOutput {
 	return o.ApplyT(func(v *V2Function) pulumi.IntOutput { return v.CaPort }).(pulumi.IntOutput)
 }
 
-// Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
 func (o V2FunctionOutput) Code() V2FunctionCodePtrOutput {
 	return o.ApplyT(func(v *V2Function) V2FunctionCodePtrOutput { return v.Code }).(V2FunctionCodePtrOutput)
 }
 
-// crc64 of function code.
 func (o V2FunctionOutput) CodeChecksum() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2Function) pulumi.StringOutput { return v.CodeChecksum }).(pulumi.StringOutput)
 }
 
-// The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
 func (o V2FunctionOutput) Cpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *V2Function) pulumi.Float64PtrOutput { return v.Cpu }).(pulumi.Float64PtrOutput)
 }
 
-// create time of function.
 func (o V2FunctionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2Function) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Custom-container runtime related function configuration. See `customContainerConfig` below.
 func (o V2FunctionOutput) CustomContainerConfig() V2FunctionCustomContainerConfigPtrOutput {
 	return o.ApplyT(func(v *V2Function) V2FunctionCustomContainerConfigPtrOutput { return v.CustomContainerConfig }).(V2FunctionCustomContainerConfigPtrOutput)
 }
 
-// Function custom DNS configuration. See `customDns` below.
 func (o V2FunctionOutput) CustomDns() V2FunctionCustomDnsPtrOutput {
 	return o.ApplyT(func(v *V2Function) V2FunctionCustomDnsPtrOutput { return v.CustomDns }).(V2FunctionCustomDnsPtrOutput)
 }
 
-// Custom runtime/container Custom health check configuration. See `customHealthCheckConfig` below.
 func (o V2FunctionOutput) CustomHealthCheckConfig() V2FunctionCustomHealthCheckConfigPtrOutput {
 	return o.ApplyT(func(v *V2Function) V2FunctionCustomHealthCheckConfigPtrOutput { return v.CustomHealthCheckConfig }).(V2FunctionCustomHealthCheckConfigPtrOutput)
 }
 
-// Detailed configuration of Custom Runtime function. See `customRuntimeConfig` below.
 func (o V2FunctionOutput) CustomRuntimeConfig() V2FunctionCustomRuntimeConfigPtrOutput {
 	return o.ApplyT(func(v *V2Function) V2FunctionCustomRuntimeConfigPtrOutput { return v.CustomRuntimeConfig }).(V2FunctionCustomRuntimeConfigPtrOutput)
 }
 
-// description of function.
 func (o V2FunctionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V2Function) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
 func (o V2FunctionOutput) DiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *V2Function) pulumi.IntPtrOutput { return v.DiskSize }).(pulumi.IntPtrOutput)
 }
 
-// The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
 func (o V2FunctionOutput) EnvironmentVariables() pulumi.MapOutput {
 	return o.ApplyT(func(v *V2Function) pulumi.MapOutput { return v.EnvironmentVariables }).(pulumi.MapOutput)
 }
 
-// function name.
 func (o V2FunctionOutput) FunctionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2Function) pulumi.StringOutput { return v.FunctionName }).(pulumi.StringOutput)
 }
 
-// The GPU memory specification of the function, in MB, is a multiple of 1024MB.
 func (o V2FunctionOutput) GpuMemorySize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *V2Function) pulumi.IntPtrOutput { return v.GpuMemorySize }).(pulumi.IntPtrOutput)
 }
 
-// entry point of function.
 func (o V2FunctionOutput) Handler() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2Function) pulumi.StringOutput { return v.Handler }).(pulumi.StringOutput)
 }
 
-// max running time of initializer.
 func (o V2FunctionOutput) InitializationTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *V2Function) pulumi.IntOutput { return v.InitializationTimeout }).(pulumi.IntOutput)
 }
 
-// initializer entry point of function.
 func (o V2FunctionOutput) Initializer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V2Function) pulumi.StringPtrOutput { return v.Initializer }).(pulumi.StringPtrOutput)
 }
 
-// The maximum concurrency allowed for a single function instance.
 func (o V2FunctionOutput) InstanceConcurrency() pulumi.IntOutput {
 	return o.ApplyT(func(v *V2Function) pulumi.IntOutput { return v.InstanceConcurrency }).(pulumi.IntOutput)
 }
 
-// Instance lifecycle configuration. See `instanceLifecycleConfig` below.
 func (o V2FunctionOutput) InstanceLifecycleConfig() V2FunctionInstanceLifecycleConfigPtrOutput {
 	return o.ApplyT(func(v *V2Function) V2FunctionInstanceLifecycleConfigPtrOutput { return v.InstanceLifecycleConfig }).(V2FunctionInstanceLifecycleConfigPtrOutput)
 }
 
-// The instance type of the function. Valid values:
-// - **e1**: Elastic instance.
-// - **c1**: performance instance.
-// - **fc.gpu.tesla.1**: the T4 card type of the Tesla series of GPU instances.
-// - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
-// - **g1**: Same as **fc.gpu.tesla.1**.
 func (o V2FunctionOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2Function) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
 
-// List of layers.
-// > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
 func (o V2FunctionOutput) Layers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *V2Function) pulumi.StringArrayOutput { return v.Layers }).(pulumi.StringArrayOutput)
 }
 
-// memory size needed by function.
 func (o V2FunctionOutput) MemorySize() pulumi.IntOutput {
 	return o.ApplyT(func(v *V2Function) pulumi.IntOutput { return v.MemorySize }).(pulumi.IntOutput)
 }
 
-// runtime of function code.
 func (o V2FunctionOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2Function) pulumi.StringOutput { return v.Runtime }).(pulumi.StringOutput)
 }
 
-// The name of the function Service.
 func (o V2FunctionOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2Function) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// max running time of function.
 func (o V2FunctionOutput) Timeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *V2Function) pulumi.IntOutput { return v.Timeout }).(pulumi.IntOutput)
 }
@@ -751,6 +422,12 @@ func (o V2FunctionArrayOutput) ToV2FunctionArrayOutput() V2FunctionArrayOutput {
 
 func (o V2FunctionArrayOutput) ToV2FunctionArrayOutputWithContext(ctx context.Context) V2FunctionArrayOutput {
 	return o
+}
+
+func (o V2FunctionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*V2Function] {
+	return pulumix.Output[[]*V2Function]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o V2FunctionArrayOutput) Index(i pulumi.IntInput) V2FunctionOutput {
@@ -771,6 +448,12 @@ func (o V2FunctionMapOutput) ToV2FunctionMapOutput() V2FunctionMapOutput {
 
 func (o V2FunctionMapOutput) ToV2FunctionMapOutputWithContext(ctx context.Context) V2FunctionMapOutput {
 	return o
+}
+
+func (o V2FunctionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*V2Function] {
+	return pulumix.Output[map[string]*V2Function]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o V2FunctionMapOutput) MapIndex(k pulumi.StringInput) V2FunctionOutput {

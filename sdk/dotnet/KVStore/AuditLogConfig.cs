@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.KVStore
     /// <summary>
     /// Provides a Redis And Memcache (KVStore) Audit Log Config resource.
     /// 
-    /// &gt; **NOTE:** Available in v1.130.0+.
+    /// &gt; **NOTE:** Available since v1.130.0.
     /// 
     /// ## Example Usage
     /// 
@@ -26,10 +26,58 @@ namespace Pulumi.AliCloud.KVStore
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.KVStore.GetZones.Invoke();
+    /// 
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     {
+    ///         Status = "OK",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.KVStore.Instance("defaultInstance", new()
+    ///     {
+    ///         DbInstanceName = name,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         InstanceClass = "redis.master.large.default",
+    ///         InstanceType = "Redis",
+    ///         EngineVersion = "5.0",
+    ///         SecurityIps = new[]
+    ///         {
+    ///             "10.23.12.24",
+    ///         },
+    ///         Config = 
+    ///         {
+    ///             { "appendonly", "yes" },
+    ///             { "lazyfree-lazy-eviction", "yes" },
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///     });
+    /// 
     ///     var example = new AliCloud.KVStore.AuditLogConfig("example", new()
     ///     {
+    ///         InstanceId = defaultInstance.Id,
     ///         DbAudit = true,
-    ///         InstanceId = "r-abc123455",
     ///         Retention = 1,
     ///     });
     /// 

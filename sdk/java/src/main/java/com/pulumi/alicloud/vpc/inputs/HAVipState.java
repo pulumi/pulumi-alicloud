@@ -18,30 +18,62 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
 
     public static final HAVipState Empty = new HAVipState();
 
+    /**
+     * The elastic IP address (EIP) associated with the HAVIP.
+     * 
+     */
     @Import(name="associatedEipAddresses")
     private @Nullable Output<List<String>> associatedEipAddresses;
 
+    /**
+     * @return The elastic IP address (EIP) associated with the HAVIP.
+     * 
+     */
     public Optional<Output<List<String>>> associatedEipAddresses() {
         return Optional.ofNullable(this.associatedEipAddresses);
     }
 
+    /**
+     * The type of the instance with which the HAVIP is associated. Valid values:
+     * 
+     */
     @Import(name="associatedInstanceType")
     private @Nullable Output<String> associatedInstanceType;
 
+    /**
+     * @return The type of the instance with which the HAVIP is associated. Valid values:
+     * 
+     */
     public Optional<Output<String>> associatedInstanceType() {
         return Optional.ofNullable(this.associatedInstanceType);
     }
 
+    /**
+     * The ID of the instance with which the HAVIP is associated.
+     * 
+     */
     @Import(name="associatedInstances")
     private @Nullable Output<List<String>> associatedInstances;
 
+    /**
+     * @return The ID of the instance with which the HAVIP is associated.
+     * 
+     */
     public Optional<Output<List<String>>> associatedInstances() {
         return Optional.ofNullable(this.associatedInstances);
     }
 
+    /**
+     * The time when the HAVIP was created.
+     * 
+     */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
+    /**
+     * @return The time when the HAVIP was created.
+     * 
+     */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
     }
@@ -61,16 +93,32 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * The ID of the HAVIP.
+     * 
+     */
     @Import(name="haVipId")
     private @Nullable Output<String> haVipId;
 
+    /**
+     * @return The ID of the HAVIP.
+     * 
+     */
     public Optional<Output<String>> haVipId() {
         return Optional.ofNullable(this.haVipId);
     }
 
+    /**
+     * The name of the HAVIP.
+     * 
+     */
     @Import(name="haVipName")
     private @Nullable Output<String> haVipName;
 
+    /**
+     * @return The name of the HAVIP.
+     * 
+     */
     public Optional<Output<String>> haVipName() {
         return Optional.ofNullable(this.haVipName);
     }
@@ -113,16 +161,32 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.ipAddress);
     }
 
+    /**
+     * The ID of the active instance that is associated with the HAVIP.
+     * 
+     */
     @Import(name="masterInstanceId")
     private @Nullable Output<String> masterInstanceId;
 
+    /**
+     * @return The ID of the active instance that is associated with the HAVIP.
+     * 
+     */
     public Optional<Output<String>> masterInstanceId() {
         return Optional.ofNullable(this.masterInstanceId);
     }
 
+    /**
+     * The ID of the resource group to which the HAVIP belongs.
+     * 
+     */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
+    /**
+     * @return The ID of the resource group to which the HAVIP belongs.
+     * 
+     */
     public Optional<Output<String>> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
@@ -142,16 +206,32 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * The list of tags.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
+    /**
+     * @return The list of tags.
+     * 
+     */
     public Optional<Output<Map<String,Object>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * The ID of the VPC to which the HAVIP belongs.
+     * 
+     */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
+    /**
+     * @return The ID of the VPC to which the HAVIP belongs.
+     * 
+     */
     public Optional<Output<String>> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }
@@ -209,46 +289,106 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
             $ = new HAVipState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param associatedEipAddresses The elastic IP address (EIP) associated with the HAVIP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder associatedEipAddresses(@Nullable Output<List<String>> associatedEipAddresses) {
             $.associatedEipAddresses = associatedEipAddresses;
             return this;
         }
 
+        /**
+         * @param associatedEipAddresses The elastic IP address (EIP) associated with the HAVIP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder associatedEipAddresses(List<String> associatedEipAddresses) {
             return associatedEipAddresses(Output.of(associatedEipAddresses));
         }
 
+        /**
+         * @param associatedEipAddresses The elastic IP address (EIP) associated with the HAVIP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder associatedEipAddresses(String... associatedEipAddresses) {
             return associatedEipAddresses(List.of(associatedEipAddresses));
         }
 
+        /**
+         * @param associatedInstanceType The type of the instance with which the HAVIP is associated. Valid values:
+         * 
+         * @return builder
+         * 
+         */
         public Builder associatedInstanceType(@Nullable Output<String> associatedInstanceType) {
             $.associatedInstanceType = associatedInstanceType;
             return this;
         }
 
+        /**
+         * @param associatedInstanceType The type of the instance with which the HAVIP is associated. Valid values:
+         * 
+         * @return builder
+         * 
+         */
         public Builder associatedInstanceType(String associatedInstanceType) {
             return associatedInstanceType(Output.of(associatedInstanceType));
         }
 
+        /**
+         * @param associatedInstances The ID of the instance with which the HAVIP is associated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder associatedInstances(@Nullable Output<List<String>> associatedInstances) {
             $.associatedInstances = associatedInstances;
             return this;
         }
 
+        /**
+         * @param associatedInstances The ID of the instance with which the HAVIP is associated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder associatedInstances(List<String> associatedInstances) {
             return associatedInstances(Output.of(associatedInstances));
         }
 
+        /**
+         * @param associatedInstances The ID of the instance with which the HAVIP is associated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder associatedInstances(String... associatedInstances) {
             return associatedInstances(List.of(associatedInstances));
         }
 
+        /**
+         * @param createTime The time when the HAVIP was created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createTime(@Nullable Output<String> createTime) {
             $.createTime = createTime;
             return this;
         }
 
+        /**
+         * @param createTime The time when the HAVIP was created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
         }
@@ -274,20 +414,44 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        /**
+         * @param haVipId The ID of the HAVIP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder haVipId(@Nullable Output<String> haVipId) {
             $.haVipId = haVipId;
             return this;
         }
 
+        /**
+         * @param haVipId The ID of the HAVIP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder haVipId(String haVipId) {
             return haVipId(Output.of(haVipId));
         }
 
+        /**
+         * @param haVipName The name of the HAVIP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder haVipName(@Nullable Output<String> haVipName) {
             $.haVipName = haVipName;
             return this;
         }
 
+        /**
+         * @param haVipName The name of the HAVIP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder haVipName(String haVipName) {
             return haVipName(Output.of(haVipName));
         }
@@ -342,20 +506,44 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
             return ipAddress(Output.of(ipAddress));
         }
 
+        /**
+         * @param masterInstanceId The ID of the active instance that is associated with the HAVIP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder masterInstanceId(@Nullable Output<String> masterInstanceId) {
             $.masterInstanceId = masterInstanceId;
             return this;
         }
 
+        /**
+         * @param masterInstanceId The ID of the active instance that is associated with the HAVIP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder masterInstanceId(String masterInstanceId) {
             return masterInstanceId(Output.of(masterInstanceId));
         }
 
+        /**
+         * @param resourceGroupId The ID of the resource group to which the HAVIP belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
             $.resourceGroupId = resourceGroupId;
             return this;
         }
 
+        /**
+         * @param resourceGroupId The ID of the resource group to which the HAVIP belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
         }
@@ -381,20 +569,44 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
             return status(Output.of(status));
         }
 
+        /**
+         * @param tags The list of tags.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<Map<String,Object>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags The list of tags.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(Map<String,Object> tags) {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param vpcId The ID of the VPC to which the HAVIP belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(@Nullable Output<String> vpcId) {
             $.vpcId = vpcId;
             return this;
         }
 
+        /**
+         * @param vpcId The ID of the VPC to which the HAVIP belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(String vpcId) {
             return vpcId(Output.of(vpcId));
         }

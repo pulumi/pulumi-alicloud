@@ -42,36 +42,6 @@ class V2FunctionArgs:
                  timeout: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a V2Function resource.
-        :param pulumi.Input[str] function_name: function name.
-        :param pulumi.Input[str] handler: entry point of function.
-        :param pulumi.Input[str] runtime: runtime of function code.
-        :param pulumi.Input[str] service_name: The name of the function Service.
-        :param pulumi.Input[int] ca_port: The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
-        :param pulumi.Input['V2FunctionCodeArgs'] code: Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
-        :param pulumi.Input[str] code_checksum: crc64 of function code.
-        :param pulumi.Input[float] cpu: The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
-        :param pulumi.Input['V2FunctionCustomContainerConfigArgs'] custom_container_config: Custom-container runtime related function configuration. See `custom_container_config` below.
-        :param pulumi.Input['V2FunctionCustomDnsArgs'] custom_dns: Function custom DNS configuration. See `custom_dns` below.
-        :param pulumi.Input['V2FunctionCustomHealthCheckConfigArgs'] custom_health_check_config: Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
-        :param pulumi.Input['V2FunctionCustomRuntimeConfigArgs'] custom_runtime_config: Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
-        :param pulumi.Input[str] description: description of function.
-        :param pulumi.Input[int] disk_size: The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
-        :param pulumi.Input[Mapping[str, Any]] environment_variables: The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
-        :param pulumi.Input[int] gpu_memory_size: The GPU memory specification of the function, in MB, is a multiple of 1024MB.
-        :param pulumi.Input[int] initialization_timeout: max running time of initializer.
-        :param pulumi.Input[str] initializer: initializer entry point of function.
-        :param pulumi.Input[int] instance_concurrency: The maximum concurrency allowed for a single function instance.
-        :param pulumi.Input['V2FunctionInstanceLifecycleConfigArgs'] instance_lifecycle_config: Instance lifecycle configuration. See `instance_lifecycle_config` below.
-        :param pulumi.Input[str] instance_type: The instance type of the function. Valid values:
-               - **e1**: Elastic instance.
-               - **c1**: performance instance.
-               - **fc.gpu.tesla.1**: the T4 card type of the Tesla series of GPU instances.
-               - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
-               - **g1**: Same as **fc.gpu.tesla.1**.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] layers: List of layers.
-               > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
-        :param pulumi.Input[int] memory_size: memory size needed by function.
-        :param pulumi.Input[int] timeout: max running time of function.
         """
         pulumi.set(__self__, "function_name", function_name)
         pulumi.set(__self__, "handler", handler)
@@ -121,9 +91,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter(name="functionName")
     def function_name(self) -> pulumi.Input[str]:
-        """
-        function name.
-        """
         return pulumi.get(self, "function_name")
 
     @function_name.setter
@@ -133,9 +100,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter
     def handler(self) -> pulumi.Input[str]:
-        """
-        entry point of function.
-        """
         return pulumi.get(self, "handler")
 
     @handler.setter
@@ -145,9 +109,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter
     def runtime(self) -> pulumi.Input[str]:
-        """
-        runtime of function code.
-        """
         return pulumi.get(self, "runtime")
 
     @runtime.setter
@@ -157,9 +118,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
-        """
-        The name of the function Service.
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -169,9 +127,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter(name="caPort")
     def ca_port(self) -> Optional[pulumi.Input[int]]:
-        """
-        The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
-        """
         return pulumi.get(self, "ca_port")
 
     @ca_port.setter
@@ -181,9 +136,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter
     def code(self) -> Optional[pulumi.Input['V2FunctionCodeArgs']]:
-        """
-        Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
-        """
         return pulumi.get(self, "code")
 
     @code.setter
@@ -193,9 +145,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter(name="codeChecksum")
     def code_checksum(self) -> Optional[pulumi.Input[str]]:
-        """
-        crc64 of function code.
-        """
         return pulumi.get(self, "code_checksum")
 
     @code_checksum.setter
@@ -205,9 +154,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter
     def cpu(self) -> Optional[pulumi.Input[float]]:
-        """
-        The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
-        """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
@@ -217,9 +163,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter(name="customContainerConfig")
     def custom_container_config(self) -> Optional[pulumi.Input['V2FunctionCustomContainerConfigArgs']]:
-        """
-        Custom-container runtime related function configuration. See `custom_container_config` below.
-        """
         return pulumi.get(self, "custom_container_config")
 
     @custom_container_config.setter
@@ -229,9 +172,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter(name="customDns")
     def custom_dns(self) -> Optional[pulumi.Input['V2FunctionCustomDnsArgs']]:
-        """
-        Function custom DNS configuration. See `custom_dns` below.
-        """
         return pulumi.get(self, "custom_dns")
 
     @custom_dns.setter
@@ -241,9 +181,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter(name="customHealthCheckConfig")
     def custom_health_check_config(self) -> Optional[pulumi.Input['V2FunctionCustomHealthCheckConfigArgs']]:
-        """
-        Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
-        """
         return pulumi.get(self, "custom_health_check_config")
 
     @custom_health_check_config.setter
@@ -253,9 +190,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter(name="customRuntimeConfig")
     def custom_runtime_config(self) -> Optional[pulumi.Input['V2FunctionCustomRuntimeConfigArgs']]:
-        """
-        Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
-        """
         return pulumi.get(self, "custom_runtime_config")
 
     @custom_runtime_config.setter
@@ -265,9 +199,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        description of function.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -277,9 +208,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[pulumi.Input[int]]:
-        """
-        The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
-        """
         return pulumi.get(self, "disk_size")
 
     @disk_size.setter
@@ -289,9 +217,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter(name="environmentVariables")
     def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
-        """
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
@@ -301,9 +226,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter(name="gpuMemorySize")
     def gpu_memory_size(self) -> Optional[pulumi.Input[int]]:
-        """
-        The GPU memory specification of the function, in MB, is a multiple of 1024MB.
-        """
         return pulumi.get(self, "gpu_memory_size")
 
     @gpu_memory_size.setter
@@ -313,9 +235,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter(name="initializationTimeout")
     def initialization_timeout(self) -> Optional[pulumi.Input[int]]:
-        """
-        max running time of initializer.
-        """
         return pulumi.get(self, "initialization_timeout")
 
     @initialization_timeout.setter
@@ -325,9 +244,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter
     def initializer(self) -> Optional[pulumi.Input[str]]:
-        """
-        initializer entry point of function.
-        """
         return pulumi.get(self, "initializer")
 
     @initializer.setter
@@ -337,9 +253,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter(name="instanceConcurrency")
     def instance_concurrency(self) -> Optional[pulumi.Input[int]]:
-        """
-        The maximum concurrency allowed for a single function instance.
-        """
         return pulumi.get(self, "instance_concurrency")
 
     @instance_concurrency.setter
@@ -349,9 +262,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter(name="instanceLifecycleConfig")
     def instance_lifecycle_config(self) -> Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigArgs']]:
-        """
-        Instance lifecycle configuration. See `instance_lifecycle_config` below.
-        """
         return pulumi.get(self, "instance_lifecycle_config")
 
     @instance_lifecycle_config.setter
@@ -361,14 +271,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The instance type of the function. Valid values:
-        - **e1**: Elastic instance.
-        - **c1**: performance instance.
-        - **fc.gpu.tesla.1**: the T4 card type of the Tesla series of GPU instances.
-        - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
-        - **g1**: Same as **fc.gpu.tesla.1**.
-        """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
@@ -378,10 +280,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter
     def layers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of layers.
-        > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
-        """
         return pulumi.get(self, "layers")
 
     @layers.setter
@@ -391,9 +289,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter(name="memorySize")
     def memory_size(self) -> Optional[pulumi.Input[int]]:
-        """
-        memory size needed by function.
-        """
         return pulumi.get(self, "memory_size")
 
     @memory_size.setter
@@ -403,9 +298,6 @@ class V2FunctionArgs:
     @property
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[int]]:
-        """
-        max running time of function.
-        """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
@@ -443,37 +335,6 @@ class _V2FunctionState:
                  timeout: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering V2Function resources.
-        :param pulumi.Input[int] ca_port: The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
-        :param pulumi.Input['V2FunctionCodeArgs'] code: Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
-        :param pulumi.Input[str] code_checksum: crc64 of function code.
-        :param pulumi.Input[float] cpu: The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
-        :param pulumi.Input[str] create_time: create time of function.
-        :param pulumi.Input['V2FunctionCustomContainerConfigArgs'] custom_container_config: Custom-container runtime related function configuration. See `custom_container_config` below.
-        :param pulumi.Input['V2FunctionCustomDnsArgs'] custom_dns: Function custom DNS configuration. See `custom_dns` below.
-        :param pulumi.Input['V2FunctionCustomHealthCheckConfigArgs'] custom_health_check_config: Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
-        :param pulumi.Input['V2FunctionCustomRuntimeConfigArgs'] custom_runtime_config: Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
-        :param pulumi.Input[str] description: description of function.
-        :param pulumi.Input[int] disk_size: The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
-        :param pulumi.Input[Mapping[str, Any]] environment_variables: The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
-        :param pulumi.Input[str] function_name: function name.
-        :param pulumi.Input[int] gpu_memory_size: The GPU memory specification of the function, in MB, is a multiple of 1024MB.
-        :param pulumi.Input[str] handler: entry point of function.
-        :param pulumi.Input[int] initialization_timeout: max running time of initializer.
-        :param pulumi.Input[str] initializer: initializer entry point of function.
-        :param pulumi.Input[int] instance_concurrency: The maximum concurrency allowed for a single function instance.
-        :param pulumi.Input['V2FunctionInstanceLifecycleConfigArgs'] instance_lifecycle_config: Instance lifecycle configuration. See `instance_lifecycle_config` below.
-        :param pulumi.Input[str] instance_type: The instance type of the function. Valid values:
-               - **e1**: Elastic instance.
-               - **c1**: performance instance.
-               - **fc.gpu.tesla.1**: the T4 card type of the Tesla series of GPU instances.
-               - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
-               - **g1**: Same as **fc.gpu.tesla.1**.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] layers: List of layers.
-               > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
-        :param pulumi.Input[int] memory_size: memory size needed by function.
-        :param pulumi.Input[str] runtime: runtime of function code.
-        :param pulumi.Input[str] service_name: The name of the function Service.
-        :param pulumi.Input[int] timeout: max running time of function.
         """
         if ca_port is not None:
             pulumi.set(__self__, "ca_port", ca_port)
@@ -529,9 +390,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter(name="caPort")
     def ca_port(self) -> Optional[pulumi.Input[int]]:
-        """
-        The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
-        """
         return pulumi.get(self, "ca_port")
 
     @ca_port.setter
@@ -541,9 +399,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter
     def code(self) -> Optional[pulumi.Input['V2FunctionCodeArgs']]:
-        """
-        Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
-        """
         return pulumi.get(self, "code")
 
     @code.setter
@@ -553,9 +408,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter(name="codeChecksum")
     def code_checksum(self) -> Optional[pulumi.Input[str]]:
-        """
-        crc64 of function code.
-        """
         return pulumi.get(self, "code_checksum")
 
     @code_checksum.setter
@@ -565,9 +417,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter
     def cpu(self) -> Optional[pulumi.Input[float]]:
-        """
-        The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
-        """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
@@ -577,9 +426,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        create time of function.
-        """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -589,9 +435,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter(name="customContainerConfig")
     def custom_container_config(self) -> Optional[pulumi.Input['V2FunctionCustomContainerConfigArgs']]:
-        """
-        Custom-container runtime related function configuration. See `custom_container_config` below.
-        """
         return pulumi.get(self, "custom_container_config")
 
     @custom_container_config.setter
@@ -601,9 +444,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter(name="customDns")
     def custom_dns(self) -> Optional[pulumi.Input['V2FunctionCustomDnsArgs']]:
-        """
-        Function custom DNS configuration. See `custom_dns` below.
-        """
         return pulumi.get(self, "custom_dns")
 
     @custom_dns.setter
@@ -613,9 +453,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter(name="customHealthCheckConfig")
     def custom_health_check_config(self) -> Optional[pulumi.Input['V2FunctionCustomHealthCheckConfigArgs']]:
-        """
-        Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
-        """
         return pulumi.get(self, "custom_health_check_config")
 
     @custom_health_check_config.setter
@@ -625,9 +462,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter(name="customRuntimeConfig")
     def custom_runtime_config(self) -> Optional[pulumi.Input['V2FunctionCustomRuntimeConfigArgs']]:
-        """
-        Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
-        """
         return pulumi.get(self, "custom_runtime_config")
 
     @custom_runtime_config.setter
@@ -637,9 +471,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        description of function.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -649,9 +480,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[pulumi.Input[int]]:
-        """
-        The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
-        """
         return pulumi.get(self, "disk_size")
 
     @disk_size.setter
@@ -661,9 +489,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter(name="environmentVariables")
     def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
-        """
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
@@ -673,9 +498,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter(name="functionName")
     def function_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        function name.
-        """
         return pulumi.get(self, "function_name")
 
     @function_name.setter
@@ -685,9 +507,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter(name="gpuMemorySize")
     def gpu_memory_size(self) -> Optional[pulumi.Input[int]]:
-        """
-        The GPU memory specification of the function, in MB, is a multiple of 1024MB.
-        """
         return pulumi.get(self, "gpu_memory_size")
 
     @gpu_memory_size.setter
@@ -697,9 +516,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter
     def handler(self) -> Optional[pulumi.Input[str]]:
-        """
-        entry point of function.
-        """
         return pulumi.get(self, "handler")
 
     @handler.setter
@@ -709,9 +525,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter(name="initializationTimeout")
     def initialization_timeout(self) -> Optional[pulumi.Input[int]]:
-        """
-        max running time of initializer.
-        """
         return pulumi.get(self, "initialization_timeout")
 
     @initialization_timeout.setter
@@ -721,9 +534,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter
     def initializer(self) -> Optional[pulumi.Input[str]]:
-        """
-        initializer entry point of function.
-        """
         return pulumi.get(self, "initializer")
 
     @initializer.setter
@@ -733,9 +543,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter(name="instanceConcurrency")
     def instance_concurrency(self) -> Optional[pulumi.Input[int]]:
-        """
-        The maximum concurrency allowed for a single function instance.
-        """
         return pulumi.get(self, "instance_concurrency")
 
     @instance_concurrency.setter
@@ -745,9 +552,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter(name="instanceLifecycleConfig")
     def instance_lifecycle_config(self) -> Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigArgs']]:
-        """
-        Instance lifecycle configuration. See `instance_lifecycle_config` below.
-        """
         return pulumi.get(self, "instance_lifecycle_config")
 
     @instance_lifecycle_config.setter
@@ -757,14 +561,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The instance type of the function. Valid values:
-        - **e1**: Elastic instance.
-        - **c1**: performance instance.
-        - **fc.gpu.tesla.1**: the T4 card type of the Tesla series of GPU instances.
-        - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
-        - **g1**: Same as **fc.gpu.tesla.1**.
-        """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
@@ -774,10 +570,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter
     def layers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of layers.
-        > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
-        """
         return pulumi.get(self, "layers")
 
     @layers.setter
@@ -787,9 +579,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter(name="memorySize")
     def memory_size(self) -> Optional[pulumi.Input[int]]:
-        """
-        memory size needed by function.
-        """
         return pulumi.get(self, "memory_size")
 
     @memory_size.setter
@@ -799,9 +588,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter
     def runtime(self) -> Optional[pulumi.Input[str]]:
-        """
-        runtime of function code.
-        """
         return pulumi.get(self, "runtime")
 
     @runtime.setter
@@ -811,9 +597,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the function Service.
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -823,9 +606,6 @@ class _V2FunctionState:
     @property
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[int]]:
-        """
-        max running time of function.
-        """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
@@ -864,156 +644,9 @@ class V2Function(pulumi.CustomResource):
                  timeout: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Provides a FCV2 Function resource. Function is the unit of system scheduling and operation. Functions must be subordinate to services. All functions under the same service share some identical settings, such as service authorization and log configuration.
-
-        For information about FCV2 Function and how to use it, see [What is Function](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-fc-function).
-
-        > **NOTE:** Available since v1.208.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_project = alicloud.log.Project("defaultProject", description=name)
-        default_store = alicloud.log.Store("defaultStore",
-            project=default_project.name,
-            retention_period=3000,
-            shard_count=1)
-        default_role = alicloud.ram.Role("defaultRole",
-            document=\"\"\"  {
-              "Statement": [
-                {
-                  "Action": "sts:AssumeRole",
-                  "Effect": "Allow",
-                  "Principal": {
-                    "Service": [
-                      "fc.aliyuncs.com"
-                    ]
-                  }
-                }
-              ],
-              "Version": "1"
-          }
-        \"\"\",
-            description=name,
-            force=True)
-        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
-            role_name=default_role.name,
-            policy_name="AliyunLogFullAccess",
-            policy_type="System")
-        default_service = alicloud.fc.Service("defaultService",
-            description=name,
-            log_config=alicloud.fc.ServiceLogConfigArgs(
-                project=default_project.name,
-                logstore=default_store.name,
-            ),
-            role=default_role.arn)
-        default_v2_function = alicloud.fc.V2Function("defaultV2Function",
-            function_name=name,
-            memory_size=1024,
-            runtime="custom.debian10",
-            description=name,
-            service_name=default_service.name,
-            initializer="index.initializer",
-            initialization_timeout=10,
-            timeout=60,
-            handler="index.handler",
-            instance_type="e1",
-            instance_lifecycle_config=alicloud.fc.V2FunctionInstanceLifecycleConfigArgs(
-                pre_freeze=alicloud.fc.V2FunctionInstanceLifecycleConfigPreFreezeArgs(
-                    handler="index.prefreeze",
-                    timeout=30,
-                ),
-                pre_stop=alicloud.fc.V2FunctionInstanceLifecycleConfigPreStopArgs(
-                    handler="index.prestop",
-                    timeout=30,
-                ),
-            ),
-            code=alicloud.fc.V2FunctionCodeArgs(
-                oss_bucket_name="code-sample-cn-hangzhou",
-                oss_object_name="quick-start-sample-codes/quick-start-sample-codes-nodejs/RocketMQ-producer-nodejs14-event/code.zip",
-            ),
-            custom_dns=alicloud.fc.V2FunctionCustomDnsArgs(
-                name_servers=["223.5.5.5"],
-                searches=["mydomain.com"],
-                dns_options=[alicloud.fc.V2FunctionCustomDnsDnsOptionArgs(
-                    name=name,
-                    value="1",
-                )],
-            ),
-            disk_size=512,
-            instance_concurrency=10,
-            layers=[
-                "d3fc5de8d120687be2bfab761518d5de#Nodejs-Aliyun-SDK#2",
-                "d3fc5de8d120687be2bfab761518d5de#Python39#2",
-            ],
-            cpu=1,
-            custom_health_check_config=alicloud.fc.V2FunctionCustomHealthCheckConfigArgs(
-                http_get_url="/healthcheck",
-                initial_delay_seconds=3,
-                period_seconds=3,
-                timeout_seconds=3,
-                failure_threshold=1,
-                success_threshold=1,
-            ),
-            ca_port=9000,
-            custom_runtime_config=alicloud.fc.V2FunctionCustomRuntimeConfigArgs(
-                commands=["npm"],
-                args=[
-                    "run",
-                    "start",
-                ],
-            ))
-        ```
-
-        ## Import
-
-        FCV2 Function can be imported using the id, e.g.
-
-        ```sh
-         $ pulumi import alicloud:fc/v2Function:V2Function example <service_name>:<function_name>
-        ```
-
+        Create a V2Function resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] ca_port: The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
-        :param pulumi.Input[pulumi.InputType['V2FunctionCodeArgs']] code: Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
-        :param pulumi.Input[str] code_checksum: crc64 of function code.
-        :param pulumi.Input[float] cpu: The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
-        :param pulumi.Input[pulumi.InputType['V2FunctionCustomContainerConfigArgs']] custom_container_config: Custom-container runtime related function configuration. See `custom_container_config` below.
-        :param pulumi.Input[pulumi.InputType['V2FunctionCustomDnsArgs']] custom_dns: Function custom DNS configuration. See `custom_dns` below.
-        :param pulumi.Input[pulumi.InputType['V2FunctionCustomHealthCheckConfigArgs']] custom_health_check_config: Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
-        :param pulumi.Input[pulumi.InputType['V2FunctionCustomRuntimeConfigArgs']] custom_runtime_config: Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
-        :param pulumi.Input[str] description: description of function.
-        :param pulumi.Input[int] disk_size: The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
-        :param pulumi.Input[Mapping[str, Any]] environment_variables: The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
-        :param pulumi.Input[str] function_name: function name.
-        :param pulumi.Input[int] gpu_memory_size: The GPU memory specification of the function, in MB, is a multiple of 1024MB.
-        :param pulumi.Input[str] handler: entry point of function.
-        :param pulumi.Input[int] initialization_timeout: max running time of initializer.
-        :param pulumi.Input[str] initializer: initializer entry point of function.
-        :param pulumi.Input[int] instance_concurrency: The maximum concurrency allowed for a single function instance.
-        :param pulumi.Input[pulumi.InputType['V2FunctionInstanceLifecycleConfigArgs']] instance_lifecycle_config: Instance lifecycle configuration. See `instance_lifecycle_config` below.
-        :param pulumi.Input[str] instance_type: The instance type of the function. Valid values:
-               - **e1**: Elastic instance.
-               - **c1**: performance instance.
-               - **fc.gpu.tesla.1**: the T4 card type of the Tesla series of GPU instances.
-               - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
-               - **g1**: Same as **fc.gpu.tesla.1**.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] layers: List of layers.
-               > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
-        :param pulumi.Input[int] memory_size: memory size needed by function.
-        :param pulumi.Input[str] runtime: runtime of function code.
-        :param pulumi.Input[str] service_name: The name of the function Service.
-        :param pulumi.Input[int] timeout: max running time of function.
         """
         ...
     @overload
@@ -1022,124 +655,7 @@ class V2Function(pulumi.CustomResource):
                  args: V2FunctionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a FCV2 Function resource. Function is the unit of system scheduling and operation. Functions must be subordinate to services. All functions under the same service share some identical settings, such as service authorization and log configuration.
-
-        For information about FCV2 Function and how to use it, see [What is Function](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-fc-function).
-
-        > **NOTE:** Available since v1.208.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_project = alicloud.log.Project("defaultProject", description=name)
-        default_store = alicloud.log.Store("defaultStore",
-            project=default_project.name,
-            retention_period=3000,
-            shard_count=1)
-        default_role = alicloud.ram.Role("defaultRole",
-            document=\"\"\"  {
-              "Statement": [
-                {
-                  "Action": "sts:AssumeRole",
-                  "Effect": "Allow",
-                  "Principal": {
-                    "Service": [
-                      "fc.aliyuncs.com"
-                    ]
-                  }
-                }
-              ],
-              "Version": "1"
-          }
-        \"\"\",
-            description=name,
-            force=True)
-        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
-            role_name=default_role.name,
-            policy_name="AliyunLogFullAccess",
-            policy_type="System")
-        default_service = alicloud.fc.Service("defaultService",
-            description=name,
-            log_config=alicloud.fc.ServiceLogConfigArgs(
-                project=default_project.name,
-                logstore=default_store.name,
-            ),
-            role=default_role.arn)
-        default_v2_function = alicloud.fc.V2Function("defaultV2Function",
-            function_name=name,
-            memory_size=1024,
-            runtime="custom.debian10",
-            description=name,
-            service_name=default_service.name,
-            initializer="index.initializer",
-            initialization_timeout=10,
-            timeout=60,
-            handler="index.handler",
-            instance_type="e1",
-            instance_lifecycle_config=alicloud.fc.V2FunctionInstanceLifecycleConfigArgs(
-                pre_freeze=alicloud.fc.V2FunctionInstanceLifecycleConfigPreFreezeArgs(
-                    handler="index.prefreeze",
-                    timeout=30,
-                ),
-                pre_stop=alicloud.fc.V2FunctionInstanceLifecycleConfigPreStopArgs(
-                    handler="index.prestop",
-                    timeout=30,
-                ),
-            ),
-            code=alicloud.fc.V2FunctionCodeArgs(
-                oss_bucket_name="code-sample-cn-hangzhou",
-                oss_object_name="quick-start-sample-codes/quick-start-sample-codes-nodejs/RocketMQ-producer-nodejs14-event/code.zip",
-            ),
-            custom_dns=alicloud.fc.V2FunctionCustomDnsArgs(
-                name_servers=["223.5.5.5"],
-                searches=["mydomain.com"],
-                dns_options=[alicloud.fc.V2FunctionCustomDnsDnsOptionArgs(
-                    name=name,
-                    value="1",
-                )],
-            ),
-            disk_size=512,
-            instance_concurrency=10,
-            layers=[
-                "d3fc5de8d120687be2bfab761518d5de#Nodejs-Aliyun-SDK#2",
-                "d3fc5de8d120687be2bfab761518d5de#Python39#2",
-            ],
-            cpu=1,
-            custom_health_check_config=alicloud.fc.V2FunctionCustomHealthCheckConfigArgs(
-                http_get_url="/healthcheck",
-                initial_delay_seconds=3,
-                period_seconds=3,
-                timeout_seconds=3,
-                failure_threshold=1,
-                success_threshold=1,
-            ),
-            ca_port=9000,
-            custom_runtime_config=alicloud.fc.V2FunctionCustomRuntimeConfigArgs(
-                commands=["npm"],
-                args=[
-                    "run",
-                    "start",
-                ],
-            ))
-        ```
-
-        ## Import
-
-        FCV2 Function can be imported using the id, e.g.
-
-        ```sh
-         $ pulumi import alicloud:fc/v2Function:V2Function example <service_name>:<function_name>
-        ```
-
+        Create a V2Function resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param V2FunctionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1263,37 +779,6 @@ class V2Function(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] ca_port: The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
-        :param pulumi.Input[pulumi.InputType['V2FunctionCodeArgs']] code: Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
-        :param pulumi.Input[str] code_checksum: crc64 of function code.
-        :param pulumi.Input[float] cpu: The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
-        :param pulumi.Input[str] create_time: create time of function.
-        :param pulumi.Input[pulumi.InputType['V2FunctionCustomContainerConfigArgs']] custom_container_config: Custom-container runtime related function configuration. See `custom_container_config` below.
-        :param pulumi.Input[pulumi.InputType['V2FunctionCustomDnsArgs']] custom_dns: Function custom DNS configuration. See `custom_dns` below.
-        :param pulumi.Input[pulumi.InputType['V2FunctionCustomHealthCheckConfigArgs']] custom_health_check_config: Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
-        :param pulumi.Input[pulumi.InputType['V2FunctionCustomRuntimeConfigArgs']] custom_runtime_config: Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
-        :param pulumi.Input[str] description: description of function.
-        :param pulumi.Input[int] disk_size: The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
-        :param pulumi.Input[Mapping[str, Any]] environment_variables: The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
-        :param pulumi.Input[str] function_name: function name.
-        :param pulumi.Input[int] gpu_memory_size: The GPU memory specification of the function, in MB, is a multiple of 1024MB.
-        :param pulumi.Input[str] handler: entry point of function.
-        :param pulumi.Input[int] initialization_timeout: max running time of initializer.
-        :param pulumi.Input[str] initializer: initializer entry point of function.
-        :param pulumi.Input[int] instance_concurrency: The maximum concurrency allowed for a single function instance.
-        :param pulumi.Input[pulumi.InputType['V2FunctionInstanceLifecycleConfigArgs']] instance_lifecycle_config: Instance lifecycle configuration. See `instance_lifecycle_config` below.
-        :param pulumi.Input[str] instance_type: The instance type of the function. Valid values:
-               - **e1**: Elastic instance.
-               - **c1**: performance instance.
-               - **fc.gpu.tesla.1**: the T4 card type of the Tesla series of GPU instances.
-               - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
-               - **g1**: Same as **fc.gpu.tesla.1**.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] layers: List of layers.
-               > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
-        :param pulumi.Input[int] memory_size: memory size needed by function.
-        :param pulumi.Input[str] runtime: runtime of function code.
-        :param pulumi.Input[str] service_name: The name of the function Service.
-        :param pulumi.Input[int] timeout: max running time of function.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1329,206 +814,125 @@ class V2Function(pulumi.CustomResource):
     @property
     @pulumi.getter(name="caPort")
     def ca_port(self) -> pulumi.Output[int]:
-        """
-        The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
-        """
         return pulumi.get(self, "ca_port")
 
     @property
     @pulumi.getter
     def code(self) -> pulumi.Output[Optional['outputs.V2FunctionCode']]:
-        """
-        Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
-        """
         return pulumi.get(self, "code")
 
     @property
     @pulumi.getter(name="codeChecksum")
     def code_checksum(self) -> pulumi.Output[str]:
-        """
-        crc64 of function code.
-        """
         return pulumi.get(self, "code_checksum")
 
     @property
     @pulumi.getter
     def cpu(self) -> pulumi.Output[Optional[float]]:
-        """
-        The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
-        """
         return pulumi.get(self, "cpu")
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
-        """
-        create time of function.
-        """
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="customContainerConfig")
     def custom_container_config(self) -> pulumi.Output[Optional['outputs.V2FunctionCustomContainerConfig']]:
-        """
-        Custom-container runtime related function configuration. See `custom_container_config` below.
-        """
         return pulumi.get(self, "custom_container_config")
 
     @property
     @pulumi.getter(name="customDns")
     def custom_dns(self) -> pulumi.Output[Optional['outputs.V2FunctionCustomDns']]:
-        """
-        Function custom DNS configuration. See `custom_dns` below.
-        """
         return pulumi.get(self, "custom_dns")
 
     @property
     @pulumi.getter(name="customHealthCheckConfig")
     def custom_health_check_config(self) -> pulumi.Output[Optional['outputs.V2FunctionCustomHealthCheckConfig']]:
-        """
-        Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
-        """
         return pulumi.get(self, "custom_health_check_config")
 
     @property
     @pulumi.getter(name="customRuntimeConfig")
     def custom_runtime_config(self) -> pulumi.Output[Optional['outputs.V2FunctionCustomRuntimeConfig']]:
-        """
-        Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
-        """
         return pulumi.get(self, "custom_runtime_config")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        description of function.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> pulumi.Output[Optional[int]]:
-        """
-        The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
-        """
         return pulumi.get(self, "disk_size")
 
     @property
     @pulumi.getter(name="environmentVariables")
     def environment_variables(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
-        """
-        The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
-        """
         return pulumi.get(self, "environment_variables")
 
     @property
     @pulumi.getter(name="functionName")
     def function_name(self) -> pulumi.Output[str]:
-        """
-        function name.
-        """
         return pulumi.get(self, "function_name")
 
     @property
     @pulumi.getter(name="gpuMemorySize")
     def gpu_memory_size(self) -> pulumi.Output[Optional[int]]:
-        """
-        The GPU memory specification of the function, in MB, is a multiple of 1024MB.
-        """
         return pulumi.get(self, "gpu_memory_size")
 
     @property
     @pulumi.getter
     def handler(self) -> pulumi.Output[str]:
-        """
-        entry point of function.
-        """
         return pulumi.get(self, "handler")
 
     @property
     @pulumi.getter(name="initializationTimeout")
     def initialization_timeout(self) -> pulumi.Output[int]:
-        """
-        max running time of initializer.
-        """
         return pulumi.get(self, "initialization_timeout")
 
     @property
     @pulumi.getter
     def initializer(self) -> pulumi.Output[Optional[str]]:
-        """
-        initializer entry point of function.
-        """
         return pulumi.get(self, "initializer")
 
     @property
     @pulumi.getter(name="instanceConcurrency")
     def instance_concurrency(self) -> pulumi.Output[int]:
-        """
-        The maximum concurrency allowed for a single function instance.
-        """
         return pulumi.get(self, "instance_concurrency")
 
     @property
     @pulumi.getter(name="instanceLifecycleConfig")
     def instance_lifecycle_config(self) -> pulumi.Output[Optional['outputs.V2FunctionInstanceLifecycleConfig']]:
-        """
-        Instance lifecycle configuration. See `instance_lifecycle_config` below.
-        """
         return pulumi.get(self, "instance_lifecycle_config")
 
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Output[str]:
-        """
-        The instance type of the function. Valid values:
-        - **e1**: Elastic instance.
-        - **c1**: performance instance.
-        - **fc.gpu.tesla.1**: the T4 card type of the Tesla series of GPU instances.
-        - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
-        - **g1**: Same as **fc.gpu.tesla.1**.
-        """
         return pulumi.get(self, "instance_type")
 
     @property
     @pulumi.getter
     def layers(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        List of layers.
-        > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
-        """
         return pulumi.get(self, "layers")
 
     @property
     @pulumi.getter(name="memorySize")
     def memory_size(self) -> pulumi.Output[int]:
-        """
-        memory size needed by function.
-        """
         return pulumi.get(self, "memory_size")
 
     @property
     @pulumi.getter
     def runtime(self) -> pulumi.Output[str]:
-        """
-        runtime of function code.
-        """
         return pulumi.get(self, "runtime")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
-        """
-        The name of the function Service.
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def timeout(self) -> pulumi.Output[int]:
-        """
-        max running time of function.
-        """
         return pulumi.get(self, "timeout")
 

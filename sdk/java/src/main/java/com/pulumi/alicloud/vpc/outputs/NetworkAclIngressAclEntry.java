@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworkAclIngressAclEntry {
     /**
-     * @return The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * @return Description of the inbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     private @Nullable String description;
     /**
-     * @return Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * @return The name of the inbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     private @Nullable String networkAclEntryName;
@@ -25,24 +25,16 @@ public final class NetworkAclIngressAclEntry {
      * @return Authorization policy. Value:
      * - accept: Allow.
      * - drop: Refused.
-     * - accept: Allow.
-     * - drop: Refused.
      * 
      */
     private @Nullable String policy;
     /**
-     * @return The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+     * @return The source port range of the inbound rule.When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
      * 
      */
     private @Nullable String port;
     /**
      * @return The protocol type. Value:
-     * - icmp: Network Control Message Protocol.
-     * - gre: Generic Routing Encapsulation Protocol.
-     * - tcp: Transmission Control Protocol.
-     * - udp: User Datagram Protocol.
-     * - all: Supports all protocols.
-     * 
      * - icmp: Network Control Message Protocol.
      * - gre: Generic Routing Encapsulation Protocol.
      * - tcp: Transmission Control Protocol.
@@ -59,14 +51,14 @@ public final class NetworkAclIngressAclEntry {
 
     private NetworkAclIngressAclEntry() {}
     /**
-     * @return The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * @return Description of the inbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * @return The name of the inbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     public Optional<String> networkAclEntryName() {
@@ -76,15 +68,13 @@ public final class NetworkAclIngressAclEntry {
      * @return Authorization policy. Value:
      * - accept: Allow.
      * - drop: Refused.
-     * - accept: Allow.
-     * - drop: Refused.
      * 
      */
     public Optional<String> policy() {
         return Optional.ofNullable(this.policy);
     }
     /**
-     * @return The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+     * @return The source port range of the inbound rule.When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
      * 
      */
     public Optional<String> port() {
@@ -92,12 +82,6 @@ public final class NetworkAclIngressAclEntry {
     }
     /**
      * @return The protocol type. Value:
-     * - icmp: Network Control Message Protocol.
-     * - gre: Generic Routing Encapsulation Protocol.
-     * - tcp: Transmission Control Protocol.
-     * - udp: User Datagram Protocol.
-     * - all: Supports all protocols.
-     * 
      * - icmp: Network Control Message Protocol.
      * - gre: Generic Routing Encapsulation Protocol.
      * - tcp: Transmission Control Protocol.

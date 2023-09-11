@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/describe-db-resource-group)
@@ -120,6 +121,12 @@ func (o GetResourceGroupsResultOutput) ToGetResourceGroupsResultOutput() GetReso
 
 func (o GetResourceGroupsResultOutput) ToGetResourceGroupsResultOutputWithContext(ctx context.Context) GetResourceGroupsResultOutput {
 	return o
+}
+
+func (o GetResourceGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceGroupsResult] {
+	return pulumix.Output[GetResourceGroupsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // DB cluster id.

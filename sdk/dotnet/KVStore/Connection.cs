@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.KVStore
     /// <summary>
     /// Operate the public network ip of the specified resource. How to use it, see [What is Resource Alicloud KVStore Connection](https://www.alibabacloud.com/help/doc-detail/125795.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.101.0+.
+    /// &gt; **NOTE:** Available since v1.101.0.
     /// 
     /// ## Example Usage
     /// 
@@ -26,10 +26,58 @@ namespace Pulumi.AliCloud.KVStore
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.KVStore.Connection("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.KVStore.GetZones.Invoke();
+    /// 
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
-    ///         ConnectionStringPrefix = "allocatetestupdate",
-    ///         InstanceId = "r-abc123456",
+    ///         Status = "OK",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.KVStore.Instance("defaultInstance", new()
+    ///     {
+    ///         DbInstanceName = name,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         InstanceClass = "redis.master.large.default",
+    ///         InstanceType = "Redis",
+    ///         EngineVersion = "5.0",
+    ///         SecurityIps = new[]
+    ///         {
+    ///             "10.23.12.24",
+    ///         },
+    ///         Config = 
+    ///         {
+    ///             { "appendonly", "yes" },
+    ///             { "lazyfree-lazy-eviction", "yes" },
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultConnection = new AliCloud.KVStore.Connection("defaultConnection", new()
+    ///     {
+    ///         ConnectionStringPrefix = "exampleconnection",
+    ///         InstanceId = defaultInstance.Id,
     ///         Port = "6370",
     ///     });
     /// 

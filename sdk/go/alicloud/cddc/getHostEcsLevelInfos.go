@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cddc Host Ecs Level Infos of the current Alibaba Cloud user.
@@ -94,6 +95,12 @@ func (o GetHostEcsLevelInfosResultOutput) ToGetHostEcsLevelInfosResultOutput() G
 
 func (o GetHostEcsLevelInfosResultOutput) ToGetHostEcsLevelInfosResultOutputWithContext(ctx context.Context) GetHostEcsLevelInfosResultOutput {
 	return o
+}
+
+func (o GetHostEcsLevelInfosResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetHostEcsLevelInfosResult] {
+	return pulumix.Output[GetHostEcsLevelInfosResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHostEcsLevelInfosResultOutput) DbType() pulumi.StringOutput {

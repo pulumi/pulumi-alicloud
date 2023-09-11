@@ -19,9 +19,9 @@ class VpdArgs:
                  resource_group_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Vpd resource.
-        :param pulumi.Input[str] cidr: CIDR network segment
+        :param pulumi.Input[str] cidr: CIDR network segment.
         :param pulumi.Input[str] vpd_name: The Name of the VPD.
-        :param pulumi.Input[str] resource_group_id: The Resource group id
+        :param pulumi.Input[str] resource_group_id: The Resource group id.
         """
         pulumi.set(__self__, "cidr", cidr)
         pulumi.set(__self__, "vpd_name", vpd_name)
@@ -32,7 +32,7 @@ class VpdArgs:
     @pulumi.getter
     def cidr(self) -> pulumi.Input[str]:
         """
-        CIDR network segment
+        CIDR network segment.
         """
         return pulumi.get(self, "cidr")
 
@@ -56,7 +56,7 @@ class VpdArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Resource group id
+        The Resource group id.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -76,10 +76,10 @@ class _VpdState:
                  vpd_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Vpd resources.
-        :param pulumi.Input[str] cidr: CIDR network segment
+        :param pulumi.Input[str] cidr: CIDR network segment.
         :param pulumi.Input[str] create_time: The creation time of the resource
         :param pulumi.Input[str] gmt_modified: Modification time
-        :param pulumi.Input[str] resource_group_id: The Resource group id
+        :param pulumi.Input[str] resource_group_id: The Resource group id.
         :param pulumi.Input[str] status: The Vpd status.
         :param pulumi.Input[str] vpd_name: The Name of the VPD.
         """
@@ -100,7 +100,7 @@ class _VpdState:
     @pulumi.getter
     def cidr(self) -> Optional[pulumi.Input[str]]:
         """
-        CIDR network segment
+        CIDR network segment.
         """
         return pulumi.get(self, "cidr")
 
@@ -136,7 +136,7 @@ class _VpdState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Resource group id
+        The Resource group id.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -181,9 +181,9 @@ class Vpd(pulumi.CustomResource):
         """
         Provides a Eflo Vpd resource.
 
-        For information about Eflo Vpd and how to use it, see [What is Vpd](https://help.aliyun.com/document_detail/604976.html).
+        For information about Eflo Vpd and how to use it, see [What is Vpd](https://www.alibabacloud.com/help/en/pai/user-guide/overview-of-intelligent-computing-lingjun).
 
-        > **NOTE:** Available in v1.201.0+.
+        > **NOTE:** Available since v1.201.0.
 
         ## Example Usage
 
@@ -193,9 +193,15 @@ class Vpd(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.eflo.Vpd("default",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_vpd = alicloud.eflo.Vpd("defaultVpd",
             cidr="10.0.0.0/8",
-            vpd_name="RMC-Terraform-Test")
+            vpd_name=name,
+            resource_group_id=default_resource_groups.groups[0].id)
         ```
 
         ## Import
@@ -208,8 +214,8 @@ class Vpd(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cidr: CIDR network segment
-        :param pulumi.Input[str] resource_group_id: The Resource group id
+        :param pulumi.Input[str] cidr: CIDR network segment.
+        :param pulumi.Input[str] resource_group_id: The Resource group id.
         :param pulumi.Input[str] vpd_name: The Name of the VPD.
         """
         ...
@@ -221,9 +227,9 @@ class Vpd(pulumi.CustomResource):
         """
         Provides a Eflo Vpd resource.
 
-        For information about Eflo Vpd and how to use it, see [What is Vpd](https://help.aliyun.com/document_detail/604976.html).
+        For information about Eflo Vpd and how to use it, see [What is Vpd](https://www.alibabacloud.com/help/en/pai/user-guide/overview-of-intelligent-computing-lingjun).
 
-        > **NOTE:** Available in v1.201.0+.
+        > **NOTE:** Available since v1.201.0.
 
         ## Example Usage
 
@@ -233,9 +239,15 @@ class Vpd(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.eflo.Vpd("default",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_vpd = alicloud.eflo.Vpd("defaultVpd",
             cidr="10.0.0.0/8",
-            vpd_name="RMC-Terraform-Test")
+            vpd_name=name,
+            resource_group_id=default_resource_groups.groups[0].id)
         ```
 
         ## Import
@@ -306,10 +318,10 @@ class Vpd(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cidr: CIDR network segment
+        :param pulumi.Input[str] cidr: CIDR network segment.
         :param pulumi.Input[str] create_time: The creation time of the resource
         :param pulumi.Input[str] gmt_modified: Modification time
-        :param pulumi.Input[str] resource_group_id: The Resource group id
+        :param pulumi.Input[str] resource_group_id: The Resource group id.
         :param pulumi.Input[str] status: The Vpd status.
         :param pulumi.Input[str] vpd_name: The Name of the VPD.
         """
@@ -329,7 +341,7 @@ class Vpd(pulumi.CustomResource):
     @pulumi.getter
     def cidr(self) -> pulumi.Output[str]:
         """
-        CIDR network segment
+        CIDR network segment.
         """
         return pulumi.get(self, "cidr")
 
@@ -353,7 +365,7 @@ class Vpd(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The Resource group id
+        The Resource group id.
         """
         return pulumi.get(self, "resource_group_id")
 

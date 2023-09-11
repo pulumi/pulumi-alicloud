@@ -346,10 +346,10 @@ class AnycastEipAddress(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraform-example"
+            name = "tf-example"
         default = alicloud.eipanycast.AnycastEipAddress("default",
             anycast_eip_address_name=name,
-            description="test_1",
+            description=name,
             bandwidth=200,
             service_location="international",
             internet_charge_type="PayByTraffic",
@@ -399,10 +399,10 @@ class AnycastEipAddress(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraform-example"
+            name = "tf-example"
         default = alicloud.eipanycast.AnycastEipAddress("default",
             anycast_eip_address_name=name,
-            description="test_1",
+            description=name,
             bandwidth=200,
             service_location="international",
             internet_charge_type="PayByTraffic",

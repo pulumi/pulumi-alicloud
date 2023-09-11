@@ -15,7 +15,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The subscription is the basic unit of resource usage in Datahub Service under Publish/Subscribe model. You can manage the relationships between user and topics by using subscriptions. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
+ * The subscription is the basic unit of resource usage in Datahub Service under Publish/Subscribe model. You can manage the relationships between user and topics by using subscriptions. [Refer to details](https://www.alibabacloud.com/help/en/datahub/latest/nerbcz).
+ * 
+ * &gt; **NOTE:** Available since v1.19.0.
  * 
  * ## Example Usage
  * 
@@ -26,6 +28,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.datahub.Project;
+ * import com.pulumi.alicloud.datahub.ProjectArgs;
+ * import com.pulumi.alicloud.datahub.Topic;
+ * import com.pulumi.alicloud.datahub.TopicArgs;
  * import com.pulumi.alicloud.datahub.Subscription;
  * import com.pulumi.alicloud.datahub.SubscriptionArgs;
  * import java.util.List;
@@ -41,10 +47,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Subscription(&#34;example&#34;, SubscriptionArgs.builder()        
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform_example&#34;);
+ *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
  *             .comment(&#34;created by terraform&#34;)
- *             .projectName(&#34;tf_datahub_project&#34;)
- *             .topicName(&#34;tf_datahub_topic&#34;)
+ *             .build());
+ * 
+ *         var exampleTopic = new Topic(&#34;exampleTopic&#34;, TopicArgs.builder()        
+ *             .projectName(exampleProject.name())
+ *             .recordType(&#34;BLOB&#34;)
+ *             .shardCount(3)
+ *             .lifeCycle(7)
+ *             .comment(&#34;created by terraform&#34;)
+ *             .build());
+ * 
+ *         var exampleSubscription = new Subscription(&#34;exampleSubscription&#34;, SubscriptionArgs.builder()        
+ *             .projectName(exampleProject.name())
+ *             .topicName(exampleTopic.name())
+ *             .comment(&#34;created by terraform&#34;)
  *             .build());
  * 
  *     }

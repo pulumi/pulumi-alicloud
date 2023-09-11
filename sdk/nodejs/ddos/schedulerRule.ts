@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a DdosCoo Scheduler Rule resource. For information about DdosCoo Scheduler Rule and how to use it, see[What is DdosCoo Scheduler Rule](https://www.alibabacloud.com/help/en/doc-detail/157481.htm).
+ * Provides a DdosCoo Scheduler Rule resource. For information about DdosCoo Scheduler Rule and how to use it, see[What is DdosCoo Scheduler Rule](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createschedulerrule).
  *
- * > **NOTE:** Available in 1.86.0+
+ * > **NOTE:** Available since v1.86.0.
  *
  * ## Example Usage
  *
@@ -19,8 +19,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const example = new alicloud.ddos.SchedulerRule("example", {
- *     ruleName: "tf-testacc7929727",
+ *     ruleName: name,
  *     ruleType: 3,
  *     rules: [
  *         {
@@ -101,7 +103,7 @@ export class SchedulerRule extends pulumi.CustomResource {
      */
     public readonly ruleType!: pulumi.Output<number>;
     /**
-     * The information about the scheduling rules. See the following `Block rules`.
+     * The information about the scheduling rules. See `rules` below.
      */
     public readonly rules!: pulumi.Output<outputs.ddos.SchedulerRuleRule[]>;
 
@@ -175,7 +177,7 @@ export interface SchedulerRuleState {
      */
     ruleType?: pulumi.Input<number>;
     /**
-     * The information about the scheduling rules. See the following `Block rules`.
+     * The information about the scheduling rules. See `rules` below.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.ddos.SchedulerRuleRule>[]>;
 }
@@ -204,7 +206,7 @@ export interface SchedulerRuleArgs {
      */
     ruleType: pulumi.Input<number>;
     /**
-     * The information about the scheduling rules. See the following `Block rules`.
+     * The information about the scheduling rules. See `rules` below.
      */
     rules: pulumi.Input<pulumi.Input<inputs.ddos.SchedulerRuleRule>[]>;
 }

@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a HBR Backup vault resource.
  *
- * For information about HBR Backup vault and how to use it, see [What is Backup vault](https://www.alibabacloud.com/help/doc-detail/62362.htm).
+ * For information about HBR Backup vault and how to use it, see [What is Backup vault](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createvault).
  *
- * > **NOTE:** Available in v1.129.0+.
+ * > **NOTE:** Available since v1.129.0.
  *
  * ## Example Usage
  *
@@ -63,7 +63,7 @@ export class Vault extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+     * Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
      */
     public readonly encryptType!: pulumi.Output<string>;
     /**
@@ -71,11 +71,7 @@ export class Vault extends pulumi.CustomResource {
      */
     public readonly kmsKeyId!: pulumi.Output<string | undefined>;
     /**
-     * The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-     */
-    public readonly redundancyType!: pulumi.Output<string>;
-    /**
-     * The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+     * The status of the Vault.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -87,7 +83,7 @@ export class Vault extends pulumi.CustomResource {
      */
     public readonly vaultStorageClass!: pulumi.Output<string>;
     /**
-     * The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+     * The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
      */
     public readonly vaultType!: pulumi.Output<string>;
 
@@ -107,7 +103,6 @@ export class Vault extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["encryptType"] = state ? state.encryptType : undefined;
             resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
-            resourceInputs["redundancyType"] = state ? state.redundancyType : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["vaultName"] = state ? state.vaultName : undefined;
             resourceInputs["vaultStorageClass"] = state ? state.vaultStorageClass : undefined;
@@ -120,7 +115,6 @@ export class Vault extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["encryptType"] = args ? args.encryptType : undefined;
             resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
-            resourceInputs["redundancyType"] = args ? args.redundancyType : undefined;
             resourceInputs["vaultName"] = args ? args.vaultName : undefined;
             resourceInputs["vaultStorageClass"] = args ? args.vaultStorageClass : undefined;
             resourceInputs["vaultType"] = args ? args.vaultType : undefined;
@@ -140,7 +134,7 @@ export interface VaultState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+     * Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
      */
     encryptType?: pulumi.Input<string>;
     /**
@@ -148,11 +142,7 @@ export interface VaultState {
      */
     kmsKeyId?: pulumi.Input<string>;
     /**
-     * The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-     */
-    redundancyType?: pulumi.Input<string>;
-    /**
-     * The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+     * The status of the Vault.
      */
     status?: pulumi.Input<string>;
     /**
@@ -164,7 +154,7 @@ export interface VaultState {
      */
     vaultStorageClass?: pulumi.Input<string>;
     /**
-     * The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+     * The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
      */
     vaultType?: pulumi.Input<string>;
 }
@@ -178,17 +168,13 @@ export interface VaultArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+     * Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
      */
     encryptType?: pulumi.Input<string>;
     /**
      * The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
      */
     kmsKeyId?: pulumi.Input<string>;
-    /**
-     * The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-     */
-    redundancyType?: pulumi.Input<string>;
     /**
      * The name of Vault.
      */
@@ -198,7 +184,7 @@ export interface VaultArgs {
      */
     vaultStorageClass?: pulumi.Input<string>;
     /**
-     * The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+     * The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
      */
     vaultType?: pulumi.Input<string>;
 }

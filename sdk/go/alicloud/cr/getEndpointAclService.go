@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the CR Endpoint Acl Service of the current Alibaba Cloud user.
@@ -130,6 +131,12 @@ func (o GetEndpointAclServiceResultOutput) ToGetEndpointAclServiceResultOutput()
 
 func (o GetEndpointAclServiceResultOutput) ToGetEndpointAclServiceResultOutputWithContext(ctx context.Context) GetEndpointAclServiceResultOutput {
 	return o
+}
+
+func (o GetEndpointAclServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEndpointAclServiceResult] {
+	return pulumix.Output[GetEndpointAclServiceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetEndpointAclServiceResultOutput) Enable() pulumi.BoolOutput {

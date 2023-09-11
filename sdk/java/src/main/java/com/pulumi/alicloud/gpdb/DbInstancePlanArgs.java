@@ -48,14 +48,14 @@ public final class DbInstancePlanArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The plan config. See the following `Block plan_config`.
+     * The plan config. See `plan_config` below.
      * 
      */
     @Import(name="planConfigs", required=true)
     private Output<List<DbInstancePlanPlanConfigArgs>> planConfigs;
 
     /**
-     * @return The plan config. See the following `Block plan_config`.
+     * @return The plan config. See `plan_config` below.
      * 
      */
     public Output<List<DbInstancePlanPlanConfigArgs>> planConfigs() {
@@ -227,7 +227,7 @@ public final class DbInstancePlanArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param planConfigs The plan config. See the following `Block plan_config`.
+         * @param planConfigs The plan config. See `plan_config` below.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class DbInstancePlanArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param planConfigs The plan config. See the following `Block plan_config`.
+         * @param planConfigs The plan config. See `plan_config` below.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class DbInstancePlanArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param planConfigs The plan config. See the following `Block plan_config`.
+         * @param planConfigs The plan config. See `plan_config` below.
          * 
          * @return builder
          * 

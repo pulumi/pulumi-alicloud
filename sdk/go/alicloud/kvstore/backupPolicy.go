@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **DEPRECATED:**  This resource  has been deprecated from version `1.104.0`. Please use resource alicloud_kvstore_instance.
@@ -215,6 +216,12 @@ func (i *BackupPolicy) ToBackupPolicyOutputWithContext(ctx context.Context) Back
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyOutput)
 }
 
+func (i *BackupPolicy) ToOutput(ctx context.Context) pulumix.Output[*BackupPolicy] {
+	return pulumix.Output[*BackupPolicy]{
+		OutputState: i.ToBackupPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BackupPolicyArrayInput is an input type that accepts BackupPolicyArray and BackupPolicyArrayOutput values.
 // You can construct a concrete instance of `BackupPolicyArrayInput` via:
 //
@@ -238,6 +245,12 @@ func (i BackupPolicyArray) ToBackupPolicyArrayOutput() BackupPolicyArrayOutput {
 
 func (i BackupPolicyArray) ToBackupPolicyArrayOutputWithContext(ctx context.Context) BackupPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyArrayOutput)
+}
+
+func (i BackupPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*BackupPolicy] {
+	return pulumix.Output[[]*BackupPolicy]{
+		OutputState: i.ToBackupPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BackupPolicyMapInput is an input type that accepts BackupPolicyMap and BackupPolicyMapOutput values.
@@ -265,6 +278,12 @@ func (i BackupPolicyMap) ToBackupPolicyMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyMapOutput)
 }
 
+func (i BackupPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackupPolicy] {
+	return pulumix.Output[map[string]*BackupPolicy]{
+		OutputState: i.ToBackupPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackupPolicyOutput struct{ *pulumi.OutputState }
 
 func (BackupPolicyOutput) ElementType() reflect.Type {
@@ -277,6 +296,12 @@ func (o BackupPolicyOutput) ToBackupPolicyOutput() BackupPolicyOutput {
 
 func (o BackupPolicyOutput) ToBackupPolicyOutputWithContext(ctx context.Context) BackupPolicyOutput {
 	return o
+}
+
+func (o BackupPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupPolicy] {
+	return pulumix.Output[*BackupPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
@@ -308,6 +333,12 @@ func (o BackupPolicyArrayOutput) ToBackupPolicyArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o BackupPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BackupPolicy] {
+	return pulumix.Output[[]*BackupPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackupPolicyArrayOutput) Index(i pulumi.IntInput) BackupPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BackupPolicy {
 		return vs[0].([]*BackupPolicy)[vs[1].(int)]
@@ -326,6 +357,12 @@ func (o BackupPolicyMapOutput) ToBackupPolicyMapOutput() BackupPolicyMapOutput {
 
 func (o BackupPolicyMapOutput) ToBackupPolicyMapOutputWithContext(ctx context.Context) BackupPolicyMapOutput {
 	return o
+}
+
+func (o BackupPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackupPolicy] {
+	return pulumix.Output[map[string]*BackupPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackupPolicyMapOutput) MapIndex(k pulumi.StringInput) BackupPolicyOutput {

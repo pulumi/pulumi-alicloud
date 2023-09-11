@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DFS Access Group resource.
@@ -172,6 +173,12 @@ func (i *AccessGroup) ToAccessGroupOutputWithContext(ctx context.Context) Access
 	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupOutput)
 }
 
+func (i *AccessGroup) ToOutput(ctx context.Context) pulumix.Output[*AccessGroup] {
+	return pulumix.Output[*AccessGroup]{
+		OutputState: i.ToAccessGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccessGroupArrayInput is an input type that accepts AccessGroupArray and AccessGroupArrayOutput values.
 // You can construct a concrete instance of `AccessGroupArrayInput` via:
 //
@@ -195,6 +202,12 @@ func (i AccessGroupArray) ToAccessGroupArrayOutput() AccessGroupArrayOutput {
 
 func (i AccessGroupArray) ToAccessGroupArrayOutputWithContext(ctx context.Context) AccessGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupArrayOutput)
+}
+
+func (i AccessGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessGroup] {
+	return pulumix.Output[[]*AccessGroup]{
+		OutputState: i.ToAccessGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AccessGroupMapInput is an input type that accepts AccessGroupMap and AccessGroupMapOutput values.
@@ -222,6 +235,12 @@ func (i AccessGroupMap) ToAccessGroupMapOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupMapOutput)
 }
 
+func (i AccessGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessGroup] {
+	return pulumix.Output[map[string]*AccessGroup]{
+		OutputState: i.ToAccessGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessGroupOutput struct{ *pulumi.OutputState }
 
 func (AccessGroupOutput) ElementType() reflect.Type {
@@ -234,6 +253,12 @@ func (o AccessGroupOutput) ToAccessGroupOutput() AccessGroupOutput {
 
 func (o AccessGroupOutput) ToAccessGroupOutputWithContext(ctx context.Context) AccessGroupOutput {
 	return o
+}
+
+func (o AccessGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessGroup] {
+	return pulumix.Output[*AccessGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Name of Access Group.The length of `accessGroupName` does not exceed 100 bytes.
@@ -265,6 +290,12 @@ func (o AccessGroupArrayOutput) ToAccessGroupArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o AccessGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessGroup] {
+	return pulumix.Output[[]*AccessGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccessGroupArrayOutput) Index(i pulumi.IntInput) AccessGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessGroup {
 		return vs[0].([]*AccessGroup)[vs[1].(int)]
@@ -283,6 +314,12 @@ func (o AccessGroupMapOutput) ToAccessGroupMapOutput() AccessGroupMapOutput {
 
 func (o AccessGroupMapOutput) ToAccessGroupMapOutputWithContext(ctx context.Context) AccessGroupMapOutput {
 	return o
+}
+
+func (o AccessGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessGroup] {
+	return pulumix.Output[map[string]*AccessGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessGroupMapOutput) MapIndex(k pulumi.StringInput) AccessGroupOutput {

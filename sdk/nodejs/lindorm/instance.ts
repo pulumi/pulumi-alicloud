@@ -13,6 +13,41 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines, or the number of nodes at the same time.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const region = "cn-hangzhou";
+ * const zoneId = "cn-hangzhou-h";
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: zoneId,
+ * });
+ * const defaultInstance = new alicloud.lindorm.Instance("defaultInstance", {
+ *     diskCategory: "cloud_efficiency",
+ *     paymentType: "PayAsYouGo",
+ *     zoneId: zoneId,
+ *     vswitchId: defaultSwitch.id,
+ *     vpcId: defaultNetwork.id,
+ *     instanceName: name,
+ *     tableEngineSpecification: "lindorm.g.4xlarge",
+ *     tableEngineNodeCount: 2,
+ *     instanceStorage: "1920",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Lindorm Instance can be imported using the id, e.g.

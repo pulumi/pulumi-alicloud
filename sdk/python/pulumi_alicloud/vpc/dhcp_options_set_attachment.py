@@ -151,7 +151,7 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
 
         For information about VPC Dhcp Options Set and how to use it, see [What is Dhcp Options Set](https://www.alibabacloud.com/help/doc-detail/174112.htm).
 
-        > **NOTE:** Available in v1.153.0+.
+        > **NOTE:** Available since v1.153.0.
 
         ## Example Usage
 
@@ -161,12 +161,16 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="test",
-            cidr_block="172.16.0.0/12")
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
         example_dhcp_options_set = alicloud.vpc.DhcpOptionsSet("exampleDhcpOptionsSet",
-            dhcp_options_set_name="example_value",
-            dhcp_options_set_description="example_value",
+            dhcp_options_set_name=name,
+            dhcp_options_set_description=name,
             domain_name="example.com",
             domain_name_servers="100.100.2.136")
         example_dhcp_options_set_attachment = alicloud.vpc.DhcpOptionsSetAttachment("exampleDhcpOptionsSetAttachment",
@@ -199,7 +203,7 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
 
         For information about VPC Dhcp Options Set and how to use it, see [What is Dhcp Options Set](https://www.alibabacloud.com/help/doc-detail/174112.htm).
 
-        > **NOTE:** Available in v1.153.0+.
+        > **NOTE:** Available since v1.153.0.
 
         ## Example Usage
 
@@ -209,12 +213,16 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="test",
-            cidr_block="172.16.0.0/12")
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
         example_dhcp_options_set = alicloud.vpc.DhcpOptionsSet("exampleDhcpOptionsSet",
-            dhcp_options_set_name="example_value",
-            dhcp_options_set_description="example_value",
+            dhcp_options_set_name=name,
+            dhcp_options_set_description=name,
             domain_name="example.com",
             domain_name_servers="100.100.2.136")
         example_dhcp_options_set_attachment = alicloud.vpc.DhcpOptionsSetAttachment("exampleDhcpOptionsSetAttachment",

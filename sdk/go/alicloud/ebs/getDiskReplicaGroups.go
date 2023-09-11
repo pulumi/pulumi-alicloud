@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ebs Disk Replica Groups of the current Alibaba Cloud user.
@@ -110,6 +111,12 @@ func (o GetDiskReplicaGroupsResultOutput) ToGetDiskReplicaGroupsResultOutput() G
 
 func (o GetDiskReplicaGroupsResultOutput) ToGetDiskReplicaGroupsResultOutputWithContext(ctx context.Context) GetDiskReplicaGroupsResultOutput {
 	return o
+}
+
+func (o GetDiskReplicaGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDiskReplicaGroupsResult] {
+	return pulumix.Output[GetDiskReplicaGroupsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDiskReplicaGroupsResultOutput) Groups() GetDiskReplicaGroupsGroupArrayOutput {

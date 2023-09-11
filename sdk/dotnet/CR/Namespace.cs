@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CR
 {
     /// <summary>
-    /// This resource will help you to manager Container Registry namespaces.
+    /// This resource will help you to manager Container Registry namespaces, see [What is Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace).
     /// 
-    /// &gt; **NOTE:** Available in v1.34.0+.
+    /// &gt; **NOTE:** Available since v1.34.0.
     /// 
     /// &gt; **NOTE:** You need to set your registry password in Container Registry console before use this resource.
     /// 
@@ -28,7 +28,9 @@ namespace Pulumi.AliCloud.CR
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_namespace = new AliCloud.CR.Namespace("my-namespace", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var example = new AliCloud.CR.Namespace("example", new()
     ///     {
     ///         AutoCreate = false,
     ///         DefaultVisibility = "PUBLIC",

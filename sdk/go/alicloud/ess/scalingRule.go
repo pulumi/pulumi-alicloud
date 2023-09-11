@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ESS scaling rule resource.
@@ -373,6 +374,12 @@ func (i *ScalingRule) ToScalingRuleOutputWithContext(ctx context.Context) Scalin
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingRuleOutput)
 }
 
+func (i *ScalingRule) ToOutput(ctx context.Context) pulumix.Output[*ScalingRule] {
+	return pulumix.Output[*ScalingRule]{
+		OutputState: i.ToScalingRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ScalingRuleArrayInput is an input type that accepts ScalingRuleArray and ScalingRuleArrayOutput values.
 // You can construct a concrete instance of `ScalingRuleArrayInput` via:
 //
@@ -396,6 +403,12 @@ func (i ScalingRuleArray) ToScalingRuleArrayOutput() ScalingRuleArrayOutput {
 
 func (i ScalingRuleArray) ToScalingRuleArrayOutputWithContext(ctx context.Context) ScalingRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingRuleArrayOutput)
+}
+
+func (i ScalingRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*ScalingRule] {
+	return pulumix.Output[[]*ScalingRule]{
+		OutputState: i.ToScalingRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ScalingRuleMapInput is an input type that accepts ScalingRuleMap and ScalingRuleMapOutput values.
@@ -423,6 +436,12 @@ func (i ScalingRuleMap) ToScalingRuleMapOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingRuleMapOutput)
 }
 
+func (i ScalingRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ScalingRule] {
+	return pulumix.Output[map[string]*ScalingRule]{
+		OutputState: i.ToScalingRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ScalingRuleOutput struct{ *pulumi.OutputState }
 
 func (ScalingRuleOutput) ElementType() reflect.Type {
@@ -435,6 +454,12 @@ func (o ScalingRuleOutput) ToScalingRuleOutput() ScalingRuleOutput {
 
 func (o ScalingRuleOutput) ToScalingRuleOutputWithContext(ctx context.Context) ScalingRuleOutput {
 	return o
+}
+
+func (o ScalingRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*ScalingRule] {
+	return pulumix.Output[*ScalingRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Adjustment mode of a scaling rule. Optional values:
@@ -517,6 +542,12 @@ func (o ScalingRuleArrayOutput) ToScalingRuleArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o ScalingRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ScalingRule] {
+	return pulumix.Output[[]*ScalingRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ScalingRuleArrayOutput) Index(i pulumi.IntInput) ScalingRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ScalingRule {
 		return vs[0].([]*ScalingRule)[vs[1].(int)]
@@ -535,6 +566,12 @@ func (o ScalingRuleMapOutput) ToScalingRuleMapOutput() ScalingRuleMapOutput {
 
 func (o ScalingRuleMapOutput) ToScalingRuleMapOutputWithContext(ctx context.Context) ScalingRuleMapOutput {
 	return o
+}
+
+func (o ScalingRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ScalingRule] {
+	return pulumix.Output[map[string]*ScalingRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScalingRuleMapOutput) MapIndex(k pulumi.StringInput) ScalingRuleOutput {

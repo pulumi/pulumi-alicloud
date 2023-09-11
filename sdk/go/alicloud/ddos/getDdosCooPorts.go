@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ddoscoo Ports of the current Alibaba Cloud user.
@@ -126,6 +127,12 @@ func (o GetDdosCooPortsResultOutput) ToGetDdosCooPortsResultOutput() GetDdosCooP
 
 func (o GetDdosCooPortsResultOutput) ToGetDdosCooPortsResultOutputWithContext(ctx context.Context) GetDdosCooPortsResultOutput {
 	return o
+}
+
+func (o GetDdosCooPortsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDdosCooPortsResult] {
+	return pulumix.Output[GetDdosCooPortsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDdosCooPortsResultOutput) FrontendPort() pulumi.StringPtrOutput {

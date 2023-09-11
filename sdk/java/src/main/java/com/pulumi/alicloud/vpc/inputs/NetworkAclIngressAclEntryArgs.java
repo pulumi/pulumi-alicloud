@@ -16,14 +16,14 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
     public static final NetworkAclIngressAclEntryArgs Empty = new NetworkAclIngressAclEntryArgs();
 
     /**
-     * The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * Description of the inbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * @return Description of the inbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     public Optional<Output<String>> description() {
@@ -31,14 +31,14 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * The name of the inbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     @Import(name="networkAclEntryName")
     private @Nullable Output<String> networkAclEntryName;
 
     /**
-     * @return Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * @return The name of the inbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     public Optional<Output<String>> networkAclEntryName() {
@@ -47,8 +47,6 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
 
     /**
      * Authorization policy. Value:
-     * - accept: Allow.
-     * - drop: Refused.
      * - accept: Allow.
      * - drop: Refused.
      * 
@@ -60,8 +58,6 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
      * @return Authorization policy. Value:
      * - accept: Allow.
      * - drop: Refused.
-     * - accept: Allow.
-     * - drop: Refused.
      * 
      */
     public Optional<Output<String>> policy() {
@@ -69,14 +65,14 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+     * The source port range of the inbound rule.When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
      * 
      */
     @Import(name="port")
     private @Nullable Output<String> port;
 
     /**
-     * @return The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+     * @return The source port range of the inbound rule.When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
      * 
      */
     public Optional<Output<String>> port() {
@@ -91,24 +87,12 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
      * - udp: User Datagram Protocol.
      * - all: Supports all protocols.
      * 
-     * - icmp: Network Control Message Protocol.
-     * - gre: Generic Routing Encapsulation Protocol.
-     * - tcp: Transmission Control Protocol.
-     * - udp: User Datagram Protocol.
-     * - all: Supports all protocols.
-     * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
      * @return The protocol type. Value:
-     * - icmp: Network Control Message Protocol.
-     * - gre: Generic Routing Encapsulation Protocol.
-     * - tcp: Transmission Control Protocol.
-     * - udp: User Datagram Protocol.
-     * - all: Supports all protocols.
-     * 
      * - icmp: Network Control Message Protocol.
      * - gre: Generic Routing Encapsulation Protocol.
      * - tcp: Transmission Control Protocol.
@@ -165,7 +149,7 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param description The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+         * @param description Description of the inbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -176,7 +160,7 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param description The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+         * @param description Description of the inbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -186,7 +170,7 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param networkAclEntryName Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+         * @param networkAclEntryName The name of the inbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -197,7 +181,7 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param networkAclEntryName Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+         * @param networkAclEntryName The name of the inbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -208,8 +192,6 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
 
         /**
          * @param policy Authorization policy. Value:
-         * - accept: Allow.
-         * - drop: Refused.
          * - accept: Allow.
          * - drop: Refused.
          * 
@@ -225,8 +207,6 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
          * @param policy Authorization policy. Value:
          * - accept: Allow.
          * - drop: Refused.
-         * - accept: Allow.
-         * - drop: Refused.
          * 
          * @return builder
          * 
@@ -236,7 +216,7 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param port The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+         * @param port The source port range of the inbound rule.When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
          * 
          * @return builder
          * 
@@ -247,7 +227,7 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param port The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+         * @param port The source port range of the inbound rule.When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
          * 
          * @return builder
          * 
@@ -264,12 +244,6 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
          * - udp: User Datagram Protocol.
          * - all: Supports all protocols.
          * 
-         * - icmp: Network Control Message Protocol.
-         * - gre: Generic Routing Encapsulation Protocol.
-         * - tcp: Transmission Control Protocol.
-         * - udp: User Datagram Protocol.
-         * - all: Supports all protocols.
-         * 
          * @return builder
          * 
          */
@@ -280,12 +254,6 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
 
         /**
          * @param protocol The protocol type. Value:
-         * - icmp: Network Control Message Protocol.
-         * - gre: Generic Routing Encapsulation Protocol.
-         * - tcp: Transmission Control Protocol.
-         * - udp: User Datagram Protocol.
-         * - all: Supports all protocols.
-         * 
          * - icmp: Network Control Message Protocol.
          * - gre: Generic Routing Encapsulation Protocol.
          * - tcp: Transmission Control Protocol.

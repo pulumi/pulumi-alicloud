@@ -135,14 +135,6 @@ class InstanceArgs:
         :param pulumi.Input[str] security_ip_group_name: The name of the whitelist group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
         :param pulumi.Input[int] shard_count: The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
-               
-               > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-               
-               > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-               
-               > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-               
-               > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         :param pulumi.Input[str] srcdb_instance_id: The ID of the source instance.
         :param pulumi.Input[str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
                **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
@@ -948,14 +940,6 @@ class InstanceArgs:
     def shard_count(self) -> Optional[pulumi.Input[int]]:
         """
         The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
-
-        > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-
-        > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-
-        > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-
-        > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         """
         return pulumi.get(self, "shard_count")
 
@@ -1132,7 +1116,15 @@ class _InstanceState:
         :param pulumi.Input[int] capacity: The storage capacity of the KVStore DBInstance. Unit: MB.
         :param pulumi.Input[Mapping[str, Any]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
         :param pulumi.Input[str] connection_domain: Intranet connection address of the KVStore instance.
-        :param pulumi.Input[str] connection_string: (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
+        :param pulumi.Input[str] connection_string: Indicates whether the address is a private endpoint.
+               
+               > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+               
+               > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+               
+               > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+               
+               > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         :param pulumi.Input[str] connection_string_prefix: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[str] coupon_no: The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
         :param pulumi.Input[str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
@@ -1182,14 +1174,6 @@ class _InstanceState:
         :param pulumi.Input[str] security_ip_group_name: The name of the whitelist group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
         :param pulumi.Input[int] shard_count: The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
-               
-               > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-               
-               > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-               
-               > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-               
-               > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         :param pulumi.Input[str] srcdb_instance_id: The ID of the source instance.
         :param pulumi.Input[str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
                **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
@@ -1508,7 +1492,15 @@ class _InstanceState:
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> Optional[pulumi.Input[str]]:
         """
-        (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
+        Indicates whether the address is a private endpoint.
+
+        > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+
+        > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+
+        > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+
+        > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         """
         warnings.warn("""Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
         pulumi.log.warn("""connection_string is deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
@@ -2074,14 +2066,6 @@ class _InstanceState:
     def shard_count(self) -> Optional[pulumi.Input[int]]:
         """
         The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
-
-        > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-
-        > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-
-        > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-
-        > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         """
         return pulumi.get(self, "shard_count")
 
@@ -2321,14 +2305,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] security_ip_group_name: The name of the whitelist group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
         :param pulumi.Input[int] shard_count: The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
-               
-               > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-               
-               > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-               
-               > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-               
-               > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         :param pulumi.Input[str] srcdb_instance_id: The ID of the source instance.
         :param pulumi.Input[str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
                **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
@@ -2621,7 +2597,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] capacity: The storage capacity of the KVStore DBInstance. Unit: MB.
         :param pulumi.Input[Mapping[str, Any]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
         :param pulumi.Input[str] connection_domain: Intranet connection address of the KVStore instance.
-        :param pulumi.Input[str] connection_string: (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
+        :param pulumi.Input[str] connection_string: Indicates whether the address is a private endpoint.
+               
+               > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+               
+               > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+               
+               > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+               
+               > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         :param pulumi.Input[str] connection_string_prefix: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[str] coupon_no: The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
         :param pulumi.Input[str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
@@ -2671,14 +2655,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] security_ip_group_name: The name of the whitelist group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
         :param pulumi.Input[int] shard_count: The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
-               
-               > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-               
-               > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-               
-               > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-               
-               > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         :param pulumi.Input[str] srcdb_instance_id: The ID of the source instance.
         :param pulumi.Input[str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
                **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
@@ -2864,7 +2840,15 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> pulumi.Output[str]:
         """
-        (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
+        Indicates whether the address is a private endpoint.
+
+        > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+
+        > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+
+        > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+
+        > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         """
         warnings.warn("""Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
         pulumi.log.warn("""connection_string is deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
@@ -3250,14 +3234,6 @@ class Instance(pulumi.CustomResource):
     def shard_count(self) -> pulumi.Output[int]:
         """
         The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
-
-        > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-
-        > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-
-        > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-
-        > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         """
         return pulumi.get(self, "shard_count")
 

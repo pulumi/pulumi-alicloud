@@ -26,6 +26,12 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.BucketLifecycleRuleExpiration> Expirations;
         /// <summary>
+        /// Configuration block used to identify objects that a Lifecycle rule applies to. See `filter` below.
+        /// 
+        /// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+        /// </summary>
+        public readonly Outputs.BucketLifecycleRuleFilter? Filter;
+        /// <summary>
         /// Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
         /// </summary>
         public readonly string? Id;
@@ -38,13 +44,11 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.BucketLifecycleRuleNoncurrentVersionTransition> NoncurrentVersionTransitions;
         /// <summary>
-        /// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+        /// The prefix in the names of the objects to which the lifecycle rule does not apply.
         /// </summary>
         public readonly string? Prefix;
         /// <summary>
         /// Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
-        /// 
-        /// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
         /// <summary>
@@ -59,6 +63,8 @@ namespace Pulumi.AliCloud.Oss.Outputs
             bool enabled,
 
             ImmutableArray<Outputs.BucketLifecycleRuleExpiration> expirations,
+
+            Outputs.BucketLifecycleRuleFilter? filter,
 
             string? id,
 
@@ -75,6 +81,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
             AbortMultipartUploads = abortMultipartUploads;
             Enabled = enabled;
             Expirations = expirations;
+            Filter = filter;
             Id = id;
             NoncurrentVersionExpirations = noncurrentVersionExpirations;
             NoncurrentVersionTransitions = noncurrentVersionTransitions;

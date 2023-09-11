@@ -16,14 +16,14 @@ public final class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs extends co
     public static final FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs Empty = new FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs();
 
     /**
-     * Peer VPC route entry list information.See the following `Block PeerRouteEntryList`.
+     * Peer VPC route entry list information. See `peer_route_entry_list` below.
      * 
      */
     @Import(name="peerRouteEntryLists", required=true)
     private Output<List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs>> peerRouteEntryLists;
 
     /**
-     * @return Peer VPC route entry list information.See the following `Block PeerRouteEntryList`.
+     * @return Peer VPC route entry list information. See `peer_route_entry_list` below.
      * 
      */
     public Output<List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs>> peerRouteEntryLists() {
@@ -71,7 +71,7 @@ public final class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs extends co
         }
 
         /**
-         * @param peerRouteEntryLists Peer VPC route entry list information.See the following `Block PeerRouteEntryList`.
+         * @param peerRouteEntryLists Peer VPC route entry list information. See `peer_route_entry_list` below.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs extends co
         }
 
         /**
-         * @param peerRouteEntryLists Peer VPC route entry list information.See the following `Block PeerRouteEntryList`.
+         * @param peerRouteEntryLists Peer VPC route entry list information. See `peer_route_entry_list` below.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs extends co
         }
 
         /**
-         * @param peerRouteEntryLists Peer VPC route entry list information.See the following `Block PeerRouteEntryList`.
+         * @param peerRouteEntryLists Peer VPC route entry list information. See `peer_route_entry_list` below.
          * 
          * @return builder
          * 

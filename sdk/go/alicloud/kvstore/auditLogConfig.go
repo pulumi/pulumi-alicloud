@@ -10,11 +10,12 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Redis And Memcache (KVStore) Audit Log Config resource.
 //
-// > **NOTE:** Available in v1.130.0+.
+// > **NOTE:** Available since v1.130.0.
 //
 // ## Example Usage
 //
@@ -26,15 +27,72 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kvstore.NewAuditLogConfig(ctx, "example", &kvstore.AuditLogConfigArgs{
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := kvstore.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := kvstore.NewInstance(ctx, "defaultInstance", &kvstore.InstanceArgs{
+//				DbInstanceName:  pulumi.String(name),
+//				VswitchId:       defaultSwitch.ID(),
+//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Ids[0]),
+//				ZoneId:          *pulumi.String(defaultZones.Zones[0].Id),
+//				InstanceClass:   pulumi.String("redis.master.large.default"),
+//				InstanceType:    pulumi.String("Redis"),
+//				EngineVersion:   pulumi.String("5.0"),
+//				SecurityIps: pulumi.StringArray{
+//					pulumi.String("10.23.12.24"),
+//				},
+//				Config: pulumi.AnyMap{
+//					"appendonly":             pulumi.Any("yes"),
+//					"lazyfree-lazy-eviction": pulumi.Any("yes"),
+//				},
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kvstore.NewAuditLogConfig(ctx, "example", &kvstore.AuditLogConfigArgs{
+//				InstanceId: defaultInstance.ID(),
 //				DbAudit:    pulumi.Bool(true),
-//				InstanceId: pulumi.String("r-abc123455"),
 //				Retention:  pulumi.Int(1),
 //			})
 //			if err != nil {
@@ -204,6 +262,12 @@ func (i *AuditLogConfig) ToAuditLogConfigOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
 }
 
+func (i *AuditLogConfig) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfig] {
+	return pulumix.Output[*AuditLogConfig]{
+		OutputState: i.ToAuditLogConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
@@ -227,6 +291,12 @@ func (i AuditLogConfigArray) ToAuditLogConfigArrayOutput() AuditLogConfigArrayOu
 
 func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
+}
+
+func (i AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*AuditLogConfig] {
+	return pulumix.Output[[]*AuditLogConfig]{
+		OutputState: i.ToAuditLogConfigArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AuditLogConfigMapInput is an input type that accepts AuditLogConfigMap and AuditLogConfigMapOutput values.
@@ -254,6 +324,12 @@ func (i AuditLogConfigMap) ToAuditLogConfigMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigMapOutput)
 }
 
+func (i AuditLogConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuditLogConfig] {
+	return pulumix.Output[map[string]*AuditLogConfig]{
+		OutputState: i.ToAuditLogConfigMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AuditLogConfigOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigOutput) ElementType() reflect.Type {
@@ -266,6 +342,12 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
 
 func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
 	return o
+}
+
+func (o AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfig] {
+	return pulumix.Output[*AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Instance Creation Time.
@@ -313,6 +395,12 @@ func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AuditLogConfig] {
+	return pulumix.Output[[]*AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuditLogConfig {
 		return vs[0].([]*AuditLogConfig)[vs[1].(int)]
@@ -331,6 +419,12 @@ func (o AuditLogConfigMapOutput) ToAuditLogConfigMapOutput() AuditLogConfigMapOu
 
 func (o AuditLogConfigMapOutput) ToAuditLogConfigMapOutputWithContext(ctx context.Context) AuditLogConfigMapOutput {
 	return o
+}
+
+func (o AuditLogConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuditLogConfig] {
+	return pulumix.Output[map[string]*AuditLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditLogConfigMapOutput) MapIndex(k pulumi.StringInput) AuditLogConfigOutput {

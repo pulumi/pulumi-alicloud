@@ -16,62 +16,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApplicationScalingRuleScalingRuleMetric {
     /**
-     * @return Maximum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+     * @return Maximum number of instances applied.
      * 
      */
     private @Nullable Integer maxReplicas;
     /**
-     * @return Indicator rule configuration. See the following `Block metrics`.
+     * @return Indicator rule configuration. See `metrics` below.
      * 
      */
     private @Nullable List<ApplicationScalingRuleScalingRuleMetricMetric> metrics;
     /**
-     * @return Minimum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+     * @return Minimum number of instances applied.
      * 
      */
     private @Nullable Integer minReplicas;
     /**
-     * @return Apply shrink rules. See the following `Block scale_down_rules`.
+     * @return Apply shrink rules. See `scale_down_rules` below.
      * 
      */
     private @Nullable ApplicationScalingRuleScalingRuleMetricScaleDownRules scaleDownRules;
     /**
-     * @return Apply expansion rules. See the following `Block scale_up_rules`.
+     * @return Apply expansion rules. See `scale_up_rules` below.
      * 
      */
     private @Nullable ApplicationScalingRuleScalingRuleMetricScaleUpRules scaleUpRules;
 
     private ApplicationScalingRuleScalingRuleMetric() {}
     /**
-     * @return Maximum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+     * @return Maximum number of instances applied.
      * 
      */
     public Optional<Integer> maxReplicas() {
         return Optional.ofNullable(this.maxReplicas);
     }
     /**
-     * @return Indicator rule configuration. See the following `Block metrics`.
+     * @return Indicator rule configuration. See `metrics` below.
      * 
      */
     public List<ApplicationScalingRuleScalingRuleMetricMetric> metrics() {
         return this.metrics == null ? List.of() : this.metrics;
     }
     /**
-     * @return Minimum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+     * @return Minimum number of instances applied.
      * 
      */
     public Optional<Integer> minReplicas() {
         return Optional.ofNullable(this.minReplicas);
     }
     /**
-     * @return Apply shrink rules. See the following `Block scale_down_rules`.
+     * @return Apply shrink rules. See `scale_down_rules` below.
      * 
      */
     public Optional<ApplicationScalingRuleScalingRuleMetricScaleDownRules> scaleDownRules() {
         return Optional.ofNullable(this.scaleDownRules);
     }
     /**
-     * @return Apply expansion rules. See the following `Block scale_up_rules`.
+     * @return Apply expansion rules. See `scale_up_rules` below.
      * 
      */
     public Optional<ApplicationScalingRuleScalingRuleMetricScaleUpRules> scaleUpRules() {

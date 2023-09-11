@@ -10,13 +10,14 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a CR Vpc Endpoint Linked Vpc resource.
 //
-// For information about CR Vpc Endpoint Linked Vpc and how to use it, see [What is Vpc Endpoint Linked Vpc](https://www.alibabacloud.com/help/en/container-registry/latest/api-doc-cr-2018-12-01-api-doc-createinstancevpcendpointlinkedvpc).
+// For information about CR Vpc Endpoint Linked Vpc and how to use it, see [What is Vpc Endpoint Linked Vpc](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createinstancevpcendpointlinkedvpc).
 //
-// > **NOTE:** Available in v1.199.0+.
+// > **NOTE:** Available since v1.199.0.
 //
 // ## Example Usage
 //
@@ -27,19 +28,60 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cr.NewVpcEndpointLinkedVpc(ctx, "default", &cr.VpcEndpointLinkedVpcArgs{
-//				EnableCreateDnsRecordInPvzt: pulumi.Bool(true),
-//				InstanceId:                  pulumi.String("your_cr_instance_id"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegistryEnterpriseInstance, err := cr.NewRegistryEnterpriseInstance(ctx, "defaultRegistryEnterpriseInstance", &cr.RegistryEnterpriseInstanceArgs{
+//				PaymentType:   pulumi.String("Subscription"),
+//				Period:        pulumi.Int(1),
+//				RenewPeriod:   pulumi.Int(0),
+//				RenewalStatus: pulumi.String("ManualRenewal"),
+//				InstanceType:  pulumi.String("Advanced"),
+//				InstanceName:  pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cr.NewVpcEndpointLinkedVpc(ctx, "defaultVpcEndpointLinkedVpc", &cr.VpcEndpointLinkedVpcArgs{
+//				InstanceId:                  defaultRegistryEnterpriseInstance.ID(),
+//				VpcId:                       defaultNetwork.ID(),
+//				VswitchId:                   defaultSwitch.ID(),
 //				ModuleName:                  pulumi.String("Registry"),
-//				VpcId:                       pulumi.String("your_vpc_id"),
-//				VswitchId:                   pulumi.String("your_vswitch_id"),
+//				EnableCreateDnsRecordInPvzt: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -201,6 +243,12 @@ func (i *VpcEndpointLinkedVpc) ToVpcEndpointLinkedVpcOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointLinkedVpcOutput)
 }
 
+func (i *VpcEndpointLinkedVpc) ToOutput(ctx context.Context) pulumix.Output[*VpcEndpointLinkedVpc] {
+	return pulumix.Output[*VpcEndpointLinkedVpc]{
+		OutputState: i.ToVpcEndpointLinkedVpcOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VpcEndpointLinkedVpcArrayInput is an input type that accepts VpcEndpointLinkedVpcArray and VpcEndpointLinkedVpcArrayOutput values.
 // You can construct a concrete instance of `VpcEndpointLinkedVpcArrayInput` via:
 //
@@ -224,6 +272,12 @@ func (i VpcEndpointLinkedVpcArray) ToVpcEndpointLinkedVpcArrayOutput() VpcEndpoi
 
 func (i VpcEndpointLinkedVpcArray) ToVpcEndpointLinkedVpcArrayOutputWithContext(ctx context.Context) VpcEndpointLinkedVpcArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointLinkedVpcArrayOutput)
+}
+
+func (i VpcEndpointLinkedVpcArray) ToOutput(ctx context.Context) pulumix.Output[[]*VpcEndpointLinkedVpc] {
+	return pulumix.Output[[]*VpcEndpointLinkedVpc]{
+		OutputState: i.ToVpcEndpointLinkedVpcArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // VpcEndpointLinkedVpcMapInput is an input type that accepts VpcEndpointLinkedVpcMap and VpcEndpointLinkedVpcMapOutput values.
@@ -251,6 +305,12 @@ func (i VpcEndpointLinkedVpcMap) ToVpcEndpointLinkedVpcMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointLinkedVpcMapOutput)
 }
 
+func (i VpcEndpointLinkedVpcMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VpcEndpointLinkedVpc] {
+	return pulumix.Output[map[string]*VpcEndpointLinkedVpc]{
+		OutputState: i.ToVpcEndpointLinkedVpcMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VpcEndpointLinkedVpcOutput struct{ *pulumi.OutputState }
 
 func (VpcEndpointLinkedVpcOutput) ElementType() reflect.Type {
@@ -263,6 +323,12 @@ func (o VpcEndpointLinkedVpcOutput) ToVpcEndpointLinkedVpcOutput() VpcEndpointLi
 
 func (o VpcEndpointLinkedVpcOutput) ToVpcEndpointLinkedVpcOutputWithContext(ctx context.Context) VpcEndpointLinkedVpcOutput {
 	return o
+}
+
+func (o VpcEndpointLinkedVpcOutput) ToOutput(ctx context.Context) pulumix.Output[*VpcEndpointLinkedVpc] {
+	return pulumix.Output[*VpcEndpointLinkedVpc]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies whether to automatically create an Alibaba Cloud DNS PrivateZone record. Valid Values:
@@ -309,6 +375,12 @@ func (o VpcEndpointLinkedVpcArrayOutput) ToVpcEndpointLinkedVpcArrayOutputWithCo
 	return o
 }
 
+func (o VpcEndpointLinkedVpcArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VpcEndpointLinkedVpc] {
+	return pulumix.Output[[]*VpcEndpointLinkedVpc]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VpcEndpointLinkedVpcArrayOutput) Index(i pulumi.IntInput) VpcEndpointLinkedVpcOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VpcEndpointLinkedVpc {
 		return vs[0].([]*VpcEndpointLinkedVpc)[vs[1].(int)]
@@ -327,6 +399,12 @@ func (o VpcEndpointLinkedVpcMapOutput) ToVpcEndpointLinkedVpcMapOutput() VpcEndp
 
 func (o VpcEndpointLinkedVpcMapOutput) ToVpcEndpointLinkedVpcMapOutputWithContext(ctx context.Context) VpcEndpointLinkedVpcMapOutput {
 	return o
+}
+
+func (o VpcEndpointLinkedVpcMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VpcEndpointLinkedVpc] {
+	return pulumix.Output[map[string]*VpcEndpointLinkedVpc]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VpcEndpointLinkedVpcMapOutput) MapIndex(k pulumi.StringInput) VpcEndpointLinkedVpcOutput {

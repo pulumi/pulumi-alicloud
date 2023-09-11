@@ -40,6 +40,9 @@ namespace Pulumi.AliCloud.Cdn.Inputs
         [Input("certType")]
         public Input<string>? CertType { get; set; }
 
+        /// <summary>
+        /// The force set of the security certificate.
+        /// </summary>
         [Input("forceSet")]
         public Input<string>? ForceSet { get; set; }
 

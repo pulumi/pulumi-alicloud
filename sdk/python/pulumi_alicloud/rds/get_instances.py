@@ -234,6 +234,8 @@ def get_instances(connection_mode: Optional[str] = None,
     The `rds_get_instances` data source provides a collection of RDS instances available in Alibaba Cloud account.
     Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
 
+    > **NOTE:** Available since v1.7.0+
+
     ## Example Usage
 
     ```python
@@ -318,6 +320,8 @@ def get_instances_output(connection_mode: Optional[pulumi.Input[Optional[str]]] 
     """
     The `rds_get_instances` data source provides a collection of RDS instances available in Alibaba Cloud account.
     Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+
+    > **NOTE:** Available since v1.7.0+
 
     ## Example Usage
 

@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         public Input<string> ExecutionMoment { get; set; } = null!;
 
         /// <summary>
-        /// The bootstrap scripts execution target.
+        /// The bootstrap scripts execution target. See `node_selector` below.
         /// </summary>
         [Input("nodeSelector", required: true)]
         public Input<Inputs.ClusterBootstrapScriptNodeSelectorGetArgs> NodeSelector { get; set; } = null!;

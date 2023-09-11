@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Ddos Bgp Ip and how to use it, see [What is Ip](https://www.alibabacloud.com/help/en/ddos-protection/latest/addip).
  *
- * > **NOTE:** Available in v1.180.0+.
+ * > **NOTE:** Available since v1.180.0.
  *
  * ## Example Usage
  *
@@ -19,11 +19,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {addressName: _var.name});
- * const defaultDdosBgpInstances = alicloud.ddos.getDdosBgpInstances({});
+ * const instance = new alicloud.ddos.DdosBgpInstance("instance", {
+ *     baseBandwidth: 20,
+ *     bandwidth: -1,
+ *     ipCount: 100,
+ *     ipType: "IPv4",
+ *     normalBandwidth: 100,
+ *     type: "Enterprise",
+ * });
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {addressName: name});
  * const defaultBgpIp = new alicloud.ddos.BgpIp("defaultBgpIp", {
- *     instanceId: defaultDdosBgpInstances.then(defaultDdosBgpInstances => defaultDdosBgpInstances.ids?.[0]),
+ *     instanceId: instance.id,
  *     ip: defaultEipAddress.ipAddress,
  *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
  * });

@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Ens
     /// <summary>
     /// Provides a ENS Key Pair resource.
     /// 
-    /// For information about ENS Key Pair and how to use it, see [What is Key Pair](https://help.aliyun.com/product/62684.html).
+    /// For information about ENS Key Pair and how to use it, see [What is Key Pair](https://www.alibabacloud.com/help/en/ens/latest/createkeypair).
     /// 
-    /// &gt; **NOTE:** Available in v1.133.0+.
+    /// &gt; **NOTE:** Available since v1.133.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,10 +28,12 @@ namespace Pulumi.AliCloud.Ens
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var example = new AliCloud.Ens.KeyPair("example", new()
     ///     {
-    ///         KeyPairName = "example_value",
-    ///         Version = "example_value",
+    ///         KeyPairName = name,
+    ///         Version = "2017-11-10",
     ///     });
     /// 
     /// });

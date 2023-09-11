@@ -9,32 +9,31 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
 
 type ClusterAdditionalVolume struct {
-	// The queue to which the compute nodes are added.
+	// The queue of the nodes to which the additional file system is attached.
 	JobQueue *string `pulumi:"jobQueue"`
 	// The local directory on which the additional file system is mounted.
 	LocalDirectory *string `pulumi:"localDirectory"`
 	// The type of the cluster. Valid value: `PublicCloud`.
 	Location *string `pulumi:"location"`
-	// The remote directory to which the file system is mounted.
+	// The remote directory to which the additional file system is mounted.
 	RemoteDirectory *string `pulumi:"remoteDirectory"`
-	// The roles. See the following `Block roles`.
+	// The roles. See `roles` below.
 	Roles []ClusterAdditionalVolumeRole `pulumi:"roles"`
-	// The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
+	// The ID of the additional file system.
 	VolumeId *string `pulumi:"volumeId"`
 	// The mount options of the file system.
 	VolumeMountOption *string `pulumi:"volumeMountOption"`
-	// The mount target of the file system. Take note of the following information:
-	// - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
-	// - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
+	// The mount target of the additional file system.
 	VolumeMountpoint *string `pulumi:"volumeMountpoint"`
-	// The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
+	// The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
 	VolumeProtocol *string `pulumi:"volumeProtocol"`
-	// The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
+	// The type of the additional shared storage. Only NAS file systems are supported.
 	VolumeType *string `pulumi:"volumeType"`
 }
 
@@ -50,27 +49,25 @@ type ClusterAdditionalVolumeInput interface {
 }
 
 type ClusterAdditionalVolumeArgs struct {
-	// The queue to which the compute nodes are added.
+	// The queue of the nodes to which the additional file system is attached.
 	JobQueue pulumi.StringPtrInput `pulumi:"jobQueue"`
 	// The local directory on which the additional file system is mounted.
 	LocalDirectory pulumi.StringPtrInput `pulumi:"localDirectory"`
 	// The type of the cluster. Valid value: `PublicCloud`.
 	Location pulumi.StringPtrInput `pulumi:"location"`
-	// The remote directory to which the file system is mounted.
+	// The remote directory to which the additional file system is mounted.
 	RemoteDirectory pulumi.StringPtrInput `pulumi:"remoteDirectory"`
-	// The roles. See the following `Block roles`.
+	// The roles. See `roles` below.
 	Roles ClusterAdditionalVolumeRoleArrayInput `pulumi:"roles"`
-	// The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
+	// The ID of the additional file system.
 	VolumeId pulumi.StringPtrInput `pulumi:"volumeId"`
 	// The mount options of the file system.
 	VolumeMountOption pulumi.StringPtrInput `pulumi:"volumeMountOption"`
-	// The mount target of the file system. Take note of the following information:
-	// - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
-	// - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
+	// The mount target of the additional file system.
 	VolumeMountpoint pulumi.StringPtrInput `pulumi:"volumeMountpoint"`
-	// The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
+	// The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
 	VolumeProtocol pulumi.StringPtrInput `pulumi:"volumeProtocol"`
-	// The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
+	// The type of the additional shared storage. Only NAS file systems are supported.
 	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
 }
 
@@ -84,6 +81,12 @@ func (i ClusterAdditionalVolumeArgs) ToClusterAdditionalVolumeOutput() ClusterAd
 
 func (i ClusterAdditionalVolumeArgs) ToClusterAdditionalVolumeOutputWithContext(ctx context.Context) ClusterAdditionalVolumeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAdditionalVolumeOutput)
+}
+
+func (i ClusterAdditionalVolumeArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterAdditionalVolume] {
+	return pulumix.Output[ClusterAdditionalVolume]{
+		OutputState: i.ToClusterAdditionalVolumeOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ClusterAdditionalVolumeArrayInput is an input type that accepts ClusterAdditionalVolumeArray and ClusterAdditionalVolumeArrayOutput values.
@@ -111,6 +114,12 @@ func (i ClusterAdditionalVolumeArray) ToClusterAdditionalVolumeArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAdditionalVolumeArrayOutput)
 }
 
+func (i ClusterAdditionalVolumeArray) ToOutput(ctx context.Context) pulumix.Output[[]ClusterAdditionalVolume] {
+	return pulumix.Output[[]ClusterAdditionalVolume]{
+		OutputState: i.ToClusterAdditionalVolumeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ClusterAdditionalVolumeOutput struct{ *pulumi.OutputState }
 
 func (ClusterAdditionalVolumeOutput) ElementType() reflect.Type {
@@ -125,7 +134,13 @@ func (o ClusterAdditionalVolumeOutput) ToClusterAdditionalVolumeOutputWithContex
 	return o
 }
 
-// The queue to which the compute nodes are added.
+func (o ClusterAdditionalVolumeOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterAdditionalVolume] {
+	return pulumix.Output[ClusterAdditionalVolume]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The queue of the nodes to which the additional file system is attached.
 func (o ClusterAdditionalVolumeOutput) JobQueue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.JobQueue }).(pulumi.StringPtrOutput)
 }
@@ -140,17 +155,17 @@ func (o ClusterAdditionalVolumeOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The remote directory to which the file system is mounted.
+// The remote directory to which the additional file system is mounted.
 func (o ClusterAdditionalVolumeOutput) RemoteDirectory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.RemoteDirectory }).(pulumi.StringPtrOutput)
 }
 
-// The roles. See the following `Block roles`.
+// The roles. See `roles` below.
 func (o ClusterAdditionalVolumeOutput) Roles() ClusterAdditionalVolumeRoleArrayOutput {
 	return o.ApplyT(func(v ClusterAdditionalVolume) []ClusterAdditionalVolumeRole { return v.Roles }).(ClusterAdditionalVolumeRoleArrayOutput)
 }
 
-// The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
+// The ID of the additional file system.
 func (o ClusterAdditionalVolumeOutput) VolumeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.VolumeId }).(pulumi.StringPtrOutput)
 }
@@ -160,19 +175,17 @@ func (o ClusterAdditionalVolumeOutput) VolumeMountOption() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.VolumeMountOption }).(pulumi.StringPtrOutput)
 }
 
-// The mount target of the file system. Take note of the following information:
-// - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
-// - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
+// The mount target of the additional file system.
 func (o ClusterAdditionalVolumeOutput) VolumeMountpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.VolumeMountpoint }).(pulumi.StringPtrOutput)
 }
 
-// The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
+// The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
 func (o ClusterAdditionalVolumeOutput) VolumeProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.VolumeProtocol }).(pulumi.StringPtrOutput)
 }
 
-// The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
+// The type of the additional shared storage. Only NAS file systems are supported.
 func (o ClusterAdditionalVolumeOutput) VolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
 }
@@ -189,6 +202,12 @@ func (o ClusterAdditionalVolumeArrayOutput) ToClusterAdditionalVolumeArrayOutput
 
 func (o ClusterAdditionalVolumeArrayOutput) ToClusterAdditionalVolumeArrayOutputWithContext(ctx context.Context) ClusterAdditionalVolumeArrayOutput {
 	return o
+}
+
+func (o ClusterAdditionalVolumeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterAdditionalVolume] {
+	return pulumix.Output[[]ClusterAdditionalVolume]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterAdditionalVolumeArrayOutput) Index(i pulumi.IntInput) ClusterAdditionalVolumeOutput {
@@ -230,6 +249,12 @@ func (i ClusterAdditionalVolumeRoleArgs) ToClusterAdditionalVolumeRoleOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAdditionalVolumeRoleOutput)
 }
 
+func (i ClusterAdditionalVolumeRoleArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterAdditionalVolumeRole] {
+	return pulumix.Output[ClusterAdditionalVolumeRole]{
+		OutputState: i.ToClusterAdditionalVolumeRoleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ClusterAdditionalVolumeRoleArrayInput is an input type that accepts ClusterAdditionalVolumeRoleArray and ClusterAdditionalVolumeRoleArrayOutput values.
 // You can construct a concrete instance of `ClusterAdditionalVolumeRoleArrayInput` via:
 //
@@ -255,6 +280,12 @@ func (i ClusterAdditionalVolumeRoleArray) ToClusterAdditionalVolumeRoleArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAdditionalVolumeRoleArrayOutput)
 }
 
+func (i ClusterAdditionalVolumeRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]ClusterAdditionalVolumeRole] {
+	return pulumix.Output[[]ClusterAdditionalVolumeRole]{
+		OutputState: i.ToClusterAdditionalVolumeRoleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ClusterAdditionalVolumeRoleOutput struct{ *pulumi.OutputState }
 
 func (ClusterAdditionalVolumeRoleOutput) ElementType() reflect.Type {
@@ -267,6 +298,12 @@ func (o ClusterAdditionalVolumeRoleOutput) ToClusterAdditionalVolumeRoleOutput()
 
 func (o ClusterAdditionalVolumeRoleOutput) ToClusterAdditionalVolumeRoleOutputWithContext(ctx context.Context) ClusterAdditionalVolumeRoleOutput {
 	return o
+}
+
+func (o ClusterAdditionalVolumeRoleOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterAdditionalVolumeRole] {
+	return pulumix.Output[ClusterAdditionalVolumeRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of the nodes to which the additional file system is attached.
@@ -286,6 +323,12 @@ func (o ClusterAdditionalVolumeRoleArrayOutput) ToClusterAdditionalVolumeRoleArr
 
 func (o ClusterAdditionalVolumeRoleArrayOutput) ToClusterAdditionalVolumeRoleArrayOutputWithContext(ctx context.Context) ClusterAdditionalVolumeRoleArrayOutput {
 	return o
+}
+
+func (o ClusterAdditionalVolumeRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterAdditionalVolumeRole] {
+	return pulumix.Output[[]ClusterAdditionalVolumeRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterAdditionalVolumeRoleArrayOutput) Index(i pulumi.IntInput) ClusterAdditionalVolumeRoleOutput {
@@ -327,6 +370,12 @@ func (i ClusterApplicationArgs) ToClusterApplicationOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterApplicationOutput)
 }
 
+func (i ClusterApplicationArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterApplication] {
+	return pulumix.Output[ClusterApplication]{
+		OutputState: i.ToClusterApplicationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ClusterApplicationArrayInput is an input type that accepts ClusterApplicationArray and ClusterApplicationArrayOutput values.
 // You can construct a concrete instance of `ClusterApplicationArrayInput` via:
 //
@@ -352,6 +401,12 @@ func (i ClusterApplicationArray) ToClusterApplicationArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterApplicationArrayOutput)
 }
 
+func (i ClusterApplicationArray) ToOutput(ctx context.Context) pulumix.Output[[]ClusterApplication] {
+	return pulumix.Output[[]ClusterApplication]{
+		OutputState: i.ToClusterApplicationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ClusterApplicationOutput struct{ *pulumi.OutputState }
 
 func (ClusterApplicationOutput) ElementType() reflect.Type {
@@ -364,6 +419,12 @@ func (o ClusterApplicationOutput) ToClusterApplicationOutput() ClusterApplicatio
 
 func (o ClusterApplicationOutput) ToClusterApplicationOutputWithContext(ctx context.Context) ClusterApplicationOutput {
 	return o
+}
+
+func (o ClusterApplicationOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterApplication] {
+	return pulumix.Output[ClusterApplication]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The tag of the software.
@@ -383,6 +444,12 @@ func (o ClusterApplicationArrayOutput) ToClusterApplicationArrayOutput() Cluster
 
 func (o ClusterApplicationArrayOutput) ToClusterApplicationArrayOutputWithContext(ctx context.Context) ClusterApplicationArrayOutput {
 	return o
+}
+
+func (o ClusterApplicationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterApplication] {
+	return pulumix.Output[[]ClusterApplication]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterApplicationArrayOutput) Index(i pulumi.IntInput) ClusterApplicationOutput {
@@ -428,6 +495,12 @@ func (i ClusterPostInstallScriptArgs) ToClusterPostInstallScriptOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterPostInstallScriptOutput)
 }
 
+func (i ClusterPostInstallScriptArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterPostInstallScript] {
+	return pulumix.Output[ClusterPostInstallScript]{
+		OutputState: i.ToClusterPostInstallScriptOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ClusterPostInstallScriptArrayInput is an input type that accepts ClusterPostInstallScriptArray and ClusterPostInstallScriptArrayOutput values.
 // You can construct a concrete instance of `ClusterPostInstallScriptArrayInput` via:
 //
@@ -453,6 +526,12 @@ func (i ClusterPostInstallScriptArray) ToClusterPostInstallScriptArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterPostInstallScriptArrayOutput)
 }
 
+func (i ClusterPostInstallScriptArray) ToOutput(ctx context.Context) pulumix.Output[[]ClusterPostInstallScript] {
+	return pulumix.Output[[]ClusterPostInstallScript]{
+		OutputState: i.ToClusterPostInstallScriptArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ClusterPostInstallScriptOutput struct{ *pulumi.OutputState }
 
 func (ClusterPostInstallScriptOutput) ElementType() reflect.Type {
@@ -465,6 +544,12 @@ func (o ClusterPostInstallScriptOutput) ToClusterPostInstallScriptOutput() Clust
 
 func (o ClusterPostInstallScriptOutput) ToClusterPostInstallScriptOutputWithContext(ctx context.Context) ClusterPostInstallScriptOutput {
 	return o
+}
+
+func (o ClusterPostInstallScriptOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterPostInstallScript] {
+	return pulumix.Output[ClusterPostInstallScript]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The parameter that is used to run the script after the cluster is created.
@@ -489,6 +574,12 @@ func (o ClusterPostInstallScriptArrayOutput) ToClusterPostInstallScriptArrayOutp
 
 func (o ClusterPostInstallScriptArrayOutput) ToClusterPostInstallScriptArrayOutputWithContext(ctx context.Context) ClusterPostInstallScriptArrayOutput {
 	return o
+}
+
+func (o ClusterPostInstallScriptArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterPostInstallScript] {
+	return pulumix.Output[[]ClusterPostInstallScript]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterPostInstallScriptArrayOutput) Index(i pulumi.IntInput) ClusterPostInstallScriptOutput {
@@ -656,6 +747,12 @@ func (i GetClustersClusterArgs) ToGetClustersClusterOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterOutput)
 }
 
+func (i GetClustersClusterArgs) ToOutput(ctx context.Context) pulumix.Output[GetClustersCluster] {
+	return pulumix.Output[GetClustersCluster]{
+		OutputState: i.ToGetClustersClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetClustersClusterArrayInput is an input type that accepts GetClustersClusterArray and GetClustersClusterArrayOutput values.
 // You can construct a concrete instance of `GetClustersClusterArrayInput` via:
 //
@@ -681,6 +778,12 @@ func (i GetClustersClusterArray) ToGetClustersClusterArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterArrayOutput)
 }
 
+func (i GetClustersClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClustersCluster] {
+	return pulumix.Output[[]GetClustersCluster]{
+		OutputState: i.ToGetClustersClusterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetClustersClusterOutput struct{ *pulumi.OutputState }
 
 func (GetClustersClusterOutput) ElementType() reflect.Type {
@@ -693,6 +796,12 @@ func (o GetClustersClusterOutput) ToGetClustersClusterOutput() GetClustersCluste
 
 func (o GetClustersClusterOutput) ToGetClustersClusterOutputWithContext(ctx context.Context) GetClustersClusterOutput {
 	return o
+}
+
+func (o GetClustersClusterOutput) ToOutput(ctx context.Context) pulumix.Output[GetClustersCluster] {
+	return pulumix.Output[GetClustersCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The server type of the account.
@@ -870,6 +979,12 @@ func (o GetClustersClusterArrayOutput) ToGetClustersClusterArrayOutputWithContex
 	return o
 }
 
+func (o GetClustersClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClustersCluster] {
+	return pulumix.Output[[]GetClustersCluster]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetClustersClusterArrayOutput) Index(i pulumi.IntInput) GetClustersClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClustersCluster {
 		return vs[0].([]GetClustersCluster)[vs[1].(int)]
@@ -907,6 +1022,12 @@ func (i GetClustersClusterApplicationArgs) ToGetClustersClusterApplicationOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterApplicationOutput)
 }
 
+func (i GetClustersClusterApplicationArgs) ToOutput(ctx context.Context) pulumix.Output[GetClustersClusterApplication] {
+	return pulumix.Output[GetClustersClusterApplication]{
+		OutputState: i.ToGetClustersClusterApplicationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetClustersClusterApplicationArrayInput is an input type that accepts GetClustersClusterApplicationArray and GetClustersClusterApplicationArrayOutput values.
 // You can construct a concrete instance of `GetClustersClusterApplicationArrayInput` via:
 //
@@ -932,6 +1053,12 @@ func (i GetClustersClusterApplicationArray) ToGetClustersClusterApplicationArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterApplicationArrayOutput)
 }
 
+func (i GetClustersClusterApplicationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClustersClusterApplication] {
+	return pulumix.Output[[]GetClustersClusterApplication]{
+		OutputState: i.ToGetClustersClusterApplicationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetClustersClusterApplicationOutput struct{ *pulumi.OutputState }
 
 func (GetClustersClusterApplicationOutput) ElementType() reflect.Type {
@@ -944,6 +1071,12 @@ func (o GetClustersClusterApplicationOutput) ToGetClustersClusterApplicationOutp
 
 func (o GetClustersClusterApplicationOutput) ToGetClustersClusterApplicationOutputWithContext(ctx context.Context) GetClustersClusterApplicationOutput {
 	return o
+}
+
+func (o GetClustersClusterApplicationOutput) ToOutput(ctx context.Context) pulumix.Output[GetClustersClusterApplication] {
+	return pulumix.Output[GetClustersClusterApplication]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetClustersClusterApplicationOutput) Tag() pulumi.StringOutput {
@@ -962,6 +1095,12 @@ func (o GetClustersClusterApplicationArrayOutput) ToGetClustersClusterApplicatio
 
 func (o GetClustersClusterApplicationArrayOutput) ToGetClustersClusterApplicationArrayOutputWithContext(ctx context.Context) GetClustersClusterApplicationArrayOutput {
 	return o
+}
+
+func (o GetClustersClusterApplicationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClustersClusterApplication] {
+	return pulumix.Output[[]GetClustersClusterApplication]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetClustersClusterApplicationArrayOutput) Index(i pulumi.IntInput) GetClustersClusterApplicationOutput {
@@ -1003,6 +1142,12 @@ func (i GetClustersClusterPostInstallScriptArgs) ToGetClustersClusterPostInstall
 	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterPostInstallScriptOutput)
 }
 
+func (i GetClustersClusterPostInstallScriptArgs) ToOutput(ctx context.Context) pulumix.Output[GetClustersClusterPostInstallScript] {
+	return pulumix.Output[GetClustersClusterPostInstallScript]{
+		OutputState: i.ToGetClustersClusterPostInstallScriptOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetClustersClusterPostInstallScriptArrayInput is an input type that accepts GetClustersClusterPostInstallScriptArray and GetClustersClusterPostInstallScriptArrayOutput values.
 // You can construct a concrete instance of `GetClustersClusterPostInstallScriptArrayInput` via:
 //
@@ -1028,6 +1173,12 @@ func (i GetClustersClusterPostInstallScriptArray) ToGetClustersClusterPostInstal
 	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterPostInstallScriptArrayOutput)
 }
 
+func (i GetClustersClusterPostInstallScriptArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClustersClusterPostInstallScript] {
+	return pulumix.Output[[]GetClustersClusterPostInstallScript]{
+		OutputState: i.ToGetClustersClusterPostInstallScriptArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetClustersClusterPostInstallScriptOutput struct{ *pulumi.OutputState }
 
 func (GetClustersClusterPostInstallScriptOutput) ElementType() reflect.Type {
@@ -1040,6 +1191,12 @@ func (o GetClustersClusterPostInstallScriptOutput) ToGetClustersClusterPostInsta
 
 func (o GetClustersClusterPostInstallScriptOutput) ToGetClustersClusterPostInstallScriptOutputWithContext(ctx context.Context) GetClustersClusterPostInstallScriptOutput {
 	return o
+}
+
+func (o GetClustersClusterPostInstallScriptOutput) ToOutput(ctx context.Context) pulumix.Output[GetClustersClusterPostInstallScript] {
+	return pulumix.Output[GetClustersClusterPostInstallScript]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetClustersClusterPostInstallScriptOutput) Args() pulumi.StringOutput {
@@ -1062,6 +1219,12 @@ func (o GetClustersClusterPostInstallScriptArrayOutput) ToGetClustersClusterPost
 
 func (o GetClustersClusterPostInstallScriptArrayOutput) ToGetClustersClusterPostInstallScriptArrayOutputWithContext(ctx context.Context) GetClustersClusterPostInstallScriptArrayOutput {
 	return o
+}
+
+func (o GetClustersClusterPostInstallScriptArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClustersClusterPostInstallScript] {
+	return pulumix.Output[[]GetClustersClusterPostInstallScript]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetClustersClusterPostInstallScriptArrayOutput) Index(i pulumi.IntInput) GetClustersClusterPostInstallScriptOutput {
@@ -1175,6 +1338,12 @@ func (i GetJobTemplatesTemplateArgs) ToGetJobTemplatesTemplateOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplatesTemplateOutput)
 }
 
+func (i GetJobTemplatesTemplateArgs) ToOutput(ctx context.Context) pulumix.Output[GetJobTemplatesTemplate] {
+	return pulumix.Output[GetJobTemplatesTemplate]{
+		OutputState: i.ToGetJobTemplatesTemplateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetJobTemplatesTemplateArrayInput is an input type that accepts GetJobTemplatesTemplateArray and GetJobTemplatesTemplateArrayOutput values.
 // You can construct a concrete instance of `GetJobTemplatesTemplateArrayInput` via:
 //
@@ -1200,6 +1369,12 @@ func (i GetJobTemplatesTemplateArray) ToGetJobTemplatesTemplateArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplatesTemplateArrayOutput)
 }
 
+func (i GetJobTemplatesTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]GetJobTemplatesTemplate] {
+	return pulumix.Output[[]GetJobTemplatesTemplate]{
+		OutputState: i.ToGetJobTemplatesTemplateArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetJobTemplatesTemplateOutput struct{ *pulumi.OutputState }
 
 func (GetJobTemplatesTemplateOutput) ElementType() reflect.Type {
@@ -1212,6 +1387,12 @@ func (o GetJobTemplatesTemplateOutput) ToGetJobTemplatesTemplateOutput() GetJobT
 
 func (o GetJobTemplatesTemplateOutput) ToGetJobTemplatesTemplateOutputWithContext(ctx context.Context) GetJobTemplatesTemplateOutput {
 	return o
+}
+
+func (o GetJobTemplatesTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[GetJobTemplatesTemplate] {
+	return pulumix.Output[GetJobTemplatesTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Queue Jobs, Is of the Form: 1-10:2.
@@ -1321,6 +1502,12 @@ func (o GetJobTemplatesTemplateArrayOutput) ToGetJobTemplatesTemplateArrayOutput
 
 func (o GetJobTemplatesTemplateArrayOutput) ToGetJobTemplatesTemplateArrayOutputWithContext(ctx context.Context) GetJobTemplatesTemplateArrayOutput {
 	return o
+}
+
+func (o GetJobTemplatesTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetJobTemplatesTemplate] {
+	return pulumix.Output[[]GetJobTemplatesTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetJobTemplatesTemplateArrayOutput) Index(i pulumi.IntInput) GetJobTemplatesTemplateOutput {

@@ -21,11 +21,15 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
+ * const name = config.get("name") || "tf-example";
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
+ * });
  * const defaultPublicIpAddressPool = new alicloud.vpc.PublicIpAddressPool("defaultPublicIpAddressPool", {
- *     publicIpAddressPoolName: name,
  *     description: name,
+ *     publicIpAddressPoolName: name,
  *     isp: "BGP",
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
  * });
  * const defaultPublicIpAddressPoolCidrBlock = new alicloud.vpc.PublicIpAddressPoolCidrBlock("defaultPublicIpAddressPoolCidrBlock", {
  *     publicIpAddressPoolId: defaultPublicIpAddressPool.id,

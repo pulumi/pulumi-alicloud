@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the api groups of the current Alibaba Cloud user.
@@ -113,6 +114,12 @@ func (o GetGroupsResultOutput) ToGetGroupsResultOutput() GetGroupsResultOutput {
 
 func (o GetGroupsResultOutput) ToGetGroupsResultOutputWithContext(ctx context.Context) GetGroupsResultOutput {
 	return o
+}
+
+func (o GetGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupsResult] {
+	return pulumix.Output[GetGroupsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of api groups. Each element contains the following attributes:

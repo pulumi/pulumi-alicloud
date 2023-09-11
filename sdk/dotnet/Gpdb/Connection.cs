@@ -12,10 +12,77 @@ namespace Pulumi.AliCloud.Gpdb
     /// <summary>
     /// Provides a connection resource to allocate an Internet connection string for instance.
     /// 
-    /// &gt; **NOTE:**  Available in 1.48.0+
+    /// &gt; **NOTE:** Available since v1.48.0.
     /// 
     /// &gt; **NOTE:** Each instance will allocate a intranet connection string automatically and its prefix is instance ID.
     ///  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultZones = AliCloud.Gpdb.GetZones.Invoke();
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Gpdb.Instance("defaultInstance", new()
+    ///     {
+    ///         DbInstanceCategory = "HighAvailability",
+    ///         DbInstanceClass = "gpdb.group.segsdx1",
+    ///         DbInstanceMode = "StorageElastic",
+    ///         Description = name,
+    ///         Engine = "gpdb",
+    ///         EngineVersion = "6.0",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         InstanceNetworkType = "VPC",
+    ///         InstanceSpec = "2C16G",
+    ///         MasterNodeNum = 1,
+    ///         PaymentType = "PayAsYouGo",
+    ///         PrivateIpAddress = "1.1.1.1",
+    ///         SegStorageType = "cloud_essd",
+    ///         SegNodeNum = 4,
+    ///         StorageSize = 50,
+    ///         VpcId = defaultNetwork.Id,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         IpWhitelists = new[]
+    ///         {
+    ///             new AliCloud.Gpdb.Inputs.InstanceIpWhitelistArgs
+    ///             {
+    ///                 SecurityIpList = "127.0.0.1",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultConnection = new AliCloud.Gpdb.Connection("defaultConnection", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         ConnectionPrefix = "exampelcon",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

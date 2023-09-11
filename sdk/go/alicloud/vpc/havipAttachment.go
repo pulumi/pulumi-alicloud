@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -31,71 +32,72 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			exampleInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
 //				CpuCoreCount:     pulumi.IntRef(1),
 //				MemorySize:       pulumi.Float64Ref(2),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
-//				MostRecent: pulumi.BoolRef(true),
-//				Owners:     pulumi.StringRef("system"),
+//			exampleImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+//				Owners:    pulumi.StringRef("system"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			cfg := config.New(ctx, "")
-//			name := "test_havip_attachment"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
-//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
-//				VpcId:     fooNetwork.ID(),
-//				CidrBlock: pulumi.String("172.16.0.0/21"),
-//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      *pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			fooHAVip, err := vpc.NewHAVip(ctx, "fooHAVip", &vpc.HAVipArgs{
-//				VswitchId:   fooSwitch.ID(),
+//			exampleHAVip, err := vpc.NewHAVip(ctx, "exampleHAVip", &vpc.HAVipArgs{
+//				VswitchId:   exampleSwitch.ID(),
 //				Description: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			tfTestFoo, err := ecs.NewSecurityGroup(ctx, "tfTestFoo", &ecs.SecurityGroupArgs{
-//				Description: pulumi.String("foo"),
-//				VpcId:       fooNetwork.ID(),
+//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
+//				Description: pulumi.String(name),
+//				VpcId:       exampleNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			fooInstance, err := ecs.NewInstance(ctx, "fooInstance", &ecs.InstanceArgs{
-//				AvailabilityZone:        *pulumi.String(defaultZones.Zones[0].Id),
-//				VswitchId:               fooSwitch.ID(),
-//				ImageId:                 *pulumi.String(defaultImages.Images[0].Id),
-//				InstanceType:            *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//			exampleInstance, err := ecs.NewInstance(ctx, "exampleInstance", &ecs.InstanceArgs{
+//				AvailabilityZone:        *pulumi.String(_default.Zones[0].Id),
+//				VswitchId:               exampleSwitch.ID(),
+//				ImageId:                 *pulumi.String(exampleImages.Images[0].Id),
+//				InstanceType:            *pulumi.String(exampleInstanceTypes.InstanceTypes[0].Id),
 //				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
 //				InternetChargeType:      pulumi.String("PayByTraffic"),
 //				InternetMaxBandwidthOut: pulumi.Int(5),
 //				SecurityGroups: pulumi.StringArray{
-//					tfTestFoo.ID(),
+//					exampleSecurityGroup.ID(),
 //				},
 //				InstanceName: pulumi.String(name),
 //				UserData:     pulumi.String("echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf"),
@@ -103,9 +105,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewHAVipAttachment(ctx, "fooHAVipAttachment", &vpc.HAVipAttachmentArgs{
-//				HavipId:    fooHAVip.ID(),
-//				InstanceId: fooInstance.ID(),
+//			_, err = vpc.NewHAVipAttachment(ctx, "exampleHAVipAttachment", &vpc.HAVipAttachmentArgs{
+//				HavipId:    exampleHAVip.ID(),
+//				InstanceId: exampleInstance.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -251,6 +253,12 @@ func (i *HAVipAttachment) ToHAVipAttachmentOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(HAVipAttachmentOutput)
 }
 
+func (i *HAVipAttachment) ToOutput(ctx context.Context) pulumix.Output[*HAVipAttachment] {
+	return pulumix.Output[*HAVipAttachment]{
+		OutputState: i.ToHAVipAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HAVipAttachmentArrayInput is an input type that accepts HAVipAttachmentArray and HAVipAttachmentArrayOutput values.
 // You can construct a concrete instance of `HAVipAttachmentArrayInput` via:
 //
@@ -274,6 +282,12 @@ func (i HAVipAttachmentArray) ToHAVipAttachmentArrayOutput() HAVipAttachmentArra
 
 func (i HAVipAttachmentArray) ToHAVipAttachmentArrayOutputWithContext(ctx context.Context) HAVipAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HAVipAttachmentArrayOutput)
+}
+
+func (i HAVipAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*HAVipAttachment] {
+	return pulumix.Output[[]*HAVipAttachment]{
+		OutputState: i.ToHAVipAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // HAVipAttachmentMapInput is an input type that accepts HAVipAttachmentMap and HAVipAttachmentMapOutput values.
@@ -301,6 +315,12 @@ func (i HAVipAttachmentMap) ToHAVipAttachmentMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(HAVipAttachmentMapOutput)
 }
 
+func (i HAVipAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HAVipAttachment] {
+	return pulumix.Output[map[string]*HAVipAttachment]{
+		OutputState: i.ToHAVipAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HAVipAttachmentOutput struct{ *pulumi.OutputState }
 
 func (HAVipAttachmentOutput) ElementType() reflect.Type {
@@ -313,6 +333,12 @@ func (o HAVipAttachmentOutput) ToHAVipAttachmentOutput() HAVipAttachmentOutput {
 
 func (o HAVipAttachmentOutput) ToHAVipAttachmentOutputWithContext(ctx context.Context) HAVipAttachmentOutput {
 	return o
+}
+
+func (o HAVipAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*HAVipAttachment] {
+	return pulumix.Output[*HAVipAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
@@ -354,6 +380,12 @@ func (o HAVipAttachmentArrayOutput) ToHAVipAttachmentArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o HAVipAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HAVipAttachment] {
+	return pulumix.Output[[]*HAVipAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HAVipAttachmentArrayOutput) Index(i pulumi.IntInput) HAVipAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HAVipAttachment {
 		return vs[0].([]*HAVipAttachment)[vs[1].(int)]
@@ -372,6 +404,12 @@ func (o HAVipAttachmentMapOutput) ToHAVipAttachmentMapOutput() HAVipAttachmentMa
 
 func (o HAVipAttachmentMapOutput) ToHAVipAttachmentMapOutputWithContext(ctx context.Context) HAVipAttachmentMapOutput {
 	return o
+}
+
+func (o HAVipAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HAVipAttachment] {
+	return pulumix.Output[map[string]*HAVipAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HAVipAttachmentMapOutput) MapIndex(k pulumi.StringInput) HAVipAttachmentOutput {

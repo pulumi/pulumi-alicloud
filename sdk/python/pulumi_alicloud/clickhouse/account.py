@@ -395,9 +395,9 @@ class Account(pulumi.CustomResource):
         """
         Provides a Click House Account resource.
 
-        For information about Click House Account and how to use it, see [What is Account](https://www.alibabacloud.com/product/clickhouse).
+        For information about Click House Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/clickhouse/latest/api-clickhouse-2019-11-11-createaccount).
 
-        > **NOTE:** Available in v1.134.0+.
+        > **NOTE:** Available since v1.134.0.
 
         ## Example Usage
 
@@ -410,30 +410,32 @@ class Account(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "testaccountname"
-        pwd = config.get("pwd")
-        if pwd is None:
-            pwd = "Tf-testpwd"
+            name = "tf-example"
         default_regions = alicloud.clickhouse.get_regions(current=True)
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
             zone_id=default_regions.regions[0].zone_ids[0].zone_id)
         default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
-            db_cluster_version="20.3.10.75",
+            db_cluster_version="22.8.5.29",
             category="Basic",
             db_cluster_class="S8",
             db_cluster_network_type="vpc",
-            db_cluster_description=name,
             db_node_group_count=1,
             payment_type="PayAsYouGo",
             db_node_storage="500",
             storage_type="cloud_essd",
-            vswitch_id=default_switches.vswitches[0].id)
+            vswitch_id=default_switch.id,
+            vpc_id=default_network.id)
         default_account = alicloud.clickhouse.Account("defaultAccount",
             db_cluster_id=default_db_cluster.id,
-            account_description="your_description",
-            account_name=name,
-            account_password=pwd)
+            account_description="tf-example-description",
+            account_name="examplename",
+            account_password="Example1234")
         ```
 
         ## Import
@@ -466,9 +468,9 @@ class Account(pulumi.CustomResource):
         """
         Provides a Click House Account resource.
 
-        For information about Click House Account and how to use it, see [What is Account](https://www.alibabacloud.com/product/clickhouse).
+        For information about Click House Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/clickhouse/latest/api-clickhouse-2019-11-11-createaccount).
 
-        > **NOTE:** Available in v1.134.0+.
+        > **NOTE:** Available since v1.134.0.
 
         ## Example Usage
 
@@ -481,30 +483,32 @@ class Account(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "testaccountname"
-        pwd = config.get("pwd")
-        if pwd is None:
-            pwd = "Tf-testpwd"
+            name = "tf-example"
         default_regions = alicloud.clickhouse.get_regions(current=True)
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
             zone_id=default_regions.regions[0].zone_ids[0].zone_id)
         default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
-            db_cluster_version="20.3.10.75",
+            db_cluster_version="22.8.5.29",
             category="Basic",
             db_cluster_class="S8",
             db_cluster_network_type="vpc",
-            db_cluster_description=name,
             db_node_group_count=1,
             payment_type="PayAsYouGo",
             db_node_storage="500",
             storage_type="cloud_essd",
-            vswitch_id=default_switches.vswitches[0].id)
+            vswitch_id=default_switch.id,
+            vpc_id=default_network.id)
         default_account = alicloud.clickhouse.Account("defaultAccount",
             db_cluster_id=default_db_cluster.id,
-            account_description="your_description",
-            account_name=name,
-            account_password=pwd)
+            account_description="tf-example-description",
+            account_name="examplename",
+            account_password="Example1234")
         ```
 
         ## Import

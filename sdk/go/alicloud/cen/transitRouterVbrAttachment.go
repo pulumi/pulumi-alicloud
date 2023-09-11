@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutervbrattachment)
@@ -329,6 +330,12 @@ func (i *TransitRouterVbrAttachment) ToTransitRouterVbrAttachmentOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterVbrAttachmentOutput)
 }
 
+func (i *TransitRouterVbrAttachment) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterVbrAttachment] {
+	return pulumix.Output[*TransitRouterVbrAttachment]{
+		OutputState: i.ToTransitRouterVbrAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TransitRouterVbrAttachmentArrayInput is an input type that accepts TransitRouterVbrAttachmentArray and TransitRouterVbrAttachmentArrayOutput values.
 // You can construct a concrete instance of `TransitRouterVbrAttachmentArrayInput` via:
 //
@@ -352,6 +359,12 @@ func (i TransitRouterVbrAttachmentArray) ToTransitRouterVbrAttachmentArrayOutput
 
 func (i TransitRouterVbrAttachmentArray) ToTransitRouterVbrAttachmentArrayOutputWithContext(ctx context.Context) TransitRouterVbrAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterVbrAttachmentArrayOutput)
+}
+
+func (i TransitRouterVbrAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterVbrAttachment] {
+	return pulumix.Output[[]*TransitRouterVbrAttachment]{
+		OutputState: i.ToTransitRouterVbrAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TransitRouterVbrAttachmentMapInput is an input type that accepts TransitRouterVbrAttachmentMap and TransitRouterVbrAttachmentMapOutput values.
@@ -379,6 +392,12 @@ func (i TransitRouterVbrAttachmentMap) ToTransitRouterVbrAttachmentMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterVbrAttachmentMapOutput)
 }
 
+func (i TransitRouterVbrAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterVbrAttachment] {
+	return pulumix.Output[map[string]*TransitRouterVbrAttachment]{
+		OutputState: i.ToTransitRouterVbrAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TransitRouterVbrAttachmentOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterVbrAttachmentOutput) ElementType() reflect.Type {
@@ -391,6 +410,12 @@ func (o TransitRouterVbrAttachmentOutput) ToTransitRouterVbrAttachmentOutput() T
 
 func (o TransitRouterVbrAttachmentOutput) ToTransitRouterVbrAttachmentOutputWithContext(ctx context.Context) TransitRouterVbrAttachmentOutput {
 	return o
+}
+
+func (o TransitRouterVbrAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterVbrAttachment] {
+	return pulumix.Output[*TransitRouterVbrAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Auto publish route enabled.Default value is `false`.
@@ -481,6 +506,12 @@ func (o TransitRouterVbrAttachmentArrayOutput) ToTransitRouterVbrAttachmentArray
 	return o
 }
 
+func (o TransitRouterVbrAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterVbrAttachment] {
+	return pulumix.Output[[]*TransitRouterVbrAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TransitRouterVbrAttachmentArrayOutput) Index(i pulumi.IntInput) TransitRouterVbrAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TransitRouterVbrAttachment {
 		return vs[0].([]*TransitRouterVbrAttachment)[vs[1].(int)]
@@ -499,6 +530,12 @@ func (o TransitRouterVbrAttachmentMapOutput) ToTransitRouterVbrAttachmentMapOutp
 
 func (o TransitRouterVbrAttachmentMapOutput) ToTransitRouterVbrAttachmentMapOutputWithContext(ctx context.Context) TransitRouterVbrAttachmentMapOutput {
 	return o
+}
+
+func (o TransitRouterVbrAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterVbrAttachment] {
+	return pulumix.Output[map[string]*TransitRouterVbrAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransitRouterVbrAttachmentMapOutput) MapIndex(k pulumi.StringInput) TransitRouterVbrAttachmentOutput {

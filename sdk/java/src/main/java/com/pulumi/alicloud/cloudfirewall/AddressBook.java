@@ -20,9 +20,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Firewall Address Book resource.
  * 
- * For information about Cloud Firewall Address Book and how to use it, see [What is Address Book](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describeaddressbook).
+ * For information about Cloud Firewall Address Book and how to use it, see [What is Address Book](https://www.alibabacloud.com/help/en/cloud-firewall/developer-reference/api-cloudfw-2017-12-07-addaddressbook).
  * 
- * &gt; **NOTE:** Available in v1.178.0+.
+ * &gt; **NOTE:** Available since v1.178.0.
  * 
  * ## Example Usage
  * 
@@ -119,14 +119,14 @@ public class AddressBook extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
-     * A list of ECS tags. See the following `Block ecs_tags`.
+     * A list of ECS tags. See `ecs_tags` below.
      * 
      */
     @Export(name="ecsTags", type=List.class, parameters={AddressBookEcsTag.class})
     private Output</* @Nullable */ List<AddressBookEcsTag>> ecsTags;
 
     /**
-     * @return A list of ECS tags. See the following `Block ecs_tags`.
+     * @return A list of ECS tags. See `ecs_tags` below.
      * 
      */
     public Output<Optional<List<AddressBookEcsTag>>> ecsTags() {
@@ -147,50 +147,46 @@ public class AddressBook extends com.pulumi.resources.CustomResource {
         return this.groupName;
     }
     /**
-     * The type of the Address Book. Valid values:  `ip`, `tag`.
+     * The type of the Address Book. Valid values: `ip`, `tag`.
      * 
      */
     @Export(name="groupType", type=String.class, parameters={})
     private Output<String> groupType;
 
     /**
-     * @return The type of the Address Book. Valid values:  `ip`, `tag`.
+     * @return The type of the Address Book. Valid values: `ip`, `tag`.
      * 
      */
     public Output<String> groupType() {
         return this.groupType;
     }
     /**
-     * The language of the content within the request and response. Valid values: `en`, `zh`.
+     * The language of the content within the request and response. Valid values: `zh`, `en`.
      * 
      */
     @Export(name="lang", type=String.class, parameters={})
     private Output</* @Nullable */ String> lang;
 
     /**
-     * @return The language of the content within the request and response. Valid values: `en`, `zh`.
+     * @return The language of the content within the request and response. Valid values: `zh`, `en`.
      * 
      */
     public Output<Optional<String>> lang() {
         return Codegen.optional(this.lang);
     }
     /**
-     * The logical relation among the ECS tags that to be matched. Valid values:
-     * - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-     * - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+     * The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
      * 
      */
     @Export(name="tagRelation", type=String.class, parameters={})
-    private Output</* @Nullable */ String> tagRelation;
+    private Output<String> tagRelation;
 
     /**
-     * @return The logical relation among the ECS tags that to be matched. Valid values:
-     * - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-     * - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+     * @return The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
      * 
      */
-    public Output<Optional<String>> tagRelation() {
-        return Codegen.optional(this.tagRelation);
+    public Output<String> tagRelation() {
+        return this.tagRelation;
     }
 
     /**

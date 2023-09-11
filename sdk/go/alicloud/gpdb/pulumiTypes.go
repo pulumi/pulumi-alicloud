@@ -9,18 +9,19 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
 
 type DbInstancePlanPlanConfig struct {
-	// Pause instance plan config. See the following `Block pause`.
+	// Pause instance plan config. See `pause` below.
 	Pause *DbInstancePlanPlanConfigPause `pulumi:"pause"`
-	// Resume instance plan config. See the following `Block resume`.
+	// Resume instance plan config. See `resume` below.
 	Resume *DbInstancePlanPlanConfigResume `pulumi:"resume"`
-	// Scale In instance plan config. See the following `Block scaleIn`.
+	// Scale In instance plan config. See `scaleIn` below.
 	ScaleIn *DbInstancePlanPlanConfigScaleIn `pulumi:"scaleIn"`
-	// Scale out instance plan config. See the following `Block scaleOut`.
+	// Scale out instance plan config. See `scaleOut` below.
 	ScaleOut *DbInstancePlanPlanConfigScaleOut `pulumi:"scaleOut"`
 }
 
@@ -36,13 +37,13 @@ type DbInstancePlanPlanConfigInput interface {
 }
 
 type DbInstancePlanPlanConfigArgs struct {
-	// Pause instance plan config. See the following `Block pause`.
+	// Pause instance plan config. See `pause` below.
 	Pause DbInstancePlanPlanConfigPausePtrInput `pulumi:"pause"`
-	// Resume instance plan config. See the following `Block resume`.
+	// Resume instance plan config. See `resume` below.
 	Resume DbInstancePlanPlanConfigResumePtrInput `pulumi:"resume"`
-	// Scale In instance plan config. See the following `Block scaleIn`.
+	// Scale In instance plan config. See `scaleIn` below.
 	ScaleIn DbInstancePlanPlanConfigScaleInPtrInput `pulumi:"scaleIn"`
-	// Scale out instance plan config. See the following `Block scaleOut`.
+	// Scale out instance plan config. See `scaleOut` below.
 	ScaleOut DbInstancePlanPlanConfigScaleOutPtrInput `pulumi:"scaleOut"`
 }
 
@@ -56,6 +57,12 @@ func (i DbInstancePlanPlanConfigArgs) ToDbInstancePlanPlanConfigOutput() DbInsta
 
 func (i DbInstancePlanPlanConfigArgs) ToDbInstancePlanPlanConfigOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigOutput)
+}
+
+func (i DbInstancePlanPlanConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DbInstancePlanPlanConfig] {
+	return pulumix.Output[DbInstancePlanPlanConfig]{
+		OutputState: i.ToDbInstancePlanPlanConfigOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DbInstancePlanPlanConfigArrayInput is an input type that accepts DbInstancePlanPlanConfigArray and DbInstancePlanPlanConfigArrayOutput values.
@@ -83,6 +90,12 @@ func (i DbInstancePlanPlanConfigArray) ToDbInstancePlanPlanConfigArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigArrayOutput)
 }
 
+func (i DbInstancePlanPlanConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]DbInstancePlanPlanConfig] {
+	return pulumix.Output[[]DbInstancePlanPlanConfig]{
+		OutputState: i.ToDbInstancePlanPlanConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DbInstancePlanPlanConfigOutput struct{ *pulumi.OutputState }
 
 func (DbInstancePlanPlanConfigOutput) ElementType() reflect.Type {
@@ -97,22 +110,28 @@ func (o DbInstancePlanPlanConfigOutput) ToDbInstancePlanPlanConfigOutputWithCont
 	return o
 }
 
-// Pause instance plan config. See the following `Block pause`.
+func (o DbInstancePlanPlanConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DbInstancePlanPlanConfig] {
+	return pulumix.Output[DbInstancePlanPlanConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Pause instance plan config. See `pause` below.
 func (o DbInstancePlanPlanConfigOutput) Pause() DbInstancePlanPlanConfigPausePtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfig) *DbInstancePlanPlanConfigPause { return v.Pause }).(DbInstancePlanPlanConfigPausePtrOutput)
 }
 
-// Resume instance plan config. See the following `Block resume`.
+// Resume instance plan config. See `resume` below.
 func (o DbInstancePlanPlanConfigOutput) Resume() DbInstancePlanPlanConfigResumePtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfig) *DbInstancePlanPlanConfigResume { return v.Resume }).(DbInstancePlanPlanConfigResumePtrOutput)
 }
 
-// Scale In instance plan config. See the following `Block scaleIn`.
+// Scale In instance plan config. See `scaleIn` below.
 func (o DbInstancePlanPlanConfigOutput) ScaleIn() DbInstancePlanPlanConfigScaleInPtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfig) *DbInstancePlanPlanConfigScaleIn { return v.ScaleIn }).(DbInstancePlanPlanConfigScaleInPtrOutput)
 }
 
-// Scale out instance plan config. See the following `Block scaleOut`.
+// Scale out instance plan config. See `scaleOut` below.
 func (o DbInstancePlanPlanConfigOutput) ScaleOut() DbInstancePlanPlanConfigScaleOutPtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfig) *DbInstancePlanPlanConfigScaleOut { return v.ScaleOut }).(DbInstancePlanPlanConfigScaleOutPtrOutput)
 }
@@ -129,6 +148,12 @@ func (o DbInstancePlanPlanConfigArrayOutput) ToDbInstancePlanPlanConfigArrayOutp
 
 func (o DbInstancePlanPlanConfigArrayOutput) ToDbInstancePlanPlanConfigArrayOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigArrayOutput {
 	return o
+}
+
+func (o DbInstancePlanPlanConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DbInstancePlanPlanConfig] {
+	return pulumix.Output[[]DbInstancePlanPlanConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DbInstancePlanPlanConfigArrayOutput) Index(i pulumi.IntInput) DbInstancePlanPlanConfigOutput {
@@ -174,6 +199,12 @@ func (i DbInstancePlanPlanConfigPauseArgs) ToDbInstancePlanPlanConfigPauseOutput
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigPauseOutput)
 }
 
+func (i DbInstancePlanPlanConfigPauseArgs) ToOutput(ctx context.Context) pulumix.Output[DbInstancePlanPlanConfigPause] {
+	return pulumix.Output[DbInstancePlanPlanConfigPause]{
+		OutputState: i.ToDbInstancePlanPlanConfigPauseOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DbInstancePlanPlanConfigPauseArgs) ToDbInstancePlanPlanConfigPausePtrOutput() DbInstancePlanPlanConfigPausePtrOutput {
 	return i.ToDbInstancePlanPlanConfigPausePtrOutputWithContext(context.Background())
 }
@@ -215,6 +246,12 @@ func (i *dbInstancePlanPlanConfigPausePtrType) ToDbInstancePlanPlanConfigPausePt
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigPausePtrOutput)
 }
 
+func (i *dbInstancePlanPlanConfigPausePtrType) ToOutput(ctx context.Context) pulumix.Output[*DbInstancePlanPlanConfigPause] {
+	return pulumix.Output[*DbInstancePlanPlanConfigPause]{
+		OutputState: i.ToDbInstancePlanPlanConfigPausePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DbInstancePlanPlanConfigPauseOutput struct{ *pulumi.OutputState }
 
 func (DbInstancePlanPlanConfigPauseOutput) ElementType() reflect.Type {
@@ -239,6 +276,12 @@ func (o DbInstancePlanPlanConfigPauseOutput) ToDbInstancePlanPlanConfigPausePtrO
 	}).(DbInstancePlanPlanConfigPausePtrOutput)
 }
 
+func (o DbInstancePlanPlanConfigPauseOutput) ToOutput(ctx context.Context) pulumix.Output[DbInstancePlanPlanConfigPause] {
+	return pulumix.Output[DbInstancePlanPlanConfigPause]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The executed time of the Plan.
 func (o DbInstancePlanPlanConfigPauseOutput) ExecuteTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfigPause) *string { return v.ExecuteTime }).(pulumi.StringPtrOutput)
@@ -261,6 +304,12 @@ func (o DbInstancePlanPlanConfigPausePtrOutput) ToDbInstancePlanPlanConfigPauseP
 
 func (o DbInstancePlanPlanConfigPausePtrOutput) ToDbInstancePlanPlanConfigPausePtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigPausePtrOutput {
 	return o
+}
+
+func (o DbInstancePlanPlanConfigPausePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DbInstancePlanPlanConfigPause] {
+	return pulumix.Output[*DbInstancePlanPlanConfigPause]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DbInstancePlanPlanConfigPausePtrOutput) Elem() DbInstancePlanPlanConfigPauseOutput {
@@ -330,6 +379,12 @@ func (i DbInstancePlanPlanConfigResumeArgs) ToDbInstancePlanPlanConfigResumeOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigResumeOutput)
 }
 
+func (i DbInstancePlanPlanConfigResumeArgs) ToOutput(ctx context.Context) pulumix.Output[DbInstancePlanPlanConfigResume] {
+	return pulumix.Output[DbInstancePlanPlanConfigResume]{
+		OutputState: i.ToDbInstancePlanPlanConfigResumeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DbInstancePlanPlanConfigResumeArgs) ToDbInstancePlanPlanConfigResumePtrOutput() DbInstancePlanPlanConfigResumePtrOutput {
 	return i.ToDbInstancePlanPlanConfigResumePtrOutputWithContext(context.Background())
 }
@@ -371,6 +426,12 @@ func (i *dbInstancePlanPlanConfigResumePtrType) ToDbInstancePlanPlanConfigResume
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigResumePtrOutput)
 }
 
+func (i *dbInstancePlanPlanConfigResumePtrType) ToOutput(ctx context.Context) pulumix.Output[*DbInstancePlanPlanConfigResume] {
+	return pulumix.Output[*DbInstancePlanPlanConfigResume]{
+		OutputState: i.ToDbInstancePlanPlanConfigResumePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DbInstancePlanPlanConfigResumeOutput struct{ *pulumi.OutputState }
 
 func (DbInstancePlanPlanConfigResumeOutput) ElementType() reflect.Type {
@@ -395,6 +456,12 @@ func (o DbInstancePlanPlanConfigResumeOutput) ToDbInstancePlanPlanConfigResumePt
 	}).(DbInstancePlanPlanConfigResumePtrOutput)
 }
 
+func (o DbInstancePlanPlanConfigResumeOutput) ToOutput(ctx context.Context) pulumix.Output[DbInstancePlanPlanConfigResume] {
+	return pulumix.Output[DbInstancePlanPlanConfigResume]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The executed time of the Plan.
 func (o DbInstancePlanPlanConfigResumeOutput) ExecuteTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfigResume) *string { return v.ExecuteTime }).(pulumi.StringPtrOutput)
@@ -417,6 +484,12 @@ func (o DbInstancePlanPlanConfigResumePtrOutput) ToDbInstancePlanPlanConfigResum
 
 func (o DbInstancePlanPlanConfigResumePtrOutput) ToDbInstancePlanPlanConfigResumePtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigResumePtrOutput {
 	return o
+}
+
+func (o DbInstancePlanPlanConfigResumePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DbInstancePlanPlanConfigResume] {
+	return pulumix.Output[*DbInstancePlanPlanConfigResume]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DbInstancePlanPlanConfigResumePtrOutput) Elem() DbInstancePlanPlanConfigResumeOutput {
@@ -490,6 +563,12 @@ func (i DbInstancePlanPlanConfigScaleInArgs) ToDbInstancePlanPlanConfigScaleInOu
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigScaleInOutput)
 }
 
+func (i DbInstancePlanPlanConfigScaleInArgs) ToOutput(ctx context.Context) pulumix.Output[DbInstancePlanPlanConfigScaleIn] {
+	return pulumix.Output[DbInstancePlanPlanConfigScaleIn]{
+		OutputState: i.ToDbInstancePlanPlanConfigScaleInOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DbInstancePlanPlanConfigScaleInArgs) ToDbInstancePlanPlanConfigScaleInPtrOutput() DbInstancePlanPlanConfigScaleInPtrOutput {
 	return i.ToDbInstancePlanPlanConfigScaleInPtrOutputWithContext(context.Background())
 }
@@ -531,6 +610,12 @@ func (i *dbInstancePlanPlanConfigScaleInPtrType) ToDbInstancePlanPlanConfigScale
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigScaleInPtrOutput)
 }
 
+func (i *dbInstancePlanPlanConfigScaleInPtrType) ToOutput(ctx context.Context) pulumix.Output[*DbInstancePlanPlanConfigScaleIn] {
+	return pulumix.Output[*DbInstancePlanPlanConfigScaleIn]{
+		OutputState: i.ToDbInstancePlanPlanConfigScaleInPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DbInstancePlanPlanConfigScaleInOutput struct{ *pulumi.OutputState }
 
 func (DbInstancePlanPlanConfigScaleInOutput) ElementType() reflect.Type {
@@ -553,6 +638,12 @@ func (o DbInstancePlanPlanConfigScaleInOutput) ToDbInstancePlanPlanConfigScaleIn
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbInstancePlanPlanConfigScaleIn) *DbInstancePlanPlanConfigScaleIn {
 		return &v
 	}).(DbInstancePlanPlanConfigScaleInPtrOutput)
+}
+
+func (o DbInstancePlanPlanConfigScaleInOutput) ToOutput(ctx context.Context) pulumix.Output[DbInstancePlanPlanConfigScaleIn] {
+	return pulumix.Output[DbInstancePlanPlanConfigScaleIn]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The executed time of the Plan.
@@ -582,6 +673,12 @@ func (o DbInstancePlanPlanConfigScaleInPtrOutput) ToDbInstancePlanPlanConfigScal
 
 func (o DbInstancePlanPlanConfigScaleInPtrOutput) ToDbInstancePlanPlanConfigScaleInPtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleInPtrOutput {
 	return o
+}
+
+func (o DbInstancePlanPlanConfigScaleInPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DbInstancePlanPlanConfigScaleIn] {
+	return pulumix.Output[*DbInstancePlanPlanConfigScaleIn]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DbInstancePlanPlanConfigScaleInPtrOutput) Elem() DbInstancePlanPlanConfigScaleInOutput {
@@ -665,6 +762,12 @@ func (i DbInstancePlanPlanConfigScaleOutArgs) ToDbInstancePlanPlanConfigScaleOut
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigScaleOutOutput)
 }
 
+func (i DbInstancePlanPlanConfigScaleOutArgs) ToOutput(ctx context.Context) pulumix.Output[DbInstancePlanPlanConfigScaleOut] {
+	return pulumix.Output[DbInstancePlanPlanConfigScaleOut]{
+		OutputState: i.ToDbInstancePlanPlanConfigScaleOutOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DbInstancePlanPlanConfigScaleOutArgs) ToDbInstancePlanPlanConfigScaleOutPtrOutput() DbInstancePlanPlanConfigScaleOutPtrOutput {
 	return i.ToDbInstancePlanPlanConfigScaleOutPtrOutputWithContext(context.Background())
 }
@@ -706,6 +809,12 @@ func (i *dbInstancePlanPlanConfigScaleOutPtrType) ToDbInstancePlanPlanConfigScal
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigScaleOutPtrOutput)
 }
 
+func (i *dbInstancePlanPlanConfigScaleOutPtrType) ToOutput(ctx context.Context) pulumix.Output[*DbInstancePlanPlanConfigScaleOut] {
+	return pulumix.Output[*DbInstancePlanPlanConfigScaleOut]{
+		OutputState: i.ToDbInstancePlanPlanConfigScaleOutPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DbInstancePlanPlanConfigScaleOutOutput struct{ *pulumi.OutputState }
 
 func (DbInstancePlanPlanConfigScaleOutOutput) ElementType() reflect.Type {
@@ -728,6 +837,12 @@ func (o DbInstancePlanPlanConfigScaleOutOutput) ToDbInstancePlanPlanConfigScaleO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbInstancePlanPlanConfigScaleOut) *DbInstancePlanPlanConfigScaleOut {
 		return &v
 	}).(DbInstancePlanPlanConfigScaleOutPtrOutput)
+}
+
+func (o DbInstancePlanPlanConfigScaleOutOutput) ToOutput(ctx context.Context) pulumix.Output[DbInstancePlanPlanConfigScaleOut] {
+	return pulumix.Output[DbInstancePlanPlanConfigScaleOut]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The executed time of the Plan.
@@ -757,6 +872,12 @@ func (o DbInstancePlanPlanConfigScaleOutPtrOutput) ToDbInstancePlanPlanConfigSca
 
 func (o DbInstancePlanPlanConfigScaleOutPtrOutput) ToDbInstancePlanPlanConfigScaleOutPtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleOutPtrOutput {
 	return o
+}
+
+func (o DbInstancePlanPlanConfigScaleOutPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DbInstancePlanPlanConfigScaleOut] {
+	return pulumix.Output[*DbInstancePlanPlanConfigScaleOut]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DbInstancePlanPlanConfigScaleOutPtrOutput) Elem() DbInstancePlanPlanConfigScaleOutOutput {
@@ -842,6 +963,12 @@ func (i InstanceIpWhitelistArgs) ToInstanceIpWhitelistOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIpWhitelistOutput)
 }
 
+func (i InstanceIpWhitelistArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceIpWhitelist] {
+	return pulumix.Output[InstanceIpWhitelist]{
+		OutputState: i.ToInstanceIpWhitelistOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceIpWhitelistArrayInput is an input type that accepts InstanceIpWhitelistArray and InstanceIpWhitelistArrayOutput values.
 // You can construct a concrete instance of `InstanceIpWhitelistArrayInput` via:
 //
@@ -867,6 +994,12 @@ func (i InstanceIpWhitelistArray) ToInstanceIpWhitelistArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIpWhitelistArrayOutput)
 }
 
+func (i InstanceIpWhitelistArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceIpWhitelist] {
+	return pulumix.Output[[]InstanceIpWhitelist]{
+		OutputState: i.ToInstanceIpWhitelistArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceIpWhitelistOutput struct{ *pulumi.OutputState }
 
 func (InstanceIpWhitelistOutput) ElementType() reflect.Type {
@@ -879,6 +1012,12 @@ func (o InstanceIpWhitelistOutput) ToInstanceIpWhitelistOutput() InstanceIpWhite
 
 func (o InstanceIpWhitelistOutput) ToInstanceIpWhitelistOutputWithContext(ctx context.Context) InstanceIpWhitelistOutput {
 	return o
+}
+
+func (o InstanceIpWhitelistOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceIpWhitelist] {
+	return pulumix.Output[InstanceIpWhitelist]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The value of this parameter is empty by default. The attribute of the whitelist group.
@@ -909,6 +1048,12 @@ func (o InstanceIpWhitelistArrayOutput) ToInstanceIpWhitelistArrayOutput() Insta
 
 func (o InstanceIpWhitelistArrayOutput) ToInstanceIpWhitelistArrayOutputWithContext(ctx context.Context) InstanceIpWhitelistArrayOutput {
 	return o
+}
+
+func (o InstanceIpWhitelistArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceIpWhitelist] {
+	return pulumix.Output[[]InstanceIpWhitelist]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceIpWhitelistArrayOutput) Index(i pulumi.IntInput) InstanceIpWhitelistOutput {
@@ -966,6 +1111,12 @@ func (i GetAccountsAccountArgs) ToGetAccountsAccountOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountOutput)
 }
 
+func (i GetAccountsAccountArgs) ToOutput(ctx context.Context) pulumix.Output[GetAccountsAccount] {
+	return pulumix.Output[GetAccountsAccount]{
+		OutputState: i.ToGetAccountsAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAccountsAccountArrayInput is an input type that accepts GetAccountsAccountArray and GetAccountsAccountArrayOutput values.
 // You can construct a concrete instance of `GetAccountsAccountArrayInput` via:
 //
@@ -991,6 +1142,12 @@ func (i GetAccountsAccountArray) ToGetAccountsAccountArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountArrayOutput)
 }
 
+func (i GetAccountsAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAccountsAccount] {
+	return pulumix.Output[[]GetAccountsAccount]{
+		OutputState: i.ToGetAccountsAccountArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAccountsAccountOutput struct{ *pulumi.OutputState }
 
 func (GetAccountsAccountOutput) ElementType() reflect.Type {
@@ -1003,6 +1160,12 @@ func (o GetAccountsAccountOutput) ToGetAccountsAccountOutput() GetAccountsAccoun
 
 func (o GetAccountsAccountOutput) ToGetAccountsAccountOutputWithContext(ctx context.Context) GetAccountsAccountOutput {
 	return o
+}
+
+func (o GetAccountsAccountOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountsAccount] {
+	return pulumix.Output[GetAccountsAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the account.
@@ -1042,6 +1205,12 @@ func (o GetAccountsAccountArrayOutput) ToGetAccountsAccountArrayOutput() GetAcco
 
 func (o GetAccountsAccountArrayOutput) ToGetAccountsAccountArrayOutputWithContext(ctx context.Context) GetAccountsAccountArrayOutput {
 	return o
+}
+
+func (o GetAccountsAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAccountsAccount] {
+	return pulumix.Output[[]GetAccountsAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetAccountsAccountOutput {
@@ -1117,6 +1286,12 @@ func (i GetDbInstancePlansPlanArgs) ToGetDbInstancePlansPlanOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanOutput)
 }
 
+func (i GetDbInstancePlansPlanArgs) ToOutput(ctx context.Context) pulumix.Output[GetDbInstancePlansPlan] {
+	return pulumix.Output[GetDbInstancePlansPlan]{
+		OutputState: i.ToGetDbInstancePlansPlanOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDbInstancePlansPlanArrayInput is an input type that accepts GetDbInstancePlansPlanArray and GetDbInstancePlansPlanArrayOutput values.
 // You can construct a concrete instance of `GetDbInstancePlansPlanArrayInput` via:
 //
@@ -1142,6 +1317,12 @@ func (i GetDbInstancePlansPlanArray) ToGetDbInstancePlansPlanArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanArrayOutput)
 }
 
+func (i GetDbInstancePlansPlanArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDbInstancePlansPlan] {
+	return pulumix.Output[[]GetDbInstancePlansPlan]{
+		OutputState: i.ToGetDbInstancePlansPlanArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDbInstancePlansPlanOutput struct{ *pulumi.OutputState }
 
 func (GetDbInstancePlansPlanOutput) ElementType() reflect.Type {
@@ -1154,6 +1335,12 @@ func (o GetDbInstancePlansPlanOutput) ToGetDbInstancePlansPlanOutput() GetDbInst
 
 func (o GetDbInstancePlansPlanOutput) ToGetDbInstancePlansPlanOutputWithContext(ctx context.Context) GetDbInstancePlansPlanOutput {
 	return o
+}
+
+func (o GetDbInstancePlansPlanOutput) ToOutput(ctx context.Context) pulumix.Output[GetDbInstancePlansPlan] {
+	return pulumix.Output[GetDbInstancePlansPlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the Plan.
@@ -1219,6 +1406,12 @@ func (o GetDbInstancePlansPlanArrayOutput) ToGetDbInstancePlansPlanArrayOutputWi
 	return o
 }
 
+func (o GetDbInstancePlansPlanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDbInstancePlansPlan] {
+	return pulumix.Output[[]GetDbInstancePlansPlan]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetDbInstancePlansPlanArrayOutput) Index(i pulumi.IntInput) GetDbInstancePlansPlanOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDbInstancePlansPlan {
 		return vs[0].([]GetDbInstancePlansPlan)[vs[1].(int)]
@@ -1270,6 +1463,12 @@ func (i GetDbInstancePlansPlanPlanConfigArgs) ToGetDbInstancePlansPlanPlanConfig
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanPlanConfigOutput)
 }
 
+func (i GetDbInstancePlansPlanPlanConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetDbInstancePlansPlanPlanConfig] {
+	return pulumix.Output[GetDbInstancePlansPlanPlanConfig]{
+		OutputState: i.ToGetDbInstancePlansPlanPlanConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDbInstancePlansPlanPlanConfigArrayInput is an input type that accepts GetDbInstancePlansPlanPlanConfigArray and GetDbInstancePlansPlanPlanConfigArrayOutput values.
 // You can construct a concrete instance of `GetDbInstancePlansPlanPlanConfigArrayInput` via:
 //
@@ -1295,6 +1494,12 @@ func (i GetDbInstancePlansPlanPlanConfigArray) ToGetDbInstancePlansPlanPlanConfi
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanPlanConfigArrayOutput)
 }
 
+func (i GetDbInstancePlansPlanPlanConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDbInstancePlansPlanPlanConfig] {
+	return pulumix.Output[[]GetDbInstancePlansPlanPlanConfig]{
+		OutputState: i.ToGetDbInstancePlansPlanPlanConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDbInstancePlansPlanPlanConfigOutput struct{ *pulumi.OutputState }
 
 func (GetDbInstancePlansPlanPlanConfigOutput) ElementType() reflect.Type {
@@ -1307,6 +1512,12 @@ func (o GetDbInstancePlansPlanPlanConfigOutput) ToGetDbInstancePlansPlanPlanConf
 
 func (o GetDbInstancePlansPlanPlanConfigOutput) ToGetDbInstancePlansPlanPlanConfigOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigOutput {
 	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetDbInstancePlansPlanPlanConfig] {
+	return pulumix.Output[GetDbInstancePlansPlanPlanConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Pause instance plan config.
@@ -1343,6 +1554,12 @@ func (o GetDbInstancePlansPlanPlanConfigArrayOutput) ToGetDbInstancePlansPlanPla
 
 func (o GetDbInstancePlansPlanPlanConfigArrayOutput) ToGetDbInstancePlansPlanPlanConfigArrayOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigArrayOutput {
 	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDbInstancePlansPlanPlanConfig] {
+	return pulumix.Output[[]GetDbInstancePlansPlanPlanConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDbInstancePlansPlanPlanConfigArrayOutput) Index(i pulumi.IntInput) GetDbInstancePlansPlanPlanConfigOutput {
@@ -1392,6 +1609,12 @@ func (i GetDbInstancePlansPlanPlanConfigPauseArgs) ToGetDbInstancePlansPlanPlanC
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanPlanConfigPauseOutput)
 }
 
+func (i GetDbInstancePlansPlanPlanConfigPauseArgs) ToOutput(ctx context.Context) pulumix.Output[GetDbInstancePlansPlanPlanConfigPause] {
+	return pulumix.Output[GetDbInstancePlansPlanPlanConfigPause]{
+		OutputState: i.ToGetDbInstancePlansPlanPlanConfigPauseOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDbInstancePlansPlanPlanConfigPauseArrayInput is an input type that accepts GetDbInstancePlansPlanPlanConfigPauseArray and GetDbInstancePlansPlanPlanConfigPauseArrayOutput values.
 // You can construct a concrete instance of `GetDbInstancePlansPlanPlanConfigPauseArrayInput` via:
 //
@@ -1417,6 +1640,12 @@ func (i GetDbInstancePlansPlanPlanConfigPauseArray) ToGetDbInstancePlansPlanPlan
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanPlanConfigPauseArrayOutput)
 }
 
+func (i GetDbInstancePlansPlanPlanConfigPauseArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDbInstancePlansPlanPlanConfigPause] {
+	return pulumix.Output[[]GetDbInstancePlansPlanPlanConfigPause]{
+		OutputState: i.ToGetDbInstancePlansPlanPlanConfigPauseArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDbInstancePlansPlanPlanConfigPauseOutput struct{ *pulumi.OutputState }
 
 func (GetDbInstancePlansPlanPlanConfigPauseOutput) ElementType() reflect.Type {
@@ -1429,6 +1658,12 @@ func (o GetDbInstancePlansPlanPlanConfigPauseOutput) ToGetDbInstancePlansPlanPla
 
 func (o GetDbInstancePlansPlanPlanConfigPauseOutput) ToGetDbInstancePlansPlanPlanConfigPauseOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigPauseOutput {
 	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigPauseOutput) ToOutput(ctx context.Context) pulumix.Output[GetDbInstancePlansPlanPlanConfigPause] {
+	return pulumix.Output[GetDbInstancePlansPlanPlanConfigPause]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The executed time of the Plan.
@@ -1458,6 +1693,12 @@ func (o GetDbInstancePlansPlanPlanConfigPauseArrayOutput) ToGetDbInstancePlansPl
 
 func (o GetDbInstancePlansPlanPlanConfigPauseArrayOutput) ToGetDbInstancePlansPlanPlanConfigPauseArrayOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigPauseArrayOutput {
 	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigPauseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDbInstancePlansPlanPlanConfigPause] {
+	return pulumix.Output[[]GetDbInstancePlansPlanPlanConfigPause]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDbInstancePlansPlanPlanConfigPauseArrayOutput) Index(i pulumi.IntInput) GetDbInstancePlansPlanPlanConfigPauseOutput {
@@ -1507,6 +1748,12 @@ func (i GetDbInstancePlansPlanPlanConfigResumeArgs) ToGetDbInstancePlansPlanPlan
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanPlanConfigResumeOutput)
 }
 
+func (i GetDbInstancePlansPlanPlanConfigResumeArgs) ToOutput(ctx context.Context) pulumix.Output[GetDbInstancePlansPlanPlanConfigResume] {
+	return pulumix.Output[GetDbInstancePlansPlanPlanConfigResume]{
+		OutputState: i.ToGetDbInstancePlansPlanPlanConfigResumeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDbInstancePlansPlanPlanConfigResumeArrayInput is an input type that accepts GetDbInstancePlansPlanPlanConfigResumeArray and GetDbInstancePlansPlanPlanConfigResumeArrayOutput values.
 // You can construct a concrete instance of `GetDbInstancePlansPlanPlanConfigResumeArrayInput` via:
 //
@@ -1532,6 +1779,12 @@ func (i GetDbInstancePlansPlanPlanConfigResumeArray) ToGetDbInstancePlansPlanPla
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanPlanConfigResumeArrayOutput)
 }
 
+func (i GetDbInstancePlansPlanPlanConfigResumeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDbInstancePlansPlanPlanConfigResume] {
+	return pulumix.Output[[]GetDbInstancePlansPlanPlanConfigResume]{
+		OutputState: i.ToGetDbInstancePlansPlanPlanConfigResumeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDbInstancePlansPlanPlanConfigResumeOutput struct{ *pulumi.OutputState }
 
 func (GetDbInstancePlansPlanPlanConfigResumeOutput) ElementType() reflect.Type {
@@ -1544,6 +1797,12 @@ func (o GetDbInstancePlansPlanPlanConfigResumeOutput) ToGetDbInstancePlansPlanPl
 
 func (o GetDbInstancePlansPlanPlanConfigResumeOutput) ToGetDbInstancePlansPlanPlanConfigResumeOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigResumeOutput {
 	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigResumeOutput) ToOutput(ctx context.Context) pulumix.Output[GetDbInstancePlansPlanPlanConfigResume] {
+	return pulumix.Output[GetDbInstancePlansPlanPlanConfigResume]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The executed time of the Plan.
@@ -1573,6 +1832,12 @@ func (o GetDbInstancePlansPlanPlanConfigResumeArrayOutput) ToGetDbInstancePlansP
 
 func (o GetDbInstancePlansPlanPlanConfigResumeArrayOutput) ToGetDbInstancePlansPlanPlanConfigResumeArrayOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigResumeArrayOutput {
 	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigResumeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDbInstancePlansPlanPlanConfigResume] {
+	return pulumix.Output[[]GetDbInstancePlansPlanPlanConfigResume]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDbInstancePlansPlanPlanConfigResumeArrayOutput) Index(i pulumi.IntInput) GetDbInstancePlansPlanPlanConfigResumeOutput {
@@ -1626,6 +1891,12 @@ func (i GetDbInstancePlansPlanPlanConfigScaleInArgs) ToGetDbInstancePlansPlanPla
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanPlanConfigScaleInOutput)
 }
 
+func (i GetDbInstancePlansPlanPlanConfigScaleInArgs) ToOutput(ctx context.Context) pulumix.Output[GetDbInstancePlansPlanPlanConfigScaleIn] {
+	return pulumix.Output[GetDbInstancePlansPlanPlanConfigScaleIn]{
+		OutputState: i.ToGetDbInstancePlansPlanPlanConfigScaleInOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDbInstancePlansPlanPlanConfigScaleInArrayInput is an input type that accepts GetDbInstancePlansPlanPlanConfigScaleInArray and GetDbInstancePlansPlanPlanConfigScaleInArrayOutput values.
 // You can construct a concrete instance of `GetDbInstancePlansPlanPlanConfigScaleInArrayInput` via:
 //
@@ -1651,6 +1922,12 @@ func (i GetDbInstancePlansPlanPlanConfigScaleInArray) ToGetDbInstancePlansPlanPl
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanPlanConfigScaleInArrayOutput)
 }
 
+func (i GetDbInstancePlansPlanPlanConfigScaleInArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDbInstancePlansPlanPlanConfigScaleIn] {
+	return pulumix.Output[[]GetDbInstancePlansPlanPlanConfigScaleIn]{
+		OutputState: i.ToGetDbInstancePlansPlanPlanConfigScaleInArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDbInstancePlansPlanPlanConfigScaleInOutput struct{ *pulumi.OutputState }
 
 func (GetDbInstancePlansPlanPlanConfigScaleInOutput) ElementType() reflect.Type {
@@ -1663,6 +1940,12 @@ func (o GetDbInstancePlansPlanPlanConfigScaleInOutput) ToGetDbInstancePlansPlanP
 
 func (o GetDbInstancePlansPlanPlanConfigScaleInOutput) ToGetDbInstancePlansPlanPlanConfigScaleInOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigScaleInOutput {
 	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigScaleInOutput) ToOutput(ctx context.Context) pulumix.Output[GetDbInstancePlansPlanPlanConfigScaleIn] {
+	return pulumix.Output[GetDbInstancePlansPlanPlanConfigScaleIn]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The executed time of the Plan.
@@ -1697,6 +1980,12 @@ func (o GetDbInstancePlansPlanPlanConfigScaleInArrayOutput) ToGetDbInstancePlans
 
 func (o GetDbInstancePlansPlanPlanConfigScaleInArrayOutput) ToGetDbInstancePlansPlanPlanConfigScaleInArrayOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigScaleInArrayOutput {
 	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigScaleInArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDbInstancePlansPlanPlanConfigScaleIn] {
+	return pulumix.Output[[]GetDbInstancePlansPlanPlanConfigScaleIn]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDbInstancePlansPlanPlanConfigScaleInArrayOutput) Index(i pulumi.IntInput) GetDbInstancePlansPlanPlanConfigScaleInOutput {
@@ -1750,6 +2039,12 @@ func (i GetDbInstancePlansPlanPlanConfigScaleOutArgs) ToGetDbInstancePlansPlanPl
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanPlanConfigScaleOutOutput)
 }
 
+func (i GetDbInstancePlansPlanPlanConfigScaleOutArgs) ToOutput(ctx context.Context) pulumix.Output[GetDbInstancePlansPlanPlanConfigScaleOut] {
+	return pulumix.Output[GetDbInstancePlansPlanPlanConfigScaleOut]{
+		OutputState: i.ToGetDbInstancePlansPlanPlanConfigScaleOutOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDbInstancePlansPlanPlanConfigScaleOutArrayInput is an input type that accepts GetDbInstancePlansPlanPlanConfigScaleOutArray and GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput values.
 // You can construct a concrete instance of `GetDbInstancePlansPlanPlanConfigScaleOutArrayInput` via:
 //
@@ -1775,6 +2070,12 @@ func (i GetDbInstancePlansPlanPlanConfigScaleOutArray) ToGetDbInstancePlansPlanP
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput)
 }
 
+func (i GetDbInstancePlansPlanPlanConfigScaleOutArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDbInstancePlansPlanPlanConfigScaleOut] {
+	return pulumix.Output[[]GetDbInstancePlansPlanPlanConfigScaleOut]{
+		OutputState: i.ToGetDbInstancePlansPlanPlanConfigScaleOutArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDbInstancePlansPlanPlanConfigScaleOutOutput struct{ *pulumi.OutputState }
 
 func (GetDbInstancePlansPlanPlanConfigScaleOutOutput) ElementType() reflect.Type {
@@ -1787,6 +2088,12 @@ func (o GetDbInstancePlansPlanPlanConfigScaleOutOutput) ToGetDbInstancePlansPlan
 
 func (o GetDbInstancePlansPlanPlanConfigScaleOutOutput) ToGetDbInstancePlansPlanPlanConfigScaleOutOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigScaleOutOutput {
 	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigScaleOutOutput) ToOutput(ctx context.Context) pulumix.Output[GetDbInstancePlansPlanPlanConfigScaleOut] {
+	return pulumix.Output[GetDbInstancePlansPlanPlanConfigScaleOut]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The executed time of the Plan.
@@ -1821,6 +2128,12 @@ func (o GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput) ToGetDbInstancePlan
 
 func (o GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput) ToGetDbInstancePlansPlanPlanConfigScaleOutArrayOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput {
 	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDbInstancePlansPlanPlanConfigScaleOut] {
+	return pulumix.Output[[]GetDbInstancePlansPlanPlanConfigScaleOut]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput) Index(i pulumi.IntInput) GetDbInstancePlansPlanPlanConfigScaleOutOutput {
@@ -1974,6 +2287,12 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
 }
 
+func (i GetInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
+	return pulumix.Output[GetInstancesInstance]{
+		OutputState: i.ToGetInstancesInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
@@ -1999,6 +2318,12 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
+func (i GetInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
+	return pulumix.Output[[]GetInstancesInstance]{
+		OutputState: i.ToGetInstancesInstanceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
@@ -2011,6 +2336,12 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesI
 
 func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
 	return o
+}
+
+func (o GetInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
+	return pulumix.Output[GetInstancesInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Instance availability zone.
@@ -2175,6 +2506,12 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithCo
 	return o
 }
 
+func (o GetInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
+	return pulumix.Output[[]GetInstancesInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
 		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
@@ -2222,6 +2559,12 @@ func (i GetInstancesInstanceIpWhitelistArgs) ToGetInstancesInstanceIpWhitelistOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceIpWhitelistOutput)
 }
 
+func (i GetInstancesInstanceIpWhitelistArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstanceIpWhitelist] {
+	return pulumix.Output[GetInstancesInstanceIpWhitelist]{
+		OutputState: i.ToGetInstancesInstanceIpWhitelistOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstancesInstanceIpWhitelistArrayInput is an input type that accepts GetInstancesInstanceIpWhitelistArray and GetInstancesInstanceIpWhitelistArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceIpWhitelistArrayInput` via:
 //
@@ -2247,6 +2590,12 @@ func (i GetInstancesInstanceIpWhitelistArray) ToGetInstancesInstanceIpWhitelistA
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceIpWhitelistArrayOutput)
 }
 
+func (i GetInstancesInstanceIpWhitelistArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstanceIpWhitelist] {
+	return pulumix.Output[[]GetInstancesInstanceIpWhitelist]{
+		OutputState: i.ToGetInstancesInstanceIpWhitelistArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstancesInstanceIpWhitelistOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceIpWhitelistOutput) ElementType() reflect.Type {
@@ -2259,6 +2608,12 @@ func (o GetInstancesInstanceIpWhitelistOutput) ToGetInstancesInstanceIpWhitelist
 
 func (o GetInstancesInstanceIpWhitelistOutput) ToGetInstancesInstanceIpWhitelistOutputWithContext(ctx context.Context) GetInstancesInstanceIpWhitelistOutput {
 	return o
+}
+
+func (o GetInstancesInstanceIpWhitelistOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstanceIpWhitelist] {
+	return pulumix.Output[GetInstancesInstanceIpWhitelist]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
@@ -2288,6 +2643,12 @@ func (o GetInstancesInstanceIpWhitelistArrayOutput) ToGetInstancesInstanceIpWhit
 
 func (o GetInstancesInstanceIpWhitelistArrayOutput) ToGetInstancesInstanceIpWhitelistArrayOutputWithContext(ctx context.Context) GetInstancesInstanceIpWhitelistArrayOutput {
 	return o
+}
+
+func (o GetInstancesInstanceIpWhitelistArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstanceIpWhitelist] {
+	return pulumix.Output[[]GetInstancesInstanceIpWhitelist]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstancesInstanceIpWhitelistArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceIpWhitelistOutput {
@@ -2333,6 +2694,12 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneOutput)
 }
 
+func (i GetZonesZoneArgs) ToOutput(ctx context.Context) pulumix.Output[GetZonesZone] {
+	return pulumix.Output[GetZonesZone]{
+		OutputState: i.ToGetZonesZoneOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
@@ -2358,6 +2725,12 @@ func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
 }
 
+func (i GetZonesZoneArray) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZone] {
+	return pulumix.Output[[]GetZonesZone]{
+		OutputState: i.ToGetZonesZoneArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneOutput) ElementType() reflect.Type {
@@ -2370,6 +2743,12 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutput() GetZonesZoneOutput {
 
 func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
 	return o
+}
+
+func (o GetZonesZoneOutput) ToOutput(ctx context.Context) pulumix.Output[GetZonesZone] {
+	return pulumix.Output[GetZonesZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID of the zone.
@@ -2394,6 +2773,12 @@ func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOu
 
 func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
 	return o
+}
+
+func (o GetZonesZoneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZone] {
+	return pulumix.Output[[]GetZonesZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {

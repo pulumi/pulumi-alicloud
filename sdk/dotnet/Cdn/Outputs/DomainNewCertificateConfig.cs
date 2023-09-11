@@ -33,6 +33,9 @@ namespace Pulumi.AliCloud.Cdn.Outputs
         /// &gt; If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
         /// </summary>
         public readonly string? CertType;
+        /// <summary>
+        /// The force set of the security certificate.
+        /// </summary>
         public readonly string? ForceSet;
         /// <summary>
         /// The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.

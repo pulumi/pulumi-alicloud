@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sag
     /// 
     /// For information about Smartag Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createflowlog).
     /// 
-    /// &gt; **NOTE:** Available in v1.168.0+.
+    /// &gt; **NOTE:** Available since v1.168.0.
     /// 
     /// ## Example Usage
     /// 
@@ -30,13 +30,10 @@ namespace Pulumi.AliCloud.Sag
     /// {
     ///     var example = new AliCloud.Sag.SmartagFlowLog("example", new()
     ///     {
-    ///         FlowLogName = "example_value",
-    ///         LogstoreName = "example_value",
-    ///         NetflowServerIp = "example_value",
-    ///         NetflowServerPort = 1,
-    ///         OutputType = "all",
-    ///         ProjectName = "example_value",
-    ///         SlsRegionId = "example_value",
+    ///         NetflowServerIp = "192.168.0.2",
+    ///         NetflowServerPort = 9995,
+    ///         NetflowVersion = "V9",
+    ///         OutputType = "netflow",
     ///     });
     /// 
     /// });

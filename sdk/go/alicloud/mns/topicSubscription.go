@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -215,6 +216,12 @@ func (i *TopicSubscription) ToTopicSubscriptionOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(TopicSubscriptionOutput)
 }
 
+func (i *TopicSubscription) ToOutput(ctx context.Context) pulumix.Output[*TopicSubscription] {
+	return pulumix.Output[*TopicSubscription]{
+		OutputState: i.ToTopicSubscriptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TopicSubscriptionArrayInput is an input type that accepts TopicSubscriptionArray and TopicSubscriptionArrayOutput values.
 // You can construct a concrete instance of `TopicSubscriptionArrayInput` via:
 //
@@ -238,6 +245,12 @@ func (i TopicSubscriptionArray) ToTopicSubscriptionArrayOutput() TopicSubscripti
 
 func (i TopicSubscriptionArray) ToTopicSubscriptionArrayOutputWithContext(ctx context.Context) TopicSubscriptionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TopicSubscriptionArrayOutput)
+}
+
+func (i TopicSubscriptionArray) ToOutput(ctx context.Context) pulumix.Output[[]*TopicSubscription] {
+	return pulumix.Output[[]*TopicSubscription]{
+		OutputState: i.ToTopicSubscriptionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TopicSubscriptionMapInput is an input type that accepts TopicSubscriptionMap and TopicSubscriptionMapOutput values.
@@ -265,6 +278,12 @@ func (i TopicSubscriptionMap) ToTopicSubscriptionMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TopicSubscriptionMapOutput)
 }
 
+func (i TopicSubscriptionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TopicSubscription] {
+	return pulumix.Output[map[string]*TopicSubscription]{
+		OutputState: i.ToTopicSubscriptionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TopicSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (TopicSubscriptionOutput) ElementType() reflect.Type {
@@ -277,6 +296,12 @@ func (o TopicSubscriptionOutput) ToTopicSubscriptionOutput() TopicSubscriptionOu
 
 func (o TopicSubscriptionOutput) ToTopicSubscriptionOutputWithContext(ctx context.Context) TopicSubscriptionOutput {
 	return o
+}
+
+func (o TopicSubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[*TopicSubscription] {
+	return pulumix.Output[*TopicSubscription]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The endpoint has three format. Available values format:
@@ -326,6 +351,12 @@ func (o TopicSubscriptionArrayOutput) ToTopicSubscriptionArrayOutputWithContext(
 	return o
 }
 
+func (o TopicSubscriptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TopicSubscription] {
+	return pulumix.Output[[]*TopicSubscription]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TopicSubscriptionArrayOutput) Index(i pulumi.IntInput) TopicSubscriptionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TopicSubscription {
 		return vs[0].([]*TopicSubscription)[vs[1].(int)]
@@ -344,6 +375,12 @@ func (o TopicSubscriptionMapOutput) ToTopicSubscriptionMapOutput() TopicSubscrip
 
 func (o TopicSubscriptionMapOutput) ToTopicSubscriptionMapOutputWithContext(ctx context.Context) TopicSubscriptionMapOutput {
 	return o
+}
+
+func (o TopicSubscriptionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TopicSubscription] {
+	return pulumix.Output[map[string]*TopicSubscription]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TopicSubscriptionMapOutput) MapIndex(k pulumi.StringInput) TopicSubscriptionOutput {

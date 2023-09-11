@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Rdc Organizations of the current Alibaba Cloud user.
@@ -140,6 +141,12 @@ func (o GetOrganizationsResultOutput) ToGetOrganizationsResultOutput() GetOrgani
 
 func (o GetOrganizationsResultOutput) ToGetOrganizationsResultOutputWithContext(ctx context.Context) GetOrganizationsResultOutput {
 	return o
+}
+
+func (o GetOrganizationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetOrganizationsResult] {
+	return pulumix.Output[GetOrganizationsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

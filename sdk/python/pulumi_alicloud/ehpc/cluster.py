@@ -84,8 +84,8 @@ class ClusterArgs:
         :param pulumi.Input[str] manager_instance_type: The instance type of the management nodes.
         :param pulumi.Input[str] os_tag: The image tag of the operating system.
         :param pulumi.Input[str] account_type: The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeArgs']]] additional_volumes: The additional volumes. See the following `Block additional_volumes`.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterApplicationArgs']]] applications: The application. See the following `Block application`.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeArgs']]] additional_volumes: The additional volumes. See `additional_volumes` below.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterApplicationArgs']]] applications: The application. See `application` below.
         :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal for the subscription. Default value: `false`.
         :param pulumi.Input[int] auto_renew_period: The auto-renewal period of the subscription compute nodes. The parameter takes effect when AutoRenew is set to true.
         :param pulumi.Input[str] client_version: The version of the E-HPC client. By default, the parameter is set to the latest version number.
@@ -118,7 +118,7 @@ class ClusterArgs:
                - image: By default, the plug-in is stored in a pre-defined local path. The local path is specified by the pluginLocalPath parameter.
                - pluginLocalPath: the local path where the plug-in is stored. We recommend that you select a shared directory in oss mode and a non-shared directory in image mode.
                - pluginOssPath: the remote path where the plug-in is stored in OSS. This parameter takes effect only when the pluginMod parameter is set to oss.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterPostInstallScriptArgs']]] post_install_scripts: The post install script. See the following `Block post_install_script`.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterPostInstallScriptArgs']]] post_install_scripts: The post install script. See `post_install_script` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ram_node_types: The node of the RAM role.
         :param pulumi.Input[str] ram_role_name: The name of the Resource Access Management (RAM) role.
         :param pulumi.Input[bool] release_instance: The release instance. Valid values: `true`.
@@ -355,7 +355,7 @@ class ClusterArgs:
     @pulumi.getter(name="additionalVolumes")
     def additional_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeArgs']]]]:
         """
-        The additional volumes. See the following `Block additional_volumes`.
+        The additional volumes. See `additional_volumes` below.
         """
         return pulumi.get(self, "additional_volumes")
 
@@ -367,7 +367,7 @@ class ClusterArgs:
     @pulumi.getter
     def applications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationArgs']]]]:
         """
-        The application. See the following `Block application`.
+        The application. See `application` below.
         """
         return pulumi.get(self, "applications")
 
@@ -675,7 +675,7 @@ class ClusterArgs:
     @pulumi.getter(name="postInstallScripts")
     def post_install_scripts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPostInstallScriptArgs']]]]:
         """
-        The post install script. See the following `Block post_install_script`.
+        The post install script. See `post_install_script` below.
         """
         return pulumi.get(self, "post_install_scripts")
 
@@ -1027,8 +1027,8 @@ class _ClusterState:
         """
         Input properties used for looking up and filtering Cluster resources.
         :param pulumi.Input[str] account_type: The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeArgs']]] additional_volumes: The additional volumes. See the following `Block additional_volumes`.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterApplicationArgs']]] applications: The application. See the following `Block application`.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeArgs']]] additional_volumes: The additional volumes. See `additional_volumes` below.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterApplicationArgs']]] applications: The application. See `application` below.
         :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal for the subscription. Default value: `false`.
         :param pulumi.Input[int] auto_renew_period: The auto-renewal period of the subscription compute nodes. The parameter takes effect when AutoRenew is set to true.
         :param pulumi.Input[str] client_version: The version of the E-HPC client. By default, the parameter is set to the latest version number.
@@ -1068,7 +1068,7 @@ class _ClusterState:
                - image: By default, the plug-in is stored in a pre-defined local path. The local path is specified by the pluginLocalPath parameter.
                - pluginLocalPath: the local path where the plug-in is stored. We recommend that you select a shared directory in oss mode and a non-shared directory in image mode.
                - pluginOssPath: the remote path where the plug-in is stored in OSS. This parameter takes effect only when the pluginMod parameter is set to oss.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterPostInstallScriptArgs']]] post_install_scripts: The post install script. See the following `Block post_install_script`.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterPostInstallScriptArgs']]] post_install_scripts: The post install script. See `post_install_script` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ram_node_types: The node of the RAM role.
         :param pulumi.Input[str] ram_role_name: The name of the Resource Access Management (RAM) role.
         :param pulumi.Input[bool] release_instance: The release instance. Valid values: `true`.
@@ -1231,7 +1231,7 @@ class _ClusterState:
     @pulumi.getter(name="additionalVolumes")
     def additional_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeArgs']]]]:
         """
-        The additional volumes. See the following `Block additional_volumes`.
+        The additional volumes. See `additional_volumes` below.
         """
         return pulumi.get(self, "additional_volumes")
 
@@ -1243,7 +1243,7 @@ class _ClusterState:
     @pulumi.getter
     def applications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationArgs']]]]:
         """
-        The application. See the following `Block application`.
+        The application. See `application` below.
         """
         return pulumi.get(self, "applications")
 
@@ -1635,7 +1635,7 @@ class _ClusterState:
     @pulumi.getter(name="postInstallScripts")
     def post_install_scripts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPostInstallScriptArgs']]]]:
         """
-        The post install script. See the following `Block post_install_script`.
+        The post install script. See `post_install_script` below.
         """
         return pulumi.get(self, "post_install_scripts")
 
@@ -2003,7 +2003,7 @@ class Cluster(pulumi.CustomResource):
 
         For information about Ehpc Cluster and how to use it, see [What is Cluster](https://www.alibabacloud.com/help/e-hpc/latest/createcluster).
 
-        > **NOTE:** Available in v1.173.0+.
+        > **NOTE:** Available since v1.173.0.
 
         ## Example Usage
 
@@ -2013,28 +2013,33 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id)
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id)
         config = pulumi.Config()
-        storage_type = config.get("storageType")
-        if storage_type is None:
-            storage_type = "Performance"
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_images = alicloud.ecs.get_images(name_regex="^centos_7_6_x64*",
+            owners="system")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.1.0.0/16",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
         default_file_system = alicloud.nas.FileSystem("defaultFileSystem",
-            storage_type=storage_type,
+            storage_type="Performance",
             protocol_type="NFS")
         default_mount_target = alicloud.nas.MountTarget("defaultMountTarget",
             file_system_id=default_file_system.id,
             access_group_name="DEFAULT_VPC_GROUP_NAME",
-            vswitch_id=default_switches.ids[0])
-        default_images = alicloud.ecs.get_images(name_regex="^centos_7_6_x64*",
-            owners="system")
+            vswitch_id=default_switch.id)
         default_cluster = alicloud.ehpc.Cluster("defaultCluster",
-            cluster_name="example_value",
+            cluster_name=name,
             deploy_mode="Simple",
-            description="example_description",
+            description=name,
             ha_enable=False,
             image_id=default_images.images[0].id,
             image_owner_alias="system",
@@ -2050,8 +2055,8 @@ class Cluster(pulumi.CustomResource):
             os_tag="CentOS_7.6_64",
             scheduler_type="pbs",
             password="your-password123",
-            vswitch_id=default_switches.ids[0],
-            vpc_id=default_networks.ids[0],
+            vswitch_id=default_switch.id,
+            vpc_id=default_network.id,
             zone_id=default_zones.zones[0].id)
         ```
 
@@ -2066,8 +2071,8 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_type: The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAdditionalVolumeArgs']]]] additional_volumes: The additional volumes. See the following `Block additional_volumes`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterApplicationArgs']]]] applications: The application. See the following `Block application`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAdditionalVolumeArgs']]]] additional_volumes: The additional volumes. See `additional_volumes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterApplicationArgs']]]] applications: The application. See `application` below.
         :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal for the subscription. Default value: `false`.
         :param pulumi.Input[int] auto_renew_period: The auto-renewal period of the subscription compute nodes. The parameter takes effect when AutoRenew is set to true.
         :param pulumi.Input[str] client_version: The version of the E-HPC client. By default, the parameter is set to the latest version number.
@@ -2107,7 +2112,7 @@ class Cluster(pulumi.CustomResource):
                - image: By default, the plug-in is stored in a pre-defined local path. The local path is specified by the pluginLocalPath parameter.
                - pluginLocalPath: the local path where the plug-in is stored. We recommend that you select a shared directory in oss mode and a non-shared directory in image mode.
                - pluginOssPath: the remote path where the plug-in is stored in OSS. This parameter takes effect only when the pluginMod parameter is set to oss.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPostInstallScriptArgs']]]] post_install_scripts: The post install script. See the following `Block post_install_script`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPostInstallScriptArgs']]]] post_install_scripts: The post install script. See `post_install_script` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ram_node_types: The node of the RAM role.
         :param pulumi.Input[str] ram_role_name: The name of the Resource Access Management (RAM) role.
         :param pulumi.Input[bool] release_instance: The release instance. Valid values: `true`.
@@ -2145,7 +2150,7 @@ class Cluster(pulumi.CustomResource):
 
         For information about Ehpc Cluster and how to use it, see [What is Cluster](https://www.alibabacloud.com/help/e-hpc/latest/createcluster).
 
-        > **NOTE:** Available in v1.173.0+.
+        > **NOTE:** Available since v1.173.0.
 
         ## Example Usage
 
@@ -2155,28 +2160,33 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id)
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id)
         config = pulumi.Config()
-        storage_type = config.get("storageType")
-        if storage_type is None:
-            storage_type = "Performance"
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_images = alicloud.ecs.get_images(name_regex="^centos_7_6_x64*",
+            owners="system")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.1.0.0/16",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
         default_file_system = alicloud.nas.FileSystem("defaultFileSystem",
-            storage_type=storage_type,
+            storage_type="Performance",
             protocol_type="NFS")
         default_mount_target = alicloud.nas.MountTarget("defaultMountTarget",
             file_system_id=default_file_system.id,
             access_group_name="DEFAULT_VPC_GROUP_NAME",
-            vswitch_id=default_switches.ids[0])
-        default_images = alicloud.ecs.get_images(name_regex="^centos_7_6_x64*",
-            owners="system")
+            vswitch_id=default_switch.id)
         default_cluster = alicloud.ehpc.Cluster("defaultCluster",
-            cluster_name="example_value",
+            cluster_name=name,
             deploy_mode="Simple",
-            description="example_description",
+            description=name,
             ha_enable=False,
             image_id=default_images.images[0].id,
             image_owner_alias="system",
@@ -2192,8 +2202,8 @@ class Cluster(pulumi.CustomResource):
             os_tag="CentOS_7.6_64",
             scheduler_type="pbs",
             password="your-password123",
-            vswitch_id=default_switches.ids[0],
-            vpc_id=default_networks.ids[0],
+            vswitch_id=default_switch.id,
+            vpc_id=default_network.id,
             zone_id=default_zones.zones[0].id)
         ```
 
@@ -2439,8 +2449,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_type: The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAdditionalVolumeArgs']]]] additional_volumes: The additional volumes. See the following `Block additional_volumes`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterApplicationArgs']]]] applications: The application. See the following `Block application`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAdditionalVolumeArgs']]]] additional_volumes: The additional volumes. See `additional_volumes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterApplicationArgs']]]] applications: The application. See `application` below.
         :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal for the subscription. Default value: `false`.
         :param pulumi.Input[int] auto_renew_period: The auto-renewal period of the subscription compute nodes. The parameter takes effect when AutoRenew is set to true.
         :param pulumi.Input[str] client_version: The version of the E-HPC client. By default, the parameter is set to the latest version number.
@@ -2480,7 +2490,7 @@ class Cluster(pulumi.CustomResource):
                - image: By default, the plug-in is stored in a pre-defined local path. The local path is specified by the pluginLocalPath parameter.
                - pluginLocalPath: the local path where the plug-in is stored. We recommend that you select a shared directory in oss mode and a non-shared directory in image mode.
                - pluginOssPath: the remote path where the plug-in is stored in OSS. This parameter takes effect only when the pluginMod parameter is set to oss.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPostInstallScriptArgs']]]] post_install_scripts: The post install script. See the following `Block post_install_script`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPostInstallScriptArgs']]]] post_install_scripts: The post install script. See `post_install_script` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ram_node_types: The node of the RAM role.
         :param pulumi.Input[str] ram_role_name: The name of the Resource Access Management (RAM) role.
         :param pulumi.Input[bool] release_instance: The release instance. Valid values: `true`.
@@ -2585,7 +2595,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="additionalVolumes")
     def additional_volumes(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterAdditionalVolume']]]:
         """
-        The additional volumes. See the following `Block additional_volumes`.
+        The additional volumes. See `additional_volumes` below.
         """
         return pulumi.get(self, "additional_volumes")
 
@@ -2593,7 +2603,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def applications(self) -> pulumi.Output[Sequence['outputs.ClusterApplication']]:
         """
-        The application. See the following `Block application`.
+        The application. See `application` below.
         """
         return pulumi.get(self, "applications")
 
@@ -2857,7 +2867,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="postInstallScripts")
     def post_install_scripts(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterPostInstallScript']]]:
         """
-        The post install script. See the following `Block post_install_script`.
+        The post install script. See `post_install_script` below.
         """
         return pulumi.get(self, "post_install_scripts")
 

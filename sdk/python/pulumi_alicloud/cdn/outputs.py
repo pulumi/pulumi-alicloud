@@ -342,6 +342,7 @@ class DomainNewCertificateConfig(dict):
                - **cas**: Cloud Shield certificate.
                - **free**: free certificate.
                > If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
+        :param str force_set: The force set of the security certificate.
         :param str private_key: The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
         :param str server_certificate: The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
         :param str server_certificate_status: Whether the HTTPS certificate is enabled. Value:
@@ -404,6 +405,9 @@ class DomainNewCertificateConfig(dict):
     @property
     @pulumi.getter(name="forceSet")
     def force_set(self) -> Optional[str]:
+        """
+        The force set of the security certificate.
+        """
         return pulumi.get(self, "force_set")
 
     @property

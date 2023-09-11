@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Vpc Bgp Groups of the current Alibaba Cloud user.
@@ -133,6 +134,12 @@ func (o GetBgpGroupsResultOutput) ToGetBgpGroupsResultOutput() GetBgpGroupsResul
 
 func (o GetBgpGroupsResultOutput) ToGetBgpGroupsResultOutputWithContext(ctx context.Context) GetBgpGroupsResultOutput {
 	return o
+}
+
+func (o GetBgpGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBgpGroupsResult] {
+	return pulumix.Output[GetBgpGroupsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetBgpGroupsResultOutput) Groups() GetBgpGroupsGroupArrayOutput {

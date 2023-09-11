@@ -15,7 +15,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The project is the basic unit of resource management in Datahub Service and is used to isolate and control resources. It contains a set of Topics. You can manage the datahub sources of an application by using projects. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
+ * The project is the basic unit of resource management in Datahub Service and is used to isolate and control resources. It contains a set of Topics. You can manage the datahub sources of an application by using projects. [Refer to details](https://www.alibabacloud.com/help/en/datahub/latest/nerbcz).
+ * 
+ * &gt; **NOTE:** Available since v1.19.0.
  * 
  * &gt; **NOTE:** Currently Datahub service only can be supported in the regions: cn-beijing, cn-hangzhou, cn-shanghai, cn-shenzhen,  ap-southeast-1.
  * 
@@ -43,6 +45,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
  *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
  *             .comment(&#34;created by terraform&#34;)
  *             .build());

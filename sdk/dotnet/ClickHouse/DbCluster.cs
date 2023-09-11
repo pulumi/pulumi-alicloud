@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.ClickHouse
     /// <summary>
     /// Provides a Click House DBCluster resource.
     /// 
-    /// For information about Click House DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/product/clickhouse).
+    /// For information about Click House DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/help/en/clickhouse/latest/api-clickhouse-2019-11-11-createdbinstance).
     /// 
-    /// &gt; **NOTE:** Available in v1.134.0+.
+    /// &gt; **NOTE:** Available since v1.134.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,25 +28,30 @@ namespace Pulumi.AliCloud.ClickHouse
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var defaultRegions = AliCloud.ClickHouse.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         NameRegex = "default-NODELETING",
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
     ///         ZoneId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.ZoneIds[0]?.ZoneId),
     ///     });
     /// 
     ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new()
     ///     {
-    ///         DbClusterVersion = "20.3.10.75",
+    ///         DbClusterVersion = "22.8.5.29",
     ///         Category = "Basic",
     ///         DbClusterClass = "S8",
     ///         DbClusterNetworkType = "vpc",
@@ -54,16 +59,8 @@ namespace Pulumi.AliCloud.ClickHouse
     ///         PaymentType = "PayAsYouGo",
     ///         DbNodeStorage = "500",
     ///         StorageType = "cloud_essd",
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
-    ///         DbClusterAccessWhiteLists = new[]
-    ///         {
-    ///             new AliCloud.ClickHouse.Inputs.DbClusterDbClusterAccessWhiteListArgs
-    ///             {
-    ///                 DbClusterIpArrayAttribute = "test",
-    ///                 DbClusterIpArrayName = "test",
-    ///                 SecurityIpList = "192.168.0.1",
-    ///             },
-    ///         },
+    ///         VswitchId = defaultSwitch.Id,
+    ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
     /// });
@@ -87,13 +84,13 @@ namespace Pulumi.AliCloud.ClickHouse
         public Output<string> Category { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.196.0+) - The connection string of the cluster.
+        /// (Available since v1.196.0) - The connection string of the cluster.
         /// </summary>
         [Output("connectionString")]
         public Output<string> ConnectionString { get; private set; } = null!;
 
         /// <summary>
-        /// The db cluster access white list.
+        /// The db cluster access white list. See `db_cluster_access_white_list` below.
         /// </summary>
         [Output("dbClusterAccessWhiteLists")]
         public Output<ImmutableArray<Outputs.DbClusterDbClusterAccessWhiteList>> DbClusterAccessWhiteLists { get; private set; } = null!;
@@ -167,7 +164,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Output<string?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.196.0+) The connection port of the cluster.
+        /// (Available since v1.196.0) The connection port of the cluster.
         /// </summary>
         [Output("port")]
         public Output<string> Port { get; private set; } = null!;
@@ -264,7 +261,7 @@ namespace Pulumi.AliCloud.ClickHouse
         private InputList<Inputs.DbClusterDbClusterAccessWhiteListArgs>? _dbClusterAccessWhiteLists;
 
         /// <summary>
-        /// The db cluster access white list.
+        /// The db cluster access white list. See `db_cluster_access_white_list` below.
         /// </summary>
         public InputList<Inputs.DbClusterDbClusterAccessWhiteListArgs> DbClusterAccessWhiteLists
         {
@@ -391,7 +388,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? Category { get; set; }
 
         /// <summary>
-        /// (Available in 1.196.0+) - The connection string of the cluster.
+        /// (Available since v1.196.0) - The connection string of the cluster.
         /// </summary>
         [Input("connectionString")]
         public Input<string>? ConnectionString { get; set; }
@@ -400,7 +397,7 @@ namespace Pulumi.AliCloud.ClickHouse
         private InputList<Inputs.DbClusterDbClusterAccessWhiteListGetArgs>? _dbClusterAccessWhiteLists;
 
         /// <summary>
-        /// The db cluster access white list.
+        /// The db cluster access white list. See `db_cluster_access_white_list` below.
         /// </summary>
         public InputList<Inputs.DbClusterDbClusterAccessWhiteListGetArgs> DbClusterAccessWhiteLists
         {
@@ -477,7 +474,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? Period { get; set; }
 
         /// <summary>
-        /// (Available in 1.196.0+) The connection port of the cluster.
+        /// (Available since v1.196.0) The connection port of the cluster.
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }

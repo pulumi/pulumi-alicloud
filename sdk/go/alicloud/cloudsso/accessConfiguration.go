@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud SSO Access Configuration resource.
@@ -195,6 +196,12 @@ func (i *AccessConfiguration) ToAccessConfigurationOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(AccessConfigurationOutput)
 }
 
+func (i *AccessConfiguration) ToOutput(ctx context.Context) pulumix.Output[*AccessConfiguration] {
+	return pulumix.Output[*AccessConfiguration]{
+		OutputState: i.ToAccessConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccessConfigurationArrayInput is an input type that accepts AccessConfigurationArray and AccessConfigurationArrayOutput values.
 // You can construct a concrete instance of `AccessConfigurationArrayInput` via:
 //
@@ -218,6 +225,12 @@ func (i AccessConfigurationArray) ToAccessConfigurationArrayOutput() AccessConfi
 
 func (i AccessConfigurationArray) ToAccessConfigurationArrayOutputWithContext(ctx context.Context) AccessConfigurationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessConfigurationArrayOutput)
+}
+
+func (i AccessConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessConfiguration] {
+	return pulumix.Output[[]*AccessConfiguration]{
+		OutputState: i.ToAccessConfigurationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AccessConfigurationMapInput is an input type that accepts AccessConfigurationMap and AccessConfigurationMapOutput values.
@@ -245,6 +258,12 @@ func (i AccessConfigurationMap) ToAccessConfigurationMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AccessConfigurationMapOutput)
 }
 
+func (i AccessConfigurationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessConfiguration] {
+	return pulumix.Output[map[string]*AccessConfiguration]{
+		OutputState: i.ToAccessConfigurationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessConfigurationOutput struct{ *pulumi.OutputState }
 
 func (AccessConfigurationOutput) ElementType() reflect.Type {
@@ -257,6 +276,12 @@ func (o AccessConfigurationOutput) ToAccessConfigurationOutput() AccessConfigura
 
 func (o AccessConfigurationOutput) ToAccessConfigurationOutputWithContext(ctx context.Context) AccessConfigurationOutput {
 	return o
+}
+
+func (o AccessConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessConfiguration] {
+	return pulumix.Output[*AccessConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The AccessConfigurationId of the Access Configuration.
@@ -317,6 +342,12 @@ func (o AccessConfigurationArrayOutput) ToAccessConfigurationArrayOutputWithCont
 	return o
 }
 
+func (o AccessConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessConfiguration] {
+	return pulumix.Output[[]*AccessConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccessConfigurationArrayOutput) Index(i pulumi.IntInput) AccessConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessConfiguration {
 		return vs[0].([]*AccessConfiguration)[vs[1].(int)]
@@ -335,6 +366,12 @@ func (o AccessConfigurationMapOutput) ToAccessConfigurationMapOutput() AccessCon
 
 func (o AccessConfigurationMapOutput) ToAccessConfigurationMapOutputWithContext(ctx context.Context) AccessConfigurationMapOutput {
 	return o
+}
+
+func (o AccessConfigurationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessConfiguration] {
+	return pulumix.Output[map[string]*AccessConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessConfigurationMapOutput) MapIndex(k pulumi.StringInput) AccessConfigurationOutput {

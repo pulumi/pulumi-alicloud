@@ -16,43 +16,53 @@ class InstanceArgs:
     def __init__(__self__, *,
                  band_width: pulumi.Input[int],
                  cfw_log: pulumi.Input[bool],
-                 cfw_log_storage: pulumi.Input[int],
-                 cfw_service: pulumi.Input[bool],
                  ip_number: pulumi.Input[int],
                  payment_type: pulumi.Input[str],
                  period: pulumi.Input[int],
                  spec: pulumi.Input[str],
+                 account_number: Optional[pulumi.Input[int]] = None,
+                 cfw_account: Optional[pulumi.Input[bool]] = None,
+                 cfw_log_storage: Optional[pulumi.Input[int]] = None,
                  fw_vpc_number: Optional[pulumi.Input[int]] = None,
                  instance_count: Optional[pulumi.Input[int]] = None,
                  logistics: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
+                 renewal_duration: Optional[pulumi.Input[int]] = None,
+                 renewal_duration_unit: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[int] band_width: Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         :param pulumi.Input[bool] cfw_log: Whether to use log audit. Valid values: `true`, `false`.
-        :param pulumi.Input[int] cfw_log_storage: The log storage capacity.
-        :param pulumi.Input[bool] cfw_service: Whether to use expert service. Valid values: `true`, `false`.
         :param pulumi.Input[int] ip_number: The number of public IPs that can be protected. Valid values: 20 to 4000.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`.
         :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
         :param pulumi.Input[str] spec: Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
-        :param pulumi.Input[int] fw_vpc_number: The number of protected VPCs. Valid values between 2 and 500.
+        :param pulumi.Input[int] account_number: The number of multi account. It will be ignored when `cfw_account = false`.
+        :param pulumi.Input[bool] cfw_account: Whether to use multi-account. Valid values: `true`, `false`.
+        :param pulumi.Input[int] cfw_log_storage: The log storage capacity. It will be ignored when `cfw_log = false`.
+        :param pulumi.Input[int] fw_vpc_number: The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
         :param pulumi.Input[int] instance_count: The number of assets.
         :param pulumi.Input[str] logistics: The logistics.
-        :param pulumi.Input[str] modify_type: The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
-        :param pulumi.Input[int] renew_period: Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
-        :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+        :param pulumi.Input[str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+        :param pulumi.Input[int] renew_period: Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+        :param pulumi.Input[int] renewal_duration: Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+        :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
         """
         pulumi.set(__self__, "band_width", band_width)
         pulumi.set(__self__, "cfw_log", cfw_log)
-        pulumi.set(__self__, "cfw_log_storage", cfw_log_storage)
-        pulumi.set(__self__, "cfw_service", cfw_service)
         pulumi.set(__self__, "ip_number", ip_number)
         pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "period", period)
         pulumi.set(__self__, "spec", spec)
+        if account_number is not None:
+            pulumi.set(__self__, "account_number", account_number)
+        if cfw_account is not None:
+            pulumi.set(__self__, "cfw_account", cfw_account)
+        if cfw_log_storage is not None:
+            pulumi.set(__self__, "cfw_log_storage", cfw_log_storage)
         if fw_vpc_number is not None:
             pulumi.set(__self__, "fw_vpc_number", fw_vpc_number)
         if instance_count is not None:
@@ -62,7 +72,14 @@ class InstanceArgs:
         if modify_type is not None:
             pulumi.set(__self__, "modify_type", modify_type)
         if renew_period is not None:
+            warnings.warn("""Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""", DeprecationWarning)
+            pulumi.log.warn("""renew_period is deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""")
+        if renew_period is not None:
             pulumi.set(__self__, "renew_period", renew_period)
+        if renewal_duration is not None:
+            pulumi.set(__self__, "renewal_duration", renewal_duration)
+        if renewal_duration_unit is not None:
+            pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
 
@@ -89,30 +106,6 @@ class InstanceArgs:
     @cfw_log.setter
     def cfw_log(self, value: pulumi.Input[bool]):
         pulumi.set(self, "cfw_log", value)
-
-    @property
-    @pulumi.getter(name="cfwLogStorage")
-    def cfw_log_storage(self) -> pulumi.Input[int]:
-        """
-        The log storage capacity.
-        """
-        return pulumi.get(self, "cfw_log_storage")
-
-    @cfw_log_storage.setter
-    def cfw_log_storage(self, value: pulumi.Input[int]):
-        pulumi.set(self, "cfw_log_storage", value)
-
-    @property
-    @pulumi.getter(name="cfwService")
-    def cfw_service(self) -> pulumi.Input[bool]:
-        """
-        Whether to use expert service. Valid values: `true`, `false`.
-        """
-        return pulumi.get(self, "cfw_service")
-
-    @cfw_service.setter
-    def cfw_service(self, value: pulumi.Input[bool]):
-        pulumi.set(self, "cfw_service", value)
 
     @property
     @pulumi.getter(name="ipNumber")
@@ -163,10 +156,46 @@ class InstanceArgs:
         pulumi.set(self, "spec", value)
 
     @property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of multi account. It will be ignored when `cfw_account = false`.
+        """
+        return pulumi.get(self, "account_number")
+
+    @account_number.setter
+    def account_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "account_number", value)
+
+    @property
+    @pulumi.getter(name="cfwAccount")
+    def cfw_account(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to use multi-account. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "cfw_account")
+
+    @cfw_account.setter
+    def cfw_account(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cfw_account", value)
+
+    @property
+    @pulumi.getter(name="cfwLogStorage")
+    def cfw_log_storage(self) -> Optional[pulumi.Input[int]]:
+        """
+        The log storage capacity. It will be ignored when `cfw_log = false`.
+        """
+        return pulumi.get(self, "cfw_log_storage")
+
+    @cfw_log_storage.setter
+    def cfw_log_storage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cfw_log_storage", value)
+
+    @property
     @pulumi.getter(name="fwVpcNumber")
     def fw_vpc_number(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of protected VPCs. Valid values between 2 and 500.
+        The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
         """
         return pulumi.get(self, "fw_vpc_number")
 
@@ -202,7 +231,7 @@ class InstanceArgs:
     @pulumi.getter(name="modifyType")
     def modify_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+        The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
         """
         return pulumi.get(self, "modify_type")
 
@@ -214,8 +243,11 @@ class InstanceArgs:
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+        Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
         """
+        warnings.warn("""Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""", DeprecationWarning)
+        pulumi.log.warn("""renew_period is deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""")
+
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
@@ -223,10 +255,34 @@ class InstanceArgs:
         pulumi.set(self, "renew_period", value)
 
     @property
+    @pulumi.getter(name="renewalDuration")
+    def renewal_duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        """
+        return pulumi.get(self, "renewal_duration")
+
+    @renewal_duration.setter
+    def renewal_duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "renewal_duration", value)
+
+    @property
+    @pulumi.getter(name="renewalDurationUnit")
+    def renewal_duration_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+        """
+        return pulumi.get(self, "renewal_duration_unit")
+
+    @renewal_duration_unit.setter
+    def renewal_duration_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_duration_unit", value)
+
+    @property
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+        Whether to renew an instance automatically or not. Default to "ManualRenewal".
         """
         return pulumi.get(self, "renewal_status")
 
@@ -238,10 +294,11 @@ class InstanceArgs:
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
+                 account_number: Optional[pulumi.Input[int]] = None,
                  band_width: Optional[pulumi.Input[int]] = None,
+                 cfw_account: Optional[pulumi.Input[bool]] = None,
                  cfw_log: Optional[pulumi.Input[bool]] = None,
                  cfw_log_storage: Optional[pulumi.Input[int]] = None,
-                 cfw_service: Optional[pulumi.Input[bool]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  fw_vpc_number: Optional[pulumi.Input[int]] = None,
@@ -253,40 +310,45 @@ class _InstanceState:
                  period: Optional[pulumi.Input[int]] = None,
                  release_time: Optional[pulumi.Input[str]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
+                 renewal_duration: Optional[pulumi.Input[int]] = None,
                  renewal_duration_unit: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input[int] account_number: The number of multi account. It will be ignored when `cfw_account = false`.
         :param pulumi.Input[int] band_width: Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
+        :param pulumi.Input[bool] cfw_account: Whether to use multi-account. Valid values: `true`, `false`.
         :param pulumi.Input[bool] cfw_log: Whether to use log audit. Valid values: `true`, `false`.
-        :param pulumi.Input[int] cfw_log_storage: The log storage capacity.
-        :param pulumi.Input[bool] cfw_service: Whether to use expert service. Valid values: `true`, `false`.
+        :param pulumi.Input[int] cfw_log_storage: The log storage capacity. It will be ignored when `cfw_log = false`.
         :param pulumi.Input[str] create_time: The creation time.
         :param pulumi.Input[str] end_time: The end time.
-        :param pulumi.Input[int] fw_vpc_number: The number of protected VPCs. Valid values between 2 and 500.
+        :param pulumi.Input[int] fw_vpc_number: The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
         :param pulumi.Input[int] instance_count: The number of assets.
         :param pulumi.Input[int] ip_number: The number of public IPs that can be protected. Valid values: 20 to 4000.
         :param pulumi.Input[str] logistics: The logistics.
-        :param pulumi.Input[str] modify_type: The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+        :param pulumi.Input[str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`.
         :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
         :param pulumi.Input[str] release_time: The release time.
-        :param pulumi.Input[int] renew_period: Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
-        :param pulumi.Input[str] renewal_duration_unit: Automatic renewal period unit. Valid values: `Month`,`Year`.
-        :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+        :param pulumi.Input[int] renew_period: Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+        :param pulumi.Input[int] renewal_duration: Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+        :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
         :param pulumi.Input[str] spec: Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
         :param pulumi.Input[str] status: The status of Instance.
         """
+        if account_number is not None:
+            pulumi.set(__self__, "account_number", account_number)
         if band_width is not None:
             pulumi.set(__self__, "band_width", band_width)
+        if cfw_account is not None:
+            pulumi.set(__self__, "cfw_account", cfw_account)
         if cfw_log is not None:
             pulumi.set(__self__, "cfw_log", cfw_log)
         if cfw_log_storage is not None:
             pulumi.set(__self__, "cfw_log_storage", cfw_log_storage)
-        if cfw_service is not None:
-            pulumi.set(__self__, "cfw_service", cfw_service)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if end_time is not None:
@@ -308,7 +370,12 @@ class _InstanceState:
         if release_time is not None:
             pulumi.set(__self__, "release_time", release_time)
         if renew_period is not None:
+            warnings.warn("""Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""", DeprecationWarning)
+            pulumi.log.warn("""renew_period is deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""")
+        if renew_period is not None:
             pulumi.set(__self__, "renew_period", renew_period)
+        if renewal_duration is not None:
+            pulumi.set(__self__, "renewal_duration", renewal_duration)
         if renewal_duration_unit is not None:
             pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
         if renewal_status is not None:
@@ -317,6 +384,18 @@ class _InstanceState:
             pulumi.set(__self__, "spec", spec)
         if status is not None:
             pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of multi account. It will be ignored when `cfw_account = false`.
+        """
+        return pulumi.get(self, "account_number")
+
+    @account_number.setter
+    def account_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "account_number", value)
 
     @property
     @pulumi.getter(name="bandWidth")
@@ -329,6 +408,18 @@ class _InstanceState:
     @band_width.setter
     def band_width(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "band_width", value)
+
+    @property
+    @pulumi.getter(name="cfwAccount")
+    def cfw_account(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to use multi-account. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "cfw_account")
+
+    @cfw_account.setter
+    def cfw_account(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cfw_account", value)
 
     @property
     @pulumi.getter(name="cfwLog")
@@ -346,25 +437,13 @@ class _InstanceState:
     @pulumi.getter(name="cfwLogStorage")
     def cfw_log_storage(self) -> Optional[pulumi.Input[int]]:
         """
-        The log storage capacity.
+        The log storage capacity. It will be ignored when `cfw_log = false`.
         """
         return pulumi.get(self, "cfw_log_storage")
 
     @cfw_log_storage.setter
     def cfw_log_storage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cfw_log_storage", value)
-
-    @property
-    @pulumi.getter(name="cfwService")
-    def cfw_service(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether to use expert service. Valid values: `true`, `false`.
-        """
-        return pulumi.get(self, "cfw_service")
-
-    @cfw_service.setter
-    def cfw_service(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "cfw_service", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -394,7 +473,7 @@ class _InstanceState:
     @pulumi.getter(name="fwVpcNumber")
     def fw_vpc_number(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of protected VPCs. Valid values between 2 and 500.
+        The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
         """
         return pulumi.get(self, "fw_vpc_number")
 
@@ -442,7 +521,7 @@ class _InstanceState:
     @pulumi.getter(name="modifyType")
     def modify_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+        The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
         """
         return pulumi.get(self, "modify_type")
 
@@ -490,8 +569,11 @@ class _InstanceState:
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+        Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
         """
+        warnings.warn("""Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""", DeprecationWarning)
+        pulumi.log.warn("""renew_period is deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""")
+
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
@@ -499,10 +581,22 @@ class _InstanceState:
         pulumi.set(self, "renew_period", value)
 
     @property
+    @pulumi.getter(name="renewalDuration")
+    def renewal_duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        """
+        return pulumi.get(self, "renewal_duration")
+
+    @renewal_duration.setter
+    def renewal_duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "renewal_duration", value)
+
+    @property
     @pulumi.getter(name="renewalDurationUnit")
     def renewal_duration_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        Automatic renewal period unit. Valid values: `Month`,`Year`.
+        Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         """
         return pulumi.get(self, "renewal_duration_unit")
 
@@ -514,7 +608,7 @@ class _InstanceState:
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+        Whether to renew an instance automatically or not. Default to "ManualRenewal".
         """
         return pulumi.get(self, "renewal_status")
 
@@ -552,10 +646,11 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_number: Optional[pulumi.Input[int]] = None,
                  band_width: Optional[pulumi.Input[int]] = None,
+                 cfw_account: Optional[pulumi.Input[bool]] = None,
                  cfw_log: Optional[pulumi.Input[bool]] = None,
                  cfw_log_storage: Optional[pulumi.Input[int]] = None,
-                 cfw_service: Optional[pulumi.Input[bool]] = None,
                  fw_vpc_number: Optional[pulumi.Input[int]] = None,
                  instance_count: Optional[pulumi.Input[int]] = None,
                  ip_number: Optional[pulumi.Input[int]] = None,
@@ -564,6 +659,8 @@ class Instance(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
+                 renewal_duration: Optional[pulumi.Input[int]] = None,
+                 renewal_duration_unit: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -572,7 +669,7 @@ class Instance(pulumi.CustomResource):
 
         For information about Cloud Firewall Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/product/90174.htm).
 
-        > **NOTE:** Available in v1.139.0+.
+        > **NOTE:** Available since v1.139.0.
 
         ## Example Usage
 
@@ -584,12 +681,11 @@ class Instance(pulumi.CustomResource):
 
         example = alicloud.cloudfirewall.Instance("example",
             band_width=10,
-            cfw_log=False,
+            cfw_log=True,
             cfw_log_storage=1000,
-            cfw_service=False,
             ip_number=20,
             payment_type="Subscription",
-            period=6,
+            period=1,
             spec="premium_version")
         ```
 
@@ -603,19 +699,22 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] account_number: The number of multi account. It will be ignored when `cfw_account = false`.
         :param pulumi.Input[int] band_width: Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
+        :param pulumi.Input[bool] cfw_account: Whether to use multi-account. Valid values: `true`, `false`.
         :param pulumi.Input[bool] cfw_log: Whether to use log audit. Valid values: `true`, `false`.
-        :param pulumi.Input[int] cfw_log_storage: The log storage capacity.
-        :param pulumi.Input[bool] cfw_service: Whether to use expert service. Valid values: `true`, `false`.
-        :param pulumi.Input[int] fw_vpc_number: The number of protected VPCs. Valid values between 2 and 500.
+        :param pulumi.Input[int] cfw_log_storage: The log storage capacity. It will be ignored when `cfw_log = false`.
+        :param pulumi.Input[int] fw_vpc_number: The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
         :param pulumi.Input[int] instance_count: The number of assets.
         :param pulumi.Input[int] ip_number: The number of public IPs that can be protected. Valid values: 20 to 4000.
         :param pulumi.Input[str] logistics: The logistics.
-        :param pulumi.Input[str] modify_type: The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+        :param pulumi.Input[str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`.
         :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
-        :param pulumi.Input[int] renew_period: Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
-        :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+        :param pulumi.Input[int] renew_period: Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+        :param pulumi.Input[int] renewal_duration: Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+        :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
         :param pulumi.Input[str] spec: Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
         """
         ...
@@ -629,7 +728,7 @@ class Instance(pulumi.CustomResource):
 
         For information about Cloud Firewall Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/product/90174.htm).
 
-        > **NOTE:** Available in v1.139.0+.
+        > **NOTE:** Available since v1.139.0.
 
         ## Example Usage
 
@@ -641,12 +740,11 @@ class Instance(pulumi.CustomResource):
 
         example = alicloud.cloudfirewall.Instance("example",
             band_width=10,
-            cfw_log=False,
+            cfw_log=True,
             cfw_log_storage=1000,
-            cfw_service=False,
             ip_number=20,
             payment_type="Subscription",
-            period=6,
+            period=1,
             spec="premium_version")
         ```
 
@@ -673,10 +771,11 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_number: Optional[pulumi.Input[int]] = None,
                  band_width: Optional[pulumi.Input[int]] = None,
+                 cfw_account: Optional[pulumi.Input[bool]] = None,
                  cfw_log: Optional[pulumi.Input[bool]] = None,
                  cfw_log_storage: Optional[pulumi.Input[int]] = None,
-                 cfw_service: Optional[pulumi.Input[bool]] = None,
                  fw_vpc_number: Optional[pulumi.Input[int]] = None,
                  instance_count: Optional[pulumi.Input[int]] = None,
                  ip_number: Optional[pulumi.Input[int]] = None,
@@ -685,6 +784,8 @@ class Instance(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
+                 renewal_duration: Optional[pulumi.Input[int]] = None,
+                 renewal_duration_unit: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -696,18 +797,15 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["account_number"] = account_number
             if band_width is None and not opts.urn:
                 raise TypeError("Missing required property 'band_width'")
             __props__.__dict__["band_width"] = band_width
+            __props__.__dict__["cfw_account"] = cfw_account
             if cfw_log is None and not opts.urn:
                 raise TypeError("Missing required property 'cfw_log'")
             __props__.__dict__["cfw_log"] = cfw_log
-            if cfw_log_storage is None and not opts.urn:
-                raise TypeError("Missing required property 'cfw_log_storage'")
             __props__.__dict__["cfw_log_storage"] = cfw_log_storage
-            if cfw_service is None and not opts.urn:
-                raise TypeError("Missing required property 'cfw_service'")
-            __props__.__dict__["cfw_service"] = cfw_service
             __props__.__dict__["fw_vpc_number"] = fw_vpc_number
             __props__.__dict__["instance_count"] = instance_count
             if ip_number is None and not opts.urn:
@@ -721,7 +819,12 @@ class Instance(pulumi.CustomResource):
             if period is None and not opts.urn:
                 raise TypeError("Missing required property 'period'")
             __props__.__dict__["period"] = period
+            if renew_period is not None and not opts.urn:
+                warnings.warn("""Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""", DeprecationWarning)
+                pulumi.log.warn("""renew_period is deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""")
             __props__.__dict__["renew_period"] = renew_period
+            __props__.__dict__["renewal_duration"] = renewal_duration
+            __props__.__dict__["renewal_duration_unit"] = renewal_duration_unit
             __props__.__dict__["renewal_status"] = renewal_status
             if spec is None and not opts.urn:
                 raise TypeError("Missing required property 'spec'")
@@ -729,7 +832,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["end_time"] = None
             __props__.__dict__["release_time"] = None
-            __props__.__dict__["renewal_duration_unit"] = None
             __props__.__dict__["status"] = None
         super(Instance, __self__).__init__(
             'alicloud:cloudfirewall/instance:Instance',
@@ -741,10 +843,11 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            account_number: Optional[pulumi.Input[int]] = None,
             band_width: Optional[pulumi.Input[int]] = None,
+            cfw_account: Optional[pulumi.Input[bool]] = None,
             cfw_log: Optional[pulumi.Input[bool]] = None,
             cfw_log_storage: Optional[pulumi.Input[int]] = None,
-            cfw_service: Optional[pulumi.Input[bool]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             end_time: Optional[pulumi.Input[str]] = None,
             fw_vpc_number: Optional[pulumi.Input[int]] = None,
@@ -756,6 +859,7 @@ class Instance(pulumi.CustomResource):
             period: Optional[pulumi.Input[int]] = None,
             release_time: Optional[pulumi.Input[str]] = None,
             renew_period: Optional[pulumi.Input[int]] = None,
+            renewal_duration: Optional[pulumi.Input[int]] = None,
             renewal_duration_unit: Optional[pulumi.Input[str]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
             spec: Optional[pulumi.Input[str]] = None,
@@ -767,23 +871,25 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] account_number: The number of multi account. It will be ignored when `cfw_account = false`.
         :param pulumi.Input[int] band_width: Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
+        :param pulumi.Input[bool] cfw_account: Whether to use multi-account. Valid values: `true`, `false`.
         :param pulumi.Input[bool] cfw_log: Whether to use log audit. Valid values: `true`, `false`.
-        :param pulumi.Input[int] cfw_log_storage: The log storage capacity.
-        :param pulumi.Input[bool] cfw_service: Whether to use expert service. Valid values: `true`, `false`.
+        :param pulumi.Input[int] cfw_log_storage: The log storage capacity. It will be ignored when `cfw_log = false`.
         :param pulumi.Input[str] create_time: The creation time.
         :param pulumi.Input[str] end_time: The end time.
-        :param pulumi.Input[int] fw_vpc_number: The number of protected VPCs. Valid values between 2 and 500.
+        :param pulumi.Input[int] fw_vpc_number: The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
         :param pulumi.Input[int] instance_count: The number of assets.
         :param pulumi.Input[int] ip_number: The number of public IPs that can be protected. Valid values: 20 to 4000.
         :param pulumi.Input[str] logistics: The logistics.
-        :param pulumi.Input[str] modify_type: The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+        :param pulumi.Input[str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`.
         :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
         :param pulumi.Input[str] release_time: The release time.
-        :param pulumi.Input[int] renew_period: Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
-        :param pulumi.Input[str] renewal_duration_unit: Automatic renewal period unit. Valid values: `Month`,`Year`.
-        :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+        :param pulumi.Input[int] renew_period: Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+        :param pulumi.Input[int] renewal_duration: Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+        :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
         :param pulumi.Input[str] spec: Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
         :param pulumi.Input[str] status: The status of Instance.
         """
@@ -791,10 +897,11 @@ class Instance(pulumi.CustomResource):
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
+        __props__.__dict__["account_number"] = account_number
         __props__.__dict__["band_width"] = band_width
+        __props__.__dict__["cfw_account"] = cfw_account
         __props__.__dict__["cfw_log"] = cfw_log
         __props__.__dict__["cfw_log_storage"] = cfw_log_storage
-        __props__.__dict__["cfw_service"] = cfw_service
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["end_time"] = end_time
         __props__.__dict__["fw_vpc_number"] = fw_vpc_number
@@ -806,11 +913,20 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["period"] = period
         __props__.__dict__["release_time"] = release_time
         __props__.__dict__["renew_period"] = renew_period
+        __props__.__dict__["renewal_duration"] = renewal_duration
         __props__.__dict__["renewal_duration_unit"] = renewal_duration_unit
         __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["spec"] = spec
         __props__.__dict__["status"] = status
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> pulumi.Output[Optional[int]]:
+        """
+        The number of multi account. It will be ignored when `cfw_account = false`.
+        """
+        return pulumi.get(self, "account_number")
 
     @property
     @pulumi.getter(name="bandWidth")
@@ -819,6 +935,14 @@ class Instance(pulumi.CustomResource):
         Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         """
         return pulumi.get(self, "band_width")
+
+    @property
+    @pulumi.getter(name="cfwAccount")
+    def cfw_account(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to use multi-account. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "cfw_account")
 
     @property
     @pulumi.getter(name="cfwLog")
@@ -830,19 +954,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cfwLogStorage")
-    def cfw_log_storage(self) -> pulumi.Output[int]:
+    def cfw_log_storage(self) -> pulumi.Output[Optional[int]]:
         """
-        The log storage capacity.
+        The log storage capacity. It will be ignored when `cfw_log = false`.
         """
         return pulumi.get(self, "cfw_log_storage")
-
-    @property
-    @pulumi.getter(name="cfwService")
-    def cfw_service(self) -> pulumi.Output[bool]:
-        """
-        Whether to use expert service. Valid values: `true`, `false`.
-        """
-        return pulumi.get(self, "cfw_service")
 
     @property
     @pulumi.getter(name="createTime")
@@ -864,7 +980,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="fwVpcNumber")
     def fw_vpc_number(self) -> pulumi.Output[Optional[int]]:
         """
-        The number of protected VPCs. Valid values between 2 and 500.
+        The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
         """
         return pulumi.get(self, "fw_vpc_number")
 
@@ -896,7 +1012,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="modifyType")
     def modify_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+        The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
         """
         return pulumi.get(self, "modify_type")
 
@@ -926,17 +1042,28 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="renewPeriod")
-    def renew_period(self) -> pulumi.Output[Optional[int]]:
+    def renew_period(self) -> pulumi.Output[int]:
         """
-        Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+        Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
         """
+        warnings.warn("""Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""", DeprecationWarning)
+        pulumi.log.warn("""renew_period is deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""")
+
         return pulumi.get(self, "renew_period")
 
     @property
-    @pulumi.getter(name="renewalDurationUnit")
-    def renewal_duration_unit(self) -> pulumi.Output[str]:
+    @pulumi.getter(name="renewalDuration")
+    def renewal_duration(self) -> pulumi.Output[int]:
         """
-        Automatic renewal period unit. Valid values: `Month`,`Year`.
+        Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        """
+        return pulumi.get(self, "renewal_duration")
+
+    @property
+    @pulumi.getter(name="renewalDurationUnit")
+    def renewal_duration_unit(self) -> pulumi.Output[Optional[str]]:
+        """
+        Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         """
         return pulumi.get(self, "renewal_duration_unit")
 
@@ -944,7 +1071,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> pulumi.Output[str]:
         """
-        Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
+        Whether to renew an instance automatically or not. Default to "ManualRenewal".
         """
         return pulumi.get(self, "renewal_status")
 

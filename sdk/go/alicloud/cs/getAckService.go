@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Using this data source can open Container Service (CS) service automatically. If the service has been opened, it will return opened.
@@ -113,6 +114,12 @@ func (o GetAckServiceResultOutput) ToGetAckServiceResultOutput() GetAckServiceRe
 
 func (o GetAckServiceResultOutput) ToGetAckServiceResultOutputWithContext(ctx context.Context) GetAckServiceResultOutput {
 	return o
+}
+
+func (o GetAckServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAckServiceResult] {
+	return pulumix.Output[GetAckServiceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAckServiceResultOutput) Enable() pulumi.StringPtrOutput {

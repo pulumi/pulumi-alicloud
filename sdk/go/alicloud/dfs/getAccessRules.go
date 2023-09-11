@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Dfs Access Rules of the current Alibaba Cloud user.
@@ -117,6 +118,12 @@ func (o GetAccessRulesResultOutput) ToGetAccessRulesResultOutput() GetAccessRule
 
 func (o GetAccessRulesResultOutput) ToGetAccessRulesResultOutputWithContext(ctx context.Context) GetAccessRulesResultOutput {
 	return o
+}
+
+func (o GetAccessRulesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccessRulesResult] {
+	return pulumix.Output[GetAccessRulesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAccessRulesResultOutput) AccessGroupId() pulumi.StringOutput {

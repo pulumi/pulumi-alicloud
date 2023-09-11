@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about EMR New and how to use it, see [Add a domain](https://www.alibabacloud.com/help/doc-detail/28068.htm).
  *
- * > **NOTE:** Available in v1.199.0+.
+ * > **NOTE:** Available since v1.199.0.
  *
  * ## Example Usage
  *
@@ -21,23 +21,23 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
- *     status: "OK",
- * });
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const defaultZones = alicloud.getZones({
  *     availableInstanceType: "ecs.g7.xlarge",
  * });
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: "TF-VPC",
+ *     vpcName: name,
  *     cidrBlock: "172.16.0.0/12",
  * });
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchName: "TF_VSwitch",
+ *     vswitchName: name,
  * });
- * const defaultEcsKeyPair = new alicloud.ecs.EcsKeyPair("defaultEcsKeyPair", {keyPairName: "terraform-kp"});
+ * const defaultEcsKeyPair = new alicloud.ecs.EcsKeyPair("defaultEcsKeyPair", {keyPairName: name});
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultRole = new alicloud.ram.Role("defaultRole", {
  *     document: `    {
@@ -56,14 +56,14 @@ import * as utilities from "../utilities";
  *         "Version": "1"
  *     }
  * `,
- *     description: "this is a role test.",
+ *     description: "this is a role example.",
  *     force: true,
  * });
  * const defaultCluster = new alicloud.emrv2.Cluster("defaultCluster", {
  *     paymentType: "PayAsYouGo",
  *     clusterType: "DATALAKE",
  *     releaseVersion: "EMR-5.10.0",
- *     clusterName: "terraform-emr-cluster-v2",
+ *     clusterName: name,
  *     deployMode: "NORMAL",
  *     securityMode: "NORMAL",
  *     applications: [
@@ -181,7 +181,7 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /**
-     * The application configurations of EMR cluster.
+     * The application configurations of EMR cluster. See `applicationConfigs` below.
      */
     public readonly applicationConfigs!: pulumi.Output<outputs.emrv2.ClusterApplicationConfig[] | undefined>;
     /**
@@ -189,7 +189,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly applications!: pulumi.Output<string[]>;
     /**
-     * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster.
+     * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrapScripts` below.
      */
     public readonly bootstrapScripts!: pulumi.Output<outputs.emrv2.ClusterBootstrapScript[] | undefined>;
     /**
@@ -205,11 +205,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly deployMode!: pulumi.Output<string>;
     /**
-     * The node attributes of ecs instances which the emr-cluster belongs.
+     * The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
      */
     public readonly nodeAttributes!: pulumi.Output<outputs.emrv2.ClusterNodeAttribute[]>;
     /**
-     * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example).
+     * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below.
      */
     public readonly nodeGroups!: pulumi.Output<outputs.emrv2.ClusterNodeGroup[]>;
     /**
@@ -229,7 +229,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly securityMode!: pulumi.Output<string>;
     /**
-     * The detail configuration of subscription payment type.
+     * The detail configuration of subscription payment type. See `subscriptionConfig` below.
      */
     public readonly subscriptionConfig!: pulumi.Output<outputs.emrv2.ClusterSubscriptionConfig | undefined>;
     /**
@@ -309,7 +309,7 @@ export class Cluster extends pulumi.CustomResource {
  */
 export interface ClusterState {
     /**
-     * The application configurations of EMR cluster.
+     * The application configurations of EMR cluster. See `applicationConfigs` below.
      */
     applicationConfigs?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterApplicationConfig>[]>;
     /**
@@ -317,7 +317,7 @@ export interface ClusterState {
      */
     applications?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster.
+     * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrapScripts` below.
      */
     bootstrapScripts?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterBootstrapScript>[]>;
     /**
@@ -333,11 +333,11 @@ export interface ClusterState {
      */
     deployMode?: pulumi.Input<string>;
     /**
-     * The node attributes of ecs instances which the emr-cluster belongs.
+     * The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
      */
     nodeAttributes?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterNodeAttribute>[]>;
     /**
-     * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example).
+     * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below.
      */
     nodeGroups?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterNodeGroup>[]>;
     /**
@@ -357,7 +357,7 @@ export interface ClusterState {
      */
     securityMode?: pulumi.Input<string>;
     /**
-     * The detail configuration of subscription payment type.
+     * The detail configuration of subscription payment type. See `subscriptionConfig` below.
      */
     subscriptionConfig?: pulumi.Input<inputs.emrv2.ClusterSubscriptionConfig>;
     /**
@@ -371,7 +371,7 @@ export interface ClusterState {
  */
 export interface ClusterArgs {
     /**
-     * The application configurations of EMR cluster.
+     * The application configurations of EMR cluster. See `applicationConfigs` below.
      */
     applicationConfigs?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterApplicationConfig>[]>;
     /**
@@ -379,7 +379,7 @@ export interface ClusterArgs {
      */
     applications: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster.
+     * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrapScripts` below.
      */
     bootstrapScripts?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterBootstrapScript>[]>;
     /**
@@ -395,11 +395,11 @@ export interface ClusterArgs {
      */
     deployMode?: pulumi.Input<string>;
     /**
-     * The node attributes of ecs instances which the emr-cluster belongs.
+     * The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
      */
     nodeAttributes: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterNodeAttribute>[]>;
     /**
-     * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example).
+     * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below.
      */
     nodeGroups: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterNodeGroup>[]>;
     /**
@@ -419,7 +419,7 @@ export interface ClusterArgs {
      */
     securityMode?: pulumi.Input<string>;
     /**
-     * The detail configuration of subscription payment type.
+     * The detail configuration of subscription payment type. See `subscriptionConfig` below.
      */
     subscriptionConfig?: pulumi.Input<inputs.emrv2.ClusterSubscriptionConfig>;
     /**

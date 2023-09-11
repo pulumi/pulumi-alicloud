@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ddos
 {
     /// <summary>
-    /// Provides a DdosCoo Scheduler Rule resource. For information about DdosCoo Scheduler Rule and how to use it, see[What is DdosCoo Scheduler Rule](https://www.alibabacloud.com/help/en/doc-detail/157481.htm).
+    /// Provides a DdosCoo Scheduler Rule resource. For information about DdosCoo Scheduler Rule and how to use it, see[What is DdosCoo Scheduler Rule](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createschedulerrule).
     /// 
-    /// &gt; **NOTE:** Available in 1.86.0+
+    /// &gt; **NOTE:** Available since v1.86.0.
     /// 
     /// ## Example Usage
     /// 
@@ -26,9 +26,11 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var example = new AliCloud.Ddos.SchedulerRule("example", new()
     ///     {
-    ///         RuleName = "tf-testacc7929727",
+    ///         RuleName = name,
     ///         RuleType = 3,
     ///         Rules = new[]
     ///         {
@@ -99,7 +101,7 @@ namespace Pulumi.AliCloud.Ddos
         public Output<int> RuleType { get; private set; } = null!;
 
         /// <summary>
-        /// The information about the scheduling rules. See the following `Block rules`.
+        /// The information about the scheduling rules. See `rules` below.
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.SchedulerRuleRule>> Rules { get; private set; } = null!;
@@ -181,7 +183,7 @@ namespace Pulumi.AliCloud.Ddos
         private InputList<Inputs.SchedulerRuleRuleArgs>? _rules;
 
         /// <summary>
-        /// The information about the scheduling rules. See the following `Block rules`.
+        /// The information about the scheduling rules. See `rules` below.
         /// </summary>
         public InputList<Inputs.SchedulerRuleRuleArgs> Rules
         {
@@ -234,7 +236,7 @@ namespace Pulumi.AliCloud.Ddos
         private InputList<Inputs.SchedulerRuleRuleGetArgs>? _rules;
 
         /// <summary>
-        /// The information about the scheduling rules. See the following `Block rules`.
+        /// The information about the scheduling rules. See `rules` below.
         /// </summary>
         public InputList<Inputs.SchedulerRuleRuleGetArgs> Rules
         {

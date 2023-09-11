@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -72,6 +73,12 @@ func (i GetExpressSyncsSyncArgs) ToGetExpressSyncsSyncOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetExpressSyncsSyncOutput)
 }
 
+func (i GetExpressSyncsSyncArgs) ToOutput(ctx context.Context) pulumix.Output[GetExpressSyncsSync] {
+	return pulumix.Output[GetExpressSyncsSync]{
+		OutputState: i.ToGetExpressSyncsSyncOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetExpressSyncsSyncArrayInput is an input type that accepts GetExpressSyncsSyncArray and GetExpressSyncsSyncArrayOutput values.
 // You can construct a concrete instance of `GetExpressSyncsSyncArrayInput` via:
 //
@@ -97,6 +104,12 @@ func (i GetExpressSyncsSyncArray) ToGetExpressSyncsSyncArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetExpressSyncsSyncArrayOutput)
 }
 
+func (i GetExpressSyncsSyncArray) ToOutput(ctx context.Context) pulumix.Output[[]GetExpressSyncsSync] {
+	return pulumix.Output[[]GetExpressSyncsSync]{
+		OutputState: i.ToGetExpressSyncsSyncArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetExpressSyncsSyncOutput struct{ *pulumi.OutputState }
 
 func (GetExpressSyncsSyncOutput) ElementType() reflect.Type {
@@ -109,6 +122,12 @@ func (o GetExpressSyncsSyncOutput) ToGetExpressSyncsSyncOutput() GetExpressSyncs
 
 func (o GetExpressSyncsSyncOutput) ToGetExpressSyncsSyncOutputWithContext(ctx context.Context) GetExpressSyncsSyncOutput {
 	return o
+}
+
+func (o GetExpressSyncsSyncOutput) ToOutput(ctx context.Context) pulumix.Output[GetExpressSyncsSync] {
+	return pulumix.Output[GetExpressSyncsSync]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the OSS Bucket.
@@ -162,6 +181,12 @@ func (o GetExpressSyncsSyncArrayOutput) ToGetExpressSyncsSyncArrayOutput() GetEx
 
 func (o GetExpressSyncsSyncArrayOutput) ToGetExpressSyncsSyncArrayOutputWithContext(ctx context.Context) GetExpressSyncsSyncArrayOutput {
 	return o
+}
+
+func (o GetExpressSyncsSyncArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetExpressSyncsSync] {
+	return pulumix.Output[[]GetExpressSyncsSync]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetExpressSyncsSyncArrayOutput) Index(i pulumi.IntInput) GetExpressSyncsSyncOutput {
@@ -301,6 +326,12 @@ func (i GetGatewayBlockVolumesVolumeArgs) ToGetGatewayBlockVolumesVolumeOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayBlockVolumesVolumeOutput)
 }
 
+func (i GetGatewayBlockVolumesVolumeArgs) ToOutput(ctx context.Context) pulumix.Output[GetGatewayBlockVolumesVolume] {
+	return pulumix.Output[GetGatewayBlockVolumesVolume]{
+		OutputState: i.ToGetGatewayBlockVolumesVolumeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGatewayBlockVolumesVolumeArrayInput is an input type that accepts GetGatewayBlockVolumesVolumeArray and GetGatewayBlockVolumesVolumeArrayOutput values.
 // You can construct a concrete instance of `GetGatewayBlockVolumesVolumeArrayInput` via:
 //
@@ -326,6 +357,12 @@ func (i GetGatewayBlockVolumesVolumeArray) ToGetGatewayBlockVolumesVolumeArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayBlockVolumesVolumeArrayOutput)
 }
 
+func (i GetGatewayBlockVolumesVolumeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewayBlockVolumesVolume] {
+	return pulumix.Output[[]GetGatewayBlockVolumesVolume]{
+		OutputState: i.ToGetGatewayBlockVolumesVolumeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGatewayBlockVolumesVolumeOutput struct{ *pulumi.OutputState }
 
 func (GetGatewayBlockVolumesVolumeOutput) ElementType() reflect.Type {
@@ -338,6 +375,12 @@ func (o GetGatewayBlockVolumesVolumeOutput) ToGetGatewayBlockVolumesVolumeOutput
 
 func (o GetGatewayBlockVolumesVolumeOutput) ToGetGatewayBlockVolumesVolumeOutputWithContext(ctx context.Context) GetGatewayBlockVolumesVolumeOutput {
 	return o
+}
+
+func (o GetGatewayBlockVolumesVolumeOutput) ToOutput(ctx context.Context) pulumix.Output[GetGatewayBlockVolumesVolume] {
+	return pulumix.Output[GetGatewayBlockVolumesVolume]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP ADDRESS.
@@ -483,6 +526,12 @@ func (o GetGatewayBlockVolumesVolumeArrayOutput) ToGetGatewayBlockVolumesVolumeA
 	return o
 }
 
+func (o GetGatewayBlockVolumesVolumeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewayBlockVolumesVolume] {
+	return pulumix.Output[[]GetGatewayBlockVolumesVolume]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetGatewayBlockVolumesVolumeArrayOutput) Index(i pulumi.IntInput) GetGatewayBlockVolumesVolumeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayBlockVolumesVolume {
 		return vs[0].([]GetGatewayBlockVolumesVolume)[vs[1].(int)]
@@ -562,6 +611,12 @@ func (i GetGatewayCacheDisksDiskArgs) ToGetGatewayCacheDisksDiskOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayCacheDisksDiskOutput)
 }
 
+func (i GetGatewayCacheDisksDiskArgs) ToOutput(ctx context.Context) pulumix.Output[GetGatewayCacheDisksDisk] {
+	return pulumix.Output[GetGatewayCacheDisksDisk]{
+		OutputState: i.ToGetGatewayCacheDisksDiskOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGatewayCacheDisksDiskArrayInput is an input type that accepts GetGatewayCacheDisksDiskArray and GetGatewayCacheDisksDiskArrayOutput values.
 // You can construct a concrete instance of `GetGatewayCacheDisksDiskArrayInput` via:
 //
@@ -587,6 +642,12 @@ func (i GetGatewayCacheDisksDiskArray) ToGetGatewayCacheDisksDiskArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayCacheDisksDiskArrayOutput)
 }
 
+func (i GetGatewayCacheDisksDiskArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewayCacheDisksDisk] {
+	return pulumix.Output[[]GetGatewayCacheDisksDisk]{
+		OutputState: i.ToGetGatewayCacheDisksDiskArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGatewayCacheDisksDiskOutput struct{ *pulumi.OutputState }
 
 func (GetGatewayCacheDisksDiskOutput) ElementType() reflect.Type {
@@ -599,6 +660,12 @@ func (o GetGatewayCacheDisksDiskOutput) ToGetGatewayCacheDisksDiskOutput() GetGa
 
 func (o GetGatewayCacheDisksDiskOutput) ToGetGatewayCacheDisksDiskOutputWithContext(ctx context.Context) GetGatewayCacheDisksDiskOutput {
 	return o
+}
+
+func (o GetGatewayCacheDisksDiskOutput) ToOutput(ctx context.Context) pulumix.Output[GetGatewayCacheDisksDisk] {
+	return pulumix.Output[GetGatewayCacheDisksDisk]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The category of eht cache disk.
@@ -668,6 +735,12 @@ func (o GetGatewayCacheDisksDiskArrayOutput) ToGetGatewayCacheDisksDiskArrayOutp
 
 func (o GetGatewayCacheDisksDiskArrayOutput) ToGetGatewayCacheDisksDiskArrayOutputWithContext(ctx context.Context) GetGatewayCacheDisksDiskArrayOutput {
 	return o
+}
+
+func (o GetGatewayCacheDisksDiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewayCacheDisksDisk] {
+	return pulumix.Output[[]GetGatewayCacheDisksDisk]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGatewayCacheDisksDiskArrayOutput) Index(i pulumi.IntInput) GetGatewayCacheDisksDiskOutput {
@@ -953,6 +1026,12 @@ func (i GetGatewayFileSharesShareArgs) ToGetGatewayFileSharesShareOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayFileSharesShareOutput)
 }
 
+func (i GetGatewayFileSharesShareArgs) ToOutput(ctx context.Context) pulumix.Output[GetGatewayFileSharesShare] {
+	return pulumix.Output[GetGatewayFileSharesShare]{
+		OutputState: i.ToGetGatewayFileSharesShareOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGatewayFileSharesShareArrayInput is an input type that accepts GetGatewayFileSharesShareArray and GetGatewayFileSharesShareArrayOutput values.
 // You can construct a concrete instance of `GetGatewayFileSharesShareArrayInput` via:
 //
@@ -978,6 +1057,12 @@ func (i GetGatewayFileSharesShareArray) ToGetGatewayFileSharesShareArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayFileSharesShareArrayOutput)
 }
 
+func (i GetGatewayFileSharesShareArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewayFileSharesShare] {
+	return pulumix.Output[[]GetGatewayFileSharesShare]{
+		OutputState: i.ToGetGatewayFileSharesShareArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGatewayFileSharesShareOutput struct{ *pulumi.OutputState }
 
 func (GetGatewayFileSharesShareOutput) ElementType() reflect.Type {
@@ -990,6 +1075,12 @@ func (o GetGatewayFileSharesShareOutput) ToGetGatewayFileSharesShareOutput() Get
 
 func (o GetGatewayFileSharesShareOutput) ToGetGatewayFileSharesShareOutputWithContext(ctx context.Context) GetGatewayFileSharesShareOutput {
 	return o
+}
+
+func (o GetGatewayFileSharesShareOutput) ToOutput(ctx context.Context) pulumix.Output[GetGatewayFileSharesShare] {
+	return pulumix.Output[GetGatewayFileSharesShare]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The set up gateway file share Server Message Block (SMB) protocol, whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** Gateway version >= 1.0.45 above support.
@@ -1316,6 +1407,12 @@ func (o GetGatewayFileSharesShareArrayOutput) ToGetGatewayFileSharesShareArrayOu
 	return o
 }
 
+func (o GetGatewayFileSharesShareArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewayFileSharesShare] {
+	return pulumix.Output[[]GetGatewayFileSharesShare]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetGatewayFileSharesShareArrayOutput) Index(i pulumi.IntInput) GetGatewayFileSharesShareOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayFileSharesShare {
 		return vs[0].([]GetGatewayFileSharesShare)[vs[1].(int)]
@@ -1363,6 +1460,12 @@ func (i GetGatewaySmbUsersUserArgs) ToGetGatewaySmbUsersUserOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaySmbUsersUserOutput)
 }
 
+func (i GetGatewaySmbUsersUserArgs) ToOutput(ctx context.Context) pulumix.Output[GetGatewaySmbUsersUser] {
+	return pulumix.Output[GetGatewaySmbUsersUser]{
+		OutputState: i.ToGetGatewaySmbUsersUserOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGatewaySmbUsersUserArrayInput is an input type that accepts GetGatewaySmbUsersUserArray and GetGatewaySmbUsersUserArrayOutput values.
 // You can construct a concrete instance of `GetGatewaySmbUsersUserArrayInput` via:
 //
@@ -1388,6 +1491,12 @@ func (i GetGatewaySmbUsersUserArray) ToGetGatewaySmbUsersUserArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaySmbUsersUserArrayOutput)
 }
 
+func (i GetGatewaySmbUsersUserArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewaySmbUsersUser] {
+	return pulumix.Output[[]GetGatewaySmbUsersUser]{
+		OutputState: i.ToGetGatewaySmbUsersUserArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGatewaySmbUsersUserOutput struct{ *pulumi.OutputState }
 
 func (GetGatewaySmbUsersUserOutput) ElementType() reflect.Type {
@@ -1400,6 +1509,12 @@ func (o GetGatewaySmbUsersUserOutput) ToGetGatewaySmbUsersUserOutput() GetGatewa
 
 func (o GetGatewaySmbUsersUserOutput) ToGetGatewaySmbUsersUserOutputWithContext(ctx context.Context) GetGatewaySmbUsersUserOutput {
 	return o
+}
+
+func (o GetGatewaySmbUsersUserOutput) ToOutput(ctx context.Context) pulumix.Output[GetGatewaySmbUsersUser] {
+	return pulumix.Output[GetGatewaySmbUsersUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Gateway ID.
@@ -1429,6 +1544,12 @@ func (o GetGatewaySmbUsersUserArrayOutput) ToGetGatewaySmbUsersUserArrayOutput()
 
 func (o GetGatewaySmbUsersUserArrayOutput) ToGetGatewaySmbUsersUserArrayOutputWithContext(ctx context.Context) GetGatewaySmbUsersUserArrayOutput {
 	return o
+}
+
+func (o GetGatewaySmbUsersUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewaySmbUsersUser] {
+	return pulumix.Output[[]GetGatewaySmbUsersUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGatewaySmbUsersUserArrayOutput) Index(i pulumi.IntInput) GetGatewaySmbUsersUserOutput {
@@ -1566,6 +1687,12 @@ func (i GetGatewaysGatewayArgs) ToGetGatewaysGatewayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayOutput)
 }
 
+func (i GetGatewaysGatewayArgs) ToOutput(ctx context.Context) pulumix.Output[GetGatewaysGateway] {
+	return pulumix.Output[GetGatewaysGateway]{
+		OutputState: i.ToGetGatewaysGatewayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGatewaysGatewayArrayInput is an input type that accepts GetGatewaysGatewayArray and GetGatewaysGatewayArrayOutput values.
 // You can construct a concrete instance of `GetGatewaysGatewayArrayInput` via:
 //
@@ -1591,6 +1718,12 @@ func (i GetGatewaysGatewayArray) ToGetGatewaysGatewayArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayArrayOutput)
 }
 
+func (i GetGatewaysGatewayArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewaysGateway] {
+	return pulumix.Output[[]GetGatewaysGateway]{
+		OutputState: i.ToGetGatewaysGatewayArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGatewaysGatewayOutput struct{ *pulumi.OutputState }
 
 func (GetGatewaysGatewayOutput) ElementType() reflect.Type {
@@ -1603,6 +1736,12 @@ func (o GetGatewaysGatewayOutput) ToGetGatewaysGatewayOutput() GetGatewaysGatewa
 
 func (o GetGatewaysGatewayOutput) ToGetGatewaysGatewayOutputWithContext(ctx context.Context) GetGatewaysGatewayOutput {
 	return o
+}
+
+func (o GetGatewaysGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[GetGatewaysGateway] {
+	return pulumix.Output[GetGatewaysGateway]{
+		OutputState: o.OutputState,
+	}
 }
 
 // gateway .
@@ -1747,6 +1886,12 @@ func (o GetGatewaysGatewayArrayOutput) ToGetGatewaysGatewayArrayOutputWithContex
 	return o
 }
 
+func (o GetGatewaysGatewayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewaysGateway] {
+	return pulumix.Output[[]GetGatewaysGateway]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetGatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetGatewaysGatewayOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewaysGateway {
 		return vs[0].([]GetGatewaysGateway)[vs[1].(int)]
@@ -1790,6 +1935,12 @@ func (i GetStocksStockArgs) ToGetStocksStockOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetStocksStockOutput)
 }
 
+func (i GetStocksStockArgs) ToOutput(ctx context.Context) pulumix.Output[GetStocksStock] {
+	return pulumix.Output[GetStocksStock]{
+		OutputState: i.ToGetStocksStockOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetStocksStockArrayInput is an input type that accepts GetStocksStockArray and GetStocksStockArrayOutput values.
 // You can construct a concrete instance of `GetStocksStockArrayInput` via:
 //
@@ -1815,6 +1966,12 @@ func (i GetStocksStockArray) ToGetStocksStockArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetStocksStockArrayOutput)
 }
 
+func (i GetStocksStockArray) ToOutput(ctx context.Context) pulumix.Output[[]GetStocksStock] {
+	return pulumix.Output[[]GetStocksStock]{
+		OutputState: i.ToGetStocksStockArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetStocksStockOutput struct{ *pulumi.OutputState }
 
 func (GetStocksStockOutput) ElementType() reflect.Type {
@@ -1827,6 +1984,12 @@ func (o GetStocksStockOutput) ToGetStocksStockOutput() GetStocksStockOutput {
 
 func (o GetStocksStockOutput) ToGetStocksStockOutputWithContext(ctx context.Context) GetStocksStockOutput {
 	return o
+}
+
+func (o GetStocksStockOutput) ToOutput(ctx context.Context) pulumix.Output[GetStocksStock] {
+	return pulumix.Output[GetStocksStock]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of available gateway class in this Zone ID.
@@ -1851,6 +2014,12 @@ func (o GetStocksStockArrayOutput) ToGetStocksStockArrayOutput() GetStocksStockA
 
 func (o GetStocksStockArrayOutput) ToGetStocksStockArrayOutputWithContext(ctx context.Context) GetStocksStockArrayOutput {
 	return o
+}
+
+func (o GetStocksStockArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetStocksStock] {
+	return pulumix.Output[[]GetStocksStock]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetStocksStockArrayOutput) Index(i pulumi.IntInput) GetStocksStockOutput {
@@ -1900,6 +2069,12 @@ func (i GetStorageBundlesBundleArgs) ToGetStorageBundlesBundleOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetStorageBundlesBundleOutput)
 }
 
+func (i GetStorageBundlesBundleArgs) ToOutput(ctx context.Context) pulumix.Output[GetStorageBundlesBundle] {
+	return pulumix.Output[GetStorageBundlesBundle]{
+		OutputState: i.ToGetStorageBundlesBundleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetStorageBundlesBundleArrayInput is an input type that accepts GetStorageBundlesBundleArray and GetStorageBundlesBundleArrayOutput values.
 // You can construct a concrete instance of `GetStorageBundlesBundleArrayInput` via:
 //
@@ -1925,6 +2100,12 @@ func (i GetStorageBundlesBundleArray) ToGetStorageBundlesBundleArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetStorageBundlesBundleArrayOutput)
 }
 
+func (i GetStorageBundlesBundleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetStorageBundlesBundle] {
+	return pulumix.Output[[]GetStorageBundlesBundle]{
+		OutputState: i.ToGetStorageBundlesBundleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetStorageBundlesBundleOutput struct{ *pulumi.OutputState }
 
 func (GetStorageBundlesBundleOutput) ElementType() reflect.Type {
@@ -1937,6 +2118,12 @@ func (o GetStorageBundlesBundleOutput) ToGetStorageBundlesBundleOutput() GetStor
 
 func (o GetStorageBundlesBundleOutput) ToGetStorageBundlesBundleOutputWithContext(ctx context.Context) GetStorageBundlesBundleOutput {
 	return o
+}
+
+func (o GetStorageBundlesBundleOutput) ToOutput(ctx context.Context) pulumix.Output[GetStorageBundlesBundle] {
+	return pulumix.Output[GetStorageBundlesBundle]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetStorageBundlesBundleOutput) CreateTime() pulumi.StringOutput {
@@ -1975,6 +2162,12 @@ func (o GetStorageBundlesBundleArrayOutput) ToGetStorageBundlesBundleArrayOutput
 
 func (o GetStorageBundlesBundleArrayOutput) ToGetStorageBundlesBundleArrayOutputWithContext(ctx context.Context) GetStorageBundlesBundleArrayOutput {
 	return o
+}
+
+func (o GetStorageBundlesBundleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetStorageBundlesBundle] {
+	return pulumix.Output[[]GetStorageBundlesBundle]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetStorageBundlesBundleArrayOutput) Index(i pulumi.IntInput) GetStorageBundlesBundleOutput {

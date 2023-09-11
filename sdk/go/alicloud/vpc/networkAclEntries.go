@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a network acl entries resource to create ingress and egress entries.
@@ -223,6 +224,12 @@ func (i *NetworkAclEntries) ToNetworkAclEntriesOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclEntriesOutput)
 }
 
+func (i *NetworkAclEntries) ToOutput(ctx context.Context) pulumix.Output[*NetworkAclEntries] {
+	return pulumix.Output[*NetworkAclEntries]{
+		OutputState: i.ToNetworkAclEntriesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NetworkAclEntriesArrayInput is an input type that accepts NetworkAclEntriesArray and NetworkAclEntriesArrayOutput values.
 // You can construct a concrete instance of `NetworkAclEntriesArrayInput` via:
 //
@@ -246,6 +253,12 @@ func (i NetworkAclEntriesArray) ToNetworkAclEntriesArrayOutput() NetworkAclEntri
 
 func (i NetworkAclEntriesArray) ToNetworkAclEntriesArrayOutputWithContext(ctx context.Context) NetworkAclEntriesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclEntriesArrayOutput)
+}
+
+func (i NetworkAclEntriesArray) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkAclEntries] {
+	return pulumix.Output[[]*NetworkAclEntries]{
+		OutputState: i.ToNetworkAclEntriesArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NetworkAclEntriesMapInput is an input type that accepts NetworkAclEntriesMap and NetworkAclEntriesMapOutput values.
@@ -273,6 +286,12 @@ func (i NetworkAclEntriesMap) ToNetworkAclEntriesMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclEntriesMapOutput)
 }
 
+func (i NetworkAclEntriesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkAclEntries] {
+	return pulumix.Output[map[string]*NetworkAclEntries]{
+		OutputState: i.ToNetworkAclEntriesMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NetworkAclEntriesOutput struct{ *pulumi.OutputState }
 
 func (NetworkAclEntriesOutput) ElementType() reflect.Type {
@@ -285,6 +304,12 @@ func (o NetworkAclEntriesOutput) ToNetworkAclEntriesOutput() NetworkAclEntriesOu
 
 func (o NetworkAclEntriesOutput) ToNetworkAclEntriesOutputWithContext(ctx context.Context) NetworkAclEntriesOutput {
 	return o
+}
+
+func (o NetworkAclEntriesOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkAclEntries] {
+	return pulumix.Output[*NetworkAclEntries]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
@@ -316,6 +341,12 @@ func (o NetworkAclEntriesArrayOutput) ToNetworkAclEntriesArrayOutputWithContext(
 	return o
 }
 
+func (o NetworkAclEntriesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkAclEntries] {
+	return pulumix.Output[[]*NetworkAclEntries]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkAclEntriesArrayOutput) Index(i pulumi.IntInput) NetworkAclEntriesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkAclEntries {
 		return vs[0].([]*NetworkAclEntries)[vs[1].(int)]
@@ -334,6 +365,12 @@ func (o NetworkAclEntriesMapOutput) ToNetworkAclEntriesMapOutput() NetworkAclEnt
 
 func (o NetworkAclEntriesMapOutput) ToNetworkAclEntriesMapOutputWithContext(ctx context.Context) NetworkAclEntriesMapOutput {
 	return o
+}
+
+func (o NetworkAclEntriesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkAclEntries] {
+	return pulumix.Output[map[string]*NetworkAclEntries]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkAclEntriesMapOutput) MapIndex(k pulumi.StringInput) NetworkAclEntriesOutput {

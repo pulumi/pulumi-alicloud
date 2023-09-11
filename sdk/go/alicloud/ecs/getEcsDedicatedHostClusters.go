@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
@@ -166,6 +167,12 @@ func (o GetEcsDedicatedHostClustersResultOutput) ToGetEcsDedicatedHostClustersRe
 
 func (o GetEcsDedicatedHostClustersResultOutput) ToGetEcsDedicatedHostClustersResultOutputWithContext(ctx context.Context) GetEcsDedicatedHostClustersResultOutput {
 	return o
+}
+
+func (o GetEcsDedicatedHostClustersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEcsDedicatedHostClustersResult] {
+	return pulumix.Output[GetEcsDedicatedHostClustersResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetEcsDedicatedHostClustersResultOutput) Clusters() GetEcsDedicatedHostClustersClusterArrayOutput {

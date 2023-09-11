@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ROS Template Scratch resource.
@@ -236,6 +237,12 @@ func (i *TemplateScratch) ToTemplateScratchOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchOutput)
 }
 
+func (i *TemplateScratch) ToOutput(ctx context.Context) pulumix.Output[*TemplateScratch] {
+	return pulumix.Output[*TemplateScratch]{
+		OutputState: i.ToTemplateScratchOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TemplateScratchArrayInput is an input type that accepts TemplateScratchArray and TemplateScratchArrayOutput values.
 // You can construct a concrete instance of `TemplateScratchArrayInput` via:
 //
@@ -259,6 +266,12 @@ func (i TemplateScratchArray) ToTemplateScratchArrayOutput() TemplateScratchArra
 
 func (i TemplateScratchArray) ToTemplateScratchArrayOutputWithContext(ctx context.Context) TemplateScratchArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchArrayOutput)
+}
+
+func (i TemplateScratchArray) ToOutput(ctx context.Context) pulumix.Output[[]*TemplateScratch] {
+	return pulumix.Output[[]*TemplateScratch]{
+		OutputState: i.ToTemplateScratchArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TemplateScratchMapInput is an input type that accepts TemplateScratchMap and TemplateScratchMapOutput values.
@@ -286,6 +299,12 @@ func (i TemplateScratchMap) ToTemplateScratchMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchMapOutput)
 }
 
+func (i TemplateScratchMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TemplateScratch] {
+	return pulumix.Output[map[string]*TemplateScratch]{
+		OutputState: i.ToTemplateScratchMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TemplateScratchOutput struct{ *pulumi.OutputState }
 
 func (TemplateScratchOutput) ElementType() reflect.Type {
@@ -298,6 +317,12 @@ func (o TemplateScratchOutput) ToTemplateScratchOutput() TemplateScratchOutput {
 
 func (o TemplateScratchOutput) ToTemplateScratchOutputWithContext(ctx context.Context) TemplateScratchOutput {
 	return o
+}
+
+func (o TemplateScratchOutput) ToOutput(ctx context.Context) pulumix.Output[*TemplateScratch] {
+	return pulumix.Output[*TemplateScratch]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Description of the Template Scratch.
@@ -359,6 +384,12 @@ func (o TemplateScratchArrayOutput) ToTemplateScratchArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o TemplateScratchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TemplateScratch] {
+	return pulumix.Output[[]*TemplateScratch]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TemplateScratchArrayOutput) Index(i pulumi.IntInput) TemplateScratchOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TemplateScratch {
 		return vs[0].([]*TemplateScratch)[vs[1].(int)]
@@ -377,6 +408,12 @@ func (o TemplateScratchMapOutput) ToTemplateScratchMapOutput() TemplateScratchMa
 
 func (o TemplateScratchMapOutput) ToTemplateScratchMapOutputWithContext(ctx context.Context) TemplateScratchMapOutput {
 	return o
+}
+
+func (o TemplateScratchMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TemplateScratch] {
+	return pulumix.Output[map[string]*TemplateScratch]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TemplateScratchMapOutput) MapIndex(k pulumi.StringInput) TemplateScratchOutput {

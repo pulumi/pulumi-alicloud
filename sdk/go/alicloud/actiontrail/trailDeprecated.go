@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **DEPRECATED:**  This resource has been renamed to actiontrail.Trail from version 1.95.0.
@@ -266,6 +267,12 @@ func (i *TrailDeprecated) ToTrailDeprecatedOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TrailDeprecatedOutput)
 }
 
+func (i *TrailDeprecated) ToOutput(ctx context.Context) pulumix.Output[*TrailDeprecated] {
+	return pulumix.Output[*TrailDeprecated]{
+		OutputState: i.ToTrailDeprecatedOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TrailDeprecatedArrayInput is an input type that accepts TrailDeprecatedArray and TrailDeprecatedArrayOutput values.
 // You can construct a concrete instance of `TrailDeprecatedArrayInput` via:
 //
@@ -289,6 +296,12 @@ func (i TrailDeprecatedArray) ToTrailDeprecatedArrayOutput() TrailDeprecatedArra
 
 func (i TrailDeprecatedArray) ToTrailDeprecatedArrayOutputWithContext(ctx context.Context) TrailDeprecatedArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TrailDeprecatedArrayOutput)
+}
+
+func (i TrailDeprecatedArray) ToOutput(ctx context.Context) pulumix.Output[[]*TrailDeprecated] {
+	return pulumix.Output[[]*TrailDeprecated]{
+		OutputState: i.ToTrailDeprecatedArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TrailDeprecatedMapInput is an input type that accepts TrailDeprecatedMap and TrailDeprecatedMapOutput values.
@@ -316,6 +329,12 @@ func (i TrailDeprecatedMap) ToTrailDeprecatedMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TrailDeprecatedMapOutput)
 }
 
+func (i TrailDeprecatedMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TrailDeprecated] {
+	return pulumix.Output[map[string]*TrailDeprecated]{
+		OutputState: i.ToTrailDeprecatedMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TrailDeprecatedOutput struct{ *pulumi.OutputState }
 
 func (TrailDeprecatedOutput) ElementType() reflect.Type {
@@ -328,6 +347,12 @@ func (o TrailDeprecatedOutput) ToTrailDeprecatedOutput() TrailDeprecatedOutput {
 
 func (o TrailDeprecatedOutput) ToTrailDeprecatedOutputWithContext(ctx context.Context) TrailDeprecatedOutput {
 	return o
+}
+
+func (o TrailDeprecatedOutput) ToOutput(ctx context.Context) pulumix.Output[*TrailDeprecated] {
+	return pulumix.Output[*TrailDeprecated]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
@@ -410,6 +435,12 @@ func (o TrailDeprecatedArrayOutput) ToTrailDeprecatedArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o TrailDeprecatedArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TrailDeprecated] {
+	return pulumix.Output[[]*TrailDeprecated]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TrailDeprecatedArrayOutput) Index(i pulumi.IntInput) TrailDeprecatedOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TrailDeprecated {
 		return vs[0].([]*TrailDeprecated)[vs[1].(int)]
@@ -428,6 +459,12 @@ func (o TrailDeprecatedMapOutput) ToTrailDeprecatedMapOutput() TrailDeprecatedMa
 
 func (o TrailDeprecatedMapOutput) ToTrailDeprecatedMapOutputWithContext(ctx context.Context) TrailDeprecatedMapOutput {
 	return o
+}
+
+func (o TrailDeprecatedMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TrailDeprecated] {
+	return pulumix.Output[map[string]*TrailDeprecated]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrailDeprecatedMapOutput) MapIndex(k pulumi.StringInput) TrailDeprecatedOutput {

@@ -63,14 +63,14 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configure listening information. See the following `Block Listen`.
+     * Configure listening information. See `listen` below.
      * 
      */
     @Import(name="listen", required=true)
     private Output<DomainListenArgs> listen;
 
     /**
-     * @return Configure listening information. See the following `Block Listen`.
+     * @return Configure listening information. See `listen` below.
      * 
      */
     public Output<DomainListenArgs> listen() {
@@ -78,14 +78,14 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configure forwarding information. See the following `Block Redirect`.
+     * Configure forwarding information. See `redirect` below.
      * 
      */
     @Import(name="redirect", required=true)
     private Output<DomainRedirectArgs> redirect;
 
     /**
-     * @return Configure forwarding information. See the following `Block Redirect`.
+     * @return Configure forwarding information. See `redirect` below.
      * 
      */
     public Output<DomainRedirectArgs> redirect() {
@@ -184,7 +184,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listen Configure listening information. See the following `Block Listen`.
+         * @param listen Configure listening information. See `listen` below.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listen Configure listening information. See the following `Block Listen`.
+         * @param listen Configure listening information. See `listen` below.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redirect Configure forwarding information. See the following `Block Redirect`.
+         * @param redirect Configure forwarding information. See `redirect` below.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redirect Configure forwarding information. See the following `Block Redirect`.
+         * @param redirect Configure forwarding information. See `redirect` below.
          * 
          * @return builder
          * 

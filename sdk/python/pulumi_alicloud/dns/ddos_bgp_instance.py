@@ -303,7 +303,7 @@ class DdosBgpInstance(pulumi.CustomResource):
 
         > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
 
-        > **NOTE:** Available in 1.183.0+ .
+        > **NOTE:** Available since v1.183.0.
 
         ## Example Usage
 
@@ -313,9 +313,13 @@ class DdosBgpInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         instance = alicloud.ddos.DdosBgpInstance("instance",
-            bandwidth=-1,
             base_bandwidth=20,
+            bandwidth=-1,
             ip_count=100,
             ip_type="IPv4",
             normal_bandwidth=100,
@@ -352,7 +356,7 @@ class DdosBgpInstance(pulumi.CustomResource):
 
         > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
 
-        > **NOTE:** Available in 1.183.0+ .
+        > **NOTE:** Available since v1.183.0.
 
         ## Example Usage
 
@@ -362,9 +366,13 @@ class DdosBgpInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         instance = alicloud.ddos.DdosBgpInstance("instance",
-            bandwidth=-1,
             base_bandwidth=20,
+            bandwidth=-1,
             ip_count=100,
             ip_type="IPv4",
             normal_bandwidth=100,

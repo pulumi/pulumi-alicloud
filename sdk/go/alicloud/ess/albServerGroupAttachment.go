@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Attaches/Detaches alb server group to a specified scaling group.
@@ -301,6 +302,12 @@ func (i *AlbServerGroupAttachment) ToAlbServerGroupAttachmentOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(AlbServerGroupAttachmentOutput)
 }
 
+func (i *AlbServerGroupAttachment) ToOutput(ctx context.Context) pulumix.Output[*AlbServerGroupAttachment] {
+	return pulumix.Output[*AlbServerGroupAttachment]{
+		OutputState: i.ToAlbServerGroupAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AlbServerGroupAttachmentArrayInput is an input type that accepts AlbServerGroupAttachmentArray and AlbServerGroupAttachmentArrayOutput values.
 // You can construct a concrete instance of `AlbServerGroupAttachmentArrayInput` via:
 //
@@ -324,6 +331,12 @@ func (i AlbServerGroupAttachmentArray) ToAlbServerGroupAttachmentArrayOutput() A
 
 func (i AlbServerGroupAttachmentArray) ToAlbServerGroupAttachmentArrayOutputWithContext(ctx context.Context) AlbServerGroupAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlbServerGroupAttachmentArrayOutput)
+}
+
+func (i AlbServerGroupAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*AlbServerGroupAttachment] {
+	return pulumix.Output[[]*AlbServerGroupAttachment]{
+		OutputState: i.ToAlbServerGroupAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AlbServerGroupAttachmentMapInput is an input type that accepts AlbServerGroupAttachmentMap and AlbServerGroupAttachmentMapOutput values.
@@ -351,6 +364,12 @@ func (i AlbServerGroupAttachmentMap) ToAlbServerGroupAttachmentMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AlbServerGroupAttachmentMapOutput)
 }
 
+func (i AlbServerGroupAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AlbServerGroupAttachment] {
+	return pulumix.Output[map[string]*AlbServerGroupAttachment]{
+		OutputState: i.ToAlbServerGroupAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlbServerGroupAttachmentOutput struct{ *pulumi.OutputState }
 
 func (AlbServerGroupAttachmentOutput) ElementType() reflect.Type {
@@ -363,6 +382,12 @@ func (o AlbServerGroupAttachmentOutput) ToAlbServerGroupAttachmentOutput() AlbSe
 
 func (o AlbServerGroupAttachmentOutput) ToAlbServerGroupAttachmentOutputWithContext(ctx context.Context) AlbServerGroupAttachmentOutput {
 	return o
+}
+
+func (o AlbServerGroupAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*AlbServerGroupAttachment] {
+	return pulumix.Output[*AlbServerGroupAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID of Alb Server Group.
@@ -405,6 +430,12 @@ func (o AlbServerGroupAttachmentArrayOutput) ToAlbServerGroupAttachmentArrayOutp
 	return o
 }
 
+func (o AlbServerGroupAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AlbServerGroupAttachment] {
+	return pulumix.Output[[]*AlbServerGroupAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AlbServerGroupAttachmentArrayOutput) Index(i pulumi.IntInput) AlbServerGroupAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AlbServerGroupAttachment {
 		return vs[0].([]*AlbServerGroupAttachment)[vs[1].(int)]
@@ -423,6 +454,12 @@ func (o AlbServerGroupAttachmentMapOutput) ToAlbServerGroupAttachmentMapOutput()
 
 func (o AlbServerGroupAttachmentMapOutput) ToAlbServerGroupAttachmentMapOutputWithContext(ctx context.Context) AlbServerGroupAttachmentMapOutput {
 	return o
+}
+
+func (o AlbServerGroupAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AlbServerGroupAttachment] {
+	return pulumix.Output[map[string]*AlbServerGroupAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlbServerGroupAttachmentMapOutput) MapIndex(k pulumi.StringInput) AlbServerGroupAttachmentOutput {

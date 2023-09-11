@@ -94,7 +94,15 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly connectionDomain!: pulumi.Output<string>;
     /**
-     * (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
+     * Indicates whether the address is a private endpoint.
+     *
+     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     *
+     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     *
+     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     *
+     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
      *
      * @deprecated Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
@@ -293,14 +301,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly securityIps!: pulumi.Output<string[]>;
     /**
      * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
-     *
-     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-     *
-     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-     *
-     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-     *
-     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
      */
     public readonly shardCount!: pulumi.Output<number>;
     /**
@@ -547,7 +547,15 @@ export interface InstanceState {
      */
     connectionDomain?: pulumi.Input<string>;
     /**
-     * (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
+     * Indicates whether the address is a private endpoint.
+     *
+     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     *
+     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     *
+     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     *
+     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
      *
      * @deprecated Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
@@ -746,14 +754,6 @@ export interface InstanceState {
     securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
-     *
-     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-     *
-     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-     *
-     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-     *
-     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
      */
     shardCount?: pulumi.Input<number>;
     /**
@@ -1023,14 +1023,6 @@ export interface InstanceArgs {
     securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
-     *
-     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-     *
-     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-     *
-     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-     *
-     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
      */
     shardCount?: pulumi.Input<number>;
     /**

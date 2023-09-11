@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Storage Gateway Express Sync Share Attachment resource.
@@ -140,6 +141,12 @@ func (i *ExpressSyncShareAttachment) ToExpressSyncShareAttachmentOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressSyncShareAttachmentOutput)
 }
 
+func (i *ExpressSyncShareAttachment) ToOutput(ctx context.Context) pulumix.Output[*ExpressSyncShareAttachment] {
+	return pulumix.Output[*ExpressSyncShareAttachment]{
+		OutputState: i.ToExpressSyncShareAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ExpressSyncShareAttachmentArrayInput is an input type that accepts ExpressSyncShareAttachmentArray and ExpressSyncShareAttachmentArrayOutput values.
 // You can construct a concrete instance of `ExpressSyncShareAttachmentArrayInput` via:
 //
@@ -163,6 +170,12 @@ func (i ExpressSyncShareAttachmentArray) ToExpressSyncShareAttachmentArrayOutput
 
 func (i ExpressSyncShareAttachmentArray) ToExpressSyncShareAttachmentArrayOutputWithContext(ctx context.Context) ExpressSyncShareAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressSyncShareAttachmentArrayOutput)
+}
+
+func (i ExpressSyncShareAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*ExpressSyncShareAttachment] {
+	return pulumix.Output[[]*ExpressSyncShareAttachment]{
+		OutputState: i.ToExpressSyncShareAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ExpressSyncShareAttachmentMapInput is an input type that accepts ExpressSyncShareAttachmentMap and ExpressSyncShareAttachmentMapOutput values.
@@ -190,6 +203,12 @@ func (i ExpressSyncShareAttachmentMap) ToExpressSyncShareAttachmentMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressSyncShareAttachmentMapOutput)
 }
 
+func (i ExpressSyncShareAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ExpressSyncShareAttachment] {
+	return pulumix.Output[map[string]*ExpressSyncShareAttachment]{
+		OutputState: i.ToExpressSyncShareAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ExpressSyncShareAttachmentOutput struct{ *pulumi.OutputState }
 
 func (ExpressSyncShareAttachmentOutput) ElementType() reflect.Type {
@@ -202,6 +221,12 @@ func (o ExpressSyncShareAttachmentOutput) ToExpressSyncShareAttachmentOutput() E
 
 func (o ExpressSyncShareAttachmentOutput) ToExpressSyncShareAttachmentOutputWithContext(ctx context.Context) ExpressSyncShareAttachmentOutput {
 	return o
+}
+
+func (o ExpressSyncShareAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*ExpressSyncShareAttachment] {
+	return pulumix.Output[*ExpressSyncShareAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the ExpressSync.
@@ -233,6 +258,12 @@ func (o ExpressSyncShareAttachmentArrayOutput) ToExpressSyncShareAttachmentArray
 	return o
 }
 
+func (o ExpressSyncShareAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ExpressSyncShareAttachment] {
+	return pulumix.Output[[]*ExpressSyncShareAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ExpressSyncShareAttachmentArrayOutput) Index(i pulumi.IntInput) ExpressSyncShareAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ExpressSyncShareAttachment {
 		return vs[0].([]*ExpressSyncShareAttachment)[vs[1].(int)]
@@ -251,6 +282,12 @@ func (o ExpressSyncShareAttachmentMapOutput) ToExpressSyncShareAttachmentMapOutp
 
 func (o ExpressSyncShareAttachmentMapOutput) ToExpressSyncShareAttachmentMapOutputWithContext(ctx context.Context) ExpressSyncShareAttachmentMapOutput {
 	return o
+}
+
+func (o ExpressSyncShareAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ExpressSyncShareAttachment] {
+	return pulumix.Output[map[string]*ExpressSyncShareAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExpressSyncShareAttachmentMapOutput) MapIndex(k pulumi.StringInput) ExpressSyncShareAttachmentOutput {

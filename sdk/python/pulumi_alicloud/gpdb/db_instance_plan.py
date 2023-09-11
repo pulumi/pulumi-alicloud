@@ -29,7 +29,7 @@ class DbInstancePlanArgs:
         The set of arguments for constructing a DbInstancePlan resource.
         :param pulumi.Input[str] db_instance_id: The ID of the Database instance.
         :param pulumi.Input[str] db_instance_plan_name: The name of the Plan.
-        :param pulumi.Input[Sequence[pulumi.Input['DbInstancePlanPlanConfigArgs']]] plan_configs: The plan config. See the following `Block plan_config`.
+        :param pulumi.Input[Sequence[pulumi.Input['DbInstancePlanPlanConfigArgs']]] plan_configs: The plan config. See `plan_config` below.
         :param pulumi.Input[str] plan_schedule_type: Plan scheduling type. Valid values: `Postpone`, `Regular`.
         :param pulumi.Input[str] plan_type: The type of the Plan. Valid values: `PauseResume`, `Resize`.
         :param pulumi.Input[str] plan_desc: The description of the Plan.
@@ -79,7 +79,7 @@ class DbInstancePlanArgs:
     @pulumi.getter(name="planConfigs")
     def plan_configs(self) -> pulumi.Input[Sequence[pulumi.Input['DbInstancePlanPlanConfigArgs']]]:
         """
-        The plan config. See the following `Block plan_config`.
+        The plan config. See `plan_config` below.
         """
         return pulumi.get(self, "plan_configs")
 
@@ -177,7 +177,7 @@ class _DbInstancePlanState:
         Input properties used for looking up and filtering DbInstancePlan resources.
         :param pulumi.Input[str] db_instance_id: The ID of the Database instance.
         :param pulumi.Input[str] db_instance_plan_name: The name of the Plan.
-        :param pulumi.Input[Sequence[pulumi.Input['DbInstancePlanPlanConfigArgs']]] plan_configs: The plan config. See the following `Block plan_config`.
+        :param pulumi.Input[Sequence[pulumi.Input['DbInstancePlanPlanConfigArgs']]] plan_configs: The plan config. See `plan_config` below.
         :param pulumi.Input[str] plan_desc: The description of the Plan.
         :param pulumi.Input[str] plan_end_date: The end time of the Plan.
         :param pulumi.Input[str] plan_id: The ID of DB Instance Plan.
@@ -235,7 +235,7 @@ class _DbInstancePlanState:
     @pulumi.getter(name="planConfigs")
     def plan_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbInstancePlanPlanConfigArgs']]]]:
         """
-        The plan config. See the following `Block plan_config`.
+        The plan config. See `plan_config` below.
         """
         return pulumi.get(self, "plan_configs")
 
@@ -346,9 +346,9 @@ class DbInstancePlan(pulumi.CustomResource):
         """
         Provides a GPDB DB Instance Plan resource.
 
-        For information about GPDB DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/zh/analyticdb-for-postgresql/latest/createdbinstanceplan).
+        For information about GPDB DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/createdbinstanceplan).
 
-        > **NOTE:** Available in v1.189.0+.
+        > **NOTE:** Available since v1.189.0.
 
         ## Import
 
@@ -362,7 +362,7 @@ class DbInstancePlan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] db_instance_id: The ID of the Database instance.
         :param pulumi.Input[str] db_instance_plan_name: The name of the Plan.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstancePlanPlanConfigArgs']]]] plan_configs: The plan config. See the following `Block plan_config`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstancePlanPlanConfigArgs']]]] plan_configs: The plan config. See `plan_config` below.
         :param pulumi.Input[str] plan_desc: The description of the Plan.
         :param pulumi.Input[str] plan_end_date: The end time of the Plan.
         :param pulumi.Input[str] plan_schedule_type: Plan scheduling type. Valid values: `Postpone`, `Regular`.
@@ -379,9 +379,9 @@ class DbInstancePlan(pulumi.CustomResource):
         """
         Provides a GPDB DB Instance Plan resource.
 
-        For information about GPDB DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/zh/analyticdb-for-postgresql/latest/createdbinstanceplan).
+        For information about GPDB DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/createdbinstanceplan).
 
-        > **NOTE:** Available in v1.189.0+.
+        > **NOTE:** Available since v1.189.0.
 
         ## Import
 
@@ -473,7 +473,7 @@ class DbInstancePlan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] db_instance_id: The ID of the Database instance.
         :param pulumi.Input[str] db_instance_plan_name: The name of the Plan.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstancePlanPlanConfigArgs']]]] plan_configs: The plan config. See the following `Block plan_config`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstancePlanPlanConfigArgs']]]] plan_configs: The plan config. See `plan_config` below.
         :param pulumi.Input[str] plan_desc: The description of the Plan.
         :param pulumi.Input[str] plan_end_date: The end time of the Plan.
         :param pulumi.Input[str] plan_id: The ID of DB Instance Plan.
@@ -518,7 +518,7 @@ class DbInstancePlan(pulumi.CustomResource):
     @pulumi.getter(name="planConfigs")
     def plan_configs(self) -> pulumi.Output[Sequence['outputs.DbInstancePlanPlanConfig']]:
         """
-        The plan config. See the following `Block plan_config`.
+        The plan config. See `plan_config` below.
         """
         return pulumi.get(self, "plan_configs")
 

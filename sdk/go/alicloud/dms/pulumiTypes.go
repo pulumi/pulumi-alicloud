@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -110,6 +111,12 @@ func (i GetEnterpriseDatabasesDatabaseArgs) ToGetEnterpriseDatabasesDatabaseOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnterpriseDatabasesDatabaseOutput)
 }
 
+func (i GetEnterpriseDatabasesDatabaseArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnterpriseDatabasesDatabase] {
+	return pulumix.Output[GetEnterpriseDatabasesDatabase]{
+		OutputState: i.ToGetEnterpriseDatabasesDatabaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetEnterpriseDatabasesDatabaseArrayInput is an input type that accepts GetEnterpriseDatabasesDatabaseArray and GetEnterpriseDatabasesDatabaseArrayOutput values.
 // You can construct a concrete instance of `GetEnterpriseDatabasesDatabaseArrayInput` via:
 //
@@ -135,6 +142,12 @@ func (i GetEnterpriseDatabasesDatabaseArray) ToGetEnterpriseDatabasesDatabaseArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnterpriseDatabasesDatabaseArrayOutput)
 }
 
+func (i GetEnterpriseDatabasesDatabaseArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnterpriseDatabasesDatabase] {
+	return pulumix.Output[[]GetEnterpriseDatabasesDatabase]{
+		OutputState: i.ToGetEnterpriseDatabasesDatabaseArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetEnterpriseDatabasesDatabaseOutput struct{ *pulumi.OutputState }
 
 func (GetEnterpriseDatabasesDatabaseOutput) ElementType() reflect.Type {
@@ -147,6 +160,12 @@ func (o GetEnterpriseDatabasesDatabaseOutput) ToGetEnterpriseDatabasesDatabaseOu
 
 func (o GetEnterpriseDatabasesDatabaseOutput) ToGetEnterpriseDatabasesDatabaseOutputWithContext(ctx context.Context) GetEnterpriseDatabasesDatabaseOutput {
 	return o
+}
+
+func (o GetEnterpriseDatabasesDatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnterpriseDatabasesDatabase] {
+	return pulumix.Output[GetEnterpriseDatabasesDatabase]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the Database Directory.> PG Series databases will display the database name.
@@ -246,6 +265,12 @@ func (o GetEnterpriseDatabasesDatabaseArrayOutput) ToGetEnterpriseDatabasesDatab
 
 func (o GetEnterpriseDatabasesDatabaseArrayOutput) ToGetEnterpriseDatabasesDatabaseArrayOutputWithContext(ctx context.Context) GetEnterpriseDatabasesDatabaseArrayOutput {
 	return o
+}
+
+func (o GetEnterpriseDatabasesDatabaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnterpriseDatabasesDatabase] {
+	return pulumix.Output[[]GetEnterpriseDatabasesDatabase]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetEnterpriseDatabasesDatabaseArrayOutput) Index(i pulumi.IntInput) GetEnterpriseDatabasesDatabaseOutput {
@@ -375,6 +400,12 @@ func (i GetEnterpriseInstancesInstanceArgs) ToGetEnterpriseInstancesInstanceOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnterpriseInstancesInstanceOutput)
 }
 
+func (i GetEnterpriseInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnterpriseInstancesInstance] {
+	return pulumix.Output[GetEnterpriseInstancesInstance]{
+		OutputState: i.ToGetEnterpriseInstancesInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetEnterpriseInstancesInstanceArrayInput is an input type that accepts GetEnterpriseInstancesInstanceArray and GetEnterpriseInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetEnterpriseInstancesInstanceArrayInput` via:
 //
@@ -400,6 +431,12 @@ func (i GetEnterpriseInstancesInstanceArray) ToGetEnterpriseInstancesInstanceArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnterpriseInstancesInstanceArrayOutput)
 }
 
+func (i GetEnterpriseInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnterpriseInstancesInstance] {
+	return pulumix.Output[[]GetEnterpriseInstancesInstance]{
+		OutputState: i.ToGetEnterpriseInstancesInstanceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetEnterpriseInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetEnterpriseInstancesInstanceOutput) ElementType() reflect.Type {
@@ -412,6 +449,12 @@ func (o GetEnterpriseInstancesInstanceOutput) ToGetEnterpriseInstancesInstanceOu
 
 func (o GetEnterpriseInstancesInstanceOutput) ToGetEnterpriseInstancesInstanceOutputWithContext(ctx context.Context) GetEnterpriseInstancesInstanceOutput {
 	return o
+}
+
+func (o GetEnterpriseInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnterpriseInstancesInstance] {
+	return pulumix.Output[GetEnterpriseInstancesInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the data link for the database instance.
@@ -546,6 +589,12 @@ func (o GetEnterpriseInstancesInstanceArrayOutput) ToGetEnterpriseInstancesInsta
 	return o
 }
 
+func (o GetEnterpriseInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnterpriseInstancesInstance] {
+	return pulumix.Output[[]GetEnterpriseInstancesInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetEnterpriseInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetEnterpriseInstancesInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnterpriseInstancesInstance {
 		return vs[0].([]GetEnterpriseInstancesInstance)[vs[1].(int)]
@@ -625,6 +674,12 @@ func (i GetEnterpriseLogicDatabasesDatabaseArgs) ToGetEnterpriseLogicDatabasesDa
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnterpriseLogicDatabasesDatabaseOutput)
 }
 
+func (i GetEnterpriseLogicDatabasesDatabaseArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnterpriseLogicDatabasesDatabase] {
+	return pulumix.Output[GetEnterpriseLogicDatabasesDatabase]{
+		OutputState: i.ToGetEnterpriseLogicDatabasesDatabaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetEnterpriseLogicDatabasesDatabaseArrayInput is an input type that accepts GetEnterpriseLogicDatabasesDatabaseArray and GetEnterpriseLogicDatabasesDatabaseArrayOutput values.
 // You can construct a concrete instance of `GetEnterpriseLogicDatabasesDatabaseArrayInput` via:
 //
@@ -650,6 +705,12 @@ func (i GetEnterpriseLogicDatabasesDatabaseArray) ToGetEnterpriseLogicDatabasesD
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnterpriseLogicDatabasesDatabaseArrayOutput)
 }
 
+func (i GetEnterpriseLogicDatabasesDatabaseArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnterpriseLogicDatabasesDatabase] {
+	return pulumix.Output[[]GetEnterpriseLogicDatabasesDatabase]{
+		OutputState: i.ToGetEnterpriseLogicDatabasesDatabaseArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetEnterpriseLogicDatabasesDatabaseOutput struct{ *pulumi.OutputState }
 
 func (GetEnterpriseLogicDatabasesDatabaseOutput) ElementType() reflect.Type {
@@ -662,6 +723,12 @@ func (o GetEnterpriseLogicDatabasesDatabaseOutput) ToGetEnterpriseLogicDatabases
 
 func (o GetEnterpriseLogicDatabasesDatabaseOutput) ToGetEnterpriseLogicDatabasesDatabaseOutputWithContext(ctx context.Context) GetEnterpriseLogicDatabasesDatabaseOutput {
 	return o
+}
+
+func (o GetEnterpriseLogicDatabasesDatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnterpriseLogicDatabasesDatabase] {
+	return pulumix.Output[GetEnterpriseLogicDatabasesDatabase]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Logical Library alias.
@@ -731,6 +798,12 @@ func (o GetEnterpriseLogicDatabasesDatabaseArrayOutput) ToGetEnterpriseLogicData
 
 func (o GetEnterpriseLogicDatabasesDatabaseArrayOutput) ToGetEnterpriseLogicDatabasesDatabaseArrayOutputWithContext(ctx context.Context) GetEnterpriseLogicDatabasesDatabaseArrayOutput {
 	return o
+}
+
+func (o GetEnterpriseLogicDatabasesDatabaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnterpriseLogicDatabasesDatabase] {
+	return pulumix.Output[[]GetEnterpriseLogicDatabasesDatabase]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetEnterpriseLogicDatabasesDatabaseArrayOutput) Index(i pulumi.IntInput) GetEnterpriseLogicDatabasesDatabaseOutput {
@@ -816,6 +889,12 @@ func (i GetEnterpriseProxiesProxyArgs) ToGetEnterpriseProxiesProxyOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnterpriseProxiesProxyOutput)
 }
 
+func (i GetEnterpriseProxiesProxyArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnterpriseProxiesProxy] {
+	return pulumix.Output[GetEnterpriseProxiesProxy]{
+		OutputState: i.ToGetEnterpriseProxiesProxyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetEnterpriseProxiesProxyArrayInput is an input type that accepts GetEnterpriseProxiesProxyArray and GetEnterpriseProxiesProxyArrayOutput values.
 // You can construct a concrete instance of `GetEnterpriseProxiesProxyArrayInput` via:
 //
@@ -841,6 +920,12 @@ func (i GetEnterpriseProxiesProxyArray) ToGetEnterpriseProxiesProxyArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnterpriseProxiesProxyArrayOutput)
 }
 
+func (i GetEnterpriseProxiesProxyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnterpriseProxiesProxy] {
+	return pulumix.Output[[]GetEnterpriseProxiesProxy]{
+		OutputState: i.ToGetEnterpriseProxiesProxyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetEnterpriseProxiesProxyOutput struct{ *pulumi.OutputState }
 
 func (GetEnterpriseProxiesProxyOutput) ElementType() reflect.Type {
@@ -853,6 +938,12 @@ func (o GetEnterpriseProxiesProxyOutput) ToGetEnterpriseProxiesProxyOutput() Get
 
 func (o GetEnterpriseProxiesProxyOutput) ToGetEnterpriseProxiesProxyOutputWithContext(ctx context.Context) GetEnterpriseProxiesProxyOutput {
 	return o
+}
+
+func (o GetEnterpriseProxiesProxyOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnterpriseProxiesProxy] {
+	return pulumix.Output[GetEnterpriseProxiesProxy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the user who enabled the secure access proxy feature.
@@ -927,6 +1018,12 @@ func (o GetEnterpriseProxiesProxyArrayOutput) ToGetEnterpriseProxiesProxyArrayOu
 
 func (o GetEnterpriseProxiesProxyArrayOutput) ToGetEnterpriseProxiesProxyArrayOutputWithContext(ctx context.Context) GetEnterpriseProxiesProxyArrayOutput {
 	return o
+}
+
+func (o GetEnterpriseProxiesProxyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnterpriseProxiesProxy] {
+	return pulumix.Output[[]GetEnterpriseProxiesProxy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetEnterpriseProxiesProxyArrayOutput) Index(i pulumi.IntInput) GetEnterpriseProxiesProxyOutput {
@@ -1008,6 +1105,12 @@ func (i GetEnterpriseProxyAccessesAccessArgs) ToGetEnterpriseProxyAccessesAccess
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnterpriseProxyAccessesAccessOutput)
 }
 
+func (i GetEnterpriseProxyAccessesAccessArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnterpriseProxyAccessesAccess] {
+	return pulumix.Output[GetEnterpriseProxyAccessesAccess]{
+		OutputState: i.ToGetEnterpriseProxyAccessesAccessOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetEnterpriseProxyAccessesAccessArrayInput is an input type that accepts GetEnterpriseProxyAccessesAccessArray and GetEnterpriseProxyAccessesAccessArrayOutput values.
 // You can construct a concrete instance of `GetEnterpriseProxyAccessesAccessArrayInput` via:
 //
@@ -1033,6 +1136,12 @@ func (i GetEnterpriseProxyAccessesAccessArray) ToGetEnterpriseProxyAccessesAcces
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnterpriseProxyAccessesAccessArrayOutput)
 }
 
+func (i GetEnterpriseProxyAccessesAccessArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnterpriseProxyAccessesAccess] {
+	return pulumix.Output[[]GetEnterpriseProxyAccessesAccess]{
+		OutputState: i.ToGetEnterpriseProxyAccessesAccessArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetEnterpriseProxyAccessesAccessOutput struct{ *pulumi.OutputState }
 
 func (GetEnterpriseProxyAccessesAccessOutput) ElementType() reflect.Type {
@@ -1045,6 +1154,12 @@ func (o GetEnterpriseProxyAccessesAccessOutput) ToGetEnterpriseProxyAccessesAcce
 
 func (o GetEnterpriseProxyAccessesAccessOutput) ToGetEnterpriseProxyAccessesAccessOutputWithContext(ctx context.Context) GetEnterpriseProxyAccessesAccessOutput {
 	return o
+}
+
+func (o GetEnterpriseProxyAccessesAccessOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnterpriseProxyAccessesAccess] {
+	return pulumix.Output[GetEnterpriseProxyAccessesAccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authorized account of the security agent.
@@ -1117,6 +1232,12 @@ func (o GetEnterpriseProxyAccessesAccessArrayOutput) ToGetEnterpriseProxyAccesse
 
 func (o GetEnterpriseProxyAccessesAccessArrayOutput) ToGetEnterpriseProxyAccessesAccessArrayOutputWithContext(ctx context.Context) GetEnterpriseProxyAccessesAccessArrayOutput {
 	return o
+}
+
+func (o GetEnterpriseProxyAccessesAccessArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnterpriseProxyAccessesAccess] {
+	return pulumix.Output[[]GetEnterpriseProxyAccessesAccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetEnterpriseProxyAccessesAccessArrayOutput) Index(i pulumi.IntInput) GetEnterpriseProxyAccessesAccessOutput {
@@ -1192,6 +1313,12 @@ func (i GetEnterpriseUsersUserArgs) ToGetEnterpriseUsersUserOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnterpriseUsersUserOutput)
 }
 
+func (i GetEnterpriseUsersUserArgs) ToOutput(ctx context.Context) pulumix.Output[GetEnterpriseUsersUser] {
+	return pulumix.Output[GetEnterpriseUsersUser]{
+		OutputState: i.ToGetEnterpriseUsersUserOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetEnterpriseUsersUserArrayInput is an input type that accepts GetEnterpriseUsersUserArray and GetEnterpriseUsersUserArrayOutput values.
 // You can construct a concrete instance of `GetEnterpriseUsersUserArrayInput` via:
 //
@@ -1217,6 +1344,12 @@ func (i GetEnterpriseUsersUserArray) ToGetEnterpriseUsersUserArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetEnterpriseUsersUserArrayOutput)
 }
 
+func (i GetEnterpriseUsersUserArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEnterpriseUsersUser] {
+	return pulumix.Output[[]GetEnterpriseUsersUser]{
+		OutputState: i.ToGetEnterpriseUsersUserArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetEnterpriseUsersUserOutput struct{ *pulumi.OutputState }
 
 func (GetEnterpriseUsersUserOutput) ElementType() reflect.Type {
@@ -1229,6 +1362,12 @@ func (o GetEnterpriseUsersUserOutput) ToGetEnterpriseUsersUserOutput() GetEnterp
 
 func (o GetEnterpriseUsersUserOutput) ToGetEnterpriseUsersUserOutputWithContext(ctx context.Context) GetEnterpriseUsersUserOutput {
 	return o
+}
+
+func (o GetEnterpriseUsersUserOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnterpriseUsersUser] {
+	return pulumix.Output[GetEnterpriseUsersUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Alibaba Cloud unique ID (UID) of the user.
@@ -1294,6 +1433,12 @@ func (o GetEnterpriseUsersUserArrayOutput) ToGetEnterpriseUsersUserArrayOutputWi
 	return o
 }
 
+func (o GetEnterpriseUsersUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEnterpriseUsersUser] {
+	return pulumix.Output[[]GetEnterpriseUsersUser]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetEnterpriseUsersUserArrayOutput) Index(i pulumi.IntInput) GetEnterpriseUsersUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnterpriseUsersUser {
 		return vs[0].([]GetEnterpriseUsersUser)[vs[1].(int)]
@@ -1345,6 +1490,12 @@ func (i GetUserTenantsTenantArgs) ToGetUserTenantsTenantOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetUserTenantsTenantOutput)
 }
 
+func (i GetUserTenantsTenantArgs) ToOutput(ctx context.Context) pulumix.Output[GetUserTenantsTenant] {
+	return pulumix.Output[GetUserTenantsTenant]{
+		OutputState: i.ToGetUserTenantsTenantOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetUserTenantsTenantArrayInput is an input type that accepts GetUserTenantsTenantArray and GetUserTenantsTenantArrayOutput values.
 // You can construct a concrete instance of `GetUserTenantsTenantArrayInput` via:
 //
@@ -1370,6 +1521,12 @@ func (i GetUserTenantsTenantArray) ToGetUserTenantsTenantArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetUserTenantsTenantArrayOutput)
 }
 
+func (i GetUserTenantsTenantArray) ToOutput(ctx context.Context) pulumix.Output[[]GetUserTenantsTenant] {
+	return pulumix.Output[[]GetUserTenantsTenant]{
+		OutputState: i.ToGetUserTenantsTenantArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetUserTenantsTenantOutput struct{ *pulumi.OutputState }
 
 func (GetUserTenantsTenantOutput) ElementType() reflect.Type {
@@ -1382,6 +1539,12 @@ func (o GetUserTenantsTenantOutput) ToGetUserTenantsTenantOutput() GetUserTenant
 
 func (o GetUserTenantsTenantOutput) ToGetUserTenantsTenantOutputWithContext(ctx context.Context) GetUserTenantsTenantOutput {
 	return o
+}
+
+func (o GetUserTenantsTenantOutput) ToOutput(ctx context.Context) pulumix.Output[GetUserTenantsTenant] {
+	return pulumix.Output[GetUserTenantsTenant]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The user tenant id.
@@ -1416,6 +1579,12 @@ func (o GetUserTenantsTenantArrayOutput) ToGetUserTenantsTenantArrayOutput() Get
 
 func (o GetUserTenantsTenantArrayOutput) ToGetUserTenantsTenantArrayOutputWithContext(ctx context.Context) GetUserTenantsTenantArrayOutput {
 	return o
+}
+
+func (o GetUserTenantsTenantArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetUserTenantsTenant] {
+	return pulumix.Output[[]GetUserTenantsTenant]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetUserTenantsTenantArrayOutput) Index(i pulumi.IntInput) GetUserTenantsTenantOutput {

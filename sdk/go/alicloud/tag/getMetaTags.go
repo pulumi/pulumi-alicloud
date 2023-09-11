@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Tag Meta Tags of the current Alibaba Cloud user.
@@ -108,6 +109,12 @@ func (o GetMetaTagsResultOutput) ToGetMetaTagsResultOutput() GetMetaTagsResultOu
 
 func (o GetMetaTagsResultOutput) ToGetMetaTagsResultOutputWithContext(ctx context.Context) GetMetaTagsResultOutput {
 	return o
+}
+
+func (o GetMetaTagsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMetaTagsResult] {
+	return pulumix.Output[GetMetaTagsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

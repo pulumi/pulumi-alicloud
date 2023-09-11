@@ -16,7 +16,9 @@ namespace Pulumi.AliCloud.CR.Inputs
         private InputList<Inputs.ChainChainConfigNodeGetArgs>? _nodes;
 
         /// <summary>
-        /// Each node in the delivery chain.
+        /// Each node in the delivery chain. See `nodes` below.
+        /// 
+        /// &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
         /// </summary>
         public InputList<Inputs.ChainChainConfigNodeGetArgs> Nodes
         {
@@ -28,7 +30,7 @@ namespace Pulumi.AliCloud.CR.Inputs
         private InputList<Inputs.ChainChainConfigRouterGetArgs>? _routers;
 
         /// <summary>
-        /// Execution sequence relationship between delivery chain nodes.
+        /// Execution sequence relationship between delivery chain nodes. See `routers` below.
         /// </summary>
         public InputList<Inputs.ChainChainConfigRouterGetArgs> Routers
         {

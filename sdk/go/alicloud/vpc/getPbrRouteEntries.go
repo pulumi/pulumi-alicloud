@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **NOTE:** Available in v1.162.0+.
@@ -116,6 +117,12 @@ func (o GetPbrRouteEntriesResultOutput) ToGetPbrRouteEntriesResultOutput() GetPb
 
 func (o GetPbrRouteEntriesResultOutput) ToGetPbrRouteEntriesResultOutputWithContext(ctx context.Context) GetPbrRouteEntriesResultOutput {
 	return o
+}
+
+func (o GetPbrRouteEntriesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPbrRouteEntriesResult] {
+	return pulumix.Output[GetPbrRouteEntriesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of VPN Pbr Route Entries. Each element contains the following attributes:

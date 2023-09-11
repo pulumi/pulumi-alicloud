@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Logtail access service is a log collection agent provided by Log Service.
@@ -257,6 +258,12 @@ func (i *LogTailConfig) ToLogTailConfigOutputWithContext(ctx context.Context) Lo
 	return pulumi.ToOutputWithContext(ctx, i).(LogTailConfigOutput)
 }
 
+func (i *LogTailConfig) ToOutput(ctx context.Context) pulumix.Output[*LogTailConfig] {
+	return pulumix.Output[*LogTailConfig]{
+		OutputState: i.ToLogTailConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LogTailConfigArrayInput is an input type that accepts LogTailConfigArray and LogTailConfigArrayOutput values.
 // You can construct a concrete instance of `LogTailConfigArrayInput` via:
 //
@@ -280,6 +287,12 @@ func (i LogTailConfigArray) ToLogTailConfigArrayOutput() LogTailConfigArrayOutpu
 
 func (i LogTailConfigArray) ToLogTailConfigArrayOutputWithContext(ctx context.Context) LogTailConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogTailConfigArrayOutput)
+}
+
+func (i LogTailConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*LogTailConfig] {
+	return pulumix.Output[[]*LogTailConfig]{
+		OutputState: i.ToLogTailConfigArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // LogTailConfigMapInput is an input type that accepts LogTailConfigMap and LogTailConfigMapOutput values.
@@ -307,6 +320,12 @@ func (i LogTailConfigMap) ToLogTailConfigMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(LogTailConfigMapOutput)
 }
 
+func (i LogTailConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogTailConfig] {
+	return pulumix.Output[map[string]*LogTailConfig]{
+		OutputState: i.ToLogTailConfigMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LogTailConfigOutput struct{ *pulumi.OutputState }
 
 func (LogTailConfigOutput) ElementType() reflect.Type {
@@ -319,6 +338,12 @@ func (o LogTailConfigOutput) ToLogTailConfigOutput() LogTailConfigOutput {
 
 func (o LogTailConfigOutput) ToLogTailConfigOutputWithContext(ctx context.Context) LogTailConfigOutput {
 	return o
+}
+
+func (o LogTailConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*LogTailConfig] {
+	return pulumix.Output[*LogTailConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The logtail configure the required JSON files. ([Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm))
@@ -370,6 +395,12 @@ func (o LogTailConfigArrayOutput) ToLogTailConfigArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o LogTailConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LogTailConfig] {
+	return pulumix.Output[[]*LogTailConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LogTailConfigArrayOutput) Index(i pulumi.IntInput) LogTailConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LogTailConfig {
 		return vs[0].([]*LogTailConfig)[vs[1].(int)]
@@ -388,6 +419,12 @@ func (o LogTailConfigMapOutput) ToLogTailConfigMapOutput() LogTailConfigMapOutpu
 
 func (o LogTailConfigMapOutput) ToLogTailConfigMapOutputWithContext(ctx context.Context) LogTailConfigMapOutput {
 	return o
+}
+
+func (o LogTailConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogTailConfig] {
+	return pulumix.Output[map[string]*LogTailConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogTailConfigMapOutput) MapIndex(k pulumi.StringInput) LogTailConfigOutput {

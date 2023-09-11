@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Smartag Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createflowlog).
  * 
- * &gt; **NOTE:** Available in v1.168.0+.
+ * &gt; **NOTE:** Available since v1.168.0.
  * 
  * ## Example Usage
  * 
@@ -47,13 +47,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new SmartagFlowLog(&#34;example&#34;, SmartagFlowLogArgs.builder()        
- *             .flowLogName(&#34;example_value&#34;)
- *             .logstoreName(&#34;example_value&#34;)
- *             .netflowServerIp(&#34;example_value&#34;)
- *             .netflowServerPort(1)
- *             .outputType(&#34;all&#34;)
- *             .projectName(&#34;example_value&#34;)
- *             .slsRegionId(&#34;example_value&#34;)
+ *             .netflowServerIp(&#34;192.168.0.2&#34;)
+ *             .netflowServerPort(9995)
+ *             .netflowVersion(&#34;V9&#34;)
+ *             .outputType(&#34;netflow&#34;)
  *             .build());
  * 
  *     }

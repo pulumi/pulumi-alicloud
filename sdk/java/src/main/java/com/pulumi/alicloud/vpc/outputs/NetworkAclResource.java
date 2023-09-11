@@ -22,7 +22,7 @@ public final class NetworkAclResource {
      */
     private String resourceType;
     /**
-     * @return The state of the network ACL.
+     * @return The status of the associated resource.
      * 
      */
     private @Nullable String status;
@@ -43,7 +43,7 @@ public final class NetworkAclResource {
         return this.resourceType;
     }
     /**
-     * @return The state of the network ACL.
+     * @return The status of the associated resource.
      * 
      */
     public Optional<String> status() {

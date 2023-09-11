@@ -10,13 +10,14 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource will help you to manager Container Registry Enterprise Edition repositories.
 //
-// For information about Container Registry Enterprise Edition repository and how to use it, see [Create a Repository](https://www.alibabacloud.com/help/doc-detail/145291.htm)
+// For information about Container Registry Enterprise Edition repository and how to use it, see [Create a Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository)
 //
-// > **NOTE:** Available in v1.86.0+.
+// > **NOTE:** Available since v1.86.0.
 //
 // > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
 //
@@ -29,24 +30,42 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cs.NewRegistryEnterpriseNamespace(ctx, "my-namespace", &cs.RegistryEnterpriseNamespaceArgs{
-//				InstanceId:        pulumi.String("cri-xxx"),
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			exampleRegistryEnterpriseInstance, err := cr.NewRegistryEnterpriseInstance(ctx, "exampleRegistryEnterpriseInstance", &cr.RegistryEnterpriseInstanceArgs{
+//				PaymentType:   pulumi.String("Subscription"),
+//				Period:        pulumi.Int(1),
+//				RenewPeriod:   pulumi.Int(0),
+//				RenewalStatus: pulumi.String("ManualRenewal"),
+//				InstanceType:  pulumi.String("Advanced"),
+//				InstanceName:  pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleRegistryEnterpriseNamespace, err := cs.NewRegistryEnterpriseNamespace(ctx, "exampleRegistryEnterpriseNamespace", &cs.RegistryEnterpriseNamespaceArgs{
+//				InstanceId:        exampleRegistryEnterpriseInstance.ID(),
 //				AutoCreate:        pulumi.Bool(false),
 //				DefaultVisibility: pulumi.String("PUBLIC"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cs.NewRegistryEnterpriseRepo(ctx, "my-repo", &cs.RegistryEnterpriseRepoArgs{
-//				InstanceId: my_namespace.InstanceId,
-//				Namespace:  my_namespace.Name,
+//			_, err = cs.NewRegistryEnterpriseRepo(ctx, "exampleRegistryEnterpriseRepo", &cs.RegistryEnterpriseRepoArgs{
+//				InstanceId: exampleRegistryEnterpriseInstance.ID(),
+//				Namespace:  exampleRegistryEnterpriseNamespace.Name,
 //				Summary:    pulumi.String("this is summary of my new repo"),
 //				RepoType:   pulumi.String("PUBLIC"),
 //				Detail:     pulumi.String("this is a public repo"),
@@ -221,6 +240,12 @@ func (i *RegistryEnterpriseRepo) ToRegistryEnterpriseRepoOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseRepoOutput)
 }
 
+func (i *RegistryEnterpriseRepo) ToOutput(ctx context.Context) pulumix.Output[*RegistryEnterpriseRepo] {
+	return pulumix.Output[*RegistryEnterpriseRepo]{
+		OutputState: i.ToRegistryEnterpriseRepoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RegistryEnterpriseRepoArrayInput is an input type that accepts RegistryEnterpriseRepoArray and RegistryEnterpriseRepoArrayOutput values.
 // You can construct a concrete instance of `RegistryEnterpriseRepoArrayInput` via:
 //
@@ -244,6 +269,12 @@ func (i RegistryEnterpriseRepoArray) ToRegistryEnterpriseRepoArrayOutput() Regis
 
 func (i RegistryEnterpriseRepoArray) ToRegistryEnterpriseRepoArrayOutputWithContext(ctx context.Context) RegistryEnterpriseRepoArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseRepoArrayOutput)
+}
+
+func (i RegistryEnterpriseRepoArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegistryEnterpriseRepo] {
+	return pulumix.Output[[]*RegistryEnterpriseRepo]{
+		OutputState: i.ToRegistryEnterpriseRepoArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RegistryEnterpriseRepoMapInput is an input type that accepts RegistryEnterpriseRepoMap and RegistryEnterpriseRepoMapOutput values.
@@ -271,6 +302,12 @@ func (i RegistryEnterpriseRepoMap) ToRegistryEnterpriseRepoMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseRepoMapOutput)
 }
 
+func (i RegistryEnterpriseRepoMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegistryEnterpriseRepo] {
+	return pulumix.Output[map[string]*RegistryEnterpriseRepo]{
+		OutputState: i.ToRegistryEnterpriseRepoMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegistryEnterpriseRepoOutput struct{ *pulumi.OutputState }
 
 func (RegistryEnterpriseRepoOutput) ElementType() reflect.Type {
@@ -283,6 +320,12 @@ func (o RegistryEnterpriseRepoOutput) ToRegistryEnterpriseRepoOutput() RegistryE
 
 func (o RegistryEnterpriseRepoOutput) ToRegistryEnterpriseRepoOutputWithContext(ctx context.Context) RegistryEnterpriseRepoOutput {
 	return o
+}
+
+func (o RegistryEnterpriseRepoOutput) ToOutput(ctx context.Context) pulumix.Output[*RegistryEnterpriseRepo] {
+	return pulumix.Output[*RegistryEnterpriseRepo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The repository specific information. MarkDown format is supported, and the length limit is 2000.
@@ -334,6 +377,12 @@ func (o RegistryEnterpriseRepoArrayOutput) ToRegistryEnterpriseRepoArrayOutputWi
 	return o
 }
 
+func (o RegistryEnterpriseRepoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegistryEnterpriseRepo] {
+	return pulumix.Output[[]*RegistryEnterpriseRepo]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegistryEnterpriseRepoArrayOutput) Index(i pulumi.IntInput) RegistryEnterpriseRepoOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegistryEnterpriseRepo {
 		return vs[0].([]*RegistryEnterpriseRepo)[vs[1].(int)]
@@ -352,6 +401,12 @@ func (o RegistryEnterpriseRepoMapOutput) ToRegistryEnterpriseRepoMapOutput() Reg
 
 func (o RegistryEnterpriseRepoMapOutput) ToRegistryEnterpriseRepoMapOutputWithContext(ctx context.Context) RegistryEnterpriseRepoMapOutput {
 	return o
+}
+
+func (o RegistryEnterpriseRepoMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegistryEnterpriseRepo] {
+	return pulumix.Output[map[string]*RegistryEnterpriseRepo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegistryEnterpriseRepoMapOutput) MapIndex(k pulumi.StringInput) RegistryEnterpriseRepoOutput {

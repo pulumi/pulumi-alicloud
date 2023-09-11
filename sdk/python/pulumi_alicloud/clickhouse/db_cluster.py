@@ -47,7 +47,7 @@ class DbClusterArgs:
         :param pulumi.Input[str] db_node_storage: The db node storage.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         :param pulumi.Input[str] storage_type: Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
-        :param pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]] db_cluster_access_white_lists: The db cluster access white list.
+        :param pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]] db_cluster_access_white_lists: The db cluster access white list. See `db_cluster_access_white_list` below.
         :param pulumi.Input[str] db_cluster_description: The DBCluster description.
         :param pulumi.Input[str] encryption_key: Key management service KMS key ID.
         :param pulumi.Input[str] encryption_type: Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
@@ -192,7 +192,7 @@ class DbClusterArgs:
     @pulumi.getter(name="dbClusterAccessWhiteLists")
     def db_cluster_access_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]]]:
         """
-        The db cluster access white list.
+        The db cluster access white list. See `db_cluster_access_white_list` below.
         """
         return pulumi.get(self, "db_cluster_access_white_lists")
 
@@ -348,8 +348,8 @@ class _DbClusterState:
         """
         Input properties used for looking up and filtering DbCluster resources.
         :param pulumi.Input[str] category: The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
-        :param pulumi.Input[str] connection_string: (Available in 1.196.0+) - The connection string of the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]] db_cluster_access_white_lists: The db cluster access white list.
+        :param pulumi.Input[str] connection_string: (Available since v1.196.0) - The connection string of the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]] db_cluster_access_white_lists: The db cluster access white list. See `db_cluster_access_white_list` below.
         :param pulumi.Input[str] db_cluster_class: The DBCluster class. According to the category, db_cluster_class has two value ranges:
                * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
                * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
@@ -363,7 +363,7 @@ class _DbClusterState:
         :param pulumi.Input[str] maintain_time: The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
-        :param pulumi.Input[str] port: (Available in 1.196.0+) The connection port of the cluster.
+        :param pulumi.Input[str] port: (Available since v1.196.0) The connection port of the cluster.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         :param pulumi.Input[str] storage_type: Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
         :param pulumi.Input[str] used_time: The used time of DBCluster.
@@ -430,7 +430,7 @@ class _DbClusterState:
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in 1.196.0+) - The connection string of the cluster.
+        (Available since v1.196.0) - The connection string of the cluster.
         """
         return pulumi.get(self, "connection_string")
 
@@ -442,7 +442,7 @@ class _DbClusterState:
     @pulumi.getter(name="dbClusterAccessWhiteLists")
     def db_cluster_access_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]]]:
         """
-        The db cluster access white list.
+        The db cluster access white list. See `db_cluster_access_white_list` below.
         """
         return pulumi.get(self, "db_cluster_access_white_lists")
 
@@ -588,7 +588,7 @@ class _DbClusterState:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in 1.196.0+) The connection port of the cluster.
+        (Available since v1.196.0) The connection port of the cluster.
         """
         return pulumi.get(self, "port")
 
@@ -697,9 +697,9 @@ class DbCluster(pulumi.CustomResource):
         """
         Provides a Click House DBCluster resource.
 
-        For information about Click House DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/product/clickhouse).
+        For information about Click House DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/help/en/clickhouse/latest/api-clickhouse-2019-11-11-createdbinstance).
 
-        > **NOTE:** Available in v1.134.0+.
+        > **NOTE:** Available since v1.134.0.
 
         ## Example Usage
 
@@ -709,12 +709,21 @@ class DbCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_regions = alicloud.clickhouse.get_regions(current=True)
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
             zone_id=default_regions.regions[0].zone_ids[0].zone_id)
         default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
-            db_cluster_version="20.3.10.75",
+            db_cluster_version="22.8.5.29",
             category="Basic",
             db_cluster_class="S8",
             db_cluster_network_type="vpc",
@@ -722,12 +731,8 @@ class DbCluster(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             db_node_storage="500",
             storage_type="cloud_essd",
-            vswitch_id=default_switches.ids[0],
-            db_cluster_access_white_lists=[alicloud.clickhouse.DbClusterDbClusterAccessWhiteListArgs(
-                db_cluster_ip_array_attribute="test",
-                db_cluster_ip_array_name="test",
-                security_ip_list="192.168.0.1",
-            )])
+            vswitch_id=default_switch.id,
+            vpc_id=default_network.id)
         ```
 
         ## Import
@@ -741,7 +746,7 @@ class DbCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] category: The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbClusterDbClusterAccessWhiteListArgs']]]] db_cluster_access_white_lists: The db cluster access white list.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbClusterDbClusterAccessWhiteListArgs']]]] db_cluster_access_white_lists: The db cluster access white list. See `db_cluster_access_white_list` below.
         :param pulumi.Input[str] db_cluster_class: The DBCluster class. According to the category, db_cluster_class has two value ranges:
                * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
                * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
@@ -771,9 +776,9 @@ class DbCluster(pulumi.CustomResource):
         """
         Provides a Click House DBCluster resource.
 
-        For information about Click House DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/product/clickhouse).
+        For information about Click House DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/help/en/clickhouse/latest/api-clickhouse-2019-11-11-createdbinstance).
 
-        > **NOTE:** Available in v1.134.0+.
+        > **NOTE:** Available since v1.134.0.
 
         ## Example Usage
 
@@ -783,12 +788,21 @@ class DbCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_regions = alicloud.clickhouse.get_regions(current=True)
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
             zone_id=default_regions.regions[0].zone_ids[0].zone_id)
         default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
-            db_cluster_version="20.3.10.75",
+            db_cluster_version="22.8.5.29",
             category="Basic",
             db_cluster_class="S8",
             db_cluster_network_type="vpc",
@@ -796,12 +810,8 @@ class DbCluster(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             db_node_storage="500",
             storage_type="cloud_essd",
-            vswitch_id=default_switches.ids[0],
-            db_cluster_access_white_lists=[alicloud.clickhouse.DbClusterDbClusterAccessWhiteListArgs(
-                db_cluster_ip_array_attribute="test",
-                db_cluster_ip_array_name="test",
-                security_ip_list="192.168.0.1",
-            )])
+            vswitch_id=default_switch.id,
+            vpc_id=default_network.id)
         ```
 
         ## Import
@@ -931,8 +941,8 @@ class DbCluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] category: The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
-        :param pulumi.Input[str] connection_string: (Available in 1.196.0+) - The connection string of the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbClusterDbClusterAccessWhiteListArgs']]]] db_cluster_access_white_lists: The db cluster access white list.
+        :param pulumi.Input[str] connection_string: (Available since v1.196.0) - The connection string of the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbClusterDbClusterAccessWhiteListArgs']]]] db_cluster_access_white_lists: The db cluster access white list. See `db_cluster_access_white_list` below.
         :param pulumi.Input[str] db_cluster_class: The DBCluster class. According to the category, db_cluster_class has two value ranges:
                * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
                * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
@@ -946,7 +956,7 @@ class DbCluster(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_time: The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
-        :param pulumi.Input[str] port: (Available in 1.196.0+) The connection port of the cluster.
+        :param pulumi.Input[str] port: (Available since v1.196.0) The connection port of the cluster.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         :param pulumi.Input[str] storage_type: Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
         :param pulumi.Input[str] used_time: The used time of DBCluster.
@@ -993,7 +1003,7 @@ class DbCluster(pulumi.CustomResource):
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> pulumi.Output[str]:
         """
-        (Available in 1.196.0+) - The connection string of the cluster.
+        (Available since v1.196.0) - The connection string of the cluster.
         """
         return pulumi.get(self, "connection_string")
 
@@ -1001,7 +1011,7 @@ class DbCluster(pulumi.CustomResource):
     @pulumi.getter(name="dbClusterAccessWhiteLists")
     def db_cluster_access_white_lists(self) -> pulumi.Output[Optional[Sequence['outputs.DbClusterDbClusterAccessWhiteList']]]:
         """
-        The db cluster access white list.
+        The db cluster access white list. See `db_cluster_access_white_list` below.
         """
         return pulumi.get(self, "db_cluster_access_white_lists")
 
@@ -1099,7 +1109,7 @@ class DbCluster(pulumi.CustomResource):
     @pulumi.getter
     def port(self) -> pulumi.Output[str]:
         """
-        (Available in 1.196.0+) The connection port of the cluster.
+        (Available since v1.196.0) The connection port of the cluster.
         """
         return pulumi.get(self, "port")
 

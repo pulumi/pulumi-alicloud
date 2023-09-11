@@ -343,6 +343,28 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deletionProtection);
     }
     /**
+     * The instance configuration type. Valid values:
+     * - Up
+     * - Down
+     * - TempUpgrade
+     * - Serverless
+     * 
+     */
+    @Export(name="direction", type=String.class, parameters={})
+    private Output</* @Nullable */ String> direction;
+
+    /**
+     * @return The instance configuration type. Valid values:
+     * - Up
+     * - Down
+     * - TempUpgrade
+     * - Serverless
+     * 
+     */
+    public Output<Optional<String>> direction() {
+        return Codegen.optional(this.direction);
+    }
+    /**
      * The method to change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.
      * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.

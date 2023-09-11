@@ -19,9 +19,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a ApsaraDB for MyBase Dedicated Host Group resource.
  * 
- * For information about ApsaraDB for MyBase Dedicated Host Group and how to use it, see [What is Dedicated Host Group](https://www.alibabacloud.com/help/doc-detail/141455.htm).
+ * For information about ApsaraDB for MyBase Dedicated Host Group and how to use it, see [What is Dedicated Host Group](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/creatededicatedhostgroup).
  * 
- * &gt; **NOTE:** Available in v1.132.0+.
+ * &gt; **NOTE:** Available since v1.132.0.
  * 
  * ## Example Usage
  * 
@@ -49,20 +49,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;tf_test_foo&#34;)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
  *             .build());
  * 
- *         var default_ = new DedicatedHostGroup(&#34;default&#34;, DedicatedHostGroupArgs.builder()        
- *             .engine(&#34;MongoDB&#34;)
- *             .vpcId(vpc.id())
+ *         var defaultDedicatedHostGroup = new DedicatedHostGroup(&#34;defaultDedicatedHostGroup&#34;, DedicatedHostGroupArgs.builder()        
+ *             .engine(&#34;MySQL&#34;)
+ *             .vpcId(defaultNetwork.id())
  *             .cpuAllocationRatio(101)
  *             .memAllocationRatio(50)
  *             .diskAllocationRatio(200)
  *             .allocationPolicy(&#34;Evenly&#34;)
  *             .hostReplacePolicy(&#34;Manual&#34;)
- *             .dedicatedHostGroupDesc(&#34;tf-testaccDesc&#34;)
+ *             .dedicatedHostGroupDesc(name)
  *             .build());
  * 
  *     }

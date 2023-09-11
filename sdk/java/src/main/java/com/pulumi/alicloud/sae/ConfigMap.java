@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Serverless App Engine (SAE) Config Map resource.
  * 
- * For information about Serverless App Engine (SAE) Config Map and how to use it, see [What is Config Map](https://help.aliyun.com/document_detail/97792.html).
+ * For information about Serverless App Engine (SAE) Config Map and how to use it, see [What is Config Map](https://www.alibabacloud.com/help/en/sae/latest/create-configmap).
  * 
- * &gt; **NOTE:** Available in v1.130.0+.
+ * &gt; **NOTE:** Available since v1.130.0.
  * 
  * ## Example Usage
  * 
@@ -30,6 +30,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.sae.Namespace;
  * import com.pulumi.alicloud.sae.NamespaceArgs;
  * import com.pulumi.alicloud.sae.ConfigMap;
@@ -49,20 +53,30 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var configMapName = config.get(&#34;configMapName&#34;).orElse(&#34;examplename&#34;);
- *         var exampleNamespace = new Namespace(&#34;exampleNamespace&#34;, NamespaceArgs.builder()        
- *             .namespaceId(&#34;cn-hangzhou:yourname&#34;)
- *             .namespaceName(&#34;example_value&#34;)
- *             .namespaceDescription(&#34;your_description&#34;)
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
  *             .build());
  * 
- *         var exampleConfigMap = new ConfigMap(&#34;exampleConfigMap&#34;, ConfigMapArgs.builder()        
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
+ *             .namespaceId(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s:example%s&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),result)))
+ *             .namespaceName(name)
+ *             .namespaceDescription(name)
+ *             .enableMicroRegistration(false)
+ *             .build());
+ * 
+ *         var defaultConfigMap = new ConfigMap(&#34;defaultConfigMap&#34;, ConfigMapArgs.builder()        
  *             .data(serializeJson(
  *                 jsonObject(
  *                     jsonProperty(&#34;env.home&#34;, &#34;/root&#34;),
  *                     jsonProperty(&#34;env.shell&#34;, &#34;/bin/sh&#34;)
  *                 )))
- *             .namespaceId(exampleNamespace.namespaceId())
+ *             .namespaceId(defaultNamespace.namespaceId())
  *             .build());
  * 
  *     }

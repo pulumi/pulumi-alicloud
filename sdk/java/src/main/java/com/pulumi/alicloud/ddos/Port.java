@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Anti-DDoS Pro Port resource.
  * 
- * For information about Anti-DDoS Pro Port and how to use it, see [What is Port](https://www.alibabacloud.com/help/en/doc-detail/157482.htm).
+ * For information about Anti-DDoS Pro Port and how to use it, see [What is Port](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createport).
  * 
- * &gt; **NOTE:** Available in v1.123.0+.
+ * &gt; **NOTE:** Available since v1.123.0.
  * 
  * ## Example Usage
  * 
@@ -48,17 +48,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleDdosCooInstance = new DdosCooInstance(&#34;exampleDdosCooInstance&#34;, DdosCooInstanceArgs.builder()        
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         var defaultDdosCooInstance = new DdosCooInstance(&#34;defaultDdosCooInstance&#34;, DdosCooInstanceArgs.builder()        
  *             .bandwidth(&#34;30&#34;)
  *             .baseBandwidth(&#34;30&#34;)
  *             .serviceBandwidth(&#34;100&#34;)
  *             .portCount(&#34;50&#34;)
  *             .domainCount(&#34;50&#34;)
+ *             .period(&#34;1&#34;)
+ *             .productType(&#34;ddoscoo&#34;)
  *             .build());
  * 
- *         var examplePort = new Port(&#34;examplePort&#34;, PortArgs.builder()        
- *             .instanceId(exampleDdosCooInstance.id())
+ *         var defaultPort = new Port(&#34;defaultPort&#34;, PortArgs.builder()        
+ *             .instanceId(defaultDdosCooInstance.id())
  *             .frontendPort(&#34;7001&#34;)
+ *             .backendPort(&#34;7002&#34;)
  *             .frontendProtocol(&#34;tcp&#34;)
  *             .realServers(            
  *                 &#34;1.1.1.1&#34;,

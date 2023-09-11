@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
@@ -111,6 +112,12 @@ func (o GetSecretParametersResultOutput) ToGetSecretParametersResultOutput() Get
 
 func (o GetSecretParametersResultOutput) ToGetSecretParametersResultOutputWithContext(ctx context.Context) GetSecretParametersResultOutput {
 	return o
+}
+
+func (o GetSecretParametersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretParametersResult] {
+	return pulumix.Output[GetSecretParametersResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSecretParametersResultOutput) EnableDetails() pulumi.BoolPtrOutput {

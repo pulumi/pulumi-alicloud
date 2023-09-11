@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type Swarm struct {
@@ -195,6 +196,12 @@ func (i *Swarm) ToSwarmOutputWithContext(ctx context.Context) SwarmOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SwarmOutput)
 }
 
+func (i *Swarm) ToOutput(ctx context.Context) pulumix.Output[*Swarm] {
+	return pulumix.Output[*Swarm]{
+		OutputState: i.ToSwarmOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SwarmArrayInput is an input type that accepts SwarmArray and SwarmArrayOutput values.
 // You can construct a concrete instance of `SwarmArrayInput` via:
 //
@@ -218,6 +225,12 @@ func (i SwarmArray) ToSwarmArrayOutput() SwarmArrayOutput {
 
 func (i SwarmArray) ToSwarmArrayOutputWithContext(ctx context.Context) SwarmArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SwarmArrayOutput)
+}
+
+func (i SwarmArray) ToOutput(ctx context.Context) pulumix.Output[[]*Swarm] {
+	return pulumix.Output[[]*Swarm]{
+		OutputState: i.ToSwarmArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SwarmMapInput is an input type that accepts SwarmMap and SwarmMapOutput values.
@@ -245,6 +258,12 @@ func (i SwarmMap) ToSwarmMapOutputWithContext(ctx context.Context) SwarmMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(SwarmMapOutput)
 }
 
+func (i SwarmMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Swarm] {
+	return pulumix.Output[map[string]*Swarm]{
+		OutputState: i.ToSwarmMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SwarmOutput struct{ *pulumi.OutputState }
 
 func (SwarmOutput) ElementType() reflect.Type {
@@ -257,6 +276,12 @@ func (o SwarmOutput) ToSwarmOutput() SwarmOutput {
 
 func (o SwarmOutput) ToSwarmOutputWithContext(ctx context.Context) SwarmOutput {
 	return o
+}
+
+func (o SwarmOutput) ToOutput(ctx context.Context) pulumix.Output[*Swarm] {
+	return pulumix.Output[*Swarm]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SwarmOutput) AgentVersion() pulumi.StringOutput {
@@ -350,6 +375,12 @@ func (o SwarmArrayOutput) ToSwarmArrayOutputWithContext(ctx context.Context) Swa
 	return o
 }
 
+func (o SwarmArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Swarm] {
+	return pulumix.Output[[]*Swarm]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SwarmArrayOutput) Index(i pulumi.IntInput) SwarmOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Swarm {
 		return vs[0].([]*Swarm)[vs[1].(int)]
@@ -368,6 +399,12 @@ func (o SwarmMapOutput) ToSwarmMapOutput() SwarmMapOutput {
 
 func (o SwarmMapOutput) ToSwarmMapOutputWithContext(ctx context.Context) SwarmMapOutput {
 	return o
+}
+
+func (o SwarmMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Swarm] {
+	return pulumix.Output[map[string]*Swarm]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SwarmMapOutput) MapIndex(k pulumi.StringInput) SwarmOutput {

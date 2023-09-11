@@ -16,9 +16,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Connect Network Attachment resource. This topic describes how to associate a Smart Access Gateway (SAG) instance with a network instance. You must associate an SAG instance with a network instance if you want to connect the SAG to Alibaba Cloud. You can connect an SAG to Alibaba Cloud through a leased line, the Internet, or the active and standby links.
  * 
- * For information about Cloud Connect Network Attachment and how to use it, see [What is Cloud Connect Network Attachment](https://www.alibabacloud.com/help/doc-detail/124230.htm).
+ * For information about Cloud Connect Network Attachment and how to use it, see [What is Cloud Connect Network Attachment](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/bindsmartaccessgateway).
  * 
- * &gt; **NOTE:** Available in 1.64.0+
+ * &gt; **NOTE:** Available since v1.64.0.
  * 
  * &gt; **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
  * 
@@ -35,7 +35,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
  * import com.pulumi.alicloud.cloudconnect.NetworkAttachment;
  * import com.pulumi.alicloud.cloudconnect.NetworkAttachmentArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,16 +48,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ccn = new Network(&#34;ccn&#34;, NetworkArgs.builder()        
- *             .isDefault(&#34;true&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var sagId = config.get(&#34;sagId&#34;).orElse(&#34;sag-9bifkf***&#34;);
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .description(name)
+ *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+ *             .isDefault(true)
  *             .build());
  * 
- *         var default_ = new NetworkAttachment(&#34;default&#34;, NetworkAttachmentArgs.builder()        
- *             .ccnId(ccn.id())
- *             .sagId(&#34;sag-xxxxx&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(ccn)
- *                 .build());
+ *         var defaultNetworkAttachment = new NetworkAttachment(&#34;defaultNetworkAttachment&#34;, NetworkAttachmentArgs.builder()        
+ *             .ccnId(defaultNetwork.id())
+ *             .sagId(sagId)
+ *             .build());
  * 
  *     }
  * }

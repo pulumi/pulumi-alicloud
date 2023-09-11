@@ -20,10 +20,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
+ * const name = config.get("name") || "tf-example";
  * const _default = new alicloud.eipanycast.AnycastEipAddress("default", {
  *     anycastEipAddressName: name,
- *     description: "test_1",
+ *     description: name,
  *     bandwidth: 200,
  *     serviceLocation: "international",
  *     internetChargeType: "PayByTraffic",

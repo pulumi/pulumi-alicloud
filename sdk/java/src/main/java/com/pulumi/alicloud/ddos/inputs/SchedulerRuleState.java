@@ -100,14 +100,14 @@ public final class SchedulerRuleState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The information about the scheduling rules. See the following `Block rules`.
+     * The information about the scheduling rules. See `rules` below.
      * 
      */
     @Import(name="rules")
     private @Nullable Output<List<SchedulerRuleRuleArgs>> rules;
 
     /**
-     * @return The information about the scheduling rules. See the following `Block rules`.
+     * @return The information about the scheduling rules. See `rules` below.
      * 
      */
     public Optional<Output<List<SchedulerRuleRuleArgs>>> rules() {
@@ -255,7 +255,7 @@ public final class SchedulerRuleState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rules The information about the scheduling rules. See the following `Block rules`.
+         * @param rules The information about the scheduling rules. See `rules` below.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class SchedulerRuleState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rules The information about the scheduling rules. See the following `Block rules`.
+         * @param rules The information about the scheduling rules. See `rules` below.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class SchedulerRuleState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rules The information about the scheduling rules. See the following `Block rules`.
+         * @param rules The information about the scheduling rules. See `rules` below.
          * 
          * @return builder
          * 

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a CEN transit router peer attachment resource that associate the transit router with the CEN instance. [What is CEN transit router peer attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitrouterpeerattachment)
@@ -357,6 +358,12 @@ func (i *TransitRouterPeerAttachment) ToTransitRouterPeerAttachmentOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterPeerAttachmentOutput)
 }
 
+func (i *TransitRouterPeerAttachment) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterPeerAttachment] {
+	return pulumix.Output[*TransitRouterPeerAttachment]{
+		OutputState: i.ToTransitRouterPeerAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TransitRouterPeerAttachmentArrayInput is an input type that accepts TransitRouterPeerAttachmentArray and TransitRouterPeerAttachmentArrayOutput values.
 // You can construct a concrete instance of `TransitRouterPeerAttachmentArrayInput` via:
 //
@@ -380,6 +387,12 @@ func (i TransitRouterPeerAttachmentArray) ToTransitRouterPeerAttachmentArrayOutp
 
 func (i TransitRouterPeerAttachmentArray) ToTransitRouterPeerAttachmentArrayOutputWithContext(ctx context.Context) TransitRouterPeerAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterPeerAttachmentArrayOutput)
+}
+
+func (i TransitRouterPeerAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterPeerAttachment] {
+	return pulumix.Output[[]*TransitRouterPeerAttachment]{
+		OutputState: i.ToTransitRouterPeerAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TransitRouterPeerAttachmentMapInput is an input type that accepts TransitRouterPeerAttachmentMap and TransitRouterPeerAttachmentMapOutput values.
@@ -407,6 +420,12 @@ func (i TransitRouterPeerAttachmentMap) ToTransitRouterPeerAttachmentMapOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterPeerAttachmentMapOutput)
 }
 
+func (i TransitRouterPeerAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterPeerAttachment] {
+	return pulumix.Output[map[string]*TransitRouterPeerAttachment]{
+		OutputState: i.ToTransitRouterPeerAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TransitRouterPeerAttachmentOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterPeerAttachmentOutput) ElementType() reflect.Type {
@@ -419,6 +438,12 @@ func (o TransitRouterPeerAttachmentOutput) ToTransitRouterPeerAttachmentOutput()
 
 func (o TransitRouterPeerAttachmentOutput) ToTransitRouterPeerAttachmentOutputWithContext(ctx context.Context) TransitRouterPeerAttachmentOutput {
 	return o
+}
+
+func (o TransitRouterPeerAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterPeerAttachment] {
+	return pulumix.Output[*TransitRouterPeerAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Auto publish route enabled. The system default value is `false`.
@@ -517,6 +542,12 @@ func (o TransitRouterPeerAttachmentArrayOutput) ToTransitRouterPeerAttachmentArr
 	return o
 }
 
+func (o TransitRouterPeerAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterPeerAttachment] {
+	return pulumix.Output[[]*TransitRouterPeerAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TransitRouterPeerAttachmentArrayOutput) Index(i pulumi.IntInput) TransitRouterPeerAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TransitRouterPeerAttachment {
 		return vs[0].([]*TransitRouterPeerAttachment)[vs[1].(int)]
@@ -535,6 +566,12 @@ func (o TransitRouterPeerAttachmentMapOutput) ToTransitRouterPeerAttachmentMapOu
 
 func (o TransitRouterPeerAttachmentMapOutput) ToTransitRouterPeerAttachmentMapOutputWithContext(ctx context.Context) TransitRouterPeerAttachmentMapOutput {
 	return o
+}
+
+func (o TransitRouterPeerAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterPeerAttachment] {
+	return pulumix.Output[map[string]*TransitRouterPeerAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransitRouterPeerAttachmentMapOutput) MapIndex(k pulumi.StringInput) TransitRouterPeerAttachmentOutput {

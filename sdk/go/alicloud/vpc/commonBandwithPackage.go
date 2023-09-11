@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -291,6 +292,12 @@ func (i *CommonBandwithPackage) ToCommonBandwithPackageOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(CommonBandwithPackageOutput)
 }
 
+func (i *CommonBandwithPackage) ToOutput(ctx context.Context) pulumix.Output[*CommonBandwithPackage] {
+	return pulumix.Output[*CommonBandwithPackage]{
+		OutputState: i.ToCommonBandwithPackageOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CommonBandwithPackageArrayInput is an input type that accepts CommonBandwithPackageArray and CommonBandwithPackageArrayOutput values.
 // You can construct a concrete instance of `CommonBandwithPackageArrayInput` via:
 //
@@ -314,6 +321,12 @@ func (i CommonBandwithPackageArray) ToCommonBandwithPackageArrayOutput() CommonB
 
 func (i CommonBandwithPackageArray) ToCommonBandwithPackageArrayOutputWithContext(ctx context.Context) CommonBandwithPackageArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CommonBandwithPackageArrayOutput)
+}
+
+func (i CommonBandwithPackageArray) ToOutput(ctx context.Context) pulumix.Output[[]*CommonBandwithPackage] {
+	return pulumix.Output[[]*CommonBandwithPackage]{
+		OutputState: i.ToCommonBandwithPackageArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CommonBandwithPackageMapInput is an input type that accepts CommonBandwithPackageMap and CommonBandwithPackageMapOutput values.
@@ -341,6 +354,12 @@ func (i CommonBandwithPackageMap) ToCommonBandwithPackageMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(CommonBandwithPackageMapOutput)
 }
 
+func (i CommonBandwithPackageMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CommonBandwithPackage] {
+	return pulumix.Output[map[string]*CommonBandwithPackage]{
+		OutputState: i.ToCommonBandwithPackageMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CommonBandwithPackageOutput struct{ *pulumi.OutputState }
 
 func (CommonBandwithPackageOutput) ElementType() reflect.Type {
@@ -353,6 +372,12 @@ func (o CommonBandwithPackageOutput) ToCommonBandwithPackageOutput() CommonBandw
 
 func (o CommonBandwithPackageOutput) ToCommonBandwithPackageOutputWithContext(ctx context.Context) CommonBandwithPackageOutput {
 	return o
+}
+
+func (o CommonBandwithPackageOutput) ToOutput(ctx context.Context) pulumix.Output[*CommonBandwithPackage] {
+	return pulumix.Output[*CommonBandwithPackage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The peak bandwidth of the shared bandwidth. Unit: Mbps.
@@ -458,6 +483,12 @@ func (o CommonBandwithPackageArrayOutput) ToCommonBandwithPackageArrayOutputWith
 	return o
 }
 
+func (o CommonBandwithPackageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CommonBandwithPackage] {
+	return pulumix.Output[[]*CommonBandwithPackage]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CommonBandwithPackageArrayOutput) Index(i pulumi.IntInput) CommonBandwithPackageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CommonBandwithPackage {
 		return vs[0].([]*CommonBandwithPackage)[vs[1].(int)]
@@ -476,6 +507,12 @@ func (o CommonBandwithPackageMapOutput) ToCommonBandwithPackageMapOutput() Commo
 
 func (o CommonBandwithPackageMapOutput) ToCommonBandwithPackageMapOutputWithContext(ctx context.Context) CommonBandwithPackageMapOutput {
 	return o
+}
+
+func (o CommonBandwithPackageMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CommonBandwithPackage] {
+	return pulumix.Output[map[string]*CommonBandwithPackage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CommonBandwithPackageMapOutput) MapIndex(k pulumi.StringInput) CommonBandwithPackageOutput {

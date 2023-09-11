@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// For information about Cloud Firewall Vpc Firewall Control Policy and how to use it, see [What is Vpc Firewall Control Policy](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcontrolpolicy).
     /// 
-    /// &gt; **NOTE:** Available in v1.194.0+.
+    /// &gt; **NOTE:** Available since v1.194.0.
     /// 
     /// ## Example Usage
     /// 
@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
         /// </summary>
         [Output("destPort")]
-        public Output<string?> DestPort { get; private set; } = null!;
+        public Output<string> DestPort { get; private set; } = null!;
 
         /// <summary>
         /// Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
@@ -126,10 +126,10 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// The type of the destination port in the access control policy. Valid values: `port`, `group`.
         /// </summary>
         [Output("destPortType")]
-        public Output<string?> DestPortType { get; private set; } = null!;
+        public Output<string> DestPortType { get; private set; } = null!;
 
         /// <summary>
-        /// The destination address in the access control policy. Valid values: 
+        /// The destination address in the access control policy. Valid values:
         /// - If `destination_type` is set to `net`, the value of `destination` must be a CIDR block.
         /// - If `destination_type` is set to `group`, the value of `destination` must be an address book.
         /// - If `destination_type` is set to `domain`, the value of `destination` must be a domain name.
@@ -144,9 +144,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<ImmutableArray<string>> DestinationGroupCidrs { get; private set; } = null!;
 
         /// <summary>
-        /// The destination address book type in the access control policy. Value:
-        /// - **ip**:IP address book, which contains one or more ip address segments.
-        /// - **domain**: domain address book, which contains one or more domain addresses.
+        /// The destination address book type in the access control policy.
         /// </summary>
         [Output("destinationGroupType")]
         public Output<string> DestinationGroupType { get; private set; } = null!;
@@ -188,9 +186,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> Proto { get; private set; } = null!;
 
         /// <summary>
-        /// The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-        /// - **true**: Enable access control policies
-        /// - **false**: does not enable access control policies.
+        /// The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
         /// </summary>
         [Output("release")]
         public Output<bool> Release { get; private set; } = null!;
@@ -208,7 +204,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<ImmutableArray<string>> SourceGroupCidrs { get; private set; } = null!;
 
         /// <summary>
-        /// The source address type in the access control policy. Unique value: **ip**. The IP address book contains one or more IP address segments.
+        /// The source address type in the access control policy.
         /// </summary>
         [Output("sourceGroupType")]
         public Output<string> SourceGroupType { get; private set; } = null!;
@@ -220,7 +216,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> SourceType { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VPC firewall instance. Value:
+        /// The ID of the VPC firewall instance. Valid values:
         /// - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
         /// - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
         /// </summary>
@@ -310,7 +306,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? DestPortType { get; set; }
 
         /// <summary>
-        /// The destination address in the access control policy. Valid values: 
+        /// The destination address in the access control policy. Valid values:
         /// - If `destination_type` is set to `net`, the value of `destination` must be a CIDR block.
         /// - If `destination_type` is set to `group`, the value of `destination` must be an address book.
         /// - If `destination_type` is set to `domain`, the value of `destination` must be a domain name.
@@ -349,9 +345,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> Proto { get; set; } = null!;
 
         /// <summary>
-        /// The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-        /// - **true**: Enable access control policies
-        /// - **false**: does not enable access control policies.
+        /// The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
         /// </summary>
         [Input("release")]
         public Input<bool>? Release { get; set; }
@@ -369,7 +363,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> SourceType { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the VPC firewall instance. Value:
+        /// The ID of the VPC firewall instance. Valid values:
         /// - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
         /// - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
         /// </summary>
@@ -445,7 +439,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? DestPortType { get; set; }
 
         /// <summary>
-        /// The destination address in the access control policy. Valid values: 
+        /// The destination address in the access control policy. Valid values:
         /// - If `destination_type` is set to `net`, the value of `destination` must be a CIDR block.
         /// - If `destination_type` is set to `group`, the value of `destination` must be an address book.
         /// - If `destination_type` is set to `domain`, the value of `destination` must be a domain name.
@@ -466,9 +460,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         }
 
         /// <summary>
-        /// The destination address book type in the access control policy. Value:
-        /// - **ip**:IP address book, which contains one or more ip address segments.
-        /// - **domain**: domain address book, which contains one or more domain addresses.
+        /// The destination address book type in the access control policy.
         /// </summary>
         [Input("destinationGroupType")]
         public Input<string>? DestinationGroupType { get; set; }
@@ -510,9 +502,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Proto { get; set; }
 
         /// <summary>
-        /// The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-        /// - **true**: Enable access control policies
-        /// - **false**: does not enable access control policies.
+        /// The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
         /// </summary>
         [Input("release")]
         public Input<bool>? Release { get; set; }
@@ -536,7 +526,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         }
 
         /// <summary>
-        /// The source address type in the access control policy. Unique value: **ip**. The IP address book contains one or more IP address segments.
+        /// The source address type in the access control policy.
         /// </summary>
         [Input("sourceGroupType")]
         public Input<string>? SourceGroupType { get; set; }
@@ -548,7 +538,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? SourceType { get; set; }
 
         /// <summary>
-        /// The ID of the VPC firewall instance. Value:
+        /// The ID of the VPC firewall instance. Valid values:
         /// - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
         /// - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
         /// </summary>

@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a HBR Backup vault resource.
  * 
- * For information about HBR Backup vault and how to use it, see [What is Backup vault](https://www.alibabacloud.com/help/doc-detail/62362.htm).
+ * For information about HBR Backup vault and how to use it, see [What is Backup vault](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createvault).
  * 
- * &gt; **NOTE:** Available in v1.129.0+.
+ * &gt; **NOTE:** Available since v1.129.0.
  * 
  * ## Example Usage
  * 
@@ -79,14 +79,14 @@ public class Vault extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+     * Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
      * 
      */
     @Export(name="encryptType", type=String.class, parameters={})
     private Output<String> encryptType;
 
     /**
-     * @return Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+     * @return Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
      * 
      */
     public Output<String> encryptType() {
@@ -107,28 +107,14 @@ public class Vault extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kmsKeyId);
     }
     /**
-     * The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-     * 
-     */
-    @Export(name="redundancyType", type=String.class, parameters={})
-    private Output<String> redundancyType;
-
-    /**
-     * @return The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-     * 
-     */
-    public Output<String> redundancyType() {
-        return this.redundancyType;
-    }
-    /**
-     * The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+     * The status of the Vault.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+     * @return The status of the Vault.
      * 
      */
     public Output<String> status() {
@@ -163,14 +149,14 @@ public class Vault extends com.pulumi.resources.CustomResource {
         return this.vaultStorageClass;
     }
     /**
-     * The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+     * The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
      * 
      */
     @Export(name="vaultType", type=String.class, parameters={})
     private Output<String> vaultType;
 
     /**
-     * @return The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+     * @return The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
      * 
      */
     public Output<String> vaultType() {

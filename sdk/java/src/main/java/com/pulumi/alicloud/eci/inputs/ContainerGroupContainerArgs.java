@@ -205,14 +205,14 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+     * Indicates whether the container passed the readiness probe.
      * 
      */
     @Import(name="ready")
     private @Nullable Output<Boolean> ready;
 
     /**
-     * @return (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+     * @return Indicates whether the container passed the readiness probe.
      * 
      */
     public Optional<Output<Boolean>> ready() {
@@ -220,14 +220,14 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * (Available since v1.208.0) The number of times that the container restarted.
+     * The number of times that the container restarted.
      * 
      */
     @Import(name="restartCount")
     private @Nullable Output<Integer> restartCount;
 
     /**
-     * @return (Available since v1.208.0) The number of times that the container restarted.
+     * @return The number of times that the container restarted.
      * 
      */
     public Optional<Output<Integer>> restartCount() {
@@ -616,7 +616,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ready (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+         * @param ready Indicates whether the container passed the readiness probe.
          * 
          * @return builder
          * 
@@ -627,7 +627,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ready (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+         * @param ready Indicates whether the container passed the readiness probe.
          * 
          * @return builder
          * 
@@ -637,7 +637,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param restartCount (Available since v1.208.0) The number of times that the container restarted.
+         * @param restartCount The number of times that the container restarted.
          * 
          * @return builder
          * 
@@ -648,7 +648,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param restartCount (Available since v1.208.0) The number of times that the container restarted.
+         * @param restartCount The number of times that the container restarted.
          * 
          * @return builder
          * 

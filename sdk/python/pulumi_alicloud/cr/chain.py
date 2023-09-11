@@ -26,7 +26,7 @@ class ChainArgs:
         The set of arguments for constructing a Chain resource.
         :param pulumi.Input[str] chain_name: The name of delivery chain. The length of the name is 1-64 characters, lowercase English letters and numbers, and the separators "_", "-", "." can be used, noted that the separator cannot be at the first or last position.
         :param pulumi.Input[str] instance_id: The ID of CR Enterprise Edition instance.
-        :param pulumi.Input[Sequence[pulumi.Input['ChainChainConfigArgs']]] chain_configs: The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+        :param pulumi.Input[Sequence[pulumi.Input['ChainChainConfigArgs']]] chain_configs: The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         :param pulumi.Input[str] description: The description delivery chain.
         :param pulumi.Input[str] repo_name: The name of CR Enterprise Edition repository. **NOTE:** This parameter must specify a correct value, otherwise the created resource will be incorrect.
         :param pulumi.Input[str] repo_namespace_name: The name of CR Enterprise Edition namespace. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
@@ -70,7 +70,7 @@ class ChainArgs:
     @pulumi.getter(name="chainConfigs")
     def chain_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigArgs']]]]:
         """
-        The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+        The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         """
         return pulumi.get(self, "chain_configs")
 
@@ -127,7 +127,7 @@ class _ChainState:
                  repo_namespace_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Chain resources.
-        :param pulumi.Input[Sequence[pulumi.Input['ChainChainConfigArgs']]] chain_configs: The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+        :param pulumi.Input[Sequence[pulumi.Input['ChainChainConfigArgs']]] chain_configs: The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         :param pulumi.Input[str] chain_id: Delivery chain ID.
         :param pulumi.Input[str] chain_name: The name of delivery chain. The length of the name is 1-64 characters, lowercase English letters and numbers, and the separators "_", "-", "." can be used, noted that the separator cannot be at the first or last position.
         :param pulumi.Input[str] description: The description delivery chain.
@@ -154,7 +154,7 @@ class _ChainState:
     @pulumi.getter(name="chainConfigs")
     def chain_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigArgs']]]]:
         """
-        The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+        The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         """
         return pulumi.get(self, "chain_configs")
 
@@ -250,9 +250,154 @@ class Chain(pulumi.CustomResource):
         """
         Provides a CR Chain resource.
 
-        For information about CR Chain and how to use it, see [What is Chain](https://www.alibabacloud.com/help/en/doc-detail/357808.html).
+        For information about CR Chain and how to use it, see [What is Chain](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createchain).
 
-        > **NOTE:** Available in v1.161.0+.
+        > **NOTE:** Available since v1.161.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance",
+            payment_type="Subscription",
+            period=1,
+            renew_period=0,
+            renewal_status="ManualRenewal",
+            instance_type="Advanced",
+            instance_name=name)
+        default_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace",
+            instance_id=default_registry_enterprise_instance.id,
+            auto_create=False,
+            default_visibility="PUBLIC")
+        default_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("defaultRegistryEnterpriseRepo",
+            instance_id=default_registry_enterprise_instance.id,
+            namespace=default_registry_enterprise_namespace.name,
+            summary="this is summary of my new repo",
+            repo_type="PUBLIC",
+            detail="this is a public repo")
+        default_chain = alicloud.cr.Chain("defaultChain",
+            chain_name=name,
+            description=name,
+            instance_id=default_registry_enterprise_namespace.instance_id,
+            repo_name=default_registry_enterprise_repo.name,
+            repo_namespace_name=default_registry_enterprise_namespace.name,
+            chain_configs=[alicloud.cr.ChainChainConfigArgs(
+                routers=[
+                    alicloud.cr.ChainChainConfigRouterArgs(
+                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
+                            node_name="DOCKER_IMAGE_BUILD",
+                        )],
+                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
+                            node_name="DOCKER_IMAGE_PUSH",
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigRouterArgs(
+                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
+                            node_name="DOCKER_IMAGE_PUSH",
+                        )],
+                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
+                            node_name="VULNERABILITY_SCANNING",
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigRouterArgs(
+                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
+                            node_name="VULNERABILITY_SCANNING",
+                        )],
+                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
+                            node_name="ACTIVATE_REPLICATION",
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigRouterArgs(
+                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
+                            node_name="ACTIVATE_REPLICATION",
+                        )],
+                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
+                            node_name="TRIGGER",
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigRouterArgs(
+                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
+                            node_name="VULNERABILITY_SCANNING",
+                        )],
+                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
+                            node_name="SNAPSHOT",
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigRouterArgs(
+                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
+                            node_name="SNAPSHOT",
+                        )],
+                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
+                            node_name="TRIGGER_SNAPSHOT",
+                        )],
+                    ),
+                ],
+                nodes=[
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        enable=True,
+                        node_name="DOCKER_IMAGE_BUILD",
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        enable=True,
+                        node_name="DOCKER_IMAGE_PUSH",
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        enable=True,
+                        node_name="VULNERABILITY_SCANNING",
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs(
+                                issue_level="MEDIUM",
+                                issue_count="1",
+                                action="BLOCK_DELETE_TAG",
+                                logic="AND",
+                            )],
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        enable=True,
+                        node_name="ACTIVATE_REPLICATION",
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        enable=True,
+                        node_name="TRIGGER",
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        enable=False,
+                        node_name="SNAPSHOT",
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        enable=False,
+                        node_name="TRIGGER_SNAPSHOT",
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                    ),
+                ],
+            )])
+        ```
 
         ## Import
 
@@ -264,7 +409,7 @@ class Chain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ChainChainConfigArgs']]]] chain_configs: The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ChainChainConfigArgs']]]] chain_configs: The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         :param pulumi.Input[str] chain_name: The name of delivery chain. The length of the name is 1-64 characters, lowercase English letters and numbers, and the separators "_", "-", "." can be used, noted that the separator cannot be at the first or last position.
         :param pulumi.Input[str] description: The description delivery chain.
         :param pulumi.Input[str] instance_id: The ID of CR Enterprise Edition instance.
@@ -280,9 +425,154 @@ class Chain(pulumi.CustomResource):
         """
         Provides a CR Chain resource.
 
-        For information about CR Chain and how to use it, see [What is Chain](https://www.alibabacloud.com/help/en/doc-detail/357808.html).
+        For information about CR Chain and how to use it, see [What is Chain](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createchain).
 
-        > **NOTE:** Available in v1.161.0+.
+        > **NOTE:** Available since v1.161.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance",
+            payment_type="Subscription",
+            period=1,
+            renew_period=0,
+            renewal_status="ManualRenewal",
+            instance_type="Advanced",
+            instance_name=name)
+        default_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace",
+            instance_id=default_registry_enterprise_instance.id,
+            auto_create=False,
+            default_visibility="PUBLIC")
+        default_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("defaultRegistryEnterpriseRepo",
+            instance_id=default_registry_enterprise_instance.id,
+            namespace=default_registry_enterprise_namespace.name,
+            summary="this is summary of my new repo",
+            repo_type="PUBLIC",
+            detail="this is a public repo")
+        default_chain = alicloud.cr.Chain("defaultChain",
+            chain_name=name,
+            description=name,
+            instance_id=default_registry_enterprise_namespace.instance_id,
+            repo_name=default_registry_enterprise_repo.name,
+            repo_namespace_name=default_registry_enterprise_namespace.name,
+            chain_configs=[alicloud.cr.ChainChainConfigArgs(
+                routers=[
+                    alicloud.cr.ChainChainConfigRouterArgs(
+                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
+                            node_name="DOCKER_IMAGE_BUILD",
+                        )],
+                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
+                            node_name="DOCKER_IMAGE_PUSH",
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigRouterArgs(
+                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
+                            node_name="DOCKER_IMAGE_PUSH",
+                        )],
+                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
+                            node_name="VULNERABILITY_SCANNING",
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigRouterArgs(
+                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
+                            node_name="VULNERABILITY_SCANNING",
+                        )],
+                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
+                            node_name="ACTIVATE_REPLICATION",
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigRouterArgs(
+                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
+                            node_name="ACTIVATE_REPLICATION",
+                        )],
+                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
+                            node_name="TRIGGER",
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigRouterArgs(
+                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
+                            node_name="VULNERABILITY_SCANNING",
+                        )],
+                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
+                            node_name="SNAPSHOT",
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigRouterArgs(
+                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
+                            node_name="SNAPSHOT",
+                        )],
+                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
+                            node_name="TRIGGER_SNAPSHOT",
+                        )],
+                    ),
+                ],
+                nodes=[
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        enable=True,
+                        node_name="DOCKER_IMAGE_BUILD",
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        enable=True,
+                        node_name="DOCKER_IMAGE_PUSH",
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        enable=True,
+                        node_name="VULNERABILITY_SCANNING",
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs(
+                                issue_level="MEDIUM",
+                                issue_count="1",
+                                action="BLOCK_DELETE_TAG",
+                                logic="AND",
+                            )],
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        enable=True,
+                        node_name="ACTIVATE_REPLICATION",
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        enable=True,
+                        node_name="TRIGGER",
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        enable=False,
+                        node_name="SNAPSHOT",
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        enable=False,
+                        node_name="TRIGGER_SNAPSHOT",
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                    ),
+                ],
+            )])
+        ```
 
         ## Import
 
@@ -357,7 +647,7 @@ class Chain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ChainChainConfigArgs']]]] chain_configs: The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ChainChainConfigArgs']]]] chain_configs: The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         :param pulumi.Input[str] chain_id: Delivery chain ID.
         :param pulumi.Input[str] chain_name: The name of delivery chain. The length of the name is 1-64 characters, lowercase English letters and numbers, and the separators "_", "-", "." can be used, noted that the separator cannot be at the first or last position.
         :param pulumi.Input[str] description: The description delivery chain.
@@ -382,7 +672,7 @@ class Chain(pulumi.CustomResource):
     @pulumi.getter(name="chainConfigs")
     def chain_configs(self) -> pulumi.Output[Optional[Sequence['outputs.ChainChainConfig']]]:
         """
-        The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+        The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         """
         return pulumi.get(self, "chain_configs")
 

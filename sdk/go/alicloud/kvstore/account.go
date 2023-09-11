@@ -10,13 +10,14 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a KVStore Account resource.
 //
 // For information about KVStore Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/doc-detail/95973.htm).
 //
-// > **NOTE:** Available in 1.66.0+
+// > **NOTE:** Available since v1.66.0.
 //
 // ## Example Usage
 //
@@ -27,8 +28,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -38,51 +39,61 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			creation := "KVStore"
-//			if param := cfg.Get("creation"); param != "" {
-//				creation = param
-//			}
-//			name := "kvstoreinstancevpc"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef(creation),
+//			defaultZones, err := kvstore.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
-//				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultInstance, err := kvstore.NewInstance(ctx, "defaultInstance", &kvstore.InstanceArgs{
-//				InstanceClass: pulumi.String("redis.master.small.default"),
-//				InstanceName:  pulumi.String(name),
-//				VswitchId:     defaultSwitch.ID(),
-//				PrivateIp:     pulumi.String("172.16.0.10"),
+//				DbInstanceName:  pulumi.String(name),
+//				VswitchId:       defaultSwitch.ID(),
+//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Ids[0]),
+//				ZoneId:          *pulumi.String(defaultZones.Zones[0].Id),
+//				InstanceClass:   pulumi.String("redis.master.large.default"),
+//				InstanceType:    pulumi.String("Redis"),
+//				EngineVersion:   pulumi.String("5.0"),
 //				SecurityIps: pulumi.StringArray{
-//					pulumi.String("10.0.0.1"),
+//					pulumi.String("10.23.12.24"),
 //				},
-//				InstanceType:  pulumi.String("Redis"),
-//				EngineVersion: pulumi.String("4.0"),
+//				Config: pulumi.AnyMap{
+//					"appendonly":             pulumi.Any("yes"),
+//					"lazyfree-lazy-eviction": pulumi.Any("yes"),
+//				},
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
+//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = kvstore.NewAccount(ctx, "example", &kvstore.AccountArgs{
-//				AccountName:     pulumi.String("tftestnormal"),
+//			_, err = kvstore.NewAccount(ctx, "defaultAccount", &kvstore.AccountArgs{
+//				AccountName:     pulumi.String("tfexamplename"),
 //				AccountPassword: pulumi.String("YourPassword_123"),
 //				InstanceId:      defaultInstance.ID(),
 //			})
@@ -302,6 +313,12 @@ func (i *Account) ToAccountOutputWithContext(ctx context.Context) AccountOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(AccountOutput)
 }
 
+func (i *Account) ToOutput(ctx context.Context) pulumix.Output[*Account] {
+	return pulumix.Output[*Account]{
+		OutputState: i.ToAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccountArrayInput is an input type that accepts AccountArray and AccountArrayOutput values.
 // You can construct a concrete instance of `AccountArrayInput` via:
 //
@@ -325,6 +342,12 @@ func (i AccountArray) ToAccountArrayOutput() AccountArrayOutput {
 
 func (i AccountArray) ToAccountArrayOutputWithContext(ctx context.Context) AccountArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountArrayOutput)
+}
+
+func (i AccountArray) ToOutput(ctx context.Context) pulumix.Output[[]*Account] {
+	return pulumix.Output[[]*Account]{
+		OutputState: i.ToAccountArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AccountMapInput is an input type that accepts AccountMap and AccountMapOutput values.
@@ -352,6 +375,12 @@ func (i AccountMap) ToAccountMapOutputWithContext(ctx context.Context) AccountMa
 	return pulumi.ToOutputWithContext(ctx, i).(AccountMapOutput)
 }
 
+func (i AccountMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Account] {
+	return pulumix.Output[map[string]*Account]{
+		OutputState: i.ToAccountMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccountOutput struct{ *pulumi.OutputState }
 
 func (AccountOutput) ElementType() reflect.Type {
@@ -364,6 +393,12 @@ func (o AccountOutput) ToAccountOutput() AccountOutput {
 
 func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOutput {
 	return o
+}
+
+func (o AccountOutput) ToOutput(ctx context.Context) pulumix.Output[*Account] {
+	return pulumix.Output[*Account]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the account. The name must meet the following requirements:
@@ -430,6 +465,12 @@ func (o AccountArrayOutput) ToAccountArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o AccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Account] {
+	return pulumix.Output[[]*Account]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccountArrayOutput) Index(i pulumi.IntInput) AccountOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Account {
 		return vs[0].([]*Account)[vs[1].(int)]
@@ -448,6 +489,12 @@ func (o AccountMapOutput) ToAccountMapOutput() AccountMapOutput {
 
 func (o AccountMapOutput) ToAccountMapOutputWithContext(ctx context.Context) AccountMapOutput {
 	return o
+}
+
+func (o AccountMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Account] {
+	return pulumix.Output[map[string]*Account]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccountMapOutput) MapIndex(k pulumi.StringInput) AccountOutput {

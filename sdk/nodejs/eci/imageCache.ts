@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * An ECI Image Cache can help user to solve the time-consuming problem of image pull. For information about Alicloud ECI Image Cache and how to use it, see [What is Resource Alicloud ECI Image Cache](https://www.alibabacloud.com/help/doc-detail/146891.htm).
  *
- * > **NOTE:** Available in v1.89.0+.
+ * > **NOTE:** Available since v1.89.0.
  *
  * > **NOTE:** Each image cache corresponds to a snapshot, and the user does not delete the snapshot directly, otherwise the cache will fail.
  *
@@ -21,12 +21,37 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.eci.ImageCache("example", {
- *     eipInstanceId: "eip-uf60c7cqb2pcrkgxhxxxx",
- *     imageCacheName: "tf-test",
- *     images: ["registry.cn-beijing.aliyuncs.com/sceneplatform/sae-image-xxxx:latest"],
- *     securityGroupId: "sg-2zeef68b66fxxxx",
- *     vswitchId: "vsw-2zef9k7ng82xxxx",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.eci.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.0.0.0/8",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.1.0.0/16",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneIds?.[0]),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {
+ *     isp: "BGP",
+ *     addressName: name,
+ *     netmode: "public",
+ *     bandwidth: "1",
+ *     securityProtectionTypes: ["AntiDDoS_Enhanced"],
+ *     paymentType: "PayAsYouGo",
+ * });
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultImageCache = new alicloud.eci.ImageCache("defaultImageCache", {
+ *     imageCacheName: name,
+ *     images: [defaultRegions.then(defaultRegions => `registry-vpc.${defaultRegions.regions?.[0]?.id}.aliyuncs.com/eci_open/nginx:alpine`)],
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     vswitchId: defaultSwitch.id,
+ *     eipInstanceId: defaultEipAddress.id,
  * });
  * ```
  *
@@ -83,7 +108,7 @@ export class ImageCache extends pulumi.CustomResource {
      */
     public readonly imageCacheSize!: pulumi.Output<number | undefined>;
     /**
-     * The Image Registry parameters about the image to be cached.
+     * The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
      */
     public readonly imageRegistryCredentials!: pulumi.Output<outputs.eci.ImageCacheImageRegistryCredential[] | undefined>;
     /**
@@ -193,7 +218,7 @@ export interface ImageCacheState {
      */
     imageCacheSize?: pulumi.Input<number>;
     /**
-     * The Image Registry parameters about the image to be cached.
+     * The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
      */
     imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.ImageCacheImageRegistryCredential>[]>;
     /**
@@ -243,7 +268,7 @@ export interface ImageCacheArgs {
      */
     imageCacheSize?: pulumi.Input<number>;
     /**
-     * The Image Registry parameters about the image to be cached.
+     * The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
      */
     imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.ImageCacheImageRegistryCredential>[]>;
     /**

@@ -28,14 +28,12 @@ class AddressBookArgs:
         The set of arguments for constructing a AddressBook resource.
         :param pulumi.Input[str] description: The description of the Address Book.
         :param pulumi.Input[str] group_name: The name of the Address Book.
-        :param pulumi.Input[str] group_type: The type of the Address Book. Valid values:  `ip`, `tag`.
+        :param pulumi.Input[str] group_type: The type of the Address Book. Valid values: `ip`, `tag`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] address_lists: The list of addresses.
         :param pulumi.Input[int] auto_add_tag_ecs: Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
-        :param pulumi.Input[Sequence[pulumi.Input['AddressBookEcsTagArgs']]] ecs_tags: A list of ECS tags. See the following `Block ecs_tags`.
-        :param pulumi.Input[str] lang: The language of the content within the request and response. Valid values: `en`, `zh`.
-        :param pulumi.Input[str] tag_relation: The logical relation among the ECS tags that to be matched. Valid values:
-               - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-               - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+        :param pulumi.Input[Sequence[pulumi.Input['AddressBookEcsTagArgs']]] ecs_tags: A list of ECS tags. See `ecs_tags` below.
+        :param pulumi.Input[str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
+        :param pulumi.Input[str] tag_relation: The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "group_name", group_name)
@@ -79,7 +77,7 @@ class AddressBookArgs:
     @pulumi.getter(name="groupType")
     def group_type(self) -> pulumi.Input[str]:
         """
-        The type of the Address Book. Valid values:  `ip`, `tag`.
+        The type of the Address Book. Valid values: `ip`, `tag`.
         """
         return pulumi.get(self, "group_type")
 
@@ -115,7 +113,7 @@ class AddressBookArgs:
     @pulumi.getter(name="ecsTags")
     def ecs_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AddressBookEcsTagArgs']]]]:
         """
-        A list of ECS tags. See the following `Block ecs_tags`.
+        A list of ECS tags. See `ecs_tags` below.
         """
         return pulumi.get(self, "ecs_tags")
 
@@ -127,7 +125,7 @@ class AddressBookArgs:
     @pulumi.getter
     def lang(self) -> Optional[pulumi.Input[str]]:
         """
-        The language of the content within the request and response. Valid values: `en`, `zh`.
+        The language of the content within the request and response. Valid values: `zh`, `en`.
         """
         return pulumi.get(self, "lang")
 
@@ -139,9 +137,7 @@ class AddressBookArgs:
     @pulumi.getter(name="tagRelation")
     def tag_relation(self) -> Optional[pulumi.Input[str]]:
         """
-        The logical relation among the ECS tags that to be matched. Valid values:
-        - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-        - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+        The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
         """
         return pulumi.get(self, "tag_relation")
 
@@ -166,13 +162,11 @@ class _AddressBookState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] address_lists: The list of addresses.
         :param pulumi.Input[int] auto_add_tag_ecs: Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
         :param pulumi.Input[str] description: The description of the Address Book.
-        :param pulumi.Input[Sequence[pulumi.Input['AddressBookEcsTagArgs']]] ecs_tags: A list of ECS tags. See the following `Block ecs_tags`.
+        :param pulumi.Input[Sequence[pulumi.Input['AddressBookEcsTagArgs']]] ecs_tags: A list of ECS tags. See `ecs_tags` below.
         :param pulumi.Input[str] group_name: The name of the Address Book.
-        :param pulumi.Input[str] group_type: The type of the Address Book. Valid values:  `ip`, `tag`.
-        :param pulumi.Input[str] lang: The language of the content within the request and response. Valid values: `en`, `zh`.
-        :param pulumi.Input[str] tag_relation: The logical relation among the ECS tags that to be matched. Valid values:
-               - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-               - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+        :param pulumi.Input[str] group_type: The type of the Address Book. Valid values: `ip`, `tag`.
+        :param pulumi.Input[str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
+        :param pulumi.Input[str] tag_relation: The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
         """
         if address_lists is not None:
             pulumi.set(__self__, "address_lists", address_lists)
@@ -231,7 +225,7 @@ class _AddressBookState:
     @pulumi.getter(name="ecsTags")
     def ecs_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AddressBookEcsTagArgs']]]]:
         """
-        A list of ECS tags. See the following `Block ecs_tags`.
+        A list of ECS tags. See `ecs_tags` below.
         """
         return pulumi.get(self, "ecs_tags")
 
@@ -255,7 +249,7 @@ class _AddressBookState:
     @pulumi.getter(name="groupType")
     def group_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the Address Book. Valid values:  `ip`, `tag`.
+        The type of the Address Book. Valid values: `ip`, `tag`.
         """
         return pulumi.get(self, "group_type")
 
@@ -267,7 +261,7 @@ class _AddressBookState:
     @pulumi.getter
     def lang(self) -> Optional[pulumi.Input[str]]:
         """
-        The language of the content within the request and response. Valid values: `en`, `zh`.
+        The language of the content within the request and response. Valid values: `zh`, `en`.
         """
         return pulumi.get(self, "lang")
 
@@ -279,9 +273,7 @@ class _AddressBookState:
     @pulumi.getter(name="tagRelation")
     def tag_relation(self) -> Optional[pulumi.Input[str]]:
         """
-        The logical relation among the ECS tags that to be matched. Valid values:
-        - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-        - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+        The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
         """
         return pulumi.get(self, "tag_relation")
 
@@ -307,9 +299,9 @@ class AddressBook(pulumi.CustomResource):
         """
         Provides a Cloud Firewall Address Book resource.
 
-        For information about Cloud Firewall Address Book and how to use it, see [What is Address Book](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describeaddressbook).
+        For information about Cloud Firewall Address Book and how to use it, see [What is Address Book](https://www.alibabacloud.com/help/en/cloud-firewall/developer-reference/api-cloudfw-2017-12-07-addaddressbook).
 
-        > **NOTE:** Available in v1.178.0+.
+        > **NOTE:** Available since v1.178.0.
 
         ## Example Usage
 
@@ -344,13 +336,11 @@ class AddressBook(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] address_lists: The list of addresses.
         :param pulumi.Input[int] auto_add_tag_ecs: Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
         :param pulumi.Input[str] description: The description of the Address Book.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressBookEcsTagArgs']]]] ecs_tags: A list of ECS tags. See the following `Block ecs_tags`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressBookEcsTagArgs']]]] ecs_tags: A list of ECS tags. See `ecs_tags` below.
         :param pulumi.Input[str] group_name: The name of the Address Book.
-        :param pulumi.Input[str] group_type: The type of the Address Book. Valid values:  `ip`, `tag`.
-        :param pulumi.Input[str] lang: The language of the content within the request and response. Valid values: `en`, `zh`.
-        :param pulumi.Input[str] tag_relation: The logical relation among the ECS tags that to be matched. Valid values:
-               - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-               - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+        :param pulumi.Input[str] group_type: The type of the Address Book. Valid values: `ip`, `tag`.
+        :param pulumi.Input[str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
+        :param pulumi.Input[str] tag_relation: The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
         """
         ...
     @overload
@@ -361,9 +351,9 @@ class AddressBook(pulumi.CustomResource):
         """
         Provides a Cloud Firewall Address Book resource.
 
-        For information about Cloud Firewall Address Book and how to use it, see [What is Address Book](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describeaddressbook).
+        For information about Cloud Firewall Address Book and how to use it, see [What is Address Book](https://www.alibabacloud.com/help/en/cloud-firewall/developer-reference/api-cloudfw-2017-12-07-addaddressbook).
 
-        > **NOTE:** Available in v1.178.0+.
+        > **NOTE:** Available since v1.178.0.
 
         ## Example Usage
 
@@ -467,13 +457,11 @@ class AddressBook(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] address_lists: The list of addresses.
         :param pulumi.Input[int] auto_add_tag_ecs: Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
         :param pulumi.Input[str] description: The description of the Address Book.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressBookEcsTagArgs']]]] ecs_tags: A list of ECS tags. See the following `Block ecs_tags`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressBookEcsTagArgs']]]] ecs_tags: A list of ECS tags. See `ecs_tags` below.
         :param pulumi.Input[str] group_name: The name of the Address Book.
-        :param pulumi.Input[str] group_type: The type of the Address Book. Valid values:  `ip`, `tag`.
-        :param pulumi.Input[str] lang: The language of the content within the request and response. Valid values: `en`, `zh`.
-        :param pulumi.Input[str] tag_relation: The logical relation among the ECS tags that to be matched. Valid values:
-               - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-               - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+        :param pulumi.Input[str] group_type: The type of the Address Book. Valid values: `ip`, `tag`.
+        :param pulumi.Input[str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
+        :param pulumi.Input[str] tag_relation: The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -517,7 +505,7 @@ class AddressBook(pulumi.CustomResource):
     @pulumi.getter(name="ecsTags")
     def ecs_tags(self) -> pulumi.Output[Optional[Sequence['outputs.AddressBookEcsTag']]]:
         """
-        A list of ECS tags. See the following `Block ecs_tags`.
+        A list of ECS tags. See `ecs_tags` below.
         """
         return pulumi.get(self, "ecs_tags")
 
@@ -533,7 +521,7 @@ class AddressBook(pulumi.CustomResource):
     @pulumi.getter(name="groupType")
     def group_type(self) -> pulumi.Output[str]:
         """
-        The type of the Address Book. Valid values:  `ip`, `tag`.
+        The type of the Address Book. Valid values: `ip`, `tag`.
         """
         return pulumi.get(self, "group_type")
 
@@ -541,17 +529,15 @@ class AddressBook(pulumi.CustomResource):
     @pulumi.getter
     def lang(self) -> pulumi.Output[Optional[str]]:
         """
-        The language of the content within the request and response. Valid values: `en`, `zh`.
+        The language of the content within the request and response. Valid values: `zh`, `en`.
         """
         return pulumi.get(self, "lang")
 
     @property
     @pulumi.getter(name="tagRelation")
-    def tag_relation(self) -> pulumi.Output[Optional[str]]:
+    def tag_relation(self) -> pulumi.Output[str]:
         """
-        The logical relation among the ECS tags that to be matched. Valid values:
-        - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-        - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+        The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
         """
         return pulumi.get(self, "tag_relation")
 

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.
@@ -113,6 +114,12 @@ func (o GetRealTimeLogDeliveriesResultOutput) ToGetRealTimeLogDeliveriesResultOu
 
 func (o GetRealTimeLogDeliveriesResultOutput) ToGetRealTimeLogDeliveriesResultOutputWithContext(ctx context.Context) GetRealTimeLogDeliveriesResultOutput {
 	return o
+}
+
+func (o GetRealTimeLogDeliveriesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRealTimeLogDeliveriesResult] {
+	return pulumix.Output[GetRealTimeLogDeliveriesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRealTimeLogDeliveriesResultOutput) Deliveries() GetRealTimeLogDeliveriesDeliveryArrayOutput {

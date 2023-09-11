@@ -18,9 +18,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a DdosCoo Scheduler Rule resource. For information about DdosCoo Scheduler Rule and how to use it, see[What is DdosCoo Scheduler Rule](https://www.alibabacloud.com/help/en/doc-detail/157481.htm).
+ * Provides a DdosCoo Scheduler Rule resource. For information about DdosCoo Scheduler Rule and how to use it, see[What is DdosCoo Scheduler Rule](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createschedulerrule).
  * 
- * &gt; **NOTE:** Available in 1.86.0+
+ * &gt; **NOTE:** Available since v1.86.0.
  * 
  * ## Example Usage
  * 
@@ -47,8 +47,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         var example = new SchedulerRule(&#34;example&#34;, SchedulerRuleArgs.builder()        
- *             .ruleName(&#34;tf-testacc7929727&#34;)
+ *             .ruleName(name)
  *             .ruleType(3)
  *             .rules(            
  *                 SchedulerRuleRuleArgs.builder()
@@ -159,14 +161,14 @@ public class SchedulerRule extends com.pulumi.resources.CustomResource {
         return this.ruleType;
     }
     /**
-     * The information about the scheduling rules. See the following `Block rules`.
+     * The information about the scheduling rules. See `rules` below.
      * 
      */
     @Export(name="rules", type=List.class, parameters={SchedulerRuleRule.class})
     private Output<List<SchedulerRuleRule>> rules;
 
     /**
-     * @return The information about the scheduling rules. See the following `Block rules`.
+     * @return The information about the scheduling rules. See `rules` below.
      * 
      */
     public Output<List<SchedulerRuleRule>> rules() {

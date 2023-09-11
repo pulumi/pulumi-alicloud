@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Network Acls of the current Alibaba Cloud user.
@@ -142,6 +143,12 @@ func (o GetNetworkAclsResultOutput) ToGetNetworkAclsResultOutput() GetNetworkAcl
 
 func (o GetNetworkAclsResultOutput) ToGetNetworkAclsResultOutputWithContext(ctx context.Context) GetNetworkAclsResultOutput {
 	return o
+}
+
+func (o GetNetworkAclsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNetworkAclsResult] {
+	return pulumix.Output[GetNetworkAclsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetNetworkAclsResultOutput) Acls() GetNetworkAclsAclArrayOutput {

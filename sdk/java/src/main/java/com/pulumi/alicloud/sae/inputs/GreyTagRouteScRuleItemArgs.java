@@ -46,14 +46,14 @@ public final class GreyTagRouteScRuleItemArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`
+     * The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
      * 
      */
     @Import(name="operator")
     private @Nullable Output<String> operator;
 
     /**
-     * @return The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`
+     * @return The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
      * 
      */
     public Optional<Output<String>> operator() {
@@ -161,7 +161,7 @@ public final class GreyTagRouteScRuleItemArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param operator The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`
+         * @param operator The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class GreyTagRouteScRuleItemArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param operator The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`
+         * @param operator The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
          * 
          * @return builder
          * 

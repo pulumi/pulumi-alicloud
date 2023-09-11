@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Eci Container Groups of the current Alibaba Cloud user.
@@ -159,6 +160,12 @@ func (o GetContainerGroupsResultOutput) ToGetContainerGroupsResultOutput() GetCo
 
 func (o GetContainerGroupsResultOutput) ToGetContainerGroupsResultOutputWithContext(ctx context.Context) GetContainerGroupsResultOutput {
 	return o
+}
+
+func (o GetContainerGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsResult] {
+	return pulumix.Output[GetContainerGroupsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetContainerGroupsResultOutput) ContainerGroupName() pulumi.StringPtrOutput {

@@ -167,7 +167,86 @@ class EnterpriseProxy(pulumi.CustomResource):
 
         For information about DMS Enterprise Proxy and how to use it, see [What is Proxy](https://www.alibabacloud.com/help/en/data-management-service/latest/createproxy).
 
-        > **NOTE:** Available in v1.188.0+.
+        > **NOTE:** Available since v1.188.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        current = alicloud.get_account()
+        default_regions = alicloud.get_regions(current=True)
+        default_user_tenants = alicloud.dms.get_user_tenants(status="ACTIVE")
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="HighAvailability",
+            db_instance_storage_type="cloud_essd")
+        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            category="HighAvailability",
+            db_instance_storage_type="cloud_essd",
+            instance_charge_type="PostPaid")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.rds.Instance("defaultInstance",
+            engine="MySQL",
+            engine_version="8.0",
+            db_instance_storage_type="cloud_essd",
+            instance_type=default_instance_classes.instance_classes[0].instance_class,
+            instance_storage=default_instance_classes.instance_classes[0].storage_range.min,
+            vswitch_id=default_switch.id,
+            instance_name=name,
+            security_ips=[
+                "100.104.5.0/24",
+                "192.168.0.6",
+            ],
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        default_account = alicloud.rds.Account("defaultAccount",
+            db_instance_id=default_instance.id,
+            account_name="tfexamplename",
+            account_password="Example12345",
+            account_type="Normal")
+        default_enterprise_instance = alicloud.dms.EnterpriseInstance("defaultEnterpriseInstance",
+            tid=default_user_tenants.ids[0],
+            instance_type="MySQL",
+            instance_source="RDS",
+            network_type="VPC",
+            env_type="dev",
+            host=default_instance.connection_string,
+            port=3306,
+            database_user=default_account.account_name,
+            database_password=default_account.account_password,
+            instance_name=name,
+            dba_uid=current.id,
+            safe_rule="自由操作",
+            query_timeout=60,
+            export_timeout=600,
+            ecs_region=default_regions.regions[0].id)
+        default_enterprise_proxy = alicloud.dms.EnterpriseProxy("defaultEnterpriseProxy",
+            instance_id=default_enterprise_instance.instance_id,
+            password="Example12345",
+            username="tfexamplename",
+            tid=default_user_tenants.ids[0])
+        ```
 
         ## Import
 
@@ -195,7 +274,86 @@ class EnterpriseProxy(pulumi.CustomResource):
 
         For information about DMS Enterprise Proxy and how to use it, see [What is Proxy](https://www.alibabacloud.com/help/en/data-management-service/latest/createproxy).
 
-        > **NOTE:** Available in v1.188.0+.
+        > **NOTE:** Available since v1.188.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        current = alicloud.get_account()
+        default_regions = alicloud.get_regions(current=True)
+        default_user_tenants = alicloud.dms.get_user_tenants(status="ACTIVE")
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="HighAvailability",
+            db_instance_storage_type="cloud_essd")
+        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            category="HighAvailability",
+            db_instance_storage_type="cloud_essd",
+            instance_charge_type="PostPaid")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.rds.Instance("defaultInstance",
+            engine="MySQL",
+            engine_version="8.0",
+            db_instance_storage_type="cloud_essd",
+            instance_type=default_instance_classes.instance_classes[0].instance_class,
+            instance_storage=default_instance_classes.instance_classes[0].storage_range.min,
+            vswitch_id=default_switch.id,
+            instance_name=name,
+            security_ips=[
+                "100.104.5.0/24",
+                "192.168.0.6",
+            ],
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        default_account = alicloud.rds.Account("defaultAccount",
+            db_instance_id=default_instance.id,
+            account_name="tfexamplename",
+            account_password="Example12345",
+            account_type="Normal")
+        default_enterprise_instance = alicloud.dms.EnterpriseInstance("defaultEnterpriseInstance",
+            tid=default_user_tenants.ids[0],
+            instance_type="MySQL",
+            instance_source="RDS",
+            network_type="VPC",
+            env_type="dev",
+            host=default_instance.connection_string,
+            port=3306,
+            database_user=default_account.account_name,
+            database_password=default_account.account_password,
+            instance_name=name,
+            dba_uid=current.id,
+            safe_rule="自由操作",
+            query_timeout=60,
+            export_timeout=600,
+            ecs_region=default_regions.regions[0].id)
+        default_enterprise_proxy = alicloud.dms.EnterpriseProxy("defaultEnterpriseProxy",
+            instance_id=default_enterprise_instance.instance_id,
+            password="Example12345",
+            username="tfexamplename",
+            tid=default_user_tenants.ids[0])
+        ```
 
         ## Import
 

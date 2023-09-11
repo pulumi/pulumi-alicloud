@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Ddos
     /// <summary>
     /// Provides a Anti-DDoS Pro Domain Resource resource.
     /// 
-    /// For information about Anti-DDoS Pro Domain Resource and how to use it, see [What is Domain Resource](https://www.alibabacloud.com/help/en/doc-detail/157463.htm).
+    /// For information about Anti-DDoS Pro Domain Resource and how to use it, see [What is Domain Resource](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createwebrule).
     /// 
     /// &gt; **NOTE:** Available since v1.123.0.
     /// 
@@ -28,14 +28,33 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.Ddos.DomainResource("example", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var domain = config.Get("domain") ?? "tf-example.alibaba.com";
+    ///     var defaultDdosCooInstance = new AliCloud.Ddos.DdosCooInstance("defaultDdosCooInstance", new()
     ///     {
-    ///         Domain = "tftestacc1234.abc",
-    ///         HttpsExt = "{\"Http2\":1,\"Http2https\":0，\"Https2http\":0}",
+    ///         Bandwidth = "30",
+    ///         BaseBandwidth = "30",
+    ///         ServiceBandwidth = "100",
+    ///         PortCount = "50",
+    ///         DomainCount = "50",
+    ///         Period = 1,
+    ///         ProductType = "ddoscoo",
+    ///     });
+    /// 
+    ///     var defaultDomainResource = new AliCloud.Ddos.DomainResource("defaultDomainResource", new()
+    ///     {
+    ///         Domain = domain,
+    ///         RsType = 0,
     ///         InstanceIds = new[]
     ///         {
-    ///             "ddoscoo-cn-6ja1rl4j****",
+    ///             defaultDdosCooInstance.Id,
     ///         },
+    ///         RealServers = new[]
+    ///         {
+    ///             "177.167.32.11",
+    ///         },
+    ///         HttpsExt = "{\"Http2\":1,\"Http2https\":0,\"Https2http\":0}",
     ///         ProxyTypes = new[]
     ///         {
     ///             new AliCloud.Ddos.Inputs.DomainResourceProxyTypeArgs
@@ -47,11 +66,6 @@ namespace Pulumi.AliCloud.Ddos
     ///                 ProxyType = "https",
     ///             },
     ///         },
-    ///         RealServers = new[]
-    ///         {
-    ///             "177.167.32.11",
-    ///         },
-    ///         RsType = 0,
     ///     });
     /// 
     /// });

@@ -10,13 +10,14 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Vpc Peer Connection Accepter resource.
 //
 // For information about Vpc Peer Connection Accepter and how to use it, see [What is Peer Connection Accepter](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/AcceptVpcPeerConnection).
 //
-// > **NOTE:** Available in v1.196.0+.
+// > **NOTE:** Available since v1.196.0.
 //
 // ## Example Usage
 //
@@ -36,53 +37,69 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
 //			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			acceptingRegion := "cn-beijing"
 //			if param := cfg.Get("acceptingRegion"); param != "" {
 //				acceptingRegion = param
 //			}
-//			_, err = alicloud.NewProvider(ctx, "local", &alicloud.ProviderArgs{
-//				Region: pulumi.String("hangzhou"),
+//			acceptingAccountAccessKey := "access_key"
+//			if param := cfg.Get("acceptingAccountAccessKey"); param != "" {
+//				acceptingAccountAccessKey = param
+//			}
+//			acceptingAccountSecretKey := "secret_key"
+//			if param := cfg.Get("acceptingAccountSecretKey"); param != "" {
+//				acceptingAccountSecretKey = param
+//			}
+//			_, err := alicloud.NewProvider(ctx, "local", &alicloud.ProviderArgs{
+//				Region: pulumi.String("cn-hangzhou"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = alicloud.NewProvider(ctx, "accepting", &alicloud.ProviderArgs{
-//				Region: pulumi.String(acceptingRegion),
+//				Region:    pulumi.String(acceptingRegion),
+//				AccessKey: pulumi.String(acceptingAccountAccessKey),
+//				SecretKey: pulumi.String(acceptingAccountSecretKey),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
-//			}, nil)
+//			localNetwork, err := vpc.NewNetwork(ctx, "localNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			}, pulumi.Provider(alicloud.Local))
 //			if err != nil {
 //				return err
 //			}
-//			defaultone, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
-//			}, nil)
+//			acceptingNetwork, err := vpc.NewNetwork(ctx, "acceptingNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("192.168.0.0/16"),
+//			}, pulumi.Provider(alicloud.Accepting))
+//			if err != nil {
+//				return err
+//			}
+//			acceptingAccount, err := alicloud.GetAccount(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
 //			defaultPeerConnection, err := vpc.NewPeerConnection(ctx, "defaultPeerConnection", &vpc.PeerConnectionArgs{
-//				PeerConnectionName: pulumi.String("example_value"),
-//				VpcId:              *pulumi.String(defaultNetworks.Ids[0]),
-//				AcceptingAliUid:    *pulumi.String(defaultAccount.Id),
+//				PeerConnectionName: pulumi.String(name),
+//				VpcId:              localNetwork.ID(),
+//				AcceptingAliUid:    *pulumi.String(acceptingAccount.Id),
 //				AcceptingRegionId:  pulumi.String(acceptingRegion),
-//				AcceptingVpcId:     *pulumi.String(defaultone.Ids[0]),
-//				Description:        pulumi.String("example_value"),
+//				AcceptingVpcId:     acceptingNetwork.ID(),
+//				Description:        pulumi.String(name),
 //			}, pulumi.Provider(alicloud.Local))
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vpc.NewPeerConnectionAccepter(ctx, "defaultPeerConnectionAccepter", &vpc.PeerConnectionAccepterArgs{
 //				InstanceId: defaultPeerConnection.ID(),
-//			})
+//			}, pulumi.Provider(alicloud.Accepting))
 //			if err != nil {
 //				return err
 //			}
@@ -246,6 +263,12 @@ func (i *PeerConnectionAccepter) ToPeerConnectionAccepterOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(PeerConnectionAccepterOutput)
 }
 
+func (i *PeerConnectionAccepter) ToOutput(ctx context.Context) pulumix.Output[*PeerConnectionAccepter] {
+	return pulumix.Output[*PeerConnectionAccepter]{
+		OutputState: i.ToPeerConnectionAccepterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PeerConnectionAccepterArrayInput is an input type that accepts PeerConnectionAccepterArray and PeerConnectionAccepterArrayOutput values.
 // You can construct a concrete instance of `PeerConnectionAccepterArrayInput` via:
 //
@@ -269,6 +292,12 @@ func (i PeerConnectionAccepterArray) ToPeerConnectionAccepterArrayOutput() PeerC
 
 func (i PeerConnectionAccepterArray) ToPeerConnectionAccepterArrayOutputWithContext(ctx context.Context) PeerConnectionAccepterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PeerConnectionAccepterArrayOutput)
+}
+
+func (i PeerConnectionAccepterArray) ToOutput(ctx context.Context) pulumix.Output[[]*PeerConnectionAccepter] {
+	return pulumix.Output[[]*PeerConnectionAccepter]{
+		OutputState: i.ToPeerConnectionAccepterArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PeerConnectionAccepterMapInput is an input type that accepts PeerConnectionAccepterMap and PeerConnectionAccepterMapOutput values.
@@ -296,6 +325,12 @@ func (i PeerConnectionAccepterMap) ToPeerConnectionAccepterMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(PeerConnectionAccepterMapOutput)
 }
 
+func (i PeerConnectionAccepterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PeerConnectionAccepter] {
+	return pulumix.Output[map[string]*PeerConnectionAccepter]{
+		OutputState: i.ToPeerConnectionAccepterMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PeerConnectionAccepterOutput struct{ *pulumi.OutputState }
 
 func (PeerConnectionAccepterOutput) ElementType() reflect.Type {
@@ -308,6 +343,12 @@ func (o PeerConnectionAccepterOutput) ToPeerConnectionAccepterOutput() PeerConne
 
 func (o PeerConnectionAccepterOutput) ToPeerConnectionAccepterOutputWithContext(ctx context.Context) PeerConnectionAccepterOutput {
 	return o
+}
+
+func (o PeerConnectionAccepterOutput) ToOutput(ctx context.Context) pulumix.Output[*PeerConnectionAccepter] {
+	return pulumix.Output[*PeerConnectionAccepter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.-Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.-Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.> If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
@@ -374,6 +415,12 @@ func (o PeerConnectionAccepterArrayOutput) ToPeerConnectionAccepterArrayOutputWi
 	return o
 }
 
+func (o PeerConnectionAccepterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PeerConnectionAccepter] {
+	return pulumix.Output[[]*PeerConnectionAccepter]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PeerConnectionAccepterArrayOutput) Index(i pulumi.IntInput) PeerConnectionAccepterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PeerConnectionAccepter {
 		return vs[0].([]*PeerConnectionAccepter)[vs[1].(int)]
@@ -392,6 +439,12 @@ func (o PeerConnectionAccepterMapOutput) ToPeerConnectionAccepterMapOutput() Pee
 
 func (o PeerConnectionAccepterMapOutput) ToPeerConnectionAccepterMapOutputWithContext(ctx context.Context) PeerConnectionAccepterMapOutput {
 	return o
+}
+
+func (o PeerConnectionAccepterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PeerConnectionAccepter] {
+	return pulumix.Output[map[string]*PeerConnectionAccepter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PeerConnectionAccepterMapOutput) MapIndex(k pulumi.StringInput) PeerConnectionAccepterOutput {

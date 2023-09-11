@@ -52,14 +52,14 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Out direction rule information. See the following `Block EgressAclEntries`.
+     * Out direction rule information. See `egress_acl_entries` below.
      * 
      */
     @Import(name="egressAclEntries")
     private @Nullable Output<List<NetworkAclEgressAclEntryArgs>> egressAclEntries;
 
     /**
-     * @return Out direction rule information. See the following `Block EgressAclEntries`.
+     * @return Out direction rule information. See `egress_acl_entries` below.
      * 
      */
     public Optional<Output<List<NetworkAclEgressAclEntryArgs>>> egressAclEntries() {
@@ -67,14 +67,14 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Inward direction rule information. See the following `Block IngressAclEntries`.
+     * Inward direction rule information. See `ingress_acl_entries` below.
      * 
      */
     @Import(name="ingressAclEntries")
     private @Nullable Output<List<NetworkAclIngressAclEntryArgs>> ingressAclEntries;
 
     /**
-     * @return Inward direction rule information. See the following `Block IngressAclEntries`.
+     * @return Inward direction rule information. See `ingress_acl_entries` below.
      * 
      */
     public Optional<Output<List<NetworkAclIngressAclEntryArgs>>> ingressAclEntries() {
@@ -120,14 +120,14 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The associated resource. See the following `Block Resources`.
+     * The associated resource. See `resources` below.
      * 
      */
     @Import(name="resources")
     private @Nullable Output<List<NetworkAclResourceArgs>> resources;
 
     /**
-     * @return The associated resource. See the following `Block Resources`.
+     * @return The associated resource. See `resources` below.
      * 
      */
     public Optional<Output<List<NetworkAclResourceArgs>>> resources() {
@@ -135,14 +135,14 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The state of the network ACL.
+     * The status of the associated resource.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The state of the network ACL.
+     * @return The status of the associated resource.
      * 
      */
     public Optional<Output<String>> status() {
@@ -259,7 +259,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param egressAclEntries Out direction rule information. See the following `Block EgressAclEntries`.
+         * @param egressAclEntries Out direction rule information. See `egress_acl_entries` below.
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param egressAclEntries Out direction rule information. See the following `Block EgressAclEntries`.
+         * @param egressAclEntries Out direction rule information. See `egress_acl_entries` below.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param egressAclEntries Out direction rule information. See the following `Block EgressAclEntries`.
+         * @param egressAclEntries Out direction rule information. See `egress_acl_entries` below.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ingressAclEntries Inward direction rule information. See the following `Block IngressAclEntries`.
+         * @param ingressAclEntries Inward direction rule information. See `ingress_acl_entries` below.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ingressAclEntries Inward direction rule information. See the following `Block IngressAclEntries`.
+         * @param ingressAclEntries Inward direction rule information. See `ingress_acl_entries` below.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ingressAclEntries Inward direction rule information. See the following `Block IngressAclEntries`.
+         * @param ingressAclEntries Inward direction rule information. See `ingress_acl_entries` below.
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resources The associated resource. See the following `Block Resources`.
+         * @param resources The associated resource. See `resources` below.
          * 
          * @return builder
          * 
@@ -382,7 +382,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resources The associated resource. See the following `Block Resources`.
+         * @param resources The associated resource. See `resources` below.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resources The associated resource. See the following `Block Resources`.
+         * @param resources The associated resource. See `resources` below.
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The state of the network ACL.
+         * @param status The status of the associated resource.
          * 
          * @return builder
          * 
@@ -413,7 +413,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The state of the network ACL.
+         * @param status The status of the associated resource.
          * 
          * @return builder
          * 

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Threat Detection Honeypot Probe resource.
@@ -276,6 +277,12 @@ func (i *HoneypotProbe) ToHoneypotProbeOutputWithContext(ctx context.Context) Ho
 	return pulumi.ToOutputWithContext(ctx, i).(HoneypotProbeOutput)
 }
 
+func (i *HoneypotProbe) ToOutput(ctx context.Context) pulumix.Output[*HoneypotProbe] {
+	return pulumix.Output[*HoneypotProbe]{
+		OutputState: i.ToHoneypotProbeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HoneypotProbeArrayInput is an input type that accepts HoneypotProbeArray and HoneypotProbeArrayOutput values.
 // You can construct a concrete instance of `HoneypotProbeArrayInput` via:
 //
@@ -299,6 +306,12 @@ func (i HoneypotProbeArray) ToHoneypotProbeArrayOutput() HoneypotProbeArrayOutpu
 
 func (i HoneypotProbeArray) ToHoneypotProbeArrayOutputWithContext(ctx context.Context) HoneypotProbeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HoneypotProbeArrayOutput)
+}
+
+func (i HoneypotProbeArray) ToOutput(ctx context.Context) pulumix.Output[[]*HoneypotProbe] {
+	return pulumix.Output[[]*HoneypotProbe]{
+		OutputState: i.ToHoneypotProbeArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // HoneypotProbeMapInput is an input type that accepts HoneypotProbeMap and HoneypotProbeMapOutput values.
@@ -326,6 +339,12 @@ func (i HoneypotProbeMap) ToHoneypotProbeMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(HoneypotProbeMapOutput)
 }
 
+func (i HoneypotProbeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HoneypotProbe] {
+	return pulumix.Output[map[string]*HoneypotProbe]{
+		OutputState: i.ToHoneypotProbeMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HoneypotProbeOutput struct{ *pulumi.OutputState }
 
 func (HoneypotProbeOutput) ElementType() reflect.Type {
@@ -338,6 +357,12 @@ func (o HoneypotProbeOutput) ToHoneypotProbeOutput() HoneypotProbeOutput {
 
 func (o HoneypotProbeOutput) ToHoneypotProbeOutputWithContext(ctx context.Context) HoneypotProbeOutput {
 	return o
+}
+
+func (o HoneypotProbeOutput) ToOutput(ctx context.Context) pulumix.Output[*HoneypotProbe] {
+	return pulumix.Output[*HoneypotProbe]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ARP spoofing detection.**true**: Enable **false**: Disabled
@@ -419,6 +444,12 @@ func (o HoneypotProbeArrayOutput) ToHoneypotProbeArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o HoneypotProbeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HoneypotProbe] {
+	return pulumix.Output[[]*HoneypotProbe]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HoneypotProbeArrayOutput) Index(i pulumi.IntInput) HoneypotProbeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HoneypotProbe {
 		return vs[0].([]*HoneypotProbe)[vs[1].(int)]
@@ -437,6 +468,12 @@ func (o HoneypotProbeMapOutput) ToHoneypotProbeMapOutput() HoneypotProbeMapOutpu
 
 func (o HoneypotProbeMapOutput) ToHoneypotProbeMapOutputWithContext(ctx context.Context) HoneypotProbeMapOutput {
 	return o
+}
+
+func (o HoneypotProbeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HoneypotProbe] {
+	return pulumix.Output[map[string]*HoneypotProbe]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HoneypotProbeMapOutput) MapIndex(k pulumi.StringInput) HoneypotProbeOutput {

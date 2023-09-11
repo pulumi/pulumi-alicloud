@@ -34,14 +34,14 @@ public final class ChainChainConfigNodeArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The configuration of delivery chain node.
+     * The configuration of delivery chain node. See `node_config` below.
      * 
      */
     @Import(name="nodeConfigs")
     private @Nullable Output<List<ChainChainConfigNodeNodeConfigArgs>> nodeConfigs;
 
     /**
-     * @return The configuration of delivery chain node.
+     * @return The configuration of delivery chain node. See `node_config` below.
      * 
      */
     public Optional<Output<List<ChainChainConfigNodeNodeConfigArgs>>> nodeConfigs() {
@@ -49,14 +49,14 @@ public final class ChainChainConfigNodeArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+     * The name of delivery chain node.
      * 
      */
     @Import(name="nodeName")
     private @Nullable Output<String> nodeName;
 
     /**
-     * @return The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+     * @return The name of delivery chain node.
      * 
      */
     public Optional<Output<String>> nodeName() {
@@ -111,7 +111,7 @@ public final class ChainChainConfigNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param nodeConfigs The configuration of delivery chain node.
+         * @param nodeConfigs The configuration of delivery chain node. See `node_config` below.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class ChainChainConfigNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param nodeConfigs The configuration of delivery chain node.
+         * @param nodeConfigs The configuration of delivery chain node. See `node_config` below.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ChainChainConfigNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param nodeConfigs The configuration of delivery chain node.
+         * @param nodeConfigs The configuration of delivery chain node. See `node_config` below.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ChainChainConfigNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param nodeName The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+         * @param nodeName The name of delivery chain node.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class ChainChainConfigNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param nodeName The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+         * @param nodeName The name of delivery chain node.
          * 
          * @return builder
          * 

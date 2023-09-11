@@ -97,13 +97,13 @@ namespace Pulumi.AliCloud.Eci.Inputs
         }
 
         /// <summary>
-        /// (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+        /// Indicates whether the container passed the readiness probe.
         /// </summary>
         [Input("ready")]
         public Input<bool>? Ready { get; set; }
 
         /// <summary>
-        /// (Available since v1.208.0) The number of times that the container restarted.
+        /// The number of times that the container restarted.
         /// </summary>
         [Input("restartCount")]
         public Input<int>? RestartCount { get; set; }

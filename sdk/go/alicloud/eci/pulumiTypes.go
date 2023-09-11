@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -58,6 +59,12 @@ func (i ContainerGroupAcrRegistryInfoArgs) ToContainerGroupAcrRegistryInfoOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupAcrRegistryInfoOutput)
 }
 
+func (i ContainerGroupAcrRegistryInfoArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupAcrRegistryInfo] {
+	return pulumix.Output[ContainerGroupAcrRegistryInfo]{
+		OutputState: i.ToContainerGroupAcrRegistryInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerGroupAcrRegistryInfoArrayInput is an input type that accepts ContainerGroupAcrRegistryInfoArray and ContainerGroupAcrRegistryInfoArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupAcrRegistryInfoArrayInput` via:
 //
@@ -83,6 +90,12 @@ func (i ContainerGroupAcrRegistryInfoArray) ToContainerGroupAcrRegistryInfoArray
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupAcrRegistryInfoArrayOutput)
 }
 
+func (i ContainerGroupAcrRegistryInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupAcrRegistryInfo] {
+	return pulumix.Output[[]ContainerGroupAcrRegistryInfo]{
+		OutputState: i.ToContainerGroupAcrRegistryInfoArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupAcrRegistryInfoOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupAcrRegistryInfoOutput) ElementType() reflect.Type {
@@ -95,6 +108,12 @@ func (o ContainerGroupAcrRegistryInfoOutput) ToContainerGroupAcrRegistryInfoOutp
 
 func (o ContainerGroupAcrRegistryInfoOutput) ToContainerGroupAcrRegistryInfoOutputWithContext(ctx context.Context) ContainerGroupAcrRegistryInfoOutput {
 	return o
+}
+
+func (o ContainerGroupAcrRegistryInfoOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupAcrRegistryInfo] {
+	return pulumix.Output[ContainerGroupAcrRegistryInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The domain name of the ACR Enterprise Edition instance. Defaults to all domain names of the corresponding instance. Support specifying individual domain names, multiple separated by half comma.
@@ -131,6 +150,12 @@ func (o ContainerGroupAcrRegistryInfoArrayOutput) ToContainerGroupAcrRegistryInf
 	return o
 }
 
+func (o ContainerGroupAcrRegistryInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupAcrRegistryInfo] {
+	return pulumix.Output[[]ContainerGroupAcrRegistryInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ContainerGroupAcrRegistryInfoArrayOutput) Index(i pulumi.IntInput) ContainerGroupAcrRegistryInfoOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupAcrRegistryInfo {
 		return vs[0].([]ContainerGroupAcrRegistryInfo)[vs[1].(int)]
@@ -162,9 +187,9 @@ type ContainerGroupContainer struct {
 	Ports []ContainerGroupContainerPort `pulumi:"ports"`
 	// The health check of the container. See `readinessProbe` below.
 	ReadinessProbes []ContainerGroupContainerReadinessProbe `pulumi:"readinessProbes"`
-	// (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+	// Indicates whether the container passed the readiness probe.
 	Ready *bool `pulumi:"ready"`
-	// (Available since v1.208.0) The number of times that the container restarted.
+	// The number of times that the container restarted.
 	RestartCount *int `pulumi:"restartCount"`
 	// The structure of volumeMounts. See `volumeMounts` below.
 	VolumeMounts []ContainerGroupContainerVolumeMount `pulumi:"volumeMounts"`
@@ -208,9 +233,9 @@ type ContainerGroupContainerArgs struct {
 	Ports ContainerGroupContainerPortArrayInput `pulumi:"ports"`
 	// The health check of the container. See `readinessProbe` below.
 	ReadinessProbes ContainerGroupContainerReadinessProbeArrayInput `pulumi:"readinessProbes"`
-	// (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+	// Indicates whether the container passed the readiness probe.
 	Ready pulumi.BoolPtrInput `pulumi:"ready"`
-	// (Available since v1.208.0) The number of times that the container restarted.
+	// The number of times that the container restarted.
 	RestartCount pulumi.IntPtrInput `pulumi:"restartCount"`
 	// The structure of volumeMounts. See `volumeMounts` below.
 	VolumeMounts ContainerGroupContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
@@ -228,6 +253,12 @@ func (i ContainerGroupContainerArgs) ToContainerGroupContainerOutput() Container
 
 func (i ContainerGroupContainerArgs) ToContainerGroupContainerOutputWithContext(ctx context.Context) ContainerGroupContainerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerOutput)
+}
+
+func (i ContainerGroupContainerArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainer] {
+	return pulumix.Output[ContainerGroupContainer]{
+		OutputState: i.ToContainerGroupContainerOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ContainerGroupContainerArrayInput is an input type that accepts ContainerGroupContainerArray and ContainerGroupContainerArrayOutput values.
@@ -255,6 +286,12 @@ func (i ContainerGroupContainerArray) ToContainerGroupContainerArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerArrayOutput)
 }
 
+func (i ContainerGroupContainerArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainer] {
+	return pulumix.Output[[]ContainerGroupContainer]{
+		OutputState: i.ToContainerGroupContainerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupContainerOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupContainerOutput) ElementType() reflect.Type {
@@ -267,6 +304,12 @@ func (o ContainerGroupContainerOutput) ToContainerGroupContainerOutput() Contain
 
 func (o ContainerGroupContainerOutput) ToContainerGroupContainerOutputWithContext(ctx context.Context) ContainerGroupContainerOutput {
 	return o
+}
+
+func (o ContainerGroupContainerOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainer] {
+	return pulumix.Output[ContainerGroupContainer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The arguments passed to the commands.
@@ -329,12 +372,12 @@ func (o ContainerGroupContainerOutput) ReadinessProbes() ContainerGroupContainer
 	return o.ApplyT(func(v ContainerGroupContainer) []ContainerGroupContainerReadinessProbe { return v.ReadinessProbes }).(ContainerGroupContainerReadinessProbeArrayOutput)
 }
 
-// (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+// Indicates whether the container passed the readiness probe.
 func (o ContainerGroupContainerOutput) Ready() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) *bool { return v.Ready }).(pulumi.BoolPtrOutput)
 }
 
-// (Available since v1.208.0) The number of times that the container restarted.
+// The number of times that the container restarted.
 func (o ContainerGroupContainerOutput) RestartCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) *int { return v.RestartCount }).(pulumi.IntPtrOutput)
 }
@@ -361,6 +404,12 @@ func (o ContainerGroupContainerArrayOutput) ToContainerGroupContainerArrayOutput
 
 func (o ContainerGroupContainerArrayOutput) ToContainerGroupContainerArrayOutputWithContext(ctx context.Context) ContainerGroupContainerArrayOutput {
 	return o
+}
+
+func (o ContainerGroupContainerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainer] {
+	return pulumix.Output[[]ContainerGroupContainer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerGroupContainerArrayOutput) Index(i pulumi.IntInput) ContainerGroupContainerOutput {
@@ -406,6 +455,12 @@ func (i ContainerGroupContainerEnvironmentVarArgs) ToContainerGroupContainerEnvi
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerEnvironmentVarOutput)
 }
 
+func (i ContainerGroupContainerEnvironmentVarArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainerEnvironmentVar] {
+	return pulumix.Output[ContainerGroupContainerEnvironmentVar]{
+		OutputState: i.ToContainerGroupContainerEnvironmentVarOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerGroupContainerEnvironmentVarArrayInput is an input type that accepts ContainerGroupContainerEnvironmentVarArray and ContainerGroupContainerEnvironmentVarArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupContainerEnvironmentVarArrayInput` via:
 //
@@ -431,6 +486,12 @@ func (i ContainerGroupContainerEnvironmentVarArray) ToContainerGroupContainerEnv
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerEnvironmentVarArrayOutput)
 }
 
+func (i ContainerGroupContainerEnvironmentVarArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainerEnvironmentVar] {
+	return pulumix.Output[[]ContainerGroupContainerEnvironmentVar]{
+		OutputState: i.ToContainerGroupContainerEnvironmentVarArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupContainerEnvironmentVarOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupContainerEnvironmentVarOutput) ElementType() reflect.Type {
@@ -443,6 +504,12 @@ func (o ContainerGroupContainerEnvironmentVarOutput) ToContainerGroupContainerEn
 
 func (o ContainerGroupContainerEnvironmentVarOutput) ToContainerGroupContainerEnvironmentVarOutputWithContext(ctx context.Context) ContainerGroupContainerEnvironmentVarOutput {
 	return o
+}
+
+func (o ContainerGroupContainerEnvironmentVarOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainerEnvironmentVar] {
+	return pulumix.Output[ContainerGroupContainerEnvironmentVar]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
@@ -467,6 +534,12 @@ func (o ContainerGroupContainerEnvironmentVarArrayOutput) ToContainerGroupContai
 
 func (o ContainerGroupContainerEnvironmentVarArrayOutput) ToContainerGroupContainerEnvironmentVarArrayOutputWithContext(ctx context.Context) ContainerGroupContainerEnvironmentVarArrayOutput {
 	return o
+}
+
+func (o ContainerGroupContainerEnvironmentVarArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainerEnvironmentVar] {
+	return pulumix.Output[[]ContainerGroupContainerEnvironmentVar]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerGroupContainerEnvironmentVarArrayOutput) Index(i pulumi.IntInput) ContainerGroupContainerEnvironmentVarOutput {
@@ -536,6 +609,12 @@ func (i ContainerGroupContainerLivenessProbeArgs) ToContainerGroupContainerLiven
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerLivenessProbeOutput)
 }
 
+func (i ContainerGroupContainerLivenessProbeArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainerLivenessProbe] {
+	return pulumix.Output[ContainerGroupContainerLivenessProbe]{
+		OutputState: i.ToContainerGroupContainerLivenessProbeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerGroupContainerLivenessProbeArrayInput is an input type that accepts ContainerGroupContainerLivenessProbeArray and ContainerGroupContainerLivenessProbeArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupContainerLivenessProbeArrayInput` via:
 //
@@ -561,6 +640,12 @@ func (i ContainerGroupContainerLivenessProbeArray) ToContainerGroupContainerLive
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerLivenessProbeArrayOutput)
 }
 
+func (i ContainerGroupContainerLivenessProbeArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainerLivenessProbe] {
+	return pulumix.Output[[]ContainerGroupContainerLivenessProbe]{
+		OutputState: i.ToContainerGroupContainerLivenessProbeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupContainerLivenessProbeOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupContainerLivenessProbeOutput) ElementType() reflect.Type {
@@ -573,6 +658,12 @@ func (o ContainerGroupContainerLivenessProbeOutput) ToContainerGroupContainerLiv
 
 func (o ContainerGroupContainerLivenessProbeOutput) ToContainerGroupContainerLivenessProbeOutputWithContext(ctx context.Context) ContainerGroupContainerLivenessProbeOutput {
 	return o
+}
+
+func (o ContainerGroupContainerLivenessProbeOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainerLivenessProbe] {
+	return pulumix.Output[ContainerGroupContainerLivenessProbe]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Health check using command line method. See `exec` below.
@@ -635,6 +726,12 @@ func (o ContainerGroupContainerLivenessProbeArrayOutput) ToContainerGroupContain
 	return o
 }
 
+func (o ContainerGroupContainerLivenessProbeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainerLivenessProbe] {
+	return pulumix.Output[[]ContainerGroupContainerLivenessProbe]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ContainerGroupContainerLivenessProbeArrayOutput) Index(i pulumi.IntInput) ContainerGroupContainerLivenessProbeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupContainerLivenessProbe {
 		return vs[0].([]ContainerGroupContainerLivenessProbe)[vs[1].(int)]
@@ -674,6 +771,12 @@ func (i ContainerGroupContainerLivenessProbeExecArgs) ToContainerGroupContainerL
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerLivenessProbeExecOutput)
 }
 
+func (i ContainerGroupContainerLivenessProbeExecArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainerLivenessProbeExec] {
+	return pulumix.Output[ContainerGroupContainerLivenessProbeExec]{
+		OutputState: i.ToContainerGroupContainerLivenessProbeExecOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerGroupContainerLivenessProbeExecArrayInput is an input type that accepts ContainerGroupContainerLivenessProbeExecArray and ContainerGroupContainerLivenessProbeExecArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupContainerLivenessProbeExecArrayInput` via:
 //
@@ -699,6 +802,12 @@ func (i ContainerGroupContainerLivenessProbeExecArray) ToContainerGroupContainer
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerLivenessProbeExecArrayOutput)
 }
 
+func (i ContainerGroupContainerLivenessProbeExecArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainerLivenessProbeExec] {
+	return pulumix.Output[[]ContainerGroupContainerLivenessProbeExec]{
+		OutputState: i.ToContainerGroupContainerLivenessProbeExecArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupContainerLivenessProbeExecOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupContainerLivenessProbeExecOutput) ElementType() reflect.Type {
@@ -711,6 +820,12 @@ func (o ContainerGroupContainerLivenessProbeExecOutput) ToContainerGroupContaine
 
 func (o ContainerGroupContainerLivenessProbeExecOutput) ToContainerGroupContainerLivenessProbeExecOutputWithContext(ctx context.Context) ContainerGroupContainerLivenessProbeExecOutput {
 	return o
+}
+
+func (o ContainerGroupContainerLivenessProbeExecOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainerLivenessProbeExec] {
+	return pulumix.Output[ContainerGroupContainerLivenessProbeExec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The commands run by the init container.
@@ -730,6 +845,12 @@ func (o ContainerGroupContainerLivenessProbeExecArrayOutput) ToContainerGroupCon
 
 func (o ContainerGroupContainerLivenessProbeExecArrayOutput) ToContainerGroupContainerLivenessProbeExecArrayOutputWithContext(ctx context.Context) ContainerGroupContainerLivenessProbeExecArrayOutput {
 	return o
+}
+
+func (o ContainerGroupContainerLivenessProbeExecArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainerLivenessProbeExec] {
+	return pulumix.Output[[]ContainerGroupContainerLivenessProbeExec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerGroupContainerLivenessProbeExecArrayOutput) Index(i pulumi.IntInput) ContainerGroupContainerLivenessProbeExecOutput {
@@ -779,6 +900,12 @@ func (i ContainerGroupContainerLivenessProbeHttpGetArgs) ToContainerGroupContain
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerLivenessProbeHttpGetOutput)
 }
 
+func (i ContainerGroupContainerLivenessProbeHttpGetArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainerLivenessProbeHttpGet] {
+	return pulumix.Output[ContainerGroupContainerLivenessProbeHttpGet]{
+		OutputState: i.ToContainerGroupContainerLivenessProbeHttpGetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerGroupContainerLivenessProbeHttpGetArrayInput is an input type that accepts ContainerGroupContainerLivenessProbeHttpGetArray and ContainerGroupContainerLivenessProbeHttpGetArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupContainerLivenessProbeHttpGetArrayInput` via:
 //
@@ -804,6 +931,12 @@ func (i ContainerGroupContainerLivenessProbeHttpGetArray) ToContainerGroupContai
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerLivenessProbeHttpGetArrayOutput)
 }
 
+func (i ContainerGroupContainerLivenessProbeHttpGetArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainerLivenessProbeHttpGet] {
+	return pulumix.Output[[]ContainerGroupContainerLivenessProbeHttpGet]{
+		OutputState: i.ToContainerGroupContainerLivenessProbeHttpGetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupContainerLivenessProbeHttpGetOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupContainerLivenessProbeHttpGetOutput) ElementType() reflect.Type {
@@ -816,6 +949,12 @@ func (o ContainerGroupContainerLivenessProbeHttpGetOutput) ToContainerGroupConta
 
 func (o ContainerGroupContainerLivenessProbeHttpGetOutput) ToContainerGroupContainerLivenessProbeHttpGetOutputWithContext(ctx context.Context) ContainerGroupContainerLivenessProbeHttpGetOutput {
 	return o
+}
+
+func (o ContainerGroupContainerLivenessProbeHttpGetOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainerLivenessProbeHttpGet] {
+	return pulumix.Output[ContainerGroupContainerLivenessProbeHttpGet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The relative file path.
@@ -845,6 +984,12 @@ func (o ContainerGroupContainerLivenessProbeHttpGetArrayOutput) ToContainerGroup
 
 func (o ContainerGroupContainerLivenessProbeHttpGetArrayOutput) ToContainerGroupContainerLivenessProbeHttpGetArrayOutputWithContext(ctx context.Context) ContainerGroupContainerLivenessProbeHttpGetArrayOutput {
 	return o
+}
+
+func (o ContainerGroupContainerLivenessProbeHttpGetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainerLivenessProbeHttpGet] {
+	return pulumix.Output[[]ContainerGroupContainerLivenessProbeHttpGet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerGroupContainerLivenessProbeHttpGetArrayOutput) Index(i pulumi.IntInput) ContainerGroupContainerLivenessProbeHttpGetOutput {
@@ -886,6 +1031,12 @@ func (i ContainerGroupContainerLivenessProbeTcpSocketArgs) ToContainerGroupConta
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerLivenessProbeTcpSocketOutput)
 }
 
+func (i ContainerGroupContainerLivenessProbeTcpSocketArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainerLivenessProbeTcpSocket] {
+	return pulumix.Output[ContainerGroupContainerLivenessProbeTcpSocket]{
+		OutputState: i.ToContainerGroupContainerLivenessProbeTcpSocketOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerGroupContainerLivenessProbeTcpSocketArrayInput is an input type that accepts ContainerGroupContainerLivenessProbeTcpSocketArray and ContainerGroupContainerLivenessProbeTcpSocketArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupContainerLivenessProbeTcpSocketArrayInput` via:
 //
@@ -911,6 +1062,12 @@ func (i ContainerGroupContainerLivenessProbeTcpSocketArray) ToContainerGroupCont
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerLivenessProbeTcpSocketArrayOutput)
 }
 
+func (i ContainerGroupContainerLivenessProbeTcpSocketArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainerLivenessProbeTcpSocket] {
+	return pulumix.Output[[]ContainerGroupContainerLivenessProbeTcpSocket]{
+		OutputState: i.ToContainerGroupContainerLivenessProbeTcpSocketArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupContainerLivenessProbeTcpSocketOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupContainerLivenessProbeTcpSocketOutput) ElementType() reflect.Type {
@@ -923,6 +1080,12 @@ func (o ContainerGroupContainerLivenessProbeTcpSocketOutput) ToContainerGroupCon
 
 func (o ContainerGroupContainerLivenessProbeTcpSocketOutput) ToContainerGroupContainerLivenessProbeTcpSocketOutputWithContext(ctx context.Context) ContainerGroupContainerLivenessProbeTcpSocketOutput {
 	return o
+}
+
+func (o ContainerGroupContainerLivenessProbeTcpSocketOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainerLivenessProbeTcpSocket] {
+	return pulumix.Output[ContainerGroupContainerLivenessProbeTcpSocket]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The port number. Valid values: `1` to `65535`.
@@ -942,6 +1105,12 @@ func (o ContainerGroupContainerLivenessProbeTcpSocketArrayOutput) ToContainerGro
 
 func (o ContainerGroupContainerLivenessProbeTcpSocketArrayOutput) ToContainerGroupContainerLivenessProbeTcpSocketArrayOutputWithContext(ctx context.Context) ContainerGroupContainerLivenessProbeTcpSocketArrayOutput {
 	return o
+}
+
+func (o ContainerGroupContainerLivenessProbeTcpSocketArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainerLivenessProbeTcpSocket] {
+	return pulumix.Output[[]ContainerGroupContainerLivenessProbeTcpSocket]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerGroupContainerLivenessProbeTcpSocketArrayOutput) Index(i pulumi.IntInput) ContainerGroupContainerLivenessProbeTcpSocketOutput {
@@ -987,6 +1156,12 @@ func (i ContainerGroupContainerPortArgs) ToContainerGroupContainerPortOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerPortOutput)
 }
 
+func (i ContainerGroupContainerPortArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainerPort] {
+	return pulumix.Output[ContainerGroupContainerPort]{
+		OutputState: i.ToContainerGroupContainerPortOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerGroupContainerPortArrayInput is an input type that accepts ContainerGroupContainerPortArray and ContainerGroupContainerPortArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupContainerPortArrayInput` via:
 //
@@ -1012,6 +1187,12 @@ func (i ContainerGroupContainerPortArray) ToContainerGroupContainerPortArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerPortArrayOutput)
 }
 
+func (i ContainerGroupContainerPortArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainerPort] {
+	return pulumix.Output[[]ContainerGroupContainerPort]{
+		OutputState: i.ToContainerGroupContainerPortArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupContainerPortOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupContainerPortOutput) ElementType() reflect.Type {
@@ -1024,6 +1205,12 @@ func (o ContainerGroupContainerPortOutput) ToContainerGroupContainerPortOutput()
 
 func (o ContainerGroupContainerPortOutput) ToContainerGroupContainerPortOutputWithContext(ctx context.Context) ContainerGroupContainerPortOutput {
 	return o
+}
+
+func (o ContainerGroupContainerPortOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainerPort] {
+	return pulumix.Output[ContainerGroupContainerPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The port number. Valid values: `1` to `65535`.
@@ -1048,6 +1235,12 @@ func (o ContainerGroupContainerPortArrayOutput) ToContainerGroupContainerPortArr
 
 func (o ContainerGroupContainerPortArrayOutput) ToContainerGroupContainerPortArrayOutputWithContext(ctx context.Context) ContainerGroupContainerPortArrayOutput {
 	return o
+}
+
+func (o ContainerGroupContainerPortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainerPort] {
+	return pulumix.Output[[]ContainerGroupContainerPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerGroupContainerPortArrayOutput) Index(i pulumi.IntInput) ContainerGroupContainerPortOutput {
@@ -1117,6 +1310,12 @@ func (i ContainerGroupContainerReadinessProbeArgs) ToContainerGroupContainerRead
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerReadinessProbeOutput)
 }
 
+func (i ContainerGroupContainerReadinessProbeArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainerReadinessProbe] {
+	return pulumix.Output[ContainerGroupContainerReadinessProbe]{
+		OutputState: i.ToContainerGroupContainerReadinessProbeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerGroupContainerReadinessProbeArrayInput is an input type that accepts ContainerGroupContainerReadinessProbeArray and ContainerGroupContainerReadinessProbeArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupContainerReadinessProbeArrayInput` via:
 //
@@ -1142,6 +1341,12 @@ func (i ContainerGroupContainerReadinessProbeArray) ToContainerGroupContainerRea
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerReadinessProbeArrayOutput)
 }
 
+func (i ContainerGroupContainerReadinessProbeArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainerReadinessProbe] {
+	return pulumix.Output[[]ContainerGroupContainerReadinessProbe]{
+		OutputState: i.ToContainerGroupContainerReadinessProbeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupContainerReadinessProbeOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupContainerReadinessProbeOutput) ElementType() reflect.Type {
@@ -1154,6 +1359,12 @@ func (o ContainerGroupContainerReadinessProbeOutput) ToContainerGroupContainerRe
 
 func (o ContainerGroupContainerReadinessProbeOutput) ToContainerGroupContainerReadinessProbeOutputWithContext(ctx context.Context) ContainerGroupContainerReadinessProbeOutput {
 	return o
+}
+
+func (o ContainerGroupContainerReadinessProbeOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainerReadinessProbe] {
+	return pulumix.Output[ContainerGroupContainerReadinessProbe]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Health check using command line method. See `exec` below.
@@ -1216,6 +1427,12 @@ func (o ContainerGroupContainerReadinessProbeArrayOutput) ToContainerGroupContai
 	return o
 }
 
+func (o ContainerGroupContainerReadinessProbeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainerReadinessProbe] {
+	return pulumix.Output[[]ContainerGroupContainerReadinessProbe]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ContainerGroupContainerReadinessProbeArrayOutput) Index(i pulumi.IntInput) ContainerGroupContainerReadinessProbeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupContainerReadinessProbe {
 		return vs[0].([]ContainerGroupContainerReadinessProbe)[vs[1].(int)]
@@ -1255,6 +1472,12 @@ func (i ContainerGroupContainerReadinessProbeExecArgs) ToContainerGroupContainer
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerReadinessProbeExecOutput)
 }
 
+func (i ContainerGroupContainerReadinessProbeExecArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainerReadinessProbeExec] {
+	return pulumix.Output[ContainerGroupContainerReadinessProbeExec]{
+		OutputState: i.ToContainerGroupContainerReadinessProbeExecOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerGroupContainerReadinessProbeExecArrayInput is an input type that accepts ContainerGroupContainerReadinessProbeExecArray and ContainerGroupContainerReadinessProbeExecArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupContainerReadinessProbeExecArrayInput` via:
 //
@@ -1280,6 +1503,12 @@ func (i ContainerGroupContainerReadinessProbeExecArray) ToContainerGroupContaine
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerReadinessProbeExecArrayOutput)
 }
 
+func (i ContainerGroupContainerReadinessProbeExecArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainerReadinessProbeExec] {
+	return pulumix.Output[[]ContainerGroupContainerReadinessProbeExec]{
+		OutputState: i.ToContainerGroupContainerReadinessProbeExecArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupContainerReadinessProbeExecOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupContainerReadinessProbeExecOutput) ElementType() reflect.Type {
@@ -1292,6 +1521,12 @@ func (o ContainerGroupContainerReadinessProbeExecOutput) ToContainerGroupContain
 
 func (o ContainerGroupContainerReadinessProbeExecOutput) ToContainerGroupContainerReadinessProbeExecOutputWithContext(ctx context.Context) ContainerGroupContainerReadinessProbeExecOutput {
 	return o
+}
+
+func (o ContainerGroupContainerReadinessProbeExecOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainerReadinessProbeExec] {
+	return pulumix.Output[ContainerGroupContainerReadinessProbeExec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The commands run by the init container.
@@ -1311,6 +1546,12 @@ func (o ContainerGroupContainerReadinessProbeExecArrayOutput) ToContainerGroupCo
 
 func (o ContainerGroupContainerReadinessProbeExecArrayOutput) ToContainerGroupContainerReadinessProbeExecArrayOutputWithContext(ctx context.Context) ContainerGroupContainerReadinessProbeExecArrayOutput {
 	return o
+}
+
+func (o ContainerGroupContainerReadinessProbeExecArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainerReadinessProbeExec] {
+	return pulumix.Output[[]ContainerGroupContainerReadinessProbeExec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerGroupContainerReadinessProbeExecArrayOutput) Index(i pulumi.IntInput) ContainerGroupContainerReadinessProbeExecOutput {
@@ -1360,6 +1601,12 @@ func (i ContainerGroupContainerReadinessProbeHttpGetArgs) ToContainerGroupContai
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerReadinessProbeHttpGetOutput)
 }
 
+func (i ContainerGroupContainerReadinessProbeHttpGetArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainerReadinessProbeHttpGet] {
+	return pulumix.Output[ContainerGroupContainerReadinessProbeHttpGet]{
+		OutputState: i.ToContainerGroupContainerReadinessProbeHttpGetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerGroupContainerReadinessProbeHttpGetArrayInput is an input type that accepts ContainerGroupContainerReadinessProbeHttpGetArray and ContainerGroupContainerReadinessProbeHttpGetArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupContainerReadinessProbeHttpGetArrayInput` via:
 //
@@ -1385,6 +1632,12 @@ func (i ContainerGroupContainerReadinessProbeHttpGetArray) ToContainerGroupConta
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerReadinessProbeHttpGetArrayOutput)
 }
 
+func (i ContainerGroupContainerReadinessProbeHttpGetArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainerReadinessProbeHttpGet] {
+	return pulumix.Output[[]ContainerGroupContainerReadinessProbeHttpGet]{
+		OutputState: i.ToContainerGroupContainerReadinessProbeHttpGetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupContainerReadinessProbeHttpGetOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupContainerReadinessProbeHttpGetOutput) ElementType() reflect.Type {
@@ -1397,6 +1650,12 @@ func (o ContainerGroupContainerReadinessProbeHttpGetOutput) ToContainerGroupCont
 
 func (o ContainerGroupContainerReadinessProbeHttpGetOutput) ToContainerGroupContainerReadinessProbeHttpGetOutputWithContext(ctx context.Context) ContainerGroupContainerReadinessProbeHttpGetOutput {
 	return o
+}
+
+func (o ContainerGroupContainerReadinessProbeHttpGetOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainerReadinessProbeHttpGet] {
+	return pulumix.Output[ContainerGroupContainerReadinessProbeHttpGet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The relative file path.
@@ -1426,6 +1685,12 @@ func (o ContainerGroupContainerReadinessProbeHttpGetArrayOutput) ToContainerGrou
 
 func (o ContainerGroupContainerReadinessProbeHttpGetArrayOutput) ToContainerGroupContainerReadinessProbeHttpGetArrayOutputWithContext(ctx context.Context) ContainerGroupContainerReadinessProbeHttpGetArrayOutput {
 	return o
+}
+
+func (o ContainerGroupContainerReadinessProbeHttpGetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainerReadinessProbeHttpGet] {
+	return pulumix.Output[[]ContainerGroupContainerReadinessProbeHttpGet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerGroupContainerReadinessProbeHttpGetArrayOutput) Index(i pulumi.IntInput) ContainerGroupContainerReadinessProbeHttpGetOutput {
@@ -1467,6 +1732,12 @@ func (i ContainerGroupContainerReadinessProbeTcpSocketArgs) ToContainerGroupCont
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerReadinessProbeTcpSocketOutput)
 }
 
+func (i ContainerGroupContainerReadinessProbeTcpSocketArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainerReadinessProbeTcpSocket] {
+	return pulumix.Output[ContainerGroupContainerReadinessProbeTcpSocket]{
+		OutputState: i.ToContainerGroupContainerReadinessProbeTcpSocketOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerGroupContainerReadinessProbeTcpSocketArrayInput is an input type that accepts ContainerGroupContainerReadinessProbeTcpSocketArray and ContainerGroupContainerReadinessProbeTcpSocketArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupContainerReadinessProbeTcpSocketArrayInput` via:
 //
@@ -1492,6 +1763,12 @@ func (i ContainerGroupContainerReadinessProbeTcpSocketArray) ToContainerGroupCon
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerReadinessProbeTcpSocketArrayOutput)
 }
 
+func (i ContainerGroupContainerReadinessProbeTcpSocketArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainerReadinessProbeTcpSocket] {
+	return pulumix.Output[[]ContainerGroupContainerReadinessProbeTcpSocket]{
+		OutputState: i.ToContainerGroupContainerReadinessProbeTcpSocketArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupContainerReadinessProbeTcpSocketOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupContainerReadinessProbeTcpSocketOutput) ElementType() reflect.Type {
@@ -1504,6 +1781,12 @@ func (o ContainerGroupContainerReadinessProbeTcpSocketOutput) ToContainerGroupCo
 
 func (o ContainerGroupContainerReadinessProbeTcpSocketOutput) ToContainerGroupContainerReadinessProbeTcpSocketOutputWithContext(ctx context.Context) ContainerGroupContainerReadinessProbeTcpSocketOutput {
 	return o
+}
+
+func (o ContainerGroupContainerReadinessProbeTcpSocketOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainerReadinessProbeTcpSocket] {
+	return pulumix.Output[ContainerGroupContainerReadinessProbeTcpSocket]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The port number. Valid values: `1` to `65535`.
@@ -1523,6 +1806,12 @@ func (o ContainerGroupContainerReadinessProbeTcpSocketArrayOutput) ToContainerGr
 
 func (o ContainerGroupContainerReadinessProbeTcpSocketArrayOutput) ToContainerGroupContainerReadinessProbeTcpSocketArrayOutputWithContext(ctx context.Context) ContainerGroupContainerReadinessProbeTcpSocketArrayOutput {
 	return o
+}
+
+func (o ContainerGroupContainerReadinessProbeTcpSocketArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainerReadinessProbeTcpSocket] {
+	return pulumix.Output[[]ContainerGroupContainerReadinessProbeTcpSocket]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerGroupContainerReadinessProbeTcpSocketArrayOutput) Index(i pulumi.IntInput) ContainerGroupContainerReadinessProbeTcpSocketOutput {
@@ -1572,6 +1861,12 @@ func (i ContainerGroupContainerVolumeMountArgs) ToContainerGroupContainerVolumeM
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerVolumeMountOutput)
 }
 
+func (i ContainerGroupContainerVolumeMountArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainerVolumeMount] {
+	return pulumix.Output[ContainerGroupContainerVolumeMount]{
+		OutputState: i.ToContainerGroupContainerVolumeMountOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerGroupContainerVolumeMountArrayInput is an input type that accepts ContainerGroupContainerVolumeMountArray and ContainerGroupContainerVolumeMountArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupContainerVolumeMountArrayInput` via:
 //
@@ -1597,6 +1892,12 @@ func (i ContainerGroupContainerVolumeMountArray) ToContainerGroupContainerVolume
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerVolumeMountArrayOutput)
 }
 
+func (i ContainerGroupContainerVolumeMountArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainerVolumeMount] {
+	return pulumix.Output[[]ContainerGroupContainerVolumeMount]{
+		OutputState: i.ToContainerGroupContainerVolumeMountArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupContainerVolumeMountOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupContainerVolumeMountOutput) ElementType() reflect.Type {
@@ -1609,6 +1910,12 @@ func (o ContainerGroupContainerVolumeMountOutput) ToContainerGroupContainerVolum
 
 func (o ContainerGroupContainerVolumeMountOutput) ToContainerGroupContainerVolumeMountOutputWithContext(ctx context.Context) ContainerGroupContainerVolumeMountOutput {
 	return o
+}
+
+func (o ContainerGroupContainerVolumeMountOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupContainerVolumeMount] {
+	return pulumix.Output[ContainerGroupContainerVolumeMount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
@@ -1638,6 +1945,12 @@ func (o ContainerGroupContainerVolumeMountArrayOutput) ToContainerGroupContainer
 
 func (o ContainerGroupContainerVolumeMountArrayOutput) ToContainerGroupContainerVolumeMountArrayOutputWithContext(ctx context.Context) ContainerGroupContainerVolumeMountArrayOutput {
 	return o
+}
+
+func (o ContainerGroupContainerVolumeMountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupContainerVolumeMount] {
+	return pulumix.Output[[]ContainerGroupContainerVolumeMount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerGroupContainerVolumeMountArrayOutput) Index(i pulumi.IntInput) ContainerGroupContainerVolumeMountOutput {
@@ -1687,6 +2000,12 @@ func (i ContainerGroupDnsConfigArgs) ToContainerGroupDnsConfigOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupDnsConfigOutput)
 }
 
+func (i ContainerGroupDnsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupDnsConfig] {
+	return pulumix.Output[ContainerGroupDnsConfig]{
+		OutputState: i.ToContainerGroupDnsConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ContainerGroupDnsConfigArgs) ToContainerGroupDnsConfigPtrOutput() ContainerGroupDnsConfigPtrOutput {
 	return i.ToContainerGroupDnsConfigPtrOutputWithContext(context.Background())
 }
@@ -1728,6 +2047,12 @@ func (i *containerGroupDnsConfigPtrType) ToContainerGroupDnsConfigPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupDnsConfigPtrOutput)
 }
 
+func (i *containerGroupDnsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerGroupDnsConfig] {
+	return pulumix.Output[*ContainerGroupDnsConfig]{
+		OutputState: i.ToContainerGroupDnsConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupDnsConfigOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupDnsConfigOutput) ElementType() reflect.Type {
@@ -1750,6 +2075,12 @@ func (o ContainerGroupDnsConfigOutput) ToContainerGroupDnsConfigPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerGroupDnsConfig) *ContainerGroupDnsConfig {
 		return &v
 	}).(ContainerGroupDnsConfigPtrOutput)
+}
+
+func (o ContainerGroupDnsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupDnsConfig] {
+	return pulumix.Output[ContainerGroupDnsConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of DNS server IP addresses.
@@ -1779,6 +2110,12 @@ func (o ContainerGroupDnsConfigPtrOutput) ToContainerGroupDnsConfigPtrOutput() C
 
 func (o ContainerGroupDnsConfigPtrOutput) ToContainerGroupDnsConfigPtrOutputWithContext(ctx context.Context) ContainerGroupDnsConfigPtrOutput {
 	return o
+}
+
+func (o ContainerGroupDnsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerGroupDnsConfig] {
+	return pulumix.Output[*ContainerGroupDnsConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerGroupDnsConfigPtrOutput) Elem() ContainerGroupDnsConfigOutput {
@@ -1858,6 +2195,12 @@ func (i ContainerGroupDnsConfigOptionArgs) ToContainerGroupDnsConfigOptionOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupDnsConfigOptionOutput)
 }
 
+func (i ContainerGroupDnsConfigOptionArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupDnsConfigOption] {
+	return pulumix.Output[ContainerGroupDnsConfigOption]{
+		OutputState: i.ToContainerGroupDnsConfigOptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerGroupDnsConfigOptionArrayInput is an input type that accepts ContainerGroupDnsConfigOptionArray and ContainerGroupDnsConfigOptionArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupDnsConfigOptionArrayInput` via:
 //
@@ -1883,6 +2226,12 @@ func (i ContainerGroupDnsConfigOptionArray) ToContainerGroupDnsConfigOptionArray
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupDnsConfigOptionArrayOutput)
 }
 
+func (i ContainerGroupDnsConfigOptionArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupDnsConfigOption] {
+	return pulumix.Output[[]ContainerGroupDnsConfigOption]{
+		OutputState: i.ToContainerGroupDnsConfigOptionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupDnsConfigOptionOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupDnsConfigOptionOutput) ElementType() reflect.Type {
@@ -1895,6 +2244,12 @@ func (o ContainerGroupDnsConfigOptionOutput) ToContainerGroupDnsConfigOptionOutp
 
 func (o ContainerGroupDnsConfigOptionOutput) ToContainerGroupDnsConfigOptionOutputWithContext(ctx context.Context) ContainerGroupDnsConfigOptionOutput {
 	return o
+}
+
+func (o ContainerGroupDnsConfigOptionOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupDnsConfigOption] {
+	return pulumix.Output[ContainerGroupDnsConfigOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the volume.
@@ -1919,6 +2274,12 @@ func (o ContainerGroupDnsConfigOptionArrayOutput) ToContainerGroupDnsConfigOptio
 
 func (o ContainerGroupDnsConfigOptionArrayOutput) ToContainerGroupDnsConfigOptionArrayOutputWithContext(ctx context.Context) ContainerGroupDnsConfigOptionArrayOutput {
 	return o
+}
+
+func (o ContainerGroupDnsConfigOptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupDnsConfigOption] {
+	return pulumix.Output[[]ContainerGroupDnsConfigOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerGroupDnsConfigOptionArrayOutput) Index(i pulumi.IntInput) ContainerGroupDnsConfigOptionOutput {
@@ -1958,6 +2319,12 @@ func (i ContainerGroupEciSecurityContextArgs) ToContainerGroupEciSecurityContext
 
 func (i ContainerGroupEciSecurityContextArgs) ToContainerGroupEciSecurityContextOutputWithContext(ctx context.Context) ContainerGroupEciSecurityContextOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupEciSecurityContextOutput)
+}
+
+func (i ContainerGroupEciSecurityContextArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupEciSecurityContext] {
+	return pulumix.Output[ContainerGroupEciSecurityContext]{
+		OutputState: i.ToContainerGroupEciSecurityContextOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i ContainerGroupEciSecurityContextArgs) ToContainerGroupEciSecurityContextPtrOutput() ContainerGroupEciSecurityContextPtrOutput {
@@ -2001,6 +2368,12 @@ func (i *containerGroupEciSecurityContextPtrType) ToContainerGroupEciSecurityCon
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupEciSecurityContextPtrOutput)
 }
 
+func (i *containerGroupEciSecurityContextPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerGroupEciSecurityContext] {
+	return pulumix.Output[*ContainerGroupEciSecurityContext]{
+		OutputState: i.ToContainerGroupEciSecurityContextPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupEciSecurityContextOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupEciSecurityContextOutput) ElementType() reflect.Type {
@@ -2025,6 +2398,12 @@ func (o ContainerGroupEciSecurityContextOutput) ToContainerGroupEciSecurityConte
 	}).(ContainerGroupEciSecurityContextPtrOutput)
 }
 
+func (o ContainerGroupEciSecurityContextOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupEciSecurityContext] {
+	return pulumix.Output[ContainerGroupEciSecurityContext]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctls` below.
 func (o ContainerGroupEciSecurityContextOutput) Sysctls() ContainerGroupEciSecurityContextSysctlArrayOutput {
 	return o.ApplyT(func(v ContainerGroupEciSecurityContext) []ContainerGroupEciSecurityContextSysctl { return v.Sysctls }).(ContainerGroupEciSecurityContextSysctlArrayOutput)
@@ -2042,6 +2421,12 @@ func (o ContainerGroupEciSecurityContextPtrOutput) ToContainerGroupEciSecurityCo
 
 func (o ContainerGroupEciSecurityContextPtrOutput) ToContainerGroupEciSecurityContextPtrOutputWithContext(ctx context.Context) ContainerGroupEciSecurityContextPtrOutput {
 	return o
+}
+
+func (o ContainerGroupEciSecurityContextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerGroupEciSecurityContext] {
+	return pulumix.Output[*ContainerGroupEciSecurityContext]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerGroupEciSecurityContextPtrOutput) Elem() ContainerGroupEciSecurityContextOutput {
@@ -2101,6 +2486,12 @@ func (i ContainerGroupEciSecurityContextSysctlArgs) ToContainerGroupEciSecurityC
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupEciSecurityContextSysctlOutput)
 }
 
+func (i ContainerGroupEciSecurityContextSysctlArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupEciSecurityContextSysctl] {
+	return pulumix.Output[ContainerGroupEciSecurityContextSysctl]{
+		OutputState: i.ToContainerGroupEciSecurityContextSysctlOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerGroupEciSecurityContextSysctlArrayInput is an input type that accepts ContainerGroupEciSecurityContextSysctlArray and ContainerGroupEciSecurityContextSysctlArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupEciSecurityContextSysctlArrayInput` via:
 //
@@ -2126,6 +2517,12 @@ func (i ContainerGroupEciSecurityContextSysctlArray) ToContainerGroupEciSecurity
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupEciSecurityContextSysctlArrayOutput)
 }
 
+func (i ContainerGroupEciSecurityContextSysctlArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupEciSecurityContextSysctl] {
+	return pulumix.Output[[]ContainerGroupEciSecurityContextSysctl]{
+		OutputState: i.ToContainerGroupEciSecurityContextSysctlArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupEciSecurityContextSysctlOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupEciSecurityContextSysctlOutput) ElementType() reflect.Type {
@@ -2138,6 +2535,12 @@ func (o ContainerGroupEciSecurityContextSysctlOutput) ToContainerGroupEciSecurit
 
 func (o ContainerGroupEciSecurityContextSysctlOutput) ToContainerGroupEciSecurityContextSysctlOutputWithContext(ctx context.Context) ContainerGroupEciSecurityContextSysctlOutput {
 	return o
+}
+
+func (o ContainerGroupEciSecurityContextSysctlOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupEciSecurityContextSysctl] {
+	return pulumix.Output[ContainerGroupEciSecurityContextSysctl]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the volume.
@@ -2162,6 +2565,12 @@ func (o ContainerGroupEciSecurityContextSysctlArrayOutput) ToContainerGroupEciSe
 
 func (o ContainerGroupEciSecurityContextSysctlArrayOutput) ToContainerGroupEciSecurityContextSysctlArrayOutputWithContext(ctx context.Context) ContainerGroupEciSecurityContextSysctlArrayOutput {
 	return o
+}
+
+func (o ContainerGroupEciSecurityContextSysctlArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupEciSecurityContextSysctl] {
+	return pulumix.Output[[]ContainerGroupEciSecurityContextSysctl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerGroupEciSecurityContextSysctlArrayOutput) Index(i pulumi.IntInput) ContainerGroupEciSecurityContextSysctlOutput {
@@ -2207,6 +2616,12 @@ func (i ContainerGroupHostAliasArgs) ToContainerGroupHostAliasOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupHostAliasOutput)
 }
 
+func (i ContainerGroupHostAliasArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupHostAlias] {
+	return pulumix.Output[ContainerGroupHostAlias]{
+		OutputState: i.ToContainerGroupHostAliasOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerGroupHostAliasArrayInput is an input type that accepts ContainerGroupHostAliasArray and ContainerGroupHostAliasArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupHostAliasArrayInput` via:
 //
@@ -2232,6 +2647,12 @@ func (i ContainerGroupHostAliasArray) ToContainerGroupHostAliasArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupHostAliasArrayOutput)
 }
 
+func (i ContainerGroupHostAliasArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupHostAlias] {
+	return pulumix.Output[[]ContainerGroupHostAlias]{
+		OutputState: i.ToContainerGroupHostAliasArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupHostAliasOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupHostAliasOutput) ElementType() reflect.Type {
@@ -2244,6 +2665,12 @@ func (o ContainerGroupHostAliasOutput) ToContainerGroupHostAliasOutput() Contain
 
 func (o ContainerGroupHostAliasOutput) ToContainerGroupHostAliasOutputWithContext(ctx context.Context) ContainerGroupHostAliasOutput {
 	return o
+}
+
+func (o ContainerGroupHostAliasOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupHostAlias] {
+	return pulumix.Output[ContainerGroupHostAlias]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The information about the host.
@@ -2268,6 +2695,12 @@ func (o ContainerGroupHostAliasArrayOutput) ToContainerGroupHostAliasArrayOutput
 
 func (o ContainerGroupHostAliasArrayOutput) ToContainerGroupHostAliasArrayOutputWithContext(ctx context.Context) ContainerGroupHostAliasArrayOutput {
 	return o
+}
+
+func (o ContainerGroupHostAliasArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupHostAlias] {
+	return pulumix.Output[[]ContainerGroupHostAlias]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerGroupHostAliasArrayOutput) Index(i pulumi.IntInput) ContainerGroupHostAliasOutput {
@@ -2317,6 +2750,12 @@ func (i ContainerGroupImageRegistryCredentialArgs) ToContainerGroupImageRegistry
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupImageRegistryCredentialOutput)
 }
 
+func (i ContainerGroupImageRegistryCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupImageRegistryCredential] {
+	return pulumix.Output[ContainerGroupImageRegistryCredential]{
+		OutputState: i.ToContainerGroupImageRegistryCredentialOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerGroupImageRegistryCredentialArrayInput is an input type that accepts ContainerGroupImageRegistryCredentialArray and ContainerGroupImageRegistryCredentialArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupImageRegistryCredentialArrayInput` via:
 //
@@ -2342,6 +2781,12 @@ func (i ContainerGroupImageRegistryCredentialArray) ToContainerGroupImageRegistr
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupImageRegistryCredentialArrayOutput)
 }
 
+func (i ContainerGroupImageRegistryCredentialArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupImageRegistryCredential] {
+	return pulumix.Output[[]ContainerGroupImageRegistryCredential]{
+		OutputState: i.ToContainerGroupImageRegistryCredentialArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupImageRegistryCredentialOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupImageRegistryCredentialOutput) ElementType() reflect.Type {
@@ -2354,6 +2799,12 @@ func (o ContainerGroupImageRegistryCredentialOutput) ToContainerGroupImageRegist
 
 func (o ContainerGroupImageRegistryCredentialOutput) ToContainerGroupImageRegistryCredentialOutputWithContext(ctx context.Context) ContainerGroupImageRegistryCredentialOutput {
 	return o
+}
+
+func (o ContainerGroupImageRegistryCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupImageRegistryCredential] {
+	return pulumix.Output[ContainerGroupImageRegistryCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The password used to log on to the image repository. It is required when `imageRegistryCredential` is configured.
@@ -2385,6 +2836,12 @@ func (o ContainerGroupImageRegistryCredentialArrayOutput) ToContainerGroupImageR
 	return o
 }
 
+func (o ContainerGroupImageRegistryCredentialArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupImageRegistryCredential] {
+	return pulumix.Output[[]ContainerGroupImageRegistryCredential]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ContainerGroupImageRegistryCredentialArrayOutput) Index(i pulumi.IntInput) ContainerGroupImageRegistryCredentialOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupImageRegistryCredential {
 		return vs[0].([]ContainerGroupImageRegistryCredential)[vs[1].(int)]
@@ -2412,9 +2869,9 @@ type ContainerGroupInitContainer struct {
 	Name *string `pulumi:"name"`
 	// The structure of port. See `ports` below.
 	Ports []ContainerGroupInitContainerPort `pulumi:"ports"`
-	// (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+	// Indicates whether the container passed the readiness probe.
 	Ready *bool `pulumi:"ready"`
-	// (Available since v1.208.0) The number of times that the container restarted.
+	// The number of times that the container restarted.
 	RestartCount *int `pulumi:"restartCount"`
 	// The structure of volumeMounts. See `volumeMounts` below.
 	VolumeMounts []ContainerGroupInitContainerVolumeMount `pulumi:"volumeMounts"`
@@ -2454,9 +2911,9 @@ type ContainerGroupInitContainerArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The structure of port. See `ports` below.
 	Ports ContainerGroupInitContainerPortArrayInput `pulumi:"ports"`
-	// (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+	// Indicates whether the container passed the readiness probe.
 	Ready pulumi.BoolPtrInput `pulumi:"ready"`
-	// (Available since v1.208.0) The number of times that the container restarted.
+	// The number of times that the container restarted.
 	RestartCount pulumi.IntPtrInput `pulumi:"restartCount"`
 	// The structure of volumeMounts. See `volumeMounts` below.
 	VolumeMounts ContainerGroupInitContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
@@ -2474,6 +2931,12 @@ func (i ContainerGroupInitContainerArgs) ToContainerGroupInitContainerOutput() C
 
 func (i ContainerGroupInitContainerArgs) ToContainerGroupInitContainerOutputWithContext(ctx context.Context) ContainerGroupInitContainerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupInitContainerOutput)
+}
+
+func (i ContainerGroupInitContainerArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupInitContainer] {
+	return pulumix.Output[ContainerGroupInitContainer]{
+		OutputState: i.ToContainerGroupInitContainerOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ContainerGroupInitContainerArrayInput is an input type that accepts ContainerGroupInitContainerArray and ContainerGroupInitContainerArrayOutput values.
@@ -2501,6 +2964,12 @@ func (i ContainerGroupInitContainerArray) ToContainerGroupInitContainerArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupInitContainerArrayOutput)
 }
 
+func (i ContainerGroupInitContainerArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupInitContainer] {
+	return pulumix.Output[[]ContainerGroupInitContainer]{
+		OutputState: i.ToContainerGroupInitContainerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupInitContainerOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupInitContainerOutput) ElementType() reflect.Type {
@@ -2513,6 +2982,12 @@ func (o ContainerGroupInitContainerOutput) ToContainerGroupInitContainerOutput()
 
 func (o ContainerGroupInitContainerOutput) ToContainerGroupInitContainerOutputWithContext(ctx context.Context) ContainerGroupInitContainerOutput {
 	return o
+}
+
+func (o ContainerGroupInitContainerOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupInitContainer] {
+	return pulumix.Output[ContainerGroupInitContainer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The arguments passed to the commands.
@@ -2567,12 +3042,12 @@ func (o ContainerGroupInitContainerOutput) Ports() ContainerGroupInitContainerPo
 	return o.ApplyT(func(v ContainerGroupInitContainer) []ContainerGroupInitContainerPort { return v.Ports }).(ContainerGroupInitContainerPortArrayOutput)
 }
 
-// (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+// Indicates whether the container passed the readiness probe.
 func (o ContainerGroupInitContainerOutput) Ready() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainer) *bool { return v.Ready }).(pulumi.BoolPtrOutput)
 }
 
-// (Available since v1.208.0) The number of times that the container restarted.
+// The number of times that the container restarted.
 func (o ContainerGroupInitContainerOutput) RestartCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainer) *int { return v.RestartCount }).(pulumi.IntPtrOutput)
 }
@@ -2599,6 +3074,12 @@ func (o ContainerGroupInitContainerArrayOutput) ToContainerGroupInitContainerArr
 
 func (o ContainerGroupInitContainerArrayOutput) ToContainerGroupInitContainerArrayOutputWithContext(ctx context.Context) ContainerGroupInitContainerArrayOutput {
 	return o
+}
+
+func (o ContainerGroupInitContainerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupInitContainer] {
+	return pulumix.Output[[]ContainerGroupInitContainer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerGroupInitContainerArrayOutput) Index(i pulumi.IntInput) ContainerGroupInitContainerOutput {
@@ -2644,6 +3125,12 @@ func (i ContainerGroupInitContainerEnvironmentVarArgs) ToContainerGroupInitConta
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupInitContainerEnvironmentVarOutput)
 }
 
+func (i ContainerGroupInitContainerEnvironmentVarArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupInitContainerEnvironmentVar] {
+	return pulumix.Output[ContainerGroupInitContainerEnvironmentVar]{
+		OutputState: i.ToContainerGroupInitContainerEnvironmentVarOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerGroupInitContainerEnvironmentVarArrayInput is an input type that accepts ContainerGroupInitContainerEnvironmentVarArray and ContainerGroupInitContainerEnvironmentVarArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupInitContainerEnvironmentVarArrayInput` via:
 //
@@ -2669,6 +3156,12 @@ func (i ContainerGroupInitContainerEnvironmentVarArray) ToContainerGroupInitCont
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupInitContainerEnvironmentVarArrayOutput)
 }
 
+func (i ContainerGroupInitContainerEnvironmentVarArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupInitContainerEnvironmentVar] {
+	return pulumix.Output[[]ContainerGroupInitContainerEnvironmentVar]{
+		OutputState: i.ToContainerGroupInitContainerEnvironmentVarArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupInitContainerEnvironmentVarOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupInitContainerEnvironmentVarOutput) ElementType() reflect.Type {
@@ -2681,6 +3174,12 @@ func (o ContainerGroupInitContainerEnvironmentVarOutput) ToContainerGroupInitCon
 
 func (o ContainerGroupInitContainerEnvironmentVarOutput) ToContainerGroupInitContainerEnvironmentVarOutputWithContext(ctx context.Context) ContainerGroupInitContainerEnvironmentVarOutput {
 	return o
+}
+
+func (o ContainerGroupInitContainerEnvironmentVarOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupInitContainerEnvironmentVar] {
+	return pulumix.Output[ContainerGroupInitContainerEnvironmentVar]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
@@ -2705,6 +3204,12 @@ func (o ContainerGroupInitContainerEnvironmentVarArrayOutput) ToContainerGroupIn
 
 func (o ContainerGroupInitContainerEnvironmentVarArrayOutput) ToContainerGroupInitContainerEnvironmentVarArrayOutputWithContext(ctx context.Context) ContainerGroupInitContainerEnvironmentVarArrayOutput {
 	return o
+}
+
+func (o ContainerGroupInitContainerEnvironmentVarArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupInitContainerEnvironmentVar] {
+	return pulumix.Output[[]ContainerGroupInitContainerEnvironmentVar]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerGroupInitContainerEnvironmentVarArrayOutput) Index(i pulumi.IntInput) ContainerGroupInitContainerEnvironmentVarOutput {
@@ -2750,6 +3255,12 @@ func (i ContainerGroupInitContainerPortArgs) ToContainerGroupInitContainerPortOu
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupInitContainerPortOutput)
 }
 
+func (i ContainerGroupInitContainerPortArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupInitContainerPort] {
+	return pulumix.Output[ContainerGroupInitContainerPort]{
+		OutputState: i.ToContainerGroupInitContainerPortOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerGroupInitContainerPortArrayInput is an input type that accepts ContainerGroupInitContainerPortArray and ContainerGroupInitContainerPortArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupInitContainerPortArrayInput` via:
 //
@@ -2775,6 +3286,12 @@ func (i ContainerGroupInitContainerPortArray) ToContainerGroupInitContainerPortA
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupInitContainerPortArrayOutput)
 }
 
+func (i ContainerGroupInitContainerPortArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupInitContainerPort] {
+	return pulumix.Output[[]ContainerGroupInitContainerPort]{
+		OutputState: i.ToContainerGroupInitContainerPortArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupInitContainerPortOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupInitContainerPortOutput) ElementType() reflect.Type {
@@ -2787,6 +3304,12 @@ func (o ContainerGroupInitContainerPortOutput) ToContainerGroupInitContainerPort
 
 func (o ContainerGroupInitContainerPortOutput) ToContainerGroupInitContainerPortOutputWithContext(ctx context.Context) ContainerGroupInitContainerPortOutput {
 	return o
+}
+
+func (o ContainerGroupInitContainerPortOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupInitContainerPort] {
+	return pulumix.Output[ContainerGroupInitContainerPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The port number. Valid values: `1` to `65535`.
@@ -2811,6 +3334,12 @@ func (o ContainerGroupInitContainerPortArrayOutput) ToContainerGroupInitContaine
 
 func (o ContainerGroupInitContainerPortArrayOutput) ToContainerGroupInitContainerPortArrayOutputWithContext(ctx context.Context) ContainerGroupInitContainerPortArrayOutput {
 	return o
+}
+
+func (o ContainerGroupInitContainerPortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupInitContainerPort] {
+	return pulumix.Output[[]ContainerGroupInitContainerPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerGroupInitContainerPortArrayOutput) Index(i pulumi.IntInput) ContainerGroupInitContainerPortOutput {
@@ -2860,6 +3389,12 @@ func (i ContainerGroupInitContainerVolumeMountArgs) ToContainerGroupInitContaine
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupInitContainerVolumeMountOutput)
 }
 
+func (i ContainerGroupInitContainerVolumeMountArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupInitContainerVolumeMount] {
+	return pulumix.Output[ContainerGroupInitContainerVolumeMount]{
+		OutputState: i.ToContainerGroupInitContainerVolumeMountOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerGroupInitContainerVolumeMountArrayInput is an input type that accepts ContainerGroupInitContainerVolumeMountArray and ContainerGroupInitContainerVolumeMountArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupInitContainerVolumeMountArrayInput` via:
 //
@@ -2885,6 +3420,12 @@ func (i ContainerGroupInitContainerVolumeMountArray) ToContainerGroupInitContain
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupInitContainerVolumeMountArrayOutput)
 }
 
+func (i ContainerGroupInitContainerVolumeMountArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupInitContainerVolumeMount] {
+	return pulumix.Output[[]ContainerGroupInitContainerVolumeMount]{
+		OutputState: i.ToContainerGroupInitContainerVolumeMountArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupInitContainerVolumeMountOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupInitContainerVolumeMountOutput) ElementType() reflect.Type {
@@ -2897,6 +3438,12 @@ func (o ContainerGroupInitContainerVolumeMountOutput) ToContainerGroupInitContai
 
 func (o ContainerGroupInitContainerVolumeMountOutput) ToContainerGroupInitContainerVolumeMountOutputWithContext(ctx context.Context) ContainerGroupInitContainerVolumeMountOutput {
 	return o
+}
+
+func (o ContainerGroupInitContainerVolumeMountOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupInitContainerVolumeMount] {
+	return pulumix.Output[ContainerGroupInitContainerVolumeMount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
@@ -2926,6 +3473,12 @@ func (o ContainerGroupInitContainerVolumeMountArrayOutput) ToContainerGroupInitC
 
 func (o ContainerGroupInitContainerVolumeMountArrayOutput) ToContainerGroupInitContainerVolumeMountArrayOutputWithContext(ctx context.Context) ContainerGroupInitContainerVolumeMountArrayOutput {
 	return o
+}
+
+func (o ContainerGroupInitContainerVolumeMountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupInitContainerVolumeMount] {
+	return pulumix.Output[[]ContainerGroupInitContainerVolumeMount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerGroupInitContainerVolumeMountArrayOutput) Index(i pulumi.IntInput) ContainerGroupInitContainerVolumeMountOutput {
@@ -3009,6 +3562,12 @@ func (i ContainerGroupVolumeArgs) ToContainerGroupVolumeOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupVolumeOutput)
 }
 
+func (i ContainerGroupVolumeArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupVolume] {
+	return pulumix.Output[ContainerGroupVolume]{
+		OutputState: i.ToContainerGroupVolumeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerGroupVolumeArrayInput is an input type that accepts ContainerGroupVolumeArray and ContainerGroupVolumeArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupVolumeArrayInput` via:
 //
@@ -3034,6 +3593,12 @@ func (i ContainerGroupVolumeArray) ToContainerGroupVolumeArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupVolumeArrayOutput)
 }
 
+func (i ContainerGroupVolumeArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupVolume] {
+	return pulumix.Output[[]ContainerGroupVolume]{
+		OutputState: i.ToContainerGroupVolumeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupVolumeOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupVolumeOutput) ElementType() reflect.Type {
@@ -3046,6 +3611,12 @@ func (o ContainerGroupVolumeOutput) ToContainerGroupVolumeOutput() ContainerGrou
 
 func (o ContainerGroupVolumeOutput) ToContainerGroupVolumeOutputWithContext(ctx context.Context) ContainerGroupVolumeOutput {
 	return o
+}
+
+func (o ContainerGroupVolumeOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupVolume] {
+	return pulumix.Output[ContainerGroupVolume]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The paths of the ConfigFile volume. See `configFileVolumeConfigFileToPaths` below.
@@ -3120,6 +3691,12 @@ func (o ContainerGroupVolumeArrayOutput) ToContainerGroupVolumeArrayOutputWithCo
 	return o
 }
 
+func (o ContainerGroupVolumeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupVolume] {
+	return pulumix.Output[[]ContainerGroupVolume]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ContainerGroupVolumeArrayOutput) Index(i pulumi.IntInput) ContainerGroupVolumeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupVolume {
 		return vs[0].([]ContainerGroupVolume)[vs[1].(int)]
@@ -3163,6 +3740,12 @@ func (i ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs) ToContainerGro
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupVolumeConfigFileVolumeConfigFileToPathOutput)
 }
 
+func (i ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupVolumeConfigFileVolumeConfigFileToPath] {
+	return pulumix.Output[ContainerGroupVolumeConfigFileVolumeConfigFileToPath]{
+		OutputState: i.ToContainerGroupVolumeConfigFileVolumeConfigFileToPathOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerGroupVolumeConfigFileVolumeConfigFileToPathArrayInput is an input type that accepts ContainerGroupVolumeConfigFileVolumeConfigFileToPathArray and ContainerGroupVolumeConfigFileVolumeConfigFileToPathArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupVolumeConfigFileVolumeConfigFileToPathArrayInput` via:
 //
@@ -3188,6 +3771,12 @@ func (i ContainerGroupVolumeConfigFileVolumeConfigFileToPathArray) ToContainerGr
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupVolumeConfigFileVolumeConfigFileToPathArrayOutput)
 }
 
+func (i ContainerGroupVolumeConfigFileVolumeConfigFileToPathArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupVolumeConfigFileVolumeConfigFileToPath] {
+	return pulumix.Output[[]ContainerGroupVolumeConfigFileVolumeConfigFileToPath]{
+		OutputState: i.ToContainerGroupVolumeConfigFileVolumeConfigFileToPathArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupVolumeConfigFileVolumeConfigFileToPathOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupVolumeConfigFileVolumeConfigFileToPathOutput) ElementType() reflect.Type {
@@ -3200,6 +3789,12 @@ func (o ContainerGroupVolumeConfigFileVolumeConfigFileToPathOutput) ToContainerG
 
 func (o ContainerGroupVolumeConfigFileVolumeConfigFileToPathOutput) ToContainerGroupVolumeConfigFileVolumeConfigFileToPathOutputWithContext(ctx context.Context) ContainerGroupVolumeConfigFileVolumeConfigFileToPathOutput {
 	return o
+}
+
+func (o ContainerGroupVolumeConfigFileVolumeConfigFileToPathOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupVolumeConfigFileVolumeConfigFileToPath] {
+	return pulumix.Output[ContainerGroupVolumeConfigFileVolumeConfigFileToPath]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The content of the configuration file. Maximum size: 32 KB.
@@ -3224,6 +3819,12 @@ func (o ContainerGroupVolumeConfigFileVolumeConfigFileToPathArrayOutput) ToConta
 
 func (o ContainerGroupVolumeConfigFileVolumeConfigFileToPathArrayOutput) ToContainerGroupVolumeConfigFileVolumeConfigFileToPathArrayOutputWithContext(ctx context.Context) ContainerGroupVolumeConfigFileVolumeConfigFileToPathArrayOutput {
 	return o
+}
+
+func (o ContainerGroupVolumeConfigFileVolumeConfigFileToPathArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupVolumeConfigFileVolumeConfigFileToPath] {
+	return pulumix.Output[[]ContainerGroupVolumeConfigFileVolumeConfigFileToPath]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerGroupVolumeConfigFileVolumeConfigFileToPathArrayOutput) Index(i pulumi.IntInput) ContainerGroupVolumeConfigFileVolumeConfigFileToPathOutput {
@@ -3273,6 +3874,12 @@ func (i ImageCacheImageRegistryCredentialArgs) ToImageCacheImageRegistryCredenti
 	return pulumi.ToOutputWithContext(ctx, i).(ImageCacheImageRegistryCredentialOutput)
 }
 
+func (i ImageCacheImageRegistryCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[ImageCacheImageRegistryCredential] {
+	return pulumix.Output[ImageCacheImageRegistryCredential]{
+		OutputState: i.ToImageCacheImageRegistryCredentialOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ImageCacheImageRegistryCredentialArrayInput is an input type that accepts ImageCacheImageRegistryCredentialArray and ImageCacheImageRegistryCredentialArrayOutput values.
 // You can construct a concrete instance of `ImageCacheImageRegistryCredentialArrayInput` via:
 //
@@ -3298,6 +3905,12 @@ func (i ImageCacheImageRegistryCredentialArray) ToImageCacheImageRegistryCredent
 	return pulumi.ToOutputWithContext(ctx, i).(ImageCacheImageRegistryCredentialArrayOutput)
 }
 
+func (i ImageCacheImageRegistryCredentialArray) ToOutput(ctx context.Context) pulumix.Output[[]ImageCacheImageRegistryCredential] {
+	return pulumix.Output[[]ImageCacheImageRegistryCredential]{
+		OutputState: i.ToImageCacheImageRegistryCredentialArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ImageCacheImageRegistryCredentialOutput struct{ *pulumi.OutputState }
 
 func (ImageCacheImageRegistryCredentialOutput) ElementType() reflect.Type {
@@ -3310,6 +3923,12 @@ func (o ImageCacheImageRegistryCredentialOutput) ToImageCacheImageRegistryCreden
 
 func (o ImageCacheImageRegistryCredentialOutput) ToImageCacheImageRegistryCredentialOutputWithContext(ctx context.Context) ImageCacheImageRegistryCredentialOutput {
 	return o
+}
+
+func (o ImageCacheImageRegistryCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[ImageCacheImageRegistryCredential] {
+	return pulumix.Output[ImageCacheImageRegistryCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The password of the Image Registry.
@@ -3339,6 +3958,12 @@ func (o ImageCacheImageRegistryCredentialArrayOutput) ToImageCacheImageRegistryC
 
 func (o ImageCacheImageRegistryCredentialArrayOutput) ToImageCacheImageRegistryCredentialArrayOutputWithContext(ctx context.Context) ImageCacheImageRegistryCredentialArrayOutput {
 	return o
+}
+
+func (o ImageCacheImageRegistryCredentialArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ImageCacheImageRegistryCredential] {
+	return pulumix.Output[[]ImageCacheImageRegistryCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ImageCacheImageRegistryCredentialArrayOutput) Index(i pulumi.IntInput) ImageCacheImageRegistryCredentialOutput {
@@ -3382,6 +4007,12 @@ func (i OpenApiImageCacheImageRegistryCredentialArgs) ToOpenApiImageCacheImageRe
 	return pulumi.ToOutputWithContext(ctx, i).(OpenApiImageCacheImageRegistryCredentialOutput)
 }
 
+func (i OpenApiImageCacheImageRegistryCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[OpenApiImageCacheImageRegistryCredential] {
+	return pulumix.Output[OpenApiImageCacheImageRegistryCredential]{
+		OutputState: i.ToOpenApiImageCacheImageRegistryCredentialOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OpenApiImageCacheImageRegistryCredentialArrayInput is an input type that accepts OpenApiImageCacheImageRegistryCredentialArray and OpenApiImageCacheImageRegistryCredentialArrayOutput values.
 // You can construct a concrete instance of `OpenApiImageCacheImageRegistryCredentialArrayInput` via:
 //
@@ -3407,6 +4038,12 @@ func (i OpenApiImageCacheImageRegistryCredentialArray) ToOpenApiImageCacheImageR
 	return pulumi.ToOutputWithContext(ctx, i).(OpenApiImageCacheImageRegistryCredentialArrayOutput)
 }
 
+func (i OpenApiImageCacheImageRegistryCredentialArray) ToOutput(ctx context.Context) pulumix.Output[[]OpenApiImageCacheImageRegistryCredential] {
+	return pulumix.Output[[]OpenApiImageCacheImageRegistryCredential]{
+		OutputState: i.ToOpenApiImageCacheImageRegistryCredentialArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OpenApiImageCacheImageRegistryCredentialOutput struct{ *pulumi.OutputState }
 
 func (OpenApiImageCacheImageRegistryCredentialOutput) ElementType() reflect.Type {
@@ -3419,6 +4056,12 @@ func (o OpenApiImageCacheImageRegistryCredentialOutput) ToOpenApiImageCacheImage
 
 func (o OpenApiImageCacheImageRegistryCredentialOutput) ToOpenApiImageCacheImageRegistryCredentialOutputWithContext(ctx context.Context) OpenApiImageCacheImageRegistryCredentialOutput {
 	return o
+}
+
+func (o OpenApiImageCacheImageRegistryCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[OpenApiImageCacheImageRegistryCredential] {
+	return pulumix.Output[OpenApiImageCacheImageRegistryCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OpenApiImageCacheImageRegistryCredentialOutput) Password() pulumi.StringPtrOutput {
@@ -3445,6 +4088,12 @@ func (o OpenApiImageCacheImageRegistryCredentialArrayOutput) ToOpenApiImageCache
 
 func (o OpenApiImageCacheImageRegistryCredentialArrayOutput) ToOpenApiImageCacheImageRegistryCredentialArrayOutputWithContext(ctx context.Context) OpenApiImageCacheImageRegistryCredentialArrayOutput {
 	return o
+}
+
+func (o OpenApiImageCacheImageRegistryCredentialArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OpenApiImageCacheImageRegistryCredential] {
+	return pulumix.Output[[]OpenApiImageCacheImageRegistryCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OpenApiImageCacheImageRegistryCredentialArrayOutput) Index(i pulumi.IntInput) OpenApiImageCacheImageRegistryCredentialOutput {
@@ -3494,6 +4143,12 @@ func (i VirtualNodeTaintArgs) ToVirtualNodeTaintOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeTaintOutput)
 }
 
+func (i VirtualNodeTaintArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualNodeTaint] {
+	return pulumix.Output[VirtualNodeTaint]{
+		OutputState: i.ToVirtualNodeTaintOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VirtualNodeTaintArrayInput is an input type that accepts VirtualNodeTaintArray and VirtualNodeTaintArrayOutput values.
 // You can construct a concrete instance of `VirtualNodeTaintArrayInput` via:
 //
@@ -3519,6 +4174,12 @@ func (i VirtualNodeTaintArray) ToVirtualNodeTaintArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeTaintArrayOutput)
 }
 
+func (i VirtualNodeTaintArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNodeTaint] {
+	return pulumix.Output[[]VirtualNodeTaint]{
+		OutputState: i.ToVirtualNodeTaintArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VirtualNodeTaintOutput struct{ *pulumi.OutputState }
 
 func (VirtualNodeTaintOutput) ElementType() reflect.Type {
@@ -3531,6 +4192,12 @@ func (o VirtualNodeTaintOutput) ToVirtualNodeTaintOutput() VirtualNodeTaintOutpu
 
 func (o VirtualNodeTaintOutput) ToVirtualNodeTaintOutputWithContext(ctx context.Context) VirtualNodeTaintOutput {
 	return o
+}
+
+func (o VirtualNodeTaintOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNodeTaint] {
+	return pulumix.Output[VirtualNodeTaint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The effect of the taint. Valid values: `NoSchedule`, `NoExecute` and `PreferNoSchedule`.
@@ -3560,6 +4227,12 @@ func (o VirtualNodeTaintArrayOutput) ToVirtualNodeTaintArrayOutput() VirtualNode
 
 func (o VirtualNodeTaintArrayOutput) ToVirtualNodeTaintArrayOutputWithContext(ctx context.Context) VirtualNodeTaintArrayOutput {
 	return o
+}
+
+func (o VirtualNodeTaintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNodeTaint] {
+	return pulumix.Output[[]VirtualNodeTaint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VirtualNodeTaintArrayOutput) Index(i pulumi.IntInput) VirtualNodeTaintOutput {
@@ -3715,6 +4388,12 @@ func (i GetContainerGroupsGroupArgs) ToGetContainerGroupsGroupOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupOutput)
 }
 
+func (i GetContainerGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroup] {
+	return pulumix.Output[GetContainerGroupsGroup]{
+		OutputState: i.ToGetContainerGroupsGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetContainerGroupsGroupArrayInput is an input type that accepts GetContainerGroupsGroupArray and GetContainerGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupArrayInput` via:
 //
@@ -3740,6 +4419,12 @@ func (i GetContainerGroupsGroupArray) ToGetContainerGroupsGroupArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupArrayOutput)
 }
 
+func (i GetContainerGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroup] {
+	return pulumix.Output[[]GetContainerGroupsGroup]{
+		OutputState: i.ToGetContainerGroupsGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetContainerGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetContainerGroupsGroupOutput) ElementType() reflect.Type {
@@ -3752,6 +4437,12 @@ func (o GetContainerGroupsGroupOutput) ToGetContainerGroupsGroupOutput() GetCont
 
 func (o GetContainerGroupsGroupOutput) ToGetContainerGroupsGroupOutputWithContext(ctx context.Context) GetContainerGroupsGroupOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroup] {
+	return pulumix.Output[GetContainerGroupsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The id if ContainerGroup.
@@ -3919,6 +4610,12 @@ func (o GetContainerGroupsGroupArrayOutput) ToGetContainerGroupsGroupArrayOutput
 	return o
 }
 
+func (o GetContainerGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroup] {
+	return pulumix.Output[[]GetContainerGroupsGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetContainerGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetContainerGroupsGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetContainerGroupsGroup {
 		return vs[0].([]GetContainerGroupsGroup)[vs[1].(int)]
@@ -4010,6 +4707,12 @@ func (i GetContainerGroupsGroupContainerArgs) ToGetContainerGroupsGroupContainer
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupContainerOutput)
 }
 
+func (i GetContainerGroupsGroupContainerArgs) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupContainer] {
+	return pulumix.Output[GetContainerGroupsGroupContainer]{
+		OutputState: i.ToGetContainerGroupsGroupContainerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetContainerGroupsGroupContainerArrayInput is an input type that accepts GetContainerGroupsGroupContainerArray and GetContainerGroupsGroupContainerArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupContainerArrayInput` via:
 //
@@ -4035,6 +4738,12 @@ func (i GetContainerGroupsGroupContainerArray) ToGetContainerGroupsGroupContaine
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupContainerArrayOutput)
 }
 
+func (i GetContainerGroupsGroupContainerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupContainer] {
+	return pulumix.Output[[]GetContainerGroupsGroupContainer]{
+		OutputState: i.ToGetContainerGroupsGroupContainerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetContainerGroupsGroupContainerOutput struct{ *pulumi.OutputState }
 
 func (GetContainerGroupsGroupContainerOutput) ElementType() reflect.Type {
@@ -4047,6 +4756,12 @@ func (o GetContainerGroupsGroupContainerOutput) ToGetContainerGroupsGroupContain
 
 func (o GetContainerGroupsGroupContainerOutput) ToGetContainerGroupsGroupContainerOutputWithContext(ctx context.Context) GetContainerGroupsGroupContainerOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupContainerOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupContainer] {
+	return pulumix.Output[GetContainerGroupsGroupContainer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The arguments passed to the commands.
@@ -4137,6 +4852,12 @@ func (o GetContainerGroupsGroupContainerArrayOutput) ToGetContainerGroupsGroupCo
 	return o
 }
 
+func (o GetContainerGroupsGroupContainerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupContainer] {
+	return pulumix.Output[[]GetContainerGroupsGroupContainer]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetContainerGroupsGroupContainerArrayOutput) Index(i pulumi.IntInput) GetContainerGroupsGroupContainerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetContainerGroupsGroupContainer {
 		return vs[0].([]GetContainerGroupsGroupContainer)[vs[1].(int)]
@@ -4180,6 +4901,12 @@ func (i GetContainerGroupsGroupContainerEnvironmentVarArgs) ToGetContainerGroups
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupContainerEnvironmentVarOutput)
 }
 
+func (i GetContainerGroupsGroupContainerEnvironmentVarArgs) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupContainerEnvironmentVar] {
+	return pulumix.Output[GetContainerGroupsGroupContainerEnvironmentVar]{
+		OutputState: i.ToGetContainerGroupsGroupContainerEnvironmentVarOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetContainerGroupsGroupContainerEnvironmentVarArrayInput is an input type that accepts GetContainerGroupsGroupContainerEnvironmentVarArray and GetContainerGroupsGroupContainerEnvironmentVarArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupContainerEnvironmentVarArrayInput` via:
 //
@@ -4205,6 +4932,12 @@ func (i GetContainerGroupsGroupContainerEnvironmentVarArray) ToGetContainerGroup
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupContainerEnvironmentVarArrayOutput)
 }
 
+func (i GetContainerGroupsGroupContainerEnvironmentVarArray) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupContainerEnvironmentVar] {
+	return pulumix.Output[[]GetContainerGroupsGroupContainerEnvironmentVar]{
+		OutputState: i.ToGetContainerGroupsGroupContainerEnvironmentVarArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetContainerGroupsGroupContainerEnvironmentVarOutput struct{ *pulumi.OutputState }
 
 func (GetContainerGroupsGroupContainerEnvironmentVarOutput) ElementType() reflect.Type {
@@ -4217,6 +4950,12 @@ func (o GetContainerGroupsGroupContainerEnvironmentVarOutput) ToGetContainerGrou
 
 func (o GetContainerGroupsGroupContainerEnvironmentVarOutput) ToGetContainerGroupsGroupContainerEnvironmentVarOutputWithContext(ctx context.Context) GetContainerGroupsGroupContainerEnvironmentVarOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupContainerEnvironmentVarOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupContainerEnvironmentVar] {
+	return pulumix.Output[GetContainerGroupsGroupContainerEnvironmentVar]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the variable.
@@ -4241,6 +4980,12 @@ func (o GetContainerGroupsGroupContainerEnvironmentVarArrayOutput) ToGetContaine
 
 func (o GetContainerGroupsGroupContainerEnvironmentVarArrayOutput) ToGetContainerGroupsGroupContainerEnvironmentVarArrayOutputWithContext(ctx context.Context) GetContainerGroupsGroupContainerEnvironmentVarArrayOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupContainerEnvironmentVarArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupContainerEnvironmentVar] {
+	return pulumix.Output[[]GetContainerGroupsGroupContainerEnvironmentVar]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetContainerGroupsGroupContainerEnvironmentVarArrayOutput) Index(i pulumi.IntInput) GetContainerGroupsGroupContainerEnvironmentVarOutput {
@@ -4286,6 +5031,12 @@ func (i GetContainerGroupsGroupContainerPortArgs) ToGetContainerGroupsGroupConta
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupContainerPortOutput)
 }
 
+func (i GetContainerGroupsGroupContainerPortArgs) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupContainerPort] {
+	return pulumix.Output[GetContainerGroupsGroupContainerPort]{
+		OutputState: i.ToGetContainerGroupsGroupContainerPortOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetContainerGroupsGroupContainerPortArrayInput is an input type that accepts GetContainerGroupsGroupContainerPortArray and GetContainerGroupsGroupContainerPortArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupContainerPortArrayInput` via:
 //
@@ -4311,6 +5062,12 @@ func (i GetContainerGroupsGroupContainerPortArray) ToGetContainerGroupsGroupCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupContainerPortArrayOutput)
 }
 
+func (i GetContainerGroupsGroupContainerPortArray) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupContainerPort] {
+	return pulumix.Output[[]GetContainerGroupsGroupContainerPort]{
+		OutputState: i.ToGetContainerGroupsGroupContainerPortArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetContainerGroupsGroupContainerPortOutput struct{ *pulumi.OutputState }
 
 func (GetContainerGroupsGroupContainerPortOutput) ElementType() reflect.Type {
@@ -4323,6 +5080,12 @@ func (o GetContainerGroupsGroupContainerPortOutput) ToGetContainerGroupsGroupCon
 
 func (o GetContainerGroupsGroupContainerPortOutput) ToGetContainerGroupsGroupContainerPortOutputWithContext(ctx context.Context) GetContainerGroupsGroupContainerPortOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupContainerPortOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupContainerPort] {
+	return pulumix.Output[GetContainerGroupsGroupContainerPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The port number. Valid values: 1 to 65535.
@@ -4347,6 +5110,12 @@ func (o GetContainerGroupsGroupContainerPortArrayOutput) ToGetContainerGroupsGro
 
 func (o GetContainerGroupsGroupContainerPortArrayOutput) ToGetContainerGroupsGroupContainerPortArrayOutputWithContext(ctx context.Context) GetContainerGroupsGroupContainerPortArrayOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupContainerPortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupContainerPort] {
+	return pulumix.Output[[]GetContainerGroupsGroupContainerPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetContainerGroupsGroupContainerPortArrayOutput) Index(i pulumi.IntInput) GetContainerGroupsGroupContainerPortOutput {
@@ -4396,6 +5165,12 @@ func (i GetContainerGroupsGroupContainerVolumeMountArgs) ToGetContainerGroupsGro
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupContainerVolumeMountOutput)
 }
 
+func (i GetContainerGroupsGroupContainerVolumeMountArgs) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupContainerVolumeMount] {
+	return pulumix.Output[GetContainerGroupsGroupContainerVolumeMount]{
+		OutputState: i.ToGetContainerGroupsGroupContainerVolumeMountOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetContainerGroupsGroupContainerVolumeMountArrayInput is an input type that accepts GetContainerGroupsGroupContainerVolumeMountArray and GetContainerGroupsGroupContainerVolumeMountArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupContainerVolumeMountArrayInput` via:
 //
@@ -4421,6 +5196,12 @@ func (i GetContainerGroupsGroupContainerVolumeMountArray) ToGetContainerGroupsGr
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupContainerVolumeMountArrayOutput)
 }
 
+func (i GetContainerGroupsGroupContainerVolumeMountArray) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupContainerVolumeMount] {
+	return pulumix.Output[[]GetContainerGroupsGroupContainerVolumeMount]{
+		OutputState: i.ToGetContainerGroupsGroupContainerVolumeMountArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetContainerGroupsGroupContainerVolumeMountOutput struct{ *pulumi.OutputState }
 
 func (GetContainerGroupsGroupContainerVolumeMountOutput) ElementType() reflect.Type {
@@ -4433,6 +5214,12 @@ func (o GetContainerGroupsGroupContainerVolumeMountOutput) ToGetContainerGroupsG
 
 func (o GetContainerGroupsGroupContainerVolumeMountOutput) ToGetContainerGroupsGroupContainerVolumeMountOutputWithContext(ctx context.Context) GetContainerGroupsGroupContainerVolumeMountOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupContainerVolumeMountOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupContainerVolumeMount] {
+	return pulumix.Output[GetContainerGroupsGroupContainerVolumeMount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
@@ -4462,6 +5249,12 @@ func (o GetContainerGroupsGroupContainerVolumeMountArrayOutput) ToGetContainerGr
 
 func (o GetContainerGroupsGroupContainerVolumeMountArrayOutput) ToGetContainerGroupsGroupContainerVolumeMountArrayOutputWithContext(ctx context.Context) GetContainerGroupsGroupContainerVolumeMountArrayOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupContainerVolumeMountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupContainerVolumeMount] {
+	return pulumix.Output[[]GetContainerGroupsGroupContainerVolumeMount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetContainerGroupsGroupContainerVolumeMountArrayOutput) Index(i pulumi.IntInput) GetContainerGroupsGroupContainerVolumeMountOutput {
@@ -4511,6 +5304,12 @@ func (i GetContainerGroupsGroupDnsConfigArgs) ToGetContainerGroupsGroupDnsConfig
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupDnsConfigOutput)
 }
 
+func (i GetContainerGroupsGroupDnsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupDnsConfig] {
+	return pulumix.Output[GetContainerGroupsGroupDnsConfig]{
+		OutputState: i.ToGetContainerGroupsGroupDnsConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetContainerGroupsGroupDnsConfigArrayInput is an input type that accepts GetContainerGroupsGroupDnsConfigArray and GetContainerGroupsGroupDnsConfigArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupDnsConfigArrayInput` via:
 //
@@ -4536,6 +5335,12 @@ func (i GetContainerGroupsGroupDnsConfigArray) ToGetContainerGroupsGroupDnsConfi
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupDnsConfigArrayOutput)
 }
 
+func (i GetContainerGroupsGroupDnsConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupDnsConfig] {
+	return pulumix.Output[[]GetContainerGroupsGroupDnsConfig]{
+		OutputState: i.ToGetContainerGroupsGroupDnsConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetContainerGroupsGroupDnsConfigOutput struct{ *pulumi.OutputState }
 
 func (GetContainerGroupsGroupDnsConfigOutput) ElementType() reflect.Type {
@@ -4548,6 +5353,12 @@ func (o GetContainerGroupsGroupDnsConfigOutput) ToGetContainerGroupsGroupDnsConf
 
 func (o GetContainerGroupsGroupDnsConfigOutput) ToGetContainerGroupsGroupDnsConfigOutputWithContext(ctx context.Context) GetContainerGroupsGroupDnsConfigOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupDnsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupDnsConfig] {
+	return pulumix.Output[GetContainerGroupsGroupDnsConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of DNS server IP addresses.
@@ -4577,6 +5388,12 @@ func (o GetContainerGroupsGroupDnsConfigArrayOutput) ToGetContainerGroupsGroupDn
 
 func (o GetContainerGroupsGroupDnsConfigArrayOutput) ToGetContainerGroupsGroupDnsConfigArrayOutputWithContext(ctx context.Context) GetContainerGroupsGroupDnsConfigArrayOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupDnsConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupDnsConfig] {
+	return pulumix.Output[[]GetContainerGroupsGroupDnsConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetContainerGroupsGroupDnsConfigArrayOutput) Index(i pulumi.IntInput) GetContainerGroupsGroupDnsConfigOutput {
@@ -4622,6 +5439,12 @@ func (i GetContainerGroupsGroupDnsConfigOptionArgs) ToGetContainerGroupsGroupDns
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupDnsConfigOptionOutput)
 }
 
+func (i GetContainerGroupsGroupDnsConfigOptionArgs) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupDnsConfigOption] {
+	return pulumix.Output[GetContainerGroupsGroupDnsConfigOption]{
+		OutputState: i.ToGetContainerGroupsGroupDnsConfigOptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetContainerGroupsGroupDnsConfigOptionArrayInput is an input type that accepts GetContainerGroupsGroupDnsConfigOptionArray and GetContainerGroupsGroupDnsConfigOptionArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupDnsConfigOptionArrayInput` via:
 //
@@ -4647,6 +5470,12 @@ func (i GetContainerGroupsGroupDnsConfigOptionArray) ToGetContainerGroupsGroupDn
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupDnsConfigOptionArrayOutput)
 }
 
+func (i GetContainerGroupsGroupDnsConfigOptionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupDnsConfigOption] {
+	return pulumix.Output[[]GetContainerGroupsGroupDnsConfigOption]{
+		OutputState: i.ToGetContainerGroupsGroupDnsConfigOptionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetContainerGroupsGroupDnsConfigOptionOutput struct{ *pulumi.OutputState }
 
 func (GetContainerGroupsGroupDnsConfigOptionOutput) ElementType() reflect.Type {
@@ -4659,6 +5488,12 @@ func (o GetContainerGroupsGroupDnsConfigOptionOutput) ToGetContainerGroupsGroupD
 
 func (o GetContainerGroupsGroupDnsConfigOptionOutput) ToGetContainerGroupsGroupDnsConfigOptionOutputWithContext(ctx context.Context) GetContainerGroupsGroupDnsConfigOptionOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupDnsConfigOptionOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupDnsConfigOption] {
+	return pulumix.Output[GetContainerGroupsGroupDnsConfigOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the volume.
@@ -4683,6 +5518,12 @@ func (o GetContainerGroupsGroupDnsConfigOptionArrayOutput) ToGetContainerGroupsG
 
 func (o GetContainerGroupsGroupDnsConfigOptionArrayOutput) ToGetContainerGroupsGroupDnsConfigOptionArrayOutputWithContext(ctx context.Context) GetContainerGroupsGroupDnsConfigOptionArrayOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupDnsConfigOptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupDnsConfigOption] {
+	return pulumix.Output[[]GetContainerGroupsGroupDnsConfigOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetContainerGroupsGroupDnsConfigOptionArrayOutput) Index(i pulumi.IntInput) GetContainerGroupsGroupDnsConfigOptionOutput {
@@ -4724,6 +5565,12 @@ func (i GetContainerGroupsGroupEciSecurityContextArgs) ToGetContainerGroupsGroup
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupEciSecurityContextOutput)
 }
 
+func (i GetContainerGroupsGroupEciSecurityContextArgs) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupEciSecurityContext] {
+	return pulumix.Output[GetContainerGroupsGroupEciSecurityContext]{
+		OutputState: i.ToGetContainerGroupsGroupEciSecurityContextOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetContainerGroupsGroupEciSecurityContextArrayInput is an input type that accepts GetContainerGroupsGroupEciSecurityContextArray and GetContainerGroupsGroupEciSecurityContextArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupEciSecurityContextArrayInput` via:
 //
@@ -4749,6 +5596,12 @@ func (i GetContainerGroupsGroupEciSecurityContextArray) ToGetContainerGroupsGrou
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupEciSecurityContextArrayOutput)
 }
 
+func (i GetContainerGroupsGroupEciSecurityContextArray) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupEciSecurityContext] {
+	return pulumix.Output[[]GetContainerGroupsGroupEciSecurityContext]{
+		OutputState: i.ToGetContainerGroupsGroupEciSecurityContextArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetContainerGroupsGroupEciSecurityContextOutput struct{ *pulumi.OutputState }
 
 func (GetContainerGroupsGroupEciSecurityContextOutput) ElementType() reflect.Type {
@@ -4761,6 +5614,12 @@ func (o GetContainerGroupsGroupEciSecurityContextOutput) ToGetContainerGroupsGro
 
 func (o GetContainerGroupsGroupEciSecurityContextOutput) ToGetContainerGroupsGroupEciSecurityContextOutputWithContext(ctx context.Context) GetContainerGroupsGroupEciSecurityContextOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupEciSecurityContextOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupEciSecurityContext] {
+	return pulumix.Output[GetContainerGroupsGroupEciSecurityContext]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The system information.
@@ -4782,6 +5641,12 @@ func (o GetContainerGroupsGroupEciSecurityContextArrayOutput) ToGetContainerGrou
 
 func (o GetContainerGroupsGroupEciSecurityContextArrayOutput) ToGetContainerGroupsGroupEciSecurityContextArrayOutputWithContext(ctx context.Context) GetContainerGroupsGroupEciSecurityContextArrayOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupEciSecurityContextArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupEciSecurityContext] {
+	return pulumix.Output[[]GetContainerGroupsGroupEciSecurityContext]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetContainerGroupsGroupEciSecurityContextArrayOutput) Index(i pulumi.IntInput) GetContainerGroupsGroupEciSecurityContextOutput {
@@ -4827,6 +5692,12 @@ func (i GetContainerGroupsGroupEciSecurityContextSysctlArgs) ToGetContainerGroup
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupEciSecurityContextSysctlOutput)
 }
 
+func (i GetContainerGroupsGroupEciSecurityContextSysctlArgs) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupEciSecurityContextSysctl] {
+	return pulumix.Output[GetContainerGroupsGroupEciSecurityContextSysctl]{
+		OutputState: i.ToGetContainerGroupsGroupEciSecurityContextSysctlOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetContainerGroupsGroupEciSecurityContextSysctlArrayInput is an input type that accepts GetContainerGroupsGroupEciSecurityContextSysctlArray and GetContainerGroupsGroupEciSecurityContextSysctlArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupEciSecurityContextSysctlArrayInput` via:
 //
@@ -4852,6 +5723,12 @@ func (i GetContainerGroupsGroupEciSecurityContextSysctlArray) ToGetContainerGrou
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupEciSecurityContextSysctlArrayOutput)
 }
 
+func (i GetContainerGroupsGroupEciSecurityContextSysctlArray) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupEciSecurityContextSysctl] {
+	return pulumix.Output[[]GetContainerGroupsGroupEciSecurityContextSysctl]{
+		OutputState: i.ToGetContainerGroupsGroupEciSecurityContextSysctlArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetContainerGroupsGroupEciSecurityContextSysctlOutput struct{ *pulumi.OutputState }
 
 func (GetContainerGroupsGroupEciSecurityContextSysctlOutput) ElementType() reflect.Type {
@@ -4864,6 +5741,12 @@ func (o GetContainerGroupsGroupEciSecurityContextSysctlOutput) ToGetContainerGro
 
 func (o GetContainerGroupsGroupEciSecurityContextSysctlOutput) ToGetContainerGroupsGroupEciSecurityContextSysctlOutputWithContext(ctx context.Context) GetContainerGroupsGroupEciSecurityContextSysctlOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupEciSecurityContextSysctlOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupEciSecurityContextSysctl] {
+	return pulumix.Output[GetContainerGroupsGroupEciSecurityContextSysctl]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the volume.
@@ -4888,6 +5771,12 @@ func (o GetContainerGroupsGroupEciSecurityContextSysctlArrayOutput) ToGetContain
 
 func (o GetContainerGroupsGroupEciSecurityContextSysctlArrayOutput) ToGetContainerGroupsGroupEciSecurityContextSysctlArrayOutputWithContext(ctx context.Context) GetContainerGroupsGroupEciSecurityContextSysctlArrayOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupEciSecurityContextSysctlArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupEciSecurityContextSysctl] {
+	return pulumix.Output[[]GetContainerGroupsGroupEciSecurityContextSysctl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetContainerGroupsGroupEciSecurityContextSysctlArrayOutput) Index(i pulumi.IntInput) GetContainerGroupsGroupEciSecurityContextSysctlOutput {
@@ -4953,6 +5842,12 @@ func (i GetContainerGroupsGroupEventArgs) ToGetContainerGroupsGroupEventOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupEventOutput)
 }
 
+func (i GetContainerGroupsGroupEventArgs) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupEvent] {
+	return pulumix.Output[GetContainerGroupsGroupEvent]{
+		OutputState: i.ToGetContainerGroupsGroupEventOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetContainerGroupsGroupEventArrayInput is an input type that accepts GetContainerGroupsGroupEventArray and GetContainerGroupsGroupEventArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupEventArrayInput` via:
 //
@@ -4978,6 +5873,12 @@ func (i GetContainerGroupsGroupEventArray) ToGetContainerGroupsGroupEventArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupEventArrayOutput)
 }
 
+func (i GetContainerGroupsGroupEventArray) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupEvent] {
+	return pulumix.Output[[]GetContainerGroupsGroupEvent]{
+		OutputState: i.ToGetContainerGroupsGroupEventArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetContainerGroupsGroupEventOutput struct{ *pulumi.OutputState }
 
 func (GetContainerGroupsGroupEventOutput) ElementType() reflect.Type {
@@ -4990,6 +5891,12 @@ func (o GetContainerGroupsGroupEventOutput) ToGetContainerGroupsGroupEventOutput
 
 func (o GetContainerGroupsGroupEventOutput) ToGetContainerGroupsGroupEventOutputWithContext(ctx context.Context) GetContainerGroupsGroupEventOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupEventOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupEvent] {
+	return pulumix.Output[GetContainerGroupsGroupEvent]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The number of events.
@@ -5041,6 +5948,12 @@ func (o GetContainerGroupsGroupEventArrayOutput) ToGetContainerGroupsGroupEventA
 	return o
 }
 
+func (o GetContainerGroupsGroupEventArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupEvent] {
+	return pulumix.Output[[]GetContainerGroupsGroupEvent]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetContainerGroupsGroupEventArrayOutput) Index(i pulumi.IntInput) GetContainerGroupsGroupEventOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetContainerGroupsGroupEvent {
 		return vs[0].([]GetContainerGroupsGroupEvent)[vs[1].(int)]
@@ -5084,6 +5997,12 @@ func (i GetContainerGroupsGroupHostAliasArgs) ToGetContainerGroupsGroupHostAlias
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupHostAliasOutput)
 }
 
+func (i GetContainerGroupsGroupHostAliasArgs) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupHostAlias] {
+	return pulumix.Output[GetContainerGroupsGroupHostAlias]{
+		OutputState: i.ToGetContainerGroupsGroupHostAliasOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetContainerGroupsGroupHostAliasArrayInput is an input type that accepts GetContainerGroupsGroupHostAliasArray and GetContainerGroupsGroupHostAliasArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupHostAliasArrayInput` via:
 //
@@ -5109,6 +6028,12 @@ func (i GetContainerGroupsGroupHostAliasArray) ToGetContainerGroupsGroupHostAlia
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupHostAliasArrayOutput)
 }
 
+func (i GetContainerGroupsGroupHostAliasArray) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupHostAlias] {
+	return pulumix.Output[[]GetContainerGroupsGroupHostAlias]{
+		OutputState: i.ToGetContainerGroupsGroupHostAliasArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetContainerGroupsGroupHostAliasOutput struct{ *pulumi.OutputState }
 
 func (GetContainerGroupsGroupHostAliasOutput) ElementType() reflect.Type {
@@ -5121,6 +6046,12 @@ func (o GetContainerGroupsGroupHostAliasOutput) ToGetContainerGroupsGroupHostAli
 
 func (o GetContainerGroupsGroupHostAliasOutput) ToGetContainerGroupsGroupHostAliasOutputWithContext(ctx context.Context) GetContainerGroupsGroupHostAliasOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupHostAliasOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupHostAlias] {
+	return pulumix.Output[GetContainerGroupsGroupHostAlias]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the host.
@@ -5145,6 +6076,12 @@ func (o GetContainerGroupsGroupHostAliasArrayOutput) ToGetContainerGroupsGroupHo
 
 func (o GetContainerGroupsGroupHostAliasArrayOutput) ToGetContainerGroupsGroupHostAliasArrayOutputWithContext(ctx context.Context) GetContainerGroupsGroupHostAliasArrayOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupHostAliasArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupHostAlias] {
+	return pulumix.Output[[]GetContainerGroupsGroupHostAlias]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetContainerGroupsGroupHostAliasArrayOutput) Index(i pulumi.IntInput) GetContainerGroupsGroupHostAliasOutput {
@@ -5238,6 +6175,12 @@ func (i GetContainerGroupsGroupInitContainerArgs) ToGetContainerGroupsGroupInitC
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupInitContainerOutput)
 }
 
+func (i GetContainerGroupsGroupInitContainerArgs) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupInitContainer] {
+	return pulumix.Output[GetContainerGroupsGroupInitContainer]{
+		OutputState: i.ToGetContainerGroupsGroupInitContainerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetContainerGroupsGroupInitContainerArrayInput is an input type that accepts GetContainerGroupsGroupInitContainerArray and GetContainerGroupsGroupInitContainerArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupInitContainerArrayInput` via:
 //
@@ -5263,6 +6206,12 @@ func (i GetContainerGroupsGroupInitContainerArray) ToGetContainerGroupsGroupInit
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupInitContainerArrayOutput)
 }
 
+func (i GetContainerGroupsGroupInitContainerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupInitContainer] {
+	return pulumix.Output[[]GetContainerGroupsGroupInitContainer]{
+		OutputState: i.ToGetContainerGroupsGroupInitContainerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetContainerGroupsGroupInitContainerOutput struct{ *pulumi.OutputState }
 
 func (GetContainerGroupsGroupInitContainerOutput) ElementType() reflect.Type {
@@ -5275,6 +6224,12 @@ func (o GetContainerGroupsGroupInitContainerOutput) ToGetContainerGroupsGroupIni
 
 func (o GetContainerGroupsGroupInitContainerOutput) ToGetContainerGroupsGroupInitContainerOutputWithContext(ctx context.Context) GetContainerGroupsGroupInitContainerOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupInitContainerOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupInitContainer] {
+	return pulumix.Output[GetContainerGroupsGroupInitContainer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The arguments passed to the commands.
@@ -5367,6 +6322,12 @@ func (o GetContainerGroupsGroupInitContainerArrayOutput) ToGetContainerGroupsGro
 	return o
 }
 
+func (o GetContainerGroupsGroupInitContainerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupInitContainer] {
+	return pulumix.Output[[]GetContainerGroupsGroupInitContainer]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetContainerGroupsGroupInitContainerArrayOutput) Index(i pulumi.IntInput) GetContainerGroupsGroupInitContainerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetContainerGroupsGroupInitContainer {
 		return vs[0].([]GetContainerGroupsGroupInitContainer)[vs[1].(int)]
@@ -5410,6 +6371,12 @@ func (i GetContainerGroupsGroupInitContainerEnvironmentVarArgs) ToGetContainerGr
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupInitContainerEnvironmentVarOutput)
 }
 
+func (i GetContainerGroupsGroupInitContainerEnvironmentVarArgs) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupInitContainerEnvironmentVar] {
+	return pulumix.Output[GetContainerGroupsGroupInitContainerEnvironmentVar]{
+		OutputState: i.ToGetContainerGroupsGroupInitContainerEnvironmentVarOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetContainerGroupsGroupInitContainerEnvironmentVarArrayInput is an input type that accepts GetContainerGroupsGroupInitContainerEnvironmentVarArray and GetContainerGroupsGroupInitContainerEnvironmentVarArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupInitContainerEnvironmentVarArrayInput` via:
 //
@@ -5435,6 +6402,12 @@ func (i GetContainerGroupsGroupInitContainerEnvironmentVarArray) ToGetContainerG
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupInitContainerEnvironmentVarArrayOutput)
 }
 
+func (i GetContainerGroupsGroupInitContainerEnvironmentVarArray) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupInitContainerEnvironmentVar] {
+	return pulumix.Output[[]GetContainerGroupsGroupInitContainerEnvironmentVar]{
+		OutputState: i.ToGetContainerGroupsGroupInitContainerEnvironmentVarArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetContainerGroupsGroupInitContainerEnvironmentVarOutput struct{ *pulumi.OutputState }
 
 func (GetContainerGroupsGroupInitContainerEnvironmentVarOutput) ElementType() reflect.Type {
@@ -5447,6 +6420,12 @@ func (o GetContainerGroupsGroupInitContainerEnvironmentVarOutput) ToGetContainer
 
 func (o GetContainerGroupsGroupInitContainerEnvironmentVarOutput) ToGetContainerGroupsGroupInitContainerEnvironmentVarOutputWithContext(ctx context.Context) GetContainerGroupsGroupInitContainerEnvironmentVarOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupInitContainerEnvironmentVarOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupInitContainerEnvironmentVar] {
+	return pulumix.Output[GetContainerGroupsGroupInitContainerEnvironmentVar]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the variable.
@@ -5471,6 +6450,12 @@ func (o GetContainerGroupsGroupInitContainerEnvironmentVarArrayOutput) ToGetCont
 
 func (o GetContainerGroupsGroupInitContainerEnvironmentVarArrayOutput) ToGetContainerGroupsGroupInitContainerEnvironmentVarArrayOutputWithContext(ctx context.Context) GetContainerGroupsGroupInitContainerEnvironmentVarArrayOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupInitContainerEnvironmentVarArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupInitContainerEnvironmentVar] {
+	return pulumix.Output[[]GetContainerGroupsGroupInitContainerEnvironmentVar]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetContainerGroupsGroupInitContainerEnvironmentVarArrayOutput) Index(i pulumi.IntInput) GetContainerGroupsGroupInitContainerEnvironmentVarOutput {
@@ -5516,6 +6501,12 @@ func (i GetContainerGroupsGroupInitContainerPortArgs) ToGetContainerGroupsGroupI
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupInitContainerPortOutput)
 }
 
+func (i GetContainerGroupsGroupInitContainerPortArgs) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupInitContainerPort] {
+	return pulumix.Output[GetContainerGroupsGroupInitContainerPort]{
+		OutputState: i.ToGetContainerGroupsGroupInitContainerPortOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetContainerGroupsGroupInitContainerPortArrayInput is an input type that accepts GetContainerGroupsGroupInitContainerPortArray and GetContainerGroupsGroupInitContainerPortArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupInitContainerPortArrayInput` via:
 //
@@ -5541,6 +6532,12 @@ func (i GetContainerGroupsGroupInitContainerPortArray) ToGetContainerGroupsGroup
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupInitContainerPortArrayOutput)
 }
 
+func (i GetContainerGroupsGroupInitContainerPortArray) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupInitContainerPort] {
+	return pulumix.Output[[]GetContainerGroupsGroupInitContainerPort]{
+		OutputState: i.ToGetContainerGroupsGroupInitContainerPortArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetContainerGroupsGroupInitContainerPortOutput struct{ *pulumi.OutputState }
 
 func (GetContainerGroupsGroupInitContainerPortOutput) ElementType() reflect.Type {
@@ -5553,6 +6550,12 @@ func (o GetContainerGroupsGroupInitContainerPortOutput) ToGetContainerGroupsGrou
 
 func (o GetContainerGroupsGroupInitContainerPortOutput) ToGetContainerGroupsGroupInitContainerPortOutputWithContext(ctx context.Context) GetContainerGroupsGroupInitContainerPortOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupInitContainerPortOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupInitContainerPort] {
+	return pulumix.Output[GetContainerGroupsGroupInitContainerPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The port number. Valid values: 1 to 65535.
@@ -5577,6 +6580,12 @@ func (o GetContainerGroupsGroupInitContainerPortArrayOutput) ToGetContainerGroup
 
 func (o GetContainerGroupsGroupInitContainerPortArrayOutput) ToGetContainerGroupsGroupInitContainerPortArrayOutputWithContext(ctx context.Context) GetContainerGroupsGroupInitContainerPortArrayOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupInitContainerPortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupInitContainerPort] {
+	return pulumix.Output[[]GetContainerGroupsGroupInitContainerPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetContainerGroupsGroupInitContainerPortArrayOutput) Index(i pulumi.IntInput) GetContainerGroupsGroupInitContainerPortOutput {
@@ -5626,6 +6635,12 @@ func (i GetContainerGroupsGroupInitContainerVolumeMountArgs) ToGetContainerGroup
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupInitContainerVolumeMountOutput)
 }
 
+func (i GetContainerGroupsGroupInitContainerVolumeMountArgs) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupInitContainerVolumeMount] {
+	return pulumix.Output[GetContainerGroupsGroupInitContainerVolumeMount]{
+		OutputState: i.ToGetContainerGroupsGroupInitContainerVolumeMountOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetContainerGroupsGroupInitContainerVolumeMountArrayInput is an input type that accepts GetContainerGroupsGroupInitContainerVolumeMountArray and GetContainerGroupsGroupInitContainerVolumeMountArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupInitContainerVolumeMountArrayInput` via:
 //
@@ -5651,6 +6666,12 @@ func (i GetContainerGroupsGroupInitContainerVolumeMountArray) ToGetContainerGrou
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupInitContainerVolumeMountArrayOutput)
 }
 
+func (i GetContainerGroupsGroupInitContainerVolumeMountArray) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupInitContainerVolumeMount] {
+	return pulumix.Output[[]GetContainerGroupsGroupInitContainerVolumeMount]{
+		OutputState: i.ToGetContainerGroupsGroupInitContainerVolumeMountArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetContainerGroupsGroupInitContainerVolumeMountOutput struct{ *pulumi.OutputState }
 
 func (GetContainerGroupsGroupInitContainerVolumeMountOutput) ElementType() reflect.Type {
@@ -5663,6 +6684,12 @@ func (o GetContainerGroupsGroupInitContainerVolumeMountOutput) ToGetContainerGro
 
 func (o GetContainerGroupsGroupInitContainerVolumeMountOutput) ToGetContainerGroupsGroupInitContainerVolumeMountOutputWithContext(ctx context.Context) GetContainerGroupsGroupInitContainerVolumeMountOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupInitContainerVolumeMountOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupInitContainerVolumeMount] {
+	return pulumix.Output[GetContainerGroupsGroupInitContainerVolumeMount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
@@ -5692,6 +6719,12 @@ func (o GetContainerGroupsGroupInitContainerVolumeMountArrayOutput) ToGetContain
 
 func (o GetContainerGroupsGroupInitContainerVolumeMountArrayOutput) ToGetContainerGroupsGroupInitContainerVolumeMountArrayOutputWithContext(ctx context.Context) GetContainerGroupsGroupInitContainerVolumeMountArrayOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupInitContainerVolumeMountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupInitContainerVolumeMount] {
+	return pulumix.Output[[]GetContainerGroupsGroupInitContainerVolumeMount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetContainerGroupsGroupInitContainerVolumeMountArrayOutput) Index(i pulumi.IntInput) GetContainerGroupsGroupInitContainerVolumeMountOutput {
@@ -5773,6 +6806,12 @@ func (i GetContainerGroupsGroupVolumeArgs) ToGetContainerGroupsGroupVolumeOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupVolumeOutput)
 }
 
+func (i GetContainerGroupsGroupVolumeArgs) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupVolume] {
+	return pulumix.Output[GetContainerGroupsGroupVolume]{
+		OutputState: i.ToGetContainerGroupsGroupVolumeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetContainerGroupsGroupVolumeArrayInput is an input type that accepts GetContainerGroupsGroupVolumeArray and GetContainerGroupsGroupVolumeArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupVolumeArrayInput` via:
 //
@@ -5798,6 +6837,12 @@ func (i GetContainerGroupsGroupVolumeArray) ToGetContainerGroupsGroupVolumeArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupVolumeArrayOutput)
 }
 
+func (i GetContainerGroupsGroupVolumeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupVolume] {
+	return pulumix.Output[[]GetContainerGroupsGroupVolume]{
+		OutputState: i.ToGetContainerGroupsGroupVolumeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetContainerGroupsGroupVolumeOutput struct{ *pulumi.OutputState }
 
 func (GetContainerGroupsGroupVolumeOutput) ElementType() reflect.Type {
@@ -5810,6 +6855,12 @@ func (o GetContainerGroupsGroupVolumeOutput) ToGetContainerGroupsGroupVolumeOutp
 
 func (o GetContainerGroupsGroupVolumeOutput) ToGetContainerGroupsGroupVolumeOutputWithContext(ctx context.Context) GetContainerGroupsGroupVolumeOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupVolumeOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupVolume] {
+	return pulumix.Output[GetContainerGroupsGroupVolume]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of configuration file paths.
@@ -5883,6 +6934,12 @@ func (o GetContainerGroupsGroupVolumeArrayOutput) ToGetContainerGroupsGroupVolum
 	return o
 }
 
+func (o GetContainerGroupsGroupVolumeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupVolume] {
+	return pulumix.Output[[]GetContainerGroupsGroupVolume]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetContainerGroupsGroupVolumeArrayOutput) Index(i pulumi.IntInput) GetContainerGroupsGroupVolumeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetContainerGroupsGroupVolume {
 		return vs[0].([]GetContainerGroupsGroupVolume)[vs[1].(int)]
@@ -5926,6 +6983,12 @@ func (i GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArgs) ToGet
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathOutput)
 }
 
+func (i GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArgs) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath] {
+	return pulumix.Output[GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath]{
+		OutputState: i.ToGetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArrayInput is an input type that accepts GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArray and GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArrayOutput values.
 // You can construct a concrete instance of `GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArrayInput` via:
 //
@@ -5951,6 +7014,12 @@ func (i GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArray) ToGe
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArrayOutput)
 }
 
+func (i GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArray) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath] {
+	return pulumix.Output[[]GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath]{
+		OutputState: i.ToGetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathOutput struct{ *pulumi.OutputState }
 
 func (GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathOutput) ElementType() reflect.Type {
@@ -5963,6 +7032,12 @@ func (o GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathOutput) ToG
 
 func (o GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathOutput) ToGetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathOutputWithContext(ctx context.Context) GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath] {
+	return pulumix.Output[GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The content of the configuration file. Maximum size: 32 KB.
@@ -5987,6 +7062,12 @@ func (o GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArrayOutput
 
 func (o GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArrayOutput) ToGetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArrayOutputWithContext(ctx context.Context) GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArrayOutput {
 	return o
+}
+
+func (o GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath] {
+	return pulumix.Output[[]GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArrayOutput) Index(i pulumi.IntInput) GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathOutput {
@@ -6064,6 +7145,12 @@ func (i GetImageCachesCachArgs) ToGetImageCachesCachOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetImageCachesCachOutput)
 }
 
+func (i GetImageCachesCachArgs) ToOutput(ctx context.Context) pulumix.Output[GetImageCachesCach] {
+	return pulumix.Output[GetImageCachesCach]{
+		OutputState: i.ToGetImageCachesCachOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetImageCachesCachArrayInput is an input type that accepts GetImageCachesCachArray and GetImageCachesCachArrayOutput values.
 // You can construct a concrete instance of `GetImageCachesCachArrayInput` via:
 //
@@ -6089,6 +7176,12 @@ func (i GetImageCachesCachArray) ToGetImageCachesCachArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetImageCachesCachArrayOutput)
 }
 
+func (i GetImageCachesCachArray) ToOutput(ctx context.Context) pulumix.Output[[]GetImageCachesCach] {
+	return pulumix.Output[[]GetImageCachesCach]{
+		OutputState: i.ToGetImageCachesCachArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetImageCachesCachOutput struct{ *pulumi.OutputState }
 
 func (GetImageCachesCachOutput) ElementType() reflect.Type {
@@ -6101,6 +7194,12 @@ func (o GetImageCachesCachOutput) ToGetImageCachesCachOutput() GetImageCachesCac
 
 func (o GetImageCachesCachOutput) ToGetImageCachesCachOutputWithContext(ctx context.Context) GetImageCachesCachOutput {
 	return o
+}
+
+func (o GetImageCachesCachOutput) ToOutput(ctx context.Context) pulumix.Output[GetImageCachesCach] {
+	return pulumix.Output[GetImageCachesCach]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The id of container group.
@@ -6167,6 +7266,12 @@ func (o GetImageCachesCachArrayOutput) ToGetImageCachesCachArrayOutputWithContex
 	return o
 }
 
+func (o GetImageCachesCachArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetImageCachesCach] {
+	return pulumix.Output[[]GetImageCachesCach]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetImageCachesCachArrayOutput) Index(i pulumi.IntInput) GetImageCachesCachOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetImageCachesCach {
 		return vs[0].([]GetImageCachesCach)[vs[1].(int)]
@@ -6224,6 +7329,12 @@ func (i GetImageCachesCachEventArgs) ToGetImageCachesCachEventOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetImageCachesCachEventOutput)
 }
 
+func (i GetImageCachesCachEventArgs) ToOutput(ctx context.Context) pulumix.Output[GetImageCachesCachEvent] {
+	return pulumix.Output[GetImageCachesCachEvent]{
+		OutputState: i.ToGetImageCachesCachEventOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetImageCachesCachEventArrayInput is an input type that accepts GetImageCachesCachEventArray and GetImageCachesCachEventArrayOutput values.
 // You can construct a concrete instance of `GetImageCachesCachEventArrayInput` via:
 //
@@ -6249,6 +7360,12 @@ func (i GetImageCachesCachEventArray) ToGetImageCachesCachEventArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetImageCachesCachEventArrayOutput)
 }
 
+func (i GetImageCachesCachEventArray) ToOutput(ctx context.Context) pulumix.Output[[]GetImageCachesCachEvent] {
+	return pulumix.Output[[]GetImageCachesCachEvent]{
+		OutputState: i.ToGetImageCachesCachEventArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetImageCachesCachEventOutput struct{ *pulumi.OutputState }
 
 func (GetImageCachesCachEventOutput) ElementType() reflect.Type {
@@ -6261,6 +7378,12 @@ func (o GetImageCachesCachEventOutput) ToGetImageCachesCachEventOutput() GetImag
 
 func (o GetImageCachesCachEventOutput) ToGetImageCachesCachEventOutputWithContext(ctx context.Context) GetImageCachesCachEventOutput {
 	return o
+}
+
+func (o GetImageCachesCachEventOutput) ToOutput(ctx context.Context) pulumix.Output[GetImageCachesCachEvent] {
+	return pulumix.Output[GetImageCachesCachEvent]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Number of events.
@@ -6304,6 +7427,12 @@ func (o GetImageCachesCachEventArrayOutput) ToGetImageCachesCachEventArrayOutput
 
 func (o GetImageCachesCachEventArrayOutput) ToGetImageCachesCachEventArrayOutputWithContext(ctx context.Context) GetImageCachesCachEventArrayOutput {
 	return o
+}
+
+func (o GetImageCachesCachEventArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetImageCachesCachEvent] {
+	return pulumix.Output[[]GetImageCachesCachEvent]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetImageCachesCachEventArrayOutput) Index(i pulumi.IntInput) GetImageCachesCachEventOutput {
@@ -6411,6 +7540,12 @@ func (i GetVirtualNodesNodeArgs) ToGetVirtualNodesNodeOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualNodesNodeOutput)
 }
 
+func (i GetVirtualNodesNodeArgs) ToOutput(ctx context.Context) pulumix.Output[GetVirtualNodesNode] {
+	return pulumix.Output[GetVirtualNodesNode]{
+		OutputState: i.ToGetVirtualNodesNodeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetVirtualNodesNodeArrayInput is an input type that accepts GetVirtualNodesNodeArray and GetVirtualNodesNodeArrayOutput values.
 // You can construct a concrete instance of `GetVirtualNodesNodeArrayInput` via:
 //
@@ -6436,6 +7571,12 @@ func (i GetVirtualNodesNodeArray) ToGetVirtualNodesNodeArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualNodesNodeArrayOutput)
 }
 
+func (i GetVirtualNodesNodeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVirtualNodesNode] {
+	return pulumix.Output[[]GetVirtualNodesNode]{
+		OutputState: i.ToGetVirtualNodesNodeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetVirtualNodesNodeOutput struct{ *pulumi.OutputState }
 
 func (GetVirtualNodesNodeOutput) ElementType() reflect.Type {
@@ -6448,6 +7589,12 @@ func (o GetVirtualNodesNodeOutput) ToGetVirtualNodesNodeOutput() GetVirtualNodes
 
 func (o GetVirtualNodesNodeOutput) ToGetVirtualNodesNodeOutputWithContext(ctx context.Context) GetVirtualNodesNodeOutput {
 	return o
+}
+
+func (o GetVirtualNodesNodeOutput) ToOutput(ctx context.Context) pulumix.Output[GetVirtualNodesNode] {
+	return pulumix.Output[GetVirtualNodesNode]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Number of CPU.
@@ -6553,6 +7700,12 @@ func (o GetVirtualNodesNodeArrayOutput) ToGetVirtualNodesNodeArrayOutputWithCont
 	return o
 }
 
+func (o GetVirtualNodesNodeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVirtualNodesNode] {
+	return pulumix.Output[[]GetVirtualNodesNode]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetVirtualNodesNodeArrayOutput) Index(i pulumi.IntInput) GetVirtualNodesNodeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVirtualNodesNode {
 		return vs[0].([]GetVirtualNodesNode)[vs[1].(int)]
@@ -6616,6 +7769,12 @@ func (i GetVirtualNodesNodeEventArgs) ToGetVirtualNodesNodeEventOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualNodesNodeEventOutput)
 }
 
+func (i GetVirtualNodesNodeEventArgs) ToOutput(ctx context.Context) pulumix.Output[GetVirtualNodesNodeEvent] {
+	return pulumix.Output[GetVirtualNodesNodeEvent]{
+		OutputState: i.ToGetVirtualNodesNodeEventOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetVirtualNodesNodeEventArrayInput is an input type that accepts GetVirtualNodesNodeEventArray and GetVirtualNodesNodeEventArrayOutput values.
 // You can construct a concrete instance of `GetVirtualNodesNodeEventArrayInput` via:
 //
@@ -6641,6 +7800,12 @@ func (i GetVirtualNodesNodeEventArray) ToGetVirtualNodesNodeEventArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualNodesNodeEventArrayOutput)
 }
 
+func (i GetVirtualNodesNodeEventArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVirtualNodesNodeEvent] {
+	return pulumix.Output[[]GetVirtualNodesNodeEvent]{
+		OutputState: i.ToGetVirtualNodesNodeEventArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetVirtualNodesNodeEventOutput struct{ *pulumi.OutputState }
 
 func (GetVirtualNodesNodeEventOutput) ElementType() reflect.Type {
@@ -6653,6 +7818,12 @@ func (o GetVirtualNodesNodeEventOutput) ToGetVirtualNodesNodeEventOutput() GetVi
 
 func (o GetVirtualNodesNodeEventOutput) ToGetVirtualNodesNodeEventOutputWithContext(ctx context.Context) GetVirtualNodesNodeEventOutput {
 	return o
+}
+
+func (o GetVirtualNodesNodeEventOutput) ToOutput(ctx context.Context) pulumix.Output[GetVirtualNodesNodeEvent] {
+	return pulumix.Output[GetVirtualNodesNodeEvent]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The number of occurrences.
@@ -6704,6 +7875,12 @@ func (o GetVirtualNodesNodeEventArrayOutput) ToGetVirtualNodesNodeEventArrayOutp
 	return o
 }
 
+func (o GetVirtualNodesNodeEventArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVirtualNodesNodeEvent] {
+	return pulumix.Output[[]GetVirtualNodesNodeEvent]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetVirtualNodesNodeEventArrayOutput) Index(i pulumi.IntInput) GetVirtualNodesNodeEventOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVirtualNodesNodeEvent {
 		return vs[0].([]GetVirtualNodesNodeEvent)[vs[1].(int)]
@@ -6747,6 +7924,12 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneOutput)
 }
 
+func (i GetZonesZoneArgs) ToOutput(ctx context.Context) pulumix.Output[GetZonesZone] {
+	return pulumix.Output[GetZonesZone]{
+		OutputState: i.ToGetZonesZoneOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
@@ -6772,6 +7955,12 @@ func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
 }
 
+func (i GetZonesZoneArray) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZone] {
+	return pulumix.Output[[]GetZonesZone]{
+		OutputState: i.ToGetZonesZoneArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneOutput) ElementType() reflect.Type {
@@ -6784,6 +7973,12 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutput() GetZonesZoneOutput {
 
 func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
 	return o
+}
+
+func (o GetZonesZoneOutput) ToOutput(ctx context.Context) pulumix.Output[GetZonesZone] {
+	return pulumix.Output[GetZonesZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The endpoint of the region.
@@ -6808,6 +8003,12 @@ func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOu
 
 func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
 	return o
+}
+
+func (o GetZonesZoneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZone] {
+	return pulumix.Output[[]GetZonesZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {

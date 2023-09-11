@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Network Attached Storage (NAS) Recycle Bin resource.
@@ -175,6 +176,12 @@ func (i *RecycleBin) ToRecycleBinOutputWithContext(ctx context.Context) RecycleB
 	return pulumi.ToOutputWithContext(ctx, i).(RecycleBinOutput)
 }
 
+func (i *RecycleBin) ToOutput(ctx context.Context) pulumix.Output[*RecycleBin] {
+	return pulumix.Output[*RecycleBin]{
+		OutputState: i.ToRecycleBinOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RecycleBinArrayInput is an input type that accepts RecycleBinArray and RecycleBinArrayOutput values.
 // You can construct a concrete instance of `RecycleBinArrayInput` via:
 //
@@ -198,6 +205,12 @@ func (i RecycleBinArray) ToRecycleBinArrayOutput() RecycleBinArrayOutput {
 
 func (i RecycleBinArray) ToRecycleBinArrayOutputWithContext(ctx context.Context) RecycleBinArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RecycleBinArrayOutput)
+}
+
+func (i RecycleBinArray) ToOutput(ctx context.Context) pulumix.Output[[]*RecycleBin] {
+	return pulumix.Output[[]*RecycleBin]{
+		OutputState: i.ToRecycleBinArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RecycleBinMapInput is an input type that accepts RecycleBinMap and RecycleBinMapOutput values.
@@ -225,6 +238,12 @@ func (i RecycleBinMap) ToRecycleBinMapOutputWithContext(ctx context.Context) Rec
 	return pulumi.ToOutputWithContext(ctx, i).(RecycleBinMapOutput)
 }
 
+func (i RecycleBinMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RecycleBin] {
+	return pulumix.Output[map[string]*RecycleBin]{
+		OutputState: i.ToRecycleBinMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RecycleBinOutput struct{ *pulumi.OutputState }
 
 func (RecycleBinOutput) ElementType() reflect.Type {
@@ -237,6 +256,12 @@ func (o RecycleBinOutput) ToRecycleBinOutput() RecycleBinOutput {
 
 func (o RecycleBinOutput) ToRecycleBinOutputWithContext(ctx context.Context) RecycleBinOutput {
 	return o
+}
+
+func (o RecycleBinOutput) ToOutput(ctx context.Context) pulumix.Output[*RecycleBin] {
+	return pulumix.Output[*RecycleBin]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the file system for which you want to enable the recycle bin feature.
@@ -268,6 +293,12 @@ func (o RecycleBinArrayOutput) ToRecycleBinArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o RecycleBinArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RecycleBin] {
+	return pulumix.Output[[]*RecycleBin]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RecycleBinArrayOutput) Index(i pulumi.IntInput) RecycleBinOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RecycleBin {
 		return vs[0].([]*RecycleBin)[vs[1].(int)]
@@ -286,6 +317,12 @@ func (o RecycleBinMapOutput) ToRecycleBinMapOutput() RecycleBinMapOutput {
 
 func (o RecycleBinMapOutput) ToRecycleBinMapOutputWithContext(ctx context.Context) RecycleBinMapOutput {
 	return o
+}
+
+func (o RecycleBinMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RecycleBin] {
+	return pulumix.Output[map[string]*RecycleBin]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecycleBinMapOutput) MapIndex(k pulumi.StringInput) RecycleBinOutput {

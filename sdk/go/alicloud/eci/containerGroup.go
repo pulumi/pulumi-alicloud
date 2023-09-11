@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides ECI Container Group resource.
@@ -28,21 +29,56 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eci"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := eci.NewContainerGroup(ctx, "example", &eci.ContainerGroupArgs{
-//				ContainerGroupName: pulumi.String("tf-eci-gruop"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := eci.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.0.0.0/8"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.1.0.0/16"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].ZoneIds[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eci.NewContainerGroup(ctx, "defaultContainerGroup", &eci.ContainerGroupArgs{
+//				ContainerGroupName: pulumi.String(name),
 //				Cpu:                pulumi.Float64(8),
 //				Memory:             pulumi.Float64(16),
 //				RestartPolicy:      pulumi.String("OnFailure"),
-//				SecurityGroupId:    pulumi.Any(alicloud_security_group.Group.Id),
-//				VswitchId:          pulumi.Any(data.Alicloud_vpcs.Default.Vpcs[0].Vswitch_ids[0]),
+//				SecurityGroupId:    defaultSecurityGroup.ID(),
+//				VswitchId:          defaultSwitch.ID(),
 //				Tags: pulumi.AnyMap{
-//					"TF": pulumi.Any("create"),
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
 //				},
 //				Containers: eci.ContainerGroupContainerArray{
 //					&eci.ContainerGroupContainerArgs{
@@ -57,7 +93,7 @@ import (
 //						},
 //						VolumeMounts: eci.ContainerGroupContainerVolumeMountArray{
 //							&eci.ContainerGroupContainerVolumeMountArgs{
-//								MountPath: pulumi.String("/tmp/test"),
+//								MountPath: pulumi.String("/tmp/example"),
 //								ReadOnly:  pulumi.Bool(false),
 //								Name:      pulumi.String("empty1"),
 //							},
@@ -70,7 +106,7 @@ import (
 //						},
 //						EnvironmentVars: eci.ContainerGroupContainerEnvironmentVarArray{
 //							&eci.ContainerGroupContainerEnvironmentVarArgs{
-//								Key:   pulumi.String("test"),
+//								Key:   pulumi.String("name"),
 //								Value: pulumi.String("nginx"),
 //							},
 //						},
@@ -528,6 +564,12 @@ func (i *ContainerGroup) ToContainerGroupOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupOutput)
 }
 
+func (i *ContainerGroup) ToOutput(ctx context.Context) pulumix.Output[*ContainerGroup] {
+	return pulumix.Output[*ContainerGroup]{
+		OutputState: i.ToContainerGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerGroupArrayInput is an input type that accepts ContainerGroupArray and ContainerGroupArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupArrayInput` via:
 //
@@ -551,6 +593,12 @@ func (i ContainerGroupArray) ToContainerGroupArrayOutput() ContainerGroupArrayOu
 
 func (i ContainerGroupArray) ToContainerGroupArrayOutputWithContext(ctx context.Context) ContainerGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupArrayOutput)
+}
+
+func (i ContainerGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*ContainerGroup] {
+	return pulumix.Output[[]*ContainerGroup]{
+		OutputState: i.ToContainerGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ContainerGroupMapInput is an input type that accepts ContainerGroupMap and ContainerGroupMapOutput values.
@@ -578,6 +626,12 @@ func (i ContainerGroupMap) ToContainerGroupMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupMapOutput)
 }
 
+func (i ContainerGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ContainerGroup] {
+	return pulumix.Output[map[string]*ContainerGroup]{
+		OutputState: i.ToContainerGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupOutput) ElementType() reflect.Type {
@@ -590,6 +644,12 @@ func (o ContainerGroupOutput) ToContainerGroupOutput() ContainerGroupOutput {
 
 func (o ContainerGroupOutput) ToContainerGroupOutputWithContext(ctx context.Context) ContainerGroupOutput {
 	return o
+}
+
+func (o ContainerGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerGroup] {
+	return pulumix.Output[*ContainerGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ACR enterprise edition example properties. See `acrRegistryInfo` below.
@@ -751,6 +811,12 @@ func (o ContainerGroupArrayOutput) ToContainerGroupArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o ContainerGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ContainerGroup] {
+	return pulumix.Output[[]*ContainerGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ContainerGroupArrayOutput) Index(i pulumi.IntInput) ContainerGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ContainerGroup {
 		return vs[0].([]*ContainerGroup)[vs[1].(int)]
@@ -769,6 +835,12 @@ func (o ContainerGroupMapOutput) ToContainerGroupMapOutput() ContainerGroupMapOu
 
 func (o ContainerGroupMapOutput) ToContainerGroupMapOutputWithContext(ctx context.Context) ContainerGroupMapOutput {
 	return o
+}
+
+func (o ContainerGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ContainerGroup] {
+	return pulumix.Output[map[string]*ContainerGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerGroupMapOutput) MapIndex(k pulumi.StringInput) ContainerGroupOutput {

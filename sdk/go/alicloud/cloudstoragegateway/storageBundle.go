@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Storage Gateway Storage Bundle resource.
@@ -152,6 +153,12 @@ func (i *StorageBundle) ToStorageBundleOutputWithContext(ctx context.Context) St
 	return pulumi.ToOutputWithContext(ctx, i).(StorageBundleOutput)
 }
 
+func (i *StorageBundle) ToOutput(ctx context.Context) pulumix.Output[*StorageBundle] {
+	return pulumix.Output[*StorageBundle]{
+		OutputState: i.ToStorageBundleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StorageBundleArrayInput is an input type that accepts StorageBundleArray and StorageBundleArrayOutput values.
 // You can construct a concrete instance of `StorageBundleArrayInput` via:
 //
@@ -175,6 +182,12 @@ func (i StorageBundleArray) ToStorageBundleArrayOutput() StorageBundleArrayOutpu
 
 func (i StorageBundleArray) ToStorageBundleArrayOutputWithContext(ctx context.Context) StorageBundleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StorageBundleArrayOutput)
+}
+
+func (i StorageBundleArray) ToOutput(ctx context.Context) pulumix.Output[[]*StorageBundle] {
+	return pulumix.Output[[]*StorageBundle]{
+		OutputState: i.ToStorageBundleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // StorageBundleMapInput is an input type that accepts StorageBundleMap and StorageBundleMapOutput values.
@@ -202,6 +215,12 @@ func (i StorageBundleMap) ToStorageBundleMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(StorageBundleMapOutput)
 }
 
+func (i StorageBundleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*StorageBundle] {
+	return pulumix.Output[map[string]*StorageBundle]{
+		OutputState: i.ToStorageBundleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StorageBundleOutput struct{ *pulumi.OutputState }
 
 func (StorageBundleOutput) ElementType() reflect.Type {
@@ -214,6 +233,12 @@ func (o StorageBundleOutput) ToStorageBundleOutput() StorageBundleOutput {
 
 func (o StorageBundleOutput) ToStorageBundleOutputWithContext(ctx context.Context) StorageBundleOutput {
 	return o
+}
+
+func (o StorageBundleOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageBundle] {
+	return pulumix.Output[*StorageBundle]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of storage bundle.
@@ -240,6 +265,12 @@ func (o StorageBundleArrayOutput) ToStorageBundleArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o StorageBundleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*StorageBundle] {
+	return pulumix.Output[[]*StorageBundle]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StorageBundleArrayOutput) Index(i pulumi.IntInput) StorageBundleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StorageBundle {
 		return vs[0].([]*StorageBundle)[vs[1].(int)]
@@ -258,6 +289,12 @@ func (o StorageBundleMapOutput) ToStorageBundleMapOutput() StorageBundleMapOutpu
 
 func (o StorageBundleMapOutput) ToStorageBundleMapOutputWithContext(ctx context.Context) StorageBundleMapOutput {
 	return o
+}
+
+func (o StorageBundleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*StorageBundle] {
+	return pulumix.Output[map[string]*StorageBundle]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StorageBundleMapOutput) MapIndex(k pulumi.StringInput) StorageBundleOutput {

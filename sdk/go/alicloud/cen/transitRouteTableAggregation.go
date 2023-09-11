@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Enterprise Network (CEN) Transit Route Table Aggregation resource.
@@ -218,6 +219,12 @@ func (i *TransitRouteTableAggregation) ToTransitRouteTableAggregationOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouteTableAggregationOutput)
 }
 
+func (i *TransitRouteTableAggregation) ToOutput(ctx context.Context) pulumix.Output[*TransitRouteTableAggregation] {
+	return pulumix.Output[*TransitRouteTableAggregation]{
+		OutputState: i.ToTransitRouteTableAggregationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TransitRouteTableAggregationArrayInput is an input type that accepts TransitRouteTableAggregationArray and TransitRouteTableAggregationArrayOutput values.
 // You can construct a concrete instance of `TransitRouteTableAggregationArrayInput` via:
 //
@@ -241,6 +248,12 @@ func (i TransitRouteTableAggregationArray) ToTransitRouteTableAggregationArrayOu
 
 func (i TransitRouteTableAggregationArray) ToTransitRouteTableAggregationArrayOutputWithContext(ctx context.Context) TransitRouteTableAggregationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouteTableAggregationArrayOutput)
+}
+
+func (i TransitRouteTableAggregationArray) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouteTableAggregation] {
+	return pulumix.Output[[]*TransitRouteTableAggregation]{
+		OutputState: i.ToTransitRouteTableAggregationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TransitRouteTableAggregationMapInput is an input type that accepts TransitRouteTableAggregationMap and TransitRouteTableAggregationMapOutput values.
@@ -268,6 +281,12 @@ func (i TransitRouteTableAggregationMap) ToTransitRouteTableAggregationMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouteTableAggregationMapOutput)
 }
 
+func (i TransitRouteTableAggregationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouteTableAggregation] {
+	return pulumix.Output[map[string]*TransitRouteTableAggregation]{
+		OutputState: i.ToTransitRouteTableAggregationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TransitRouteTableAggregationOutput struct{ *pulumi.OutputState }
 
 func (TransitRouteTableAggregationOutput) ElementType() reflect.Type {
@@ -280,6 +299,12 @@ func (o TransitRouteTableAggregationOutput) ToTransitRouteTableAggregationOutput
 
 func (o TransitRouteTableAggregationOutput) ToTransitRouteTableAggregationOutputWithContext(ctx context.Context) TransitRouteTableAggregationOutput {
 	return o
+}
+
+func (o TransitRouteTableAggregationOutput) ToOutput(ctx context.Context) pulumix.Output[*TransitRouteTableAggregation] {
+	return pulumix.Output[*TransitRouteTableAggregation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The status of the Transit Route Table Aggregation.
@@ -330,6 +355,12 @@ func (o TransitRouteTableAggregationArrayOutput) ToTransitRouteTableAggregationA
 	return o
 }
 
+func (o TransitRouteTableAggregationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouteTableAggregation] {
+	return pulumix.Output[[]*TransitRouteTableAggregation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TransitRouteTableAggregationArrayOutput) Index(i pulumi.IntInput) TransitRouteTableAggregationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TransitRouteTableAggregation {
 		return vs[0].([]*TransitRouteTableAggregation)[vs[1].(int)]
@@ -348,6 +379,12 @@ func (o TransitRouteTableAggregationMapOutput) ToTransitRouteTableAggregationMap
 
 func (o TransitRouteTableAggregationMapOutput) ToTransitRouteTableAggregationMapOutputWithContext(ctx context.Context) TransitRouteTableAggregationMapOutput {
 	return o
+}
+
+func (o TransitRouteTableAggregationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouteTableAggregation] {
+	return pulumix.Output[map[string]*TransitRouteTableAggregation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransitRouteTableAggregationMapOutput) MapIndex(k pulumi.StringInput) TransitRouteTableAggregationOutput {

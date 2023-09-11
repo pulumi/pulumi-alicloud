@@ -5118,6 +5118,9 @@ export namespace cdn {
          * > If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
          */
         certType: string;
+        /**
+         * The force set of the security certificate.
+         */
         forceSet?: string;
         /**
          * The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
@@ -7548,6 +7551,9 @@ export namespace cloudfirewall {
          * List of elastic network cards.
          */
         eniLists: outputs.cloudfirewall.FirewallVpcFirewallCenLocalVpcEniList[];
+        /**
+         * The ID of the vSwitch specified when the routing mode is manual mode.
+         */
         manualVswitchId: string;
         /**
          * The ID of the VPC instance that created the VPC firewall.
@@ -7634,15 +7640,15 @@ export namespace cloudfirewall {
 
     export interface FirewallVpcFirewallLocalVpc {
         /**
-         * The ID of the instance of the Eni in the local VPC.
+         * The ID of the instance of the ENI in the peer VPC.
          */
         eniId: string;
         /**
-         * The private IP address of the elastic network card in the local VPC.
+         * The private IP address of the elastic network card in the peer VPC.
          */
         eniPrivateIpAddress: string;
         /**
-         * The network segment list of the local VPC.See the following `Block LocalVpcCidrTableList`.
+         * The network segment list of the local VPC. See `localVpcCidrTableList` below.
          */
         localVpcCidrTableLists: outputs.cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableList[];
         /**
@@ -7650,7 +7656,7 @@ export namespace cloudfirewall {
          */
         regionNo: string;
         /**
-         * The ID of the router interface in the local VPC.
+         * The ID of the router interface in the peer VPC.
          */
         routerInterfaceId: string;
         /**
@@ -7658,14 +7664,14 @@ export namespace cloudfirewall {
          */
         vpcId: string;
         /**
-         * The instance name of the local VPC.
+         * The instance name of the peer VPC.
          */
         vpcName: string;
     }
 
     export interface FirewallVpcFirewallLocalVpcLocalVpcCidrTableList {
         /**
-         * The list of route entries of the local VPC.See the following `Block LocalRouteEntryList`.
+         * The list of route entries of the local VPC. See `localRouteEntryList` below.
          */
         localRouteEntryLists: outputs.cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList[];
         /**
@@ -7687,38 +7693,38 @@ export namespace cloudfirewall {
 
     export interface FirewallVpcFirewallPeerVpc {
         /**
-         * The ID of the instance of the Eni in the local VPC.
+         * The ID of the instance of the ENI in the peer VPC.
          */
         eniId: string;
         /**
-         * The private IP address of the elastic network card in the local VPC.
+         * The private IP address of the elastic network card in the peer VPC.
          */
         eniPrivateIpAddress: string;
         /**
-         * The network segment list of the peer VPC.See the following `Block PeerVpcCidrTableList`.
+         * The network segment list of the peer VPC. See `peerVpcCidrTableList` below.
          */
         peerVpcCidrTableLists: outputs.cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableList[];
         /**
-         * The region ID of the local VPC.
+         * The region ID of the peer VPC.
          */
         regionNo: string;
         /**
-         * The ID of the router interface in the local VPC.
+         * The ID of the router interface in the peer VPC.
          */
         routerInterfaceId: string;
         /**
-         * The ID of the local VPC instance.
+         * The ID of the peer VPC instance.
          */
         vpcId: string;
         /**
-         * The instance name of the local VPC.
+         * The instance name of the peer VPC.
          */
         vpcName: string;
     }
 
     export interface FirewallVpcFirewallPeerVpcPeerVpcCidrTableList {
         /**
-         * Peer VPC route entry list information.See the following `Block PeerRouteEntryList`.
+         * Peer VPC route entry list information. See `peerRouteEntryList` below.
          */
         peerRouteEntryLists: outputs.cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList[];
         /**
@@ -10992,11 +10998,13 @@ export namespace config {
 export namespace cr {
     export interface ChainChainConfig {
         /**
-         * Each node in the delivery chain.
+         * Each node in the delivery chain. See `nodes` below.
+         *
+         * > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `nodeName` are fixed. You can refer to the template given in the example for configuration.
          */
         nodes?: outputs.cr.ChainChainConfigNode[];
         /**
-         * Execution sequence relationship between delivery chain nodes.
+         * Execution sequence relationship between delivery chain nodes. See `routers` below.
          */
         routers?: outputs.cr.ChainChainConfigRouter[];
     }
@@ -11007,18 +11015,18 @@ export namespace cr {
          */
         enable?: boolean;
         /**
-         * The configuration of delivery chain node.
+         * The configuration of delivery chain node. See `nodeConfig` below.
          */
         nodeConfigs?: outputs.cr.ChainChainConfigNodeNodeConfig[];
         /**
-         * The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+         * The name of delivery chain node.
          */
         nodeName?: string;
     }
 
     export interface ChainChainConfigNodeNodeConfig {
         /**
-         * Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
+         * Blocking rules for scanning nodes in delivery chain nodes. See `denyPolicy` below. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
          */
         denyPolicies?: outputs.cr.ChainChainConfigNodeNodeConfigDenyPolicy[];
     }
@@ -11026,8 +11034,6 @@ export namespace cr {
     export interface ChainChainConfigNodeNodeConfigDenyPolicy {
         /**
          * The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
-         *
-         * > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `nodeName` are fixed. You can refer to the template given in the example for configuration.
          */
         action?: string;
         /**
@@ -11046,11 +11052,11 @@ export namespace cr {
 
     export interface ChainChainConfigRouter {
         /**
-         * Source node.
+         * Source node. See `from` below.
          */
         froms?: outputs.cr.ChainChainConfigRouterFrom[];
         /**
-         * Destination node.
+         * Destination node. See `to` below.
          */
         tos?: outputs.cr.ChainChainConfigRouterTo[];
     }
@@ -17277,11 +17283,11 @@ export namespace eci {
          */
         readinessProbes: outputs.eci.ContainerGroupContainerReadinessProbe[];
         /**
-         * (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+         * Indicates whether the container passed the readiness probe.
          */
         ready: boolean;
         /**
-         * (Available since v1.208.0) The number of times that the container restarted.
+         * The number of times that the container restarted.
          */
         restartCount: number;
         /**
@@ -17571,11 +17577,11 @@ export namespace eci {
          */
         ports?: outputs.eci.ContainerGroupInitContainerPort[];
         /**
-         * (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+         * Indicates whether the container passed the readiness probe.
          */
         ready: boolean;
         /**
-         * (Available since v1.208.0) The number of times that the container restarted.
+         * The number of times that the container restarted.
          */
         restartCount: number;
         /**
@@ -23366,7 +23372,7 @@ export namespace eflo {
 export namespace ehpc {
     export interface ClusterAdditionalVolume {
         /**
-         * The queue to which the compute nodes are added.
+         * The queue of the nodes to which the additional file system is attached.
          */
         jobQueue?: string;
         /**
@@ -23378,15 +23384,15 @@ export namespace ehpc {
          */
         location?: string;
         /**
-         * The remote directory to which the file system is mounted.
+         * The remote directory to which the additional file system is mounted.
          */
         remoteDirectory?: string;
         /**
-         * The roles. See the following `Block roles`.
+         * The roles. See `roles` below.
          */
         roles?: outputs.ehpc.ClusterAdditionalVolumeRole[];
         /**
-         * The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
+         * The ID of the additional file system.
          */
         volumeId?: string;
         /**
@@ -23394,17 +23400,15 @@ export namespace ehpc {
          */
         volumeMountOption?: string;
         /**
-         * The mount target of the file system. Take note of the following information:
-         * - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
-         * - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
+         * The mount target of the additional file system.
          */
         volumeMountpoint?: string;
         /**
-         * The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
+         * The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
          */
         volumeProtocol?: string;
         /**
-         * The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
+         * The type of the additional shared storage. Only NAS file systems are supported.
          */
         volumeType?: string;
     }
@@ -24427,7 +24431,7 @@ export namespace emrv2 {
          */
         executionMoment: string;
         /**
-         * The bootstrap scripts execution target.
+         * The bootstrap scripts execution target. See `nodeSelector` below.
          */
         nodeSelector: outputs.emrv2.ClusterBootstrapScriptNodeSelector;
         /**
@@ -24508,11 +24512,11 @@ export namespace emrv2 {
          */
         additionalSecurityGroupIds?: string[];
         /**
-         * The detail cost optimized configuration of emr cluster.
+         * The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below.
          */
         costOptimizedConfig?: outputs.emrv2.ClusterNodeGroupCostOptimizedConfig;
         /**
-         * Host Ecs data disks information in this node group.
+         * Host Ecs data disks information in this node group. See `dataDisks` below.
          */
         dataDisks: outputs.emrv2.ClusterNodeGroupDataDisk[];
         /**
@@ -24528,7 +24532,7 @@ export namespace emrv2 {
          */
         nodeCount: number;
         /**
-         * The configuration effected which node group name of emr cluster.
+         * The node group name of emr cluster.
          */
         nodeGroupName: string;
         /**
@@ -24540,7 +24544,7 @@ export namespace emrv2 {
          */
         paymentType: string;
         /**
-         * The spot bid prices of a PayAsYouGo instance.
+         * The spot bid prices of a PayAsYouGo instance. See `spotBidPrices` below.
          */
         spotBidPrices?: outputs.emrv2.ClusterNodeGroupSpotBidPrice[];
         /**
@@ -24548,11 +24552,11 @@ export namespace emrv2 {
          */
         spotInstanceRemedy: boolean;
         /**
-         * The detail configuration of subscription payment type.
+         * The detail configuration of subscription payment type. See `subscriptionConfig` below.
          */
         subscriptionConfig?: outputs.emrv2.ClusterNodeGroupSubscriptionConfig;
         /**
-         * Host Ecs system disk information in this node group.
+         * Host Ecs system disk information in this node group. See `systemDisk` below.
          */
         systemDisk: outputs.emrv2.ClusterNodeGroupSystemDisk;
         /**
@@ -28341,19 +28345,19 @@ export namespace ga {
 export namespace gpdb {
     export interface DbInstancePlanPlanConfig {
         /**
-         * Pause instance plan config. See the following `Block pause`.
+         * Pause instance plan config. See `pause` below.
          */
         pause?: outputs.gpdb.DbInstancePlanPlanConfigPause;
         /**
-         * Resume instance plan config. See the following `Block resume`.
+         * Resume instance plan config. See `resume` below.
          */
         resume?: outputs.gpdb.DbInstancePlanPlanConfigResume;
         /**
-         * Scale In instance plan config. See the following `Block scaleIn`.
+         * Scale In instance plan config. See `scaleIn` below.
          */
         scaleIn?: outputs.gpdb.DbInstancePlanPlanConfigScaleIn;
         /**
-         * Scale out instance plan config. See the following `Block scaleOut`.
+         * Scale out instance plan config. See `scaleOut` below.
          */
         scaleOut?: outputs.gpdb.DbInstancePlanPlanConfigScaleOut;
     }
@@ -34797,6 +34801,12 @@ export namespace oss {
          */
         expirations?: outputs.oss.BucketLifecycleRuleExpiration[];
         /**
+         * Configuration block used to identify objects that a Lifecycle rule applies to. See `filter` below.
+         *
+         * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
+         */
+        filter?: outputs.oss.BucketLifecycleRuleFilter;
+        /**
          * Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
          */
         id: string;
@@ -34809,13 +34819,11 @@ export namespace oss {
          */
         noncurrentVersionTransitions?: outputs.oss.BucketLifecycleRuleNoncurrentVersionTransition[];
         /**
-         * Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+         * The prefix in the names of the objects to which the lifecycle rule does not apply.
          */
         prefix?: string;
         /**
          * Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
-         *
-         * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
          */
         tags?: {[key: string]: any};
         /**
@@ -34858,6 +34866,43 @@ export namespace oss {
          * `NOTE`: One and only one of "date", "days", "createdBeforeDate" and "expiredObjectDeleteMarker" can be specified in one expiration configuration.
          */
         expiredObjectDeleteMarker?: boolean;
+    }
+
+    export interface BucketLifecycleRuleFilter {
+        /**
+         * The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
+         */
+        not?: outputs.oss.BucketLifecycleRuleFilterNot;
+        /**
+         * Minimum object size (in bytes) to which the rule applies.
+         */
+        objectSizeGreaterThan?: number;
+        /**
+         * Maximum object size (in bytes) to which the rule applies.
+         */
+        objectSizeLessThan?: number;
+    }
+
+    export interface BucketLifecycleRuleFilterNot {
+        /**
+         * Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+         */
+        prefix?: string;
+        /**
+         * The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
+         */
+        tag?: outputs.oss.BucketLifecycleRuleFilterNotTag;
+    }
+
+    export interface BucketLifecycleRuleFilterNotTag {
+        /**
+         * The key of the tag that is specified for the objects.
+         */
+        key: string;
+        /**
+         * The value of the tag that is specified for the objects.
+         */
+        value: string;
     }
 
     export interface BucketLifecycleRuleNoncurrentVersionExpiration {
@@ -37681,6 +37726,9 @@ export namespace rds {
          * (Available in 1.124.1+) The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
          */
         clientCaCert: string;
+        /**
+         * (Available in 1.124.1+) The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. This parameter is not supported now.
+         */
         clientCaCertExpireTime: string;
         /**
          * (Available in 1.124.1+) The certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
@@ -37755,6 +37803,14 @@ export namespace rds {
          */
         guardInstanceId: string;
         /**
+         * (Available since v1.209.1) The high availability mode of the instance.
+         */
+        haMode: string;
+        /**
+         * (Available since v1.209.1) An array that consists of the information of the primary and secondary instances.
+         */
+        hostInstanceInfos: outputs.rds.GetInstancesInstanceHostInstanceInfo[];
+        /**
          * The ID of the RDS instance.
          */
         id: string;
@@ -37818,7 +37874,7 @@ export namespace rds {
          */
         readonlyInstanceIds: string[];
         /**
-         * Region ID the instance belongs to.
+         * The region ID of the instance.
          */
         regionId: string;
         /**
@@ -37878,6 +37934,10 @@ export namespace rds {
          */
         status: string;
         /**
+         * (Available since v1.209.1) The data replication mode of the instance.
+         */
+        syncMode: string;
+        /**
          * If a temporary instance is attached to the current instance, the ID of the temporary instance applies.
          */
         tempInstanceId: string;
@@ -37897,6 +37957,37 @@ export namespace rds {
          * (Available in 1.101.0+) The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
          */
         zoneIdSlaveB: string;
+    }
+
+    export interface GetInstancesInstanceHostInstanceInfo {
+        /**
+         * The time when the secondary instance completed the synchronization of data from the primary instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+         */
+        dataSyncTime: string;
+        /**
+         * The time when the secondary instance received logs from the primary instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+         */
+        logSyncTime: string;
+        /**
+         * The ID of the instance.
+         */
+        nodeId: string;
+        /**
+         * The type of the node.
+         */
+        nodeType: string;
+        /**
+         * The region ID of the instance.
+         */
+        regionId: string;
+        /**
+         * The synchronization status.
+         */
+        syncStatus: string;
+        /**
+         * The ID of the zone.
+         */
+        zoneId: string;
     }
 
     export interface GetInstancesInstanceParameter {
@@ -39549,23 +39640,23 @@ export namespace ros {
 export namespace sae {
     export interface ApplicationScalingRuleScalingRuleMetric {
         /**
-         * Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+         * Maximum number of instances applied.
          */
         maxReplicas?: number;
         /**
-         * Indicator rule configuration. See the following `Block metrics`.
+         * Indicator rule configuration. See `metrics` below.
          */
         metrics?: outputs.sae.ApplicationScalingRuleScalingRuleMetricMetric[];
         /**
-         * Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+         * Minimum number of instances applied.
          */
         minReplicas?: number;
         /**
-         * Apply shrink rules. See the following `Block scaleDownRules`.
+         * Apply shrink rules. See `scaleDownRules` below.
          */
         scaleDownRules?: outputs.sae.ApplicationScalingRuleScalingRuleMetricScaleDownRules;
         /**
-         * Apply expansion rules. See the following `Block scaleUpRules`.
+         * Apply expansion rules. See `scaleUpRules` below.
          */
         scaleUpRules?: outputs.sae.ApplicationScalingRuleScalingRuleMetricScaleUpRules;
     }
@@ -39651,7 +39742,7 @@ export namespace sae {
          */
         period?: string;
         /**
-         * Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+         * Resilient Scaling Strategy Trigger Timing. See `schedules` below.
          */
         schedules?: outputs.sae.ApplicationScalingRuleScalingRuleTimerSchedule[];
     }
@@ -40355,7 +40446,7 @@ export namespace sae {
          */
         group?: string;
         /**
-         * A list of conditions items. The details see Block `dubboRulesItems`.
+         * A list of conditions items. See `items` below.
          */
         items?: outputs.sae.GreyTagRouteDubboRuleItem[];
         /**
@@ -40386,7 +40477,7 @@ export namespace sae {
          */
         index?: number;
         /**
-         * The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+         * The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
          */
         operator?: string;
         /**
@@ -40401,7 +40492,7 @@ export namespace sae {
          */
         condition?: string;
         /**
-         * A list of conditions items. The details see Block `scRulesItems`.
+         * A list of conditions items.See `items` below.
          */
         items?: outputs.sae.GreyTagRouteScRuleItem[];
         /**
@@ -40420,7 +40511,7 @@ export namespace sae {
          */
         name?: string;
         /**
-         * The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+         * The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
          */
         operator?: string;
         /**
@@ -45933,7 +46024,7 @@ export namespace vpc {
 
     export interface NetworkAclEgressAclEntry {
         /**
-         * The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+         * The description of the outbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
          */
         description?: string;
         /**
@@ -45948,8 +46039,6 @@ export namespace vpc {
          * Authorization policy. Value:
          * - accept: Allow.
          * - drop: Refused.
-         * - accept: Allow.
-         * - drop: Refused.
          */
         policy?: string;
         /**
@@ -45958,12 +46047,6 @@ export namespace vpc {
         port?: string;
         /**
          * The protocol type. Value:
-         * - icmp: Network Control Message Protocol.
-         * - gre: Generic Routing Encapsulation Protocol.
-         * - tcp: Transmission Control Protocol.
-         * - udp: User Datagram Protocol.
-         * - all: Supports all protocols.
-         *
          * - icmp: Network Control Message Protocol.
          * - gre: Generic Routing Encapsulation Protocol.
          * - tcp: Transmission Control Protocol.
@@ -46037,33 +46120,25 @@ export namespace vpc {
 
     export interface NetworkAclIngressAclEntry {
         /**
-         * The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+         * Description of the inbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
          */
         description?: string;
         /**
-         * Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+         * The name of the inbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
          */
         networkAclEntryName?: string;
         /**
          * Authorization policy. Value:
          * - accept: Allow.
          * - drop: Refused.
-         * - accept: Allow.
-         * - drop: Refused.
          */
         policy?: string;
         /**
-         * The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+         * The source port range of the inbound rule.When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
          */
         port?: string;
         /**
          * The protocol type. Value:
-         * - icmp: Network Control Message Protocol.
-         * - gre: Generic Routing Encapsulation Protocol.
-         * - tcp: Transmission Control Protocol.
-         * - udp: User Datagram Protocol.
-         * - all: Supports all protocols.
-         *
          * - icmp: Network Control Message Protocol.
          * - gre: Generic Routing Encapsulation Protocol.
          * - tcp: Transmission Control Protocol.
@@ -46087,7 +46162,7 @@ export namespace vpc {
          */
         resourceType: string;
         /**
-         * The state of the network ACL.
+         * The status of the associated resource.
          */
         status: string;
     }
@@ -47270,7 +47345,13 @@ export namespace wafv3 {
          */
         readTimeout?: number;
         /**
-         * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is `[{" k ":"_key_"," v ":"_value_"}]`. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.See the following `Block RequestHeaders`.
+         * The traffic tag field and value of the domain name which used to mark the traffic processed by WAF. 
+         * It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
+         * and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
+         * when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
+         * to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
+         * custom header field already exists in the request, the system will overwrite the value of the custom field in the
+         * request with the set traffic tag value. See `requestHeaders` below.
          */
         requestHeaders?: outputs.wafv3.DomainRedirectRequestHeader[];
         /**

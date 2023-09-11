@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Eflo Subnet resource.
  *
- * For information about Eflo Subnet and how to use it, see [What is Subnet](https://help.aliyun.com/document_detail/604977.html).
+ * For information about Eflo Subnet and how to use it, see [What is Subnet](https://www.alibabacloud.com/help/en/pai/user-guide/overview-of-intelligent-computing-lingjun).
  *
- * > **NOTE:** Available in v1.204.0+.
+ * > **NOTE:** Available since v1.204.0.
  *
  * ## Example Usage
  *
@@ -19,15 +19,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const defaultZones = alicloud.getZones({});
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const defaultVpd = new alicloud.eflo.Vpd("defaultVpd", {
  *     cidr: "10.0.0.0/8",
- *     vpdName: _var.name,
+ *     vpdName: name,
  *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
  * });
  * const defaultSubnet = new alicloud.eflo.Subnet("defaultSubnet", {
- *     subnetName: _var.name,
+ *     subnetName: name,
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     cidr: "10.0.0.0/16",
  *     vpdId: defaultVpd.id,
@@ -71,7 +73,7 @@ export class Subnet extends pulumi.CustomResource {
     }
 
     /**
-     * CIDR network segment
+     * CIDR network segment.
      */
     public readonly cidr!: pulumi.Output<string>;
     /**
@@ -114,7 +116,7 @@ export class Subnet extends pulumi.CustomResource {
      */
     public readonly vpdId!: pulumi.Output<string>;
     /**
-     * The zone ID  of the resource
+     * The zone ID  of the resource.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -178,7 +180,7 @@ export class Subnet extends pulumi.CustomResource {
  */
 export interface SubnetState {
     /**
-     * CIDR network segment
+     * CIDR network segment.
      */
     cidr?: pulumi.Input<string>;
     /**
@@ -221,7 +223,7 @@ export interface SubnetState {
      */
     vpdId?: pulumi.Input<string>;
     /**
-     * The zone ID  of the resource
+     * The zone ID  of the resource.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -231,7 +233,7 @@ export interface SubnetState {
  */
 export interface SubnetArgs {
     /**
-     * CIDR network segment
+     * CIDR network segment.
      */
     cidr: pulumi.Input<string>;
     /**
@@ -250,7 +252,7 @@ export interface SubnetArgs {
      */
     vpdId: pulumi.Input<string>;
     /**
-     * The zone ID  of the resource
+     * The zone ID  of the resource.
      */
     zoneId: pulumi.Input<string>;
 }

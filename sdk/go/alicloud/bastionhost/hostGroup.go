@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Bastion Host Host Group resource.
@@ -224,6 +225,12 @@ func (i *HostGroup) ToHostGroupOutputWithContext(ctx context.Context) HostGroupO
 	return pulumi.ToOutputWithContext(ctx, i).(HostGroupOutput)
 }
 
+func (i *HostGroup) ToOutput(ctx context.Context) pulumix.Output[*HostGroup] {
+	return pulumix.Output[*HostGroup]{
+		OutputState: i.ToHostGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HostGroupArrayInput is an input type that accepts HostGroupArray and HostGroupArrayOutput values.
 // You can construct a concrete instance of `HostGroupArrayInput` via:
 //
@@ -247,6 +254,12 @@ func (i HostGroupArray) ToHostGroupArrayOutput() HostGroupArrayOutput {
 
 func (i HostGroupArray) ToHostGroupArrayOutputWithContext(ctx context.Context) HostGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostGroupArrayOutput)
+}
+
+func (i HostGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*HostGroup] {
+	return pulumix.Output[[]*HostGroup]{
+		OutputState: i.ToHostGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // HostGroupMapInput is an input type that accepts HostGroupMap and HostGroupMapOutput values.
@@ -274,6 +287,12 @@ func (i HostGroupMap) ToHostGroupMapOutputWithContext(ctx context.Context) HostG
 	return pulumi.ToOutputWithContext(ctx, i).(HostGroupMapOutput)
 }
 
+func (i HostGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostGroup] {
+	return pulumix.Output[map[string]*HostGroup]{
+		OutputState: i.ToHostGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HostGroupOutput struct{ *pulumi.OutputState }
 
 func (HostGroupOutput) ElementType() reflect.Type {
@@ -286,6 +305,12 @@ func (o HostGroupOutput) ToHostGroupOutput() HostGroupOutput {
 
 func (o HostGroupOutput) ToHostGroupOutputWithContext(ctx context.Context) HostGroupOutput {
 	return o
+}
+
+func (o HostGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*HostGroup] {
+	return pulumix.Output[*HostGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specify the New Host Group of Notes, Supports up to 500 Characters.
@@ -322,6 +347,12 @@ func (o HostGroupArrayOutput) ToHostGroupArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o HostGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HostGroup] {
+	return pulumix.Output[[]*HostGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HostGroupArrayOutput) Index(i pulumi.IntInput) HostGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HostGroup {
 		return vs[0].([]*HostGroup)[vs[1].(int)]
@@ -340,6 +371,12 @@ func (o HostGroupMapOutput) ToHostGroupMapOutput() HostGroupMapOutput {
 
 func (o HostGroupMapOutput) ToHostGroupMapOutputWithContext(ctx context.Context) HostGroupMapOutput {
 	return o
+}
+
+func (o HostGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostGroup] {
+	return pulumix.Output[map[string]*HostGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HostGroupMapOutput) MapIndex(k pulumi.StringInput) HostGroupOutput {

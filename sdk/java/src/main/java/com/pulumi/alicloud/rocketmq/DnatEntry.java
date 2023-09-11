@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Sag DnatEntry resource. This topic describes how to add a DNAT entry to a Smart Access Gateway (SAG) instance to enable the DNAT function. By using the DNAT function, you can forward requests received by public IP addresses to Alibaba Cloud instances according to custom mapping rules.
  * 
- * For information about Sag DnatEntry and how to use it, see [What is Sag DnatEntry](https://www.alibabacloud.com/help/doc-detail/124312.htm).
+ * For information about Sag DnatEntry and how to use it, see [What is Sag DnatEntry](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/adddnatentry).
  * 
- * &gt; **NOTE:** Available in 1.63.0+
+ * &gt; **NOTE:** Available since v1.63.0.
  * 
  * &gt; **NOTE:** Only the following regions suppor. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
  * 
@@ -47,14 +47,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var sagId = config.get(&#34;sagId&#34;).orElse(&#34;sag-9bifkfaz***&#34;);
  *         var default_ = new DnatEntry(&#34;default&#34;, DnatEntryArgs.builder()        
- *             .externalIp(&#34;1.0.0.2&#34;)
- *             .externalPort(&#34;1&#34;)
- *             .internalIp(&#34;10.0.0.2&#34;)
- *             .internalPort(&#34;20&#34;)
- *             .ipProtocol(&#34;tcp&#34;)
- *             .sagId(&#34;sag-3rb1t3iagy3w0zgwy9&#34;)
+ *             .sagId(sagId)
  *             .type(&#34;Intranet&#34;)
+ *             .ipProtocol(&#34;any&#34;)
+ *             .externalIp(&#34;172.32.0.2&#34;)
+ *             .externalPort(&#34;any&#34;)
+ *             .internalIp(&#34;172.16.0.4&#34;)
+ *             .internalPort(&#34;any&#34;)
  *             .build());
  * 
  *     }

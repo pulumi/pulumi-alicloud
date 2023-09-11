@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a HBR Oss Backup Plan resource.
@@ -290,6 +291,12 @@ func (i *OssBackupPlan) ToOssBackupPlanOutputWithContext(ctx context.Context) Os
 	return pulumi.ToOutputWithContext(ctx, i).(OssBackupPlanOutput)
 }
 
+func (i *OssBackupPlan) ToOutput(ctx context.Context) pulumix.Output[*OssBackupPlan] {
+	return pulumix.Output[*OssBackupPlan]{
+		OutputState: i.ToOssBackupPlanOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OssBackupPlanArrayInput is an input type that accepts OssBackupPlanArray and OssBackupPlanArrayOutput values.
 // You can construct a concrete instance of `OssBackupPlanArrayInput` via:
 //
@@ -313,6 +320,12 @@ func (i OssBackupPlanArray) ToOssBackupPlanArrayOutput() OssBackupPlanArrayOutpu
 
 func (i OssBackupPlanArray) ToOssBackupPlanArrayOutputWithContext(ctx context.Context) OssBackupPlanArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OssBackupPlanArrayOutput)
+}
+
+func (i OssBackupPlanArray) ToOutput(ctx context.Context) pulumix.Output[[]*OssBackupPlan] {
+	return pulumix.Output[[]*OssBackupPlan]{
+		OutputState: i.ToOssBackupPlanArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // OssBackupPlanMapInput is an input type that accepts OssBackupPlanMap and OssBackupPlanMapOutput values.
@@ -340,6 +353,12 @@ func (i OssBackupPlanMap) ToOssBackupPlanMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(OssBackupPlanMapOutput)
 }
 
+func (i OssBackupPlanMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OssBackupPlan] {
+	return pulumix.Output[map[string]*OssBackupPlan]{
+		OutputState: i.ToOssBackupPlanMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OssBackupPlanOutput struct{ *pulumi.OutputState }
 
 func (OssBackupPlanOutput) ElementType() reflect.Type {
@@ -352,6 +371,12 @@ func (o OssBackupPlanOutput) ToOssBackupPlanOutput() OssBackupPlanOutput {
 
 func (o OssBackupPlanOutput) ToOssBackupPlanOutputWithContext(ctx context.Context) OssBackupPlanOutput {
 	return o
+}
+
+func (o OssBackupPlanOutput) ToOutput(ctx context.Context) pulumix.Output[*OssBackupPlan] {
+	return pulumix.Output[*OssBackupPlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Backup type. Valid values: `COMPLETE`.
@@ -423,6 +448,12 @@ func (o OssBackupPlanArrayOutput) ToOssBackupPlanArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o OssBackupPlanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OssBackupPlan] {
+	return pulumix.Output[[]*OssBackupPlan]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OssBackupPlanArrayOutput) Index(i pulumi.IntInput) OssBackupPlanOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OssBackupPlan {
 		return vs[0].([]*OssBackupPlan)[vs[1].(int)]
@@ -441,6 +472,12 @@ func (o OssBackupPlanMapOutput) ToOssBackupPlanMapOutput() OssBackupPlanMapOutpu
 
 func (o OssBackupPlanMapOutput) ToOssBackupPlanMapOutputWithContext(ctx context.Context) OssBackupPlanMapOutput {
 	return o
+}
+
+func (o OssBackupPlanMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OssBackupPlan] {
+	return pulumix.Output[map[string]*OssBackupPlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OssBackupPlanMapOutput) MapIndex(k pulumi.StringInput) OssBackupPlanOutput {

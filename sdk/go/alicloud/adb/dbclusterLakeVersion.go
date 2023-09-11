@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a AnalyticDB for MySQL (ADB) DB Cluster Lake Version resource.
@@ -370,6 +371,12 @@ func (i *DBClusterLakeVersion) ToDBClusterLakeVersionOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(DBClusterLakeVersionOutput)
 }
 
+func (i *DBClusterLakeVersion) ToOutput(ctx context.Context) pulumix.Output[*DBClusterLakeVersion] {
+	return pulumix.Output[*DBClusterLakeVersion]{
+		OutputState: i.ToDBClusterLakeVersionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DBClusterLakeVersionArrayInput is an input type that accepts DBClusterLakeVersionArray and DBClusterLakeVersionArrayOutput values.
 // You can construct a concrete instance of `DBClusterLakeVersionArrayInput` via:
 //
@@ -393,6 +400,12 @@ func (i DBClusterLakeVersionArray) ToDBClusterLakeVersionArrayOutput() DBCluster
 
 func (i DBClusterLakeVersionArray) ToDBClusterLakeVersionArrayOutputWithContext(ctx context.Context) DBClusterLakeVersionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DBClusterLakeVersionArrayOutput)
+}
+
+func (i DBClusterLakeVersionArray) ToOutput(ctx context.Context) pulumix.Output[[]*DBClusterLakeVersion] {
+	return pulumix.Output[[]*DBClusterLakeVersion]{
+		OutputState: i.ToDBClusterLakeVersionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DBClusterLakeVersionMapInput is an input type that accepts DBClusterLakeVersionMap and DBClusterLakeVersionMapOutput values.
@@ -420,6 +433,12 @@ func (i DBClusterLakeVersionMap) ToDBClusterLakeVersionMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DBClusterLakeVersionMapOutput)
 }
 
+func (i DBClusterLakeVersionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DBClusterLakeVersion] {
+	return pulumix.Output[map[string]*DBClusterLakeVersion]{
+		OutputState: i.ToDBClusterLakeVersionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DBClusterLakeVersionOutput struct{ *pulumi.OutputState }
 
 func (DBClusterLakeVersionOutput) ElementType() reflect.Type {
@@ -432,6 +451,12 @@ func (o DBClusterLakeVersionOutput) ToDBClusterLakeVersionOutput() DBClusterLake
 
 func (o DBClusterLakeVersionOutput) ToDBClusterLakeVersionOutputWithContext(ctx context.Context) DBClusterLakeVersionOutput {
 	return o
+}
+
+func (o DBClusterLakeVersionOutput) ToOutput(ctx context.Context) pulumix.Output[*DBClusterLakeVersion] {
+	return pulumix.Output[*DBClusterLakeVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the service.
@@ -560,6 +585,12 @@ func (o DBClusterLakeVersionArrayOutput) ToDBClusterLakeVersionArrayOutputWithCo
 	return o
 }
 
+func (o DBClusterLakeVersionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DBClusterLakeVersion] {
+	return pulumix.Output[[]*DBClusterLakeVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DBClusterLakeVersionArrayOutput) Index(i pulumi.IntInput) DBClusterLakeVersionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DBClusterLakeVersion {
 		return vs[0].([]*DBClusterLakeVersion)[vs[1].(int)]
@@ -578,6 +609,12 @@ func (o DBClusterLakeVersionMapOutput) ToDBClusterLakeVersionMapOutput() DBClust
 
 func (o DBClusterLakeVersionMapOutput) ToDBClusterLakeVersionMapOutputWithContext(ctx context.Context) DBClusterLakeVersionMapOutput {
 	return o
+}
+
+func (o DBClusterLakeVersionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DBClusterLakeVersion] {
+	return pulumix.Output[map[string]*DBClusterLakeVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DBClusterLakeVersionMapOutput) MapIndex(k pulumi.StringInput) DBClusterLakeVersionOutput {

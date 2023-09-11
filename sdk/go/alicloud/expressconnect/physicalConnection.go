@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Express Connect Physical Connection resource.
@@ -340,6 +341,12 @@ func (i *PhysicalConnection) ToPhysicalConnectionOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(PhysicalConnectionOutput)
 }
 
+func (i *PhysicalConnection) ToOutput(ctx context.Context) pulumix.Output[*PhysicalConnection] {
+	return pulumix.Output[*PhysicalConnection]{
+		OutputState: i.ToPhysicalConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PhysicalConnectionArrayInput is an input type that accepts PhysicalConnectionArray and PhysicalConnectionArrayOutput values.
 // You can construct a concrete instance of `PhysicalConnectionArrayInput` via:
 //
@@ -363,6 +370,12 @@ func (i PhysicalConnectionArray) ToPhysicalConnectionArrayOutput() PhysicalConne
 
 func (i PhysicalConnectionArray) ToPhysicalConnectionArrayOutputWithContext(ctx context.Context) PhysicalConnectionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PhysicalConnectionArrayOutput)
+}
+
+func (i PhysicalConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]*PhysicalConnection] {
+	return pulumix.Output[[]*PhysicalConnection]{
+		OutputState: i.ToPhysicalConnectionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PhysicalConnectionMapInput is an input type that accepts PhysicalConnectionMap and PhysicalConnectionMapOutput values.
@@ -390,6 +403,12 @@ func (i PhysicalConnectionMap) ToPhysicalConnectionMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(PhysicalConnectionMapOutput)
 }
 
+func (i PhysicalConnectionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PhysicalConnection] {
+	return pulumix.Output[map[string]*PhysicalConnection]{
+		OutputState: i.ToPhysicalConnectionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PhysicalConnectionOutput struct{ *pulumi.OutputState }
 
 func (PhysicalConnectionOutput) ElementType() reflect.Type {
@@ -402,6 +421,12 @@ func (o PhysicalConnectionOutput) ToPhysicalConnectionOutput() PhysicalConnectio
 
 func (o PhysicalConnectionOutput) ToPhysicalConnectionOutputWithContext(ctx context.Context) PhysicalConnectionOutput {
 	return o
+}
+
+func (o PhysicalConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*PhysicalConnection] {
+	return pulumix.Output[*PhysicalConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Physical Leased Line Access Point ID.
@@ -488,6 +513,12 @@ func (o PhysicalConnectionArrayOutput) ToPhysicalConnectionArrayOutputWithContex
 	return o
 }
 
+func (o PhysicalConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PhysicalConnection] {
+	return pulumix.Output[[]*PhysicalConnection]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PhysicalConnectionArrayOutput) Index(i pulumi.IntInput) PhysicalConnectionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PhysicalConnection {
 		return vs[0].([]*PhysicalConnection)[vs[1].(int)]
@@ -506,6 +537,12 @@ func (o PhysicalConnectionMapOutput) ToPhysicalConnectionMapOutput() PhysicalCon
 
 func (o PhysicalConnectionMapOutput) ToPhysicalConnectionMapOutputWithContext(ctx context.Context) PhysicalConnectionMapOutput {
 	return o
+}
+
+func (o PhysicalConnectionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PhysicalConnection] {
+	return pulumix.Output[map[string]*PhysicalConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PhysicalConnectionMapOutput) MapIndex(k pulumi.StringInput) PhysicalConnectionOutput {

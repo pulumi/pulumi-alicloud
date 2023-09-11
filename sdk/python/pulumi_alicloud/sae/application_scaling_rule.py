@@ -32,8 +32,8 @@ class ApplicationScalingRuleArgs:
         :param pulumi.Input[int] min_ready_instance_ratio: The min ready instance ratio.
         :param pulumi.Input[int] min_ready_instances: The min ready instances.
         :param pulumi.Input[bool] scaling_rule_enable: True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
-        :param pulumi.Input['ApplicationScalingRuleScalingRuleMetricArgs'] scaling_rule_metric: Monitor the configuration of the indicator elasticity strategy. See the following `Block scaling_rule_metric`.
-        :param pulumi.Input['ApplicationScalingRuleScalingRuleTimerArgs'] scaling_rule_timer: Configuration of Timing Resilient Policies. See the following `Block scaling_rule_timer`.
+        :param pulumi.Input['ApplicationScalingRuleScalingRuleMetricArgs'] scaling_rule_metric: Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
+        :param pulumi.Input['ApplicationScalingRuleScalingRuleTimerArgs'] scaling_rule_timer: Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
         """
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "scaling_rule_name", scaling_rule_name)
@@ -125,7 +125,7 @@ class ApplicationScalingRuleArgs:
     @pulumi.getter(name="scalingRuleMetric")
     def scaling_rule_metric(self) -> Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricArgs']]:
         """
-        Monitor the configuration of the indicator elasticity strategy. See the following `Block scaling_rule_metric`.
+        Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
         """
         return pulumi.get(self, "scaling_rule_metric")
 
@@ -137,7 +137,7 @@ class ApplicationScalingRuleArgs:
     @pulumi.getter(name="scalingRuleTimer")
     def scaling_rule_timer(self) -> Optional[pulumi.Input['ApplicationScalingRuleScalingRuleTimerArgs']]:
         """
-        Configuration of Timing Resilient Policies. See the following `Block scaling_rule_timer`.
+        Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
         """
         return pulumi.get(self, "scaling_rule_timer")
 
@@ -163,9 +163,9 @@ class _ApplicationScalingRuleState:
         :param pulumi.Input[int] min_ready_instance_ratio: The min ready instance ratio.
         :param pulumi.Input[int] min_ready_instances: The min ready instances.
         :param pulumi.Input[bool] scaling_rule_enable: True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
-        :param pulumi.Input['ApplicationScalingRuleScalingRuleMetricArgs'] scaling_rule_metric: Monitor the configuration of the indicator elasticity strategy. See the following `Block scaling_rule_metric`.
+        :param pulumi.Input['ApplicationScalingRuleScalingRuleMetricArgs'] scaling_rule_metric: Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
         :param pulumi.Input[str] scaling_rule_name: The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
-        :param pulumi.Input['ApplicationScalingRuleScalingRuleTimerArgs'] scaling_rule_timer: Configuration of Timing Resilient Policies. See the following `Block scaling_rule_timer`.
+        :param pulumi.Input['ApplicationScalingRuleScalingRuleTimerArgs'] scaling_rule_timer: Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
         :param pulumi.Input[str] scaling_rule_type: Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
         """
         if app_id is not None:
@@ -237,7 +237,7 @@ class _ApplicationScalingRuleState:
     @pulumi.getter(name="scalingRuleMetric")
     def scaling_rule_metric(self) -> Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricArgs']]:
         """
-        Monitor the configuration of the indicator elasticity strategy. See the following `Block scaling_rule_metric`.
+        Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
         """
         return pulumi.get(self, "scaling_rule_metric")
 
@@ -261,7 +261,7 @@ class _ApplicationScalingRuleState:
     @pulumi.getter(name="scalingRuleTimer")
     def scaling_rule_timer(self) -> Optional[pulumi.Input['ApplicationScalingRuleScalingRuleTimerArgs']]:
         """
-        Configuration of Timing Resilient Policies. See the following `Block scaling_rule_timer`.
+        Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
         """
         return pulumi.get(self, "scaling_rule_timer")
 
@@ -299,9 +299,9 @@ class ApplicationScalingRule(pulumi.CustomResource):
         """
         Provides a Serverless App Engine (SAE) Application Scaling Rule resource.
 
-        For information about Serverless App Engine (SAE) Application Scaling Rule and how to use it, see [What is Application Scaling Rule](https://help.aliyun.com/document_detail/134120.html).
+        For information about Serverless App Engine (SAE) Application Scaling Rule and how to use it, see [What is Application Scaling Rule](https://www.alibabacloud.com/help/en/sae/latest/create-application-scaling-rule).
 
-        > **NOTE:** Available in v1.159.0+.
+        > **NOTE:** Available since v1.159.0.
 
         ## Example Usage
 
@@ -310,34 +310,52 @@ class ApplicationScalingRule(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_description="example_value",
-            namespace_id="example_value",
-            namespace_name="example_value")
+            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
+            namespace_name=name,
+            namespace_description=name,
+            enable_micro_registration=False)
         default_application = alicloud.sae.Application("defaultApplication",
-            app_description="example_value",
-            app_name="example_value",
-            namespace_id=default_namespace.namespace_id,
-            image_url="registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
+            app_description=name,
+            app_name=name,
+            namespace_id=default_namespace.id,
+            image_url=f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
             package_type="Image",
-            jdk="Open JDK 8",
-            vswitch_id=default_switches.ids[0],
-            vpc_id=default_networks.ids[0],
-            timezone="Asia/Shanghai",
+            security_group_id=default_security_group.id,
+            vpc_id=default_network.id,
+            vswitch_id=default_switch.id,
+            timezone="Asia/Beijing",
             replicas=5,
             cpu=500,
             memory=2048)
-        example = alicloud.sae.ApplicationScalingRule("example",
+        default_application_scaling_rule = alicloud.sae.ApplicationScalingRule("defaultApplicationScalingRule",
             app_id=default_application.id,
-            scaling_rule_name="example-value",
+            scaling_rule_name=name,
             scaling_rule_enable=True,
             scaling_rule_type="mix",
+            min_ready_instances=3,
+            min_ready_instance_ratio=-1,
             scaling_rule_timer=alicloud.sae.ApplicationScalingRuleScalingRuleTimerArgs(
-                begin_date="2022-02-25",
-                end_date="2022-03-25",
                 period="* * *",
                 schedules=[
                     alicloud.sae.ApplicationScalingRuleScalingRuleTimerScheduleArgs(
@@ -396,9 +414,9 @@ class ApplicationScalingRule(pulumi.CustomResource):
         :param pulumi.Input[int] min_ready_instance_ratio: The min ready instance ratio.
         :param pulumi.Input[int] min_ready_instances: The min ready instances.
         :param pulumi.Input[bool] scaling_rule_enable: True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
-        :param pulumi.Input[pulumi.InputType['ApplicationScalingRuleScalingRuleMetricArgs']] scaling_rule_metric: Monitor the configuration of the indicator elasticity strategy. See the following `Block scaling_rule_metric`.
+        :param pulumi.Input[pulumi.InputType['ApplicationScalingRuleScalingRuleMetricArgs']] scaling_rule_metric: Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
         :param pulumi.Input[str] scaling_rule_name: The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
-        :param pulumi.Input[pulumi.InputType['ApplicationScalingRuleScalingRuleTimerArgs']] scaling_rule_timer: Configuration of Timing Resilient Policies. See the following `Block scaling_rule_timer`.
+        :param pulumi.Input[pulumi.InputType['ApplicationScalingRuleScalingRuleTimerArgs']] scaling_rule_timer: Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
         :param pulumi.Input[str] scaling_rule_type: Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
         """
         ...
@@ -410,9 +428,9 @@ class ApplicationScalingRule(pulumi.CustomResource):
         """
         Provides a Serverless App Engine (SAE) Application Scaling Rule resource.
 
-        For information about Serverless App Engine (SAE) Application Scaling Rule and how to use it, see [What is Application Scaling Rule](https://help.aliyun.com/document_detail/134120.html).
+        For information about Serverless App Engine (SAE) Application Scaling Rule and how to use it, see [What is Application Scaling Rule](https://www.alibabacloud.com/help/en/sae/latest/create-application-scaling-rule).
 
-        > **NOTE:** Available in v1.159.0+.
+        > **NOTE:** Available since v1.159.0.
 
         ## Example Usage
 
@@ -421,34 +439,52 @@ class ApplicationScalingRule(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_description="example_value",
-            namespace_id="example_value",
-            namespace_name="example_value")
+            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
+            namespace_name=name,
+            namespace_description=name,
+            enable_micro_registration=False)
         default_application = alicloud.sae.Application("defaultApplication",
-            app_description="example_value",
-            app_name="example_value",
-            namespace_id=default_namespace.namespace_id,
-            image_url="registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
+            app_description=name,
+            app_name=name,
+            namespace_id=default_namespace.id,
+            image_url=f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
             package_type="Image",
-            jdk="Open JDK 8",
-            vswitch_id=default_switches.ids[0],
-            vpc_id=default_networks.ids[0],
-            timezone="Asia/Shanghai",
+            security_group_id=default_security_group.id,
+            vpc_id=default_network.id,
+            vswitch_id=default_switch.id,
+            timezone="Asia/Beijing",
             replicas=5,
             cpu=500,
             memory=2048)
-        example = alicloud.sae.ApplicationScalingRule("example",
+        default_application_scaling_rule = alicloud.sae.ApplicationScalingRule("defaultApplicationScalingRule",
             app_id=default_application.id,
-            scaling_rule_name="example-value",
+            scaling_rule_name=name,
             scaling_rule_enable=True,
             scaling_rule_type="mix",
+            min_ready_instances=3,
+            min_ready_instance_ratio=-1,
             scaling_rule_timer=alicloud.sae.ApplicationScalingRuleScalingRuleTimerArgs(
-                begin_date="2022-02-25",
-                end_date="2022-03-25",
                 period="* * *",
                 schedules=[
                     alicloud.sae.ApplicationScalingRuleScalingRuleTimerScheduleArgs(
@@ -576,9 +612,9 @@ class ApplicationScalingRule(pulumi.CustomResource):
         :param pulumi.Input[int] min_ready_instance_ratio: The min ready instance ratio.
         :param pulumi.Input[int] min_ready_instances: The min ready instances.
         :param pulumi.Input[bool] scaling_rule_enable: True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
-        :param pulumi.Input[pulumi.InputType['ApplicationScalingRuleScalingRuleMetricArgs']] scaling_rule_metric: Monitor the configuration of the indicator elasticity strategy. See the following `Block scaling_rule_metric`.
+        :param pulumi.Input[pulumi.InputType['ApplicationScalingRuleScalingRuleMetricArgs']] scaling_rule_metric: Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
         :param pulumi.Input[str] scaling_rule_name: The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
-        :param pulumi.Input[pulumi.InputType['ApplicationScalingRuleScalingRuleTimerArgs']] scaling_rule_timer: Configuration of Timing Resilient Policies. See the following `Block scaling_rule_timer`.
+        :param pulumi.Input[pulumi.InputType['ApplicationScalingRuleScalingRuleTimerArgs']] scaling_rule_timer: Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
         :param pulumi.Input[str] scaling_rule_type: Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -631,7 +667,7 @@ class ApplicationScalingRule(pulumi.CustomResource):
     @pulumi.getter(name="scalingRuleMetric")
     def scaling_rule_metric(self) -> pulumi.Output[Optional['outputs.ApplicationScalingRuleScalingRuleMetric']]:
         """
-        Monitor the configuration of the indicator elasticity strategy. See the following `Block scaling_rule_metric`.
+        Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
         """
         return pulumi.get(self, "scaling_rule_metric")
 
@@ -647,7 +683,7 @@ class ApplicationScalingRule(pulumi.CustomResource):
     @pulumi.getter(name="scalingRuleTimer")
     def scaling_rule_timer(self) -> pulumi.Output[Optional['outputs.ApplicationScalingRuleScalingRuleTimer']]:
         """
-        Configuration of Timing Resilient Policies. See the following `Block scaling_rule_timer`.
+        Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
         """
         return pulumi.get(self, "scaling_rule_timer")
 

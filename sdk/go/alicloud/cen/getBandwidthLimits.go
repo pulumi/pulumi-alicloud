@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides CEN Bandwidth Limits available to the user.
@@ -107,6 +108,12 @@ func (o GetBandwidthLimitsResultOutput) ToGetBandwidthLimitsResultOutput() GetBa
 
 func (o GetBandwidthLimitsResultOutput) ToGetBandwidthLimitsResultOutputWithContext(ctx context.Context) GetBandwidthLimitsResultOutput {
 	return o
+}
+
+func (o GetBandwidthLimitsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBandwidthLimitsResult] {
+	return pulumix.Output[GetBandwidthLimitsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

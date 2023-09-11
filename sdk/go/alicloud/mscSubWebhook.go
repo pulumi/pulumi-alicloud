@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Msc Sub Webhook resource.
@@ -154,6 +155,12 @@ func (i *MscSubWebhook) ToMscSubWebhookOutputWithContext(ctx context.Context) Ms
 	return pulumi.ToOutputWithContext(ctx, i).(MscSubWebhookOutput)
 }
 
+func (i *MscSubWebhook) ToOutput(ctx context.Context) pulumix.Output[*MscSubWebhook] {
+	return pulumix.Output[*MscSubWebhook]{
+		OutputState: i.ToMscSubWebhookOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MscSubWebhookArrayInput is an input type that accepts MscSubWebhookArray and MscSubWebhookArrayOutput values.
 // You can construct a concrete instance of `MscSubWebhookArrayInput` via:
 //
@@ -177,6 +184,12 @@ func (i MscSubWebhookArray) ToMscSubWebhookArrayOutput() MscSubWebhookArrayOutpu
 
 func (i MscSubWebhookArray) ToMscSubWebhookArrayOutputWithContext(ctx context.Context) MscSubWebhookArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MscSubWebhookArrayOutput)
+}
+
+func (i MscSubWebhookArray) ToOutput(ctx context.Context) pulumix.Output[[]*MscSubWebhook] {
+	return pulumix.Output[[]*MscSubWebhook]{
+		OutputState: i.ToMscSubWebhookArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MscSubWebhookMapInput is an input type that accepts MscSubWebhookMap and MscSubWebhookMapOutput values.
@@ -204,6 +217,12 @@ func (i MscSubWebhookMap) ToMscSubWebhookMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(MscSubWebhookMapOutput)
 }
 
+func (i MscSubWebhookMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MscSubWebhook] {
+	return pulumix.Output[map[string]*MscSubWebhook]{
+		OutputState: i.ToMscSubWebhookMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MscSubWebhookOutput struct{ *pulumi.OutputState }
 
 func (MscSubWebhookOutput) ElementType() reflect.Type {
@@ -216,6 +235,12 @@ func (o MscSubWebhookOutput) ToMscSubWebhookOutput() MscSubWebhookOutput {
 
 func (o MscSubWebhookOutput) ToMscSubWebhookOutputWithContext(ctx context.Context) MscSubWebhookOutput {
 	return o
+}
+
+func (o MscSubWebhookOutput) ToOutput(ctx context.Context) pulumix.Output[*MscSubWebhook] {
+	return pulumix.Output[*MscSubWebhook]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The serverUrl of the Webhook. This url must start with `https://oapi.dingtalk.com/robot/send?access_token=`.
@@ -242,6 +267,12 @@ func (o MscSubWebhookArrayOutput) ToMscSubWebhookArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o MscSubWebhookArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MscSubWebhook] {
+	return pulumix.Output[[]*MscSubWebhook]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MscSubWebhookArrayOutput) Index(i pulumi.IntInput) MscSubWebhookOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MscSubWebhook {
 		return vs[0].([]*MscSubWebhook)[vs[1].(int)]
@@ -260,6 +291,12 @@ func (o MscSubWebhookMapOutput) ToMscSubWebhookMapOutput() MscSubWebhookMapOutpu
 
 func (o MscSubWebhookMapOutput) ToMscSubWebhookMapOutputWithContext(ctx context.Context) MscSubWebhookMapOutput {
 	return o
+}
+
+func (o MscSubWebhookMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MscSubWebhook] {
+	return pulumix.Output[map[string]*MscSubWebhook]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MscSubWebhookMapOutput) MapIndex(k pulumi.StringInput) MscSubWebhookOutput {

@@ -18,14 +18,14 @@ public final class ChainChainConfigRouterArgs extends com.pulumi.resources.Resou
     public static final ChainChainConfigRouterArgs Empty = new ChainChainConfigRouterArgs();
 
     /**
-     * Source node.
+     * Source node. See `from` below.
      * 
      */
     @Import(name="froms")
     private @Nullable Output<List<ChainChainConfigRouterFromArgs>> froms;
 
     /**
-     * @return Source node.
+     * @return Source node. See `from` below.
      * 
      */
     public Optional<Output<List<ChainChainConfigRouterFromArgs>>> froms() {
@@ -33,14 +33,14 @@ public final class ChainChainConfigRouterArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Destination node.
+     * Destination node. See `to` below.
      * 
      */
     @Import(name="tos")
     private @Nullable Output<List<ChainChainConfigRouterToArgs>> tos;
 
     /**
-     * @return Destination node.
+     * @return Destination node. See `to` below.
      * 
      */
     public Optional<Output<List<ChainChainConfigRouterToArgs>>> tos() {
@@ -73,7 +73,7 @@ public final class ChainChainConfigRouterArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param froms Source node.
+         * @param froms Source node. See `from` below.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class ChainChainConfigRouterArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param froms Source node.
+         * @param froms Source node. See `from` below.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class ChainChainConfigRouterArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param froms Source node.
+         * @param froms Source node. See `from` below.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ChainChainConfigRouterArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param tos Destination node.
+         * @param tos Destination node. See `to` below.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ChainChainConfigRouterArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param tos Destination node.
+         * @param tos Destination node. See `to` below.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class ChainChainConfigRouterArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param tos Destination node.
+         * @param tos Destination node. See `to` below.
          * 
          * @return builder
          * 

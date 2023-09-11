@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a MHUB Product resource.
@@ -144,6 +145,12 @@ func (i *Product) ToProductOutputWithContext(ctx context.Context) ProductOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ProductOutput)
 }
 
+func (i *Product) ToOutput(ctx context.Context) pulumix.Output[*Product] {
+	return pulumix.Output[*Product]{
+		OutputState: i.ToProductOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProductArrayInput is an input type that accepts ProductArray and ProductArrayOutput values.
 // You can construct a concrete instance of `ProductArrayInput` via:
 //
@@ -167,6 +174,12 @@ func (i ProductArray) ToProductArrayOutput() ProductArrayOutput {
 
 func (i ProductArray) ToProductArrayOutputWithContext(ctx context.Context) ProductArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProductArrayOutput)
+}
+
+func (i ProductArray) ToOutput(ctx context.Context) pulumix.Output[[]*Product] {
+	return pulumix.Output[[]*Product]{
+		OutputState: i.ToProductArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProductMapInput is an input type that accepts ProductMap and ProductMapOutput values.
@@ -194,6 +207,12 @@ func (i ProductMap) ToProductMapOutputWithContext(ctx context.Context) ProductMa
 	return pulumi.ToOutputWithContext(ctx, i).(ProductMapOutput)
 }
 
+func (i ProductMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Product] {
+	return pulumix.Output[map[string]*Product]{
+		OutputState: i.ToProductMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProductOutput struct{ *pulumi.OutputState }
 
 func (ProductOutput) ElementType() reflect.Type {
@@ -206,6 +225,12 @@ func (o ProductOutput) ToProductOutput() ProductOutput {
 
 func (o ProductOutput) ToProductOutputWithContext(ctx context.Context) ProductOutput {
 	return o
+}
+
+func (o ProductOutput) ToOutput(ctx context.Context) pulumix.Output[*Product] {
+	return pulumix.Output[*Product]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ProductName.
@@ -227,6 +252,12 @@ func (o ProductArrayOutput) ToProductArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ProductArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Product] {
+	return pulumix.Output[[]*Product]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProductArrayOutput) Index(i pulumi.IntInput) ProductOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Product {
 		return vs[0].([]*Product)[vs[1].(int)]
@@ -245,6 +276,12 @@ func (o ProductMapOutput) ToProductMapOutput() ProductMapOutput {
 
 func (o ProductMapOutput) ToProductMapOutputWithContext(ctx context.Context) ProductMapOutput {
 	return o
+}
+
+func (o ProductMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Product] {
+	return pulumix.Output[map[string]*Product]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProductMapOutput) MapIndex(k pulumi.StringInput) ProductOutput {

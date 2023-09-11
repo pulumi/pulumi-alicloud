@@ -49,14 +49,14 @@ public final class GreyTagRouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The grayscale rule created for Dubbo Application. The details see Block `dubbo_rules`.
+     * The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
      * 
      */
     @Import(name="dubboRules")
     private @Nullable Output<List<GreyTagRouteDubboRuleArgs>> dubboRules;
 
     /**
-     * @return The grayscale rule created for Dubbo Application. The details see Block `dubbo_rules`.
+     * @return The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
      * 
      */
     public Optional<Output<List<GreyTagRouteDubboRuleArgs>>> dubboRules() {
@@ -79,14 +79,14 @@ public final class GreyTagRouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The grayscale rule created for SpringCloud Application. The details see Block `sc_rules`.
+     * The grayscale rule created for SpringCloud Application. See `sc_rules` below.
      * 
      */
     @Import(name="scRules")
     private @Nullable Output<List<GreyTagRouteScRuleArgs>> scRules;
 
     /**
-     * @return The grayscale rule created for SpringCloud Application. The details see Block `sc_rules`.
+     * @return The grayscale rule created for SpringCloud Application. See `sc_rules` below.
      * 
      */
     public Optional<Output<List<GreyTagRouteScRuleArgs>>> scRules() {
@@ -164,7 +164,7 @@ public final class GreyTagRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dubboRules The grayscale rule created for Dubbo Application. The details see Block `dubbo_rules`.
+         * @param dubboRules The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class GreyTagRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dubboRules The grayscale rule created for Dubbo Application. The details see Block `dubbo_rules`.
+         * @param dubboRules The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class GreyTagRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dubboRules The grayscale rule created for Dubbo Application. The details see Block `dubbo_rules`.
+         * @param dubboRules The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class GreyTagRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scRules The grayscale rule created for SpringCloud Application. The details see Block `sc_rules`.
+         * @param scRules The grayscale rule created for SpringCloud Application. See `sc_rules` below.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class GreyTagRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scRules The grayscale rule created for SpringCloud Application. The details see Block `sc_rules`.
+         * @param scRules The grayscale rule created for SpringCloud Application. See `sc_rules` below.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class GreyTagRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scRules The grayscale rule created for SpringCloud Application. The details see Block `sc_rules`.
+         * @param scRules The grayscale rule created for SpringCloud Application. See `sc_rules` below.
          * 
          * @return builder
          * 

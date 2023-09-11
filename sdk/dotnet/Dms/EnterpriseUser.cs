@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Dms
 {
     /// <summary>
-    /// Provides a DMS Enterprise User resource. For information about Alidms Enterprise User and how to use it, see [What is Resource Alidms Enterprise User](https://www.alibabacloud.com/help/doc-detail/98001.htm).
+    /// Provides a DMS Enterprise User resource. For information about Alidms Enterprise User and how to use it, see [What is Resource Alidms Enterprise User](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-registeruser).
     /// 
-    /// &gt; **NOTE:** Available in 1.90.0+.
+    /// &gt; **NOTE:** Available since v1.90.0.
     /// 
     /// ## Example Usage
     /// 
@@ -24,15 +24,25 @@ namespace Pulumi.AliCloud.Dms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.Dms.EnterpriseUser("example", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexamplename";
+    ///     var defaultUser = new AliCloud.Ram.User("defaultUser", new()
     ///     {
-    ///         Mobile = "1591066xxxx",
+    ///         DisplayName = name,
+    ///         Mobile = "86-18688888888",
+    ///         Email = "hello.uuu@aaa.com",
+    ///         Comments = "example",
+    ///     });
+    /// 
+    ///     var defaultEnterpriseUser = new AliCloud.Dms.EnterpriseUser("defaultEnterpriseUser", new()
+    ///     {
+    ///         Uid = defaultUser.Id,
+    ///         UserName = name,
     ///         RoleNames = new[]
     ///         {
     ///             "DBA",
     ///         },
-    ///         Uid = "uid",
-    ///         UserName = "tf-test",
+    ///         Mobile = "86-18688888888",
     ///     });
     /// 
     /// });

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ssl Certificates Service Certificates of the current Alibaba Cloud user.
@@ -127,6 +128,12 @@ func (o GetServiceCertificatesResultOutput) ToGetServiceCertificatesResultOutput
 
 func (o GetServiceCertificatesResultOutput) ToGetServiceCertificatesResultOutputWithContext(ctx context.Context) GetServiceCertificatesResultOutput {
 	return o
+}
+
+func (o GetServiceCertificatesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceCertificatesResult] {
+	return pulumix.Output[GetServiceCertificatesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetServiceCertificatesResultOutput) Certificates() GetServiceCertificatesCertificateArrayOutput {

@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a CDN Real Time Log Delivery resource.
  *
- * For information about CDN Real Time Log Delivery and how to use it, see [What is Real Time Log Delivery](https://www.alibabacloud.com/help/doc-detail/100456.htm).
+ * For information about CDN Real Time Log Delivery and how to use it, see [What is Real Time Log Delivery](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-createrealtimelogdelivery).
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *
@@ -18,12 +18,40 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const example = new alicloud.cdn.RealTimeLogDelivery("example", {
- *     domain: "example_value",
- *     logstore: "example_value",
- *     project: "example_value",
- *     slsRegion: "cn-hanghzou",
+ * const defaultDomainNew = new alicloud.cdn.DomainNew("defaultDomainNew", {
+ *     scope: "overseas",
+ *     domainName: "mycdndomain.alicloud-provider.cn",
+ *     cdnType: "web",
+ *     sources: [{
+ *         type: "ipaddr",
+ *         content: "1.1.3.1",
+ *         priority: 20,
+ *         port: 80,
+ *         weight: 15,
+ *     }],
+ * });
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultProject = new alicloud.log.Project("defaultProject", {description: "terraform-example"});
+ * const defaultStore = new alicloud.log.Store("defaultStore", {
+ *     project: defaultProject.name,
+ *     shardCount: 3,
+ *     autoSplit: true,
+ *     maxSplitShardCount: 60,
+ *     appendMeta: true,
+ * });
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultRealTimeLogDelivery = new alicloud.cdn.RealTimeLogDelivery("defaultRealTimeLogDelivery", {
+ *     domain: defaultDomainNew.domainName,
+ *     logstore: defaultProject.name,
+ *     project: defaultStore.name,
+ *     slsRegion: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
  * });
  * ```
  *

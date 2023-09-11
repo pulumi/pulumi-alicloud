@@ -364,9 +364,9 @@ class QosCar(pulumi.CustomResource):
         Provides a Sag qos car resource.
         You need to create a QoS car to set priorities, rate limits, and quintuple rules for different messages.
 
-        For information about Sag Qos Car and how to use it, see [What is Qos Car](https://www.alibabacloud.com/help/doc-detail/140065.htm).
+        For information about Sag Qos Car and how to use it, see [What is Qos Car](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createqoscar).
 
-        > **NOTE:** Available in 1.60.0+
+        > **NOTE:** Available since v1.60.0.
 
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
@@ -378,10 +378,14 @@ class QosCar(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
         default_qos = alicloud.rocketmq.Qos("defaultQos")
         default_qos_car = alicloud.rocketmq.QosCar("defaultQosCar",
             qos_id=default_qos.id,
-            description="tf-testSagQosCarDescription",
+            description=name,
             priority=1,
             limit_type="Absolute",
             min_bandwidth_abs=10,
@@ -422,9 +426,9 @@ class QosCar(pulumi.CustomResource):
         Provides a Sag qos car resource.
         You need to create a QoS car to set priorities, rate limits, and quintuple rules for different messages.
 
-        For information about Sag Qos Car and how to use it, see [What is Qos Car](https://www.alibabacloud.com/help/doc-detail/140065.htm).
+        For information about Sag Qos Car and how to use it, see [What is Qos Car](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createqoscar).
 
-        > **NOTE:** Available in 1.60.0+
+        > **NOTE:** Available since v1.60.0.
 
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
@@ -436,10 +440,14 @@ class QosCar(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
         default_qos = alicloud.rocketmq.Qos("defaultQos")
         default_qos_car = alicloud.rocketmq.QosCar("defaultQosCar",
             qos_id=default_qos.id,
-            description="tf-testSagQosCarDescription",
+            description=name,
             priority=1,
             limit_type="Absolute",
             min_bandwidth_abs=10,

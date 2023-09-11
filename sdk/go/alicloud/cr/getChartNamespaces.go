@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cr Chart Namespaces of the current Alibaba Cloud user.
@@ -90,6 +91,12 @@ func (o GetChartNamespacesResultOutput) ToGetChartNamespacesResultOutput() GetCh
 
 func (o GetChartNamespacesResultOutput) ToGetChartNamespacesResultOutputWithContext(ctx context.Context) GetChartNamespacesResultOutput {
 	return o
+}
+
+func (o GetChartNamespacesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetChartNamespacesResult] {
+	return pulumix.Output[GetChartNamespacesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

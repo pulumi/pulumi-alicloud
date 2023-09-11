@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Application Real-Time Monitoring Service (ARMS) Integration Exporter resource.
@@ -238,6 +239,12 @@ func (i *IntegrationExporter) ToIntegrationExporterOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationExporterOutput)
 }
 
+func (i *IntegrationExporter) ToOutput(ctx context.Context) pulumix.Output[*IntegrationExporter] {
+	return pulumix.Output[*IntegrationExporter]{
+		OutputState: i.ToIntegrationExporterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IntegrationExporterArrayInput is an input type that accepts IntegrationExporterArray and IntegrationExporterArrayOutput values.
 // You can construct a concrete instance of `IntegrationExporterArrayInput` via:
 //
@@ -261,6 +268,12 @@ func (i IntegrationExporterArray) ToIntegrationExporterArrayOutput() Integration
 
 func (i IntegrationExporterArray) ToIntegrationExporterArrayOutputWithContext(ctx context.Context) IntegrationExporterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationExporterArrayOutput)
+}
+
+func (i IntegrationExporterArray) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationExporter] {
+	return pulumix.Output[[]*IntegrationExporter]{
+		OutputState: i.ToIntegrationExporterArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // IntegrationExporterMapInput is an input type that accepts IntegrationExporterMap and IntegrationExporterMapOutput values.
@@ -288,6 +301,12 @@ func (i IntegrationExporterMap) ToIntegrationExporterMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationExporterMapOutput)
 }
 
+func (i IntegrationExporterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationExporter] {
+	return pulumix.Output[map[string]*IntegrationExporter]{
+		OutputState: i.ToIntegrationExporterMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IntegrationExporterOutput struct{ *pulumi.OutputState }
 
 func (IntegrationExporterOutput) ElementType() reflect.Type {
@@ -300,6 +319,12 @@ func (o IntegrationExporterOutput) ToIntegrationExporterOutput() IntegrationExpo
 
 func (o IntegrationExporterOutput) ToIntegrationExporterOutputWithContext(ctx context.Context) IntegrationExporterOutput {
 	return o
+}
+
+func (o IntegrationExporterOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationExporter] {
+	return pulumix.Output[*IntegrationExporter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Prometheus instance.
@@ -336,6 +361,12 @@ func (o IntegrationExporterArrayOutput) ToIntegrationExporterArrayOutputWithCont
 	return o
 }
 
+func (o IntegrationExporterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationExporter] {
+	return pulumix.Output[[]*IntegrationExporter]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IntegrationExporterArrayOutput) Index(i pulumi.IntInput) IntegrationExporterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IntegrationExporter {
 		return vs[0].([]*IntegrationExporter)[vs[1].(int)]
@@ -354,6 +385,12 @@ func (o IntegrationExporterMapOutput) ToIntegrationExporterMapOutput() Integrati
 
 func (o IntegrationExporterMapOutput) ToIntegrationExporterMapOutputWithContext(ctx context.Context) IntegrationExporterMapOutput {
 	return o
+}
+
+func (o IntegrationExporterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationExporter] {
+	return pulumix.Output[map[string]*IntegrationExporter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IntegrationExporterMapOutput) MapIndex(k pulumi.StringInput) IntegrationExporterOutput {

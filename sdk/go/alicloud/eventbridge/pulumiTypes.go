@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -68,6 +69,12 @@ func (i RuleTargetArgs) ToRuleTargetOutputWithContext(ctx context.Context) RuleT
 	return pulumi.ToOutputWithContext(ctx, i).(RuleTargetOutput)
 }
 
+func (i RuleTargetArgs) ToOutput(ctx context.Context) pulumix.Output[RuleTarget] {
+	return pulumix.Output[RuleTarget]{
+		OutputState: i.ToRuleTargetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RuleTargetArrayInput is an input type that accepts RuleTargetArray and RuleTargetArrayOutput values.
 // You can construct a concrete instance of `RuleTargetArrayInput` via:
 //
@@ -93,6 +100,12 @@ func (i RuleTargetArray) ToRuleTargetArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(RuleTargetArrayOutput)
 }
 
+func (i RuleTargetArray) ToOutput(ctx context.Context) pulumix.Output[[]RuleTarget] {
+	return pulumix.Output[[]RuleTarget]{
+		OutputState: i.ToRuleTargetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuleTargetOutput struct{ *pulumi.OutputState }
 
 func (RuleTargetOutput) ElementType() reflect.Type {
@@ -105,6 +118,12 @@ func (o RuleTargetOutput) ToRuleTargetOutput() RuleTargetOutput {
 
 func (o RuleTargetOutput) ToRuleTargetOutputWithContext(ctx context.Context) RuleTargetOutput {
 	return o
+}
+
+func (o RuleTargetOutput) ToOutput(ctx context.Context) pulumix.Output[RuleTarget] {
+	return pulumix.Output[RuleTarget]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `deadLetterQueue` below.
@@ -152,6 +171,12 @@ func (o RuleTargetArrayOutput) ToRuleTargetArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o RuleTargetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RuleTarget] {
+	return pulumix.Output[[]RuleTarget]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RuleTargetArrayOutput) Index(i pulumi.IntInput) RuleTargetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleTarget {
 		return vs[0].([]RuleTarget)[vs[1].(int)]
@@ -189,6 +214,12 @@ func (i RuleTargetDeadLetterQueueArgs) ToRuleTargetDeadLetterQueueOutput() RuleT
 
 func (i RuleTargetDeadLetterQueueArgs) ToRuleTargetDeadLetterQueueOutputWithContext(ctx context.Context) RuleTargetDeadLetterQueueOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RuleTargetDeadLetterQueueOutput)
+}
+
+func (i RuleTargetDeadLetterQueueArgs) ToOutput(ctx context.Context) pulumix.Output[RuleTargetDeadLetterQueue] {
+	return pulumix.Output[RuleTargetDeadLetterQueue]{
+		OutputState: i.ToRuleTargetDeadLetterQueueOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i RuleTargetDeadLetterQueueArgs) ToRuleTargetDeadLetterQueuePtrOutput() RuleTargetDeadLetterQueuePtrOutput {
@@ -232,6 +263,12 @@ func (i *ruleTargetDeadLetterQueuePtrType) ToRuleTargetDeadLetterQueuePtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(RuleTargetDeadLetterQueuePtrOutput)
 }
 
+func (i *ruleTargetDeadLetterQueuePtrType) ToOutput(ctx context.Context) pulumix.Output[*RuleTargetDeadLetterQueue] {
+	return pulumix.Output[*RuleTargetDeadLetterQueue]{
+		OutputState: i.ToRuleTargetDeadLetterQueuePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuleTargetDeadLetterQueueOutput struct{ *pulumi.OutputState }
 
 func (RuleTargetDeadLetterQueueOutput) ElementType() reflect.Type {
@@ -256,6 +293,12 @@ func (o RuleTargetDeadLetterQueueOutput) ToRuleTargetDeadLetterQueuePtrOutputWit
 	}).(RuleTargetDeadLetterQueuePtrOutput)
 }
 
+func (o RuleTargetDeadLetterQueueOutput) ToOutput(ctx context.Context) pulumix.Output[RuleTargetDeadLetterQueue] {
+	return pulumix.Output[RuleTargetDeadLetterQueue]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The srn of the dead letter queue.
 func (o RuleTargetDeadLetterQueueOutput) Arn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleTargetDeadLetterQueue) *string { return v.Arn }).(pulumi.StringPtrOutput)
@@ -273,6 +316,12 @@ func (o RuleTargetDeadLetterQueuePtrOutput) ToRuleTargetDeadLetterQueuePtrOutput
 
 func (o RuleTargetDeadLetterQueuePtrOutput) ToRuleTargetDeadLetterQueuePtrOutputWithContext(ctx context.Context) RuleTargetDeadLetterQueuePtrOutput {
 	return o
+}
+
+func (o RuleTargetDeadLetterQueuePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuleTargetDeadLetterQueue] {
+	return pulumix.Output[*RuleTargetDeadLetterQueue]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuleTargetDeadLetterQueuePtrOutput) Elem() RuleTargetDeadLetterQueueOutput {
@@ -380,6 +429,12 @@ func (i RuleTargetParamListArgs) ToRuleTargetParamListOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(RuleTargetParamListOutput)
 }
 
+func (i RuleTargetParamListArgs) ToOutput(ctx context.Context) pulumix.Output[RuleTargetParamList] {
+	return pulumix.Output[RuleTargetParamList]{
+		OutputState: i.ToRuleTargetParamListOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RuleTargetParamListArrayInput is an input type that accepts RuleTargetParamListArray and RuleTargetParamListArrayOutput values.
 // You can construct a concrete instance of `RuleTargetParamListArrayInput` via:
 //
@@ -405,6 +460,12 @@ func (i RuleTargetParamListArray) ToRuleTargetParamListArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(RuleTargetParamListArrayOutput)
 }
 
+func (i RuleTargetParamListArray) ToOutput(ctx context.Context) pulumix.Output[[]RuleTargetParamList] {
+	return pulumix.Output[[]RuleTargetParamList]{
+		OutputState: i.ToRuleTargetParamListArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuleTargetParamListOutput struct{ *pulumi.OutputState }
 
 func (RuleTargetParamListOutput) ElementType() reflect.Type {
@@ -417,6 +478,12 @@ func (o RuleTargetParamListOutput) ToRuleTargetParamListOutput() RuleTargetParam
 
 func (o RuleTargetParamListOutput) ToRuleTargetParamListOutputWithContext(ctx context.Context) RuleTargetParamListOutput {
 	return o
+}
+
+func (o RuleTargetParamListOutput) ToOutput(ctx context.Context) pulumix.Output[RuleTargetParamList] {
+	return pulumix.Output[RuleTargetParamList]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The format of param. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
@@ -476,6 +543,12 @@ func (o RuleTargetParamListArrayOutput) ToRuleTargetParamListArrayOutputWithCont
 	return o
 }
 
+func (o RuleTargetParamListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RuleTargetParamList] {
+	return pulumix.Output[[]RuleTargetParamList]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RuleTargetParamListArrayOutput) Index(i pulumi.IntInput) RuleTargetParamListOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleTargetParamList {
 		return vs[0].([]RuleTargetParamList)[vs[1].(int)]
@@ -527,6 +600,12 @@ func (i GetEventBusesBusArgs) ToGetEventBusesBusOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetEventBusesBusOutput)
 }
 
+func (i GetEventBusesBusArgs) ToOutput(ctx context.Context) pulumix.Output[GetEventBusesBus] {
+	return pulumix.Output[GetEventBusesBus]{
+		OutputState: i.ToGetEventBusesBusOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetEventBusesBusArrayInput is an input type that accepts GetEventBusesBusArray and GetEventBusesBusArrayOutput values.
 // You can construct a concrete instance of `GetEventBusesBusArrayInput` via:
 //
@@ -552,6 +631,12 @@ func (i GetEventBusesBusArray) ToGetEventBusesBusArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetEventBusesBusArrayOutput)
 }
 
+func (i GetEventBusesBusArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEventBusesBus] {
+	return pulumix.Output[[]GetEventBusesBus]{
+		OutputState: i.ToGetEventBusesBusArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetEventBusesBusOutput struct{ *pulumi.OutputState }
 
 func (GetEventBusesBusOutput) ElementType() reflect.Type {
@@ -564,6 +649,12 @@ func (o GetEventBusesBusOutput) ToGetEventBusesBusOutput() GetEventBusesBusOutpu
 
 func (o GetEventBusesBusOutput) ToGetEventBusesBusOutputWithContext(ctx context.Context) GetEventBusesBusOutput {
 	return o
+}
+
+func (o GetEventBusesBusOutput) ToOutput(ctx context.Context) pulumix.Output[GetEventBusesBus] {
+	return pulumix.Output[GetEventBusesBus]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time of this bus was created.
@@ -598,6 +689,12 @@ func (o GetEventBusesBusArrayOutput) ToGetEventBusesBusArrayOutput() GetEventBus
 
 func (o GetEventBusesBusArrayOutput) ToGetEventBusesBusArrayOutputWithContext(ctx context.Context) GetEventBusesBusArrayOutput {
 	return o
+}
+
+func (o GetEventBusesBusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEventBusesBus] {
+	return pulumix.Output[[]GetEventBusesBus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetEventBusesBusArrayOutput) Index(i pulumi.IntInput) GetEventBusesBusOutput {
@@ -661,6 +758,12 @@ func (i GetEventSourcesSourceArgs) ToGetEventSourcesSourceOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetEventSourcesSourceOutput)
 }
 
+func (i GetEventSourcesSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GetEventSourcesSource] {
+	return pulumix.Output[GetEventSourcesSource]{
+		OutputState: i.ToGetEventSourcesSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetEventSourcesSourceArrayInput is an input type that accepts GetEventSourcesSourceArray and GetEventSourcesSourceArrayOutput values.
 // You can construct a concrete instance of `GetEventSourcesSourceArrayInput` via:
 //
@@ -686,6 +789,12 @@ func (i GetEventSourcesSourceArray) ToGetEventSourcesSourceArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetEventSourcesSourceArrayOutput)
 }
 
+func (i GetEventSourcesSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEventSourcesSource] {
+	return pulumix.Output[[]GetEventSourcesSource]{
+		OutputState: i.ToGetEventSourcesSourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetEventSourcesSourceOutput struct{ *pulumi.OutputState }
 
 func (GetEventSourcesSourceOutput) ElementType() reflect.Type {
@@ -698,6 +807,12 @@ func (o GetEventSourcesSourceOutput) ToGetEventSourcesSourceOutput() GetEventSou
 
 func (o GetEventSourcesSourceOutput) ToGetEventSourcesSourceOutputWithContext(ctx context.Context) GetEventSourcesSourceOutput {
 	return o
+}
+
+func (o GetEventSourcesSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GetEventSourcesSource] {
+	return pulumix.Output[GetEventSourcesSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The detail describe of event source.
@@ -746,6 +861,12 @@ func (o GetEventSourcesSourceArrayOutput) ToGetEventSourcesSourceArrayOutput() G
 
 func (o GetEventSourcesSourceArrayOutput) ToGetEventSourcesSourceArrayOutputWithContext(ctx context.Context) GetEventSourcesSourceArrayOutput {
 	return o
+}
+
+func (o GetEventSourcesSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEventSourcesSource] {
+	return pulumix.Output[[]GetEventSourcesSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetEventSourcesSourceArrayOutput) Index(i pulumi.IntInput) GetEventSourcesSourceOutput {
@@ -811,6 +932,12 @@ func (i GetRulesRuleArgs) ToGetRulesRuleOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleOutput)
 }
 
+func (i GetRulesRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetRulesRule] {
+	return pulumix.Output[GetRulesRule]{
+		OutputState: i.ToGetRulesRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRulesRuleArrayInput is an input type that accepts GetRulesRuleArray and GetRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetRulesRuleArrayInput` via:
 //
@@ -836,6 +963,12 @@ func (i GetRulesRuleArray) ToGetRulesRuleArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleArrayOutput)
 }
 
+func (i GetRulesRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesRule] {
+	return pulumix.Output[[]GetRulesRule]{
+		OutputState: i.ToGetRulesRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRulesRuleOutput struct{ *pulumi.OutputState }
 
 func (GetRulesRuleOutput) ElementType() reflect.Type {
@@ -848,6 +981,12 @@ func (o GetRulesRuleOutput) ToGetRulesRuleOutput() GetRulesRuleOutput {
 
 func (o GetRulesRuleOutput) ToGetRulesRuleOutputWithContext(ctx context.Context) GetRulesRuleOutput {
 	return o
+}
+
+func (o GetRulesRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetRulesRule] {
+	return pulumix.Output[GetRulesRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of rule.
@@ -899,6 +1038,12 @@ func (o GetRulesRuleArrayOutput) ToGetRulesRuleArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o GetRulesRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesRule] {
+	return pulumix.Output[[]GetRulesRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetRulesRuleArrayOutput) Index(i pulumi.IntInput) GetRulesRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRule {
 		return vs[0].([]GetRulesRule)[vs[1].(int)]
@@ -946,6 +1091,12 @@ func (i GetRulesRuleTargetArgs) ToGetRulesRuleTargetOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleTargetOutput)
 }
 
+func (i GetRulesRuleTargetArgs) ToOutput(ctx context.Context) pulumix.Output[GetRulesRuleTarget] {
+	return pulumix.Output[GetRulesRuleTarget]{
+		OutputState: i.ToGetRulesRuleTargetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRulesRuleTargetArrayInput is an input type that accepts GetRulesRuleTargetArray and GetRulesRuleTargetArrayOutput values.
 // You can construct a concrete instance of `GetRulesRuleTargetArrayInput` via:
 //
@@ -971,6 +1122,12 @@ func (i GetRulesRuleTargetArray) ToGetRulesRuleTargetArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleTargetArrayOutput)
 }
 
+func (i GetRulesRuleTargetArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesRuleTarget] {
+	return pulumix.Output[[]GetRulesRuleTarget]{
+		OutputState: i.ToGetRulesRuleTargetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRulesRuleTargetOutput struct{ *pulumi.OutputState }
 
 func (GetRulesRuleTargetOutput) ElementType() reflect.Type {
@@ -983,6 +1140,12 @@ func (o GetRulesRuleTargetOutput) ToGetRulesRuleTargetOutput() GetRulesRuleTarge
 
 func (o GetRulesRuleTargetOutput) ToGetRulesRuleTargetOutputWithContext(ctx context.Context) GetRulesRuleTargetOutput {
 	return o
+}
+
+func (o GetRulesRuleTargetOutput) ToOutput(ctx context.Context) pulumix.Output[GetRulesRuleTarget] {
+	return pulumix.Output[GetRulesRuleTarget]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The endpoint.
@@ -1012,6 +1175,12 @@ func (o GetRulesRuleTargetArrayOutput) ToGetRulesRuleTargetArrayOutput() GetRule
 
 func (o GetRulesRuleTargetArrayOutput) ToGetRulesRuleTargetArrayOutputWithContext(ctx context.Context) GetRulesRuleTargetArrayOutput {
 	return o
+}
+
+func (o GetRulesRuleTargetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesRuleTarget] {
+	return pulumix.Output[[]GetRulesRuleTarget]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRulesRuleTargetArrayOutput) Index(i pulumi.IntInput) GetRulesRuleTargetOutput {

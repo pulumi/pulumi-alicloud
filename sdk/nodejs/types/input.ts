@@ -1285,6 +1285,9 @@ export namespace cdn {
          * > If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
          */
         certType?: pulumi.Input<string>;
+        /**
+         * The force set of the security certificate.
+         */
         forceSet?: pulumi.Input<string>;
         /**
          * The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
@@ -1506,6 +1509,9 @@ export namespace cloudfirewall {
          * List of elastic network cards.
          */
         eniLists?: pulumi.Input<pulumi.Input<inputs.cloudfirewall.FirewallVpcFirewallCenLocalVpcEniList>[]>;
+        /**
+         * The ID of the vSwitch specified when the routing mode is manual mode.
+         */
         manualVswitchId?: pulumi.Input<string>;
         /**
          * The ID of the VPC instance that created the VPC firewall.
@@ -1592,15 +1598,15 @@ export namespace cloudfirewall {
 
     export interface FirewallVpcFirewallLocalVpc {
         /**
-         * The ID of the instance of the Eni in the local VPC.
+         * The ID of the instance of the ENI in the peer VPC.
          */
         eniId?: pulumi.Input<string>;
         /**
-         * The private IP address of the elastic network card in the local VPC.
+         * The private IP address of the elastic network card in the peer VPC.
          */
         eniPrivateIpAddress?: pulumi.Input<string>;
         /**
-         * The network segment list of the local VPC.See the following `Block LocalVpcCidrTableList`.
+         * The network segment list of the local VPC. See `localVpcCidrTableList` below.
          */
         localVpcCidrTableLists: pulumi.Input<pulumi.Input<inputs.cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableList>[]>;
         /**
@@ -1608,7 +1614,7 @@ export namespace cloudfirewall {
          */
         regionNo: pulumi.Input<string>;
         /**
-         * The ID of the router interface in the local VPC.
+         * The ID of the router interface in the peer VPC.
          */
         routerInterfaceId?: pulumi.Input<string>;
         /**
@@ -1616,14 +1622,14 @@ export namespace cloudfirewall {
          */
         vpcId: pulumi.Input<string>;
         /**
-         * The instance name of the local VPC.
+         * The instance name of the peer VPC.
          */
         vpcName?: pulumi.Input<string>;
     }
 
     export interface FirewallVpcFirewallLocalVpcLocalVpcCidrTableList {
         /**
-         * The list of route entries of the local VPC.See the following `Block LocalRouteEntryList`.
+         * The list of route entries of the local VPC. See `localRouteEntryList` below.
          */
         localRouteEntryLists: pulumi.Input<pulumi.Input<inputs.cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList>[]>;
         /**
@@ -1645,38 +1651,38 @@ export namespace cloudfirewall {
 
     export interface FirewallVpcFirewallPeerVpc {
         /**
-         * The ID of the instance of the Eni in the local VPC.
+         * The ID of the instance of the ENI in the peer VPC.
          */
         eniId?: pulumi.Input<string>;
         /**
-         * The private IP address of the elastic network card in the local VPC.
+         * The private IP address of the elastic network card in the peer VPC.
          */
         eniPrivateIpAddress?: pulumi.Input<string>;
         /**
-         * The network segment list of the peer VPC.See the following `Block PeerVpcCidrTableList`.
+         * The network segment list of the peer VPC. See `peerVpcCidrTableList` below.
          */
         peerVpcCidrTableLists: pulumi.Input<pulumi.Input<inputs.cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableList>[]>;
         /**
-         * The region ID of the local VPC.
+         * The region ID of the peer VPC.
          */
         regionNo: pulumi.Input<string>;
         /**
-         * The ID of the router interface in the local VPC.
+         * The ID of the router interface in the peer VPC.
          */
         routerInterfaceId?: pulumi.Input<string>;
         /**
-         * The ID of the local VPC instance.
+         * The ID of the peer VPC instance.
          */
         vpcId: pulumi.Input<string>;
         /**
-         * The instance name of the local VPC.
+         * The instance name of the peer VPC.
          */
         vpcName?: pulumi.Input<string>;
     }
 
     export interface FirewallVpcFirewallPeerVpcPeerVpcCidrTableList {
         /**
-         * Peer VPC route entry list information.See the following `Block PeerRouteEntryList`.
+         * Peer VPC route entry list information. See `peerRouteEntryList` below.
          */
         peerRouteEntryLists: pulumi.Input<pulumi.Input<inputs.cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList>[]>;
         /**
@@ -2261,11 +2267,13 @@ export namespace config {
 export namespace cr {
     export interface ChainChainConfig {
         /**
-         * Each node in the delivery chain.
+         * Each node in the delivery chain. See `nodes` below.
+         *
+         * > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `nodeName` are fixed. You can refer to the template given in the example for configuration.
          */
         nodes?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfigNode>[]>;
         /**
-         * Execution sequence relationship between delivery chain nodes.
+         * Execution sequence relationship between delivery chain nodes. See `routers` below.
          */
         routers?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfigRouter>[]>;
     }
@@ -2276,18 +2284,18 @@ export namespace cr {
          */
         enable?: pulumi.Input<boolean>;
         /**
-         * The configuration of delivery chain node.
+         * The configuration of delivery chain node. See `nodeConfig` below.
          */
         nodeConfigs?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfigNodeNodeConfig>[]>;
         /**
-         * The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+         * The name of delivery chain node.
          */
         nodeName?: pulumi.Input<string>;
     }
 
     export interface ChainChainConfigNodeNodeConfig {
         /**
-         * Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
+         * Blocking rules for scanning nodes in delivery chain nodes. See `denyPolicy` below. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
          */
         denyPolicies?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfigNodeNodeConfigDenyPolicy>[]>;
     }
@@ -2295,8 +2303,6 @@ export namespace cr {
     export interface ChainChainConfigNodeNodeConfigDenyPolicy {
         /**
          * The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
-         *
-         * > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `nodeName` are fixed. You can refer to the template given in the example for configuration.
          */
         action?: pulumi.Input<string>;
         /**
@@ -2315,11 +2321,11 @@ export namespace cr {
 
     export interface ChainChainConfigRouter {
         /**
-         * Source node.
+         * Source node. See `from` below.
          */
         froms?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfigRouterFrom>[]>;
         /**
-         * Destination node.
+         * Destination node. See `to` below.
          */
         tos?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfigRouterTo>[]>;
     }
@@ -4312,11 +4318,11 @@ export namespace eci {
          */
         readinessProbes?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupContainerReadinessProbe>[]>;
         /**
-         * (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+         * Indicates whether the container passed the readiness probe.
          */
         ready?: pulumi.Input<boolean>;
         /**
-         * (Available since v1.208.0) The number of times that the container restarted.
+         * The number of times that the container restarted.
          */
         restartCount?: pulumi.Input<number>;
         /**
@@ -4606,11 +4612,11 @@ export namespace eci {
          */
         ports?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupInitContainerPort>[]>;
         /**
-         * (Available since v1.208.0) Indicates whether the container passed the readiness probe.
+         * Indicates whether the container passed the readiness probe.
          */
         ready?: pulumi.Input<boolean>;
         /**
-         * (Available since v1.208.0) The number of times that the container restarted.
+         * The number of times that the container restarted.
          */
         restartCount?: pulumi.Input<number>;
         /**
@@ -5335,7 +5341,7 @@ export namespace eflo {
 export namespace ehpc {
     export interface ClusterAdditionalVolume {
         /**
-         * The queue to which the compute nodes are added.
+         * The queue of the nodes to which the additional file system is attached.
          */
         jobQueue?: pulumi.Input<string>;
         /**
@@ -5347,15 +5353,15 @@ export namespace ehpc {
          */
         location?: pulumi.Input<string>;
         /**
-         * The remote directory to which the file system is mounted.
+         * The remote directory to which the additional file system is mounted.
          */
         remoteDirectory?: pulumi.Input<string>;
         /**
-         * The roles. See the following `Block roles`.
+         * The roles. See `roles` below.
          */
         roles?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterAdditionalVolumeRole>[]>;
         /**
-         * The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
+         * The ID of the additional file system.
          */
         volumeId?: pulumi.Input<string>;
         /**
@@ -5363,17 +5369,15 @@ export namespace ehpc {
          */
         volumeMountOption?: pulumi.Input<string>;
         /**
-         * The mount target of the file system. Take note of the following information:
-         * - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
-         * - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
+         * The mount target of the additional file system.
          */
         volumeMountpoint?: pulumi.Input<string>;
         /**
-         * The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
+         * The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
          */
         volumeProtocol?: pulumi.Input<string>;
         /**
-         * The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
+         * The type of the additional shared storage. Only NAS file systems are supported.
          */
         volumeType?: pulumi.Input<string>;
     }
@@ -5631,7 +5635,7 @@ export namespace emrv2 {
          */
         executionMoment: pulumi.Input<string>;
         /**
-         * The bootstrap scripts execution target.
+         * The bootstrap scripts execution target. See `nodeSelector` below.
          */
         nodeSelector: pulumi.Input<inputs.emrv2.ClusterBootstrapScriptNodeSelector>;
         /**
@@ -5712,11 +5716,11 @@ export namespace emrv2 {
          */
         additionalSecurityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The detail cost optimized configuration of emr cluster.
+         * The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below.
          */
         costOptimizedConfig?: pulumi.Input<inputs.emrv2.ClusterNodeGroupCostOptimizedConfig>;
         /**
-         * Host Ecs data disks information in this node group.
+         * Host Ecs data disks information in this node group. See `dataDisks` below.
          */
         dataDisks: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterNodeGroupDataDisk>[]>;
         /**
@@ -5732,7 +5736,7 @@ export namespace emrv2 {
          */
         nodeCount: pulumi.Input<number>;
         /**
-         * The configuration effected which node group name of emr cluster.
+         * The node group name of emr cluster.
          */
         nodeGroupName: pulumi.Input<string>;
         /**
@@ -5744,7 +5748,7 @@ export namespace emrv2 {
          */
         paymentType?: pulumi.Input<string>;
         /**
-         * The spot bid prices of a PayAsYouGo instance.
+         * The spot bid prices of a PayAsYouGo instance. See `spotBidPrices` below.
          */
         spotBidPrices?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterNodeGroupSpotBidPrice>[]>;
         /**
@@ -5752,11 +5756,11 @@ export namespace emrv2 {
          */
         spotInstanceRemedy?: pulumi.Input<boolean>;
         /**
-         * The detail configuration of subscription payment type.
+         * The detail configuration of subscription payment type. See `subscriptionConfig` below.
          */
         subscriptionConfig?: pulumi.Input<inputs.emrv2.ClusterNodeGroupSubscriptionConfig>;
         /**
-         * Host Ecs system disk information in this node group.
+         * Host Ecs system disk information in this node group. See `systemDisk` below.
          */
         systemDisk: pulumi.Input<inputs.emrv2.ClusterNodeGroupSystemDisk>;
         /**
@@ -6978,19 +6982,19 @@ export namespace ga {
 export namespace gpdb {
     export interface DbInstancePlanPlanConfig {
         /**
-         * Pause instance plan config. See the following `Block pause`.
+         * Pause instance plan config. See `pause` below.
          */
         pause?: pulumi.Input<inputs.gpdb.DbInstancePlanPlanConfigPause>;
         /**
-         * Resume instance plan config. See the following `Block resume`.
+         * Resume instance plan config. See `resume` below.
          */
         resume?: pulumi.Input<inputs.gpdb.DbInstancePlanPlanConfigResume>;
         /**
-         * Scale In instance plan config. See the following `Block scaleIn`.
+         * Scale In instance plan config. See `scaleIn` below.
          */
         scaleIn?: pulumi.Input<inputs.gpdb.DbInstancePlanPlanConfigScaleIn>;
         /**
-         * Scale out instance plan config. See the following `Block scaleOut`.
+         * Scale out instance plan config. See `scaleOut` below.
          */
         scaleOut?: pulumi.Input<inputs.gpdb.DbInstancePlanPlanConfigScaleOut>;
     }
@@ -8236,6 +8240,12 @@ export namespace oss {
          */
         expirations?: pulumi.Input<pulumi.Input<inputs.oss.BucketLifecycleRuleExpiration>[]>;
         /**
+         * Configuration block used to identify objects that a Lifecycle rule applies to. See `filter` below.
+         *
+         * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
+         */
+        filter?: pulumi.Input<inputs.oss.BucketLifecycleRuleFilter>;
+        /**
          * Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
          */
         id?: pulumi.Input<string>;
@@ -8248,13 +8258,11 @@ export namespace oss {
          */
         noncurrentVersionTransitions?: pulumi.Input<pulumi.Input<inputs.oss.BucketLifecycleRuleNoncurrentVersionTransition>[]>;
         /**
-         * Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+         * The prefix in the names of the objects to which the lifecycle rule does not apply.
          */
         prefix?: pulumi.Input<string>;
         /**
          * Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
-         *
-         * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
          */
         tags?: pulumi.Input<{[key: string]: any}>;
         /**
@@ -8297,6 +8305,43 @@ export namespace oss {
          * `NOTE`: One and only one of "date", "days", "createdBeforeDate" and "expiredObjectDeleteMarker" can be specified in one expiration configuration.
          */
         expiredObjectDeleteMarker?: pulumi.Input<boolean>;
+    }
+
+    export interface BucketLifecycleRuleFilter {
+        /**
+         * The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
+         */
+        not?: pulumi.Input<inputs.oss.BucketLifecycleRuleFilterNot>;
+        /**
+         * Minimum object size (in bytes) to which the rule applies.
+         */
+        objectSizeGreaterThan?: pulumi.Input<number>;
+        /**
+         * Maximum object size (in bytes) to which the rule applies.
+         */
+        objectSizeLessThan?: pulumi.Input<number>;
+    }
+
+    export interface BucketLifecycleRuleFilterNot {
+        /**
+         * Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+         */
+        prefix?: pulumi.Input<string>;
+        /**
+         * The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
+         */
+        tag?: pulumi.Input<inputs.oss.BucketLifecycleRuleFilterNotTag>;
+    }
+
+    export interface BucketLifecycleRuleFilterNotTag {
+        /**
+         * The key of the tag that is specified for the objects.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The value of the tag that is specified for the objects.
+         */
+        value: pulumi.Input<string>;
     }
 
     export interface BucketLifecycleRuleNoncurrentVersionExpiration {
@@ -9497,23 +9542,23 @@ export namespace ros {
 export namespace sae {
     export interface ApplicationScalingRuleScalingRuleMetric {
         /**
-         * Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+         * Maximum number of instances applied.
          */
         maxReplicas?: pulumi.Input<number>;
         /**
-         * Indicator rule configuration. See the following `Block metrics`.
+         * Indicator rule configuration. See `metrics` below.
          */
         metrics?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationScalingRuleScalingRuleMetricMetric>[]>;
         /**
-         * Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+         * Minimum number of instances applied.
          */
         minReplicas?: pulumi.Input<number>;
         /**
-         * Apply shrink rules. See the following `Block scaleDownRules`.
+         * Apply shrink rules. See `scaleDownRules` below.
          */
         scaleDownRules?: pulumi.Input<inputs.sae.ApplicationScalingRuleScalingRuleMetricScaleDownRules>;
         /**
-         * Apply expansion rules. See the following `Block scaleUpRules`.
+         * Apply expansion rules. See `scaleUpRules` below.
          */
         scaleUpRules?: pulumi.Input<inputs.sae.ApplicationScalingRuleScalingRuleMetricScaleUpRules>;
     }
@@ -9599,7 +9644,7 @@ export namespace sae {
          */
         period?: pulumi.Input<string>;
         /**
-         * Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+         * Resilient Scaling Strategy Trigger Timing. See `schedules` below.
          */
         schedules?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationScalingRuleScalingRuleTimerSchedule>[]>;
     }
@@ -9633,7 +9678,7 @@ export namespace sae {
          */
         group?: pulumi.Input<string>;
         /**
-         * A list of conditions items. The details see Block `dubboRulesItems`.
+         * A list of conditions items. See `items` below.
          */
         items?: pulumi.Input<pulumi.Input<inputs.sae.GreyTagRouteDubboRuleItem>[]>;
         /**
@@ -9664,7 +9709,7 @@ export namespace sae {
          */
         index?: pulumi.Input<number>;
         /**
-         * The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+         * The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
          */
         operator?: pulumi.Input<string>;
         /**
@@ -9679,7 +9724,7 @@ export namespace sae {
          */
         condition?: pulumi.Input<string>;
         /**
-         * A list of conditions items. The details see Block `scRulesItems`.
+         * A list of conditions items.See `items` below.
          */
         items?: pulumi.Input<pulumi.Input<inputs.sae.GreyTagRouteScRuleItem>[]>;
         /**
@@ -9698,7 +9743,7 @@ export namespace sae {
          */
         name?: pulumi.Input<string>;
         /**
-         * The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+         * The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
          */
         operator?: pulumi.Input<string>;
         /**
@@ -10296,7 +10341,7 @@ export namespace vpc {
 
     export interface NetworkAclEgressAclEntry {
         /**
-         * The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+         * The description of the outbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
          */
         description?: pulumi.Input<string>;
         /**
@@ -10311,8 +10356,6 @@ export namespace vpc {
          * Authorization policy. Value:
          * - accept: Allow.
          * - drop: Refused.
-         * - accept: Allow.
-         * - drop: Refused.
          */
         policy?: pulumi.Input<string>;
         /**
@@ -10321,12 +10364,6 @@ export namespace vpc {
         port?: pulumi.Input<string>;
         /**
          * The protocol type. Value:
-         * - icmp: Network Control Message Protocol.
-         * - gre: Generic Routing Encapsulation Protocol.
-         * - tcp: Transmission Control Protocol.
-         * - udp: User Datagram Protocol.
-         * - all: Supports all protocols.
-         *
          * - icmp: Network Control Message Protocol.
          * - gre: Generic Routing Encapsulation Protocol.
          * - tcp: Transmission Control Protocol.
@@ -10400,33 +10437,25 @@ export namespace vpc {
 
     export interface NetworkAclIngressAclEntry {
         /**
-         * The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+         * Description of the inbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
          */
         description?: pulumi.Input<string>;
         /**
-         * Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+         * The name of the inbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
          */
         networkAclEntryName?: pulumi.Input<string>;
         /**
          * Authorization policy. Value:
          * - accept: Allow.
          * - drop: Refused.
-         * - accept: Allow.
-         * - drop: Refused.
          */
         policy?: pulumi.Input<string>;
         /**
-         * The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+         * The source port range of the inbound rule.When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
          */
         port?: pulumi.Input<string>;
         /**
          * The protocol type. Value:
-         * - icmp: Network Control Message Protocol.
-         * - gre: Generic Routing Encapsulation Protocol.
-         * - tcp: Transmission Control Protocol.
-         * - udp: User Datagram Protocol.
-         * - all: Supports all protocols.
-         *
          * - icmp: Network Control Message Protocol.
          * - gre: Generic Routing Encapsulation Protocol.
          * - tcp: Transmission Control Protocol.
@@ -10450,7 +10479,7 @@ export namespace vpc {
          */
         resourceType: pulumi.Input<string>;
         /**
-         * The state of the network ACL.
+         * The status of the associated resource.
          */
         status?: pulumi.Input<string>;
     }
@@ -11002,7 +11031,13 @@ export namespace wafv3 {
          */
         readTimeout?: pulumi.Input<number>;
         /**
-         * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is `[{" k ":"_key_"," v ":"_value_"}]`. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.See the following `Block RequestHeaders`.
+         * The traffic tag field and value of the domain name which used to mark the traffic processed by WAF. 
+         * It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
+         * and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
+         * when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
+         * to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
+         * custom header field already exists in the request, the system will overwrite the value of the custom field in the
+         * request with the set traffic tag value. See `requestHeaders` below.
          */
         requestHeaders?: pulumi.Input<pulumi.Input<inputs.wafv3.DomainRedirectRequestHeader>[]>;
         /**

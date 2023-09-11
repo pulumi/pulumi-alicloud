@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Nas Snapshots of the current Alibaba Cloud user.
@@ -134,6 +135,12 @@ func (o GetSnapshotsResultOutput) ToGetSnapshotsResultOutput() GetSnapshotsResul
 
 func (o GetSnapshotsResultOutput) ToGetSnapshotsResultOutputWithContext(ctx context.Context) GetSnapshotsResultOutput {
 	return o
+}
+
+func (o GetSnapshotsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSnapshotsResult] {
+	return pulumix.Output[GetSnapshotsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSnapshotsResultOutput) FileSystemId() pulumi.StringPtrOutput {

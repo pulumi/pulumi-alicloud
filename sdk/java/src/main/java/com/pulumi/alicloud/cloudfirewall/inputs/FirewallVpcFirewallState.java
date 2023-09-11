@@ -34,14 +34,14 @@ public final class FirewallVpcFirewallState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The communication type of the VPC firewall. Valid value: **expressconnect**, which indicates Express Connect.
+     * The communication type of the VPC firewall.
      * 
      */
     @Import(name="connectType")
     private @Nullable Output<String> connectType;
 
     /**
-     * @return The communication type of the VPC firewall. Valid value: **expressconnect**, which indicates Express Connect.
+     * @return The communication type of the VPC firewall.
      * 
      */
     public Optional<Output<String>> connectType() {
@@ -49,14 +49,14 @@ public final class FirewallVpcFirewallState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+     * The language type of the requested and received messages. Valid values:
      * 
      */
     @Import(name="lang")
     private @Nullable Output<String> lang;
 
     /**
-     * @return The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+     * @return The language type of the requested and received messages. Valid values:
      * 
      */
     public Optional<Output<String>> lang() {
@@ -64,14 +64,14 @@ public final class FirewallVpcFirewallState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The details of the local VPC. See the following `Block LocalVpc`.
+     * The details of the local VPC. See `local_vpc` below.
      * 
      */
     @Import(name="localVpc")
     private @Nullable Output<FirewallVpcFirewallLocalVpcArgs> localVpc;
 
     /**
-     * @return The details of the local VPC. See the following `Block LocalVpc`.
+     * @return The details of the local VPC. See `local_vpc` below.
      * 
      */
     public Optional<Output<FirewallVpcFirewallLocalVpcArgs>> localVpc() {
@@ -94,14 +94,14 @@ public final class FirewallVpcFirewallState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The details of the peer VPC. See the following `Block PeerVpc`.
+     * The details of the peer VPC. See `peer_vpc` below.
      * 
      */
     @Import(name="peerVpc")
     private @Nullable Output<FirewallVpcFirewallPeerVpcArgs> peerVpc;
 
     /**
-     * @return The details of the peer VPC. See the following `Block PeerVpc`.
+     * @return The details of the peer VPC. See `peer_vpc` below.
      * 
      */
     public Optional<Output<FirewallVpcFirewallPeerVpcArgs>> peerVpc() {
@@ -109,14 +109,14 @@ public final class FirewallVpcFirewallState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
+     * The region is open.
      * 
      */
     @Import(name="regionStatus")
     private @Nullable Output<String> regionStatus;
 
     /**
-     * @return The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
+     * @return The region is open.
      * 
      */
     public Optional<Output<String>> regionStatus() {
@@ -124,14 +124,14 @@ public final class FirewallVpcFirewallState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The status of the resource
+     * The status of the resource. Valid values:
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The status of the resource. Valid values:
      * 
      */
     public Optional<Output<String>> status() {
@@ -223,7 +223,7 @@ public final class FirewallVpcFirewallState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param connectType The communication type of the VPC firewall. Valid value: **expressconnect**, which indicates Express Connect.
+         * @param connectType The communication type of the VPC firewall.
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class FirewallVpcFirewallState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param connectType The communication type of the VPC firewall. Valid value: **expressconnect**, which indicates Express Connect.
+         * @param connectType The communication type of the VPC firewall.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class FirewallVpcFirewallState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param lang The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+         * @param lang The language type of the requested and received messages. Valid values:
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class FirewallVpcFirewallState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param lang The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+         * @param lang The language type of the requested and received messages. Valid values:
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class FirewallVpcFirewallState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param localVpc The details of the local VPC. See the following `Block LocalVpc`.
+         * @param localVpc The details of the local VPC. See `local_vpc` below.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class FirewallVpcFirewallState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param localVpc The details of the local VPC. See the following `Block LocalVpc`.
+         * @param localVpc The details of the local VPC. See `local_vpc` below.
          * 
          * @return builder
          * 
@@ -307,7 +307,7 @@ public final class FirewallVpcFirewallState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param peerVpc The details of the peer VPC. See the following `Block PeerVpc`.
+         * @param peerVpc The details of the peer VPC. See `peer_vpc` below.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class FirewallVpcFirewallState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param peerVpc The details of the peer VPC. See the following `Block PeerVpc`.
+         * @param peerVpc The details of the peer VPC. See `peer_vpc` below.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class FirewallVpcFirewallState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param regionStatus The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
+         * @param regionStatus The region is open.
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class FirewallVpcFirewallState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param regionStatus The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
+         * @param regionStatus The region is open.
          * 
          * @return builder
          * 
@@ -349,7 +349,7 @@ public final class FirewallVpcFirewallState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param status The status of the resource
+         * @param status The status of the resource. Valid values:
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class FirewallVpcFirewallState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param status The status of the resource
+         * @param status The status of the resource. Valid values:
          * 
          * @return builder
          * 

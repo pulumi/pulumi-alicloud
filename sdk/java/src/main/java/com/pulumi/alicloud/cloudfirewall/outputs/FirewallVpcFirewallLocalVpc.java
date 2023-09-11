@@ -14,17 +14,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FirewallVpcFirewallLocalVpc {
     /**
-     * @return The ID of the instance of the Eni in the local VPC.
+     * @return The ID of the instance of the ENI in the peer VPC.
      * 
      */
     private @Nullable String eniId;
     /**
-     * @return The private IP address of the elastic network card in the local VPC.
+     * @return The private IP address of the elastic network card in the peer VPC.
      * 
      */
     private @Nullable String eniPrivateIpAddress;
     /**
-     * @return The network segment list of the local VPC.See the following `Block LocalVpcCidrTableList`.
+     * @return The network segment list of the local VPC. See `local_vpc_cidr_table_list` below.
      * 
      */
     private List<FirewallVpcFirewallLocalVpcLocalVpcCidrTableList> localVpcCidrTableLists;
@@ -34,7 +34,7 @@ public final class FirewallVpcFirewallLocalVpc {
      */
     private String regionNo;
     /**
-     * @return The ID of the router interface in the local VPC.
+     * @return The ID of the router interface in the peer VPC.
      * 
      */
     private @Nullable String routerInterfaceId;
@@ -44,28 +44,28 @@ public final class FirewallVpcFirewallLocalVpc {
      */
     private String vpcId;
     /**
-     * @return The instance name of the local VPC.
+     * @return The instance name of the peer VPC.
      * 
      */
     private @Nullable String vpcName;
 
     private FirewallVpcFirewallLocalVpc() {}
     /**
-     * @return The ID of the instance of the Eni in the local VPC.
+     * @return The ID of the instance of the ENI in the peer VPC.
      * 
      */
     public Optional<String> eniId() {
         return Optional.ofNullable(this.eniId);
     }
     /**
-     * @return The private IP address of the elastic network card in the local VPC.
+     * @return The private IP address of the elastic network card in the peer VPC.
      * 
      */
     public Optional<String> eniPrivateIpAddress() {
         return Optional.ofNullable(this.eniPrivateIpAddress);
     }
     /**
-     * @return The network segment list of the local VPC.See the following `Block LocalVpcCidrTableList`.
+     * @return The network segment list of the local VPC. See `local_vpc_cidr_table_list` below.
      * 
      */
     public List<FirewallVpcFirewallLocalVpcLocalVpcCidrTableList> localVpcCidrTableLists() {
@@ -79,7 +79,7 @@ public final class FirewallVpcFirewallLocalVpc {
         return this.regionNo;
     }
     /**
-     * @return The ID of the router interface in the local VPC.
+     * @return The ID of the router interface in the peer VPC.
      * 
      */
     public Optional<String> routerInterfaceId() {
@@ -93,7 +93,7 @@ public final class FirewallVpcFirewallLocalVpc {
         return this.vpcId;
     }
     /**
-     * @return The instance name of the local VPC.
+     * @return The instance name of the peer VPC.
      * 
      */
     public Optional<String> vpcName() {

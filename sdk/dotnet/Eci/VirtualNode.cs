@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eci
     /// 
     /// For information about ECI Virtual Node and how to use it, see [What is Virtual Node](https://www.alibabacloud.com/help/en/doc-detail/89129.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.145.0+.
+    /// &gt; **NOTE:** Available since v1.145.0.
     /// 
     /// ## Example Usage
     /// 
@@ -29,28 +29,39 @@ namespace Pulumi.AliCloud.Eci
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testaccvirtualnode";
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var defaultZones = AliCloud.Eci.GetZones.Invoke();
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         NameRegex = "default-NODELETING",
+    ///         VpcName = name,
+    ///         CidrBlock = "10.0.0.0/8",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneIds[1]),
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.1.0.0/16",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneIds[0]),
     ///     });
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
     ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()
     ///     {
+    ///         Isp = "BGP",
     ///         AddressName = name,
+    ///         Netmode = "public",
+    ///         Bandwidth = "1",
+    ///         SecurityProtectionTypes = new[]
+    ///         {
+    ///             "AntiDDoS_Enhanced",
+    ///         },
+    ///         PaymentType = "PayAsYouGo",
     ///     });
     /// 
     ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
@@ -59,11 +70,11 @@ namespace Pulumi.AliCloud.Eci
     ///     {
     ///         SecurityGroupId = defaultSecurityGroup.Id,
     ///         VirtualNodeName = name,
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[1]),
+    ///         VswitchId = defaultSwitch.Id,
     ///         EnablePublicNetwork = false,
     ///         EipInstanceId = defaultEipAddress.Id,
     ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
-    ///         KubeConfig = "kube config",
+    ///         KubeConfig = "kube_config",
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },
@@ -73,8 +84,8 @@ namespace Pulumi.AliCloud.Eci
     ///             new AliCloud.Eci.Inputs.VirtualNodeTaintArgs
     ///             {
     ///                 Effect = "NoSchedule",
-    ///                 Key = "Tf1",
-    ///                 Value = "Test1",
+    ///                 Key = "TF",
+    ///                 Value = "example",
     ///             },
     ///         },
     ///     });
@@ -136,7 +147,7 @@ namespace Pulumi.AliCloud.Eci
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The taint. See the following `Block taints`.
+        /// The taint. See `taints` below.
         /// </summary>
         [Output("taints")]
         public Output<ImmutableArray<Outputs.VirtualNodeTaint>> Taints { get; private set; } = null!;
@@ -251,7 +262,7 @@ namespace Pulumi.AliCloud.Eci
         private InputList<Inputs.VirtualNodeTaintArgs>? _taints;
 
         /// <summary>
-        /// The taint. See the following `Block taints`.
+        /// The taint. See `taints` below.
         /// </summary>
         public InputList<Inputs.VirtualNodeTaintArgs> Taints
         {
@@ -337,7 +348,7 @@ namespace Pulumi.AliCloud.Eci
         private InputList<Inputs.VirtualNodeTaintGetArgs>? _taints;
 
         /// <summary>
-        /// The taint. See the following `Block taints`.
+        /// The taint. See `taints` below.
         /// </summary>
         public InputList<Inputs.VirtualNodeTaintGetArgs> Taints
         {

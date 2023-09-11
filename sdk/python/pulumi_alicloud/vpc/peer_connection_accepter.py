@@ -231,7 +231,7 @@ class PeerConnectionAccepter(pulumi.CustomResource):
 
         For information about Vpc Peer Connection Accepter and how to use it, see [What is Peer Connection Accepter](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/AcceptVpcPeerConnection).
 
-        > **NOTE:** Available in v1.196.0+.
+        > **NOTE:** Available since v1.196.0.
 
         ## Example Usage
 
@@ -241,24 +241,43 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_account = alicloud.get_account()
         config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         accepting_region = config.get("acceptingRegion")
         if accepting_region is None:
             accepting_region = "cn-beijing"
-        local = alicloud.Provider("local", region="hangzhou")
-        accepting = alicloud.Provider("accepting", region=accepting_region)
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        defaultone = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_peer_connection = alicloud.vpc.PeerConnection("defaultPeerConnection",
-            peer_connection_name="example_value",
-            vpc_id=default_networks.ids[0],
-            accepting_ali_uid=default_account.id,
-            accepting_region_id=accepting_region,
-            accepting_vpc_id=defaultone.ids[0],
-            description="example_value",
+        accepting_account_access_key = config.get("acceptingAccountAccessKey")
+        if accepting_account_access_key is None:
+            accepting_account_access_key = "access_key"
+        accepting_account_secret_key = config.get("acceptingAccountSecretKey")
+        if accepting_account_secret_key is None:
+            accepting_account_secret_key = "secret_key"
+        local = alicloud.Provider("local", region="cn-hangzhou")
+        accepting = alicloud.Provider("accepting",
+            region=accepting_region,
+            access_key=accepting_account_access_key,
+            secret_key=accepting_account_secret_key)
+        local_network = alicloud.vpc.Network("localNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16",
             opts=pulumi.ResourceOptions(provider=alicloud["local"]))
-        default_peer_connection_accepter = alicloud.vpc.PeerConnectionAccepter("defaultPeerConnectionAccepter", instance_id=default_peer_connection.id)
+        accepting_network = alicloud.vpc.Network("acceptingNetwork",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16",
+            opts=pulumi.ResourceOptions(provider=alicloud["accepting"]))
+        accepting_account = alicloud.get_account()
+        default_peer_connection = alicloud.vpc.PeerConnection("defaultPeerConnection",
+            peer_connection_name=name,
+            vpc_id=local_network.id,
+            accepting_ali_uid=accepting_account.id,
+            accepting_region_id=accepting_region,
+            accepting_vpc_id=accepting_network.id,
+            description=name,
+            opts=pulumi.ResourceOptions(provider=alicloud["local"]))
+        default_peer_connection_accepter = alicloud.vpc.PeerConnectionAccepter("defaultPeerConnectionAccepter", instance_id=default_peer_connection.id,
+        opts=pulumi.ResourceOptions(provider=alicloud["accepting"]))
         ```
 
         ## Import
@@ -285,7 +304,7 @@ class PeerConnectionAccepter(pulumi.CustomResource):
 
         For information about Vpc Peer Connection Accepter and how to use it, see [What is Peer Connection Accepter](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/AcceptVpcPeerConnection).
 
-        > **NOTE:** Available in v1.196.0+.
+        > **NOTE:** Available since v1.196.0.
 
         ## Example Usage
 
@@ -295,24 +314,43 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_account = alicloud.get_account()
         config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         accepting_region = config.get("acceptingRegion")
         if accepting_region is None:
             accepting_region = "cn-beijing"
-        local = alicloud.Provider("local", region="hangzhou")
-        accepting = alicloud.Provider("accepting", region=accepting_region)
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        defaultone = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_peer_connection = alicloud.vpc.PeerConnection("defaultPeerConnection",
-            peer_connection_name="example_value",
-            vpc_id=default_networks.ids[0],
-            accepting_ali_uid=default_account.id,
-            accepting_region_id=accepting_region,
-            accepting_vpc_id=defaultone.ids[0],
-            description="example_value",
+        accepting_account_access_key = config.get("acceptingAccountAccessKey")
+        if accepting_account_access_key is None:
+            accepting_account_access_key = "access_key"
+        accepting_account_secret_key = config.get("acceptingAccountSecretKey")
+        if accepting_account_secret_key is None:
+            accepting_account_secret_key = "secret_key"
+        local = alicloud.Provider("local", region="cn-hangzhou")
+        accepting = alicloud.Provider("accepting",
+            region=accepting_region,
+            access_key=accepting_account_access_key,
+            secret_key=accepting_account_secret_key)
+        local_network = alicloud.vpc.Network("localNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16",
             opts=pulumi.ResourceOptions(provider=alicloud["local"]))
-        default_peer_connection_accepter = alicloud.vpc.PeerConnectionAccepter("defaultPeerConnectionAccepter", instance_id=default_peer_connection.id)
+        accepting_network = alicloud.vpc.Network("acceptingNetwork",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16",
+            opts=pulumi.ResourceOptions(provider=alicloud["accepting"]))
+        accepting_account = alicloud.get_account()
+        default_peer_connection = alicloud.vpc.PeerConnection("defaultPeerConnection",
+            peer_connection_name=name,
+            vpc_id=local_network.id,
+            accepting_ali_uid=accepting_account.id,
+            accepting_region_id=accepting_region,
+            accepting_vpc_id=accepting_network.id,
+            description=name,
+            opts=pulumi.ResourceOptions(provider=alicloud["local"]))
+        default_peer_connection_accepter = alicloud.vpc.PeerConnectionAccepter("defaultPeerConnectionAccepter", instance_id=default_peer_connection.id,
+        opts=pulumi.ResourceOptions(provider=alicloud["accepting"]))
         ```
 
         ## Import

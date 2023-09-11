@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides CEN Route Maps available to the user.
@@ -144,6 +145,12 @@ func (o GetRouteMapsResultOutput) ToGetRouteMapsResultOutput() GetRouteMapsResul
 
 func (o GetRouteMapsResultOutput) ToGetRouteMapsResultOutputWithContext(ctx context.Context) GetRouteMapsResultOutput {
 	return o
+}
+
+func (o GetRouteMapsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRouteMapsResult] {
+	return pulumix.Output[GetRouteMapsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the CEN instance.

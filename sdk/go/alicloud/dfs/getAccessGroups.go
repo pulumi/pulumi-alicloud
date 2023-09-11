@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.
@@ -135,6 +136,12 @@ func (o GetAccessGroupsResultOutput) ToGetAccessGroupsResultOutput() GetAccessGr
 
 func (o GetAccessGroupsResultOutput) ToGetAccessGroupsResultOutputWithContext(ctx context.Context) GetAccessGroupsResultOutput {
 	return o
+}
+
+func (o GetAccessGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccessGroupsResult] {
+	return pulumix.Output[GetAccessGroupsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAccessGroupsResultOutput) Groups() GetAccessGroupsGroupArrayOutput {

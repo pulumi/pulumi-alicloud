@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Sae.Inputs
         private InputList<Inputs.GreyTagRouteScRuleItemArgs>? _items;
 
         /// <summary>
-        /// A list of conditions items. The details see Block `sc_rules_items`.
+        /// A list of conditions items.See `items` below.
         /// </summary>
         public InputList<Inputs.GreyTagRouteScRuleItemArgs> Items
         {

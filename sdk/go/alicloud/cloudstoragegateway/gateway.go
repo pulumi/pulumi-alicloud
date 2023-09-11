@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Storage Gateway: Gateway resource.
@@ -239,6 +240,12 @@ func (i *Gateway) ToGatewayOutputWithContext(ctx context.Context) GatewayOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayOutput)
 }
 
+func (i *Gateway) ToOutput(ctx context.Context) pulumix.Output[*Gateway] {
+	return pulumix.Output[*Gateway]{
+		OutputState: i.ToGatewayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GatewayArrayInput is an input type that accepts GatewayArray and GatewayArrayOutput values.
 // You can construct a concrete instance of `GatewayArrayInput` via:
 //
@@ -262,6 +269,12 @@ func (i GatewayArray) ToGatewayArrayOutput() GatewayArrayOutput {
 
 func (i GatewayArray) ToGatewayArrayOutputWithContext(ctx context.Context) GatewayArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayArrayOutput)
+}
+
+func (i GatewayArray) ToOutput(ctx context.Context) pulumix.Output[[]*Gateway] {
+	return pulumix.Output[[]*Gateway]{
+		OutputState: i.ToGatewayArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GatewayMapInput is an input type that accepts GatewayMap and GatewayMapOutput values.
@@ -289,6 +302,12 @@ func (i GatewayMap) ToGatewayMapOutputWithContext(ctx context.Context) GatewayMa
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayMapOutput)
 }
 
+func (i GatewayMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Gateway] {
+	return pulumix.Output[map[string]*Gateway]{
+		OutputState: i.ToGatewayMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GatewayOutput struct{ *pulumi.OutputState }
 
 func (GatewayOutput) ElementType() reflect.Type {
@@ -301,6 +320,12 @@ func (o GatewayOutput) ToGatewayOutput() GatewayOutput {
 
 func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOutput {
 	return o
+}
+
+func (o GatewayOutput) ToOutput(ctx context.Context) pulumix.Output[*Gateway] {
+	return pulumix.Output[*Gateway]{
+		OutputState: o.OutputState,
+	}
 }
 
 // the description of gateway.
@@ -382,6 +407,12 @@ func (o GatewayArrayOutput) ToGatewayArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o GatewayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Gateway] {
+	return pulumix.Output[[]*Gateway]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GatewayArrayOutput) Index(i pulumi.IntInput) GatewayOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Gateway {
 		return vs[0].([]*Gateway)[vs[1].(int)]
@@ -400,6 +431,12 @@ func (o GatewayMapOutput) ToGatewayMapOutput() GatewayMapOutput {
 
 func (o GatewayMapOutput) ToGatewayMapOutputWithContext(ctx context.Context) GatewayMapOutput {
 	return o
+}
+
+func (o GatewayMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Gateway] {
+	return pulumix.Output[map[string]*Gateway]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GatewayMapOutput) MapIndex(k pulumi.StringInput) GatewayOutput {

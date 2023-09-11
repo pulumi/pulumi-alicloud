@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Private Link Vpc Endpoint Zone resource.
@@ -183,6 +184,12 @@ func (i *VpcEndpointZone) ToVpcEndpointZoneOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointZoneOutput)
 }
 
+func (i *VpcEndpointZone) ToOutput(ctx context.Context) pulumix.Output[*VpcEndpointZone] {
+	return pulumix.Output[*VpcEndpointZone]{
+		OutputState: i.ToVpcEndpointZoneOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VpcEndpointZoneArrayInput is an input type that accepts VpcEndpointZoneArray and VpcEndpointZoneArrayOutput values.
 // You can construct a concrete instance of `VpcEndpointZoneArrayInput` via:
 //
@@ -206,6 +213,12 @@ func (i VpcEndpointZoneArray) ToVpcEndpointZoneArrayOutput() VpcEndpointZoneArra
 
 func (i VpcEndpointZoneArray) ToVpcEndpointZoneArrayOutputWithContext(ctx context.Context) VpcEndpointZoneArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointZoneArrayOutput)
+}
+
+func (i VpcEndpointZoneArray) ToOutput(ctx context.Context) pulumix.Output[[]*VpcEndpointZone] {
+	return pulumix.Output[[]*VpcEndpointZone]{
+		OutputState: i.ToVpcEndpointZoneArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // VpcEndpointZoneMapInput is an input type that accepts VpcEndpointZoneMap and VpcEndpointZoneMapOutput values.
@@ -233,6 +246,12 @@ func (i VpcEndpointZoneMap) ToVpcEndpointZoneMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointZoneMapOutput)
 }
 
+func (i VpcEndpointZoneMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VpcEndpointZone] {
+	return pulumix.Output[map[string]*VpcEndpointZone]{
+		OutputState: i.ToVpcEndpointZoneMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VpcEndpointZoneOutput struct{ *pulumi.OutputState }
 
 func (VpcEndpointZoneOutput) ElementType() reflect.Type {
@@ -245,6 +264,12 @@ func (o VpcEndpointZoneOutput) ToVpcEndpointZoneOutput() VpcEndpointZoneOutput {
 
 func (o VpcEndpointZoneOutput) ToVpcEndpointZoneOutputWithContext(ctx context.Context) VpcEndpointZoneOutput {
 	return o
+}
+
+func (o VpcEndpointZoneOutput) ToOutput(ctx context.Context) pulumix.Output[*VpcEndpointZone] {
+	return pulumix.Output[*VpcEndpointZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The dry run.
@@ -286,6 +311,12 @@ func (o VpcEndpointZoneArrayOutput) ToVpcEndpointZoneArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o VpcEndpointZoneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VpcEndpointZone] {
+	return pulumix.Output[[]*VpcEndpointZone]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VpcEndpointZoneArrayOutput) Index(i pulumi.IntInput) VpcEndpointZoneOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VpcEndpointZone {
 		return vs[0].([]*VpcEndpointZone)[vs[1].(int)]
@@ -304,6 +335,12 @@ func (o VpcEndpointZoneMapOutput) ToVpcEndpointZoneMapOutput() VpcEndpointZoneMa
 
 func (o VpcEndpointZoneMapOutput) ToVpcEndpointZoneMapOutputWithContext(ctx context.Context) VpcEndpointZoneMapOutput {
 	return o
+}
+
+func (o VpcEndpointZoneMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VpcEndpointZone] {
+	return pulumix.Output[map[string]*VpcEndpointZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VpcEndpointZoneMapOutput) MapIndex(k pulumi.StringInput) VpcEndpointZoneOutput {

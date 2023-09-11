@@ -261,9 +261,9 @@ class DnatEntry(pulumi.CustomResource):
         """
         Provides a Sag DnatEntry resource. This topic describes how to add a DNAT entry to a Smart Access Gateway (SAG) instance to enable the DNAT function. By using the DNAT function, you can forward requests received by public IP addresses to Alibaba Cloud instances according to custom mapping rules.
 
-        For information about Sag DnatEntry and how to use it, see [What is Sag DnatEntry](https://www.alibabacloud.com/help/doc-detail/124312.htm).
+        For information about Sag DnatEntry and how to use it, see [What is Sag DnatEntry](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/adddnatentry).
 
-        > **NOTE:** Available in 1.63.0+
+        > **NOTE:** Available since v1.63.0.
 
         > **NOTE:** Only the following regions suppor. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
@@ -275,14 +275,18 @@ class DnatEntry(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        sag_id = config.get("sagId")
+        if sag_id is None:
+            sag_id = "sag-9bifkfaz***"
         default = alicloud.rocketmq.DnatEntry("default",
-            external_ip="1.0.0.2",
-            external_port="1",
-            internal_ip="10.0.0.2",
-            internal_port="20",
-            ip_protocol="tcp",
-            sag_id="sag-3rb1t3iagy3w0zgwy9",
-            type="Intranet")
+            sag_id=sag_id,
+            type="Intranet",
+            ip_protocol="any",
+            external_ip="172.32.0.2",
+            external_port="any",
+            internal_ip="172.16.0.4",
+            internal_port="any")
         ```
 
         ## Import
@@ -312,9 +316,9 @@ class DnatEntry(pulumi.CustomResource):
         """
         Provides a Sag DnatEntry resource. This topic describes how to add a DNAT entry to a Smart Access Gateway (SAG) instance to enable the DNAT function. By using the DNAT function, you can forward requests received by public IP addresses to Alibaba Cloud instances according to custom mapping rules.
 
-        For information about Sag DnatEntry and how to use it, see [What is Sag DnatEntry](https://www.alibabacloud.com/help/doc-detail/124312.htm).
+        For information about Sag DnatEntry and how to use it, see [What is Sag DnatEntry](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/adddnatentry).
 
-        > **NOTE:** Available in 1.63.0+
+        > **NOTE:** Available since v1.63.0.
 
         > **NOTE:** Only the following regions suppor. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
@@ -326,14 +330,18 @@ class DnatEntry(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        sag_id = config.get("sagId")
+        if sag_id is None:
+            sag_id = "sag-9bifkfaz***"
         default = alicloud.rocketmq.DnatEntry("default",
-            external_ip="1.0.0.2",
-            external_port="1",
-            internal_ip="10.0.0.2",
-            internal_port="20",
-            ip_protocol="tcp",
-            sag_id="sag-3rb1t3iagy3w0zgwy9",
-            type="Intranet")
+            sag_id=sag_id,
+            type="Intranet",
+            ip_protocol="any",
+            external_ip="172.32.0.2",
+            external_port="any",
+            internal_ip="172.16.0.4",
+            internal_port="any")
         ```
 
         ## Import

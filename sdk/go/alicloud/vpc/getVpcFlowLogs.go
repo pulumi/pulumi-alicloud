@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Vpc Flow Logs of the current Alibaba Cloud user.
@@ -157,6 +158,12 @@ func (o GetVpcFlowLogsResultOutput) ToGetVpcFlowLogsResultOutput() GetVpcFlowLog
 
 func (o GetVpcFlowLogsResultOutput) ToGetVpcFlowLogsResultOutputWithContext(ctx context.Context) GetVpcFlowLogsResultOutput {
 	return o
+}
+
+func (o GetVpcFlowLogsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcFlowLogsResult] {
+	return pulumix.Output[GetVpcFlowLogsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetVpcFlowLogsResultOutput) Description() pulumi.StringPtrOutput {

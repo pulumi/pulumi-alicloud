@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetAccountAliases(ctx *pulumi.Context, args *GetAccountAliasesArgs, opts ...pulumi.InvokeOption) (*GetAccountAliasesResult, error) {
@@ -69,6 +70,12 @@ func (o GetAccountAliasesResultOutput) ToGetAccountAliasesResultOutput() GetAcco
 
 func (o GetAccountAliasesResultOutput) ToGetAccountAliasesResultOutputWithContext(ctx context.Context) GetAccountAliasesResultOutput {
 	return o
+}
+
+func (o GetAccountAliasesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountAliasesResult] {
+	return pulumix.Output[GetAccountAliasesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAccountAliasesResultOutput) AccountAlias() pulumi.StringOutput {

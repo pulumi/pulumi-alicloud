@@ -196,7 +196,7 @@ class ClusterBootstrapScript(dict):
         """
         :param str execution_fail_strategy: The bootstrap scripts execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ .
         :param str execution_moment: The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
-        :param 'ClusterBootstrapScriptNodeSelectorArgs' node_selector: The bootstrap scripts execution target.
+        :param 'ClusterBootstrapScriptNodeSelectorArgs' node_selector: The bootstrap scripts execution target. See `node_selector` below.
         :param str script_args: The bootstrap script args, e.g. "--a=b".
         :param str script_name: The bootstrap script name.
         :param str script_path: The bootstrap script path, e.g. "oss://bucket/path".
@@ -231,7 +231,7 @@ class ClusterBootstrapScript(dict):
     @pulumi.getter(name="nodeSelector")
     def node_selector(self) -> 'outputs.ClusterBootstrapScriptNodeSelector':
         """
-        The bootstrap scripts execution target.
+        The bootstrap scripts execution target. See `node_selector` below.
         """
         return pulumi.get(self, "node_selector")
 
@@ -538,19 +538,19 @@ class ClusterNodeGroup(dict):
                  vswitch_ids: Optional[Sequence[str]] = None,
                  with_public_ip: Optional[bool] = None):
         """
-        :param Sequence['ClusterNodeGroupDataDiskArgs'] data_disks: Host Ecs data disks information in this node group.
+        :param Sequence['ClusterNodeGroupDataDiskArgs'] data_disks: Host Ecs data disks information in this node group. See `data_disks` below.
         :param Sequence[str] instance_types: Host Ecs instance types.
         :param int node_count: Host Ecs number in this node group.
-        :param str node_group_name: The configuration effected which node group name of emr cluster.
+        :param str node_group_name: The node group name of emr cluster.
         :param str node_group_type: The node group type of emr cluster, supported value: MASTER, CORE or TASK.
-        :param 'ClusterNodeGroupSystemDiskArgs' system_disk: Host Ecs system disk information in this node group.
+        :param 'ClusterNodeGroupSystemDiskArgs' system_disk: Host Ecs system disk information in this node group. See `system_disk` below.
         :param Sequence[str] additional_security_group_ids: Additional security Group IDS for Cluster, you can also specify this key for each node group.
-        :param 'ClusterNodeGroupCostOptimizedConfigArgs' cost_optimized_config: The detail cost optimized configuration of emr cluster.
+        :param 'ClusterNodeGroupCostOptimizedConfigArgs' cost_optimized_config: The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below.
         :param bool graceful_shutdown: Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
         :param str payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
-        :param Sequence['ClusterNodeGroupSpotBidPriceArgs'] spot_bid_prices: The spot bid prices of a PayAsYouGo instance.
+        :param Sequence['ClusterNodeGroupSpotBidPriceArgs'] spot_bid_prices: The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
         :param bool spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
-        :param 'ClusterNodeGroupSubscriptionConfigArgs' subscription_config: The detail configuration of subscription payment type.
+        :param 'ClusterNodeGroupSubscriptionConfigArgs' subscription_config: The detail configuration of subscription payment type. See `subscription_config` below.
         :param Sequence[str] vswitch_ids: Global vSwitch ids, you can also specify it in node group.
         :param bool with_public_ip: Whether the node has a public IP address enabled.
         """
@@ -583,7 +583,7 @@ class ClusterNodeGroup(dict):
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> Sequence['outputs.ClusterNodeGroupDataDisk']:
         """
-        Host Ecs data disks information in this node group.
+        Host Ecs data disks information in this node group. See `data_disks` below.
         """
         return pulumi.get(self, "data_disks")
 
@@ -607,7 +607,7 @@ class ClusterNodeGroup(dict):
     @pulumi.getter(name="nodeGroupName")
     def node_group_name(self) -> str:
         """
-        The configuration effected which node group name of emr cluster.
+        The node group name of emr cluster.
         """
         return pulumi.get(self, "node_group_name")
 
@@ -623,7 +623,7 @@ class ClusterNodeGroup(dict):
     @pulumi.getter(name="systemDisk")
     def system_disk(self) -> 'outputs.ClusterNodeGroupSystemDisk':
         """
-        Host Ecs system disk information in this node group.
+        Host Ecs system disk information in this node group. See `system_disk` below.
         """
         return pulumi.get(self, "system_disk")
 
@@ -639,7 +639,7 @@ class ClusterNodeGroup(dict):
     @pulumi.getter(name="costOptimizedConfig")
     def cost_optimized_config(self) -> Optional['outputs.ClusterNodeGroupCostOptimizedConfig']:
         """
-        The detail cost optimized configuration of emr cluster.
+        The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below.
         """
         return pulumi.get(self, "cost_optimized_config")
 
@@ -663,7 +663,7 @@ class ClusterNodeGroup(dict):
     @pulumi.getter(name="spotBidPrices")
     def spot_bid_prices(self) -> Optional[Sequence['outputs.ClusterNodeGroupSpotBidPrice']]:
         """
-        The spot bid prices of a PayAsYouGo instance.
+        The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
         """
         return pulumi.get(self, "spot_bid_prices")
 
@@ -679,7 +679,7 @@ class ClusterNodeGroup(dict):
     @pulumi.getter(name="subscriptionConfig")
     def subscription_config(self) -> Optional['outputs.ClusterNodeGroupSubscriptionConfig']:
         """
-        The detail configuration of subscription payment type.
+        The detail configuration of subscription payment type. See `subscription_config` below.
         """
         return pulumi.get(self, "subscription_config")
 

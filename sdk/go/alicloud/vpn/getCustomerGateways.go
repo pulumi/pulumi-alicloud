@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
@@ -117,6 +118,12 @@ func (o GetCustomerGatewaysResultOutput) ToGetCustomerGatewaysResultOutput() Get
 
 func (o GetCustomerGatewaysResultOutput) ToGetCustomerGatewaysResultOutputWithContext(ctx context.Context) GetCustomerGatewaysResultOutput {
 	return o
+}
+
+func (o GetCustomerGatewaysResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCustomerGatewaysResult] {
+	return pulumix.Output[GetCustomerGatewaysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of VPN customer gateways. Each element contains the following attributes:

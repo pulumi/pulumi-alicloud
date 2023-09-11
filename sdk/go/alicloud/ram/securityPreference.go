@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a RAM Security Preference resource.
@@ -214,6 +215,12 @@ func (i *SecurityPreference) ToSecurityPreferenceOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityPreferenceOutput)
 }
 
+func (i *SecurityPreference) ToOutput(ctx context.Context) pulumix.Output[*SecurityPreference] {
+	return pulumix.Output[*SecurityPreference]{
+		OutputState: i.ToSecurityPreferenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SecurityPreferenceArrayInput is an input type that accepts SecurityPreferenceArray and SecurityPreferenceArrayOutput values.
 // You can construct a concrete instance of `SecurityPreferenceArrayInput` via:
 //
@@ -237,6 +244,12 @@ func (i SecurityPreferenceArray) ToSecurityPreferenceArrayOutput() SecurityPrefe
 
 func (i SecurityPreferenceArray) ToSecurityPreferenceArrayOutputWithContext(ctx context.Context) SecurityPreferenceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityPreferenceArrayOutput)
+}
+
+func (i SecurityPreferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]*SecurityPreference] {
+	return pulumix.Output[[]*SecurityPreference]{
+		OutputState: i.ToSecurityPreferenceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SecurityPreferenceMapInput is an input type that accepts SecurityPreferenceMap and SecurityPreferenceMapOutput values.
@@ -264,6 +277,12 @@ func (i SecurityPreferenceMap) ToSecurityPreferenceMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityPreferenceMapOutput)
 }
 
+func (i SecurityPreferenceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecurityPreference] {
+	return pulumix.Output[map[string]*SecurityPreference]{
+		OutputState: i.ToSecurityPreferenceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecurityPreferenceOutput struct{ *pulumi.OutputState }
 
 func (SecurityPreferenceOutput) ElementType() reflect.Type {
@@ -276,6 +295,12 @@ func (o SecurityPreferenceOutput) ToSecurityPreferenceOutput() SecurityPreferenc
 
 func (o SecurityPreferenceOutput) ToSecurityPreferenceOutputWithContext(ctx context.Context) SecurityPreferenceOutput {
 	return o
+}
+
+func (o SecurityPreferenceOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPreference] {
+	return pulumix.Output[*SecurityPreference]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies whether RAM users can change their passwords. Valid values: `true` and `false`
@@ -330,6 +355,12 @@ func (o SecurityPreferenceArrayOutput) ToSecurityPreferenceArrayOutputWithContex
 	return o
 }
 
+func (o SecurityPreferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SecurityPreference] {
+	return pulumix.Output[[]*SecurityPreference]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecurityPreferenceArrayOutput) Index(i pulumi.IntInput) SecurityPreferenceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecurityPreference {
 		return vs[0].([]*SecurityPreference)[vs[1].(int)]
@@ -348,6 +379,12 @@ func (o SecurityPreferenceMapOutput) ToSecurityPreferenceMapOutput() SecurityPre
 
 func (o SecurityPreferenceMapOutput) ToSecurityPreferenceMapOutputWithContext(ctx context.Context) SecurityPreferenceMapOutput {
 	return o
+}
+
+func (o SecurityPreferenceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecurityPreference] {
+	return pulumix.Output[map[string]*SecurityPreference]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityPreferenceMapOutput) MapIndex(k pulumi.StringInput) SecurityPreferenceOutput {

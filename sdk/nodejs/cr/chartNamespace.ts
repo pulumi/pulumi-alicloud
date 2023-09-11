@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a CR Chart Namespace resource.
  *
- * For information about CR Chart Namespace and how to use it, see [What is Chart Namespace](https://www.alibabacloud.com/help/doc-detail/145313.htm).
+ * For information about CR Chart Namespace and how to use it, see [What is Chart Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createchartnamespace).
  *
- * > **NOTE:** Available in v1.149.0+.
+ * > **NOTE:** Available since v1.149.0.
  *
  * ## Example Usage
  *
@@ -19,15 +19,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", {
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "example-name";
+ * const exampleRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance", {
  *     paymentType: "Subscription",
  *     period: 1,
+ *     renewPeriod: 0,
+ *     renewalStatus: "ManualRenewal",
  *     instanceType: "Advanced",
- *     instanceName: "name",
+ *     instanceName: name,
  * });
- * const defaultChartNamespace = new alicloud.cr.ChartNamespace("defaultChartNamespace", {
- *     instanceId: defaultRegistryEnterpriseInstance.id,
- *     namespaceName: "name",
+ * const exampleChartNamespace = new alicloud.cr.ChartNamespace("exampleChartNamespace", {
+ *     instanceId: exampleRegistryEnterpriseInstance.id,
+ *     namespaceName: name,
  * });
  * ```
  *

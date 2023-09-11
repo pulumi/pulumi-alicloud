@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Config Configuration Recorders of the current Alibaba Cloud user.
@@ -102,6 +103,12 @@ func (o GetConfigurationRecordersResultOutput) ToGetConfigurationRecordersResult
 
 func (o GetConfigurationRecordersResultOutput) ToGetConfigurationRecordersResultOutputWithContext(ctx context.Context) GetConfigurationRecordersResultOutput {
 	return o
+}
+
+func (o GetConfigurationRecordersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetConfigurationRecordersResult] {
+	return pulumix.Output[GetConfigurationRecordersResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

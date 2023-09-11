@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPC Ipv6 Internet Bandwidth resource. Public network bandwidth of IPv6 address.
@@ -269,6 +270,12 @@ func (i *Ipv6InternetBandwidth) ToIpv6InternetBandwidthOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(Ipv6InternetBandwidthOutput)
 }
 
+func (i *Ipv6InternetBandwidth) ToOutput(ctx context.Context) pulumix.Output[*Ipv6InternetBandwidth] {
+	return pulumix.Output[*Ipv6InternetBandwidth]{
+		OutputState: i.ToIpv6InternetBandwidthOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Ipv6InternetBandwidthArrayInput is an input type that accepts Ipv6InternetBandwidthArray and Ipv6InternetBandwidthArrayOutput values.
 // You can construct a concrete instance of `Ipv6InternetBandwidthArrayInput` via:
 //
@@ -292,6 +299,12 @@ func (i Ipv6InternetBandwidthArray) ToIpv6InternetBandwidthArrayOutput() Ipv6Int
 
 func (i Ipv6InternetBandwidthArray) ToIpv6InternetBandwidthArrayOutputWithContext(ctx context.Context) Ipv6InternetBandwidthArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(Ipv6InternetBandwidthArrayOutput)
+}
+
+func (i Ipv6InternetBandwidthArray) ToOutput(ctx context.Context) pulumix.Output[[]*Ipv6InternetBandwidth] {
+	return pulumix.Output[[]*Ipv6InternetBandwidth]{
+		OutputState: i.ToIpv6InternetBandwidthArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Ipv6InternetBandwidthMapInput is an input type that accepts Ipv6InternetBandwidthMap and Ipv6InternetBandwidthMapOutput values.
@@ -319,6 +332,12 @@ func (i Ipv6InternetBandwidthMap) ToIpv6InternetBandwidthMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(Ipv6InternetBandwidthMapOutput)
 }
 
+func (i Ipv6InternetBandwidthMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Ipv6InternetBandwidth] {
+	return pulumix.Output[map[string]*Ipv6InternetBandwidth]{
+		OutputState: i.ToIpv6InternetBandwidthMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type Ipv6InternetBandwidthOutput struct{ *pulumi.OutputState }
 
 func (Ipv6InternetBandwidthOutput) ElementType() reflect.Type {
@@ -331,6 +350,12 @@ func (o Ipv6InternetBandwidthOutput) ToIpv6InternetBandwidthOutput() Ipv6Interne
 
 func (o Ipv6InternetBandwidthOutput) ToIpv6InternetBandwidthOutputWithContext(ctx context.Context) Ipv6InternetBandwidthOutput {
 	return o
+}
+
+func (o Ipv6InternetBandwidthOutput) ToOutput(ctx context.Context) pulumix.Output[*Ipv6InternetBandwidth] {
+	return pulumix.Output[*Ipv6InternetBandwidth]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`. Valid values: `1` to `5000`. **NOTE:** If `internetChargeType` is set to `PayByTraffic`, the amount of Internet bandwidth resources of the IPv6 address is limited by the specification of the IPv6 gateway. `Small` (default): specifies the Free edition and the Internet bandwidth is from `1` to `500` Mbit/s. `Medium`: specifies the Medium edition and the Internet bandwidth is from `1` to `1000` Mbit/s. `Large`: specifies the Large edition and the Internet bandwidth is from `1` to `2000` Mbit/s.
@@ -372,6 +397,12 @@ func (o Ipv6InternetBandwidthArrayOutput) ToIpv6InternetBandwidthArrayOutputWith
 	return o
 }
 
+func (o Ipv6InternetBandwidthArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Ipv6InternetBandwidth] {
+	return pulumix.Output[[]*Ipv6InternetBandwidth]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o Ipv6InternetBandwidthArrayOutput) Index(i pulumi.IntInput) Ipv6InternetBandwidthOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Ipv6InternetBandwidth {
 		return vs[0].([]*Ipv6InternetBandwidth)[vs[1].(int)]
@@ -390,6 +421,12 @@ func (o Ipv6InternetBandwidthMapOutput) ToIpv6InternetBandwidthMapOutput() Ipv6I
 
 func (o Ipv6InternetBandwidthMapOutput) ToIpv6InternetBandwidthMapOutputWithContext(ctx context.Context) Ipv6InternetBandwidthMapOutput {
 	return o
+}
+
+func (o Ipv6InternetBandwidthMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Ipv6InternetBandwidth] {
+	return pulumix.Output[map[string]*Ipv6InternetBandwidth]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o Ipv6InternetBandwidthMapOutput) MapIndex(k pulumi.StringInput) Ipv6InternetBandwidthOutput {

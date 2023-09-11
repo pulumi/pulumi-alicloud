@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * For information about ECI Virtual Node and how to use it, see [What is Virtual Node](https://www.alibabacloud.com/help/en/doc-detail/89129.html).
  * 
- * &gt; **NOTE:** Available in v1.145.0+.
+ * &gt; **NOTE:** Available since v1.145.0.
  * 
  * ## Example Usage
  * 
@@ -37,9 +37,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.eci.EciFunctions;
  * import com.pulumi.alicloud.eci.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ecs.EipAddress;
@@ -63,24 +64,32 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testaccvirtualnode&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var defaultZones = EciFunctions.getZones();
  * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;default-NODELETING&#34;)
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.0.0.0/8&#34;)
  *             .build());
  * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneIds()[1]))
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.1.0.0/16&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneIds()[0]))
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
+ *             .isp(&#34;BGP&#34;)
  *             .addressName(name)
+ *             .netmode(&#34;public&#34;)
+ *             .bandwidth(&#34;1&#34;)
+ *             .securityProtectionTypes(&#34;AntiDDoS_Enhanced&#34;)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
  *             .build());
  * 
  *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
@@ -88,16 +97,16 @@ import javax.annotation.Nullable;
  *         var defaultVirtualNode = new VirtualNode(&#34;defaultVirtualNode&#34;, VirtualNodeArgs.builder()        
  *             .securityGroupId(defaultSecurityGroup.id())
  *             .virtualNodeName(name)
- *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[1]))
+ *             .vswitchId(defaultSwitch.id())
  *             .enablePublicNetwork(false)
  *             .eipInstanceId(defaultEipAddress.id())
  *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
- *             .kubeConfig(&#34;kube config&#34;)
+ *             .kubeConfig(&#34;kube_config&#34;)
  *             .tags(Map.of(&#34;Created&#34;, &#34;TF&#34;))
  *             .taints(VirtualNodeTaintArgs.builder()
  *                 .effect(&#34;NoSchedule&#34;)
- *                 .key(&#34;Tf1&#34;)
- *                 .value(&#34;Test1&#34;)
+ *                 .key(&#34;TF&#34;)
+ *                 .value(&#34;example&#34;)
  *                 .build())
  *             .build());
  * 
@@ -215,14 +224,14 @@ public class VirtualNode extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The taint. See the following `Block taints`.
+     * The taint. See `taints` below.
      * 
      */
     @Export(name="taints", type=List.class, parameters={VirtualNodeTaint.class})
     private Output</* @Nullable */ List<VirtualNodeTaint>> taints;
 
     /**
-     * @return The taint. See the following `Block taints`.
+     * @return The taint. See `taints` below.
      * 
      */
     public Output<Optional<List<VirtualNodeTaint>>> taints() {

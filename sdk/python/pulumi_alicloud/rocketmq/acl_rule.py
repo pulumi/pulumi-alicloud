@@ -358,11 +358,37 @@ class AclRule(pulumi.CustomResource):
         """
         Provides a Sag Acl Rule resource. This topic describes how to configure an access control list (ACL) rule for a target Smart Access Gateway instance to permit or deny access to or from specified IP addresses in the ACL rule.
 
-        For information about Sag Acl Rule and how to use it, see [What is access control list (ACL) rule](https://www.alibabacloud.com/help/doc-detail/111483.htm).
+        For information about Sag Acl Rule and how to use it, see [What is access control list (ACL) rule](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/addaclrule).
 
-        > **NOTE:** Available in 1.60.0+
+        > **NOTE:** Available since v1.60.0.
 
         > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_acl = alicloud.rocketmq.Acl("defaultAcl")
+        default_acl_rule = alicloud.rocketmq.AclRule("defaultAclRule",
+            acl_id=default_acl.id,
+            description=name,
+            policy="accept",
+            ip_protocol="ALL",
+            direction="in",
+            source_cidr="10.10.1.0/24",
+            source_port_range="-1/-1",
+            dest_cidr="192.168.1.0/24",
+            dest_port_range="-1/-1",
+            priority=1)
+        ```
 
         ## Import
 
@@ -394,11 +420,37 @@ class AclRule(pulumi.CustomResource):
         """
         Provides a Sag Acl Rule resource. This topic describes how to configure an access control list (ACL) rule for a target Smart Access Gateway instance to permit or deny access to or from specified IP addresses in the ACL rule.
 
-        For information about Sag Acl Rule and how to use it, see [What is access control list (ACL) rule](https://www.alibabacloud.com/help/doc-detail/111483.htm).
+        For information about Sag Acl Rule and how to use it, see [What is access control list (ACL) rule](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/addaclrule).
 
-        > **NOTE:** Available in 1.60.0+
+        > **NOTE:** Available since v1.60.0.
 
         > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_acl = alicloud.rocketmq.Acl("defaultAcl")
+        default_acl_rule = alicloud.rocketmq.AclRule("defaultAclRule",
+            acl_id=default_acl.id,
+            description=name,
+            policy="accept",
+            ip_protocol="ALL",
+            direction="in",
+            source_cidr="10.10.1.0/24",
+            source_port_range="-1/-1",
+            dest_cidr="192.168.1.0/24",
+            dest_port_range="-1/-1",
+            priority=1)
+        ```
 
         ## Import
 

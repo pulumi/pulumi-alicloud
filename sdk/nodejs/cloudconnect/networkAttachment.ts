@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Connect Network Attachment resource. This topic describes how to associate a Smart Access Gateway (SAG) instance with a network instance. You must associate an SAG instance with a network instance if you want to connect the SAG to Alibaba Cloud. You can connect an SAG to Alibaba Cloud through a leased line, the Internet, or the active and standby links.
  *
- * For information about Cloud Connect Network Attachment and how to use it, see [What is Cloud Connect Network Attachment](https://www.alibabacloud.com/help/doc-detail/124230.htm).
+ * For information about Cloud Connect Network Attachment and how to use it, see [What is Cloud Connect Network Attachment](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/bindsmartaccessgateway).
  *
- * > **NOTE:** Available in 1.64.0+
+ * > **NOTE:** Available since v1.64.0.
  *
  * > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
  *
@@ -21,12 +21,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ccn = new alicloud.cloudconnect.Network("ccn", {isDefault: true});
- * const _default = new alicloud.cloudconnect.NetworkAttachment("default", {
- *     ccnId: ccn.id,
- *     sagId: "sag-xxxxx",
- * }, {
- *     dependsOn: [ccn],
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const sagId = config.get("sagId") || "sag-9bifkf***";
+ * const defaultNetwork = new alicloud.cloudconnect.Network("defaultNetwork", {
+ *     description: name,
+ *     cidrBlock: "192.168.0.0/24",
+ *     isDefault: true,
+ * });
+ * const defaultNetworkAttachment = new alicloud.cloudconnect.NetworkAttachment("defaultNetworkAttachment", {
+ *     ccnId: defaultNetwork.id,
+ *     sagId: sagId,
  * });
  * ```
  *

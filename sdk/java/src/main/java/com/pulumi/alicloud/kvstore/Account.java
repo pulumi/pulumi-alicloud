@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * For information about KVStore Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/doc-detail/95973.htm).
  * 
- * &gt; **NOTE:** Available in 1.66.0+
+ * &gt; **NOTE:** Available since v1.66.0.
  * 
  * ## Example Usage
  * 
@@ -33,8 +33,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+ * import com.pulumi.alicloud.kvstore.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -57,35 +59,46 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;KVStore&#34;);
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;kvstoreinstancevpc&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(creation)
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultZones = KvstoreFunctions.getZones();
+ * 
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .status(&#34;OK&#34;)
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
  *             .build());
  * 
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .instanceClass(&#34;redis.master.small.default&#34;)
- *             .instanceName(name)
+ *             .dbInstanceName(name)
  *             .vswitchId(defaultSwitch.id())
- *             .privateIp(&#34;172.16.0.10&#34;)
- *             .securityIps(&#34;10.0.0.1&#34;)
+ *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .instanceClass(&#34;redis.master.large.default&#34;)
  *             .instanceType(&#34;Redis&#34;)
- *             .engineVersion(&#34;4.0&#34;)
+ *             .engineVersion(&#34;5.0&#34;)
+ *             .securityIps(&#34;10.23.12.24&#34;)
+ *             .config(Map.ofEntries(
+ *                 Map.entry(&#34;appendonly&#34;, &#34;yes&#34;),
+ *                 Map.entry(&#34;lazyfree-lazy-eviction&#34;, &#34;yes&#34;)
+ *             ))
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *             ))
  *             .build());
  * 
- *         var example = new Account(&#34;example&#34;, AccountArgs.builder()        
- *             .accountName(&#34;tftestnormal&#34;)
+ *         var defaultAccount = new Account(&#34;defaultAccount&#34;, AccountArgs.builder()        
+ *             .accountName(&#34;tfexamplename&#34;)
  *             .accountPassword(&#34;YourPassword_123&#34;)
  *             .instanceId(defaultInstance.id())
  *             .build());

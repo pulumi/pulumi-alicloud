@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cddc
     /// <summary>
     /// Provides a ApsaraDB for MyBase Dedicated Host Group resource.
     /// 
-    /// For information about ApsaraDB for MyBase Dedicated Host Group and how to use it, see [What is Dedicated Host Group](https://www.alibabacloud.com/help/doc-detail/141455.htm).
+    /// For information about ApsaraDB for MyBase Dedicated Host Group and how to use it, see [What is Dedicated Host Group](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/creatededicatedhostgroup).
     /// 
-    /// &gt; **NOTE:** Available in v1.132.0+.
+    /// &gt; **NOTE:** Available since v1.132.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,22 +28,24 @@ namespace Pulumi.AliCloud.Cddc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         VpcName = "tf_test_foo",
-    ///         CidrBlock = "172.16.0.0/12",
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var @default = new AliCloud.Cddc.DedicatedHostGroup("default", new()
+    ///     var defaultDedicatedHostGroup = new AliCloud.Cddc.DedicatedHostGroup("defaultDedicatedHostGroup", new()
     ///     {
-    ///         Engine = "MongoDB",
-    ///         VpcId = vpc.Id,
+    ///         Engine = "MySQL",
+    ///         VpcId = defaultNetwork.Id,
     ///         CpuAllocationRatio = 101,
     ///         MemAllocationRatio = 50,
     ///         DiskAllocationRatio = 200,
     ///         AllocationPolicy = "Evenly",
     ///         HostReplacePolicy = "Manual",
-    ///         DedicatedHostGroupDesc = "tf-testaccDesc",
+    ///         DedicatedHostGroupDesc = name,
     ///     });
     /// 
     /// });

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Cloud Firewall Vpc Firewall Control Policy and how to use it, see [What is Vpc Firewall Control Policy](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcontrolpolicy).
  *
- * > **NOTE:** Available in v1.194.0+.
+ * > **NOTE:** Available since v1.194.0.
  *
  * ## Example Usage
  *
@@ -106,7 +106,7 @@ export class FirewallVpcFirewallControlPolicy extends pulumi.CustomResource {
     /**
      * The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
      */
-    public readonly destPort!: pulumi.Output<string | undefined>;
+    public readonly destPort!: pulumi.Output<string>;
     /**
      * Access control policy in the access traffic of the destination port address book name. **Note:** If `destPortType` is set to `group`, you must specify this parameter.
      */
@@ -118,9 +118,9 @@ export class FirewallVpcFirewallControlPolicy extends pulumi.CustomResource {
     /**
      * The type of the destination port in the access control policy. Valid values: `port`, `group`.
      */
-    public readonly destPortType!: pulumi.Output<string | undefined>;
+    public readonly destPortType!: pulumi.Output<string>;
     /**
-     * The destination address in the access control policy. Valid values: 
+     * The destination address in the access control policy. Valid values:
      * - If `destinationType` is set to `net`, the value of `destination` must be a CIDR block.
      * - If `destinationType` is set to `group`, the value of `destination` must be an address book.
      * - If `destinationType` is set to `domain`, the value of `destination` must be a domain name.
@@ -131,9 +131,7 @@ export class FirewallVpcFirewallControlPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly destinationGroupCidrs!: pulumi.Output<string[]>;
     /**
-     * The destination address book type in the access control policy. Value:
-     * - **ip**:IP address book, which contains one or more ip address segments.
-     * - **domain**: domain address book, which contains one or more domain addresses.
+     * The destination address book type in the access control policy.
      */
     public /*out*/ readonly destinationGroupType!: pulumi.Output<string>;
     /**
@@ -161,9 +159,7 @@ export class FirewallVpcFirewallControlPolicy extends pulumi.CustomResource {
      */
     public readonly proto!: pulumi.Output<string>;
     /**
-     * The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-     * - **true**: Enable access control policies
-     * - **false**: does not enable access control policies.
+     * The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
      */
     public readonly release!: pulumi.Output<boolean>;
     /**
@@ -175,7 +171,7 @@ export class FirewallVpcFirewallControlPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly sourceGroupCidrs!: pulumi.Output<string[]>;
     /**
-     * The source address type in the access control policy. Unique value: **ip**. The IP address book contains one or more IP address segments.
+     * The source address type in the access control policy.
      */
     public /*out*/ readonly sourceGroupType!: pulumi.Output<string>;
     /**
@@ -183,7 +179,7 @@ export class FirewallVpcFirewallControlPolicy extends pulumi.CustomResource {
      */
     public readonly sourceType!: pulumi.Output<string>;
     /**
-     * The ID of the VPC firewall instance. Value:
+     * The ID of the VPC firewall instance. Valid values:
      * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
      * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
      */
@@ -329,7 +325,7 @@ export interface FirewallVpcFirewallControlPolicyState {
      */
     destPortType?: pulumi.Input<string>;
     /**
-     * The destination address in the access control policy. Valid values: 
+     * The destination address in the access control policy. Valid values:
      * - If `destinationType` is set to `net`, the value of `destination` must be a CIDR block.
      * - If `destinationType` is set to `group`, the value of `destination` must be an address book.
      * - If `destinationType` is set to `domain`, the value of `destination` must be a domain name.
@@ -340,9 +336,7 @@ export interface FirewallVpcFirewallControlPolicyState {
      */
     destinationGroupCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The destination address book type in the access control policy. Value:
-     * - **ip**:IP address book, which contains one or more ip address segments.
-     * - **domain**: domain address book, which contains one or more domain addresses.
+     * The destination address book type in the access control policy.
      */
     destinationGroupType?: pulumi.Input<string>;
     /**
@@ -370,9 +364,7 @@ export interface FirewallVpcFirewallControlPolicyState {
      */
     proto?: pulumi.Input<string>;
     /**
-     * The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-     * - **true**: Enable access control policies
-     * - **false**: does not enable access control policies.
+     * The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
      */
     release?: pulumi.Input<boolean>;
     /**
@@ -384,7 +376,7 @@ export interface FirewallVpcFirewallControlPolicyState {
      */
     sourceGroupCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The source address type in the access control policy. Unique value: **ip**. The IP address book contains one or more IP address segments.
+     * The source address type in the access control policy.
      */
     sourceGroupType?: pulumi.Input<string>;
     /**
@@ -392,7 +384,7 @@ export interface FirewallVpcFirewallControlPolicyState {
      */
     sourceType?: pulumi.Input<string>;
     /**
-     * The ID of the VPC firewall instance. Value:
+     * The ID of the VPC firewall instance. Valid values:
      * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
      * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
      */
@@ -428,7 +420,7 @@ export interface FirewallVpcFirewallControlPolicyArgs {
      */
     destPortType?: pulumi.Input<string>;
     /**
-     * The destination address in the access control policy. Valid values: 
+     * The destination address in the access control policy. Valid values:
      * - If `destinationType` is set to `net`, the value of `destination` must be a CIDR block.
      * - If `destinationType` is set to `group`, the value of `destination` must be an address book.
      * - If `destinationType` is set to `domain`, the value of `destination` must be a domain name.
@@ -455,9 +447,7 @@ export interface FirewallVpcFirewallControlPolicyArgs {
      */
     proto: pulumi.Input<string>;
     /**
-     * The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-     * - **true**: Enable access control policies
-     * - **false**: does not enable access control policies.
+     * The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
      */
     release?: pulumi.Input<boolean>;
     /**
@@ -469,7 +459,7 @@ export interface FirewallVpcFirewallControlPolicyArgs {
      */
     sourceType: pulumi.Input<string>;
     /**
-     * The ID of the VPC firewall instance. Value:
+     * The ID of the VPC firewall instance. Valid values:
      * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
      * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
      */

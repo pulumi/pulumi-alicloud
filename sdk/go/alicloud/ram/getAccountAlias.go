@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupAccountAlias(ctx *pulumi.Context, args *LookupAccountAliasArgs, opts ...pulumi.InvokeOption) (*LookupAccountAliasResult, error) {
@@ -69,6 +70,12 @@ func (o LookupAccountAliasResultOutput) ToLookupAccountAliasResultOutput() Looku
 
 func (o LookupAccountAliasResultOutput) ToLookupAccountAliasResultOutputWithContext(ctx context.Context) LookupAccountAliasResultOutput {
 	return o
+}
+
+func (o LookupAccountAliasResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccountAliasResult] {
+	return pulumix.Output[LookupAccountAliasResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupAccountAliasResultOutput) AccountAlias() pulumi.StringOutput {

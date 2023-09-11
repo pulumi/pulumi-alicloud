@@ -13,50 +13,53 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultZones = alicloud.getZones({
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?.[0]?.id,
+ * const exampleInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
  *     cpuCoreCount: 1,
  *     memorySize: 2,
  * }));
- * const defaultImages = alicloud.ecs.getImages({
- *     nameRegex: "^ubuntu_18.*64",
- *     mostRecent: true,
+ * const exampleImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
  *     owners: "system",
  * });
- * const config = new pulumi.Config();
- * const name = config.get("name") || "test_havip_attachment";
- * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {cidrBlock: "172.16.0.0/12"});
- * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
- *     vpcId: fooNetwork.id,
- *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
  * });
- * const fooHAVip = new alicloud.vpc.HAVip("fooHAVip", {
- *     vswitchId: fooSwitch.id,
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const exampleHAVip = new alicloud.vpc.HAVip("exampleHAVip", {
+ *     vswitchId: exampleSwitch.id,
  *     description: name,
  * });
- * const tfTestFoo = new alicloud.ecs.SecurityGroup("tfTestFoo", {
- *     description: "foo",
- *     vpcId: fooNetwork.id,
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {
+ *     description: name,
+ *     vpcId: exampleNetwork.id,
  * });
- * const fooInstance = new alicloud.ecs.Instance("fooInstance", {
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchId: fooSwitch.id,
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ * const exampleInstance = new alicloud.ecs.Instance("exampleInstance", {
+ *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
+ *     vswitchId: exampleSwitch.id,
+ *     imageId: exampleImages.then(exampleImages => exampleImages.images?.[0]?.id),
+ *     instanceType: exampleInstanceTypes.then(exampleInstanceTypes => exampleInstanceTypes.instanceTypes?.[0]?.id),
  *     systemDiskCategory: "cloud_efficiency",
  *     internetChargeType: "PayByTraffic",
  *     internetMaxBandwidthOut: 5,
- *     securityGroups: [tfTestFoo.id],
+ *     securityGroups: [exampleSecurityGroup.id],
  *     instanceName: name,
  *     userData: "echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf",
  * });
- * const fooHAVipAttachment = new alicloud.vpc.HAVipAttachment("fooHAVipAttachment", {
- *     havipId: fooHAVip.id,
- *     instanceId: fooInstance.id,
+ * const exampleHAVipAttachment = new alicloud.vpc.HAVipAttachment("exampleHAVipAttachment", {
+ *     havipId: exampleHAVip.id,
+ *     instanceId: exampleInstance.id,
  * });
  * ```
  *

@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Serverless App Engine (SAE) Application Scaling Rule resource.
  *
- * For information about Serverless App Engine (SAE) Application Scaling Rule and how to use it, see [What is Application Scaling Rule](https://help.aliyun.com/document_detail/134120.html).
+ * For information about Serverless App Engine (SAE) Application Scaling Rule and how to use it, see [What is Application Scaling Rule](https://www.alibabacloud.com/help/en/sae/latest/create-application-scaling-rule).
  *
- * > **NOTE:** Available in v1.159.0+.
+ * > **NOTE:** Available since v1.159.0.
  *
  * ## Example Usage
  *
@@ -20,40 +20,59 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
  * });
- * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- * }));
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultNamespace = new alicloud.sae.Namespace("defaultNamespace", {
- *     namespaceDescription: "example_value",
- *     namespaceId: "example_value",
- *     namespaceName: "example_value",
+ *     namespaceId: pulumi.all([defaultRegions, defaultRandomInteger.result]).apply(([defaultRegions, result]) => `${defaultRegions.regions?.[0]?.id}:example${result}`),
+ *     namespaceName: name,
+ *     namespaceDescription: name,
+ *     enableMicroRegistration: false,
  * });
  * const defaultApplication = new alicloud.sae.Application("defaultApplication", {
- *     appDescription: "example_value",
- *     appName: "example_value",
- *     namespaceId: defaultNamespace.namespaceId,
- *     imageUrl: "registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
+ *     appDescription: name,
+ *     appName: name,
+ *     namespaceId: defaultNamespace.id,
+ *     imageUrl: defaultRegions.then(defaultRegions => `registry-vpc.${defaultRegions.regions?.[0]?.id}.aliyuncs.com/sae-demo-image/consumer:1.0`),
  *     packageType: "Image",
- *     jdk: "Open JDK 8",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
- *     timezone: "Asia/Shanghai",
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     vpcId: defaultNetwork.id,
+ *     vswitchId: defaultSwitch.id,
+ *     timezone: "Asia/Beijing",
  *     replicas: 5,
  *     cpu: 500,
  *     memory: 2048,
  * });
- * const example = new alicloud.sae.ApplicationScalingRule("example", {
+ * const defaultApplicationScalingRule = new alicloud.sae.ApplicationScalingRule("defaultApplicationScalingRule", {
  *     appId: defaultApplication.id,
- *     scalingRuleName: "example-value",
+ *     scalingRuleName: name,
  *     scalingRuleEnable: true,
  *     scalingRuleType: "mix",
+ *     minReadyInstances: 3,
+ *     minReadyInstanceRatio: -1,
  *     scalingRuleTimer: {
- *         beginDate: "2022-02-25",
- *         endDate: "2022-03-25",
  *         period: "* * *",
  *         schedules: [
  *             {
@@ -152,7 +171,7 @@ export class ApplicationScalingRule extends pulumi.CustomResource {
      */
     public readonly scalingRuleEnable!: pulumi.Output<boolean>;
     /**
-     * Monitor the configuration of the indicator elasticity strategy. See the following `Block scalingRuleMetric`.
+     * Monitor the configuration of the indicator elasticity strategy. See `scalingRuleMetric` below.
      */
     public readonly scalingRuleMetric!: pulumi.Output<outputs.sae.ApplicationScalingRuleScalingRuleMetric | undefined>;
     /**
@@ -160,7 +179,7 @@ export class ApplicationScalingRule extends pulumi.CustomResource {
      */
     public readonly scalingRuleName!: pulumi.Output<string>;
     /**
-     * Configuration of Timing Resilient Policies. See the following `Block scalingRuleTimer`.
+     * Configuration of Timing Resilient Policies. See `scalingRuleTimer` below.
      */
     public readonly scalingRuleTimer!: pulumi.Output<outputs.sae.ApplicationScalingRuleScalingRuleTimer | undefined>;
     /**
@@ -235,7 +254,7 @@ export interface ApplicationScalingRuleState {
      */
     scalingRuleEnable?: pulumi.Input<boolean>;
     /**
-     * Monitor the configuration of the indicator elasticity strategy. See the following `Block scalingRuleMetric`.
+     * Monitor the configuration of the indicator elasticity strategy. See `scalingRuleMetric` below.
      */
     scalingRuleMetric?: pulumi.Input<inputs.sae.ApplicationScalingRuleScalingRuleMetric>;
     /**
@@ -243,7 +262,7 @@ export interface ApplicationScalingRuleState {
      */
     scalingRuleName?: pulumi.Input<string>;
     /**
-     * Configuration of Timing Resilient Policies. See the following `Block scalingRuleTimer`.
+     * Configuration of Timing Resilient Policies. See `scalingRuleTimer` below.
      */
     scalingRuleTimer?: pulumi.Input<inputs.sae.ApplicationScalingRuleScalingRuleTimer>;
     /**
@@ -273,7 +292,7 @@ export interface ApplicationScalingRuleArgs {
      */
     scalingRuleEnable?: pulumi.Input<boolean>;
     /**
-     * Monitor the configuration of the indicator elasticity strategy. See the following `Block scalingRuleMetric`.
+     * Monitor the configuration of the indicator elasticity strategy. See `scalingRuleMetric` below.
      */
     scalingRuleMetric?: pulumi.Input<inputs.sae.ApplicationScalingRuleScalingRuleMetric>;
     /**
@@ -281,7 +300,7 @@ export interface ApplicationScalingRuleArgs {
      */
     scalingRuleName: pulumi.Input<string>;
     /**
-     * Configuration of Timing Resilient Policies. See the following `Block scalingRuleTimer`.
+     * Configuration of Timing Resilient Policies. See `scalingRuleTimer` below.
      */
     scalingRuleTimer?: pulumi.Input<inputs.sae.ApplicationScalingRuleScalingRuleTimer>;
     /**

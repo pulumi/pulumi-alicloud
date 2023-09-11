@@ -10,13 +10,14 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ApsaraDB for MyBase Dedicated Host Group resource.
 //
-// For information about ApsaraDB for MyBase Dedicated Host Group and how to use it, see [What is Dedicated Host Group](https://www.alibabacloud.com/help/doc-detail/141455.htm).
+// For information about ApsaraDB for MyBase Dedicated Host Group and how to use it, see [What is Dedicated Host Group](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/creatededicatedhostgroup).
 //
-// > **NOTE:** Available in v1.132.0+.
+// > **NOTE:** Available since v1.132.0.
 //
 // ## Example Usage
 //
@@ -30,27 +31,33 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cddc"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("tf_test_foo"),
-//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cddc.NewDedicatedHostGroup(ctx, "default", &cddc.DedicatedHostGroupArgs{
-//				Engine:                 pulumi.String("MongoDB"),
-//				VpcId:                  vpc.ID(),
+//			_, err = cddc.NewDedicatedHostGroup(ctx, "defaultDedicatedHostGroup", &cddc.DedicatedHostGroupArgs{
+//				Engine:                 pulumi.String("MySQL"),
+//				VpcId:                  defaultNetwork.ID(),
 //				CpuAllocationRatio:     pulumi.Int(101),
 //				MemAllocationRatio:     pulumi.Int(50),
 //				DiskAllocationRatio:    pulumi.Int(200),
 //				AllocationPolicy:       pulumi.String("Evenly"),
 //				HostReplacePolicy:      pulumi.String("Manual"),
-//				DedicatedHostGroupDesc: pulumi.String("tf-testaccDesc"),
+//				DedicatedHostGroupDesc: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -245,6 +252,12 @@ func (i *DedicatedHostGroup) ToDedicatedHostGroupOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHostGroupOutput)
 }
 
+func (i *DedicatedHostGroup) ToOutput(ctx context.Context) pulumix.Output[*DedicatedHostGroup] {
+	return pulumix.Output[*DedicatedHostGroup]{
+		OutputState: i.ToDedicatedHostGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DedicatedHostGroupArrayInput is an input type that accepts DedicatedHostGroupArray and DedicatedHostGroupArrayOutput values.
 // You can construct a concrete instance of `DedicatedHostGroupArrayInput` via:
 //
@@ -268,6 +281,12 @@ func (i DedicatedHostGroupArray) ToDedicatedHostGroupArrayOutput() DedicatedHost
 
 func (i DedicatedHostGroupArray) ToDedicatedHostGroupArrayOutputWithContext(ctx context.Context) DedicatedHostGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHostGroupArrayOutput)
+}
+
+func (i DedicatedHostGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*DedicatedHostGroup] {
+	return pulumix.Output[[]*DedicatedHostGroup]{
+		OutputState: i.ToDedicatedHostGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DedicatedHostGroupMapInput is an input type that accepts DedicatedHostGroupMap and DedicatedHostGroupMapOutput values.
@@ -295,6 +314,12 @@ func (i DedicatedHostGroupMap) ToDedicatedHostGroupMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHostGroupMapOutput)
 }
 
+func (i DedicatedHostGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DedicatedHostGroup] {
+	return pulumix.Output[map[string]*DedicatedHostGroup]{
+		OutputState: i.ToDedicatedHostGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DedicatedHostGroupOutput struct{ *pulumi.OutputState }
 
 func (DedicatedHostGroupOutput) ElementType() reflect.Type {
@@ -307,6 +332,12 @@ func (o DedicatedHostGroupOutput) ToDedicatedHostGroupOutput() DedicatedHostGrou
 
 func (o DedicatedHostGroupOutput) ToDedicatedHostGroupOutputWithContext(ctx context.Context) DedicatedHostGroupOutput {
 	return o
+}
+
+func (o DedicatedHostGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*DedicatedHostGroup] {
+	return pulumix.Output[*DedicatedHostGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
@@ -369,6 +400,12 @@ func (o DedicatedHostGroupArrayOutput) ToDedicatedHostGroupArrayOutputWithContex
 	return o
 }
 
+func (o DedicatedHostGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DedicatedHostGroup] {
+	return pulumix.Output[[]*DedicatedHostGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DedicatedHostGroupArrayOutput) Index(i pulumi.IntInput) DedicatedHostGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DedicatedHostGroup {
 		return vs[0].([]*DedicatedHostGroup)[vs[1].(int)]
@@ -387,6 +424,12 @@ func (o DedicatedHostGroupMapOutput) ToDedicatedHostGroupMapOutput() DedicatedHo
 
 func (o DedicatedHostGroupMapOutput) ToDedicatedHostGroupMapOutputWithContext(ctx context.Context) DedicatedHostGroupMapOutput {
 	return o
+}
+
+func (o DedicatedHostGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DedicatedHostGroup] {
+	return pulumix.Output[map[string]*DedicatedHostGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DedicatedHostGroupMapOutput) MapIndex(k pulumi.StringInput) DedicatedHostGroupOutput {

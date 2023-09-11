@@ -21,7 +21,7 @@ class AdditionalCertificateArgs:
         """
         The set of arguments for constructing a AdditionalCertificate resource.
         :param pulumi.Input[str] accelerator_id: The ID of the GA instance.
-        :param pulumi.Input[str] certificate_id: The Certificate ID.
+        :param pulumi.Input[str] certificate_id: The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
         :param pulumi.Input[str] domain: The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
         :param pulumi.Input[str] listener_id: The ID of the listener. **NOTE:** Only HTTPS listeners support this parameter.
         """
@@ -46,7 +46,7 @@ class AdditionalCertificateArgs:
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> pulumi.Input[str]:
         """
-        The Certificate ID.
+        The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
         """
         return pulumi.get(self, "certificate_id")
 
@@ -89,7 +89,7 @@ class _AdditionalCertificateState:
         """
         Input properties used for looking up and filtering AdditionalCertificate resources.
         :param pulumi.Input[str] accelerator_id: The ID of the GA instance.
-        :param pulumi.Input[str] certificate_id: The Certificate ID.
+        :param pulumi.Input[str] certificate_id: The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
         :param pulumi.Input[str] domain: The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
         :param pulumi.Input[str] listener_id: The ID of the listener. **NOTE:** Only HTTPS listeners support this parameter.
         """
@@ -118,7 +118,7 @@ class _AdditionalCertificateState:
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Certificate ID.
+        The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
         """
         return pulumi.get(self, "certificate_id")
 
@@ -179,7 +179,7 @@ class AdditionalCertificate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accelerator_id: The ID of the GA instance.
-        :param pulumi.Input[str] certificate_id: The Certificate ID.
+        :param pulumi.Input[str] certificate_id: The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
         :param pulumi.Input[str] domain: The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
         :param pulumi.Input[str] listener_id: The ID of the listener. **NOTE:** Only HTTPS listeners support this parameter.
         """
@@ -266,7 +266,7 @@ class AdditionalCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accelerator_id: The ID of the GA instance.
-        :param pulumi.Input[str] certificate_id: The Certificate ID.
+        :param pulumi.Input[str] certificate_id: The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
         :param pulumi.Input[str] domain: The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
         :param pulumi.Input[str] listener_id: The ID of the listener. **NOTE:** Only HTTPS listeners support this parameter.
         """
@@ -292,7 +292,7 @@ class AdditionalCertificate(pulumi.CustomResource):
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> pulumi.Output[str]:
         """
-        The Certificate ID.
+        The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
         """
         return pulumi.get(self, "certificate_id")
 

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a CR Endpoint Acl Policy resource.
@@ -216,6 +217,12 @@ func (i *EndpointAclPolicy) ToEndpointAclPolicyOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointAclPolicyOutput)
 }
 
+func (i *EndpointAclPolicy) ToOutput(ctx context.Context) pulumix.Output[*EndpointAclPolicy] {
+	return pulumix.Output[*EndpointAclPolicy]{
+		OutputState: i.ToEndpointAclPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EndpointAclPolicyArrayInput is an input type that accepts EndpointAclPolicyArray and EndpointAclPolicyArrayOutput values.
 // You can construct a concrete instance of `EndpointAclPolicyArrayInput` via:
 //
@@ -239,6 +246,12 @@ func (i EndpointAclPolicyArray) ToEndpointAclPolicyArrayOutput() EndpointAclPoli
 
 func (i EndpointAclPolicyArray) ToEndpointAclPolicyArrayOutputWithContext(ctx context.Context) EndpointAclPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointAclPolicyArrayOutput)
+}
+
+func (i EndpointAclPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*EndpointAclPolicy] {
+	return pulumix.Output[[]*EndpointAclPolicy]{
+		OutputState: i.ToEndpointAclPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EndpointAclPolicyMapInput is an input type that accepts EndpointAclPolicyMap and EndpointAclPolicyMapOutput values.
@@ -266,6 +279,12 @@ func (i EndpointAclPolicyMap) ToEndpointAclPolicyMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointAclPolicyMapOutput)
 }
 
+func (i EndpointAclPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EndpointAclPolicy] {
+	return pulumix.Output[map[string]*EndpointAclPolicy]{
+		OutputState: i.ToEndpointAclPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EndpointAclPolicyOutput struct{ *pulumi.OutputState }
 
 func (EndpointAclPolicyOutput) ElementType() reflect.Type {
@@ -278,6 +297,12 @@ func (o EndpointAclPolicyOutput) ToEndpointAclPolicyOutput() EndpointAclPolicyOu
 
 func (o EndpointAclPolicyOutput) ToEndpointAclPolicyOutputWithContext(ctx context.Context) EndpointAclPolicyOutput {
 	return o
+}
+
+func (o EndpointAclPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*EndpointAclPolicy] {
+	return pulumix.Output[*EndpointAclPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the entry.
@@ -319,6 +344,12 @@ func (o EndpointAclPolicyArrayOutput) ToEndpointAclPolicyArrayOutputWithContext(
 	return o
 }
 
+func (o EndpointAclPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EndpointAclPolicy] {
+	return pulumix.Output[[]*EndpointAclPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EndpointAclPolicyArrayOutput) Index(i pulumi.IntInput) EndpointAclPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EndpointAclPolicy {
 		return vs[0].([]*EndpointAclPolicy)[vs[1].(int)]
@@ -337,6 +368,12 @@ func (o EndpointAclPolicyMapOutput) ToEndpointAclPolicyMapOutput() EndpointAclPo
 
 func (o EndpointAclPolicyMapOutput) ToEndpointAclPolicyMapOutputWithContext(ctx context.Context) EndpointAclPolicyMapOutput {
 	return o
+}
+
+func (o EndpointAclPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EndpointAclPolicy] {
+	return pulumix.Output[map[string]*EndpointAclPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EndpointAclPolicyMapOutput) MapIndex(k pulumi.StringInput) EndpointAclPolicyOutput {

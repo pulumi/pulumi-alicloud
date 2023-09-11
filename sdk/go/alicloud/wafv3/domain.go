@@ -10,13 +10,14 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Wafv3 Domain resource.
 //
 // For information about Wafv3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-doc-waf-openapi-2021-10-01-api-doc-createdomain).
 //
-// > **NOTE:** Available in v1.200.0+.
+// > **NOTE:** Available since v1.200.0.
 //
 // ## Import
 //
@@ -36,9 +37,9 @@ type Domain struct {
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// WAF instance ID
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Configure listening information. See the following `Block Listen`.
+	// Configure listening information. See `listen` below.
 	Listen DomainListenOutput `pulumi:"listen"`
-	// Configure forwarding information. See the following `Block Redirect`.
+	// Configure forwarding information. See `redirect` below.
 	Redirect DomainRedirectOutput `pulumi:"redirect"`
 	// The ID of the resource group.
 	ResourceManagerResourceGroupId pulumi.StringOutput `pulumi:"resourceManagerResourceGroupId"`
@@ -94,9 +95,9 @@ type domainState struct {
 	Domain *string `pulumi:"domain"`
 	// WAF instance ID
 	InstanceId *string `pulumi:"instanceId"`
-	// Configure listening information. See the following `Block Listen`.
+	// Configure listening information. See `listen` below.
 	Listen *DomainListen `pulumi:"listen"`
-	// Configure forwarding information. See the following `Block Redirect`.
+	// Configure forwarding information. See `redirect` below.
 	Redirect *DomainRedirect `pulumi:"redirect"`
 	// The ID of the resource group.
 	ResourceManagerResourceGroupId *string `pulumi:"resourceManagerResourceGroupId"`
@@ -111,9 +112,9 @@ type DomainState struct {
 	Domain pulumi.StringPtrInput
 	// WAF instance ID
 	InstanceId pulumi.StringPtrInput
-	// Configure listening information. See the following `Block Listen`.
+	// Configure listening information. See `listen` below.
 	Listen DomainListenPtrInput
-	// Configure forwarding information. See the following `Block Redirect`.
+	// Configure forwarding information. See `redirect` below.
 	Redirect DomainRedirectPtrInput
 	// The ID of the resource group.
 	ResourceManagerResourceGroupId pulumi.StringPtrInput
@@ -132,9 +133,9 @@ type domainArgs struct {
 	Domain string `pulumi:"domain"`
 	// WAF instance ID
 	InstanceId string `pulumi:"instanceId"`
-	// Configure listening information. See the following `Block Listen`.
+	// Configure listening information. See `listen` below.
 	Listen DomainListen `pulumi:"listen"`
-	// Configure forwarding information. See the following `Block Redirect`.
+	// Configure forwarding information. See `redirect` below.
 	Redirect DomainRedirect `pulumi:"redirect"`
 }
 
@@ -146,9 +147,9 @@ type DomainArgs struct {
 	Domain pulumi.StringInput
 	// WAF instance ID
 	InstanceId pulumi.StringInput
-	// Configure listening information. See the following `Block Listen`.
+	// Configure listening information. See `listen` below.
 	Listen DomainListenInput
-	// Configure forwarding information. See the following `Block Redirect`.
+	// Configure forwarding information. See `redirect` below.
 	Redirect DomainRedirectInput
 }
 
@@ -173,6 +174,12 @@ func (i *Domain) ToDomainOutput() DomainOutput {
 
 func (i *Domain) ToDomainOutputWithContext(ctx context.Context) DomainOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainOutput)
+}
+
+func (i *Domain) ToOutput(ctx context.Context) pulumix.Output[*Domain] {
+	return pulumix.Output[*Domain]{
+		OutputState: i.ToDomainOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DomainArrayInput is an input type that accepts DomainArray and DomainArrayOutput values.
@@ -200,6 +207,12 @@ func (i DomainArray) ToDomainArrayOutputWithContext(ctx context.Context) DomainA
 	return pulumi.ToOutputWithContext(ctx, i).(DomainArrayOutput)
 }
 
+func (i DomainArray) ToOutput(ctx context.Context) pulumix.Output[[]*Domain] {
+	return pulumix.Output[[]*Domain]{
+		OutputState: i.ToDomainArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DomainMapInput is an input type that accepts DomainMap and DomainMapOutput values.
 // You can construct a concrete instance of `DomainMapInput` via:
 //
@@ -225,6 +238,12 @@ func (i DomainMap) ToDomainMapOutputWithContext(ctx context.Context) DomainMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMapOutput)
 }
 
+func (i DomainMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Domain] {
+	return pulumix.Output[map[string]*Domain]{
+		OutputState: i.ToDomainMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DomainOutput struct{ *pulumi.OutputState }
 
 func (DomainOutput) ElementType() reflect.Type {
@@ -237,6 +256,12 @@ func (o DomainOutput) ToDomainOutput() DomainOutput {
 
 func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutput {
 	return o
+}
+
+func (o DomainOutput) ToOutput(ctx context.Context) pulumix.Output[*Domain] {
+	return pulumix.Output[*Domain]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The access type of the WAF instance. Value: **share** (default): CNAME access.
@@ -254,12 +279,12 @@ func (o DomainOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Configure listening information. See the following `Block Listen`.
+// Configure listening information. See `listen` below.
 func (o DomainOutput) Listen() DomainListenOutput {
 	return o.ApplyT(func(v *Domain) DomainListenOutput { return v.Listen }).(DomainListenOutput)
 }
 
-// Configure forwarding information. See the following `Block Redirect`.
+// Configure forwarding information. See `redirect` below.
 func (o DomainOutput) Redirect() DomainRedirectOutput {
 	return o.ApplyT(func(v *Domain) DomainRedirectOutput { return v.Redirect }).(DomainRedirectOutput)
 }
@@ -288,6 +313,12 @@ func (o DomainArrayOutput) ToDomainArrayOutputWithContext(ctx context.Context) D
 	return o
 }
 
+func (o DomainArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Domain] {
+	return pulumix.Output[[]*Domain]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DomainArrayOutput) Index(i pulumi.IntInput) DomainOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Domain {
 		return vs[0].([]*Domain)[vs[1].(int)]
@@ -306,6 +337,12 @@ func (o DomainMapOutput) ToDomainMapOutput() DomainMapOutput {
 
 func (o DomainMapOutput) ToDomainMapOutputWithContext(ctx context.Context) DomainMapOutput {
 	return o
+}
+
+func (o DomainMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Domain] {
+	return pulumix.Output[map[string]*Domain]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DomainMapOutput) MapIndex(k pulumi.StringInput) DomainOutput {

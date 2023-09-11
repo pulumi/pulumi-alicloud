@@ -10,13 +10,14 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Serverless App Engine (SAE) Config Map resource.
 //
-// For information about Serverless App Engine (SAE) Config Map and how to use it, see [What is Config Map](https://help.aliyun.com/document_detail/97792.html).
+// For information about Serverless App Engine (SAE) Config Map and how to use it, see [What is Config Map](https://www.alibabacloud.com/help/en/sae/latest/create-configmap).
 //
-// > **NOTE:** Available in v1.130.0+.
+// > **NOTE:** Available since v1.130.0.
 //
 // ## Example Usage
 //
@@ -28,8 +29,11 @@ import (
 // import (
 //
 //	"encoding/json"
+//	"fmt"
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -38,14 +42,30 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			configMapName := "examplename"
-//			if param := cfg.Get("configMapName"); param != "" {
-//				configMapName = param
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
 //			}
-//			exampleNamespace, err := sae.NewNamespace(ctx, "exampleNamespace", &sae.NamespaceArgs{
-//				NamespaceId:          pulumi.String("cn-hangzhou:yourname"),
-//				NamespaceName:        pulumi.String("example_value"),
-//				NamespaceDescription: pulumi.String("your_description"),
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNamespace, err := sae.NewNamespace(ctx, "defaultNamespace", &sae.NamespaceArgs{
+//				NamespaceId: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("%v:example%v", defaultRegions.Regions[0].Id, result), nil
+//				}).(pulumi.StringOutput),
+//				NamespaceName:           pulumi.String(name),
+//				NamespaceDescription:    pulumi.String(name),
+//				EnableMicroRegistration: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -58,9 +78,9 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			_, err = sae.NewConfigMap(ctx, "exampleConfigMap", &sae.ConfigMapArgs{
+//			_, err = sae.NewConfigMap(ctx, "defaultConfigMap", &sae.ConfigMapArgs{
 //				Data:        pulumi.String(json0),
-//				NamespaceId: exampleNamespace.NamespaceId,
+//				NamespaceId: defaultNamespace.NamespaceId,
 //			})
 //			if err != nil {
 //				return err
@@ -200,6 +220,12 @@ func (i *ConfigMap) ToConfigMapOutputWithContext(ctx context.Context) ConfigMapO
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapOutput)
 }
 
+func (i *ConfigMap) ToOutput(ctx context.Context) pulumix.Output[*ConfigMap] {
+	return pulumix.Output[*ConfigMap]{
+		OutputState: i.ToConfigMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ConfigMapArrayInput is an input type that accepts ConfigMapArray and ConfigMapArrayOutput values.
 // You can construct a concrete instance of `ConfigMapArrayInput` via:
 //
@@ -223,6 +249,12 @@ func (i ConfigMapArray) ToConfigMapArrayOutput() ConfigMapArrayOutput {
 
 func (i ConfigMapArray) ToConfigMapArrayOutputWithContext(ctx context.Context) ConfigMapArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapArrayOutput)
+}
+
+func (i ConfigMapArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigMap] {
+	return pulumix.Output[[]*ConfigMap]{
+		OutputState: i.ToConfigMapArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ConfigMapMapInput is an input type that accepts ConfigMapMap and ConfigMapMapOutput values.
@@ -250,6 +282,12 @@ func (i ConfigMapMap) ToConfigMapMapOutputWithContext(ctx context.Context) Confi
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapMapOutput)
 }
 
+func (i ConfigMapMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigMap] {
+	return pulumix.Output[map[string]*ConfigMap]{
+		OutputState: i.ToConfigMapMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConfigMapOutput struct{ *pulumi.OutputState }
 
 func (ConfigMapOutput) ElementType() reflect.Type {
@@ -262,6 +300,12 @@ func (o ConfigMapOutput) ToConfigMapOutput() ConfigMapOutput {
 
 func (o ConfigMapOutput) ToConfigMapOutputWithContext(ctx context.Context) ConfigMapOutput {
 	return o
+}
+
+func (o ConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigMap] {
+	return pulumix.Output[*ConfigMap]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ConfigMap instance data.
@@ -298,6 +342,12 @@ func (o ConfigMapArrayOutput) ToConfigMapArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ConfigMapArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigMap] {
+	return pulumix.Output[[]*ConfigMap]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConfigMapArrayOutput) Index(i pulumi.IntInput) ConfigMapOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConfigMap {
 		return vs[0].([]*ConfigMap)[vs[1].(int)]
@@ -316,6 +366,12 @@ func (o ConfigMapMapOutput) ToConfigMapMapOutput() ConfigMapMapOutput {
 
 func (o ConfigMapMapOutput) ToConfigMapMapOutputWithContext(ctx context.Context) ConfigMapMapOutput {
 	return o
+}
+
+func (o ConfigMapMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigMap] {
+	return pulumix.Output[map[string]*ConfigMap]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConfigMapMapOutput) MapIndex(k pulumi.StringInput) ConfigMapOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a HBR Ecs Backup Plan resource.
@@ -422,6 +423,12 @@ func (i *EcsBackupPlan) ToEcsBackupPlanOutputWithContext(ctx context.Context) Ec
 	return pulumi.ToOutputWithContext(ctx, i).(EcsBackupPlanOutput)
 }
 
+func (i *EcsBackupPlan) ToOutput(ctx context.Context) pulumix.Output[*EcsBackupPlan] {
+	return pulumix.Output[*EcsBackupPlan]{
+		OutputState: i.ToEcsBackupPlanOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EcsBackupPlanArrayInput is an input type that accepts EcsBackupPlanArray and EcsBackupPlanArrayOutput values.
 // You can construct a concrete instance of `EcsBackupPlanArrayInput` via:
 //
@@ -445,6 +452,12 @@ func (i EcsBackupPlanArray) ToEcsBackupPlanArrayOutput() EcsBackupPlanArrayOutpu
 
 func (i EcsBackupPlanArray) ToEcsBackupPlanArrayOutputWithContext(ctx context.Context) EcsBackupPlanArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsBackupPlanArrayOutput)
+}
+
+func (i EcsBackupPlanArray) ToOutput(ctx context.Context) pulumix.Output[[]*EcsBackupPlan] {
+	return pulumix.Output[[]*EcsBackupPlan]{
+		OutputState: i.ToEcsBackupPlanArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EcsBackupPlanMapInput is an input type that accepts EcsBackupPlanMap and EcsBackupPlanMapOutput values.
@@ -472,6 +485,12 @@ func (i EcsBackupPlanMap) ToEcsBackupPlanMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(EcsBackupPlanMapOutput)
 }
 
+func (i EcsBackupPlanMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsBackupPlan] {
+	return pulumix.Output[map[string]*EcsBackupPlan]{
+		OutputState: i.ToEcsBackupPlanMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EcsBackupPlanOutput struct{ *pulumi.OutputState }
 
 func (EcsBackupPlanOutput) ElementType() reflect.Type {
@@ -484,6 +503,12 @@ func (o EcsBackupPlanOutput) ToEcsBackupPlanOutput() EcsBackupPlanOutput {
 
 func (o EcsBackupPlanOutput) ToEcsBackupPlanOutputWithContext(ctx context.Context) EcsBackupPlanOutput {
 	return o
+}
+
+func (o EcsBackupPlanOutput) ToOutput(ctx context.Context) pulumix.Output[*EcsBackupPlan] {
+	return pulumix.Output[*EcsBackupPlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Backup type. Valid values: `COMPLETE`.
@@ -587,6 +612,12 @@ func (o EcsBackupPlanArrayOutput) ToEcsBackupPlanArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o EcsBackupPlanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EcsBackupPlan] {
+	return pulumix.Output[[]*EcsBackupPlan]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EcsBackupPlanArrayOutput) Index(i pulumi.IntInput) EcsBackupPlanOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsBackupPlan {
 		return vs[0].([]*EcsBackupPlan)[vs[1].(int)]
@@ -605,6 +636,12 @@ func (o EcsBackupPlanMapOutput) ToEcsBackupPlanMapOutput() EcsBackupPlanMapOutpu
 
 func (o EcsBackupPlanMapOutput) ToEcsBackupPlanMapOutputWithContext(ctx context.Context) EcsBackupPlanMapOutput {
 	return o
+}
+
+func (o EcsBackupPlanMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsBackupPlan] {
+	return pulumix.Output[map[string]*EcsBackupPlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EcsBackupPlanMapOutput) MapIndex(k pulumi.StringInput) EcsBackupPlanOutput {

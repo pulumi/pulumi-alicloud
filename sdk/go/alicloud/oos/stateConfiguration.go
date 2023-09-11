@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a OOS State Configuration resource.
@@ -257,6 +258,12 @@ func (i *StateConfiguration) ToStateConfigurationOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(StateConfigurationOutput)
 }
 
+func (i *StateConfiguration) ToOutput(ctx context.Context) pulumix.Output[*StateConfiguration] {
+	return pulumix.Output[*StateConfiguration]{
+		OutputState: i.ToStateConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StateConfigurationArrayInput is an input type that accepts StateConfigurationArray and StateConfigurationArrayOutput values.
 // You can construct a concrete instance of `StateConfigurationArrayInput` via:
 //
@@ -280,6 +287,12 @@ func (i StateConfigurationArray) ToStateConfigurationArrayOutput() StateConfigur
 
 func (i StateConfigurationArray) ToStateConfigurationArrayOutputWithContext(ctx context.Context) StateConfigurationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StateConfigurationArrayOutput)
+}
+
+func (i StateConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]*StateConfiguration] {
+	return pulumix.Output[[]*StateConfiguration]{
+		OutputState: i.ToStateConfigurationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // StateConfigurationMapInput is an input type that accepts StateConfigurationMap and StateConfigurationMapOutput values.
@@ -307,6 +320,12 @@ func (i StateConfigurationMap) ToStateConfigurationMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(StateConfigurationMapOutput)
 }
 
+func (i StateConfigurationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*StateConfiguration] {
+	return pulumix.Output[map[string]*StateConfiguration]{
+		OutputState: i.ToStateConfigurationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StateConfigurationOutput struct{ *pulumi.OutputState }
 
 func (StateConfigurationOutput) ElementType() reflect.Type {
@@ -319,6 +338,12 @@ func (o StateConfigurationOutput) ToStateConfigurationOutput() StateConfiguratio
 
 func (o StateConfigurationOutput) ToStateConfigurationOutputWithContext(ctx context.Context) StateConfigurationOutput {
 	return o
+}
+
+func (o StateConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*StateConfiguration] {
+	return pulumix.Output[*StateConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Configuration mode. Valid values: `ApplyAndAutoCorrect`, `ApplyAndMonitor`, `ApplyOnly`.
@@ -385,6 +410,12 @@ func (o StateConfigurationArrayOutput) ToStateConfigurationArrayOutputWithContex
 	return o
 }
 
+func (o StateConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*StateConfiguration] {
+	return pulumix.Output[[]*StateConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StateConfigurationArrayOutput) Index(i pulumi.IntInput) StateConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StateConfiguration {
 		return vs[0].([]*StateConfiguration)[vs[1].(int)]
@@ -403,6 +434,12 @@ func (o StateConfigurationMapOutput) ToStateConfigurationMapOutput() StateConfig
 
 func (o StateConfigurationMapOutput) ToStateConfigurationMapOutputWithContext(ctx context.Context) StateConfigurationMapOutput {
 	return o
+}
+
+func (o StateConfigurationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*StateConfiguration] {
+	return pulumix.Output[map[string]*StateConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StateConfigurationMapOutput) MapIndex(k pulumi.StringInput) StateConfigurationOutput {

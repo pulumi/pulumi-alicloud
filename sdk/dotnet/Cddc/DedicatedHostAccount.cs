@@ -12,11 +12,87 @@ namespace Pulumi.AliCloud.Cddc
     /// <summary>
     /// Provides a ApsaraDB for MyBase Dedicated Host Account resource.
     /// 
-    /// For information about ApsaraDB for MyBase Dedicated Host Account and how to use it, see [What is Dedicated Host Account](https://www.alibabacloud.com/help/en/doc-detail/196877.html).
+    /// For information about ApsaraDB for MyBase Dedicated Host Account and how to use it, see [What is Dedicated Host Account](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/creatededicatedhostaccount).
     /// 
-    /// &gt; **NOTE:** Available in v1.148.0+.
+    /// &gt; **NOTE:** Available since v1.148.0.
     /// 
     /// &gt; **NOTE:** Each Dedicated host can have only one account. Before you create an account for a host, make sure that the existing account is deleted.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var defaultZones = AliCloud.Cddc.GetZones.Invoke();
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultDedicatedHostGroup = new AliCloud.Cddc.DedicatedHostGroup("defaultDedicatedHostGroup", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         VpcId = defaultNetwork.Id,
+    ///         CpuAllocationRatio = 101,
+    ///         MemAllocationRatio = 50,
+    ///         DiskAllocationRatio = 200,
+    ///         AllocationPolicy = "Evenly",
+    ///         HostReplacePolicy = "Manual",
+    ///         DedicatedHostGroupDesc = name,
+    ///         OpenPermission = true,
+    ///     });
+    /// 
+    ///     var defaultHostEcsLevelInfos = AliCloud.Cddc.GetHostEcsLevelInfos.Invoke(new()
+    ///     {
+    ///         DbType = "mysql",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         StorageType = "cloud_essd",
+    ///     });
+    /// 
+    ///     var defaultDedicatedHost = new AliCloud.Cddc.DedicatedHost("defaultDedicatedHost", new()
+    ///     {
+    ///         HostName = name,
+    ///         DedicatedHostGroupId = defaultDedicatedHostGroup.Id,
+    ///         HostClass = defaultHostEcsLevelInfos.Apply(getHostEcsLevelInfosResult =&gt; getHostEcsLevelInfosResult.Infos[0]?.ResClassCode),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         VswitchId = defaultSwitch.Id,
+    ///         PaymentType = "Subscription",
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "CDDC_DEDICATED" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultDedicatedHostAccount = new AliCloud.Cddc.DedicatedHostAccount("defaultDedicatedHostAccount", new()
+    ///     {
+    ///         AccountName = name,
+    ///         AccountPassword = "Password1234",
+    ///         DedicatedHostId = defaultDedicatedHost.DedicatedHostId,
+    ///         AccountType = "Normal",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

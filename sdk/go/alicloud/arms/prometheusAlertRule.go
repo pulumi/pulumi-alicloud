@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule resource.
@@ -228,6 +229,12 @@ func (i *PrometheusAlertRule) ToPrometheusAlertRuleOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(PrometheusAlertRuleOutput)
 }
 
+func (i *PrometheusAlertRule) ToOutput(ctx context.Context) pulumix.Output[*PrometheusAlertRule] {
+	return pulumix.Output[*PrometheusAlertRule]{
+		OutputState: i.ToPrometheusAlertRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrometheusAlertRuleArrayInput is an input type that accepts PrometheusAlertRuleArray and PrometheusAlertRuleArrayOutput values.
 // You can construct a concrete instance of `PrometheusAlertRuleArrayInput` via:
 //
@@ -251,6 +258,12 @@ func (i PrometheusAlertRuleArray) ToPrometheusAlertRuleArrayOutput() PrometheusA
 
 func (i PrometheusAlertRuleArray) ToPrometheusAlertRuleArrayOutputWithContext(ctx context.Context) PrometheusAlertRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PrometheusAlertRuleArrayOutput)
+}
+
+func (i PrometheusAlertRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*PrometheusAlertRule] {
+	return pulumix.Output[[]*PrometheusAlertRule]{
+		OutputState: i.ToPrometheusAlertRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PrometheusAlertRuleMapInput is an input type that accepts PrometheusAlertRuleMap and PrometheusAlertRuleMapOutput values.
@@ -278,6 +291,12 @@ func (i PrometheusAlertRuleMap) ToPrometheusAlertRuleMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(PrometheusAlertRuleMapOutput)
 }
 
+func (i PrometheusAlertRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrometheusAlertRule] {
+	return pulumix.Output[map[string]*PrometheusAlertRule]{
+		OutputState: i.ToPrometheusAlertRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrometheusAlertRuleOutput struct{ *pulumi.OutputState }
 
 func (PrometheusAlertRuleOutput) ElementType() reflect.Type {
@@ -290,6 +309,12 @@ func (o PrometheusAlertRuleOutput) ToPrometheusAlertRuleOutput() PrometheusAlert
 
 func (o PrometheusAlertRuleOutput) ToPrometheusAlertRuleOutputWithContext(ctx context.Context) PrometheusAlertRuleOutput {
 	return o
+}
+
+func (o PrometheusAlertRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*PrometheusAlertRule] {
+	return pulumix.Output[*PrometheusAlertRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The annotations of the alert rule. See `annotations` below.
@@ -366,6 +391,12 @@ func (o PrometheusAlertRuleArrayOutput) ToPrometheusAlertRuleArrayOutputWithCont
 	return o
 }
 
+func (o PrometheusAlertRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PrometheusAlertRule] {
+	return pulumix.Output[[]*PrometheusAlertRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PrometheusAlertRuleArrayOutput) Index(i pulumi.IntInput) PrometheusAlertRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PrometheusAlertRule {
 		return vs[0].([]*PrometheusAlertRule)[vs[1].(int)]
@@ -384,6 +415,12 @@ func (o PrometheusAlertRuleMapOutput) ToPrometheusAlertRuleMapOutput() Prometheu
 
 func (o PrometheusAlertRuleMapOutput) ToPrometheusAlertRuleMapOutputWithContext(ctx context.Context) PrometheusAlertRuleMapOutput {
 	return o
+}
+
+func (o PrometheusAlertRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrometheusAlertRule] {
+	return pulumix.Output[map[string]*PrometheusAlertRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrometheusAlertRuleMapOutput) MapIndex(k pulumi.StringInput) PrometheusAlertRuleOutput {

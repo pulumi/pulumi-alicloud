@@ -10,13 +10,14 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPC Ipv6 Egress Rule resource. IPv6 address addition only active exit rule.
 //
 // For information about VPC Ipv6 Egress Rule and how to use it, see [What is Ipv6 Egress Rule](https://www.alibabacloud.com/help/doc-detail/102200.htm).
 //
-// > **NOTE:** Available in v1.142.0+.
+// > **NOTE:** Available since v1.142.0.
 //
 // ## Example Usage
 //
@@ -27,6 +28,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -41,39 +43,97 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone:              pulumi.StringRef(defaultZones.Zones[0].Id),
+//				SystemDiskCategory:            pulumi.StringRef("cloud_efficiency"),
+//				CpuCoreCount:                  pulumi.IntRef(4),
+//				MinimumEniIpv6AddressQuantity: pulumi.IntRef(1),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
+//				MostRecent: pulumi.BoolRef(true),
+//				Owners:     pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
 //				VpcName:    pulumi.String(name),
 //				EnableIpv6: pulumi.Bool(true),
+//				CidrBlock:  pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleIpv6Gateway, err := vpc.NewIpv6Gateway(ctx, "exampleIpv6Gateway", &vpc.Ipv6GatewayArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:             defaultNetwork.ID(),
+//				CidrBlock:         pulumi.String("172.16.0.0/21"),
+//				ZoneId:            *pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName:       pulumi.String(name),
+//				Ipv6CidrBlockMask: pulumi.Int(64),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				Description: pulumi.String(name),
+//				VpcId:       defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
+//				AvailabilityZone:        *pulumi.String(defaultZones.Zones[0].Id),
+//				Ipv6AddressCount:        pulumi.Int(1),
+//				InstanceType:            *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
+//				ImageId:                 *pulumi.String(defaultImages.Images[0].Id),
+//				InstanceName:            pulumi.String(name),
+//				VswitchId:               defaultSwitch.ID(),
+//				InternetMaxBandwidthOut: pulumi.Int(10),
+//				SecurityGroups: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultIpv6Gateway, err := vpc.NewIpv6Gateway(ctx, "defaultIpv6Gateway", &vpc.Ipv6GatewayArgs{
 //				Ipv6GatewayName: pulumi.String(name),
 //				VpcId:           defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstances, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
-//				NameRegex: pulumi.StringRef("ecs_with_ipv6_address"),
-//				Status:    pulumi.StringRef("Running"),
+//			defaultIpv6Addresses := vpc.GetIpv6AddressesOutput(ctx, vpc.GetIpv6AddressesOutputArgs{
+//				AssociatedInstanceId: defaultInstance.ID(),
+//				Status:               pulumi.String("Available"),
 //			}, nil)
+//			defaultIpv6InternetBandwidth, err := vpc.NewIpv6InternetBandwidth(ctx, "defaultIpv6InternetBandwidth", &vpc.Ipv6InternetBandwidthArgs{
+//				Ipv6AddressId: defaultIpv6Addresses.ApplyT(func(defaultIpv6Addresses vpc.GetIpv6AddressesResult) (*string, error) {
+//					return &defaultIpv6Addresses.Addresses[0].Id, nil
+//				}).(pulumi.StringPtrOutput),
+//				Ipv6GatewayId:      defaultIpv6Gateway.Ipv6GatewayId,
+//				InternetChargeType: pulumi.String("PayByBandwidth"),
+//				Bandwidth:          pulumi.Int(20),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultIpv6Addresses, err := vpc.GetIpv6Addresses(ctx, &vpc.GetIpv6AddressesArgs{
-//				AssociatedInstanceId: pulumi.StringRef(defaultInstances.Instances[0].Id),
-//				Status:               pulumi.StringRef("Available"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vpc.NewIpv6EgressRule(ctx, "exampleIpv6EgressRule", &vpc.Ipv6EgressRuleArgs{
-//				InstanceId:         *pulumi.String(defaultIpv6Addresses.Ids[0]),
-//				Ipv6EgressRuleName: pulumi.String("example_value"),
-//				Description:        pulumi.String("example_value"),
-//				Ipv6GatewayId:      exampleIpv6Gateway.ID(),
+//			_, err = vpc.NewIpv6EgressRule(ctx, "defaultIpv6EgressRule", &vpc.Ipv6EgressRuleArgs{
+//				InstanceId:         defaultIpv6InternetBandwidth.Ipv6AddressId,
+//				Ipv6EgressRuleName: pulumi.String(name),
+//				Description:        pulumi.String(name),
+//				Ipv6GatewayId:      defaultIpv6InternetBandwidth.Ipv6GatewayId,
 //				InstanceType:       pulumi.String("Ipv6Address"),
 //			})
 //			if err != nil {
@@ -230,6 +290,12 @@ func (i *Ipv6EgressRule) ToIpv6EgressRuleOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(Ipv6EgressRuleOutput)
 }
 
+func (i *Ipv6EgressRule) ToOutput(ctx context.Context) pulumix.Output[*Ipv6EgressRule] {
+	return pulumix.Output[*Ipv6EgressRule]{
+		OutputState: i.ToIpv6EgressRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Ipv6EgressRuleArrayInput is an input type that accepts Ipv6EgressRuleArray and Ipv6EgressRuleArrayOutput values.
 // You can construct a concrete instance of `Ipv6EgressRuleArrayInput` via:
 //
@@ -253,6 +319,12 @@ func (i Ipv6EgressRuleArray) ToIpv6EgressRuleArrayOutput() Ipv6EgressRuleArrayOu
 
 func (i Ipv6EgressRuleArray) ToIpv6EgressRuleArrayOutputWithContext(ctx context.Context) Ipv6EgressRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(Ipv6EgressRuleArrayOutput)
+}
+
+func (i Ipv6EgressRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*Ipv6EgressRule] {
+	return pulumix.Output[[]*Ipv6EgressRule]{
+		OutputState: i.ToIpv6EgressRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Ipv6EgressRuleMapInput is an input type that accepts Ipv6EgressRuleMap and Ipv6EgressRuleMapOutput values.
@@ -280,6 +352,12 @@ func (i Ipv6EgressRuleMap) ToIpv6EgressRuleMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(Ipv6EgressRuleMapOutput)
 }
 
+func (i Ipv6EgressRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Ipv6EgressRule] {
+	return pulumix.Output[map[string]*Ipv6EgressRule]{
+		OutputState: i.ToIpv6EgressRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type Ipv6EgressRuleOutput struct{ *pulumi.OutputState }
 
 func (Ipv6EgressRuleOutput) ElementType() reflect.Type {
@@ -292,6 +370,12 @@ func (o Ipv6EgressRuleOutput) ToIpv6EgressRuleOutput() Ipv6EgressRuleOutput {
 
 func (o Ipv6EgressRuleOutput) ToIpv6EgressRuleOutputWithContext(ctx context.Context) Ipv6EgressRuleOutput {
 	return o
+}
+
+func (o Ipv6EgressRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*Ipv6EgressRule] {
+	return pulumix.Output[*Ipv6EgressRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the egress-only rule. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
@@ -338,6 +422,12 @@ func (o Ipv6EgressRuleArrayOutput) ToIpv6EgressRuleArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o Ipv6EgressRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Ipv6EgressRule] {
+	return pulumix.Output[[]*Ipv6EgressRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o Ipv6EgressRuleArrayOutput) Index(i pulumi.IntInput) Ipv6EgressRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Ipv6EgressRule {
 		return vs[0].([]*Ipv6EgressRule)[vs[1].(int)]
@@ -356,6 +446,12 @@ func (o Ipv6EgressRuleMapOutput) ToIpv6EgressRuleMapOutput() Ipv6EgressRuleMapOu
 
 func (o Ipv6EgressRuleMapOutput) ToIpv6EgressRuleMapOutputWithContext(ctx context.Context) Ipv6EgressRuleMapOutput {
 	return o
+}
+
+func (o Ipv6EgressRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Ipv6EgressRule] {
+	return pulumix.Output[map[string]*Ipv6EgressRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o Ipv6EgressRuleMapOutput) MapIndex(k pulumi.StringInput) Ipv6EgressRuleOutput {

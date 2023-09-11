@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Ebs Disk Replica Pair available to the user.
@@ -118,6 +119,12 @@ func (o GetDiskReplicaPairsResultOutput) ToGetDiskReplicaPairsResultOutput() Get
 
 func (o GetDiskReplicaPairsResultOutput) ToGetDiskReplicaPairsResultOutputWithContext(ctx context.Context) GetDiskReplicaPairsResultOutput {
 	return o
+}
+
+func (o GetDiskReplicaPairsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDiskReplicaPairsResult] {
+	return pulumix.Output[GetDiskReplicaPairsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

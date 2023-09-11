@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECD Ad Connector Directory resource.
@@ -324,6 +325,12 @@ func (i *AdConnectorDirectory) ToAdConnectorDirectoryOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(AdConnectorDirectoryOutput)
 }
 
+func (i *AdConnectorDirectory) ToOutput(ctx context.Context) pulumix.Output[*AdConnectorDirectory] {
+	return pulumix.Output[*AdConnectorDirectory]{
+		OutputState: i.ToAdConnectorDirectoryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AdConnectorDirectoryArrayInput is an input type that accepts AdConnectorDirectoryArray and AdConnectorDirectoryArrayOutput values.
 // You can construct a concrete instance of `AdConnectorDirectoryArrayInput` via:
 //
@@ -347,6 +354,12 @@ func (i AdConnectorDirectoryArray) ToAdConnectorDirectoryArrayOutput() AdConnect
 
 func (i AdConnectorDirectoryArray) ToAdConnectorDirectoryArrayOutputWithContext(ctx context.Context) AdConnectorDirectoryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AdConnectorDirectoryArrayOutput)
+}
+
+func (i AdConnectorDirectoryArray) ToOutput(ctx context.Context) pulumix.Output[[]*AdConnectorDirectory] {
+	return pulumix.Output[[]*AdConnectorDirectory]{
+		OutputState: i.ToAdConnectorDirectoryArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AdConnectorDirectoryMapInput is an input type that accepts AdConnectorDirectoryMap and AdConnectorDirectoryMapOutput values.
@@ -374,6 +387,12 @@ func (i AdConnectorDirectoryMap) ToAdConnectorDirectoryMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(AdConnectorDirectoryMapOutput)
 }
 
+func (i AdConnectorDirectoryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AdConnectorDirectory] {
+	return pulumix.Output[map[string]*AdConnectorDirectory]{
+		OutputState: i.ToAdConnectorDirectoryMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AdConnectorDirectoryOutput struct{ *pulumi.OutputState }
 
 func (AdConnectorDirectoryOutput) ElementType() reflect.Type {
@@ -386,6 +405,12 @@ func (o AdConnectorDirectoryOutput) ToAdConnectorDirectoryOutput() AdConnectorDi
 
 func (o AdConnectorDirectoryOutput) ToAdConnectorDirectoryOutputWithContext(ctx context.Context) AdConnectorDirectoryOutput {
 	return o
+}
+
+func (o AdConnectorDirectoryOutput) ToOutput(ctx context.Context) pulumix.Output[*AdConnectorDirectory] {
+	return pulumix.Output[*AdConnectorDirectory]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
@@ -467,6 +492,12 @@ func (o AdConnectorDirectoryArrayOutput) ToAdConnectorDirectoryArrayOutputWithCo
 	return o
 }
 
+func (o AdConnectorDirectoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AdConnectorDirectory] {
+	return pulumix.Output[[]*AdConnectorDirectory]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AdConnectorDirectoryArrayOutput) Index(i pulumi.IntInput) AdConnectorDirectoryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AdConnectorDirectory {
 		return vs[0].([]*AdConnectorDirectory)[vs[1].(int)]
@@ -485,6 +516,12 @@ func (o AdConnectorDirectoryMapOutput) ToAdConnectorDirectoryMapOutput() AdConne
 
 func (o AdConnectorDirectoryMapOutput) ToAdConnectorDirectoryMapOutputWithContext(ctx context.Context) AdConnectorDirectoryMapOutput {
 	return o
+}
+
+func (o AdConnectorDirectoryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AdConnectorDirectory] {
+	return pulumix.Output[map[string]*AdConnectorDirectory]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AdConnectorDirectoryMapOutput) MapIndex(k pulumi.StringInput) AdConnectorDirectoryOutput {

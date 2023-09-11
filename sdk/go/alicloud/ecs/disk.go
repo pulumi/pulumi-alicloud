@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECS disk resource.
@@ -355,6 +356,12 @@ func (i *Disk) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskOutput)
 }
 
+func (i *Disk) ToOutput(ctx context.Context) pulumix.Output[*Disk] {
+	return pulumix.Output[*Disk]{
+		OutputState: i.ToDiskOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DiskArrayInput is an input type that accepts DiskArray and DiskArrayOutput values.
 // You can construct a concrete instance of `DiskArrayInput` via:
 //
@@ -378,6 +385,12 @@ func (i DiskArray) ToDiskArrayOutput() DiskArrayOutput {
 
 func (i DiskArray) ToDiskArrayOutputWithContext(ctx context.Context) DiskArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskArrayOutput)
+}
+
+func (i DiskArray) ToOutput(ctx context.Context) pulumix.Output[[]*Disk] {
+	return pulumix.Output[[]*Disk]{
+		OutputState: i.ToDiskArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DiskMapInput is an input type that accepts DiskMap and DiskMapOutput values.
@@ -405,6 +418,12 @@ func (i DiskMap) ToDiskMapOutputWithContext(ctx context.Context) DiskMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskMapOutput)
 }
 
+func (i DiskMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Disk] {
+	return pulumix.Output[map[string]*Disk]{
+		OutputState: i.ToDiskMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DiskOutput struct{ *pulumi.OutputState }
 
 func (DiskOutput) ElementType() reflect.Type {
@@ -417,6 +436,12 @@ func (o DiskOutput) ToDiskOutput() DiskOutput {
 
 func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return o
+}
+
+func (o DiskOutput) ToOutput(ctx context.Context) pulumix.Output[*Disk] {
+	return pulumix.Output[*Disk]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DiskOutput) AdvancedFeatures() pulumi.StringPtrOutput {
@@ -553,6 +578,12 @@ func (o DiskArrayOutput) ToDiskArrayOutputWithContext(ctx context.Context) DiskA
 	return o
 }
 
+func (o DiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Disk] {
+	return pulumix.Output[[]*Disk]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DiskArrayOutput) Index(i pulumi.IntInput) DiskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Disk {
 		return vs[0].([]*Disk)[vs[1].(int)]
@@ -571,6 +602,12 @@ func (o DiskMapOutput) ToDiskMapOutput() DiskMapOutput {
 
 func (o DiskMapOutput) ToDiskMapOutputWithContext(ctx context.Context) DiskMapOutput {
 	return o
+}
+
+func (o DiskMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Disk] {
+	return pulumix.Output[map[string]*Disk]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DiskMapOutput) MapIndex(k pulumi.StringInput) DiskOutput {

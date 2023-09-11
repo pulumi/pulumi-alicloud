@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a CR Chart Repository resource.
  *
- * For information about CR Chart Repository and how to use it, see [What is Chart Repository](https://www.alibabacloud.com/help/doc-detail/145318.htm).
+ * For information about CR Chart Repository and how to use it, see [What is Chart Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createchartrepository).
  *
- * > **NOTE:** Available in v1.149.0+.
+ * > **NOTE:** Available since v1.149.0.
  *
  * ## Example Usage
  *
@@ -19,20 +19,24 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", {
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const exampleRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance", {
  *     paymentType: "Subscription",
  *     period: 1,
+ *     renewPeriod: 0,
+ *     renewalStatus: "ManualRenewal",
  *     instanceType: "Advanced",
- *     instanceName: "name",
+ *     instanceName: name,
  * });
- * const defaultChartNamespace = new alicloud.cr.ChartNamespace("defaultChartNamespace", {
- *     instanceId: defaultRegistryEnterpriseInstance.id,
- *     namespaceName: "name",
+ * const exampleChartNamespace = new alicloud.cr.ChartNamespace("exampleChartNamespace", {
+ *     instanceId: exampleRegistryEnterpriseInstance.id,
+ *     namespaceName: name,
  * });
- * const defaultChartRepository = new alicloud.cr.ChartRepository("defaultChartRepository", {
- *     repoNamespaceName: defaultChartNamespace.namespaceName,
- *     instanceId: local.instance,
- *     repoName: "repo_name",
+ * const exampleChartRepository = new alicloud.cr.ChartRepository("exampleChartRepository", {
+ *     repoNamespaceName: exampleChartNamespace.namespaceName,
+ *     instanceId: exampleChartNamespace.instanceId,
+ *     repoName: name,
  * });
  * ```
  *

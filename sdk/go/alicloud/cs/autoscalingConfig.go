@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource will help you configure auto scaling for the kubernetes cluster, see [What is autoscaling config](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-configure-auto-scaling).
@@ -242,6 +243,12 @@ func (i *AutoscalingConfig) ToAutoscalingConfigOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingConfigOutput)
 }
 
+func (i *AutoscalingConfig) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingConfig] {
+	return pulumix.Output[*AutoscalingConfig]{
+		OutputState: i.ToAutoscalingConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AutoscalingConfigArrayInput is an input type that accepts AutoscalingConfigArray and AutoscalingConfigArrayOutput values.
 // You can construct a concrete instance of `AutoscalingConfigArrayInput` via:
 //
@@ -265,6 +272,12 @@ func (i AutoscalingConfigArray) ToAutoscalingConfigArrayOutput() AutoscalingConf
 
 func (i AutoscalingConfigArray) ToAutoscalingConfigArrayOutputWithContext(ctx context.Context) AutoscalingConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingConfigArrayOutput)
+}
+
+func (i AutoscalingConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*AutoscalingConfig] {
+	return pulumix.Output[[]*AutoscalingConfig]{
+		OutputState: i.ToAutoscalingConfigArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AutoscalingConfigMapInput is an input type that accepts AutoscalingConfigMap and AutoscalingConfigMapOutput values.
@@ -292,6 +305,12 @@ func (i AutoscalingConfigMap) ToAutoscalingConfigMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingConfigMapOutput)
 }
 
+func (i AutoscalingConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AutoscalingConfig] {
+	return pulumix.Output[map[string]*AutoscalingConfig]{
+		OutputState: i.ToAutoscalingConfigMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AutoscalingConfigOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingConfigOutput) ElementType() reflect.Type {
@@ -304,6 +323,12 @@ func (o AutoscalingConfigOutput) ToAutoscalingConfigOutput() AutoscalingConfigOu
 
 func (o AutoscalingConfigOutput) ToAutoscalingConfigOutputWithContext(ctx context.Context) AutoscalingConfigOutput {
 	return o
+}
+
+func (o AutoscalingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingConfig] {
+	return pulumix.Output[*AutoscalingConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The id of kubernetes cluster.
@@ -395,6 +420,12 @@ func (o AutoscalingConfigArrayOutput) ToAutoscalingConfigArrayOutputWithContext(
 	return o
 }
 
+func (o AutoscalingConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AutoscalingConfig] {
+	return pulumix.Output[[]*AutoscalingConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AutoscalingConfigArrayOutput) Index(i pulumi.IntInput) AutoscalingConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AutoscalingConfig {
 		return vs[0].([]*AutoscalingConfig)[vs[1].(int)]
@@ -413,6 +444,12 @@ func (o AutoscalingConfigMapOutput) ToAutoscalingConfigMapOutput() AutoscalingCo
 
 func (o AutoscalingConfigMapOutput) ToAutoscalingConfigMapOutputWithContext(ctx context.Context) AutoscalingConfigMapOutput {
 	return o
+}
+
+func (o AutoscalingConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AutoscalingConfig] {
+	return pulumix.Output[map[string]*AutoscalingConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutoscalingConfigMapOutput) MapIndex(k pulumi.StringInput) AutoscalingConfigOutput {

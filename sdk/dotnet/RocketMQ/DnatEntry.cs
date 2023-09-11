@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.RocketMQ
     /// <summary>
     /// Provides a Sag DnatEntry resource. This topic describes how to add a DNAT entry to a Smart Access Gateway (SAG) instance to enable the DNAT function. By using the DNAT function, you can forward requests received by public IP addresses to Alibaba Cloud instances according to custom mapping rules.
     /// 
-    /// For information about Sag DnatEntry and how to use it, see [What is Sag DnatEntry](https://www.alibabacloud.com/help/doc-detail/124312.htm).
+    /// For information about Sag DnatEntry and how to use it, see [What is Sag DnatEntry](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/adddnatentry).
     /// 
-    /// &gt; **NOTE:** Available in 1.63.0+
+    /// &gt; **NOTE:** Available since v1.63.0.
     /// 
     /// &gt; **NOTE:** Only the following regions suppor. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
     /// 
@@ -30,15 +30,17 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var sagId = config.Get("sagId") ?? "sag-9bifkfaz***";
     ///     var @default = new AliCloud.RocketMQ.DnatEntry("default", new()
     ///     {
-    ///         ExternalIp = "1.0.0.2",
-    ///         ExternalPort = "1",
-    ///         InternalIp = "10.0.0.2",
-    ///         InternalPort = "20",
-    ///         IpProtocol = "tcp",
-    ///         SagId = "sag-3rb1t3iagy3w0zgwy9",
+    ///         SagId = sagId,
     ///         Type = "Intranet",
+    ///         IpProtocol = "any",
+    ///         ExternalIp = "172.32.0.2",
+    ///         ExternalPort = "any",
+    ///         InternalIp = "172.16.0.4",
+    ///         InternalPort = "any",
     ///     });
     /// 
     /// });

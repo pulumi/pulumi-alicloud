@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an RDS Clone DB Instance resource.
@@ -1159,6 +1160,12 @@ func (i *RdsCloneDbInstance) ToRdsCloneDbInstanceOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(RdsCloneDbInstanceOutput)
 }
 
+func (i *RdsCloneDbInstance) ToOutput(ctx context.Context) pulumix.Output[*RdsCloneDbInstance] {
+	return pulumix.Output[*RdsCloneDbInstance]{
+		OutputState: i.ToRdsCloneDbInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RdsCloneDbInstanceArrayInput is an input type that accepts RdsCloneDbInstanceArray and RdsCloneDbInstanceArrayOutput values.
 // You can construct a concrete instance of `RdsCloneDbInstanceArrayInput` via:
 //
@@ -1182,6 +1189,12 @@ func (i RdsCloneDbInstanceArray) ToRdsCloneDbInstanceArrayOutput() RdsCloneDbIns
 
 func (i RdsCloneDbInstanceArray) ToRdsCloneDbInstanceArrayOutputWithContext(ctx context.Context) RdsCloneDbInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RdsCloneDbInstanceArrayOutput)
+}
+
+func (i RdsCloneDbInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*RdsCloneDbInstance] {
+	return pulumix.Output[[]*RdsCloneDbInstance]{
+		OutputState: i.ToRdsCloneDbInstanceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RdsCloneDbInstanceMapInput is an input type that accepts RdsCloneDbInstanceMap and RdsCloneDbInstanceMapOutput values.
@@ -1209,6 +1222,12 @@ func (i RdsCloneDbInstanceMap) ToRdsCloneDbInstanceMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(RdsCloneDbInstanceMapOutput)
 }
 
+func (i RdsCloneDbInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RdsCloneDbInstance] {
+	return pulumix.Output[map[string]*RdsCloneDbInstance]{
+		OutputState: i.ToRdsCloneDbInstanceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RdsCloneDbInstanceOutput struct{ *pulumi.OutputState }
 
 func (RdsCloneDbInstanceOutput) ElementType() reflect.Type {
@@ -1221,6 +1240,12 @@ func (o RdsCloneDbInstanceOutput) ToRdsCloneDbInstanceOutput() RdsCloneDbInstanc
 
 func (o RdsCloneDbInstanceOutput) ToRdsCloneDbInstanceOutputWithContext(ctx context.Context) RdsCloneDbInstanceOutput {
 	return o
+}
+
+func (o RdsCloneDbInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*RdsCloneDbInstance] {
+	return pulumix.Output[*RdsCloneDbInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
@@ -1616,6 +1641,12 @@ func (o RdsCloneDbInstanceArrayOutput) ToRdsCloneDbInstanceArrayOutputWithContex
 	return o
 }
 
+func (o RdsCloneDbInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RdsCloneDbInstance] {
+	return pulumix.Output[[]*RdsCloneDbInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RdsCloneDbInstanceArrayOutput) Index(i pulumi.IntInput) RdsCloneDbInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RdsCloneDbInstance {
 		return vs[0].([]*RdsCloneDbInstance)[vs[1].(int)]
@@ -1634,6 +1665,12 @@ func (o RdsCloneDbInstanceMapOutput) ToRdsCloneDbInstanceMapOutput() RdsCloneDbI
 
 func (o RdsCloneDbInstanceMapOutput) ToRdsCloneDbInstanceMapOutputWithContext(ctx context.Context) RdsCloneDbInstanceMapOutput {
 	return o
+}
+
+func (o RdsCloneDbInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RdsCloneDbInstance] {
+	return pulumix.Output[map[string]*RdsCloneDbInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RdsCloneDbInstanceMapOutput) MapIndex(k pulumi.StringInput) RdsCloneDbInstanceOutput {

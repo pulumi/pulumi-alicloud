@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Microservice Engine (MSE) Engine Namespace resource.
@@ -220,6 +221,12 @@ func (i *EngineNamespace) ToEngineNamespaceOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(EngineNamespaceOutput)
 }
 
+func (i *EngineNamespace) ToOutput(ctx context.Context) pulumix.Output[*EngineNamespace] {
+	return pulumix.Output[*EngineNamespace]{
+		OutputState: i.ToEngineNamespaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EngineNamespaceArrayInput is an input type that accepts EngineNamespaceArray and EngineNamespaceArrayOutput values.
 // You can construct a concrete instance of `EngineNamespaceArrayInput` via:
 //
@@ -243,6 +250,12 @@ func (i EngineNamespaceArray) ToEngineNamespaceArrayOutput() EngineNamespaceArra
 
 func (i EngineNamespaceArray) ToEngineNamespaceArrayOutputWithContext(ctx context.Context) EngineNamespaceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EngineNamespaceArrayOutput)
+}
+
+func (i EngineNamespaceArray) ToOutput(ctx context.Context) pulumix.Output[[]*EngineNamespace] {
+	return pulumix.Output[[]*EngineNamespace]{
+		OutputState: i.ToEngineNamespaceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EngineNamespaceMapInput is an input type that accepts EngineNamespaceMap and EngineNamespaceMapOutput values.
@@ -270,6 +283,12 @@ func (i EngineNamespaceMap) ToEngineNamespaceMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EngineNamespaceMapOutput)
 }
 
+func (i EngineNamespaceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EngineNamespace] {
+	return pulumix.Output[map[string]*EngineNamespace]{
+		OutputState: i.ToEngineNamespaceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EngineNamespaceOutput struct{ *pulumi.OutputState }
 
 func (EngineNamespaceOutput) ElementType() reflect.Type {
@@ -282,6 +301,12 @@ func (o EngineNamespaceOutput) ToEngineNamespaceOutput() EngineNamespaceOutput {
 
 func (o EngineNamespaceOutput) ToEngineNamespaceOutputWithContext(ctx context.Context) EngineNamespaceOutput {
 	return o
+}
+
+func (o EngineNamespaceOutput) ToOutput(ctx context.Context) pulumix.Output[*EngineNamespace] {
+	return pulumix.Output[*EngineNamespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The language type of the returned information. Valid values: `zh`, `en`.
@@ -318,6 +343,12 @@ func (o EngineNamespaceArrayOutput) ToEngineNamespaceArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o EngineNamespaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EngineNamespace] {
+	return pulumix.Output[[]*EngineNamespace]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EngineNamespaceArrayOutput) Index(i pulumi.IntInput) EngineNamespaceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EngineNamespace {
 		return vs[0].([]*EngineNamespace)[vs[1].(int)]
@@ -336,6 +367,12 @@ func (o EngineNamespaceMapOutput) ToEngineNamespaceMapOutput() EngineNamespaceMa
 
 func (o EngineNamespaceMapOutput) ToEngineNamespaceMapOutputWithContext(ctx context.Context) EngineNamespaceMapOutput {
 	return o
+}
+
+func (o EngineNamespaceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EngineNamespace] {
+	return pulumix.Output[map[string]*EngineNamespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EngineNamespaceMapOutput) MapIndex(k pulumi.StringInput) EngineNamespaceOutput {
