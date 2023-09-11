@@ -2498,6 +2498,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_dataworks_service",
 		},
 		SkipExamples: func(args tfbridge.SkipExamplesArgs) bool {
+			// Blocked by https://github.com/pulumi/pulumi/issues/13886
 			return args.Token == "alicloud:fc/service:Service" || args.Token == "alicloud:fc/v2Function:V2Function"
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
