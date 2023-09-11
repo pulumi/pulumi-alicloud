@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Service Catalog Launch Option available to the user.[What is Launch Option](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listlaunchoptions)
@@ -123,6 +124,12 @@ func (o GetLaunchOptionsResultOutput) ToGetLaunchOptionsResultOutput() GetLaunch
 
 func (o GetLaunchOptionsResultOutput) ToGetLaunchOptionsResultOutputWithContext(ctx context.Context) GetLaunchOptionsResultOutput {
 	return o
+}
+
+func (o GetLaunchOptionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetLaunchOptionsResult] {
+	return pulumix.Output[GetLaunchOptionsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

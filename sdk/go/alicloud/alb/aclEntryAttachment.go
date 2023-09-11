@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **NOTE:** Available since v1.166.0.
@@ -187,6 +188,12 @@ func (i *AclEntryAttachment) ToAclEntryAttachmentOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AclEntryAttachmentOutput)
 }
 
+func (i *AclEntryAttachment) ToOutput(ctx context.Context) pulumix.Output[*AclEntryAttachment] {
+	return pulumix.Output[*AclEntryAttachment]{
+		OutputState: i.ToAclEntryAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AclEntryAttachmentArrayInput is an input type that accepts AclEntryAttachmentArray and AclEntryAttachmentArrayOutput values.
 // You can construct a concrete instance of `AclEntryAttachmentArrayInput` via:
 //
@@ -210,6 +217,12 @@ func (i AclEntryAttachmentArray) ToAclEntryAttachmentArrayOutput() AclEntryAttac
 
 func (i AclEntryAttachmentArray) ToAclEntryAttachmentArrayOutputWithContext(ctx context.Context) AclEntryAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclEntryAttachmentArrayOutput)
+}
+
+func (i AclEntryAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*AclEntryAttachment] {
+	return pulumix.Output[[]*AclEntryAttachment]{
+		OutputState: i.ToAclEntryAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AclEntryAttachmentMapInput is an input type that accepts AclEntryAttachmentMap and AclEntryAttachmentMapOutput values.
@@ -237,6 +250,12 @@ func (i AclEntryAttachmentMap) ToAclEntryAttachmentMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AclEntryAttachmentMapOutput)
 }
 
+func (i AclEntryAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AclEntryAttachment] {
+	return pulumix.Output[map[string]*AclEntryAttachment]{
+		OutputState: i.ToAclEntryAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AclEntryAttachmentOutput struct{ *pulumi.OutputState }
 
 func (AclEntryAttachmentOutput) ElementType() reflect.Type {
@@ -249,6 +268,12 @@ func (o AclEntryAttachmentOutput) ToAclEntryAttachmentOutput() AclEntryAttachmen
 
 func (o AclEntryAttachmentOutput) ToAclEntryAttachmentOutputWithContext(ctx context.Context) AclEntryAttachmentOutput {
 	return o
+}
+
+func (o AclEntryAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*AclEntryAttachment] {
+	return pulumix.Output[*AclEntryAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Acl.
@@ -285,6 +310,12 @@ func (o AclEntryAttachmentArrayOutput) ToAclEntryAttachmentArrayOutputWithContex
 	return o
 }
 
+func (o AclEntryAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AclEntryAttachment] {
+	return pulumix.Output[[]*AclEntryAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AclEntryAttachmentArrayOutput) Index(i pulumi.IntInput) AclEntryAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AclEntryAttachment {
 		return vs[0].([]*AclEntryAttachment)[vs[1].(int)]
@@ -303,6 +334,12 @@ func (o AclEntryAttachmentMapOutput) ToAclEntryAttachmentMapOutput() AclEntryAtt
 
 func (o AclEntryAttachmentMapOutput) ToAclEntryAttachmentMapOutputWithContext(ctx context.Context) AclEntryAttachmentMapOutput {
 	return o
+}
+
+func (o AclEntryAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AclEntryAttachment] {
+	return pulumix.Output[map[string]*AclEntryAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AclEntryAttachmentMapOutput) MapIndex(k pulumi.StringInput) AclEntryAttachmentOutput {

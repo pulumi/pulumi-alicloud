@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DFS Access Rule resource.
@@ -215,6 +216,12 @@ func (i *AccessRule) ToAccessRuleOutputWithContext(ctx context.Context) AccessRu
 	return pulumi.ToOutputWithContext(ctx, i).(AccessRuleOutput)
 }
 
+func (i *AccessRule) ToOutput(ctx context.Context) pulumix.Output[*AccessRule] {
+	return pulumix.Output[*AccessRule]{
+		OutputState: i.ToAccessRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccessRuleArrayInput is an input type that accepts AccessRuleArray and AccessRuleArrayOutput values.
 // You can construct a concrete instance of `AccessRuleArrayInput` via:
 //
@@ -238,6 +245,12 @@ func (i AccessRuleArray) ToAccessRuleArrayOutput() AccessRuleArrayOutput {
 
 func (i AccessRuleArray) ToAccessRuleArrayOutputWithContext(ctx context.Context) AccessRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessRuleArrayOutput)
+}
+
+func (i AccessRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessRule] {
+	return pulumix.Output[[]*AccessRule]{
+		OutputState: i.ToAccessRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AccessRuleMapInput is an input type that accepts AccessRuleMap and AccessRuleMapOutput values.
@@ -265,6 +278,12 @@ func (i AccessRuleMap) ToAccessRuleMapOutputWithContext(ctx context.Context) Acc
 	return pulumi.ToOutputWithContext(ctx, i).(AccessRuleMapOutput)
 }
 
+func (i AccessRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessRule] {
+	return pulumix.Output[map[string]*AccessRule]{
+		OutputState: i.ToAccessRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessRuleOutput struct{ *pulumi.OutputState }
 
 func (AccessRuleOutput) ElementType() reflect.Type {
@@ -277,6 +296,12 @@ func (o AccessRuleOutput) ToAccessRuleOutput() AccessRuleOutput {
 
 func (o AccessRuleOutput) ToAccessRuleOutputWithContext(ctx context.Context) AccessRuleOutput {
 	return o
+}
+
+func (o AccessRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessRule] {
+	return pulumix.Output[*AccessRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource ID of Access Group.
@@ -323,6 +348,12 @@ func (o AccessRuleArrayOutput) ToAccessRuleArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o AccessRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessRule] {
+	return pulumix.Output[[]*AccessRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccessRuleArrayOutput) Index(i pulumi.IntInput) AccessRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessRule {
 		return vs[0].([]*AccessRule)[vs[1].(int)]
@@ -341,6 +372,12 @@ func (o AccessRuleMapOutput) ToAccessRuleMapOutput() AccessRuleMapOutput {
 
 func (o AccessRuleMapOutput) ToAccessRuleMapOutputWithContext(ctx context.Context) AccessRuleMapOutput {
 	return o
+}
+
+func (o AccessRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessRule] {
+	return pulumix.Output[map[string]*AccessRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessRuleMapOutput) MapIndex(k pulumi.StringInput) AccessRuleOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Anti-DDoS Pro Domain Resource resource.
@@ -268,6 +269,12 @@ func (i *DomainResource) ToDomainResourceOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(DomainResourceOutput)
 }
 
+func (i *DomainResource) ToOutput(ctx context.Context) pulumix.Output[*DomainResource] {
+	return pulumix.Output[*DomainResource]{
+		OutputState: i.ToDomainResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DomainResourceArrayInput is an input type that accepts DomainResourceArray and DomainResourceArrayOutput values.
 // You can construct a concrete instance of `DomainResourceArrayInput` via:
 //
@@ -291,6 +298,12 @@ func (i DomainResourceArray) ToDomainResourceArrayOutput() DomainResourceArrayOu
 
 func (i DomainResourceArray) ToDomainResourceArrayOutputWithContext(ctx context.Context) DomainResourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainResourceArrayOutput)
+}
+
+func (i DomainResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*DomainResource] {
+	return pulumix.Output[[]*DomainResource]{
+		OutputState: i.ToDomainResourceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DomainResourceMapInput is an input type that accepts DomainResourceMap and DomainResourceMapOutput values.
@@ -318,6 +331,12 @@ func (i DomainResourceMap) ToDomainResourceMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DomainResourceMapOutput)
 }
 
+func (i DomainResourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DomainResource] {
+	return pulumix.Output[map[string]*DomainResource]{
+		OutputState: i.ToDomainResourceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DomainResourceOutput struct{ *pulumi.OutputState }
 
 func (DomainResourceOutput) ElementType() reflect.Type {
@@ -330,6 +349,12 @@ func (o DomainResourceOutput) ToDomainResourceOutput() DomainResourceOutput {
 
 func (o DomainResourceOutput) ToDomainResourceOutputWithContext(ctx context.Context) DomainResourceOutput {
 	return o
+}
+
+func (o DomainResourceOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainResource] {
+	return pulumix.Output[*DomainResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Available since v1.207.2) The CNAME assigned to the domain name.
@@ -388,6 +413,12 @@ func (o DomainResourceArrayOutput) ToDomainResourceArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o DomainResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DomainResource] {
+	return pulumix.Output[[]*DomainResource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DomainResourceArrayOutput) Index(i pulumi.IntInput) DomainResourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DomainResource {
 		return vs[0].([]*DomainResource)[vs[1].(int)]
@@ -406,6 +437,12 @@ func (o DomainResourceMapOutput) ToDomainResourceMapOutput() DomainResourceMapOu
 
 func (o DomainResourceMapOutput) ToDomainResourceMapOutputWithContext(ctx context.Context) DomainResourceMapOutput {
 	return o
+}
+
+func (o DomainResourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DomainResource] {
+	return pulumix.Output[map[string]*DomainResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DomainResourceMapOutput) MapIndex(k pulumi.StringInput) DomainResourceOutput {

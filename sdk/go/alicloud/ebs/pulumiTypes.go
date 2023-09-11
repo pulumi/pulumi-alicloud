@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -108,6 +109,12 @@ func (i GetDedicatedBlockStorageClustersClusterArgs) ToGetDedicatedBlockStorageC
 	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedBlockStorageClustersClusterOutput)
 }
 
+func (i GetDedicatedBlockStorageClustersClusterArgs) ToOutput(ctx context.Context) pulumix.Output[GetDedicatedBlockStorageClustersCluster] {
+	return pulumix.Output[GetDedicatedBlockStorageClustersCluster]{
+		OutputState: i.ToGetDedicatedBlockStorageClustersClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDedicatedBlockStorageClustersClusterArrayInput is an input type that accepts GetDedicatedBlockStorageClustersClusterArray and GetDedicatedBlockStorageClustersClusterArrayOutput values.
 // You can construct a concrete instance of `GetDedicatedBlockStorageClustersClusterArrayInput` via:
 //
@@ -133,6 +140,12 @@ func (i GetDedicatedBlockStorageClustersClusterArray) ToGetDedicatedBlockStorage
 	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedBlockStorageClustersClusterArrayOutput)
 }
 
+func (i GetDedicatedBlockStorageClustersClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDedicatedBlockStorageClustersCluster] {
+	return pulumix.Output[[]GetDedicatedBlockStorageClustersCluster]{
+		OutputState: i.ToGetDedicatedBlockStorageClustersClusterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDedicatedBlockStorageClustersClusterOutput struct{ *pulumi.OutputState }
 
 func (GetDedicatedBlockStorageClustersClusterOutput) ElementType() reflect.Type {
@@ -145,6 +158,12 @@ func (o GetDedicatedBlockStorageClustersClusterOutput) ToGetDedicatedBlockStorag
 
 func (o GetDedicatedBlockStorageClustersClusterOutput) ToGetDedicatedBlockStorageClustersClusterOutputWithContext(ctx context.Context) GetDedicatedBlockStorageClustersClusterOutput {
 	return o
+}
+
+func (o GetDedicatedBlockStorageClustersClusterOutput) ToOutput(ctx context.Context) pulumix.Output[GetDedicatedBlockStorageClustersCluster] {
+	return pulumix.Output[GetDedicatedBlockStorageClustersCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The available capacity of the dedicated block storage cluster. Unit: GiB.
@@ -245,6 +264,12 @@ func (o GetDedicatedBlockStorageClustersClusterArrayOutput) ToGetDedicatedBlockS
 	return o
 }
 
+func (o GetDedicatedBlockStorageClustersClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDedicatedBlockStorageClustersCluster] {
+	return pulumix.Output[[]GetDedicatedBlockStorageClustersCluster]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetDedicatedBlockStorageClustersClusterArrayOutput) Index(i pulumi.IntInput) GetDedicatedBlockStorageClustersClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDedicatedBlockStorageClustersCluster {
 		return vs[0].([]GetDedicatedBlockStorageClustersCluster)[vs[1].(int)]
@@ -342,6 +367,12 @@ func (i GetDiskReplicaGroupsGroupArgs) ToGetDiskReplicaGroupsGroupOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetDiskReplicaGroupsGroupOutput)
 }
 
+func (i GetDiskReplicaGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetDiskReplicaGroupsGroup] {
+	return pulumix.Output[GetDiskReplicaGroupsGroup]{
+		OutputState: i.ToGetDiskReplicaGroupsGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDiskReplicaGroupsGroupArrayInput is an input type that accepts GetDiskReplicaGroupsGroupArray and GetDiskReplicaGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetDiskReplicaGroupsGroupArrayInput` via:
 //
@@ -367,6 +398,12 @@ func (i GetDiskReplicaGroupsGroupArray) ToGetDiskReplicaGroupsGroupArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetDiskReplicaGroupsGroupArrayOutput)
 }
 
+func (i GetDiskReplicaGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDiskReplicaGroupsGroup] {
+	return pulumix.Output[[]GetDiskReplicaGroupsGroup]{
+		OutputState: i.ToGetDiskReplicaGroupsGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDiskReplicaGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetDiskReplicaGroupsGroupOutput) ElementType() reflect.Type {
@@ -379,6 +416,12 @@ func (o GetDiskReplicaGroupsGroupOutput) ToGetDiskReplicaGroupsGroupOutput() Get
 
 func (o GetDiskReplicaGroupsGroupOutput) ToGetDiskReplicaGroupsGroupOutputWithContext(ctx context.Context) GetDiskReplicaGroupsGroupOutput {
 	return o
+}
+
+func (o GetDiskReplicaGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetDiskReplicaGroupsGroup] {
+	return pulumix.Output[GetDiskReplicaGroupsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the consistent replication group.
@@ -474,6 +517,12 @@ func (o GetDiskReplicaGroupsGroupArrayOutput) ToGetDiskReplicaGroupsGroupArrayOu
 	return o
 }
 
+func (o GetDiskReplicaGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDiskReplicaGroupsGroup] {
+	return pulumix.Output[[]GetDiskReplicaGroupsGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetDiskReplicaGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetDiskReplicaGroupsGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiskReplicaGroupsGroup {
 		return vs[0].([]GetDiskReplicaGroupsGroup)[vs[1].(int)]
@@ -563,6 +612,12 @@ func (i GetDiskReplicaPairsPairArgs) ToGetDiskReplicaPairsPairOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetDiskReplicaPairsPairOutput)
 }
 
+func (i GetDiskReplicaPairsPairArgs) ToOutput(ctx context.Context) pulumix.Output[GetDiskReplicaPairsPair] {
+	return pulumix.Output[GetDiskReplicaPairsPair]{
+		OutputState: i.ToGetDiskReplicaPairsPairOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDiskReplicaPairsPairArrayInput is an input type that accepts GetDiskReplicaPairsPairArray and GetDiskReplicaPairsPairArrayOutput values.
 // You can construct a concrete instance of `GetDiskReplicaPairsPairArrayInput` via:
 //
@@ -588,6 +643,12 @@ func (i GetDiskReplicaPairsPairArray) ToGetDiskReplicaPairsPairArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetDiskReplicaPairsPairArrayOutput)
 }
 
+func (i GetDiskReplicaPairsPairArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDiskReplicaPairsPair] {
+	return pulumix.Output[[]GetDiskReplicaPairsPair]{
+		OutputState: i.ToGetDiskReplicaPairsPairArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDiskReplicaPairsPairOutput struct{ *pulumi.OutputState }
 
 func (GetDiskReplicaPairsPairOutput) ElementType() reflect.Type {
@@ -600,6 +661,12 @@ func (o GetDiskReplicaPairsPairOutput) ToGetDiskReplicaPairsPairOutput() GetDisk
 
 func (o GetDiskReplicaPairsPairOutput) ToGetDiskReplicaPairsPairOutputWithContext(ctx context.Context) GetDiskReplicaPairsPairOutput {
 	return o
+}
+
+func (o GetDiskReplicaPairsPairOutput) ToOutput(ctx context.Context) pulumix.Output[GetDiskReplicaPairsPair] {
+	return pulumix.Output[GetDiskReplicaPairsPair]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
@@ -685,6 +752,12 @@ func (o GetDiskReplicaPairsPairArrayOutput) ToGetDiskReplicaPairsPairArrayOutput
 	return o
 }
 
+func (o GetDiskReplicaPairsPairArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDiskReplicaPairsPair] {
+	return pulumix.Output[[]GetDiskReplicaPairsPair]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetDiskReplicaPairsPairArrayOutput) Index(i pulumi.IntInput) GetDiskReplicaPairsPairOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiskReplicaPairsPair {
 		return vs[0].([]GetDiskReplicaPairsPair)[vs[1].(int)]
@@ -728,6 +801,12 @@ func (i GetRegionsRegionArgs) ToGetRegionsRegionOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionOutput)
 }
 
+func (i GetRegionsRegionArgs) ToOutput(ctx context.Context) pulumix.Output[GetRegionsRegion] {
+	return pulumix.Output[GetRegionsRegion]{
+		OutputState: i.ToGetRegionsRegionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRegionsRegionArrayInput is an input type that accepts GetRegionsRegionArray and GetRegionsRegionArrayOutput values.
 // You can construct a concrete instance of `GetRegionsRegionArrayInput` via:
 //
@@ -753,6 +832,12 @@ func (i GetRegionsRegionArray) ToGetRegionsRegionArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionArrayOutput)
 }
 
+func (i GetRegionsRegionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRegionsRegion] {
+	return pulumix.Output[[]GetRegionsRegion]{
+		OutputState: i.ToGetRegionsRegionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRegionsRegionOutput struct{ *pulumi.OutputState }
 
 func (GetRegionsRegionOutput) ElementType() reflect.Type {
@@ -765,6 +850,12 @@ func (o GetRegionsRegionOutput) ToGetRegionsRegionOutput() GetRegionsRegionOutpu
 
 func (o GetRegionsRegionOutput) ToGetRegionsRegionOutputWithContext(ctx context.Context) GetRegionsRegionOutput {
 	return o
+}
+
+func (o GetRegionsRegionOutput) ToOutput(ctx context.Context) pulumix.Output[GetRegionsRegion] {
+	return pulumix.Output[GetRegionsRegion]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the region.
@@ -789,6 +880,12 @@ func (o GetRegionsRegionArrayOutput) ToGetRegionsRegionArrayOutput() GetRegionsR
 
 func (o GetRegionsRegionArrayOutput) ToGetRegionsRegionArrayOutputWithContext(ctx context.Context) GetRegionsRegionArrayOutput {
 	return o
+}
+
+func (o GetRegionsRegionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRegionsRegion] {
+	return pulumix.Output[[]GetRegionsRegion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetRegionsRegionOutput {
@@ -830,6 +927,12 @@ func (i GetRegionsRegionZoneArgs) ToGetRegionsRegionZoneOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionZoneOutput)
 }
 
+func (i GetRegionsRegionZoneArgs) ToOutput(ctx context.Context) pulumix.Output[GetRegionsRegionZone] {
+	return pulumix.Output[GetRegionsRegionZone]{
+		OutputState: i.ToGetRegionsRegionZoneOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRegionsRegionZoneArrayInput is an input type that accepts GetRegionsRegionZoneArray and GetRegionsRegionZoneArrayOutput values.
 // You can construct a concrete instance of `GetRegionsRegionZoneArrayInput` via:
 //
@@ -855,6 +958,12 @@ func (i GetRegionsRegionZoneArray) ToGetRegionsRegionZoneArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionZoneArrayOutput)
 }
 
+func (i GetRegionsRegionZoneArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRegionsRegionZone] {
+	return pulumix.Output[[]GetRegionsRegionZone]{
+		OutputState: i.ToGetRegionsRegionZoneArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRegionsRegionZoneOutput struct{ *pulumi.OutputState }
 
 func (GetRegionsRegionZoneOutput) ElementType() reflect.Type {
@@ -867,6 +976,12 @@ func (o GetRegionsRegionZoneOutput) ToGetRegionsRegionZoneOutput() GetRegionsReg
 
 func (o GetRegionsRegionZoneOutput) ToGetRegionsRegionZoneOutputWithContext(ctx context.Context) GetRegionsRegionZoneOutput {
 	return o
+}
+
+func (o GetRegionsRegionZoneOutput) ToOutput(ctx context.Context) pulumix.Output[GetRegionsRegionZone] {
+	return pulumix.Output[GetRegionsRegionZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the zone.
@@ -886,6 +1001,12 @@ func (o GetRegionsRegionZoneArrayOutput) ToGetRegionsRegionZoneArrayOutput() Get
 
 func (o GetRegionsRegionZoneArrayOutput) ToGetRegionsRegionZoneArrayOutputWithContext(ctx context.Context) GetRegionsRegionZoneArrayOutput {
 	return o
+}
+
+func (o GetRegionsRegionZoneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRegionsRegionZone] {
+	return pulumix.Output[[]GetRegionsRegionZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRegionsRegionZoneArrayOutput) Index(i pulumi.IntInput) GetRegionsRegionZoneOutput {

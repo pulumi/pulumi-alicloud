@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
@@ -123,6 +124,12 @@ func (o GetSslVpnClientCertsResultOutput) ToGetSslVpnClientCertsResultOutput() G
 
 func (o GetSslVpnClientCertsResultOutput) ToGetSslVpnClientCertsResultOutputWithContext(ctx context.Context) GetSslVpnClientCertsResultOutput {
 	return o
+}
+
+func (o GetSslVpnClientCertsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSslVpnClientCertsResult] {
+	return pulumix.Output[GetSslVpnClientCertsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of SSL-VPN client certificates. Each element contains the following attributes:

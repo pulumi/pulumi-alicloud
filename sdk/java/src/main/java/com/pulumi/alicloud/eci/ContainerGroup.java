@@ -44,6 +44,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.eci.EciFunctions;
+ * import com.pulumi.alicloud.eci.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.eci.ContainerGroup;
  * import com.pulumi.alicloud.eci.ContainerGroupArgs;
  * import com.pulumi.alicloud.eci.inputs.ContainerGroupContainerArgs;
@@ -62,14 +70,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ContainerGroup(&#34;example&#34;, ContainerGroupArgs.builder()        
- *             .containerGroupName(&#34;tf-eci-gruop&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultZones = EciFunctions.getZones();
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.1.0.0/16&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneIds()[0]))
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultContainerGroup = new ContainerGroup(&#34;defaultContainerGroup&#34;, ContainerGroupArgs.builder()        
+ *             .containerGroupName(name)
  *             .cpu(8)
  *             .memory(16)
  *             .restartPolicy(&#34;OnFailure&#34;)
- *             .securityGroupId(alicloud_security_group.group().id())
- *             .vswitchId(data.alicloud_vpcs().default().vpcs()[0].vswitch_ids()[0])
- *             .tags(Map.of(&#34;TF&#34;, &#34;create&#34;))
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .vswitchId(defaultSwitch.id())
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *             ))
  *             .containers(            
  *                 ContainerGroupContainerArgs.builder()
  *                     .image(&#34;registry-vpc.cn-beijing.aliyuncs.com/eci_open/nginx:alpine&#34;)
@@ -81,7 +112,7 @@ import javax.annotation.Nullable;
  *                         &#34;-c&#34;,
  *                         &#34;sleep 9999&#34;)
  *                     .volumeMounts(ContainerGroupContainerVolumeMountArgs.builder()
- *                         .mountPath(&#34;/tmp/test&#34;)
+ *                         .mountPath(&#34;/tmp/example&#34;)
  *                         .readOnly(false)
  *                         .name(&#34;empty1&#34;)
  *                         .build())
@@ -90,7 +121,7 @@ import javax.annotation.Nullable;
  *                         .protocol(&#34;TCP&#34;)
  *                         .build())
  *                     .environmentVars(ContainerGroupContainerEnvironmentVarArgs.builder()
- *                         .key(&#34;test&#34;)
+ *                         .key(&#34;name&#34;)
  *                         .value(&#34;nginx&#34;)
  *                         .build())
  *                     .livenessProbes(ContainerGroupContainerLivenessProbeArgs.builder()

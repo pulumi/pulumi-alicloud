@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ROS Change Set resource.
@@ -322,6 +323,12 @@ func (i *ChangeSet) ToChangeSetOutputWithContext(ctx context.Context) ChangeSetO
 	return pulumi.ToOutputWithContext(ctx, i).(ChangeSetOutput)
 }
 
+func (i *ChangeSet) ToOutput(ctx context.Context) pulumix.Output[*ChangeSet] {
+	return pulumix.Output[*ChangeSet]{
+		OutputState: i.ToChangeSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ChangeSetArrayInput is an input type that accepts ChangeSetArray and ChangeSetArrayOutput values.
 // You can construct a concrete instance of `ChangeSetArrayInput` via:
 //
@@ -345,6 +352,12 @@ func (i ChangeSetArray) ToChangeSetArrayOutput() ChangeSetArrayOutput {
 
 func (i ChangeSetArray) ToChangeSetArrayOutputWithContext(ctx context.Context) ChangeSetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ChangeSetArrayOutput)
+}
+
+func (i ChangeSetArray) ToOutput(ctx context.Context) pulumix.Output[[]*ChangeSet] {
+	return pulumix.Output[[]*ChangeSet]{
+		OutputState: i.ToChangeSetArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ChangeSetMapInput is an input type that accepts ChangeSetMap and ChangeSetMapOutput values.
@@ -372,6 +385,12 @@ func (i ChangeSetMap) ToChangeSetMapOutputWithContext(ctx context.Context) Chang
 	return pulumi.ToOutputWithContext(ctx, i).(ChangeSetMapOutput)
 }
 
+func (i ChangeSetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ChangeSet] {
+	return pulumix.Output[map[string]*ChangeSet]{
+		OutputState: i.ToChangeSetMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ChangeSetOutput struct{ *pulumi.OutputState }
 
 func (ChangeSetOutput) ElementType() reflect.Type {
@@ -384,6 +403,12 @@ func (o ChangeSetOutput) ToChangeSetOutput() ChangeSetOutput {
 
 func (o ChangeSetOutput) ToChangeSetOutputWithContext(ctx context.Context) ChangeSetOutput {
 	return o
+}
+
+func (o ChangeSetOutput) ToOutput(ctx context.Context) pulumix.Output[*ChangeSet] {
+	return pulumix.Output[*ChangeSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
@@ -495,6 +520,12 @@ func (o ChangeSetArrayOutput) ToChangeSetArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ChangeSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ChangeSet] {
+	return pulumix.Output[[]*ChangeSet]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ChangeSetArrayOutput) Index(i pulumi.IntInput) ChangeSetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ChangeSet {
 		return vs[0].([]*ChangeSet)[vs[1].(int)]
@@ -513,6 +544,12 @@ func (o ChangeSetMapOutput) ToChangeSetMapOutput() ChangeSetMapOutput {
 
 func (o ChangeSetMapOutput) ToChangeSetMapOutputWithContext(ctx context.Context) ChangeSetMapOutput {
 	return o
+}
+
+func (o ChangeSetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ChangeSet] {
+	return pulumix.Output[map[string]*ChangeSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ChangeSetMapOutput) MapIndex(k pulumi.StringInput) ChangeSetOutput {

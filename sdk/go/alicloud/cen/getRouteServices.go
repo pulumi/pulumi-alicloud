@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides CEN Route Service available to the user.
@@ -142,6 +143,12 @@ func (o GetRouteServicesResultOutput) ToGetRouteServicesResultOutput() GetRouteS
 
 func (o GetRouteServicesResultOutput) ToGetRouteServicesResultOutputWithContext(ctx context.Context) GetRouteServicesResultOutput {
 	return o
+}
+
+func (o GetRouteServicesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRouteServicesResult] {
+	return pulumix.Output[GetRouteServicesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The region of the network instances that access the cloud services.

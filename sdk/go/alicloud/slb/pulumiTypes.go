@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i AclEntryListArgs) ToAclEntryListOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AclEntryListOutput)
 }
 
+func (i AclEntryListArgs) ToOutput(ctx context.Context) pulumix.Output[AclEntryList] {
+	return pulumix.Output[AclEntryList]{
+		OutputState: i.ToAclEntryListOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AclEntryListArrayInput is an input type that accepts AclEntryListArray and AclEntryListArrayOutput values.
 // You can construct a concrete instance of `AclEntryListArrayInput` via:
 //
@@ -71,6 +78,12 @@ func (i AclEntryListArray) ToAclEntryListArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AclEntryListArrayOutput)
 }
 
+func (i AclEntryListArray) ToOutput(ctx context.Context) pulumix.Output[[]AclEntryList] {
+	return pulumix.Output[[]AclEntryList]{
+		OutputState: i.ToAclEntryListArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AclEntryListOutput struct{ *pulumi.OutputState }
 
 func (AclEntryListOutput) ElementType() reflect.Type {
@@ -83,6 +96,12 @@ func (o AclEntryListOutput) ToAclEntryListOutput() AclEntryListOutput {
 
 func (o AclEntryListOutput) ToAclEntryListOutputWithContext(ctx context.Context) AclEntryListOutput {
 	return o
+}
+
+func (o AclEntryListOutput) ToOutput(ctx context.Context) pulumix.Output[AclEntryList] {
+	return pulumix.Output[AclEntryList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AclEntryListOutput) Comment() pulumi.StringPtrOutput {
@@ -105,6 +124,12 @@ func (o AclEntryListArrayOutput) ToAclEntryListArrayOutput() AclEntryListArrayOu
 
 func (o AclEntryListArrayOutput) ToAclEntryListArrayOutputWithContext(ctx context.Context) AclEntryListArrayOutput {
 	return o
+}
+
+func (o AclEntryListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AclEntryList] {
+	return pulumix.Output[[]AclEntryList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AclEntryListArrayOutput) Index(i pulumi.IntInput) AclEntryListOutput {
@@ -150,6 +175,12 @@ func (i BackendServerBackendServerArgs) ToBackendServerBackendServerOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServerBackendServerOutput)
 }
 
+func (i BackendServerBackendServerArgs) ToOutput(ctx context.Context) pulumix.Output[BackendServerBackendServer] {
+	return pulumix.Output[BackendServerBackendServer]{
+		OutputState: i.ToBackendServerBackendServerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BackendServerBackendServerArrayInput is an input type that accepts BackendServerBackendServerArray and BackendServerBackendServerArrayOutput values.
 // You can construct a concrete instance of `BackendServerBackendServerArrayInput` via:
 //
@@ -175,6 +206,12 @@ func (i BackendServerBackendServerArray) ToBackendServerBackendServerArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServerBackendServerArrayOutput)
 }
 
+func (i BackendServerBackendServerArray) ToOutput(ctx context.Context) pulumix.Output[[]BackendServerBackendServer] {
+	return pulumix.Output[[]BackendServerBackendServer]{
+		OutputState: i.ToBackendServerBackendServerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackendServerBackendServerOutput struct{ *pulumi.OutputState }
 
 func (BackendServerBackendServerOutput) ElementType() reflect.Type {
@@ -187,6 +224,12 @@ func (o BackendServerBackendServerOutput) ToBackendServerBackendServerOutput() B
 
 func (o BackendServerBackendServerOutput) ToBackendServerBackendServerOutputWithContext(ctx context.Context) BackendServerBackendServerOutput {
 	return o
+}
+
+func (o BackendServerBackendServerOutput) ToOutput(ctx context.Context) pulumix.Output[BackendServerBackendServer] {
+	return pulumix.Output[BackendServerBackendServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendServerBackendServerOutput) ServerId() pulumi.StringOutput {
@@ -217,6 +260,12 @@ func (o BackendServerBackendServerArrayOutput) ToBackendServerBackendServerArray
 
 func (o BackendServerBackendServerArrayOutput) ToBackendServerBackendServerArrayOutputWithContext(ctx context.Context) BackendServerBackendServerArrayOutput {
 	return o
+}
+
+func (o BackendServerBackendServerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BackendServerBackendServer] {
+	return pulumix.Output[[]BackendServerBackendServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendServerBackendServerArrayOutput) Index(i pulumi.IntInput) BackendServerBackendServerOutput {
@@ -268,6 +317,12 @@ func (i ListenerXForwardedForArgs) ToListenerXForwardedForOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ListenerXForwardedForOutput)
 }
 
+func (i ListenerXForwardedForArgs) ToOutput(ctx context.Context) pulumix.Output[ListenerXForwardedFor] {
+	return pulumix.Output[ListenerXForwardedFor]{
+		OutputState: i.ToListenerXForwardedForOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ListenerXForwardedForArgs) ToListenerXForwardedForPtrOutput() ListenerXForwardedForPtrOutput {
 	return i.ToListenerXForwardedForPtrOutputWithContext(context.Background())
 }
@@ -309,6 +364,12 @@ func (i *listenerXForwardedForPtrType) ToListenerXForwardedForPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ListenerXForwardedForPtrOutput)
 }
 
+func (i *listenerXForwardedForPtrType) ToOutput(ctx context.Context) pulumix.Output[*ListenerXForwardedFor] {
+	return pulumix.Output[*ListenerXForwardedFor]{
+		OutputState: i.ToListenerXForwardedForPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ListenerXForwardedForOutput struct{ *pulumi.OutputState }
 
 func (ListenerXForwardedForOutput) ElementType() reflect.Type {
@@ -331,6 +392,12 @@ func (o ListenerXForwardedForOutput) ToListenerXForwardedForPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListenerXForwardedFor) *ListenerXForwardedFor {
 		return &v
 	}).(ListenerXForwardedForPtrOutput)
+}
+
+func (o ListenerXForwardedForOutput) ToOutput(ctx context.Context) pulumix.Output[ListenerXForwardedFor] {
+	return pulumix.Output[ListenerXForwardedFor]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListenerXForwardedForOutput) RetriveClientIp() pulumi.BoolPtrOutput {
@@ -364,6 +431,12 @@ func (o ListenerXForwardedForPtrOutput) ToListenerXForwardedForPtrOutput() Liste
 
 func (o ListenerXForwardedForPtrOutput) ToListenerXForwardedForPtrOutputWithContext(ctx context.Context) ListenerXForwardedForPtrOutput {
 	return o
+}
+
+func (o ListenerXForwardedForPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ListenerXForwardedFor] {
+	return pulumix.Output[*ListenerXForwardedFor]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListenerXForwardedForPtrOutput) Elem() ListenerXForwardedForOutput {
@@ -456,6 +529,12 @@ func (i MasterSlaveServerGroupServerArgs) ToMasterSlaveServerGroupServerOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(MasterSlaveServerGroupServerOutput)
 }
 
+func (i MasterSlaveServerGroupServerArgs) ToOutput(ctx context.Context) pulumix.Output[MasterSlaveServerGroupServer] {
+	return pulumix.Output[MasterSlaveServerGroupServer]{
+		OutputState: i.ToMasterSlaveServerGroupServerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MasterSlaveServerGroupServerArrayInput is an input type that accepts MasterSlaveServerGroupServerArray and MasterSlaveServerGroupServerArrayOutput values.
 // You can construct a concrete instance of `MasterSlaveServerGroupServerArrayInput` via:
 //
@@ -481,6 +560,12 @@ func (i MasterSlaveServerGroupServerArray) ToMasterSlaveServerGroupServerArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(MasterSlaveServerGroupServerArrayOutput)
 }
 
+func (i MasterSlaveServerGroupServerArray) ToOutput(ctx context.Context) pulumix.Output[[]MasterSlaveServerGroupServer] {
+	return pulumix.Output[[]MasterSlaveServerGroupServer]{
+		OutputState: i.ToMasterSlaveServerGroupServerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MasterSlaveServerGroupServerOutput struct{ *pulumi.OutputState }
 
 func (MasterSlaveServerGroupServerOutput) ElementType() reflect.Type {
@@ -493,6 +578,12 @@ func (o MasterSlaveServerGroupServerOutput) ToMasterSlaveServerGroupServerOutput
 
 func (o MasterSlaveServerGroupServerOutput) ToMasterSlaveServerGroupServerOutputWithContext(ctx context.Context) MasterSlaveServerGroupServerOutput {
 	return o
+}
+
+func (o MasterSlaveServerGroupServerOutput) ToOutput(ctx context.Context) pulumix.Output[MasterSlaveServerGroupServer] {
+	return pulumix.Output[MasterSlaveServerGroupServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MasterSlaveServerGroupServerOutput) IsBackup() pulumi.IntPtrOutput {
@@ -531,6 +622,12 @@ func (o MasterSlaveServerGroupServerArrayOutput) ToMasterSlaveServerGroupServerA
 
 func (o MasterSlaveServerGroupServerArrayOutput) ToMasterSlaveServerGroupServerArrayOutputWithContext(ctx context.Context) MasterSlaveServerGroupServerArrayOutput {
 	return o
+}
+
+func (o MasterSlaveServerGroupServerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MasterSlaveServerGroupServer] {
+	return pulumix.Output[[]MasterSlaveServerGroupServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MasterSlaveServerGroupServerArrayOutput) Index(i pulumi.IntInput) MasterSlaveServerGroupServerOutput {
@@ -576,6 +673,12 @@ func (i ServerGroupServerArgs) ToServerGroupServerOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupServerOutput)
 }
 
+func (i ServerGroupServerArgs) ToOutput(ctx context.Context) pulumix.Output[ServerGroupServer] {
+	return pulumix.Output[ServerGroupServer]{
+		OutputState: i.ToServerGroupServerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServerGroupServerArrayInput is an input type that accepts ServerGroupServerArray and ServerGroupServerArrayOutput values.
 // You can construct a concrete instance of `ServerGroupServerArrayInput` via:
 //
@@ -601,6 +704,12 @@ func (i ServerGroupServerArray) ToServerGroupServerArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupServerArrayOutput)
 }
 
+func (i ServerGroupServerArray) ToOutput(ctx context.Context) pulumix.Output[[]ServerGroupServer] {
+	return pulumix.Output[[]ServerGroupServer]{
+		OutputState: i.ToServerGroupServerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServerGroupServerOutput struct{ *pulumi.OutputState }
 
 func (ServerGroupServerOutput) ElementType() reflect.Type {
@@ -613,6 +722,12 @@ func (o ServerGroupServerOutput) ToServerGroupServerOutput() ServerGroupServerOu
 
 func (o ServerGroupServerOutput) ToServerGroupServerOutputWithContext(ctx context.Context) ServerGroupServerOutput {
 	return o
+}
+
+func (o ServerGroupServerOutput) ToOutput(ctx context.Context) pulumix.Output[ServerGroupServer] {
+	return pulumix.Output[ServerGroupServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServerGroupServerOutput) Port() pulumi.IntOutput {
@@ -643,6 +758,12 @@ func (o ServerGroupServerArrayOutput) ToServerGroupServerArrayOutput() ServerGro
 
 func (o ServerGroupServerArrayOutput) ToServerGroupServerArrayOutputWithContext(ctx context.Context) ServerGroupServerArrayOutput {
 	return o
+}
+
+func (o ServerGroupServerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServerGroupServer] {
+	return pulumix.Output[[]ServerGroupServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServerGroupServerArrayOutput) Index(i pulumi.IntInput) ServerGroupServerOutput {
@@ -706,6 +827,12 @@ func (i GetAclsAclArgs) ToGetAclsAclOutputWithContext(ctx context.Context) GetAc
 	return pulumi.ToOutputWithContext(ctx, i).(GetAclsAclOutput)
 }
 
+func (i GetAclsAclArgs) ToOutput(ctx context.Context) pulumix.Output[GetAclsAcl] {
+	return pulumix.Output[GetAclsAcl]{
+		OutputState: i.ToGetAclsAclOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAclsAclArrayInput is an input type that accepts GetAclsAclArray and GetAclsAclArrayOutput values.
 // You can construct a concrete instance of `GetAclsAclArrayInput` via:
 //
@@ -731,6 +858,12 @@ func (i GetAclsAclArray) ToGetAclsAclArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GetAclsAclArrayOutput)
 }
 
+func (i GetAclsAclArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAclsAcl] {
+	return pulumix.Output[[]GetAclsAcl]{
+		OutputState: i.ToGetAclsAclArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAclsAclOutput struct{ *pulumi.OutputState }
 
 func (GetAclsAclOutput) ElementType() reflect.Type {
@@ -743,6 +876,12 @@ func (o GetAclsAclOutput) ToGetAclsAclOutput() GetAclsAclOutput {
 
 func (o GetAclsAclOutput) ToGetAclsAclOutputWithContext(ctx context.Context) GetAclsAclOutput {
 	return o
+}
+
+func (o GetAclsAclOutput) ToOutput(ctx context.Context) pulumix.Output[GetAclsAcl] {
+	return pulumix.Output[GetAclsAcl]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of entry (IP addresses or CIDR blocks).  Each entry contains two sub-fields as `Entry Block` follows.
@@ -793,6 +932,12 @@ func (o GetAclsAclArrayOutput) ToGetAclsAclArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o GetAclsAclArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAclsAcl] {
+	return pulumix.Output[[]GetAclsAcl]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetAclsAclArrayOutput) Index(i pulumi.IntInput) GetAclsAclOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclsAcl {
 		return vs[0].([]GetAclsAcl)[vs[1].(int)]
@@ -832,6 +977,12 @@ func (i GetAclsAclEntryListArgs) ToGetAclsAclEntryListOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetAclsAclEntryListOutput)
 }
 
+func (i GetAclsAclEntryListArgs) ToOutput(ctx context.Context) pulumix.Output[GetAclsAclEntryList] {
+	return pulumix.Output[GetAclsAclEntryList]{
+		OutputState: i.ToGetAclsAclEntryListOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAclsAclEntryListArrayInput is an input type that accepts GetAclsAclEntryListArray and GetAclsAclEntryListArrayOutput values.
 // You can construct a concrete instance of `GetAclsAclEntryListArrayInput` via:
 //
@@ -857,6 +1008,12 @@ func (i GetAclsAclEntryListArray) ToGetAclsAclEntryListArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetAclsAclEntryListArrayOutput)
 }
 
+func (i GetAclsAclEntryListArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAclsAclEntryList] {
+	return pulumix.Output[[]GetAclsAclEntryList]{
+		OutputState: i.ToGetAclsAclEntryListArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAclsAclEntryListOutput struct{ *pulumi.OutputState }
 
 func (GetAclsAclEntryListOutput) ElementType() reflect.Type {
@@ -869,6 +1026,12 @@ func (o GetAclsAclEntryListOutput) ToGetAclsAclEntryListOutput() GetAclsAclEntry
 
 func (o GetAclsAclEntryListOutput) ToGetAclsAclEntryListOutputWithContext(ctx context.Context) GetAclsAclEntryListOutput {
 	return o
+}
+
+func (o GetAclsAclEntryListOutput) ToOutput(ctx context.Context) pulumix.Output[GetAclsAclEntryList] {
+	return pulumix.Output[GetAclsAclEntryList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAclsAclEntryListOutput) Comment() pulumi.StringOutput {
@@ -891,6 +1054,12 @@ func (o GetAclsAclEntryListArrayOutput) ToGetAclsAclEntryListArrayOutput() GetAc
 
 func (o GetAclsAclEntryListArrayOutput) ToGetAclsAclEntryListArrayOutputWithContext(ctx context.Context) GetAclsAclEntryListArrayOutput {
 	return o
+}
+
+func (o GetAclsAclEntryListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAclsAclEntryList] {
+	return pulumix.Output[[]GetAclsAclEntryList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAclsAclEntryListArrayOutput) Index(i pulumi.IntInput) GetAclsAclEntryListOutput {
@@ -936,6 +1105,12 @@ func (i GetAclsAclRelatedListenerArgs) ToGetAclsAclRelatedListenerOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetAclsAclRelatedListenerOutput)
 }
 
+func (i GetAclsAclRelatedListenerArgs) ToOutput(ctx context.Context) pulumix.Output[GetAclsAclRelatedListener] {
+	return pulumix.Output[GetAclsAclRelatedListener]{
+		OutputState: i.ToGetAclsAclRelatedListenerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAclsAclRelatedListenerArrayInput is an input type that accepts GetAclsAclRelatedListenerArray and GetAclsAclRelatedListenerArrayOutput values.
 // You can construct a concrete instance of `GetAclsAclRelatedListenerArrayInput` via:
 //
@@ -961,6 +1136,12 @@ func (i GetAclsAclRelatedListenerArray) ToGetAclsAclRelatedListenerArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetAclsAclRelatedListenerArrayOutput)
 }
 
+func (i GetAclsAclRelatedListenerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAclsAclRelatedListener] {
+	return pulumix.Output[[]GetAclsAclRelatedListener]{
+		OutputState: i.ToGetAclsAclRelatedListenerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAclsAclRelatedListenerOutput struct{ *pulumi.OutputState }
 
 func (GetAclsAclRelatedListenerOutput) ElementType() reflect.Type {
@@ -973,6 +1154,12 @@ func (o GetAclsAclRelatedListenerOutput) ToGetAclsAclRelatedListenerOutput() Get
 
 func (o GetAclsAclRelatedListenerOutput) ToGetAclsAclRelatedListenerOutputWithContext(ctx context.Context) GetAclsAclRelatedListenerOutput {
 	return o
+}
+
+func (o GetAclsAclRelatedListenerOutput) ToOutput(ctx context.Context) pulumix.Output[GetAclsAclRelatedListener] {
+	return pulumix.Output[GetAclsAclRelatedListener]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAclsAclRelatedListenerOutput) AclType() pulumi.StringOutput {
@@ -1003,6 +1190,12 @@ func (o GetAclsAclRelatedListenerArrayOutput) ToGetAclsAclRelatedListenerArrayOu
 
 func (o GetAclsAclRelatedListenerArrayOutput) ToGetAclsAclRelatedListenerArrayOutputWithContext(ctx context.Context) GetAclsAclRelatedListenerArrayOutput {
 	return o
+}
+
+func (o GetAclsAclRelatedListenerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAclsAclRelatedListener] {
+	return pulumix.Output[[]GetAclsAclRelatedListener]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAclsAclRelatedListenerArrayOutput) Index(i pulumi.IntInput) GetAclsAclRelatedListenerOutput {
@@ -1168,6 +1361,12 @@ func (i GetApplicationLoadBalancersBalancerArgs) ToGetApplicationLoadBalancersBa
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancersBalancerOutput)
 }
 
+func (i GetApplicationLoadBalancersBalancerArgs) ToOutput(ctx context.Context) pulumix.Output[GetApplicationLoadBalancersBalancer] {
+	return pulumix.Output[GetApplicationLoadBalancersBalancer]{
+		OutputState: i.ToGetApplicationLoadBalancersBalancerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetApplicationLoadBalancersBalancerArrayInput is an input type that accepts GetApplicationLoadBalancersBalancerArray and GetApplicationLoadBalancersBalancerArrayOutput values.
 // You can construct a concrete instance of `GetApplicationLoadBalancersBalancerArrayInput` via:
 //
@@ -1193,6 +1392,12 @@ func (i GetApplicationLoadBalancersBalancerArray) ToGetApplicationLoadBalancersB
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancersBalancerArrayOutput)
 }
 
+func (i GetApplicationLoadBalancersBalancerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationLoadBalancersBalancer] {
+	return pulumix.Output[[]GetApplicationLoadBalancersBalancer]{
+		OutputState: i.ToGetApplicationLoadBalancersBalancerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetApplicationLoadBalancersBalancerOutput struct{ *pulumi.OutputState }
 
 func (GetApplicationLoadBalancersBalancerOutput) ElementType() reflect.Type {
@@ -1205,6 +1410,12 @@ func (o GetApplicationLoadBalancersBalancerOutput) ToGetApplicationLoadBalancers
 
 func (o GetApplicationLoadBalancersBalancerOutput) ToGetApplicationLoadBalancersBalancerOutputWithContext(ctx context.Context) GetApplicationLoadBalancersBalancerOutput {
 	return o
+}
+
+func (o GetApplicationLoadBalancersBalancerOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationLoadBalancersBalancer] {
+	return pulumix.Output[GetApplicationLoadBalancersBalancer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Service address of the SLBs.
@@ -1387,6 +1598,12 @@ func (o GetApplicationLoadBalancersBalancerArrayOutput) ToGetApplicationLoadBala
 	return o
 }
 
+func (o GetApplicationLoadBalancersBalancerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationLoadBalancersBalancer] {
+	return pulumix.Output[[]GetApplicationLoadBalancersBalancer]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetApplicationLoadBalancersBalancerArrayOutput) Index(i pulumi.IntInput) GetApplicationLoadBalancersBalancerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationLoadBalancersBalancer {
 		return vs[0].([]GetApplicationLoadBalancersBalancer)[vs[1].(int)]
@@ -1438,6 +1655,12 @@ func (i GetApplicationLoadBalancersBalancerBackendServerArgs) ToGetApplicationLo
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancersBalancerBackendServerOutput)
 }
 
+func (i GetApplicationLoadBalancersBalancerBackendServerArgs) ToOutput(ctx context.Context) pulumix.Output[GetApplicationLoadBalancersBalancerBackendServer] {
+	return pulumix.Output[GetApplicationLoadBalancersBalancerBackendServer]{
+		OutputState: i.ToGetApplicationLoadBalancersBalancerBackendServerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetApplicationLoadBalancersBalancerBackendServerArrayInput is an input type that accepts GetApplicationLoadBalancersBalancerBackendServerArray and GetApplicationLoadBalancersBalancerBackendServerArrayOutput values.
 // You can construct a concrete instance of `GetApplicationLoadBalancersBalancerBackendServerArrayInput` via:
 //
@@ -1463,6 +1686,12 @@ func (i GetApplicationLoadBalancersBalancerBackendServerArray) ToGetApplicationL
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancersBalancerBackendServerArrayOutput)
 }
 
+func (i GetApplicationLoadBalancersBalancerBackendServerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationLoadBalancersBalancerBackendServer] {
+	return pulumix.Output[[]GetApplicationLoadBalancersBalancerBackendServer]{
+		OutputState: i.ToGetApplicationLoadBalancersBalancerBackendServerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetApplicationLoadBalancersBalancerBackendServerOutput struct{ *pulumi.OutputState }
 
 func (GetApplicationLoadBalancersBalancerBackendServerOutput) ElementType() reflect.Type {
@@ -1475,6 +1704,12 @@ func (o GetApplicationLoadBalancersBalancerBackendServerOutput) ToGetApplication
 
 func (o GetApplicationLoadBalancersBalancerBackendServerOutput) ToGetApplicationLoadBalancersBalancerBackendServerOutputWithContext(ctx context.Context) GetApplicationLoadBalancersBalancerBackendServerOutput {
 	return o
+}
+
+func (o GetApplicationLoadBalancersBalancerBackendServerOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationLoadBalancersBalancerBackendServer] {
+	return pulumix.Output[GetApplicationLoadBalancersBalancerBackendServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of protocol.
@@ -1509,6 +1744,12 @@ func (o GetApplicationLoadBalancersBalancerBackendServerArrayOutput) ToGetApplic
 
 func (o GetApplicationLoadBalancersBalancerBackendServerArrayOutput) ToGetApplicationLoadBalancersBalancerBackendServerArrayOutputWithContext(ctx context.Context) GetApplicationLoadBalancersBalancerBackendServerArrayOutput {
 	return o
+}
+
+func (o GetApplicationLoadBalancersBalancerBackendServerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationLoadBalancersBalancerBackendServer] {
+	return pulumix.Output[[]GetApplicationLoadBalancersBalancerBackendServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetApplicationLoadBalancersBalancerBackendServerArrayOutput) Index(i pulumi.IntInput) GetApplicationLoadBalancersBalancerBackendServerOutput {
@@ -1554,6 +1795,12 @@ func (i GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArgs) ToGetAp
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancersBalancerListenerPortsAndProtocalOutput)
 }
 
+func (i GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArgs) ToOutput(ctx context.Context) pulumix.Output[GetApplicationLoadBalancersBalancerListenerPortsAndProtocal] {
+	return pulumix.Output[GetApplicationLoadBalancersBalancerListenerPortsAndProtocal]{
+		OutputState: i.ToGetApplicationLoadBalancersBalancerListenerPortsAndProtocalOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArrayInput is an input type that accepts GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArray and GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArrayOutput values.
 // You can construct a concrete instance of `GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArrayInput` via:
 //
@@ -1579,6 +1826,12 @@ func (i GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArray) ToGetA
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArrayOutput)
 }
 
+func (i GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArray) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationLoadBalancersBalancerListenerPortsAndProtocal] {
+	return pulumix.Output[[]GetApplicationLoadBalancersBalancerListenerPortsAndProtocal]{
+		OutputState: i.ToGetApplicationLoadBalancersBalancerListenerPortsAndProtocalArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetApplicationLoadBalancersBalancerListenerPortsAndProtocalOutput struct{ *pulumi.OutputState }
 
 func (GetApplicationLoadBalancersBalancerListenerPortsAndProtocalOutput) ElementType() reflect.Type {
@@ -1591,6 +1844,12 @@ func (o GetApplicationLoadBalancersBalancerListenerPortsAndProtocalOutput) ToGet
 
 func (o GetApplicationLoadBalancersBalancerListenerPortsAndProtocalOutput) ToGetApplicationLoadBalancersBalancerListenerPortsAndProtocalOutputWithContext(ctx context.Context) GetApplicationLoadBalancersBalancerListenerPortsAndProtocalOutput {
 	return o
+}
+
+func (o GetApplicationLoadBalancersBalancerListenerPortsAndProtocalOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationLoadBalancersBalancerListenerPortsAndProtocal] {
+	return pulumix.Output[GetApplicationLoadBalancersBalancerListenerPortsAndProtocal]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The listener port.
@@ -1615,6 +1874,12 @@ func (o GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArrayOutput) 
 
 func (o GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArrayOutput) ToGetApplicationLoadBalancersBalancerListenerPortsAndProtocalArrayOutputWithContext(ctx context.Context) GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArrayOutput {
 	return o
+}
+
+func (o GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationLoadBalancersBalancerListenerPortsAndProtocal] {
+	return pulumix.Output[[]GetApplicationLoadBalancersBalancerListenerPortsAndProtocal]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArrayOutput) Index(i pulumi.IntInput) GetApplicationLoadBalancersBalancerListenerPortsAndProtocalOutput {
@@ -1672,6 +1937,12 @@ func (i GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArgs) ToGetAp
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancersBalancerListenerPortsAndProtocolOutput)
 }
 
+func (i GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArgs) ToOutput(ctx context.Context) pulumix.Output[GetApplicationLoadBalancersBalancerListenerPortsAndProtocol] {
+	return pulumix.Output[GetApplicationLoadBalancersBalancerListenerPortsAndProtocol]{
+		OutputState: i.ToGetApplicationLoadBalancersBalancerListenerPortsAndProtocolOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArrayInput is an input type that accepts GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArray and GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArrayOutput values.
 // You can construct a concrete instance of `GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArrayInput` via:
 //
@@ -1697,6 +1968,12 @@ func (i GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArray) ToGetA
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArrayOutput)
 }
 
+func (i GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArray) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationLoadBalancersBalancerListenerPortsAndProtocol] {
+	return pulumix.Output[[]GetApplicationLoadBalancersBalancerListenerPortsAndProtocol]{
+		OutputState: i.ToGetApplicationLoadBalancersBalancerListenerPortsAndProtocolArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetApplicationLoadBalancersBalancerListenerPortsAndProtocolOutput struct{ *pulumi.OutputState }
 
 func (GetApplicationLoadBalancersBalancerListenerPortsAndProtocolOutput) ElementType() reflect.Type {
@@ -1709,6 +1986,12 @@ func (o GetApplicationLoadBalancersBalancerListenerPortsAndProtocolOutput) ToGet
 
 func (o GetApplicationLoadBalancersBalancerListenerPortsAndProtocolOutput) ToGetApplicationLoadBalancersBalancerListenerPortsAndProtocolOutputWithContext(ctx context.Context) GetApplicationLoadBalancersBalancerListenerPortsAndProtocolOutput {
 	return o
+}
+
+func (o GetApplicationLoadBalancersBalancerListenerPortsAndProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationLoadBalancersBalancerListenerPortsAndProtocol] {
+	return pulumix.Output[GetApplicationLoadBalancersBalancerListenerPortsAndProtocol]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of protocol.
@@ -1748,6 +2031,12 @@ func (o GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArrayOutput) 
 
 func (o GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArrayOutput) ToGetApplicationLoadBalancersBalancerListenerPortsAndProtocolArrayOutputWithContext(ctx context.Context) GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArrayOutput {
 	return o
+}
+
+func (o GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationLoadBalancersBalancerListenerPortsAndProtocol] {
+	return pulumix.Output[[]GetApplicationLoadBalancersBalancerListenerPortsAndProtocol]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArrayOutput) Index(i pulumi.IntInput) GetApplicationLoadBalancersBalancerListenerPortsAndProtocolOutput {
@@ -1825,6 +2114,12 @@ func (i GetApplicationLoadBalancersSlbArgs) ToGetApplicationLoadBalancersSlbOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancersSlbOutput)
 }
 
+func (i GetApplicationLoadBalancersSlbArgs) ToOutput(ctx context.Context) pulumix.Output[GetApplicationLoadBalancersSlb] {
+	return pulumix.Output[GetApplicationLoadBalancersSlb]{
+		OutputState: i.ToGetApplicationLoadBalancersSlbOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetApplicationLoadBalancersSlbArrayInput is an input type that accepts GetApplicationLoadBalancersSlbArray and GetApplicationLoadBalancersSlbArrayOutput values.
 // You can construct a concrete instance of `GetApplicationLoadBalancersSlbArrayInput` via:
 //
@@ -1850,6 +2145,12 @@ func (i GetApplicationLoadBalancersSlbArray) ToGetApplicationLoadBalancersSlbArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancersSlbArrayOutput)
 }
 
+func (i GetApplicationLoadBalancersSlbArray) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationLoadBalancersSlb] {
+	return pulumix.Output[[]GetApplicationLoadBalancersSlb]{
+		OutputState: i.ToGetApplicationLoadBalancersSlbArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetApplicationLoadBalancersSlbOutput struct{ *pulumi.OutputState }
 
 func (GetApplicationLoadBalancersSlbOutput) ElementType() reflect.Type {
@@ -1862,6 +2163,12 @@ func (o GetApplicationLoadBalancersSlbOutput) ToGetApplicationLoadBalancersSlbOu
 
 func (o GetApplicationLoadBalancersSlbOutput) ToGetApplicationLoadBalancersSlbOutputWithContext(ctx context.Context) GetApplicationLoadBalancersSlbOutput {
 	return o
+}
+
+func (o GetApplicationLoadBalancersSlbOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationLoadBalancersSlb] {
+	return pulumix.Output[GetApplicationLoadBalancersSlb]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Service address of the SLBs.
@@ -1937,6 +2244,12 @@ func (o GetApplicationLoadBalancersSlbArrayOutput) ToGetApplicationLoadBalancers
 	return o
 }
 
+func (o GetApplicationLoadBalancersSlbArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationLoadBalancersSlb] {
+	return pulumix.Output[[]GetApplicationLoadBalancersSlb]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetApplicationLoadBalancersSlbArrayOutput) Index(i pulumi.IntInput) GetApplicationLoadBalancersSlbOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationLoadBalancersSlb {
 		return vs[0].([]GetApplicationLoadBalancersSlb)[vs[1].(int)]
@@ -1980,6 +2293,12 @@ func (i GetAttachmentsSlbAttachmentArgs) ToGetAttachmentsSlbAttachmentOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetAttachmentsSlbAttachmentOutput)
 }
 
+func (i GetAttachmentsSlbAttachmentArgs) ToOutput(ctx context.Context) pulumix.Output[GetAttachmentsSlbAttachment] {
+	return pulumix.Output[GetAttachmentsSlbAttachment]{
+		OutputState: i.ToGetAttachmentsSlbAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAttachmentsSlbAttachmentArrayInput is an input type that accepts GetAttachmentsSlbAttachmentArray and GetAttachmentsSlbAttachmentArrayOutput values.
 // You can construct a concrete instance of `GetAttachmentsSlbAttachmentArrayInput` via:
 //
@@ -2005,6 +2324,12 @@ func (i GetAttachmentsSlbAttachmentArray) ToGetAttachmentsSlbAttachmentArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetAttachmentsSlbAttachmentArrayOutput)
 }
 
+func (i GetAttachmentsSlbAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAttachmentsSlbAttachment] {
+	return pulumix.Output[[]GetAttachmentsSlbAttachment]{
+		OutputState: i.ToGetAttachmentsSlbAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAttachmentsSlbAttachmentOutput struct{ *pulumi.OutputState }
 
 func (GetAttachmentsSlbAttachmentOutput) ElementType() reflect.Type {
@@ -2017,6 +2342,12 @@ func (o GetAttachmentsSlbAttachmentOutput) ToGetAttachmentsSlbAttachmentOutput()
 
 func (o GetAttachmentsSlbAttachmentOutput) ToGetAttachmentsSlbAttachmentOutputWithContext(ctx context.Context) GetAttachmentsSlbAttachmentOutput {
 	return o
+}
+
+func (o GetAttachmentsSlbAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[GetAttachmentsSlbAttachment] {
+	return pulumix.Output[GetAttachmentsSlbAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID of the attached ECS instance.
@@ -2041,6 +2372,12 @@ func (o GetAttachmentsSlbAttachmentArrayOutput) ToGetAttachmentsSlbAttachmentArr
 
 func (o GetAttachmentsSlbAttachmentArrayOutput) ToGetAttachmentsSlbAttachmentArrayOutputWithContext(ctx context.Context) GetAttachmentsSlbAttachmentArrayOutput {
 	return o
+}
+
+func (o GetAttachmentsSlbAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAttachmentsSlbAttachment] {
+	return pulumix.Output[[]GetAttachmentsSlbAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAttachmentsSlbAttachmentArrayOutput) Index(i pulumi.IntInput) GetAttachmentsSlbAttachmentOutput {
@@ -2090,6 +2427,12 @@ func (i GetBackendServersBackendServerArgs) ToGetBackendServersBackendServerOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServersBackendServerOutput)
 }
 
+func (i GetBackendServersBackendServerArgs) ToOutput(ctx context.Context) pulumix.Output[GetBackendServersBackendServer] {
+	return pulumix.Output[GetBackendServersBackendServer]{
+		OutputState: i.ToGetBackendServersBackendServerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetBackendServersBackendServerArrayInput is an input type that accepts GetBackendServersBackendServerArray and GetBackendServersBackendServerArrayOutput values.
 // You can construct a concrete instance of `GetBackendServersBackendServerArrayInput` via:
 //
@@ -2115,6 +2458,12 @@ func (i GetBackendServersBackendServerArray) ToGetBackendServersBackendServerArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServersBackendServerArrayOutput)
 }
 
+func (i GetBackendServersBackendServerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetBackendServersBackendServer] {
+	return pulumix.Output[[]GetBackendServersBackendServer]{
+		OutputState: i.ToGetBackendServersBackendServerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetBackendServersBackendServerOutput struct{ *pulumi.OutputState }
 
 func (GetBackendServersBackendServerOutput) ElementType() reflect.Type {
@@ -2127,6 +2476,12 @@ func (o GetBackendServersBackendServerOutput) ToGetBackendServersBackendServerOu
 
 func (o GetBackendServersBackendServerOutput) ToGetBackendServersBackendServerOutputWithContext(ctx context.Context) GetBackendServersBackendServerOutput {
 	return o
+}
+
+func (o GetBackendServersBackendServerOutput) ToOutput(ctx context.Context) pulumix.Output[GetBackendServersBackendServer] {
+	return pulumix.Output[GetBackendServersBackendServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // backend server ID.
@@ -2156,6 +2511,12 @@ func (o GetBackendServersBackendServerArrayOutput) ToGetBackendServersBackendSer
 
 func (o GetBackendServersBackendServerArrayOutput) ToGetBackendServersBackendServerArrayOutputWithContext(ctx context.Context) GetBackendServersBackendServerArrayOutput {
 	return o
+}
+
+func (o GetBackendServersBackendServerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetBackendServersBackendServer] {
+	return pulumix.Output[[]GetBackendServersBackendServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetBackendServersBackendServerArrayOutput) Index(i pulumi.IntInput) GetBackendServersBackendServerOutput {
@@ -2237,6 +2598,12 @@ func (i GetCaCertificatesCertificateArgs) ToGetCaCertificatesCertificateOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetCaCertificatesCertificateOutput)
 }
 
+func (i GetCaCertificatesCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[GetCaCertificatesCertificate] {
+	return pulumix.Output[GetCaCertificatesCertificate]{
+		OutputState: i.ToGetCaCertificatesCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetCaCertificatesCertificateArrayInput is an input type that accepts GetCaCertificatesCertificateArray and GetCaCertificatesCertificateArrayOutput values.
 // You can construct a concrete instance of `GetCaCertificatesCertificateArrayInput` via:
 //
@@ -2262,6 +2629,12 @@ func (i GetCaCertificatesCertificateArray) ToGetCaCertificatesCertificateArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetCaCertificatesCertificateArrayOutput)
 }
 
+func (i GetCaCertificatesCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCaCertificatesCertificate] {
+	return pulumix.Output[[]GetCaCertificatesCertificate]{
+		OutputState: i.ToGetCaCertificatesCertificateArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetCaCertificatesCertificateOutput struct{ *pulumi.OutputState }
 
 func (GetCaCertificatesCertificateOutput) ElementType() reflect.Type {
@@ -2274,6 +2647,12 @@ func (o GetCaCertificatesCertificateOutput) ToGetCaCertificatesCertificateOutput
 
 func (o GetCaCertificatesCertificateOutput) ToGetCaCertificatesCertificateOutputWithContext(ctx context.Context) GetCaCertificatesCertificateOutput {
 	return o
+}
+
+func (o GetCaCertificatesCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[GetCaCertificatesCertificate] {
+	return pulumix.Output[GetCaCertificatesCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Available in v1.123.1+) CA certificate ID.
@@ -2345,6 +2724,12 @@ func (o GetCaCertificatesCertificateArrayOutput) ToGetCaCertificatesCertificateA
 	return o
 }
 
+func (o GetCaCertificatesCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCaCertificatesCertificate] {
+	return pulumix.Output[[]GetCaCertificatesCertificate]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetCaCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) GetCaCertificatesCertificateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCaCertificatesCertificate {
 		return vs[0].([]GetCaCertificatesCertificate)[vs[1].(int)]
@@ -2392,6 +2777,12 @@ func (i GetDomainExtensionsExtensionArgs) ToGetDomainExtensionsExtensionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainExtensionsExtensionOutput)
 }
 
+func (i GetDomainExtensionsExtensionArgs) ToOutput(ctx context.Context) pulumix.Output[GetDomainExtensionsExtension] {
+	return pulumix.Output[GetDomainExtensionsExtension]{
+		OutputState: i.ToGetDomainExtensionsExtensionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDomainExtensionsExtensionArrayInput is an input type that accepts GetDomainExtensionsExtensionArray and GetDomainExtensionsExtensionArrayOutput values.
 // You can construct a concrete instance of `GetDomainExtensionsExtensionArrayInput` via:
 //
@@ -2417,6 +2808,12 @@ func (i GetDomainExtensionsExtensionArray) ToGetDomainExtensionsExtensionArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainExtensionsExtensionArrayOutput)
 }
 
+func (i GetDomainExtensionsExtensionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainExtensionsExtension] {
+	return pulumix.Output[[]GetDomainExtensionsExtension]{
+		OutputState: i.ToGetDomainExtensionsExtensionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDomainExtensionsExtensionOutput struct{ *pulumi.OutputState }
 
 func (GetDomainExtensionsExtensionOutput) ElementType() reflect.Type {
@@ -2429,6 +2826,12 @@ func (o GetDomainExtensionsExtensionOutput) ToGetDomainExtensionsExtensionOutput
 
 func (o GetDomainExtensionsExtensionOutput) ToGetDomainExtensionsExtensionOutputWithContext(ctx context.Context) GetDomainExtensionsExtensionOutput {
 	return o
+}
+
+func (o GetDomainExtensionsExtensionOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainExtensionsExtension] {
+	return pulumix.Output[GetDomainExtensionsExtension]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The domain name.
@@ -2458,6 +2861,12 @@ func (o GetDomainExtensionsExtensionArrayOutput) ToGetDomainExtensionsExtensionA
 
 func (o GetDomainExtensionsExtensionArrayOutput) ToGetDomainExtensionsExtensionArrayOutputWithContext(ctx context.Context) GetDomainExtensionsExtensionArrayOutput {
 	return o
+}
+
+func (o GetDomainExtensionsExtensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainExtensionsExtension] {
+	return pulumix.Output[[]GetDomainExtensionsExtension]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDomainExtensionsExtensionArrayOutput) Index(i pulumi.IntInput) GetDomainExtensionsExtensionOutput {
@@ -2653,6 +3062,12 @@ func (i GetListenersSlbListenerArgs) ToGetListenersSlbListenerOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetListenersSlbListenerOutput)
 }
 
+func (i GetListenersSlbListenerArgs) ToOutput(ctx context.Context) pulumix.Output[GetListenersSlbListener] {
+	return pulumix.Output[GetListenersSlbListener]{
+		OutputState: i.ToGetListenersSlbListenerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetListenersSlbListenerArrayInput is an input type that accepts GetListenersSlbListenerArray and GetListenersSlbListenerArrayOutput values.
 // You can construct a concrete instance of `GetListenersSlbListenerArrayInput` via:
 //
@@ -2678,6 +3093,12 @@ func (i GetListenersSlbListenerArray) ToGetListenersSlbListenerArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetListenersSlbListenerArrayOutput)
 }
 
+func (i GetListenersSlbListenerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetListenersSlbListener] {
+	return pulumix.Output[[]GetListenersSlbListener]{
+		OutputState: i.ToGetListenersSlbListenerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetListenersSlbListenerOutput struct{ *pulumi.OutputState }
 
 func (GetListenersSlbListenerOutput) ElementType() reflect.Type {
@@ -2690,6 +3111,12 @@ func (o GetListenersSlbListenerOutput) ToGetListenersSlbListenerOutput() GetList
 
 func (o GetListenersSlbListenerOutput) ToGetListenersSlbListenerOutputWithContext(ctx context.Context) GetListenersSlbListenerOutput {
 	return o
+}
+
+func (o GetListenersSlbListenerOutput) ToOutput(ctx context.Context) pulumix.Output[GetListenersSlbListener] {
+	return pulumix.Output[GetListenersSlbListener]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Port opened on the backend server to receive requests.
@@ -2905,6 +3332,12 @@ func (o GetListenersSlbListenerArrayOutput) ToGetListenersSlbListenerArrayOutput
 	return o
 }
 
+func (o GetListenersSlbListenerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetListenersSlbListener] {
+	return pulumix.Output[[]GetListenersSlbListener]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetListenersSlbListenerArrayOutput) Index(i pulumi.IntInput) GetListenersSlbListenerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetListenersSlbListener {
 		return vs[0].([]GetListenersSlbListener)[vs[1].(int)]
@@ -3066,6 +3499,12 @@ func (i GetLoadBalancersBalancerArgs) ToGetLoadBalancersBalancerOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersBalancerOutput)
 }
 
+func (i GetLoadBalancersBalancerArgs) ToOutput(ctx context.Context) pulumix.Output[GetLoadBalancersBalancer] {
+	return pulumix.Output[GetLoadBalancersBalancer]{
+		OutputState: i.ToGetLoadBalancersBalancerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetLoadBalancersBalancerArrayInput is an input type that accepts GetLoadBalancersBalancerArray and GetLoadBalancersBalancerArrayOutput values.
 // You can construct a concrete instance of `GetLoadBalancersBalancerArrayInput` via:
 //
@@ -3091,6 +3530,12 @@ func (i GetLoadBalancersBalancerArray) ToGetLoadBalancersBalancerArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersBalancerArrayOutput)
 }
 
+func (i GetLoadBalancersBalancerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetLoadBalancersBalancer] {
+	return pulumix.Output[[]GetLoadBalancersBalancer]{
+		OutputState: i.ToGetLoadBalancersBalancerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetLoadBalancersBalancerOutput struct{ *pulumi.OutputState }
 
 func (GetLoadBalancersBalancerOutput) ElementType() reflect.Type {
@@ -3103,6 +3548,12 @@ func (o GetLoadBalancersBalancerOutput) ToGetLoadBalancersBalancerOutput() GetLo
 
 func (o GetLoadBalancersBalancerOutput) ToGetLoadBalancersBalancerOutputWithContext(ctx context.Context) GetLoadBalancersBalancerOutput {
 	return o
+}
+
+func (o GetLoadBalancersBalancerOutput) ToOutput(ctx context.Context) pulumix.Output[GetLoadBalancersBalancer] {
+	return pulumix.Output[GetLoadBalancersBalancer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Service address of the SLBs.
@@ -3285,6 +3736,12 @@ func (o GetLoadBalancersBalancerArrayOutput) ToGetLoadBalancersBalancerArrayOutp
 	return o
 }
 
+func (o GetLoadBalancersBalancerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetLoadBalancersBalancer] {
+	return pulumix.Output[[]GetLoadBalancersBalancer]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetLoadBalancersBalancerArrayOutput) Index(i pulumi.IntInput) GetLoadBalancersBalancerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancersBalancer {
 		return vs[0].([]GetLoadBalancersBalancer)[vs[1].(int)]
@@ -3328,6 +3785,12 @@ func (i GetLoadBalancersBalancerBackendServerArgs) ToGetLoadBalancersBalancerBac
 	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersBalancerBackendServerOutput)
 }
 
+func (i GetLoadBalancersBalancerBackendServerArgs) ToOutput(ctx context.Context) pulumix.Output[GetLoadBalancersBalancerBackendServer] {
+	return pulumix.Output[GetLoadBalancersBalancerBackendServer]{
+		OutputState: i.ToGetLoadBalancersBalancerBackendServerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetLoadBalancersBalancerBackendServerArrayInput is an input type that accepts GetLoadBalancersBalancerBackendServerArray and GetLoadBalancersBalancerBackendServerArrayOutput values.
 // You can construct a concrete instance of `GetLoadBalancersBalancerBackendServerArrayInput` via:
 //
@@ -3353,6 +3816,12 @@ func (i GetLoadBalancersBalancerBackendServerArray) ToGetLoadBalancersBalancerBa
 	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersBalancerBackendServerArrayOutput)
 }
 
+func (i GetLoadBalancersBalancerBackendServerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetLoadBalancersBalancerBackendServer] {
+	return pulumix.Output[[]GetLoadBalancersBalancerBackendServer]{
+		OutputState: i.ToGetLoadBalancersBalancerBackendServerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetLoadBalancersBalancerBackendServerOutput struct{ *pulumi.OutputState }
 
 func (GetLoadBalancersBalancerBackendServerOutput) ElementType() reflect.Type {
@@ -3365,6 +3834,12 @@ func (o GetLoadBalancersBalancerBackendServerOutput) ToGetLoadBalancersBalancerB
 
 func (o GetLoadBalancersBalancerBackendServerOutput) ToGetLoadBalancersBalancerBackendServerOutputWithContext(ctx context.Context) GetLoadBalancersBalancerBackendServerOutput {
 	return o
+}
+
+func (o GetLoadBalancersBalancerBackendServerOutput) ToOutput(ctx context.Context) pulumix.Output[GetLoadBalancersBalancerBackendServer] {
+	return pulumix.Output[GetLoadBalancersBalancerBackendServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetLoadBalancersBalancerBackendServerOutput) Description() pulumi.StringOutput {
@@ -3395,6 +3870,12 @@ func (o GetLoadBalancersBalancerBackendServerArrayOutput) ToGetLoadBalancersBala
 
 func (o GetLoadBalancersBalancerBackendServerArrayOutput) ToGetLoadBalancersBalancerBackendServerArrayOutputWithContext(ctx context.Context) GetLoadBalancersBalancerBackendServerArrayOutput {
 	return o
+}
+
+func (o GetLoadBalancersBalancerBackendServerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetLoadBalancersBalancerBackendServer] {
+	return pulumix.Output[[]GetLoadBalancersBalancerBackendServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetLoadBalancersBalancerBackendServerArrayOutput) Index(i pulumi.IntInput) GetLoadBalancersBalancerBackendServerOutput {
@@ -3436,6 +3917,12 @@ func (i GetLoadBalancersBalancerListenerPortsAndProtocalArgs) ToGetLoadBalancers
 	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersBalancerListenerPortsAndProtocalOutput)
 }
 
+func (i GetLoadBalancersBalancerListenerPortsAndProtocalArgs) ToOutput(ctx context.Context) pulumix.Output[GetLoadBalancersBalancerListenerPortsAndProtocal] {
+	return pulumix.Output[GetLoadBalancersBalancerListenerPortsAndProtocal]{
+		OutputState: i.ToGetLoadBalancersBalancerListenerPortsAndProtocalOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetLoadBalancersBalancerListenerPortsAndProtocalArrayInput is an input type that accepts GetLoadBalancersBalancerListenerPortsAndProtocalArray and GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput values.
 // You can construct a concrete instance of `GetLoadBalancersBalancerListenerPortsAndProtocalArrayInput` via:
 //
@@ -3461,6 +3948,12 @@ func (i GetLoadBalancersBalancerListenerPortsAndProtocalArray) ToGetLoadBalancer
 	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput)
 }
 
+func (i GetLoadBalancersBalancerListenerPortsAndProtocalArray) ToOutput(ctx context.Context) pulumix.Output[[]GetLoadBalancersBalancerListenerPortsAndProtocal] {
+	return pulumix.Output[[]GetLoadBalancersBalancerListenerPortsAndProtocal]{
+		OutputState: i.ToGetLoadBalancersBalancerListenerPortsAndProtocalArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetLoadBalancersBalancerListenerPortsAndProtocalOutput struct{ *pulumi.OutputState }
 
 func (GetLoadBalancersBalancerListenerPortsAndProtocalOutput) ElementType() reflect.Type {
@@ -3473,6 +3966,12 @@ func (o GetLoadBalancersBalancerListenerPortsAndProtocalOutput) ToGetLoadBalance
 
 func (o GetLoadBalancersBalancerListenerPortsAndProtocalOutput) ToGetLoadBalancersBalancerListenerPortsAndProtocalOutputWithContext(ctx context.Context) GetLoadBalancersBalancerListenerPortsAndProtocalOutput {
 	return o
+}
+
+func (o GetLoadBalancersBalancerListenerPortsAndProtocalOutput) ToOutput(ctx context.Context) pulumix.Output[GetLoadBalancersBalancerListenerPortsAndProtocal] {
+	return pulumix.Output[GetLoadBalancersBalancerListenerPortsAndProtocal]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetLoadBalancersBalancerListenerPortsAndProtocalOutput) ListenerPort() pulumi.IntOutput {
@@ -3495,6 +3994,12 @@ func (o GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput) ToGetLoadBa
 
 func (o GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput) ToGetLoadBalancersBalancerListenerPortsAndProtocalArrayOutputWithContext(ctx context.Context) GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput {
 	return o
+}
+
+func (o GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetLoadBalancersBalancerListenerPortsAndProtocal] {
+	return pulumix.Output[[]GetLoadBalancersBalancerListenerPortsAndProtocal]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput) Index(i pulumi.IntInput) GetLoadBalancersBalancerListenerPortsAndProtocalOutput {
@@ -3542,6 +4047,12 @@ func (i GetLoadBalancersBalancerListenerPortsAndProtocolArgs) ToGetLoadBalancers
 	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersBalancerListenerPortsAndProtocolOutput)
 }
 
+func (i GetLoadBalancersBalancerListenerPortsAndProtocolArgs) ToOutput(ctx context.Context) pulumix.Output[GetLoadBalancersBalancerListenerPortsAndProtocol] {
+	return pulumix.Output[GetLoadBalancersBalancerListenerPortsAndProtocol]{
+		OutputState: i.ToGetLoadBalancersBalancerListenerPortsAndProtocolOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetLoadBalancersBalancerListenerPortsAndProtocolArrayInput is an input type that accepts GetLoadBalancersBalancerListenerPortsAndProtocolArray and GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput values.
 // You can construct a concrete instance of `GetLoadBalancersBalancerListenerPortsAndProtocolArrayInput` via:
 //
@@ -3567,6 +4078,12 @@ func (i GetLoadBalancersBalancerListenerPortsAndProtocolArray) ToGetLoadBalancer
 	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput)
 }
 
+func (i GetLoadBalancersBalancerListenerPortsAndProtocolArray) ToOutput(ctx context.Context) pulumix.Output[[]GetLoadBalancersBalancerListenerPortsAndProtocol] {
+	return pulumix.Output[[]GetLoadBalancersBalancerListenerPortsAndProtocol]{
+		OutputState: i.ToGetLoadBalancersBalancerListenerPortsAndProtocolArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetLoadBalancersBalancerListenerPortsAndProtocolOutput struct{ *pulumi.OutputState }
 
 func (GetLoadBalancersBalancerListenerPortsAndProtocolOutput) ElementType() reflect.Type {
@@ -3579,6 +4096,12 @@ func (o GetLoadBalancersBalancerListenerPortsAndProtocolOutput) ToGetLoadBalance
 
 func (o GetLoadBalancersBalancerListenerPortsAndProtocolOutput) ToGetLoadBalancersBalancerListenerPortsAndProtocolOutputWithContext(ctx context.Context) GetLoadBalancersBalancerListenerPortsAndProtocolOutput {
 	return o
+}
+
+func (o GetLoadBalancersBalancerListenerPortsAndProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[GetLoadBalancersBalancerListenerPortsAndProtocol] {
+	return pulumix.Output[GetLoadBalancersBalancerListenerPortsAndProtocol]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetLoadBalancersBalancerListenerPortsAndProtocolOutput) Description() pulumi.StringOutput {
@@ -3613,6 +4136,12 @@ func (o GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput) ToGetLoadBa
 
 func (o GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput) ToGetLoadBalancersBalancerListenerPortsAndProtocolArrayOutputWithContext(ctx context.Context) GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput {
 	return o
+}
+
+func (o GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetLoadBalancersBalancerListenerPortsAndProtocol] {
+	return pulumix.Output[[]GetLoadBalancersBalancerListenerPortsAndProtocol]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput) Index(i pulumi.IntInput) GetLoadBalancersBalancerListenerPortsAndProtocolOutput {
@@ -3748,6 +4277,12 @@ func (i GetLoadBalancersSlbArgs) ToGetLoadBalancersSlbOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersSlbOutput)
 }
 
+func (i GetLoadBalancersSlbArgs) ToOutput(ctx context.Context) pulumix.Output[GetLoadBalancersSlb] {
+	return pulumix.Output[GetLoadBalancersSlb]{
+		OutputState: i.ToGetLoadBalancersSlbOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetLoadBalancersSlbArrayInput is an input type that accepts GetLoadBalancersSlbArray and GetLoadBalancersSlbArrayOutput values.
 // You can construct a concrete instance of `GetLoadBalancersSlbArrayInput` via:
 //
@@ -3773,6 +4308,12 @@ func (i GetLoadBalancersSlbArray) ToGetLoadBalancersSlbArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersSlbArrayOutput)
 }
 
+func (i GetLoadBalancersSlbArray) ToOutput(ctx context.Context) pulumix.Output[[]GetLoadBalancersSlb] {
+	return pulumix.Output[[]GetLoadBalancersSlb]{
+		OutputState: i.ToGetLoadBalancersSlbArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetLoadBalancersSlbOutput struct{ *pulumi.OutputState }
 
 func (GetLoadBalancersSlbOutput) ElementType() reflect.Type {
@@ -3785,6 +4326,12 @@ func (o GetLoadBalancersSlbOutput) ToGetLoadBalancersSlbOutput() GetLoadBalancer
 
 func (o GetLoadBalancersSlbOutput) ToGetLoadBalancersSlbOutputWithContext(ctx context.Context) GetLoadBalancersSlbOutput {
 	return o
+}
+
+func (o GetLoadBalancersSlbOutput) ToOutput(ctx context.Context) pulumix.Output[GetLoadBalancersSlb] {
+	return pulumix.Output[GetLoadBalancersSlb]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Service address of the SLBs.
@@ -3892,6 +4439,12 @@ func (o GetLoadBalancersSlbArrayOutput) ToGetLoadBalancersSlbArrayOutputWithCont
 	return o
 }
 
+func (o GetLoadBalancersSlbArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetLoadBalancersSlb] {
+	return pulumix.Output[[]GetLoadBalancersSlb]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetLoadBalancersSlbArrayOutput) Index(i pulumi.IntInput) GetLoadBalancersSlbOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancersSlb {
 		return vs[0].([]GetLoadBalancersSlb)[vs[1].(int)]
@@ -3939,6 +4492,12 @@ func (i GetMasterSlaveServerGroupsGroupArgs) ToGetMasterSlaveServerGroupsGroupOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetMasterSlaveServerGroupsGroupOutput)
 }
 
+func (i GetMasterSlaveServerGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetMasterSlaveServerGroupsGroup] {
+	return pulumix.Output[GetMasterSlaveServerGroupsGroup]{
+		OutputState: i.ToGetMasterSlaveServerGroupsGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetMasterSlaveServerGroupsGroupArrayInput is an input type that accepts GetMasterSlaveServerGroupsGroupArray and GetMasterSlaveServerGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetMasterSlaveServerGroupsGroupArrayInput` via:
 //
@@ -3964,6 +4523,12 @@ func (i GetMasterSlaveServerGroupsGroupArray) ToGetMasterSlaveServerGroupsGroupA
 	return pulumi.ToOutputWithContext(ctx, i).(GetMasterSlaveServerGroupsGroupArrayOutput)
 }
 
+func (i GetMasterSlaveServerGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMasterSlaveServerGroupsGroup] {
+	return pulumix.Output[[]GetMasterSlaveServerGroupsGroup]{
+		OutputState: i.ToGetMasterSlaveServerGroupsGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetMasterSlaveServerGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetMasterSlaveServerGroupsGroupOutput) ElementType() reflect.Type {
@@ -3976,6 +4541,12 @@ func (o GetMasterSlaveServerGroupsGroupOutput) ToGetMasterSlaveServerGroupsGroup
 
 func (o GetMasterSlaveServerGroupsGroupOutput) ToGetMasterSlaveServerGroupsGroupOutputWithContext(ctx context.Context) GetMasterSlaveServerGroupsGroupOutput {
 	return o
+}
+
+func (o GetMasterSlaveServerGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetMasterSlaveServerGroupsGroup] {
+	return pulumix.Output[GetMasterSlaveServerGroupsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // master slave server group ID.
@@ -4005,6 +4576,12 @@ func (o GetMasterSlaveServerGroupsGroupArrayOutput) ToGetMasterSlaveServerGroups
 
 func (o GetMasterSlaveServerGroupsGroupArrayOutput) ToGetMasterSlaveServerGroupsGroupArrayOutputWithContext(ctx context.Context) GetMasterSlaveServerGroupsGroupArrayOutput {
 	return o
+}
+
+func (o GetMasterSlaveServerGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMasterSlaveServerGroupsGroup] {
+	return pulumix.Output[[]GetMasterSlaveServerGroupsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMasterSlaveServerGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetMasterSlaveServerGroupsGroupOutput {
@@ -4062,6 +4639,12 @@ func (i GetMasterSlaveServerGroupsGroupServerArgs) ToGetMasterSlaveServerGroupsG
 	return pulumi.ToOutputWithContext(ctx, i).(GetMasterSlaveServerGroupsGroupServerOutput)
 }
 
+func (i GetMasterSlaveServerGroupsGroupServerArgs) ToOutput(ctx context.Context) pulumix.Output[GetMasterSlaveServerGroupsGroupServer] {
+	return pulumix.Output[GetMasterSlaveServerGroupsGroupServer]{
+		OutputState: i.ToGetMasterSlaveServerGroupsGroupServerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetMasterSlaveServerGroupsGroupServerArrayInput is an input type that accepts GetMasterSlaveServerGroupsGroupServerArray and GetMasterSlaveServerGroupsGroupServerArrayOutput values.
 // You can construct a concrete instance of `GetMasterSlaveServerGroupsGroupServerArrayInput` via:
 //
@@ -4087,6 +4670,12 @@ func (i GetMasterSlaveServerGroupsGroupServerArray) ToGetMasterSlaveServerGroups
 	return pulumi.ToOutputWithContext(ctx, i).(GetMasterSlaveServerGroupsGroupServerArrayOutput)
 }
 
+func (i GetMasterSlaveServerGroupsGroupServerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMasterSlaveServerGroupsGroupServer] {
+	return pulumix.Output[[]GetMasterSlaveServerGroupsGroupServer]{
+		OutputState: i.ToGetMasterSlaveServerGroupsGroupServerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetMasterSlaveServerGroupsGroupServerOutput struct{ *pulumi.OutputState }
 
 func (GetMasterSlaveServerGroupsGroupServerOutput) ElementType() reflect.Type {
@@ -4099,6 +4688,12 @@ func (o GetMasterSlaveServerGroupsGroupServerOutput) ToGetMasterSlaveServerGroup
 
 func (o GetMasterSlaveServerGroupsGroupServerOutput) ToGetMasterSlaveServerGroupsGroupServerOutputWithContext(ctx context.Context) GetMasterSlaveServerGroupsGroupServerOutput {
 	return o
+}
+
+func (o GetMasterSlaveServerGroupsGroupServerOutput) ToOutput(ctx context.Context) pulumix.Output[GetMasterSlaveServerGroupsGroupServer] {
+	return pulumix.Output[GetMasterSlaveServerGroupsGroupServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID of the attached ECS instance.
@@ -4138,6 +4733,12 @@ func (o GetMasterSlaveServerGroupsGroupServerArrayOutput) ToGetMasterSlaveServer
 
 func (o GetMasterSlaveServerGroupsGroupServerArrayOutput) ToGetMasterSlaveServerGroupsGroupServerArrayOutputWithContext(ctx context.Context) GetMasterSlaveServerGroupsGroupServerArrayOutput {
 	return o
+}
+
+func (o GetMasterSlaveServerGroupsGroupServerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMasterSlaveServerGroupsGroupServer] {
+	return pulumix.Output[[]GetMasterSlaveServerGroupsGroupServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMasterSlaveServerGroupsGroupServerArrayOutput) Index(i pulumi.IntInput) GetMasterSlaveServerGroupsGroupServerOutput {
@@ -4195,6 +4796,12 @@ func (i GetRulesSlbRuleArgs) ToGetRulesSlbRuleOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesSlbRuleOutput)
 }
 
+func (i GetRulesSlbRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetRulesSlbRule] {
+	return pulumix.Output[GetRulesSlbRule]{
+		OutputState: i.ToGetRulesSlbRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRulesSlbRuleArrayInput is an input type that accepts GetRulesSlbRuleArray and GetRulesSlbRuleArrayOutput values.
 // You can construct a concrete instance of `GetRulesSlbRuleArrayInput` via:
 //
@@ -4220,6 +4827,12 @@ func (i GetRulesSlbRuleArray) ToGetRulesSlbRuleArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesSlbRuleArrayOutput)
 }
 
+func (i GetRulesSlbRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesSlbRule] {
+	return pulumix.Output[[]GetRulesSlbRule]{
+		OutputState: i.ToGetRulesSlbRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRulesSlbRuleOutput struct{ *pulumi.OutputState }
 
 func (GetRulesSlbRuleOutput) ElementType() reflect.Type {
@@ -4232,6 +4845,12 @@ func (o GetRulesSlbRuleOutput) ToGetRulesSlbRuleOutput() GetRulesSlbRuleOutput {
 
 func (o GetRulesSlbRuleOutput) ToGetRulesSlbRuleOutputWithContext(ctx context.Context) GetRulesSlbRuleOutput {
 	return o
+}
+
+func (o GetRulesSlbRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetRulesSlbRule] {
+	return pulumix.Output[GetRulesSlbRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Domain name in the HTTP request where the rule applies (e.g. "*.aliyun.com").
@@ -4271,6 +4890,12 @@ func (o GetRulesSlbRuleArrayOutput) ToGetRulesSlbRuleArrayOutput() GetRulesSlbRu
 
 func (o GetRulesSlbRuleArrayOutput) ToGetRulesSlbRuleArrayOutputWithContext(ctx context.Context) GetRulesSlbRuleArrayOutput {
 	return o
+}
+
+func (o GetRulesSlbRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesSlbRule] {
+	return pulumix.Output[[]GetRulesSlbRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRulesSlbRuleArrayOutput) Index(i pulumi.IntInput) GetRulesSlbRuleOutput {
@@ -4364,6 +4989,12 @@ func (i GetServerCertificatesCertificateArgs) ToGetServerCertificatesCertificate
 	return pulumi.ToOutputWithContext(ctx, i).(GetServerCertificatesCertificateOutput)
 }
 
+func (i GetServerCertificatesCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[GetServerCertificatesCertificate] {
+	return pulumix.Output[GetServerCertificatesCertificate]{
+		OutputState: i.ToGetServerCertificatesCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetServerCertificatesCertificateArrayInput is an input type that accepts GetServerCertificatesCertificateArray and GetServerCertificatesCertificateArrayOutput values.
 // You can construct a concrete instance of `GetServerCertificatesCertificateArrayInput` via:
 //
@@ -4389,6 +5020,12 @@ func (i GetServerCertificatesCertificateArray) ToGetServerCertificatesCertificat
 	return pulumi.ToOutputWithContext(ctx, i).(GetServerCertificatesCertificateArrayOutput)
 }
 
+func (i GetServerCertificatesCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServerCertificatesCertificate] {
+	return pulumix.Output[[]GetServerCertificatesCertificate]{
+		OutputState: i.ToGetServerCertificatesCertificateArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetServerCertificatesCertificateOutput struct{ *pulumi.OutputState }
 
 func (GetServerCertificatesCertificateOutput) ElementType() reflect.Type {
@@ -4401,6 +5038,12 @@ func (o GetServerCertificatesCertificateOutput) ToGetServerCertificatesCertifica
 
 func (o GetServerCertificatesCertificateOutput) ToGetServerCertificatesCertificateOutputWithContext(ctx context.Context) GetServerCertificatesCertificateOutput {
 	return o
+}
+
+func (o GetServerCertificatesCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[GetServerCertificatesCertificate] {
+	return pulumix.Output[GetServerCertificatesCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Id of server certificate issued by alibaba cloud.
@@ -4487,6 +5130,12 @@ func (o GetServerCertificatesCertificateArrayOutput) ToGetServerCertificatesCert
 	return o
 }
 
+func (o GetServerCertificatesCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServerCertificatesCertificate] {
+	return pulumix.Output[[]GetServerCertificatesCertificate]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetServerCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) GetServerCertificatesCertificateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerCertificatesCertificate {
 		return vs[0].([]GetServerCertificatesCertificate)[vs[1].(int)]
@@ -4534,6 +5183,12 @@ func (i GetServerGroupsSlbServerGroupArgs) ToGetServerGroupsSlbServerGroupOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetServerGroupsSlbServerGroupOutput)
 }
 
+func (i GetServerGroupsSlbServerGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetServerGroupsSlbServerGroup] {
+	return pulumix.Output[GetServerGroupsSlbServerGroup]{
+		OutputState: i.ToGetServerGroupsSlbServerGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetServerGroupsSlbServerGroupArrayInput is an input type that accepts GetServerGroupsSlbServerGroupArray and GetServerGroupsSlbServerGroupArrayOutput values.
 // You can construct a concrete instance of `GetServerGroupsSlbServerGroupArrayInput` via:
 //
@@ -4559,6 +5214,12 @@ func (i GetServerGroupsSlbServerGroupArray) ToGetServerGroupsSlbServerGroupArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetServerGroupsSlbServerGroupArrayOutput)
 }
 
+func (i GetServerGroupsSlbServerGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServerGroupsSlbServerGroup] {
+	return pulumix.Output[[]GetServerGroupsSlbServerGroup]{
+		OutputState: i.ToGetServerGroupsSlbServerGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetServerGroupsSlbServerGroupOutput struct{ *pulumi.OutputState }
 
 func (GetServerGroupsSlbServerGroupOutput) ElementType() reflect.Type {
@@ -4571,6 +5232,12 @@ func (o GetServerGroupsSlbServerGroupOutput) ToGetServerGroupsSlbServerGroupOutp
 
 func (o GetServerGroupsSlbServerGroupOutput) ToGetServerGroupsSlbServerGroupOutputWithContext(ctx context.Context) GetServerGroupsSlbServerGroupOutput {
 	return o
+}
+
+func (o GetServerGroupsSlbServerGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetServerGroupsSlbServerGroup] {
+	return pulumix.Output[GetServerGroupsSlbServerGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // VServer group ID.
@@ -4600,6 +5267,12 @@ func (o GetServerGroupsSlbServerGroupArrayOutput) ToGetServerGroupsSlbServerGrou
 
 func (o GetServerGroupsSlbServerGroupArrayOutput) ToGetServerGroupsSlbServerGroupArrayOutputWithContext(ctx context.Context) GetServerGroupsSlbServerGroupArrayOutput {
 	return o
+}
+
+func (o GetServerGroupsSlbServerGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServerGroupsSlbServerGroup] {
+	return pulumix.Output[[]GetServerGroupsSlbServerGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetServerGroupsSlbServerGroupArrayOutput) Index(i pulumi.IntInput) GetServerGroupsSlbServerGroupOutput {
@@ -4645,6 +5318,12 @@ func (i GetServerGroupsSlbServerGroupServerArgs) ToGetServerGroupsSlbServerGroup
 	return pulumi.ToOutputWithContext(ctx, i).(GetServerGroupsSlbServerGroupServerOutput)
 }
 
+func (i GetServerGroupsSlbServerGroupServerArgs) ToOutput(ctx context.Context) pulumix.Output[GetServerGroupsSlbServerGroupServer] {
+	return pulumix.Output[GetServerGroupsSlbServerGroupServer]{
+		OutputState: i.ToGetServerGroupsSlbServerGroupServerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetServerGroupsSlbServerGroupServerArrayInput is an input type that accepts GetServerGroupsSlbServerGroupServerArray and GetServerGroupsSlbServerGroupServerArrayOutput values.
 // You can construct a concrete instance of `GetServerGroupsSlbServerGroupServerArrayInput` via:
 //
@@ -4670,6 +5349,12 @@ func (i GetServerGroupsSlbServerGroupServerArray) ToGetServerGroupsSlbServerGrou
 	return pulumi.ToOutputWithContext(ctx, i).(GetServerGroupsSlbServerGroupServerArrayOutput)
 }
 
+func (i GetServerGroupsSlbServerGroupServerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServerGroupsSlbServerGroupServer] {
+	return pulumix.Output[[]GetServerGroupsSlbServerGroupServer]{
+		OutputState: i.ToGetServerGroupsSlbServerGroupServerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetServerGroupsSlbServerGroupServerOutput struct{ *pulumi.OutputState }
 
 func (GetServerGroupsSlbServerGroupServerOutput) ElementType() reflect.Type {
@@ -4682,6 +5367,12 @@ func (o GetServerGroupsSlbServerGroupServerOutput) ToGetServerGroupsSlbServerGro
 
 func (o GetServerGroupsSlbServerGroupServerOutput) ToGetServerGroupsSlbServerGroupServerOutputWithContext(ctx context.Context) GetServerGroupsSlbServerGroupServerOutput {
 	return o
+}
+
+func (o GetServerGroupsSlbServerGroupServerOutput) ToOutput(ctx context.Context) pulumix.Output[GetServerGroupsSlbServerGroupServer] {
+	return pulumix.Output[GetServerGroupsSlbServerGroupServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID of the attached ECS instance.
@@ -4706,6 +5397,12 @@ func (o GetServerGroupsSlbServerGroupServerArrayOutput) ToGetServerGroupsSlbServ
 
 func (o GetServerGroupsSlbServerGroupServerArrayOutput) ToGetServerGroupsSlbServerGroupServerArrayOutputWithContext(ctx context.Context) GetServerGroupsSlbServerGroupServerArrayOutput {
 	return o
+}
+
+func (o GetServerGroupsSlbServerGroupServerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServerGroupsSlbServerGroupServer] {
+	return pulumix.Output[[]GetServerGroupsSlbServerGroupServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetServerGroupsSlbServerGroupServerArrayOutput) Index(i pulumi.IntInput) GetServerGroupsSlbServerGroupServerOutput {
@@ -4775,6 +5472,12 @@ func (i GetTlsCipherPoliciesPolicyArgs) ToGetTlsCipherPoliciesPolicyOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetTlsCipherPoliciesPolicyOutput)
 }
 
+func (i GetTlsCipherPoliciesPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GetTlsCipherPoliciesPolicy] {
+	return pulumix.Output[GetTlsCipherPoliciesPolicy]{
+		OutputState: i.ToGetTlsCipherPoliciesPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTlsCipherPoliciesPolicyArrayInput is an input type that accepts GetTlsCipherPoliciesPolicyArray and GetTlsCipherPoliciesPolicyArrayOutput values.
 // You can construct a concrete instance of `GetTlsCipherPoliciesPolicyArrayInput` via:
 //
@@ -4800,6 +5503,12 @@ func (i GetTlsCipherPoliciesPolicyArray) ToGetTlsCipherPoliciesPolicyArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetTlsCipherPoliciesPolicyArrayOutput)
 }
 
+func (i GetTlsCipherPoliciesPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTlsCipherPoliciesPolicy] {
+	return pulumix.Output[[]GetTlsCipherPoliciesPolicy]{
+		OutputState: i.ToGetTlsCipherPoliciesPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTlsCipherPoliciesPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetTlsCipherPoliciesPolicyOutput) ElementType() reflect.Type {
@@ -4812,6 +5521,12 @@ func (o GetTlsCipherPoliciesPolicyOutput) ToGetTlsCipherPoliciesPolicyOutput() G
 
 func (o GetTlsCipherPoliciesPolicyOutput) ToGetTlsCipherPoliciesPolicyOutputWithContext(ctx context.Context) GetTlsCipherPoliciesPolicyOutput {
 	return o
+}
+
+func (o GetTlsCipherPoliciesPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GetTlsCipherPoliciesPolicy] {
+	return pulumix.Output[GetTlsCipherPoliciesPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The encryption algorithms supported. It depends on the value of `tlsVersions`.
@@ -4870,6 +5585,12 @@ func (o GetTlsCipherPoliciesPolicyArrayOutput) ToGetTlsCipherPoliciesPolicyArray
 	return o
 }
 
+func (o GetTlsCipherPoliciesPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTlsCipherPoliciesPolicy] {
+	return pulumix.Output[[]GetTlsCipherPoliciesPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetTlsCipherPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetTlsCipherPoliciesPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTlsCipherPoliciesPolicy {
 		return vs[0].([]GetTlsCipherPoliciesPolicy)[vs[1].(int)]
@@ -4917,6 +5638,12 @@ func (i GetTlsCipherPoliciesPolicyRelateListenerArgs) ToGetTlsCipherPoliciesPoli
 	return pulumi.ToOutputWithContext(ctx, i).(GetTlsCipherPoliciesPolicyRelateListenerOutput)
 }
 
+func (i GetTlsCipherPoliciesPolicyRelateListenerArgs) ToOutput(ctx context.Context) pulumix.Output[GetTlsCipherPoliciesPolicyRelateListener] {
+	return pulumix.Output[GetTlsCipherPoliciesPolicyRelateListener]{
+		OutputState: i.ToGetTlsCipherPoliciesPolicyRelateListenerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTlsCipherPoliciesPolicyRelateListenerArrayInput is an input type that accepts GetTlsCipherPoliciesPolicyRelateListenerArray and GetTlsCipherPoliciesPolicyRelateListenerArrayOutput values.
 // You can construct a concrete instance of `GetTlsCipherPoliciesPolicyRelateListenerArrayInput` via:
 //
@@ -4942,6 +5669,12 @@ func (i GetTlsCipherPoliciesPolicyRelateListenerArray) ToGetTlsCipherPoliciesPol
 	return pulumi.ToOutputWithContext(ctx, i).(GetTlsCipherPoliciesPolicyRelateListenerArrayOutput)
 }
 
+func (i GetTlsCipherPoliciesPolicyRelateListenerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTlsCipherPoliciesPolicyRelateListener] {
+	return pulumix.Output[[]GetTlsCipherPoliciesPolicyRelateListener]{
+		OutputState: i.ToGetTlsCipherPoliciesPolicyRelateListenerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTlsCipherPoliciesPolicyRelateListenerOutput struct{ *pulumi.OutputState }
 
 func (GetTlsCipherPoliciesPolicyRelateListenerOutput) ElementType() reflect.Type {
@@ -4954,6 +5687,12 @@ func (o GetTlsCipherPoliciesPolicyRelateListenerOutput) ToGetTlsCipherPoliciesPo
 
 func (o GetTlsCipherPoliciesPolicyRelateListenerOutput) ToGetTlsCipherPoliciesPolicyRelateListenerOutputWithContext(ctx context.Context) GetTlsCipherPoliciesPolicyRelateListenerOutput {
 	return o
+}
+
+func (o GetTlsCipherPoliciesPolicyRelateListenerOutput) ToOutput(ctx context.Context) pulumix.Output[GetTlsCipherPoliciesPolicyRelateListener] {
+	return pulumix.Output[GetTlsCipherPoliciesPolicyRelateListener]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of SLB instance.
@@ -4983,6 +5722,12 @@ func (o GetTlsCipherPoliciesPolicyRelateListenerArrayOutput) ToGetTlsCipherPolic
 
 func (o GetTlsCipherPoliciesPolicyRelateListenerArrayOutput) ToGetTlsCipherPoliciesPolicyRelateListenerArrayOutputWithContext(ctx context.Context) GetTlsCipherPoliciesPolicyRelateListenerArrayOutput {
 	return o
+}
+
+func (o GetTlsCipherPoliciesPolicyRelateListenerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTlsCipherPoliciesPolicyRelateListener] {
+	return pulumix.Output[[]GetTlsCipherPoliciesPolicyRelateListener]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTlsCipherPoliciesPolicyRelateListenerArrayOutput) Index(i pulumi.IntInput) GetTlsCipherPoliciesPolicyRelateListenerOutput {
@@ -5046,6 +5791,12 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneOutput)
 }
 
+func (i GetZonesZoneArgs) ToOutput(ctx context.Context) pulumix.Output[GetZonesZone] {
+	return pulumix.Output[GetZonesZone]{
+		OutputState: i.ToGetZonesZoneOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
@@ -5071,6 +5822,12 @@ func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
 }
 
+func (i GetZonesZoneArray) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZone] {
+	return pulumix.Output[[]GetZonesZone]{
+		OutputState: i.ToGetZonesZoneArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneOutput) ElementType() reflect.Type {
@@ -5083,6 +5840,12 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutput() GetZonesZoneOutput {
 
 func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
 	return o
+}
+
+func (o GetZonesZoneOutput) ToOutput(ctx context.Context) pulumix.Output[GetZonesZone] {
+	return pulumix.Output[GetZonesZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID of the zone. It is same as `masterZoneId`.
@@ -5125,6 +5888,12 @@ func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOu
 
 func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
 	return o
+}
+
+func (o GetZonesZoneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZone] {
+	return pulumix.Output[[]GetZonesZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
@@ -5170,6 +5939,12 @@ func (i GetZonesZoneSupportedResourceArgs) ToGetZonesZoneSupportedResourceOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneSupportedResourceOutput)
 }
 
+func (i GetZonesZoneSupportedResourceArgs) ToOutput(ctx context.Context) pulumix.Output[GetZonesZoneSupportedResource] {
+	return pulumix.Output[GetZonesZoneSupportedResource]{
+		OutputState: i.ToGetZonesZoneSupportedResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetZonesZoneSupportedResourceArrayInput is an input type that accepts GetZonesZoneSupportedResourceArray and GetZonesZoneSupportedResourceArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneSupportedResourceArrayInput` via:
 //
@@ -5195,6 +5970,12 @@ func (i GetZonesZoneSupportedResourceArray) ToGetZonesZoneSupportedResourceArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneSupportedResourceArrayOutput)
 }
 
+func (i GetZonesZoneSupportedResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZoneSupportedResource] {
+	return pulumix.Output[[]GetZonesZoneSupportedResource]{
+		OutputState: i.ToGetZonesZoneSupportedResourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetZonesZoneSupportedResourceOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneSupportedResourceOutput) ElementType() reflect.Type {
@@ -5207,6 +5988,12 @@ func (o GetZonesZoneSupportedResourceOutput) ToGetZonesZoneSupportedResourceOutp
 
 func (o GetZonesZoneSupportedResourceOutput) ToGetZonesZoneSupportedResourceOutputWithContext(ctx context.Context) GetZonesZoneSupportedResourceOutput {
 	return o
+}
+
+func (o GetZonesZoneSupportedResourceOutput) ToOutput(ctx context.Context) pulumix.Output[GetZonesZoneSupportedResource] {
+	return pulumix.Output[GetZonesZoneSupportedResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of IP address.
@@ -5231,6 +6018,12 @@ func (o GetZonesZoneSupportedResourceArrayOutput) ToGetZonesZoneSupportedResourc
 
 func (o GetZonesZoneSupportedResourceArrayOutput) ToGetZonesZoneSupportedResourceArrayOutputWithContext(ctx context.Context) GetZonesZoneSupportedResourceArrayOutput {
 	return o
+}
+
+func (o GetZonesZoneSupportedResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZoneSupportedResource] {
+	return pulumix.Output[[]GetZonesZoneSupportedResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetZonesZoneSupportedResourceArrayOutput) Index(i pulumi.IntInput) GetZonesZoneSupportedResourceOutput {

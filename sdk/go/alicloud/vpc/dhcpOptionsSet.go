@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPC Dhcp Options Set resource. DHCP option set.
@@ -273,6 +274,12 @@ func (i *DhcpOptionsSet) ToDhcpOptionsSetOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(DhcpOptionsSetOutput)
 }
 
+func (i *DhcpOptionsSet) ToOutput(ctx context.Context) pulumix.Output[*DhcpOptionsSet] {
+	return pulumix.Output[*DhcpOptionsSet]{
+		OutputState: i.ToDhcpOptionsSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DhcpOptionsSetArrayInput is an input type that accepts DhcpOptionsSetArray and DhcpOptionsSetArrayOutput values.
 // You can construct a concrete instance of `DhcpOptionsSetArrayInput` via:
 //
@@ -296,6 +303,12 @@ func (i DhcpOptionsSetArray) ToDhcpOptionsSetArrayOutput() DhcpOptionsSetArrayOu
 
 func (i DhcpOptionsSetArray) ToDhcpOptionsSetArrayOutputWithContext(ctx context.Context) DhcpOptionsSetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DhcpOptionsSetArrayOutput)
+}
+
+func (i DhcpOptionsSetArray) ToOutput(ctx context.Context) pulumix.Output[[]*DhcpOptionsSet] {
+	return pulumix.Output[[]*DhcpOptionsSet]{
+		OutputState: i.ToDhcpOptionsSetArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DhcpOptionsSetMapInput is an input type that accepts DhcpOptionsSetMap and DhcpOptionsSetMapOutput values.
@@ -323,6 +336,12 @@ func (i DhcpOptionsSetMap) ToDhcpOptionsSetMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DhcpOptionsSetMapOutput)
 }
 
+func (i DhcpOptionsSetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DhcpOptionsSet] {
+	return pulumix.Output[map[string]*DhcpOptionsSet]{
+		OutputState: i.ToDhcpOptionsSetMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DhcpOptionsSetOutput struct{ *pulumi.OutputState }
 
 func (DhcpOptionsSetOutput) ElementType() reflect.Type {
@@ -335,6 +354,12 @@ func (o DhcpOptionsSetOutput) ToDhcpOptionsSetOutput() DhcpOptionsSetOutput {
 
 func (o DhcpOptionsSetOutput) ToDhcpOptionsSetOutputWithContext(ctx context.Context) DhcpOptionsSetOutput {
 	return o
+}
+
+func (o DhcpOptionsSetOutput) ToOutput(ctx context.Context) pulumix.Output[*DhcpOptionsSet] {
+	return pulumix.Output[*DhcpOptionsSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associateVpcs` below.
@@ -415,6 +440,12 @@ func (o DhcpOptionsSetArrayOutput) ToDhcpOptionsSetArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o DhcpOptionsSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DhcpOptionsSet] {
+	return pulumix.Output[[]*DhcpOptionsSet]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DhcpOptionsSetArrayOutput) Index(i pulumi.IntInput) DhcpOptionsSetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DhcpOptionsSet {
 		return vs[0].([]*DhcpOptionsSet)[vs[1].(int)]
@@ -433,6 +464,12 @@ func (o DhcpOptionsSetMapOutput) ToDhcpOptionsSetMapOutput() DhcpOptionsSetMapOu
 
 func (o DhcpOptionsSetMapOutput) ToDhcpOptionsSetMapOutputWithContext(ctx context.Context) DhcpOptionsSetMapOutput {
 	return o
+}
+
+func (o DhcpOptionsSetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DhcpOptionsSet] {
+	return pulumix.Output[map[string]*DhcpOptionsSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DhcpOptionsSetMapOutput) MapIndex(k pulumi.StringInput) DhcpOptionsSetOutput {

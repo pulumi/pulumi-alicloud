@@ -48,16 +48,32 @@ public final class ClientUserState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.clientIp);
     }
 
+    /**
+     * The password of the KMS Encryption.
+     * 
+     */
     @Import(name="kmsEncryptedPassword")
     private @Nullable Output<String> kmsEncryptedPassword;
 
+    /**
+     * @return The password of the KMS Encryption.
+     * 
+     */
     public Optional<Output<String>> kmsEncryptedPassword() {
         return Optional.ofNullable(this.kmsEncryptedPassword);
     }
 
+    /**
+     * The context of the KMS Encryption.
+     * 
+     */
     @Import(name="kmsEncryptionContext")
     private @Nullable Output<Map<String,Object>> kmsEncryptionContext;
 
+    /**
+     * @return The context of the KMS Encryption.
+     * 
+     */
     public Optional<Output<Map<String,Object>>> kmsEncryptionContext() {
         return Optional.ofNullable(this.kmsEncryptionContext);
     }
@@ -195,20 +211,44 @@ public final class ClientUserState extends com.pulumi.resources.ResourceArgs {
             return clientIp(Output.of(clientIp));
         }
 
+        /**
+         * @param kmsEncryptedPassword The password of the KMS Encryption.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsEncryptedPassword(@Nullable Output<String> kmsEncryptedPassword) {
             $.kmsEncryptedPassword = kmsEncryptedPassword;
             return this;
         }
 
+        /**
+         * @param kmsEncryptedPassword The password of the KMS Encryption.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsEncryptedPassword(String kmsEncryptedPassword) {
             return kmsEncryptedPassword(Output.of(kmsEncryptedPassword));
         }
 
+        /**
+         * @param kmsEncryptionContext The context of the KMS Encryption.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsEncryptionContext(@Nullable Output<Map<String,Object>> kmsEncryptionContext) {
             $.kmsEncryptionContext = kmsEncryptionContext;
             return this;
         }
 
+        /**
+         * @param kmsEncryptionContext The context of the KMS Encryption.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsEncryptionContext(Map<String,Object> kmsEncryptionContext) {
             return kmsEncryptionContext(Output.of(kmsEncryptionContext));
         }

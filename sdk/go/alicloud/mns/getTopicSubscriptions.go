@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
@@ -116,6 +117,12 @@ func (o GetTopicSubscriptionsResultOutput) ToGetTopicSubscriptionsResultOutput()
 
 func (o GetTopicSubscriptionsResultOutput) ToGetTopicSubscriptionsResultOutputWithContext(ctx context.Context) GetTopicSubscriptionsResultOutput {
 	return o
+}
+
+func (o GetTopicSubscriptionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTopicSubscriptionsResult] {
+	return pulumix.Output[GetTopicSubscriptionsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

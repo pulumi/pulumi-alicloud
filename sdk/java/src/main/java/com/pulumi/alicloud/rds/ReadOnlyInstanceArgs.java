@@ -244,6 +244,29 @@ public final class ReadOnlyInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The instance configuration type. Valid values:
+     * - Up
+     * - Down
+     * - TempUpgrade
+     * - Serverless
+     * 
+     */
+    @Import(name="direction")
+    private @Nullable Output<String> direction;
+
+    /**
+     * @return The instance configuration type. Valid values:
+     * - Up
+     * - Down
+     * - TempUpgrade
+     * - Serverless
+     * 
+     */
+    public Optional<Output<String>> direction() {
+        return Optional.ofNullable(this.direction);
+    }
+
+    /**
      * The method to change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.
      * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -714,6 +737,7 @@ public final class ReadOnlyInstanceArgs extends com.pulumi.resources.ResourceArg
         this.dbInstanceIpArrayName = $.dbInstanceIpArrayName;
         this.dbInstanceStorageType = $.dbInstanceStorageType;
         this.deletionProtection = $.deletionProtection;
+        this.direction = $.direction;
         this.effectiveTime = $.effectiveTime;
         this.engineVersion = $.engineVersion;
         this.forceRestart = $.forceRestart;
@@ -1052,6 +1076,35 @@ public final class ReadOnlyInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder deletionProtection(Boolean deletionProtection) {
             return deletionProtection(Output.of(deletionProtection));
+        }
+
+        /**
+         * @param direction The instance configuration type. Valid values:
+         * - Up
+         * - Down
+         * - TempUpgrade
+         * - Serverless
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(@Nullable Output<String> direction) {
+            $.direction = direction;
+            return this;
+        }
+
+        /**
+         * @param direction The instance configuration type. Valid values:
+         * - Up
+         * - Down
+         * - TempUpgrade
+         * - Serverless
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(String direction) {
+            return direction(Output.of(direction));
         }
 
         /**

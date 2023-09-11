@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Resource Manager Resource Directory resource. Resource Directory enables you to establish an organizational structure for the resources used by applications of your enterprise. You can plan, build, and manage the resources in a centralized manner by using only one resource directory.
@@ -172,6 +173,12 @@ func (i *ResourceDirectory) ToResourceDirectoryOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceDirectoryOutput)
 }
 
+func (i *ResourceDirectory) ToOutput(ctx context.Context) pulumix.Output[*ResourceDirectory] {
+	return pulumix.Output[*ResourceDirectory]{
+		OutputState: i.ToResourceDirectoryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ResourceDirectoryArrayInput is an input type that accepts ResourceDirectoryArray and ResourceDirectoryArrayOutput values.
 // You can construct a concrete instance of `ResourceDirectoryArrayInput` via:
 //
@@ -195,6 +202,12 @@ func (i ResourceDirectoryArray) ToResourceDirectoryArrayOutput() ResourceDirecto
 
 func (i ResourceDirectoryArray) ToResourceDirectoryArrayOutputWithContext(ctx context.Context) ResourceDirectoryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceDirectoryArrayOutput)
+}
+
+func (i ResourceDirectoryArray) ToOutput(ctx context.Context) pulumix.Output[[]*ResourceDirectory] {
+	return pulumix.Output[[]*ResourceDirectory]{
+		OutputState: i.ToResourceDirectoryArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ResourceDirectoryMapInput is an input type that accepts ResourceDirectoryMap and ResourceDirectoryMapOutput values.
@@ -222,6 +235,12 @@ func (i ResourceDirectoryMap) ToResourceDirectoryMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceDirectoryMapOutput)
 }
 
+func (i ResourceDirectoryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ResourceDirectory] {
+	return pulumix.Output[map[string]*ResourceDirectory]{
+		OutputState: i.ToResourceDirectoryMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceDirectoryOutput struct{ *pulumi.OutputState }
 
 func (ResourceDirectoryOutput) ElementType() reflect.Type {
@@ -234,6 +253,12 @@ func (o ResourceDirectoryOutput) ToResourceDirectoryOutput() ResourceDirectoryOu
 
 func (o ResourceDirectoryOutput) ToResourceDirectoryOutputWithContext(ctx context.Context) ResourceDirectoryOutput {
 	return o
+}
+
+func (o ResourceDirectoryOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceDirectory] {
+	return pulumix.Output[*ResourceDirectory]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the master account.
@@ -275,6 +300,12 @@ func (o ResourceDirectoryArrayOutput) ToResourceDirectoryArrayOutputWithContext(
 	return o
 }
 
+func (o ResourceDirectoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ResourceDirectory] {
+	return pulumix.Output[[]*ResourceDirectory]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceDirectoryArrayOutput) Index(i pulumi.IntInput) ResourceDirectoryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ResourceDirectory {
 		return vs[0].([]*ResourceDirectory)[vs[1].(int)]
@@ -293,6 +324,12 @@ func (o ResourceDirectoryMapOutput) ToResourceDirectoryMapOutput() ResourceDirec
 
 func (o ResourceDirectoryMapOutput) ToResourceDirectoryMapOutputWithContext(ctx context.Context) ResourceDirectoryMapOutput {
 	return o
+}
+
+func (o ResourceDirectoryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ResourceDirectory] {
+	return pulumix.Output[map[string]*ResourceDirectory]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceDirectoryMapOutput) MapIndex(k pulumi.StringInput) ResourceDirectoryOutput {

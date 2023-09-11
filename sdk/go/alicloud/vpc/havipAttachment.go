@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -252,6 +253,12 @@ func (i *HAVipAttachment) ToHAVipAttachmentOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(HAVipAttachmentOutput)
 }
 
+func (i *HAVipAttachment) ToOutput(ctx context.Context) pulumix.Output[*HAVipAttachment] {
+	return pulumix.Output[*HAVipAttachment]{
+		OutputState: i.ToHAVipAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HAVipAttachmentArrayInput is an input type that accepts HAVipAttachmentArray and HAVipAttachmentArrayOutput values.
 // You can construct a concrete instance of `HAVipAttachmentArrayInput` via:
 //
@@ -275,6 +282,12 @@ func (i HAVipAttachmentArray) ToHAVipAttachmentArrayOutput() HAVipAttachmentArra
 
 func (i HAVipAttachmentArray) ToHAVipAttachmentArrayOutputWithContext(ctx context.Context) HAVipAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HAVipAttachmentArrayOutput)
+}
+
+func (i HAVipAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*HAVipAttachment] {
+	return pulumix.Output[[]*HAVipAttachment]{
+		OutputState: i.ToHAVipAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // HAVipAttachmentMapInput is an input type that accepts HAVipAttachmentMap and HAVipAttachmentMapOutput values.
@@ -302,6 +315,12 @@ func (i HAVipAttachmentMap) ToHAVipAttachmentMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(HAVipAttachmentMapOutput)
 }
 
+func (i HAVipAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HAVipAttachment] {
+	return pulumix.Output[map[string]*HAVipAttachment]{
+		OutputState: i.ToHAVipAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HAVipAttachmentOutput struct{ *pulumi.OutputState }
 
 func (HAVipAttachmentOutput) ElementType() reflect.Type {
@@ -314,6 +333,12 @@ func (o HAVipAttachmentOutput) ToHAVipAttachmentOutput() HAVipAttachmentOutput {
 
 func (o HAVipAttachmentOutput) ToHAVipAttachmentOutputWithContext(ctx context.Context) HAVipAttachmentOutput {
 	return o
+}
+
+func (o HAVipAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*HAVipAttachment] {
+	return pulumix.Output[*HAVipAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
@@ -355,6 +380,12 @@ func (o HAVipAttachmentArrayOutput) ToHAVipAttachmentArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o HAVipAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HAVipAttachment] {
+	return pulumix.Output[[]*HAVipAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HAVipAttachmentArrayOutput) Index(i pulumi.IntInput) HAVipAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HAVipAttachment {
 		return vs[0].([]*HAVipAttachment)[vs[1].(int)]
@@ -373,6 +404,12 @@ func (o HAVipAttachmentMapOutput) ToHAVipAttachmentMapOutput() HAVipAttachmentMa
 
 func (o HAVipAttachmentMapOutput) ToHAVipAttachmentMapOutputWithContext(ctx context.Context) HAVipAttachmentMapOutput {
 	return o
+}
+
+func (o HAVipAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HAVipAttachment] {
+	return pulumix.Output[map[string]*HAVipAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HAVipAttachmentMapOutput) MapIndex(k pulumi.StringInput) HAVipAttachmentOutput {

@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 /**
  * This resource will help you to manager Container Registry Enterprise Edition sync rules.
  * 
- * For information about Container Registry Enterprise Edition sync rules and how to use it, see [Create a Sync Rule](https://www.alibabacloud.com/help/doc-detail/145280.htm)
+ * For information about Container Registry Enterprise Edition sync rules and how to use it, see [Create a Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposynctaskbyrule)
  * 
- * &gt; **NOTE:** Available in v1.90.0+.
+ * &gt; **NOTE:** Available since v1.90.0.
  * 
  * &gt; **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
  * 
@@ -32,6 +32,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cr.RegistryEnterpriseInstance;
+ * import com.pulumi.alicloud.cr.RegistryEnterpriseInstanceArgs;
+ * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespace;
+ * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespaceArgs;
+ * import com.pulumi.alicloud.cs.RegistryEnterpriseRepo;
+ * import com.pulumi.alicloud.cs.RegistryEnterpriseRepoArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.cs.RegistryEnterpriseSyncRule;
  * import com.pulumi.alicloud.cs.RegistryEnterpriseSyncRuleArgs;
  * import java.util.List;
@@ -47,15 +55,67 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RegistryEnterpriseSyncRule(&#34;default&#34;, RegistryEnterpriseSyncRuleArgs.builder()        
- *             .instanceId(&#34;my-source-instance-id&#34;)
- *             .namespaceName(&#34;my-source-namespace&#34;)
- *             .repoName(&#34;my-source-repo&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         var sourceRegistryEnterpriseInstance = new RegistryEnterpriseInstance(&#34;sourceRegistryEnterpriseInstance&#34;, RegistryEnterpriseInstanceArgs.builder()        
+ *             .paymentType(&#34;Subscription&#34;)
+ *             .period(1)
+ *             .renewPeriod(0)
+ *             .renewalStatus(&#34;ManualRenewal&#34;)
+ *             .instanceType(&#34;Advanced&#34;)
+ *             .instanceName(String.format(&#34;%s-source&#34;, name))
+ *             .build());
+ * 
+ *         var targetRegistryEnterpriseInstance = new RegistryEnterpriseInstance(&#34;targetRegistryEnterpriseInstance&#34;, RegistryEnterpriseInstanceArgs.builder()        
+ *             .paymentType(&#34;Subscription&#34;)
+ *             .period(1)
+ *             .renewPeriod(0)
+ *             .renewalStatus(&#34;ManualRenewal&#34;)
+ *             .instanceType(&#34;Advanced&#34;)
+ *             .instanceName(String.format(&#34;%s-target&#34;, name))
+ *             .build());
+ * 
+ *         var sourceRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace(&#34;sourceRegistryEnterpriseNamespace&#34;, RegistryEnterpriseNamespaceArgs.builder()        
+ *             .instanceId(sourceRegistryEnterpriseInstance.id())
+ *             .autoCreate(false)
+ *             .defaultVisibility(&#34;PUBLIC&#34;)
+ *             .build());
+ * 
+ *         var targetRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace(&#34;targetRegistryEnterpriseNamespace&#34;, RegistryEnterpriseNamespaceArgs.builder()        
+ *             .instanceId(targetRegistryEnterpriseInstance.id())
+ *             .autoCreate(false)
+ *             .defaultVisibility(&#34;PUBLIC&#34;)
+ *             .build());
+ * 
+ *         var sourceRegistryEnterpriseRepo = new RegistryEnterpriseRepo(&#34;sourceRegistryEnterpriseRepo&#34;, RegistryEnterpriseRepoArgs.builder()        
+ *             .instanceId(sourceRegistryEnterpriseInstance.id())
+ *             .namespace(sourceRegistryEnterpriseNamespace.name())
+ *             .summary(&#34;this is summary of my new repo&#34;)
+ *             .repoType(&#34;PUBLIC&#34;)
+ *             .detail(&#34;this is a public repo&#34;)
+ *             .build());
+ * 
+ *         var targetRegistryEnterpriseRepo = new RegistryEnterpriseRepo(&#34;targetRegistryEnterpriseRepo&#34;, RegistryEnterpriseRepoArgs.builder()        
+ *             .instanceId(targetRegistryEnterpriseInstance.id())
+ *             .namespace(targetRegistryEnterpriseNamespace.name())
+ *             .summary(&#34;this is summary of my new repo&#34;)
+ *             .repoType(&#34;PUBLIC&#34;)
+ *             .detail(&#34;this is a public repo&#34;)
+ *             .build());
+ * 
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         var defaultRegistryEnterpriseSyncRule = new RegistryEnterpriseSyncRule(&#34;defaultRegistryEnterpriseSyncRule&#34;, RegistryEnterpriseSyncRuleArgs.builder()        
+ *             .instanceId(sourceRegistryEnterpriseInstance.id())
+ *             .namespaceName(sourceRegistryEnterpriseNamespace.name())
+ *             .targetRegionId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .targetInstanceId(targetRegistryEnterpriseInstance.id())
+ *             .targetNamespaceName(targetRegistryEnterpriseNamespace.name())
  *             .tagFilter(&#34;.*&#34;)
- *             .targetInstanceId(&#34;my-target-instance-id&#34;)
- *             .targetNamespaceName(&#34;my-target-namespace&#34;)
- *             .targetRegionId(&#34;cn-hangzhou&#34;)
- *             .targetRepoName(&#34;my-target-repo&#34;)
+ *             .repoName(sourceRegistryEnterpriseRepo.name())
+ *             .targetRepoName(targetRegistryEnterpriseRepo.name())
  *             .build());
  * 
  *     }

@@ -36,14 +36,14 @@ public final class DomainNewArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Certificate configuration. See the following `Block CertificateConfig`.
+     * Certificate configuration. See `certificate_config` below.
      * 
      */
     @Import(name="certificateConfig")
     private @Nullable Output<DomainNewCertificateConfigArgs> certificateConfig;
 
     /**
-     * @return Certificate configuration. See the following `Block CertificateConfig`.
+     * @return Certificate configuration. See `certificate_config` below.
      * 
      */
     public Optional<Output<DomainNewCertificateConfigArgs>> certificateConfig() {
@@ -119,14 +119,14 @@ public final class DomainNewArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+     * The source address list of the accelerated domain. Defaults to null. See `sources` below.
      * 
      */
     @Import(name="sources", required=true)
     private Output<List<DomainNewSourceArgs>> sources;
 
     /**
-     * @return The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+     * @return The source address list of the accelerated domain. Defaults to null. See `sources` below.
      * 
      */
     public Output<List<DomainNewSourceArgs>> sources() {
@@ -201,7 +201,7 @@ public final class DomainNewArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateConfig Certificate configuration. See the following `Block CertificateConfig`.
+         * @param certificateConfig Certificate configuration. See `certificate_config` below.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class DomainNewArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateConfig Certificate configuration. See the following `Block CertificateConfig`.
+         * @param certificateConfig Certificate configuration. See `certificate_config` below.
          * 
          * @return builder
          * 
@@ -314,7 +314,7 @@ public final class DomainNewArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+         * @param sources The source address list of the accelerated domain. Defaults to null. See `sources` below.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class DomainNewArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+         * @param sources The source address list of the accelerated domain. Defaults to null. See `sources` below.
          * 
          * @return builder
          * 
@@ -335,7 +335,7 @@ public final class DomainNewArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+         * @param sources The source address list of the accelerated domain. Defaults to null. See `sources` below.
          * 
          * @return builder
          * 

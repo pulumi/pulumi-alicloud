@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides CEN VBR Health Checks available to the user.
@@ -100,6 +101,12 @@ func (o GetVbrHealthChecksResultOutput) ToGetVbrHealthChecksResultOutput() GetVb
 
 func (o GetVbrHealthChecksResultOutput) ToGetVbrHealthChecksResultOutputWithContext(ctx context.Context) GetVbrHealthChecksResultOutput {
 	return o
+}
+
+func (o GetVbrHealthChecksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVbrHealthChecksResult] {
+	return pulumix.Output[GetVbrHealthChecksResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Cloud Enterprise Network (CEN) instance.

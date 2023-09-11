@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ESS schedule resource.
@@ -295,6 +296,12 @@ func (i *ScheduledTask) ToScheduledTaskOutputWithContext(ctx context.Context) Sc
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduledTaskOutput)
 }
 
+func (i *ScheduledTask) ToOutput(ctx context.Context) pulumix.Output[*ScheduledTask] {
+	return pulumix.Output[*ScheduledTask]{
+		OutputState: i.ToScheduledTaskOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ScheduledTaskArrayInput is an input type that accepts ScheduledTaskArray and ScheduledTaskArrayOutput values.
 // You can construct a concrete instance of `ScheduledTaskArrayInput` via:
 //
@@ -318,6 +325,12 @@ func (i ScheduledTaskArray) ToScheduledTaskArrayOutput() ScheduledTaskArrayOutpu
 
 func (i ScheduledTaskArray) ToScheduledTaskArrayOutputWithContext(ctx context.Context) ScheduledTaskArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduledTaskArrayOutput)
+}
+
+func (i ScheduledTaskArray) ToOutput(ctx context.Context) pulumix.Output[[]*ScheduledTask] {
+	return pulumix.Output[[]*ScheduledTask]{
+		OutputState: i.ToScheduledTaskArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ScheduledTaskMapInput is an input type that accepts ScheduledTaskMap and ScheduledTaskMapOutput values.
@@ -345,6 +358,12 @@ func (i ScheduledTaskMap) ToScheduledTaskMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduledTaskMapOutput)
 }
 
+func (i ScheduledTaskMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ScheduledTask] {
+	return pulumix.Output[map[string]*ScheduledTask]{
+		OutputState: i.ToScheduledTaskMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ScheduledTaskOutput struct{ *pulumi.OutputState }
 
 func (ScheduledTaskOutput) ElementType() reflect.Type {
@@ -357,6 +376,12 @@ func (o ScheduledTaskOutput) ToScheduledTaskOutput() ScheduledTaskOutput {
 
 func (o ScheduledTaskOutput) ToScheduledTaskOutputWithContext(ctx context.Context) ScheduledTaskOutput {
 	return o
+}
+
+func (o ScheduledTaskOutput) ToOutput(ctx context.Context) pulumix.Output[*ScheduledTask] {
+	return pulumix.Output[*ScheduledTask]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
@@ -450,6 +475,12 @@ func (o ScheduledTaskArrayOutput) ToScheduledTaskArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o ScheduledTaskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ScheduledTask] {
+	return pulumix.Output[[]*ScheduledTask]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ScheduledTaskArrayOutput) Index(i pulumi.IntInput) ScheduledTaskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ScheduledTask {
 		return vs[0].([]*ScheduledTask)[vs[1].(int)]
@@ -468,6 +499,12 @@ func (o ScheduledTaskMapOutput) ToScheduledTaskMapOutput() ScheduledTaskMapOutpu
 
 func (o ScheduledTaskMapOutput) ToScheduledTaskMapOutputWithContext(ctx context.Context) ScheduledTaskMapOutput {
 	return o
+}
+
+func (o ScheduledTaskMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ScheduledTask] {
+	return pulumix.Output[map[string]*ScheduledTask]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScheduledTaskMapOutput) MapIndex(k pulumi.StringInput) ScheduledTaskOutput {

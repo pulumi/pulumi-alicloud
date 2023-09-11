@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `emr.getDiskTypes` data source provides a collection of data disk and
@@ -134,6 +135,12 @@ func (o GetDiskTypesResultOutput) ToGetDiskTypesResultOutput() GetDiskTypesResul
 
 func (o GetDiskTypesResultOutput) ToGetDiskTypesResultOutputWithContext(ctx context.Context) GetDiskTypesResultOutput {
 	return o
+}
+
+func (o GetDiskTypesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDiskTypesResult] {
+	return pulumix.Output[GetDiskTypesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDiskTypesResultOutput) ClusterType() pulumi.StringOutput {

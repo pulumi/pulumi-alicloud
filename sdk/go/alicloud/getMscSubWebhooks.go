@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Msc Sub Webhooks of the current Alibaba Cloud user.
@@ -123,6 +124,12 @@ func (o GetMscSubWebhooksResultOutput) ToGetMscSubWebhooksResultOutput() GetMscS
 
 func (o GetMscSubWebhooksResultOutput) ToGetMscSubWebhooksResultOutputWithContext(ctx context.Context) GetMscSubWebhooksResultOutput {
 	return o
+}
+
+func (o GetMscSubWebhooksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMscSubWebhooksResult] {
+	return pulumix.Output[GetMscSubWebhooksResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the domain extensions associated with a server load balancer listener.
@@ -118,6 +119,12 @@ func (o GetDomainExtensionsResultOutput) ToGetDomainExtensionsResultOutput() Get
 
 func (o GetDomainExtensionsResultOutput) ToGetDomainExtensionsResultOutputWithContext(ctx context.Context) GetDomainExtensionsResultOutput {
 	return o
+}
+
+func (o GetDomainExtensionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainExtensionsResult] {
+	return pulumix.Output[GetDomainExtensionsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of SLB domain extension. Each element contains the following attributes:

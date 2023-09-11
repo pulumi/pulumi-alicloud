@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Rds Backups of the current Alibaba Cloud user.
@@ -147,6 +148,12 @@ func (o GetRdsBackupsResultOutput) ToGetRdsBackupsResultOutput() GetRdsBackupsRe
 
 func (o GetRdsBackupsResultOutput) ToGetRdsBackupsResultOutputWithContext(ctx context.Context) GetRdsBackupsResultOutput {
 	return o
+}
+
+func (o GetRdsBackupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRdsBackupsResult] {
+	return pulumix.Output[GetRdsBackupsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRdsBackupsResultOutput) BackupMode() pulumi.StringPtrOutput {

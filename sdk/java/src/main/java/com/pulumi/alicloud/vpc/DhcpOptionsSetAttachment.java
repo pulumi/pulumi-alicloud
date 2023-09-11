@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about VPC Dhcp Options Set and how to use it, see [What is Dhcp Options Set](https://www.alibabacloud.com/help/doc-detail/174112.htm).
  * 
- * &gt; **NOTE:** Available in v1.153.0+.
+ * &gt; **NOTE:** Available since v1.153.0.
  * 
  * ## Example Usage
  * 
@@ -50,14 +50,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;test&#34;)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
  *             .build());
  * 
  *         var exampleDhcpOptionsSet = new DhcpOptionsSet(&#34;exampleDhcpOptionsSet&#34;, DhcpOptionsSetArgs.builder()        
- *             .dhcpOptionsSetName(&#34;example_value&#34;)
- *             .dhcpOptionsSetDescription(&#34;example_value&#34;)
+ *             .dhcpOptionsSetName(name)
+ *             .dhcpOptionsSetDescription(name)
  *             .domainName(&#34;example.com&#34;)
  *             .domainNameServers(&#34;100.100.2.136&#34;)
  *             .build());

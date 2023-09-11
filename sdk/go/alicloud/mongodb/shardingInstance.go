@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a MongoDB sharding instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
@@ -475,6 +476,12 @@ func (i *ShardingInstance) ToShardingInstanceOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ShardingInstanceOutput)
 }
 
+func (i *ShardingInstance) ToOutput(ctx context.Context) pulumix.Output[*ShardingInstance] {
+	return pulumix.Output[*ShardingInstance]{
+		OutputState: i.ToShardingInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ShardingInstanceArrayInput is an input type that accepts ShardingInstanceArray and ShardingInstanceArrayOutput values.
 // You can construct a concrete instance of `ShardingInstanceArrayInput` via:
 //
@@ -498,6 +505,12 @@ func (i ShardingInstanceArray) ToShardingInstanceArrayOutput() ShardingInstanceA
 
 func (i ShardingInstanceArray) ToShardingInstanceArrayOutputWithContext(ctx context.Context) ShardingInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ShardingInstanceArrayOutput)
+}
+
+func (i ShardingInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*ShardingInstance] {
+	return pulumix.Output[[]*ShardingInstance]{
+		OutputState: i.ToShardingInstanceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ShardingInstanceMapInput is an input type that accepts ShardingInstanceMap and ShardingInstanceMapOutput values.
@@ -525,6 +538,12 @@ func (i ShardingInstanceMap) ToShardingInstanceMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ShardingInstanceMapOutput)
 }
 
+func (i ShardingInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ShardingInstance] {
+	return pulumix.Output[map[string]*ShardingInstance]{
+		OutputState: i.ToShardingInstanceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ShardingInstanceOutput struct{ *pulumi.OutputState }
 
 func (ShardingInstanceOutput) ElementType() reflect.Type {
@@ -537,6 +556,12 @@ func (o ShardingInstanceOutput) ToShardingInstanceOutput() ShardingInstanceOutpu
 
 func (o ShardingInstanceOutput) ToShardingInstanceOutputWithContext(ctx context.Context) ShardingInstanceOutput {
 	return o
+}
+
+func (o ShardingInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*ShardingInstance] {
+	return pulumix.Output[*ShardingInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
@@ -687,6 +712,12 @@ func (o ShardingInstanceArrayOutput) ToShardingInstanceArrayOutputWithContext(ct
 	return o
 }
 
+func (o ShardingInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ShardingInstance] {
+	return pulumix.Output[[]*ShardingInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ShardingInstanceArrayOutput) Index(i pulumi.IntInput) ShardingInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ShardingInstance {
 		return vs[0].([]*ShardingInstance)[vs[1].(int)]
@@ -705,6 +736,12 @@ func (o ShardingInstanceMapOutput) ToShardingInstanceMapOutput() ShardingInstanc
 
 func (o ShardingInstanceMapOutput) ToShardingInstanceMapOutputWithContext(ctx context.Context) ShardingInstanceMapOutput {
 	return o
+}
+
+func (o ShardingInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ShardingInstance] {
+	return pulumix.Output[map[string]*ShardingInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ShardingInstanceMapOutput) MapIndex(k pulumi.StringInput) ShardingInstanceOutput {

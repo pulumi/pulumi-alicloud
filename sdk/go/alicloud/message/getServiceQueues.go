@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Message Notification Service Queues of the current Alibaba Cloud user.
@@ -135,6 +136,12 @@ func (o GetServiceQueuesResultOutput) ToGetServiceQueuesResultOutput() GetServic
 
 func (o GetServiceQueuesResultOutput) ToGetServiceQueuesResultOutputWithContext(ctx context.Context) GetServiceQueuesResultOutput {
 	return o
+}
+
+func (o GetServiceQueuesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceQueuesResult] {
+	return pulumix.Output[GetServiceQueuesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

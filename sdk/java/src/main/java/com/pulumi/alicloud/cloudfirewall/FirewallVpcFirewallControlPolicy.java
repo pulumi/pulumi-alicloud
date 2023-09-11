@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Cloud Firewall Vpc Firewall Control Policy and how to use it, see [What is Vpc Firewall Control Policy](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcontrolpolicy).
  * 
- * &gt; **NOTE:** Available in v1.194.0+.
+ * &gt; **NOTE:** Available since v1.194.0.
  * 
  * ## Example Usage
  * 
@@ -170,14 +170,14 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * 
      */
     @Export(name="destPort", type=String.class, parameters={})
-    private Output</* @Nullable */ String> destPort;
+    private Output<String> destPort;
 
     /**
      * @return The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
      * 
      */
-    public Output<Optional<String>> destPort() {
-        return Codegen.optional(this.destPort);
+    public Output<String> destPort() {
+        return this.destPort;
     }
     /**
      * Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
@@ -212,14 +212,14 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * 
      */
     @Export(name="destPortType", type=String.class, parameters={})
-    private Output</* @Nullable */ String> destPortType;
+    private Output<String> destPortType;
 
     /**
      * @return The type of the destination port in the access control policy. Valid values: `port`, `group`.
      * 
      */
-    public Output<Optional<String>> destPortType() {
-        return Codegen.optional(this.destPortType);
+    public Output<String> destPortType() {
+        return this.destPortType;
     }
     /**
      * The destination address in the access control policy. Valid values:
@@ -256,18 +256,14 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
         return this.destinationGroupCidrs;
     }
     /**
-     * The destination address book type in the access control policy. Value:
-     * - **ip**:IP address book, which contains one or more ip address segments.
-     * - **domain**: domain address book, which contains one or more domain addresses.
+     * The destination address book type in the access control policy.
      * 
      */
     @Export(name="destinationGroupType", type=String.class, parameters={})
     private Output<String> destinationGroupType;
 
     /**
-     * @return The destination address book type in the access control policy. Value:
-     * - **ip**:IP address book, which contains one or more ip address segments.
-     * - **domain**: domain address book, which contains one or more domain addresses.
+     * @return The destination address book type in the access control policy.
      * 
      */
     public Output<String> destinationGroupType() {
@@ -358,18 +354,14 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
         return this.proto;
     }
     /**
-     * The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-     * - **true**: Enable access control policies
-     * - **false**: does not enable access control policies.
+     * The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
      * 
      */
     @Export(name="release", type=Boolean.class, parameters={})
     private Output<Boolean> release;
 
     /**
-     * @return The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-     * - **true**: Enable access control policies
-     * - **false**: does not enable access control policies.
+     * @return The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
      * 
      */
     public Output<Boolean> release() {
@@ -404,14 +396,14 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
         return this.sourceGroupCidrs;
     }
     /**
-     * The source address type in the access control policy. Unique value: **ip**. The IP address book contains one or more IP address segments.
+     * The source address type in the access control policy.
      * 
      */
     @Export(name="sourceGroupType", type=String.class, parameters={})
     private Output<String> sourceGroupType;
 
     /**
-     * @return The source address type in the access control policy. Unique value: **ip**. The IP address book contains one or more IP address segments.
+     * @return The source address type in the access control policy.
      * 
      */
     public Output<String> sourceGroupType() {
@@ -432,7 +424,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
         return this.sourceType;
     }
     /**
-     * The ID of the VPC firewall instance. Value:
+     * The ID of the VPC firewall instance. Valid values:
      * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
      * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
      * 
@@ -441,7 +433,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
     private Output<String> vpcFirewallId;
 
     /**
-     * @return The ID of the VPC firewall instance. Value:
+     * @return The ID of the VPC firewall instance. Valid values:
      * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
      * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
      * 

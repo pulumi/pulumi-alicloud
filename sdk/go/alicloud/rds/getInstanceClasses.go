@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the RDS instance classes resource available info of Alibaba Cloud.
@@ -193,6 +194,12 @@ func (o GetInstanceClassesResultOutput) ToGetInstanceClassesResultOutput() GetIn
 
 func (o GetInstanceClassesResultOutput) ToGetInstanceClassesResultOutputWithContext(ctx context.Context) GetInstanceClassesResultOutput {
 	return o
+}
+
+func (o GetInstanceClassesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceClassesResult] {
+	return pulumix.Output[GetInstanceClassesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceClassesResultOutput) Category() pulumi.StringPtrOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetDomainGroups(ctx *pulumi.Context, args *GetDomainGroupsArgs, opts ...pulumi.InvokeOption) (*GetDomainGroupsResult, error) {
@@ -76,6 +77,12 @@ func (o GetDomainGroupsResultOutput) ToGetDomainGroupsResultOutput() GetDomainGr
 
 func (o GetDomainGroupsResultOutput) ToGetDomainGroupsResultOutputWithContext(ctx context.Context) GetDomainGroupsResultOutput {
 	return o
+}
+
+func (o GetDomainGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainGroupsResult] {
+	return pulumix.Output[GetDomainGroupsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDomainGroupsResultOutput) Groups() GetDomainGroupsGroupArrayOutput {

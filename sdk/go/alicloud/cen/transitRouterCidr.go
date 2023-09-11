@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Enterprise Network (CEN) Transit Router Cidr resource.
@@ -209,6 +210,12 @@ func (i *TransitRouterCidr) ToTransitRouterCidrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterCidrOutput)
 }
 
+func (i *TransitRouterCidr) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterCidr] {
+	return pulumix.Output[*TransitRouterCidr]{
+		OutputState: i.ToTransitRouterCidrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TransitRouterCidrArrayInput is an input type that accepts TransitRouterCidrArray and TransitRouterCidrArrayOutput values.
 // You can construct a concrete instance of `TransitRouterCidrArrayInput` via:
 //
@@ -232,6 +239,12 @@ func (i TransitRouterCidrArray) ToTransitRouterCidrArrayOutput() TransitRouterCi
 
 func (i TransitRouterCidrArray) ToTransitRouterCidrArrayOutputWithContext(ctx context.Context) TransitRouterCidrArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterCidrArrayOutput)
+}
+
+func (i TransitRouterCidrArray) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterCidr] {
+	return pulumix.Output[[]*TransitRouterCidr]{
+		OutputState: i.ToTransitRouterCidrArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TransitRouterCidrMapInput is an input type that accepts TransitRouterCidrMap and TransitRouterCidrMapOutput values.
@@ -259,6 +272,12 @@ func (i TransitRouterCidrMap) ToTransitRouterCidrMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterCidrMapOutput)
 }
 
+func (i TransitRouterCidrMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterCidr] {
+	return pulumix.Output[map[string]*TransitRouterCidr]{
+		OutputState: i.ToTransitRouterCidrMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TransitRouterCidrOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterCidrOutput) ElementType() reflect.Type {
@@ -271,6 +290,12 @@ func (o TransitRouterCidrOutput) ToTransitRouterCidrOutput() TransitRouterCidrOu
 
 func (o TransitRouterCidrOutput) ToTransitRouterCidrOutputWithContext(ctx context.Context) TransitRouterCidrOutput {
 	return o
+}
+
+func (o TransitRouterCidrOutput) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterCidr] {
+	return pulumix.Output[*TransitRouterCidr]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The cidr of the transit router.
@@ -317,6 +342,12 @@ func (o TransitRouterCidrArrayOutput) ToTransitRouterCidrArrayOutputWithContext(
 	return o
 }
 
+func (o TransitRouterCidrArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterCidr] {
+	return pulumix.Output[[]*TransitRouterCidr]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TransitRouterCidrArrayOutput) Index(i pulumi.IntInput) TransitRouterCidrOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TransitRouterCidr {
 		return vs[0].([]*TransitRouterCidr)[vs[1].(int)]
@@ -335,6 +366,12 @@ func (o TransitRouterCidrMapOutput) ToTransitRouterCidrMapOutput() TransitRouter
 
 func (o TransitRouterCidrMapOutput) ToTransitRouterCidrMapOutputWithContext(ctx context.Context) TransitRouterCidrMapOutput {
 	return o
+}
+
+func (o TransitRouterCidrMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterCidr] {
+	return pulumix.Output[map[string]*TransitRouterCidr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransitRouterCidrMapOutput) MapIndex(k pulumi.StringInput) TransitRouterCidrOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Vpc Peer Connections of the current Alibaba Cloud user.
@@ -134,6 +135,12 @@ func (o GetPeerConnectionsResultOutput) ToGetPeerConnectionsResultOutput() GetPe
 
 func (o GetPeerConnectionsResultOutput) ToGetPeerConnectionsResultOutputWithContext(ctx context.Context) GetPeerConnectionsResultOutput {
 	return o
+}
+
+func (o GetPeerConnectionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPeerConnectionsResult] {
+	return pulumix.Output[GetPeerConnectionsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPeerConnectionsResultOutput) Connections() GetPeerConnectionsConnectionArrayOutput {

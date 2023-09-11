@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Ebs Disk Replica Pair resource.
@@ -335,6 +336,12 @@ func (i *DiskReplicaPair) ToDiskReplicaPairOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DiskReplicaPairOutput)
 }
 
+func (i *DiskReplicaPair) ToOutput(ctx context.Context) pulumix.Output[*DiskReplicaPair] {
+	return pulumix.Output[*DiskReplicaPair]{
+		OutputState: i.ToDiskReplicaPairOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DiskReplicaPairArrayInput is an input type that accepts DiskReplicaPairArray and DiskReplicaPairArrayOutput values.
 // You can construct a concrete instance of `DiskReplicaPairArrayInput` via:
 //
@@ -358,6 +365,12 @@ func (i DiskReplicaPairArray) ToDiskReplicaPairArrayOutput() DiskReplicaPairArra
 
 func (i DiskReplicaPairArray) ToDiskReplicaPairArrayOutputWithContext(ctx context.Context) DiskReplicaPairArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskReplicaPairArrayOutput)
+}
+
+func (i DiskReplicaPairArray) ToOutput(ctx context.Context) pulumix.Output[[]*DiskReplicaPair] {
+	return pulumix.Output[[]*DiskReplicaPair]{
+		OutputState: i.ToDiskReplicaPairArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DiskReplicaPairMapInput is an input type that accepts DiskReplicaPairMap and DiskReplicaPairMapOutput values.
@@ -385,6 +398,12 @@ func (i DiskReplicaPairMap) ToDiskReplicaPairMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DiskReplicaPairMapOutput)
 }
 
+func (i DiskReplicaPairMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DiskReplicaPair] {
+	return pulumix.Output[map[string]*DiskReplicaPair]{
+		OutputState: i.ToDiskReplicaPairMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DiskReplicaPairOutput struct{ *pulumi.OutputState }
 
 func (DiskReplicaPairOutput) ElementType() reflect.Type {
@@ -397,6 +416,12 @@ func (o DiskReplicaPairOutput) ToDiskReplicaPairOutput() DiskReplicaPairOutput {
 
 func (o DiskReplicaPairOutput) ToDiskReplicaPairOutputWithContext(ctx context.Context) DiskReplicaPairOutput {
 	return o
+}
+
+func (o DiskReplicaPairOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskReplicaPair] {
+	return pulumix.Output[*DiskReplicaPair]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
@@ -493,6 +518,12 @@ func (o DiskReplicaPairArrayOutput) ToDiskReplicaPairArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o DiskReplicaPairArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DiskReplicaPair] {
+	return pulumix.Output[[]*DiskReplicaPair]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DiskReplicaPairArrayOutput) Index(i pulumi.IntInput) DiskReplicaPairOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DiskReplicaPair {
 		return vs[0].([]*DiskReplicaPair)[vs[1].(int)]
@@ -511,6 +542,12 @@ func (o DiskReplicaPairMapOutput) ToDiskReplicaPairMapOutput() DiskReplicaPairMa
 
 func (o DiskReplicaPairMapOutput) ToDiskReplicaPairMapOutputWithContext(ctx context.Context) DiskReplicaPairMapOutput {
 	return o
+}
+
+func (o DiskReplicaPairMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DiskReplicaPair] {
+	return pulumix.Output[map[string]*DiskReplicaPair]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DiskReplicaPairMapOutput) MapIndex(k pulumi.StringInput) DiskReplicaPairOutput {

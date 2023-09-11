@@ -33,14 +33,14 @@ public final class GreyTagRouteScRuleArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * A list of conditions items. The details see Block `sc_rules_items`.
+     * A list of conditions items.See `items` below.
      * 
      */
     @Import(name="items")
     private @Nullable Output<List<GreyTagRouteScRuleItemArgs>> items;
 
     /**
-     * @return A list of conditions items. The details see Block `sc_rules_items`.
+     * @return A list of conditions items.See `items` below.
      * 
      */
     public Optional<Output<List<GreyTagRouteScRuleItemArgs>>> items() {
@@ -110,7 +110,7 @@ public final class GreyTagRouteScRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param items A list of conditions items. The details see Block `sc_rules_items`.
+         * @param items A list of conditions items.See `items` below.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class GreyTagRouteScRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param items A list of conditions items. The details see Block `sc_rules_items`.
+         * @param items A list of conditions items.See `items` below.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class GreyTagRouteScRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param items A list of conditions items. The details see Block `sc_rules_items`.
+         * @param items A list of conditions items.See `items` below.
          * 
          * @return builder
          * 

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Vpc Ipv6 Gateways of the current Alibaba Cloud user.
@@ -158,6 +159,12 @@ func (o GetIpv6GatewaysResultOutput) ToGetIpv6GatewaysResultOutput() GetIpv6Gate
 
 func (o GetIpv6GatewaysResultOutput) ToGetIpv6GatewaysResultOutputWithContext(ctx context.Context) GetIpv6GatewaysResultOutput {
 	return o
+}
+
+func (o GetIpv6GatewaysResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIpv6GatewaysResult] {
+	return pulumix.Output[GetIpv6GatewaysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetIpv6GatewaysResultOutput) Gateways() GetIpv6GatewaysGatewayArrayOutput {

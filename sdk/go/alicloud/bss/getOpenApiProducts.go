@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/zh/bss-openapi/latest/api-doc-bssopenapi-2017-12-14-api-doc-queryproductlist)
@@ -87,6 +88,12 @@ func (o GetOpenApiProductsResultOutput) ToGetOpenApiProductsResultOutput() GetOp
 
 func (o GetOpenApiProductsResultOutput) ToGetOpenApiProductsResultOutputWithContext(ctx context.Context) GetOpenApiProductsResultOutput {
 	return o
+}
+
+func (o GetOpenApiProductsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetOpenApiProductsResult] {
+	return pulumix.Output[GetOpenApiProductsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

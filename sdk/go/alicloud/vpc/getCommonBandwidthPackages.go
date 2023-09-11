@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
@@ -156,6 +157,12 @@ func (o GetCommonBandwidthPackagesResultOutput) ToGetCommonBandwidthPackagesResu
 
 func (o GetCommonBandwidthPackagesResultOutput) ToGetCommonBandwidthPackagesResultOutputWithContext(ctx context.Context) GetCommonBandwidthPackagesResultOutput {
 	return o
+}
+
+func (o GetCommonBandwidthPackagesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCommonBandwidthPackagesResult] {
+	return pulumix.Output[GetCommonBandwidthPackagesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of bandwidth package.

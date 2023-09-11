@@ -7,11 +7,13 @@ import * as utilities from "./utilities";
 // Export members:
 export { GetAccountResult } from "./getAccount";
 export const getAccount: typeof import("./getAccount").getAccount = null as any;
-utilities.lazyLoad(exports, ["getAccount"], () => require("./getAccount"));
+export const getAccountOutput: typeof import("./getAccount").getAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getAccount","getAccountOutput"], () => require("./getAccount"));
 
 export { GetCallerIdentityResult } from "./getCallerIdentity";
 export const getCallerIdentity: typeof import("./getCallerIdentity").getCallerIdentity = null as any;
-utilities.lazyLoad(exports, ["getCallerIdentity"], () => require("./getCallerIdentity"));
+export const getCallerIdentityOutput: typeof import("./getCallerIdentity").getCallerIdentityOutput = null as any;
+utilities.lazyLoad(exports, ["getCallerIdentity","getCallerIdentityOutput"], () => require("./getCallerIdentity"));
 
 export { GetFileCrc64ChecksumArgs, GetFileCrc64ChecksumResult, GetFileCrc64ChecksumOutputArgs } from "./getFileCrc64Checksum";
 export const getFileCrc64Checksum: typeof import("./getFileCrc64Checksum").getFileCrc64Checksum = null as any;

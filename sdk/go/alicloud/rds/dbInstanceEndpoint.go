@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provide RDS cluster instance endpoint connection resources, see [What is RDS DB Instance Endpoint](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createdbinstanceendpoint).
@@ -332,6 +333,12 @@ func (i *DbInstanceEndpoint) ToDbInstanceEndpointOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstanceEndpointOutput)
 }
 
+func (i *DbInstanceEndpoint) ToOutput(ctx context.Context) pulumix.Output[*DbInstanceEndpoint] {
+	return pulumix.Output[*DbInstanceEndpoint]{
+		OutputState: i.ToDbInstanceEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DbInstanceEndpointArrayInput is an input type that accepts DbInstanceEndpointArray and DbInstanceEndpointArrayOutput values.
 // You can construct a concrete instance of `DbInstanceEndpointArrayInput` via:
 //
@@ -355,6 +362,12 @@ func (i DbInstanceEndpointArray) ToDbInstanceEndpointArrayOutput() DbInstanceEnd
 
 func (i DbInstanceEndpointArray) ToDbInstanceEndpointArrayOutputWithContext(ctx context.Context) DbInstanceEndpointArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstanceEndpointArrayOutput)
+}
+
+func (i DbInstanceEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]*DbInstanceEndpoint] {
+	return pulumix.Output[[]*DbInstanceEndpoint]{
+		OutputState: i.ToDbInstanceEndpointArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DbInstanceEndpointMapInput is an input type that accepts DbInstanceEndpointMap and DbInstanceEndpointMapOutput values.
@@ -382,6 +395,12 @@ func (i DbInstanceEndpointMap) ToDbInstanceEndpointMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstanceEndpointMapOutput)
 }
 
+func (i DbInstanceEndpointMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbInstanceEndpoint] {
+	return pulumix.Output[map[string]*DbInstanceEndpoint]{
+		OutputState: i.ToDbInstanceEndpointMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DbInstanceEndpointOutput struct{ *pulumi.OutputState }
 
 func (DbInstanceEndpointOutput) ElementType() reflect.Type {
@@ -394,6 +413,12 @@ func (o DbInstanceEndpointOutput) ToDbInstanceEndpointOutput() DbInstanceEndpoin
 
 func (o DbInstanceEndpointOutput) ToDbInstanceEndpointOutputWithContext(ctx context.Context) DbInstanceEndpointOutput {
 	return o
+}
+
+func (o DbInstanceEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*DbInstanceEndpoint] {
+	return pulumix.Output[*DbInstanceEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The internal endpoint.
@@ -470,6 +495,12 @@ func (o DbInstanceEndpointArrayOutput) ToDbInstanceEndpointArrayOutputWithContex
 	return o
 }
 
+func (o DbInstanceEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DbInstanceEndpoint] {
+	return pulumix.Output[[]*DbInstanceEndpoint]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DbInstanceEndpointArrayOutput) Index(i pulumi.IntInput) DbInstanceEndpointOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DbInstanceEndpoint {
 		return vs[0].([]*DbInstanceEndpoint)[vs[1].(int)]
@@ -488,6 +519,12 @@ func (o DbInstanceEndpointMapOutput) ToDbInstanceEndpointMapOutput() DbInstanceE
 
 func (o DbInstanceEndpointMapOutput) ToDbInstanceEndpointMapOutputWithContext(ctx context.Context) DbInstanceEndpointMapOutput {
 	return o
+}
+
+func (o DbInstanceEndpointMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbInstanceEndpoint] {
+	return pulumix.Output[map[string]*DbInstanceEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DbInstanceEndpointMapOutput) MapIndex(k pulumi.StringInput) DbInstanceEndpointOutput {

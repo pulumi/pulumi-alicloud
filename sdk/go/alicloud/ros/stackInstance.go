@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ROS Stack Instance resource.
@@ -262,6 +263,12 @@ func (i *StackInstance) ToStackInstanceOutputWithContext(ctx context.Context) St
 	return pulumi.ToOutputWithContext(ctx, i).(StackInstanceOutput)
 }
 
+func (i *StackInstance) ToOutput(ctx context.Context) pulumix.Output[*StackInstance] {
+	return pulumix.Output[*StackInstance]{
+		OutputState: i.ToStackInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StackInstanceArrayInput is an input type that accepts StackInstanceArray and StackInstanceArrayOutput values.
 // You can construct a concrete instance of `StackInstanceArrayInput` via:
 //
@@ -285,6 +292,12 @@ func (i StackInstanceArray) ToStackInstanceArrayOutput() StackInstanceArrayOutpu
 
 func (i StackInstanceArray) ToStackInstanceArrayOutputWithContext(ctx context.Context) StackInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StackInstanceArrayOutput)
+}
+
+func (i StackInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*StackInstance] {
+	return pulumix.Output[[]*StackInstance]{
+		OutputState: i.ToStackInstanceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // StackInstanceMapInput is an input type that accepts StackInstanceMap and StackInstanceMapOutput values.
@@ -312,6 +325,12 @@ func (i StackInstanceMap) ToStackInstanceMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(StackInstanceMapOutput)
 }
 
+func (i StackInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*StackInstance] {
+	return pulumix.Output[map[string]*StackInstance]{
+		OutputState: i.ToStackInstanceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StackInstanceOutput struct{ *pulumi.OutputState }
 
 func (StackInstanceOutput) ElementType() reflect.Type {
@@ -324,6 +343,12 @@ func (o StackInstanceOutput) ToStackInstanceOutput() StackInstanceOutput {
 
 func (o StackInstanceOutput) ToStackInstanceOutputWithContext(ctx context.Context) StackInstanceOutput {
 	return o
+}
+
+func (o StackInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*StackInstance] {
+	return pulumix.Output[*StackInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The operation description.
@@ -385,6 +410,12 @@ func (o StackInstanceArrayOutput) ToStackInstanceArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o StackInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*StackInstance] {
+	return pulumix.Output[[]*StackInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StackInstanceArrayOutput) Index(i pulumi.IntInput) StackInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StackInstance {
 		return vs[0].([]*StackInstance)[vs[1].(int)]
@@ -403,6 +434,12 @@ func (o StackInstanceMapOutput) ToStackInstanceMapOutput() StackInstanceMapOutpu
 
 func (o StackInstanceMapOutput) ToStackInstanceMapOutputWithContext(ctx context.Context) StackInstanceMapOutput {
 	return o
+}
+
+func (o StackInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*StackInstance] {
+	return pulumix.Output[map[string]*StackInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StackInstanceMapOutput) MapIndex(k pulumi.StringInput) StackInstanceOutput {

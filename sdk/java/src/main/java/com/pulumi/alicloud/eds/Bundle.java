@@ -165,14 +165,14 @@ public class Bundle extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="rootDiskPerformanceLevel", type=String.class, parameters={})
-    private Output</* @Nullable */ String> rootDiskPerformanceLevel;
+    private Output<String> rootDiskPerformanceLevel;
 
     /**
      * @return The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
      * 
      */
-    public Output<Optional<String>> rootDiskPerformanceLevel() {
-        return Codegen.optional(this.rootDiskPerformanceLevel);
+    public Output<String> rootDiskPerformanceLevel() {
+        return this.rootDiskPerformanceLevel;
     }
     /**
      * The root disk size gib.
@@ -193,14 +193,14 @@ public class Bundle extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="userDiskPerformanceLevel", type=String.class, parameters={})
-    private Output</* @Nullable */ String> userDiskPerformanceLevel;
+    private Output<String> userDiskPerformanceLevel;
 
     /**
      * @return The user disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
      * 
      */
-    public Output<Optional<String>> userDiskPerformanceLevel() {
-        return Codegen.optional(this.userDiskPerformanceLevel);
+    public Output<String> userDiskPerformanceLevel() {
+        return this.userDiskPerformanceLevel;
     }
     /**
      * The size of the data disk. Currently, only one data disk can be set. Unit: GiB.

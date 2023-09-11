@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VOD Editing Project resource.
@@ -190,6 +191,12 @@ func (i *EditingProject) ToEditingProjectOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(EditingProjectOutput)
 }
 
+func (i *EditingProject) ToOutput(ctx context.Context) pulumix.Output[*EditingProject] {
+	return pulumix.Output[*EditingProject]{
+		OutputState: i.ToEditingProjectOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EditingProjectArrayInput is an input type that accepts EditingProjectArray and EditingProjectArrayOutput values.
 // You can construct a concrete instance of `EditingProjectArrayInput` via:
 //
@@ -213,6 +220,12 @@ func (i EditingProjectArray) ToEditingProjectArrayOutput() EditingProjectArrayOu
 
 func (i EditingProjectArray) ToEditingProjectArrayOutputWithContext(ctx context.Context) EditingProjectArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EditingProjectArrayOutput)
+}
+
+func (i EditingProjectArray) ToOutput(ctx context.Context) pulumix.Output[[]*EditingProject] {
+	return pulumix.Output[[]*EditingProject]{
+		OutputState: i.ToEditingProjectArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EditingProjectMapInput is an input type that accepts EditingProjectMap and EditingProjectMapOutput values.
@@ -240,6 +253,12 @@ func (i EditingProjectMap) ToEditingProjectMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(EditingProjectMapOutput)
 }
 
+func (i EditingProjectMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EditingProject] {
+	return pulumix.Output[map[string]*EditingProject]{
+		OutputState: i.ToEditingProjectMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EditingProjectOutput struct{ *pulumi.OutputState }
 
 func (EditingProjectOutput) ElementType() reflect.Type {
@@ -252,6 +271,12 @@ func (o EditingProjectOutput) ToEditingProjectOutput() EditingProjectOutput {
 
 func (o EditingProjectOutput) ToEditingProjectOutputWithContext(ctx context.Context) EditingProjectOutput {
 	return o
+}
+
+func (o EditingProjectOutput) ToOutput(ctx context.Context) pulumix.Output[*EditingProject] {
+	return pulumix.Output[*EditingProject]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The thumbnail URL of the online editing project. If you do not specify this parameter and the video track in the timeline has mezzanine files, the thumbnail of the first mezzanine file in the timeline is used.
@@ -298,6 +323,12 @@ func (o EditingProjectArrayOutput) ToEditingProjectArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o EditingProjectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EditingProject] {
+	return pulumix.Output[[]*EditingProject]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EditingProjectArrayOutput) Index(i pulumi.IntInput) EditingProjectOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EditingProject {
 		return vs[0].([]*EditingProject)[vs[1].(int)]
@@ -316,6 +347,12 @@ func (o EditingProjectMapOutput) ToEditingProjectMapOutput() EditingProjectMapOu
 
 func (o EditingProjectMapOutput) ToEditingProjectMapOutputWithContext(ctx context.Context) EditingProjectMapOutput {
 	return o
+}
+
+func (o EditingProjectMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EditingProject] {
+	return pulumix.Output[map[string]*EditingProject]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EditingProjectMapOutput) MapIndex(k pulumi.StringInput) EditingProjectOutput {

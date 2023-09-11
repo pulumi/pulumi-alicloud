@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECS Key Pair Attachment resource.
@@ -240,6 +241,12 @@ func (i *EcsKeyPairAttachment) ToEcsKeyPairAttachmentOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(EcsKeyPairAttachmentOutput)
 }
 
+func (i *EcsKeyPairAttachment) ToOutput(ctx context.Context) pulumix.Output[*EcsKeyPairAttachment] {
+	return pulumix.Output[*EcsKeyPairAttachment]{
+		OutputState: i.ToEcsKeyPairAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EcsKeyPairAttachmentArrayInput is an input type that accepts EcsKeyPairAttachmentArray and EcsKeyPairAttachmentArrayOutput values.
 // You can construct a concrete instance of `EcsKeyPairAttachmentArrayInput` via:
 //
@@ -263,6 +270,12 @@ func (i EcsKeyPairAttachmentArray) ToEcsKeyPairAttachmentArrayOutput() EcsKeyPai
 
 func (i EcsKeyPairAttachmentArray) ToEcsKeyPairAttachmentArrayOutputWithContext(ctx context.Context) EcsKeyPairAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsKeyPairAttachmentArrayOutput)
+}
+
+func (i EcsKeyPairAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*EcsKeyPairAttachment] {
+	return pulumix.Output[[]*EcsKeyPairAttachment]{
+		OutputState: i.ToEcsKeyPairAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EcsKeyPairAttachmentMapInput is an input type that accepts EcsKeyPairAttachmentMap and EcsKeyPairAttachmentMapOutput values.
@@ -290,6 +303,12 @@ func (i EcsKeyPairAttachmentMap) ToEcsKeyPairAttachmentMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(EcsKeyPairAttachmentMapOutput)
 }
 
+func (i EcsKeyPairAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsKeyPairAttachment] {
+	return pulumix.Output[map[string]*EcsKeyPairAttachment]{
+		OutputState: i.ToEcsKeyPairAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EcsKeyPairAttachmentOutput struct{ *pulumi.OutputState }
 
 func (EcsKeyPairAttachmentOutput) ElementType() reflect.Type {
@@ -302,6 +321,12 @@ func (o EcsKeyPairAttachmentOutput) ToEcsKeyPairAttachmentOutput() EcsKeyPairAtt
 
 func (o EcsKeyPairAttachmentOutput) ToEcsKeyPairAttachmentOutputWithContext(ctx context.Context) EcsKeyPairAttachmentOutput {
 	return o
+}
+
+func (o EcsKeyPairAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*EcsKeyPairAttachment] {
+	return pulumix.Output[*EcsKeyPairAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
@@ -338,6 +363,12 @@ func (o EcsKeyPairAttachmentArrayOutput) ToEcsKeyPairAttachmentArrayOutputWithCo
 	return o
 }
 
+func (o EcsKeyPairAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EcsKeyPairAttachment] {
+	return pulumix.Output[[]*EcsKeyPairAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EcsKeyPairAttachmentArrayOutput) Index(i pulumi.IntInput) EcsKeyPairAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsKeyPairAttachment {
 		return vs[0].([]*EcsKeyPairAttachment)[vs[1].(int)]
@@ -356,6 +387,12 @@ func (o EcsKeyPairAttachmentMapOutput) ToEcsKeyPairAttachmentMapOutput() EcsKeyP
 
 func (o EcsKeyPairAttachmentMapOutput) ToEcsKeyPairAttachmentMapOutputWithContext(ctx context.Context) EcsKeyPairAttachmentMapOutput {
 	return o
+}
+
+func (o EcsKeyPairAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsKeyPairAttachment] {
+	return pulumix.Output[map[string]*EcsKeyPairAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EcsKeyPairAttachmentMapOutput) MapIndex(k pulumi.StringInput) EcsKeyPairAttachmentOutput {

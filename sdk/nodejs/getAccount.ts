@@ -33,3 +33,19 @@ export interface GetAccountResult {
      */
     readonly id: string;
 }
+/**
+ * This data source provides information about the current account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const current = alicloud.getAccount({});
+ * export const currentAccountId = current.then(current => current.id);
+ * ```
+ */
+export function getAccountOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
+    return pulumi.output(getAccount(opts))
+}

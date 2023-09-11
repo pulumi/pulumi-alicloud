@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Attaches several ECS instances to a specified scaling group or remove them from it.
@@ -336,6 +337,12 @@ func (i *Attachment) ToAttachmentOutputWithContext(ctx context.Context) Attachme
 	return pulumi.ToOutputWithContext(ctx, i).(AttachmentOutput)
 }
 
+func (i *Attachment) ToOutput(ctx context.Context) pulumix.Output[*Attachment] {
+	return pulumix.Output[*Attachment]{
+		OutputState: i.ToAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AttachmentArrayInput is an input type that accepts AttachmentArray and AttachmentArrayOutput values.
 // You can construct a concrete instance of `AttachmentArrayInput` via:
 //
@@ -359,6 +366,12 @@ func (i AttachmentArray) ToAttachmentArrayOutput() AttachmentArrayOutput {
 
 func (i AttachmentArray) ToAttachmentArrayOutputWithContext(ctx context.Context) AttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AttachmentArrayOutput)
+}
+
+func (i AttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*Attachment] {
+	return pulumix.Output[[]*Attachment]{
+		OutputState: i.ToAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AttachmentMapInput is an input type that accepts AttachmentMap and AttachmentMapOutput values.
@@ -386,6 +399,12 @@ func (i AttachmentMap) ToAttachmentMapOutputWithContext(ctx context.Context) Att
 	return pulumi.ToOutputWithContext(ctx, i).(AttachmentMapOutput)
 }
 
+func (i AttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Attachment] {
+	return pulumix.Output[map[string]*Attachment]{
+		OutputState: i.ToAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AttachmentOutput struct{ *pulumi.OutputState }
 
 func (AttachmentOutput) ElementType() reflect.Type {
@@ -398,6 +417,12 @@ func (o AttachmentOutput) ToAttachmentOutput() AttachmentOutput {
 
 func (o AttachmentOutput) ToAttachmentOutputWithContext(ctx context.Context) AttachmentOutput {
 	return o
+}
+
+func (o AttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*Attachment] {
+	return pulumix.Output[*Attachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
@@ -439,6 +464,12 @@ func (o AttachmentArrayOutput) ToAttachmentArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o AttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Attachment] {
+	return pulumix.Output[[]*Attachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AttachmentArrayOutput) Index(i pulumi.IntInput) AttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Attachment {
 		return vs[0].([]*Attachment)[vs[1].(int)]
@@ -457,6 +488,12 @@ func (o AttachmentMapOutput) ToAttachmentMapOutput() AttachmentMapOutput {
 
 func (o AttachmentMapOutput) ToAttachmentMapOutputWithContext(ctx context.Context) AttachmentMapOutput {
 	return o
+}
+
+func (o AttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Attachment] {
+	return pulumix.Output[map[string]*Attachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AttachmentMapOutput) MapIndex(k pulumi.StringInput) AttachmentOutput {

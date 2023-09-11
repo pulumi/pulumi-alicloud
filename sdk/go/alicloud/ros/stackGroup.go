@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ROS Stack Group resource.
@@ -265,6 +266,12 @@ func (i *StackGroup) ToStackGroupOutputWithContext(ctx context.Context) StackGro
 	return pulumi.ToOutputWithContext(ctx, i).(StackGroupOutput)
 }
 
+func (i *StackGroup) ToOutput(ctx context.Context) pulumix.Output[*StackGroup] {
+	return pulumix.Output[*StackGroup]{
+		OutputState: i.ToStackGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StackGroupArrayInput is an input type that accepts StackGroupArray and StackGroupArrayOutput values.
 // You can construct a concrete instance of `StackGroupArrayInput` via:
 //
@@ -288,6 +295,12 @@ func (i StackGroupArray) ToStackGroupArrayOutput() StackGroupArrayOutput {
 
 func (i StackGroupArray) ToStackGroupArrayOutputWithContext(ctx context.Context) StackGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StackGroupArrayOutput)
+}
+
+func (i StackGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*StackGroup] {
+	return pulumix.Output[[]*StackGroup]{
+		OutputState: i.ToStackGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // StackGroupMapInput is an input type that accepts StackGroupMap and StackGroupMapOutput values.
@@ -315,6 +328,12 @@ func (i StackGroupMap) ToStackGroupMapOutputWithContext(ctx context.Context) Sta
 	return pulumi.ToOutputWithContext(ctx, i).(StackGroupMapOutput)
 }
 
+func (i StackGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*StackGroup] {
+	return pulumix.Output[map[string]*StackGroup]{
+		OutputState: i.ToStackGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StackGroupOutput struct{ *pulumi.OutputState }
 
 func (StackGroupOutput) ElementType() reflect.Type {
@@ -327,6 +346,12 @@ func (o StackGroupOutput) ToStackGroupOutput() StackGroupOutput {
 
 func (o StackGroupOutput) ToStackGroupOutputWithContext(ctx context.Context) StackGroupOutput {
 	return o
+}
+
+func (o StackGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*StackGroup] {
+	return pulumix.Output[*StackGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
@@ -413,6 +438,12 @@ func (o StackGroupArrayOutput) ToStackGroupArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o StackGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*StackGroup] {
+	return pulumix.Output[[]*StackGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StackGroupArrayOutput) Index(i pulumi.IntInput) StackGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StackGroup {
 		return vs[0].([]*StackGroup)[vs[1].(int)]
@@ -431,6 +462,12 @@ func (o StackGroupMapOutput) ToStackGroupMapOutput() StackGroupMapOutput {
 
 func (o StackGroupMapOutput) ToStackGroupMapOutputWithContext(ctx context.Context) StackGroupMapOutput {
 	return o
+}
+
+func (o StackGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*StackGroup] {
+	return pulumix.Output[map[string]*StackGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StackGroupMapOutput) MapIndex(k pulumi.StringInput) StackGroupOutput {

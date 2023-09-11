@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Sae GreyTagRoutes of the current Alibaba Cloud user.
@@ -120,6 +121,12 @@ func (o GetGreyTagRoutesResultOutput) ToGetGreyTagRoutesResultOutput() GetGreyTa
 
 func (o GetGreyTagRoutesResultOutput) ToGetGreyTagRoutesResultOutputWithContext(ctx context.Context) GetGreyTagRoutesResultOutput {
 	return o
+}
+
+func (o GetGreyTagRoutesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGreyTagRoutesResult] {
+	return pulumix.Output[GetGreyTagRoutesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGreyTagRoutesResultOutput) AppId() pulumi.StringOutput {

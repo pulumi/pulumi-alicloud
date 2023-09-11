@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Brain Industrial Pid Loop resource.
@@ -226,6 +227,12 @@ func (i *IndustrialPidLoop) ToIndustrialPidLoopOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(IndustrialPidLoopOutput)
 }
 
+func (i *IndustrialPidLoop) ToOutput(ctx context.Context) pulumix.Output[*IndustrialPidLoop] {
+	return pulumix.Output[*IndustrialPidLoop]{
+		OutputState: i.ToIndustrialPidLoopOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IndustrialPidLoopArrayInput is an input type that accepts IndustrialPidLoopArray and IndustrialPidLoopArrayOutput values.
 // You can construct a concrete instance of `IndustrialPidLoopArrayInput` via:
 //
@@ -249,6 +256,12 @@ func (i IndustrialPidLoopArray) ToIndustrialPidLoopArrayOutput() IndustrialPidLo
 
 func (i IndustrialPidLoopArray) ToIndustrialPidLoopArrayOutputWithContext(ctx context.Context) IndustrialPidLoopArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IndustrialPidLoopArrayOutput)
+}
+
+func (i IndustrialPidLoopArray) ToOutput(ctx context.Context) pulumix.Output[[]*IndustrialPidLoop] {
+	return pulumix.Output[[]*IndustrialPidLoop]{
+		OutputState: i.ToIndustrialPidLoopArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // IndustrialPidLoopMapInput is an input type that accepts IndustrialPidLoopMap and IndustrialPidLoopMapOutput values.
@@ -276,6 +289,12 @@ func (i IndustrialPidLoopMap) ToIndustrialPidLoopMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(IndustrialPidLoopMapOutput)
 }
 
+func (i IndustrialPidLoopMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IndustrialPidLoop] {
+	return pulumix.Output[map[string]*IndustrialPidLoop]{
+		OutputState: i.ToIndustrialPidLoopMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IndustrialPidLoopOutput struct{ *pulumi.OutputState }
 
 func (IndustrialPidLoopOutput) ElementType() reflect.Type {
@@ -288,6 +307,12 @@ func (o IndustrialPidLoopOutput) ToIndustrialPidLoopOutput() IndustrialPidLoopOu
 
 func (o IndustrialPidLoopOutput) ToIndustrialPidLoopOutputWithContext(ctx context.Context) IndustrialPidLoopOutput {
 	return o
+}
+
+func (o IndustrialPidLoopOutput) ToOutput(ctx context.Context) pulumix.Output[*IndustrialPidLoop] {
+	return pulumix.Output[*IndustrialPidLoop]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Pid Loop Configuration.
@@ -344,6 +369,12 @@ func (o IndustrialPidLoopArrayOutput) ToIndustrialPidLoopArrayOutputWithContext(
 	return o
 }
 
+func (o IndustrialPidLoopArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IndustrialPidLoop] {
+	return pulumix.Output[[]*IndustrialPidLoop]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IndustrialPidLoopArrayOutput) Index(i pulumi.IntInput) IndustrialPidLoopOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IndustrialPidLoop {
 		return vs[0].([]*IndustrialPidLoop)[vs[1].(int)]
@@ -362,6 +393,12 @@ func (o IndustrialPidLoopMapOutput) ToIndustrialPidLoopMapOutput() IndustrialPid
 
 func (o IndustrialPidLoopMapOutput) ToIndustrialPidLoopMapOutputWithContext(ctx context.Context) IndustrialPidLoopMapOutput {
 	return o
+}
+
+func (o IndustrialPidLoopMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IndustrialPidLoop] {
+	return pulumix.Output[map[string]*IndustrialPidLoop]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IndustrialPidLoopMapOutput) MapIndex(k pulumi.StringInput) IndustrialPidLoopOutput {

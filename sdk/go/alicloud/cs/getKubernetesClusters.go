@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
@@ -127,6 +128,12 @@ func (o GetKubernetesClustersResultOutput) ToGetKubernetesClustersResultOutput()
 
 func (o GetKubernetesClustersResultOutput) ToGetKubernetesClustersResultOutputWithContext(ctx context.Context) GetKubernetesClustersResultOutput {
 	return o
+}
+
+func (o GetKubernetesClustersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetKubernetesClustersResult] {
+	return pulumix.Output[GetKubernetesClustersResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of matched Kubernetes clusters. Each element contains the following attributes:

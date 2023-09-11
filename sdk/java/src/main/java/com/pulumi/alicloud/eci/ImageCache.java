@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * An ECI Image Cache can help user to solve the time-consuming problem of image pull. For information about Alicloud ECI Image Cache and how to use it, see [What is Resource Alicloud ECI Image Cache](https://www.alibabacloud.com/help/doc-detail/146891.htm).
  * 
- * &gt; **NOTE:** Available in v1.89.0+.
+ * &gt; **NOTE:** Available since v1.89.0.
  * 
  * &gt; **NOTE:** Each image cache corresponds to a snapshot, and the user does not delete the snapshot directly, otherwise the cache will fail.
  * 
@@ -33,6 +33,18 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.eci.EciFunctions;
+ * import com.pulumi.alicloud.eci.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.EipAddress;
+ * import com.pulumi.alicloud.ecs.EipAddressArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.eci.ImageCache;
  * import com.pulumi.alicloud.eci.ImageCacheArgs;
  * import java.util.List;
@@ -48,12 +60,45 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ImageCache(&#34;example&#34;, ImageCacheArgs.builder()        
- *             .eipInstanceId(&#34;eip-uf60c7cqb2pcrkgxhxxxx&#34;)
- *             .imageCacheName(&#34;tf-test&#34;)
- *             .images(&#34;registry.cn-beijing.aliyuncs.com/sceneplatform/sae-image-xxxx:latest&#34;)
- *             .securityGroupId(&#34;sg-2zeef68b66fxxxx&#34;)
- *             .vswitchId(&#34;vsw-2zef9k7ng82xxxx&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultZones = EciFunctions.getZones();
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.1.0.0/16&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneIds()[0]))
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
+ *             .isp(&#34;BGP&#34;)
+ *             .addressName(name)
+ *             .netmode(&#34;public&#34;)
+ *             .bandwidth(&#34;1&#34;)
+ *             .securityProtectionTypes(&#34;AntiDDoS_Enhanced&#34;)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .build());
+ * 
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         var defaultImageCache = new ImageCache(&#34;defaultImageCache&#34;, ImageCacheArgs.builder()        
+ *             .imageCacheName(name)
+ *             .images(String.format(&#34;registry-vpc.%s.aliyuncs.com/eci_open/nginx:alpine&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id())))
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .vswitchId(defaultSwitch.id())
+ *             .eipInstanceId(defaultEipAddress.id())
  *             .build());
  * 
  *     }
@@ -128,14 +173,14 @@ public class ImageCache extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.imageCacheSize);
     }
     /**
-     * The Image Registry parameters about the image to be cached.
+     * The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
      * 
      */
     @Export(name="imageRegistryCredentials", type=List.class, parameters={ImageCacheImageRegistryCredential.class})
     private Output</* @Nullable */ List<ImageCacheImageRegistryCredential>> imageRegistryCredentials;
 
     /**
-     * @return The Image Registry parameters about the image to be cached.
+     * @return The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
      * 
      */
     public Output<Optional<List<ImageCacheImageRegistryCredential>>> imageRegistryCredentials() {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -66,6 +67,12 @@ func (i GetConfigsConfigArgs) ToGetConfigsConfigOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetConfigsConfigOutput)
 }
 
+func (i GetConfigsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetConfigsConfig] {
+	return pulumix.Output[GetConfigsConfig]{
+		OutputState: i.ToGetConfigsConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetConfigsConfigArrayInput is an input type that accepts GetConfigsConfigArray and GetConfigsConfigArrayOutput values.
 // You can construct a concrete instance of `GetConfigsConfigArrayInput` via:
 //
@@ -91,6 +98,12 @@ func (i GetConfigsConfigArray) ToGetConfigsConfigArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetConfigsConfigArrayOutput)
 }
 
+func (i GetConfigsConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConfigsConfig] {
+	return pulumix.Output[[]GetConfigsConfig]{
+		OutputState: i.ToGetConfigsConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetConfigsConfigOutput struct{ *pulumi.OutputState }
 
 func (GetConfigsConfigOutput) ElementType() reflect.Type {
@@ -103,6 +116,12 @@ func (o GetConfigsConfigOutput) ToGetConfigsConfigOutput() GetConfigsConfigOutpu
 
 func (o GetConfigsConfigOutput) ToGetConfigsConfigOutputWithContext(ctx context.Context) GetConfigsConfigOutput {
 	return o
+}
+
+func (o GetConfigsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetConfigsConfig] {
+	return pulumix.Output[GetConfigsConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Abnormal Alarm General Configuration Module by Using the Encoding.Valid values: `accessFailedCnt`, `accessPermissionExprieMaxDays`, `logDatasizeAvgDays`.
@@ -147,6 +166,12 @@ func (o GetConfigsConfigArrayOutput) ToGetConfigsConfigArrayOutput() GetConfigsC
 
 func (o GetConfigsConfigArrayOutput) ToGetConfigsConfigArrayOutputWithContext(ctx context.Context) GetConfigsConfigArrayOutput {
 	return o
+}
+
+func (o GetConfigsConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConfigsConfig] {
+	return pulumix.Output[[]GetConfigsConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetConfigsConfigArrayOutput) Index(i pulumi.IntInput) GetConfigsConfigOutput {
@@ -228,6 +253,12 @@ func (i GetDataLimitsLimitArgs) ToGetDataLimitsLimitOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetDataLimitsLimitOutput)
 }
 
+func (i GetDataLimitsLimitArgs) ToOutput(ctx context.Context) pulumix.Output[GetDataLimitsLimit] {
+	return pulumix.Output[GetDataLimitsLimit]{
+		OutputState: i.ToGetDataLimitsLimitOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDataLimitsLimitArrayInput is an input type that accepts GetDataLimitsLimitArray and GetDataLimitsLimitArrayOutput values.
 // You can construct a concrete instance of `GetDataLimitsLimitArrayInput` via:
 //
@@ -253,6 +284,12 @@ func (i GetDataLimitsLimitArray) ToGetDataLimitsLimitArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetDataLimitsLimitArrayOutput)
 }
 
+func (i GetDataLimitsLimitArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDataLimitsLimit] {
+	return pulumix.Output[[]GetDataLimitsLimit]{
+		OutputState: i.ToGetDataLimitsLimitArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDataLimitsLimitOutput struct{ *pulumi.OutputState }
 
 func (GetDataLimitsLimitOutput) ElementType() reflect.Type {
@@ -265,6 +302,12 @@ func (o GetDataLimitsLimitOutput) ToGetDataLimitsLimitOutput() GetDataLimitsLimi
 
 func (o GetDataLimitsLimitOutput) ToGetDataLimitsLimitOutputWithContext(ctx context.Context) GetDataLimitsLimitOutput {
 	return o
+}
+
+func (o GetDataLimitsLimitOutput) ToOutput(ctx context.Context) pulumix.Output[GetDataLimitsLimit] {
+	return pulumix.Output[GetDataLimitsLimit]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to enable the log auditing feature.
@@ -334,6 +377,12 @@ func (o GetDataLimitsLimitArrayOutput) ToGetDataLimitsLimitArrayOutput() GetData
 
 func (o GetDataLimitsLimitArrayOutput) ToGetDataLimitsLimitArrayOutputWithContext(ctx context.Context) GetDataLimitsLimitArrayOutput {
 	return o
+}
+
+func (o GetDataLimitsLimitArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDataLimitsLimit] {
+	return pulumix.Output[[]GetDataLimitsLimit]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDataLimitsLimitArrayOutput) Index(i pulumi.IntInput) GetDataLimitsLimitOutput {
@@ -409,6 +458,12 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
 }
 
+func (i GetInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
+	return pulumix.Output[GetInstancesInstance]{
+		OutputState: i.ToGetInstancesInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
@@ -434,6 +489,12 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
+func (i GetInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
+	return pulumix.Output[[]GetInstancesInstance]{
+		OutputState: i.ToGetInstancesInstanceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
@@ -446,6 +507,12 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesI
 
 func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
 	return o
+}
+
+func (o GetInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
+	return pulumix.Output[GetInstancesInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether the required RAM authorization is configured.
@@ -509,6 +576,12 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutput() Get
 
 func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
 	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
+	return pulumix.Output[[]GetInstancesInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
@@ -638,6 +711,12 @@ func (i GetRulesRuleArgs) ToGetRulesRuleOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleOutput)
 }
 
+func (i GetRulesRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetRulesRule] {
+	return pulumix.Output[GetRulesRule]{
+		OutputState: i.ToGetRulesRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRulesRuleArrayInput is an input type that accepts GetRulesRuleArray and GetRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetRulesRuleArrayInput` via:
 //
@@ -663,6 +742,12 @@ func (i GetRulesRuleArray) ToGetRulesRuleArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleArrayOutput)
 }
 
+func (i GetRulesRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesRule] {
+	return pulumix.Output[[]GetRulesRule]{
+		OutputState: i.ToGetRulesRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRulesRuleOutput struct{ *pulumi.OutputState }
 
 func (GetRulesRuleOutput) ElementType() reflect.Type {
@@ -675,6 +760,12 @@ func (o GetRulesRuleOutput) ToGetRulesRuleOutput() GetRulesRuleOutput {
 
 func (o GetRulesRuleOutput) ToGetRulesRuleOutputWithContext(ctx context.Context) GetRulesRuleOutput {
 	return o
+}
+
+func (o GetRulesRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetRulesRule] {
+	return pulumix.Output[GetRulesRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Sensitive Data Identification Rules for the Type of.
@@ -804,6 +895,12 @@ func (o GetRulesRuleArrayOutput) ToGetRulesRuleArrayOutput() GetRulesRuleArrayOu
 
 func (o GetRulesRuleArrayOutput) ToGetRulesRuleArrayOutputWithContext(ctx context.Context) GetRulesRuleArrayOutput {
 	return o
+}
+
+func (o GetRulesRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesRule] {
+	return pulumix.Output[[]GetRulesRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRulesRuleArrayOutput) Index(i pulumi.IntInput) GetRulesRuleOutput {

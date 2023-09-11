@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Cloud Firewall Vpc Firewall Cen and how to use it, see [What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcenconfigure).
  * 
- * &gt; **NOTE:** Available in v1.194.0+.
+ * &gt; **NOTE:** Available since v1.194.0.
  * 
  * ## Example Usage
  * 
@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .memberUid(&#34;1415189284827022&#34;)
  *             .status(&#34;open&#34;)
- *             .vpcFirewallName(&#34;tf-test&#34;)
+ *             .vpcFirewallName(&#34;tf-vpc-firewall-name&#34;)
  *             .vpcRegion(&#34;ap-south-1&#34;)
  *             .build());
  * 
@@ -102,28 +102,28 @@ public class FirewallVpcFirewallCen extends com.pulumi.resources.CustomResource 
         return this.connectType;
     }
     /**
-     * The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+     * The language type of the requested and received messages. Valid values:
      * 
      */
     @Export(name="lang", type=String.class, parameters={})
-    private Output<String> lang;
+    private Output</* @Nullable */ String> lang;
 
     /**
-     * @return The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+     * @return The language type of the requested and received messages. Valid values:
      * 
      */
-    public Output<String> lang() {
-        return this.lang;
+    public Output<Optional<String>> lang() {
+        return Codegen.optional(this.lang);
     }
     /**
-     * The details of the VPC.See the following `Block LocalVpc`.
+     * The details of the VPC. See `local_vpc` below.
      * 
      */
     @Export(name="localVpc", type=FirewallVpcFirewallCenLocalVpc.class, parameters={})
     private Output<FirewallVpcFirewallCenLocalVpc> localVpc;
 
     /**
-     * @return The details of the VPC.See the following `Block LocalVpc`.
+     * @return The details of the VPC. See `local_vpc` below.
      * 
      */
     public Output<FirewallVpcFirewallCenLocalVpc> localVpc() {
@@ -144,14 +144,14 @@ public class FirewallVpcFirewallCen extends com.pulumi.resources.CustomResource 
         return Codegen.optional(this.memberUid);
     }
     /**
-     * Firewall switch status
+     * Firewall switch status.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return Firewall switch status
+     * @return Firewall switch status.
      * 
      */
     public Output<String> status() {

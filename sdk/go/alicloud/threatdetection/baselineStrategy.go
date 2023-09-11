@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Threat Detection Baseline Strategy resource.
@@ -282,6 +283,12 @@ func (i *BaselineStrategy) ToBaselineStrategyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(BaselineStrategyOutput)
 }
 
+func (i *BaselineStrategy) ToOutput(ctx context.Context) pulumix.Output[*BaselineStrategy] {
+	return pulumix.Output[*BaselineStrategy]{
+		OutputState: i.ToBaselineStrategyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BaselineStrategyArrayInput is an input type that accepts BaselineStrategyArray and BaselineStrategyArrayOutput values.
 // You can construct a concrete instance of `BaselineStrategyArrayInput` via:
 //
@@ -305,6 +312,12 @@ func (i BaselineStrategyArray) ToBaselineStrategyArrayOutput() BaselineStrategyA
 
 func (i BaselineStrategyArray) ToBaselineStrategyArrayOutputWithContext(ctx context.Context) BaselineStrategyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BaselineStrategyArrayOutput)
+}
+
+func (i BaselineStrategyArray) ToOutput(ctx context.Context) pulumix.Output[[]*BaselineStrategy] {
+	return pulumix.Output[[]*BaselineStrategy]{
+		OutputState: i.ToBaselineStrategyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BaselineStrategyMapInput is an input type that accepts BaselineStrategyMap and BaselineStrategyMapOutput values.
@@ -332,6 +345,12 @@ func (i BaselineStrategyMap) ToBaselineStrategyMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(BaselineStrategyMapOutput)
 }
 
+func (i BaselineStrategyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BaselineStrategy] {
+	return pulumix.Output[map[string]*BaselineStrategy]{
+		OutputState: i.ToBaselineStrategyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BaselineStrategyOutput struct{ *pulumi.OutputState }
 
 func (BaselineStrategyOutput) ElementType() reflect.Type {
@@ -344,6 +363,12 @@ func (o BaselineStrategyOutput) ToBaselineStrategyOutput() BaselineStrategyOutpu
 
 func (o BaselineStrategyOutput) ToBaselineStrategyOutputWithContext(ctx context.Context) BaselineStrategyOutput {
 	return o
+}
+
+func (o BaselineStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[*BaselineStrategy] {
+	return pulumix.Output[*BaselineStrategy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the baseline check policy.
@@ -413,6 +438,12 @@ func (o BaselineStrategyArrayOutput) ToBaselineStrategyArrayOutputWithContext(ct
 	return o
 }
 
+func (o BaselineStrategyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BaselineStrategy] {
+	return pulumix.Output[[]*BaselineStrategy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BaselineStrategyArrayOutput) Index(i pulumi.IntInput) BaselineStrategyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BaselineStrategy {
 		return vs[0].([]*BaselineStrategy)[vs[1].(int)]
@@ -431,6 +462,12 @@ func (o BaselineStrategyMapOutput) ToBaselineStrategyMapOutput() BaselineStrateg
 
 func (o BaselineStrategyMapOutput) ToBaselineStrategyMapOutputWithContext(ctx context.Context) BaselineStrategyMapOutput {
 	return o
+}
+
+func (o BaselineStrategyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BaselineStrategy] {
+	return pulumix.Output[map[string]*BaselineStrategy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BaselineStrategyMapOutput) MapIndex(k pulumi.StringInput) BaselineStrategyOutput {

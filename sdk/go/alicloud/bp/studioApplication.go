@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Architect Design Tools Application resource.
@@ -227,6 +228,12 @@ func (i *StudioApplication) ToStudioApplicationOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(StudioApplicationOutput)
 }
 
+func (i *StudioApplication) ToOutput(ctx context.Context) pulumix.Output[*StudioApplication] {
+	return pulumix.Output[*StudioApplication]{
+		OutputState: i.ToStudioApplicationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StudioApplicationArrayInput is an input type that accepts StudioApplicationArray and StudioApplicationArrayOutput values.
 // You can construct a concrete instance of `StudioApplicationArrayInput` via:
 //
@@ -250,6 +257,12 @@ func (i StudioApplicationArray) ToStudioApplicationArrayOutput() StudioApplicati
 
 func (i StudioApplicationArray) ToStudioApplicationArrayOutputWithContext(ctx context.Context) StudioApplicationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StudioApplicationArrayOutput)
+}
+
+func (i StudioApplicationArray) ToOutput(ctx context.Context) pulumix.Output[[]*StudioApplication] {
+	return pulumix.Output[[]*StudioApplication]{
+		OutputState: i.ToStudioApplicationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // StudioApplicationMapInput is an input type that accepts StudioApplicationMap and StudioApplicationMapOutput values.
@@ -277,6 +290,12 @@ func (i StudioApplicationMap) ToStudioApplicationMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(StudioApplicationMapOutput)
 }
 
+func (i StudioApplicationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*StudioApplication] {
+	return pulumix.Output[map[string]*StudioApplication]{
+		OutputState: i.ToStudioApplicationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StudioApplicationOutput struct{ *pulumi.OutputState }
 
 func (StudioApplicationOutput) ElementType() reflect.Type {
@@ -289,6 +308,12 @@ func (o StudioApplicationOutput) ToStudioApplicationOutput() StudioApplicationOu
 
 func (o StudioApplicationOutput) ToStudioApplicationOutputWithContext(ctx context.Context) StudioApplicationOutput {
 	return o
+}
+
+func (o StudioApplicationOutput) ToOutput(ctx context.Context) pulumix.Output[*StudioApplication] {
+	return pulumix.Output[*StudioApplication]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the application.
@@ -345,6 +370,12 @@ func (o StudioApplicationArrayOutput) ToStudioApplicationArrayOutputWithContext(
 	return o
 }
 
+func (o StudioApplicationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*StudioApplication] {
+	return pulumix.Output[[]*StudioApplication]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StudioApplicationArrayOutput) Index(i pulumi.IntInput) StudioApplicationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StudioApplication {
 		return vs[0].([]*StudioApplication)[vs[1].(int)]
@@ -363,6 +394,12 @@ func (o StudioApplicationMapOutput) ToStudioApplicationMapOutput() StudioApplica
 
 func (o StudioApplicationMapOutput) ToStudioApplicationMapOutputWithContext(ctx context.Context) StudioApplicationMapOutput {
 	return o
+}
+
+func (o StudioApplicationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*StudioApplication] {
+	return pulumix.Output[map[string]*StudioApplication]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StudioApplicationMapOutput) MapIndex(k pulumi.StringInput) StudioApplicationOutput {

@@ -21,9 +21,87 @@ import javax.annotation.Nullable;
  * Provides a Elastic Cloud Phone (ECP) Instance resource.
  * 
  * For information about Elastic Cloud Phone (ECP) Instance and how to use it,
- * see [What is Instance](https://help.aliyun.com/document_detail/258178.html/).
+ * see [What is Instance](https://www.alibabacloud.com/help/en/cloudphone/latest/api-cloudphone-2020-12-30-runinstances).
  * 
- * &gt; **NOTE:** Available in v1.158.0+.
+ * &gt; **NOTE:** Available since v1.158.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecp.EcpFunctions;
+ * import com.pulumi.alicloud.ecp.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecp.KeyPair;
+ * import com.pulumi.alicloud.ecp.KeyPairArgs;
+ * import com.pulumi.alicloud.ecp.Instance;
+ * import com.pulumi.alicloud.ecp.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultZones = EcpFunctions.getZones();
+ * 
+ *         final var defaultInstanceTypes = EcpFunctions.getInstanceTypes();
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.1.0.0/16&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
+ *             .keyPairName(name)
+ *             .publicKeyBody(&#34;ssh-rsa AAAAB3Nza12345678qwertyuudsfsg&#34;)
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .instanceName(name)
+ *             .description(name)
+ *             .keyPairName(defaultKeyPair.keyPairName())
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .vswitchId(defaultSwitch.id())
+ *             .imageId(&#34;android_9_0_0_release_2851157_20211201.vhd&#34;)
+ *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[1].instanceType()))
+ *             .vncPassword(&#34;Ecp123&#34;)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

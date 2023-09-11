@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.CloudConnect
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var cenUid = config.GetNumber("cenUid") ?? 123456789;
+    ///     var cenUid = config.GetDouble("cenUid") ?? 123456789;
     ///     var @default = new AliCloud.Provider("default", new()
     ///     {
     ///         Region = "cn-shanghai",

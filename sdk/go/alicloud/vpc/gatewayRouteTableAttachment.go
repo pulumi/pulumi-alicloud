@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPC Gateway Route Table Attachment resource.
@@ -220,6 +221,12 @@ func (i *GatewayRouteTableAttachment) ToGatewayRouteTableAttachmentOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteTableAttachmentOutput)
 }
 
+func (i *GatewayRouteTableAttachment) ToOutput(ctx context.Context) pulumix.Output[*GatewayRouteTableAttachment] {
+	return pulumix.Output[*GatewayRouteTableAttachment]{
+		OutputState: i.ToGatewayRouteTableAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GatewayRouteTableAttachmentArrayInput is an input type that accepts GatewayRouteTableAttachmentArray and GatewayRouteTableAttachmentArrayOutput values.
 // You can construct a concrete instance of `GatewayRouteTableAttachmentArrayInput` via:
 //
@@ -243,6 +250,12 @@ func (i GatewayRouteTableAttachmentArray) ToGatewayRouteTableAttachmentArrayOutp
 
 func (i GatewayRouteTableAttachmentArray) ToGatewayRouteTableAttachmentArrayOutputWithContext(ctx context.Context) GatewayRouteTableAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteTableAttachmentArrayOutput)
+}
+
+func (i GatewayRouteTableAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*GatewayRouteTableAttachment] {
+	return pulumix.Output[[]*GatewayRouteTableAttachment]{
+		OutputState: i.ToGatewayRouteTableAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GatewayRouteTableAttachmentMapInput is an input type that accepts GatewayRouteTableAttachmentMap and GatewayRouteTableAttachmentMapOutput values.
@@ -270,6 +283,12 @@ func (i GatewayRouteTableAttachmentMap) ToGatewayRouteTableAttachmentMapOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteTableAttachmentMapOutput)
 }
 
+func (i GatewayRouteTableAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewayRouteTableAttachment] {
+	return pulumix.Output[map[string]*GatewayRouteTableAttachment]{
+		OutputState: i.ToGatewayRouteTableAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GatewayRouteTableAttachmentOutput struct{ *pulumi.OutputState }
 
 func (GatewayRouteTableAttachmentOutput) ElementType() reflect.Type {
@@ -282,6 +301,12 @@ func (o GatewayRouteTableAttachmentOutput) ToGatewayRouteTableAttachmentOutput()
 
 func (o GatewayRouteTableAttachmentOutput) ToGatewayRouteTableAttachmentOutputWithContext(ctx context.Context) GatewayRouteTableAttachmentOutput {
 	return o
+}
+
+func (o GatewayRouteTableAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayRouteTableAttachment] {
+	return pulumix.Output[*GatewayRouteTableAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation time of the resource.
@@ -329,6 +354,12 @@ func (o GatewayRouteTableAttachmentArrayOutput) ToGatewayRouteTableAttachmentArr
 	return o
 }
 
+func (o GatewayRouteTableAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GatewayRouteTableAttachment] {
+	return pulumix.Output[[]*GatewayRouteTableAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GatewayRouteTableAttachmentArrayOutput) Index(i pulumi.IntInput) GatewayRouteTableAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GatewayRouteTableAttachment {
 		return vs[0].([]*GatewayRouteTableAttachment)[vs[1].(int)]
@@ -347,6 +378,12 @@ func (o GatewayRouteTableAttachmentMapOutput) ToGatewayRouteTableAttachmentMapOu
 
 func (o GatewayRouteTableAttachmentMapOutput) ToGatewayRouteTableAttachmentMapOutputWithContext(ctx context.Context) GatewayRouteTableAttachmentMapOutput {
 	return o
+}
+
+func (o GatewayRouteTableAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewayRouteTableAttachment] {
+	return pulumix.Output[map[string]*GatewayRouteTableAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GatewayRouteTableAttachmentMapOutput) MapIndex(k pulumi.StringInput) GatewayRouteTableAttachmentOutput {

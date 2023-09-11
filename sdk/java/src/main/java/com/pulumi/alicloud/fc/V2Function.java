@@ -25,533 +25,155 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * Provides a FCV2 Function resource. Function is the unit of system scheduling and operation. Functions must be subordinate to services. All functions under the same service share some identical settings, such as service authorization and log configuration.
- * 
- * For information about FCV2 Function and how to use it, see [What is Function](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-fc-function).
- * 
- * &gt; **NOTE:** Available since v1.208.0.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.log.Project;
- * import com.pulumi.alicloud.log.ProjectArgs;
- * import com.pulumi.alicloud.log.Store;
- * import com.pulumi.alicloud.log.StoreArgs;
- * import com.pulumi.alicloud.ram.Role;
- * import com.pulumi.alicloud.ram.RoleArgs;
- * import com.pulumi.alicloud.ram.RolePolicyAttachment;
- * import com.pulumi.alicloud.ram.RolePolicyAttachmentArgs;
- * import com.pulumi.alicloud.fc.Service;
- * import com.pulumi.alicloud.fc.ServiceArgs;
- * import com.pulumi.alicloud.fc.inputs.ServiceLogConfigArgs;
- * import com.pulumi.alicloud.fc.V2Function;
- * import com.pulumi.alicloud.fc.V2FunctionArgs;
- * import com.pulumi.alicloud.fc.inputs.V2FunctionInstanceLifecycleConfigArgs;
- * import com.pulumi.alicloud.fc.inputs.V2FunctionInstanceLifecycleConfigPreFreezeArgs;
- * import com.pulumi.alicloud.fc.inputs.V2FunctionInstanceLifecycleConfigPreStopArgs;
- * import com.pulumi.alicloud.fc.inputs.V2FunctionCodeArgs;
- * import com.pulumi.alicloud.fc.inputs.V2FunctionCustomDnsArgs;
- * import com.pulumi.alicloud.fc.inputs.V2FunctionCustomHealthCheckConfigArgs;
- * import com.pulumi.alicloud.fc.inputs.V2FunctionCustomRuntimeConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
- *             .description(name)
- *             .build());
- * 
- *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
- *             .project(defaultProject.name())
- *             .retentionPeriod(&#34;3000&#34;)
- *             .shardCount(1)
- *             .build());
- * 
- *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
- *             .document(&#34;&#34;&#34;
- *   {
- *       &#34;Statement&#34;: [
- *         {
- *           &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
- *           &#34;Effect&#34;: &#34;Allow&#34;,
- *           &#34;Principal&#34;: {
- *             &#34;Service&#34;: [
- *               &#34;fc.aliyuncs.com&#34;
- *             ]
- *           }
- *         }
- *       ],
- *       &#34;Version&#34;: &#34;1&#34;
- *   }
- *             &#34;&#34;&#34;)
- *             .description(name)
- *             .force(true)
- *             .build());
- * 
- *         var defaultRolePolicyAttachment = new RolePolicyAttachment(&#34;defaultRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
- *             .roleName(defaultRole.name())
- *             .policyName(&#34;AliyunLogFullAccess&#34;)
- *             .policyType(&#34;System&#34;)
- *             .build());
- * 
- *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
- *             .description(name)
- *             .logConfig(ServiceLogConfigArgs.builder()
- *                 .project(defaultProject.name())
- *                 .logstore(defaultStore.name())
- *                 .build())
- *             .role(defaultRole.arn())
- *             .build());
- * 
- *         var defaultV2Function = new V2Function(&#34;defaultV2Function&#34;, V2FunctionArgs.builder()        
- *             .functionName(name)
- *             .memorySize(1024)
- *             .runtime(&#34;custom.debian10&#34;)
- *             .description(name)
- *             .serviceName(defaultService.name())
- *             .initializer(&#34;index.initializer&#34;)
- *             .initializationTimeout(10)
- *             .timeout(60)
- *             .handler(&#34;index.handler&#34;)
- *             .instanceType(&#34;e1&#34;)
- *             .instanceLifecycleConfig(V2FunctionInstanceLifecycleConfigArgs.builder()
- *                 .preFreeze(V2FunctionInstanceLifecycleConfigPreFreezeArgs.builder()
- *                     .handler(&#34;index.prefreeze&#34;)
- *                     .timeout(30)
- *                     .build())
- *                 .preStop(V2FunctionInstanceLifecycleConfigPreStopArgs.builder()
- *                     .handler(&#34;index.prestop&#34;)
- *                     .timeout(30)
- *                     .build())
- *                 .build())
- *             .code(V2FunctionCodeArgs.builder()
- *                 .ossBucketName(&#34;code-sample-cn-hangzhou&#34;)
- *                 .ossObjectName(&#34;quick-start-sample-codes/quick-start-sample-codes-nodejs/RocketMQ-producer-nodejs14-event/code.zip&#34;)
- *                 .build())
- *             .customDns(V2FunctionCustomDnsArgs.builder()
- *                 .nameServers(&#34;223.5.5.5&#34;)
- *                 .searches(&#34;mydomain.com&#34;)
- *                 .dnsOptions(V2FunctionCustomDnsDnsOptionArgs.builder()
- *                     .name(name)
- *                     .value(&#34;1&#34;)
- *                     .build())
- *                 .build())
- *             .diskSize(512)
- *             .instanceConcurrency(10)
- *             .layers(            
- *                 &#34;d3fc5de8d120687be2bfab761518d5de#Nodejs-Aliyun-SDK#2&#34;,
- *                 &#34;d3fc5de8d120687be2bfab761518d5de#Python39#2&#34;)
- *             .cpu(1)
- *             .customHealthCheckConfig(V2FunctionCustomHealthCheckConfigArgs.builder()
- *                 .httpGetUrl(&#34;/healthcheck&#34;)
- *                 .initialDelaySeconds(3)
- *                 .periodSeconds(3)
- *                 .timeoutSeconds(3)
- *                 .failureThreshold(1)
- *                 .successThreshold(1)
- *                 .build())
- *             .caPort(9000)
- *             .customRuntimeConfig(V2FunctionCustomRuntimeConfigArgs.builder()
- *                 .commands(&#34;npm&#34;)
- *                 .args(                
- *                     &#34;run&#34;,
- *                     &#34;start&#34;)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * ## Import
- * 
- * FCV2 Function can be imported using the id, e.g.
- * 
- * ```sh
- *  $ pulumi import alicloud:fc/v2Function:V2Function example &lt;service_name&gt;:&lt;function_name&gt;
- * ```
- * 
- */
 @ResourceType(type="alicloud:fc/v2Function:V2Function")
 public class V2Function extends com.pulumi.resources.CustomResource {
-    /**
-     * The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
-     * 
-     */
     @Export(name="caPort", type=Integer.class, parameters={})
     private Output<Integer> caPort;
 
-    /**
-     * @return The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
-     * 
-     */
     public Output<Integer> caPort() {
         return this.caPort;
     }
-    /**
-     * Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
-     * 
-     */
     @Export(name="code", type=V2FunctionCode.class, parameters={})
     private Output</* @Nullable */ V2FunctionCode> code;
 
-    /**
-     * @return Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
-     * 
-     */
     public Output<Optional<V2FunctionCode>> code() {
         return Codegen.optional(this.code);
     }
-    /**
-     * crc64 of function code.
-     * 
-     */
     @Export(name="codeChecksum", type=String.class, parameters={})
     private Output<String> codeChecksum;
 
-    /**
-     * @return crc64 of function code.
-     * 
-     */
     public Output<String> codeChecksum() {
         return this.codeChecksum;
     }
-    /**
-     * The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
-     * 
-     */
     @Export(name="cpu", type=Double.class, parameters={})
     private Output</* @Nullable */ Double> cpu;
 
-    /**
-     * @return The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
-     * 
-     */
     public Output<Optional<Double>> cpu() {
         return Codegen.optional(this.cpu);
     }
-    /**
-     * create time of function.
-     * 
-     */
     @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
-    /**
-     * @return create time of function.
-     * 
-     */
     public Output<String> createTime() {
         return this.createTime;
     }
-    /**
-     * Custom-container runtime related function configuration. See `custom_container_config` below.
-     * 
-     */
     @Export(name="customContainerConfig", type=V2FunctionCustomContainerConfig.class, parameters={})
     private Output</* @Nullable */ V2FunctionCustomContainerConfig> customContainerConfig;
 
-    /**
-     * @return Custom-container runtime related function configuration. See `custom_container_config` below.
-     * 
-     */
     public Output<Optional<V2FunctionCustomContainerConfig>> customContainerConfig() {
         return Codegen.optional(this.customContainerConfig);
     }
-    /**
-     * Function custom DNS configuration. See `custom_dns` below.
-     * 
-     */
     @Export(name="customDns", type=V2FunctionCustomDns.class, parameters={})
     private Output</* @Nullable */ V2FunctionCustomDns> customDns;
 
-    /**
-     * @return Function custom DNS configuration. See `custom_dns` below.
-     * 
-     */
     public Output<Optional<V2FunctionCustomDns>> customDns() {
         return Codegen.optional(this.customDns);
     }
-    /**
-     * Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
-     * 
-     */
     @Export(name="customHealthCheckConfig", type=V2FunctionCustomHealthCheckConfig.class, parameters={})
     private Output</* @Nullable */ V2FunctionCustomHealthCheckConfig> customHealthCheckConfig;
 
-    /**
-     * @return Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
-     * 
-     */
     public Output<Optional<V2FunctionCustomHealthCheckConfig>> customHealthCheckConfig() {
         return Codegen.optional(this.customHealthCheckConfig);
     }
-    /**
-     * Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
-     * 
-     */
     @Export(name="customRuntimeConfig", type=V2FunctionCustomRuntimeConfig.class, parameters={})
     private Output</* @Nullable */ V2FunctionCustomRuntimeConfig> customRuntimeConfig;
 
-    /**
-     * @return Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
-     * 
-     */
     public Output<Optional<V2FunctionCustomRuntimeConfig>> customRuntimeConfig() {
         return Codegen.optional(this.customRuntimeConfig);
     }
-    /**
-     * description of function.
-     * 
-     */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
-    /**
-     * @return description of function.
-     * 
-     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    /**
-     * The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
-     * 
-     */
     @Export(name="diskSize", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> diskSize;
 
-    /**
-     * @return The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
-     * 
-     */
     public Output<Optional<Integer>> diskSize() {
         return Codegen.optional(this.diskSize);
     }
-    /**
-     * The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
-     * 
-     */
     @Export(name="environmentVariables", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> environmentVariables;
 
-    /**
-     * @return The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
-     * 
-     */
     public Output<Optional<Map<String,Object>>> environmentVariables() {
         return Codegen.optional(this.environmentVariables);
     }
-    /**
-     * function name.
-     * 
-     */
     @Export(name="functionName", type=String.class, parameters={})
     private Output<String> functionName;
 
-    /**
-     * @return function name.
-     * 
-     */
     public Output<String> functionName() {
         return this.functionName;
     }
-    /**
-     * The GPU memory specification of the function, in MB, is a multiple of 1024MB.
-     * 
-     */
     @Export(name="gpuMemorySize", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> gpuMemorySize;
 
-    /**
-     * @return The GPU memory specification of the function, in MB, is a multiple of 1024MB.
-     * 
-     */
     public Output<Optional<Integer>> gpuMemorySize() {
         return Codegen.optional(this.gpuMemorySize);
     }
-    /**
-     * entry point of function.
-     * 
-     */
     @Export(name="handler", type=String.class, parameters={})
     private Output<String> handler;
 
-    /**
-     * @return entry point of function.
-     * 
-     */
     public Output<String> handler() {
         return this.handler;
     }
-    /**
-     * max running time of initializer.
-     * 
-     */
     @Export(name="initializationTimeout", type=Integer.class, parameters={})
     private Output<Integer> initializationTimeout;
 
-    /**
-     * @return max running time of initializer.
-     * 
-     */
     public Output<Integer> initializationTimeout() {
         return this.initializationTimeout;
     }
-    /**
-     * initializer entry point of function.
-     * 
-     */
     @Export(name="initializer", type=String.class, parameters={})
     private Output</* @Nullable */ String> initializer;
 
-    /**
-     * @return initializer entry point of function.
-     * 
-     */
     public Output<Optional<String>> initializer() {
         return Codegen.optional(this.initializer);
     }
-    /**
-     * The maximum concurrency allowed for a single function instance.
-     * 
-     */
     @Export(name="instanceConcurrency", type=Integer.class, parameters={})
     private Output<Integer> instanceConcurrency;
 
-    /**
-     * @return The maximum concurrency allowed for a single function instance.
-     * 
-     */
     public Output<Integer> instanceConcurrency() {
         return this.instanceConcurrency;
     }
-    /**
-     * Instance lifecycle configuration. See `instance_lifecycle_config` below.
-     * 
-     */
     @Export(name="instanceLifecycleConfig", type=V2FunctionInstanceLifecycleConfig.class, parameters={})
     private Output</* @Nullable */ V2FunctionInstanceLifecycleConfig> instanceLifecycleConfig;
 
-    /**
-     * @return Instance lifecycle configuration. See `instance_lifecycle_config` below.
-     * 
-     */
     public Output<Optional<V2FunctionInstanceLifecycleConfig>> instanceLifecycleConfig() {
         return Codegen.optional(this.instanceLifecycleConfig);
     }
-    /**
-     * The instance type of the function. Valid values:
-     * - **e1**: Elastic instance.
-     * - **c1**: performance instance.
-     * - **fc.gpu.tesla.1**: the T4 card type of the Tesla series of GPU instances.
-     * - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
-     * - **g1**: Same as **fc.gpu.tesla.1**.
-     * 
-     */
     @Export(name="instanceType", type=String.class, parameters={})
     private Output<String> instanceType;
 
-    /**
-     * @return The instance type of the function. Valid values:
-     * - **e1**: Elastic instance.
-     * - **c1**: performance instance.
-     * - **fc.gpu.tesla.1**: the T4 card type of the Tesla series of GPU instances.
-     * - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
-     * - **g1**: Same as **fc.gpu.tesla.1**.
-     * 
-     */
     public Output<String> instanceType() {
         return this.instanceType;
     }
-    /**
-     * List of layers.
-     * &gt; **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
-     * 
-     */
     @Export(name="layers", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> layers;
 
-    /**
-     * @return List of layers.
-     * &gt; **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
-     * 
-     */
     public Output<Optional<List<String>>> layers() {
         return Codegen.optional(this.layers);
     }
-    /**
-     * memory size needed by function.
-     * 
-     */
     @Export(name="memorySize", type=Integer.class, parameters={})
     private Output<Integer> memorySize;
 
-    /**
-     * @return memory size needed by function.
-     * 
-     */
     public Output<Integer> memorySize() {
         return this.memorySize;
     }
-    /**
-     * runtime of function code.
-     * 
-     */
     @Export(name="runtime", type=String.class, parameters={})
     private Output<String> runtime;
 
-    /**
-     * @return runtime of function code.
-     * 
-     */
     public Output<String> runtime() {
         return this.runtime;
     }
-    /**
-     * The name of the function Service.
-     * 
-     */
     @Export(name="serviceName", type=String.class, parameters={})
     private Output<String> serviceName;
 
-    /**
-     * @return The name of the function Service.
-     * 
-     */
     public Output<String> serviceName() {
         return this.serviceName;
     }
-    /**
-     * max running time of function.
-     * 
-     */
     @Export(name="timeout", type=Integer.class, parameters={})
     private Output<Integer> timeout;
 
-    /**
-     * @return max running time of function.
-     * 
-     */
     public Output<Integer> timeout() {
         return this.timeout;
     }

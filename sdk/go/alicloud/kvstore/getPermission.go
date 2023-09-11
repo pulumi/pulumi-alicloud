@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Assigns a RAM role to ApsaraDB for Redis.
@@ -105,6 +106,12 @@ func (o GetPermissionResultOutput) ToGetPermissionResultOutput() GetPermissionRe
 
 func (o GetPermissionResultOutput) ToGetPermissionResultOutputWithContext(ctx context.Context) GetPermissionResultOutput {
 	return o
+}
+
+func (o GetPermissionResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPermissionResult] {
+	return pulumix.Output[GetPermissionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPermissionResultOutput) Enable() pulumi.StringPtrOutput {

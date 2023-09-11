@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPC Vswitch resource. ## Module Support
@@ -415,6 +416,12 @@ func (i *Switch) ToSwitchOutputWithContext(ctx context.Context) SwitchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SwitchOutput)
 }
 
+func (i *Switch) ToOutput(ctx context.Context) pulumix.Output[*Switch] {
+	return pulumix.Output[*Switch]{
+		OutputState: i.ToSwitchOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SwitchArrayInput is an input type that accepts SwitchArray and SwitchArrayOutput values.
 // You can construct a concrete instance of `SwitchArrayInput` via:
 //
@@ -438,6 +445,12 @@ func (i SwitchArray) ToSwitchArrayOutput() SwitchArrayOutput {
 
 func (i SwitchArray) ToSwitchArrayOutputWithContext(ctx context.Context) SwitchArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SwitchArrayOutput)
+}
+
+func (i SwitchArray) ToOutput(ctx context.Context) pulumix.Output[[]*Switch] {
+	return pulumix.Output[[]*Switch]{
+		OutputState: i.ToSwitchArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SwitchMapInput is an input type that accepts SwitchMap and SwitchMapOutput values.
@@ -465,6 +478,12 @@ func (i SwitchMap) ToSwitchMapOutputWithContext(ctx context.Context) SwitchMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(SwitchMapOutput)
 }
 
+func (i SwitchMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Switch] {
+	return pulumix.Output[map[string]*Switch]{
+		OutputState: i.ToSwitchMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SwitchOutput struct{ *pulumi.OutputState }
 
 func (SwitchOutput) ElementType() reflect.Type {
@@ -477,6 +496,12 @@ func (o SwitchOutput) ToSwitchOutput() SwitchOutput {
 
 func (o SwitchOutput) ToSwitchOutputWithContext(ctx context.Context) SwitchOutput {
 	return o
+}
+
+func (o SwitchOutput) ToOutput(ctx context.Context) pulumix.Output[*Switch] {
+	return pulumix.Output[*Switch]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
@@ -566,6 +591,12 @@ func (o SwitchArrayOutput) ToSwitchArrayOutputWithContext(ctx context.Context) S
 	return o
 }
 
+func (o SwitchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Switch] {
+	return pulumix.Output[[]*Switch]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SwitchArrayOutput) Index(i pulumi.IntInput) SwitchOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Switch {
 		return vs[0].([]*Switch)[vs[1].(int)]
@@ -584,6 +615,12 @@ func (o SwitchMapOutput) ToSwitchMapOutput() SwitchMapOutput {
 
 func (o SwitchMapOutput) ToSwitchMapOutputWithContext(ctx context.Context) SwitchMapOutput {
 	return o
+}
+
+func (o SwitchMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Switch] {
+	return pulumix.Output[map[string]*Switch]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SwitchMapOutput) MapIndex(k pulumi.StringInput) SwitchOutput {

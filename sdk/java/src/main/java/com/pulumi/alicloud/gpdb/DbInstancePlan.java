@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a GPDB DB Instance Plan resource.
  * 
- * For information about GPDB DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/zh/analyticdb-for-postgresql/latest/createdbinstanceplan).
+ * For information about GPDB DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/createdbinstanceplan).
  * 
- * &gt; **NOTE:** Available in v1.189.0+.
+ * &gt; **NOTE:** Available since v1.189.0.
  * 
  * ## Import
  * 
@@ -62,14 +62,14 @@ public class DbInstancePlan extends com.pulumi.resources.CustomResource {
         return this.dbInstancePlanName;
     }
     /**
-     * The plan config. See the following `Block plan_config`.
+     * The plan config. See `plan_config` below.
      * 
      */
     @Export(name="planConfigs", type=List.class, parameters={DbInstancePlanPlanConfig.class})
     private Output<List<DbInstancePlanPlanConfig>> planConfigs;
 
     /**
-     * @return The plan config. See the following `Block plan_config`.
+     * @return The plan config. See `plan_config` below.
      * 
      */
     public Output<List<DbInstancePlanPlanConfig>> planConfigs() {

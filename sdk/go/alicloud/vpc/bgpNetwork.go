@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPC Bgp Network resource.
@@ -197,6 +198,12 @@ func (i *BgpNetwork) ToBgpNetworkOutputWithContext(ctx context.Context) BgpNetwo
 	return pulumi.ToOutputWithContext(ctx, i).(BgpNetworkOutput)
 }
 
+func (i *BgpNetwork) ToOutput(ctx context.Context) pulumix.Output[*BgpNetwork] {
+	return pulumix.Output[*BgpNetwork]{
+		OutputState: i.ToBgpNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BgpNetworkArrayInput is an input type that accepts BgpNetworkArray and BgpNetworkArrayOutput values.
 // You can construct a concrete instance of `BgpNetworkArrayInput` via:
 //
@@ -220,6 +227,12 @@ func (i BgpNetworkArray) ToBgpNetworkArrayOutput() BgpNetworkArrayOutput {
 
 func (i BgpNetworkArray) ToBgpNetworkArrayOutputWithContext(ctx context.Context) BgpNetworkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BgpNetworkArrayOutput)
+}
+
+func (i BgpNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]*BgpNetwork] {
+	return pulumix.Output[[]*BgpNetwork]{
+		OutputState: i.ToBgpNetworkArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BgpNetworkMapInput is an input type that accepts BgpNetworkMap and BgpNetworkMapOutput values.
@@ -247,6 +260,12 @@ func (i BgpNetworkMap) ToBgpNetworkMapOutputWithContext(ctx context.Context) Bgp
 	return pulumi.ToOutputWithContext(ctx, i).(BgpNetworkMapOutput)
 }
 
+func (i BgpNetworkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BgpNetwork] {
+	return pulumix.Output[map[string]*BgpNetwork]{
+		OutputState: i.ToBgpNetworkMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BgpNetworkOutput struct{ *pulumi.OutputState }
 
 func (BgpNetworkOutput) ElementType() reflect.Type {
@@ -259,6 +278,12 @@ func (o BgpNetworkOutput) ToBgpNetworkOutput() BgpNetworkOutput {
 
 func (o BgpNetworkOutput) ToBgpNetworkOutputWithContext(ctx context.Context) BgpNetworkOutput {
 	return o
+}
+
+func (o BgpNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*BgpNetwork] {
+	return pulumix.Output[*BgpNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
@@ -290,6 +315,12 @@ func (o BgpNetworkArrayOutput) ToBgpNetworkArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o BgpNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BgpNetwork] {
+	return pulumix.Output[[]*BgpNetwork]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BgpNetworkArrayOutput) Index(i pulumi.IntInput) BgpNetworkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BgpNetwork {
 		return vs[0].([]*BgpNetwork)[vs[1].(int)]
@@ -308,6 +339,12 @@ func (o BgpNetworkMapOutput) ToBgpNetworkMapOutput() BgpNetworkMapOutput {
 
 func (o BgpNetworkMapOutput) ToBgpNetworkMapOutputWithContext(ctx context.Context) BgpNetworkMapOutput {
 	return o
+}
+
+func (o BgpNetworkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BgpNetwork] {
+	return pulumix.Output[map[string]*BgpNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BgpNetworkMapOutput) MapIndex(k pulumi.StringInput) BgpNetworkOutput {

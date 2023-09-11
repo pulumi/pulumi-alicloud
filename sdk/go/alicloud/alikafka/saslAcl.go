@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an ALIKAFKA sasl acl resource, see [What is alikafka sasl acl](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createacl).
@@ -287,6 +288,12 @@ func (i *SaslAcl) ToSaslAclOutputWithContext(ctx context.Context) SaslAclOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(SaslAclOutput)
 }
 
+func (i *SaslAcl) ToOutput(ctx context.Context) pulumix.Output[*SaslAcl] {
+	return pulumix.Output[*SaslAcl]{
+		OutputState: i.ToSaslAclOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SaslAclArrayInput is an input type that accepts SaslAclArray and SaslAclArrayOutput values.
 // You can construct a concrete instance of `SaslAclArrayInput` via:
 //
@@ -310,6 +317,12 @@ func (i SaslAclArray) ToSaslAclArrayOutput() SaslAclArrayOutput {
 
 func (i SaslAclArray) ToSaslAclArrayOutputWithContext(ctx context.Context) SaslAclArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SaslAclArrayOutput)
+}
+
+func (i SaslAclArray) ToOutput(ctx context.Context) pulumix.Output[[]*SaslAcl] {
+	return pulumix.Output[[]*SaslAcl]{
+		OutputState: i.ToSaslAclArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SaslAclMapInput is an input type that accepts SaslAclMap and SaslAclMapOutput values.
@@ -337,6 +350,12 @@ func (i SaslAclMap) ToSaslAclMapOutputWithContext(ctx context.Context) SaslAclMa
 	return pulumi.ToOutputWithContext(ctx, i).(SaslAclMapOutput)
 }
 
+func (i SaslAclMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SaslAcl] {
+	return pulumix.Output[map[string]*SaslAcl]{
+		OutputState: i.ToSaslAclMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SaslAclOutput struct{ *pulumi.OutputState }
 
 func (SaslAclOutput) ElementType() reflect.Type {
@@ -349,6 +368,12 @@ func (o SaslAclOutput) ToSaslAclOutput() SaslAclOutput {
 
 func (o SaslAclOutput) ToSaslAclOutputWithContext(ctx context.Context) SaslAclOutput {
 	return o
+}
+
+func (o SaslAclOutput) ToOutput(ctx context.Context) pulumix.Output[*SaslAcl] {
+	return pulumix.Output[*SaslAcl]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Operation type for this acl. The operation type can only be "Write" and "Read".
@@ -400,6 +425,12 @@ func (o SaslAclArrayOutput) ToSaslAclArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o SaslAclArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SaslAcl] {
+	return pulumix.Output[[]*SaslAcl]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SaslAclArrayOutput) Index(i pulumi.IntInput) SaslAclOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SaslAcl {
 		return vs[0].([]*SaslAcl)[vs[1].(int)]
@@ -418,6 +449,12 @@ func (o SaslAclMapOutput) ToSaslAclMapOutput() SaslAclMapOutput {
 
 func (o SaslAclMapOutput) ToSaslAclMapOutputWithContext(ctx context.Context) SaslAclMapOutput {
 	return o
+}
+
+func (o SaslAclMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SaslAcl] {
+	return pulumix.Output[map[string]*SaslAcl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SaslAclMapOutput) MapIndex(k pulumi.StringInput) SaslAclOutput {

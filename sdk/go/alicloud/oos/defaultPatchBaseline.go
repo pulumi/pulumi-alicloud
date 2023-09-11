@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Oos Default Patch Baseline resource.
@@ -157,6 +158,12 @@ func (i *DefaultPatchBaseline) ToDefaultPatchBaselineOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultPatchBaselineOutput)
 }
 
+func (i *DefaultPatchBaseline) ToOutput(ctx context.Context) pulumix.Output[*DefaultPatchBaseline] {
+	return pulumix.Output[*DefaultPatchBaseline]{
+		OutputState: i.ToDefaultPatchBaselineOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DefaultPatchBaselineArrayInput is an input type that accepts DefaultPatchBaselineArray and DefaultPatchBaselineArrayOutput values.
 // You can construct a concrete instance of `DefaultPatchBaselineArrayInput` via:
 //
@@ -180,6 +187,12 @@ func (i DefaultPatchBaselineArray) ToDefaultPatchBaselineArrayOutput() DefaultPa
 
 func (i DefaultPatchBaselineArray) ToDefaultPatchBaselineArrayOutputWithContext(ctx context.Context) DefaultPatchBaselineArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultPatchBaselineArrayOutput)
+}
+
+func (i DefaultPatchBaselineArray) ToOutput(ctx context.Context) pulumix.Output[[]*DefaultPatchBaseline] {
+	return pulumix.Output[[]*DefaultPatchBaseline]{
+		OutputState: i.ToDefaultPatchBaselineArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DefaultPatchBaselineMapInput is an input type that accepts DefaultPatchBaselineMap and DefaultPatchBaselineMapOutput values.
@@ -207,6 +220,12 @@ func (i DefaultPatchBaselineMap) ToDefaultPatchBaselineMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultPatchBaselineMapOutput)
 }
 
+func (i DefaultPatchBaselineMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DefaultPatchBaseline] {
+	return pulumix.Output[map[string]*DefaultPatchBaseline]{
+		OutputState: i.ToDefaultPatchBaselineMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DefaultPatchBaselineOutput struct{ *pulumi.OutputState }
 
 func (DefaultPatchBaselineOutput) ElementType() reflect.Type {
@@ -219,6 +238,12 @@ func (o DefaultPatchBaselineOutput) ToDefaultPatchBaselineOutput() DefaultPatchB
 
 func (o DefaultPatchBaselineOutput) ToDefaultPatchBaselineOutputWithContext(ctx context.Context) DefaultPatchBaselineOutput {
 	return o
+}
+
+func (o DefaultPatchBaselineOutput) ToOutput(ctx context.Context) pulumix.Output[*DefaultPatchBaseline] {
+	return pulumix.Output[*DefaultPatchBaseline]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the patch baseline.
@@ -245,6 +270,12 @@ func (o DefaultPatchBaselineArrayOutput) ToDefaultPatchBaselineArrayOutputWithCo
 	return o
 }
 
+func (o DefaultPatchBaselineArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DefaultPatchBaseline] {
+	return pulumix.Output[[]*DefaultPatchBaseline]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DefaultPatchBaselineArrayOutput) Index(i pulumi.IntInput) DefaultPatchBaselineOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DefaultPatchBaseline {
 		return vs[0].([]*DefaultPatchBaseline)[vs[1].(int)]
@@ -263,6 +294,12 @@ func (o DefaultPatchBaselineMapOutput) ToDefaultPatchBaselineMapOutput() Default
 
 func (o DefaultPatchBaselineMapOutput) ToDefaultPatchBaselineMapOutputWithContext(ctx context.Context) DefaultPatchBaselineMapOutput {
 	return o
+}
+
+func (o DefaultPatchBaselineMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DefaultPatchBaseline] {
+	return pulumix.Output[map[string]*DefaultPatchBaseline]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DefaultPatchBaselineMapOutput) MapIndex(k pulumi.StringInput) DefaultPatchBaselineOutput {

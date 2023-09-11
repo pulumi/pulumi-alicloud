@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Global Accelerator (GA) Custom Routing Endpoint Groups of the current Alibaba Cloud user.
@@ -157,6 +158,12 @@ func (o GetCustomRoutingEndpointGroupsResultOutput) ToGetCustomRoutingEndpointGr
 
 func (o GetCustomRoutingEndpointGroupsResultOutput) ToGetCustomRoutingEndpointGroupsResultOutputWithContext(ctx context.Context) GetCustomRoutingEndpointGroupsResultOutput {
 	return o
+}
+
+func (o GetCustomRoutingEndpointGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCustomRoutingEndpointGroupsResult] {
+	return pulumix.Output[GetCustomRoutingEndpointGroupsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the GA instance.

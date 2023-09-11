@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
@@ -137,6 +138,12 @@ func (o GetEcsLaunchTemplatesResultOutput) ToGetEcsLaunchTemplatesResultOutput()
 
 func (o GetEcsLaunchTemplatesResultOutput) ToGetEcsLaunchTemplatesResultOutputWithContext(ctx context.Context) GetEcsLaunchTemplatesResultOutput {
 	return o
+}
+
+func (o GetEcsLaunchTemplatesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEcsLaunchTemplatesResult] {
+	return pulumix.Output[GetEcsLaunchTemplatesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetEcsLaunchTemplatesResultOutput) EnableDetails() pulumi.BoolPtrOutput {

@@ -22,9 +22,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a CDN Domain resource. CDN domain name.
  * 
- * For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/alibaba-cloud-cdn/latest/api-doc-cdn-2018-05-10-api-doc-addcdndomain).
+ * For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addcdndomain).
  * 
- * &gt; **NOTE:** Available in v1.34.0+.
+ * &gt; **NOTE:** Available since v1.34.0.
  * 
  * ## Example Usage
  * 
@@ -52,10 +52,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var domainName = config.get(&#34;domainName&#34;).orElse(&#34;mycdndomain.alicloud-provider.cn&#34;);
  *         var default_ = new DomainNew(&#34;default&#34;, DomainNewArgs.builder()        
- *             .scope(&#34;domestic&#34;)
- *             .domainName(name)
+ *             .scope(&#34;overseas&#34;)
+ *             .domainName(domainName)
  *             .cdnType(&#34;web&#34;)
  *             .sources(DomainNewSourceArgs.builder()
  *                 .type(&#34;ipaddr&#34;)
@@ -96,14 +96,14 @@ public class DomainNew extends com.pulumi.resources.CustomResource {
         return this.cdnType;
     }
     /**
-     * Certificate configuration. See the following `Block CertificateConfig`.
+     * Certificate configuration. See `certificate_config` below.
      * 
      */
     @Export(name="certificateConfig", type=DomainNewCertificateConfig.class, parameters={})
     private Output<DomainNewCertificateConfig> certificateConfig;
 
     /**
-     * @return Certificate configuration. See the following `Block CertificateConfig`.
+     * @return Certificate configuration. See `certificate_config` below.
      * 
      */
     public Output<DomainNewCertificateConfig> certificateConfig() {
@@ -188,14 +188,14 @@ public class DomainNew extends com.pulumi.resources.CustomResource {
         return this.scope;
     }
     /**
-     * The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+     * The source address list of the accelerated domain. Defaults to null. See `sources` below.
      * 
      */
     @Export(name="sources", type=List.class, parameters={DomainNewSource.class})
     private Output<List<DomainNewSource>> sources;
 
     /**
-     * @return The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
+     * @return The source address list of the accelerated domain. Defaults to null. See `sources` below.
      * 
      */
     public Output<List<DomainNewSource>> sources() {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Quotas Quota Alarms of the current Alibaba Cloud user.
@@ -142,6 +143,12 @@ func (o GetQuotaAlarmsResultOutput) ToGetQuotaAlarmsResultOutput() GetQuotaAlarm
 
 func (o GetQuotaAlarmsResultOutput) ToGetQuotaAlarmsResultOutputWithContext(ctx context.Context) GetQuotaAlarmsResultOutput {
 	return o
+}
+
+func (o GetQuotaAlarmsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetQuotaAlarmsResult] {
+	return pulumix.Output[GetQuotaAlarmsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetQuotaAlarmsResultOutput) Alarms() GetQuotaAlarmsAlarmArrayOutput {

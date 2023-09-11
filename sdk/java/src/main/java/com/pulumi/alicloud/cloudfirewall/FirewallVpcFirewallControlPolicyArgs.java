@@ -204,18 +204,14 @@ public final class FirewallVpcFirewallControlPolicyArgs extends com.pulumi.resou
     }
 
     /**
-     * The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-     * - **true**: Enable access control policies
-     * - **false**: does not enable access control policies.
+     * The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
      * 
      */
     @Import(name="release")
     private @Nullable Output<Boolean> release;
 
     /**
-     * @return The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-     * - **true**: Enable access control policies
-     * - **false**: does not enable access control policies.
+     * @return The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
      * 
      */
     public Optional<Output<Boolean>> release() {
@@ -253,7 +249,7 @@ public final class FirewallVpcFirewallControlPolicyArgs extends com.pulumi.resou
     }
 
     /**
-     * The ID of the VPC firewall instance. Value:
+     * The ID of the VPC firewall instance. Valid values:
      * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
      * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
      * 
@@ -262,7 +258,7 @@ public final class FirewallVpcFirewallControlPolicyArgs extends com.pulumi.resou
     private Output<String> vpcFirewallId;
 
     /**
-     * @return The ID of the VPC firewall instance. Value:
+     * @return The ID of the VPC firewall instance. Valid values:
      * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
      * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
      * 
@@ -569,9 +565,7 @@ public final class FirewallVpcFirewallControlPolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param release The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-         * - **true**: Enable access control policies
-         * - **false**: does not enable access control policies.
+         * @param release The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
          * 
          * @return builder
          * 
@@ -582,9 +576,7 @@ public final class FirewallVpcFirewallControlPolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param release The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-         * - **true**: Enable access control policies
-         * - **false**: does not enable access control policies.
+         * @param release The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
          * 
          * @return builder
          * 
@@ -636,7 +628,7 @@ public final class FirewallVpcFirewallControlPolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param vpcFirewallId The ID of the VPC firewall instance. Value:
+         * @param vpcFirewallId The ID of the VPC firewall instance. Valid values:
          * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
          * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
          * 
@@ -649,7 +641,7 @@ public final class FirewallVpcFirewallControlPolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param vpcFirewallId The ID of the VPC firewall instance. Value:
+         * @param vpcFirewallId The ID of the VPC firewall instance. Valid values:
          * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
          * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
          * 

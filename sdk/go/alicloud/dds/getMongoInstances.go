@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetMongoInstances(ctx *pulumi.Context, args *GetMongoInstancesArgs, opts ...pulumi.InvokeOption) (*GetMongoInstancesResult, error) {
@@ -88,6 +89,12 @@ func (o GetMongoInstancesResultOutput) ToGetMongoInstancesResultOutput() GetMong
 
 func (o GetMongoInstancesResultOutput) ToGetMongoInstancesResultOutputWithContext(ctx context.Context) GetMongoInstancesResultOutput {
 	return o
+}
+
+func (o GetMongoInstancesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMongoInstancesResult] {
+	return pulumix.Output[GetMongoInstancesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMongoInstancesResultOutput) AvailabilityZone() pulumi.StringPtrOutput {

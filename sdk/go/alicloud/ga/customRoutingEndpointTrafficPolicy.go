@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Global Accelerator (GA) Custom Routing Endpoint Traffic Policy resource.
@@ -301,6 +302,12 @@ func (i *CustomRoutingEndpointTrafficPolicy) ToCustomRoutingEndpointTrafficPolic
 	return pulumi.ToOutputWithContext(ctx, i).(CustomRoutingEndpointTrafficPolicyOutput)
 }
 
+func (i *CustomRoutingEndpointTrafficPolicy) ToOutput(ctx context.Context) pulumix.Output[*CustomRoutingEndpointTrafficPolicy] {
+	return pulumix.Output[*CustomRoutingEndpointTrafficPolicy]{
+		OutputState: i.ToCustomRoutingEndpointTrafficPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CustomRoutingEndpointTrafficPolicyArrayInput is an input type that accepts CustomRoutingEndpointTrafficPolicyArray and CustomRoutingEndpointTrafficPolicyArrayOutput values.
 // You can construct a concrete instance of `CustomRoutingEndpointTrafficPolicyArrayInput` via:
 //
@@ -324,6 +331,12 @@ func (i CustomRoutingEndpointTrafficPolicyArray) ToCustomRoutingEndpointTrafficP
 
 func (i CustomRoutingEndpointTrafficPolicyArray) ToCustomRoutingEndpointTrafficPolicyArrayOutputWithContext(ctx context.Context) CustomRoutingEndpointTrafficPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomRoutingEndpointTrafficPolicyArrayOutput)
+}
+
+func (i CustomRoutingEndpointTrafficPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*CustomRoutingEndpointTrafficPolicy] {
+	return pulumix.Output[[]*CustomRoutingEndpointTrafficPolicy]{
+		OutputState: i.ToCustomRoutingEndpointTrafficPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CustomRoutingEndpointTrafficPolicyMapInput is an input type that accepts CustomRoutingEndpointTrafficPolicyMap and CustomRoutingEndpointTrafficPolicyMapOutput values.
@@ -351,6 +364,12 @@ func (i CustomRoutingEndpointTrafficPolicyMap) ToCustomRoutingEndpointTrafficPol
 	return pulumi.ToOutputWithContext(ctx, i).(CustomRoutingEndpointTrafficPolicyMapOutput)
 }
 
+func (i CustomRoutingEndpointTrafficPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomRoutingEndpointTrafficPolicy] {
+	return pulumix.Output[map[string]*CustomRoutingEndpointTrafficPolicy]{
+		OutputState: i.ToCustomRoutingEndpointTrafficPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CustomRoutingEndpointTrafficPolicyOutput struct{ *pulumi.OutputState }
 
 func (CustomRoutingEndpointTrafficPolicyOutput) ElementType() reflect.Type {
@@ -363,6 +382,12 @@ func (o CustomRoutingEndpointTrafficPolicyOutput) ToCustomRoutingEndpointTraffic
 
 func (o CustomRoutingEndpointTrafficPolicyOutput) ToCustomRoutingEndpointTrafficPolicyOutputWithContext(ctx context.Context) CustomRoutingEndpointTrafficPolicyOutput {
 	return o
+}
+
+func (o CustomRoutingEndpointTrafficPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomRoutingEndpointTrafficPolicy] {
+	return pulumix.Output[*CustomRoutingEndpointTrafficPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the GA instance.
@@ -423,6 +448,12 @@ func (o CustomRoutingEndpointTrafficPolicyArrayOutput) ToCustomRoutingEndpointTr
 	return o
 }
 
+func (o CustomRoutingEndpointTrafficPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CustomRoutingEndpointTrafficPolicy] {
+	return pulumix.Output[[]*CustomRoutingEndpointTrafficPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CustomRoutingEndpointTrafficPolicyArrayOutput) Index(i pulumi.IntInput) CustomRoutingEndpointTrafficPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CustomRoutingEndpointTrafficPolicy {
 		return vs[0].([]*CustomRoutingEndpointTrafficPolicy)[vs[1].(int)]
@@ -441,6 +472,12 @@ func (o CustomRoutingEndpointTrafficPolicyMapOutput) ToCustomRoutingEndpointTraf
 
 func (o CustomRoutingEndpointTrafficPolicyMapOutput) ToCustomRoutingEndpointTrafficPolicyMapOutputWithContext(ctx context.Context) CustomRoutingEndpointTrafficPolicyMapOutput {
 	return o
+}
+
+func (o CustomRoutingEndpointTrafficPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomRoutingEndpointTrafficPolicy] {
+	return pulumix.Output[map[string]*CustomRoutingEndpointTrafficPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomRoutingEndpointTrafficPolicyMapOutput) MapIndex(k pulumi.StringInput) CustomRoutingEndpointTrafficPolicyOutput {

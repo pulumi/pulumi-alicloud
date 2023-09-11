@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Log service data delivery management, this service provides the function of delivering data in logstore to oss product storage.
@@ -454,6 +455,12 @@ func (i *OssExport) ToOssExportOutputWithContext(ctx context.Context) OssExportO
 	return pulumi.ToOutputWithContext(ctx, i).(OssExportOutput)
 }
 
+func (i *OssExport) ToOutput(ctx context.Context) pulumix.Output[*OssExport] {
+	return pulumix.Output[*OssExport]{
+		OutputState: i.ToOssExportOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OssExportArrayInput is an input type that accepts OssExportArray and OssExportArrayOutput values.
 // You can construct a concrete instance of `OssExportArrayInput` via:
 //
@@ -477,6 +484,12 @@ func (i OssExportArray) ToOssExportArrayOutput() OssExportArrayOutput {
 
 func (i OssExportArray) ToOssExportArrayOutputWithContext(ctx context.Context) OssExportArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OssExportArrayOutput)
+}
+
+func (i OssExportArray) ToOutput(ctx context.Context) pulumix.Output[[]*OssExport] {
+	return pulumix.Output[[]*OssExport]{
+		OutputState: i.ToOssExportArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // OssExportMapInput is an input type that accepts OssExportMap and OssExportMapOutput values.
@@ -504,6 +517,12 @@ func (i OssExportMap) ToOssExportMapOutputWithContext(ctx context.Context) OssEx
 	return pulumi.ToOutputWithContext(ctx, i).(OssExportMapOutput)
 }
 
+func (i OssExportMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OssExport] {
+	return pulumix.Output[map[string]*OssExport]{
+		OutputState: i.ToOssExportMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OssExportOutput struct{ *pulumi.OutputState }
 
 func (OssExportOutput) ElementType() reflect.Type {
@@ -516,6 +535,12 @@ func (o OssExportOutput) ToOssExportOutput() OssExportOutput {
 
 func (o OssExportOutput) ToOssExportOutputWithContext(ctx context.Context) OssExportOutput {
 	return o
+}
+
+func (o OssExportOutput) ToOutput(ctx context.Context) pulumix.Output[*OssExport] {
+	return pulumix.Output[*OssExport]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the oss bucket.
@@ -658,6 +683,12 @@ func (o OssExportArrayOutput) ToOssExportArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o OssExportArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OssExport] {
+	return pulumix.Output[[]*OssExport]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OssExportArrayOutput) Index(i pulumi.IntInput) OssExportOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OssExport {
 		return vs[0].([]*OssExport)[vs[1].(int)]
@@ -676,6 +707,12 @@ func (o OssExportMapOutput) ToOssExportMapOutput() OssExportMapOutput {
 
 func (o OssExportMapOutput) ToOssExportMapOutputWithContext(ctx context.Context) OssExportMapOutput {
 	return o
+}
+
+func (o OssExportMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OssExport] {
+	return pulumix.Output[map[string]*OssExport]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OssExportMapOutput) MapIndex(k pulumi.StringInput) OssExportOutput {

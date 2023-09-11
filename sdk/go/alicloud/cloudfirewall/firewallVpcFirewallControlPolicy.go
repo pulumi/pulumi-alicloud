@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Firewall Vpc Firewall Control Policy resource.
@@ -423,6 +424,12 @@ func (i *FirewallVpcFirewallControlPolicy) ToFirewallVpcFirewallControlPolicyOut
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallControlPolicyOutput)
 }
 
+func (i *FirewallVpcFirewallControlPolicy) ToOutput(ctx context.Context) pulumix.Output[*FirewallVpcFirewallControlPolicy] {
+	return pulumix.Output[*FirewallVpcFirewallControlPolicy]{
+		OutputState: i.ToFirewallVpcFirewallControlPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FirewallVpcFirewallControlPolicyArrayInput is an input type that accepts FirewallVpcFirewallControlPolicyArray and FirewallVpcFirewallControlPolicyArrayOutput values.
 // You can construct a concrete instance of `FirewallVpcFirewallControlPolicyArrayInput` via:
 //
@@ -446,6 +453,12 @@ func (i FirewallVpcFirewallControlPolicyArray) ToFirewallVpcFirewallControlPolic
 
 func (i FirewallVpcFirewallControlPolicyArray) ToFirewallVpcFirewallControlPolicyArrayOutputWithContext(ctx context.Context) FirewallVpcFirewallControlPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallControlPolicyArrayOutput)
+}
+
+func (i FirewallVpcFirewallControlPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*FirewallVpcFirewallControlPolicy] {
+	return pulumix.Output[[]*FirewallVpcFirewallControlPolicy]{
+		OutputState: i.ToFirewallVpcFirewallControlPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // FirewallVpcFirewallControlPolicyMapInput is an input type that accepts FirewallVpcFirewallControlPolicyMap and FirewallVpcFirewallControlPolicyMapOutput values.
@@ -473,6 +486,12 @@ func (i FirewallVpcFirewallControlPolicyMap) ToFirewallVpcFirewallControlPolicyM
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallControlPolicyMapOutput)
 }
 
+func (i FirewallVpcFirewallControlPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FirewallVpcFirewallControlPolicy] {
+	return pulumix.Output[map[string]*FirewallVpcFirewallControlPolicy]{
+		OutputState: i.ToFirewallVpcFirewallControlPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FirewallVpcFirewallControlPolicyOutput struct{ *pulumi.OutputState }
 
 func (FirewallVpcFirewallControlPolicyOutput) ElementType() reflect.Type {
@@ -485,6 +504,12 @@ func (o FirewallVpcFirewallControlPolicyOutput) ToFirewallVpcFirewallControlPoli
 
 func (o FirewallVpcFirewallControlPolicyOutput) ToFirewallVpcFirewallControlPolicyOutputWithContext(ctx context.Context) FirewallVpcFirewallControlPolicyOutput {
 	return o
+}
+
+func (o FirewallVpcFirewallControlPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallVpcFirewallControlPolicy] {
+	return pulumix.Output[*FirewallVpcFirewallControlPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
@@ -626,6 +651,12 @@ func (o FirewallVpcFirewallControlPolicyArrayOutput) ToFirewallVpcFirewallContro
 	return o
 }
 
+func (o FirewallVpcFirewallControlPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FirewallVpcFirewallControlPolicy] {
+	return pulumix.Output[[]*FirewallVpcFirewallControlPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FirewallVpcFirewallControlPolicyArrayOutput) Index(i pulumi.IntInput) FirewallVpcFirewallControlPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FirewallVpcFirewallControlPolicy {
 		return vs[0].([]*FirewallVpcFirewallControlPolicy)[vs[1].(int)]
@@ -644,6 +675,12 @@ func (o FirewallVpcFirewallControlPolicyMapOutput) ToFirewallVpcFirewallControlP
 
 func (o FirewallVpcFirewallControlPolicyMapOutput) ToFirewallVpcFirewallControlPolicyMapOutputWithContext(ctx context.Context) FirewallVpcFirewallControlPolicyMapOutput {
 	return o
+}
+
+func (o FirewallVpcFirewallControlPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FirewallVpcFirewallControlPolicy] {
+	return pulumix.Output[map[string]*FirewallVpcFirewallControlPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FirewallVpcFirewallControlPolicyMapOutput) MapIndex(k pulumi.StringInput) FirewallVpcFirewallControlPolicyOutput {

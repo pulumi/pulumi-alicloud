@@ -34,14 +34,14 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The db cluster access white list.
+     * The db cluster access white list. See `db_cluster_access_white_list` below.
      * 
      */
     @Import(name="dbClusterAccessWhiteLists")
     private @Nullable Output<List<DbClusterDbClusterAccessWhiteListArgs>> dbClusterAccessWhiteLists;
 
     /**
-     * @return The db cluster access white list.
+     * @return The db cluster access white list. See `db_cluster_access_white_list` below.
      * 
      */
     public Optional<Output<List<DbClusterDbClusterAccessWhiteListArgs>>> dbClusterAccessWhiteLists() {
@@ -371,7 +371,7 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterAccessWhiteLists The db cluster access white list.
+         * @param dbClusterAccessWhiteLists The db cluster access white list. See `db_cluster_access_white_list` below.
          * 
          * @return builder
          * 
@@ -382,7 +382,7 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterAccessWhiteLists The db cluster access white list.
+         * @param dbClusterAccessWhiteLists The db cluster access white list. See `db_cluster_access_white_list` below.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterAccessWhiteLists The db cluster access white list.
+         * @param dbClusterAccessWhiteLists The db cluster access white list. See `db_cluster_access_white_list` below.
          * 
          * @return builder
          * 

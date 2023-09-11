@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Eflo Vpd resource.
@@ -196,6 +197,12 @@ func (i *Vpd) ToVpdOutputWithContext(ctx context.Context) VpdOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpdOutput)
 }
 
+func (i *Vpd) ToOutput(ctx context.Context) pulumix.Output[*Vpd] {
+	return pulumix.Output[*Vpd]{
+		OutputState: i.ToVpdOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VpdArrayInput is an input type that accepts VpdArray and VpdArrayOutput values.
 // You can construct a concrete instance of `VpdArrayInput` via:
 //
@@ -219,6 +226,12 @@ func (i VpdArray) ToVpdArrayOutput() VpdArrayOutput {
 
 func (i VpdArray) ToVpdArrayOutputWithContext(ctx context.Context) VpdArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpdArrayOutput)
+}
+
+func (i VpdArray) ToOutput(ctx context.Context) pulumix.Output[[]*Vpd] {
+	return pulumix.Output[[]*Vpd]{
+		OutputState: i.ToVpdArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // VpdMapInput is an input type that accepts VpdMap and VpdMapOutput values.
@@ -246,6 +259,12 @@ func (i VpdMap) ToVpdMapOutputWithContext(ctx context.Context) VpdMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpdMapOutput)
 }
 
+func (i VpdMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Vpd] {
+	return pulumix.Output[map[string]*Vpd]{
+		OutputState: i.ToVpdMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VpdOutput struct{ *pulumi.OutputState }
 
 func (VpdOutput) ElementType() reflect.Type {
@@ -258,6 +277,12 @@ func (o VpdOutput) ToVpdOutput() VpdOutput {
 
 func (o VpdOutput) ToVpdOutputWithContext(ctx context.Context) VpdOutput {
 	return o
+}
+
+func (o VpdOutput) ToOutput(ctx context.Context) pulumix.Output[*Vpd] {
+	return pulumix.Output[*Vpd]{
+		OutputState: o.OutputState,
+	}
 }
 
 // CIDR network segment.
@@ -304,6 +329,12 @@ func (o VpdArrayOutput) ToVpdArrayOutputWithContext(ctx context.Context) VpdArra
 	return o
 }
 
+func (o VpdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Vpd] {
+	return pulumix.Output[[]*Vpd]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VpdArrayOutput) Index(i pulumi.IntInput) VpdOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Vpd {
 		return vs[0].([]*Vpd)[vs[1].(int)]
@@ -322,6 +353,12 @@ func (o VpdMapOutput) ToVpdMapOutput() VpdMapOutput {
 
 func (o VpdMapOutput) ToVpdMapOutputWithContext(ctx context.Context) VpdMapOutput {
 	return o
+}
+
+func (o VpdMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Vpd] {
+	return pulumix.Output[map[string]*Vpd]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VpdMapOutput) MapIndex(k pulumi.StringInput) VpdOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
@@ -129,6 +130,12 @@ func (o GetEndUserProductsResultOutput) ToGetEndUserProductsResultOutput() GetEn
 
 func (o GetEndUserProductsResultOutput) ToGetEndUserProductsResultOutputWithContext(ctx context.Context) GetEndUserProductsResultOutput {
 	return o
+}
+
+func (o GetEndUserProductsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEndUserProductsResult] {
+	return pulumix.Output[GetEndUserProductsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of End User Product Entries. Each element contains the following attributes:

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a SLB Tls Cipher Policy resource.
@@ -181,6 +182,12 @@ func (i *TlsCipherPolicy) ToTlsCipherPolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TlsCipherPolicyOutput)
 }
 
+func (i *TlsCipherPolicy) ToOutput(ctx context.Context) pulumix.Output[*TlsCipherPolicy] {
+	return pulumix.Output[*TlsCipherPolicy]{
+		OutputState: i.ToTlsCipherPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TlsCipherPolicyArrayInput is an input type that accepts TlsCipherPolicyArray and TlsCipherPolicyArrayOutput values.
 // You can construct a concrete instance of `TlsCipherPolicyArrayInput` via:
 //
@@ -204,6 +211,12 @@ func (i TlsCipherPolicyArray) ToTlsCipherPolicyArrayOutput() TlsCipherPolicyArra
 
 func (i TlsCipherPolicyArray) ToTlsCipherPolicyArrayOutputWithContext(ctx context.Context) TlsCipherPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TlsCipherPolicyArrayOutput)
+}
+
+func (i TlsCipherPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*TlsCipherPolicy] {
+	return pulumix.Output[[]*TlsCipherPolicy]{
+		OutputState: i.ToTlsCipherPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TlsCipherPolicyMapInput is an input type that accepts TlsCipherPolicyMap and TlsCipherPolicyMapOutput values.
@@ -231,6 +244,12 @@ func (i TlsCipherPolicyMap) ToTlsCipherPolicyMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TlsCipherPolicyMapOutput)
 }
 
+func (i TlsCipherPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TlsCipherPolicy] {
+	return pulumix.Output[map[string]*TlsCipherPolicy]{
+		OutputState: i.ToTlsCipherPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TlsCipherPolicyOutput struct{ *pulumi.OutputState }
 
 func (TlsCipherPolicyOutput) ElementType() reflect.Type {
@@ -243,6 +262,12 @@ func (o TlsCipherPolicyOutput) ToTlsCipherPolicyOutput() TlsCipherPolicyOutput {
 
 func (o TlsCipherPolicyOutput) ToTlsCipherPolicyOutputWithContext(ctx context.Context) TlsCipherPolicyOutput {
 	return o
+}
+
+func (o TlsCipherPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*TlsCipherPolicy] {
+	return pulumix.Output[*TlsCipherPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The encryption algorithms supported. It depends on the value of `tlsVersions`.
@@ -279,6 +304,12 @@ func (o TlsCipherPolicyArrayOutput) ToTlsCipherPolicyArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o TlsCipherPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TlsCipherPolicy] {
+	return pulumix.Output[[]*TlsCipherPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TlsCipherPolicyArrayOutput) Index(i pulumi.IntInput) TlsCipherPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TlsCipherPolicy {
 		return vs[0].([]*TlsCipherPolicy)[vs[1].(int)]
@@ -297,6 +328,12 @@ func (o TlsCipherPolicyMapOutput) ToTlsCipherPolicyMapOutput() TlsCipherPolicyMa
 
 func (o TlsCipherPolicyMapOutput) ToTlsCipherPolicyMapOutputWithContext(ctx context.Context) TlsCipherPolicyMapOutput {
 	return o
+}
+
+func (o TlsCipherPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TlsCipherPolicy] {
+	return pulumix.Output[map[string]*TlsCipherPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TlsCipherPolicyMapOutput) MapIndex(k pulumi.StringInput) TlsCipherPolicyOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Vpc Ipv4 Gateway resource.
@@ -259,6 +260,12 @@ func (i *Ipv4Gateway) ToIpv4GatewayOutputWithContext(ctx context.Context) Ipv4Ga
 	return pulumi.ToOutputWithContext(ctx, i).(Ipv4GatewayOutput)
 }
 
+func (i *Ipv4Gateway) ToOutput(ctx context.Context) pulumix.Output[*Ipv4Gateway] {
+	return pulumix.Output[*Ipv4Gateway]{
+		OutputState: i.ToIpv4GatewayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Ipv4GatewayArrayInput is an input type that accepts Ipv4GatewayArray and Ipv4GatewayArrayOutput values.
 // You can construct a concrete instance of `Ipv4GatewayArrayInput` via:
 //
@@ -282,6 +289,12 @@ func (i Ipv4GatewayArray) ToIpv4GatewayArrayOutput() Ipv4GatewayArrayOutput {
 
 func (i Ipv4GatewayArray) ToIpv4GatewayArrayOutputWithContext(ctx context.Context) Ipv4GatewayArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(Ipv4GatewayArrayOutput)
+}
+
+func (i Ipv4GatewayArray) ToOutput(ctx context.Context) pulumix.Output[[]*Ipv4Gateway] {
+	return pulumix.Output[[]*Ipv4Gateway]{
+		OutputState: i.ToIpv4GatewayArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Ipv4GatewayMapInput is an input type that accepts Ipv4GatewayMap and Ipv4GatewayMapOutput values.
@@ -309,6 +322,12 @@ func (i Ipv4GatewayMap) ToIpv4GatewayMapOutputWithContext(ctx context.Context) I
 	return pulumi.ToOutputWithContext(ctx, i).(Ipv4GatewayMapOutput)
 }
 
+func (i Ipv4GatewayMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Ipv4Gateway] {
+	return pulumix.Output[map[string]*Ipv4Gateway]{
+		OutputState: i.ToIpv4GatewayMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type Ipv4GatewayOutput struct{ *pulumi.OutputState }
 
 func (Ipv4GatewayOutput) ElementType() reflect.Type {
@@ -321,6 +340,12 @@ func (o Ipv4GatewayOutput) ToIpv4GatewayOutput() Ipv4GatewayOutput {
 
 func (o Ipv4GatewayOutput) ToIpv4GatewayOutputWithContext(ctx context.Context) Ipv4GatewayOutput {
 	return o
+}
+
+func (o Ipv4GatewayOutput) ToOutput(ctx context.Context) pulumix.Output[*Ipv4Gateway] {
+	return pulumix.Output[*Ipv4Gateway]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation time of the resource.
@@ -392,6 +417,12 @@ func (o Ipv4GatewayArrayOutput) ToIpv4GatewayArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o Ipv4GatewayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Ipv4Gateway] {
+	return pulumix.Output[[]*Ipv4Gateway]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o Ipv4GatewayArrayOutput) Index(i pulumi.IntInput) Ipv4GatewayOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Ipv4Gateway {
 		return vs[0].([]*Ipv4Gateway)[vs[1].(int)]
@@ -410,6 +441,12 @@ func (o Ipv4GatewayMapOutput) ToIpv4GatewayMapOutput() Ipv4GatewayMapOutput {
 
 func (o Ipv4GatewayMapOutput) ToIpv4GatewayMapOutputWithContext(ctx context.Context) Ipv4GatewayMapOutput {
 	return o
+}
+
+func (o Ipv4GatewayMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Ipv4Gateway] {
+	return pulumix.Output[map[string]*Ipv4Gateway]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o Ipv4GatewayMapOutput) MapIndex(k pulumi.StringInput) Ipv4GatewayOutput {

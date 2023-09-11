@@ -35,20 +35,26 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.slb.LoadBalancer;
- * import com.pulumi.alicloud.slb.LoadBalancerArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.sae.Namespace;
  * import com.pulumi.alicloud.sae.NamespaceArgs;
  * import com.pulumi.alicloud.sae.Application;
  * import com.pulumi.alicloud.sae.ApplicationArgs;
+ * import com.pulumi.alicloud.slb.ApplicationLoadBalancer;
+ * import com.pulumi.alicloud.slb.ApplicationLoadBalancerArgs;
  * import com.pulumi.alicloud.sae.Ingress;
  * import com.pulumi.alicloud.sae.IngressArgs;
  * import com.pulumi.alicloud.sae.inputs.IngressRuleArgs;
+ * import com.pulumi.alicloud.sae.inputs.IngressDefaultRuleArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -63,57 +69,79 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
  *             .build());
  * 
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/21&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var defaultLoadBalancer = new LoadBalancer(&#34;defaultLoadBalancer&#34;, LoadBalancerArgs.builder()        
- *             .specification(&#34;slb.s2.small&#34;)
- *             .vswitchId(data.alicloud_vswitches().default().ids()[0])
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         final var namespaceId = config.get(&#34;namespaceId&#34;).orElse(&#34;cn-hangzhou:yourname&#34;);
  *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
- *             .namespaceId(namespaceId)
+ *             .namespaceId(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s:example%s&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),result)))
  *             .namespaceName(name)
  *             .namespaceDescription(name)
+ *             .enableMicroRegistration(false)
  *             .build());
  * 
  *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
- *             .appDescription(&#34;your_app_description&#34;)
- *             .appName(&#34;your_app_name&#34;)
- *             .namespaceId(&#34;your_namespace_id&#34;)
- *             .packageUrl(&#34;your_package_url&#34;)
- *             .packageType(&#34;your_package_url&#34;)
- *             .jdk(&#34;jdk_specifications&#34;)
- *             .vswitchId(data.alicloud_vswitches().default().ids()[0])
- *             .replicas(&#34;your_replicas&#34;)
- *             .cpu(&#34;cpu_specifications&#34;)
- *             .memory(&#34;memory_specifications&#34;)
+ *             .appDescription(name)
+ *             .appName(name)
+ *             .namespaceId(defaultNamespace.id())
+ *             .imageUrl(String.format(&#34;registry-vpc.%s.aliyuncs.com/sae-demo-image/consumer:1.0&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id())))
+ *             .packageType(&#34;Image&#34;)
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .vpcId(defaultNetwork.id())
+ *             .vswitchId(defaultSwitch.id())
+ *             .timezone(&#34;Asia/Beijing&#34;)
+ *             .replicas(&#34;5&#34;)
+ *             .cpu(&#34;500&#34;)
+ *             .memory(&#34;2048&#34;)
+ *             .build());
+ * 
+ *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;defaultApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+ *             .loadBalancerName(name)
+ *             .vswitchId(defaultSwitch.id())
+ *             .loadBalancerSpec(&#34;slb.s2.small&#34;)
+ *             .addressType(&#34;intranet&#34;)
  *             .build());
  * 
  *         var defaultIngress = new Ingress(&#34;defaultIngress&#34;, IngressArgs.builder()        
- *             .slbId(defaultLoadBalancer.id())
+ *             .slbId(defaultApplicationLoadBalancer.id())
  *             .namespaceId(defaultNamespace.id())
- *             .listenerPort(&#34;your_listener_port&#34;)
+ *             .listenerPort(&#34;80&#34;)
  *             .rules(IngressRuleArgs.builder()
  *                 .appId(defaultApplication.id())
- *                 .containerPort(&#34;your_container_port&#34;)
- *                 .domain(&#34;your_domain&#34;)
- *                 .appName(&#34;your_name&#34;)
- *                 .path(&#34;your_path&#34;)
+ *                 .containerPort(&#34;443&#34;)
+ *                 .domain(&#34;www.alicloud.com&#34;)
+ *                 .appName(defaultApplication.appName())
+ *                 .path(&#34;/&#34;)
+ *                 .build())
+ *             .defaultRule(IngressDefaultRuleArgs.builder()
+ *                 .appId(defaultApplication.id())
+ *                 .containerPort(&#34;443&#34;)
  *                 .build())
  *             .build());
  * 

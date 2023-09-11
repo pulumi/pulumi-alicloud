@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Hbr NasBackupPlans of the current Alibaba Cloud user.
@@ -124,6 +125,12 @@ func (o GetNasBackupPlansResultOutput) ToGetNasBackupPlansResultOutput() GetNasB
 
 func (o GetNasBackupPlansResultOutput) ToGetNasBackupPlansResultOutputWithContext(ctx context.Context) GetNasBackupPlansResultOutput {
 	return o
+}
+
+func (o GetNasBackupPlansResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNasBackupPlansResult] {
+	return pulumix.Output[GetNasBackupPlansResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetNasBackupPlansResultOutput) FileSystemId() pulumi.StringPtrOutput {

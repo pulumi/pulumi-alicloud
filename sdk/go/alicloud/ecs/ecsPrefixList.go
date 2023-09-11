@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECS Prefix List resource.
@@ -200,6 +201,12 @@ func (i *EcsPrefixList) ToEcsPrefixListOutputWithContext(ctx context.Context) Ec
 	return pulumi.ToOutputWithContext(ctx, i).(EcsPrefixListOutput)
 }
 
+func (i *EcsPrefixList) ToOutput(ctx context.Context) pulumix.Output[*EcsPrefixList] {
+	return pulumix.Output[*EcsPrefixList]{
+		OutputState: i.ToEcsPrefixListOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EcsPrefixListArrayInput is an input type that accepts EcsPrefixListArray and EcsPrefixListArrayOutput values.
 // You can construct a concrete instance of `EcsPrefixListArrayInput` via:
 //
@@ -223,6 +230,12 @@ func (i EcsPrefixListArray) ToEcsPrefixListArrayOutput() EcsPrefixListArrayOutpu
 
 func (i EcsPrefixListArray) ToEcsPrefixListArrayOutputWithContext(ctx context.Context) EcsPrefixListArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsPrefixListArrayOutput)
+}
+
+func (i EcsPrefixListArray) ToOutput(ctx context.Context) pulumix.Output[[]*EcsPrefixList] {
+	return pulumix.Output[[]*EcsPrefixList]{
+		OutputState: i.ToEcsPrefixListArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EcsPrefixListMapInput is an input type that accepts EcsPrefixListMap and EcsPrefixListMapOutput values.
@@ -250,6 +263,12 @@ func (i EcsPrefixListMap) ToEcsPrefixListMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(EcsPrefixListMapOutput)
 }
 
+func (i EcsPrefixListMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsPrefixList] {
+	return pulumix.Output[map[string]*EcsPrefixList]{
+		OutputState: i.ToEcsPrefixListMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EcsPrefixListOutput struct{ *pulumi.OutputState }
 
 func (EcsPrefixListOutput) ElementType() reflect.Type {
@@ -262,6 +281,12 @@ func (o EcsPrefixListOutput) ToEcsPrefixListOutput() EcsPrefixListOutput {
 
 func (o EcsPrefixListOutput) ToEcsPrefixListOutputWithContext(ctx context.Context) EcsPrefixListOutput {
 	return o
+}
+
+func (o EcsPrefixListOutput) ToOutput(ctx context.Context) pulumix.Output[*EcsPrefixList] {
+	return pulumix.Output[*EcsPrefixList]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP address family. Valid values: `IPv4`,`IPv6`.
@@ -303,6 +328,12 @@ func (o EcsPrefixListArrayOutput) ToEcsPrefixListArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o EcsPrefixListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EcsPrefixList] {
+	return pulumix.Output[[]*EcsPrefixList]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EcsPrefixListArrayOutput) Index(i pulumi.IntInput) EcsPrefixListOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsPrefixList {
 		return vs[0].([]*EcsPrefixList)[vs[1].(int)]
@@ -321,6 +352,12 @@ func (o EcsPrefixListMapOutput) ToEcsPrefixListMapOutput() EcsPrefixListMapOutpu
 
 func (o EcsPrefixListMapOutput) ToEcsPrefixListMapOutputWithContext(ctx context.Context) EcsPrefixListMapOutput {
 	return o
+}
+
+func (o EcsPrefixListMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsPrefixList] {
+	return pulumix.Output[map[string]*EcsPrefixList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EcsPrefixListMapOutput) MapIndex(k pulumi.StringInput) EcsPrefixListOutput {

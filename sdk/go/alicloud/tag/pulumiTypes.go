@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -54,6 +55,12 @@ func (i GetMetaTagsTagArgs) ToGetMetaTagsTagOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetaTagsTagOutput)
 }
 
+func (i GetMetaTagsTagArgs) ToOutput(ctx context.Context) pulumix.Output[GetMetaTagsTag] {
+	return pulumix.Output[GetMetaTagsTag]{
+		OutputState: i.ToGetMetaTagsTagOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetMetaTagsTagArrayInput is an input type that accepts GetMetaTagsTagArray and GetMetaTagsTagArrayOutput values.
 // You can construct a concrete instance of `GetMetaTagsTagArrayInput` via:
 //
@@ -79,6 +86,12 @@ func (i GetMetaTagsTagArray) ToGetMetaTagsTagArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetaTagsTagArrayOutput)
 }
 
+func (i GetMetaTagsTagArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMetaTagsTag] {
+	return pulumix.Output[[]GetMetaTagsTag]{
+		OutputState: i.ToGetMetaTagsTagArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetMetaTagsTagOutput struct{ *pulumi.OutputState }
 
 func (GetMetaTagsTagOutput) ElementType() reflect.Type {
@@ -91,6 +104,12 @@ func (o GetMetaTagsTagOutput) ToGetMetaTagsTagOutput() GetMetaTagsTagOutput {
 
 func (o GetMetaTagsTagOutput) ToGetMetaTagsTagOutputWithContext(ctx context.Context) GetMetaTagsTagOutput {
 	return o
+}
+
+func (o GetMetaTagsTagOutput) ToOutput(ctx context.Context) pulumix.Output[GetMetaTagsTag] {
+	return pulumix.Output[GetMetaTagsTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of the resource tags.
@@ -120,6 +139,12 @@ func (o GetMetaTagsTagArrayOutput) ToGetMetaTagsTagArrayOutput() GetMetaTagsTagA
 
 func (o GetMetaTagsTagArrayOutput) ToGetMetaTagsTagArrayOutputWithContext(ctx context.Context) GetMetaTagsTagArrayOutput {
 	return o
+}
+
+func (o GetMetaTagsTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMetaTagsTag] {
+	return pulumix.Output[[]GetMetaTagsTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMetaTagsTagArrayOutput) Index(i pulumi.IntInput) GetMetaTagsTagOutput {

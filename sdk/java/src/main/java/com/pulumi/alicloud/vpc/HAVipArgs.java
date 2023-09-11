@@ -32,9 +32,17 @@ public final class HAVipArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * The name of the HAVIP.
+     * 
+     */
     @Import(name="haVipName")
     private @Nullable Output<String> haVipName;
 
+    /**
+     * @return The name of the HAVIP.
+     * 
+     */
     public Optional<Output<String>> haVipName() {
         return Optional.ofNullable(this.haVipName);
     }
@@ -77,16 +85,32 @@ public final class HAVipArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.ipAddress);
     }
 
+    /**
+     * The ID of the resource group to which the HAVIP belongs.
+     * 
+     */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
+    /**
+     * @return The ID of the resource group to which the HAVIP belongs.
+     * 
+     */
     public Optional<Output<String>> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
 
+    /**
+     * The list of tags.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
+    /**
+     * @return The list of tags.
+     * 
+     */
     public Optional<Output<Map<String,Object>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -157,11 +181,23 @@ public final class HAVipArgs extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        /**
+         * @param haVipName The name of the HAVIP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder haVipName(@Nullable Output<String> haVipName) {
             $.haVipName = haVipName;
             return this;
         }
 
+        /**
+         * @param haVipName The name of the HAVIP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder haVipName(String haVipName) {
             return haVipName(Output.of(haVipName));
         }
@@ -216,20 +252,44 @@ public final class HAVipArgs extends com.pulumi.resources.ResourceArgs {
             return ipAddress(Output.of(ipAddress));
         }
 
+        /**
+         * @param resourceGroupId The ID of the resource group to which the HAVIP belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
             $.resourceGroupId = resourceGroupId;
             return this;
         }
 
+        /**
+         * @param resourceGroupId The ID of the resource group to which the HAVIP belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
         }
 
+        /**
+         * @param tags The list of tags.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<Map<String,Object>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags The list of tags.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(Map<String,Object> tags) {
             return tags(Output.of(tags));
         }

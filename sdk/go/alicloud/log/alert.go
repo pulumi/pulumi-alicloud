@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Log alert is a unit of log service, which is used to monitor and alert the user's logstore status information.
@@ -782,6 +783,12 @@ func (i *Alert) ToAlertOutputWithContext(ctx context.Context) AlertOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlertOutput)
 }
 
+func (i *Alert) ToOutput(ctx context.Context) pulumix.Output[*Alert] {
+	return pulumix.Output[*Alert]{
+		OutputState: i.ToAlertOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AlertArrayInput is an input type that accepts AlertArray and AlertArrayOutput values.
 // You can construct a concrete instance of `AlertArrayInput` via:
 //
@@ -805,6 +812,12 @@ func (i AlertArray) ToAlertArrayOutput() AlertArrayOutput {
 
 func (i AlertArray) ToAlertArrayOutputWithContext(ctx context.Context) AlertArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlertArrayOutput)
+}
+
+func (i AlertArray) ToOutput(ctx context.Context) pulumix.Output[[]*Alert] {
+	return pulumix.Output[[]*Alert]{
+		OutputState: i.ToAlertArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AlertMapInput is an input type that accepts AlertMap and AlertMapOutput values.
@@ -832,6 +845,12 @@ func (i AlertMap) ToAlertMapOutputWithContext(ctx context.Context) AlertMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(AlertMapOutput)
 }
 
+func (i AlertMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Alert] {
+	return pulumix.Output[map[string]*Alert]{
+		OutputState: i.ToAlertMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlertOutput struct{ *pulumi.OutputState }
 
 func (AlertOutput) ElementType() reflect.Type {
@@ -844,6 +863,12 @@ func (o AlertOutput) ToAlertOutput() AlertOutput {
 
 func (o AlertOutput) ToAlertOutputWithContext(ctx context.Context) AlertOutput {
 	return o
+}
+
+func (o AlertOutput) ToOutput(ctx context.Context) pulumix.Output[*Alert] {
+	return pulumix.Output[*Alert]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Alert description.
@@ -1012,6 +1037,12 @@ func (o AlertArrayOutput) ToAlertArrayOutputWithContext(ctx context.Context) Ale
 	return o
 }
 
+func (o AlertArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Alert] {
+	return pulumix.Output[[]*Alert]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AlertArrayOutput) Index(i pulumi.IntInput) AlertOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Alert {
 		return vs[0].([]*Alert)[vs[1].(int)]
@@ -1030,6 +1061,12 @@ func (o AlertMapOutput) ToAlertMapOutput() AlertMapOutput {
 
 func (o AlertMapOutput) ToAlertMapOutputWithContext(ctx context.Context) AlertMapOutput {
 	return o
+}
+
+func (o AlertMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Alert] {
+	return pulumix.Output[map[string]*Alert]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertMapOutput) MapIndex(k pulumi.StringInput) AlertOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides ECI Container Group resource.
@@ -563,6 +564,12 @@ func (i *ContainerGroup) ToContainerGroupOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupOutput)
 }
 
+func (i *ContainerGroup) ToOutput(ctx context.Context) pulumix.Output[*ContainerGroup] {
+	return pulumix.Output[*ContainerGroup]{
+		OutputState: i.ToContainerGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerGroupArrayInput is an input type that accepts ContainerGroupArray and ContainerGroupArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupArrayInput` via:
 //
@@ -586,6 +593,12 @@ func (i ContainerGroupArray) ToContainerGroupArrayOutput() ContainerGroupArrayOu
 
 func (i ContainerGroupArray) ToContainerGroupArrayOutputWithContext(ctx context.Context) ContainerGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupArrayOutput)
+}
+
+func (i ContainerGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*ContainerGroup] {
+	return pulumix.Output[[]*ContainerGroup]{
+		OutputState: i.ToContainerGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ContainerGroupMapInput is an input type that accepts ContainerGroupMap and ContainerGroupMapOutput values.
@@ -613,6 +626,12 @@ func (i ContainerGroupMap) ToContainerGroupMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupMapOutput)
 }
 
+func (i ContainerGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ContainerGroup] {
+	return pulumix.Output[map[string]*ContainerGroup]{
+		OutputState: i.ToContainerGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerGroupOutput struct{ *pulumi.OutputState }
 
 func (ContainerGroupOutput) ElementType() reflect.Type {
@@ -625,6 +644,12 @@ func (o ContainerGroupOutput) ToContainerGroupOutput() ContainerGroupOutput {
 
 func (o ContainerGroupOutput) ToContainerGroupOutputWithContext(ctx context.Context) ContainerGroupOutput {
 	return o
+}
+
+func (o ContainerGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerGroup] {
+	return pulumix.Output[*ContainerGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ACR enterprise edition example properties. See `acrRegistryInfo` below.
@@ -786,6 +811,12 @@ func (o ContainerGroupArrayOutput) ToContainerGroupArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o ContainerGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ContainerGroup] {
+	return pulumix.Output[[]*ContainerGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ContainerGroupArrayOutput) Index(i pulumi.IntInput) ContainerGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ContainerGroup {
 		return vs[0].([]*ContainerGroup)[vs[1].(int)]
@@ -804,6 +835,12 @@ func (o ContainerGroupMapOutput) ToContainerGroupMapOutput() ContainerGroupMapOu
 
 func (o ContainerGroupMapOutput) ToContainerGroupMapOutputWithContext(ctx context.Context) ContainerGroupMapOutput {
 	return o
+}
+
+func (o ContainerGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ContainerGroup] {
+	return pulumix.Output[map[string]*ContainerGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerGroupMapOutput) MapIndex(k pulumi.StringInput) ContainerGroupOutput {

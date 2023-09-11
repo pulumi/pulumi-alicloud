@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createproxyaccess)
@@ -128,6 +129,12 @@ func (o GetEnterpriseProxyAccessesResultOutput) ToGetEnterpriseProxyAccessesResu
 
 func (o GetEnterpriseProxyAccessesResultOutput) ToGetEnterpriseProxyAccessesResultOutputWithContext(ctx context.Context) GetEnterpriseProxyAccessesResultOutput {
 	return o
+}
+
+func (o GetEnterpriseProxyAccessesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnterpriseProxyAccessesResult] {
+	return pulumix.Output[GetEnterpriseProxyAccessesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of Proxy Access Entries. Each element contains the following attributes:

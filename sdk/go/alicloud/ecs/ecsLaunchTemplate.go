@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECS Launch Template resource.
@@ -773,6 +774,12 @@ func (i *EcsLaunchTemplate) ToEcsLaunchTemplateOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(EcsLaunchTemplateOutput)
 }
 
+func (i *EcsLaunchTemplate) ToOutput(ctx context.Context) pulumix.Output[*EcsLaunchTemplate] {
+	return pulumix.Output[*EcsLaunchTemplate]{
+		OutputState: i.ToEcsLaunchTemplateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EcsLaunchTemplateArrayInput is an input type that accepts EcsLaunchTemplateArray and EcsLaunchTemplateArrayOutput values.
 // You can construct a concrete instance of `EcsLaunchTemplateArrayInput` via:
 //
@@ -796,6 +803,12 @@ func (i EcsLaunchTemplateArray) ToEcsLaunchTemplateArrayOutput() EcsLaunchTempla
 
 func (i EcsLaunchTemplateArray) ToEcsLaunchTemplateArrayOutputWithContext(ctx context.Context) EcsLaunchTemplateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsLaunchTemplateArrayOutput)
+}
+
+func (i EcsLaunchTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]*EcsLaunchTemplate] {
+	return pulumix.Output[[]*EcsLaunchTemplate]{
+		OutputState: i.ToEcsLaunchTemplateArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EcsLaunchTemplateMapInput is an input type that accepts EcsLaunchTemplateMap and EcsLaunchTemplateMapOutput values.
@@ -823,6 +836,12 @@ func (i EcsLaunchTemplateMap) ToEcsLaunchTemplateMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(EcsLaunchTemplateMapOutput)
 }
 
+func (i EcsLaunchTemplateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsLaunchTemplate] {
+	return pulumix.Output[map[string]*EcsLaunchTemplate]{
+		OutputState: i.ToEcsLaunchTemplateMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EcsLaunchTemplateOutput struct{ *pulumi.OutputState }
 
 func (EcsLaunchTemplateOutput) ElementType() reflect.Type {
@@ -835,6 +854,12 @@ func (o EcsLaunchTemplateOutput) ToEcsLaunchTemplateOutput() EcsLaunchTemplateOu
 
 func (o EcsLaunchTemplateOutput) ToEcsLaunchTemplateOutputWithContext(ctx context.Context) EcsLaunchTemplateOutput {
 	return o
+}
+
+func (o EcsLaunchTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*EcsLaunchTemplate] {
+	return pulumix.Output[*EcsLaunchTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
@@ -1094,6 +1119,12 @@ func (o EcsLaunchTemplateArrayOutput) ToEcsLaunchTemplateArrayOutputWithContext(
 	return o
 }
 
+func (o EcsLaunchTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EcsLaunchTemplate] {
+	return pulumix.Output[[]*EcsLaunchTemplate]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EcsLaunchTemplateArrayOutput) Index(i pulumi.IntInput) EcsLaunchTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsLaunchTemplate {
 		return vs[0].([]*EcsLaunchTemplate)[vs[1].(int)]
@@ -1112,6 +1143,12 @@ func (o EcsLaunchTemplateMapOutput) ToEcsLaunchTemplateMapOutput() EcsLaunchTemp
 
 func (o EcsLaunchTemplateMapOutput) ToEcsLaunchTemplateMapOutputWithContext(ctx context.Context) EcsLaunchTemplateMapOutput {
 	return o
+}
+
+func (o EcsLaunchTemplateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsLaunchTemplate] {
+	return pulumix.Output[map[string]*EcsLaunchTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EcsLaunchTemplateMapOutput) MapIndex(k pulumi.StringInput) EcsLaunchTemplateOutput {

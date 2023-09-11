@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ecs Prefix Lists of the current Alibaba Cloud user.
@@ -125,6 +126,12 @@ func (o GetEcsPrefixListsResultOutput) ToGetEcsPrefixListsResultOutput() GetEcsP
 
 func (o GetEcsPrefixListsResultOutput) ToGetEcsPrefixListsResultOutputWithContext(ctx context.Context) GetEcsPrefixListsResultOutput {
 	return o
+}
+
+func (o GetEcsPrefixListsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEcsPrefixListsResult] {
+	return pulumix.Output[GetEcsPrefixListsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetEcsPrefixListsResultOutput) AddressFamily() pulumi.StringPtrOutput {

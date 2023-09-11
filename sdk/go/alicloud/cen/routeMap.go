@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This topic provides an overview of the route map function of Cloud Enterprise Networks (CENs).
@@ -553,6 +554,12 @@ func (i *RouteMap) ToRouteMapOutputWithContext(ctx context.Context) RouteMapOutp
 	return pulumi.ToOutputWithContext(ctx, i).(RouteMapOutput)
 }
 
+func (i *RouteMap) ToOutput(ctx context.Context) pulumix.Output[*RouteMap] {
+	return pulumix.Output[*RouteMap]{
+		OutputState: i.ToRouteMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RouteMapArrayInput is an input type that accepts RouteMapArray and RouteMapArrayOutput values.
 // You can construct a concrete instance of `RouteMapArrayInput` via:
 //
@@ -576,6 +583,12 @@ func (i RouteMapArray) ToRouteMapArrayOutput() RouteMapArrayOutput {
 
 func (i RouteMapArray) ToRouteMapArrayOutputWithContext(ctx context.Context) RouteMapArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouteMapArrayOutput)
+}
+
+func (i RouteMapArray) ToOutput(ctx context.Context) pulumix.Output[[]*RouteMap] {
+	return pulumix.Output[[]*RouteMap]{
+		OutputState: i.ToRouteMapArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RouteMapMapInput is an input type that accepts RouteMapMap and RouteMapMapOutput values.
@@ -603,6 +616,12 @@ func (i RouteMapMap) ToRouteMapMapOutputWithContext(ctx context.Context) RouteMa
 	return pulumi.ToOutputWithContext(ctx, i).(RouteMapMapOutput)
 }
 
+func (i RouteMapMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RouteMap] {
+	return pulumix.Output[map[string]*RouteMap]{
+		OutputState: i.ToRouteMapMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RouteMapOutput struct{ *pulumi.OutputState }
 
 func (RouteMapOutput) ElementType() reflect.Type {
@@ -615,6 +634,12 @@ func (o RouteMapOutput) ToRouteMapOutput() RouteMapOutput {
 
 func (o RouteMapOutput) ToRouteMapOutputWithContext(ctx context.Context) RouteMapOutput {
 	return o
+}
+
+func (o RouteMapOutput) ToOutput(ctx context.Context) pulumix.Output[*RouteMap] {
+	return pulumix.Output[*RouteMap]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A match statement. It indicates the mode in which the AS path attribute is matched. Valid values: ["Include", "Complete"].
@@ -781,6 +806,12 @@ func (o RouteMapArrayOutput) ToRouteMapArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o RouteMapArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RouteMap] {
+	return pulumix.Output[[]*RouteMap]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RouteMapArrayOutput) Index(i pulumi.IntInput) RouteMapOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RouteMap {
 		return vs[0].([]*RouteMap)[vs[1].(int)]
@@ -799,6 +830,12 @@ func (o RouteMapMapOutput) ToRouteMapMapOutput() RouteMapMapOutput {
 
 func (o RouteMapMapOutput) ToRouteMapMapOutputWithContext(ctx context.Context) RouteMapMapOutput {
 	return o
+}
+
+func (o RouteMapMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RouteMap] {
+	return pulumix.Output[map[string]*RouteMap]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouteMapMapOutput) MapIndex(k pulumi.StringInput) RouteMapOutput {

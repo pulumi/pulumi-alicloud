@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Adb DBClusters of the current Alibaba Cloud user.
@@ -152,6 +153,12 @@ func (o GetDBClustersResultOutput) ToGetDBClustersResultOutput() GetDBClustersRe
 
 func (o GetDBClustersResultOutput) ToGetDBClustersResultOutputWithContext(ctx context.Context) GetDBClustersResultOutput {
 	return o
+}
+
+func (o GetDBClustersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDBClustersResult] {
+	return pulumix.Output[GetDBClustersResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of Adb Db Clusters. Each element contains the following attributes:

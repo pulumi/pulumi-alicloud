@@ -190,18 +190,14 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
     }
 
     /**
-     * The destination address book type in the access control policy. Value:
-     * - **ip**:IP address book, which contains one or more ip address segments.
-     * - **domain**: domain address book, which contains one or more domain addresses.
+     * The destination address book type in the access control policy.
      * 
      */
     @Import(name="destinationGroupType")
     private @Nullable Output<String> destinationGroupType;
 
     /**
-     * @return The destination address book type in the access control policy. Value:
-     * - **ip**:IP address book, which contains one or more ip address segments.
-     * - **domain**: domain address book, which contains one or more domain addresses.
+     * @return The destination address book type in the access control policy.
      * 
      */
     public Optional<Output<String>> destinationGroupType() {
@@ -299,18 +295,14 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
     }
 
     /**
-     * The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-     * - **true**: Enable access control policies
-     * - **false**: does not enable access control policies.
+     * The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
      * 
      */
     @Import(name="release")
     private @Nullable Output<Boolean> release;
 
     /**
-     * @return The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-     * - **true**: Enable access control policies
-     * - **false**: does not enable access control policies.
+     * @return The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
      * 
      */
     public Optional<Output<Boolean>> release() {
@@ -348,14 +340,14 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
     }
 
     /**
-     * The source address type in the access control policy. Unique value: **ip**. The IP address book contains one or more IP address segments.
+     * The source address type in the access control policy.
      * 
      */
     @Import(name="sourceGroupType")
     private @Nullable Output<String> sourceGroupType;
 
     /**
-     * @return The source address type in the access control policy. Unique value: **ip**. The IP address book contains one or more IP address segments.
+     * @return The source address type in the access control policy.
      * 
      */
     public Optional<Output<String>> sourceGroupType() {
@@ -378,7 +370,7 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
     }
 
     /**
-     * The ID of the VPC firewall instance. Value:
+     * The ID of the VPC firewall instance. Valid values:
      * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
      * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
      * 
@@ -387,7 +379,7 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
     private @Nullable Output<String> vpcFirewallId;
 
     /**
-     * @return The ID of the VPC firewall instance. Value:
+     * @return The ID of the VPC firewall instance. Valid values:
      * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
      * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
      * 
@@ -701,9 +693,7 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
         }
 
         /**
-         * @param destinationGroupType The destination address book type in the access control policy. Value:
-         * - **ip**:IP address book, which contains one or more ip address segments.
-         * - **domain**: domain address book, which contains one or more domain addresses.
+         * @param destinationGroupType The destination address book type in the access control policy.
          * 
          * @return builder
          * 
@@ -714,9 +704,7 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
         }
 
         /**
-         * @param destinationGroupType The destination address book type in the access control policy. Value:
-         * - **ip**:IP address book, which contains one or more ip address segments.
-         * - **domain**: domain address book, which contains one or more domain addresses.
+         * @param destinationGroupType The destination address book type in the access control policy.
          * 
          * @return builder
          * 
@@ -852,9 +840,7 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
         }
 
         /**
-         * @param release The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-         * - **true**: Enable access control policies
-         * - **false**: does not enable access control policies.
+         * @param release The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
          * 
          * @return builder
          * 
@@ -865,9 +851,7 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
         }
 
         /**
-         * @param release The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
-         * - **true**: Enable access control policies
-         * - **false**: does not enable access control policies.
+         * @param release The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
          * 
          * @return builder
          * 
@@ -929,7 +913,7 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
         }
 
         /**
-         * @param sourceGroupType The source address type in the access control policy. Unique value: **ip**. The IP address book contains one or more IP address segments.
+         * @param sourceGroupType The source address type in the access control policy.
          * 
          * @return builder
          * 
@@ -940,7 +924,7 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
         }
 
         /**
-         * @param sourceGroupType The source address type in the access control policy. Unique value: **ip**. The IP address book contains one or more IP address segments.
+         * @param sourceGroupType The source address type in the access control policy.
          * 
          * @return builder
          * 
@@ -971,7 +955,7 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
         }
 
         /**
-         * @param vpcFirewallId The ID of the VPC firewall instance. Value:
+         * @param vpcFirewallId The ID of the VPC firewall instance. Valid values:
          * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
          * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
          * 
@@ -984,7 +968,7 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
         }
 
         /**
-         * @param vpcFirewallId The ID of the VPC firewall instance. Value:
+         * @param vpcFirewallId The ID of the VPC firewall instance. Valid values:
          * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
          * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
          * 

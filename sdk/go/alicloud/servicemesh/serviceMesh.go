@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Service Mesh Service Mesh resource.
@@ -210,6 +211,12 @@ func (i *ServiceMesh) ToServiceMeshOutputWithContext(ctx context.Context) Servic
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshOutput)
 }
 
+func (i *ServiceMesh) ToOutput(ctx context.Context) pulumix.Output[*ServiceMesh] {
+	return pulumix.Output[*ServiceMesh]{
+		OutputState: i.ToServiceMeshOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceMeshArrayInput is an input type that accepts ServiceMeshArray and ServiceMeshArrayOutput values.
 // You can construct a concrete instance of `ServiceMeshArrayInput` via:
 //
@@ -233,6 +240,12 @@ func (i ServiceMeshArray) ToServiceMeshArrayOutput() ServiceMeshArrayOutput {
 
 func (i ServiceMeshArray) ToServiceMeshArrayOutputWithContext(ctx context.Context) ServiceMeshArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshArrayOutput)
+}
+
+func (i ServiceMeshArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceMesh] {
+	return pulumix.Output[[]*ServiceMesh]{
+		OutputState: i.ToServiceMeshArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ServiceMeshMapInput is an input type that accepts ServiceMeshMap and ServiceMeshMapOutput values.
@@ -260,6 +273,12 @@ func (i ServiceMeshMap) ToServiceMeshMapOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMapOutput)
 }
 
+func (i ServiceMeshMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceMesh] {
+	return pulumix.Output[map[string]*ServiceMesh]{
+		OutputState: i.ToServiceMeshMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceMeshOutput struct{ *pulumi.OutputState }
 
 func (ServiceMeshOutput) ElementType() reflect.Type {
@@ -272,6 +291,12 @@ func (o ServiceMeshOutput) ToServiceMeshOutput() ServiceMeshOutput {
 
 func (o ServiceMeshOutput) ToServiceMeshOutputWithContext(ctx context.Context) ServiceMeshOutput {
 	return o
+}
+
+func (o ServiceMeshOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceMesh] {
+	return pulumix.Output[*ServiceMesh]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The array of the cluster ids.
@@ -343,6 +368,12 @@ func (o ServiceMeshArrayOutput) ToServiceMeshArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o ServiceMeshArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceMesh] {
+	return pulumix.Output[[]*ServiceMesh]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServiceMeshArrayOutput) Index(i pulumi.IntInput) ServiceMeshOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceMesh {
 		return vs[0].([]*ServiceMesh)[vs[1].(int)]
@@ -361,6 +392,12 @@ func (o ServiceMeshMapOutput) ToServiceMeshMapOutput() ServiceMeshMapOutput {
 
 func (o ServiceMeshMapOutput) ToServiceMeshMapOutputWithContext(ctx context.Context) ServiceMeshMapOutput {
 	return o
+}
+
+func (o ServiceMeshMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceMesh] {
+	return pulumix.Output[map[string]*ServiceMesh]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceMeshMapOutput) MapIndex(k pulumi.StringInput) ServiceMeshOutput {

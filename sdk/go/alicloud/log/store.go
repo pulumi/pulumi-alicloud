@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log store is a unit in Log Service to collect, store, and query the log data. Each log store belongs to a project,
@@ -349,6 +350,12 @@ func (i *Store) ToStoreOutputWithContext(ctx context.Context) StoreOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StoreOutput)
 }
 
+func (i *Store) ToOutput(ctx context.Context) pulumix.Output[*Store] {
+	return pulumix.Output[*Store]{
+		OutputState: i.ToStoreOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StoreArrayInput is an input type that accepts StoreArray and StoreArrayOutput values.
 // You can construct a concrete instance of `StoreArrayInput` via:
 //
@@ -372,6 +379,12 @@ func (i StoreArray) ToStoreArrayOutput() StoreArrayOutput {
 
 func (i StoreArray) ToStoreArrayOutputWithContext(ctx context.Context) StoreArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StoreArrayOutput)
+}
+
+func (i StoreArray) ToOutput(ctx context.Context) pulumix.Output[[]*Store] {
+	return pulumix.Output[[]*Store]{
+		OutputState: i.ToStoreArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // StoreMapInput is an input type that accepts StoreMap and StoreMapOutput values.
@@ -399,6 +412,12 @@ func (i StoreMap) ToStoreMapOutputWithContext(ctx context.Context) StoreMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(StoreMapOutput)
 }
 
+func (i StoreMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Store] {
+	return pulumix.Output[map[string]*Store]{
+		OutputState: i.ToStoreMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StoreOutput struct{ *pulumi.OutputState }
 
 func (StoreOutput) ElementType() reflect.Type {
@@ -411,6 +430,12 @@ func (o StoreOutput) ToStoreOutput() StoreOutput {
 
 func (o StoreOutput) ToStoreOutputWithContext(ctx context.Context) StoreOutput {
 	return o
+}
+
+func (o StoreOutput) ToOutput(ctx context.Context) pulumix.Output[*Store] {
+	return pulumix.Output[*Store]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
@@ -492,6 +517,12 @@ func (o StoreArrayOutput) ToStoreArrayOutputWithContext(ctx context.Context) Sto
 	return o
 }
 
+func (o StoreArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Store] {
+	return pulumix.Output[[]*Store]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StoreArrayOutput) Index(i pulumi.IntInput) StoreOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Store {
 		return vs[0].([]*Store)[vs[1].(int)]
@@ -510,6 +541,12 @@ func (o StoreMapOutput) ToStoreMapOutput() StoreMapOutput {
 
 func (o StoreMapOutput) ToStoreMapOutputWithContext(ctx context.Context) StoreMapOutput {
 	return o
+}
+
+func (o StoreMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Store] {
+	return pulumix.Output[map[string]*Store]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StoreMapOutput) MapIndex(k pulumi.StringInput) StoreOutput {

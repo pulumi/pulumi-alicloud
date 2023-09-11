@@ -49,10 +49,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         var default_ = new AnycastEipAddress(&#34;default&#34;, AnycastEipAddressArgs.builder()        
  *             .anycastEipAddressName(name)
- *             .description(&#34;test_1&#34;)
+ *             .description(name)
  *             .bandwidth(200)
  *             .serviceLocation(&#34;international&#34;)
  *             .internetChargeType(&#34;PayByTraffic&#34;)

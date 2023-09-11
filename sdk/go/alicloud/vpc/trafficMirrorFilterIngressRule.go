@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPC Traffic Mirror Filter Ingress Rule resource.
@@ -262,6 +263,12 @@ func (i *TrafficMirrorFilterIngressRule) ToTrafficMirrorFilterIngressRuleOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorFilterIngressRuleOutput)
 }
 
+func (i *TrafficMirrorFilterIngressRule) ToOutput(ctx context.Context) pulumix.Output[*TrafficMirrorFilterIngressRule] {
+	return pulumix.Output[*TrafficMirrorFilterIngressRule]{
+		OutputState: i.ToTrafficMirrorFilterIngressRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TrafficMirrorFilterIngressRuleArrayInput is an input type that accepts TrafficMirrorFilterIngressRuleArray and TrafficMirrorFilterIngressRuleArrayOutput values.
 // You can construct a concrete instance of `TrafficMirrorFilterIngressRuleArrayInput` via:
 //
@@ -285,6 +292,12 @@ func (i TrafficMirrorFilterIngressRuleArray) ToTrafficMirrorFilterIngressRuleArr
 
 func (i TrafficMirrorFilterIngressRuleArray) ToTrafficMirrorFilterIngressRuleArrayOutputWithContext(ctx context.Context) TrafficMirrorFilterIngressRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorFilterIngressRuleArrayOutput)
+}
+
+func (i TrafficMirrorFilterIngressRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*TrafficMirrorFilterIngressRule] {
+	return pulumix.Output[[]*TrafficMirrorFilterIngressRule]{
+		OutputState: i.ToTrafficMirrorFilterIngressRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TrafficMirrorFilterIngressRuleMapInput is an input type that accepts TrafficMirrorFilterIngressRuleMap and TrafficMirrorFilterIngressRuleMapOutput values.
@@ -312,6 +325,12 @@ func (i TrafficMirrorFilterIngressRuleMap) ToTrafficMirrorFilterIngressRuleMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorFilterIngressRuleMapOutput)
 }
 
+func (i TrafficMirrorFilterIngressRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TrafficMirrorFilterIngressRule] {
+	return pulumix.Output[map[string]*TrafficMirrorFilterIngressRule]{
+		OutputState: i.ToTrafficMirrorFilterIngressRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TrafficMirrorFilterIngressRuleOutput struct{ *pulumi.OutputState }
 
 func (TrafficMirrorFilterIngressRuleOutput) ElementType() reflect.Type {
@@ -324,6 +343,12 @@ func (o TrafficMirrorFilterIngressRuleOutput) ToTrafficMirrorFilterIngressRuleOu
 
 func (o TrafficMirrorFilterIngressRuleOutput) ToTrafficMirrorFilterIngressRuleOutputWithContext(ctx context.Context) TrafficMirrorFilterIngressRuleOutput {
 	return o
+}
+
+func (o TrafficMirrorFilterIngressRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*TrafficMirrorFilterIngressRule] {
+	return pulumix.Output[*TrafficMirrorFilterIngressRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The destination CIDR block of the inbound traffic.
@@ -395,6 +420,12 @@ func (o TrafficMirrorFilterIngressRuleArrayOutput) ToTrafficMirrorFilterIngressR
 	return o
 }
 
+func (o TrafficMirrorFilterIngressRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TrafficMirrorFilterIngressRule] {
+	return pulumix.Output[[]*TrafficMirrorFilterIngressRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TrafficMirrorFilterIngressRuleArrayOutput) Index(i pulumi.IntInput) TrafficMirrorFilterIngressRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TrafficMirrorFilterIngressRule {
 		return vs[0].([]*TrafficMirrorFilterIngressRule)[vs[1].(int)]
@@ -413,6 +444,12 @@ func (o TrafficMirrorFilterIngressRuleMapOutput) ToTrafficMirrorFilterIngressRul
 
 func (o TrafficMirrorFilterIngressRuleMapOutput) ToTrafficMirrorFilterIngressRuleMapOutputWithContext(ctx context.Context) TrafficMirrorFilterIngressRuleMapOutput {
 	return o
+}
+
+func (o TrafficMirrorFilterIngressRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TrafficMirrorFilterIngressRule] {
+	return pulumix.Output[map[string]*TrafficMirrorFilterIngressRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TrafficMirrorFilterIngressRuleMapOutput) MapIndex(k pulumi.StringInput) TrafficMirrorFilterIngressRuleOutput {

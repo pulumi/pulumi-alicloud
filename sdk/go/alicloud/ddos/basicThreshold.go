@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Ddos Basic Threshold resource.
@@ -278,6 +279,12 @@ func (i *BasicThreshold) ToBasicThresholdOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(BasicThresholdOutput)
 }
 
+func (i *BasicThreshold) ToOutput(ctx context.Context) pulumix.Output[*BasicThreshold] {
+	return pulumix.Output[*BasicThreshold]{
+		OutputState: i.ToBasicThresholdOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BasicThresholdArrayInput is an input type that accepts BasicThresholdArray and BasicThresholdArrayOutput values.
 // You can construct a concrete instance of `BasicThresholdArrayInput` via:
 //
@@ -301,6 +308,12 @@ func (i BasicThresholdArray) ToBasicThresholdArrayOutput() BasicThresholdArrayOu
 
 func (i BasicThresholdArray) ToBasicThresholdArrayOutputWithContext(ctx context.Context) BasicThresholdArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BasicThresholdArrayOutput)
+}
+
+func (i BasicThresholdArray) ToOutput(ctx context.Context) pulumix.Output[[]*BasicThreshold] {
+	return pulumix.Output[[]*BasicThreshold]{
+		OutputState: i.ToBasicThresholdArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BasicThresholdMapInput is an input type that accepts BasicThresholdMap and BasicThresholdMapOutput values.
@@ -328,6 +341,12 @@ func (i BasicThresholdMap) ToBasicThresholdMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(BasicThresholdMapOutput)
 }
 
+func (i BasicThresholdMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BasicThreshold] {
+	return pulumix.Output[map[string]*BasicThreshold]{
+		OutputState: i.ToBasicThresholdMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BasicThresholdOutput struct{ *pulumi.OutputState }
 
 func (BasicThresholdOutput) ElementType() reflect.Type {
@@ -340,6 +359,12 @@ func (o BasicThresholdOutput) ToBasicThresholdOutput() BasicThresholdOutput {
 
 func (o BasicThresholdOutput) ToBasicThresholdOutputWithContext(ctx context.Context) BasicThresholdOutput {
 	return o
+}
+
+func (o BasicThresholdOutput) ToOutput(ctx context.Context) pulumix.Output[*BasicThreshold] {
+	return pulumix.Output[*BasicThreshold]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
@@ -391,6 +416,12 @@ func (o BasicThresholdArrayOutput) ToBasicThresholdArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o BasicThresholdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BasicThreshold] {
+	return pulumix.Output[[]*BasicThreshold]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BasicThresholdArrayOutput) Index(i pulumi.IntInput) BasicThresholdOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BasicThreshold {
 		return vs[0].([]*BasicThreshold)[vs[1].(int)]
@@ -409,6 +440,12 @@ func (o BasicThresholdMapOutput) ToBasicThresholdMapOutput() BasicThresholdMapOu
 
 func (o BasicThresholdMapOutput) ToBasicThresholdMapOutputWithContext(ctx context.Context) BasicThresholdMapOutput {
 	return o
+}
+
+func (o BasicThresholdMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BasicThreshold] {
+	return pulumix.Output[map[string]*BasicThreshold]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BasicThresholdMapOutput) MapIndex(k pulumi.StringInput) BasicThresholdOutput {

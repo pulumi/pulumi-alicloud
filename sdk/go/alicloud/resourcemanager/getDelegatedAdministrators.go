@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
@@ -121,6 +122,12 @@ func (o GetDelegatedAdministratorsResultOutput) ToGetDelegatedAdministratorsResu
 
 func (o GetDelegatedAdministratorsResultOutput) ToGetDelegatedAdministratorsResultOutputWithContext(ctx context.Context) GetDelegatedAdministratorsResultOutput {
 	return o
+}
+
+func (o GetDelegatedAdministratorsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDelegatedAdministratorsResult] {
+	return pulumix.Output[GetDelegatedAdministratorsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDelegatedAdministratorsResultOutput) Administrators() GetDelegatedAdministratorsAdministratorArrayOutput {

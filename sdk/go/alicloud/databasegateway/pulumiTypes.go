@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -80,6 +81,12 @@ func (i GetGatewaysGatewayArgs) ToGetGatewaysGatewayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayOutput)
 }
 
+func (i GetGatewaysGatewayArgs) ToOutput(ctx context.Context) pulumix.Output[GetGatewaysGateway] {
+	return pulumix.Output[GetGatewaysGateway]{
+		OutputState: i.ToGetGatewaysGatewayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGatewaysGatewayArrayInput is an input type that accepts GetGatewaysGatewayArray and GetGatewaysGatewayArrayOutput values.
 // You can construct a concrete instance of `GetGatewaysGatewayArrayInput` via:
 //
@@ -105,6 +112,12 @@ func (i GetGatewaysGatewayArray) ToGetGatewaysGatewayArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayArrayOutput)
 }
 
+func (i GetGatewaysGatewayArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewaysGateway] {
+	return pulumix.Output[[]GetGatewaysGateway]{
+		OutputState: i.ToGetGatewaysGatewayArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGatewaysGatewayOutput struct{ *pulumi.OutputState }
 
 func (GetGatewaysGatewayOutput) ElementType() reflect.Type {
@@ -117,6 +130,12 @@ func (o GetGatewaysGatewayOutput) ToGetGatewaysGatewayOutput() GetGatewaysGatewa
 
 func (o GetGatewaysGatewayOutput) ToGetGatewaysGatewayOutputWithContext(ctx context.Context) GetGatewaysGatewayOutput {
 	return o
+}
+
+func (o GetGatewaysGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[GetGatewaysGateway] {
+	return pulumix.Output[GetGatewaysGateway]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation time of Gateway.
@@ -180,6 +199,12 @@ func (o GetGatewaysGatewayArrayOutput) ToGetGatewaysGatewayArrayOutput() GetGate
 
 func (o GetGatewaysGatewayArrayOutput) ToGetGatewaysGatewayArrayOutputWithContext(ctx context.Context) GetGatewaysGatewayArrayOutput {
 	return o
+}
+
+func (o GetGatewaysGatewayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewaysGateway] {
+	return pulumix.Output[[]GetGatewaysGateway]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetGatewaysGatewayOutput {
@@ -257,6 +282,12 @@ func (i GetGatewaysGatewayGatewayInstanceArgs) ToGetGatewaysGatewayGatewayInstan
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayGatewayInstanceOutput)
 }
 
+func (i GetGatewaysGatewayGatewayInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetGatewaysGatewayGatewayInstance] {
+	return pulumix.Output[GetGatewaysGatewayGatewayInstance]{
+		OutputState: i.ToGetGatewaysGatewayGatewayInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGatewaysGatewayGatewayInstanceArrayInput is an input type that accepts GetGatewaysGatewayGatewayInstanceArray and GetGatewaysGatewayGatewayInstanceArrayOutput values.
 // You can construct a concrete instance of `GetGatewaysGatewayGatewayInstanceArrayInput` via:
 //
@@ -282,6 +313,12 @@ func (i GetGatewaysGatewayGatewayInstanceArray) ToGetGatewaysGatewayGatewayInsta
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayGatewayInstanceArrayOutput)
 }
 
+func (i GetGatewaysGatewayGatewayInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewaysGatewayGatewayInstance] {
+	return pulumix.Output[[]GetGatewaysGatewayGatewayInstance]{
+		OutputState: i.ToGetGatewaysGatewayGatewayInstanceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGatewaysGatewayGatewayInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetGatewaysGatewayGatewayInstanceOutput) ElementType() reflect.Type {
@@ -294,6 +331,12 @@ func (o GetGatewaysGatewayGatewayInstanceOutput) ToGetGatewaysGatewayGatewayInst
 
 func (o GetGatewaysGatewayGatewayInstanceOutput) ToGetGatewaysGatewayGatewayInstanceOutputWithContext(ctx context.Context) GetGatewaysGatewayGatewayInstanceOutput {
 	return o
+}
+
+func (o GetGatewaysGatewayGatewayInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetGatewaysGatewayGatewayInstance] {
+	return pulumix.Output[GetGatewaysGatewayGatewayInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The connection type of Gateway instance.
@@ -358,6 +401,12 @@ func (o GetGatewaysGatewayGatewayInstanceArrayOutput) ToGetGatewaysGatewayGatewa
 
 func (o GetGatewaysGatewayGatewayInstanceArrayOutput) ToGetGatewaysGatewayGatewayInstanceArrayOutputWithContext(ctx context.Context) GetGatewaysGatewayGatewayInstanceArrayOutput {
 	return o
+}
+
+func (o GetGatewaysGatewayGatewayInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGatewaysGatewayGatewayInstance] {
+	return pulumix.Output[[]GetGatewaysGatewayGatewayInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGatewaysGatewayGatewayInstanceArrayOutput) Index(i pulumi.IntInput) GetGatewaysGatewayGatewayInstanceOutput {

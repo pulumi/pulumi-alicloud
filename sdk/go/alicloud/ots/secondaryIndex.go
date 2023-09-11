@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an OTS secondary index resource.
@@ -292,6 +293,12 @@ func (i *SecondaryIndex) ToSecondaryIndexOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SecondaryIndexOutput)
 }
 
+func (i *SecondaryIndex) ToOutput(ctx context.Context) pulumix.Output[*SecondaryIndex] {
+	return pulumix.Output[*SecondaryIndex]{
+		OutputState: i.ToSecondaryIndexOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SecondaryIndexArrayInput is an input type that accepts SecondaryIndexArray and SecondaryIndexArrayOutput values.
 // You can construct a concrete instance of `SecondaryIndexArrayInput` via:
 //
@@ -315,6 +322,12 @@ func (i SecondaryIndexArray) ToSecondaryIndexArrayOutput() SecondaryIndexArrayOu
 
 func (i SecondaryIndexArray) ToSecondaryIndexArrayOutputWithContext(ctx context.Context) SecondaryIndexArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecondaryIndexArrayOutput)
+}
+
+func (i SecondaryIndexArray) ToOutput(ctx context.Context) pulumix.Output[[]*SecondaryIndex] {
+	return pulumix.Output[[]*SecondaryIndex]{
+		OutputState: i.ToSecondaryIndexArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SecondaryIndexMapInput is an input type that accepts SecondaryIndexMap and SecondaryIndexMapOutput values.
@@ -342,6 +355,12 @@ func (i SecondaryIndexMap) ToSecondaryIndexMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SecondaryIndexMapOutput)
 }
 
+func (i SecondaryIndexMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecondaryIndex] {
+	return pulumix.Output[map[string]*SecondaryIndex]{
+		OutputState: i.ToSecondaryIndexMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecondaryIndexOutput struct{ *pulumi.OutputState }
 
 func (SecondaryIndexOutput) ElementType() reflect.Type {
@@ -354,6 +373,12 @@ func (o SecondaryIndexOutput) ToSecondaryIndexOutput() SecondaryIndexOutput {
 
 func (o SecondaryIndexOutput) ToSecondaryIndexOutputWithContext(ctx context.Context) SecondaryIndexOutput {
 	return o
+}
+
+func (o SecondaryIndexOutput) ToOutput(ctx context.Context) pulumix.Output[*SecondaryIndex] {
+	return pulumix.Output[*SecondaryIndex]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of defined column for index, referenced from Table's primary keys or predefined columns.
@@ -405,6 +430,12 @@ func (o SecondaryIndexArrayOutput) ToSecondaryIndexArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o SecondaryIndexArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SecondaryIndex] {
+	return pulumix.Output[[]*SecondaryIndex]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecondaryIndexArrayOutput) Index(i pulumi.IntInput) SecondaryIndexOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecondaryIndex {
 		return vs[0].([]*SecondaryIndex)[vs[1].(int)]
@@ -423,6 +454,12 @@ func (o SecondaryIndexMapOutput) ToSecondaryIndexMapOutput() SecondaryIndexMapOu
 
 func (o SecondaryIndexMapOutput) ToSecondaryIndexMapOutputWithContext(ctx context.Context) SecondaryIndexMapOutput {
 	return o
+}
+
+func (o SecondaryIndexMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecondaryIndex] {
+	return pulumix.Output[map[string]*SecondaryIndex]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecondaryIndexMapOutput) MapIndex(k pulumi.StringInput) SecondaryIndexOutput {

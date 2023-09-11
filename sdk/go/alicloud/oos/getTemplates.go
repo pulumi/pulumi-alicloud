@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
@@ -176,6 +177,12 @@ func (o GetTemplatesResultOutput) ToGetTemplatesResultOutput() GetTemplatesResul
 
 func (o GetTemplatesResultOutput) ToGetTemplatesResultOutputWithContext(ctx context.Context) GetTemplatesResultOutput {
 	return o
+}
+
+func (o GetTemplatesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTemplatesResult] {
+	return pulumix.Output[GetTemplatesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTemplatesResultOutput) Category() pulumi.StringPtrOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an OTS table resource.
@@ -282,6 +283,12 @@ func (i *Table) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TableOutput)
 }
 
+func (i *Table) ToOutput(ctx context.Context) pulumix.Output[*Table] {
+	return pulumix.Output[*Table]{
+		OutputState: i.ToTableOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TableArrayInput is an input type that accepts TableArray and TableArrayOutput values.
 // You can construct a concrete instance of `TableArrayInput` via:
 //
@@ -305,6 +312,12 @@ func (i TableArray) ToTableArrayOutput() TableArrayOutput {
 
 func (i TableArray) ToTableArrayOutputWithContext(ctx context.Context) TableArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TableArrayOutput)
+}
+
+func (i TableArray) ToOutput(ctx context.Context) pulumix.Output[[]*Table] {
+	return pulumix.Output[[]*Table]{
+		OutputState: i.ToTableArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TableMapInput is an input type that accepts TableMap and TableMapOutput values.
@@ -332,6 +345,12 @@ func (i TableMap) ToTableMapOutputWithContext(ctx context.Context) TableMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(TableMapOutput)
 }
 
+func (i TableMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Table] {
+	return pulumix.Output[map[string]*Table]{
+		OutputState: i.ToTableMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TableOutput struct{ *pulumi.OutputState }
 
 func (TableOutput) ElementType() reflect.Type {
@@ -344,6 +363,12 @@ func (o TableOutput) ToTableOutput() TableOutput {
 
 func (o TableOutput) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return o
+}
+
+func (o TableOutput) ToOutput(ctx context.Context) pulumix.Output[*Table] {
+	return pulumix.Output[*Table]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32.
@@ -405,6 +430,12 @@ func (o TableArrayOutput) ToTableArrayOutputWithContext(ctx context.Context) Tab
 	return o
 }
 
+func (o TableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Table] {
+	return pulumix.Output[[]*Table]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TableArrayOutput) Index(i pulumi.IntInput) TableOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Table {
 		return vs[0].([]*Table)[vs[1].(int)]
@@ -423,6 +454,12 @@ func (o TableMapOutput) ToTableMapOutput() TableMapOutput {
 
 func (o TableMapOutput) ToTableMapOutputWithContext(ctx context.Context) TableMapOutput {
 	return o
+}
+
+func (o TableMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Table] {
+	return pulumix.Output[map[string]*Table]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TableMapOutput) MapIndex(k pulumi.StringInput) TableOutput {

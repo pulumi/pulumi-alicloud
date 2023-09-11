@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // SLS log audit exists in the form of log service app.
@@ -392,6 +393,12 @@ func (i *Audit) ToAuditOutputWithContext(ctx context.Context) AuditOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuditOutput)
 }
 
+func (i *Audit) ToOutput(ctx context.Context) pulumix.Output[*Audit] {
+	return pulumix.Output[*Audit]{
+		OutputState: i.ToAuditOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuditArrayInput is an input type that accepts AuditArray and AuditArrayOutput values.
 // You can construct a concrete instance of `AuditArrayInput` via:
 //
@@ -415,6 +422,12 @@ func (i AuditArray) ToAuditArrayOutput() AuditArrayOutput {
 
 func (i AuditArray) ToAuditArrayOutputWithContext(ctx context.Context) AuditArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuditArrayOutput)
+}
+
+func (i AuditArray) ToOutput(ctx context.Context) pulumix.Output[[]*Audit] {
+	return pulumix.Output[[]*Audit]{
+		OutputState: i.ToAuditArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AuditMapInput is an input type that accepts AuditMap and AuditMapOutput values.
@@ -442,6 +455,12 @@ func (i AuditMap) ToAuditMapOutputWithContext(ctx context.Context) AuditMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(AuditMapOutput)
 }
 
+func (i AuditMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Audit] {
+	return pulumix.Output[map[string]*Audit]{
+		OutputState: i.ToAuditMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AuditOutput struct{ *pulumi.OutputState }
 
 func (AuditOutput) ElementType() reflect.Type {
@@ -454,6 +473,12 @@ func (o AuditOutput) ToAuditOutput() AuditOutput {
 
 func (o AuditOutput) ToAuditOutputWithContext(ctx context.Context) AuditOutput {
 	return o
+}
+
+func (o AuditOutput) ToOutput(ctx context.Context) pulumix.Output[*Audit] {
+	return pulumix.Output[*Audit]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Aliuid value of your account.
@@ -495,6 +520,12 @@ func (o AuditArrayOutput) ToAuditArrayOutputWithContext(ctx context.Context) Aud
 	return o
 }
 
+func (o AuditArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Audit] {
+	return pulumix.Output[[]*Audit]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuditArrayOutput) Index(i pulumi.IntInput) AuditOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Audit {
 		return vs[0].([]*Audit)[vs[1].(int)]
@@ -513,6 +544,12 @@ func (o AuditMapOutput) ToAuditMapOutput() AuditMapOutput {
 
 func (o AuditMapOutput) ToAuditMapOutputWithContext(ctx context.Context) AuditMapOutput {
 	return o
+}
+
+func (o AuditMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Audit] {
+	return pulumix.Output[map[string]*Audit]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuditMapOutput) MapIndex(k pulumi.StringInput) AuditOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Ddos Bgp Ip resource.
@@ -202,6 +203,12 @@ func (i *BgpIp) ToBgpIpOutputWithContext(ctx context.Context) BgpIpOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BgpIpOutput)
 }
 
+func (i *BgpIp) ToOutput(ctx context.Context) pulumix.Output[*BgpIp] {
+	return pulumix.Output[*BgpIp]{
+		OutputState: i.ToBgpIpOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BgpIpArrayInput is an input type that accepts BgpIpArray and BgpIpArrayOutput values.
 // You can construct a concrete instance of `BgpIpArrayInput` via:
 //
@@ -225,6 +232,12 @@ func (i BgpIpArray) ToBgpIpArrayOutput() BgpIpArrayOutput {
 
 func (i BgpIpArray) ToBgpIpArrayOutputWithContext(ctx context.Context) BgpIpArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BgpIpArrayOutput)
+}
+
+func (i BgpIpArray) ToOutput(ctx context.Context) pulumix.Output[[]*BgpIp] {
+	return pulumix.Output[[]*BgpIp]{
+		OutputState: i.ToBgpIpArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BgpIpMapInput is an input type that accepts BgpIpMap and BgpIpMapOutput values.
@@ -252,6 +265,12 @@ func (i BgpIpMap) ToBgpIpMapOutputWithContext(ctx context.Context) BgpIpMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(BgpIpMapOutput)
 }
 
+func (i BgpIpMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BgpIp] {
+	return pulumix.Output[map[string]*BgpIp]{
+		OutputState: i.ToBgpIpMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BgpIpOutput struct{ *pulumi.OutputState }
 
 func (BgpIpOutput) ElementType() reflect.Type {
@@ -264,6 +283,12 @@ func (o BgpIpOutput) ToBgpIpOutput() BgpIpOutput {
 
 func (o BgpIpOutput) ToBgpIpOutputWithContext(ctx context.Context) BgpIpOutput {
 	return o
+}
+
+func (o BgpIpOutput) ToOutput(ctx context.Context) pulumix.Output[*BgpIp] {
+	return pulumix.Output[*BgpIp]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the native protection enterprise instance to be operated.
@@ -300,6 +325,12 @@ func (o BgpIpArrayOutput) ToBgpIpArrayOutputWithContext(ctx context.Context) Bgp
 	return o
 }
 
+func (o BgpIpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BgpIp] {
+	return pulumix.Output[[]*BgpIp]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BgpIpArrayOutput) Index(i pulumi.IntInput) BgpIpOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BgpIp {
 		return vs[0].([]*BgpIp)[vs[1].(int)]
@@ -318,6 +349,12 @@ func (o BgpIpMapOutput) ToBgpIpMapOutput() BgpIpMapOutput {
 
 func (o BgpIpMapOutput) ToBgpIpMapOutputWithContext(ctx context.Context) BgpIpMapOutput {
 	return o
+}
+
+func (o BgpIpMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BgpIp] {
+	return pulumix.Output[map[string]*BgpIp]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BgpIpMapOutput) MapIndex(k pulumi.StringInput) BgpIpOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Api Gateway Models of the current Alibaba Cloud user.
@@ -144,6 +145,12 @@ func (o GetModelsResultOutput) ToGetModelsResultOutput() GetModelsResultOutput {
 
 func (o GetModelsResultOutput) ToGetModelsResultOutputWithContext(ctx context.Context) GetModelsResultOutput {
 	return o
+}
+
+func (o GetModelsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetModelsResult] {
+	return pulumix.Output[GetModelsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The group of the model belongs to.

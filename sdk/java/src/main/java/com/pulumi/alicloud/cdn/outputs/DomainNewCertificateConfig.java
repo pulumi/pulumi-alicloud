@@ -35,6 +35,10 @@ public final class DomainNewCertificateConfig {
      * 
      */
     private @Nullable String certType;
+    /**
+     * @return The force set of the security certificate.
+     * 
+     */
     private @Nullable String forceSet;
     /**
      * @return The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
@@ -87,6 +91,10 @@ public final class DomainNewCertificateConfig {
     public Optional<String> certType() {
         return Optional.ofNullable(this.certType);
     }
+    /**
+     * @return The force set of the security certificate.
+     * 
+     */
     public Optional<String> forceSet() {
         return Optional.ofNullable(this.forceSet);
     }

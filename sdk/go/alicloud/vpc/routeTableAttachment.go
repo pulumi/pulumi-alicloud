@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -185,6 +186,12 @@ func (i *RouteTableAttachment) ToRouteTableAttachmentOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RouteTableAttachmentOutput)
 }
 
+func (i *RouteTableAttachment) ToOutput(ctx context.Context) pulumix.Output[*RouteTableAttachment] {
+	return pulumix.Output[*RouteTableAttachment]{
+		OutputState: i.ToRouteTableAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RouteTableAttachmentArrayInput is an input type that accepts RouteTableAttachmentArray and RouteTableAttachmentArrayOutput values.
 // You can construct a concrete instance of `RouteTableAttachmentArrayInput` via:
 //
@@ -208,6 +215,12 @@ func (i RouteTableAttachmentArray) ToRouteTableAttachmentArrayOutput() RouteTabl
 
 func (i RouteTableAttachmentArray) ToRouteTableAttachmentArrayOutputWithContext(ctx context.Context) RouteTableAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouteTableAttachmentArrayOutput)
+}
+
+func (i RouteTableAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*RouteTableAttachment] {
+	return pulumix.Output[[]*RouteTableAttachment]{
+		OutputState: i.ToRouteTableAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RouteTableAttachmentMapInput is an input type that accepts RouteTableAttachmentMap and RouteTableAttachmentMapOutput values.
@@ -235,6 +248,12 @@ func (i RouteTableAttachmentMap) ToRouteTableAttachmentMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RouteTableAttachmentMapOutput)
 }
 
+func (i RouteTableAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RouteTableAttachment] {
+	return pulumix.Output[map[string]*RouteTableAttachment]{
+		OutputState: i.ToRouteTableAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RouteTableAttachmentOutput struct{ *pulumi.OutputState }
 
 func (RouteTableAttachmentOutput) ElementType() reflect.Type {
@@ -247,6 +266,12 @@ func (o RouteTableAttachmentOutput) ToRouteTableAttachmentOutput() RouteTableAtt
 
 func (o RouteTableAttachmentOutput) ToRouteTableAttachmentOutputWithContext(ctx context.Context) RouteTableAttachmentOutput {
 	return o
+}
+
+func (o RouteTableAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*RouteTableAttachment] {
+	return pulumix.Output[*RouteTableAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The routeTableId of the route table attachment, the field can't be changed.
@@ -273,6 +298,12 @@ func (o RouteTableAttachmentArrayOutput) ToRouteTableAttachmentArrayOutputWithCo
 	return o
 }
 
+func (o RouteTableAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RouteTableAttachment] {
+	return pulumix.Output[[]*RouteTableAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RouteTableAttachmentArrayOutput) Index(i pulumi.IntInput) RouteTableAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RouteTableAttachment {
 		return vs[0].([]*RouteTableAttachment)[vs[1].(int)]
@@ -291,6 +322,12 @@ func (o RouteTableAttachmentMapOutput) ToRouteTableAttachmentMapOutput() RouteTa
 
 func (o RouteTableAttachmentMapOutput) ToRouteTableAttachmentMapOutputWithContext(ctx context.Context) RouteTableAttachmentMapOutput {
 	return o
+}
+
+func (o RouteTableAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RouteTableAttachment] {
+	return pulumix.Output[map[string]*RouteTableAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouteTableAttachmentMapOutput) MapIndex(k pulumi.StringInput) RouteTableAttachmentOutput {

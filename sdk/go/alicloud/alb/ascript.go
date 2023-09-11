@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Alb Ascript resource.
@@ -198,6 +199,12 @@ func (i *AScript) ToAScriptOutputWithContext(ctx context.Context) AScriptOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(AScriptOutput)
 }
 
+func (i *AScript) ToOutput(ctx context.Context) pulumix.Output[*AScript] {
+	return pulumix.Output[*AScript]{
+		OutputState: i.ToAScriptOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AScriptArrayInput is an input type that accepts AScriptArray and AScriptArrayOutput values.
 // You can construct a concrete instance of `AScriptArrayInput` via:
 //
@@ -221,6 +228,12 @@ func (i AScriptArray) ToAScriptArrayOutput() AScriptArrayOutput {
 
 func (i AScriptArray) ToAScriptArrayOutputWithContext(ctx context.Context) AScriptArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AScriptArrayOutput)
+}
+
+func (i AScriptArray) ToOutput(ctx context.Context) pulumix.Output[[]*AScript] {
+	return pulumix.Output[[]*AScript]{
+		OutputState: i.ToAScriptArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AScriptMapInput is an input type that accepts AScriptMap and AScriptMapOutput values.
@@ -248,6 +261,12 @@ func (i AScriptMap) ToAScriptMapOutputWithContext(ctx context.Context) AScriptMa
 	return pulumi.ToOutputWithContext(ctx, i).(AScriptMapOutput)
 }
 
+func (i AScriptMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AScript] {
+	return pulumix.Output[map[string]*AScript]{
+		OutputState: i.ToAScriptMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AScriptOutput struct{ *pulumi.OutputState }
 
 func (AScriptOutput) ElementType() reflect.Type {
@@ -260,6 +279,12 @@ func (o AScriptOutput) ToAScriptOutput() AScriptOutput {
 
 func (o AScriptOutput) ToAScriptOutputWithContext(ctx context.Context) AScriptOutput {
 	return o
+}
+
+func (o AScriptOutput) ToOutput(ctx context.Context) pulumix.Output[*AScript] {
+	return pulumix.Output[*AScript]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of AScript.
@@ -321,6 +346,12 @@ func (o AScriptArrayOutput) ToAScriptArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o AScriptArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AScript] {
+	return pulumix.Output[[]*AScript]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AScriptArrayOutput) Index(i pulumi.IntInput) AScriptOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AScript {
 		return vs[0].([]*AScript)[vs[1].(int)]
@@ -339,6 +370,12 @@ func (o AScriptMapOutput) ToAScriptMapOutput() AScriptMapOutput {
 
 func (o AScriptMapOutput) ToAScriptMapOutputWithContext(ctx context.Context) AScriptMapOutput {
 	return o
+}
+
+func (o AScriptMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AScript] {
+	return pulumix.Output[map[string]*AScript]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AScriptMapOutput) MapIndex(k pulumi.StringInput) AScriptOutput {

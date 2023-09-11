@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a SMS Short Url resource.
@@ -176,6 +177,12 @@ func (i *ShortUrl) ToShortUrlOutputWithContext(ctx context.Context) ShortUrlOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ShortUrlOutput)
 }
 
+func (i *ShortUrl) ToOutput(ctx context.Context) pulumix.Output[*ShortUrl] {
+	return pulumix.Output[*ShortUrl]{
+		OutputState: i.ToShortUrlOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ShortUrlArrayInput is an input type that accepts ShortUrlArray and ShortUrlArrayOutput values.
 // You can construct a concrete instance of `ShortUrlArrayInput` via:
 //
@@ -199,6 +206,12 @@ func (i ShortUrlArray) ToShortUrlArrayOutput() ShortUrlArrayOutput {
 
 func (i ShortUrlArray) ToShortUrlArrayOutputWithContext(ctx context.Context) ShortUrlArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ShortUrlArrayOutput)
+}
+
+func (i ShortUrlArray) ToOutput(ctx context.Context) pulumix.Output[[]*ShortUrl] {
+	return pulumix.Output[[]*ShortUrl]{
+		OutputState: i.ToShortUrlArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ShortUrlMapInput is an input type that accepts ShortUrlMap and ShortUrlMapOutput values.
@@ -226,6 +239,12 @@ func (i ShortUrlMap) ToShortUrlMapOutputWithContext(ctx context.Context) ShortUr
 	return pulumi.ToOutputWithContext(ctx, i).(ShortUrlMapOutput)
 }
 
+func (i ShortUrlMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ShortUrl] {
+	return pulumix.Output[map[string]*ShortUrl]{
+		OutputState: i.ToShortUrlMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ShortUrlOutput struct{ *pulumi.OutputState }
 
 func (ShortUrlOutput) ElementType() reflect.Type {
@@ -238,6 +257,12 @@ func (o ShortUrlOutput) ToShortUrlOutput() ShortUrlOutput {
 
 func (o ShortUrlOutput) ToShortUrlOutputWithContext(ctx context.Context) ShortUrlOutput {
 	return o
+}
+
+func (o ShortUrlOutput) ToOutput(ctx context.Context) pulumix.Output[*ShortUrl] {
+	return pulumix.Output[*ShortUrl]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Short chain service use validity period. Valid values: `30`, `60`, `90`. The unit is days, and the maximum validity period is 90 days.
@@ -274,6 +299,12 @@ func (o ShortUrlArrayOutput) ToShortUrlArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o ShortUrlArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ShortUrl] {
+	return pulumix.Output[[]*ShortUrl]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ShortUrlArrayOutput) Index(i pulumi.IntInput) ShortUrlOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ShortUrl {
 		return vs[0].([]*ShortUrl)[vs[1].(int)]
@@ -292,6 +323,12 @@ func (o ShortUrlMapOutput) ToShortUrlMapOutput() ShortUrlMapOutput {
 
 func (o ShortUrlMapOutput) ToShortUrlMapOutputWithContext(ctx context.Context) ShortUrlMapOutput {
 	return o
+}
+
+func (o ShortUrlMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ShortUrl] {
+	return pulumix.Output[map[string]*ShortUrl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ShortUrlMapOutput) MapIndex(k pulumi.StringInput) ShortUrlOutput {

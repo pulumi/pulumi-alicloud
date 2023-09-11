@@ -9,381 +9,45 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.FC
 {
-    /// <summary>
-    /// Provides a Alicloud Function Compute Service resource. The resource is the base of launching Function and Trigger configuration.
-    ///  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createservice).
-    /// 
-    /// &gt; **NOTE:** The resource requires a provider field 'account_id'. See account_id.
-    /// 
-    /// &gt; **NOTE:** If you happen the error "Argument 'internetAccess' is not supported", you need to log on web console and click button "Apply VPC Function"
-    /// which is in the upper of [Function Service Web Console](https://fc.console.aliyun.com/) page.
-    /// 
-    /// &gt; **NOTE:** Currently not all regions support Function Compute Service.
-    /// For more details supported regions, see [Service endpoints](https://www.alibabacloud.com/help/doc-detail/52984.htm)
-    /// 
-    /// &gt; **NOTE:** Available since v1.93.0.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// using Random = Pulumi.Random;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
-    ///     {
-    ///         Max = 99999,
-    ///         Min = 10000,
-    ///     });
-    /// 
-    ///     var defaultProject = new AliCloud.Log.Project("defaultProject");
-    /// 
-    ///     var defaultStore = new AliCloud.Log.Store("defaultStore", new()
-    ///     {
-    ///         Project = defaultProject.Name,
-    ///     });
-    /// 
-    ///     var slsDefaultToken = @", '"";=()[]{}?@&amp;&lt;&gt;/:
-    /// 	";
-    /// 
-    ///     var example = new AliCloud.Log.StoreIndex("example", new()
-    ///     {
-    ///         Project = defaultProject.Name,
-    ///         Logstore = defaultStore.Name,
-    ///         FullText = new AliCloud.Log.Inputs.StoreIndexFullTextArgs
-    ///         {
-    ///             CaseSensitive = false,
-    ///             Token = slsDefaultToken,
-    ///         },
-    ///         FieldSearches = new[]
-    ///         {
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "aggPeriodSeconds",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "long",
-    ///                 Token = slsDefaultToken,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "concurrentRequests",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "long",
-    ///                 Token = slsDefaultToken,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "cpuPercent",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "double",
-    ///                 Token = slsDefaultToken,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "cpuQuotaPercent",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "double",
-    ///                 Token = slsDefaultToken,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "functionName",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "text",
-    ///                 Token = slsDefaultToken,
-    ///                 CaseSensitive = true,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "hostname",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "text",
-    ///                 Token = slsDefaultToken,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "instanceID",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "text",
-    ///                 Token = slsDefaultToken,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "ipAddress",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "text",
-    ///                 Token = slsDefaultToken,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "memoryLimitMB",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "double",
-    ///                 Token = slsDefaultToken,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "memoryUsageMB",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "double",
-    ///                 Token = slsDefaultToken,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "memoryUsagePercent",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "double",
-    ///                 Token = slsDefaultToken,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "operation",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "text",
-    ///                 Token = slsDefaultToken,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "qualifier",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "text",
-    ///                 Token = slsDefaultToken,
-    ///                 CaseSensitive = true,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "rxBytes",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "long",
-    ///                 Token = slsDefaultToken,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "rxTotalBytes",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "long",
-    ///                 Token = slsDefaultToken,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "serviceName",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "text",
-    ///                 Token = slsDefaultToken,
-    ///                 CaseSensitive = true,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "txBytes",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "long",
-    ///                 Token = slsDefaultToken,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "txTotalBytes",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "long",
-    ///                 Token = slsDefaultToken,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "versionId",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "text",
-    ///                 Token = slsDefaultToken,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "events",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "json",
-    ///                 Token = slsDefaultToken,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "isColdStart",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "text",
-    ///                 Token = slsDefaultToken,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "hasFunctionError",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "text",
-    ///                 Token = slsDefaultToken,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "errorType",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "text",
-    ///                 Token = slsDefaultToken,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "triggerType",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "text",
-    ///                 Token = slsDefaultToken,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "durationMs",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "double",
-    ///                 Token = slsDefaultToken,
-    ///             },
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "statusCode",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "long",
-    ///                 Token = slsDefaultToken,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultRole = new AliCloud.Ram.Role("defaultRole", new()
-    ///     {
-    ///         Document = @"  {
-    ///       ""Statement"": [
-    ///         {
-    ///           ""Action"": ""sts:AssumeRole"",
-    ///           ""Effect"": ""Allow"",
-    ///           ""Principal"": {
-    ///             ""Service"": [
-    ///               ""fc.aliyuncs.com""
-    ///             ]
-    ///           }
-    ///         }
-    ///       ],
-    ///       ""Version"": ""1""
-    ///   }
-    /// ",
-    ///         Description = "this is a example",
-    ///         Force = true,
-    ///     });
-    /// 
-    ///     var defaultRolePolicyAttachment = new AliCloud.Ram.RolePolicyAttachment("defaultRolePolicyAttachment", new()
-    ///     {
-    ///         RoleName = defaultRole.Name,
-    ///         PolicyName = "AliyunLogFullAccess",
-    ///         PolicyType = "System",
-    ///     });
-    /// 
-    ///     var defaultService = new AliCloud.FC.Service("defaultService", new()
-    ///     {
-    ///         Description = "example-value",
-    ///         Role = defaultRole.Arn,
-    ///         LogConfig = new AliCloud.FC.Inputs.ServiceLogConfigArgs
-    ///         {
-    ///             Project = defaultProject.Name,
-    ///             Logstore = defaultStore.Name,
-    ///             EnableInstanceMetrics = true,
-    ///             EnableRequestMetrics = true,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ## Module Support
-    /// 
-    /// You can use to the existing fc module to create a service and a function quickly and then set several triggers for it.
-    /// 
-    /// ## Import
-    /// 
-    /// Function Compute Service can be imported using the id or name, e.g.
-    /// 
-    /// ```sh
-    ///  $ pulumi import alicloud:fc/service:Service foo my-fc-service
-    /// ```
-    /// </summary>
     [AliCloudResourceType("alicloud:fc/service:Service")]
     public partial class Service : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The Function Compute Service description.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether to allow the Service to access Internet. Default to "true".
-        /// </summary>
         [Output("internetAccess")]
         public Output<bool?> InternetAccess { get; private set; } = null!;
 
-        /// <summary>
-        /// The date this resource was last modified.
-        /// </summary>
         [Output("lastModified")]
         public Output<string> LastModified { get; private set; } = null!;
 
-        /// <summary>
-        /// Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `log_config` requires the following: (**NOTE:** If both `project` and `logstore` are empty, log_config is considered to be empty or unset.). See `log_config` below.
-        /// </summary>
         [Output("logConfig")]
         public Output<Outputs.ServiceLogConfig?> LogConfig { get; private set; } = null!;
 
-        /// <summary>
-        /// The Function Compute Service name. It is the only in one Alicloud account and is conflict with `name_prefix`.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Setting a prefix to get a only name. It is conflict with `name`.
-        /// </summary>
         [Output("namePrefix")]
         public Output<string?> NamePrefix { get; private set; } = null!;
 
-        /// <summary>
-        /// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. See `nas_config` below.
-        /// </summary>
         [Output("nasConfig")]
         public Output<Outputs.ServiceNasConfig?> NasConfig { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
-        /// </summary>
         [Output("publish")]
         public Output<bool?> Publish { get; private set; } = null!;
 
-        /// <summary>
-        /// RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
-        /// </summary>
         [Output("role")]
         public Output<string?> Role { get; private set; } = null!;
 
-        /// <summary>
-        /// The Function Compute Service ID.
-        /// </summary>
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
 
-        /// <summary>
-        /// Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracing_config` requires the following: (**NOTE:** If both `type` and `params` are empty, tracing_config is considered to be empty or unset.). See `tracing_config` below.
-        /// </summary>
         [Output("tracingConfig")]
         public Output<Outputs.ServiceTracingConfig?> TracingConfig { get; private set; } = null!;
 
-        /// <summary>
-        /// The latest published version of your Function Compute Service.
-        /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
 
-        /// <summary>
-        /// Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpc_config` requires the following: (**NOTE:** If both `vswitch_ids` and `security_group_id` are empty, vpc_config is considered to be empty or unset.). See `vpc_config` below.
-        /// </summary>
         [Output("vpcConfig")]
         public Output<Outputs.ServiceVpcConfig?> VpcConfig { get; private set; } = null!;
 
@@ -433,63 +97,33 @@ namespace Pulumi.AliCloud.FC
 
     public sealed class ServiceArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Function Compute Service description.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Whether to allow the Service to access Internet. Default to "true".
-        /// </summary>
         [Input("internetAccess")]
         public Input<bool>? InternetAccess { get; set; }
 
-        /// <summary>
-        /// Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `log_config` requires the following: (**NOTE:** If both `project` and `logstore` are empty, log_config is considered to be empty or unset.). See `log_config` below.
-        /// </summary>
         [Input("logConfig")]
         public Input<Inputs.ServiceLogConfigArgs>? LogConfig { get; set; }
 
-        /// <summary>
-        /// The Function Compute Service name. It is the only in one Alicloud account and is conflict with `name_prefix`.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Setting a prefix to get a only name. It is conflict with `name`.
-        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
-        /// <summary>
-        /// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. See `nas_config` below.
-        /// </summary>
         [Input("nasConfig")]
         public Input<Inputs.ServiceNasConfigArgs>? NasConfig { get; set; }
 
-        /// <summary>
-        /// Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
-        /// </summary>
         [Input("publish")]
         public Input<bool>? Publish { get; set; }
 
-        /// <summary>
-        /// RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
-        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
-        /// <summary>
-        /// Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracing_config` requires the following: (**NOTE:** If both `type` and `params` are empty, tracing_config is considered to be empty or unset.). See `tracing_config` below.
-        /// </summary>
         [Input("tracingConfig")]
         public Input<Inputs.ServiceTracingConfigArgs>? TracingConfig { get; set; }
 
-        /// <summary>
-        /// Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpc_config` requires the following: (**NOTE:** If both `vswitch_ids` and `security_group_id` are empty, vpc_config is considered to be empty or unset.). See `vpc_config` below.
-        /// </summary>
         [Input("vpcConfig")]
         public Input<Inputs.ServiceVpcConfigArgs>? VpcConfig { get; set; }
 
@@ -501,81 +135,42 @@ namespace Pulumi.AliCloud.FC
 
     public sealed class ServiceState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Function Compute Service description.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Whether to allow the Service to access Internet. Default to "true".
-        /// </summary>
         [Input("internetAccess")]
         public Input<bool>? InternetAccess { get; set; }
 
-        /// <summary>
-        /// The date this resource was last modified.
-        /// </summary>
         [Input("lastModified")]
         public Input<string>? LastModified { get; set; }
 
-        /// <summary>
-        /// Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `log_config` requires the following: (**NOTE:** If both `project` and `logstore` are empty, log_config is considered to be empty or unset.). See `log_config` below.
-        /// </summary>
         [Input("logConfig")]
         public Input<Inputs.ServiceLogConfigGetArgs>? LogConfig { get; set; }
 
-        /// <summary>
-        /// The Function Compute Service name. It is the only in one Alicloud account and is conflict with `name_prefix`.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Setting a prefix to get a only name. It is conflict with `name`.
-        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
-        /// <summary>
-        /// Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. See `nas_config` below.
-        /// </summary>
         [Input("nasConfig")]
         public Input<Inputs.ServiceNasConfigGetArgs>? NasConfig { get; set; }
 
-        /// <summary>
-        /// Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
-        /// </summary>
         [Input("publish")]
         public Input<bool>? Publish { get; set; }
 
-        /// <summary>
-        /// RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
-        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
-        /// <summary>
-        /// The Function Compute Service ID.
-        /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }
 
-        /// <summary>
-        /// Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracing_config` requires the following: (**NOTE:** If both `type` and `params` are empty, tracing_config is considered to be empty or unset.). See `tracing_config` below.
-        /// </summary>
         [Input("tracingConfig")]
         public Input<Inputs.ServiceTracingConfigGetArgs>? TracingConfig { get; set; }
 
-        /// <summary>
-        /// The latest published version of your Function Compute Service.
-        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 
-        /// <summary>
-        /// Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpc_config` requires the following: (**NOTE:** If both `vswitch_ids` and `security_group_id` are empty, vpc_config is considered to be empty or unset.). See `vpc_config` below.
-        /// </summary>
         [Input("vpcConfig")]
         public Input<Inputs.ServiceVpcConfigGetArgs>? VpcConfig { get; set; }
 

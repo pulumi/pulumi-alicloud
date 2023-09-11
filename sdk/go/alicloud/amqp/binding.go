@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a RabbitMQ (AMQP) Binding resource to bind tha exchange with another exchange or queue.
@@ -307,6 +308,12 @@ func (i *Binding) ToBindingOutputWithContext(ctx context.Context) BindingOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
+func (i *Binding) ToOutput(ctx context.Context) pulumix.Output[*Binding] {
+	return pulumix.Output[*Binding]{
+		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -330,6 +337,12 @@ func (i BindingArray) ToBindingArrayOutput() BindingArrayOutput {
 
 func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
+}
+
+func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*Binding] {
+	return pulumix.Output[[]*Binding]{
+		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BindingMapInput is an input type that accepts BindingMap and BindingMapOutput values.
@@ -357,6 +370,12 @@ func (i BindingMap) ToBindingMapOutputWithContext(ctx context.Context) BindingMa
 	return pulumi.ToOutputWithContext(ctx, i).(BindingMapOutput)
 }
 
+func (i BindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Binding] {
+	return pulumix.Output[map[string]*Binding]{
+		OutputState: i.ToBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BindingOutput struct{ *pulumi.OutputState }
 
 func (BindingOutput) ElementType() reflect.Type {
@@ -369,6 +388,12 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
+}
+
+func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[*Binding] {
+	return pulumix.Output[*Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // X-match Attributes. Valid Values:
@@ -429,6 +454,12 @@ func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Binding] {
+	return pulumix.Output[[]*Binding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Binding {
 		return vs[0].([]*Binding)[vs[1].(int)]
@@ -447,6 +478,12 @@ func (o BindingMapOutput) ToBindingMapOutput() BindingMapOutput {
 
 func (o BindingMapOutput) ToBindingMapOutputWithContext(ctx context.Context) BindingMapOutput {
 	return o
+}
+
+func (o BindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Binding] {
+	return pulumix.Output[map[string]*Binding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BindingMapOutput) MapIndex(k pulumi.StringInput) BindingOutput {

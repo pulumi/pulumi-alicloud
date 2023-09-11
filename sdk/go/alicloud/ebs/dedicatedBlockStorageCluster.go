@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Ebs Dedicated Block Storage Cluster resource.
@@ -229,6 +230,12 @@ func (i *DedicatedBlockStorageCluster) ToDedicatedBlockStorageClusterOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedBlockStorageClusterOutput)
 }
 
+func (i *DedicatedBlockStorageCluster) ToOutput(ctx context.Context) pulumix.Output[*DedicatedBlockStorageCluster] {
+	return pulumix.Output[*DedicatedBlockStorageCluster]{
+		OutputState: i.ToDedicatedBlockStorageClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DedicatedBlockStorageClusterArrayInput is an input type that accepts DedicatedBlockStorageClusterArray and DedicatedBlockStorageClusterArrayOutput values.
 // You can construct a concrete instance of `DedicatedBlockStorageClusterArrayInput` via:
 //
@@ -252,6 +259,12 @@ func (i DedicatedBlockStorageClusterArray) ToDedicatedBlockStorageClusterArrayOu
 
 func (i DedicatedBlockStorageClusterArray) ToDedicatedBlockStorageClusterArrayOutputWithContext(ctx context.Context) DedicatedBlockStorageClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedBlockStorageClusterArrayOutput)
+}
+
+func (i DedicatedBlockStorageClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*DedicatedBlockStorageCluster] {
+	return pulumix.Output[[]*DedicatedBlockStorageCluster]{
+		OutputState: i.ToDedicatedBlockStorageClusterArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DedicatedBlockStorageClusterMapInput is an input type that accepts DedicatedBlockStorageClusterMap and DedicatedBlockStorageClusterMapOutput values.
@@ -279,6 +292,12 @@ func (i DedicatedBlockStorageClusterMap) ToDedicatedBlockStorageClusterMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedBlockStorageClusterMapOutput)
 }
 
+func (i DedicatedBlockStorageClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DedicatedBlockStorageCluster] {
+	return pulumix.Output[map[string]*DedicatedBlockStorageCluster]{
+		OutputState: i.ToDedicatedBlockStorageClusterMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DedicatedBlockStorageClusterOutput struct{ *pulumi.OutputState }
 
 func (DedicatedBlockStorageClusterOutput) ElementType() reflect.Type {
@@ -291,6 +310,12 @@ func (o DedicatedBlockStorageClusterOutput) ToDedicatedBlockStorageClusterOutput
 
 func (o DedicatedBlockStorageClusterOutput) ToDedicatedBlockStorageClusterOutputWithContext(ctx context.Context) DedicatedBlockStorageClusterOutput {
 	return o
+}
+
+func (o DedicatedBlockStorageClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*DedicatedBlockStorageCluster] {
+	return pulumix.Output[*DedicatedBlockStorageCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The available capacity of the dedicated block storage cluster. Unit: GiB.
@@ -387,6 +412,12 @@ func (o DedicatedBlockStorageClusterArrayOutput) ToDedicatedBlockStorageClusterA
 	return o
 }
 
+func (o DedicatedBlockStorageClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DedicatedBlockStorageCluster] {
+	return pulumix.Output[[]*DedicatedBlockStorageCluster]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DedicatedBlockStorageClusterArrayOutput) Index(i pulumi.IntInput) DedicatedBlockStorageClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DedicatedBlockStorageCluster {
 		return vs[0].([]*DedicatedBlockStorageCluster)[vs[1].(int)]
@@ -405,6 +436,12 @@ func (o DedicatedBlockStorageClusterMapOutput) ToDedicatedBlockStorageClusterMap
 
 func (o DedicatedBlockStorageClusterMapOutput) ToDedicatedBlockStorageClusterMapOutputWithContext(ctx context.Context) DedicatedBlockStorageClusterMapOutput {
 	return o
+}
+
+func (o DedicatedBlockStorageClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DedicatedBlockStorageCluster] {
+	return pulumix.Output[map[string]*DedicatedBlockStorageCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DedicatedBlockStorageClusterMapOutput) MapIndex(k pulumi.StringInput) DedicatedBlockStorageClusterOutput {

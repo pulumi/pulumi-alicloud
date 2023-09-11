@@ -20,9 +20,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Graph Database Db Instance resource.
  * 
- * For information about Graph Database Db Instance and how to use it, see [What is Db Instance](https://help.aliyun.com/document_detail/102865.html).
+ * For information about Graph Database Db Instance and how to use it, see [What is Db Instance](https://www.alibabacloud.com/help/en/graph-compute/latest/placeholder).
  * 
- * &gt; **NOTE:** Available in v1.136.0+.
+ * &gt; **NOTE:** Available since v1.136.0.
  * 
  * ## Example Usage
  * 
@@ -48,15 +48,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         var example = new DbInstance(&#34;example&#34;, DbInstanceArgs.builder()        
- *             .dbInstanceCategory(&#34;HA&#34;)
- *             .dbInstanceDescription(&#34;example_value&#34;)
- *             .dbInstanceNetworkType(&#34;vpc&#34;)
- *             .dbInstanceStorageType(&#34;cloud_ssd&#34;)
  *             .dbNodeClass(&#34;gdb.r.2xlarge&#34;)
- *             .dbNodeStorage(&#34;example_value&#34;)
+ *             .dbInstanceNetworkType(&#34;vpc&#34;)
  *             .dbVersion(&#34;1.0&#34;)
+ *             .dbInstanceCategory(&#34;HA&#34;)
+ *             .dbInstanceStorageType(&#34;cloud_ssd&#34;)
+ *             .dbNodeStorage(&#34;50&#34;)
  *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .dbInstanceDescription(name)
  *             .build());
  * 
  *     }
@@ -117,14 +119,14 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dbInstanceDescription);
     }
     /**
-     * IP ADDRESS whitelist for the instance group list. See the following `Block db_instance_ip_array`.
+     * IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
      * 
      */
     @Export(name="dbInstanceIpArrays", type=List.class, parameters={DbInstanceDbInstanceIpArray.class})
     private Output<List<DbInstanceDbInstanceIpArray>> dbInstanceIpArrays;
 
     /**
-     * @return IP ADDRESS whitelist for the instance group list. See the following `Block db_instance_ip_array`.
+     * @return IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
      * 
      */
     public Output<List<DbInstanceDbInstanceIpArray>> dbInstanceIpArrays() {

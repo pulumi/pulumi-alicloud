@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a KVStore Account resource.
@@ -312,6 +313,12 @@ func (i *Account) ToAccountOutputWithContext(ctx context.Context) AccountOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(AccountOutput)
 }
 
+func (i *Account) ToOutput(ctx context.Context) pulumix.Output[*Account] {
+	return pulumix.Output[*Account]{
+		OutputState: i.ToAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccountArrayInput is an input type that accepts AccountArray and AccountArrayOutput values.
 // You can construct a concrete instance of `AccountArrayInput` via:
 //
@@ -335,6 +342,12 @@ func (i AccountArray) ToAccountArrayOutput() AccountArrayOutput {
 
 func (i AccountArray) ToAccountArrayOutputWithContext(ctx context.Context) AccountArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountArrayOutput)
+}
+
+func (i AccountArray) ToOutput(ctx context.Context) pulumix.Output[[]*Account] {
+	return pulumix.Output[[]*Account]{
+		OutputState: i.ToAccountArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AccountMapInput is an input type that accepts AccountMap and AccountMapOutput values.
@@ -362,6 +375,12 @@ func (i AccountMap) ToAccountMapOutputWithContext(ctx context.Context) AccountMa
 	return pulumi.ToOutputWithContext(ctx, i).(AccountMapOutput)
 }
 
+func (i AccountMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Account] {
+	return pulumix.Output[map[string]*Account]{
+		OutputState: i.ToAccountMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccountOutput struct{ *pulumi.OutputState }
 
 func (AccountOutput) ElementType() reflect.Type {
@@ -374,6 +393,12 @@ func (o AccountOutput) ToAccountOutput() AccountOutput {
 
 func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOutput {
 	return o
+}
+
+func (o AccountOutput) ToOutput(ctx context.Context) pulumix.Output[*Account] {
+	return pulumix.Output[*Account]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the account. The name must meet the following requirements:
@@ -440,6 +465,12 @@ func (o AccountArrayOutput) ToAccountArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o AccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Account] {
+	return pulumix.Output[[]*Account]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccountArrayOutput) Index(i pulumi.IntInput) AccountOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Account {
 		return vs[0].([]*Account)[vs[1].(int)]
@@ -458,6 +489,12 @@ func (o AccountMapOutput) ToAccountMapOutput() AccountMapOutput {
 
 func (o AccountMapOutput) ToAccountMapOutputWithContext(ctx context.Context) AccountMapOutput {
 	return o
+}
+
+func (o AccountMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Account] {
+	return pulumix.Output[map[string]*Account]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccountMapOutput) MapIndex(k pulumi.StringInput) AccountOutput {

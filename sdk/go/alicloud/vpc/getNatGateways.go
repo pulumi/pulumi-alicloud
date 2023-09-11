@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
@@ -153,6 +154,12 @@ func (o GetNatGatewaysResultOutput) ToGetNatGatewaysResultOutput() GetNatGateway
 
 func (o GetNatGatewaysResultOutput) ToGetNatGatewaysResultOutputWithContext(ctx context.Context) GetNatGatewaysResultOutput {
 	return o
+}
+
+func (o GetNatGatewaysResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNatGatewaysResult] {
+	return pulumix.Output[GetNatGatewaysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetNatGatewaysResultOutput) DryRun() pulumi.BoolPtrOutput {

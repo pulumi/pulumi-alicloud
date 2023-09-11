@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Smartag Flow Log resource.
@@ -255,6 +256,12 @@ func (i *SmartagFlowLog) ToSmartagFlowLogOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SmartagFlowLogOutput)
 }
 
+func (i *SmartagFlowLog) ToOutput(ctx context.Context) pulumix.Output[*SmartagFlowLog] {
+	return pulumix.Output[*SmartagFlowLog]{
+		OutputState: i.ToSmartagFlowLogOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SmartagFlowLogArrayInput is an input type that accepts SmartagFlowLogArray and SmartagFlowLogArrayOutput values.
 // You can construct a concrete instance of `SmartagFlowLogArrayInput` via:
 //
@@ -278,6 +285,12 @@ func (i SmartagFlowLogArray) ToSmartagFlowLogArrayOutput() SmartagFlowLogArrayOu
 
 func (i SmartagFlowLogArray) ToSmartagFlowLogArrayOutputWithContext(ctx context.Context) SmartagFlowLogArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SmartagFlowLogArrayOutput)
+}
+
+func (i SmartagFlowLogArray) ToOutput(ctx context.Context) pulumix.Output[[]*SmartagFlowLog] {
+	return pulumix.Output[[]*SmartagFlowLog]{
+		OutputState: i.ToSmartagFlowLogArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SmartagFlowLogMapInput is an input type that accepts SmartagFlowLogMap and SmartagFlowLogMapOutput values.
@@ -305,6 +318,12 @@ func (i SmartagFlowLogMap) ToSmartagFlowLogMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SmartagFlowLogMapOutput)
 }
 
+func (i SmartagFlowLogMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SmartagFlowLog] {
+	return pulumix.Output[map[string]*SmartagFlowLog]{
+		OutputState: i.ToSmartagFlowLogMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SmartagFlowLogOutput struct{ *pulumi.OutputState }
 
 func (SmartagFlowLogOutput) ElementType() reflect.Type {
@@ -317,6 +336,12 @@ func (o SmartagFlowLogOutput) ToSmartagFlowLogOutput() SmartagFlowLogOutput {
 
 func (o SmartagFlowLogOutput) ToSmartagFlowLogOutputWithContext(ctx context.Context) SmartagFlowLogOutput {
 	return o
+}
+
+func (o SmartagFlowLogOutput) ToOutput(ctx context.Context) pulumix.Output[*SmartagFlowLog] {
+	return pulumix.Output[*SmartagFlowLog]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time interval at which log data of active connections is collected. Valid values: `60` to `6000`. Default value: `300`. Unit: second.
@@ -393,6 +418,12 @@ func (o SmartagFlowLogArrayOutput) ToSmartagFlowLogArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o SmartagFlowLogArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SmartagFlowLog] {
+	return pulumix.Output[[]*SmartagFlowLog]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SmartagFlowLogArrayOutput) Index(i pulumi.IntInput) SmartagFlowLogOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SmartagFlowLog {
 		return vs[0].([]*SmartagFlowLog)[vs[1].(int)]
@@ -411,6 +442,12 @@ func (o SmartagFlowLogMapOutput) ToSmartagFlowLogMapOutput() SmartagFlowLogMapOu
 
 func (o SmartagFlowLogMapOutput) ToSmartagFlowLogMapOutputWithContext(ctx context.Context) SmartagFlowLogMapOutput {
 	return o
+}
+
+func (o SmartagFlowLogMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SmartagFlowLog] {
+	return pulumix.Output[map[string]*SmartagFlowLog]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SmartagFlowLogMapOutput) MapIndex(k pulumi.StringInput) SmartagFlowLogOutput {

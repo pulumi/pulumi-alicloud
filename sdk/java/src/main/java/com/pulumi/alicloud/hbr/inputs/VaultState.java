@@ -31,14 +31,14 @@ public final class VaultState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+     * Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
      * 
      */
     @Import(name="encryptType")
     private @Nullable Output<String> encryptType;
 
     /**
-     * @return Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+     * @return Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
      * 
      */
     public Optional<Output<String>> encryptType() {
@@ -61,29 +61,14 @@ public final class VaultState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-     * 
-     */
-    @Import(name="redundancyType")
-    private @Nullable Output<String> redundancyType;
-
-    /**
-     * @return The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-     * 
-     */
-    public Optional<Output<String>> redundancyType() {
-        return Optional.ofNullable(this.redundancyType);
-    }
-
-    /**
-     * The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+     * The status of the Vault.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+     * @return The status of the Vault.
      * 
      */
     public Optional<Output<String>> status() {
@@ -121,14 +106,14 @@ public final class VaultState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+     * The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
      * 
      */
     @Import(name="vaultType")
     private @Nullable Output<String> vaultType;
 
     /**
-     * @return The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+     * @return The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
      * 
      */
     public Optional<Output<String>> vaultType() {
@@ -141,7 +126,6 @@ public final class VaultState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.encryptType = $.encryptType;
         this.kmsKeyId = $.kmsKeyId;
-        this.redundancyType = $.redundancyType;
         this.status = $.status;
         this.vaultName = $.vaultName;
         this.vaultStorageClass = $.vaultStorageClass;
@@ -188,7 +172,7 @@ public final class VaultState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptType Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+         * @param encryptType Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
          * 
          * @return builder
          * 
@@ -199,7 +183,7 @@ public final class VaultState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptType Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+         * @param encryptType Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
          * 
          * @return builder
          * 
@@ -230,28 +214,7 @@ public final class VaultState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redundancyType The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder redundancyType(@Nullable Output<String> redundancyType) {
-            $.redundancyType = redundancyType;
-            return this;
-        }
-
-        /**
-         * @param redundancyType The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder redundancyType(String redundancyType) {
-            return redundancyType(Output.of(redundancyType));
-        }
-
-        /**
-         * @param status The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+         * @param status The status of the Vault.
          * 
          * @return builder
          * 
@@ -262,7 +225,7 @@ public final class VaultState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+         * @param status The status of the Vault.
          * 
          * @return builder
          * 
@@ -314,7 +277,7 @@ public final class VaultState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vaultType The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+         * @param vaultType The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
          * 
          * @return builder
          * 
@@ -325,7 +288,7 @@ public final class VaultState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vaultType The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+         * @param vaultType The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
          * 
          * @return builder
          * 

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Function Compute custom domains of the current Alibaba Cloud user.
@@ -115,6 +116,12 @@ func (o GetCustomDomainsResultOutput) ToGetCustomDomainsResultOutput() GetCustom
 
 func (o GetCustomDomainsResultOutput) ToGetCustomDomainsResultOutputWithContext(ctx context.Context) GetCustomDomainsResultOutput {
 	return o
+}
+
+func (o GetCustomDomainsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCustomDomainsResult] {
+	return pulumix.Output[GetCustomDomainsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of custom domains, including the following attributes:

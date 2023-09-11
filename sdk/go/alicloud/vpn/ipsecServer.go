@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPN Ipsec Server resource.
@@ -277,6 +278,12 @@ func (i *IpsecServer) ToIpsecServerOutputWithContext(ctx context.Context) IpsecS
 	return pulumi.ToOutputWithContext(ctx, i).(IpsecServerOutput)
 }
 
+func (i *IpsecServer) ToOutput(ctx context.Context) pulumix.Output[*IpsecServer] {
+	return pulumix.Output[*IpsecServer]{
+		OutputState: i.ToIpsecServerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IpsecServerArrayInput is an input type that accepts IpsecServerArray and IpsecServerArrayOutput values.
 // You can construct a concrete instance of `IpsecServerArrayInput` via:
 //
@@ -300,6 +307,12 @@ func (i IpsecServerArray) ToIpsecServerArrayOutput() IpsecServerArrayOutput {
 
 func (i IpsecServerArray) ToIpsecServerArrayOutputWithContext(ctx context.Context) IpsecServerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IpsecServerArrayOutput)
+}
+
+func (i IpsecServerArray) ToOutput(ctx context.Context) pulumix.Output[[]*IpsecServer] {
+	return pulumix.Output[[]*IpsecServer]{
+		OutputState: i.ToIpsecServerArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // IpsecServerMapInput is an input type that accepts IpsecServerMap and IpsecServerMapOutput values.
@@ -327,6 +340,12 @@ func (i IpsecServerMap) ToIpsecServerMapOutputWithContext(ctx context.Context) I
 	return pulumi.ToOutputWithContext(ctx, i).(IpsecServerMapOutput)
 }
 
+func (i IpsecServerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IpsecServer] {
+	return pulumix.Output[map[string]*IpsecServer]{
+		OutputState: i.ToIpsecServerMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IpsecServerOutput struct{ *pulumi.OutputState }
 
 func (IpsecServerOutput) ElementType() reflect.Type {
@@ -339,6 +358,12 @@ func (o IpsecServerOutput) ToIpsecServerOutput() IpsecServerOutput {
 
 func (o IpsecServerOutput) ToIpsecServerOutputWithContext(ctx context.Context) IpsecServerOutput {
 	return o
+}
+
+func (o IpsecServerOutput) ToOutput(ctx context.Context) pulumix.Output[*IpsecServer] {
+	return pulumix.Output[*IpsecServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The client CIDR block. It refers to the CIDR block that is allocated to the virtual interface of the client.
@@ -405,6 +430,12 @@ func (o IpsecServerArrayOutput) ToIpsecServerArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o IpsecServerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IpsecServer] {
+	return pulumix.Output[[]*IpsecServer]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IpsecServerArrayOutput) Index(i pulumi.IntInput) IpsecServerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IpsecServer {
 		return vs[0].([]*IpsecServer)[vs[1].(int)]
@@ -423,6 +454,12 @@ func (o IpsecServerMapOutput) ToIpsecServerMapOutput() IpsecServerMapOutput {
 
 func (o IpsecServerMapOutput) ToIpsecServerMapOutputWithContext(ctx context.Context) IpsecServerMapOutput {
 	return o
+}
+
+func (o IpsecServerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IpsecServer] {
+	return pulumix.Output[map[string]*IpsecServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IpsecServerMapOutput) MapIndex(k pulumi.StringInput) IpsecServerOutput {

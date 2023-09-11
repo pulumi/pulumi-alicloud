@@ -83,9 +83,17 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.certType);
     }
 
+    /**
+     * The force set of the security certificate.
+     * 
+     */
     @Import(name="forceSet")
     private @Nullable Output<String> forceSet;
 
+    /**
+     * @return The force set of the security certificate.
+     * 
+     */
     public Optional<Output<String>> forceSet() {
         return Optional.ofNullable(this.forceSet);
     }
@@ -262,11 +270,23 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
             return certType(Output.of(certType));
         }
 
+        /**
+         * @param forceSet The force set of the security certificate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder forceSet(@Nullable Output<String> forceSet) {
             $.forceSet = forceSet;
             return this;
         }
 
+        /**
+         * @param forceSet The force set of the security certificate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder forceSet(String forceSet) {
             return forceSet(Output.of(forceSet));
         }

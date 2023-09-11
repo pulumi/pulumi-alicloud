@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -74,6 +75,12 @@ func (i GetGroupsGroupArgs) ToGetGroupsGroupOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupOutput)
 }
 
+func (i GetGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupsGroup] {
+	return pulumix.Output[GetGroupsGroup]{
+		OutputState: i.ToGetGroupsGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGroupsGroupArrayInput is an input type that accepts GetGroupsGroupArray and GetGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetGroupsGroupArrayInput` via:
 //
@@ -99,6 +106,12 @@ func (i GetGroupsGroupArray) ToGetGroupsGroupArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupArrayOutput)
 }
 
+func (i GetGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupsGroup] {
+	return pulumix.Output[[]GetGroupsGroup]{
+		OutputState: i.ToGetGroupsGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetGroupsGroupOutput) ElementType() reflect.Type {
@@ -111,6 +124,12 @@ func (o GetGroupsGroupOutput) ToGetGroupsGroupOutput() GetGroupsGroupOutput {
 
 func (o GetGroupsGroupOutput) ToGetGroupsGroupOutputWithContext(ctx context.Context) GetGroupsGroupOutput {
 	return o
+}
+
+func (o GetGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupsGroup] {
+	return pulumix.Output[GetGroupsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the group.
@@ -165,6 +184,12 @@ func (o GetGroupsGroupArrayOutput) ToGetGroupsGroupArrayOutput() GetGroupsGroupA
 
 func (o GetGroupsGroupArrayOutput) ToGetGroupsGroupArrayOutputWithContext(ctx context.Context) GetGroupsGroupArrayOutput {
 	return o
+}
+
+func (o GetGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupsGroup] {
+	return pulumix.Output[[]GetGroupsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput {
@@ -258,6 +283,12 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
 }
 
+func (i GetInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
+	return pulumix.Output[GetInstancesInstance]{
+		OutputState: i.ToGetInstancesInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
@@ -283,6 +314,12 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
+func (i GetInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
+	return pulumix.Output[[]GetInstancesInstance]{
+		OutputState: i.ToGetInstancesInstanceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
@@ -295,6 +332,12 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesI
 
 func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
 	return o
+}
+
+func (o GetInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
+	return pulumix.Output[GetInstancesInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The internal HTTP endpoint for the Message Queue for Apache RocketMQ instance.
@@ -381,6 +424,12 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithCo
 	return o
 }
 
+func (o GetInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
+	return pulumix.Output[[]GetInstancesInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
 		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
@@ -464,6 +513,12 @@ func (i GetTopicsTopicArgs) ToGetTopicsTopicOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetTopicsTopicOutput)
 }
 
+func (i GetTopicsTopicArgs) ToOutput(ctx context.Context) pulumix.Output[GetTopicsTopic] {
+	return pulumix.Output[GetTopicsTopic]{
+		OutputState: i.ToGetTopicsTopicOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTopicsTopicArrayInput is an input type that accepts GetTopicsTopicArray and GetTopicsTopicArrayOutput values.
 // You can construct a concrete instance of `GetTopicsTopicArrayInput` via:
 //
@@ -489,6 +544,12 @@ func (i GetTopicsTopicArray) ToGetTopicsTopicArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetTopicsTopicArrayOutput)
 }
 
+func (i GetTopicsTopicArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTopicsTopic] {
+	return pulumix.Output[[]GetTopicsTopic]{
+		OutputState: i.ToGetTopicsTopicArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTopicsTopicOutput struct{ *pulumi.OutputState }
 
 func (GetTopicsTopicOutput) ElementType() reflect.Type {
@@ -501,6 +562,12 @@ func (o GetTopicsTopicOutput) ToGetTopicsTopicOutput() GetTopicsTopicOutput {
 
 func (o GetTopicsTopicOutput) ToGetTopicsTopicOutputWithContext(ctx context.Context) GetTopicsTopicOutput {
 	return o
+}
+
+func (o GetTopicsTopicOutput) ToOutput(ctx context.Context) pulumix.Output[GetTopicsTopic] {
+	return pulumix.Output[GetTopicsTopic]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The id of the topic.
@@ -575,6 +642,12 @@ func (o GetTopicsTopicArrayOutput) ToGetTopicsTopicArrayOutput() GetTopicsTopicA
 
 func (o GetTopicsTopicArrayOutput) ToGetTopicsTopicArrayOutputWithContext(ctx context.Context) GetTopicsTopicArrayOutput {
 	return o
+}
+
+func (o GetTopicsTopicArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTopicsTopic] {
+	return pulumix.Output[[]GetTopicsTopic]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTopicsTopicArrayOutput) Index(i pulumi.IntInput) GetTopicsTopicOutput {

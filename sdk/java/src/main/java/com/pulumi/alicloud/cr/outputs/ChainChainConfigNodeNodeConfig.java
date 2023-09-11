@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ChainChainConfigNodeNodeConfig {
     /**
-     * @return Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
+     * @return Blocking rules for scanning nodes in delivery chain nodes. See `deny_policy` below. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
      * 
      */
     private @Nullable List<ChainChainConfigNodeNodeConfigDenyPolicy> denyPolicies;
 
     private ChainChainConfigNodeNodeConfig() {}
     /**
-     * @return Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
+     * @return Blocking rules for scanning nodes in delivery chain nodes. See `deny_policy` below. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
      * 
      */
     public List<ChainChainConfigNodeNodeConfigDenyPolicy> denyPolicies() {

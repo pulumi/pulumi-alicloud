@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a OOS Secret Parameter resource.
@@ -245,6 +246,12 @@ func (i *SecretParameter) ToSecretParameterOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SecretParameterOutput)
 }
 
+func (i *SecretParameter) ToOutput(ctx context.Context) pulumix.Output[*SecretParameter] {
+	return pulumix.Output[*SecretParameter]{
+		OutputState: i.ToSecretParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SecretParameterArrayInput is an input type that accepts SecretParameterArray and SecretParameterArrayOutput values.
 // You can construct a concrete instance of `SecretParameterArrayInput` via:
 //
@@ -268,6 +275,12 @@ func (i SecretParameterArray) ToSecretParameterArrayOutput() SecretParameterArra
 
 func (i SecretParameterArray) ToSecretParameterArrayOutputWithContext(ctx context.Context) SecretParameterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecretParameterArrayOutput)
+}
+
+func (i SecretParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]*SecretParameter] {
+	return pulumix.Output[[]*SecretParameter]{
+		OutputState: i.ToSecretParameterArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SecretParameterMapInput is an input type that accepts SecretParameterMap and SecretParameterMapOutput values.
@@ -295,6 +308,12 @@ func (i SecretParameterMap) ToSecretParameterMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SecretParameterMapOutput)
 }
 
+func (i SecretParameterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecretParameter] {
+	return pulumix.Output[map[string]*SecretParameter]{
+		OutputState: i.ToSecretParameterMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecretParameterOutput struct{ *pulumi.OutputState }
 
 func (SecretParameterOutput) ElementType() reflect.Type {
@@ -307,6 +326,12 @@ func (o SecretParameterOutput) ToSecretParameterOutput() SecretParameterOutput {
 
 func (o SecretParameterOutput) ToSecretParameterOutputWithContext(ctx context.Context) SecretParameterOutput {
 	return o
+}
+
+func (o SecretParameterOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretParameter] {
+	return pulumix.Output[*SecretParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The constraints of the encryption parameter. By default, this parameter is null. Valid values:
@@ -363,6 +388,12 @@ func (o SecretParameterArrayOutput) ToSecretParameterArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o SecretParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SecretParameter] {
+	return pulumix.Output[[]*SecretParameter]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecretParameterArrayOutput) Index(i pulumi.IntInput) SecretParameterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecretParameter {
 		return vs[0].([]*SecretParameter)[vs[1].(int)]
@@ -381,6 +412,12 @@ func (o SecretParameterMapOutput) ToSecretParameterMapOutput() SecretParameterMa
 
 func (o SecretParameterMapOutput) ToSecretParameterMapOutputWithContext(ctx context.Context) SecretParameterMapOutput {
 	return o
+}
+
+func (o SecretParameterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecretParameter] {
+	return pulumix.Output[map[string]*SecretParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretParameterMapOutput) MapIndex(k pulumi.StringInput) SecretParameterOutput {

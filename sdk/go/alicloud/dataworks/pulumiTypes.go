@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i GetFoldersFolderArgs) ToGetFoldersFolderOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetFoldersFolderOutput)
 }
 
+func (i GetFoldersFolderArgs) ToOutput(ctx context.Context) pulumix.Output[GetFoldersFolder] {
+	return pulumix.Output[GetFoldersFolder]{
+		OutputState: i.ToGetFoldersFolderOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetFoldersFolderArrayInput is an input type that accepts GetFoldersFolderArray and GetFoldersFolderArrayOutput values.
 // You can construct a concrete instance of `GetFoldersFolderArrayInput` via:
 //
@@ -81,6 +88,12 @@ func (i GetFoldersFolderArray) ToGetFoldersFolderArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetFoldersFolderArrayOutput)
 }
 
+func (i GetFoldersFolderArray) ToOutput(ctx context.Context) pulumix.Output[[]GetFoldersFolder] {
+	return pulumix.Output[[]GetFoldersFolder]{
+		OutputState: i.ToGetFoldersFolderArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetFoldersFolderOutput struct{ *pulumi.OutputState }
 
 func (GetFoldersFolderOutput) ElementType() reflect.Type {
@@ -93,6 +106,12 @@ func (o GetFoldersFolderOutput) ToGetFoldersFolderOutput() GetFoldersFolderOutpu
 
 func (o GetFoldersFolderOutput) ToGetFoldersFolderOutputWithContext(ctx context.Context) GetFoldersFolderOutput {
 	return o
+}
+
+func (o GetFoldersFolderOutput) ToOutput(ctx context.Context) pulumix.Output[GetFoldersFolder] {
+	return pulumix.Output[GetFoldersFolder]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetFoldersFolderOutput) FolderId() pulumi.StringOutput {
@@ -126,6 +145,12 @@ func (o GetFoldersFolderArrayOutput) ToGetFoldersFolderArrayOutput() GetFoldersF
 
 func (o GetFoldersFolderArrayOutput) ToGetFoldersFolderArrayOutputWithContext(ctx context.Context) GetFoldersFolderArrayOutput {
 	return o
+}
+
+func (o GetFoldersFolderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetFoldersFolder] {
+	return pulumix.Output[[]GetFoldersFolder]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetFoldersFolderArrayOutput) Index(i pulumi.IntInput) GetFoldersFolderOutput {

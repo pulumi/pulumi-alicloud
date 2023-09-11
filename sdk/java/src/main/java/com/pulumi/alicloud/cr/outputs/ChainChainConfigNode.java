@@ -20,12 +20,12 @@ public final class ChainChainConfigNode {
      */
     private @Nullable Boolean enable;
     /**
-     * @return The configuration of delivery chain node.
+     * @return The configuration of delivery chain node. See `node_config` below.
      * 
      */
     private @Nullable List<ChainChainConfigNodeNodeConfig> nodeConfigs;
     /**
-     * @return The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+     * @return The name of delivery chain node.
      * 
      */
     private @Nullable String nodeName;
@@ -39,14 +39,14 @@ public final class ChainChainConfigNode {
         return Optional.ofNullable(this.enable);
     }
     /**
-     * @return The configuration of delivery chain node.
+     * @return The configuration of delivery chain node. See `node_config` below.
      * 
      */
     public List<ChainChainConfigNodeNodeConfig> nodeConfigs() {
         return this.nodeConfigs == null ? List.of() : this.nodeConfigs;
     }
     /**
-     * @return The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+     * @return The name of delivery chain node.
      * 
      */
     public Optional<String> nodeName() {

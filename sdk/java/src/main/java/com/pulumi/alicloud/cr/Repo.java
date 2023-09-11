@@ -16,9 +16,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resource will help you to manager Container Registry repositories.
+ * This resource will help you to manager Container Registry repositories, see [What is Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository).
  * 
- * &gt; **NOTE:** Available in v1.35.0+.
+ * &gt; **NOTE:** Available since v1.35.0.
  * 
  * &gt; **NOTE:** You need to set your registry password in Container Registry console before use this resource.
  * 
@@ -48,13 +48,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_namespace = new Namespace(&#34;my-namespace&#34;, NamespaceArgs.builder()        
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         var exampleNamespace = new Namespace(&#34;exampleNamespace&#34;, NamespaceArgs.builder()        
  *             .autoCreate(false)
  *             .defaultVisibility(&#34;PUBLIC&#34;)
  *             .build());
  * 
- *         var my_repo = new Repo(&#34;my-repo&#34;, RepoArgs.builder()        
- *             .namespace(my_namespace.name())
+ *         var exampleRepo = new Repo(&#34;exampleRepo&#34;, RepoArgs.builder()        
+ *             .namespace(exampleNamespace.name())
  *             .summary(&#34;this is summary of my new repo&#34;)
  *             .repoType(&#34;PUBLIC&#34;)
  *             .detail(&#34;this is a public repo&#34;)

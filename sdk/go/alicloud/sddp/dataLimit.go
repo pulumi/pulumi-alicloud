@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Data Security Center Data Limit resource.
@@ -204,6 +205,12 @@ func (i *DataLimit) ToDataLimitOutputWithContext(ctx context.Context) DataLimitO
 	return pulumi.ToOutputWithContext(ctx, i).(DataLimitOutput)
 }
 
+func (i *DataLimit) ToOutput(ctx context.Context) pulumix.Output[*DataLimit] {
+	return pulumix.Output[*DataLimit]{
+		OutputState: i.ToDataLimitOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DataLimitArrayInput is an input type that accepts DataLimitArray and DataLimitArrayOutput values.
 // You can construct a concrete instance of `DataLimitArrayInput` via:
 //
@@ -227,6 +234,12 @@ func (i DataLimitArray) ToDataLimitArrayOutput() DataLimitArrayOutput {
 
 func (i DataLimitArray) ToDataLimitArrayOutputWithContext(ctx context.Context) DataLimitArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataLimitArrayOutput)
+}
+
+func (i DataLimitArray) ToOutput(ctx context.Context) pulumix.Output[[]*DataLimit] {
+	return pulumix.Output[[]*DataLimit]{
+		OutputState: i.ToDataLimitArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DataLimitMapInput is an input type that accepts DataLimitMap and DataLimitMapOutput values.
@@ -254,6 +267,12 @@ func (i DataLimitMap) ToDataLimitMapOutputWithContext(ctx context.Context) DataL
 	return pulumi.ToOutputWithContext(ctx, i).(DataLimitMapOutput)
 }
 
+func (i DataLimitMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DataLimit] {
+	return pulumix.Output[map[string]*DataLimit]{
+		OutputState: i.ToDataLimitMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DataLimitOutput struct{ *pulumi.OutputState }
 
 func (DataLimitOutput) ElementType() reflect.Type {
@@ -266,6 +285,12 @@ func (o DataLimitOutput) ToDataLimitOutput() DataLimitOutput {
 
 func (o DataLimitOutput) ToDataLimitOutputWithContext(ctx context.Context) DataLimitOutput {
 	return o
+}
+
+func (o DataLimitOutput) ToOutput(ctx context.Context) pulumix.Output[*DataLimit] {
+	return pulumix.Output[*DataLimit]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to enable the log auditing feature. Valid values: `0`, `1`.
@@ -332,6 +357,12 @@ func (o DataLimitArrayOutput) ToDataLimitArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o DataLimitArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DataLimit] {
+	return pulumix.Output[[]*DataLimit]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DataLimitArrayOutput) Index(i pulumi.IntInput) DataLimitOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DataLimit {
 		return vs[0].([]*DataLimit)[vs[1].(int)]
@@ -350,6 +381,12 @@ func (o DataLimitMapOutput) ToDataLimitMapOutput() DataLimitMapOutput {
 
 func (o DataLimitMapOutput) ToDataLimitMapOutputWithContext(ctx context.Context) DataLimitMapOutput {
 	return o
+}
+
+func (o DataLimitMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DataLimit] {
+	return pulumix.Output[map[string]*DataLimit]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataLimitMapOutput) MapIndex(k pulumi.StringInput) DataLimitOutput {

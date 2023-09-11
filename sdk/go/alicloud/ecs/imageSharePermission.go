@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manage image sharing permissions. You can share your custom image to other Alibaba Cloud users. The user can use the shared custom image to create ECS instances or replace the system disk of the instance.
@@ -234,6 +235,12 @@ func (i *ImageSharePermission) ToImageSharePermissionOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ImageSharePermissionOutput)
 }
 
+func (i *ImageSharePermission) ToOutput(ctx context.Context) pulumix.Output[*ImageSharePermission] {
+	return pulumix.Output[*ImageSharePermission]{
+		OutputState: i.ToImageSharePermissionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ImageSharePermissionArrayInput is an input type that accepts ImageSharePermissionArray and ImageSharePermissionArrayOutput values.
 // You can construct a concrete instance of `ImageSharePermissionArrayInput` via:
 //
@@ -257,6 +264,12 @@ func (i ImageSharePermissionArray) ToImageSharePermissionArrayOutput() ImageShar
 
 func (i ImageSharePermissionArray) ToImageSharePermissionArrayOutputWithContext(ctx context.Context) ImageSharePermissionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageSharePermissionArrayOutput)
+}
+
+func (i ImageSharePermissionArray) ToOutput(ctx context.Context) pulumix.Output[[]*ImageSharePermission] {
+	return pulumix.Output[[]*ImageSharePermission]{
+		OutputState: i.ToImageSharePermissionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ImageSharePermissionMapInput is an input type that accepts ImageSharePermissionMap and ImageSharePermissionMapOutput values.
@@ -284,6 +297,12 @@ func (i ImageSharePermissionMap) ToImageSharePermissionMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ImageSharePermissionMapOutput)
 }
 
+func (i ImageSharePermissionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImageSharePermission] {
+	return pulumix.Output[map[string]*ImageSharePermission]{
+		OutputState: i.ToImageSharePermissionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ImageSharePermissionOutput struct{ *pulumi.OutputState }
 
 func (ImageSharePermissionOutput) ElementType() reflect.Type {
@@ -296,6 +315,12 @@ func (o ImageSharePermissionOutput) ToImageSharePermissionOutput() ImageSharePer
 
 func (o ImageSharePermissionOutput) ToImageSharePermissionOutputWithContext(ctx context.Context) ImageSharePermissionOutput {
 	return o
+}
+
+func (o ImageSharePermissionOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageSharePermission] {
+	return pulumix.Output[*ImageSharePermission]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Alibaba Cloud Account ID. It is used to share images.
@@ -322,6 +347,12 @@ func (o ImageSharePermissionArrayOutput) ToImageSharePermissionArrayOutputWithCo
 	return o
 }
 
+func (o ImageSharePermissionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ImageSharePermission] {
+	return pulumix.Output[[]*ImageSharePermission]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ImageSharePermissionArrayOutput) Index(i pulumi.IntInput) ImageSharePermissionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ImageSharePermission {
 		return vs[0].([]*ImageSharePermission)[vs[1].(int)]
@@ -340,6 +371,12 @@ func (o ImageSharePermissionMapOutput) ToImageSharePermissionMapOutput() ImageSh
 
 func (o ImageSharePermissionMapOutput) ToImageSharePermissionMapOutputWithContext(ctx context.Context) ImageSharePermissionMapOutput {
 	return o
+}
+
+func (o ImageSharePermissionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImageSharePermission] {
+	return pulumix.Output[map[string]*ImageSharePermission]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ImageSharePermissionMapOutput) MapIndex(k pulumi.StringInput) ImageSharePermissionOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DMS Enterprise Logic Database resource.
@@ -211,6 +212,12 @@ func (i *EnterpriseLogicDatabase) ToEnterpriseLogicDatabaseOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseLogicDatabaseOutput)
 }
 
+func (i *EnterpriseLogicDatabase) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseLogicDatabase] {
+	return pulumix.Output[*EnterpriseLogicDatabase]{
+		OutputState: i.ToEnterpriseLogicDatabaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnterpriseLogicDatabaseArrayInput is an input type that accepts EnterpriseLogicDatabaseArray and EnterpriseLogicDatabaseArrayOutput values.
 // You can construct a concrete instance of `EnterpriseLogicDatabaseArrayInput` via:
 //
@@ -234,6 +241,12 @@ func (i EnterpriseLogicDatabaseArray) ToEnterpriseLogicDatabaseArrayOutput() Ent
 
 func (i EnterpriseLogicDatabaseArray) ToEnterpriseLogicDatabaseArrayOutputWithContext(ctx context.Context) EnterpriseLogicDatabaseArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseLogicDatabaseArrayOutput)
+}
+
+func (i EnterpriseLogicDatabaseArray) ToOutput(ctx context.Context) pulumix.Output[[]*EnterpriseLogicDatabase] {
+	return pulumix.Output[[]*EnterpriseLogicDatabase]{
+		OutputState: i.ToEnterpriseLogicDatabaseArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EnterpriseLogicDatabaseMapInput is an input type that accepts EnterpriseLogicDatabaseMap and EnterpriseLogicDatabaseMapOutput values.
@@ -261,6 +274,12 @@ func (i EnterpriseLogicDatabaseMap) ToEnterpriseLogicDatabaseMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseLogicDatabaseMapOutput)
 }
 
+func (i EnterpriseLogicDatabaseMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnterpriseLogicDatabase] {
+	return pulumix.Output[map[string]*EnterpriseLogicDatabase]{
+		OutputState: i.ToEnterpriseLogicDatabaseMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseLogicDatabaseOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseLogicDatabaseOutput) ElementType() reflect.Type {
@@ -273,6 +292,12 @@ func (o EnterpriseLogicDatabaseOutput) ToEnterpriseLogicDatabaseOutput() Enterpr
 
 func (o EnterpriseLogicDatabaseOutput) ToEnterpriseLogicDatabaseOutputWithContext(ctx context.Context) EnterpriseLogicDatabaseOutput {
 	return o
+}
+
+func (o EnterpriseLogicDatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseLogicDatabase] {
+	return pulumix.Output[*EnterpriseLogicDatabase]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Logical Library alias.
@@ -339,6 +364,12 @@ func (o EnterpriseLogicDatabaseArrayOutput) ToEnterpriseLogicDatabaseArrayOutput
 	return o
 }
 
+func (o EnterpriseLogicDatabaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EnterpriseLogicDatabase] {
+	return pulumix.Output[[]*EnterpriseLogicDatabase]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseLogicDatabaseArrayOutput) Index(i pulumi.IntInput) EnterpriseLogicDatabaseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EnterpriseLogicDatabase {
 		return vs[0].([]*EnterpriseLogicDatabase)[vs[1].(int)]
@@ -357,6 +388,12 @@ func (o EnterpriseLogicDatabaseMapOutput) ToEnterpriseLogicDatabaseMapOutput() E
 
 func (o EnterpriseLogicDatabaseMapOutput) ToEnterpriseLogicDatabaseMapOutputWithContext(ctx context.Context) EnterpriseLogicDatabaseMapOutput {
 	return o
+}
+
+func (o EnterpriseLogicDatabaseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnterpriseLogicDatabase] {
+	return pulumix.Output[map[string]*EnterpriseLogicDatabase]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseLogicDatabaseMapOutput) MapIndex(k pulumi.StringInput) EnterpriseLogicDatabaseOutput {

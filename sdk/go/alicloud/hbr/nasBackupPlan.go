@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a HBR Nas Backup Plan resource.
@@ -324,6 +325,12 @@ func (i *NasBackupPlan) ToNasBackupPlanOutputWithContext(ctx context.Context) Na
 	return pulumi.ToOutputWithContext(ctx, i).(NasBackupPlanOutput)
 }
 
+func (i *NasBackupPlan) ToOutput(ctx context.Context) pulumix.Output[*NasBackupPlan] {
+	return pulumix.Output[*NasBackupPlan]{
+		OutputState: i.ToNasBackupPlanOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NasBackupPlanArrayInput is an input type that accepts NasBackupPlanArray and NasBackupPlanArrayOutput values.
 // You can construct a concrete instance of `NasBackupPlanArrayInput` via:
 //
@@ -347,6 +354,12 @@ func (i NasBackupPlanArray) ToNasBackupPlanArrayOutput() NasBackupPlanArrayOutpu
 
 func (i NasBackupPlanArray) ToNasBackupPlanArrayOutputWithContext(ctx context.Context) NasBackupPlanArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NasBackupPlanArrayOutput)
+}
+
+func (i NasBackupPlanArray) ToOutput(ctx context.Context) pulumix.Output[[]*NasBackupPlan] {
+	return pulumix.Output[[]*NasBackupPlan]{
+		OutputState: i.ToNasBackupPlanArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NasBackupPlanMapInput is an input type that accepts NasBackupPlanMap and NasBackupPlanMapOutput values.
@@ -374,6 +387,12 @@ func (i NasBackupPlanMap) ToNasBackupPlanMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(NasBackupPlanMapOutput)
 }
 
+func (i NasBackupPlanMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NasBackupPlan] {
+	return pulumix.Output[map[string]*NasBackupPlan]{
+		OutputState: i.ToNasBackupPlanMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NasBackupPlanOutput struct{ *pulumi.OutputState }
 
 func (NasBackupPlanOutput) ElementType() reflect.Type {
@@ -386,6 +405,12 @@ func (o NasBackupPlanOutput) ToNasBackupPlanOutput() NasBackupPlanOutput {
 
 func (o NasBackupPlanOutput) ToNasBackupPlanOutputWithContext(ctx context.Context) NasBackupPlanOutput {
 	return o
+}
+
+func (o NasBackupPlanOutput) ToOutput(ctx context.Context) pulumix.Output[*NasBackupPlan] {
+	return pulumix.Output[*NasBackupPlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Backup type. Valid values: `COMPLETE`.
@@ -471,6 +496,12 @@ func (o NasBackupPlanArrayOutput) ToNasBackupPlanArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o NasBackupPlanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NasBackupPlan] {
+	return pulumix.Output[[]*NasBackupPlan]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NasBackupPlanArrayOutput) Index(i pulumi.IntInput) NasBackupPlanOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NasBackupPlan {
 		return vs[0].([]*NasBackupPlan)[vs[1].(int)]
@@ -489,6 +520,12 @@ func (o NasBackupPlanMapOutput) ToNasBackupPlanMapOutput() NasBackupPlanMapOutpu
 
 func (o NasBackupPlanMapOutput) ToNasBackupPlanMapOutputWithContext(ctx context.Context) NasBackupPlanMapOutput {
 	return o
+}
+
+func (o NasBackupPlanMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NasBackupPlan] {
+	return pulumix.Output[map[string]*NasBackupPlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NasBackupPlanMapOutput) MapIndex(k pulumi.StringInput) NasBackupPlanOutput {

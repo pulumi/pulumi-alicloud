@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides DMS Enterprise Logic Database available to the user.[What is Logic Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createlogicdatabase)
@@ -81,6 +82,12 @@ func (o GetEnterpriseLogicDatabasesResultOutput) ToGetEnterpriseLogicDatabasesRe
 
 func (o GetEnterpriseLogicDatabasesResultOutput) ToGetEnterpriseLogicDatabasesResultOutputWithContext(ctx context.Context) GetEnterpriseLogicDatabasesResultOutput {
 	return o
+}
+
+func (o GetEnterpriseLogicDatabasesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnterpriseLogicDatabasesResult] {
+	return pulumix.Output[GetEnterpriseLogicDatabasesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of Logic Database Entries. Each element contains the following attributes:

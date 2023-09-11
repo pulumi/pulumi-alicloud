@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ram Saml Providers of the current Alibaba Cloud user.
@@ -124,6 +125,12 @@ func (o GetSamlProvidersResultOutput) ToGetSamlProvidersResultOutput() GetSamlPr
 
 func (o GetSamlProvidersResultOutput) ToGetSamlProvidersResultOutputWithContext(ctx context.Context) GetSamlProvidersResultOutput {
 	return o
+}
+
+func (o GetSamlProvidersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSamlProvidersResult] {
+	return pulumix.Output[GetSamlProvidersResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSamlProvidersResultOutput) EnableDetails() pulumi.BoolPtrOutput {

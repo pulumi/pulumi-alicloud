@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Using this data source can enable CDN service automatically. If the service has been enabled, it will return `Opened`.
@@ -123,6 +124,12 @@ func (o GetServiceResultOutput) ToGetServiceResultOutput() GetServiceResultOutpu
 
 func (o GetServiceResultOutput) ToGetServiceResultOutputWithContext(ctx context.Context) GetServiceResultOutput {
 	return o
+}
+
+func (o GetServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceResult] {
+	return pulumix.Output[GetServiceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time when the change of the billing method starts to take effect. The time is displayed in GMT.

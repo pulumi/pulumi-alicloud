@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.rds.outputs;
 
+import com.pulumi.alicloud.rds.outputs.GetInstancesInstanceHostInstanceInfo;
 import com.pulumi.alicloud.rds.outputs.GetInstancesInstanceParameter;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
@@ -44,6 +45,10 @@ public final class GetInstancesInstance {
      * 
      */
     private String clientCaCert;
+    /**
+     * @return (Available in 1.124.1+) The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. This parameter is not supported now.
+     * 
+     */
     private String clientCaCertExpireTime;
     /**
      * @return (Available in 1.124.1+) The certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
@@ -135,6 +140,16 @@ public final class GetInstancesInstance {
      */
     private String guardInstanceId;
     /**
+     * @return (Available since v1.209.1) The high availability mode of the instance.
+     * 
+     */
+    private String haMode;
+    /**
+     * @return (Available since v1.209.1) An array that consists of the information of the primary and secondary instances.
+     * 
+     */
+    private List<GetInstancesInstanceHostInstanceInfo> hostInstanceInfos;
+    /**
      * @return The ID of the RDS instance.
      * 
      */
@@ -213,7 +228,7 @@ public final class GetInstancesInstance {
      */
     private List<String> readonlyInstanceIds;
     /**
-     * @return Region ID the instance belongs to.
+     * @return The region ID of the instance.
      * 
      */
     private String regionId;
@@ -285,6 +300,11 @@ public final class GetInstancesInstance {
      */
     private String status;
     /**
+     * @return (Available since v1.209.1) The data replication mode of the instance.
+     * 
+     */
+    private String syncMode;
+    /**
      * @return If a temporary instance is attached to the current instance, the ID of the temporary instance applies.
      * 
      */
@@ -352,6 +372,10 @@ public final class GetInstancesInstance {
     public String clientCaCert() {
         return this.clientCaCert;
     }
+    /**
+     * @return (Available in 1.124.1+) The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. This parameter is not supported now.
+     * 
+     */
     public String clientCaCertExpireTime() {
         return this.clientCaCertExpireTime;
     }
@@ -479,6 +503,20 @@ public final class GetInstancesInstance {
         return this.guardInstanceId;
     }
     /**
+     * @return (Available since v1.209.1) The high availability mode of the instance.
+     * 
+     */
+    public String haMode() {
+        return this.haMode;
+    }
+    /**
+     * @return (Available since v1.209.1) An array that consists of the information of the primary and secondary instances.
+     * 
+     */
+    public List<GetInstancesInstanceHostInstanceInfo> hostInstanceInfos() {
+        return this.hostInstanceInfos;
+    }
+    /**
      * @return The ID of the RDS instance.
      * 
      */
@@ -587,7 +625,7 @@ public final class GetInstancesInstance {
         return this.readonlyInstanceIds;
     }
     /**
-     * @return Region ID the instance belongs to.
+     * @return The region ID of the instance.
      * 
      */
     public String regionId() {
@@ -683,6 +721,13 @@ public final class GetInstancesInstance {
         return this.status;
     }
     /**
+     * @return (Available since v1.209.1) The data replication mode of the instance.
+     * 
+     */
+    public String syncMode() {
+        return this.syncMode;
+    }
+    /**
      * @return If a temporary instance is attached to the current instance, the ID of the temporary instance applies.
      * 
      */
@@ -750,6 +795,8 @@ public final class GetInstancesInstance {
         private String engineVersion;
         private String expireTime;
         private String guardInstanceId;
+        private String haMode;
+        private List<GetInstancesInstanceHostInstanceInfo> hostInstanceInfos;
         private String id;
         private Integer instanceStorage;
         private String instanceType;
@@ -777,6 +824,7 @@ public final class GetInstancesInstance {
         private String sslEnabled;
         private String sslExpireTime;
         private String status;
+        private String syncMode;
         private String tempInstanceId;
         private String vpcId;
         private String vswitchId;
@@ -808,6 +856,8 @@ public final class GetInstancesInstance {
     	      this.engineVersion = defaults.engineVersion;
     	      this.expireTime = defaults.expireTime;
     	      this.guardInstanceId = defaults.guardInstanceId;
+    	      this.haMode = defaults.haMode;
+    	      this.hostInstanceInfos = defaults.hostInstanceInfos;
     	      this.id = defaults.id;
     	      this.instanceStorage = defaults.instanceStorage;
     	      this.instanceType = defaults.instanceType;
@@ -835,6 +885,7 @@ public final class GetInstancesInstance {
     	      this.sslEnabled = defaults.sslEnabled;
     	      this.sslExpireTime = defaults.sslExpireTime;
     	      this.status = defaults.status;
+    	      this.syncMode = defaults.syncMode;
     	      this.tempInstanceId = defaults.tempInstanceId;
     	      this.vpcId = defaults.vpcId;
     	      this.vswitchId = defaults.vswitchId;
@@ -956,6 +1007,19 @@ public final class GetInstancesInstance {
         public Builder guardInstanceId(String guardInstanceId) {
             this.guardInstanceId = Objects.requireNonNull(guardInstanceId);
             return this;
+        }
+        @CustomType.Setter
+        public Builder haMode(String haMode) {
+            this.haMode = Objects.requireNonNull(haMode);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hostInstanceInfos(List<GetInstancesInstanceHostInstanceInfo> hostInstanceInfos) {
+            this.hostInstanceInfos = Objects.requireNonNull(hostInstanceInfos);
+            return this;
+        }
+        public Builder hostInstanceInfos(GetInstancesInstanceHostInstanceInfo... hostInstanceInfos) {
+            return hostInstanceInfos(List.of(hostInstanceInfos));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -1099,6 +1163,11 @@ public final class GetInstancesInstance {
             return this;
         }
         @CustomType.Setter
+        public Builder syncMode(String syncMode) {
+            this.syncMode = Objects.requireNonNull(syncMode);
+            return this;
+        }
+        @CustomType.Setter
         public Builder tempInstanceId(String tempInstanceId) {
             this.tempInstanceId = Objects.requireNonNull(tempInstanceId);
             return this;
@@ -1148,6 +1217,8 @@ public final class GetInstancesInstance {
             o.engineVersion = engineVersion;
             o.expireTime = expireTime;
             o.guardInstanceId = guardInstanceId;
+            o.haMode = haMode;
+            o.hostInstanceInfos = hostInstanceInfos;
             o.id = id;
             o.instanceStorage = instanceStorage;
             o.instanceType = instanceType;
@@ -1175,6 +1246,7 @@ public final class GetInstancesInstance {
             o.sslEnabled = sslEnabled;
             o.sslExpireTime = sslExpireTime;
             o.status = status;
+            o.syncMode = syncMode;
             o.tempInstanceId = tempInstanceId;
             o.vpcId = vpcId;
             o.vswitchId = vswitchId;

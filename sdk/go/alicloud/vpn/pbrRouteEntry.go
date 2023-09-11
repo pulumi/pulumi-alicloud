@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPN Pbr Route Entry resource.
@@ -247,6 +248,12 @@ func (i *PbrRouteEntry) ToPbrRouteEntryOutputWithContext(ctx context.Context) Pb
 	return pulumi.ToOutputWithContext(ctx, i).(PbrRouteEntryOutput)
 }
 
+func (i *PbrRouteEntry) ToOutput(ctx context.Context) pulumix.Output[*PbrRouteEntry] {
+	return pulumix.Output[*PbrRouteEntry]{
+		OutputState: i.ToPbrRouteEntryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PbrRouteEntryArrayInput is an input type that accepts PbrRouteEntryArray and PbrRouteEntryArrayOutput values.
 // You can construct a concrete instance of `PbrRouteEntryArrayInput` via:
 //
@@ -270,6 +277,12 @@ func (i PbrRouteEntryArray) ToPbrRouteEntryArrayOutput() PbrRouteEntryArrayOutpu
 
 func (i PbrRouteEntryArray) ToPbrRouteEntryArrayOutputWithContext(ctx context.Context) PbrRouteEntryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PbrRouteEntryArrayOutput)
+}
+
+func (i PbrRouteEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]*PbrRouteEntry] {
+	return pulumix.Output[[]*PbrRouteEntry]{
+		OutputState: i.ToPbrRouteEntryArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PbrRouteEntryMapInput is an input type that accepts PbrRouteEntryMap and PbrRouteEntryMapOutput values.
@@ -297,6 +310,12 @@ func (i PbrRouteEntryMap) ToPbrRouteEntryMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(PbrRouteEntryMapOutput)
 }
 
+func (i PbrRouteEntryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PbrRouteEntry] {
+	return pulumix.Output[map[string]*PbrRouteEntry]{
+		OutputState: i.ToPbrRouteEntryMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PbrRouteEntryOutput struct{ *pulumi.OutputState }
 
 func (PbrRouteEntryOutput) ElementType() reflect.Type {
@@ -309,6 +328,12 @@ func (o PbrRouteEntryOutput) ToPbrRouteEntryOutput() PbrRouteEntryOutput {
 
 func (o PbrRouteEntryOutput) ToPbrRouteEntryOutputWithContext(ctx context.Context) PbrRouteEntryOutput {
 	return o
+}
+
+func (o PbrRouteEntryOutput) ToOutput(ctx context.Context) pulumix.Output[*PbrRouteEntry] {
+	return pulumix.Output[*PbrRouteEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The next hop of the policy-based route.
@@ -360,6 +385,12 @@ func (o PbrRouteEntryArrayOutput) ToPbrRouteEntryArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o PbrRouteEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PbrRouteEntry] {
+	return pulumix.Output[[]*PbrRouteEntry]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PbrRouteEntryArrayOutput) Index(i pulumi.IntInput) PbrRouteEntryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PbrRouteEntry {
 		return vs[0].([]*PbrRouteEntry)[vs[1].(int)]
@@ -378,6 +409,12 @@ func (o PbrRouteEntryMapOutput) ToPbrRouteEntryMapOutput() PbrRouteEntryMapOutpu
 
 func (o PbrRouteEntryMapOutput) ToPbrRouteEntryMapOutputWithContext(ctx context.Context) PbrRouteEntryMapOutput {
 	return o
+}
+
+func (o PbrRouteEntryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PbrRouteEntry] {
+	return pulumix.Output[map[string]*PbrRouteEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PbrRouteEntryMapOutput) MapIndex(k pulumi.StringInput) PbrRouteEntryOutput {

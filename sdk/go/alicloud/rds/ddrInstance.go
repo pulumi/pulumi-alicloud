@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -1303,6 +1304,12 @@ func (i *DdrInstance) ToDdrInstanceOutputWithContext(ctx context.Context) DdrIns
 	return pulumi.ToOutputWithContext(ctx, i).(DdrInstanceOutput)
 }
 
+func (i *DdrInstance) ToOutput(ctx context.Context) pulumix.Output[*DdrInstance] {
+	return pulumix.Output[*DdrInstance]{
+		OutputState: i.ToDdrInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DdrInstanceArrayInput is an input type that accepts DdrInstanceArray and DdrInstanceArrayOutput values.
 // You can construct a concrete instance of `DdrInstanceArrayInput` via:
 //
@@ -1326,6 +1333,12 @@ func (i DdrInstanceArray) ToDdrInstanceArrayOutput() DdrInstanceArrayOutput {
 
 func (i DdrInstanceArray) ToDdrInstanceArrayOutputWithContext(ctx context.Context) DdrInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DdrInstanceArrayOutput)
+}
+
+func (i DdrInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*DdrInstance] {
+	return pulumix.Output[[]*DdrInstance]{
+		OutputState: i.ToDdrInstanceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DdrInstanceMapInput is an input type that accepts DdrInstanceMap and DdrInstanceMapOutput values.
@@ -1353,6 +1366,12 @@ func (i DdrInstanceMap) ToDdrInstanceMapOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DdrInstanceMapOutput)
 }
 
+func (i DdrInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DdrInstance] {
+	return pulumix.Output[map[string]*DdrInstance]{
+		OutputState: i.ToDdrInstanceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DdrInstanceOutput struct{ *pulumi.OutputState }
 
 func (DdrInstanceOutput) ElementType() reflect.Type {
@@ -1365,6 +1384,12 @@ func (o DdrInstanceOutput) ToDdrInstanceOutput() DdrInstanceOutput {
 
 func (o DdrInstanceOutput) ToDdrInstanceOutputWithContext(ctx context.Context) DdrInstanceOutput {
 	return o
+}
+
+func (o DdrInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*DdrInstance] {
+	return pulumix.Output[*DdrInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
@@ -1833,6 +1858,12 @@ func (o DdrInstanceArrayOutput) ToDdrInstanceArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o DdrInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DdrInstance] {
+	return pulumix.Output[[]*DdrInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DdrInstanceArrayOutput) Index(i pulumi.IntInput) DdrInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DdrInstance {
 		return vs[0].([]*DdrInstance)[vs[1].(int)]
@@ -1851,6 +1882,12 @@ func (o DdrInstanceMapOutput) ToDdrInstanceMapOutput() DdrInstanceMapOutput {
 
 func (o DdrInstanceMapOutput) ToDdrInstanceMapOutputWithContext(ctx context.Context) DdrInstanceMapOutput {
 	return o
+}
+
+func (o DdrInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DdrInstance] {
+	return pulumix.Output[map[string]*DdrInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DdrInstanceMapOutput) MapIndex(k pulumi.StringInput) DdrInstanceOutput {

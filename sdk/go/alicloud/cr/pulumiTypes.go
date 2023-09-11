@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -54,6 +55,12 @@ func (i ChainChainConfigArgs) ToChainChainConfigOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigOutput)
 }
 
+func (i ChainChainConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ChainChainConfig] {
+	return pulumix.Output[ChainChainConfig]{
+		OutputState: i.ToChainChainConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ChainChainConfigArrayInput is an input type that accepts ChainChainConfigArray and ChainChainConfigArrayOutput values.
 // You can construct a concrete instance of `ChainChainConfigArrayInput` via:
 //
@@ -79,6 +86,12 @@ func (i ChainChainConfigArray) ToChainChainConfigArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigArrayOutput)
 }
 
+func (i ChainChainConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]ChainChainConfig] {
+	return pulumix.Output[[]ChainChainConfig]{
+		OutputState: i.ToChainChainConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ChainChainConfigOutput struct{ *pulumi.OutputState }
 
 func (ChainChainConfigOutput) ElementType() reflect.Type {
@@ -91,6 +104,12 @@ func (o ChainChainConfigOutput) ToChainChainConfigOutput() ChainChainConfigOutpu
 
 func (o ChainChainConfigOutput) ToChainChainConfigOutputWithContext(ctx context.Context) ChainChainConfigOutput {
 	return o
+}
+
+func (o ChainChainConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ChainChainConfig] {
+	return pulumix.Output[ChainChainConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Each node in the delivery chain. See `nodes` below.
@@ -117,6 +136,12 @@ func (o ChainChainConfigArrayOutput) ToChainChainConfigArrayOutput() ChainChainC
 
 func (o ChainChainConfigArrayOutput) ToChainChainConfigArrayOutputWithContext(ctx context.Context) ChainChainConfigArrayOutput {
 	return o
+}
+
+func (o ChainChainConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ChainChainConfig] {
+	return pulumix.Output[[]ChainChainConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ChainChainConfigArrayOutput) Index(i pulumi.IntInput) ChainChainConfigOutput {
@@ -166,6 +191,12 @@ func (i ChainChainConfigNodeArgs) ToChainChainConfigNodeOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigNodeOutput)
 }
 
+func (i ChainChainConfigNodeArgs) ToOutput(ctx context.Context) pulumix.Output[ChainChainConfigNode] {
+	return pulumix.Output[ChainChainConfigNode]{
+		OutputState: i.ToChainChainConfigNodeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ChainChainConfigNodeArrayInput is an input type that accepts ChainChainConfigNodeArray and ChainChainConfigNodeArrayOutput values.
 // You can construct a concrete instance of `ChainChainConfigNodeArrayInput` via:
 //
@@ -191,6 +222,12 @@ func (i ChainChainConfigNodeArray) ToChainChainConfigNodeArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigNodeArrayOutput)
 }
 
+func (i ChainChainConfigNodeArray) ToOutput(ctx context.Context) pulumix.Output[[]ChainChainConfigNode] {
+	return pulumix.Output[[]ChainChainConfigNode]{
+		OutputState: i.ToChainChainConfigNodeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ChainChainConfigNodeOutput struct{ *pulumi.OutputState }
 
 func (ChainChainConfigNodeOutput) ElementType() reflect.Type {
@@ -203,6 +240,12 @@ func (o ChainChainConfigNodeOutput) ToChainChainConfigNodeOutput() ChainChainCon
 
 func (o ChainChainConfigNodeOutput) ToChainChainConfigNodeOutputWithContext(ctx context.Context) ChainChainConfigNodeOutput {
 	return o
+}
+
+func (o ChainChainConfigNodeOutput) ToOutput(ctx context.Context) pulumix.Output[ChainChainConfigNode] {
+	return pulumix.Output[ChainChainConfigNode]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to enable the delivery chain node. Valid values: `true`, `false`.
@@ -232,6 +275,12 @@ func (o ChainChainConfigNodeArrayOutput) ToChainChainConfigNodeArrayOutput() Cha
 
 func (o ChainChainConfigNodeArrayOutput) ToChainChainConfigNodeArrayOutputWithContext(ctx context.Context) ChainChainConfigNodeArrayOutput {
 	return o
+}
+
+func (o ChainChainConfigNodeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ChainChainConfigNode] {
+	return pulumix.Output[[]ChainChainConfigNode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ChainChainConfigNodeArrayOutput) Index(i pulumi.IntInput) ChainChainConfigNodeOutput {
@@ -273,6 +322,12 @@ func (i ChainChainConfigNodeNodeConfigArgs) ToChainChainConfigNodeNodeConfigOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigNodeNodeConfigOutput)
 }
 
+func (i ChainChainConfigNodeNodeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ChainChainConfigNodeNodeConfig] {
+	return pulumix.Output[ChainChainConfigNodeNodeConfig]{
+		OutputState: i.ToChainChainConfigNodeNodeConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ChainChainConfigNodeNodeConfigArrayInput is an input type that accepts ChainChainConfigNodeNodeConfigArray and ChainChainConfigNodeNodeConfigArrayOutput values.
 // You can construct a concrete instance of `ChainChainConfigNodeNodeConfigArrayInput` via:
 //
@@ -298,6 +353,12 @@ func (i ChainChainConfigNodeNodeConfigArray) ToChainChainConfigNodeNodeConfigArr
 	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigNodeNodeConfigArrayOutput)
 }
 
+func (i ChainChainConfigNodeNodeConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]ChainChainConfigNodeNodeConfig] {
+	return pulumix.Output[[]ChainChainConfigNodeNodeConfig]{
+		OutputState: i.ToChainChainConfigNodeNodeConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ChainChainConfigNodeNodeConfigOutput struct{ *pulumi.OutputState }
 
 func (ChainChainConfigNodeNodeConfigOutput) ElementType() reflect.Type {
@@ -310,6 +371,12 @@ func (o ChainChainConfigNodeNodeConfigOutput) ToChainChainConfigNodeNodeConfigOu
 
 func (o ChainChainConfigNodeNodeConfigOutput) ToChainChainConfigNodeNodeConfigOutputWithContext(ctx context.Context) ChainChainConfigNodeNodeConfigOutput {
 	return o
+}
+
+func (o ChainChainConfigNodeNodeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ChainChainConfigNodeNodeConfig] {
+	return pulumix.Output[ChainChainConfigNodeNodeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Blocking rules for scanning nodes in delivery chain nodes. See `denyPolicy` below. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
@@ -331,6 +398,12 @@ func (o ChainChainConfigNodeNodeConfigArrayOutput) ToChainChainConfigNodeNodeCon
 
 func (o ChainChainConfigNodeNodeConfigArrayOutput) ToChainChainConfigNodeNodeConfigArrayOutputWithContext(ctx context.Context) ChainChainConfigNodeNodeConfigArrayOutput {
 	return o
+}
+
+func (o ChainChainConfigNodeNodeConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ChainChainConfigNodeNodeConfig] {
+	return pulumix.Output[[]ChainChainConfigNodeNodeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ChainChainConfigNodeNodeConfigArrayOutput) Index(i pulumi.IntInput) ChainChainConfigNodeNodeConfigOutput {
@@ -384,6 +457,12 @@ func (i ChainChainConfigNodeNodeConfigDenyPolicyArgs) ToChainChainConfigNodeNode
 	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigNodeNodeConfigDenyPolicyOutput)
 }
 
+func (i ChainChainConfigNodeNodeConfigDenyPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[ChainChainConfigNodeNodeConfigDenyPolicy] {
+	return pulumix.Output[ChainChainConfigNodeNodeConfigDenyPolicy]{
+		OutputState: i.ToChainChainConfigNodeNodeConfigDenyPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ChainChainConfigNodeNodeConfigDenyPolicyArrayInput is an input type that accepts ChainChainConfigNodeNodeConfigDenyPolicyArray and ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput values.
 // You can construct a concrete instance of `ChainChainConfigNodeNodeConfigDenyPolicyArrayInput` via:
 //
@@ -409,6 +488,12 @@ func (i ChainChainConfigNodeNodeConfigDenyPolicyArray) ToChainChainConfigNodeNod
 	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput)
 }
 
+func (i ChainChainConfigNodeNodeConfigDenyPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]ChainChainConfigNodeNodeConfigDenyPolicy] {
+	return pulumix.Output[[]ChainChainConfigNodeNodeConfigDenyPolicy]{
+		OutputState: i.ToChainChainConfigNodeNodeConfigDenyPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ChainChainConfigNodeNodeConfigDenyPolicyOutput struct{ *pulumi.OutputState }
 
 func (ChainChainConfigNodeNodeConfigDenyPolicyOutput) ElementType() reflect.Type {
@@ -421,6 +506,12 @@ func (o ChainChainConfigNodeNodeConfigDenyPolicyOutput) ToChainChainConfigNodeNo
 
 func (o ChainChainConfigNodeNodeConfigDenyPolicyOutput) ToChainChainConfigNodeNodeConfigDenyPolicyOutputWithContext(ctx context.Context) ChainChainConfigNodeNodeConfigDenyPolicyOutput {
 	return o
+}
+
+func (o ChainChainConfigNodeNodeConfigDenyPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[ChainChainConfigNodeNodeConfigDenyPolicy] {
+	return pulumix.Output[ChainChainConfigNodeNodeConfigDenyPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
@@ -455,6 +546,12 @@ func (o ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput) ToChainChainConfigN
 
 func (o ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput) ToChainChainConfigNodeNodeConfigDenyPolicyArrayOutputWithContext(ctx context.Context) ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput {
 	return o
+}
+
+func (o ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ChainChainConfigNodeNodeConfigDenyPolicy] {
+	return pulumix.Output[[]ChainChainConfigNodeNodeConfigDenyPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput) Index(i pulumi.IntInput) ChainChainConfigNodeNodeConfigDenyPolicyOutput {
@@ -500,6 +597,12 @@ func (i ChainChainConfigRouterArgs) ToChainChainConfigRouterOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigRouterOutput)
 }
 
+func (i ChainChainConfigRouterArgs) ToOutput(ctx context.Context) pulumix.Output[ChainChainConfigRouter] {
+	return pulumix.Output[ChainChainConfigRouter]{
+		OutputState: i.ToChainChainConfigRouterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ChainChainConfigRouterArrayInput is an input type that accepts ChainChainConfigRouterArray and ChainChainConfigRouterArrayOutput values.
 // You can construct a concrete instance of `ChainChainConfigRouterArrayInput` via:
 //
@@ -525,6 +628,12 @@ func (i ChainChainConfigRouterArray) ToChainChainConfigRouterArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigRouterArrayOutput)
 }
 
+func (i ChainChainConfigRouterArray) ToOutput(ctx context.Context) pulumix.Output[[]ChainChainConfigRouter] {
+	return pulumix.Output[[]ChainChainConfigRouter]{
+		OutputState: i.ToChainChainConfigRouterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ChainChainConfigRouterOutput struct{ *pulumi.OutputState }
 
 func (ChainChainConfigRouterOutput) ElementType() reflect.Type {
@@ -537,6 +646,12 @@ func (o ChainChainConfigRouterOutput) ToChainChainConfigRouterOutput() ChainChai
 
 func (o ChainChainConfigRouterOutput) ToChainChainConfigRouterOutputWithContext(ctx context.Context) ChainChainConfigRouterOutput {
 	return o
+}
+
+func (o ChainChainConfigRouterOutput) ToOutput(ctx context.Context) pulumix.Output[ChainChainConfigRouter] {
+	return pulumix.Output[ChainChainConfigRouter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Source node. See `from` below.
@@ -561,6 +676,12 @@ func (o ChainChainConfigRouterArrayOutput) ToChainChainConfigRouterArrayOutput()
 
 func (o ChainChainConfigRouterArrayOutput) ToChainChainConfigRouterArrayOutputWithContext(ctx context.Context) ChainChainConfigRouterArrayOutput {
 	return o
+}
+
+func (o ChainChainConfigRouterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ChainChainConfigRouter] {
+	return pulumix.Output[[]ChainChainConfigRouter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ChainChainConfigRouterArrayOutput) Index(i pulumi.IntInput) ChainChainConfigRouterOutput {
@@ -602,6 +723,12 @@ func (i ChainChainConfigRouterFromArgs) ToChainChainConfigRouterFromOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigRouterFromOutput)
 }
 
+func (i ChainChainConfigRouterFromArgs) ToOutput(ctx context.Context) pulumix.Output[ChainChainConfigRouterFrom] {
+	return pulumix.Output[ChainChainConfigRouterFrom]{
+		OutputState: i.ToChainChainConfigRouterFromOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ChainChainConfigRouterFromArrayInput is an input type that accepts ChainChainConfigRouterFromArray and ChainChainConfigRouterFromArrayOutput values.
 // You can construct a concrete instance of `ChainChainConfigRouterFromArrayInput` via:
 //
@@ -627,6 +754,12 @@ func (i ChainChainConfigRouterFromArray) ToChainChainConfigRouterFromArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigRouterFromArrayOutput)
 }
 
+func (i ChainChainConfigRouterFromArray) ToOutput(ctx context.Context) pulumix.Output[[]ChainChainConfigRouterFrom] {
+	return pulumix.Output[[]ChainChainConfigRouterFrom]{
+		OutputState: i.ToChainChainConfigRouterFromArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ChainChainConfigRouterFromOutput struct{ *pulumi.OutputState }
 
 func (ChainChainConfigRouterFromOutput) ElementType() reflect.Type {
@@ -639,6 +772,12 @@ func (o ChainChainConfigRouterFromOutput) ToChainChainConfigRouterFromOutput() C
 
 func (o ChainChainConfigRouterFromOutput) ToChainChainConfigRouterFromOutputWithContext(ctx context.Context) ChainChainConfigRouterFromOutput {
 	return o
+}
+
+func (o ChainChainConfigRouterFromOutput) ToOutput(ctx context.Context) pulumix.Output[ChainChainConfigRouterFrom] {
+	return pulumix.Output[ChainChainConfigRouterFrom]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
@@ -658,6 +797,12 @@ func (o ChainChainConfigRouterFromArrayOutput) ToChainChainConfigRouterFromArray
 
 func (o ChainChainConfigRouterFromArrayOutput) ToChainChainConfigRouterFromArrayOutputWithContext(ctx context.Context) ChainChainConfigRouterFromArrayOutput {
 	return o
+}
+
+func (o ChainChainConfigRouterFromArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ChainChainConfigRouterFrom] {
+	return pulumix.Output[[]ChainChainConfigRouterFrom]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ChainChainConfigRouterFromArrayOutput) Index(i pulumi.IntInput) ChainChainConfigRouterFromOutput {
@@ -699,6 +844,12 @@ func (i ChainChainConfigRouterToArgs) ToChainChainConfigRouterToOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigRouterToOutput)
 }
 
+func (i ChainChainConfigRouterToArgs) ToOutput(ctx context.Context) pulumix.Output[ChainChainConfigRouterTo] {
+	return pulumix.Output[ChainChainConfigRouterTo]{
+		OutputState: i.ToChainChainConfigRouterToOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ChainChainConfigRouterToArrayInput is an input type that accepts ChainChainConfigRouterToArray and ChainChainConfigRouterToArrayOutput values.
 // You can construct a concrete instance of `ChainChainConfigRouterToArrayInput` via:
 //
@@ -724,6 +875,12 @@ func (i ChainChainConfigRouterToArray) ToChainChainConfigRouterToArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigRouterToArrayOutput)
 }
 
+func (i ChainChainConfigRouterToArray) ToOutput(ctx context.Context) pulumix.Output[[]ChainChainConfigRouterTo] {
+	return pulumix.Output[[]ChainChainConfigRouterTo]{
+		OutputState: i.ToChainChainConfigRouterToArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ChainChainConfigRouterToOutput struct{ *pulumi.OutputState }
 
 func (ChainChainConfigRouterToOutput) ElementType() reflect.Type {
@@ -736,6 +893,12 @@ func (o ChainChainConfigRouterToOutput) ToChainChainConfigRouterToOutput() Chain
 
 func (o ChainChainConfigRouterToOutput) ToChainChainConfigRouterToOutputWithContext(ctx context.Context) ChainChainConfigRouterToOutput {
 	return o
+}
+
+func (o ChainChainConfigRouterToOutput) ToOutput(ctx context.Context) pulumix.Output[ChainChainConfigRouterTo] {
+	return pulumix.Output[ChainChainConfigRouterTo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
@@ -755,6 +918,12 @@ func (o ChainChainConfigRouterToArrayOutput) ToChainChainConfigRouterToArrayOutp
 
 func (o ChainChainConfigRouterToArrayOutput) ToChainChainConfigRouterToArrayOutputWithContext(ctx context.Context) ChainChainConfigRouterToArrayOutput {
 	return o
+}
+
+func (o ChainChainConfigRouterToArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ChainChainConfigRouterTo] {
+	return pulumix.Output[[]ChainChainConfigRouterTo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ChainChainConfigRouterToArrayOutput) Index(i pulumi.IntInput) ChainChainConfigRouterToOutput {
@@ -804,6 +973,12 @@ func (i RepoDomainListArgs) ToRepoDomainListOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(RepoDomainListOutput)
 }
 
+func (i RepoDomainListArgs) ToOutput(ctx context.Context) pulumix.Output[RepoDomainList] {
+	return pulumix.Output[RepoDomainList]{
+		OutputState: i.ToRepoDomainListOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RepoDomainListArgs) ToRepoDomainListPtrOutput() RepoDomainListPtrOutput {
 	return i.ToRepoDomainListPtrOutputWithContext(context.Background())
 }
@@ -845,6 +1020,12 @@ func (i *repoDomainListPtrType) ToRepoDomainListPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(RepoDomainListPtrOutput)
 }
 
+func (i *repoDomainListPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepoDomainList] {
+	return pulumix.Output[*RepoDomainList]{
+		OutputState: i.ToRepoDomainListPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RepoDomainListOutput struct{ *pulumi.OutputState }
 
 func (RepoDomainListOutput) ElementType() reflect.Type {
@@ -867,6 +1048,12 @@ func (o RepoDomainListOutput) ToRepoDomainListPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepoDomainList) *RepoDomainList {
 		return &v
 	}).(RepoDomainListPtrOutput)
+}
+
+func (o RepoDomainListOutput) ToOutput(ctx context.Context) pulumix.Output[RepoDomainList] {
+	return pulumix.Output[RepoDomainList]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Domain of internal endpoint, only in some regions.
@@ -896,6 +1083,12 @@ func (o RepoDomainListPtrOutput) ToRepoDomainListPtrOutput() RepoDomainListPtrOu
 
 func (o RepoDomainListPtrOutput) ToRepoDomainListPtrOutputWithContext(ctx context.Context) RepoDomainListPtrOutput {
 	return o
+}
+
+func (o RepoDomainListPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepoDomainList] {
+	return pulumix.Output[*RepoDomainList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RepoDomainListPtrOutput) Elem() RepoDomainListOutput {
@@ -1007,6 +1200,12 @@ func (i GetChainsChainArgs) ToGetChainsChainOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainOutput)
 }
 
+func (i GetChainsChainArgs) ToOutput(ctx context.Context) pulumix.Output[GetChainsChain] {
+	return pulumix.Output[GetChainsChain]{
+		OutputState: i.ToGetChainsChainOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetChainsChainArrayInput is an input type that accepts GetChainsChainArray and GetChainsChainArrayOutput values.
 // You can construct a concrete instance of `GetChainsChainArrayInput` via:
 //
@@ -1032,6 +1231,12 @@ func (i GetChainsChainArray) ToGetChainsChainArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainArrayOutput)
 }
 
+func (i GetChainsChainArray) ToOutput(ctx context.Context) pulumix.Output[[]GetChainsChain] {
+	return pulumix.Output[[]GetChainsChain]{
+		OutputState: i.ToGetChainsChainArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetChainsChainOutput struct{ *pulumi.OutputState }
 
 func (GetChainsChainOutput) ElementType() reflect.Type {
@@ -1044,6 +1249,12 @@ func (o GetChainsChainOutput) ToGetChainsChainOutput() GetChainsChainOutput {
 
 func (o GetChainsChainOutput) ToGetChainsChainOutputWithContext(ctx context.Context) GetChainsChainOutput {
 	return o
+}
+
+func (o GetChainsChainOutput) ToOutput(ctx context.Context) pulumix.Output[GetChainsChain] {
+	return pulumix.Output[GetChainsChain]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration of delivery chain.
@@ -1110,6 +1321,12 @@ func (o GetChainsChainArrayOutput) ToGetChainsChainArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o GetChainsChainArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetChainsChain] {
+	return pulumix.Output[[]GetChainsChain]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetChainsChainArrayOutput) Index(i pulumi.IntInput) GetChainsChainOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetChainsChain {
 		return vs[0].([]GetChainsChain)[vs[1].(int)]
@@ -1153,6 +1370,12 @@ func (i GetChainsChainChainConfigArgs) ToGetChainsChainChainConfigOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigOutput)
 }
 
+func (i GetChainsChainChainConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetChainsChainChainConfig] {
+	return pulumix.Output[GetChainsChainChainConfig]{
+		OutputState: i.ToGetChainsChainChainConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetChainsChainChainConfigArrayInput is an input type that accepts GetChainsChainChainConfigArray and GetChainsChainChainConfigArrayOutput values.
 // You can construct a concrete instance of `GetChainsChainChainConfigArrayInput` via:
 //
@@ -1178,6 +1401,12 @@ func (i GetChainsChainChainConfigArray) ToGetChainsChainChainConfigArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigArrayOutput)
 }
 
+func (i GetChainsChainChainConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetChainsChainChainConfig] {
+	return pulumix.Output[[]GetChainsChainChainConfig]{
+		OutputState: i.ToGetChainsChainChainConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetChainsChainChainConfigOutput struct{ *pulumi.OutputState }
 
 func (GetChainsChainChainConfigOutput) ElementType() reflect.Type {
@@ -1190,6 +1419,12 @@ func (o GetChainsChainChainConfigOutput) ToGetChainsChainChainConfigOutput() Get
 
 func (o GetChainsChainChainConfigOutput) ToGetChainsChainChainConfigOutputWithContext(ctx context.Context) GetChainsChainChainConfigOutput {
 	return o
+}
+
+func (o GetChainsChainChainConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetChainsChainChainConfig] {
+	return pulumix.Output[GetChainsChainChainConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Each node in the delivery chain.
@@ -1214,6 +1449,12 @@ func (o GetChainsChainChainConfigArrayOutput) ToGetChainsChainChainConfigArrayOu
 
 func (o GetChainsChainChainConfigArrayOutput) ToGetChainsChainChainConfigArrayOutputWithContext(ctx context.Context) GetChainsChainChainConfigArrayOutput {
 	return o
+}
+
+func (o GetChainsChainChainConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetChainsChainChainConfig] {
+	return pulumix.Output[[]GetChainsChainChainConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetChainsChainChainConfigArrayOutput) Index(i pulumi.IntInput) GetChainsChainChainConfigOutput {
@@ -1263,6 +1504,12 @@ func (i GetChainsChainChainConfigNodeArgs) ToGetChainsChainChainConfigNodeOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigNodeOutput)
 }
 
+func (i GetChainsChainChainConfigNodeArgs) ToOutput(ctx context.Context) pulumix.Output[GetChainsChainChainConfigNode] {
+	return pulumix.Output[GetChainsChainChainConfigNode]{
+		OutputState: i.ToGetChainsChainChainConfigNodeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetChainsChainChainConfigNodeArrayInput is an input type that accepts GetChainsChainChainConfigNodeArray and GetChainsChainChainConfigNodeArrayOutput values.
 // You can construct a concrete instance of `GetChainsChainChainConfigNodeArrayInput` via:
 //
@@ -1288,6 +1535,12 @@ func (i GetChainsChainChainConfigNodeArray) ToGetChainsChainChainConfigNodeArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigNodeArrayOutput)
 }
 
+func (i GetChainsChainChainConfigNodeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetChainsChainChainConfigNode] {
+	return pulumix.Output[[]GetChainsChainChainConfigNode]{
+		OutputState: i.ToGetChainsChainChainConfigNodeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetChainsChainChainConfigNodeOutput struct{ *pulumi.OutputState }
 
 func (GetChainsChainChainConfigNodeOutput) ElementType() reflect.Type {
@@ -1300,6 +1553,12 @@ func (o GetChainsChainChainConfigNodeOutput) ToGetChainsChainChainConfigNodeOutp
 
 func (o GetChainsChainChainConfigNodeOutput) ToGetChainsChainChainConfigNodeOutputWithContext(ctx context.Context) GetChainsChainChainConfigNodeOutput {
 	return o
+}
+
+func (o GetChainsChainChainConfigNodeOutput) ToOutput(ctx context.Context) pulumix.Output[GetChainsChainChainConfigNode] {
+	return pulumix.Output[GetChainsChainChainConfigNode]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to enable the delivery chain node. Valid values: `true`, `false`.
@@ -1329,6 +1588,12 @@ func (o GetChainsChainChainConfigNodeArrayOutput) ToGetChainsChainChainConfigNod
 
 func (o GetChainsChainChainConfigNodeArrayOutput) ToGetChainsChainChainConfigNodeArrayOutputWithContext(ctx context.Context) GetChainsChainChainConfigNodeArrayOutput {
 	return o
+}
+
+func (o GetChainsChainChainConfigNodeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetChainsChainChainConfigNode] {
+	return pulumix.Output[[]GetChainsChainChainConfigNode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetChainsChainChainConfigNodeArrayOutput) Index(i pulumi.IntInput) GetChainsChainChainConfigNodeOutput {
@@ -1370,6 +1635,12 @@ func (i GetChainsChainChainConfigNodeNodeConfigArgs) ToGetChainsChainChainConfig
 	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigNodeNodeConfigOutput)
 }
 
+func (i GetChainsChainChainConfigNodeNodeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetChainsChainChainConfigNodeNodeConfig] {
+	return pulumix.Output[GetChainsChainChainConfigNodeNodeConfig]{
+		OutputState: i.ToGetChainsChainChainConfigNodeNodeConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetChainsChainChainConfigNodeNodeConfigArrayInput is an input type that accepts GetChainsChainChainConfigNodeNodeConfigArray and GetChainsChainChainConfigNodeNodeConfigArrayOutput values.
 // You can construct a concrete instance of `GetChainsChainChainConfigNodeNodeConfigArrayInput` via:
 //
@@ -1395,6 +1666,12 @@ func (i GetChainsChainChainConfigNodeNodeConfigArray) ToGetChainsChainChainConfi
 	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigNodeNodeConfigArrayOutput)
 }
 
+func (i GetChainsChainChainConfigNodeNodeConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetChainsChainChainConfigNodeNodeConfig] {
+	return pulumix.Output[[]GetChainsChainChainConfigNodeNodeConfig]{
+		OutputState: i.ToGetChainsChainChainConfigNodeNodeConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetChainsChainChainConfigNodeNodeConfigOutput struct{ *pulumi.OutputState }
 
 func (GetChainsChainChainConfigNodeNodeConfigOutput) ElementType() reflect.Type {
@@ -1407,6 +1684,12 @@ func (o GetChainsChainChainConfigNodeNodeConfigOutput) ToGetChainsChainChainConf
 
 func (o GetChainsChainChainConfigNodeNodeConfigOutput) ToGetChainsChainChainConfigNodeNodeConfigOutputWithContext(ctx context.Context) GetChainsChainChainConfigNodeNodeConfigOutput {
 	return o
+}
+
+func (o GetChainsChainChainConfigNodeNodeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetChainsChainChainConfigNodeNodeConfig] {
+	return pulumix.Output[GetChainsChainChainConfigNodeNodeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
@@ -1428,6 +1711,12 @@ func (o GetChainsChainChainConfigNodeNodeConfigArrayOutput) ToGetChainsChainChai
 
 func (o GetChainsChainChainConfigNodeNodeConfigArrayOutput) ToGetChainsChainChainConfigNodeNodeConfigArrayOutputWithContext(ctx context.Context) GetChainsChainChainConfigNodeNodeConfigArrayOutput {
 	return o
+}
+
+func (o GetChainsChainChainConfigNodeNodeConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetChainsChainChainConfigNodeNodeConfig] {
+	return pulumix.Output[[]GetChainsChainChainConfigNodeNodeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetChainsChainChainConfigNodeNodeConfigArrayOutput) Index(i pulumi.IntInput) GetChainsChainChainConfigNodeNodeConfigOutput {
@@ -1481,6 +1770,12 @@ func (i GetChainsChainChainConfigNodeNodeConfigDenyPolicyArgs) ToGetChainsChainC
 	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput)
 }
 
+func (i GetChainsChainChainConfigNodeNodeConfigDenyPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GetChainsChainChainConfigNodeNodeConfigDenyPolicy] {
+	return pulumix.Output[GetChainsChainChainConfigNodeNodeConfigDenyPolicy]{
+		OutputState: i.ToGetChainsChainChainConfigNodeNodeConfigDenyPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayInput is an input type that accepts GetChainsChainChainConfigNodeNodeConfigDenyPolicyArray and GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput values.
 // You can construct a concrete instance of `GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayInput` via:
 //
@@ -1506,6 +1801,12 @@ func (i GetChainsChainChainConfigNodeNodeConfigDenyPolicyArray) ToGetChainsChain
 	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput)
 }
 
+func (i GetChainsChainChainConfigNodeNodeConfigDenyPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetChainsChainChainConfigNodeNodeConfigDenyPolicy] {
+	return pulumix.Output[[]GetChainsChainChainConfigNodeNodeConfigDenyPolicy]{
+		OutputState: i.ToGetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput) ElementType() reflect.Type {
@@ -1518,6 +1819,12 @@ func (o GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput) ToGetChainsChai
 
 func (o GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput) ToGetChainsChainChainConfigNodeNodeConfigDenyPolicyOutputWithContext(ctx context.Context) GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput {
 	return o
+}
+
+func (o GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GetChainsChainChainConfigNodeNodeConfigDenyPolicy] {
+	return pulumix.Output[GetChainsChainChainConfigNodeNodeConfigDenyPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
@@ -1552,6 +1859,12 @@ func (o GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput) ToGetChain
 
 func (o GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput) ToGetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutputWithContext(ctx context.Context) GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput {
 	return o
+}
+
+func (o GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetChainsChainChainConfigNodeNodeConfigDenyPolicy] {
+	return pulumix.Output[[]GetChainsChainChainConfigNodeNodeConfigDenyPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput) Index(i pulumi.IntInput) GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput {
@@ -1597,6 +1910,12 @@ func (i GetChainsChainChainConfigRouterArgs) ToGetChainsChainChainConfigRouterOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigRouterOutput)
 }
 
+func (i GetChainsChainChainConfigRouterArgs) ToOutput(ctx context.Context) pulumix.Output[GetChainsChainChainConfigRouter] {
+	return pulumix.Output[GetChainsChainChainConfigRouter]{
+		OutputState: i.ToGetChainsChainChainConfigRouterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetChainsChainChainConfigRouterArrayInput is an input type that accepts GetChainsChainChainConfigRouterArray and GetChainsChainChainConfigRouterArrayOutput values.
 // You can construct a concrete instance of `GetChainsChainChainConfigRouterArrayInput` via:
 //
@@ -1622,6 +1941,12 @@ func (i GetChainsChainChainConfigRouterArray) ToGetChainsChainChainConfigRouterA
 	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigRouterArrayOutput)
 }
 
+func (i GetChainsChainChainConfigRouterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetChainsChainChainConfigRouter] {
+	return pulumix.Output[[]GetChainsChainChainConfigRouter]{
+		OutputState: i.ToGetChainsChainChainConfigRouterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetChainsChainChainConfigRouterOutput struct{ *pulumi.OutputState }
 
 func (GetChainsChainChainConfigRouterOutput) ElementType() reflect.Type {
@@ -1634,6 +1959,12 @@ func (o GetChainsChainChainConfigRouterOutput) ToGetChainsChainChainConfigRouter
 
 func (o GetChainsChainChainConfigRouterOutput) ToGetChainsChainChainConfigRouterOutputWithContext(ctx context.Context) GetChainsChainChainConfigRouterOutput {
 	return o
+}
+
+func (o GetChainsChainChainConfigRouterOutput) ToOutput(ctx context.Context) pulumix.Output[GetChainsChainChainConfigRouter] {
+	return pulumix.Output[GetChainsChainChainConfigRouter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Source node.
@@ -1658,6 +1989,12 @@ func (o GetChainsChainChainConfigRouterArrayOutput) ToGetChainsChainChainConfigR
 
 func (o GetChainsChainChainConfigRouterArrayOutput) ToGetChainsChainChainConfigRouterArrayOutputWithContext(ctx context.Context) GetChainsChainChainConfigRouterArrayOutput {
 	return o
+}
+
+func (o GetChainsChainChainConfigRouterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetChainsChainChainConfigRouter] {
+	return pulumix.Output[[]GetChainsChainChainConfigRouter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetChainsChainChainConfigRouterArrayOutput) Index(i pulumi.IntInput) GetChainsChainChainConfigRouterOutput {
@@ -1699,6 +2036,12 @@ func (i GetChainsChainChainConfigRouterFromArgs) ToGetChainsChainChainConfigRout
 	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigRouterFromOutput)
 }
 
+func (i GetChainsChainChainConfigRouterFromArgs) ToOutput(ctx context.Context) pulumix.Output[GetChainsChainChainConfigRouterFrom] {
+	return pulumix.Output[GetChainsChainChainConfigRouterFrom]{
+		OutputState: i.ToGetChainsChainChainConfigRouterFromOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetChainsChainChainConfigRouterFromArrayInput is an input type that accepts GetChainsChainChainConfigRouterFromArray and GetChainsChainChainConfigRouterFromArrayOutput values.
 // You can construct a concrete instance of `GetChainsChainChainConfigRouterFromArrayInput` via:
 //
@@ -1724,6 +2067,12 @@ func (i GetChainsChainChainConfigRouterFromArray) ToGetChainsChainChainConfigRou
 	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigRouterFromArrayOutput)
 }
 
+func (i GetChainsChainChainConfigRouterFromArray) ToOutput(ctx context.Context) pulumix.Output[[]GetChainsChainChainConfigRouterFrom] {
+	return pulumix.Output[[]GetChainsChainChainConfigRouterFrom]{
+		OutputState: i.ToGetChainsChainChainConfigRouterFromArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetChainsChainChainConfigRouterFromOutput struct{ *pulumi.OutputState }
 
 func (GetChainsChainChainConfigRouterFromOutput) ElementType() reflect.Type {
@@ -1736,6 +2085,12 @@ func (o GetChainsChainChainConfigRouterFromOutput) ToGetChainsChainChainConfigRo
 
 func (o GetChainsChainChainConfigRouterFromOutput) ToGetChainsChainChainConfigRouterFromOutputWithContext(ctx context.Context) GetChainsChainChainConfigRouterFromOutput {
 	return o
+}
+
+func (o GetChainsChainChainConfigRouterFromOutput) ToOutput(ctx context.Context) pulumix.Output[GetChainsChainChainConfigRouterFrom] {
+	return pulumix.Output[GetChainsChainChainConfigRouterFrom]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of delivery chain node.
@@ -1755,6 +2110,12 @@ func (o GetChainsChainChainConfigRouterFromArrayOutput) ToGetChainsChainChainCon
 
 func (o GetChainsChainChainConfigRouterFromArrayOutput) ToGetChainsChainChainConfigRouterFromArrayOutputWithContext(ctx context.Context) GetChainsChainChainConfigRouterFromArrayOutput {
 	return o
+}
+
+func (o GetChainsChainChainConfigRouterFromArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetChainsChainChainConfigRouterFrom] {
+	return pulumix.Output[[]GetChainsChainChainConfigRouterFrom]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetChainsChainChainConfigRouterFromArrayOutput) Index(i pulumi.IntInput) GetChainsChainChainConfigRouterFromOutput {
@@ -1796,6 +2157,12 @@ func (i GetChainsChainChainConfigRouterToArgs) ToGetChainsChainChainConfigRouter
 	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigRouterToOutput)
 }
 
+func (i GetChainsChainChainConfigRouterToArgs) ToOutput(ctx context.Context) pulumix.Output[GetChainsChainChainConfigRouterTo] {
+	return pulumix.Output[GetChainsChainChainConfigRouterTo]{
+		OutputState: i.ToGetChainsChainChainConfigRouterToOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetChainsChainChainConfigRouterToArrayInput is an input type that accepts GetChainsChainChainConfigRouterToArray and GetChainsChainChainConfigRouterToArrayOutput values.
 // You can construct a concrete instance of `GetChainsChainChainConfigRouterToArrayInput` via:
 //
@@ -1821,6 +2188,12 @@ func (i GetChainsChainChainConfigRouterToArray) ToGetChainsChainChainConfigRoute
 	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigRouterToArrayOutput)
 }
 
+func (i GetChainsChainChainConfigRouterToArray) ToOutput(ctx context.Context) pulumix.Output[[]GetChainsChainChainConfigRouterTo] {
+	return pulumix.Output[[]GetChainsChainChainConfigRouterTo]{
+		OutputState: i.ToGetChainsChainChainConfigRouterToArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetChainsChainChainConfigRouterToOutput struct{ *pulumi.OutputState }
 
 func (GetChainsChainChainConfigRouterToOutput) ElementType() reflect.Type {
@@ -1833,6 +2206,12 @@ func (o GetChainsChainChainConfigRouterToOutput) ToGetChainsChainChainConfigRout
 
 func (o GetChainsChainChainConfigRouterToOutput) ToGetChainsChainChainConfigRouterToOutputWithContext(ctx context.Context) GetChainsChainChainConfigRouterToOutput {
 	return o
+}
+
+func (o GetChainsChainChainConfigRouterToOutput) ToOutput(ctx context.Context) pulumix.Output[GetChainsChainChainConfigRouterTo] {
+	return pulumix.Output[GetChainsChainChainConfigRouterTo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of delivery chain node.
@@ -1852,6 +2231,12 @@ func (o GetChainsChainChainConfigRouterToArrayOutput) ToGetChainsChainChainConfi
 
 func (o GetChainsChainChainConfigRouterToArrayOutput) ToGetChainsChainChainConfigRouterToArrayOutputWithContext(ctx context.Context) GetChainsChainChainConfigRouterToArrayOutput {
 	return o
+}
+
+func (o GetChainsChainChainConfigRouterToArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetChainsChainChainConfigRouterTo] {
+	return pulumix.Output[[]GetChainsChainChainConfigRouterTo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetChainsChainChainConfigRouterToArrayOutput) Index(i pulumi.IntInput) GetChainsChainChainConfigRouterToOutput {
@@ -1913,6 +2298,12 @@ func (i GetChartNamespacesNamespaceArgs) ToGetChartNamespacesNamespaceOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetChartNamespacesNamespaceOutput)
 }
 
+func (i GetChartNamespacesNamespaceArgs) ToOutput(ctx context.Context) pulumix.Output[GetChartNamespacesNamespace] {
+	return pulumix.Output[GetChartNamespacesNamespace]{
+		OutputState: i.ToGetChartNamespacesNamespaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetChartNamespacesNamespaceArrayInput is an input type that accepts GetChartNamespacesNamespaceArray and GetChartNamespacesNamespaceArrayOutput values.
 // You can construct a concrete instance of `GetChartNamespacesNamespaceArrayInput` via:
 //
@@ -1938,6 +2329,12 @@ func (i GetChartNamespacesNamespaceArray) ToGetChartNamespacesNamespaceArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetChartNamespacesNamespaceArrayOutput)
 }
 
+func (i GetChartNamespacesNamespaceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetChartNamespacesNamespace] {
+	return pulumix.Output[[]GetChartNamespacesNamespace]{
+		OutputState: i.ToGetChartNamespacesNamespaceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetChartNamespacesNamespaceOutput struct{ *pulumi.OutputState }
 
 func (GetChartNamespacesNamespaceOutput) ElementType() reflect.Type {
@@ -1950,6 +2347,12 @@ func (o GetChartNamespacesNamespaceOutput) ToGetChartNamespacesNamespaceOutput()
 
 func (o GetChartNamespacesNamespaceOutput) ToGetChartNamespacesNamespaceOutputWithContext(ctx context.Context) GetChartNamespacesNamespaceOutput {
 	return o
+}
+
+func (o GetChartNamespacesNamespaceOutput) ToOutput(ctx context.Context) pulumix.Output[GetChartNamespacesNamespace] {
+	return pulumix.Output[GetChartNamespacesNamespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicates whether a repository is automatically created when an image is pushed to the namespace.
@@ -1994,6 +2397,12 @@ func (o GetChartNamespacesNamespaceArrayOutput) ToGetChartNamespacesNamespaceArr
 
 func (o GetChartNamespacesNamespaceArrayOutput) ToGetChartNamespacesNamespaceArrayOutputWithContext(ctx context.Context) GetChartNamespacesNamespaceArrayOutput {
 	return o
+}
+
+func (o GetChartNamespacesNamespaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetChartNamespacesNamespace] {
+	return pulumix.Output[[]GetChartNamespacesNamespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetChartNamespacesNamespaceArrayOutput) Index(i pulumi.IntInput) GetChartNamespacesNamespaceOutput {
@@ -2063,6 +2472,12 @@ func (i GetChartRepositoriesRepositoryArgs) ToGetChartRepositoriesRepositoryOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetChartRepositoriesRepositoryOutput)
 }
 
+func (i GetChartRepositoriesRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[GetChartRepositoriesRepository] {
+	return pulumix.Output[GetChartRepositoriesRepository]{
+		OutputState: i.ToGetChartRepositoriesRepositoryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetChartRepositoriesRepositoryArrayInput is an input type that accepts GetChartRepositoriesRepositoryArray and GetChartRepositoriesRepositoryArrayOutput values.
 // You can construct a concrete instance of `GetChartRepositoriesRepositoryArrayInput` via:
 //
@@ -2088,6 +2503,12 @@ func (i GetChartRepositoriesRepositoryArray) ToGetChartRepositoriesRepositoryArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetChartRepositoriesRepositoryArrayOutput)
 }
 
+func (i GetChartRepositoriesRepositoryArray) ToOutput(ctx context.Context) pulumix.Output[[]GetChartRepositoriesRepository] {
+	return pulumix.Output[[]GetChartRepositoriesRepository]{
+		OutputState: i.ToGetChartRepositoriesRepositoryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetChartRepositoriesRepositoryOutput struct{ *pulumi.OutputState }
 
 func (GetChartRepositoriesRepositoryOutput) ElementType() reflect.Type {
@@ -2100,6 +2521,12 @@ func (o GetChartRepositoriesRepositoryOutput) ToGetChartRepositoriesRepositoryOu
 
 func (o GetChartRepositoriesRepositoryOutput) ToGetChartRepositoriesRepositoryOutputWithContext(ctx context.Context) GetChartRepositoriesRepositoryOutput {
 	return o
+}
+
+func (o GetChartRepositoriesRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[GetChartRepositoriesRepository] {
+	return pulumix.Output[GetChartRepositoriesRepository]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The first ID of the resource.
@@ -2154,6 +2581,12 @@ func (o GetChartRepositoriesRepositoryArrayOutput) ToGetChartRepositoriesReposit
 
 func (o GetChartRepositoriesRepositoryArrayOutput) ToGetChartRepositoriesRepositoryArrayOutputWithContext(ctx context.Context) GetChartRepositoriesRepositoryArrayOutput {
 	return o
+}
+
+func (o GetChartRepositoriesRepositoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetChartRepositoriesRepository] {
+	return pulumix.Output[[]GetChartRepositoriesRepository]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetChartRepositoriesRepositoryArrayOutput) Index(i pulumi.IntInput) GetChartRepositoriesRepositoryOutput {
@@ -2211,6 +2644,12 @@ func (i GetEndpointAclPoliciesPolicyArgs) ToGetEndpointAclPoliciesPolicyOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetEndpointAclPoliciesPolicyOutput)
 }
 
+func (i GetEndpointAclPoliciesPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GetEndpointAclPoliciesPolicy] {
+	return pulumix.Output[GetEndpointAclPoliciesPolicy]{
+		OutputState: i.ToGetEndpointAclPoliciesPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetEndpointAclPoliciesPolicyArrayInput is an input type that accepts GetEndpointAclPoliciesPolicyArray and GetEndpointAclPoliciesPolicyArrayOutput values.
 // You can construct a concrete instance of `GetEndpointAclPoliciesPolicyArrayInput` via:
 //
@@ -2236,6 +2675,12 @@ func (i GetEndpointAclPoliciesPolicyArray) ToGetEndpointAclPoliciesPolicyArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetEndpointAclPoliciesPolicyArrayOutput)
 }
 
+func (i GetEndpointAclPoliciesPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEndpointAclPoliciesPolicy] {
+	return pulumix.Output[[]GetEndpointAclPoliciesPolicy]{
+		OutputState: i.ToGetEndpointAclPoliciesPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetEndpointAclPoliciesPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetEndpointAclPoliciesPolicyOutput) ElementType() reflect.Type {
@@ -2248,6 +2693,12 @@ func (o GetEndpointAclPoliciesPolicyOutput) ToGetEndpointAclPoliciesPolicyOutput
 
 func (o GetEndpointAclPoliciesPolicyOutput) ToGetEndpointAclPoliciesPolicyOutputWithContext(ctx context.Context) GetEndpointAclPoliciesPolicyOutput {
 	return o
+}
+
+func (o GetEndpointAclPoliciesPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GetEndpointAclPoliciesPolicy] {
+	return pulumix.Output[GetEndpointAclPoliciesPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the entry.
@@ -2287,6 +2738,12 @@ func (o GetEndpointAclPoliciesPolicyArrayOutput) ToGetEndpointAclPoliciesPolicyA
 
 func (o GetEndpointAclPoliciesPolicyArrayOutput) ToGetEndpointAclPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetEndpointAclPoliciesPolicyArrayOutput {
 	return o
+}
+
+func (o GetEndpointAclPoliciesPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEndpointAclPoliciesPolicy] {
+	return pulumix.Output[[]GetEndpointAclPoliciesPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetEndpointAclPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetEndpointAclPoliciesPolicyOutput {
@@ -2336,6 +2793,12 @@ func (i GetNamespacesNamespaceArgs) ToGetNamespacesNamespaceOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetNamespacesNamespaceOutput)
 }
 
+func (i GetNamespacesNamespaceArgs) ToOutput(ctx context.Context) pulumix.Output[GetNamespacesNamespace] {
+	return pulumix.Output[GetNamespacesNamespace]{
+		OutputState: i.ToGetNamespacesNamespaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetNamespacesNamespaceArrayInput is an input type that accepts GetNamespacesNamespaceArray and GetNamespacesNamespaceArrayOutput values.
 // You can construct a concrete instance of `GetNamespacesNamespaceArrayInput` via:
 //
@@ -2361,6 +2824,12 @@ func (i GetNamespacesNamespaceArray) ToGetNamespacesNamespaceArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetNamespacesNamespaceArrayOutput)
 }
 
+func (i GetNamespacesNamespaceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetNamespacesNamespace] {
+	return pulumix.Output[[]GetNamespacesNamespace]{
+		OutputState: i.ToGetNamespacesNamespaceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetNamespacesNamespaceOutput struct{ *pulumi.OutputState }
 
 func (GetNamespacesNamespaceOutput) ElementType() reflect.Type {
@@ -2373,6 +2842,12 @@ func (o GetNamespacesNamespaceOutput) ToGetNamespacesNamespaceOutput() GetNamesp
 
 func (o GetNamespacesNamespaceOutput) ToGetNamespacesNamespaceOutputWithContext(ctx context.Context) GetNamespacesNamespaceOutput {
 	return o
+}
+
+func (o GetNamespacesNamespaceOutput) ToOutput(ctx context.Context) pulumix.Output[GetNamespacesNamespace] {
+	return pulumix.Output[GetNamespacesNamespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
@@ -2402,6 +2877,12 @@ func (o GetNamespacesNamespaceArrayOutput) ToGetNamespacesNamespaceArrayOutput()
 
 func (o GetNamespacesNamespaceArrayOutput) ToGetNamespacesNamespaceArrayOutputWithContext(ctx context.Context) GetNamespacesNamespaceArrayOutput {
 	return o
+}
+
+func (o GetNamespacesNamespaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetNamespacesNamespace] {
+	return pulumix.Output[[]GetNamespacesNamespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetNamespacesNamespaceArrayOutput) Index(i pulumi.IntInput) GetNamespacesNamespaceOutput {
@@ -2463,6 +2944,12 @@ func (i GetReposRepoArgs) ToGetReposRepoOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetReposRepoOutput)
 }
 
+func (i GetReposRepoArgs) ToOutput(ctx context.Context) pulumix.Output[GetReposRepo] {
+	return pulumix.Output[GetReposRepo]{
+		OutputState: i.ToGetReposRepoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetReposRepoArrayInput is an input type that accepts GetReposRepoArray and GetReposRepoArrayOutput values.
 // You can construct a concrete instance of `GetReposRepoArrayInput` via:
 //
@@ -2488,6 +2975,12 @@ func (i GetReposRepoArray) ToGetReposRepoArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetReposRepoArrayOutput)
 }
 
+func (i GetReposRepoArray) ToOutput(ctx context.Context) pulumix.Output[[]GetReposRepo] {
+	return pulumix.Output[[]GetReposRepo]{
+		OutputState: i.ToGetReposRepoArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetReposRepoOutput struct{ *pulumi.OutputState }
 
 func (GetReposRepoOutput) ElementType() reflect.Type {
@@ -2500,6 +2993,12 @@ func (o GetReposRepoOutput) ToGetReposRepoOutput() GetReposRepoOutput {
 
 func (o GetReposRepoOutput) ToGetReposRepoOutputWithContext(ctx context.Context) GetReposRepoOutput {
 	return o
+}
+
+func (o GetReposRepoOutput) ToOutput(ctx context.Context) pulumix.Output[GetReposRepo] {
+	return pulumix.Output[GetReposRepo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The repository domain list.
@@ -2544,6 +3043,12 @@ func (o GetReposRepoArrayOutput) ToGetReposRepoArrayOutput() GetReposRepoArrayOu
 
 func (o GetReposRepoArrayOutput) ToGetReposRepoArrayOutputWithContext(ctx context.Context) GetReposRepoArrayOutput {
 	return o
+}
+
+func (o GetReposRepoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetReposRepo] {
+	return pulumix.Output[[]GetReposRepo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetReposRepoArrayOutput) Index(i pulumi.IntInput) GetReposRepoOutput {
@@ -2593,6 +3098,12 @@ func (i GetReposRepoDomainListArgs) ToGetReposRepoDomainListOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetReposRepoDomainListOutput)
 }
 
+func (i GetReposRepoDomainListArgs) ToOutput(ctx context.Context) pulumix.Output[GetReposRepoDomainList] {
+	return pulumix.Output[GetReposRepoDomainList]{
+		OutputState: i.ToGetReposRepoDomainListOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetReposRepoDomainListOutput struct{ *pulumi.OutputState }
 
 func (GetReposRepoDomainListOutput) ElementType() reflect.Type {
@@ -2605,6 +3116,12 @@ func (o GetReposRepoDomainListOutput) ToGetReposRepoDomainListOutput() GetReposR
 
 func (o GetReposRepoDomainListOutput) ToGetReposRepoDomainListOutputWithContext(ctx context.Context) GetReposRepoDomainListOutput {
 	return o
+}
+
+func (o GetReposRepoDomainListOutput) ToOutput(ctx context.Context) pulumix.Output[GetReposRepoDomainList] {
+	return pulumix.Output[GetReposRepoDomainList]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Domain of internal endpoint, only in some regions.
@@ -2679,6 +3196,12 @@ func (i GetReposRepoTagArgs) ToGetReposRepoTagOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetReposRepoTagOutput)
 }
 
+func (i GetReposRepoTagArgs) ToOutput(ctx context.Context) pulumix.Output[GetReposRepoTag] {
+	return pulumix.Output[GetReposRepoTag]{
+		OutputState: i.ToGetReposRepoTagOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetReposRepoTagArrayInput is an input type that accepts GetReposRepoTagArray and GetReposRepoTagArrayOutput values.
 // You can construct a concrete instance of `GetReposRepoTagArrayInput` via:
 //
@@ -2704,6 +3227,12 @@ func (i GetReposRepoTagArray) ToGetReposRepoTagArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetReposRepoTagArrayOutput)
 }
 
+func (i GetReposRepoTagArray) ToOutput(ctx context.Context) pulumix.Output[[]GetReposRepoTag] {
+	return pulumix.Output[[]GetReposRepoTag]{
+		OutputState: i.ToGetReposRepoTagArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetReposRepoTagOutput struct{ *pulumi.OutputState }
 
 func (GetReposRepoTagOutput) ElementType() reflect.Type {
@@ -2716,6 +3245,12 @@ func (o GetReposRepoTagOutput) ToGetReposRepoTagOutput() GetReposRepoTagOutput {
 
 func (o GetReposRepoTagOutput) ToGetReposRepoTagOutputWithContext(ctx context.Context) GetReposRepoTagOutput {
 	return o
+}
+
+func (o GetReposRepoTagOutput) ToOutput(ctx context.Context) pulumix.Output[GetReposRepoTag] {
+	return pulumix.Output[GetReposRepoTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Digest of this image.
@@ -2765,6 +3300,12 @@ func (o GetReposRepoTagArrayOutput) ToGetReposRepoTagArrayOutput() GetReposRepoT
 
 func (o GetReposRepoTagArrayOutput) ToGetReposRepoTagArrayOutputWithContext(ctx context.Context) GetReposRepoTagArrayOutput {
 	return o
+}
+
+func (o GetReposRepoTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetReposRepoTag] {
+	return pulumix.Output[[]GetReposRepoTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetReposRepoTagArrayOutput) Index(i pulumi.IntInput) GetReposRepoTagOutput {
@@ -2834,6 +3375,12 @@ func (i GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArgs) ToGetVpcEndpointLinked
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput)
 }
 
+func (i GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArgs) ToOutput(ctx context.Context) pulumix.Output[GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc] {
+	return pulumix.Output[GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc]{
+		OutputState: i.ToGetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayInput is an input type that accepts GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArray and GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput values.
 // You can construct a concrete instance of `GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayInput` via:
 //
@@ -2859,6 +3406,12 @@ func (i GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArray) ToGetVpcEndpointLinke
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput)
 }
 
+func (i GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc] {
+	return pulumix.Output[[]GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc]{
+		OutputState: i.ToGetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput struct{ *pulumi.OutputState }
 
 func (GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput) ElementType() reflect.Type {
@@ -2871,6 +3424,12 @@ func (o GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput) ToGetVpcEndpointLink
 
 func (o GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput) ToGetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutputWithContext(ctx context.Context) GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput {
 	return o
+}
+
+func (o GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc] {
+	return pulumix.Output[GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicates whether the default policy is used to access the instance.
@@ -2925,6 +3484,12 @@ func (o GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput) ToGetVpcEndpoin
 
 func (o GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput) ToGetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutputWithContext(ctx context.Context) GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput {
 	return o
+}
+
+func (o GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc] {
+	return pulumix.Output[[]GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput) Index(i pulumi.IntInput) GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput {

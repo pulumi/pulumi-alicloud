@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Alb Security Policies of the current Alibaba Cloud user.
@@ -142,6 +143,12 @@ func (o GetSecurityPoliciesResultOutput) ToGetSecurityPoliciesResultOutput() Get
 
 func (o GetSecurityPoliciesResultOutput) ToGetSecurityPoliciesResultOutputWithContext(ctx context.Context) GetSecurityPoliciesResultOutput {
 	return o
+}
+
+func (o GetSecurityPoliciesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecurityPoliciesResult] {
+	return pulumix.Output[GetSecurityPoliciesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

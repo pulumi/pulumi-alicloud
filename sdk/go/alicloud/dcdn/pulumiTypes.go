@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -50,6 +51,12 @@ func (i DomainConfigFunctionArgArgs) ToDomainConfigFunctionArgOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigFunctionArgOutput)
 }
 
+func (i DomainConfigFunctionArgArgs) ToOutput(ctx context.Context) pulumix.Output[DomainConfigFunctionArg] {
+	return pulumix.Output[DomainConfigFunctionArg]{
+		OutputState: i.ToDomainConfigFunctionArgOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DomainConfigFunctionArgArrayInput is an input type that accepts DomainConfigFunctionArgArray and DomainConfigFunctionArgArrayOutput values.
 // You can construct a concrete instance of `DomainConfigFunctionArgArrayInput` via:
 //
@@ -75,6 +82,12 @@ func (i DomainConfigFunctionArgArray) ToDomainConfigFunctionArgArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigFunctionArgArrayOutput)
 }
 
+func (i DomainConfigFunctionArgArray) ToOutput(ctx context.Context) pulumix.Output[[]DomainConfigFunctionArg] {
+	return pulumix.Output[[]DomainConfigFunctionArg]{
+		OutputState: i.ToDomainConfigFunctionArgArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DomainConfigFunctionArgOutput struct{ *pulumi.OutputState }
 
 func (DomainConfigFunctionArgOutput) ElementType() reflect.Type {
@@ -87,6 +100,12 @@ func (o DomainConfigFunctionArgOutput) ToDomainConfigFunctionArgOutput() DomainC
 
 func (o DomainConfigFunctionArgOutput) ToDomainConfigFunctionArgOutputWithContext(ctx context.Context) DomainConfigFunctionArgOutput {
 	return o
+}
+
+func (o DomainConfigFunctionArgOutput) ToOutput(ctx context.Context) pulumix.Output[DomainConfigFunctionArg] {
+	return pulumix.Output[DomainConfigFunctionArg]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of arg.
@@ -111,6 +130,12 @@ func (o DomainConfigFunctionArgArrayOutput) ToDomainConfigFunctionArgArrayOutput
 
 func (o DomainConfigFunctionArgArrayOutput) ToDomainConfigFunctionArgArrayOutputWithContext(ctx context.Context) DomainConfigFunctionArgArrayOutput {
 	return o
+}
+
+func (o DomainConfigFunctionArgArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DomainConfigFunctionArg] {
+	return pulumix.Output[[]DomainConfigFunctionArg]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DomainConfigFunctionArgArrayOutput) Index(i pulumi.IntInput) DomainConfigFunctionArgOutput {
@@ -174,6 +199,12 @@ func (i DomainSourceArgs) ToDomainSourceOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DomainSourceOutput)
 }
 
+func (i DomainSourceArgs) ToOutput(ctx context.Context) pulumix.Output[DomainSource] {
+	return pulumix.Output[DomainSource]{
+		OutputState: i.ToDomainSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DomainSourceArrayInput is an input type that accepts DomainSourceArray and DomainSourceArrayOutput values.
 // You can construct a concrete instance of `DomainSourceArrayInput` via:
 //
@@ -199,6 +230,12 @@ func (i DomainSourceArray) ToDomainSourceArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DomainSourceArrayOutput)
 }
 
+func (i DomainSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]DomainSource] {
+	return pulumix.Output[[]DomainSource]{
+		OutputState: i.ToDomainSourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DomainSourceOutput struct{ *pulumi.OutputState }
 
 func (DomainSourceOutput) ElementType() reflect.Type {
@@ -211,6 +248,12 @@ func (o DomainSourceOutput) ToDomainSourceOutput() DomainSourceOutput {
 
 func (o DomainSourceOutput) ToDomainSourceOutputWithContext(ctx context.Context) DomainSourceOutput {
 	return o
+}
+
+func (o DomainSourceOutput) ToOutput(ctx context.Context) pulumix.Output[DomainSource] {
+	return pulumix.Output[DomainSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The origin address.
@@ -253,6 +296,12 @@ func (o DomainSourceArrayOutput) ToDomainSourceArrayOutput() DomainSourceArrayOu
 
 func (o DomainSourceArrayOutput) ToDomainSourceArrayOutputWithContext(ctx context.Context) DomainSourceArrayOutput {
 	return o
+}
+
+func (o DomainSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DomainSource] {
+	return pulumix.Output[[]DomainSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DomainSourceArrayOutput) Index(i pulumi.IntInput) DomainSourceOutput {
@@ -438,6 +487,12 @@ func (i ErEnvConfArgs) ToErEnvConfOutputWithContext(ctx context.Context) ErEnvCo
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfOutput)
 }
 
+func (i ErEnvConfArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConf] {
+	return pulumix.Output[ErEnvConf]{
+		OutputState: i.ToErEnvConfOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfArgs) ToErEnvConfPtrOutput() ErEnvConfPtrOutput {
 	return i.ToErEnvConfPtrOutputWithContext(context.Background())
 }
@@ -479,6 +534,12 @@ func (i *erEnvConfPtrType) ToErEnvConfPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPtrOutput)
 }
 
+func (i *erEnvConfPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConf] {
+	return pulumix.Output[*ErEnvConf]{
+		OutputState: i.ToErEnvConfPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfOutput) ElementType() reflect.Type {
@@ -501,6 +562,12 @@ func (o ErEnvConfOutput) ToErEnvConfPtrOutputWithContext(ctx context.Context) Er
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConf) *ErEnvConf {
 		return &v
 	}).(ErEnvConfPtrOutput)
+}
+
+func (o ErEnvConfOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConf] {
+	return pulumix.Output[ErEnvConf]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration of a presetCanaryAnhui environment. See `staging` below.
@@ -700,6 +767,12 @@ func (o ErEnvConfPtrOutput) ToErEnvConfPtrOutput() ErEnvConfPtrOutput {
 
 func (o ErEnvConfPtrOutput) ToErEnvConfPtrOutputWithContext(ctx context.Context) ErEnvConfPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConf] {
+	return pulumix.Output[*ErEnvConf]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPtrOutput) Elem() ErEnvConfOutput {
@@ -1123,6 +1196,12 @@ func (i ErEnvConfPresetCanaryAnhuiArgs) ToErEnvConfPresetCanaryAnhuiOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryAnhuiOutput)
 }
 
+func (i ErEnvConfPresetCanaryAnhuiArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryAnhui] {
+	return pulumix.Output[ErEnvConfPresetCanaryAnhui]{
+		OutputState: i.ToErEnvConfPresetCanaryAnhuiOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryAnhuiArgs) ToErEnvConfPresetCanaryAnhuiPtrOutput() ErEnvConfPresetCanaryAnhuiPtrOutput {
 	return i.ToErEnvConfPresetCanaryAnhuiPtrOutputWithContext(context.Background())
 }
@@ -1164,6 +1243,12 @@ func (i *erEnvConfPresetCanaryAnhuiPtrType) ToErEnvConfPresetCanaryAnhuiPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryAnhuiPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryAnhuiPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryAnhui] {
+	return pulumix.Output[*ErEnvConfPresetCanaryAnhui]{
+		OutputState: i.ToErEnvConfPresetCanaryAnhuiPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryAnhuiOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryAnhuiOutput) ElementType() reflect.Type {
@@ -1186,6 +1271,12 @@ func (o ErEnvConfPresetCanaryAnhuiOutput) ToErEnvConfPresetCanaryAnhuiPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryAnhui) *ErEnvConfPresetCanaryAnhui {
 		return &v
 	}).(ErEnvConfPresetCanaryAnhuiPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryAnhuiOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryAnhui] {
+	return pulumix.Output[ErEnvConfPresetCanaryAnhui]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -1215,6 +1306,12 @@ func (o ErEnvConfPresetCanaryAnhuiPtrOutput) ToErEnvConfPresetCanaryAnhuiPtrOutp
 
 func (o ErEnvConfPresetCanaryAnhuiPtrOutput) ToErEnvConfPresetCanaryAnhuiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryAnhuiPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryAnhuiPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryAnhui] {
+	return pulumix.Output[*ErEnvConfPresetCanaryAnhui]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryAnhuiPtrOutput) Elem() ErEnvConfPresetCanaryAnhuiOutput {
@@ -1298,6 +1395,12 @@ func (i ErEnvConfPresetCanaryBeijingArgs) ToErEnvConfPresetCanaryBeijingOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryBeijingOutput)
 }
 
+func (i ErEnvConfPresetCanaryBeijingArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryBeijing] {
+	return pulumix.Output[ErEnvConfPresetCanaryBeijing]{
+		OutputState: i.ToErEnvConfPresetCanaryBeijingOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryBeijingArgs) ToErEnvConfPresetCanaryBeijingPtrOutput() ErEnvConfPresetCanaryBeijingPtrOutput {
 	return i.ToErEnvConfPresetCanaryBeijingPtrOutputWithContext(context.Background())
 }
@@ -1339,6 +1442,12 @@ func (i *erEnvConfPresetCanaryBeijingPtrType) ToErEnvConfPresetCanaryBeijingPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryBeijingPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryBeijingPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryBeijing] {
+	return pulumix.Output[*ErEnvConfPresetCanaryBeijing]{
+		OutputState: i.ToErEnvConfPresetCanaryBeijingPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryBeijingOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryBeijingOutput) ElementType() reflect.Type {
@@ -1361,6 +1470,12 @@ func (o ErEnvConfPresetCanaryBeijingOutput) ToErEnvConfPresetCanaryBeijingPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryBeijing) *ErEnvConfPresetCanaryBeijing {
 		return &v
 	}).(ErEnvConfPresetCanaryBeijingPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryBeijingOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryBeijing] {
+	return pulumix.Output[ErEnvConfPresetCanaryBeijing]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -1390,6 +1505,12 @@ func (o ErEnvConfPresetCanaryBeijingPtrOutput) ToErEnvConfPresetCanaryBeijingPtr
 
 func (o ErEnvConfPresetCanaryBeijingPtrOutput) ToErEnvConfPresetCanaryBeijingPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryBeijingPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryBeijingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryBeijing] {
+	return pulumix.Output[*ErEnvConfPresetCanaryBeijing]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryBeijingPtrOutput) Elem() ErEnvConfPresetCanaryBeijingOutput {
@@ -1473,6 +1594,12 @@ func (i ErEnvConfPresetCanaryChongqingArgs) ToErEnvConfPresetCanaryChongqingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryChongqingOutput)
 }
 
+func (i ErEnvConfPresetCanaryChongqingArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryChongqing] {
+	return pulumix.Output[ErEnvConfPresetCanaryChongqing]{
+		OutputState: i.ToErEnvConfPresetCanaryChongqingOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryChongqingArgs) ToErEnvConfPresetCanaryChongqingPtrOutput() ErEnvConfPresetCanaryChongqingPtrOutput {
 	return i.ToErEnvConfPresetCanaryChongqingPtrOutputWithContext(context.Background())
 }
@@ -1514,6 +1641,12 @@ func (i *erEnvConfPresetCanaryChongqingPtrType) ToErEnvConfPresetCanaryChongqing
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryChongqingPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryChongqingPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryChongqing] {
+	return pulumix.Output[*ErEnvConfPresetCanaryChongqing]{
+		OutputState: i.ToErEnvConfPresetCanaryChongqingPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryChongqingOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryChongqingOutput) ElementType() reflect.Type {
@@ -1536,6 +1669,12 @@ func (o ErEnvConfPresetCanaryChongqingOutput) ToErEnvConfPresetCanaryChongqingPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryChongqing) *ErEnvConfPresetCanaryChongqing {
 		return &v
 	}).(ErEnvConfPresetCanaryChongqingPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryChongqingOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryChongqing] {
+	return pulumix.Output[ErEnvConfPresetCanaryChongqing]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -1565,6 +1704,12 @@ func (o ErEnvConfPresetCanaryChongqingPtrOutput) ToErEnvConfPresetCanaryChongqin
 
 func (o ErEnvConfPresetCanaryChongqingPtrOutput) ToErEnvConfPresetCanaryChongqingPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryChongqingPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryChongqingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryChongqing] {
+	return pulumix.Output[*ErEnvConfPresetCanaryChongqing]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryChongqingPtrOutput) Elem() ErEnvConfPresetCanaryChongqingOutput {
@@ -1648,6 +1793,12 @@ func (i ErEnvConfPresetCanaryFujianArgs) ToErEnvConfPresetCanaryFujianOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryFujianOutput)
 }
 
+func (i ErEnvConfPresetCanaryFujianArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryFujian] {
+	return pulumix.Output[ErEnvConfPresetCanaryFujian]{
+		OutputState: i.ToErEnvConfPresetCanaryFujianOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryFujianArgs) ToErEnvConfPresetCanaryFujianPtrOutput() ErEnvConfPresetCanaryFujianPtrOutput {
 	return i.ToErEnvConfPresetCanaryFujianPtrOutputWithContext(context.Background())
 }
@@ -1689,6 +1840,12 @@ func (i *erEnvConfPresetCanaryFujianPtrType) ToErEnvConfPresetCanaryFujianPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryFujianPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryFujianPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryFujian] {
+	return pulumix.Output[*ErEnvConfPresetCanaryFujian]{
+		OutputState: i.ToErEnvConfPresetCanaryFujianPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryFujianOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryFujianOutput) ElementType() reflect.Type {
@@ -1711,6 +1868,12 @@ func (o ErEnvConfPresetCanaryFujianOutput) ToErEnvConfPresetCanaryFujianPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryFujian) *ErEnvConfPresetCanaryFujian {
 		return &v
 	}).(ErEnvConfPresetCanaryFujianPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryFujianOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryFujian] {
+	return pulumix.Output[ErEnvConfPresetCanaryFujian]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -1740,6 +1903,12 @@ func (o ErEnvConfPresetCanaryFujianPtrOutput) ToErEnvConfPresetCanaryFujianPtrOu
 
 func (o ErEnvConfPresetCanaryFujianPtrOutput) ToErEnvConfPresetCanaryFujianPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryFujianPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryFujianPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryFujian] {
+	return pulumix.Output[*ErEnvConfPresetCanaryFujian]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryFujianPtrOutput) Elem() ErEnvConfPresetCanaryFujianOutput {
@@ -1823,6 +1992,12 @@ func (i ErEnvConfPresetCanaryGansuArgs) ToErEnvConfPresetCanaryGansuOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryGansuOutput)
 }
 
+func (i ErEnvConfPresetCanaryGansuArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryGansu] {
+	return pulumix.Output[ErEnvConfPresetCanaryGansu]{
+		OutputState: i.ToErEnvConfPresetCanaryGansuOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryGansuArgs) ToErEnvConfPresetCanaryGansuPtrOutput() ErEnvConfPresetCanaryGansuPtrOutput {
 	return i.ToErEnvConfPresetCanaryGansuPtrOutputWithContext(context.Background())
 }
@@ -1864,6 +2039,12 @@ func (i *erEnvConfPresetCanaryGansuPtrType) ToErEnvConfPresetCanaryGansuPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryGansuPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryGansuPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryGansu] {
+	return pulumix.Output[*ErEnvConfPresetCanaryGansu]{
+		OutputState: i.ToErEnvConfPresetCanaryGansuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryGansuOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryGansuOutput) ElementType() reflect.Type {
@@ -1886,6 +2067,12 @@ func (o ErEnvConfPresetCanaryGansuOutput) ToErEnvConfPresetCanaryGansuPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryGansu) *ErEnvConfPresetCanaryGansu {
 		return &v
 	}).(ErEnvConfPresetCanaryGansuPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryGansuOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryGansu] {
+	return pulumix.Output[ErEnvConfPresetCanaryGansu]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -1915,6 +2102,12 @@ func (o ErEnvConfPresetCanaryGansuPtrOutput) ToErEnvConfPresetCanaryGansuPtrOutp
 
 func (o ErEnvConfPresetCanaryGansuPtrOutput) ToErEnvConfPresetCanaryGansuPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGansuPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryGansuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryGansu] {
+	return pulumix.Output[*ErEnvConfPresetCanaryGansu]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryGansuPtrOutput) Elem() ErEnvConfPresetCanaryGansuOutput {
@@ -1998,6 +2191,12 @@ func (i ErEnvConfPresetCanaryGuangdongArgs) ToErEnvConfPresetCanaryGuangdongOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryGuangdongOutput)
 }
 
+func (i ErEnvConfPresetCanaryGuangdongArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryGuangdong] {
+	return pulumix.Output[ErEnvConfPresetCanaryGuangdong]{
+		OutputState: i.ToErEnvConfPresetCanaryGuangdongOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryGuangdongArgs) ToErEnvConfPresetCanaryGuangdongPtrOutput() ErEnvConfPresetCanaryGuangdongPtrOutput {
 	return i.ToErEnvConfPresetCanaryGuangdongPtrOutputWithContext(context.Background())
 }
@@ -2039,6 +2238,12 @@ func (i *erEnvConfPresetCanaryGuangdongPtrType) ToErEnvConfPresetCanaryGuangdong
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryGuangdongPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryGuangdongPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryGuangdong] {
+	return pulumix.Output[*ErEnvConfPresetCanaryGuangdong]{
+		OutputState: i.ToErEnvConfPresetCanaryGuangdongPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryGuangdongOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryGuangdongOutput) ElementType() reflect.Type {
@@ -2061,6 +2266,12 @@ func (o ErEnvConfPresetCanaryGuangdongOutput) ToErEnvConfPresetCanaryGuangdongPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryGuangdong) *ErEnvConfPresetCanaryGuangdong {
 		return &v
 	}).(ErEnvConfPresetCanaryGuangdongPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryGuangdongOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryGuangdong] {
+	return pulumix.Output[ErEnvConfPresetCanaryGuangdong]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -2090,6 +2301,12 @@ func (o ErEnvConfPresetCanaryGuangdongPtrOutput) ToErEnvConfPresetCanaryGuangdon
 
 func (o ErEnvConfPresetCanaryGuangdongPtrOutput) ToErEnvConfPresetCanaryGuangdongPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGuangdongPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryGuangdongPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryGuangdong] {
+	return pulumix.Output[*ErEnvConfPresetCanaryGuangdong]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryGuangdongPtrOutput) Elem() ErEnvConfPresetCanaryGuangdongOutput {
@@ -2173,6 +2390,12 @@ func (i ErEnvConfPresetCanaryGuangxiArgs) ToErEnvConfPresetCanaryGuangxiOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryGuangxiOutput)
 }
 
+func (i ErEnvConfPresetCanaryGuangxiArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryGuangxi] {
+	return pulumix.Output[ErEnvConfPresetCanaryGuangxi]{
+		OutputState: i.ToErEnvConfPresetCanaryGuangxiOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryGuangxiArgs) ToErEnvConfPresetCanaryGuangxiPtrOutput() ErEnvConfPresetCanaryGuangxiPtrOutput {
 	return i.ToErEnvConfPresetCanaryGuangxiPtrOutputWithContext(context.Background())
 }
@@ -2214,6 +2437,12 @@ func (i *erEnvConfPresetCanaryGuangxiPtrType) ToErEnvConfPresetCanaryGuangxiPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryGuangxiPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryGuangxiPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryGuangxi] {
+	return pulumix.Output[*ErEnvConfPresetCanaryGuangxi]{
+		OutputState: i.ToErEnvConfPresetCanaryGuangxiPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryGuangxiOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryGuangxiOutput) ElementType() reflect.Type {
@@ -2236,6 +2465,12 @@ func (o ErEnvConfPresetCanaryGuangxiOutput) ToErEnvConfPresetCanaryGuangxiPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryGuangxi) *ErEnvConfPresetCanaryGuangxi {
 		return &v
 	}).(ErEnvConfPresetCanaryGuangxiPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryGuangxiOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryGuangxi] {
+	return pulumix.Output[ErEnvConfPresetCanaryGuangxi]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -2265,6 +2500,12 @@ func (o ErEnvConfPresetCanaryGuangxiPtrOutput) ToErEnvConfPresetCanaryGuangxiPtr
 
 func (o ErEnvConfPresetCanaryGuangxiPtrOutput) ToErEnvConfPresetCanaryGuangxiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGuangxiPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryGuangxiPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryGuangxi] {
+	return pulumix.Output[*ErEnvConfPresetCanaryGuangxi]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryGuangxiPtrOutput) Elem() ErEnvConfPresetCanaryGuangxiOutput {
@@ -2348,6 +2589,12 @@ func (i ErEnvConfPresetCanaryGuizhouArgs) ToErEnvConfPresetCanaryGuizhouOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryGuizhouOutput)
 }
 
+func (i ErEnvConfPresetCanaryGuizhouArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryGuizhou] {
+	return pulumix.Output[ErEnvConfPresetCanaryGuizhou]{
+		OutputState: i.ToErEnvConfPresetCanaryGuizhouOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryGuizhouArgs) ToErEnvConfPresetCanaryGuizhouPtrOutput() ErEnvConfPresetCanaryGuizhouPtrOutput {
 	return i.ToErEnvConfPresetCanaryGuizhouPtrOutputWithContext(context.Background())
 }
@@ -2389,6 +2636,12 @@ func (i *erEnvConfPresetCanaryGuizhouPtrType) ToErEnvConfPresetCanaryGuizhouPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryGuizhouPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryGuizhouPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryGuizhou] {
+	return pulumix.Output[*ErEnvConfPresetCanaryGuizhou]{
+		OutputState: i.ToErEnvConfPresetCanaryGuizhouPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryGuizhouOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryGuizhouOutput) ElementType() reflect.Type {
@@ -2411,6 +2664,12 @@ func (o ErEnvConfPresetCanaryGuizhouOutput) ToErEnvConfPresetCanaryGuizhouPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryGuizhou) *ErEnvConfPresetCanaryGuizhou {
 		return &v
 	}).(ErEnvConfPresetCanaryGuizhouPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryGuizhouOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryGuizhou] {
+	return pulumix.Output[ErEnvConfPresetCanaryGuizhou]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -2440,6 +2699,12 @@ func (o ErEnvConfPresetCanaryGuizhouPtrOutput) ToErEnvConfPresetCanaryGuizhouPtr
 
 func (o ErEnvConfPresetCanaryGuizhouPtrOutput) ToErEnvConfPresetCanaryGuizhouPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGuizhouPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryGuizhouPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryGuizhou] {
+	return pulumix.Output[*ErEnvConfPresetCanaryGuizhou]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryGuizhouPtrOutput) Elem() ErEnvConfPresetCanaryGuizhouOutput {
@@ -2523,6 +2788,12 @@ func (i ErEnvConfPresetCanaryHainanArgs) ToErEnvConfPresetCanaryHainanOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHainanOutput)
 }
 
+func (i ErEnvConfPresetCanaryHainanArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryHainan] {
+	return pulumix.Output[ErEnvConfPresetCanaryHainan]{
+		OutputState: i.ToErEnvConfPresetCanaryHainanOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryHainanArgs) ToErEnvConfPresetCanaryHainanPtrOutput() ErEnvConfPresetCanaryHainanPtrOutput {
 	return i.ToErEnvConfPresetCanaryHainanPtrOutputWithContext(context.Background())
 }
@@ -2564,6 +2835,12 @@ func (i *erEnvConfPresetCanaryHainanPtrType) ToErEnvConfPresetCanaryHainanPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHainanPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryHainanPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryHainan] {
+	return pulumix.Output[*ErEnvConfPresetCanaryHainan]{
+		OutputState: i.ToErEnvConfPresetCanaryHainanPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryHainanOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryHainanOutput) ElementType() reflect.Type {
@@ -2586,6 +2863,12 @@ func (o ErEnvConfPresetCanaryHainanOutput) ToErEnvConfPresetCanaryHainanPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryHainan) *ErEnvConfPresetCanaryHainan {
 		return &v
 	}).(ErEnvConfPresetCanaryHainanPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryHainanOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryHainan] {
+	return pulumix.Output[ErEnvConfPresetCanaryHainan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -2615,6 +2898,12 @@ func (o ErEnvConfPresetCanaryHainanPtrOutput) ToErEnvConfPresetCanaryHainanPtrOu
 
 func (o ErEnvConfPresetCanaryHainanPtrOutput) ToErEnvConfPresetCanaryHainanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHainanPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryHainanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryHainan] {
+	return pulumix.Output[*ErEnvConfPresetCanaryHainan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryHainanPtrOutput) Elem() ErEnvConfPresetCanaryHainanOutput {
@@ -2698,6 +2987,12 @@ func (i ErEnvConfPresetCanaryHebeiArgs) ToErEnvConfPresetCanaryHebeiOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHebeiOutput)
 }
 
+func (i ErEnvConfPresetCanaryHebeiArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryHebei] {
+	return pulumix.Output[ErEnvConfPresetCanaryHebei]{
+		OutputState: i.ToErEnvConfPresetCanaryHebeiOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryHebeiArgs) ToErEnvConfPresetCanaryHebeiPtrOutput() ErEnvConfPresetCanaryHebeiPtrOutput {
 	return i.ToErEnvConfPresetCanaryHebeiPtrOutputWithContext(context.Background())
 }
@@ -2739,6 +3034,12 @@ func (i *erEnvConfPresetCanaryHebeiPtrType) ToErEnvConfPresetCanaryHebeiPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHebeiPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryHebeiPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryHebei] {
+	return pulumix.Output[*ErEnvConfPresetCanaryHebei]{
+		OutputState: i.ToErEnvConfPresetCanaryHebeiPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryHebeiOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryHebeiOutput) ElementType() reflect.Type {
@@ -2761,6 +3062,12 @@ func (o ErEnvConfPresetCanaryHebeiOutput) ToErEnvConfPresetCanaryHebeiPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryHebei) *ErEnvConfPresetCanaryHebei {
 		return &v
 	}).(ErEnvConfPresetCanaryHebeiPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryHebeiOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryHebei] {
+	return pulumix.Output[ErEnvConfPresetCanaryHebei]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -2790,6 +3097,12 @@ func (o ErEnvConfPresetCanaryHebeiPtrOutput) ToErEnvConfPresetCanaryHebeiPtrOutp
 
 func (o ErEnvConfPresetCanaryHebeiPtrOutput) ToErEnvConfPresetCanaryHebeiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHebeiPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryHebeiPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryHebei] {
+	return pulumix.Output[*ErEnvConfPresetCanaryHebei]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryHebeiPtrOutput) Elem() ErEnvConfPresetCanaryHebeiOutput {
@@ -2873,6 +3186,12 @@ func (i ErEnvConfPresetCanaryHeilongjiangArgs) ToErEnvConfPresetCanaryHeilongjia
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHeilongjiangOutput)
 }
 
+func (i ErEnvConfPresetCanaryHeilongjiangArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryHeilongjiang] {
+	return pulumix.Output[ErEnvConfPresetCanaryHeilongjiang]{
+		OutputState: i.ToErEnvConfPresetCanaryHeilongjiangOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryHeilongjiangArgs) ToErEnvConfPresetCanaryHeilongjiangPtrOutput() ErEnvConfPresetCanaryHeilongjiangPtrOutput {
 	return i.ToErEnvConfPresetCanaryHeilongjiangPtrOutputWithContext(context.Background())
 }
@@ -2914,6 +3233,12 @@ func (i *erEnvConfPresetCanaryHeilongjiangPtrType) ToErEnvConfPresetCanaryHeilon
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHeilongjiangPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryHeilongjiangPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryHeilongjiang] {
+	return pulumix.Output[*ErEnvConfPresetCanaryHeilongjiang]{
+		OutputState: i.ToErEnvConfPresetCanaryHeilongjiangPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryHeilongjiangOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryHeilongjiangOutput) ElementType() reflect.Type {
@@ -2936,6 +3261,12 @@ func (o ErEnvConfPresetCanaryHeilongjiangOutput) ToErEnvConfPresetCanaryHeilongj
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryHeilongjiang) *ErEnvConfPresetCanaryHeilongjiang {
 		return &v
 	}).(ErEnvConfPresetCanaryHeilongjiangPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryHeilongjiangOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryHeilongjiang] {
+	return pulumix.Output[ErEnvConfPresetCanaryHeilongjiang]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -2965,6 +3296,12 @@ func (o ErEnvConfPresetCanaryHeilongjiangPtrOutput) ToErEnvConfPresetCanaryHeilo
 
 func (o ErEnvConfPresetCanaryHeilongjiangPtrOutput) ToErEnvConfPresetCanaryHeilongjiangPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHeilongjiangPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryHeilongjiangPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryHeilongjiang] {
+	return pulumix.Output[*ErEnvConfPresetCanaryHeilongjiang]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryHeilongjiangPtrOutput) Elem() ErEnvConfPresetCanaryHeilongjiangOutput {
@@ -3048,6 +3385,12 @@ func (i ErEnvConfPresetCanaryHenanArgs) ToErEnvConfPresetCanaryHenanOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHenanOutput)
 }
 
+func (i ErEnvConfPresetCanaryHenanArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryHenan] {
+	return pulumix.Output[ErEnvConfPresetCanaryHenan]{
+		OutputState: i.ToErEnvConfPresetCanaryHenanOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryHenanArgs) ToErEnvConfPresetCanaryHenanPtrOutput() ErEnvConfPresetCanaryHenanPtrOutput {
 	return i.ToErEnvConfPresetCanaryHenanPtrOutputWithContext(context.Background())
 }
@@ -3089,6 +3432,12 @@ func (i *erEnvConfPresetCanaryHenanPtrType) ToErEnvConfPresetCanaryHenanPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHenanPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryHenanPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryHenan] {
+	return pulumix.Output[*ErEnvConfPresetCanaryHenan]{
+		OutputState: i.ToErEnvConfPresetCanaryHenanPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryHenanOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryHenanOutput) ElementType() reflect.Type {
@@ -3111,6 +3460,12 @@ func (o ErEnvConfPresetCanaryHenanOutput) ToErEnvConfPresetCanaryHenanPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryHenan) *ErEnvConfPresetCanaryHenan {
 		return &v
 	}).(ErEnvConfPresetCanaryHenanPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryHenanOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryHenan] {
+	return pulumix.Output[ErEnvConfPresetCanaryHenan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -3140,6 +3495,12 @@ func (o ErEnvConfPresetCanaryHenanPtrOutput) ToErEnvConfPresetCanaryHenanPtrOutp
 
 func (o ErEnvConfPresetCanaryHenanPtrOutput) ToErEnvConfPresetCanaryHenanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHenanPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryHenanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryHenan] {
+	return pulumix.Output[*ErEnvConfPresetCanaryHenan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryHenanPtrOutput) Elem() ErEnvConfPresetCanaryHenanOutput {
@@ -3223,6 +3584,12 @@ func (i ErEnvConfPresetCanaryHongKongArgs) ToErEnvConfPresetCanaryHongKongOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHongKongOutput)
 }
 
+func (i ErEnvConfPresetCanaryHongKongArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryHongKong] {
+	return pulumix.Output[ErEnvConfPresetCanaryHongKong]{
+		OutputState: i.ToErEnvConfPresetCanaryHongKongOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryHongKongArgs) ToErEnvConfPresetCanaryHongKongPtrOutput() ErEnvConfPresetCanaryHongKongPtrOutput {
 	return i.ToErEnvConfPresetCanaryHongKongPtrOutputWithContext(context.Background())
 }
@@ -3264,6 +3631,12 @@ func (i *erEnvConfPresetCanaryHongKongPtrType) ToErEnvConfPresetCanaryHongKongPt
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHongKongPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryHongKongPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryHongKong] {
+	return pulumix.Output[*ErEnvConfPresetCanaryHongKong]{
+		OutputState: i.ToErEnvConfPresetCanaryHongKongPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryHongKongOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryHongKongOutput) ElementType() reflect.Type {
@@ -3286,6 +3659,12 @@ func (o ErEnvConfPresetCanaryHongKongOutput) ToErEnvConfPresetCanaryHongKongPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryHongKong) *ErEnvConfPresetCanaryHongKong {
 		return &v
 	}).(ErEnvConfPresetCanaryHongKongPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryHongKongOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryHongKong] {
+	return pulumix.Output[ErEnvConfPresetCanaryHongKong]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -3315,6 +3694,12 @@ func (o ErEnvConfPresetCanaryHongKongPtrOutput) ToErEnvConfPresetCanaryHongKongP
 
 func (o ErEnvConfPresetCanaryHongKongPtrOutput) ToErEnvConfPresetCanaryHongKongPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHongKongPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryHongKongPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryHongKong] {
+	return pulumix.Output[*ErEnvConfPresetCanaryHongKong]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryHongKongPtrOutput) Elem() ErEnvConfPresetCanaryHongKongOutput {
@@ -3398,6 +3783,12 @@ func (i ErEnvConfPresetCanaryHubeiArgs) ToErEnvConfPresetCanaryHubeiOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHubeiOutput)
 }
 
+func (i ErEnvConfPresetCanaryHubeiArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryHubei] {
+	return pulumix.Output[ErEnvConfPresetCanaryHubei]{
+		OutputState: i.ToErEnvConfPresetCanaryHubeiOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryHubeiArgs) ToErEnvConfPresetCanaryHubeiPtrOutput() ErEnvConfPresetCanaryHubeiPtrOutput {
 	return i.ToErEnvConfPresetCanaryHubeiPtrOutputWithContext(context.Background())
 }
@@ -3439,6 +3830,12 @@ func (i *erEnvConfPresetCanaryHubeiPtrType) ToErEnvConfPresetCanaryHubeiPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHubeiPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryHubeiPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryHubei] {
+	return pulumix.Output[*ErEnvConfPresetCanaryHubei]{
+		OutputState: i.ToErEnvConfPresetCanaryHubeiPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryHubeiOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryHubeiOutput) ElementType() reflect.Type {
@@ -3461,6 +3858,12 @@ func (o ErEnvConfPresetCanaryHubeiOutput) ToErEnvConfPresetCanaryHubeiPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryHubei) *ErEnvConfPresetCanaryHubei {
 		return &v
 	}).(ErEnvConfPresetCanaryHubeiPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryHubeiOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryHubei] {
+	return pulumix.Output[ErEnvConfPresetCanaryHubei]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -3490,6 +3893,12 @@ func (o ErEnvConfPresetCanaryHubeiPtrOutput) ToErEnvConfPresetCanaryHubeiPtrOutp
 
 func (o ErEnvConfPresetCanaryHubeiPtrOutput) ToErEnvConfPresetCanaryHubeiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHubeiPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryHubeiPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryHubei] {
+	return pulumix.Output[*ErEnvConfPresetCanaryHubei]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryHubeiPtrOutput) Elem() ErEnvConfPresetCanaryHubeiOutput {
@@ -3573,6 +3982,12 @@ func (i ErEnvConfPresetCanaryHunanArgs) ToErEnvConfPresetCanaryHunanOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHunanOutput)
 }
 
+func (i ErEnvConfPresetCanaryHunanArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryHunan] {
+	return pulumix.Output[ErEnvConfPresetCanaryHunan]{
+		OutputState: i.ToErEnvConfPresetCanaryHunanOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryHunanArgs) ToErEnvConfPresetCanaryHunanPtrOutput() ErEnvConfPresetCanaryHunanPtrOutput {
 	return i.ToErEnvConfPresetCanaryHunanPtrOutputWithContext(context.Background())
 }
@@ -3614,6 +4029,12 @@ func (i *erEnvConfPresetCanaryHunanPtrType) ToErEnvConfPresetCanaryHunanPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHunanPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryHunanPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryHunan] {
+	return pulumix.Output[*ErEnvConfPresetCanaryHunan]{
+		OutputState: i.ToErEnvConfPresetCanaryHunanPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryHunanOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryHunanOutput) ElementType() reflect.Type {
@@ -3636,6 +4057,12 @@ func (o ErEnvConfPresetCanaryHunanOutput) ToErEnvConfPresetCanaryHunanPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryHunan) *ErEnvConfPresetCanaryHunan {
 		return &v
 	}).(ErEnvConfPresetCanaryHunanPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryHunanOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryHunan] {
+	return pulumix.Output[ErEnvConfPresetCanaryHunan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -3665,6 +4092,12 @@ func (o ErEnvConfPresetCanaryHunanPtrOutput) ToErEnvConfPresetCanaryHunanPtrOutp
 
 func (o ErEnvConfPresetCanaryHunanPtrOutput) ToErEnvConfPresetCanaryHunanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHunanPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryHunanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryHunan] {
+	return pulumix.Output[*ErEnvConfPresetCanaryHunan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryHunanPtrOutput) Elem() ErEnvConfPresetCanaryHunanOutput {
@@ -3748,6 +4181,12 @@ func (i ErEnvConfPresetCanaryJiangsuArgs) ToErEnvConfPresetCanaryJiangsuOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryJiangsuOutput)
 }
 
+func (i ErEnvConfPresetCanaryJiangsuArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryJiangsu] {
+	return pulumix.Output[ErEnvConfPresetCanaryJiangsu]{
+		OutputState: i.ToErEnvConfPresetCanaryJiangsuOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryJiangsuArgs) ToErEnvConfPresetCanaryJiangsuPtrOutput() ErEnvConfPresetCanaryJiangsuPtrOutput {
 	return i.ToErEnvConfPresetCanaryJiangsuPtrOutputWithContext(context.Background())
 }
@@ -3789,6 +4228,12 @@ func (i *erEnvConfPresetCanaryJiangsuPtrType) ToErEnvConfPresetCanaryJiangsuPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryJiangsuPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryJiangsuPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryJiangsu] {
+	return pulumix.Output[*ErEnvConfPresetCanaryJiangsu]{
+		OutputState: i.ToErEnvConfPresetCanaryJiangsuPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryJiangsuOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryJiangsuOutput) ElementType() reflect.Type {
@@ -3811,6 +4256,12 @@ func (o ErEnvConfPresetCanaryJiangsuOutput) ToErEnvConfPresetCanaryJiangsuPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryJiangsu) *ErEnvConfPresetCanaryJiangsu {
 		return &v
 	}).(ErEnvConfPresetCanaryJiangsuPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryJiangsuOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryJiangsu] {
+	return pulumix.Output[ErEnvConfPresetCanaryJiangsu]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -3840,6 +4291,12 @@ func (o ErEnvConfPresetCanaryJiangsuPtrOutput) ToErEnvConfPresetCanaryJiangsuPtr
 
 func (o ErEnvConfPresetCanaryJiangsuPtrOutput) ToErEnvConfPresetCanaryJiangsuPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryJiangsuPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryJiangsuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryJiangsu] {
+	return pulumix.Output[*ErEnvConfPresetCanaryJiangsu]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryJiangsuPtrOutput) Elem() ErEnvConfPresetCanaryJiangsuOutput {
@@ -3923,6 +4380,12 @@ func (i ErEnvConfPresetCanaryJiangxiArgs) ToErEnvConfPresetCanaryJiangxiOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryJiangxiOutput)
 }
 
+func (i ErEnvConfPresetCanaryJiangxiArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryJiangxi] {
+	return pulumix.Output[ErEnvConfPresetCanaryJiangxi]{
+		OutputState: i.ToErEnvConfPresetCanaryJiangxiOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryJiangxiArgs) ToErEnvConfPresetCanaryJiangxiPtrOutput() ErEnvConfPresetCanaryJiangxiPtrOutput {
 	return i.ToErEnvConfPresetCanaryJiangxiPtrOutputWithContext(context.Background())
 }
@@ -3964,6 +4427,12 @@ func (i *erEnvConfPresetCanaryJiangxiPtrType) ToErEnvConfPresetCanaryJiangxiPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryJiangxiPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryJiangxiPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryJiangxi] {
+	return pulumix.Output[*ErEnvConfPresetCanaryJiangxi]{
+		OutputState: i.ToErEnvConfPresetCanaryJiangxiPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryJiangxiOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryJiangxiOutput) ElementType() reflect.Type {
@@ -3986,6 +4455,12 @@ func (o ErEnvConfPresetCanaryJiangxiOutput) ToErEnvConfPresetCanaryJiangxiPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryJiangxi) *ErEnvConfPresetCanaryJiangxi {
 		return &v
 	}).(ErEnvConfPresetCanaryJiangxiPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryJiangxiOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryJiangxi] {
+	return pulumix.Output[ErEnvConfPresetCanaryJiangxi]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -4015,6 +4490,12 @@ func (o ErEnvConfPresetCanaryJiangxiPtrOutput) ToErEnvConfPresetCanaryJiangxiPtr
 
 func (o ErEnvConfPresetCanaryJiangxiPtrOutput) ToErEnvConfPresetCanaryJiangxiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryJiangxiPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryJiangxiPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryJiangxi] {
+	return pulumix.Output[*ErEnvConfPresetCanaryJiangxi]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryJiangxiPtrOutput) Elem() ErEnvConfPresetCanaryJiangxiOutput {
@@ -4098,6 +4579,12 @@ func (i ErEnvConfPresetCanaryJilinArgs) ToErEnvConfPresetCanaryJilinOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryJilinOutput)
 }
 
+func (i ErEnvConfPresetCanaryJilinArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryJilin] {
+	return pulumix.Output[ErEnvConfPresetCanaryJilin]{
+		OutputState: i.ToErEnvConfPresetCanaryJilinOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryJilinArgs) ToErEnvConfPresetCanaryJilinPtrOutput() ErEnvConfPresetCanaryJilinPtrOutput {
 	return i.ToErEnvConfPresetCanaryJilinPtrOutputWithContext(context.Background())
 }
@@ -4139,6 +4626,12 @@ func (i *erEnvConfPresetCanaryJilinPtrType) ToErEnvConfPresetCanaryJilinPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryJilinPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryJilinPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryJilin] {
+	return pulumix.Output[*ErEnvConfPresetCanaryJilin]{
+		OutputState: i.ToErEnvConfPresetCanaryJilinPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryJilinOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryJilinOutput) ElementType() reflect.Type {
@@ -4161,6 +4654,12 @@ func (o ErEnvConfPresetCanaryJilinOutput) ToErEnvConfPresetCanaryJilinPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryJilin) *ErEnvConfPresetCanaryJilin {
 		return &v
 	}).(ErEnvConfPresetCanaryJilinPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryJilinOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryJilin] {
+	return pulumix.Output[ErEnvConfPresetCanaryJilin]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -4190,6 +4689,12 @@ func (o ErEnvConfPresetCanaryJilinPtrOutput) ToErEnvConfPresetCanaryJilinPtrOutp
 
 func (o ErEnvConfPresetCanaryJilinPtrOutput) ToErEnvConfPresetCanaryJilinPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryJilinPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryJilinPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryJilin] {
+	return pulumix.Output[*ErEnvConfPresetCanaryJilin]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryJilinPtrOutput) Elem() ErEnvConfPresetCanaryJilinOutput {
@@ -4273,6 +4778,12 @@ func (i ErEnvConfPresetCanaryLiaoningArgs) ToErEnvConfPresetCanaryLiaoningOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryLiaoningOutput)
 }
 
+func (i ErEnvConfPresetCanaryLiaoningArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryLiaoning] {
+	return pulumix.Output[ErEnvConfPresetCanaryLiaoning]{
+		OutputState: i.ToErEnvConfPresetCanaryLiaoningOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryLiaoningArgs) ToErEnvConfPresetCanaryLiaoningPtrOutput() ErEnvConfPresetCanaryLiaoningPtrOutput {
 	return i.ToErEnvConfPresetCanaryLiaoningPtrOutputWithContext(context.Background())
 }
@@ -4314,6 +4825,12 @@ func (i *erEnvConfPresetCanaryLiaoningPtrType) ToErEnvConfPresetCanaryLiaoningPt
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryLiaoningPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryLiaoningPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryLiaoning] {
+	return pulumix.Output[*ErEnvConfPresetCanaryLiaoning]{
+		OutputState: i.ToErEnvConfPresetCanaryLiaoningPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryLiaoningOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryLiaoningOutput) ElementType() reflect.Type {
@@ -4336,6 +4853,12 @@ func (o ErEnvConfPresetCanaryLiaoningOutput) ToErEnvConfPresetCanaryLiaoningPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryLiaoning) *ErEnvConfPresetCanaryLiaoning {
 		return &v
 	}).(ErEnvConfPresetCanaryLiaoningPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryLiaoningOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryLiaoning] {
+	return pulumix.Output[ErEnvConfPresetCanaryLiaoning]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -4365,6 +4888,12 @@ func (o ErEnvConfPresetCanaryLiaoningPtrOutput) ToErEnvConfPresetCanaryLiaoningP
 
 func (o ErEnvConfPresetCanaryLiaoningPtrOutput) ToErEnvConfPresetCanaryLiaoningPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryLiaoningPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryLiaoningPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryLiaoning] {
+	return pulumix.Output[*ErEnvConfPresetCanaryLiaoning]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryLiaoningPtrOutput) Elem() ErEnvConfPresetCanaryLiaoningOutput {
@@ -4448,6 +4977,12 @@ func (i ErEnvConfPresetCanaryMacauArgs) ToErEnvConfPresetCanaryMacauOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryMacauOutput)
 }
 
+func (i ErEnvConfPresetCanaryMacauArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryMacau] {
+	return pulumix.Output[ErEnvConfPresetCanaryMacau]{
+		OutputState: i.ToErEnvConfPresetCanaryMacauOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryMacauArgs) ToErEnvConfPresetCanaryMacauPtrOutput() ErEnvConfPresetCanaryMacauPtrOutput {
 	return i.ToErEnvConfPresetCanaryMacauPtrOutputWithContext(context.Background())
 }
@@ -4489,6 +5024,12 @@ func (i *erEnvConfPresetCanaryMacauPtrType) ToErEnvConfPresetCanaryMacauPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryMacauPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryMacauPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryMacau] {
+	return pulumix.Output[*ErEnvConfPresetCanaryMacau]{
+		OutputState: i.ToErEnvConfPresetCanaryMacauPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryMacauOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryMacauOutput) ElementType() reflect.Type {
@@ -4511,6 +5052,12 @@ func (o ErEnvConfPresetCanaryMacauOutput) ToErEnvConfPresetCanaryMacauPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryMacau) *ErEnvConfPresetCanaryMacau {
 		return &v
 	}).(ErEnvConfPresetCanaryMacauPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryMacauOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryMacau] {
+	return pulumix.Output[ErEnvConfPresetCanaryMacau]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -4540,6 +5087,12 @@ func (o ErEnvConfPresetCanaryMacauPtrOutput) ToErEnvConfPresetCanaryMacauPtrOutp
 
 func (o ErEnvConfPresetCanaryMacauPtrOutput) ToErEnvConfPresetCanaryMacauPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryMacauPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryMacauPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryMacau] {
+	return pulumix.Output[*ErEnvConfPresetCanaryMacau]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryMacauPtrOutput) Elem() ErEnvConfPresetCanaryMacauOutput {
@@ -4623,6 +5176,12 @@ func (i ErEnvConfPresetCanaryNeimengguArgs) ToErEnvConfPresetCanaryNeimengguOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryNeimengguOutput)
 }
 
+func (i ErEnvConfPresetCanaryNeimengguArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryNeimenggu] {
+	return pulumix.Output[ErEnvConfPresetCanaryNeimenggu]{
+		OutputState: i.ToErEnvConfPresetCanaryNeimengguOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryNeimengguArgs) ToErEnvConfPresetCanaryNeimengguPtrOutput() ErEnvConfPresetCanaryNeimengguPtrOutput {
 	return i.ToErEnvConfPresetCanaryNeimengguPtrOutputWithContext(context.Background())
 }
@@ -4664,6 +5223,12 @@ func (i *erEnvConfPresetCanaryNeimengguPtrType) ToErEnvConfPresetCanaryNeimenggu
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryNeimengguPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryNeimengguPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryNeimenggu] {
+	return pulumix.Output[*ErEnvConfPresetCanaryNeimenggu]{
+		OutputState: i.ToErEnvConfPresetCanaryNeimengguPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryNeimengguOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryNeimengguOutput) ElementType() reflect.Type {
@@ -4686,6 +5251,12 @@ func (o ErEnvConfPresetCanaryNeimengguOutput) ToErEnvConfPresetCanaryNeimengguPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryNeimenggu) *ErEnvConfPresetCanaryNeimenggu {
 		return &v
 	}).(ErEnvConfPresetCanaryNeimengguPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryNeimengguOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryNeimenggu] {
+	return pulumix.Output[ErEnvConfPresetCanaryNeimenggu]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -4715,6 +5286,12 @@ func (o ErEnvConfPresetCanaryNeimengguPtrOutput) ToErEnvConfPresetCanaryNeimengg
 
 func (o ErEnvConfPresetCanaryNeimengguPtrOutput) ToErEnvConfPresetCanaryNeimengguPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryNeimengguPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryNeimengguPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryNeimenggu] {
+	return pulumix.Output[*ErEnvConfPresetCanaryNeimenggu]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryNeimengguPtrOutput) Elem() ErEnvConfPresetCanaryNeimengguOutput {
@@ -4798,6 +5375,12 @@ func (i ErEnvConfPresetCanaryNingxiaArgs) ToErEnvConfPresetCanaryNingxiaOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryNingxiaOutput)
 }
 
+func (i ErEnvConfPresetCanaryNingxiaArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryNingxia] {
+	return pulumix.Output[ErEnvConfPresetCanaryNingxia]{
+		OutputState: i.ToErEnvConfPresetCanaryNingxiaOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryNingxiaArgs) ToErEnvConfPresetCanaryNingxiaPtrOutput() ErEnvConfPresetCanaryNingxiaPtrOutput {
 	return i.ToErEnvConfPresetCanaryNingxiaPtrOutputWithContext(context.Background())
 }
@@ -4839,6 +5422,12 @@ func (i *erEnvConfPresetCanaryNingxiaPtrType) ToErEnvConfPresetCanaryNingxiaPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryNingxiaPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryNingxiaPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryNingxia] {
+	return pulumix.Output[*ErEnvConfPresetCanaryNingxia]{
+		OutputState: i.ToErEnvConfPresetCanaryNingxiaPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryNingxiaOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryNingxiaOutput) ElementType() reflect.Type {
@@ -4861,6 +5450,12 @@ func (o ErEnvConfPresetCanaryNingxiaOutput) ToErEnvConfPresetCanaryNingxiaPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryNingxia) *ErEnvConfPresetCanaryNingxia {
 		return &v
 	}).(ErEnvConfPresetCanaryNingxiaPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryNingxiaOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryNingxia] {
+	return pulumix.Output[ErEnvConfPresetCanaryNingxia]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -4890,6 +5485,12 @@ func (o ErEnvConfPresetCanaryNingxiaPtrOutput) ToErEnvConfPresetCanaryNingxiaPtr
 
 func (o ErEnvConfPresetCanaryNingxiaPtrOutput) ToErEnvConfPresetCanaryNingxiaPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryNingxiaPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryNingxiaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryNingxia] {
+	return pulumix.Output[*ErEnvConfPresetCanaryNingxia]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryNingxiaPtrOutput) Elem() ErEnvConfPresetCanaryNingxiaOutput {
@@ -4973,6 +5574,12 @@ func (i ErEnvConfPresetCanaryOverseasArgs) ToErEnvConfPresetCanaryOverseasOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryOverseasOutput)
 }
 
+func (i ErEnvConfPresetCanaryOverseasArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryOverseas] {
+	return pulumix.Output[ErEnvConfPresetCanaryOverseas]{
+		OutputState: i.ToErEnvConfPresetCanaryOverseasOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryOverseasArgs) ToErEnvConfPresetCanaryOverseasPtrOutput() ErEnvConfPresetCanaryOverseasPtrOutput {
 	return i.ToErEnvConfPresetCanaryOverseasPtrOutputWithContext(context.Background())
 }
@@ -5014,6 +5621,12 @@ func (i *erEnvConfPresetCanaryOverseasPtrType) ToErEnvConfPresetCanaryOverseasPt
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryOverseasPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryOverseasPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryOverseas] {
+	return pulumix.Output[*ErEnvConfPresetCanaryOverseas]{
+		OutputState: i.ToErEnvConfPresetCanaryOverseasPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryOverseasOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryOverseasOutput) ElementType() reflect.Type {
@@ -5036,6 +5649,12 @@ func (o ErEnvConfPresetCanaryOverseasOutput) ToErEnvConfPresetCanaryOverseasPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryOverseas) *ErEnvConfPresetCanaryOverseas {
 		return &v
 	}).(ErEnvConfPresetCanaryOverseasPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryOverseasOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryOverseas] {
+	return pulumix.Output[ErEnvConfPresetCanaryOverseas]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -5065,6 +5684,12 @@ func (o ErEnvConfPresetCanaryOverseasPtrOutput) ToErEnvConfPresetCanaryOverseasP
 
 func (o ErEnvConfPresetCanaryOverseasPtrOutput) ToErEnvConfPresetCanaryOverseasPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryOverseasPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryOverseasPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryOverseas] {
+	return pulumix.Output[*ErEnvConfPresetCanaryOverseas]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryOverseasPtrOutput) Elem() ErEnvConfPresetCanaryOverseasOutput {
@@ -5148,6 +5773,12 @@ func (i ErEnvConfPresetCanaryQinghaiArgs) ToErEnvConfPresetCanaryQinghaiOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryQinghaiOutput)
 }
 
+func (i ErEnvConfPresetCanaryQinghaiArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryQinghai] {
+	return pulumix.Output[ErEnvConfPresetCanaryQinghai]{
+		OutputState: i.ToErEnvConfPresetCanaryQinghaiOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryQinghaiArgs) ToErEnvConfPresetCanaryQinghaiPtrOutput() ErEnvConfPresetCanaryQinghaiPtrOutput {
 	return i.ToErEnvConfPresetCanaryQinghaiPtrOutputWithContext(context.Background())
 }
@@ -5189,6 +5820,12 @@ func (i *erEnvConfPresetCanaryQinghaiPtrType) ToErEnvConfPresetCanaryQinghaiPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryQinghaiPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryQinghaiPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryQinghai] {
+	return pulumix.Output[*ErEnvConfPresetCanaryQinghai]{
+		OutputState: i.ToErEnvConfPresetCanaryQinghaiPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryQinghaiOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryQinghaiOutput) ElementType() reflect.Type {
@@ -5211,6 +5848,12 @@ func (o ErEnvConfPresetCanaryQinghaiOutput) ToErEnvConfPresetCanaryQinghaiPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryQinghai) *ErEnvConfPresetCanaryQinghai {
 		return &v
 	}).(ErEnvConfPresetCanaryQinghaiPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryQinghaiOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryQinghai] {
+	return pulumix.Output[ErEnvConfPresetCanaryQinghai]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -5240,6 +5883,12 @@ func (o ErEnvConfPresetCanaryQinghaiPtrOutput) ToErEnvConfPresetCanaryQinghaiPtr
 
 func (o ErEnvConfPresetCanaryQinghaiPtrOutput) ToErEnvConfPresetCanaryQinghaiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryQinghaiPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryQinghaiPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryQinghai] {
+	return pulumix.Output[*ErEnvConfPresetCanaryQinghai]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryQinghaiPtrOutput) Elem() ErEnvConfPresetCanaryQinghaiOutput {
@@ -5323,6 +5972,12 @@ func (i ErEnvConfPresetCanaryShaanxiArgs) ToErEnvConfPresetCanaryShaanxiOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryShaanxiOutput)
 }
 
+func (i ErEnvConfPresetCanaryShaanxiArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryShaanxi] {
+	return pulumix.Output[ErEnvConfPresetCanaryShaanxi]{
+		OutputState: i.ToErEnvConfPresetCanaryShaanxiOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryShaanxiArgs) ToErEnvConfPresetCanaryShaanxiPtrOutput() ErEnvConfPresetCanaryShaanxiPtrOutput {
 	return i.ToErEnvConfPresetCanaryShaanxiPtrOutputWithContext(context.Background())
 }
@@ -5364,6 +6019,12 @@ func (i *erEnvConfPresetCanaryShaanxiPtrType) ToErEnvConfPresetCanaryShaanxiPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryShaanxiPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryShaanxiPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryShaanxi] {
+	return pulumix.Output[*ErEnvConfPresetCanaryShaanxi]{
+		OutputState: i.ToErEnvConfPresetCanaryShaanxiPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryShaanxiOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryShaanxiOutput) ElementType() reflect.Type {
@@ -5386,6 +6047,12 @@ func (o ErEnvConfPresetCanaryShaanxiOutput) ToErEnvConfPresetCanaryShaanxiPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryShaanxi) *ErEnvConfPresetCanaryShaanxi {
 		return &v
 	}).(ErEnvConfPresetCanaryShaanxiPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryShaanxiOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryShaanxi] {
+	return pulumix.Output[ErEnvConfPresetCanaryShaanxi]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -5415,6 +6082,12 @@ func (o ErEnvConfPresetCanaryShaanxiPtrOutput) ToErEnvConfPresetCanaryShaanxiPtr
 
 func (o ErEnvConfPresetCanaryShaanxiPtrOutput) ToErEnvConfPresetCanaryShaanxiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShaanxiPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryShaanxiPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryShaanxi] {
+	return pulumix.Output[*ErEnvConfPresetCanaryShaanxi]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryShaanxiPtrOutput) Elem() ErEnvConfPresetCanaryShaanxiOutput {
@@ -5498,6 +6171,12 @@ func (i ErEnvConfPresetCanaryShandongArgs) ToErEnvConfPresetCanaryShandongOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryShandongOutput)
 }
 
+func (i ErEnvConfPresetCanaryShandongArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryShandong] {
+	return pulumix.Output[ErEnvConfPresetCanaryShandong]{
+		OutputState: i.ToErEnvConfPresetCanaryShandongOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryShandongArgs) ToErEnvConfPresetCanaryShandongPtrOutput() ErEnvConfPresetCanaryShandongPtrOutput {
 	return i.ToErEnvConfPresetCanaryShandongPtrOutputWithContext(context.Background())
 }
@@ -5539,6 +6218,12 @@ func (i *erEnvConfPresetCanaryShandongPtrType) ToErEnvConfPresetCanaryShandongPt
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryShandongPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryShandongPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryShandong] {
+	return pulumix.Output[*ErEnvConfPresetCanaryShandong]{
+		OutputState: i.ToErEnvConfPresetCanaryShandongPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryShandongOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryShandongOutput) ElementType() reflect.Type {
@@ -5561,6 +6246,12 @@ func (o ErEnvConfPresetCanaryShandongOutput) ToErEnvConfPresetCanaryShandongPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryShandong) *ErEnvConfPresetCanaryShandong {
 		return &v
 	}).(ErEnvConfPresetCanaryShandongPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryShandongOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryShandong] {
+	return pulumix.Output[ErEnvConfPresetCanaryShandong]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -5590,6 +6281,12 @@ func (o ErEnvConfPresetCanaryShandongPtrOutput) ToErEnvConfPresetCanaryShandongP
 
 func (o ErEnvConfPresetCanaryShandongPtrOutput) ToErEnvConfPresetCanaryShandongPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShandongPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryShandongPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryShandong] {
+	return pulumix.Output[*ErEnvConfPresetCanaryShandong]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryShandongPtrOutput) Elem() ErEnvConfPresetCanaryShandongOutput {
@@ -5673,6 +6370,12 @@ func (i ErEnvConfPresetCanaryShanghaiArgs) ToErEnvConfPresetCanaryShanghaiOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryShanghaiOutput)
 }
 
+func (i ErEnvConfPresetCanaryShanghaiArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryShanghai] {
+	return pulumix.Output[ErEnvConfPresetCanaryShanghai]{
+		OutputState: i.ToErEnvConfPresetCanaryShanghaiOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryShanghaiArgs) ToErEnvConfPresetCanaryShanghaiPtrOutput() ErEnvConfPresetCanaryShanghaiPtrOutput {
 	return i.ToErEnvConfPresetCanaryShanghaiPtrOutputWithContext(context.Background())
 }
@@ -5714,6 +6417,12 @@ func (i *erEnvConfPresetCanaryShanghaiPtrType) ToErEnvConfPresetCanaryShanghaiPt
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryShanghaiPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryShanghaiPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryShanghai] {
+	return pulumix.Output[*ErEnvConfPresetCanaryShanghai]{
+		OutputState: i.ToErEnvConfPresetCanaryShanghaiPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryShanghaiOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryShanghaiOutput) ElementType() reflect.Type {
@@ -5736,6 +6445,12 @@ func (o ErEnvConfPresetCanaryShanghaiOutput) ToErEnvConfPresetCanaryShanghaiPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryShanghai) *ErEnvConfPresetCanaryShanghai {
 		return &v
 	}).(ErEnvConfPresetCanaryShanghaiPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryShanghaiOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryShanghai] {
+	return pulumix.Output[ErEnvConfPresetCanaryShanghai]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -5765,6 +6480,12 @@ func (o ErEnvConfPresetCanaryShanghaiPtrOutput) ToErEnvConfPresetCanaryShanghaiP
 
 func (o ErEnvConfPresetCanaryShanghaiPtrOutput) ToErEnvConfPresetCanaryShanghaiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShanghaiPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryShanghaiPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryShanghai] {
+	return pulumix.Output[*ErEnvConfPresetCanaryShanghai]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryShanghaiPtrOutput) Elem() ErEnvConfPresetCanaryShanghaiOutput {
@@ -5848,6 +6569,12 @@ func (i ErEnvConfPresetCanaryShanxiArgs) ToErEnvConfPresetCanaryShanxiOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryShanxiOutput)
 }
 
+func (i ErEnvConfPresetCanaryShanxiArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryShanxi] {
+	return pulumix.Output[ErEnvConfPresetCanaryShanxi]{
+		OutputState: i.ToErEnvConfPresetCanaryShanxiOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryShanxiArgs) ToErEnvConfPresetCanaryShanxiPtrOutput() ErEnvConfPresetCanaryShanxiPtrOutput {
 	return i.ToErEnvConfPresetCanaryShanxiPtrOutputWithContext(context.Background())
 }
@@ -5889,6 +6616,12 @@ func (i *erEnvConfPresetCanaryShanxiPtrType) ToErEnvConfPresetCanaryShanxiPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryShanxiPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryShanxiPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryShanxi] {
+	return pulumix.Output[*ErEnvConfPresetCanaryShanxi]{
+		OutputState: i.ToErEnvConfPresetCanaryShanxiPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryShanxiOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryShanxiOutput) ElementType() reflect.Type {
@@ -5911,6 +6644,12 @@ func (o ErEnvConfPresetCanaryShanxiOutput) ToErEnvConfPresetCanaryShanxiPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryShanxi) *ErEnvConfPresetCanaryShanxi {
 		return &v
 	}).(ErEnvConfPresetCanaryShanxiPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryShanxiOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryShanxi] {
+	return pulumix.Output[ErEnvConfPresetCanaryShanxi]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -5940,6 +6679,12 @@ func (o ErEnvConfPresetCanaryShanxiPtrOutput) ToErEnvConfPresetCanaryShanxiPtrOu
 
 func (o ErEnvConfPresetCanaryShanxiPtrOutput) ToErEnvConfPresetCanaryShanxiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShanxiPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryShanxiPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryShanxi] {
+	return pulumix.Output[*ErEnvConfPresetCanaryShanxi]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryShanxiPtrOutput) Elem() ErEnvConfPresetCanaryShanxiOutput {
@@ -6023,6 +6768,12 @@ func (i ErEnvConfPresetCanarySichuanArgs) ToErEnvConfPresetCanarySichuanOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanarySichuanOutput)
 }
 
+func (i ErEnvConfPresetCanarySichuanArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanarySichuan] {
+	return pulumix.Output[ErEnvConfPresetCanarySichuan]{
+		OutputState: i.ToErEnvConfPresetCanarySichuanOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanarySichuanArgs) ToErEnvConfPresetCanarySichuanPtrOutput() ErEnvConfPresetCanarySichuanPtrOutput {
 	return i.ToErEnvConfPresetCanarySichuanPtrOutputWithContext(context.Background())
 }
@@ -6064,6 +6815,12 @@ func (i *erEnvConfPresetCanarySichuanPtrType) ToErEnvConfPresetCanarySichuanPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanarySichuanPtrOutput)
 }
 
+func (i *erEnvConfPresetCanarySichuanPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanarySichuan] {
+	return pulumix.Output[*ErEnvConfPresetCanarySichuan]{
+		OutputState: i.ToErEnvConfPresetCanarySichuanPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanarySichuanOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanarySichuanOutput) ElementType() reflect.Type {
@@ -6086,6 +6843,12 @@ func (o ErEnvConfPresetCanarySichuanOutput) ToErEnvConfPresetCanarySichuanPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanarySichuan) *ErEnvConfPresetCanarySichuan {
 		return &v
 	}).(ErEnvConfPresetCanarySichuanPtrOutput)
+}
+
+func (o ErEnvConfPresetCanarySichuanOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanarySichuan] {
+	return pulumix.Output[ErEnvConfPresetCanarySichuan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -6115,6 +6878,12 @@ func (o ErEnvConfPresetCanarySichuanPtrOutput) ToErEnvConfPresetCanarySichuanPtr
 
 func (o ErEnvConfPresetCanarySichuanPtrOutput) ToErEnvConfPresetCanarySichuanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanarySichuanPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanarySichuanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanarySichuan] {
+	return pulumix.Output[*ErEnvConfPresetCanarySichuan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanarySichuanPtrOutput) Elem() ErEnvConfPresetCanarySichuanOutput {
@@ -6198,6 +6967,12 @@ func (i ErEnvConfPresetCanaryTaiwanArgs) ToErEnvConfPresetCanaryTaiwanOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryTaiwanOutput)
 }
 
+func (i ErEnvConfPresetCanaryTaiwanArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryTaiwan] {
+	return pulumix.Output[ErEnvConfPresetCanaryTaiwan]{
+		OutputState: i.ToErEnvConfPresetCanaryTaiwanOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryTaiwanArgs) ToErEnvConfPresetCanaryTaiwanPtrOutput() ErEnvConfPresetCanaryTaiwanPtrOutput {
 	return i.ToErEnvConfPresetCanaryTaiwanPtrOutputWithContext(context.Background())
 }
@@ -6239,6 +7014,12 @@ func (i *erEnvConfPresetCanaryTaiwanPtrType) ToErEnvConfPresetCanaryTaiwanPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryTaiwanPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryTaiwanPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryTaiwan] {
+	return pulumix.Output[*ErEnvConfPresetCanaryTaiwan]{
+		OutputState: i.ToErEnvConfPresetCanaryTaiwanPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryTaiwanOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryTaiwanOutput) ElementType() reflect.Type {
@@ -6261,6 +7042,12 @@ func (o ErEnvConfPresetCanaryTaiwanOutput) ToErEnvConfPresetCanaryTaiwanPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryTaiwan) *ErEnvConfPresetCanaryTaiwan {
 		return &v
 	}).(ErEnvConfPresetCanaryTaiwanPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryTaiwanOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryTaiwan] {
+	return pulumix.Output[ErEnvConfPresetCanaryTaiwan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -6290,6 +7077,12 @@ func (o ErEnvConfPresetCanaryTaiwanPtrOutput) ToErEnvConfPresetCanaryTaiwanPtrOu
 
 func (o ErEnvConfPresetCanaryTaiwanPtrOutput) ToErEnvConfPresetCanaryTaiwanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryTaiwanPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryTaiwanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryTaiwan] {
+	return pulumix.Output[*ErEnvConfPresetCanaryTaiwan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryTaiwanPtrOutput) Elem() ErEnvConfPresetCanaryTaiwanOutput {
@@ -6373,6 +7166,12 @@ func (i ErEnvConfPresetCanaryTianjinArgs) ToErEnvConfPresetCanaryTianjinOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryTianjinOutput)
 }
 
+func (i ErEnvConfPresetCanaryTianjinArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryTianjin] {
+	return pulumix.Output[ErEnvConfPresetCanaryTianjin]{
+		OutputState: i.ToErEnvConfPresetCanaryTianjinOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryTianjinArgs) ToErEnvConfPresetCanaryTianjinPtrOutput() ErEnvConfPresetCanaryTianjinPtrOutput {
 	return i.ToErEnvConfPresetCanaryTianjinPtrOutputWithContext(context.Background())
 }
@@ -6414,6 +7213,12 @@ func (i *erEnvConfPresetCanaryTianjinPtrType) ToErEnvConfPresetCanaryTianjinPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryTianjinPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryTianjinPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryTianjin] {
+	return pulumix.Output[*ErEnvConfPresetCanaryTianjin]{
+		OutputState: i.ToErEnvConfPresetCanaryTianjinPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryTianjinOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryTianjinOutput) ElementType() reflect.Type {
@@ -6436,6 +7241,12 @@ func (o ErEnvConfPresetCanaryTianjinOutput) ToErEnvConfPresetCanaryTianjinPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryTianjin) *ErEnvConfPresetCanaryTianjin {
 		return &v
 	}).(ErEnvConfPresetCanaryTianjinPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryTianjinOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryTianjin] {
+	return pulumix.Output[ErEnvConfPresetCanaryTianjin]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -6465,6 +7276,12 @@ func (o ErEnvConfPresetCanaryTianjinPtrOutput) ToErEnvConfPresetCanaryTianjinPtr
 
 func (o ErEnvConfPresetCanaryTianjinPtrOutput) ToErEnvConfPresetCanaryTianjinPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryTianjinPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryTianjinPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryTianjin] {
+	return pulumix.Output[*ErEnvConfPresetCanaryTianjin]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryTianjinPtrOutput) Elem() ErEnvConfPresetCanaryTianjinOutput {
@@ -6548,6 +7365,12 @@ func (i ErEnvConfPresetCanaryXinjiangArgs) ToErEnvConfPresetCanaryXinjiangOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryXinjiangOutput)
 }
 
+func (i ErEnvConfPresetCanaryXinjiangArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryXinjiang] {
+	return pulumix.Output[ErEnvConfPresetCanaryXinjiang]{
+		OutputState: i.ToErEnvConfPresetCanaryXinjiangOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryXinjiangArgs) ToErEnvConfPresetCanaryXinjiangPtrOutput() ErEnvConfPresetCanaryXinjiangPtrOutput {
 	return i.ToErEnvConfPresetCanaryXinjiangPtrOutputWithContext(context.Background())
 }
@@ -6589,6 +7412,12 @@ func (i *erEnvConfPresetCanaryXinjiangPtrType) ToErEnvConfPresetCanaryXinjiangPt
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryXinjiangPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryXinjiangPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryXinjiang] {
+	return pulumix.Output[*ErEnvConfPresetCanaryXinjiang]{
+		OutputState: i.ToErEnvConfPresetCanaryXinjiangPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryXinjiangOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryXinjiangOutput) ElementType() reflect.Type {
@@ -6611,6 +7440,12 @@ func (o ErEnvConfPresetCanaryXinjiangOutput) ToErEnvConfPresetCanaryXinjiangPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryXinjiang) *ErEnvConfPresetCanaryXinjiang {
 		return &v
 	}).(ErEnvConfPresetCanaryXinjiangPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryXinjiangOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryXinjiang] {
+	return pulumix.Output[ErEnvConfPresetCanaryXinjiang]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -6640,6 +7475,12 @@ func (o ErEnvConfPresetCanaryXinjiangPtrOutput) ToErEnvConfPresetCanaryXinjiangP
 
 func (o ErEnvConfPresetCanaryXinjiangPtrOutput) ToErEnvConfPresetCanaryXinjiangPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryXinjiangPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryXinjiangPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryXinjiang] {
+	return pulumix.Output[*ErEnvConfPresetCanaryXinjiang]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryXinjiangPtrOutput) Elem() ErEnvConfPresetCanaryXinjiangOutput {
@@ -6723,6 +7564,12 @@ func (i ErEnvConfPresetCanaryXizangArgs) ToErEnvConfPresetCanaryXizangOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryXizangOutput)
 }
 
+func (i ErEnvConfPresetCanaryXizangArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryXizang] {
+	return pulumix.Output[ErEnvConfPresetCanaryXizang]{
+		OutputState: i.ToErEnvConfPresetCanaryXizangOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryXizangArgs) ToErEnvConfPresetCanaryXizangPtrOutput() ErEnvConfPresetCanaryXizangPtrOutput {
 	return i.ToErEnvConfPresetCanaryXizangPtrOutputWithContext(context.Background())
 }
@@ -6764,6 +7611,12 @@ func (i *erEnvConfPresetCanaryXizangPtrType) ToErEnvConfPresetCanaryXizangPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryXizangPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryXizangPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryXizang] {
+	return pulumix.Output[*ErEnvConfPresetCanaryXizang]{
+		OutputState: i.ToErEnvConfPresetCanaryXizangPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryXizangOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryXizangOutput) ElementType() reflect.Type {
@@ -6786,6 +7639,12 @@ func (o ErEnvConfPresetCanaryXizangOutput) ToErEnvConfPresetCanaryXizangPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryXizang) *ErEnvConfPresetCanaryXizang {
 		return &v
 	}).(ErEnvConfPresetCanaryXizangPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryXizangOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryXizang] {
+	return pulumix.Output[ErEnvConfPresetCanaryXizang]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -6815,6 +7674,12 @@ func (o ErEnvConfPresetCanaryXizangPtrOutput) ToErEnvConfPresetCanaryXizangPtrOu
 
 func (o ErEnvConfPresetCanaryXizangPtrOutput) ToErEnvConfPresetCanaryXizangPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryXizangPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryXizangPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryXizang] {
+	return pulumix.Output[*ErEnvConfPresetCanaryXizang]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryXizangPtrOutput) Elem() ErEnvConfPresetCanaryXizangOutput {
@@ -6898,6 +7763,12 @@ func (i ErEnvConfPresetCanaryYunnanArgs) ToErEnvConfPresetCanaryYunnanOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryYunnanOutput)
 }
 
+func (i ErEnvConfPresetCanaryYunnanArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryYunnan] {
+	return pulumix.Output[ErEnvConfPresetCanaryYunnan]{
+		OutputState: i.ToErEnvConfPresetCanaryYunnanOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryYunnanArgs) ToErEnvConfPresetCanaryYunnanPtrOutput() ErEnvConfPresetCanaryYunnanPtrOutput {
 	return i.ToErEnvConfPresetCanaryYunnanPtrOutputWithContext(context.Background())
 }
@@ -6939,6 +7810,12 @@ func (i *erEnvConfPresetCanaryYunnanPtrType) ToErEnvConfPresetCanaryYunnanPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryYunnanPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryYunnanPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryYunnan] {
+	return pulumix.Output[*ErEnvConfPresetCanaryYunnan]{
+		OutputState: i.ToErEnvConfPresetCanaryYunnanPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryYunnanOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryYunnanOutput) ElementType() reflect.Type {
@@ -6961,6 +7838,12 @@ func (o ErEnvConfPresetCanaryYunnanOutput) ToErEnvConfPresetCanaryYunnanPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryYunnan) *ErEnvConfPresetCanaryYunnan {
 		return &v
 	}).(ErEnvConfPresetCanaryYunnanPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryYunnanOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryYunnan] {
+	return pulumix.Output[ErEnvConfPresetCanaryYunnan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -6990,6 +7873,12 @@ func (o ErEnvConfPresetCanaryYunnanPtrOutput) ToErEnvConfPresetCanaryYunnanPtrOu
 
 func (o ErEnvConfPresetCanaryYunnanPtrOutput) ToErEnvConfPresetCanaryYunnanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryYunnanPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryYunnanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryYunnan] {
+	return pulumix.Output[*ErEnvConfPresetCanaryYunnan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryYunnanPtrOutput) Elem() ErEnvConfPresetCanaryYunnanOutput {
@@ -7073,6 +7962,12 @@ func (i ErEnvConfPresetCanaryZhejiangArgs) ToErEnvConfPresetCanaryZhejiangOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryZhejiangOutput)
 }
 
+func (i ErEnvConfPresetCanaryZhejiangArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryZhejiang] {
+	return pulumix.Output[ErEnvConfPresetCanaryZhejiang]{
+		OutputState: i.ToErEnvConfPresetCanaryZhejiangOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfPresetCanaryZhejiangArgs) ToErEnvConfPresetCanaryZhejiangPtrOutput() ErEnvConfPresetCanaryZhejiangPtrOutput {
 	return i.ToErEnvConfPresetCanaryZhejiangPtrOutputWithContext(context.Background())
 }
@@ -7114,6 +8009,12 @@ func (i *erEnvConfPresetCanaryZhejiangPtrType) ToErEnvConfPresetCanaryZhejiangPt
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryZhejiangPtrOutput)
 }
 
+func (i *erEnvConfPresetCanaryZhejiangPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryZhejiang] {
+	return pulumix.Output[*ErEnvConfPresetCanaryZhejiang]{
+		OutputState: i.ToErEnvConfPresetCanaryZhejiangPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfPresetCanaryZhejiangOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfPresetCanaryZhejiangOutput) ElementType() reflect.Type {
@@ -7136,6 +8037,12 @@ func (o ErEnvConfPresetCanaryZhejiangOutput) ToErEnvConfPresetCanaryZhejiangPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryZhejiang) *ErEnvConfPresetCanaryZhejiang {
 		return &v
 	}).(ErEnvConfPresetCanaryZhejiangPtrOutput)
+}
+
+func (o ErEnvConfPresetCanaryZhejiangOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfPresetCanaryZhejiang] {
+	return pulumix.Output[ErEnvConfPresetCanaryZhejiang]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -7165,6 +8072,12 @@ func (o ErEnvConfPresetCanaryZhejiangPtrOutput) ToErEnvConfPresetCanaryZhejiangP
 
 func (o ErEnvConfPresetCanaryZhejiangPtrOutput) ToErEnvConfPresetCanaryZhejiangPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryZhejiangPtrOutput {
 	return o
+}
+
+func (o ErEnvConfPresetCanaryZhejiangPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfPresetCanaryZhejiang] {
+	return pulumix.Output[*ErEnvConfPresetCanaryZhejiang]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfPresetCanaryZhejiangPtrOutput) Elem() ErEnvConfPresetCanaryZhejiangOutput {
@@ -7248,6 +8161,12 @@ func (i ErEnvConfProductionArgs) ToErEnvConfProductionOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfProductionOutput)
 }
 
+func (i ErEnvConfProductionArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfProduction] {
+	return pulumix.Output[ErEnvConfProduction]{
+		OutputState: i.ToErEnvConfProductionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfProductionArgs) ToErEnvConfProductionPtrOutput() ErEnvConfProductionPtrOutput {
 	return i.ToErEnvConfProductionPtrOutputWithContext(context.Background())
 }
@@ -7289,6 +8208,12 @@ func (i *erEnvConfProductionPtrType) ToErEnvConfProductionPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfProductionPtrOutput)
 }
 
+func (i *erEnvConfProductionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfProduction] {
+	return pulumix.Output[*ErEnvConfProduction]{
+		OutputState: i.ToErEnvConfProductionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfProductionOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfProductionOutput) ElementType() reflect.Type {
@@ -7311,6 +8236,12 @@ func (o ErEnvConfProductionOutput) ToErEnvConfProductionPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfProduction) *ErEnvConfProduction {
 		return &v
 	}).(ErEnvConfProductionPtrOutput)
+}
+
+func (o ErEnvConfProductionOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfProduction] {
+	return pulumix.Output[ErEnvConfProduction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -7340,6 +8271,12 @@ func (o ErEnvConfProductionPtrOutput) ToErEnvConfProductionPtrOutput() ErEnvConf
 
 func (o ErEnvConfProductionPtrOutput) ToErEnvConfProductionPtrOutputWithContext(ctx context.Context) ErEnvConfProductionPtrOutput {
 	return o
+}
+
+func (o ErEnvConfProductionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfProduction] {
+	return pulumix.Output[*ErEnvConfProduction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfProductionPtrOutput) Elem() ErEnvConfProductionOutput {
@@ -7423,6 +8360,12 @@ func (i ErEnvConfStagingArgs) ToErEnvConfStagingOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfStagingOutput)
 }
 
+func (i ErEnvConfStagingArgs) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfStaging] {
+	return pulumix.Output[ErEnvConfStaging]{
+		OutputState: i.ToErEnvConfStagingOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ErEnvConfStagingArgs) ToErEnvConfStagingPtrOutput() ErEnvConfStagingPtrOutput {
 	return i.ToErEnvConfStagingPtrOutputWithContext(context.Background())
 }
@@ -7464,6 +8407,12 @@ func (i *erEnvConfStagingPtrType) ToErEnvConfStagingPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfStagingPtrOutput)
 }
 
+func (i *erEnvConfStagingPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfStaging] {
+	return pulumix.Output[*ErEnvConfStaging]{
+		OutputState: i.ToErEnvConfStagingPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ErEnvConfStagingOutput struct{ *pulumi.OutputState }
 
 func (ErEnvConfStagingOutput) ElementType() reflect.Type {
@@ -7486,6 +8435,12 @@ func (o ErEnvConfStagingOutput) ToErEnvConfStagingPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfStaging) *ErEnvConfStaging {
 		return &v
 	}).(ErEnvConfStagingPtrOutput)
+}
+
+func (o ErEnvConfStagingOutput) ToOutput(ctx context.Context) pulumix.Output[ErEnvConfStaging] {
+	return pulumix.Output[ErEnvConfStaging]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allowed DCDN domain names.
@@ -7515,6 +8470,12 @@ func (o ErEnvConfStagingPtrOutput) ToErEnvConfStagingPtrOutput() ErEnvConfStagin
 
 func (o ErEnvConfStagingPtrOutput) ToErEnvConfStagingPtrOutputWithContext(ctx context.Context) ErEnvConfStagingPtrOutput {
 	return o
+}
+
+func (o ErEnvConfStagingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErEnvConfStaging] {
+	return pulumix.Output[*ErEnvConfStaging]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ErEnvConfStagingPtrOutput) Elem() ErEnvConfStagingOutput {
@@ -7606,6 +8567,12 @@ func (i IpaDomainSourceArgs) ToIpaDomainSourceOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(IpaDomainSourceOutput)
 }
 
+func (i IpaDomainSourceArgs) ToOutput(ctx context.Context) pulumix.Output[IpaDomainSource] {
+	return pulumix.Output[IpaDomainSource]{
+		OutputState: i.ToIpaDomainSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IpaDomainSourceArrayInput is an input type that accepts IpaDomainSourceArray and IpaDomainSourceArrayOutput values.
 // You can construct a concrete instance of `IpaDomainSourceArrayInput` via:
 //
@@ -7631,6 +8598,12 @@ func (i IpaDomainSourceArray) ToIpaDomainSourceArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(IpaDomainSourceArrayOutput)
 }
 
+func (i IpaDomainSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]IpaDomainSource] {
+	return pulumix.Output[[]IpaDomainSource]{
+		OutputState: i.ToIpaDomainSourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IpaDomainSourceOutput struct{ *pulumi.OutputState }
 
 func (IpaDomainSourceOutput) ElementType() reflect.Type {
@@ -7643,6 +8616,12 @@ func (o IpaDomainSourceOutput) ToIpaDomainSourceOutput() IpaDomainSourceOutput {
 
 func (o IpaDomainSourceOutput) ToIpaDomainSourceOutputWithContext(ctx context.Context) IpaDomainSourceOutput {
 	return o
+}
+
+func (o IpaDomainSourceOutput) ToOutput(ctx context.Context) pulumix.Output[IpaDomainSource] {
+	return pulumix.Output[IpaDomainSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The address of the origin server. You can specify an IP address or a domain name.
@@ -7682,6 +8661,12 @@ func (o IpaDomainSourceArrayOutput) ToIpaDomainSourceArrayOutput() IpaDomainSour
 
 func (o IpaDomainSourceArrayOutput) ToIpaDomainSourceArrayOutputWithContext(ctx context.Context) IpaDomainSourceArrayOutput {
 	return o
+}
+
+func (o IpaDomainSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IpaDomainSource] {
+	return pulumix.Output[[]IpaDomainSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IpaDomainSourceArrayOutput) Index(i pulumi.IntInput) IpaDomainSourceOutput {
@@ -7735,6 +8720,12 @@ func (i WafRuleConditionArgs) ToWafRuleConditionOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConditionOutput)
 }
 
+func (i WafRuleConditionArgs) ToOutput(ctx context.Context) pulumix.Output[WafRuleCondition] {
+	return pulumix.Output[WafRuleCondition]{
+		OutputState: i.ToWafRuleConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WafRuleConditionArrayInput is an input type that accepts WafRuleConditionArray and WafRuleConditionArrayOutput values.
 // You can construct a concrete instance of `WafRuleConditionArrayInput` via:
 //
@@ -7760,6 +8751,12 @@ func (i WafRuleConditionArray) ToWafRuleConditionArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConditionArrayOutput)
 }
 
+func (i WafRuleConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]WafRuleCondition] {
+	return pulumix.Output[[]WafRuleCondition]{
+		OutputState: i.ToWafRuleConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WafRuleConditionOutput struct{ *pulumi.OutputState }
 
 func (WafRuleConditionOutput) ElementType() reflect.Type {
@@ -7772,6 +8769,12 @@ func (o WafRuleConditionOutput) ToWafRuleConditionOutput() WafRuleConditionOutpu
 
 func (o WafRuleConditionOutput) ToWafRuleConditionOutputWithContext(ctx context.Context) WafRuleConditionOutput {
 	return o
+}
+
+func (o WafRuleConditionOutput) ToOutput(ctx context.Context) pulumix.Output[WafRuleCondition] {
+	return pulumix.Output[WafRuleCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The match field.
@@ -7806,6 +8809,12 @@ func (o WafRuleConditionArrayOutput) ToWafRuleConditionArrayOutput() WafRuleCond
 
 func (o WafRuleConditionArrayOutput) ToWafRuleConditionArrayOutputWithContext(ctx context.Context) WafRuleConditionArrayOutput {
 	return o
+}
+
+func (o WafRuleConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WafRuleCondition] {
+	return pulumix.Output[[]WafRuleCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WafRuleConditionArrayOutput) Index(i pulumi.IntInput) WafRuleConditionOutput {
@@ -7867,6 +8876,12 @@ func (i WafRuleRateLimitArgs) ToWafRuleRateLimitOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(WafRuleRateLimitOutput)
 }
 
+func (i WafRuleRateLimitArgs) ToOutput(ctx context.Context) pulumix.Output[WafRuleRateLimit] {
+	return pulumix.Output[WafRuleRateLimit]{
+		OutputState: i.ToWafRuleRateLimitOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WafRuleRateLimitArgs) ToWafRuleRateLimitPtrOutput() WafRuleRateLimitPtrOutput {
 	return i.ToWafRuleRateLimitPtrOutputWithContext(context.Background())
 }
@@ -7908,6 +8923,12 @@ func (i *wafRuleRateLimitPtrType) ToWafRuleRateLimitPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(WafRuleRateLimitPtrOutput)
 }
 
+func (i *wafRuleRateLimitPtrType) ToOutput(ctx context.Context) pulumix.Output[*WafRuleRateLimit] {
+	return pulumix.Output[*WafRuleRateLimit]{
+		OutputState: i.ToWafRuleRateLimitPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WafRuleRateLimitOutput struct{ *pulumi.OutputState }
 
 func (WafRuleRateLimitOutput) ElementType() reflect.Type {
@@ -7930,6 +8951,12 @@ func (o WafRuleRateLimitOutput) ToWafRuleRateLimitPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafRuleRateLimit) *WafRuleRateLimit {
 		return &v
 	}).(WafRuleRateLimitPtrOutput)
+}
+
+func (o WafRuleRateLimitOutput) ToOutput(ctx context.Context) pulumix.Output[WafRuleRateLimit] {
+	return pulumix.Output[WafRuleRateLimit]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Statistical duration, 5-1800.
@@ -7974,6 +9001,12 @@ func (o WafRuleRateLimitPtrOutput) ToWafRuleRateLimitPtrOutput() WafRuleRateLimi
 
 func (o WafRuleRateLimitPtrOutput) ToWafRuleRateLimitPtrOutputWithContext(ctx context.Context) WafRuleRateLimitPtrOutput {
 	return o
+}
+
+func (o WafRuleRateLimitPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WafRuleRateLimit] {
+	return pulumix.Output[*WafRuleRateLimit]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WafRuleRateLimitPtrOutput) Elem() WafRuleRateLimitOutput {
@@ -8087,6 +9120,12 @@ func (i WafRuleRateLimitStatusArgs) ToWafRuleRateLimitStatusOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(WafRuleRateLimitStatusOutput)
 }
 
+func (i WafRuleRateLimitStatusArgs) ToOutput(ctx context.Context) pulumix.Output[WafRuleRateLimitStatus] {
+	return pulumix.Output[WafRuleRateLimitStatus]{
+		OutputState: i.ToWafRuleRateLimitStatusOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WafRuleRateLimitStatusArgs) ToWafRuleRateLimitStatusPtrOutput() WafRuleRateLimitStatusPtrOutput {
 	return i.ToWafRuleRateLimitStatusPtrOutputWithContext(context.Background())
 }
@@ -8128,6 +9167,12 @@ func (i *wafRuleRateLimitStatusPtrType) ToWafRuleRateLimitStatusPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(WafRuleRateLimitStatusPtrOutput)
 }
 
+func (i *wafRuleRateLimitStatusPtrType) ToOutput(ctx context.Context) pulumix.Output[*WafRuleRateLimitStatus] {
+	return pulumix.Output[*WafRuleRateLimitStatus]{
+		OutputState: i.ToWafRuleRateLimitStatusPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WafRuleRateLimitStatusOutput struct{ *pulumi.OutputState }
 
 func (WafRuleRateLimitStatusOutput) ElementType() reflect.Type {
@@ -8150,6 +9195,12 @@ func (o WafRuleRateLimitStatusOutput) ToWafRuleRateLimitStatusPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafRuleRateLimitStatus) *WafRuleRateLimitStatus {
 		return &v
 	}).(WafRuleRateLimitStatusPtrOutput)
+}
+
+func (o WafRuleRateLimitStatusOutput) ToOutput(ctx context.Context) pulumix.Output[WafRuleRateLimitStatus] {
+	return pulumix.Output[WafRuleRateLimitStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The HTTP status code returned.
@@ -8179,6 +9230,12 @@ func (o WafRuleRateLimitStatusPtrOutput) ToWafRuleRateLimitStatusPtrOutput() Waf
 
 func (o WafRuleRateLimitStatusPtrOutput) ToWafRuleRateLimitStatusPtrOutputWithContext(ctx context.Context) WafRuleRateLimitStatusPtrOutput {
 	return o
+}
+
+func (o WafRuleRateLimitStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WafRuleRateLimitStatus] {
+	return pulumix.Output[*WafRuleRateLimitStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WafRuleRateLimitStatusPtrOutput) Elem() WafRuleRateLimitStatusOutput {
@@ -8298,6 +9355,12 @@ func (i GetDomainsDomainArgs) ToGetDomainsDomainOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainOutput)
 }
 
+func (i GetDomainsDomainArgs) ToOutput(ctx context.Context) pulumix.Output[GetDomainsDomain] {
+	return pulumix.Output[GetDomainsDomain]{
+		OutputState: i.ToGetDomainsDomainOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDomainsDomainArrayInput is an input type that accepts GetDomainsDomainArray and GetDomainsDomainArrayOutput values.
 // You can construct a concrete instance of `GetDomainsDomainArrayInput` via:
 //
@@ -8323,6 +9386,12 @@ func (i GetDomainsDomainArray) ToGetDomainsDomainArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainArrayOutput)
 }
 
+func (i GetDomainsDomainArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainsDomain] {
+	return pulumix.Output[[]GetDomainsDomain]{
+		OutputState: i.ToGetDomainsDomainArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDomainsDomainOutput struct{ *pulumi.OutputState }
 
 func (GetDomainsDomainOutput) ElementType() reflect.Type {
@@ -8335,6 +9404,12 @@ func (o GetDomainsDomainOutput) ToGetDomainsDomainOutput() GetDomainsDomainOutpu
 
 func (o GetDomainsDomainOutput) ToGetDomainsDomainOutputWithContext(ctx context.Context) GetDomainsDomainOutput {
 	return o
+}
+
+func (o GetDomainsDomainOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainsDomain] {
+	return pulumix.Output[GetDomainsDomain]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicates the name of the certificate.
@@ -8411,6 +9486,12 @@ func (o GetDomainsDomainArrayOutput) ToGetDomainsDomainArrayOutputWithContext(ct
 	return o
 }
 
+func (o GetDomainsDomainArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainsDomain] {
+	return pulumix.Output[[]GetDomainsDomain]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainsDomain {
 		return vs[0].([]GetDomainsDomain)[vs[1].(int)]
@@ -8470,6 +9551,12 @@ func (i GetDomainsDomainSourceArgs) ToGetDomainsDomainSourceOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainSourceOutput)
 }
 
+func (i GetDomainsDomainSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GetDomainsDomainSource] {
+	return pulumix.Output[GetDomainsDomainSource]{
+		OutputState: i.ToGetDomainsDomainSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDomainsDomainSourceArrayInput is an input type that accepts GetDomainsDomainSourceArray and GetDomainsDomainSourceArrayOutput values.
 // You can construct a concrete instance of `GetDomainsDomainSourceArrayInput` via:
 //
@@ -8495,6 +9582,12 @@ func (i GetDomainsDomainSourceArray) ToGetDomainsDomainSourceArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainSourceArrayOutput)
 }
 
+func (i GetDomainsDomainSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainsDomainSource] {
+	return pulumix.Output[[]GetDomainsDomainSource]{
+		OutputState: i.ToGetDomainsDomainSourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDomainsDomainSourceOutput struct{ *pulumi.OutputState }
 
 func (GetDomainsDomainSourceOutput) ElementType() reflect.Type {
@@ -8507,6 +9600,12 @@ func (o GetDomainsDomainSourceOutput) ToGetDomainsDomainSourceOutput() GetDomain
 
 func (o GetDomainsDomainSourceOutput) ToGetDomainsDomainSourceOutputWithContext(ctx context.Context) GetDomainsDomainSourceOutput {
 	return o
+}
+
+func (o GetDomainsDomainSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainsDomainSource] {
+	return pulumix.Output[GetDomainsDomainSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The origin address.
@@ -8551,6 +9650,12 @@ func (o GetDomainsDomainSourceArrayOutput) ToGetDomainsDomainSourceArrayOutput()
 
 func (o GetDomainsDomainSourceArrayOutput) ToGetDomainsDomainSourceArrayOutputWithContext(ctx context.Context) GetDomainsDomainSourceArrayOutput {
 	return o
+}
+
+func (o GetDomainsDomainSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainsDomainSource] {
+	return pulumix.Output[[]GetDomainsDomainSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDomainsDomainSourceArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainSourceOutput {
@@ -8636,6 +9741,12 @@ func (i GetIpaDomainsDomainArgs) ToGetIpaDomainsDomainOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetIpaDomainsDomainOutput)
 }
 
+func (i GetIpaDomainsDomainArgs) ToOutput(ctx context.Context) pulumix.Output[GetIpaDomainsDomain] {
+	return pulumix.Output[GetIpaDomainsDomain]{
+		OutputState: i.ToGetIpaDomainsDomainOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetIpaDomainsDomainArrayInput is an input type that accepts GetIpaDomainsDomainArray and GetIpaDomainsDomainArrayOutput values.
 // You can construct a concrete instance of `GetIpaDomainsDomainArrayInput` via:
 //
@@ -8661,6 +9772,12 @@ func (i GetIpaDomainsDomainArray) ToGetIpaDomainsDomainArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetIpaDomainsDomainArrayOutput)
 }
 
+func (i GetIpaDomainsDomainArray) ToOutput(ctx context.Context) pulumix.Output[[]GetIpaDomainsDomain] {
+	return pulumix.Output[[]GetIpaDomainsDomain]{
+		OutputState: i.ToGetIpaDomainsDomainArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetIpaDomainsDomainOutput struct{ *pulumi.OutputState }
 
 func (GetIpaDomainsDomainOutput) ElementType() reflect.Type {
@@ -8673,6 +9790,12 @@ func (o GetIpaDomainsDomainOutput) ToGetIpaDomainsDomainOutput() GetIpaDomainsDo
 
 func (o GetIpaDomainsDomainOutput) ToGetIpaDomainsDomainOutputWithContext(ctx context.Context) GetIpaDomainsDomainOutput {
 	return o
+}
+
+func (o GetIpaDomainsDomainOutput) ToOutput(ctx context.Context) pulumix.Output[GetIpaDomainsDomain] {
+	return pulumix.Output[GetIpaDomainsDomain]{
+		OutputState: o.OutputState,
+	}
 }
 
 // CertName.
@@ -8749,6 +9872,12 @@ func (o GetIpaDomainsDomainArrayOutput) ToGetIpaDomainsDomainArrayOutputWithCont
 	return o
 }
 
+func (o GetIpaDomainsDomainArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetIpaDomainsDomain] {
+	return pulumix.Output[[]GetIpaDomainsDomain]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetIpaDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetIpaDomainsDomainOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIpaDomainsDomain {
 		return vs[0].([]GetIpaDomainsDomain)[vs[1].(int)]
@@ -8804,6 +9933,12 @@ func (i GetIpaDomainsDomainSourceArgs) ToGetIpaDomainsDomainSourceOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetIpaDomainsDomainSourceOutput)
 }
 
+func (i GetIpaDomainsDomainSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GetIpaDomainsDomainSource] {
+	return pulumix.Output[GetIpaDomainsDomainSource]{
+		OutputState: i.ToGetIpaDomainsDomainSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetIpaDomainsDomainSourceArrayInput is an input type that accepts GetIpaDomainsDomainSourceArray and GetIpaDomainsDomainSourceArrayOutput values.
 // You can construct a concrete instance of `GetIpaDomainsDomainSourceArrayInput` via:
 //
@@ -8829,6 +9964,12 @@ func (i GetIpaDomainsDomainSourceArray) ToGetIpaDomainsDomainSourceArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetIpaDomainsDomainSourceArrayOutput)
 }
 
+func (i GetIpaDomainsDomainSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetIpaDomainsDomainSource] {
+	return pulumix.Output[[]GetIpaDomainsDomainSource]{
+		OutputState: i.ToGetIpaDomainsDomainSourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetIpaDomainsDomainSourceOutput struct{ *pulumi.OutputState }
 
 func (GetIpaDomainsDomainSourceOutput) ElementType() reflect.Type {
@@ -8841,6 +9982,12 @@ func (o GetIpaDomainsDomainSourceOutput) ToGetIpaDomainsDomainSourceOutput() Get
 
 func (o GetIpaDomainsDomainSourceOutput) ToGetIpaDomainsDomainSourceOutputWithContext(ctx context.Context) GetIpaDomainsDomainSourceOutput {
 	return o
+}
+
+func (o GetIpaDomainsDomainSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GetIpaDomainsDomainSource] {
+	return pulumix.Output[GetIpaDomainsDomainSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The address of the origin server.
@@ -8880,6 +10027,12 @@ func (o GetIpaDomainsDomainSourceArrayOutput) ToGetIpaDomainsDomainSourceArrayOu
 
 func (o GetIpaDomainsDomainSourceArrayOutput) ToGetIpaDomainsDomainSourceArrayOutputWithContext(ctx context.Context) GetIpaDomainsDomainSourceArrayOutput {
 	return o
+}
+
+func (o GetIpaDomainsDomainSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetIpaDomainsDomainSource] {
+	return pulumix.Output[[]GetIpaDomainsDomainSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetIpaDomainsDomainSourceArrayOutput) Index(i pulumi.IntInput) GetIpaDomainsDomainSourceOutput {
@@ -8933,6 +10086,12 @@ func (i GetWafDomainsDomainArgs) ToGetWafDomainsDomainOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetWafDomainsDomainOutput)
 }
 
+func (i GetWafDomainsDomainArgs) ToOutput(ctx context.Context) pulumix.Output[GetWafDomainsDomain] {
+	return pulumix.Output[GetWafDomainsDomain]{
+		OutputState: i.ToGetWafDomainsDomainOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetWafDomainsDomainArrayInput is an input type that accepts GetWafDomainsDomainArray and GetWafDomainsDomainArrayOutput values.
 // You can construct a concrete instance of `GetWafDomainsDomainArrayInput` via:
 //
@@ -8958,6 +10117,12 @@ func (i GetWafDomainsDomainArray) ToGetWafDomainsDomainArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetWafDomainsDomainArrayOutput)
 }
 
+func (i GetWafDomainsDomainArray) ToOutput(ctx context.Context) pulumix.Output[[]GetWafDomainsDomain] {
+	return pulumix.Output[[]GetWafDomainsDomain]{
+		OutputState: i.ToGetWafDomainsDomainArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetWafDomainsDomainOutput struct{ *pulumi.OutputState }
 
 func (GetWafDomainsDomainOutput) ElementType() reflect.Type {
@@ -8970,6 +10135,12 @@ func (o GetWafDomainsDomainOutput) ToGetWafDomainsDomainOutput() GetWafDomainsDo
 
 func (o GetWafDomainsDomainOutput) ToGetWafDomainsDomainOutputWithContext(ctx context.Context) GetWafDomainsDomainOutput {
 	return o
+}
+
+func (o GetWafDomainsDomainOutput) ToOutput(ctx context.Context) pulumix.Output[GetWafDomainsDomain] {
+	return pulumix.Output[GetWafDomainsDomain]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The client ip tag.
@@ -9004,6 +10175,12 @@ func (o GetWafDomainsDomainArrayOutput) ToGetWafDomainsDomainArrayOutput() GetWa
 
 func (o GetWafDomainsDomainArrayOutput) ToGetWafDomainsDomainArrayOutputWithContext(ctx context.Context) GetWafDomainsDomainArrayOutput {
 	return o
+}
+
+func (o GetWafDomainsDomainArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetWafDomainsDomain] {
+	return pulumix.Output[[]GetWafDomainsDomain]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetWafDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetWafDomainsDomainOutput {
@@ -9049,6 +10226,12 @@ func (i GetWafDomainsDomainDefenseSceneArgs) ToGetWafDomainsDomainDefenseSceneOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetWafDomainsDomainDefenseSceneOutput)
 }
 
+func (i GetWafDomainsDomainDefenseSceneArgs) ToOutput(ctx context.Context) pulumix.Output[GetWafDomainsDomainDefenseScene] {
+	return pulumix.Output[GetWafDomainsDomainDefenseScene]{
+		OutputState: i.ToGetWafDomainsDomainDefenseSceneOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetWafDomainsDomainDefenseSceneArrayInput is an input type that accepts GetWafDomainsDomainDefenseSceneArray and GetWafDomainsDomainDefenseSceneArrayOutput values.
 // You can construct a concrete instance of `GetWafDomainsDomainDefenseSceneArrayInput` via:
 //
@@ -9074,6 +10257,12 @@ func (i GetWafDomainsDomainDefenseSceneArray) ToGetWafDomainsDomainDefenseSceneA
 	return pulumi.ToOutputWithContext(ctx, i).(GetWafDomainsDomainDefenseSceneArrayOutput)
 }
 
+func (i GetWafDomainsDomainDefenseSceneArray) ToOutput(ctx context.Context) pulumix.Output[[]GetWafDomainsDomainDefenseScene] {
+	return pulumix.Output[[]GetWafDomainsDomainDefenseScene]{
+		OutputState: i.ToGetWafDomainsDomainDefenseSceneArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetWafDomainsDomainDefenseSceneOutput struct{ *pulumi.OutputState }
 
 func (GetWafDomainsDomainDefenseSceneOutput) ElementType() reflect.Type {
@@ -9086,6 +10275,12 @@ func (o GetWafDomainsDomainDefenseSceneOutput) ToGetWafDomainsDomainDefenseScene
 
 func (o GetWafDomainsDomainDefenseSceneOutput) ToGetWafDomainsDomainDefenseSceneOutputWithContext(ctx context.Context) GetWafDomainsDomainDefenseSceneOutput {
 	return o
+}
+
+func (o GetWafDomainsDomainDefenseSceneOutput) ToOutput(ctx context.Context) pulumix.Output[GetWafDomainsDomainDefenseScene] {
+	return pulumix.Output[GetWafDomainsDomainDefenseScene]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of protection policy.
@@ -9110,6 +10305,12 @@ func (o GetWafDomainsDomainDefenseSceneArrayOutput) ToGetWafDomainsDomainDefense
 
 func (o GetWafDomainsDomainDefenseSceneArrayOutput) ToGetWafDomainsDomainDefenseSceneArrayOutputWithContext(ctx context.Context) GetWafDomainsDomainDefenseSceneArrayOutput {
 	return o
+}
+
+func (o GetWafDomainsDomainDefenseSceneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetWafDomainsDomainDefenseScene] {
+	return pulumix.Output[[]GetWafDomainsDomainDefenseScene]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetWafDomainsDomainDefenseSceneArrayOutput) Index(i pulumi.IntInput) GetWafDomainsDomainDefenseSceneOutput {
@@ -9183,6 +10384,12 @@ func (i GetWafPoliciesPolicyArgs) ToGetWafPoliciesPolicyOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetWafPoliciesPolicyOutput)
 }
 
+func (i GetWafPoliciesPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GetWafPoliciesPolicy] {
+	return pulumix.Output[GetWafPoliciesPolicy]{
+		OutputState: i.ToGetWafPoliciesPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetWafPoliciesPolicyArrayInput is an input type that accepts GetWafPoliciesPolicyArray and GetWafPoliciesPolicyArrayOutput values.
 // You can construct a concrete instance of `GetWafPoliciesPolicyArrayInput` via:
 //
@@ -9208,6 +10415,12 @@ func (i GetWafPoliciesPolicyArray) ToGetWafPoliciesPolicyArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetWafPoliciesPolicyArrayOutput)
 }
 
+func (i GetWafPoliciesPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetWafPoliciesPolicy] {
+	return pulumix.Output[[]GetWafPoliciesPolicy]{
+		OutputState: i.ToGetWafPoliciesPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetWafPoliciesPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetWafPoliciesPolicyOutput) ElementType() reflect.Type {
@@ -9220,6 +10433,12 @@ func (o GetWafPoliciesPolicyOutput) ToGetWafPoliciesPolicyOutput() GetWafPolicie
 
 func (o GetWafPoliciesPolicyOutput) ToGetWafPoliciesPolicyOutputWithContext(ctx context.Context) GetWafPoliciesPolicyOutput {
 	return o
+}
+
+func (o GetWafPoliciesPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GetWafPoliciesPolicy] {
+	return pulumix.Output[GetWafPoliciesPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The first ID of the resource.
@@ -9279,6 +10498,12 @@ func (o GetWafPoliciesPolicyArrayOutput) ToGetWafPoliciesPolicyArrayOutput() Get
 
 func (o GetWafPoliciesPolicyArrayOutput) ToGetWafPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetWafPoliciesPolicyArrayOutput {
 	return o
+}
+
+func (o GetWafPoliciesPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetWafPoliciesPolicy] {
+	return pulumix.Output[[]GetWafPoliciesPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetWafPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetWafPoliciesPolicyOutput {
@@ -9392,6 +10617,12 @@ func (i GetWafRulesWafRuleArgs) ToGetWafRulesWafRuleOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesWafRuleOutput)
 }
 
+func (i GetWafRulesWafRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetWafRulesWafRule] {
+	return pulumix.Output[GetWafRulesWafRule]{
+		OutputState: i.ToGetWafRulesWafRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetWafRulesWafRuleArrayInput is an input type that accepts GetWafRulesWafRuleArray and GetWafRulesWafRuleArrayOutput values.
 // You can construct a concrete instance of `GetWafRulesWafRuleArrayInput` via:
 //
@@ -9417,6 +10648,12 @@ func (i GetWafRulesWafRuleArray) ToGetWafRulesWafRuleArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesWafRuleArrayOutput)
 }
 
+func (i GetWafRulesWafRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetWafRulesWafRule] {
+	return pulumix.Output[[]GetWafRulesWafRule]{
+		OutputState: i.ToGetWafRulesWafRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetWafRulesWafRuleOutput struct{ *pulumi.OutputState }
 
 func (GetWafRulesWafRuleOutput) ElementType() reflect.Type {
@@ -9429,6 +10666,12 @@ func (o GetWafRulesWafRuleOutput) ToGetWafRulesWafRuleOutput() GetWafRulesWafRul
 
 func (o GetWafRulesWafRuleOutput) ToGetWafRulesWafRuleOutputWithContext(ctx context.Context) GetWafRulesWafRuleOutput {
 	return o
+}
+
+func (o GetWafRulesWafRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetWafRulesWafRule] {
+	return pulumix.Output[GetWafRulesWafRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the action of the rule.
@@ -9540,6 +10783,12 @@ func (o GetWafRulesWafRuleArrayOutput) ToGetWafRulesWafRuleArrayOutputWithContex
 	return o
 }
 
+func (o GetWafRulesWafRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetWafRulesWafRule] {
+	return pulumix.Output[[]GetWafRulesWafRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetWafRulesWafRuleArrayOutput) Index(i pulumi.IntInput) GetWafRulesWafRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWafRulesWafRule {
 		return vs[0].([]GetWafRulesWafRule)[vs[1].(int)]
@@ -9591,6 +10840,12 @@ func (i GetWafRulesWafRuleConditionArgs) ToGetWafRulesWafRuleConditionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesWafRuleConditionOutput)
 }
 
+func (i GetWafRulesWafRuleConditionArgs) ToOutput(ctx context.Context) pulumix.Output[GetWafRulesWafRuleCondition] {
+	return pulumix.Output[GetWafRulesWafRuleCondition]{
+		OutputState: i.ToGetWafRulesWafRuleConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetWafRulesWafRuleConditionArrayInput is an input type that accepts GetWafRulesWafRuleConditionArray and GetWafRulesWafRuleConditionArrayOutput values.
 // You can construct a concrete instance of `GetWafRulesWafRuleConditionArrayInput` via:
 //
@@ -9616,6 +10871,12 @@ func (i GetWafRulesWafRuleConditionArray) ToGetWafRulesWafRuleConditionArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesWafRuleConditionArrayOutput)
 }
 
+func (i GetWafRulesWafRuleConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetWafRulesWafRuleCondition] {
+	return pulumix.Output[[]GetWafRulesWafRuleCondition]{
+		OutputState: i.ToGetWafRulesWafRuleConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetWafRulesWafRuleConditionOutput struct{ *pulumi.OutputState }
 
 func (GetWafRulesWafRuleConditionOutput) ElementType() reflect.Type {
@@ -9628,6 +10889,12 @@ func (o GetWafRulesWafRuleConditionOutput) ToGetWafRulesWafRuleConditionOutput()
 
 func (o GetWafRulesWafRuleConditionOutput) ToGetWafRulesWafRuleConditionOutputWithContext(ctx context.Context) GetWafRulesWafRuleConditionOutput {
 	return o
+}
+
+func (o GetWafRulesWafRuleConditionOutput) ToOutput(ctx context.Context) pulumix.Output[GetWafRulesWafRuleCondition] {
+	return pulumix.Output[GetWafRulesWafRuleCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The match field.
@@ -9662,6 +10929,12 @@ func (o GetWafRulesWafRuleConditionArrayOutput) ToGetWafRulesWafRuleConditionArr
 
 func (o GetWafRulesWafRuleConditionArrayOutput) ToGetWafRulesWafRuleConditionArrayOutputWithContext(ctx context.Context) GetWafRulesWafRuleConditionArrayOutput {
 	return o
+}
+
+func (o GetWafRulesWafRuleConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetWafRulesWafRuleCondition] {
+	return pulumix.Output[[]GetWafRulesWafRuleCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetWafRulesWafRuleConditionArrayOutput) Index(i pulumi.IntInput) GetWafRulesWafRuleConditionOutput {
@@ -9723,6 +10996,12 @@ func (i GetWafRulesWafRuleRateLimitArgs) ToGetWafRulesWafRuleRateLimitOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesWafRuleRateLimitOutput)
 }
 
+func (i GetWafRulesWafRuleRateLimitArgs) ToOutput(ctx context.Context) pulumix.Output[GetWafRulesWafRuleRateLimit] {
+	return pulumix.Output[GetWafRulesWafRuleRateLimit]{
+		OutputState: i.ToGetWafRulesWafRuleRateLimitOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetWafRulesWafRuleRateLimitArrayInput is an input type that accepts GetWafRulesWafRuleRateLimitArray and GetWafRulesWafRuleRateLimitArrayOutput values.
 // You can construct a concrete instance of `GetWafRulesWafRuleRateLimitArrayInput` via:
 //
@@ -9748,6 +11027,12 @@ func (i GetWafRulesWafRuleRateLimitArray) ToGetWafRulesWafRuleRateLimitArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesWafRuleRateLimitArrayOutput)
 }
 
+func (i GetWafRulesWafRuleRateLimitArray) ToOutput(ctx context.Context) pulumix.Output[[]GetWafRulesWafRuleRateLimit] {
+	return pulumix.Output[[]GetWafRulesWafRuleRateLimit]{
+		OutputState: i.ToGetWafRulesWafRuleRateLimitArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetWafRulesWafRuleRateLimitOutput struct{ *pulumi.OutputState }
 
 func (GetWafRulesWafRuleRateLimitOutput) ElementType() reflect.Type {
@@ -9760,6 +11045,12 @@ func (o GetWafRulesWafRuleRateLimitOutput) ToGetWafRulesWafRuleRateLimitOutput()
 
 func (o GetWafRulesWafRuleRateLimitOutput) ToGetWafRulesWafRuleRateLimitOutputWithContext(ctx context.Context) GetWafRulesWafRuleRateLimitOutput {
 	return o
+}
+
+func (o GetWafRulesWafRuleRateLimitOutput) ToOutput(ctx context.Context) pulumix.Output[GetWafRulesWafRuleRateLimit] {
+	return pulumix.Output[GetWafRulesWafRuleRateLimit]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The statistical interval. Valid values: 5 to 1800. Unit: seconds.
@@ -9804,6 +11095,12 @@ func (o GetWafRulesWafRuleRateLimitArrayOutput) ToGetWafRulesWafRuleRateLimitArr
 
 func (o GetWafRulesWafRuleRateLimitArrayOutput) ToGetWafRulesWafRuleRateLimitArrayOutputWithContext(ctx context.Context) GetWafRulesWafRuleRateLimitArrayOutput {
 	return o
+}
+
+func (o GetWafRulesWafRuleRateLimitArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetWafRulesWafRuleRateLimit] {
+	return pulumix.Output[[]GetWafRulesWafRuleRateLimit]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetWafRulesWafRuleRateLimitArrayOutput) Index(i pulumi.IntInput) GetWafRulesWafRuleRateLimitOutput {
@@ -9851,6 +11148,12 @@ func (i GetWafRulesWafRuleRateLimitStatusArgs) ToGetWafRulesWafRuleRateLimitStat
 	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesWafRuleRateLimitStatusOutput)
 }
 
+func (i GetWafRulesWafRuleRateLimitStatusArgs) ToOutput(ctx context.Context) pulumix.Output[GetWafRulesWafRuleRateLimitStatus] {
+	return pulumix.Output[GetWafRulesWafRuleRateLimitStatus]{
+		OutputState: i.ToGetWafRulesWafRuleRateLimitStatusOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetWafRulesWafRuleRateLimitStatusArrayInput is an input type that accepts GetWafRulesWafRuleRateLimitStatusArray and GetWafRulesWafRuleRateLimitStatusArrayOutput values.
 // You can construct a concrete instance of `GetWafRulesWafRuleRateLimitStatusArrayInput` via:
 //
@@ -9876,6 +11179,12 @@ func (i GetWafRulesWafRuleRateLimitStatusArray) ToGetWafRulesWafRuleRateLimitSta
 	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesWafRuleRateLimitStatusArrayOutput)
 }
 
+func (i GetWafRulesWafRuleRateLimitStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]GetWafRulesWafRuleRateLimitStatus] {
+	return pulumix.Output[[]GetWafRulesWafRuleRateLimitStatus]{
+		OutputState: i.ToGetWafRulesWafRuleRateLimitStatusArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetWafRulesWafRuleRateLimitStatusOutput struct{ *pulumi.OutputState }
 
 func (GetWafRulesWafRuleRateLimitStatusOutput) ElementType() reflect.Type {
@@ -9888,6 +11197,12 @@ func (o GetWafRulesWafRuleRateLimitStatusOutput) ToGetWafRulesWafRuleRateLimitSt
 
 func (o GetWafRulesWafRuleRateLimitStatusOutput) ToGetWafRulesWafRuleRateLimitStatusOutputWithContext(ctx context.Context) GetWafRulesWafRuleRateLimitStatusOutput {
 	return o
+}
+
+func (o GetWafRulesWafRuleRateLimitStatusOutput) ToOutput(ctx context.Context) pulumix.Output[GetWafRulesWafRuleRateLimitStatus] {
+	return pulumix.Output[GetWafRulesWafRuleRateLimitStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetWafRulesWafRuleRateLimitStatusOutput) Code() pulumi.StringOutput {
@@ -9916,6 +11231,12 @@ func (o GetWafRulesWafRuleRateLimitStatusArrayOutput) ToGetWafRulesWafRuleRateLi
 
 func (o GetWafRulesWafRuleRateLimitStatusArrayOutput) ToGetWafRulesWafRuleRateLimitStatusArrayOutputWithContext(ctx context.Context) GetWafRulesWafRuleRateLimitStatusArrayOutput {
 	return o
+}
+
+func (o GetWafRulesWafRuleRateLimitStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetWafRulesWafRuleRateLimitStatus] {
+	return pulumix.Output[[]GetWafRulesWafRuleRateLimitStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetWafRulesWafRuleRateLimitStatusArrayOutput) Index(i pulumi.IntInput) GetWafRulesWafRuleRateLimitStatusOutput {

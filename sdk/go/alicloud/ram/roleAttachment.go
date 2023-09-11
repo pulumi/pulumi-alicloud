@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a RAM role attachment resource to bind role for several ECS instances.
@@ -250,6 +251,12 @@ func (i *RoleAttachment) ToRoleAttachmentOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(RoleAttachmentOutput)
 }
 
+func (i *RoleAttachment) ToOutput(ctx context.Context) pulumix.Output[*RoleAttachment] {
+	return pulumix.Output[*RoleAttachment]{
+		OutputState: i.ToRoleAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RoleAttachmentArrayInput is an input type that accepts RoleAttachmentArray and RoleAttachmentArrayOutput values.
 // You can construct a concrete instance of `RoleAttachmentArrayInput` via:
 //
@@ -273,6 +280,12 @@ func (i RoleAttachmentArray) ToRoleAttachmentArrayOutput() RoleAttachmentArrayOu
 
 func (i RoleAttachmentArray) ToRoleAttachmentArrayOutputWithContext(ctx context.Context) RoleAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoleAttachmentArrayOutput)
+}
+
+func (i RoleAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*RoleAttachment] {
+	return pulumix.Output[[]*RoleAttachment]{
+		OutputState: i.ToRoleAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RoleAttachmentMapInput is an input type that accepts RoleAttachmentMap and RoleAttachmentMapOutput values.
@@ -300,6 +313,12 @@ func (i RoleAttachmentMap) ToRoleAttachmentMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(RoleAttachmentMapOutput)
 }
 
+func (i RoleAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RoleAttachment] {
+	return pulumix.Output[map[string]*RoleAttachment]{
+		OutputState: i.ToRoleAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RoleAttachmentOutput struct{ *pulumi.OutputState }
 
 func (RoleAttachmentOutput) ElementType() reflect.Type {
@@ -312,6 +331,12 @@ func (o RoleAttachmentOutput) ToRoleAttachmentOutput() RoleAttachmentOutput {
 
 func (o RoleAttachmentOutput) ToRoleAttachmentOutputWithContext(ctx context.Context) RoleAttachmentOutput {
 	return o
+}
+
+func (o RoleAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*RoleAttachment] {
+	return pulumix.Output[*RoleAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of ECS instance's IDs.
@@ -338,6 +363,12 @@ func (o RoleAttachmentArrayOutput) ToRoleAttachmentArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o RoleAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RoleAttachment] {
+	return pulumix.Output[[]*RoleAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RoleAttachmentArrayOutput) Index(i pulumi.IntInput) RoleAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RoleAttachment {
 		return vs[0].([]*RoleAttachment)[vs[1].(int)]
@@ -356,6 +387,12 @@ func (o RoleAttachmentMapOutput) ToRoleAttachmentMapOutput() RoleAttachmentMapOu
 
 func (o RoleAttachmentMapOutput) ToRoleAttachmentMapOutputWithContext(ctx context.Context) RoleAttachmentMapOutput {
 	return o
+}
+
+func (o RoleAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RoleAttachment] {
+	return pulumix.Output[map[string]*RoleAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RoleAttachmentMapOutput) MapIndex(k pulumi.StringInput) RoleAttachmentOutput {

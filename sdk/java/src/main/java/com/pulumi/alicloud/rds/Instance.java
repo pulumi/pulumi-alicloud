@@ -444,6 +444,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deletionProtection);
     }
     /**
+     * The instance configuration type. Valid values:
+     * - Up
+     * - Down
+     * - TempUpgrade
+     * - Serverless
+     * 
+     */
+    @Export(name="direction", type=String.class, parameters={})
+    private Output</* @Nullable */ String> direction;
+
+    /**
+     * @return The instance configuration type. Valid values:
+     * - Up
+     * - Down
+     * - TempUpgrade
+     * - Serverless
+     * 
+     */
+    public Output<Optional<String>> direction() {
+        return Codegen.optional(this.direction);
+    }
+    /**
      * The method to update the engine version and change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.
      * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -1240,18 +1262,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.tcpConnectionType;
     }
     /**
-     * The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+     * The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
      * 
      */
     @Export(name="tdeStatus", type=String.class, parameters={})
-    private Output</* @Nullable */ String> tdeStatus;
+    private Output<String> tdeStatus;
 
     /**
-     * @return The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+     * @return The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
      * 
      */
-    public Output<Optional<String>> tdeStatus() {
-        return Codegen.optional(this.tdeStatus);
+    public Output<String> tdeStatus() {
+        return this.tdeStatus;
     }
     /**
      * Whether to upgrade a minor version of the kernel. Valid values:

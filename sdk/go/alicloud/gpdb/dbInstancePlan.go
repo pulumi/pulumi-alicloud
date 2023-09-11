@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a GPDB DB Instance Plan resource.
@@ -212,6 +213,12 @@ func (i *DbInstancePlan) ToDbInstancePlanOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanOutput)
 }
 
+func (i *DbInstancePlan) ToOutput(ctx context.Context) pulumix.Output[*DbInstancePlan] {
+	return pulumix.Output[*DbInstancePlan]{
+		OutputState: i.ToDbInstancePlanOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DbInstancePlanArrayInput is an input type that accepts DbInstancePlanArray and DbInstancePlanArrayOutput values.
 // You can construct a concrete instance of `DbInstancePlanArrayInput` via:
 //
@@ -235,6 +242,12 @@ func (i DbInstancePlanArray) ToDbInstancePlanArrayOutput() DbInstancePlanArrayOu
 
 func (i DbInstancePlanArray) ToDbInstancePlanArrayOutputWithContext(ctx context.Context) DbInstancePlanArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanArrayOutput)
+}
+
+func (i DbInstancePlanArray) ToOutput(ctx context.Context) pulumix.Output[[]*DbInstancePlan] {
+	return pulumix.Output[[]*DbInstancePlan]{
+		OutputState: i.ToDbInstancePlanArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DbInstancePlanMapInput is an input type that accepts DbInstancePlanMap and DbInstancePlanMapOutput values.
@@ -262,6 +275,12 @@ func (i DbInstancePlanMap) ToDbInstancePlanMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanMapOutput)
 }
 
+func (i DbInstancePlanMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbInstancePlan] {
+	return pulumix.Output[map[string]*DbInstancePlan]{
+		OutputState: i.ToDbInstancePlanMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DbInstancePlanOutput struct{ *pulumi.OutputState }
 
 func (DbInstancePlanOutput) ElementType() reflect.Type {
@@ -274,6 +293,12 @@ func (o DbInstancePlanOutput) ToDbInstancePlanOutput() DbInstancePlanOutput {
 
 func (o DbInstancePlanOutput) ToDbInstancePlanOutputWithContext(ctx context.Context) DbInstancePlanOutput {
 	return o
+}
+
+func (o DbInstancePlanOutput) ToOutput(ctx context.Context) pulumix.Output[*DbInstancePlan] {
+	return pulumix.Output[*DbInstancePlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Database instance.
@@ -340,6 +365,12 @@ func (o DbInstancePlanArrayOutput) ToDbInstancePlanArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o DbInstancePlanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DbInstancePlan] {
+	return pulumix.Output[[]*DbInstancePlan]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DbInstancePlanArrayOutput) Index(i pulumi.IntInput) DbInstancePlanOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DbInstancePlan {
 		return vs[0].([]*DbInstancePlan)[vs[1].(int)]
@@ -358,6 +389,12 @@ func (o DbInstancePlanMapOutput) ToDbInstancePlanMapOutput() DbInstancePlanMapOu
 
 func (o DbInstancePlanMapOutput) ToDbInstancePlanMapOutputWithContext(ctx context.Context) DbInstancePlanMapOutput {
 	return o
+}
+
+func (o DbInstancePlanMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbInstancePlan] {
+	return pulumix.Output[map[string]*DbInstancePlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DbInstancePlanMapOutput) MapIndex(k pulumi.StringInput) DbInstancePlanOutput {

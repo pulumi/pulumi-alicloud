@@ -15,50 +15,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DbInstancePlanPlanConfig {
     /**
-     * @return Pause instance plan config. See the following `Block pause`.
+     * @return Pause instance plan config. See `pause` below.
      * 
      */
     private @Nullable DbInstancePlanPlanConfigPause pause;
     /**
-     * @return Resume instance plan config. See the following `Block resume`.
+     * @return Resume instance plan config. See `resume` below.
      * 
      */
     private @Nullable DbInstancePlanPlanConfigResume resume;
     /**
-     * @return Scale In instance plan config. See the following `Block scale_in`.
+     * @return Scale In instance plan config. See `scale_in` below.
      * 
      */
     private @Nullable DbInstancePlanPlanConfigScaleIn scaleIn;
     /**
-     * @return Scale out instance plan config. See the following `Block scale_out`.
+     * @return Scale out instance plan config. See `scale_out` below.
      * 
      */
     private @Nullable DbInstancePlanPlanConfigScaleOut scaleOut;
 
     private DbInstancePlanPlanConfig() {}
     /**
-     * @return Pause instance plan config. See the following `Block pause`.
+     * @return Pause instance plan config. See `pause` below.
      * 
      */
     public Optional<DbInstancePlanPlanConfigPause> pause() {
         return Optional.ofNullable(this.pause);
     }
     /**
-     * @return Resume instance plan config. See the following `Block resume`.
+     * @return Resume instance plan config. See `resume` below.
      * 
      */
     public Optional<DbInstancePlanPlanConfigResume> resume() {
         return Optional.ofNullable(this.resume);
     }
     /**
-     * @return Scale In instance plan config. See the following `Block scale_in`.
+     * @return Scale In instance plan config. See `scale_in` below.
      * 
      */
     public Optional<DbInstancePlanPlanConfigScaleIn> scaleIn() {
         return Optional.ofNullable(this.scaleIn);
     }
     /**
-     * @return Scale out instance plan config. See the following `Block scale_out`.
+     * @return Scale out instance plan config. See `scale_out` below.
      * 
      */
     public Optional<DbInstancePlanPlanConfigScaleOut> scaleOut() {

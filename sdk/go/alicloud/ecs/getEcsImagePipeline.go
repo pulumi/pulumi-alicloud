@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
@@ -138,6 +139,12 @@ func (o LookupEcsImagePipelineResultOutput) ToLookupEcsImagePipelineResultOutput
 
 func (o LookupEcsImagePipelineResultOutput) ToLookupEcsImagePipelineResultOutputWithContext(ctx context.Context) LookupEcsImagePipelineResultOutput {
 	return o
+}
+
+func (o LookupEcsImagePipelineResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEcsImagePipelineResult] {
+	return pulumix.Output[LookupEcsImagePipelineResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

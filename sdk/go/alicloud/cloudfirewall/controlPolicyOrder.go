@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Firewall Control Policy resource.
@@ -181,6 +182,12 @@ func (i *ControlPolicyOrder) ToControlPolicyOrderOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ControlPolicyOrderOutput)
 }
 
+func (i *ControlPolicyOrder) ToOutput(ctx context.Context) pulumix.Output[*ControlPolicyOrder] {
+	return pulumix.Output[*ControlPolicyOrder]{
+		OutputState: i.ToControlPolicyOrderOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ControlPolicyOrderArrayInput is an input type that accepts ControlPolicyOrderArray and ControlPolicyOrderArrayOutput values.
 // You can construct a concrete instance of `ControlPolicyOrderArrayInput` via:
 //
@@ -204,6 +211,12 @@ func (i ControlPolicyOrderArray) ToControlPolicyOrderArrayOutput() ControlPolicy
 
 func (i ControlPolicyOrderArray) ToControlPolicyOrderArrayOutputWithContext(ctx context.Context) ControlPolicyOrderArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ControlPolicyOrderArrayOutput)
+}
+
+func (i ControlPolicyOrderArray) ToOutput(ctx context.Context) pulumix.Output[[]*ControlPolicyOrder] {
+	return pulumix.Output[[]*ControlPolicyOrder]{
+		OutputState: i.ToControlPolicyOrderArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ControlPolicyOrderMapInput is an input type that accepts ControlPolicyOrderMap and ControlPolicyOrderMapOutput values.
@@ -231,6 +244,12 @@ func (i ControlPolicyOrderMap) ToControlPolicyOrderMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ControlPolicyOrderMapOutput)
 }
 
+func (i ControlPolicyOrderMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ControlPolicyOrder] {
+	return pulumix.Output[map[string]*ControlPolicyOrder]{
+		OutputState: i.ToControlPolicyOrderMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ControlPolicyOrderOutput struct{ *pulumi.OutputState }
 
 func (ControlPolicyOrderOutput) ElementType() reflect.Type {
@@ -243,6 +262,12 @@ func (o ControlPolicyOrderOutput) ToControlPolicyOrderOutput() ControlPolicyOrde
 
 func (o ControlPolicyOrderOutput) ToControlPolicyOrderOutputWithContext(ctx context.Context) ControlPolicyOrderOutput {
 	return o
+}
+
+func (o ControlPolicyOrderOutput) ToOutput(ctx context.Context) pulumix.Output[*ControlPolicyOrder] {
+	return pulumix.Output[*ControlPolicyOrder]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The unique ID of the access control policy.
@@ -274,6 +299,12 @@ func (o ControlPolicyOrderArrayOutput) ToControlPolicyOrderArrayOutputWithContex
 	return o
 }
 
+func (o ControlPolicyOrderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ControlPolicyOrder] {
+	return pulumix.Output[[]*ControlPolicyOrder]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ControlPolicyOrderArrayOutput) Index(i pulumi.IntInput) ControlPolicyOrderOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ControlPolicyOrder {
 		return vs[0].([]*ControlPolicyOrder)[vs[1].(int)]
@@ -292,6 +323,12 @@ func (o ControlPolicyOrderMapOutput) ToControlPolicyOrderMapOutput() ControlPoli
 
 func (o ControlPolicyOrderMapOutput) ToControlPolicyOrderMapOutputWithContext(ctx context.Context) ControlPolicyOrderMapOutput {
 	return o
+}
+
+func (o ControlPolicyOrderMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ControlPolicyOrder] {
+	return pulumix.Output[map[string]*ControlPolicyOrder]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ControlPolicyOrderMapOutput) MapIndex(k pulumi.StringInput) ControlPolicyOrderOutput {

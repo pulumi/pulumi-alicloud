@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Private Link Vpc Endpoint Connection resource.
@@ -183,6 +184,12 @@ func (i *VpcEndpointServiceConnection) ToVpcEndpointServiceConnectionOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceConnectionOutput)
 }
 
+func (i *VpcEndpointServiceConnection) ToOutput(ctx context.Context) pulumix.Output[*VpcEndpointServiceConnection] {
+	return pulumix.Output[*VpcEndpointServiceConnection]{
+		OutputState: i.ToVpcEndpointServiceConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VpcEndpointServiceConnectionArrayInput is an input type that accepts VpcEndpointServiceConnectionArray and VpcEndpointServiceConnectionArrayOutput values.
 // You can construct a concrete instance of `VpcEndpointServiceConnectionArrayInput` via:
 //
@@ -206,6 +213,12 @@ func (i VpcEndpointServiceConnectionArray) ToVpcEndpointServiceConnectionArrayOu
 
 func (i VpcEndpointServiceConnectionArray) ToVpcEndpointServiceConnectionArrayOutputWithContext(ctx context.Context) VpcEndpointServiceConnectionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceConnectionArrayOutput)
+}
+
+func (i VpcEndpointServiceConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]*VpcEndpointServiceConnection] {
+	return pulumix.Output[[]*VpcEndpointServiceConnection]{
+		OutputState: i.ToVpcEndpointServiceConnectionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // VpcEndpointServiceConnectionMapInput is an input type that accepts VpcEndpointServiceConnectionMap and VpcEndpointServiceConnectionMapOutput values.
@@ -233,6 +246,12 @@ func (i VpcEndpointServiceConnectionMap) ToVpcEndpointServiceConnectionMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceConnectionMapOutput)
 }
 
+func (i VpcEndpointServiceConnectionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VpcEndpointServiceConnection] {
+	return pulumix.Output[map[string]*VpcEndpointServiceConnection]{
+		OutputState: i.ToVpcEndpointServiceConnectionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VpcEndpointServiceConnectionOutput struct{ *pulumi.OutputState }
 
 func (VpcEndpointServiceConnectionOutput) ElementType() reflect.Type {
@@ -245,6 +264,12 @@ func (o VpcEndpointServiceConnectionOutput) ToVpcEndpointServiceConnectionOutput
 
 func (o VpcEndpointServiceConnectionOutput) ToVpcEndpointServiceConnectionOutputWithContext(ctx context.Context) VpcEndpointServiceConnectionOutput {
 	return o
+}
+
+func (o VpcEndpointServiceConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*VpcEndpointServiceConnection] {
+	return pulumix.Output[*VpcEndpointServiceConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Bandwidth.
@@ -286,6 +311,12 @@ func (o VpcEndpointServiceConnectionArrayOutput) ToVpcEndpointServiceConnectionA
 	return o
 }
 
+func (o VpcEndpointServiceConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VpcEndpointServiceConnection] {
+	return pulumix.Output[[]*VpcEndpointServiceConnection]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VpcEndpointServiceConnectionArrayOutput) Index(i pulumi.IntInput) VpcEndpointServiceConnectionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VpcEndpointServiceConnection {
 		return vs[0].([]*VpcEndpointServiceConnection)[vs[1].(int)]
@@ -304,6 +335,12 @@ func (o VpcEndpointServiceConnectionMapOutput) ToVpcEndpointServiceConnectionMap
 
 func (o VpcEndpointServiceConnectionMapOutput) ToVpcEndpointServiceConnectionMapOutputWithContext(ctx context.Context) VpcEndpointServiceConnectionMapOutput {
 	return o
+}
+
+func (o VpcEndpointServiceConnectionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VpcEndpointServiceConnection] {
+	return pulumix.Output[map[string]*VpcEndpointServiceConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VpcEndpointServiceConnectionMapOutput) MapIndex(k pulumi.StringInput) VpcEndpointServiceConnectionOutput {

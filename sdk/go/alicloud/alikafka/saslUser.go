@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an Alikafka sasl user resource.
@@ -267,6 +268,12 @@ func (i *SaslUser) ToSaslUserOutputWithContext(ctx context.Context) SaslUserOutp
 	return pulumi.ToOutputWithContext(ctx, i).(SaslUserOutput)
 }
 
+func (i *SaslUser) ToOutput(ctx context.Context) pulumix.Output[*SaslUser] {
+	return pulumix.Output[*SaslUser]{
+		OutputState: i.ToSaslUserOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SaslUserArrayInput is an input type that accepts SaslUserArray and SaslUserArrayOutput values.
 // You can construct a concrete instance of `SaslUserArrayInput` via:
 //
@@ -290,6 +297,12 @@ func (i SaslUserArray) ToSaslUserArrayOutput() SaslUserArrayOutput {
 
 func (i SaslUserArray) ToSaslUserArrayOutputWithContext(ctx context.Context) SaslUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SaslUserArrayOutput)
+}
+
+func (i SaslUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*SaslUser] {
+	return pulumix.Output[[]*SaslUser]{
+		OutputState: i.ToSaslUserArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SaslUserMapInput is an input type that accepts SaslUserMap and SaslUserMapOutput values.
@@ -317,6 +330,12 @@ func (i SaslUserMap) ToSaslUserMapOutputWithContext(ctx context.Context) SaslUse
 	return pulumi.ToOutputWithContext(ctx, i).(SaslUserMapOutput)
 }
 
+func (i SaslUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SaslUser] {
+	return pulumix.Output[map[string]*SaslUser]{
+		OutputState: i.ToSaslUserMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SaslUserOutput struct{ *pulumi.OutputState }
 
 func (SaslUserOutput) ElementType() reflect.Type {
@@ -329,6 +348,12 @@ func (o SaslUserOutput) ToSaslUserOutput() SaslUserOutput {
 
 func (o SaslUserOutput) ToSaslUserOutputWithContext(ctx context.Context) SaslUserOutput {
 	return o
+}
+
+func (o SaslUserOutput) ToOutput(ctx context.Context) pulumix.Output[*SaslUser] {
+	return pulumix.Output[*SaslUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID of the ALIKAFKA Instance that owns the groups.
@@ -375,6 +400,12 @@ func (o SaslUserArrayOutput) ToSaslUserArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o SaslUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SaslUser] {
+	return pulumix.Output[[]*SaslUser]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SaslUserArrayOutput) Index(i pulumi.IntInput) SaslUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SaslUser {
 		return vs[0].([]*SaslUser)[vs[1].(int)]
@@ -393,6 +424,12 @@ func (o SaslUserMapOutput) ToSaslUserMapOutput() SaslUserMapOutput {
 
 func (o SaslUserMapOutput) ToSaslUserMapOutputWithContext(ctx context.Context) SaslUserMapOutput {
 	return o
+}
+
+func (o SaslUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SaslUser] {
+	return pulumix.Output[map[string]*SaslUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SaslUserMapOutput) MapIndex(k pulumi.StringInput) SaslUserOutput {

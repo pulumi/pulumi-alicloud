@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DMS Enterprise Proxy Access resource.
@@ -241,6 +242,12 @@ func (i *EnterpriseProxyAccess) ToEnterpriseProxyAccessOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseProxyAccessOutput)
 }
 
+func (i *EnterpriseProxyAccess) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseProxyAccess] {
+	return pulumix.Output[*EnterpriseProxyAccess]{
+		OutputState: i.ToEnterpriseProxyAccessOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnterpriseProxyAccessArrayInput is an input type that accepts EnterpriseProxyAccessArray and EnterpriseProxyAccessArrayOutput values.
 // You can construct a concrete instance of `EnterpriseProxyAccessArrayInput` via:
 //
@@ -264,6 +271,12 @@ func (i EnterpriseProxyAccessArray) ToEnterpriseProxyAccessArrayOutput() Enterpr
 
 func (i EnterpriseProxyAccessArray) ToEnterpriseProxyAccessArrayOutputWithContext(ctx context.Context) EnterpriseProxyAccessArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseProxyAccessArrayOutput)
+}
+
+func (i EnterpriseProxyAccessArray) ToOutput(ctx context.Context) pulumix.Output[[]*EnterpriseProxyAccess] {
+	return pulumix.Output[[]*EnterpriseProxyAccess]{
+		OutputState: i.ToEnterpriseProxyAccessArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EnterpriseProxyAccessMapInput is an input type that accepts EnterpriseProxyAccessMap and EnterpriseProxyAccessMapOutput values.
@@ -291,6 +304,12 @@ func (i EnterpriseProxyAccessMap) ToEnterpriseProxyAccessMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseProxyAccessMapOutput)
 }
 
+func (i EnterpriseProxyAccessMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnterpriseProxyAccess] {
+	return pulumix.Output[map[string]*EnterpriseProxyAccess]{
+		OutputState: i.ToEnterpriseProxyAccessMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseProxyAccessOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseProxyAccessOutput) ElementType() reflect.Type {
@@ -303,6 +322,12 @@ func (o EnterpriseProxyAccessOutput) ToEnterpriseProxyAccessOutput() EnterpriseP
 
 func (o EnterpriseProxyAccessOutput) ToEnterpriseProxyAccessOutputWithContext(ctx context.Context) EnterpriseProxyAccessOutput {
 	return o
+}
+
+func (o EnterpriseProxyAccessOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseProxyAccess] {
+	return pulumix.Output[*EnterpriseProxyAccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authorized account of the security agent.
@@ -380,6 +405,12 @@ func (o EnterpriseProxyAccessArrayOutput) ToEnterpriseProxyAccessArrayOutputWith
 	return o
 }
 
+func (o EnterpriseProxyAccessArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EnterpriseProxyAccess] {
+	return pulumix.Output[[]*EnterpriseProxyAccess]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseProxyAccessArrayOutput) Index(i pulumi.IntInput) EnterpriseProxyAccessOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EnterpriseProxyAccess {
 		return vs[0].([]*EnterpriseProxyAccess)[vs[1].(int)]
@@ -398,6 +429,12 @@ func (o EnterpriseProxyAccessMapOutput) ToEnterpriseProxyAccessMapOutput() Enter
 
 func (o EnterpriseProxyAccessMapOutput) ToEnterpriseProxyAccessMapOutputWithContext(ctx context.Context) EnterpriseProxyAccessMapOutput {
 	return o
+}
+
+func (o EnterpriseProxyAccessMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnterpriseProxyAccess] {
+	return pulumix.Output[map[string]*EnterpriseProxyAccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseProxyAccessMapOutput) MapIndex(k pulumi.StringInput) EnterpriseProxyAccessOutput {

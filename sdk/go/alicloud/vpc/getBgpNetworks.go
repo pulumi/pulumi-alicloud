@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Vpc Bgp Networks of the current Alibaba Cloud user.
@@ -134,6 +135,12 @@ func (o GetBgpNetworksResultOutput) ToGetBgpNetworksResultOutput() GetBgpNetwork
 
 func (o GetBgpNetworksResultOutput) ToGetBgpNetworksResultOutputWithContext(ctx context.Context) GetBgpNetworksResultOutput {
 	return o
+}
+
+func (o GetBgpNetworksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBgpNetworksResult] {
+	return pulumix.Output[GetBgpNetworksResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

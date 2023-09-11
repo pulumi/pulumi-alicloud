@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides available lifecycle hook resources.
@@ -122,6 +123,12 @@ func (o GetLifecycleHooksResultOutput) ToGetLifecycleHooksResultOutput() GetLife
 
 func (o GetLifecycleHooksResultOutput) ToGetLifecycleHooksResultOutputWithContext(ctx context.Context) GetLifecycleHooksResultOutput {
 	return o
+}
+
+func (o GetLifecycleHooksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetLifecycleHooksResult] {
+	return pulumix.Output[GetLifecycleHooksResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of lifecycle hooks. Each element contains the following attributes:

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -50,6 +51,12 @@ func (i AggregateCompliancePackConfigRuleArgs) ToAggregateCompliancePackConfigRu
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateCompliancePackConfigRuleOutput)
 }
 
+func (i AggregateCompliancePackConfigRuleArgs) ToOutput(ctx context.Context) pulumix.Output[AggregateCompliancePackConfigRule] {
+	return pulumix.Output[AggregateCompliancePackConfigRule]{
+		OutputState: i.ToAggregateCompliancePackConfigRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AggregateCompliancePackConfigRuleArrayInput is an input type that accepts AggregateCompliancePackConfigRuleArray and AggregateCompliancePackConfigRuleArrayOutput values.
 // You can construct a concrete instance of `AggregateCompliancePackConfigRuleArrayInput` via:
 //
@@ -75,6 +82,12 @@ func (i AggregateCompliancePackConfigRuleArray) ToAggregateCompliancePackConfigR
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateCompliancePackConfigRuleArrayOutput)
 }
 
+func (i AggregateCompliancePackConfigRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]AggregateCompliancePackConfigRule] {
+	return pulumix.Output[[]AggregateCompliancePackConfigRule]{
+		OutputState: i.ToAggregateCompliancePackConfigRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AggregateCompliancePackConfigRuleOutput struct{ *pulumi.OutputState }
 
 func (AggregateCompliancePackConfigRuleOutput) ElementType() reflect.Type {
@@ -87,6 +100,12 @@ func (o AggregateCompliancePackConfigRuleOutput) ToAggregateCompliancePackConfig
 
 func (o AggregateCompliancePackConfigRuleOutput) ToAggregateCompliancePackConfigRuleOutputWithContext(ctx context.Context) AggregateCompliancePackConfigRuleOutput {
 	return o
+}
+
+func (o AggregateCompliancePackConfigRuleOutput) ToOutput(ctx context.Context) pulumix.Output[AggregateCompliancePackConfigRule] {
+	return pulumix.Output[AggregateCompliancePackConfigRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of parameter rules. See `configRuleParameters` below.
@@ -113,6 +132,12 @@ func (o AggregateCompliancePackConfigRuleArrayOutput) ToAggregateCompliancePackC
 
 func (o AggregateCompliancePackConfigRuleArrayOutput) ToAggregateCompliancePackConfigRuleArrayOutputWithContext(ctx context.Context) AggregateCompliancePackConfigRuleArrayOutput {
 	return o
+}
+
+func (o AggregateCompliancePackConfigRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AggregateCompliancePackConfigRule] {
+	return pulumix.Output[[]AggregateCompliancePackConfigRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AggregateCompliancePackConfigRuleArrayOutput) Index(i pulumi.IntInput) AggregateCompliancePackConfigRuleOutput {
@@ -158,6 +183,12 @@ func (i AggregateCompliancePackConfigRuleConfigRuleParameterArgs) ToAggregateCom
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateCompliancePackConfigRuleConfigRuleParameterOutput)
 }
 
+func (i AggregateCompliancePackConfigRuleConfigRuleParameterArgs) ToOutput(ctx context.Context) pulumix.Output[AggregateCompliancePackConfigRuleConfigRuleParameter] {
+	return pulumix.Output[AggregateCompliancePackConfigRuleConfigRuleParameter]{
+		OutputState: i.ToAggregateCompliancePackConfigRuleConfigRuleParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AggregateCompliancePackConfigRuleConfigRuleParameterArrayInput is an input type that accepts AggregateCompliancePackConfigRuleConfigRuleParameterArray and AggregateCompliancePackConfigRuleConfigRuleParameterArrayOutput values.
 // You can construct a concrete instance of `AggregateCompliancePackConfigRuleConfigRuleParameterArrayInput` via:
 //
@@ -183,6 +214,12 @@ func (i AggregateCompliancePackConfigRuleConfigRuleParameterArray) ToAggregateCo
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateCompliancePackConfigRuleConfigRuleParameterArrayOutput)
 }
 
+func (i AggregateCompliancePackConfigRuleConfigRuleParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]AggregateCompliancePackConfigRuleConfigRuleParameter] {
+	return pulumix.Output[[]AggregateCompliancePackConfigRuleConfigRuleParameter]{
+		OutputState: i.ToAggregateCompliancePackConfigRuleConfigRuleParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AggregateCompliancePackConfigRuleConfigRuleParameterOutput struct{ *pulumi.OutputState }
 
 func (AggregateCompliancePackConfigRuleConfigRuleParameterOutput) ElementType() reflect.Type {
@@ -195,6 +232,12 @@ func (o AggregateCompliancePackConfigRuleConfigRuleParameterOutput) ToAggregateC
 
 func (o AggregateCompliancePackConfigRuleConfigRuleParameterOutput) ToAggregateCompliancePackConfigRuleConfigRuleParameterOutputWithContext(ctx context.Context) AggregateCompliancePackConfigRuleConfigRuleParameterOutput {
 	return o
+}
+
+func (o AggregateCompliancePackConfigRuleConfigRuleParameterOutput) ToOutput(ctx context.Context) pulumix.Output[AggregateCompliancePackConfigRuleConfigRuleParameter] {
+	return pulumix.Output[AggregateCompliancePackConfigRuleConfigRuleParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Parameter Name.
@@ -219,6 +262,12 @@ func (o AggregateCompliancePackConfigRuleConfigRuleParameterArrayOutput) ToAggre
 
 func (o AggregateCompliancePackConfigRuleConfigRuleParameterArrayOutput) ToAggregateCompliancePackConfigRuleConfigRuleParameterArrayOutputWithContext(ctx context.Context) AggregateCompliancePackConfigRuleConfigRuleParameterArrayOutput {
 	return o
+}
+
+func (o AggregateCompliancePackConfigRuleConfigRuleParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AggregateCompliancePackConfigRuleConfigRuleParameter] {
+	return pulumix.Output[[]AggregateCompliancePackConfigRuleConfigRuleParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AggregateCompliancePackConfigRuleConfigRuleParameterArrayOutput) Index(i pulumi.IntInput) AggregateCompliancePackConfigRuleConfigRuleParameterOutput {
@@ -260,6 +309,12 @@ func (i AggregateCompliancePackConfigRuleIdArgs) ToAggregateCompliancePackConfig
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateCompliancePackConfigRuleIdOutput)
 }
 
+func (i AggregateCompliancePackConfigRuleIdArgs) ToOutput(ctx context.Context) pulumix.Output[AggregateCompliancePackConfigRuleId] {
+	return pulumix.Output[AggregateCompliancePackConfigRuleId]{
+		OutputState: i.ToAggregateCompliancePackConfigRuleIdOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AggregateCompliancePackConfigRuleIdArrayInput is an input type that accepts AggregateCompliancePackConfigRuleIdArray and AggregateCompliancePackConfigRuleIdArrayOutput values.
 // You can construct a concrete instance of `AggregateCompliancePackConfigRuleIdArrayInput` via:
 //
@@ -285,6 +340,12 @@ func (i AggregateCompliancePackConfigRuleIdArray) ToAggregateCompliancePackConfi
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateCompliancePackConfigRuleIdArrayOutput)
 }
 
+func (i AggregateCompliancePackConfigRuleIdArray) ToOutput(ctx context.Context) pulumix.Output[[]AggregateCompliancePackConfigRuleId] {
+	return pulumix.Output[[]AggregateCompliancePackConfigRuleId]{
+		OutputState: i.ToAggregateCompliancePackConfigRuleIdArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AggregateCompliancePackConfigRuleIdOutput struct{ *pulumi.OutputState }
 
 func (AggregateCompliancePackConfigRuleIdOutput) ElementType() reflect.Type {
@@ -297,6 +358,12 @@ func (o AggregateCompliancePackConfigRuleIdOutput) ToAggregateCompliancePackConf
 
 func (o AggregateCompliancePackConfigRuleIdOutput) ToAggregateCompliancePackConfigRuleIdOutputWithContext(ctx context.Context) AggregateCompliancePackConfigRuleIdOutput {
 	return o
+}
+
+func (o AggregateCompliancePackConfigRuleIdOutput) ToOutput(ctx context.Context) pulumix.Output[AggregateCompliancePackConfigRuleId] {
+	return pulumix.Output[AggregateCompliancePackConfigRuleId]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The rule ID of Aggregate Config Rule.
@@ -316,6 +383,12 @@ func (o AggregateCompliancePackConfigRuleIdArrayOutput) ToAggregateCompliancePac
 
 func (o AggregateCompliancePackConfigRuleIdArrayOutput) ToAggregateCompliancePackConfigRuleIdArrayOutputWithContext(ctx context.Context) AggregateCompliancePackConfigRuleIdArrayOutput {
 	return o
+}
+
+func (o AggregateCompliancePackConfigRuleIdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AggregateCompliancePackConfigRuleId] {
+	return pulumix.Output[[]AggregateCompliancePackConfigRuleId]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AggregateCompliancePackConfigRuleIdArrayOutput) Index(i pulumi.IntInput) AggregateCompliancePackConfigRuleIdOutput {
@@ -365,6 +438,12 @@ func (i AggregatorAggregatorAccountArgs) ToAggregatorAggregatorAccountOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(AggregatorAggregatorAccountOutput)
 }
 
+func (i AggregatorAggregatorAccountArgs) ToOutput(ctx context.Context) pulumix.Output[AggregatorAggregatorAccount] {
+	return pulumix.Output[AggregatorAggregatorAccount]{
+		OutputState: i.ToAggregatorAggregatorAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AggregatorAggregatorAccountArrayInput is an input type that accepts AggregatorAggregatorAccountArray and AggregatorAggregatorAccountArrayOutput values.
 // You can construct a concrete instance of `AggregatorAggregatorAccountArrayInput` via:
 //
@@ -390,6 +469,12 @@ func (i AggregatorAggregatorAccountArray) ToAggregatorAggregatorAccountArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AggregatorAggregatorAccountArrayOutput)
 }
 
+func (i AggregatorAggregatorAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]AggregatorAggregatorAccount] {
+	return pulumix.Output[[]AggregatorAggregatorAccount]{
+		OutputState: i.ToAggregatorAggregatorAccountArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AggregatorAggregatorAccountOutput struct{ *pulumi.OutputState }
 
 func (AggregatorAggregatorAccountOutput) ElementType() reflect.Type {
@@ -402,6 +487,12 @@ func (o AggregatorAggregatorAccountOutput) ToAggregatorAggregatorAccountOutput()
 
 func (o AggregatorAggregatorAccountOutput) ToAggregatorAggregatorAccountOutputWithContext(ctx context.Context) AggregatorAggregatorAccountOutput {
 	return o
+}
+
+func (o AggregatorAggregatorAccountOutput) ToOutput(ctx context.Context) pulumix.Output[AggregatorAggregatorAccount] {
+	return pulumix.Output[AggregatorAggregatorAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Aggregator account Uid.
@@ -431,6 +522,12 @@ func (o AggregatorAggregatorAccountArrayOutput) ToAggregatorAggregatorAccountArr
 
 func (o AggregatorAggregatorAccountArrayOutput) ToAggregatorAggregatorAccountArrayOutputWithContext(ctx context.Context) AggregatorAggregatorAccountArrayOutput {
 	return o
+}
+
+func (o AggregatorAggregatorAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AggregatorAggregatorAccount] {
+	return pulumix.Output[[]AggregatorAggregatorAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AggregatorAggregatorAccountArrayOutput) Index(i pulumi.IntInput) AggregatorAggregatorAccountOutput {
@@ -476,6 +573,12 @@ func (i CompliancePackConfigRuleArgs) ToCompliancePackConfigRuleOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(CompliancePackConfigRuleOutput)
 }
 
+func (i CompliancePackConfigRuleArgs) ToOutput(ctx context.Context) pulumix.Output[CompliancePackConfigRule] {
+	return pulumix.Output[CompliancePackConfigRule]{
+		OutputState: i.ToCompliancePackConfigRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CompliancePackConfigRuleArrayInput is an input type that accepts CompliancePackConfigRuleArray and CompliancePackConfigRuleArrayOutput values.
 // You can construct a concrete instance of `CompliancePackConfigRuleArrayInput` via:
 //
@@ -501,6 +604,12 @@ func (i CompliancePackConfigRuleArray) ToCompliancePackConfigRuleArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(CompliancePackConfigRuleArrayOutput)
 }
 
+func (i CompliancePackConfigRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]CompliancePackConfigRule] {
+	return pulumix.Output[[]CompliancePackConfigRule]{
+		OutputState: i.ToCompliancePackConfigRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CompliancePackConfigRuleOutput struct{ *pulumi.OutputState }
 
 func (CompliancePackConfigRuleOutput) ElementType() reflect.Type {
@@ -513,6 +622,12 @@ func (o CompliancePackConfigRuleOutput) ToCompliancePackConfigRuleOutput() Compl
 
 func (o CompliancePackConfigRuleOutput) ToCompliancePackConfigRuleOutputWithContext(ctx context.Context) CompliancePackConfigRuleOutput {
 	return o
+}
+
+func (o CompliancePackConfigRuleOutput) ToOutput(ctx context.Context) pulumix.Output[CompliancePackConfigRule] {
+	return pulumix.Output[CompliancePackConfigRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of Config Rule Parameters. See `configRuleParameters` below.
@@ -539,6 +654,12 @@ func (o CompliancePackConfigRuleArrayOutput) ToCompliancePackConfigRuleArrayOutp
 
 func (o CompliancePackConfigRuleArrayOutput) ToCompliancePackConfigRuleArrayOutputWithContext(ctx context.Context) CompliancePackConfigRuleArrayOutput {
 	return o
+}
+
+func (o CompliancePackConfigRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CompliancePackConfigRule] {
+	return pulumix.Output[[]CompliancePackConfigRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CompliancePackConfigRuleArrayOutput) Index(i pulumi.IntInput) CompliancePackConfigRuleOutput {
@@ -584,6 +705,12 @@ func (i CompliancePackConfigRuleConfigRuleParameterArgs) ToCompliancePackConfigR
 	return pulumi.ToOutputWithContext(ctx, i).(CompliancePackConfigRuleConfigRuleParameterOutput)
 }
 
+func (i CompliancePackConfigRuleConfigRuleParameterArgs) ToOutput(ctx context.Context) pulumix.Output[CompliancePackConfigRuleConfigRuleParameter] {
+	return pulumix.Output[CompliancePackConfigRuleConfigRuleParameter]{
+		OutputState: i.ToCompliancePackConfigRuleConfigRuleParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CompliancePackConfigRuleConfigRuleParameterArrayInput is an input type that accepts CompliancePackConfigRuleConfigRuleParameterArray and CompliancePackConfigRuleConfigRuleParameterArrayOutput values.
 // You can construct a concrete instance of `CompliancePackConfigRuleConfigRuleParameterArrayInput` via:
 //
@@ -609,6 +736,12 @@ func (i CompliancePackConfigRuleConfigRuleParameterArray) ToCompliancePackConfig
 	return pulumi.ToOutputWithContext(ctx, i).(CompliancePackConfigRuleConfigRuleParameterArrayOutput)
 }
 
+func (i CompliancePackConfigRuleConfigRuleParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]CompliancePackConfigRuleConfigRuleParameter] {
+	return pulumix.Output[[]CompliancePackConfigRuleConfigRuleParameter]{
+		OutputState: i.ToCompliancePackConfigRuleConfigRuleParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CompliancePackConfigRuleConfigRuleParameterOutput struct{ *pulumi.OutputState }
 
 func (CompliancePackConfigRuleConfigRuleParameterOutput) ElementType() reflect.Type {
@@ -621,6 +754,12 @@ func (o CompliancePackConfigRuleConfigRuleParameterOutput) ToCompliancePackConfi
 
 func (o CompliancePackConfigRuleConfigRuleParameterOutput) ToCompliancePackConfigRuleConfigRuleParameterOutputWithContext(ctx context.Context) CompliancePackConfigRuleConfigRuleParameterOutput {
 	return o
+}
+
+func (o CompliancePackConfigRuleConfigRuleParameterOutput) ToOutput(ctx context.Context) pulumix.Output[CompliancePackConfigRuleConfigRuleParameter] {
+	return pulumix.Output[CompliancePackConfigRuleConfigRuleParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The parameter name.
@@ -645,6 +784,12 @@ func (o CompliancePackConfigRuleConfigRuleParameterArrayOutput) ToCompliancePack
 
 func (o CompliancePackConfigRuleConfigRuleParameterArrayOutput) ToCompliancePackConfigRuleConfigRuleParameterArrayOutputWithContext(ctx context.Context) CompliancePackConfigRuleConfigRuleParameterArrayOutput {
 	return o
+}
+
+func (o CompliancePackConfigRuleConfigRuleParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CompliancePackConfigRuleConfigRuleParameter] {
+	return pulumix.Output[[]CompliancePackConfigRuleConfigRuleParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CompliancePackConfigRuleConfigRuleParameterArrayOutput) Index(i pulumi.IntInput) CompliancePackConfigRuleConfigRuleParameterOutput {
@@ -686,6 +831,12 @@ func (i CompliancePackConfigRuleIdArgs) ToCompliancePackConfigRuleIdOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(CompliancePackConfigRuleIdOutput)
 }
 
+func (i CompliancePackConfigRuleIdArgs) ToOutput(ctx context.Context) pulumix.Output[CompliancePackConfigRuleId] {
+	return pulumix.Output[CompliancePackConfigRuleId]{
+		OutputState: i.ToCompliancePackConfigRuleIdOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CompliancePackConfigRuleIdArrayInput is an input type that accepts CompliancePackConfigRuleIdArray and CompliancePackConfigRuleIdArrayOutput values.
 // You can construct a concrete instance of `CompliancePackConfigRuleIdArrayInput` via:
 //
@@ -711,6 +862,12 @@ func (i CompliancePackConfigRuleIdArray) ToCompliancePackConfigRuleIdArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(CompliancePackConfigRuleIdArrayOutput)
 }
 
+func (i CompliancePackConfigRuleIdArray) ToOutput(ctx context.Context) pulumix.Output[[]CompliancePackConfigRuleId] {
+	return pulumix.Output[[]CompliancePackConfigRuleId]{
+		OutputState: i.ToCompliancePackConfigRuleIdArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CompliancePackConfigRuleIdOutput struct{ *pulumi.OutputState }
 
 func (CompliancePackConfigRuleIdOutput) ElementType() reflect.Type {
@@ -723,6 +880,12 @@ func (o CompliancePackConfigRuleIdOutput) ToCompliancePackConfigRuleIdOutput() C
 
 func (o CompliancePackConfigRuleIdOutput) ToCompliancePackConfigRuleIdOutputWithContext(ctx context.Context) CompliancePackConfigRuleIdOutput {
 	return o
+}
+
+func (o CompliancePackConfigRuleIdOutput) ToOutput(ctx context.Context) pulumix.Output[CompliancePackConfigRuleId] {
+	return pulumix.Output[CompliancePackConfigRuleId]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The rule ID of Config Rule.
@@ -742,6 +905,12 @@ func (o CompliancePackConfigRuleIdArrayOutput) ToCompliancePackConfigRuleIdArray
 
 func (o CompliancePackConfigRuleIdArrayOutput) ToCompliancePackConfigRuleIdArrayOutputWithContext(ctx context.Context) CompliancePackConfigRuleIdArrayOutput {
 	return o
+}
+
+func (o CompliancePackConfigRuleIdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CompliancePackConfigRuleId] {
+	return pulumix.Output[[]CompliancePackConfigRuleId]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CompliancePackConfigRuleIdArrayOutput) Index(i pulumi.IntInput) CompliancePackConfigRuleIdOutput {
@@ -787,6 +956,12 @@ func (i RuleComplianceArgs) ToRuleComplianceOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(RuleComplianceOutput)
 }
 
+func (i RuleComplianceArgs) ToOutput(ctx context.Context) pulumix.Output[RuleCompliance] {
+	return pulumix.Output[RuleCompliance]{
+		OutputState: i.ToRuleComplianceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RuleComplianceArgs) ToRuleCompliancePtrOutput() RuleCompliancePtrOutput {
 	return i.ToRuleCompliancePtrOutputWithContext(context.Background())
 }
@@ -828,6 +1003,12 @@ func (i *ruleCompliancePtrType) ToRuleCompliancePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(RuleCompliancePtrOutput)
 }
 
+func (i *ruleCompliancePtrType) ToOutput(ctx context.Context) pulumix.Output[*RuleCompliance] {
+	return pulumix.Output[*RuleCompliance]{
+		OutputState: i.ToRuleCompliancePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuleComplianceOutput struct{ *pulumi.OutputState }
 
 func (RuleComplianceOutput) ElementType() reflect.Type {
@@ -852,6 +1033,12 @@ func (o RuleComplianceOutput) ToRuleCompliancePtrOutputWithContext(ctx context.C
 	}).(RuleCompliancePtrOutput)
 }
 
+func (o RuleComplianceOutput) ToOutput(ctx context.Context) pulumix.Output[RuleCompliance] {
+	return pulumix.Output[RuleCompliance]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
 func (o RuleComplianceOutput) ComplianceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleCompliance) *string { return v.ComplianceType }).(pulumi.StringPtrOutput)
@@ -874,6 +1061,12 @@ func (o RuleCompliancePtrOutput) ToRuleCompliancePtrOutput() RuleCompliancePtrOu
 
 func (o RuleCompliancePtrOutput) ToRuleCompliancePtrOutputWithContext(ctx context.Context) RuleCompliancePtrOutput {
 	return o
+}
+
+func (o RuleCompliancePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuleCompliance] {
+	return pulumix.Output[*RuleCompliance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuleCompliancePtrOutput) Elem() RuleComplianceOutput {
@@ -971,6 +1164,12 @@ func (i GetAggregateCompliancePacksPackArgs) ToGetAggregateCompliancePacksPackOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetAggregateCompliancePacksPackOutput)
 }
 
+func (i GetAggregateCompliancePacksPackArgs) ToOutput(ctx context.Context) pulumix.Output[GetAggregateCompliancePacksPack] {
+	return pulumix.Output[GetAggregateCompliancePacksPack]{
+		OutputState: i.ToGetAggregateCompliancePacksPackOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAggregateCompliancePacksPackArrayInput is an input type that accepts GetAggregateCompliancePacksPackArray and GetAggregateCompliancePacksPackArrayOutput values.
 // You can construct a concrete instance of `GetAggregateCompliancePacksPackArrayInput` via:
 //
@@ -996,6 +1195,12 @@ func (i GetAggregateCompliancePacksPackArray) ToGetAggregateCompliancePacksPackA
 	return pulumi.ToOutputWithContext(ctx, i).(GetAggregateCompliancePacksPackArrayOutput)
 }
 
+func (i GetAggregateCompliancePacksPackArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAggregateCompliancePacksPack] {
+	return pulumix.Output[[]GetAggregateCompliancePacksPack]{
+		OutputState: i.ToGetAggregateCompliancePacksPackArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAggregateCompliancePacksPackOutput struct{ *pulumi.OutputState }
 
 func (GetAggregateCompliancePacksPackOutput) ElementType() reflect.Type {
@@ -1008,6 +1213,12 @@ func (o GetAggregateCompliancePacksPackOutput) ToGetAggregateCompliancePacksPack
 
 func (o GetAggregateCompliancePacksPackOutput) ToGetAggregateCompliancePacksPackOutputWithContext(ctx context.Context) GetAggregateCompliancePacksPackOutput {
 	return o
+}
+
+func (o GetAggregateCompliancePacksPackOutput) ToOutput(ctx context.Context) pulumix.Output[GetAggregateCompliancePacksPack] {
+	return pulumix.Output[GetAggregateCompliancePacksPack]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Aliyun User Id.
@@ -1071,6 +1282,12 @@ func (o GetAggregateCompliancePacksPackArrayOutput) ToGetAggregateCompliancePack
 	return o
 }
 
+func (o GetAggregateCompliancePacksPackArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAggregateCompliancePacksPack] {
+	return pulumix.Output[[]GetAggregateCompliancePacksPack]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetAggregateCompliancePacksPackArrayOutput) Index(i pulumi.IntInput) GetAggregateCompliancePacksPackOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAggregateCompliancePacksPack {
 		return vs[0].([]GetAggregateCompliancePacksPack)[vs[1].(int)]
@@ -1118,6 +1335,12 @@ func (i GetAggregateCompliancePacksPackConfigRuleArgs) ToGetAggregateComplianceP
 	return pulumi.ToOutputWithContext(ctx, i).(GetAggregateCompliancePacksPackConfigRuleOutput)
 }
 
+func (i GetAggregateCompliancePacksPackConfigRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetAggregateCompliancePacksPackConfigRule] {
+	return pulumix.Output[GetAggregateCompliancePacksPackConfigRule]{
+		OutputState: i.ToGetAggregateCompliancePacksPackConfigRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAggregateCompliancePacksPackConfigRuleArrayInput is an input type that accepts GetAggregateCompliancePacksPackConfigRuleArray and GetAggregateCompliancePacksPackConfigRuleArrayOutput values.
 // You can construct a concrete instance of `GetAggregateCompliancePacksPackConfigRuleArrayInput` via:
 //
@@ -1143,6 +1366,12 @@ func (i GetAggregateCompliancePacksPackConfigRuleArray) ToGetAggregateCompliance
 	return pulumi.ToOutputWithContext(ctx, i).(GetAggregateCompliancePacksPackConfigRuleArrayOutput)
 }
 
+func (i GetAggregateCompliancePacksPackConfigRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAggregateCompliancePacksPackConfigRule] {
+	return pulumix.Output[[]GetAggregateCompliancePacksPackConfigRule]{
+		OutputState: i.ToGetAggregateCompliancePacksPackConfigRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAggregateCompliancePacksPackConfigRuleOutput struct{ *pulumi.OutputState }
 
 func (GetAggregateCompliancePacksPackConfigRuleOutput) ElementType() reflect.Type {
@@ -1155,6 +1384,12 @@ func (o GetAggregateCompliancePacksPackConfigRuleOutput) ToGetAggregateComplianc
 
 func (o GetAggregateCompliancePacksPackConfigRuleOutput) ToGetAggregateCompliancePacksPackConfigRuleOutputWithContext(ctx context.Context) GetAggregateCompliancePacksPackConfigRuleOutput {
 	return o
+}
+
+func (o GetAggregateCompliancePacksPackConfigRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetAggregateCompliancePacksPackConfigRule] {
+	return pulumix.Output[GetAggregateCompliancePacksPackConfigRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the rule.
@@ -1186,6 +1421,12 @@ func (o GetAggregateCompliancePacksPackConfigRuleArrayOutput) ToGetAggregateComp
 
 func (o GetAggregateCompliancePacksPackConfigRuleArrayOutput) ToGetAggregateCompliancePacksPackConfigRuleArrayOutputWithContext(ctx context.Context) GetAggregateCompliancePacksPackConfigRuleArrayOutput {
 	return o
+}
+
+func (o GetAggregateCompliancePacksPackConfigRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAggregateCompliancePacksPackConfigRule] {
+	return pulumix.Output[[]GetAggregateCompliancePacksPackConfigRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAggregateCompliancePacksPackConfigRuleArrayOutput) Index(i pulumi.IntInput) GetAggregateCompliancePacksPackConfigRuleOutput {
@@ -1235,6 +1476,12 @@ func (i GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArgs) ToGetA
 	return pulumi.ToOutputWithContext(ctx, i).(GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterOutput)
 }
 
+func (i GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArgs) ToOutput(ctx context.Context) pulumix.Output[GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter] {
+	return pulumix.Output[GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter]{
+		OutputState: i.ToGetAggregateCompliancePacksPackConfigRuleConfigRuleParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArrayInput is an input type that accepts GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArray and GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArrayOutput values.
 // You can construct a concrete instance of `GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArrayInput` via:
 //
@@ -1260,6 +1507,12 @@ func (i GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArray) ToGet
 	return pulumi.ToOutputWithContext(ctx, i).(GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArrayOutput)
 }
 
+func (i GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter] {
+	return pulumix.Output[[]GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter]{
+		OutputState: i.ToGetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterOutput struct{ *pulumi.OutputState }
 
 func (GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterOutput) ElementType() reflect.Type {
@@ -1272,6 +1525,12 @@ func (o GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterOutput) ToGe
 
 func (o GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterOutput) ToGetAggregateCompliancePacksPackConfigRuleConfigRuleParameterOutputWithContext(ctx context.Context) GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterOutput {
 	return o
+}
+
+func (o GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterOutput) ToOutput(ctx context.Context) pulumix.Output[GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter] {
+	return pulumix.Output[GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Parameter Name.
@@ -1301,6 +1560,12 @@ func (o GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArrayOutput)
 
 func (o GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArrayOutput) ToGetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArrayOutputWithContext(ctx context.Context) GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArrayOutput {
 	return o
+}
+
+func (o GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter] {
+	return pulumix.Output[[]GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArrayOutput) Index(i pulumi.IntInput) GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterOutput {
@@ -1432,6 +1697,12 @@ func (i GetAggregateConfigRulesRuleArgs) ToGetAggregateConfigRulesRuleOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetAggregateConfigRulesRuleOutput)
 }
 
+func (i GetAggregateConfigRulesRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetAggregateConfigRulesRule] {
+	return pulumix.Output[GetAggregateConfigRulesRule]{
+		OutputState: i.ToGetAggregateConfigRulesRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAggregateConfigRulesRuleArrayInput is an input type that accepts GetAggregateConfigRulesRuleArray and GetAggregateConfigRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetAggregateConfigRulesRuleArrayInput` via:
 //
@@ -1457,6 +1728,12 @@ func (i GetAggregateConfigRulesRuleArray) ToGetAggregateConfigRulesRuleArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetAggregateConfigRulesRuleArrayOutput)
 }
 
+func (i GetAggregateConfigRulesRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAggregateConfigRulesRule] {
+	return pulumix.Output[[]GetAggregateConfigRulesRule]{
+		OutputState: i.ToGetAggregateConfigRulesRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAggregateConfigRulesRuleOutput struct{ *pulumi.OutputState }
 
 func (GetAggregateConfigRulesRuleOutput) ElementType() reflect.Type {
@@ -1469,6 +1746,12 @@ func (o GetAggregateConfigRulesRuleOutput) ToGetAggregateConfigRulesRuleOutput()
 
 func (o GetAggregateConfigRulesRuleOutput) ToGetAggregateConfigRulesRuleOutputWithContext(ctx context.Context) GetAggregateConfigRulesRuleOutput {
 	return o
+}
+
+func (o GetAggregateConfigRulesRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetAggregateConfigRulesRule] {
+	return pulumix.Output[GetAggregateConfigRulesRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Aliyun User ID.
@@ -1604,6 +1887,12 @@ func (o GetAggregateConfigRulesRuleArrayOutput) ToGetAggregateConfigRulesRuleArr
 	return o
 }
 
+func (o GetAggregateConfigRulesRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAggregateConfigRulesRule] {
+	return pulumix.Output[[]GetAggregateConfigRulesRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetAggregateConfigRulesRuleArrayOutput) Index(i pulumi.IntInput) GetAggregateConfigRulesRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAggregateConfigRulesRule {
 		return vs[0].([]GetAggregateConfigRulesRule)[vs[1].(int)]
@@ -1647,6 +1936,12 @@ func (i GetAggregateConfigRulesRuleComplianceArgs) ToGetAggregateConfigRulesRule
 	return pulumi.ToOutputWithContext(ctx, i).(GetAggregateConfigRulesRuleComplianceOutput)
 }
 
+func (i GetAggregateConfigRulesRuleComplianceArgs) ToOutput(ctx context.Context) pulumix.Output[GetAggregateConfigRulesRuleCompliance] {
+	return pulumix.Output[GetAggregateConfigRulesRuleCompliance]{
+		OutputState: i.ToGetAggregateConfigRulesRuleComplianceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAggregateConfigRulesRuleComplianceArrayInput is an input type that accepts GetAggregateConfigRulesRuleComplianceArray and GetAggregateConfigRulesRuleComplianceArrayOutput values.
 // You can construct a concrete instance of `GetAggregateConfigRulesRuleComplianceArrayInput` via:
 //
@@ -1672,6 +1967,12 @@ func (i GetAggregateConfigRulesRuleComplianceArray) ToGetAggregateConfigRulesRul
 	return pulumi.ToOutputWithContext(ctx, i).(GetAggregateConfigRulesRuleComplianceArrayOutput)
 }
 
+func (i GetAggregateConfigRulesRuleComplianceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAggregateConfigRulesRuleCompliance] {
+	return pulumix.Output[[]GetAggregateConfigRulesRuleCompliance]{
+		OutputState: i.ToGetAggregateConfigRulesRuleComplianceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAggregateConfigRulesRuleComplianceOutput struct{ *pulumi.OutputState }
 
 func (GetAggregateConfigRulesRuleComplianceOutput) ElementType() reflect.Type {
@@ -1684,6 +1985,12 @@ func (o GetAggregateConfigRulesRuleComplianceOutput) ToGetAggregateConfigRulesRu
 
 func (o GetAggregateConfigRulesRuleComplianceOutput) ToGetAggregateConfigRulesRuleComplianceOutputWithContext(ctx context.Context) GetAggregateConfigRulesRuleComplianceOutput {
 	return o
+}
+
+func (o GetAggregateConfigRulesRuleComplianceOutput) ToOutput(ctx context.Context) pulumix.Output[GetAggregateConfigRulesRuleCompliance] {
+	return pulumix.Output[GetAggregateConfigRulesRuleCompliance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Compliance Type.
@@ -1708,6 +2015,12 @@ func (o GetAggregateConfigRulesRuleComplianceArrayOutput) ToGetAggregateConfigRu
 
 func (o GetAggregateConfigRulesRuleComplianceArrayOutput) ToGetAggregateConfigRulesRuleComplianceArrayOutputWithContext(ctx context.Context) GetAggregateConfigRulesRuleComplianceArrayOutput {
 	return o
+}
+
+func (o GetAggregateConfigRulesRuleComplianceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAggregateConfigRulesRuleCompliance] {
+	return pulumix.Output[[]GetAggregateConfigRulesRuleCompliance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAggregateConfigRulesRuleComplianceArrayOutput) Index(i pulumi.IntInput) GetAggregateConfigRulesRuleComplianceOutput {
@@ -1805,6 +2118,12 @@ func (i GetAggregateDeliveriesDeliveryArgs) ToGetAggregateDeliveriesDeliveryOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetAggregateDeliveriesDeliveryOutput)
 }
 
+func (i GetAggregateDeliveriesDeliveryArgs) ToOutput(ctx context.Context) pulumix.Output[GetAggregateDeliveriesDelivery] {
+	return pulumix.Output[GetAggregateDeliveriesDelivery]{
+		OutputState: i.ToGetAggregateDeliveriesDeliveryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAggregateDeliveriesDeliveryArrayInput is an input type that accepts GetAggregateDeliveriesDeliveryArray and GetAggregateDeliveriesDeliveryArrayOutput values.
 // You can construct a concrete instance of `GetAggregateDeliveriesDeliveryArrayInput` via:
 //
@@ -1830,6 +2149,12 @@ func (i GetAggregateDeliveriesDeliveryArray) ToGetAggregateDeliveriesDeliveryArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetAggregateDeliveriesDeliveryArrayOutput)
 }
 
+func (i GetAggregateDeliveriesDeliveryArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAggregateDeliveriesDelivery] {
+	return pulumix.Output[[]GetAggregateDeliveriesDelivery]{
+		OutputState: i.ToGetAggregateDeliveriesDeliveryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAggregateDeliveriesDeliveryOutput struct{ *pulumi.OutputState }
 
 func (GetAggregateDeliveriesDeliveryOutput) ElementType() reflect.Type {
@@ -1842,6 +2167,12 @@ func (o GetAggregateDeliveriesDeliveryOutput) ToGetAggregateDeliveriesDeliveryOu
 
 func (o GetAggregateDeliveriesDeliveryOutput) ToGetAggregateDeliveriesDeliveryOutputWithContext(ctx context.Context) GetAggregateDeliveriesDeliveryOutput {
 	return o
+}
+
+func (o GetAggregateDeliveriesDeliveryOutput) ToOutput(ctx context.Context) pulumix.Output[GetAggregateDeliveriesDelivery] {
+	return pulumix.Output[GetAggregateDeliveriesDelivery]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Aliyun User Id.
@@ -1933,6 +2264,12 @@ func (o GetAggregateDeliveriesDeliveryArrayOutput) ToGetAggregateDeliveriesDeliv
 	return o
 }
 
+func (o GetAggregateDeliveriesDeliveryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAggregateDeliveriesDelivery] {
+	return pulumix.Output[[]GetAggregateDeliveriesDelivery]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetAggregateDeliveriesDeliveryArrayOutput) Index(i pulumi.IntInput) GetAggregateDeliveriesDeliveryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAggregateDeliveriesDelivery {
 		return vs[0].([]GetAggregateDeliveriesDelivery)[vs[1].(int)]
@@ -2000,6 +2337,12 @@ func (i GetAggregatorsAggregatorArgs) ToGetAggregatorsAggregatorOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetAggregatorsAggregatorOutput)
 }
 
+func (i GetAggregatorsAggregatorArgs) ToOutput(ctx context.Context) pulumix.Output[GetAggregatorsAggregator] {
+	return pulumix.Output[GetAggregatorsAggregator]{
+		OutputState: i.ToGetAggregatorsAggregatorOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAggregatorsAggregatorArrayInput is an input type that accepts GetAggregatorsAggregatorArray and GetAggregatorsAggregatorArrayOutput values.
 // You can construct a concrete instance of `GetAggregatorsAggregatorArrayInput` via:
 //
@@ -2025,6 +2368,12 @@ func (i GetAggregatorsAggregatorArray) ToGetAggregatorsAggregatorArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetAggregatorsAggregatorArrayOutput)
 }
 
+func (i GetAggregatorsAggregatorArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAggregatorsAggregator] {
+	return pulumix.Output[[]GetAggregatorsAggregator]{
+		OutputState: i.ToGetAggregatorsAggregatorArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAggregatorsAggregatorOutput struct{ *pulumi.OutputState }
 
 func (GetAggregatorsAggregatorOutput) ElementType() reflect.Type {
@@ -2037,6 +2386,12 @@ func (o GetAggregatorsAggregatorOutput) ToGetAggregatorsAggregatorOutput() GetAg
 
 func (o GetAggregatorsAggregatorOutput) ToGetAggregatorsAggregatorOutputWithContext(ctx context.Context) GetAggregatorsAggregatorOutput {
 	return o
+}
+
+func (o GetAggregatorsAggregatorOutput) ToOutput(ctx context.Context) pulumix.Output[GetAggregatorsAggregator] {
+	return pulumix.Output[GetAggregatorsAggregator]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Aggregator account uid.
@@ -2095,6 +2450,12 @@ func (o GetAggregatorsAggregatorArrayOutput) ToGetAggregatorsAggregatorArrayOutp
 	return o
 }
 
+func (o GetAggregatorsAggregatorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAggregatorsAggregator] {
+	return pulumix.Output[[]GetAggregatorsAggregator]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetAggregatorsAggregatorArrayOutput) Index(i pulumi.IntInput) GetAggregatorsAggregatorOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAggregatorsAggregator {
 		return vs[0].([]GetAggregatorsAggregator)[vs[1].(int)]
@@ -2142,6 +2503,12 @@ func (i GetAggregatorsAggregatorAggregatorAccountArgs) ToGetAggregatorsAggregato
 	return pulumi.ToOutputWithContext(ctx, i).(GetAggregatorsAggregatorAggregatorAccountOutput)
 }
 
+func (i GetAggregatorsAggregatorAggregatorAccountArgs) ToOutput(ctx context.Context) pulumix.Output[GetAggregatorsAggregatorAggregatorAccount] {
+	return pulumix.Output[GetAggregatorsAggregatorAggregatorAccount]{
+		OutputState: i.ToGetAggregatorsAggregatorAggregatorAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAggregatorsAggregatorAggregatorAccountArrayInput is an input type that accepts GetAggregatorsAggregatorAggregatorAccountArray and GetAggregatorsAggregatorAggregatorAccountArrayOutput values.
 // You can construct a concrete instance of `GetAggregatorsAggregatorAggregatorAccountArrayInput` via:
 //
@@ -2167,6 +2534,12 @@ func (i GetAggregatorsAggregatorAggregatorAccountArray) ToGetAggregatorsAggregat
 	return pulumi.ToOutputWithContext(ctx, i).(GetAggregatorsAggregatorAggregatorAccountArrayOutput)
 }
 
+func (i GetAggregatorsAggregatorAggregatorAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAggregatorsAggregatorAggregatorAccount] {
+	return pulumix.Output[[]GetAggregatorsAggregatorAggregatorAccount]{
+		OutputState: i.ToGetAggregatorsAggregatorAggregatorAccountArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAggregatorsAggregatorAggregatorAccountOutput struct{ *pulumi.OutputState }
 
 func (GetAggregatorsAggregatorAggregatorAccountOutput) ElementType() reflect.Type {
@@ -2179,6 +2552,12 @@ func (o GetAggregatorsAggregatorAggregatorAccountOutput) ToGetAggregatorsAggrega
 
 func (o GetAggregatorsAggregatorAggregatorAccountOutput) ToGetAggregatorsAggregatorAggregatorAccountOutputWithContext(ctx context.Context) GetAggregatorsAggregatorAggregatorAccountOutput {
 	return o
+}
+
+func (o GetAggregatorsAggregatorAggregatorAccountOutput) ToOutput(ctx context.Context) pulumix.Output[GetAggregatorsAggregatorAggregatorAccount] {
+	return pulumix.Output[GetAggregatorsAggregatorAggregatorAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Aggregator account uid.
@@ -2208,6 +2587,12 @@ func (o GetAggregatorsAggregatorAggregatorAccountArrayOutput) ToGetAggregatorsAg
 
 func (o GetAggregatorsAggregatorAggregatorAccountArrayOutput) ToGetAggregatorsAggregatorAggregatorAccountArrayOutputWithContext(ctx context.Context) GetAggregatorsAggregatorAggregatorAccountArrayOutput {
 	return o
+}
+
+func (o GetAggregatorsAggregatorAggregatorAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAggregatorsAggregatorAggregatorAccount] {
+	return pulumix.Output[[]GetAggregatorsAggregatorAggregatorAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAggregatorsAggregatorAggregatorAccountArrayOutput) Index(i pulumi.IntInput) GetAggregatorsAggregatorAggregatorAccountOutput {
@@ -2281,6 +2666,12 @@ func (i GetCompliancePacksPackArgs) ToGetCompliancePacksPackOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetCompliancePacksPackOutput)
 }
 
+func (i GetCompliancePacksPackArgs) ToOutput(ctx context.Context) pulumix.Output[GetCompliancePacksPack] {
+	return pulumix.Output[GetCompliancePacksPack]{
+		OutputState: i.ToGetCompliancePacksPackOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetCompliancePacksPackArrayInput is an input type that accepts GetCompliancePacksPackArray and GetCompliancePacksPackArrayOutput values.
 // You can construct a concrete instance of `GetCompliancePacksPackArrayInput` via:
 //
@@ -2306,6 +2697,12 @@ func (i GetCompliancePacksPackArray) ToGetCompliancePacksPackArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetCompliancePacksPackArrayOutput)
 }
 
+func (i GetCompliancePacksPackArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCompliancePacksPack] {
+	return pulumix.Output[[]GetCompliancePacksPack]{
+		OutputState: i.ToGetCompliancePacksPackArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetCompliancePacksPackOutput struct{ *pulumi.OutputState }
 
 func (GetCompliancePacksPackOutput) ElementType() reflect.Type {
@@ -2318,6 +2715,12 @@ func (o GetCompliancePacksPackOutput) ToGetCompliancePacksPackOutput() GetCompli
 
 func (o GetCompliancePacksPackOutput) ToGetCompliancePacksPackOutputWithContext(ctx context.Context) GetCompliancePacksPackOutput {
 	return o
+}
+
+func (o GetCompliancePacksPackOutput) ToOutput(ctx context.Context) pulumix.Output[GetCompliancePacksPack] {
+	return pulumix.Output[GetCompliancePacksPack]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Aliyun User Id.
@@ -2379,6 +2782,12 @@ func (o GetCompliancePacksPackArrayOutput) ToGetCompliancePacksPackArrayOutputWi
 	return o
 }
 
+func (o GetCompliancePacksPackArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCompliancePacksPack] {
+	return pulumix.Output[[]GetCompliancePacksPack]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetCompliancePacksPackArrayOutput) Index(i pulumi.IntInput) GetCompliancePacksPackOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCompliancePacksPack {
 		return vs[0].([]GetCompliancePacksPack)[vs[1].(int)]
@@ -2426,6 +2835,12 @@ func (i GetCompliancePacksPackConfigRuleArgs) ToGetCompliancePacksPackConfigRule
 	return pulumi.ToOutputWithContext(ctx, i).(GetCompliancePacksPackConfigRuleOutput)
 }
 
+func (i GetCompliancePacksPackConfigRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetCompliancePacksPackConfigRule] {
+	return pulumix.Output[GetCompliancePacksPackConfigRule]{
+		OutputState: i.ToGetCompliancePacksPackConfigRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetCompliancePacksPackConfigRuleArrayInput is an input type that accepts GetCompliancePacksPackConfigRuleArray and GetCompliancePacksPackConfigRuleArrayOutput values.
 // You can construct a concrete instance of `GetCompliancePacksPackConfigRuleArrayInput` via:
 //
@@ -2451,6 +2866,12 @@ func (i GetCompliancePacksPackConfigRuleArray) ToGetCompliancePacksPackConfigRul
 	return pulumi.ToOutputWithContext(ctx, i).(GetCompliancePacksPackConfigRuleArrayOutput)
 }
 
+func (i GetCompliancePacksPackConfigRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCompliancePacksPackConfigRule] {
+	return pulumix.Output[[]GetCompliancePacksPackConfigRule]{
+		OutputState: i.ToGetCompliancePacksPackConfigRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetCompliancePacksPackConfigRuleOutput struct{ *pulumi.OutputState }
 
 func (GetCompliancePacksPackConfigRuleOutput) ElementType() reflect.Type {
@@ -2463,6 +2884,12 @@ func (o GetCompliancePacksPackConfigRuleOutput) ToGetCompliancePacksPackConfigRu
 
 func (o GetCompliancePacksPackConfigRuleOutput) ToGetCompliancePacksPackConfigRuleOutputWithContext(ctx context.Context) GetCompliancePacksPackConfigRuleOutput {
 	return o
+}
+
+func (o GetCompliancePacksPackConfigRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetCompliancePacksPackConfigRule] {
+	return pulumix.Output[GetCompliancePacksPackConfigRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the rule.
@@ -2494,6 +2921,12 @@ func (o GetCompliancePacksPackConfigRuleArrayOutput) ToGetCompliancePacksPackCon
 
 func (o GetCompliancePacksPackConfigRuleArrayOutput) ToGetCompliancePacksPackConfigRuleArrayOutputWithContext(ctx context.Context) GetCompliancePacksPackConfigRuleArrayOutput {
 	return o
+}
+
+func (o GetCompliancePacksPackConfigRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCompliancePacksPackConfigRule] {
+	return pulumix.Output[[]GetCompliancePacksPackConfigRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetCompliancePacksPackConfigRuleArrayOutput) Index(i pulumi.IntInput) GetCompliancePacksPackConfigRuleOutput {
@@ -2543,6 +2976,12 @@ func (i GetCompliancePacksPackConfigRuleConfigRuleParameterArgs) ToGetCompliance
 	return pulumi.ToOutputWithContext(ctx, i).(GetCompliancePacksPackConfigRuleConfigRuleParameterOutput)
 }
 
+func (i GetCompliancePacksPackConfigRuleConfigRuleParameterArgs) ToOutput(ctx context.Context) pulumix.Output[GetCompliancePacksPackConfigRuleConfigRuleParameter] {
+	return pulumix.Output[GetCompliancePacksPackConfigRuleConfigRuleParameter]{
+		OutputState: i.ToGetCompliancePacksPackConfigRuleConfigRuleParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetCompliancePacksPackConfigRuleConfigRuleParameterArrayInput is an input type that accepts GetCompliancePacksPackConfigRuleConfigRuleParameterArray and GetCompliancePacksPackConfigRuleConfigRuleParameterArrayOutput values.
 // You can construct a concrete instance of `GetCompliancePacksPackConfigRuleConfigRuleParameterArrayInput` via:
 //
@@ -2568,6 +3007,12 @@ func (i GetCompliancePacksPackConfigRuleConfigRuleParameterArray) ToGetComplianc
 	return pulumi.ToOutputWithContext(ctx, i).(GetCompliancePacksPackConfigRuleConfigRuleParameterArrayOutput)
 }
 
+func (i GetCompliancePacksPackConfigRuleConfigRuleParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCompliancePacksPackConfigRuleConfigRuleParameter] {
+	return pulumix.Output[[]GetCompliancePacksPackConfigRuleConfigRuleParameter]{
+		OutputState: i.ToGetCompliancePacksPackConfigRuleConfigRuleParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetCompliancePacksPackConfigRuleConfigRuleParameterOutput struct{ *pulumi.OutputState }
 
 func (GetCompliancePacksPackConfigRuleConfigRuleParameterOutput) ElementType() reflect.Type {
@@ -2580,6 +3025,12 @@ func (o GetCompliancePacksPackConfigRuleConfigRuleParameterOutput) ToGetComplian
 
 func (o GetCompliancePacksPackConfigRuleConfigRuleParameterOutput) ToGetCompliancePacksPackConfigRuleConfigRuleParameterOutputWithContext(ctx context.Context) GetCompliancePacksPackConfigRuleConfigRuleParameterOutput {
 	return o
+}
+
+func (o GetCompliancePacksPackConfigRuleConfigRuleParameterOutput) ToOutput(ctx context.Context) pulumix.Output[GetCompliancePacksPackConfigRuleConfigRuleParameter] {
+	return pulumix.Output[GetCompliancePacksPackConfigRuleConfigRuleParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Parameter Name.
@@ -2609,6 +3060,12 @@ func (o GetCompliancePacksPackConfigRuleConfigRuleParameterArrayOutput) ToGetCom
 
 func (o GetCompliancePacksPackConfigRuleConfigRuleParameterArrayOutput) ToGetCompliancePacksPackConfigRuleConfigRuleParameterArrayOutputWithContext(ctx context.Context) GetCompliancePacksPackConfigRuleConfigRuleParameterArrayOutput {
 	return o
+}
+
+func (o GetCompliancePacksPackConfigRuleConfigRuleParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCompliancePacksPackConfigRuleConfigRuleParameter] {
+	return pulumix.Output[[]GetCompliancePacksPackConfigRuleConfigRuleParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetCompliancePacksPackConfigRuleConfigRuleParameterArrayOutput) Index(i pulumi.IntInput) GetCompliancePacksPackConfigRuleConfigRuleParameterOutput {
@@ -2670,6 +3127,12 @@ func (i GetConfigurationRecordersRecorderArgs) ToGetConfigurationRecordersRecord
 	return pulumi.ToOutputWithContext(ctx, i).(GetConfigurationRecordersRecorderOutput)
 }
 
+func (i GetConfigurationRecordersRecorderArgs) ToOutput(ctx context.Context) pulumix.Output[GetConfigurationRecordersRecorder] {
+	return pulumix.Output[GetConfigurationRecordersRecorder]{
+		OutputState: i.ToGetConfigurationRecordersRecorderOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetConfigurationRecordersRecorderArrayInput is an input type that accepts GetConfigurationRecordersRecorderArray and GetConfigurationRecordersRecorderArrayOutput values.
 // You can construct a concrete instance of `GetConfigurationRecordersRecorderArrayInput` via:
 //
@@ -2695,6 +3158,12 @@ func (i GetConfigurationRecordersRecorderArray) ToGetConfigurationRecordersRecor
 	return pulumi.ToOutputWithContext(ctx, i).(GetConfigurationRecordersRecorderArrayOutput)
 }
 
+func (i GetConfigurationRecordersRecorderArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConfigurationRecordersRecorder] {
+	return pulumix.Output[[]GetConfigurationRecordersRecorder]{
+		OutputState: i.ToGetConfigurationRecordersRecorderArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetConfigurationRecordersRecorderOutput struct{ *pulumi.OutputState }
 
 func (GetConfigurationRecordersRecorderOutput) ElementType() reflect.Type {
@@ -2707,6 +3176,12 @@ func (o GetConfigurationRecordersRecorderOutput) ToGetConfigurationRecordersReco
 
 func (o GetConfigurationRecordersRecorderOutput) ToGetConfigurationRecordersRecorderOutputWithContext(ctx context.Context) GetConfigurationRecordersRecorderOutput {
 	return o
+}
+
+func (o GetConfigurationRecordersRecorderOutput) ToOutput(ctx context.Context) pulumix.Output[GetConfigurationRecordersRecorder] {
+	return pulumix.Output[GetConfigurationRecordersRecorder]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Alicloud account.
@@ -2751,6 +3226,12 @@ func (o GetConfigurationRecordersRecorderArrayOutput) ToGetConfigurationRecorder
 
 func (o GetConfigurationRecordersRecorderArrayOutput) ToGetConfigurationRecordersRecorderArrayOutputWithContext(ctx context.Context) GetConfigurationRecordersRecorderArrayOutput {
 	return o
+}
+
+func (o GetConfigurationRecordersRecorderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConfigurationRecordersRecorder] {
+	return pulumix.Output[[]GetConfigurationRecordersRecorder]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetConfigurationRecordersRecorderArrayOutput) Index(i pulumi.IntInput) GetConfigurationRecordersRecorderOutput {
@@ -2844,6 +3325,12 @@ func (i GetDeliveriesDeliveryArgs) ToGetDeliveriesDeliveryOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeliveriesDeliveryOutput)
 }
 
+func (i GetDeliveriesDeliveryArgs) ToOutput(ctx context.Context) pulumix.Output[GetDeliveriesDelivery] {
+	return pulumix.Output[GetDeliveriesDelivery]{
+		OutputState: i.ToGetDeliveriesDeliveryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDeliveriesDeliveryArrayInput is an input type that accepts GetDeliveriesDeliveryArray and GetDeliveriesDeliveryArrayOutput values.
 // You can construct a concrete instance of `GetDeliveriesDeliveryArrayInput` via:
 //
@@ -2869,6 +3356,12 @@ func (i GetDeliveriesDeliveryArray) ToGetDeliveriesDeliveryArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeliveriesDeliveryArrayOutput)
 }
 
+func (i GetDeliveriesDeliveryArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDeliveriesDelivery] {
+	return pulumix.Output[[]GetDeliveriesDelivery]{
+		OutputState: i.ToGetDeliveriesDeliveryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDeliveriesDeliveryOutput struct{ *pulumi.OutputState }
 
 func (GetDeliveriesDeliveryOutput) ElementType() reflect.Type {
@@ -2881,6 +3374,12 @@ func (o GetDeliveriesDeliveryOutput) ToGetDeliveriesDeliveryOutput() GetDeliveri
 
 func (o GetDeliveriesDeliveryOutput) ToGetDeliveriesDeliveryOutputWithContext(ctx context.Context) GetDeliveriesDeliveryOutput {
 	return o
+}
+
+func (o GetDeliveriesDeliveryOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeliveriesDelivery] {
+	return pulumix.Output[GetDeliveriesDelivery]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Aliyun User Id.
@@ -2967,6 +3466,12 @@ func (o GetDeliveriesDeliveryArrayOutput) ToGetDeliveriesDeliveryArrayOutputWith
 	return o
 }
 
+func (o GetDeliveriesDeliveryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDeliveriesDelivery] {
+	return pulumix.Output[[]GetDeliveriesDelivery]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetDeliveriesDeliveryArrayOutput) Index(i pulumi.IntInput) GetDeliveriesDeliveryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDeliveriesDelivery {
 		return vs[0].([]GetDeliveriesDelivery)[vs[1].(int)]
@@ -3038,6 +3543,12 @@ func (i GetDeliveryChannelsChannelArgs) ToGetDeliveryChannelsChannelOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeliveryChannelsChannelOutput)
 }
 
+func (i GetDeliveryChannelsChannelArgs) ToOutput(ctx context.Context) pulumix.Output[GetDeliveryChannelsChannel] {
+	return pulumix.Output[GetDeliveryChannelsChannel]{
+		OutputState: i.ToGetDeliveryChannelsChannelOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDeliveryChannelsChannelArrayInput is an input type that accepts GetDeliveryChannelsChannelArray and GetDeliveryChannelsChannelArrayOutput values.
 // You can construct a concrete instance of `GetDeliveryChannelsChannelArrayInput` via:
 //
@@ -3063,6 +3574,12 @@ func (i GetDeliveryChannelsChannelArray) ToGetDeliveryChannelsChannelArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeliveryChannelsChannelArrayOutput)
 }
 
+func (i GetDeliveryChannelsChannelArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDeliveryChannelsChannel] {
+	return pulumix.Output[[]GetDeliveryChannelsChannel]{
+		OutputState: i.ToGetDeliveryChannelsChannelArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDeliveryChannelsChannelOutput struct{ *pulumi.OutputState }
 
 func (GetDeliveryChannelsChannelOutput) ElementType() reflect.Type {
@@ -3075,6 +3592,12 @@ func (o GetDeliveryChannelsChannelOutput) ToGetDeliveryChannelsChannelOutput() G
 
 func (o GetDeliveryChannelsChannelOutput) ToGetDeliveryChannelsChannelOutputWithContext(ctx context.Context) GetDeliveryChannelsChannelOutput {
 	return o
+}
+
+func (o GetDeliveryChannelsChannelOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeliveryChannelsChannel] {
+	return pulumix.Output[GetDeliveryChannelsChannel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Alibaba Cloud Resource Name (ARN) of the role assumed by delivery method.
@@ -3134,6 +3657,12 @@ func (o GetDeliveryChannelsChannelArrayOutput) ToGetDeliveryChannelsChannelArray
 
 func (o GetDeliveryChannelsChannelArrayOutput) ToGetDeliveryChannelsChannelArrayOutputWithContext(ctx context.Context) GetDeliveryChannelsChannelArrayOutput {
 	return o
+}
+
+func (o GetDeliveryChannelsChannelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDeliveryChannelsChannel] {
+	return pulumix.Output[[]GetDeliveryChannelsChannel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDeliveryChannelsChannelArrayOutput) Index(i pulumi.IntInput) GetDeliveryChannelsChannelOutput {
@@ -3277,6 +3806,12 @@ func (i GetRulesRuleArgs) ToGetRulesRuleOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleOutput)
 }
 
+func (i GetRulesRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetRulesRule] {
+	return pulumix.Output[GetRulesRule]{
+		OutputState: i.ToGetRulesRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRulesRuleArrayInput is an input type that accepts GetRulesRuleArray and GetRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetRulesRuleArrayInput` via:
 //
@@ -3302,6 +3837,12 @@ func (i GetRulesRuleArray) ToGetRulesRuleArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleArrayOutput)
 }
 
+func (i GetRulesRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesRule] {
+	return pulumix.Output[[]GetRulesRule]{
+		OutputState: i.ToGetRulesRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRulesRuleOutput struct{ *pulumi.OutputState }
 
 func (GetRulesRuleOutput) ElementType() reflect.Type {
@@ -3314,6 +3855,12 @@ func (o GetRulesRuleOutput) ToGetRulesRuleOutput() GetRulesRuleOutput {
 
 func (o GetRulesRuleOutput) ToGetRulesRuleOutputWithContext(ctx context.Context) GetRulesRuleOutput {
 	return o
+}
+
+func (o GetRulesRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetRulesRule] {
+	return pulumix.Output[GetRulesRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Alicloud account.
@@ -3464,6 +4011,12 @@ func (o GetRulesRuleArrayOutput) ToGetRulesRuleArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o GetRulesRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesRule] {
+	return pulumix.Output[[]GetRulesRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetRulesRuleArrayOutput) Index(i pulumi.IntInput) GetRulesRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRule {
 		return vs[0].([]GetRulesRule)[vs[1].(int)]
@@ -3507,6 +4060,12 @@ func (i GetRulesRuleComplianceArgs) ToGetRulesRuleComplianceOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleComplianceOutput)
 }
 
+func (i GetRulesRuleComplianceArgs) ToOutput(ctx context.Context) pulumix.Output[GetRulesRuleCompliance] {
+	return pulumix.Output[GetRulesRuleCompliance]{
+		OutputState: i.ToGetRulesRuleComplianceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRulesRuleComplianceArrayInput is an input type that accepts GetRulesRuleComplianceArray and GetRulesRuleComplianceArrayOutput values.
 // You can construct a concrete instance of `GetRulesRuleComplianceArrayInput` via:
 //
@@ -3532,6 +4091,12 @@ func (i GetRulesRuleComplianceArray) ToGetRulesRuleComplianceArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleComplianceArrayOutput)
 }
 
+func (i GetRulesRuleComplianceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesRuleCompliance] {
+	return pulumix.Output[[]GetRulesRuleCompliance]{
+		OutputState: i.ToGetRulesRuleComplianceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRulesRuleComplianceOutput struct{ *pulumi.OutputState }
 
 func (GetRulesRuleComplianceOutput) ElementType() reflect.Type {
@@ -3544,6 +4109,12 @@ func (o GetRulesRuleComplianceOutput) ToGetRulesRuleComplianceOutput() GetRulesR
 
 func (o GetRulesRuleComplianceOutput) ToGetRulesRuleComplianceOutputWithContext(ctx context.Context) GetRulesRuleComplianceOutput {
 	return o
+}
+
+func (o GetRulesRuleComplianceOutput) ToOutput(ctx context.Context) pulumix.Output[GetRulesRuleCompliance] {
+	return pulumix.Output[GetRulesRuleCompliance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The compliance evaluation result of the target resources.
@@ -3568,6 +4139,12 @@ func (o GetRulesRuleComplianceArrayOutput) ToGetRulesRuleComplianceArrayOutput()
 
 func (o GetRulesRuleComplianceArrayOutput) ToGetRulesRuleComplianceArrayOutputWithContext(ctx context.Context) GetRulesRuleComplianceArrayOutput {
 	return o
+}
+
+func (o GetRulesRuleComplianceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesRuleCompliance] {
+	return pulumix.Output[[]GetRulesRuleCompliance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRulesRuleComplianceArrayOutput) Index(i pulumi.IntInput) GetRulesRuleComplianceOutput {

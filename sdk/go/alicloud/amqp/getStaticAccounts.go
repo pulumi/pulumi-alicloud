@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Amqp Static Account available to the user.[What is Static Account](https://help.aliyun.com/document_detail/184399.html)
@@ -113,6 +114,12 @@ func (o GetStaticAccountsResultOutput) ToGetStaticAccountsResultOutput() GetStat
 
 func (o GetStaticAccountsResultOutput) ToGetStaticAccountsResultOutputWithContext(ctx context.Context) GetStaticAccountsResultOutput {
 	return o
+}
+
+func (o GetStaticAccountsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetStaticAccountsResult] {
+	return pulumix.Output[GetStaticAccountsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of Static Account Entries. Each element contains the following attributes:

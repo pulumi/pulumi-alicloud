@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides the generation of txt records to realize the retrieval and verification of domain names.
@@ -121,6 +122,12 @@ func (o GetDomainTxtGuidResultOutput) ToGetDomainTxtGuidResultOutput() GetDomain
 
 func (o GetDomainTxtGuidResultOutput) ToGetDomainTxtGuidResultOutputWithContext(ctx context.Context) GetDomainTxtGuidResultOutput {
 	return o
+}
+
+func (o GetDomainTxtGuidResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainTxtGuidResult] {
+	return pulumix.Output[GetDomainTxtGuidResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDomainTxtGuidResultOutput) DomainName() pulumi.StringOutput {

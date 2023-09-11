@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)
@@ -97,6 +98,12 @@ func (o GetTransitRouterVbrAttachmentsResultOutput) ToGetTransitRouterVbrAttachm
 
 func (o GetTransitRouterVbrAttachmentsResultOutput) ToGetTransitRouterVbrAttachmentsResultOutputWithContext(ctx context.Context) GetTransitRouterVbrAttachmentsResultOutput {
 	return o
+}
+
+func (o GetTransitRouterVbrAttachmentsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterVbrAttachmentsResult] {
+	return pulumix.Output[GetTransitRouterVbrAttachmentsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of CEN Transit Router VBR Attachments. Each element contains the following attributes:

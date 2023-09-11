@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource will help you to manager Container Registry Enterprise Edition namespaces.
@@ -200,6 +201,12 @@ func (i *RegistryEnterpriseNamespace) ToRegistryEnterpriseNamespaceOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseNamespaceOutput)
 }
 
+func (i *RegistryEnterpriseNamespace) ToOutput(ctx context.Context) pulumix.Output[*RegistryEnterpriseNamespace] {
+	return pulumix.Output[*RegistryEnterpriseNamespace]{
+		OutputState: i.ToRegistryEnterpriseNamespaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RegistryEnterpriseNamespaceArrayInput is an input type that accepts RegistryEnterpriseNamespaceArray and RegistryEnterpriseNamespaceArrayOutput values.
 // You can construct a concrete instance of `RegistryEnterpriseNamespaceArrayInput` via:
 //
@@ -223,6 +230,12 @@ func (i RegistryEnterpriseNamespaceArray) ToRegistryEnterpriseNamespaceArrayOutp
 
 func (i RegistryEnterpriseNamespaceArray) ToRegistryEnterpriseNamespaceArrayOutputWithContext(ctx context.Context) RegistryEnterpriseNamespaceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseNamespaceArrayOutput)
+}
+
+func (i RegistryEnterpriseNamespaceArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegistryEnterpriseNamespace] {
+	return pulumix.Output[[]*RegistryEnterpriseNamespace]{
+		OutputState: i.ToRegistryEnterpriseNamespaceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RegistryEnterpriseNamespaceMapInput is an input type that accepts RegistryEnterpriseNamespaceMap and RegistryEnterpriseNamespaceMapOutput values.
@@ -250,6 +263,12 @@ func (i RegistryEnterpriseNamespaceMap) ToRegistryEnterpriseNamespaceMapOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseNamespaceMapOutput)
 }
 
+func (i RegistryEnterpriseNamespaceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegistryEnterpriseNamespace] {
+	return pulumix.Output[map[string]*RegistryEnterpriseNamespace]{
+		OutputState: i.ToRegistryEnterpriseNamespaceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegistryEnterpriseNamespaceOutput struct{ *pulumi.OutputState }
 
 func (RegistryEnterpriseNamespaceOutput) ElementType() reflect.Type {
@@ -262,6 +281,12 @@ func (o RegistryEnterpriseNamespaceOutput) ToRegistryEnterpriseNamespaceOutput()
 
 func (o RegistryEnterpriseNamespaceOutput) ToRegistryEnterpriseNamespaceOutputWithContext(ctx context.Context) RegistryEnterpriseNamespaceOutput {
 	return o
+}
+
+func (o RegistryEnterpriseNamespaceOutput) ToOutput(ctx context.Context) pulumix.Output[*RegistryEnterpriseNamespace] {
+	return pulumix.Output[*RegistryEnterpriseNamespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
@@ -298,6 +323,12 @@ func (o RegistryEnterpriseNamespaceArrayOutput) ToRegistryEnterpriseNamespaceArr
 	return o
 }
 
+func (o RegistryEnterpriseNamespaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegistryEnterpriseNamespace] {
+	return pulumix.Output[[]*RegistryEnterpriseNamespace]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegistryEnterpriseNamespaceArrayOutput) Index(i pulumi.IntInput) RegistryEnterpriseNamespaceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegistryEnterpriseNamespace {
 		return vs[0].([]*RegistryEnterpriseNamespace)[vs[1].(int)]
@@ -316,6 +347,12 @@ func (o RegistryEnterpriseNamespaceMapOutput) ToRegistryEnterpriseNamespaceMapOu
 
 func (o RegistryEnterpriseNamespaceMapOutput) ToRegistryEnterpriseNamespaceMapOutputWithContext(ctx context.Context) RegistryEnterpriseNamespaceMapOutput {
 	return o
+}
+
+func (o RegistryEnterpriseNamespaceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegistryEnterpriseNamespace] {
+	return pulumix.Output[map[string]*RegistryEnterpriseNamespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegistryEnterpriseNamespaceMapOutput) MapIndex(k pulumi.StringInput) RegistryEnterpriseNamespaceOutput {

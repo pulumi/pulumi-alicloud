@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Api Gateway Log Config resource.
@@ -232,6 +233,12 @@ func (i *LogConfig) ToLogConfigOutputWithContext(ctx context.Context) LogConfigO
 	return pulumi.ToOutputWithContext(ctx, i).(LogConfigOutput)
 }
 
+func (i *LogConfig) ToOutput(ctx context.Context) pulumix.Output[*LogConfig] {
+	return pulumix.Output[*LogConfig]{
+		OutputState: i.ToLogConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LogConfigArrayInput is an input type that accepts LogConfigArray and LogConfigArrayOutput values.
 // You can construct a concrete instance of `LogConfigArrayInput` via:
 //
@@ -255,6 +262,12 @@ func (i LogConfigArray) ToLogConfigArrayOutput() LogConfigArrayOutput {
 
 func (i LogConfigArray) ToLogConfigArrayOutputWithContext(ctx context.Context) LogConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogConfigArrayOutput)
+}
+
+func (i LogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*LogConfig] {
+	return pulumix.Output[[]*LogConfig]{
+		OutputState: i.ToLogConfigArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // LogConfigMapInput is an input type that accepts LogConfigMap and LogConfigMapOutput values.
@@ -282,6 +295,12 @@ func (i LogConfigMap) ToLogConfigMapOutputWithContext(ctx context.Context) LogCo
 	return pulumi.ToOutputWithContext(ctx, i).(LogConfigMapOutput)
 }
 
+func (i LogConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogConfig] {
+	return pulumix.Output[map[string]*LogConfig]{
+		OutputState: i.ToLogConfigMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LogConfigOutput struct{ *pulumi.OutputState }
 
 func (LogConfigOutput) ElementType() reflect.Type {
@@ -294,6 +313,12 @@ func (o LogConfigOutput) ToLogConfigOutput() LogConfigOutput {
 
 func (o LogConfigOutput) ToLogConfigOutputWithContext(ctx context.Context) LogConfigOutput {
 	return o
+}
+
+func (o LogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*LogConfig] {
+	return pulumix.Output[*LogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type the of log. Valid values: `PROVIDER`.
@@ -325,6 +350,12 @@ func (o LogConfigArrayOutput) ToLogConfigArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o LogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LogConfig] {
+	return pulumix.Output[[]*LogConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LogConfigArrayOutput) Index(i pulumi.IntInput) LogConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LogConfig {
 		return vs[0].([]*LogConfig)[vs[1].(int)]
@@ -343,6 +374,12 @@ func (o LogConfigMapOutput) ToLogConfigMapOutput() LogConfigMapOutput {
 
 func (o LogConfigMapOutput) ToLogConfigMapOutputWithContext(ctx context.Context) LogConfigMapOutput {
 	return o
+}
+
+func (o LogConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogConfig] {
+	return pulumix.Output[map[string]*LogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogConfigMapOutput) MapIndex(k pulumi.StringInput) LogConfigOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Graph Database Db Instance resource.
@@ -301,6 +302,12 @@ func (i *DbInstance) ToDbInstanceOutputWithContext(ctx context.Context) DbInstan
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstanceOutput)
 }
 
+func (i *DbInstance) ToOutput(ctx context.Context) pulumix.Output[*DbInstance] {
+	return pulumix.Output[*DbInstance]{
+		OutputState: i.ToDbInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DbInstanceArrayInput is an input type that accepts DbInstanceArray and DbInstanceArrayOutput values.
 // You can construct a concrete instance of `DbInstanceArrayInput` via:
 //
@@ -324,6 +331,12 @@ func (i DbInstanceArray) ToDbInstanceArrayOutput() DbInstanceArrayOutput {
 
 func (i DbInstanceArray) ToDbInstanceArrayOutputWithContext(ctx context.Context) DbInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstanceArrayOutput)
+}
+
+func (i DbInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*DbInstance] {
+	return pulumix.Output[[]*DbInstance]{
+		OutputState: i.ToDbInstanceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DbInstanceMapInput is an input type that accepts DbInstanceMap and DbInstanceMapOutput values.
@@ -351,6 +364,12 @@ func (i DbInstanceMap) ToDbInstanceMapOutputWithContext(ctx context.Context) DbI
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstanceMapOutput)
 }
 
+func (i DbInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbInstance] {
+	return pulumix.Output[map[string]*DbInstance]{
+		OutputState: i.ToDbInstanceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DbInstanceOutput struct{ *pulumi.OutputState }
 
 func (DbInstanceOutput) ElementType() reflect.Type {
@@ -363,6 +382,12 @@ func (o DbInstanceOutput) ToDbInstanceOutput() DbInstanceOutput {
 
 func (o DbInstanceOutput) ToDbInstanceOutputWithContext(ctx context.Context) DbInstanceOutput {
 	return o
+}
+
+func (o DbInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*DbInstance] {
+	return pulumix.Output[*DbInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Available in 1.196.0+)  The connection string of the instance.
@@ -454,6 +479,12 @@ func (o DbInstanceArrayOutput) ToDbInstanceArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o DbInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DbInstance] {
+	return pulumix.Output[[]*DbInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DbInstanceArrayOutput) Index(i pulumi.IntInput) DbInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DbInstance {
 		return vs[0].([]*DbInstance)[vs[1].(int)]
@@ -472,6 +503,12 @@ func (o DbInstanceMapOutput) ToDbInstanceMapOutput() DbInstanceMapOutput {
 
 func (o DbInstanceMapOutput) ToDbInstanceMapOutputWithContext(ctx context.Context) DbInstanceMapOutput {
 	return o
+}
+
+func (o DbInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbInstance] {
+	return pulumix.Output[map[string]*DbInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DbInstanceMapOutput) MapIndex(k pulumi.StringInput) DbInstanceOutput {

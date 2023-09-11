@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Global Accelerator (GA) Access Log resource.
@@ -307,6 +308,12 @@ func (i *AccessLog) ToAccessLogOutputWithContext(ctx context.Context) AccessLogO
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLogOutput)
 }
 
+func (i *AccessLog) ToOutput(ctx context.Context) pulumix.Output[*AccessLog] {
+	return pulumix.Output[*AccessLog]{
+		OutputState: i.ToAccessLogOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccessLogArrayInput is an input type that accepts AccessLogArray and AccessLogArrayOutput values.
 // You can construct a concrete instance of `AccessLogArrayInput` via:
 //
@@ -330,6 +337,12 @@ func (i AccessLogArray) ToAccessLogArrayOutput() AccessLogArrayOutput {
 
 func (i AccessLogArray) ToAccessLogArrayOutputWithContext(ctx context.Context) AccessLogArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLogArrayOutput)
+}
+
+func (i AccessLogArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessLog] {
+	return pulumix.Output[[]*AccessLog]{
+		OutputState: i.ToAccessLogArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AccessLogMapInput is an input type that accepts AccessLogMap and AccessLogMapOutput values.
@@ -357,6 +370,12 @@ func (i AccessLogMap) ToAccessLogMapOutputWithContext(ctx context.Context) Acces
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLogMapOutput)
 }
 
+func (i AccessLogMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessLog] {
+	return pulumix.Output[map[string]*AccessLog]{
+		OutputState: i.ToAccessLogMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessLogOutput struct{ *pulumi.OutputState }
 
 func (AccessLogOutput) ElementType() reflect.Type {
@@ -369,6 +388,12 @@ func (o AccessLogOutput) ToAccessLogOutput() AccessLogOutput {
 
 func (o AccessLogOutput) ToAccessLogOutputWithContext(ctx context.Context) AccessLogOutput {
 	return o
+}
+
+func (o AccessLogOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessLog] {
+	return pulumix.Output[*AccessLog]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the global acceleration instance.
@@ -420,6 +445,12 @@ func (o AccessLogArrayOutput) ToAccessLogArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o AccessLogArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessLog] {
+	return pulumix.Output[[]*AccessLog]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccessLogArrayOutput) Index(i pulumi.IntInput) AccessLogOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessLog {
 		return vs[0].([]*AccessLog)[vs[1].(int)]
@@ -438,6 +469,12 @@ func (o AccessLogMapOutput) ToAccessLogMapOutput() AccessLogMapOutput {
 
 func (o AccessLogMapOutput) ToAccessLogMapOutputWithContext(ctx context.Context) AccessLogMapOutput {
 	return o
+}
+
+func (o AccessLogMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessLog] {
+	return pulumix.Output[map[string]*AccessLog]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessLogMapOutput) MapIndex(k pulumi.StringInput) AccessLogOutput {

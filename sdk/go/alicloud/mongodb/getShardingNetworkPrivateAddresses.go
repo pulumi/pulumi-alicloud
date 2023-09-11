@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Mongodb Sharding Network Private Addresses of the current Alibaba Cloud user.
@@ -89,6 +90,12 @@ func (o GetShardingNetworkPrivateAddressesResultOutput) ToGetShardingNetworkPriv
 
 func (o GetShardingNetworkPrivateAddressesResultOutput) ToGetShardingNetworkPrivateAddressesResultOutputWithContext(ctx context.Context) GetShardingNetworkPrivateAddressesResultOutput {
 	return o
+}
+
+func (o GetShardingNetworkPrivateAddressesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetShardingNetworkPrivateAddressesResult] {
+	return pulumix.Output[GetShardingNetworkPrivateAddressesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetShardingNetworkPrivateAddressesResultOutput) Addresses() GetShardingNetworkPrivateAddressesAddressArrayOutput {

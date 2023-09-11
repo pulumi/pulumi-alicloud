@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECD Ram Directory resource.
@@ -224,6 +225,12 @@ func (i *RamDirectory) ToRamDirectoryOutputWithContext(ctx context.Context) RamD
 	return pulumi.ToOutputWithContext(ctx, i).(RamDirectoryOutput)
 }
 
+func (i *RamDirectory) ToOutput(ctx context.Context) pulumix.Output[*RamDirectory] {
+	return pulumix.Output[*RamDirectory]{
+		OutputState: i.ToRamDirectoryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RamDirectoryArrayInput is an input type that accepts RamDirectoryArray and RamDirectoryArrayOutput values.
 // You can construct a concrete instance of `RamDirectoryArrayInput` via:
 //
@@ -247,6 +254,12 @@ func (i RamDirectoryArray) ToRamDirectoryArrayOutput() RamDirectoryArrayOutput {
 
 func (i RamDirectoryArray) ToRamDirectoryArrayOutputWithContext(ctx context.Context) RamDirectoryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RamDirectoryArrayOutput)
+}
+
+func (i RamDirectoryArray) ToOutput(ctx context.Context) pulumix.Output[[]*RamDirectory] {
+	return pulumix.Output[[]*RamDirectory]{
+		OutputState: i.ToRamDirectoryArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RamDirectoryMapInput is an input type that accepts RamDirectoryMap and RamDirectoryMapOutput values.
@@ -274,6 +287,12 @@ func (i RamDirectoryMap) ToRamDirectoryMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(RamDirectoryMapOutput)
 }
 
+func (i RamDirectoryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RamDirectory] {
+	return pulumix.Output[map[string]*RamDirectory]{
+		OutputState: i.ToRamDirectoryMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RamDirectoryOutput struct{ *pulumi.OutputState }
 
 func (RamDirectoryOutput) ElementType() reflect.Type {
@@ -286,6 +305,12 @@ func (o RamDirectoryOutput) ToRamDirectoryOutput() RamDirectoryOutput {
 
 func (o RamDirectoryOutput) ToRamDirectoryOutputWithContext(ctx context.Context) RamDirectoryOutput {
 	return o
+}
+
+func (o RamDirectoryOutput) ToOutput(ctx context.Context) pulumix.Output[*RamDirectory] {
+	return pulumix.Output[*RamDirectory]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
@@ -332,6 +357,12 @@ func (o RamDirectoryArrayOutput) ToRamDirectoryArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o RamDirectoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RamDirectory] {
+	return pulumix.Output[[]*RamDirectory]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RamDirectoryArrayOutput) Index(i pulumi.IntInput) RamDirectoryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RamDirectory {
 		return vs[0].([]*RamDirectory)[vs[1].(int)]
@@ -350,6 +381,12 @@ func (o RamDirectoryMapOutput) ToRamDirectoryMapOutput() RamDirectoryMapOutput {
 
 func (o RamDirectoryMapOutput) ToRamDirectoryMapOutputWithContext(ctx context.Context) RamDirectoryMapOutput {
 	return o
+}
+
+func (o RamDirectoryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RamDirectory] {
+	return pulumix.Output[map[string]*RamDirectory]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RamDirectoryMapOutput) MapIndex(k pulumi.StringInput) RamDirectoryOutput {

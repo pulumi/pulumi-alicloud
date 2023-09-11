@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Brain Industrial Pid Project resource.
@@ -164,6 +165,12 @@ func (i *IndustrialPidProject) ToIndustrialPidProjectOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(IndustrialPidProjectOutput)
 }
 
+func (i *IndustrialPidProject) ToOutput(ctx context.Context) pulumix.Output[*IndustrialPidProject] {
+	return pulumix.Output[*IndustrialPidProject]{
+		OutputState: i.ToIndustrialPidProjectOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IndustrialPidProjectArrayInput is an input type that accepts IndustrialPidProjectArray and IndustrialPidProjectArrayOutput values.
 // You can construct a concrete instance of `IndustrialPidProjectArrayInput` via:
 //
@@ -187,6 +194,12 @@ func (i IndustrialPidProjectArray) ToIndustrialPidProjectArrayOutput() Industria
 
 func (i IndustrialPidProjectArray) ToIndustrialPidProjectArrayOutputWithContext(ctx context.Context) IndustrialPidProjectArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IndustrialPidProjectArrayOutput)
+}
+
+func (i IndustrialPidProjectArray) ToOutput(ctx context.Context) pulumix.Output[[]*IndustrialPidProject] {
+	return pulumix.Output[[]*IndustrialPidProject]{
+		OutputState: i.ToIndustrialPidProjectArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // IndustrialPidProjectMapInput is an input type that accepts IndustrialPidProjectMap and IndustrialPidProjectMapOutput values.
@@ -214,6 +227,12 @@ func (i IndustrialPidProjectMap) ToIndustrialPidProjectMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(IndustrialPidProjectMapOutput)
 }
 
+func (i IndustrialPidProjectMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IndustrialPidProject] {
+	return pulumix.Output[map[string]*IndustrialPidProject]{
+		OutputState: i.ToIndustrialPidProjectMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IndustrialPidProjectOutput struct{ *pulumi.OutputState }
 
 func (IndustrialPidProjectOutput) ElementType() reflect.Type {
@@ -226,6 +245,12 @@ func (o IndustrialPidProjectOutput) ToIndustrialPidProjectOutput() IndustrialPid
 
 func (o IndustrialPidProjectOutput) ToIndustrialPidProjectOutputWithContext(ctx context.Context) IndustrialPidProjectOutput {
 	return o
+}
+
+func (o IndustrialPidProjectOutput) ToOutput(ctx context.Context) pulumix.Output[*IndustrialPidProject] {
+	return pulumix.Output[*IndustrialPidProject]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of Pid Organization.
@@ -257,6 +282,12 @@ func (o IndustrialPidProjectArrayOutput) ToIndustrialPidProjectArrayOutputWithCo
 	return o
 }
 
+func (o IndustrialPidProjectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IndustrialPidProject] {
+	return pulumix.Output[[]*IndustrialPidProject]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IndustrialPidProjectArrayOutput) Index(i pulumi.IntInput) IndustrialPidProjectOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IndustrialPidProject {
 		return vs[0].([]*IndustrialPidProject)[vs[1].(int)]
@@ -275,6 +306,12 @@ func (o IndustrialPidProjectMapOutput) ToIndustrialPidProjectMapOutput() Industr
 
 func (o IndustrialPidProjectMapOutput) ToIndustrialPidProjectMapOutputWithContext(ctx context.Context) IndustrialPidProjectMapOutput {
 	return o
+}
+
+func (o IndustrialPidProjectMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IndustrialPidProject] {
+	return pulumix.Output[map[string]*IndustrialPidProject]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IndustrialPidProjectMapOutput) MapIndex(k pulumi.StringInput) IndustrialPidProjectOutput {

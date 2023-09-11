@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **DEPRECATED:**  This datasource has been deprecated from version `1.126.0`. Please use new datasource alicloud_eip_addresses.
@@ -179,6 +180,12 @@ func (o GetEipsResultOutput) ToGetEipsResultOutput() GetEipsResultOutput {
 
 func (o GetEipsResultOutput) ToGetEipsResultOutputWithContext(ctx context.Context) GetEipsResultOutput {
 	return o
+}
+
+func (o GetEipsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEipsResult] {
+	return pulumix.Output[GetEipsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetEipsResultOutput) AddressName() pulumi.StringPtrOutput {

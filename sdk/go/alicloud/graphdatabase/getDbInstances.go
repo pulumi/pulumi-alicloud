@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
@@ -145,6 +146,12 @@ func (o GetDbInstancesResultOutput) ToGetDbInstancesResultOutput() GetDbInstance
 
 func (o GetDbInstancesResultOutput) ToGetDbInstancesResultOutputWithContext(ctx context.Context) GetDbInstancesResultOutput {
 	return o
+}
+
+func (o GetDbInstancesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDbInstancesResult] {
+	return pulumix.Output[GetDbInstancesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDbInstancesResultOutput) DbInstanceDescription() pulumi.StringPtrOutput {

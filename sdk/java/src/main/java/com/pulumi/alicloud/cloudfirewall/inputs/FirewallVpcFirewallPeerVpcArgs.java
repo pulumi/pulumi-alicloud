@@ -18,14 +18,14 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
     public static final FirewallVpcFirewallPeerVpcArgs Empty = new FirewallVpcFirewallPeerVpcArgs();
 
     /**
-     * The ID of the instance of the Eni in the local VPC.
+     * The ID of the instance of the ENI in the peer VPC.
      * 
      */
     @Import(name="eniId")
     private @Nullable Output<String> eniId;
 
     /**
-     * @return The ID of the instance of the Eni in the local VPC.
+     * @return The ID of the instance of the ENI in the peer VPC.
      * 
      */
     public Optional<Output<String>> eniId() {
@@ -33,14 +33,14 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The private IP address of the elastic network card in the local VPC.
+     * The private IP address of the elastic network card in the peer VPC.
      * 
      */
     @Import(name="eniPrivateIpAddress")
     private @Nullable Output<String> eniPrivateIpAddress;
 
     /**
-     * @return The private IP address of the elastic network card in the local VPC.
+     * @return The private IP address of the elastic network card in the peer VPC.
      * 
      */
     public Optional<Output<String>> eniPrivateIpAddress() {
@@ -48,14 +48,14 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The network segment list of the peer VPC.See the following `Block PeerVpcCidrTableList`.
+     * The network segment list of the peer VPC. See `peer_vpc_cidr_table_list` below.
      * 
      */
     @Import(name="peerVpcCidrTableLists", required=true)
     private Output<List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs>> peerVpcCidrTableLists;
 
     /**
-     * @return The network segment list of the peer VPC.See the following `Block PeerVpcCidrTableList`.
+     * @return The network segment list of the peer VPC. See `peer_vpc_cidr_table_list` below.
      * 
      */
     public Output<List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs>> peerVpcCidrTableLists() {
@@ -63,14 +63,14 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The region ID of the local VPC.
+     * The region ID of the peer VPC.
      * 
      */
     @Import(name="regionNo", required=true)
     private Output<String> regionNo;
 
     /**
-     * @return The region ID of the local VPC.
+     * @return The region ID of the peer VPC.
      * 
      */
     public Output<String> regionNo() {
@@ -78,14 +78,14 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The ID of the router interface in the local VPC.
+     * The ID of the router interface in the peer VPC.
      * 
      */
     @Import(name="routerInterfaceId")
     private @Nullable Output<String> routerInterfaceId;
 
     /**
-     * @return The ID of the router interface in the local VPC.
+     * @return The ID of the router interface in the peer VPC.
      * 
      */
     public Optional<Output<String>> routerInterfaceId() {
@@ -93,14 +93,14 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The ID of the local VPC instance.
+     * The ID of the peer VPC instance.
      * 
      */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
     /**
-     * @return The ID of the local VPC instance.
+     * @return The ID of the peer VPC instance.
      * 
      */
     public Output<String> vpcId() {
@@ -108,14 +108,14 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The instance name of the local VPC.
+     * The instance name of the peer VPC.
      * 
      */
     @Import(name="vpcName")
     private @Nullable Output<String> vpcName;
 
     /**
-     * @return The instance name of the local VPC.
+     * @return The instance name of the peer VPC.
      * 
      */
     public Optional<Output<String>> vpcName() {
@@ -153,7 +153,7 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param eniId The ID of the instance of the Eni in the local VPC.
+         * @param eniId The ID of the instance of the ENI in the peer VPC.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param eniId The ID of the instance of the Eni in the local VPC.
+         * @param eniId The ID of the instance of the ENI in the peer VPC.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param eniPrivateIpAddress The private IP address of the elastic network card in the local VPC.
+         * @param eniPrivateIpAddress The private IP address of the elastic network card in the peer VPC.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param eniPrivateIpAddress The private IP address of the elastic network card in the local VPC.
+         * @param eniPrivateIpAddress The private IP address of the elastic network card in the peer VPC.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param peerVpcCidrTableLists The network segment list of the peer VPC.See the following `Block PeerVpcCidrTableList`.
+         * @param peerVpcCidrTableLists The network segment list of the peer VPC. See `peer_vpc_cidr_table_list` below.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param peerVpcCidrTableLists The network segment list of the peer VPC.See the following `Block PeerVpcCidrTableList`.
+         * @param peerVpcCidrTableLists The network segment list of the peer VPC. See `peer_vpc_cidr_table_list` below.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param peerVpcCidrTableLists The network segment list of the peer VPC.See the following `Block PeerVpcCidrTableList`.
+         * @param peerVpcCidrTableLists The network segment list of the peer VPC. See `peer_vpc_cidr_table_list` below.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param regionNo The region ID of the local VPC.
+         * @param regionNo The region ID of the peer VPC.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param regionNo The region ID of the local VPC.
+         * @param regionNo The region ID of the peer VPC.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param routerInterfaceId The ID of the router interface in the local VPC.
+         * @param routerInterfaceId The ID of the router interface in the peer VPC.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param routerInterfaceId The ID of the router interface in the local VPC.
+         * @param routerInterfaceId The ID of the router interface in the peer VPC.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param vpcId The ID of the local VPC instance.
+         * @param vpcId The ID of the peer VPC instance.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param vpcId The ID of the local VPC instance.
+         * @param vpcId The ID of the peer VPC instance.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param vpcName The instance name of the local VPC.
+         * @param vpcName The instance name of the peer VPC.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param vpcName The instance name of the local VPC.
+         * @param vpcName The instance name of the peer VPC.
          * 
          * @return builder
          * 

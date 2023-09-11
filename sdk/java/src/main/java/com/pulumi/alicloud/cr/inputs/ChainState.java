@@ -18,14 +18,14 @@ public final class ChainState extends com.pulumi.resources.ResourceArgs {
     public static final ChainState Empty = new ChainState();
 
     /**
-     * The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+     * The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
      * 
      */
     @Import(name="chainConfigs")
     private @Nullable Output<List<ChainChainConfigArgs>> chainConfigs;
 
     /**
-     * @return The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+     * @return The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
      * 
      */
     public Optional<Output<List<ChainChainConfigArgs>>> chainConfigs() {
@@ -153,7 +153,7 @@ public final class ChainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param chainConfigs The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+         * @param chainConfigs The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class ChainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param chainConfigs The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+         * @param chainConfigs The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class ChainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param chainConfigs The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+         * @param chainConfigs The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
          * 
          * @return builder
          * 

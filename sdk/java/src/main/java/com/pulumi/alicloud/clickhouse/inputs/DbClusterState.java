@@ -34,14 +34,14 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in 1.196.0+) - The connection string of the cluster.
+     * (Available since v1.196.0) - The connection string of the cluster.
      * 
      */
     @Import(name="connectionString")
     private @Nullable Output<String> connectionString;
 
     /**
-     * @return (Available in 1.196.0+) - The connection string of the cluster.
+     * @return (Available since v1.196.0) - The connection string of the cluster.
      * 
      */
     public Optional<Output<String>> connectionString() {
@@ -49,14 +49,14 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The db cluster access white list.
+     * The db cluster access white list. See `db_cluster_access_white_list` below.
      * 
      */
     @Import(name="dbClusterAccessWhiteLists")
     private @Nullable Output<List<DbClusterDbClusterAccessWhiteListArgs>> dbClusterAccessWhiteLists;
 
     /**
-     * @return The db cluster access white list.
+     * @return The db cluster access white list. See `db_cluster_access_white_list` below.
      * 
      */
     public Optional<Output<List<DbClusterDbClusterAccessWhiteListArgs>>> dbClusterAccessWhiteLists() {
@@ -233,14 +233,14 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in 1.196.0+) The connection port of the cluster.
+     * (Available since v1.196.0) The connection port of the cluster.
      * 
      */
     @Import(name="port")
     private @Nullable Output<String> port;
 
     /**
-     * @return (Available in 1.196.0+) The connection port of the cluster.
+     * @return (Available since v1.196.0) The connection port of the cluster.
      * 
      */
     public Optional<Output<String>> port() {
@@ -403,7 +403,7 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionString (Available in 1.196.0+) - The connection string of the cluster.
+         * @param connectionString (Available since v1.196.0) - The connection string of the cluster.
          * 
          * @return builder
          * 
@@ -414,7 +414,7 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionString (Available in 1.196.0+) - The connection string of the cluster.
+         * @param connectionString (Available since v1.196.0) - The connection string of the cluster.
          * 
          * @return builder
          * 
@@ -424,7 +424,7 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterAccessWhiteLists The db cluster access white list.
+         * @param dbClusterAccessWhiteLists The db cluster access white list. See `db_cluster_access_white_list` below.
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterAccessWhiteLists The db cluster access white list.
+         * @param dbClusterAccessWhiteLists The db cluster access white list. See `db_cluster_access_white_list` below.
          * 
          * @return builder
          * 
@@ -445,7 +445,7 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterAccessWhiteLists The db cluster access white list.
+         * @param dbClusterAccessWhiteLists The db cluster access white list. See `db_cluster_access_white_list` below.
          * 
          * @return builder
          * 
@@ -690,7 +690,7 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param port (Available in 1.196.0+) The connection port of the cluster.
+         * @param port (Available since v1.196.0) The connection port of the cluster.
          * 
          * @return builder
          * 
@@ -701,7 +701,7 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param port (Available in 1.196.0+) The connection port of the cluster.
+         * @param port (Available since v1.196.0) The connection port of the cluster.
          * 
          * @return builder
          * 

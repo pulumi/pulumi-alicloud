@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 /**
  * This resource will help you to manager Container Registry Enterprise Edition namespaces.
  * 
- * For information about Container Registry Enterprise Edition namespaces and how to use it, see [Create a Namespace](https://www.alibabacloud.com/help/doc-detail/145483.htm)
+ * For information about Container Registry Enterprise Edition namespaces and how to use it, see [Create a Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace)
  * 
- * &gt; **NOTE:** Available in v1.86.0+.
+ * &gt; **NOTE:** Available since v1.86.0.
  * 
  * &gt; **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
  * 
@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cr.RegistryEnterpriseInstance;
+ * import com.pulumi.alicloud.cr.RegistryEnterpriseInstanceArgs;
  * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespace;
  * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespaceArgs;
  * import java.util.List;
@@ -47,10 +49,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_namespace = new RegistryEnterpriseNamespace(&#34;my-namespace&#34;, RegistryEnterpriseNamespaceArgs.builder()        
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example-name&#34;);
+ *         var exampleRegistryEnterpriseInstance = new RegistryEnterpriseInstance(&#34;exampleRegistryEnterpriseInstance&#34;, RegistryEnterpriseInstanceArgs.builder()        
+ *             .paymentType(&#34;Subscription&#34;)
+ *             .period(1)
+ *             .renewPeriod(0)
+ *             .renewalStatus(&#34;ManualRenewal&#34;)
+ *             .instanceType(&#34;Advanced&#34;)
+ *             .instanceName(name)
+ *             .build());
+ * 
+ *         var exampleRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace(&#34;exampleRegistryEnterpriseNamespace&#34;, RegistryEnterpriseNamespaceArgs.builder()        
+ *             .instanceId(exampleRegistryEnterpriseInstance.id())
  *             .autoCreate(false)
  *             .defaultVisibility(&#34;PUBLIC&#34;)
- *             .instanceId(&#34;cri-xxx&#34;)
  *             .build());
  * 
  *     }

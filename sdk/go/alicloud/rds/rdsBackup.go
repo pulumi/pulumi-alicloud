@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a RDS Backup resource.
@@ -235,6 +236,12 @@ func (i *RdsBackup) ToRdsBackupOutputWithContext(ctx context.Context) RdsBackupO
 	return pulumi.ToOutputWithContext(ctx, i).(RdsBackupOutput)
 }
 
+func (i *RdsBackup) ToOutput(ctx context.Context) pulumix.Output[*RdsBackup] {
+	return pulumix.Output[*RdsBackup]{
+		OutputState: i.ToRdsBackupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RdsBackupArrayInput is an input type that accepts RdsBackupArray and RdsBackupArrayOutput values.
 // You can construct a concrete instance of `RdsBackupArrayInput` via:
 //
@@ -258,6 +265,12 @@ func (i RdsBackupArray) ToRdsBackupArrayOutput() RdsBackupArrayOutput {
 
 func (i RdsBackupArray) ToRdsBackupArrayOutputWithContext(ctx context.Context) RdsBackupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RdsBackupArrayOutput)
+}
+
+func (i RdsBackupArray) ToOutput(ctx context.Context) pulumix.Output[[]*RdsBackup] {
+	return pulumix.Output[[]*RdsBackup]{
+		OutputState: i.ToRdsBackupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RdsBackupMapInput is an input type that accepts RdsBackupMap and RdsBackupMapOutput values.
@@ -285,6 +298,12 @@ func (i RdsBackupMap) ToRdsBackupMapOutputWithContext(ctx context.Context) RdsBa
 	return pulumi.ToOutputWithContext(ctx, i).(RdsBackupMapOutput)
 }
 
+func (i RdsBackupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RdsBackup] {
+	return pulumix.Output[map[string]*RdsBackup]{
+		OutputState: i.ToRdsBackupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RdsBackupOutput struct{ *pulumi.OutputState }
 
 func (RdsBackupOutput) ElementType() reflect.Type {
@@ -297,6 +316,12 @@ func (o RdsBackupOutput) ToRdsBackupOutput() RdsBackupOutput {
 
 func (o RdsBackupOutput) ToRdsBackupOutputWithContext(ctx context.Context) RdsBackupOutput {
 	return o
+}
+
+func (o RdsBackupOutput) ToOutput(ctx context.Context) pulumix.Output[*RdsBackup] {
+	return pulumix.Output[*RdsBackup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The backup id.
@@ -357,6 +382,12 @@ func (o RdsBackupArrayOutput) ToRdsBackupArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o RdsBackupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RdsBackup] {
+	return pulumix.Output[[]*RdsBackup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RdsBackupArrayOutput) Index(i pulumi.IntInput) RdsBackupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RdsBackup {
 		return vs[0].([]*RdsBackup)[vs[1].(int)]
@@ -375,6 +406,12 @@ func (o RdsBackupMapOutput) ToRdsBackupMapOutput() RdsBackupMapOutput {
 
 func (o RdsBackupMapOutput) ToRdsBackupMapOutputWithContext(ctx context.Context) RdsBackupMapOutput {
 	return o
+}
+
+func (o RdsBackupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RdsBackup] {
+	return pulumix.Output[map[string]*RdsBackup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RdsBackupMapOutput) MapIndex(k pulumi.StringInput) RdsBackupOutput {

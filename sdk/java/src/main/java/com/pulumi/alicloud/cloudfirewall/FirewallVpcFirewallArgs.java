@@ -18,14 +18,14 @@ public final class FirewallVpcFirewallArgs extends com.pulumi.resources.Resource
     public static final FirewallVpcFirewallArgs Empty = new FirewallVpcFirewallArgs();
 
     /**
-     * The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+     * The language type of the requested and received messages. Valid values:
      * 
      */
     @Import(name="lang")
     private @Nullable Output<String> lang;
 
     /**
-     * @return The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+     * @return The language type of the requested and received messages. Valid values:
      * 
      */
     public Optional<Output<String>> lang() {
@@ -33,14 +33,14 @@ public final class FirewallVpcFirewallArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The details of the local VPC. See the following `Block LocalVpc`.
+     * The details of the local VPC. See `local_vpc` below.
      * 
      */
     @Import(name="localVpc", required=true)
     private Output<FirewallVpcFirewallLocalVpcArgs> localVpc;
 
     /**
-     * @return The details of the local VPC. See the following `Block LocalVpc`.
+     * @return The details of the local VPC. See `local_vpc` below.
      * 
      */
     public Output<FirewallVpcFirewallLocalVpcArgs> localVpc() {
@@ -63,14 +63,14 @@ public final class FirewallVpcFirewallArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The details of the peer VPC. See the following `Block PeerVpc`.
+     * The details of the peer VPC. See `peer_vpc` below.
      * 
      */
     @Import(name="peerVpc", required=true)
     private Output<FirewallVpcFirewallPeerVpcArgs> peerVpc;
 
     /**
-     * @return The details of the peer VPC. See the following `Block PeerVpc`.
+     * @return The details of the peer VPC. See `peer_vpc` below.
      * 
      */
     public Output<FirewallVpcFirewallPeerVpcArgs> peerVpc() {
@@ -78,14 +78,14 @@ public final class FirewallVpcFirewallArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The status of the resource
+     * The status of the resource. Valid values:
      * 
      */
     @Import(name="status", required=true)
     private Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The status of the resource. Valid values:
      * 
      */
     public Output<String> status() {
@@ -137,7 +137,7 @@ public final class FirewallVpcFirewallArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param lang The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+         * @param lang The language type of the requested and received messages. Valid values:
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class FirewallVpcFirewallArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param lang The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+         * @param lang The language type of the requested and received messages. Valid values:
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class FirewallVpcFirewallArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param localVpc The details of the local VPC. See the following `Block LocalVpc`.
+         * @param localVpc The details of the local VPC. See `local_vpc` below.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class FirewallVpcFirewallArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param localVpc The details of the local VPC. See the following `Block LocalVpc`.
+         * @param localVpc The details of the local VPC. See `local_vpc` below.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class FirewallVpcFirewallArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param peerVpc The details of the peer VPC. See the following `Block PeerVpc`.
+         * @param peerVpc The details of the peer VPC. See `peer_vpc` below.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class FirewallVpcFirewallArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param peerVpc The details of the peer VPC. See the following `Block PeerVpc`.
+         * @param peerVpc The details of the peer VPC. See `peer_vpc` below.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class FirewallVpcFirewallArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param status The status of the resource
+         * @param status The status of the resource. Valid values:
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class FirewallVpcFirewallArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param status The status of the resource
+         * @param status The status of the resource. Valid values:
          * 
          * @return builder
          * 

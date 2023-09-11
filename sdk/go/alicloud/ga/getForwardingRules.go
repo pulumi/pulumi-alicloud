@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Global Accelerator (GA) Forwarding Rules of the current Alibaba Cloud user.
@@ -127,6 +128,12 @@ func (o GetForwardingRulesResultOutput) ToGetForwardingRulesResultOutput() GetFo
 
 func (o GetForwardingRulesResultOutput) ToGetForwardingRulesResultOutputWithContext(ctx context.Context) GetForwardingRulesResultOutput {
 	return o
+}
+
+func (o GetForwardingRulesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetForwardingRulesResult] {
+	return pulumix.Output[GetForwardingRulesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetForwardingRulesResultOutput) AcceleratorId() pulumi.StringOutput {

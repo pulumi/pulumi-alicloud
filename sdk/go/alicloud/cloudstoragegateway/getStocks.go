@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.
@@ -108,6 +109,12 @@ func (o GetStocksResultOutput) ToGetStocksResultOutput() GetStocksResultOutput {
 
 func (o GetStocksResultOutput) ToGetStocksResultOutputWithContext(ctx context.Context) GetStocksResultOutput {
 	return o
+}
+
+func (o GetStocksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetStocksResult] {
+	return pulumix.Output[GetStocksResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetStocksResultOutput) GatewayClass() pulumi.StringPtrOutput {

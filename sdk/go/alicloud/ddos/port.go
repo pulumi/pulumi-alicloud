@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Anti-DDoS Pro Port resource.
@@ -216,6 +217,12 @@ func (i *Port) ToPortOutputWithContext(ctx context.Context) PortOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PortOutput)
 }
 
+func (i *Port) ToOutput(ctx context.Context) pulumix.Output[*Port] {
+	return pulumix.Output[*Port]{
+		OutputState: i.ToPortOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PortArrayInput is an input type that accepts PortArray and PortArrayOutput values.
 // You can construct a concrete instance of `PortArrayInput` via:
 //
@@ -239,6 +246,12 @@ func (i PortArray) ToPortArrayOutput() PortArrayOutput {
 
 func (i PortArray) ToPortArrayOutputWithContext(ctx context.Context) PortArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PortArrayOutput)
+}
+
+func (i PortArray) ToOutput(ctx context.Context) pulumix.Output[[]*Port] {
+	return pulumix.Output[[]*Port]{
+		OutputState: i.ToPortArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PortMapInput is an input type that accepts PortMap and PortMapOutput values.
@@ -266,6 +279,12 @@ func (i PortMap) ToPortMapOutputWithContext(ctx context.Context) PortMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PortMapOutput)
 }
 
+func (i PortMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Port] {
+	return pulumix.Output[map[string]*Port]{
+		OutputState: i.ToPortMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PortOutput struct{ *pulumi.OutputState }
 
 func (PortOutput) ElementType() reflect.Type {
@@ -278,6 +297,12 @@ func (o PortOutput) ToPortOutput() PortOutput {
 
 func (o PortOutput) ToPortOutputWithContext(ctx context.Context) PortOutput {
 	return o
+}
+
+func (o PortOutput) ToOutput(ctx context.Context) pulumix.Output[*Port] {
+	return pulumix.Output[*Port]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The port of the origin server. Valid values: [1~65535].
@@ -319,6 +344,12 @@ func (o PortArrayOutput) ToPortArrayOutputWithContext(ctx context.Context) PortA
 	return o
 }
 
+func (o PortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Port] {
+	return pulumix.Output[[]*Port]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PortArrayOutput) Index(i pulumi.IntInput) PortOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Port {
 		return vs[0].([]*Port)[vs[1].(int)]
@@ -337,6 +368,12 @@ func (o PortMapOutput) ToPortMapOutput() PortMapOutput {
 
 func (o PortMapOutput) ToPortMapOutputWithContext(ctx context.Context) PortMapOutput {
 	return o
+}
+
+func (o PortMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Port] {
+	return pulumix.Output[map[string]*Port]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PortMapOutput) MapIndex(k pulumi.StringInput) PortOutput {

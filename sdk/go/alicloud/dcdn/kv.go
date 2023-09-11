@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Dcdn Kv resource.
@@ -183,6 +184,12 @@ func (i *Kv) ToKvOutputWithContext(ctx context.Context) KvOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KvOutput)
 }
 
+func (i *Kv) ToOutput(ctx context.Context) pulumix.Output[*Kv] {
+	return pulumix.Output[*Kv]{
+		OutputState: i.ToKvOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KvArrayInput is an input type that accepts KvArray and KvArrayOutput values.
 // You can construct a concrete instance of `KvArrayInput` via:
 //
@@ -206,6 +213,12 @@ func (i KvArray) ToKvArrayOutput() KvArrayOutput {
 
 func (i KvArray) ToKvArrayOutputWithContext(ctx context.Context) KvArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KvArrayOutput)
+}
+
+func (i KvArray) ToOutput(ctx context.Context) pulumix.Output[[]*Kv] {
+	return pulumix.Output[[]*Kv]{
+		OutputState: i.ToKvArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // KvMapInput is an input type that accepts KvMap and KvMapOutput values.
@@ -233,6 +246,12 @@ func (i KvMap) ToKvMapOutputWithContext(ctx context.Context) KvMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KvMapOutput)
 }
 
+func (i KvMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Kv] {
+	return pulumix.Output[map[string]*Kv]{
+		OutputState: i.ToKvMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KvOutput struct{ *pulumi.OutputState }
 
 func (KvOutput) ElementType() reflect.Type {
@@ -245,6 +264,12 @@ func (o KvOutput) ToKvOutput() KvOutput {
 
 func (o KvOutput) ToKvOutputWithContext(ctx context.Context) KvOutput {
 	return o
+}
+
+func (o KvOutput) ToOutput(ctx context.Context) pulumix.Output[*Kv] {
+	return pulumix.Output[*Kv]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the key to Put, the longest 512, cannot contain spaces.
@@ -276,6 +301,12 @@ func (o KvArrayOutput) ToKvArrayOutputWithContext(ctx context.Context) KvArrayOu
 	return o
 }
 
+func (o KvArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Kv] {
+	return pulumix.Output[[]*Kv]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KvArrayOutput) Index(i pulumi.IntInput) KvOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Kv {
 		return vs[0].([]*Kv)[vs[1].(int)]
@@ -294,6 +325,12 @@ func (o KvMapOutput) ToKvMapOutput() KvMapOutput {
 
 func (o KvMapOutput) ToKvMapOutputWithContext(ctx context.Context) KvMapOutput {
 	return o
+}
+
+func (o KvMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Kv] {
+	return pulumix.Output[map[string]*Kv]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KvMapOutput) MapIndex(k pulumi.StringInput) KvOutput {

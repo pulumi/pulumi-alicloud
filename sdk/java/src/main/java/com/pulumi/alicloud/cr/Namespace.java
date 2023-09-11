@@ -15,9 +15,9 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * This resource will help you to manager Container Registry namespaces.
+ * This resource will help you to manager Container Registry namespaces, see [What is Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace).
  * 
- * &gt; **NOTE:** Available in v1.34.0+.
+ * &gt; **NOTE:** Available since v1.34.0.
  * 
  * &gt; **NOTE:** You need to set your registry password in Container Registry console before use this resource.
  * 
@@ -45,7 +45,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_namespace = new Namespace(&#34;my-namespace&#34;, NamespaceArgs.builder()        
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         var example = new Namespace(&#34;example&#34;, NamespaceArgs.builder()        
  *             .autoCreate(false)
  *             .defaultVisibility(&#34;PUBLIC&#34;)
  *             .build());

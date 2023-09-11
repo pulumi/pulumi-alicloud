@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -44,6 +45,12 @@ func (i ServiceMeshExtraConfigurationArgs) ToServiceMeshExtraConfigurationOutput
 
 func (i ServiceMeshExtraConfigurationArgs) ToServiceMeshExtraConfigurationOutputWithContext(ctx context.Context) ServiceMeshExtraConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshExtraConfigurationOutput)
+}
+
+func (i ServiceMeshExtraConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshExtraConfiguration] {
+	return pulumix.Output[ServiceMeshExtraConfiguration]{
+		OutputState: i.ToServiceMeshExtraConfigurationOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i ServiceMeshExtraConfigurationArgs) ToServiceMeshExtraConfigurationPtrOutput() ServiceMeshExtraConfigurationPtrOutput {
@@ -87,6 +94,12 @@ func (i *serviceMeshExtraConfigurationPtrType) ToServiceMeshExtraConfigurationPt
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshExtraConfigurationPtrOutput)
 }
 
+func (i *serviceMeshExtraConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshExtraConfiguration] {
+	return pulumix.Output[*ServiceMeshExtraConfiguration]{
+		OutputState: i.ToServiceMeshExtraConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceMeshExtraConfigurationOutput struct{ *pulumi.OutputState }
 
 func (ServiceMeshExtraConfigurationOutput) ElementType() reflect.Type {
@@ -111,6 +124,12 @@ func (o ServiceMeshExtraConfigurationOutput) ToServiceMeshExtraConfigurationPtrO
 	}).(ServiceMeshExtraConfigurationPtrOutput)
 }
 
+func (o ServiceMeshExtraConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshExtraConfiguration] {
+	return pulumix.Output[ServiceMeshExtraConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
 func (o ServiceMeshExtraConfigurationOutput) CrAggregationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshExtraConfiguration) *bool { return v.CrAggregationEnabled }).(pulumi.BoolPtrOutput)
@@ -128,6 +147,12 @@ func (o ServiceMeshExtraConfigurationPtrOutput) ToServiceMeshExtraConfigurationP
 
 func (o ServiceMeshExtraConfigurationPtrOutput) ToServiceMeshExtraConfigurationPtrOutputWithContext(ctx context.Context) ServiceMeshExtraConfigurationPtrOutput {
 	return o
+}
+
+func (o ServiceMeshExtraConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshExtraConfiguration] {
+	return pulumix.Output[*ServiceMeshExtraConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceMeshExtraConfigurationPtrOutput) Elem() ServiceMeshExtraConfigurationOutput {
@@ -191,6 +216,12 @@ func (i ServiceMeshLoadBalancerArgs) ToServiceMeshLoadBalancerOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshLoadBalancerOutput)
 }
 
+func (i ServiceMeshLoadBalancerArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshLoadBalancer] {
+	return pulumix.Output[ServiceMeshLoadBalancer]{
+		OutputState: i.ToServiceMeshLoadBalancerOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceMeshLoadBalancerArgs) ToServiceMeshLoadBalancerPtrOutput() ServiceMeshLoadBalancerPtrOutput {
 	return i.ToServiceMeshLoadBalancerPtrOutputWithContext(context.Background())
 }
@@ -232,6 +263,12 @@ func (i *serviceMeshLoadBalancerPtrType) ToServiceMeshLoadBalancerPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshLoadBalancerPtrOutput)
 }
 
+func (i *serviceMeshLoadBalancerPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshLoadBalancer] {
+	return pulumix.Output[*ServiceMeshLoadBalancer]{
+		OutputState: i.ToServiceMeshLoadBalancerPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceMeshLoadBalancerOutput struct{ *pulumi.OutputState }
 
 func (ServiceMeshLoadBalancerOutput) ElementType() reflect.Type {
@@ -254,6 +291,12 @@ func (o ServiceMeshLoadBalancerOutput) ToServiceMeshLoadBalancerPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMeshLoadBalancer) *ServiceMeshLoadBalancer {
 		return &v
 	}).(ServiceMeshLoadBalancerPtrOutput)
+}
+
+func (o ServiceMeshLoadBalancerOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshLoadBalancer] {
+	return pulumix.Output[ServiceMeshLoadBalancer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceMeshLoadBalancerOutput) ApiServerLoadbalancerId() pulumi.StringPtrOutput {
@@ -286,6 +329,12 @@ func (o ServiceMeshLoadBalancerPtrOutput) ToServiceMeshLoadBalancerPtrOutput() S
 
 func (o ServiceMeshLoadBalancerPtrOutput) ToServiceMeshLoadBalancerPtrOutputWithContext(ctx context.Context) ServiceMeshLoadBalancerPtrOutput {
 	return o
+}
+
+func (o ServiceMeshLoadBalancerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshLoadBalancer] {
+	return pulumix.Output[*ServiceMeshLoadBalancer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceMeshLoadBalancerPtrOutput) Elem() ServiceMeshLoadBalancerOutput {
@@ -417,6 +466,12 @@ func (i ServiceMeshMeshConfigArgs) ToServiceMeshMeshConfigOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigOutput)
 }
 
+func (i ServiceMeshMeshConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMeshConfig] {
+	return pulumix.Output[ServiceMeshMeshConfig]{
+		OutputState: i.ToServiceMeshMeshConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceMeshMeshConfigArgs) ToServiceMeshMeshConfigPtrOutput() ServiceMeshMeshConfigPtrOutput {
 	return i.ToServiceMeshMeshConfigPtrOutputWithContext(context.Background())
 }
@@ -458,6 +513,12 @@ func (i *serviceMeshMeshConfigPtrType) ToServiceMeshMeshConfigPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigPtrOutput)
 }
 
+func (i *serviceMeshMeshConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMeshConfig] {
+	return pulumix.Output[*ServiceMeshMeshConfig]{
+		OutputState: i.ToServiceMeshMeshConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceMeshMeshConfigOutput struct{ *pulumi.OutputState }
 
 func (ServiceMeshMeshConfigOutput) ElementType() reflect.Type {
@@ -480,6 +541,12 @@ func (o ServiceMeshMeshConfigOutput) ToServiceMeshMeshConfigPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMeshMeshConfig) *ServiceMeshMeshConfig {
 		return &v
 	}).(ServiceMeshMeshConfigPtrOutput)
+}
+
+func (o ServiceMeshMeshConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMeshConfig] {
+	return pulumix.Output[ServiceMeshMeshConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration of the access logging.
@@ -559,6 +626,12 @@ func (o ServiceMeshMeshConfigPtrOutput) ToServiceMeshMeshConfigPtrOutput() Servi
 
 func (o ServiceMeshMeshConfigPtrOutput) ToServiceMeshMeshConfigPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigPtrOutput {
 	return o
+}
+
+func (o ServiceMeshMeshConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMeshConfig] {
+	return pulumix.Output[*ServiceMeshMeshConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceMeshMeshConfigPtrOutput) Elem() ServiceMeshMeshConfigOutput {
@@ -738,6 +811,12 @@ func (i ServiceMeshMeshConfigAccessLogArgs) ToServiceMeshMeshConfigAccessLogOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigAccessLogOutput)
 }
 
+func (i ServiceMeshMeshConfigAccessLogArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMeshConfigAccessLog] {
+	return pulumix.Output[ServiceMeshMeshConfigAccessLog]{
+		OutputState: i.ToServiceMeshMeshConfigAccessLogOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceMeshMeshConfigAccessLogArgs) ToServiceMeshMeshConfigAccessLogPtrOutput() ServiceMeshMeshConfigAccessLogPtrOutput {
 	return i.ToServiceMeshMeshConfigAccessLogPtrOutputWithContext(context.Background())
 }
@@ -779,6 +858,12 @@ func (i *serviceMeshMeshConfigAccessLogPtrType) ToServiceMeshMeshConfigAccessLog
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigAccessLogPtrOutput)
 }
 
+func (i *serviceMeshMeshConfigAccessLogPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMeshConfigAccessLog] {
+	return pulumix.Output[*ServiceMeshMeshConfigAccessLog]{
+		OutputState: i.ToServiceMeshMeshConfigAccessLogPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceMeshMeshConfigAccessLogOutput struct{ *pulumi.OutputState }
 
 func (ServiceMeshMeshConfigAccessLogOutput) ElementType() reflect.Type {
@@ -803,6 +888,12 @@ func (o ServiceMeshMeshConfigAccessLogOutput) ToServiceMeshMeshConfigAccessLogPt
 	}).(ServiceMeshMeshConfigAccessLogPtrOutput)
 }
 
+func (o ServiceMeshMeshConfigAccessLogOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMeshConfigAccessLog] {
+	return pulumix.Output[ServiceMeshMeshConfigAccessLog]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether to enable of the access logging. Valid values: `true` and `false`.
 func (o ServiceMeshMeshConfigAccessLogOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigAccessLog) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -825,6 +916,12 @@ func (o ServiceMeshMeshConfigAccessLogPtrOutput) ToServiceMeshMeshConfigAccessLo
 
 func (o ServiceMeshMeshConfigAccessLogPtrOutput) ToServiceMeshMeshConfigAccessLogPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigAccessLogPtrOutput {
 	return o
+}
+
+func (o ServiceMeshMeshConfigAccessLogPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMeshConfigAccessLog] {
+	return pulumix.Output[*ServiceMeshMeshConfigAccessLog]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceMeshMeshConfigAccessLogPtrOutput) Elem() ServiceMeshMeshConfigAccessLogOutput {
@@ -894,6 +991,12 @@ func (i ServiceMeshMeshConfigAuditArgs) ToServiceMeshMeshConfigAuditOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigAuditOutput)
 }
 
+func (i ServiceMeshMeshConfigAuditArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMeshConfigAudit] {
+	return pulumix.Output[ServiceMeshMeshConfigAudit]{
+		OutputState: i.ToServiceMeshMeshConfigAuditOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceMeshMeshConfigAuditArgs) ToServiceMeshMeshConfigAuditPtrOutput() ServiceMeshMeshConfigAuditPtrOutput {
 	return i.ToServiceMeshMeshConfigAuditPtrOutputWithContext(context.Background())
 }
@@ -935,6 +1038,12 @@ func (i *serviceMeshMeshConfigAuditPtrType) ToServiceMeshMeshConfigAuditPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigAuditPtrOutput)
 }
 
+func (i *serviceMeshMeshConfigAuditPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMeshConfigAudit] {
+	return pulumix.Output[*ServiceMeshMeshConfigAudit]{
+		OutputState: i.ToServiceMeshMeshConfigAuditPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceMeshMeshConfigAuditOutput struct{ *pulumi.OutputState }
 
 func (ServiceMeshMeshConfigAuditOutput) ElementType() reflect.Type {
@@ -959,6 +1068,12 @@ func (o ServiceMeshMeshConfigAuditOutput) ToServiceMeshMeshConfigAuditPtrOutputW
 	}).(ServiceMeshMeshConfigAuditPtrOutput)
 }
 
+func (o ServiceMeshMeshConfigAuditOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMeshConfigAudit] {
+	return pulumix.Output[ServiceMeshMeshConfigAudit]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether to enable of the access logging. Valid values: `true` and `false`.
 func (o ServiceMeshMeshConfigAuditOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigAudit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -981,6 +1096,12 @@ func (o ServiceMeshMeshConfigAuditPtrOutput) ToServiceMeshMeshConfigAuditPtrOutp
 
 func (o ServiceMeshMeshConfigAuditPtrOutput) ToServiceMeshMeshConfigAuditPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigAuditPtrOutput {
 	return o
+}
+
+func (o ServiceMeshMeshConfigAuditPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMeshConfigAudit] {
+	return pulumix.Output[*ServiceMeshMeshConfigAudit]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceMeshMeshConfigAuditPtrOutput) Elem() ServiceMeshMeshConfigAuditOutput {
@@ -1050,6 +1171,12 @@ func (i ServiceMeshMeshConfigControlPlaneLogArgs) ToServiceMeshMeshConfigControl
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigControlPlaneLogOutput)
 }
 
+func (i ServiceMeshMeshConfigControlPlaneLogArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMeshConfigControlPlaneLog] {
+	return pulumix.Output[ServiceMeshMeshConfigControlPlaneLog]{
+		OutputState: i.ToServiceMeshMeshConfigControlPlaneLogOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceMeshMeshConfigControlPlaneLogArgs) ToServiceMeshMeshConfigControlPlaneLogPtrOutput() ServiceMeshMeshConfigControlPlaneLogPtrOutput {
 	return i.ToServiceMeshMeshConfigControlPlaneLogPtrOutputWithContext(context.Background())
 }
@@ -1091,6 +1218,12 @@ func (i *serviceMeshMeshConfigControlPlaneLogPtrType) ToServiceMeshMeshConfigCon
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigControlPlaneLogPtrOutput)
 }
 
+func (i *serviceMeshMeshConfigControlPlaneLogPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMeshConfigControlPlaneLog] {
+	return pulumix.Output[*ServiceMeshMeshConfigControlPlaneLog]{
+		OutputState: i.ToServiceMeshMeshConfigControlPlaneLogPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceMeshMeshConfigControlPlaneLogOutput struct{ *pulumi.OutputState }
 
 func (ServiceMeshMeshConfigControlPlaneLogOutput) ElementType() reflect.Type {
@@ -1115,6 +1248,12 @@ func (o ServiceMeshMeshConfigControlPlaneLogOutput) ToServiceMeshMeshConfigContr
 	}).(ServiceMeshMeshConfigControlPlaneLogPtrOutput)
 }
 
+func (o ServiceMeshMeshConfigControlPlaneLogOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMeshConfigControlPlaneLog] {
+	return pulumix.Output[ServiceMeshMeshConfigControlPlaneLog]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether to enable of the access logging. Valid values: `true` and `false`.
 func (o ServiceMeshMeshConfigControlPlaneLogOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigControlPlaneLog) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -1137,6 +1276,12 @@ func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) ToServiceMeshMeshConfigCo
 
 func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) ToServiceMeshMeshConfigControlPlaneLogPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigControlPlaneLogPtrOutput {
 	return o
+}
+
+func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMeshConfigControlPlaneLog] {
+	return pulumix.Output[*ServiceMeshMeshConfigControlPlaneLog]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) Elem() ServiceMeshMeshConfigControlPlaneLogOutput {
@@ -1202,6 +1347,12 @@ func (i ServiceMeshMeshConfigKialiArgs) ToServiceMeshMeshConfigKialiOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigKialiOutput)
 }
 
+func (i ServiceMeshMeshConfigKialiArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMeshConfigKiali] {
+	return pulumix.Output[ServiceMeshMeshConfigKiali]{
+		OutputState: i.ToServiceMeshMeshConfigKialiOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceMeshMeshConfigKialiArgs) ToServiceMeshMeshConfigKialiPtrOutput() ServiceMeshMeshConfigKialiPtrOutput {
 	return i.ToServiceMeshMeshConfigKialiPtrOutputWithContext(context.Background())
 }
@@ -1243,6 +1394,12 @@ func (i *serviceMeshMeshConfigKialiPtrType) ToServiceMeshMeshConfigKialiPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigKialiPtrOutput)
 }
 
+func (i *serviceMeshMeshConfigKialiPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMeshConfigKiali] {
+	return pulumix.Output[*ServiceMeshMeshConfigKiali]{
+		OutputState: i.ToServiceMeshMeshConfigKialiPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceMeshMeshConfigKialiOutput struct{ *pulumi.OutputState }
 
 func (ServiceMeshMeshConfigKialiOutput) ElementType() reflect.Type {
@@ -1267,6 +1424,12 @@ func (o ServiceMeshMeshConfigKialiOutput) ToServiceMeshMeshConfigKialiPtrOutputW
 	}).(ServiceMeshMeshConfigKialiPtrOutput)
 }
 
+func (o ServiceMeshMeshConfigKialiOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMeshConfigKiali] {
+	return pulumix.Output[ServiceMeshMeshConfigKiali]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether to enable of the access logging. Valid values: `true` and `false`.
 func (o ServiceMeshMeshConfigKialiOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigKiali) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -1284,6 +1447,12 @@ func (o ServiceMeshMeshConfigKialiPtrOutput) ToServiceMeshMeshConfigKialiPtrOutp
 
 func (o ServiceMeshMeshConfigKialiPtrOutput) ToServiceMeshMeshConfigKialiPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigKialiPtrOutput {
 	return o
+}
+
+func (o ServiceMeshMeshConfigKialiPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMeshConfigKiali] {
+	return pulumix.Output[*ServiceMeshMeshConfigKiali]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceMeshMeshConfigKialiPtrOutput) Elem() ServiceMeshMeshConfigKialiOutput {
@@ -1359,6 +1528,12 @@ func (i ServiceMeshMeshConfigOpaArgs) ToServiceMeshMeshConfigOpaOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigOpaOutput)
 }
 
+func (i ServiceMeshMeshConfigOpaArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMeshConfigOpa] {
+	return pulumix.Output[ServiceMeshMeshConfigOpa]{
+		OutputState: i.ToServiceMeshMeshConfigOpaOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceMeshMeshConfigOpaArgs) ToServiceMeshMeshConfigOpaPtrOutput() ServiceMeshMeshConfigOpaPtrOutput {
 	return i.ToServiceMeshMeshConfigOpaPtrOutputWithContext(context.Background())
 }
@@ -1400,6 +1575,12 @@ func (i *serviceMeshMeshConfigOpaPtrType) ToServiceMeshMeshConfigOpaPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigOpaPtrOutput)
 }
 
+func (i *serviceMeshMeshConfigOpaPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMeshConfigOpa] {
+	return pulumix.Output[*ServiceMeshMeshConfigOpa]{
+		OutputState: i.ToServiceMeshMeshConfigOpaPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceMeshMeshConfigOpaOutput struct{ *pulumi.OutputState }
 
 func (ServiceMeshMeshConfigOpaOutput) ElementType() reflect.Type {
@@ -1422,6 +1603,12 @@ func (o ServiceMeshMeshConfigOpaOutput) ToServiceMeshMeshConfigOpaPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMeshMeshConfigOpa) *ServiceMeshMeshConfigOpa {
 		return &v
 	}).(ServiceMeshMeshConfigOpaPtrOutput)
+}
+
+func (o ServiceMeshMeshConfigOpaOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMeshConfigOpa] {
+	return pulumix.Output[ServiceMeshMeshConfigOpa]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to enable of the access logging. Valid values: `true` and `false`.
@@ -1466,6 +1653,12 @@ func (o ServiceMeshMeshConfigOpaPtrOutput) ToServiceMeshMeshConfigOpaPtrOutput()
 
 func (o ServiceMeshMeshConfigOpaPtrOutput) ToServiceMeshMeshConfigOpaPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigOpaPtrOutput {
 	return o
+}
+
+func (o ServiceMeshMeshConfigOpaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMeshConfigOpa] {
+	return pulumix.Output[*ServiceMeshMeshConfigOpa]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceMeshMeshConfigOpaPtrOutput) Elem() ServiceMeshMeshConfigOpaOutput {
@@ -1575,6 +1768,12 @@ func (i ServiceMeshMeshConfigPilotArgs) ToServiceMeshMeshConfigPilotOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigPilotOutput)
 }
 
+func (i ServiceMeshMeshConfigPilotArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMeshConfigPilot] {
+	return pulumix.Output[ServiceMeshMeshConfigPilot]{
+		OutputState: i.ToServiceMeshMeshConfigPilotOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceMeshMeshConfigPilotArgs) ToServiceMeshMeshConfigPilotPtrOutput() ServiceMeshMeshConfigPilotPtrOutput {
 	return i.ToServiceMeshMeshConfigPilotPtrOutputWithContext(context.Background())
 }
@@ -1616,6 +1815,12 @@ func (i *serviceMeshMeshConfigPilotPtrType) ToServiceMeshMeshConfigPilotPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigPilotPtrOutput)
 }
 
+func (i *serviceMeshMeshConfigPilotPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMeshConfigPilot] {
+	return pulumix.Output[*ServiceMeshMeshConfigPilot]{
+		OutputState: i.ToServiceMeshMeshConfigPilotPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceMeshMeshConfigPilotOutput struct{ *pulumi.OutputState }
 
 func (ServiceMeshMeshConfigPilotOutput) ElementType() reflect.Type {
@@ -1640,6 +1845,12 @@ func (o ServiceMeshMeshConfigPilotOutput) ToServiceMeshMeshConfigPilotPtrOutputW
 	}).(ServiceMeshMeshConfigPilotPtrOutput)
 }
 
+func (o ServiceMeshMeshConfigPilotOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMeshConfigPilot] {
+	return pulumix.Output[ServiceMeshMeshConfigPilot]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether to support the HTTP1.0.
 func (o ServiceMeshMeshConfigPilotOutput) Http10Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigPilot) *bool { return v.Http10Enabled }).(pulumi.BoolPtrOutput)
@@ -1662,6 +1873,12 @@ func (o ServiceMeshMeshConfigPilotPtrOutput) ToServiceMeshMeshConfigPilotPtrOutp
 
 func (o ServiceMeshMeshConfigPilotPtrOutput) ToServiceMeshMeshConfigPilotPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigPilotPtrOutput {
 	return o
+}
+
+func (o ServiceMeshMeshConfigPilotPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMeshConfigPilot] {
+	return pulumix.Output[*ServiceMeshMeshConfigPilot]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceMeshMeshConfigPilotPtrOutput) Elem() ServiceMeshMeshConfigPilotOutput {
@@ -1739,6 +1956,12 @@ func (i ServiceMeshMeshConfigProxyArgs) ToServiceMeshMeshConfigProxyOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigProxyOutput)
 }
 
+func (i ServiceMeshMeshConfigProxyArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMeshConfigProxy] {
+	return pulumix.Output[ServiceMeshMeshConfigProxy]{
+		OutputState: i.ToServiceMeshMeshConfigProxyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceMeshMeshConfigProxyArgs) ToServiceMeshMeshConfigProxyPtrOutput() ServiceMeshMeshConfigProxyPtrOutput {
 	return i.ToServiceMeshMeshConfigProxyPtrOutputWithContext(context.Background())
 }
@@ -1780,6 +2003,12 @@ func (i *serviceMeshMeshConfigProxyPtrType) ToServiceMeshMeshConfigProxyPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigProxyPtrOutput)
 }
 
+func (i *serviceMeshMeshConfigProxyPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMeshConfigProxy] {
+	return pulumix.Output[*ServiceMeshMeshConfigProxy]{
+		OutputState: i.ToServiceMeshMeshConfigProxyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceMeshMeshConfigProxyOutput struct{ *pulumi.OutputState }
 
 func (ServiceMeshMeshConfigProxyOutput) ElementType() reflect.Type {
@@ -1802,6 +2031,12 @@ func (o ServiceMeshMeshConfigProxyOutput) ToServiceMeshMeshConfigProxyPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMeshMeshConfigProxy) *ServiceMeshMeshConfigProxy {
 		return &v
 	}).(ServiceMeshMeshConfigProxyPtrOutput)
+}
+
+func (o ServiceMeshMeshConfigProxyOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMeshConfigProxy] {
+	return pulumix.Output[ServiceMeshMeshConfigProxy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The limit cpu of the Sidecar injector Pods.
@@ -1836,6 +2071,12 @@ func (o ServiceMeshMeshConfigProxyPtrOutput) ToServiceMeshMeshConfigProxyPtrOutp
 
 func (o ServiceMeshMeshConfigProxyPtrOutput) ToServiceMeshMeshConfigProxyPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigProxyPtrOutput {
 	return o
+}
+
+func (o ServiceMeshMeshConfigProxyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMeshConfigProxy] {
+	return pulumix.Output[*ServiceMeshMeshConfigProxy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceMeshMeshConfigProxyPtrOutput) Elem() ServiceMeshMeshConfigProxyOutput {
@@ -1941,6 +2182,12 @@ func (i ServiceMeshMeshConfigSidecarInjectorArgs) ToServiceMeshMeshConfigSidecar
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigSidecarInjectorOutput)
 }
 
+func (i ServiceMeshMeshConfigSidecarInjectorArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMeshConfigSidecarInjector] {
+	return pulumix.Output[ServiceMeshMeshConfigSidecarInjector]{
+		OutputState: i.ToServiceMeshMeshConfigSidecarInjectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceMeshMeshConfigSidecarInjectorArgs) ToServiceMeshMeshConfigSidecarInjectorPtrOutput() ServiceMeshMeshConfigSidecarInjectorPtrOutput {
 	return i.ToServiceMeshMeshConfigSidecarInjectorPtrOutputWithContext(context.Background())
 }
@@ -1982,6 +2229,12 @@ func (i *serviceMeshMeshConfigSidecarInjectorPtrType) ToServiceMeshMeshConfigSid
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigSidecarInjectorPtrOutput)
 }
 
+func (i *serviceMeshMeshConfigSidecarInjectorPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMeshConfigSidecarInjector] {
+	return pulumix.Output[*ServiceMeshMeshConfigSidecarInjector]{
+		OutputState: i.ToServiceMeshMeshConfigSidecarInjectorPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceMeshMeshConfigSidecarInjectorOutput struct{ *pulumi.OutputState }
 
 func (ServiceMeshMeshConfigSidecarInjectorOutput) ElementType() reflect.Type {
@@ -2004,6 +2257,12 @@ func (o ServiceMeshMeshConfigSidecarInjectorOutput) ToServiceMeshMeshConfigSidec
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMeshMeshConfigSidecarInjector) *ServiceMeshMeshConfigSidecarInjector {
 		return &v
 	}).(ServiceMeshMeshConfigSidecarInjectorPtrOutput)
+}
+
+func (o ServiceMeshMeshConfigSidecarInjectorOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMeshConfigSidecarInjector] {
+	return pulumix.Output[ServiceMeshMeshConfigSidecarInjector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to enable by Pod Annotations automatic injection Sidecar.
@@ -2048,6 +2307,12 @@ func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) ToServiceMeshMeshConfigSi
 
 func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) ToServiceMeshMeshConfigSidecarInjectorPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigSidecarInjectorPtrOutput {
 	return o
+}
+
+func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMeshConfigSidecarInjector] {
+	return pulumix.Output[*ServiceMeshMeshConfigSidecarInjector]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) Elem() ServiceMeshMeshConfigSidecarInjectorOutput {
@@ -2157,6 +2422,12 @@ func (i ServiceMeshNetworkArgs) ToServiceMeshNetworkOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshNetworkOutput)
 }
 
+func (i ServiceMeshNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshNetwork] {
+	return pulumix.Output[ServiceMeshNetwork]{
+		OutputState: i.ToServiceMeshNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceMeshNetworkArgs) ToServiceMeshNetworkPtrOutput() ServiceMeshNetworkPtrOutput {
 	return i.ToServiceMeshNetworkPtrOutputWithContext(context.Background())
 }
@@ -2198,6 +2469,12 @@ func (i *serviceMeshNetworkPtrType) ToServiceMeshNetworkPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshNetworkPtrOutput)
 }
 
+func (i *serviceMeshNetworkPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshNetwork] {
+	return pulumix.Output[*ServiceMeshNetwork]{
+		OutputState: i.ToServiceMeshNetworkPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceMeshNetworkOutput struct{ *pulumi.OutputState }
 
 func (ServiceMeshNetworkOutput) ElementType() reflect.Type {
@@ -2222,6 +2499,12 @@ func (o ServiceMeshNetworkOutput) ToServiceMeshNetworkPtrOutputWithContext(ctx c
 	}).(ServiceMeshNetworkPtrOutput)
 }
 
+func (o ServiceMeshNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshNetwork] {
+	return pulumix.Output[ServiceMeshNetwork]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The ID of the VPC.
 func (o ServiceMeshNetworkOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceMeshNetwork) string { return v.VpcId }).(pulumi.StringOutput)
@@ -2244,6 +2527,12 @@ func (o ServiceMeshNetworkPtrOutput) ToServiceMeshNetworkPtrOutput() ServiceMesh
 
 func (o ServiceMeshNetworkPtrOutput) ToServiceMeshNetworkPtrOutputWithContext(ctx context.Context) ServiceMeshNetworkPtrOutput {
 	return o
+}
+
+func (o ServiceMeshNetworkPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshNetwork] {
+	return pulumix.Output[*ServiceMeshNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceMeshNetworkPtrOutput) Elem() ServiceMeshNetworkOutput {
@@ -2331,6 +2620,12 @@ func (i UserPermissionPermissionArgs) ToUserPermissionPermissionOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(UserPermissionPermissionOutput)
 }
 
+func (i UserPermissionPermissionArgs) ToOutput(ctx context.Context) pulumix.Output[UserPermissionPermission] {
+	return pulumix.Output[UserPermissionPermission]{
+		OutputState: i.ToUserPermissionPermissionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // UserPermissionPermissionArrayInput is an input type that accepts UserPermissionPermissionArray and UserPermissionPermissionArrayOutput values.
 // You can construct a concrete instance of `UserPermissionPermissionArrayInput` via:
 //
@@ -2356,6 +2651,12 @@ func (i UserPermissionPermissionArray) ToUserPermissionPermissionArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(UserPermissionPermissionArrayOutput)
 }
 
+func (i UserPermissionPermissionArray) ToOutput(ctx context.Context) pulumix.Output[[]UserPermissionPermission] {
+	return pulumix.Output[[]UserPermissionPermission]{
+		OutputState: i.ToUserPermissionPermissionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UserPermissionPermissionOutput struct{ *pulumi.OutputState }
 
 func (UserPermissionPermissionOutput) ElementType() reflect.Type {
@@ -2368,6 +2669,12 @@ func (o UserPermissionPermissionOutput) ToUserPermissionPermissionOutput() UserP
 
 func (o UserPermissionPermissionOutput) ToUserPermissionPermissionOutputWithContext(ctx context.Context) UserPermissionPermissionOutput {
 	return o
+}
+
+func (o UserPermissionPermissionOutput) ToOutput(ctx context.Context) pulumix.Output[UserPermissionPermission] {
+	return pulumix.Output[UserPermissionPermission]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether the grant object is a RAM role.
@@ -2410,6 +2717,12 @@ func (o UserPermissionPermissionArrayOutput) ToUserPermissionPermissionArrayOutp
 
 func (o UserPermissionPermissionArrayOutput) ToUserPermissionPermissionArrayOutputWithContext(ctx context.Context) UserPermissionPermissionArrayOutput {
 	return o
+}
+
+func (o UserPermissionPermissionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UserPermissionPermission] {
+	return pulumix.Output[[]UserPermissionPermission]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserPermissionPermissionArrayOutput) Index(i pulumi.IntInput) UserPermissionPermissionOutput {
@@ -2467,6 +2780,12 @@ func (i GetExtensionProvidersProviderArgs) ToGetExtensionProvidersProviderOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetExtensionProvidersProviderOutput)
 }
 
+func (i GetExtensionProvidersProviderArgs) ToOutput(ctx context.Context) pulumix.Output[GetExtensionProvidersProvider] {
+	return pulumix.Output[GetExtensionProvidersProvider]{
+		OutputState: i.ToGetExtensionProvidersProviderOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetExtensionProvidersProviderArrayInput is an input type that accepts GetExtensionProvidersProviderArray and GetExtensionProvidersProviderArrayOutput values.
 // You can construct a concrete instance of `GetExtensionProvidersProviderArrayInput` via:
 //
@@ -2492,6 +2811,12 @@ func (i GetExtensionProvidersProviderArray) ToGetExtensionProvidersProviderArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetExtensionProvidersProviderArrayOutput)
 }
 
+func (i GetExtensionProvidersProviderArray) ToOutput(ctx context.Context) pulumix.Output[[]GetExtensionProvidersProvider] {
+	return pulumix.Output[[]GetExtensionProvidersProvider]{
+		OutputState: i.ToGetExtensionProvidersProviderArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetExtensionProvidersProviderOutput struct{ *pulumi.OutputState }
 
 func (GetExtensionProvidersProviderOutput) ElementType() reflect.Type {
@@ -2504,6 +2829,12 @@ func (o GetExtensionProvidersProviderOutput) ToGetExtensionProvidersProviderOutp
 
 func (o GetExtensionProvidersProviderOutput) ToGetExtensionProvidersProviderOutputWithContext(ctx context.Context) GetExtensionProvidersProviderOutput {
 	return o
+}
+
+func (o GetExtensionProvidersProviderOutput) ToOutput(ctx context.Context) pulumix.Output[GetExtensionProvidersProvider] {
+	return pulumix.Output[GetExtensionProvidersProvider]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The config of the Service Mesh Extension Provider.
@@ -2543,6 +2874,12 @@ func (o GetExtensionProvidersProviderArrayOutput) ToGetExtensionProvidersProvide
 
 func (o GetExtensionProvidersProviderArrayOutput) ToGetExtensionProvidersProviderArrayOutputWithContext(ctx context.Context) GetExtensionProvidersProviderArrayOutput {
 	return o
+}
+
+func (o GetExtensionProvidersProviderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetExtensionProvidersProvider] {
+	return pulumix.Output[[]GetExtensionProvidersProvider]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetExtensionProvidersProviderArrayOutput) Index(i pulumi.IntInput) GetExtensionProvidersProviderOutput {
@@ -2640,6 +2977,12 @@ func (i GetServiceMeshesMeshArgs) ToGetServiceMeshesMeshOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshOutput)
 }
 
+func (i GetServiceMeshesMeshArgs) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMesh] {
+	return pulumix.Output[GetServiceMeshesMesh]{
+		OutputState: i.ToGetServiceMeshesMeshOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetServiceMeshesMeshArrayInput is an input type that accepts GetServiceMeshesMeshArray and GetServiceMeshesMeshArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshArrayInput` via:
 //
@@ -2665,6 +3008,12 @@ func (i GetServiceMeshesMeshArray) ToGetServiceMeshesMeshArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshArrayOutput)
 }
 
+func (i GetServiceMeshesMeshArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMesh] {
+	return pulumix.Output[[]GetServiceMeshesMesh]{
+		OutputState: i.ToGetServiceMeshesMeshArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetServiceMeshesMeshOutput struct{ *pulumi.OutputState }
 
 func (GetServiceMeshesMeshOutput) ElementType() reflect.Type {
@@ -2677,6 +3026,12 @@ func (o GetServiceMeshesMeshOutput) ToGetServiceMeshesMeshOutput() GetServiceMes
 
 func (o GetServiceMeshesMeshOutput) ToGetServiceMeshesMeshOutputWithContext(ctx context.Context) GetServiceMeshesMeshOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMesh] {
+	return pulumix.Output[GetServiceMeshesMesh]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cluster List.
@@ -2768,6 +3123,12 @@ func (o GetServiceMeshesMeshArrayOutput) ToGetServiceMeshesMeshArrayOutputWithCo
 	return o
 }
 
+func (o GetServiceMeshesMeshArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMesh] {
+	return pulumix.Output[[]GetServiceMeshesMesh]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetServiceMeshesMeshArrayOutput) Index(i pulumi.IntInput) GetServiceMeshesMeshOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceMeshesMesh {
 		return vs[0].([]GetServiceMeshesMesh)[vs[1].(int)]
@@ -2819,6 +3180,12 @@ func (i GetServiceMeshesMeshEndpointArgs) ToGetServiceMeshesMeshEndpointOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshEndpointOutput)
 }
 
+func (i GetServiceMeshesMeshEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshEndpoint] {
+	return pulumix.Output[GetServiceMeshesMeshEndpoint]{
+		OutputState: i.ToGetServiceMeshesMeshEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetServiceMeshesMeshEndpointArrayInput is an input type that accepts GetServiceMeshesMeshEndpointArray and GetServiceMeshesMeshEndpointArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshEndpointArrayInput` via:
 //
@@ -2844,6 +3211,12 @@ func (i GetServiceMeshesMeshEndpointArray) ToGetServiceMeshesMeshEndpointArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshEndpointArrayOutput)
 }
 
+func (i GetServiceMeshesMeshEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshEndpoint] {
+	return pulumix.Output[[]GetServiceMeshesMeshEndpoint]{
+		OutputState: i.ToGetServiceMeshesMeshEndpointArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetServiceMeshesMeshEndpointOutput struct{ *pulumi.OutputState }
 
 func (GetServiceMeshesMeshEndpointOutput) ElementType() reflect.Type {
@@ -2856,6 +3229,12 @@ func (o GetServiceMeshesMeshEndpointOutput) ToGetServiceMeshesMeshEndpointOutput
 
 func (o GetServiceMeshesMeshEndpointOutput) ToGetServiceMeshesMeshEndpointOutputWithContext(ctx context.Context) GetServiceMeshesMeshEndpointOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshEndpoint] {
+	return pulumix.Output[GetServiceMeshesMeshEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The internal address of the API Server.
@@ -2890,6 +3269,12 @@ func (o GetServiceMeshesMeshEndpointArrayOutput) ToGetServiceMeshesMeshEndpointA
 
 func (o GetServiceMeshesMeshEndpointArrayOutput) ToGetServiceMeshesMeshEndpointArrayOutputWithContext(ctx context.Context) GetServiceMeshesMeshEndpointArrayOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshEndpoint] {
+	return pulumix.Output[[]GetServiceMeshesMeshEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetServiceMeshesMeshEndpointArrayOutput) Index(i pulumi.IntInput) GetServiceMeshesMeshEndpointOutput {
@@ -2943,6 +3328,12 @@ func (i GetServiceMeshesMeshLoadBalancerArgs) ToGetServiceMeshesMeshLoadBalancer
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshLoadBalancerOutput)
 }
 
+func (i GetServiceMeshesMeshLoadBalancerArgs) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshLoadBalancer] {
+	return pulumix.Output[GetServiceMeshesMeshLoadBalancer]{
+		OutputState: i.ToGetServiceMeshesMeshLoadBalancerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetServiceMeshesMeshLoadBalancerArrayInput is an input type that accepts GetServiceMeshesMeshLoadBalancerArray and GetServiceMeshesMeshLoadBalancerArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshLoadBalancerArrayInput` via:
 //
@@ -2968,6 +3359,12 @@ func (i GetServiceMeshesMeshLoadBalancerArray) ToGetServiceMeshesMeshLoadBalance
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshLoadBalancerArrayOutput)
 }
 
+func (i GetServiceMeshesMeshLoadBalancerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshLoadBalancer] {
+	return pulumix.Output[[]GetServiceMeshesMeshLoadBalancer]{
+		OutputState: i.ToGetServiceMeshesMeshLoadBalancerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetServiceMeshesMeshLoadBalancerOutput struct{ *pulumi.OutputState }
 
 func (GetServiceMeshesMeshLoadBalancerOutput) ElementType() reflect.Type {
@@ -2980,6 +3377,12 @@ func (o GetServiceMeshesMeshLoadBalancerOutput) ToGetServiceMeshesMeshLoadBalanc
 
 func (o GetServiceMeshesMeshLoadBalancerOutput) ToGetServiceMeshesMeshLoadBalancerOutputWithContext(ctx context.Context) GetServiceMeshesMeshLoadBalancerOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshLoadBalancerOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshLoadBalancer] {
+	return pulumix.Output[GetServiceMeshesMeshLoadBalancer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP address of a public network exposed API Server corresponding to the Load Balance.
@@ -3014,6 +3417,12 @@ func (o GetServiceMeshesMeshLoadBalancerArrayOutput) ToGetServiceMeshesMeshLoadB
 
 func (o GetServiceMeshesMeshLoadBalancerArrayOutput) ToGetServiceMeshesMeshLoadBalancerArrayOutputWithContext(ctx context.Context) GetServiceMeshesMeshLoadBalancerArrayOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshLoadBalancerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshLoadBalancer] {
+	return pulumix.Output[[]GetServiceMeshesMeshLoadBalancer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetServiceMeshesMeshLoadBalancerArrayOutput) Index(i pulumi.IntInput) GetServiceMeshesMeshLoadBalancerOutput {
@@ -3111,6 +3520,12 @@ func (i GetServiceMeshesMeshMeshConfigArgs) ToGetServiceMeshesMeshMeshConfigOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigOutput)
 }
 
+func (i GetServiceMeshesMeshMeshConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshMeshConfig] {
+	return pulumix.Output[GetServiceMeshesMeshMeshConfig]{
+		OutputState: i.ToGetServiceMeshesMeshMeshConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetServiceMeshesMeshMeshConfigArrayInput is an input type that accepts GetServiceMeshesMeshMeshConfigArray and GetServiceMeshesMeshMeshConfigArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigArrayInput` via:
 //
@@ -3136,6 +3551,12 @@ func (i GetServiceMeshesMeshMeshConfigArray) ToGetServiceMeshesMeshMeshConfigArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigArrayOutput)
 }
 
+func (i GetServiceMeshesMeshMeshConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshMeshConfig] {
+	return pulumix.Output[[]GetServiceMeshesMeshMeshConfig]{
+		OutputState: i.ToGetServiceMeshesMeshMeshConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetServiceMeshesMeshMeshConfigOutput struct{ *pulumi.OutputState }
 
 func (GetServiceMeshesMeshMeshConfigOutput) ElementType() reflect.Type {
@@ -3148,6 +3569,12 @@ func (o GetServiceMeshesMeshMeshConfigOutput) ToGetServiceMeshesMeshMeshConfigOu
 
 func (o GetServiceMeshesMeshMeshConfigOutput) ToGetServiceMeshesMeshMeshConfigOutputWithContext(ctx context.Context) GetServiceMeshesMeshMeshConfigOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshMeshConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshMeshConfig] {
+	return pulumix.Output[GetServiceMeshesMeshMeshConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration of the access logging.
@@ -3245,6 +3672,12 @@ func (o GetServiceMeshesMeshMeshConfigArrayOutput) ToGetServiceMeshesMeshMeshCon
 	return o
 }
 
+func (o GetServiceMeshesMeshMeshConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshMeshConfig] {
+	return pulumix.Output[[]GetServiceMeshesMeshMeshConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetServiceMeshesMeshMeshConfigArrayOutput) Index(i pulumi.IntInput) GetServiceMeshesMeshMeshConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceMeshesMeshMeshConfig {
 		return vs[0].([]GetServiceMeshesMeshMeshConfig)[vs[1].(int)]
@@ -3288,6 +3721,12 @@ func (i GetServiceMeshesMeshMeshConfigAccessLogArgs) ToGetServiceMeshesMeshMeshC
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigAccessLogOutput)
 }
 
+func (i GetServiceMeshesMeshMeshConfigAccessLogArgs) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshMeshConfigAccessLog] {
+	return pulumix.Output[GetServiceMeshesMeshMeshConfigAccessLog]{
+		OutputState: i.ToGetServiceMeshesMeshMeshConfigAccessLogOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetServiceMeshesMeshMeshConfigAccessLogArrayInput is an input type that accepts GetServiceMeshesMeshMeshConfigAccessLogArray and GetServiceMeshesMeshMeshConfigAccessLogArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigAccessLogArrayInput` via:
 //
@@ -3313,6 +3752,12 @@ func (i GetServiceMeshesMeshMeshConfigAccessLogArray) ToGetServiceMeshesMeshMesh
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigAccessLogArrayOutput)
 }
 
+func (i GetServiceMeshesMeshMeshConfigAccessLogArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshMeshConfigAccessLog] {
+	return pulumix.Output[[]GetServiceMeshesMeshMeshConfigAccessLog]{
+		OutputState: i.ToGetServiceMeshesMeshMeshConfigAccessLogArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetServiceMeshesMeshMeshConfigAccessLogOutput struct{ *pulumi.OutputState }
 
 func (GetServiceMeshesMeshMeshConfigAccessLogOutput) ElementType() reflect.Type {
@@ -3325,6 +3770,12 @@ func (o GetServiceMeshesMeshMeshConfigAccessLogOutput) ToGetServiceMeshesMeshMes
 
 func (o GetServiceMeshesMeshMeshConfigAccessLogOutput) ToGetServiceMeshesMeshMeshConfigAccessLogOutputWithContext(ctx context.Context) GetServiceMeshesMeshMeshConfigAccessLogOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshMeshConfigAccessLogOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshMeshConfigAccessLog] {
+	return pulumix.Output[GetServiceMeshesMeshMeshConfigAccessLog]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to enable Service grid audit.
@@ -3349,6 +3800,12 @@ func (o GetServiceMeshesMeshMeshConfigAccessLogArrayOutput) ToGetServiceMeshesMe
 
 func (o GetServiceMeshesMeshMeshConfigAccessLogArrayOutput) ToGetServiceMeshesMeshMeshConfigAccessLogArrayOutputWithContext(ctx context.Context) GetServiceMeshesMeshMeshConfigAccessLogArrayOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshMeshConfigAccessLogArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshMeshConfigAccessLog] {
+	return pulumix.Output[[]GetServiceMeshesMeshMeshConfigAccessLog]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetServiceMeshesMeshMeshConfigAccessLogArrayOutput) Index(i pulumi.IntInput) GetServiceMeshesMeshMeshConfigAccessLogOutput {
@@ -3394,6 +3851,12 @@ func (i GetServiceMeshesMeshMeshConfigAuditArgs) ToGetServiceMeshesMeshMeshConfi
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigAuditOutput)
 }
 
+func (i GetServiceMeshesMeshMeshConfigAuditArgs) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshMeshConfigAudit] {
+	return pulumix.Output[GetServiceMeshesMeshMeshConfigAudit]{
+		OutputState: i.ToGetServiceMeshesMeshMeshConfigAuditOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetServiceMeshesMeshMeshConfigAuditArrayInput is an input type that accepts GetServiceMeshesMeshMeshConfigAuditArray and GetServiceMeshesMeshMeshConfigAuditArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigAuditArrayInput` via:
 //
@@ -3419,6 +3882,12 @@ func (i GetServiceMeshesMeshMeshConfigAuditArray) ToGetServiceMeshesMeshMeshConf
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigAuditArrayOutput)
 }
 
+func (i GetServiceMeshesMeshMeshConfigAuditArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshMeshConfigAudit] {
+	return pulumix.Output[[]GetServiceMeshesMeshMeshConfigAudit]{
+		OutputState: i.ToGetServiceMeshesMeshMeshConfigAuditArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetServiceMeshesMeshMeshConfigAuditOutput struct{ *pulumi.OutputState }
 
 func (GetServiceMeshesMeshMeshConfigAuditOutput) ElementType() reflect.Type {
@@ -3431,6 +3900,12 @@ func (o GetServiceMeshesMeshMeshConfigAuditOutput) ToGetServiceMeshesMeshMeshCon
 
 func (o GetServiceMeshesMeshMeshConfigAuditOutput) ToGetServiceMeshesMeshMeshConfigAuditOutputWithContext(ctx context.Context) GetServiceMeshesMeshMeshConfigAuditOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshMeshConfigAuditOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshMeshConfigAudit] {
+	return pulumix.Output[GetServiceMeshesMeshMeshConfigAudit]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to enable Service grid audit.
@@ -3455,6 +3930,12 @@ func (o GetServiceMeshesMeshMeshConfigAuditArrayOutput) ToGetServiceMeshesMeshMe
 
 func (o GetServiceMeshesMeshMeshConfigAuditArrayOutput) ToGetServiceMeshesMeshMeshConfigAuditArrayOutputWithContext(ctx context.Context) GetServiceMeshesMeshMeshConfigAuditArrayOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshMeshConfigAuditArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshMeshConfigAudit] {
+	return pulumix.Output[[]GetServiceMeshesMeshMeshConfigAudit]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetServiceMeshesMeshMeshConfigAuditArrayOutput) Index(i pulumi.IntInput) GetServiceMeshesMeshMeshConfigAuditOutput {
@@ -3500,6 +3981,12 @@ func (i GetServiceMeshesMeshMeshConfigControlPlaneLogArgs) ToGetServiceMeshesMes
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigControlPlaneLogOutput)
 }
 
+func (i GetServiceMeshesMeshMeshConfigControlPlaneLogArgs) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshMeshConfigControlPlaneLog] {
+	return pulumix.Output[GetServiceMeshesMeshMeshConfigControlPlaneLog]{
+		OutputState: i.ToGetServiceMeshesMeshMeshConfigControlPlaneLogOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetServiceMeshesMeshMeshConfigControlPlaneLogArrayInput is an input type that accepts GetServiceMeshesMeshMeshConfigControlPlaneLogArray and GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigControlPlaneLogArrayInput` via:
 //
@@ -3525,6 +4012,12 @@ func (i GetServiceMeshesMeshMeshConfigControlPlaneLogArray) ToGetServiceMeshesMe
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput)
 }
 
+func (i GetServiceMeshesMeshMeshConfigControlPlaneLogArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshMeshConfigControlPlaneLog] {
+	return pulumix.Output[[]GetServiceMeshesMeshMeshConfigControlPlaneLog]{
+		OutputState: i.ToGetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetServiceMeshesMeshMeshConfigControlPlaneLogOutput struct{ *pulumi.OutputState }
 
 func (GetServiceMeshesMeshMeshConfigControlPlaneLogOutput) ElementType() reflect.Type {
@@ -3537,6 +4030,12 @@ func (o GetServiceMeshesMeshMeshConfigControlPlaneLogOutput) ToGetServiceMeshesM
 
 func (o GetServiceMeshesMeshMeshConfigControlPlaneLogOutput) ToGetServiceMeshesMeshMeshConfigControlPlaneLogOutputWithContext(ctx context.Context) GetServiceMeshesMeshMeshConfigControlPlaneLogOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshMeshConfigControlPlaneLogOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshMeshConfigControlPlaneLog] {
+	return pulumix.Output[GetServiceMeshesMeshMeshConfigControlPlaneLog]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to enable Service grid audit.
@@ -3561,6 +4060,12 @@ func (o GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput) ToGetServiceMe
 
 func (o GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput) ToGetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutputWithContext(ctx context.Context) GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshMeshConfigControlPlaneLog] {
+	return pulumix.Output[[]GetServiceMeshesMeshMeshConfigControlPlaneLog]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput) Index(i pulumi.IntInput) GetServiceMeshesMeshMeshConfigControlPlaneLogOutput {
@@ -3606,6 +4111,12 @@ func (i GetServiceMeshesMeshMeshConfigKialiArgs) ToGetServiceMeshesMeshMeshConfi
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigKialiOutput)
 }
 
+func (i GetServiceMeshesMeshMeshConfigKialiArgs) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshMeshConfigKiali] {
+	return pulumix.Output[GetServiceMeshesMeshMeshConfigKiali]{
+		OutputState: i.ToGetServiceMeshesMeshMeshConfigKialiOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetServiceMeshesMeshMeshConfigKialiArrayInput is an input type that accepts GetServiceMeshesMeshMeshConfigKialiArray and GetServiceMeshesMeshMeshConfigKialiArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigKialiArrayInput` via:
 //
@@ -3631,6 +4142,12 @@ func (i GetServiceMeshesMeshMeshConfigKialiArray) ToGetServiceMeshesMeshMeshConf
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigKialiArrayOutput)
 }
 
+func (i GetServiceMeshesMeshMeshConfigKialiArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshMeshConfigKiali] {
+	return pulumix.Output[[]GetServiceMeshesMeshMeshConfigKiali]{
+		OutputState: i.ToGetServiceMeshesMeshMeshConfigKialiArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetServiceMeshesMeshMeshConfigKialiOutput struct{ *pulumi.OutputState }
 
 func (GetServiceMeshesMeshMeshConfigKialiOutput) ElementType() reflect.Type {
@@ -3643,6 +4160,12 @@ func (o GetServiceMeshesMeshMeshConfigKialiOutput) ToGetServiceMeshesMeshMeshCon
 
 func (o GetServiceMeshesMeshMeshConfigKialiOutput) ToGetServiceMeshesMeshMeshConfigKialiOutputWithContext(ctx context.Context) GetServiceMeshesMeshMeshConfigKialiOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshMeshConfigKialiOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshMeshConfigKiali] {
+	return pulumix.Output[GetServiceMeshesMeshMeshConfigKiali]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to enable Service grid audit.
@@ -3667,6 +4190,12 @@ func (o GetServiceMeshesMeshMeshConfigKialiArrayOutput) ToGetServiceMeshesMeshMe
 
 func (o GetServiceMeshesMeshMeshConfigKialiArrayOutput) ToGetServiceMeshesMeshMeshConfigKialiArrayOutputWithContext(ctx context.Context) GetServiceMeshesMeshMeshConfigKialiArrayOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshMeshConfigKialiArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshMeshConfigKiali] {
+	return pulumix.Output[[]GetServiceMeshesMeshMeshConfigKiali]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetServiceMeshesMeshMeshConfigKialiArrayOutput) Index(i pulumi.IntInput) GetServiceMeshesMeshMeshConfigKialiOutput {
@@ -3728,6 +4257,12 @@ func (i GetServiceMeshesMeshMeshConfigOpaArgs) ToGetServiceMeshesMeshMeshConfigO
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigOpaOutput)
 }
 
+func (i GetServiceMeshesMeshMeshConfigOpaArgs) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshMeshConfigOpa] {
+	return pulumix.Output[GetServiceMeshesMeshMeshConfigOpa]{
+		OutputState: i.ToGetServiceMeshesMeshMeshConfigOpaOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetServiceMeshesMeshMeshConfigOpaArrayInput is an input type that accepts GetServiceMeshesMeshMeshConfigOpaArray and GetServiceMeshesMeshMeshConfigOpaArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigOpaArrayInput` via:
 //
@@ -3753,6 +4288,12 @@ func (i GetServiceMeshesMeshMeshConfigOpaArray) ToGetServiceMeshesMeshMeshConfig
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigOpaArrayOutput)
 }
 
+func (i GetServiceMeshesMeshMeshConfigOpaArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshMeshConfigOpa] {
+	return pulumix.Output[[]GetServiceMeshesMeshMeshConfigOpa]{
+		OutputState: i.ToGetServiceMeshesMeshMeshConfigOpaArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetServiceMeshesMeshMeshConfigOpaOutput struct{ *pulumi.OutputState }
 
 func (GetServiceMeshesMeshMeshConfigOpaOutput) ElementType() reflect.Type {
@@ -3765,6 +4306,12 @@ func (o GetServiceMeshesMeshMeshConfigOpaOutput) ToGetServiceMeshesMeshMeshConfi
 
 func (o GetServiceMeshesMeshMeshConfigOpaOutput) ToGetServiceMeshesMeshMeshConfigOpaOutputWithContext(ctx context.Context) GetServiceMeshesMeshMeshConfigOpaOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshMeshConfigOpaOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshMeshConfigOpa] {
+	return pulumix.Output[GetServiceMeshesMeshMeshConfigOpa]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to enable Service grid audit.
@@ -3811,6 +4358,12 @@ func (o GetServiceMeshesMeshMeshConfigOpaArrayOutput) ToGetServiceMeshesMeshMesh
 	return o
 }
 
+func (o GetServiceMeshesMeshMeshConfigOpaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshMeshConfigOpa] {
+	return pulumix.Output[[]GetServiceMeshesMeshMeshConfigOpa]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetServiceMeshesMeshMeshConfigOpaArrayOutput) Index(i pulumi.IntInput) GetServiceMeshesMeshMeshConfigOpaOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceMeshesMeshMeshConfigOpa {
 		return vs[0].([]GetServiceMeshesMeshMeshConfigOpa)[vs[1].(int)]
@@ -3854,6 +4407,12 @@ func (i GetServiceMeshesMeshMeshConfigPilotArgs) ToGetServiceMeshesMeshMeshConfi
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigPilotOutput)
 }
 
+func (i GetServiceMeshesMeshMeshConfigPilotArgs) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshMeshConfigPilot] {
+	return pulumix.Output[GetServiceMeshesMeshMeshConfigPilot]{
+		OutputState: i.ToGetServiceMeshesMeshMeshConfigPilotOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetServiceMeshesMeshMeshConfigPilotArrayInput is an input type that accepts GetServiceMeshesMeshMeshConfigPilotArray and GetServiceMeshesMeshMeshConfigPilotArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigPilotArrayInput` via:
 //
@@ -3879,6 +4438,12 @@ func (i GetServiceMeshesMeshMeshConfigPilotArray) ToGetServiceMeshesMeshMeshConf
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigPilotArrayOutput)
 }
 
+func (i GetServiceMeshesMeshMeshConfigPilotArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshMeshConfigPilot] {
+	return pulumix.Output[[]GetServiceMeshesMeshMeshConfigPilot]{
+		OutputState: i.ToGetServiceMeshesMeshMeshConfigPilotArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetServiceMeshesMeshMeshConfigPilotOutput struct{ *pulumi.OutputState }
 
 func (GetServiceMeshesMeshMeshConfigPilotOutput) ElementType() reflect.Type {
@@ -3891,6 +4456,12 @@ func (o GetServiceMeshesMeshMeshConfigPilotOutput) ToGetServiceMeshesMeshMeshCon
 
 func (o GetServiceMeshesMeshMeshConfigPilotOutput) ToGetServiceMeshesMeshMeshConfigPilotOutputWithContext(ctx context.Context) GetServiceMeshesMeshMeshConfigPilotOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshMeshConfigPilotOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshMeshConfigPilot] {
+	return pulumix.Output[GetServiceMeshesMeshMeshConfigPilot]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to support the HTTP1.0.
@@ -3915,6 +4486,12 @@ func (o GetServiceMeshesMeshMeshConfigPilotArrayOutput) ToGetServiceMeshesMeshMe
 
 func (o GetServiceMeshesMeshMeshConfigPilotArrayOutput) ToGetServiceMeshesMeshMeshConfigPilotArrayOutputWithContext(ctx context.Context) GetServiceMeshesMeshMeshConfigPilotArrayOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshMeshConfigPilotArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshMeshConfigPilot] {
+	return pulumix.Output[[]GetServiceMeshesMeshMeshConfigPilot]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetServiceMeshesMeshMeshConfigPilotArrayOutput) Index(i pulumi.IntInput) GetServiceMeshesMeshMeshConfigPilotOutput {
@@ -3960,6 +4537,12 @@ func (i GetServiceMeshesMeshMeshConfigPrometheusArgs) ToGetServiceMeshesMeshMesh
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigPrometheusOutput)
 }
 
+func (i GetServiceMeshesMeshMeshConfigPrometheusArgs) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshMeshConfigPrometheus] {
+	return pulumix.Output[GetServiceMeshesMeshMeshConfigPrometheus]{
+		OutputState: i.ToGetServiceMeshesMeshMeshConfigPrometheusOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetServiceMeshesMeshMeshConfigPrometheusArrayInput is an input type that accepts GetServiceMeshesMeshMeshConfigPrometheusArray and GetServiceMeshesMeshMeshConfigPrometheusArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigPrometheusArrayInput` via:
 //
@@ -3985,6 +4568,12 @@ func (i GetServiceMeshesMeshMeshConfigPrometheusArray) ToGetServiceMeshesMeshMes
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigPrometheusArrayOutput)
 }
 
+func (i GetServiceMeshesMeshMeshConfigPrometheusArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshMeshConfigPrometheus] {
+	return pulumix.Output[[]GetServiceMeshesMeshMeshConfigPrometheus]{
+		OutputState: i.ToGetServiceMeshesMeshMeshConfigPrometheusArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetServiceMeshesMeshMeshConfigPrometheusOutput struct{ *pulumi.OutputState }
 
 func (GetServiceMeshesMeshMeshConfigPrometheusOutput) ElementType() reflect.Type {
@@ -3997,6 +4586,12 @@ func (o GetServiceMeshesMeshMeshConfigPrometheusOutput) ToGetServiceMeshesMeshMe
 
 func (o GetServiceMeshesMeshMeshConfigPrometheusOutput) ToGetServiceMeshesMeshMeshConfigPrometheusOutputWithContext(ctx context.Context) GetServiceMeshesMeshMeshConfigPrometheusOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshMeshConfigPrometheusOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshMeshConfigPrometheus] {
+	return pulumix.Output[GetServiceMeshesMeshMeshConfigPrometheus]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The  service addresses of the Prometheus.
@@ -4021,6 +4616,12 @@ func (o GetServiceMeshesMeshMeshConfigPrometheusArrayOutput) ToGetServiceMeshesM
 
 func (o GetServiceMeshesMeshMeshConfigPrometheusArrayOutput) ToGetServiceMeshesMeshMeshConfigPrometheusArrayOutputWithContext(ctx context.Context) GetServiceMeshesMeshMeshConfigPrometheusArrayOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshMeshConfigPrometheusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshMeshConfigPrometheus] {
+	return pulumix.Output[[]GetServiceMeshesMeshMeshConfigPrometheus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetServiceMeshesMeshMeshConfigPrometheusArrayOutput) Index(i pulumi.IntInput) GetServiceMeshesMeshMeshConfigPrometheusOutput {
@@ -4078,6 +4679,12 @@ func (i GetServiceMeshesMeshMeshConfigProxyArgs) ToGetServiceMeshesMeshMeshConfi
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigProxyOutput)
 }
 
+func (i GetServiceMeshesMeshMeshConfigProxyArgs) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshMeshConfigProxy] {
+	return pulumix.Output[GetServiceMeshesMeshMeshConfigProxy]{
+		OutputState: i.ToGetServiceMeshesMeshMeshConfigProxyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetServiceMeshesMeshMeshConfigProxyArrayInput is an input type that accepts GetServiceMeshesMeshMeshConfigProxyArray and GetServiceMeshesMeshMeshConfigProxyArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigProxyArrayInput` via:
 //
@@ -4103,6 +4710,12 @@ func (i GetServiceMeshesMeshMeshConfigProxyArray) ToGetServiceMeshesMeshMeshConf
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigProxyArrayOutput)
 }
 
+func (i GetServiceMeshesMeshMeshConfigProxyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshMeshConfigProxy] {
+	return pulumix.Output[[]GetServiceMeshesMeshMeshConfigProxy]{
+		OutputState: i.ToGetServiceMeshesMeshMeshConfigProxyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetServiceMeshesMeshMeshConfigProxyOutput struct{ *pulumi.OutputState }
 
 func (GetServiceMeshesMeshMeshConfigProxyOutput) ElementType() reflect.Type {
@@ -4115,6 +4728,12 @@ func (o GetServiceMeshesMeshMeshConfigProxyOutput) ToGetServiceMeshesMeshMeshCon
 
 func (o GetServiceMeshesMeshMeshConfigProxyOutput) ToGetServiceMeshesMeshMeshConfigProxyOutputWithContext(ctx context.Context) GetServiceMeshesMeshMeshConfigProxyOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshMeshConfigProxyOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshMeshConfigProxy] {
+	return pulumix.Output[GetServiceMeshesMeshMeshConfigProxy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The domain name of the Cluster.
@@ -4154,6 +4773,12 @@ func (o GetServiceMeshesMeshMeshConfigProxyArrayOutput) ToGetServiceMeshesMeshMe
 
 func (o GetServiceMeshesMeshMeshConfigProxyArrayOutput) ToGetServiceMeshesMeshMeshConfigProxyArrayOutputWithContext(ctx context.Context) GetServiceMeshesMeshMeshConfigProxyArrayOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshMeshConfigProxyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshMeshConfigProxy] {
+	return pulumix.Output[[]GetServiceMeshesMeshMeshConfigProxy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetServiceMeshesMeshMeshConfigProxyArrayOutput) Index(i pulumi.IntInput) GetServiceMeshesMeshMeshConfigProxyOutput {
@@ -4223,6 +4848,12 @@ func (i GetServiceMeshesMeshMeshConfigSidecarInjectorArgs) ToGetServiceMeshesMes
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigSidecarInjectorOutput)
 }
 
+func (i GetServiceMeshesMeshMeshConfigSidecarInjectorArgs) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshMeshConfigSidecarInjector] {
+	return pulumix.Output[GetServiceMeshesMeshMeshConfigSidecarInjector]{
+		OutputState: i.ToGetServiceMeshesMeshMeshConfigSidecarInjectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetServiceMeshesMeshMeshConfigSidecarInjectorArrayInput is an input type that accepts GetServiceMeshesMeshMeshConfigSidecarInjectorArray and GetServiceMeshesMeshMeshConfigSidecarInjectorArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigSidecarInjectorArrayInput` via:
 //
@@ -4248,6 +4879,12 @@ func (i GetServiceMeshesMeshMeshConfigSidecarInjectorArray) ToGetServiceMeshesMe
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigSidecarInjectorArrayOutput)
 }
 
+func (i GetServiceMeshesMeshMeshConfigSidecarInjectorArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshMeshConfigSidecarInjector] {
+	return pulumix.Output[[]GetServiceMeshesMeshMeshConfigSidecarInjector]{
+		OutputState: i.ToGetServiceMeshesMeshMeshConfigSidecarInjectorArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetServiceMeshesMeshMeshConfigSidecarInjectorOutput struct{ *pulumi.OutputState }
 
 func (GetServiceMeshesMeshMeshConfigSidecarInjectorOutput) ElementType() reflect.Type {
@@ -4260,6 +4897,12 @@ func (o GetServiceMeshesMeshMeshConfigSidecarInjectorOutput) ToGetServiceMeshesM
 
 func (o GetServiceMeshesMeshMeshConfigSidecarInjectorOutput) ToGetServiceMeshesMeshMeshConfigSidecarInjectorOutputWithContext(ctx context.Context) GetServiceMeshesMeshMeshConfigSidecarInjectorOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshMeshConfigSidecarInjectorOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshMeshConfigSidecarInjector] {
+	return pulumix.Output[GetServiceMeshesMeshMeshConfigSidecarInjector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to enable by Pod Annotations automatic injection Sidecar.
@@ -4318,6 +4961,12 @@ func (o GetServiceMeshesMeshMeshConfigSidecarInjectorArrayOutput) ToGetServiceMe
 	return o
 }
 
+func (o GetServiceMeshesMeshMeshConfigSidecarInjectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshMeshConfigSidecarInjector] {
+	return pulumix.Output[[]GetServiceMeshesMeshMeshConfigSidecarInjector]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetServiceMeshesMeshMeshConfigSidecarInjectorArrayOutput) Index(i pulumi.IntInput) GetServiceMeshesMeshMeshConfigSidecarInjectorOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceMeshesMeshMeshConfigSidecarInjector {
 		return vs[0].([]GetServiceMeshesMeshMeshConfigSidecarInjector)[vs[1].(int)]
@@ -4361,6 +5010,12 @@ func (i GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationOutput)
 }
 
+func (i GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration] {
+	return pulumix.Output[GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration]{
+		OutputState: i.ToGetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArrayInput is an input type that accepts GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArray and GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArrayInput` via:
 //
@@ -4386,6 +5041,12 @@ func (i GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArray) 
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArrayOutput)
 }
 
+func (i GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration] {
+	return pulumix.Output[[]GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration]{
+		OutputState: i.ToGetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationOutput struct{ *pulumi.OutputState }
 
 func (GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationOutput) ElementType() reflect.Type {
@@ -4398,6 +5059,12 @@ func (o GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationOutput)
 
 func (o GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationOutput) ToGetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationOutputWithContext(ctx context.Context) GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration] {
+	return pulumix.Output[GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to enable Service grid audit.
@@ -4424,6 +5091,12 @@ func (o GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArrayOu
 
 func (o GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArrayOutput) ToGetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArrayOutputWithContext(ctx context.Context) GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArrayOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration] {
+	return pulumix.Output[[]GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArrayOutput) Index(i pulumi.IntInput) GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationOutput {
@@ -4473,6 +5146,12 @@ func (i GetServiceMeshesMeshNetworkArgs) ToGetServiceMeshesMeshNetworkOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshNetworkOutput)
 }
 
+func (i GetServiceMeshesMeshNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshNetwork] {
+	return pulumix.Output[GetServiceMeshesMeshNetwork]{
+		OutputState: i.ToGetServiceMeshesMeshNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetServiceMeshesMeshNetworkArrayInput is an input type that accepts GetServiceMeshesMeshNetworkArray and GetServiceMeshesMeshNetworkArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshNetworkArrayInput` via:
 //
@@ -4498,6 +5177,12 @@ func (i GetServiceMeshesMeshNetworkArray) ToGetServiceMeshesMeshNetworkArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshNetworkArrayOutput)
 }
 
+func (i GetServiceMeshesMeshNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshNetwork] {
+	return pulumix.Output[[]GetServiceMeshesMeshNetwork]{
+		OutputState: i.ToGetServiceMeshesMeshNetworkArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetServiceMeshesMeshNetworkOutput struct{ *pulumi.OutputState }
 
 func (GetServiceMeshesMeshNetworkOutput) ElementType() reflect.Type {
@@ -4510,6 +5195,12 @@ func (o GetServiceMeshesMeshNetworkOutput) ToGetServiceMeshesMeshNetworkOutput()
 
 func (o GetServiceMeshesMeshNetworkOutput) ToGetServiceMeshesMeshNetworkOutputWithContext(ctx context.Context) GetServiceMeshesMeshNetworkOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesMeshNetwork] {
+	return pulumix.Output[GetServiceMeshesMeshNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Security group
@@ -4539,6 +5230,12 @@ func (o GetServiceMeshesMeshNetworkArrayOutput) ToGetServiceMeshesMeshNetworkArr
 
 func (o GetServiceMeshesMeshNetworkArrayOutput) ToGetServiceMeshesMeshNetworkArrayOutputWithContext(ctx context.Context) GetServiceMeshesMeshNetworkArrayOutput {
 	return o
+}
+
+func (o GetServiceMeshesMeshNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceMeshesMeshNetwork] {
+	return pulumix.Output[[]GetServiceMeshesMeshNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetServiceMeshesMeshNetworkArrayOutput) Index(i pulumi.IntInput) GetServiceMeshesMeshNetworkOutput {
@@ -4588,6 +5285,12 @@ func (i GetVersionsVersionArgs) ToGetVersionsVersionOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetVersionsVersionOutput)
 }
 
+func (i GetVersionsVersionArgs) ToOutput(ctx context.Context) pulumix.Output[GetVersionsVersion] {
+	return pulumix.Output[GetVersionsVersion]{
+		OutputState: i.ToGetVersionsVersionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetVersionsVersionArrayInput is an input type that accepts GetVersionsVersionArray and GetVersionsVersionArrayOutput values.
 // You can construct a concrete instance of `GetVersionsVersionArrayInput` via:
 //
@@ -4613,6 +5316,12 @@ func (i GetVersionsVersionArray) ToGetVersionsVersionArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetVersionsVersionArrayOutput)
 }
 
+func (i GetVersionsVersionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVersionsVersion] {
+	return pulumix.Output[[]GetVersionsVersion]{
+		OutputState: i.ToGetVersionsVersionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetVersionsVersionOutput struct{ *pulumi.OutputState }
 
 func (GetVersionsVersionOutput) ElementType() reflect.Type {
@@ -4625,6 +5334,12 @@ func (o GetVersionsVersionOutput) ToGetVersionsVersionOutput() GetVersionsVersio
 
 func (o GetVersionsVersionOutput) ToGetVersionsVersionOutputWithContext(ctx context.Context) GetVersionsVersionOutput {
 	return o
+}
+
+func (o GetVersionsVersionOutput) ToOutput(ctx context.Context) pulumix.Output[GetVersionsVersion] {
+	return pulumix.Output[GetVersionsVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The edition of the ASM instance.
@@ -4654,6 +5369,12 @@ func (o GetVersionsVersionArrayOutput) ToGetVersionsVersionArrayOutput() GetVers
 
 func (o GetVersionsVersionArrayOutput) ToGetVersionsVersionArrayOutputWithContext(ctx context.Context) GetVersionsVersionArrayOutput {
 	return o
+}
+
+func (o GetVersionsVersionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVersionsVersion] {
+	return pulumix.Output[[]GetVersionsVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetVersionsVersionOutput {

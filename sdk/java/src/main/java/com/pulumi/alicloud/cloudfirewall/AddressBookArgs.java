@@ -64,14 +64,14 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of ECS tags. See the following `Block ecs_tags`.
+     * A list of ECS tags. See `ecs_tags` below.
      * 
      */
     @Import(name="ecsTags")
     private @Nullable Output<List<AddressBookEcsTagArgs>> ecsTags;
 
     /**
-     * @return A list of ECS tags. See the following `Block ecs_tags`.
+     * @return A list of ECS tags. See `ecs_tags` below.
      * 
      */
     public Optional<Output<List<AddressBookEcsTagArgs>>> ecsTags() {
@@ -94,14 +94,14 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the Address Book. Valid values:  `ip`, `tag`.
+     * The type of the Address Book. Valid values: `ip`, `tag`.
      * 
      */
     @Import(name="groupType", required=true)
     private Output<String> groupType;
 
     /**
-     * @return The type of the Address Book. Valid values:  `ip`, `tag`.
+     * @return The type of the Address Book. Valid values: `ip`, `tag`.
      * 
      */
     public Output<String> groupType() {
@@ -109,14 +109,14 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The language of the content within the request and response. Valid values: `en`, `zh`.
+     * The language of the content within the request and response. Valid values: `zh`, `en`.
      * 
      */
     @Import(name="lang")
     private @Nullable Output<String> lang;
 
     /**
-     * @return The language of the content within the request and response. Valid values: `en`, `zh`.
+     * @return The language of the content within the request and response. Valid values: `zh`, `en`.
      * 
      */
     public Optional<Output<String>> lang() {
@@ -124,18 +124,14 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The logical relation among the ECS tags that to be matched. Valid values:
-     * - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-     * - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+     * The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
      * 
      */
     @Import(name="tagRelation")
     private @Nullable Output<String> tagRelation;
 
     /**
-     * @return The logical relation among the ECS tags that to be matched. Valid values:
-     * - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-     * - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+     * @return The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
      * 
      */
     public Optional<Output<String>> tagRelation() {
@@ -247,7 +243,7 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ecsTags A list of ECS tags. See the following `Block ecs_tags`.
+         * @param ecsTags A list of ECS tags. See `ecs_tags` below.
          * 
          * @return builder
          * 
@@ -258,7 +254,7 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ecsTags A list of ECS tags. See the following `Block ecs_tags`.
+         * @param ecsTags A list of ECS tags. See `ecs_tags` below.
          * 
          * @return builder
          * 
@@ -268,7 +264,7 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ecsTags A list of ECS tags. See the following `Block ecs_tags`.
+         * @param ecsTags A list of ECS tags. See `ecs_tags` below.
          * 
          * @return builder
          * 
@@ -299,7 +295,7 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupType The type of the Address Book. Valid values:  `ip`, `tag`.
+         * @param groupType The type of the Address Book. Valid values: `ip`, `tag`.
          * 
          * @return builder
          * 
@@ -310,7 +306,7 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupType The type of the Address Book. Valid values:  `ip`, `tag`.
+         * @param groupType The type of the Address Book. Valid values: `ip`, `tag`.
          * 
          * @return builder
          * 
@@ -320,7 +316,7 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lang The language of the content within the request and response. Valid values: `en`, `zh`.
+         * @param lang The language of the content within the request and response. Valid values: `zh`, `en`.
          * 
          * @return builder
          * 
@@ -331,7 +327,7 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lang The language of the content within the request and response. Valid values: `en`, `zh`.
+         * @param lang The language of the content within the request and response. Valid values: `zh`, `en`.
          * 
          * @return builder
          * 
@@ -341,9 +337,7 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tagRelation The logical relation among the ECS tags that to be matched. Valid values:
-         * - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-         * - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+         * @param tagRelation The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
          * 
          * @return builder
          * 
@@ -354,9 +348,7 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tagRelation The logical relation among the ECS tags that to be matched. Valid values:
-         * - **and**: Only the public IP addresses of ECS instances that match all the specified tags can be added to the Address Book. This is the default value.
-         * - **or**: The public IP addresses of ECS instances that match one of the specified tags can be added to the Address Book.
+         * @param tagRelation The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
          * 
          * @return builder
          * 

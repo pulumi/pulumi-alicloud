@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
@@ -126,6 +127,12 @@ func (o GetCertificatesResultOutput) ToGetCertificatesResultOutput() GetCertific
 
 func (o GetCertificatesResultOutput) ToGetCertificatesResultOutputWithContext(ctx context.Context) GetCertificatesResultOutput {
 	return o
+}
+
+func (o GetCertificatesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCertificatesResult] {
+	return pulumix.Output[GetCertificatesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of apis. Each element contains the following attributes:

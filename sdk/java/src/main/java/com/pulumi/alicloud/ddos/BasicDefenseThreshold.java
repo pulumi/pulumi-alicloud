@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Ddos Basic Antiddos and how to use it, see [What is Defense Threshold](https://www.alibabacloud.com/help/en/ddos-protection/latest/modifydefensethreshold).
  * 
- * &gt; **NOTE:** Available in v1.168.0+.
+ * &gt; **NOTE:** Available since v1.168.0.
  * 
  * ## Example Usage
  * 
@@ -48,15 +48,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new EipAddress(&#34;default&#34;, EipAddressArgs.builder()        
- *             .addressName(var_.name())
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
+ *             .addressName(name)
  *             .isp(&#34;BGP&#34;)
  *             .internetChargeType(&#34;PayByBandwidth&#34;)
  *             .paymentType(&#34;PayAsYouGo&#34;)
  *             .build());
  * 
- *         var example = new BasicDefenseThreshold(&#34;example&#34;, BasicDefenseThresholdArgs.builder()        
- *             .instanceId(default_.id())
+ *         var defaultBasicDefenseThreshold = new BasicDefenseThreshold(&#34;defaultBasicDefenseThreshold&#34;, BasicDefenseThresholdArgs.builder()        
+ *             .instanceId(defaultEipAddress.id())
  *             .ddosType(&#34;defense&#34;)
  *             .instanceType(&#34;eip&#34;)
  *             .bps(390)

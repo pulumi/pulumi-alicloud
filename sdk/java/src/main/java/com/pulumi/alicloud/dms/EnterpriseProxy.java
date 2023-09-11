@@ -20,7 +20,148 @@ import javax.annotation.Nullable;
  * 
  * For information about DMS Enterprise Proxy and how to use it, see [What is Proxy](https://www.alibabacloud.com/help/en/data-management-service/latest/createproxy).
  * 
- * &gt; **NOTE:** Available in v1.188.0+.
+ * &gt; **NOTE:** Available since v1.188.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.alicloud.dms.DmsFunctions;
+ * import com.pulumi.alicloud.dms.inputs.GetUserTenantsArgs;
+ * import com.pulumi.alicloud.rds.RdsFunctions;
+ * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.rds.Instance;
+ * import com.pulumi.alicloud.rds.InstanceArgs;
+ * import com.pulumi.alicloud.rds.Account;
+ * import com.pulumi.alicloud.rds.AccountArgs;
+ * import com.pulumi.alicloud.dms.EnterpriseInstance;
+ * import com.pulumi.alicloud.dms.EnterpriseInstanceArgs;
+ * import com.pulumi.alicloud.dms.EnterpriseProxy;
+ * import com.pulumi.alicloud.dms.EnterpriseProxyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var current = AlicloudFunctions.getAccount();
+ * 
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         final var defaultUserTenants = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
+ *             .status(&#34;ACTIVE&#34;)
+ *             .build());
+ * 
+ *         final var defaultZones = RdsFunctions.getZones(GetZonesArgs.builder()
+ *             .engine(&#34;MySQL&#34;)
+ *             .engineVersion(&#34;8.0&#34;)
+ *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .category(&#34;HighAvailability&#34;)
+ *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
+ *             .build());
+ * 
+ *         final var defaultInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .engine(&#34;MySQL&#34;)
+ *             .engineVersion(&#34;8.0&#34;)
+ *             .category(&#34;HighAvailability&#34;)
+ *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
+ *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .engine(&#34;MySQL&#34;)
+ *             .engineVersion(&#34;8.0&#34;)
+ *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
+ *             .instanceType(defaultInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
+ *             .instanceStorage(defaultInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
+ *             .vswitchId(defaultSwitch.id())
+ *             .instanceName(name)
+ *             .securityIps(            
+ *                 &#34;100.104.5.0/24&#34;,
+ *                 &#34;192.168.0.6&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *             ))
+ *             .build());
+ * 
+ *         var defaultAccount = new Account(&#34;defaultAccount&#34;, AccountArgs.builder()        
+ *             .dbInstanceId(defaultInstance.id())
+ *             .accountName(&#34;tfexamplename&#34;)
+ *             .accountPassword(&#34;Example12345&#34;)
+ *             .accountType(&#34;Normal&#34;)
+ *             .build());
+ * 
+ *         var defaultEnterpriseInstance = new EnterpriseInstance(&#34;defaultEnterpriseInstance&#34;, EnterpriseInstanceArgs.builder()        
+ *             .tid(defaultUserTenants.applyValue(getUserTenantsResult -&gt; getUserTenantsResult.ids()[0]))
+ *             .instanceType(&#34;MySQL&#34;)
+ *             .instanceSource(&#34;RDS&#34;)
+ *             .networkType(&#34;VPC&#34;)
+ *             .envType(&#34;dev&#34;)
+ *             .host(defaultInstance.connectionString())
+ *             .port(3306)
+ *             .databaseUser(defaultAccount.accountName())
+ *             .databasePassword(defaultAccount.accountPassword())
+ *             .instanceName(name)
+ *             .dbaUid(current.applyValue(getAccountResult -&gt; getAccountResult.id()))
+ *             .safeRule(&#34;自由操作&#34;)
+ *             .queryTimeout(60)
+ *             .exportTimeout(600)
+ *             .ecsRegion(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .build());
+ * 
+ *         var defaultEnterpriseProxy = new EnterpriseProxy(&#34;defaultEnterpriseProxy&#34;, EnterpriseProxyArgs.builder()        
+ *             .instanceId(defaultEnterpriseInstance.instanceId())
+ *             .password(&#34;Example12345&#34;)
+ *             .username(&#34;tfexamplename&#34;)
+ *             .tid(defaultUserTenants.applyValue(getUserTenantsResult -&gt; getUserTenantsResult.ids()[0]))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

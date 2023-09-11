@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Attaches/Detaches vserver groups to a specified scaling group.
@@ -151,6 +152,12 @@ func (i *ScalingGroupVServerGroups) ToScalingGroupVServerGroupsOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupVServerGroupsOutput)
 }
 
+func (i *ScalingGroupVServerGroups) ToOutput(ctx context.Context) pulumix.Output[*ScalingGroupVServerGroups] {
+	return pulumix.Output[*ScalingGroupVServerGroups]{
+		OutputState: i.ToScalingGroupVServerGroupsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ScalingGroupVServerGroupsArrayInput is an input type that accepts ScalingGroupVServerGroupsArray and ScalingGroupVServerGroupsArrayOutput values.
 // You can construct a concrete instance of `ScalingGroupVServerGroupsArrayInput` via:
 //
@@ -174,6 +181,12 @@ func (i ScalingGroupVServerGroupsArray) ToScalingGroupVServerGroupsArrayOutput()
 
 func (i ScalingGroupVServerGroupsArray) ToScalingGroupVServerGroupsArrayOutputWithContext(ctx context.Context) ScalingGroupVServerGroupsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupVServerGroupsArrayOutput)
+}
+
+func (i ScalingGroupVServerGroupsArray) ToOutput(ctx context.Context) pulumix.Output[[]*ScalingGroupVServerGroups] {
+	return pulumix.Output[[]*ScalingGroupVServerGroups]{
+		OutputState: i.ToScalingGroupVServerGroupsArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ScalingGroupVServerGroupsMapInput is an input type that accepts ScalingGroupVServerGroupsMap and ScalingGroupVServerGroupsMapOutput values.
@@ -201,6 +214,12 @@ func (i ScalingGroupVServerGroupsMap) ToScalingGroupVServerGroupsMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupVServerGroupsMapOutput)
 }
 
+func (i ScalingGroupVServerGroupsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ScalingGroupVServerGroups] {
+	return pulumix.Output[map[string]*ScalingGroupVServerGroups]{
+		OutputState: i.ToScalingGroupVServerGroupsMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ScalingGroupVServerGroupsOutput struct{ *pulumi.OutputState }
 
 func (ScalingGroupVServerGroupsOutput) ElementType() reflect.Type {
@@ -213,6 +232,12 @@ func (o ScalingGroupVServerGroupsOutput) ToScalingGroupVServerGroupsOutput() Sca
 
 func (o ScalingGroupVServerGroupsOutput) ToScalingGroupVServerGroupsOutputWithContext(ctx context.Context) ScalingGroupVServerGroupsOutput {
 	return o
+}
+
+func (o ScalingGroupVServerGroupsOutput) ToOutput(ctx context.Context) pulumix.Output[*ScalingGroupVServerGroups] {
+	return pulumix.Output[*ScalingGroupVServerGroups]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
@@ -246,6 +271,12 @@ func (o ScalingGroupVServerGroupsArrayOutput) ToScalingGroupVServerGroupsArrayOu
 	return o
 }
 
+func (o ScalingGroupVServerGroupsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ScalingGroupVServerGroups] {
+	return pulumix.Output[[]*ScalingGroupVServerGroups]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ScalingGroupVServerGroupsArrayOutput) Index(i pulumi.IntInput) ScalingGroupVServerGroupsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ScalingGroupVServerGroups {
 		return vs[0].([]*ScalingGroupVServerGroups)[vs[1].(int)]
@@ -264,6 +295,12 @@ func (o ScalingGroupVServerGroupsMapOutput) ToScalingGroupVServerGroupsMapOutput
 
 func (o ScalingGroupVServerGroupsMapOutput) ToScalingGroupVServerGroupsMapOutputWithContext(ctx context.Context) ScalingGroupVServerGroupsMapOutput {
 	return o
+}
+
+func (o ScalingGroupVServerGroupsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ScalingGroupVServerGroups] {
+	return pulumix.Output[map[string]*ScalingGroupVServerGroups]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScalingGroupVServerGroupsMapOutput) MapIndex(k pulumi.StringInput) ScalingGroupVServerGroupsOutput {

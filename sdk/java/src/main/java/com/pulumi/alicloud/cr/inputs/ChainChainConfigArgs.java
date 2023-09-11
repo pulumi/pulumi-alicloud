@@ -18,14 +18,18 @@ public final class ChainChainConfigArgs extends com.pulumi.resources.ResourceArg
     public static final ChainChainConfigArgs Empty = new ChainChainConfigArgs();
 
     /**
-     * Each node in the delivery chain.
+     * Each node in the delivery chain. See `nodes` below.
+     * 
+     * &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
      * 
      */
     @Import(name="nodes")
     private @Nullable Output<List<ChainChainConfigNodeArgs>> nodes;
 
     /**
-     * @return Each node in the delivery chain.
+     * @return Each node in the delivery chain. See `nodes` below.
+     * 
+     * &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
      * 
      */
     public Optional<Output<List<ChainChainConfigNodeArgs>>> nodes() {
@@ -33,14 +37,14 @@ public final class ChainChainConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Execution sequence relationship between delivery chain nodes.
+     * Execution sequence relationship between delivery chain nodes. See `routers` below.
      * 
      */
     @Import(name="routers")
     private @Nullable Output<List<ChainChainConfigRouterArgs>> routers;
 
     /**
-     * @return Execution sequence relationship between delivery chain nodes.
+     * @return Execution sequence relationship between delivery chain nodes. See `routers` below.
      * 
      */
     public Optional<Output<List<ChainChainConfigRouterArgs>>> routers() {
@@ -73,7 +77,9 @@ public final class ChainChainConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodes Each node in the delivery chain.
+         * @param nodes Each node in the delivery chain. See `nodes` below.
+         * 
+         * &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
          * 
          * @return builder
          * 
@@ -84,7 +90,9 @@ public final class ChainChainConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodes Each node in the delivery chain.
+         * @param nodes Each node in the delivery chain. See `nodes` below.
+         * 
+         * &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
          * 
          * @return builder
          * 
@@ -94,7 +102,9 @@ public final class ChainChainConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodes Each node in the delivery chain.
+         * @param nodes Each node in the delivery chain. See `nodes` below.
+         * 
+         * &gt; **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
          * 
          * @return builder
          * 
@@ -104,7 +114,7 @@ public final class ChainChainConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param routers Execution sequence relationship between delivery chain nodes.
+         * @param routers Execution sequence relationship between delivery chain nodes. See `routers` below.
          * 
          * @return builder
          * 
@@ -115,7 +125,7 @@ public final class ChainChainConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param routers Execution sequence relationship between delivery chain nodes.
+         * @param routers Execution sequence relationship between delivery chain nodes. See `routers` below.
          * 
          * @return builder
          * 
@@ -125,7 +135,7 @@ public final class ChainChainConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param routers Execution sequence relationship between delivery chain nodes.
+         * @param routers Execution sequence relationship between delivery chain nodes. See `routers` below.
          * 
          * @return builder
          * 

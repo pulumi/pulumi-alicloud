@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the master slave server groups related to a server load balancer.
@@ -93,6 +94,12 @@ func (o GetMasterSlaveServerGroupsResultOutput) ToGetMasterSlaveServerGroupsResu
 
 func (o GetMasterSlaveServerGroupsResultOutput) ToGetMasterSlaveServerGroupsResultOutputWithContext(ctx context.Context) GetMasterSlaveServerGroupsResultOutput {
 	return o
+}
+
+func (o GetMasterSlaveServerGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMasterSlaveServerGroupsResult] {
+	return pulumix.Output[GetMasterSlaveServerGroupsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of SLB master slave server groups. Each element contains the following attributes:

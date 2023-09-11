@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -54,6 +55,12 @@ func (i GetAliasesAliasArgs) ToGetAliasesAliasOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetAliasesAliasOutput)
 }
 
+func (i GetAliasesAliasArgs) ToOutput(ctx context.Context) pulumix.Output[GetAliasesAlias] {
+	return pulumix.Output[GetAliasesAlias]{
+		OutputState: i.ToGetAliasesAliasOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAliasesAliasArrayInput is an input type that accepts GetAliasesAliasArray and GetAliasesAliasArrayOutput values.
 // You can construct a concrete instance of `GetAliasesAliasArrayInput` via:
 //
@@ -79,6 +86,12 @@ func (i GetAliasesAliasArray) ToGetAliasesAliasArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetAliasesAliasArrayOutput)
 }
 
+func (i GetAliasesAliasArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAliasesAlias] {
+	return pulumix.Output[[]GetAliasesAlias]{
+		OutputState: i.ToGetAliasesAliasArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAliasesAliasOutput struct{ *pulumi.OutputState }
 
 func (GetAliasesAliasOutput) ElementType() reflect.Type {
@@ -91,6 +104,12 @@ func (o GetAliasesAliasOutput) ToGetAliasesAliasOutput() GetAliasesAliasOutput {
 
 func (o GetAliasesAliasOutput) ToGetAliasesAliasOutputWithContext(ctx context.Context) GetAliasesAliasOutput {
 	return o
+}
+
+func (o GetAliasesAliasOutput) ToOutput(ctx context.Context) pulumix.Output[GetAliasesAlias] {
+	return pulumix.Output[GetAliasesAlias]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The unique identifier of the alias.
@@ -120,6 +139,12 @@ func (o GetAliasesAliasArrayOutput) ToGetAliasesAliasArrayOutput() GetAliasesAli
 
 func (o GetAliasesAliasArrayOutput) ToGetAliasesAliasArrayOutputWithContext(ctx context.Context) GetAliasesAliasArrayOutput {
 	return o
+}
+
+func (o GetAliasesAliasArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAliasesAlias] {
+	return pulumix.Output[[]GetAliasesAlias]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAliasesAliasArrayOutput) Index(i pulumi.IntInput) GetAliasesAliasOutput {
@@ -177,6 +202,12 @@ func (i GetKeyVersionsVersionArgs) ToGetKeyVersionsVersionOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetKeyVersionsVersionOutput)
 }
 
+func (i GetKeyVersionsVersionArgs) ToOutput(ctx context.Context) pulumix.Output[GetKeyVersionsVersion] {
+	return pulumix.Output[GetKeyVersionsVersion]{
+		OutputState: i.ToGetKeyVersionsVersionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetKeyVersionsVersionArrayInput is an input type that accepts GetKeyVersionsVersionArray and GetKeyVersionsVersionArrayOutput values.
 // You can construct a concrete instance of `GetKeyVersionsVersionArrayInput` via:
 //
@@ -202,6 +233,12 @@ func (i GetKeyVersionsVersionArray) ToGetKeyVersionsVersionArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetKeyVersionsVersionArrayOutput)
 }
 
+func (i GetKeyVersionsVersionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetKeyVersionsVersion] {
+	return pulumix.Output[[]GetKeyVersionsVersion]{
+		OutputState: i.ToGetKeyVersionsVersionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetKeyVersionsVersionOutput struct{ *pulumi.OutputState }
 
 func (GetKeyVersionsVersionOutput) ElementType() reflect.Type {
@@ -214,6 +251,12 @@ func (o GetKeyVersionsVersionOutput) ToGetKeyVersionsVersionOutput() GetKeyVersi
 
 func (o GetKeyVersionsVersionOutput) ToGetKeyVersionsVersionOutputWithContext(ctx context.Context) GetKeyVersionsVersionOutput {
 	return o
+}
+
+func (o GetKeyVersionsVersionOutput) ToOutput(ctx context.Context) pulumix.Output[GetKeyVersionsVersion] {
+	return pulumix.Output[GetKeyVersionsVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Date and time when the key version was created (UTC time).
@@ -253,6 +296,12 @@ func (o GetKeyVersionsVersionArrayOutput) ToGetKeyVersionsVersionArrayOutput() G
 
 func (o GetKeyVersionsVersionArrayOutput) ToGetKeyVersionsVersionArrayOutputWithContext(ctx context.Context) GetKeyVersionsVersionArrayOutput {
 	return o
+}
+
+func (o GetKeyVersionsVersionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetKeyVersionsVersion] {
+	return pulumix.Output[[]GetKeyVersionsVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetKeyVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetKeyVersionsVersionOutput {
@@ -362,6 +411,12 @@ func (i GetKeysKeyArgs) ToGetKeysKeyOutputWithContext(ctx context.Context) GetKe
 	return pulumi.ToOutputWithContext(ctx, i).(GetKeysKeyOutput)
 }
 
+func (i GetKeysKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GetKeysKey] {
+	return pulumix.Output[GetKeysKey]{
+		OutputState: i.ToGetKeysKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetKeysKeyArrayInput is an input type that accepts GetKeysKeyArray and GetKeysKeyArrayOutput values.
 // You can construct a concrete instance of `GetKeysKeyArrayInput` via:
 //
@@ -387,6 +442,12 @@ func (i GetKeysKeyArray) ToGetKeysKeyArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GetKeysKeyArrayOutput)
 }
 
+func (i GetKeysKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetKeysKey] {
+	return pulumix.Output[[]GetKeysKey]{
+		OutputState: i.ToGetKeysKeyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetKeysKeyOutput struct{ *pulumi.OutputState }
 
 func (GetKeysKeyOutput) ElementType() reflect.Type {
@@ -399,6 +460,12 @@ func (o GetKeysKeyOutput) ToGetKeysKeyOutput() GetKeysKeyOutput {
 
 func (o GetKeysKeyOutput) ToGetKeysKeyOutputWithContext(ctx context.Context) GetKeysKeyOutput {
 	return o
+}
+
+func (o GetKeysKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GetKeysKey] {
+	return pulumix.Output[GetKeysKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Alibaba Cloud Resource Name (ARN) of the key.
@@ -505,6 +572,12 @@ func (o GetKeysKeyArrayOutput) ToGetKeysKeyArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o GetKeysKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetKeysKey] {
+	return pulumix.Output[[]GetKeysKey]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetKeysKeyArrayOutput) Index(i pulumi.IntInput) GetKeysKeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKeysKey {
 		return vs[0].([]GetKeysKey)[vs[1].(int)]
@@ -560,6 +633,12 @@ func (i GetSecretVersionsVersionArgs) ToGetSecretVersionsVersionOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretVersionsVersionOutput)
 }
 
+func (i GetSecretVersionsVersionArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretVersionsVersion] {
+	return pulumix.Output[GetSecretVersionsVersion]{
+		OutputState: i.ToGetSecretVersionsVersionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetSecretVersionsVersionArrayInput is an input type that accepts GetSecretVersionsVersionArray and GetSecretVersionsVersionArrayOutput values.
 // You can construct a concrete instance of `GetSecretVersionsVersionArrayInput` via:
 //
@@ -585,6 +664,12 @@ func (i GetSecretVersionsVersionArray) ToGetSecretVersionsVersionArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretVersionsVersionArrayOutput)
 }
 
+func (i GetSecretVersionsVersionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretVersionsVersion] {
+	return pulumix.Output[[]GetSecretVersionsVersion]{
+		OutputState: i.ToGetSecretVersionsVersionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetSecretVersionsVersionOutput struct{ *pulumi.OutputState }
 
 func (GetSecretVersionsVersionOutput) ElementType() reflect.Type {
@@ -597,6 +682,12 @@ func (o GetSecretVersionsVersionOutput) ToGetSecretVersionsVersionOutput() GetSe
 
 func (o GetSecretVersionsVersionOutput) ToGetSecretVersionsVersionOutputWithContext(ctx context.Context) GetSecretVersionsVersionOutput {
 	return o
+}
+
+func (o GetSecretVersionsVersionOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretVersionsVersion] {
+	return pulumix.Output[GetSecretVersionsVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The secret value. Secrets Manager decrypts the stored secret value in ciphertext and returns it. (Returned when `enableDetails` is true).
@@ -636,6 +727,12 @@ func (o GetSecretVersionsVersionArrayOutput) ToGetSecretVersionsVersionArrayOutp
 
 func (o GetSecretVersionsVersionArrayOutput) ToGetSecretVersionsVersionArrayOutputWithContext(ctx context.Context) GetSecretVersionsVersionArrayOutput {
 	return o
+}
+
+func (o GetSecretVersionsVersionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretVersionsVersion] {
+	return pulumix.Output[[]GetSecretVersionsVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSecretVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetSecretVersionsVersionOutput {
@@ -721,6 +818,12 @@ func (i GetSecretsSecretArgs) ToGetSecretsSecretOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretsSecretOutput)
 }
 
+func (i GetSecretsSecretArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretsSecret] {
+	return pulumix.Output[GetSecretsSecret]{
+		OutputState: i.ToGetSecretsSecretOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetSecretsSecretArrayInput is an input type that accepts GetSecretsSecretArray and GetSecretsSecretArrayOutput values.
 // You can construct a concrete instance of `GetSecretsSecretArrayInput` via:
 //
@@ -746,6 +849,12 @@ func (i GetSecretsSecretArray) ToGetSecretsSecretArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretsSecretArrayOutput)
 }
 
+func (i GetSecretsSecretArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretsSecret] {
+	return pulumix.Output[[]GetSecretsSecret]{
+		OutputState: i.ToGetSecretsSecretArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetSecretsSecretOutput struct{ *pulumi.OutputState }
 
 func (GetSecretsSecretOutput) ElementType() reflect.Type {
@@ -758,6 +867,12 @@ func (o GetSecretsSecretOutput) ToGetSecretsSecretOutput() GetSecretsSecretOutpu
 
 func (o GetSecretsSecretOutput) ToGetSecretsSecretOutputWithContext(ctx context.Context) GetSecretsSecretOutput {
 	return o
+}
+
+func (o GetSecretsSecretOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretsSecret] {
+	return pulumix.Output[GetSecretsSecret]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Available in 1.124.0+) A mapping of tags to assign to the resource.
@@ -832,6 +947,12 @@ func (o GetSecretsSecretArrayOutput) ToGetSecretsSecretArrayOutput() GetSecretsS
 
 func (o GetSecretsSecretArrayOutput) ToGetSecretsSecretArrayOutputWithContext(ctx context.Context) GetSecretsSecretArrayOutput {
 	return o
+}
+
+func (o GetSecretsSecretArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretsSecret] {
+	return pulumix.Output[[]GetSecretsSecret]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSecretsSecretArrayOutput) Index(i pulumi.IntInput) GetSecretsSecretOutput {

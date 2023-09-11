@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -50,6 +51,12 @@ func (i TransitRouterVpcAttachmentZoneMappingArgs) ToTransitRouterVpcAttachmentZ
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterVpcAttachmentZoneMappingOutput)
 }
 
+func (i TransitRouterVpcAttachmentZoneMappingArgs) ToOutput(ctx context.Context) pulumix.Output[TransitRouterVpcAttachmentZoneMapping] {
+	return pulumix.Output[TransitRouterVpcAttachmentZoneMapping]{
+		OutputState: i.ToTransitRouterVpcAttachmentZoneMappingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TransitRouterVpcAttachmentZoneMappingArrayInput is an input type that accepts TransitRouterVpcAttachmentZoneMappingArray and TransitRouterVpcAttachmentZoneMappingArrayOutput values.
 // You can construct a concrete instance of `TransitRouterVpcAttachmentZoneMappingArrayInput` via:
 //
@@ -75,6 +82,12 @@ func (i TransitRouterVpcAttachmentZoneMappingArray) ToTransitRouterVpcAttachment
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterVpcAttachmentZoneMappingArrayOutput)
 }
 
+func (i TransitRouterVpcAttachmentZoneMappingArray) ToOutput(ctx context.Context) pulumix.Output[[]TransitRouterVpcAttachmentZoneMapping] {
+	return pulumix.Output[[]TransitRouterVpcAttachmentZoneMapping]{
+		OutputState: i.ToTransitRouterVpcAttachmentZoneMappingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TransitRouterVpcAttachmentZoneMappingOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterVpcAttachmentZoneMappingOutput) ElementType() reflect.Type {
@@ -87,6 +100,12 @@ func (o TransitRouterVpcAttachmentZoneMappingOutput) ToTransitRouterVpcAttachmen
 
 func (o TransitRouterVpcAttachmentZoneMappingOutput) ToTransitRouterVpcAttachmentZoneMappingOutputWithContext(ctx context.Context) TransitRouterVpcAttachmentZoneMappingOutput {
 	return o
+}
+
+func (o TransitRouterVpcAttachmentZoneMappingOutput) ToOutput(ctx context.Context) pulumix.Output[TransitRouterVpcAttachmentZoneMapping] {
+	return pulumix.Output[TransitRouterVpcAttachmentZoneMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The VSwitch id of attachment.
@@ -111,6 +130,12 @@ func (o TransitRouterVpcAttachmentZoneMappingArrayOutput) ToTransitRouterVpcAtta
 
 func (o TransitRouterVpcAttachmentZoneMappingArrayOutput) ToTransitRouterVpcAttachmentZoneMappingArrayOutputWithContext(ctx context.Context) TransitRouterVpcAttachmentZoneMappingArrayOutput {
 	return o
+}
+
+func (o TransitRouterVpcAttachmentZoneMappingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TransitRouterVpcAttachmentZoneMapping] {
+	return pulumix.Output[[]TransitRouterVpcAttachmentZoneMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransitRouterVpcAttachmentZoneMappingArrayOutput) Index(i pulumi.IntInput) TransitRouterVpcAttachmentZoneMappingOutput {
@@ -152,6 +177,12 @@ func (i TransitRouterVpnAttachmentZoneArgs) ToTransitRouterVpnAttachmentZoneOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterVpnAttachmentZoneOutput)
 }
 
+func (i TransitRouterVpnAttachmentZoneArgs) ToOutput(ctx context.Context) pulumix.Output[TransitRouterVpnAttachmentZone] {
+	return pulumix.Output[TransitRouterVpnAttachmentZone]{
+		OutputState: i.ToTransitRouterVpnAttachmentZoneOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TransitRouterVpnAttachmentZoneArrayInput is an input type that accepts TransitRouterVpnAttachmentZoneArray and TransitRouterVpnAttachmentZoneArrayOutput values.
 // You can construct a concrete instance of `TransitRouterVpnAttachmentZoneArrayInput` via:
 //
@@ -177,6 +208,12 @@ func (i TransitRouterVpnAttachmentZoneArray) ToTransitRouterVpnAttachmentZoneArr
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterVpnAttachmentZoneArrayOutput)
 }
 
+func (i TransitRouterVpnAttachmentZoneArray) ToOutput(ctx context.Context) pulumix.Output[[]TransitRouterVpnAttachmentZone] {
+	return pulumix.Output[[]TransitRouterVpnAttachmentZone]{
+		OutputState: i.ToTransitRouterVpnAttachmentZoneArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TransitRouterVpnAttachmentZoneOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterVpnAttachmentZoneOutput) ElementType() reflect.Type {
@@ -189,6 +226,12 @@ func (o TransitRouterVpnAttachmentZoneOutput) ToTransitRouterVpnAttachmentZoneOu
 
 func (o TransitRouterVpnAttachmentZoneOutput) ToTransitRouterVpnAttachmentZoneOutputWithContext(ctx context.Context) TransitRouterVpnAttachmentZoneOutput {
 	return o
+}
+
+func (o TransitRouterVpnAttachmentZoneOutput) ToOutput(ctx context.Context) pulumix.Output[TransitRouterVpnAttachmentZone] {
+	return pulumix.Output[TransitRouterVpnAttachmentZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The id of the zone.
@@ -208,6 +251,12 @@ func (o TransitRouterVpnAttachmentZoneArrayOutput) ToTransitRouterVpnAttachmentZ
 
 func (o TransitRouterVpnAttachmentZoneArrayOutput) ToTransitRouterVpnAttachmentZoneArrayOutputWithContext(ctx context.Context) TransitRouterVpnAttachmentZoneArrayOutput {
 	return o
+}
+
+func (o TransitRouterVpnAttachmentZoneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TransitRouterVpnAttachmentZone] {
+	return pulumix.Output[[]TransitRouterVpnAttachmentZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransitRouterVpnAttachmentZoneArrayOutput) Index(i pulumi.IntInput) TransitRouterVpnAttachmentZoneOutput {
@@ -265,6 +314,12 @@ func (i GetBandwidthLimitsLimitArgs) ToGetBandwidthLimitsLimitOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetBandwidthLimitsLimitOutput)
 }
 
+func (i GetBandwidthLimitsLimitArgs) ToOutput(ctx context.Context) pulumix.Output[GetBandwidthLimitsLimit] {
+	return pulumix.Output[GetBandwidthLimitsLimit]{
+		OutputState: i.ToGetBandwidthLimitsLimitOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetBandwidthLimitsLimitArrayInput is an input type that accepts GetBandwidthLimitsLimitArray and GetBandwidthLimitsLimitArrayOutput values.
 // You can construct a concrete instance of `GetBandwidthLimitsLimitArrayInput` via:
 //
@@ -290,6 +345,12 @@ func (i GetBandwidthLimitsLimitArray) ToGetBandwidthLimitsLimitArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetBandwidthLimitsLimitArrayOutput)
 }
 
+func (i GetBandwidthLimitsLimitArray) ToOutput(ctx context.Context) pulumix.Output[[]GetBandwidthLimitsLimit] {
+	return pulumix.Output[[]GetBandwidthLimitsLimit]{
+		OutputState: i.ToGetBandwidthLimitsLimitArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetBandwidthLimitsLimitOutput struct{ *pulumi.OutputState }
 
 func (GetBandwidthLimitsLimitOutput) ElementType() reflect.Type {
@@ -302,6 +363,12 @@ func (o GetBandwidthLimitsLimitOutput) ToGetBandwidthLimitsLimitOutput() GetBand
 
 func (o GetBandwidthLimitsLimitOutput) ToGetBandwidthLimitsLimitOutputWithContext(ctx context.Context) GetBandwidthLimitsLimitOutput {
 	return o
+}
+
+func (o GetBandwidthLimitsLimitOutput) ToOutput(ctx context.Context) pulumix.Output[GetBandwidthLimitsLimit] {
+	return pulumix.Output[GetBandwidthLimitsLimit]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bandwidth limit configured for the interconnected regions communication.
@@ -341,6 +408,12 @@ func (o GetBandwidthLimitsLimitArrayOutput) ToGetBandwidthLimitsLimitArrayOutput
 
 func (o GetBandwidthLimitsLimitArrayOutput) ToGetBandwidthLimitsLimitArrayOutputWithContext(ctx context.Context) GetBandwidthLimitsLimitArrayOutput {
 	return o
+}
+
+func (o GetBandwidthLimitsLimitArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetBandwidthLimitsLimit] {
+	return pulumix.Output[[]GetBandwidthLimitsLimit]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetBandwidthLimitsLimitArrayOutput) Index(i pulumi.IntInput) GetBandwidthLimitsLimitOutput {
@@ -464,6 +537,12 @@ func (i GetBandwidthPackagesPackageArgs) ToGetBandwidthPackagesPackageOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetBandwidthPackagesPackageOutput)
 }
 
+func (i GetBandwidthPackagesPackageArgs) ToOutput(ctx context.Context) pulumix.Output[GetBandwidthPackagesPackage] {
+	return pulumix.Output[GetBandwidthPackagesPackage]{
+		OutputState: i.ToGetBandwidthPackagesPackageOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetBandwidthPackagesPackageArrayInput is an input type that accepts GetBandwidthPackagesPackageArray and GetBandwidthPackagesPackageArrayOutput values.
 // You can construct a concrete instance of `GetBandwidthPackagesPackageArrayInput` via:
 //
@@ -489,6 +568,12 @@ func (i GetBandwidthPackagesPackageArray) ToGetBandwidthPackagesPackageArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetBandwidthPackagesPackageArrayOutput)
 }
 
+func (i GetBandwidthPackagesPackageArray) ToOutput(ctx context.Context) pulumix.Output[[]GetBandwidthPackagesPackage] {
+	return pulumix.Output[[]GetBandwidthPackagesPackage]{
+		OutputState: i.ToGetBandwidthPackagesPackageArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetBandwidthPackagesPackageOutput struct{ *pulumi.OutputState }
 
 func (GetBandwidthPackagesPackageOutput) ElementType() reflect.Type {
@@ -501,6 +586,12 @@ func (o GetBandwidthPackagesPackageOutput) ToGetBandwidthPackagesPackageOutput()
 
 func (o GetBandwidthPackagesPackageOutput) ToGetBandwidthPackagesPackageOutputWithContext(ctx context.Context) GetBandwidthPackagesPackageOutput {
 	return o
+}
+
+func (o GetBandwidthPackagesPackageOutput) ToOutput(ctx context.Context) pulumix.Output[GetBandwidthPackagesPackage] {
+	return pulumix.Output[GetBandwidthPackagesPackage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bandwidth in Mbps of the CEN bandwidth package.
@@ -626,6 +717,12 @@ func (o GetBandwidthPackagesPackageArrayOutput) ToGetBandwidthPackagesPackageArr
 	return o
 }
 
+func (o GetBandwidthPackagesPackageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetBandwidthPackagesPackage] {
+	return pulumix.Output[[]GetBandwidthPackagesPackage]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetBandwidthPackagesPackageArrayOutput) Index(i pulumi.IntInput) GetBandwidthPackagesPackageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBandwidthPackagesPackage {
 		return vs[0].([]GetBandwidthPackagesPackage)[vs[1].(int)]
@@ -689,6 +786,12 @@ func (i GetChildInstanceRouteEntryToAttachmentsAttachmentArgs) ToGetChildInstanc
 	return pulumi.ToOutputWithContext(ctx, i).(GetChildInstanceRouteEntryToAttachmentsAttachmentOutput)
 }
 
+func (i GetChildInstanceRouteEntryToAttachmentsAttachmentArgs) ToOutput(ctx context.Context) pulumix.Output[GetChildInstanceRouteEntryToAttachmentsAttachment] {
+	return pulumix.Output[GetChildInstanceRouteEntryToAttachmentsAttachment]{
+		OutputState: i.ToGetChildInstanceRouteEntryToAttachmentsAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetChildInstanceRouteEntryToAttachmentsAttachmentArrayInput is an input type that accepts GetChildInstanceRouteEntryToAttachmentsAttachmentArray and GetChildInstanceRouteEntryToAttachmentsAttachmentArrayOutput values.
 // You can construct a concrete instance of `GetChildInstanceRouteEntryToAttachmentsAttachmentArrayInput` via:
 //
@@ -714,6 +817,12 @@ func (i GetChildInstanceRouteEntryToAttachmentsAttachmentArray) ToGetChildInstan
 	return pulumi.ToOutputWithContext(ctx, i).(GetChildInstanceRouteEntryToAttachmentsAttachmentArrayOutput)
 }
 
+func (i GetChildInstanceRouteEntryToAttachmentsAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]GetChildInstanceRouteEntryToAttachmentsAttachment] {
+	return pulumix.Output[[]GetChildInstanceRouteEntryToAttachmentsAttachment]{
+		OutputState: i.ToGetChildInstanceRouteEntryToAttachmentsAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetChildInstanceRouteEntryToAttachmentsAttachmentOutput struct{ *pulumi.OutputState }
 
 func (GetChildInstanceRouteEntryToAttachmentsAttachmentOutput) ElementType() reflect.Type {
@@ -726,6 +835,12 @@ func (o GetChildInstanceRouteEntryToAttachmentsAttachmentOutput) ToGetChildInsta
 
 func (o GetChildInstanceRouteEntryToAttachmentsAttachmentOutput) ToGetChildInstanceRouteEntryToAttachmentsAttachmentOutputWithContext(ctx context.Context) GetChildInstanceRouteEntryToAttachmentsAttachmentOutput {
 	return o
+}
+
+func (o GetChildInstanceRouteEntryToAttachmentsAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[GetChildInstanceRouteEntryToAttachmentsAttachment] {
+	return pulumix.Output[GetChildInstanceRouteEntryToAttachmentsAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the CEN instance.
@@ -775,6 +890,12 @@ func (o GetChildInstanceRouteEntryToAttachmentsAttachmentArrayOutput) ToGetChild
 
 func (o GetChildInstanceRouteEntryToAttachmentsAttachmentArrayOutput) ToGetChildInstanceRouteEntryToAttachmentsAttachmentArrayOutputWithContext(ctx context.Context) GetChildInstanceRouteEntryToAttachmentsAttachmentArrayOutput {
 	return o
+}
+
+func (o GetChildInstanceRouteEntryToAttachmentsAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetChildInstanceRouteEntryToAttachmentsAttachment] {
+	return pulumix.Output[[]GetChildInstanceRouteEntryToAttachmentsAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetChildInstanceRouteEntryToAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) GetChildInstanceRouteEntryToAttachmentsAttachmentOutput {
@@ -844,6 +965,12 @@ func (i GetFlowlogsFlowlogArgs) ToGetFlowlogsFlowlogOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetFlowlogsFlowlogOutput)
 }
 
+func (i GetFlowlogsFlowlogArgs) ToOutput(ctx context.Context) pulumix.Output[GetFlowlogsFlowlog] {
+	return pulumix.Output[GetFlowlogsFlowlog]{
+		OutputState: i.ToGetFlowlogsFlowlogOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetFlowlogsFlowlogArrayInput is an input type that accepts GetFlowlogsFlowlogArray and GetFlowlogsFlowlogArrayOutput values.
 // You can construct a concrete instance of `GetFlowlogsFlowlogArrayInput` via:
 //
@@ -869,6 +996,12 @@ func (i GetFlowlogsFlowlogArray) ToGetFlowlogsFlowlogArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetFlowlogsFlowlogArrayOutput)
 }
 
+func (i GetFlowlogsFlowlogArray) ToOutput(ctx context.Context) pulumix.Output[[]GetFlowlogsFlowlog] {
+	return pulumix.Output[[]GetFlowlogsFlowlog]{
+		OutputState: i.ToGetFlowlogsFlowlogArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetFlowlogsFlowlogOutput struct{ *pulumi.OutputState }
 
 func (GetFlowlogsFlowlogOutput) ElementType() reflect.Type {
@@ -881,6 +1014,12 @@ func (o GetFlowlogsFlowlogOutput) ToGetFlowlogsFlowlogOutput() GetFlowlogsFlowlo
 
 func (o GetFlowlogsFlowlogOutput) ToGetFlowlogsFlowlogOutputWithContext(ctx context.Context) GetFlowlogsFlowlogOutput {
 	return o
+}
+
+func (o GetFlowlogsFlowlogOutput) ToOutput(ctx context.Context) pulumix.Output[GetFlowlogsFlowlog] {
+	return pulumix.Output[GetFlowlogsFlowlog]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the CEN Instance.
@@ -935,6 +1074,12 @@ func (o GetFlowlogsFlowlogArrayOutput) ToGetFlowlogsFlowlogArrayOutput() GetFlow
 
 func (o GetFlowlogsFlowlogArrayOutput) ToGetFlowlogsFlowlogArrayOutputWithContext(ctx context.Context) GetFlowlogsFlowlogArrayOutput {
 	return o
+}
+
+func (o GetFlowlogsFlowlogArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetFlowlogsFlowlog] {
+	return pulumix.Output[[]GetFlowlogsFlowlog]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetFlowlogsFlowlogArrayOutput) Index(i pulumi.IntInput) GetFlowlogsFlowlogOutput {
@@ -1004,6 +1149,12 @@ func (i GetInstanceAttachmentsAttachmentArgs) ToGetInstanceAttachmentsAttachment
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAttachmentsAttachmentOutput)
 }
 
+func (i GetInstanceAttachmentsAttachmentArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceAttachmentsAttachment] {
+	return pulumix.Output[GetInstanceAttachmentsAttachment]{
+		OutputState: i.ToGetInstanceAttachmentsAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstanceAttachmentsAttachmentArrayInput is an input type that accepts GetInstanceAttachmentsAttachmentArray and GetInstanceAttachmentsAttachmentArrayOutput values.
 // You can construct a concrete instance of `GetInstanceAttachmentsAttachmentArrayInput` via:
 //
@@ -1029,6 +1180,12 @@ func (i GetInstanceAttachmentsAttachmentArray) ToGetInstanceAttachmentsAttachmen
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAttachmentsAttachmentArrayOutput)
 }
 
+func (i GetInstanceAttachmentsAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceAttachmentsAttachment] {
+	return pulumix.Output[[]GetInstanceAttachmentsAttachment]{
+		OutputState: i.ToGetInstanceAttachmentsAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstanceAttachmentsAttachmentOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceAttachmentsAttachmentOutput) ElementType() reflect.Type {
@@ -1041,6 +1198,12 @@ func (o GetInstanceAttachmentsAttachmentOutput) ToGetInstanceAttachmentsAttachme
 
 func (o GetInstanceAttachmentsAttachmentOutput) ToGetInstanceAttachmentsAttachmentOutputWithContext(ctx context.Context) GetInstanceAttachmentsAttachmentOutput {
 	return o
+}
+
+func (o GetInstanceAttachmentsAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceAttachmentsAttachment] {
+	return pulumix.Output[GetInstanceAttachmentsAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time when the network is associated with the CEN instance.
@@ -1095,6 +1258,12 @@ func (o GetInstanceAttachmentsAttachmentArrayOutput) ToGetInstanceAttachmentsAtt
 
 func (o GetInstanceAttachmentsAttachmentArrayOutput) ToGetInstanceAttachmentsAttachmentArrayOutputWithContext(ctx context.Context) GetInstanceAttachmentsAttachmentArrayOutput {
 	return o
+}
+
+func (o GetInstanceAttachmentsAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceAttachmentsAttachment] {
+	return pulumix.Output[[]GetInstanceAttachmentsAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) GetInstanceAttachmentsAttachmentOutput {
@@ -1172,6 +1341,12 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
 }
 
+func (i GetInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
+	return pulumix.Output[GetInstancesInstance]{
+		OutputState: i.ToGetInstancesInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
@@ -1197,6 +1372,12 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
+func (i GetInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
+	return pulumix.Output[[]GetInstancesInstance]{
+		OutputState: i.ToGetInstancesInstanceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
@@ -1209,6 +1390,12 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesI
 
 func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
 	return o
+}
+
+func (o GetInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
+	return pulumix.Output[GetInstancesInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of CEN Bandwidth Package IDs in the specified CEN instance.
@@ -1275,6 +1462,12 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithCo
 	return o
 }
 
+func (o GetInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
+	return pulumix.Output[[]GetInstancesInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
 		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
@@ -1338,6 +1531,12 @@ func (i GetInterRegionTrafficQosPoliciesPolicyArgs) ToGetInterRegionTrafficQosPo
 	return pulumi.ToOutputWithContext(ctx, i).(GetInterRegionTrafficQosPoliciesPolicyOutput)
 }
 
+func (i GetInterRegionTrafficQosPoliciesPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GetInterRegionTrafficQosPoliciesPolicy] {
+	return pulumix.Output[GetInterRegionTrafficQosPoliciesPolicy]{
+		OutputState: i.ToGetInterRegionTrafficQosPoliciesPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInterRegionTrafficQosPoliciesPolicyArrayInput is an input type that accepts GetInterRegionTrafficQosPoliciesPolicyArray and GetInterRegionTrafficQosPoliciesPolicyArrayOutput values.
 // You can construct a concrete instance of `GetInterRegionTrafficQosPoliciesPolicyArrayInput` via:
 //
@@ -1363,6 +1562,12 @@ func (i GetInterRegionTrafficQosPoliciesPolicyArray) ToGetInterRegionTrafficQosP
 	return pulumi.ToOutputWithContext(ctx, i).(GetInterRegionTrafficQosPoliciesPolicyArrayOutput)
 }
 
+func (i GetInterRegionTrafficQosPoliciesPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInterRegionTrafficQosPoliciesPolicy] {
+	return pulumix.Output[[]GetInterRegionTrafficQosPoliciesPolicy]{
+		OutputState: i.ToGetInterRegionTrafficQosPoliciesPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInterRegionTrafficQosPoliciesPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetInterRegionTrafficQosPoliciesPolicyOutput) ElementType() reflect.Type {
@@ -1375,6 +1580,12 @@ func (o GetInterRegionTrafficQosPoliciesPolicyOutput) ToGetInterRegionTrafficQos
 
 func (o GetInterRegionTrafficQosPoliciesPolicyOutput) ToGetInterRegionTrafficQosPoliciesPolicyOutputWithContext(ctx context.Context) GetInterRegionTrafficQosPoliciesPolicyOutput {
 	return o
+}
+
+func (o GetInterRegionTrafficQosPoliciesPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GetInterRegionTrafficQosPoliciesPolicy] {
+	return pulumix.Output[GetInterRegionTrafficQosPoliciesPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Inter Region Traffic Qos Policy.
@@ -1424,6 +1635,12 @@ func (o GetInterRegionTrafficQosPoliciesPolicyArrayOutput) ToGetInterRegionTraff
 
 func (o GetInterRegionTrafficQosPoliciesPolicyArrayOutput) ToGetInterRegionTrafficQosPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetInterRegionTrafficQosPoliciesPolicyArrayOutput {
 	return o
+}
+
+func (o GetInterRegionTrafficQosPoliciesPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInterRegionTrafficQosPoliciesPolicy] {
+	return pulumix.Output[[]GetInterRegionTrafficQosPoliciesPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInterRegionTrafficQosPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetInterRegionTrafficQosPoliciesPolicyOutput {
@@ -1491,6 +1708,12 @@ func (i GetInterRegionTrafficQosQueuesQueueArgs) ToGetInterRegionTrafficQosQueue
 	return pulumi.ToOutputWithContext(ctx, i).(GetInterRegionTrafficQosQueuesQueueOutput)
 }
 
+func (i GetInterRegionTrafficQosQueuesQueueArgs) ToOutput(ctx context.Context) pulumix.Output[GetInterRegionTrafficQosQueuesQueue] {
+	return pulumix.Output[GetInterRegionTrafficQosQueuesQueue]{
+		OutputState: i.ToGetInterRegionTrafficQosQueuesQueueOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInterRegionTrafficQosQueuesQueueArrayInput is an input type that accepts GetInterRegionTrafficQosQueuesQueueArray and GetInterRegionTrafficQosQueuesQueueArrayOutput values.
 // You can construct a concrete instance of `GetInterRegionTrafficQosQueuesQueueArrayInput` via:
 //
@@ -1516,6 +1739,12 @@ func (i GetInterRegionTrafficQosQueuesQueueArray) ToGetInterRegionTrafficQosQueu
 	return pulumi.ToOutputWithContext(ctx, i).(GetInterRegionTrafficQosQueuesQueueArrayOutput)
 }
 
+func (i GetInterRegionTrafficQosQueuesQueueArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInterRegionTrafficQosQueuesQueue] {
+	return pulumix.Output[[]GetInterRegionTrafficQosQueuesQueue]{
+		OutputState: i.ToGetInterRegionTrafficQosQueuesQueueArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInterRegionTrafficQosQueuesQueueOutput struct{ *pulumi.OutputState }
 
 func (GetInterRegionTrafficQosQueuesQueueOutput) ElementType() reflect.Type {
@@ -1528,6 +1757,12 @@ func (o GetInterRegionTrafficQosQueuesQueueOutput) ToGetInterRegionTrafficQosQue
 
 func (o GetInterRegionTrafficQosQueuesQueueOutput) ToGetInterRegionTrafficQosQueuesQueueOutputWithContext(ctx context.Context) GetInterRegionTrafficQosQueuesQueueOutput {
 	return o
+}
+
+func (o GetInterRegionTrafficQosQueuesQueueOutput) ToOutput(ctx context.Context) pulumix.Output[GetInterRegionTrafficQosQueuesQueue] {
+	return pulumix.Output[GetInterRegionTrafficQosQueuesQueue]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
@@ -1581,6 +1816,12 @@ func (o GetInterRegionTrafficQosQueuesQueueArrayOutput) ToGetInterRegionTrafficQ
 
 func (o GetInterRegionTrafficQosQueuesQueueArrayOutput) ToGetInterRegionTrafficQosQueuesQueueArrayOutputWithContext(ctx context.Context) GetInterRegionTrafficQosQueuesQueueArrayOutput {
 	return o
+}
+
+func (o GetInterRegionTrafficQosQueuesQueueArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInterRegionTrafficQosQueuesQueue] {
+	return pulumix.Output[[]GetInterRegionTrafficQosQueuesQueue]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInterRegionTrafficQosQueuesQueueArrayOutput) Index(i pulumi.IntInput) GetInterRegionTrafficQosQueuesQueueOutput {
@@ -1646,6 +1887,12 @@ func (i GetPrivateZonesZoneArgs) ToGetPrivateZonesZoneOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateZonesZoneOutput)
 }
 
+func (i GetPrivateZonesZoneArgs) ToOutput(ctx context.Context) pulumix.Output[GetPrivateZonesZone] {
+	return pulumix.Output[GetPrivateZonesZone]{
+		OutputState: i.ToGetPrivateZonesZoneOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetPrivateZonesZoneArrayInput is an input type that accepts GetPrivateZonesZoneArray and GetPrivateZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetPrivateZonesZoneArrayInput` via:
 //
@@ -1671,6 +1918,12 @@ func (i GetPrivateZonesZoneArray) ToGetPrivateZonesZoneArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateZonesZoneArrayOutput)
 }
 
+func (i GetPrivateZonesZoneArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivateZonesZone] {
+	return pulumix.Output[[]GetPrivateZonesZone]{
+		OutputState: i.ToGetPrivateZonesZoneArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPrivateZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetPrivateZonesZoneOutput) ElementType() reflect.Type {
@@ -1683,6 +1936,12 @@ func (o GetPrivateZonesZoneOutput) ToGetPrivateZonesZoneOutput() GetPrivateZones
 
 func (o GetPrivateZonesZoneOutput) ToGetPrivateZonesZoneOutputWithContext(ctx context.Context) GetPrivateZonesZoneOutput {
 	return o
+}
+
+func (o GetPrivateZonesZoneOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrivateZonesZone] {
+	return pulumix.Output[GetPrivateZonesZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
@@ -1732,6 +1991,12 @@ func (o GetPrivateZonesZoneArrayOutput) ToGetPrivateZonesZoneArrayOutput() GetPr
 
 func (o GetPrivateZonesZoneArrayOutput) ToGetPrivateZonesZoneArrayOutputWithContext(ctx context.Context) GetPrivateZonesZoneArrayOutput {
 	return o
+}
+
+func (o GetPrivateZonesZoneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivateZonesZone] {
+	return pulumix.Output[[]GetPrivateZonesZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrivateZonesZoneArrayOutput) Index(i pulumi.IntInput) GetPrivateZonesZoneOutput {
@@ -1789,6 +2054,12 @@ func (i GetRegionRouteEntriesEntryArgs) ToGetRegionRouteEntriesEntryOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetRegionRouteEntriesEntryOutput)
 }
 
+func (i GetRegionRouteEntriesEntryArgs) ToOutput(ctx context.Context) pulumix.Output[GetRegionRouteEntriesEntry] {
+	return pulumix.Output[GetRegionRouteEntriesEntry]{
+		OutputState: i.ToGetRegionRouteEntriesEntryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRegionRouteEntriesEntryArrayInput is an input type that accepts GetRegionRouteEntriesEntryArray and GetRegionRouteEntriesEntryArrayOutput values.
 // You can construct a concrete instance of `GetRegionRouteEntriesEntryArrayInput` via:
 //
@@ -1814,6 +2085,12 @@ func (i GetRegionRouteEntriesEntryArray) ToGetRegionRouteEntriesEntryArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetRegionRouteEntriesEntryArrayOutput)
 }
 
+func (i GetRegionRouteEntriesEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRegionRouteEntriesEntry] {
+	return pulumix.Output[[]GetRegionRouteEntriesEntry]{
+		OutputState: i.ToGetRegionRouteEntriesEntryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRegionRouteEntriesEntryOutput struct{ *pulumi.OutputState }
 
 func (GetRegionRouteEntriesEntryOutput) ElementType() reflect.Type {
@@ -1826,6 +2103,12 @@ func (o GetRegionRouteEntriesEntryOutput) ToGetRegionRouteEntriesEntryOutput() G
 
 func (o GetRegionRouteEntriesEntryOutput) ToGetRegionRouteEntriesEntryOutputWithContext(ctx context.Context) GetRegionRouteEntriesEntryOutput {
 	return o
+}
+
+func (o GetRegionRouteEntriesEntryOutput) ToOutput(ctx context.Context) pulumix.Output[GetRegionRouteEntriesEntry] {
+	return pulumix.Output[GetRegionRouteEntriesEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The destination CIDR block of the route entry.
@@ -1865,6 +2148,12 @@ func (o GetRegionRouteEntriesEntryArrayOutput) ToGetRegionRouteEntriesEntryArray
 
 func (o GetRegionRouteEntriesEntryArrayOutput) ToGetRegionRouteEntriesEntryArrayOutputWithContext(ctx context.Context) GetRegionRouteEntriesEntryArrayOutput {
 	return o
+}
+
+func (o GetRegionRouteEntriesEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRegionRouteEntriesEntry] {
+	return pulumix.Output[[]GetRegionRouteEntriesEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRegionRouteEntriesEntryArrayOutput) Index(i pulumi.IntInput) GetRegionRouteEntriesEntryOutput {
@@ -1934,6 +2223,12 @@ func (i GetRouteEntriesEntryArgs) ToGetRouteEntriesEntryOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetRouteEntriesEntryOutput)
 }
 
+func (i GetRouteEntriesEntryArgs) ToOutput(ctx context.Context) pulumix.Output[GetRouteEntriesEntry] {
+	return pulumix.Output[GetRouteEntriesEntry]{
+		OutputState: i.ToGetRouteEntriesEntryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRouteEntriesEntryArrayInput is an input type that accepts GetRouteEntriesEntryArray and GetRouteEntriesEntryArrayOutput values.
 // You can construct a concrete instance of `GetRouteEntriesEntryArrayInput` via:
 //
@@ -1959,6 +2254,12 @@ func (i GetRouteEntriesEntryArray) ToGetRouteEntriesEntryArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetRouteEntriesEntryArrayOutput)
 }
 
+func (i GetRouteEntriesEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRouteEntriesEntry] {
+	return pulumix.Output[[]GetRouteEntriesEntry]{
+		OutputState: i.ToGetRouteEntriesEntryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRouteEntriesEntryOutput struct{ *pulumi.OutputState }
 
 func (GetRouteEntriesEntryOutput) ElementType() reflect.Type {
@@ -1971,6 +2272,12 @@ func (o GetRouteEntriesEntryOutput) ToGetRouteEntriesEntryOutput() GetRouteEntri
 
 func (o GetRouteEntriesEntryOutput) ToGetRouteEntriesEntryOutputWithContext(ctx context.Context) GetRouteEntriesEntryOutput {
 	return o
+}
+
+func (o GetRouteEntriesEntryOutput) ToOutput(ctx context.Context) pulumix.Output[GetRouteEntriesEntry] {
+	return pulumix.Output[GetRouteEntriesEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The destination CIDR block of the route entry to query.
@@ -2025,6 +2332,12 @@ func (o GetRouteEntriesEntryArrayOutput) ToGetRouteEntriesEntryArrayOutput() Get
 
 func (o GetRouteEntriesEntryArrayOutput) ToGetRouteEntriesEntryArrayOutputWithContext(ctx context.Context) GetRouteEntriesEntryArrayOutput {
 	return o
+}
+
+func (o GetRouteEntriesEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRouteEntriesEntry] {
+	return pulumix.Output[[]GetRouteEntriesEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRouteEntriesEntryArrayOutput) Index(i pulumi.IntInput) GetRouteEntriesEntryOutput {
@@ -2082,6 +2395,12 @@ func (i GetRouteEntriesEntryConflictArgs) ToGetRouteEntriesEntryConflictOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetRouteEntriesEntryConflictOutput)
 }
 
+func (i GetRouteEntriesEntryConflictArgs) ToOutput(ctx context.Context) pulumix.Output[GetRouteEntriesEntryConflict] {
+	return pulumix.Output[GetRouteEntriesEntryConflict]{
+		OutputState: i.ToGetRouteEntriesEntryConflictOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRouteEntriesEntryConflictArrayInput is an input type that accepts GetRouteEntriesEntryConflictArray and GetRouteEntriesEntryConflictArrayOutput values.
 // You can construct a concrete instance of `GetRouteEntriesEntryConflictArrayInput` via:
 //
@@ -2107,6 +2426,12 @@ func (i GetRouteEntriesEntryConflictArray) ToGetRouteEntriesEntryConflictArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetRouteEntriesEntryConflictArrayOutput)
 }
 
+func (i GetRouteEntriesEntryConflictArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRouteEntriesEntryConflict] {
+	return pulumix.Output[[]GetRouteEntriesEntryConflict]{
+		OutputState: i.ToGetRouteEntriesEntryConflictArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRouteEntriesEntryConflictOutput struct{ *pulumi.OutputState }
 
 func (GetRouteEntriesEntryConflictOutput) ElementType() reflect.Type {
@@ -2119,6 +2444,12 @@ func (o GetRouteEntriesEntryConflictOutput) ToGetRouteEntriesEntryConflictOutput
 
 func (o GetRouteEntriesEntryConflictOutput) ToGetRouteEntriesEntryConflictOutputWithContext(ctx context.Context) GetRouteEntriesEntryConflictOutput {
 	return o
+}
+
+func (o GetRouteEntriesEntryConflictOutput) ToOutput(ctx context.Context) pulumix.Output[GetRouteEntriesEntryConflict] {
+	return pulumix.Output[GetRouteEntriesEntryConflict]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The destination CIDR block of the route entry to query.
@@ -2158,6 +2489,12 @@ func (o GetRouteEntriesEntryConflictArrayOutput) ToGetRouteEntriesEntryConflictA
 
 func (o GetRouteEntriesEntryConflictArrayOutput) ToGetRouteEntriesEntryConflictArrayOutputWithContext(ctx context.Context) GetRouteEntriesEntryConflictArrayOutput {
 	return o
+}
+
+func (o GetRouteEntriesEntryConflictArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRouteEntriesEntryConflict] {
+	return pulumix.Output[[]GetRouteEntriesEntryConflict]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRouteEntriesEntryConflictArrayOutput) Index(i pulumi.IntInput) GetRouteEntriesEntryConflictOutput {
@@ -2315,6 +2652,12 @@ func (i GetRouteMapsMapArgs) ToGetRouteMapsMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRouteMapsMapOutput)
 }
 
+func (i GetRouteMapsMapArgs) ToOutput(ctx context.Context) pulumix.Output[GetRouteMapsMap] {
+	return pulumix.Output[GetRouteMapsMap]{
+		OutputState: i.ToGetRouteMapsMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRouteMapsMapArrayInput is an input type that accepts GetRouteMapsMapArray and GetRouteMapsMapArrayOutput values.
 // You can construct a concrete instance of `GetRouteMapsMapArrayInput` via:
 //
@@ -2340,6 +2683,12 @@ func (i GetRouteMapsMapArray) ToGetRouteMapsMapArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetRouteMapsMapArrayOutput)
 }
 
+func (i GetRouteMapsMapArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRouteMapsMap] {
+	return pulumix.Output[[]GetRouteMapsMap]{
+		OutputState: i.ToGetRouteMapsMapArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRouteMapsMapOutput struct{ *pulumi.OutputState }
 
 func (GetRouteMapsMapOutput) ElementType() reflect.Type {
@@ -2352,6 +2701,12 @@ func (o GetRouteMapsMapOutput) ToGetRouteMapsMapOutput() GetRouteMapsMapOutput {
 
 func (o GetRouteMapsMapOutput) ToGetRouteMapsMapOutputWithContext(ctx context.Context) GetRouteMapsMapOutput {
 	return o
+}
+
+func (o GetRouteMapsMapOutput) ToOutput(ctx context.Context) pulumix.Output[GetRouteMapsMap] {
+	return pulumix.Output[GetRouteMapsMap]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A match statement. It indicates the mode in which the as-path attribute is matched.
@@ -2518,6 +2873,12 @@ func (o GetRouteMapsMapArrayOutput) ToGetRouteMapsMapArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o GetRouteMapsMapArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRouteMapsMap] {
+	return pulumix.Output[[]GetRouteMapsMap]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetRouteMapsMapArrayOutput) Index(i pulumi.IntInput) GetRouteMapsMapOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteMapsMap {
 		return vs[0].([]GetRouteMapsMap)[vs[1].(int)]
@@ -2593,6 +2954,12 @@ func (i GetRouteServicesServiceArgs) ToGetRouteServicesServiceOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetRouteServicesServiceOutput)
 }
 
+func (i GetRouteServicesServiceArgs) ToOutput(ctx context.Context) pulumix.Output[GetRouteServicesService] {
+	return pulumix.Output[GetRouteServicesService]{
+		OutputState: i.ToGetRouteServicesServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRouteServicesServiceArrayInput is an input type that accepts GetRouteServicesServiceArray and GetRouteServicesServiceArrayOutput values.
 // You can construct a concrete instance of `GetRouteServicesServiceArrayInput` via:
 //
@@ -2618,6 +2985,12 @@ func (i GetRouteServicesServiceArray) ToGetRouteServicesServiceArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetRouteServicesServiceArrayOutput)
 }
 
+func (i GetRouteServicesServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRouteServicesService] {
+	return pulumix.Output[[]GetRouteServicesService]{
+		OutputState: i.ToGetRouteServicesServiceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRouteServicesServiceOutput struct{ *pulumi.OutputState }
 
 func (GetRouteServicesServiceOutput) ElementType() reflect.Type {
@@ -2630,6 +3003,12 @@ func (o GetRouteServicesServiceOutput) ToGetRouteServicesServiceOutput() GetRout
 
 func (o GetRouteServicesServiceOutput) ToGetRouteServicesServiceOutputWithContext(ctx context.Context) GetRouteServicesServiceOutput {
 	return o
+}
+
+func (o GetRouteServicesServiceOutput) ToOutput(ctx context.Context) pulumix.Output[GetRouteServicesService] {
+	return pulumix.Output[GetRouteServicesService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The region of the network instances that access the cloud services.
@@ -2694,6 +3073,12 @@ func (o GetRouteServicesServiceArrayOutput) ToGetRouteServicesServiceArrayOutput
 
 func (o GetRouteServicesServiceArrayOutput) ToGetRouteServicesServiceArrayOutputWithContext(ctx context.Context) GetRouteServicesServiceArrayOutput {
 	return o
+}
+
+func (o GetRouteServicesServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRouteServicesService] {
+	return pulumix.Output[[]GetRouteServicesService]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRouteServicesServiceArrayOutput) Index(i pulumi.IntInput) GetRouteServicesServiceOutput {
@@ -2763,6 +3148,12 @@ func (i GetTrafficMarkingPoliciesPolicyArgs) ToGetTrafficMarkingPoliciesPolicyOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetTrafficMarkingPoliciesPolicyOutput)
 }
 
+func (i GetTrafficMarkingPoliciesPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GetTrafficMarkingPoliciesPolicy] {
+	return pulumix.Output[GetTrafficMarkingPoliciesPolicy]{
+		OutputState: i.ToGetTrafficMarkingPoliciesPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTrafficMarkingPoliciesPolicyArrayInput is an input type that accepts GetTrafficMarkingPoliciesPolicyArray and GetTrafficMarkingPoliciesPolicyArrayOutput values.
 // You can construct a concrete instance of `GetTrafficMarkingPoliciesPolicyArrayInput` via:
 //
@@ -2788,6 +3179,12 @@ func (i GetTrafficMarkingPoliciesPolicyArray) ToGetTrafficMarkingPoliciesPolicyA
 	return pulumi.ToOutputWithContext(ctx, i).(GetTrafficMarkingPoliciesPolicyArrayOutput)
 }
 
+func (i GetTrafficMarkingPoliciesPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTrafficMarkingPoliciesPolicy] {
+	return pulumix.Output[[]GetTrafficMarkingPoliciesPolicy]{
+		OutputState: i.ToGetTrafficMarkingPoliciesPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTrafficMarkingPoliciesPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetTrafficMarkingPoliciesPolicyOutput) ElementType() reflect.Type {
@@ -2800,6 +3197,12 @@ func (o GetTrafficMarkingPoliciesPolicyOutput) ToGetTrafficMarkingPoliciesPolicy
 
 func (o GetTrafficMarkingPoliciesPolicyOutput) ToGetTrafficMarkingPoliciesPolicyOutputWithContext(ctx context.Context) GetTrafficMarkingPoliciesPolicyOutput {
 	return o
+}
+
+func (o GetTrafficMarkingPoliciesPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GetTrafficMarkingPoliciesPolicy] {
+	return pulumix.Output[GetTrafficMarkingPoliciesPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the Traffic Marking Policy.
@@ -2854,6 +3257,12 @@ func (o GetTrafficMarkingPoliciesPolicyArrayOutput) ToGetTrafficMarkingPoliciesP
 
 func (o GetTrafficMarkingPoliciesPolicyArrayOutput) ToGetTrafficMarkingPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetTrafficMarkingPoliciesPolicyArrayOutput {
 	return o
+}
+
+func (o GetTrafficMarkingPoliciesPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTrafficMarkingPoliciesPolicy] {
+	return pulumix.Output[[]GetTrafficMarkingPoliciesPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTrafficMarkingPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetTrafficMarkingPoliciesPolicyOutput {
@@ -2923,6 +3332,12 @@ func (i GetTransitRouteTableAggregationsTransitRouteTableAggregationArgs) ToGetT
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput)
 }
 
+func (i GetTransitRouteTableAggregationsTransitRouteTableAggregationArgs) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouteTableAggregationsTransitRouteTableAggregation] {
+	return pulumix.Output[GetTransitRouteTableAggregationsTransitRouteTableAggregation]{
+		OutputState: i.ToGetTransitRouteTableAggregationsTransitRouteTableAggregationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayInput is an input type that accepts GetTransitRouteTableAggregationsTransitRouteTableAggregationArray and GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayInput` via:
 //
@@ -2948,6 +3363,12 @@ func (i GetTransitRouteTableAggregationsTransitRouteTableAggregationArray) ToGet
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutput)
 }
 
+func (i GetTransitRouteTableAggregationsTransitRouteTableAggregationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouteTableAggregationsTransitRouteTableAggregation] {
+	return pulumix.Output[[]GetTransitRouteTableAggregationsTransitRouteTableAggregation]{
+		OutputState: i.ToGetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput struct{ *pulumi.OutputState }
 
 func (GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput) ElementType() reflect.Type {
@@ -2960,6 +3381,12 @@ func (o GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput) ToGe
 
 func (o GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput) ToGetTransitRouteTableAggregationsTransitRouteTableAggregationOutputWithContext(ctx context.Context) GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput {
 	return o
+}
+
+func (o GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouteTableAggregationsTransitRouteTableAggregation] {
+	return pulumix.Output[GetTransitRouteTableAggregationsTransitRouteTableAggregation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Transit Route Table Aggregation. It formats as `<transit_route_table_id>:<transit_route_table_aggregation_cidr>`.
@@ -3026,6 +3453,12 @@ func (o GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutput)
 	return o
 }
 
+func (o GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouteTableAggregationsTransitRouteTableAggregation] {
+	return pulumix.Output[[]GetTransitRouteTableAggregationsTransitRouteTableAggregation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutput) Index(i pulumi.IntInput) GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTransitRouteTableAggregationsTransitRouteTableAggregation {
 		return vs[0].([]GetTransitRouteTableAggregationsTransitRouteTableAggregation)[vs[1].(int)]
@@ -3069,6 +3502,12 @@ func (i GetTransitRouterAvailableResourcesResourceArgs) ToGetTransitRouterAvaila
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterAvailableResourcesResourceOutput)
 }
 
+func (i GetTransitRouterAvailableResourcesResourceArgs) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterAvailableResourcesResource] {
+	return pulumix.Output[GetTransitRouterAvailableResourcesResource]{
+		OutputState: i.ToGetTransitRouterAvailableResourcesResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTransitRouterAvailableResourcesResourceArrayInput is an input type that accepts GetTransitRouterAvailableResourcesResourceArray and GetTransitRouterAvailableResourcesResourceArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterAvailableResourcesResourceArrayInput` via:
 //
@@ -3094,6 +3533,12 @@ func (i GetTransitRouterAvailableResourcesResourceArray) ToGetTransitRouterAvail
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterAvailableResourcesResourceArrayOutput)
 }
 
+func (i GetTransitRouterAvailableResourcesResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterAvailableResourcesResource] {
+	return pulumix.Output[[]GetTransitRouterAvailableResourcesResource]{
+		OutputState: i.ToGetTransitRouterAvailableResourcesResourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTransitRouterAvailableResourcesResourceOutput struct{ *pulumi.OutputState }
 
 func (GetTransitRouterAvailableResourcesResourceOutput) ElementType() reflect.Type {
@@ -3106,6 +3551,12 @@ func (o GetTransitRouterAvailableResourcesResourceOutput) ToGetTransitRouterAvai
 
 func (o GetTransitRouterAvailableResourcesResourceOutput) ToGetTransitRouterAvailableResourcesResourceOutputWithContext(ctx context.Context) GetTransitRouterAvailableResourcesResourceOutput {
 	return o
+}
+
+func (o GetTransitRouterAvailableResourcesResourceOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterAvailableResourcesResource] {
+	return pulumix.Output[GetTransitRouterAvailableResourcesResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of primary zones.
@@ -3130,6 +3581,12 @@ func (o GetTransitRouterAvailableResourcesResourceArrayOutput) ToGetTransitRoute
 
 func (o GetTransitRouterAvailableResourcesResourceArrayOutput) ToGetTransitRouterAvailableResourcesResourceArrayOutputWithContext(ctx context.Context) GetTransitRouterAvailableResourcesResourceArrayOutput {
 	return o
+}
+
+func (o GetTransitRouterAvailableResourcesResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterAvailableResourcesResource] {
+	return pulumix.Output[[]GetTransitRouterAvailableResourcesResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTransitRouterAvailableResourcesResourceArrayOutput) Index(i pulumi.IntInput) GetTransitRouterAvailableResourcesResourceOutput {
@@ -3199,6 +3656,12 @@ func (i GetTransitRouterCidrsCidrArgs) ToGetTransitRouterCidrsCidrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterCidrsCidrOutput)
 }
 
+func (i GetTransitRouterCidrsCidrArgs) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterCidrsCidr] {
+	return pulumix.Output[GetTransitRouterCidrsCidr]{
+		OutputState: i.ToGetTransitRouterCidrsCidrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTransitRouterCidrsCidrArrayInput is an input type that accepts GetTransitRouterCidrsCidrArray and GetTransitRouterCidrsCidrArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterCidrsCidrArrayInput` via:
 //
@@ -3224,6 +3687,12 @@ func (i GetTransitRouterCidrsCidrArray) ToGetTransitRouterCidrsCidrArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterCidrsCidrArrayOutput)
 }
 
+func (i GetTransitRouterCidrsCidrArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterCidrsCidr] {
+	return pulumix.Output[[]GetTransitRouterCidrsCidr]{
+		OutputState: i.ToGetTransitRouterCidrsCidrArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTransitRouterCidrsCidrOutput struct{ *pulumi.OutputState }
 
 func (GetTransitRouterCidrsCidrOutput) ElementType() reflect.Type {
@@ -3236,6 +3705,12 @@ func (o GetTransitRouterCidrsCidrOutput) ToGetTransitRouterCidrsCidrOutput() Get
 
 func (o GetTransitRouterCidrsCidrOutput) ToGetTransitRouterCidrsCidrOutputWithContext(ctx context.Context) GetTransitRouterCidrsCidrOutput {
 	return o
+}
+
+func (o GetTransitRouterCidrsCidrOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterCidrsCidr] {
+	return pulumix.Output[GetTransitRouterCidrsCidr]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The cidr of the transit router.
@@ -3290,6 +3765,12 @@ func (o GetTransitRouterCidrsCidrArrayOutput) ToGetTransitRouterCidrsCidrArrayOu
 
 func (o GetTransitRouterCidrsCidrArrayOutput) ToGetTransitRouterCidrsCidrArrayOutputWithContext(ctx context.Context) GetTransitRouterCidrsCidrArrayOutput {
 	return o
+}
+
+func (o GetTransitRouterCidrsCidrArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterCidrsCidr] {
+	return pulumix.Output[[]GetTransitRouterCidrsCidr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTransitRouterCidrsCidrArrayOutput) Index(i pulumi.IntInput) GetTransitRouterCidrsCidrOutput {
@@ -3359,6 +3840,12 @@ func (i GetTransitRouterMulticastDomainAssociationsAssociationArgs) ToGetTransit
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterMulticastDomainAssociationsAssociationOutput)
 }
 
+func (i GetTransitRouterMulticastDomainAssociationsAssociationArgs) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterMulticastDomainAssociationsAssociation] {
+	return pulumix.Output[GetTransitRouterMulticastDomainAssociationsAssociation]{
+		OutputState: i.ToGetTransitRouterMulticastDomainAssociationsAssociationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTransitRouterMulticastDomainAssociationsAssociationArrayInput is an input type that accepts GetTransitRouterMulticastDomainAssociationsAssociationArray and GetTransitRouterMulticastDomainAssociationsAssociationArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterMulticastDomainAssociationsAssociationArrayInput` via:
 //
@@ -3384,6 +3871,12 @@ func (i GetTransitRouterMulticastDomainAssociationsAssociationArray) ToGetTransi
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterMulticastDomainAssociationsAssociationArrayOutput)
 }
 
+func (i GetTransitRouterMulticastDomainAssociationsAssociationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterMulticastDomainAssociationsAssociation] {
+	return pulumix.Output[[]GetTransitRouterMulticastDomainAssociationsAssociation]{
+		OutputState: i.ToGetTransitRouterMulticastDomainAssociationsAssociationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTransitRouterMulticastDomainAssociationsAssociationOutput struct{ *pulumi.OutputState }
 
 func (GetTransitRouterMulticastDomainAssociationsAssociationOutput) ElementType() reflect.Type {
@@ -3396,6 +3889,12 @@ func (o GetTransitRouterMulticastDomainAssociationsAssociationOutput) ToGetTrans
 
 func (o GetTransitRouterMulticastDomainAssociationsAssociationOutput) ToGetTransitRouterMulticastDomainAssociationsAssociationOutputWithContext(ctx context.Context) GetTransitRouterMulticastDomainAssociationsAssociationOutput {
 	return o
+}
+
+func (o GetTransitRouterMulticastDomainAssociationsAssociationOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterMulticastDomainAssociationsAssociation] {
+	return pulumix.Output[GetTransitRouterMulticastDomainAssociationsAssociation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Transit Router Multicast Domain Association. It formats as `<transit_router_multicast_domain_id>:<transit_router_attachment_id>:<vswitch_id>`.
@@ -3454,6 +3953,12 @@ func (o GetTransitRouterMulticastDomainAssociationsAssociationArrayOutput) ToGet
 
 func (o GetTransitRouterMulticastDomainAssociationsAssociationArrayOutput) ToGetTransitRouterMulticastDomainAssociationsAssociationArrayOutputWithContext(ctx context.Context) GetTransitRouterMulticastDomainAssociationsAssociationArrayOutput {
 	return o
+}
+
+func (o GetTransitRouterMulticastDomainAssociationsAssociationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterMulticastDomainAssociationsAssociation] {
+	return pulumix.Output[[]GetTransitRouterMulticastDomainAssociationsAssociation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTransitRouterMulticastDomainAssociationsAssociationArrayOutput) Index(i pulumi.IntInput) GetTransitRouterMulticastDomainAssociationsAssociationOutput {
@@ -3515,6 +4020,12 @@ func (i GetTransitRouterMulticastDomainMembersMemberArgs) ToGetTransitRouterMult
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterMulticastDomainMembersMemberOutput)
 }
 
+func (i GetTransitRouterMulticastDomainMembersMemberArgs) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterMulticastDomainMembersMember] {
+	return pulumix.Output[GetTransitRouterMulticastDomainMembersMember]{
+		OutputState: i.ToGetTransitRouterMulticastDomainMembersMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTransitRouterMulticastDomainMembersMemberArrayInput is an input type that accepts GetTransitRouterMulticastDomainMembersMemberArray and GetTransitRouterMulticastDomainMembersMemberArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterMulticastDomainMembersMemberArrayInput` via:
 //
@@ -3540,6 +4051,12 @@ func (i GetTransitRouterMulticastDomainMembersMemberArray) ToGetTransitRouterMul
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterMulticastDomainMembersMemberArrayOutput)
 }
 
+func (i GetTransitRouterMulticastDomainMembersMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterMulticastDomainMembersMember] {
+	return pulumix.Output[[]GetTransitRouterMulticastDomainMembersMember]{
+		OutputState: i.ToGetTransitRouterMulticastDomainMembersMemberArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTransitRouterMulticastDomainMembersMemberOutput struct{ *pulumi.OutputState }
 
 func (GetTransitRouterMulticastDomainMembersMemberOutput) ElementType() reflect.Type {
@@ -3552,6 +4069,12 @@ func (o GetTransitRouterMulticastDomainMembersMemberOutput) ToGetTransitRouterMu
 
 func (o GetTransitRouterMulticastDomainMembersMemberOutput) ToGetTransitRouterMulticastDomainMembersMemberOutputWithContext(ctx context.Context) GetTransitRouterMulticastDomainMembersMemberOutput {
 	return o
+}
+
+func (o GetTransitRouterMulticastDomainMembersMemberOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterMulticastDomainMembersMember] {
+	return pulumix.Output[GetTransitRouterMulticastDomainMembersMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP address of the multicast group to which the multicast member belongs. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
@@ -3596,6 +4119,12 @@ func (o GetTransitRouterMulticastDomainMembersMemberArrayOutput) ToGetTransitRou
 
 func (o GetTransitRouterMulticastDomainMembersMemberArrayOutput) ToGetTransitRouterMulticastDomainMembersMemberArrayOutputWithContext(ctx context.Context) GetTransitRouterMulticastDomainMembersMemberArrayOutput {
 	return o
+}
+
+func (o GetTransitRouterMulticastDomainMembersMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterMulticastDomainMembersMember] {
+	return pulumix.Output[[]GetTransitRouterMulticastDomainMembersMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTransitRouterMulticastDomainMembersMemberArrayOutput) Index(i pulumi.IntInput) GetTransitRouterMulticastDomainMembersMemberOutput {
@@ -3653,6 +4182,12 @@ func (i GetTransitRouterMulticastDomainPeerMembersMemberArgs) ToGetTransitRouter
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterMulticastDomainPeerMembersMemberOutput)
 }
 
+func (i GetTransitRouterMulticastDomainPeerMembersMemberArgs) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterMulticastDomainPeerMembersMember] {
+	return pulumix.Output[GetTransitRouterMulticastDomainPeerMembersMember]{
+		OutputState: i.ToGetTransitRouterMulticastDomainPeerMembersMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTransitRouterMulticastDomainPeerMembersMemberArrayInput is an input type that accepts GetTransitRouterMulticastDomainPeerMembersMemberArray and GetTransitRouterMulticastDomainPeerMembersMemberArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterMulticastDomainPeerMembersMemberArrayInput` via:
 //
@@ -3678,6 +4213,12 @@ func (i GetTransitRouterMulticastDomainPeerMembersMemberArray) ToGetTransitRoute
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterMulticastDomainPeerMembersMemberArrayOutput)
 }
 
+func (i GetTransitRouterMulticastDomainPeerMembersMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterMulticastDomainPeerMembersMember] {
+	return pulumix.Output[[]GetTransitRouterMulticastDomainPeerMembersMember]{
+		OutputState: i.ToGetTransitRouterMulticastDomainPeerMembersMemberArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTransitRouterMulticastDomainPeerMembersMemberOutput struct{ *pulumi.OutputState }
 
 func (GetTransitRouterMulticastDomainPeerMembersMemberOutput) ElementType() reflect.Type {
@@ -3690,6 +4231,12 @@ func (o GetTransitRouterMulticastDomainPeerMembersMemberOutput) ToGetTransitRout
 
 func (o GetTransitRouterMulticastDomainPeerMembersMemberOutput) ToGetTransitRouterMulticastDomainPeerMembersMemberOutputWithContext(ctx context.Context) GetTransitRouterMulticastDomainPeerMembersMemberOutput {
 	return o
+}
+
+func (o GetTransitRouterMulticastDomainPeerMembersMemberOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterMulticastDomainPeerMembersMember] {
+	return pulumix.Output[GetTransitRouterMulticastDomainPeerMembersMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP address of the multicast group to which the multicast member belongs. Value range: **224.0.0.1** to **239.255.255.254**.If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
@@ -3733,6 +4280,12 @@ func (o GetTransitRouterMulticastDomainPeerMembersMemberArrayOutput) ToGetTransi
 
 func (o GetTransitRouterMulticastDomainPeerMembersMemberArrayOutput) ToGetTransitRouterMulticastDomainPeerMembersMemberArrayOutputWithContext(ctx context.Context) GetTransitRouterMulticastDomainPeerMembersMemberArrayOutput {
 	return o
+}
+
+func (o GetTransitRouterMulticastDomainPeerMembersMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterMulticastDomainPeerMembersMember] {
+	return pulumix.Output[[]GetTransitRouterMulticastDomainPeerMembersMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTransitRouterMulticastDomainPeerMembersMemberArrayOutput) Index(i pulumi.IntInput) GetTransitRouterMulticastDomainPeerMembersMemberOutput {
@@ -3792,6 +4345,12 @@ func (i GetTransitRouterMulticastDomainSourcesSourceArgs) ToGetTransitRouterMult
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterMulticastDomainSourcesSourceOutput)
 }
 
+func (i GetTransitRouterMulticastDomainSourcesSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterMulticastDomainSourcesSource] {
+	return pulumix.Output[GetTransitRouterMulticastDomainSourcesSource]{
+		OutputState: i.ToGetTransitRouterMulticastDomainSourcesSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTransitRouterMulticastDomainSourcesSourceArrayInput is an input type that accepts GetTransitRouterMulticastDomainSourcesSourceArray and GetTransitRouterMulticastDomainSourcesSourceArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterMulticastDomainSourcesSourceArrayInput` via:
 //
@@ -3817,6 +4376,12 @@ func (i GetTransitRouterMulticastDomainSourcesSourceArray) ToGetTransitRouterMul
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterMulticastDomainSourcesSourceArrayOutput)
 }
 
+func (i GetTransitRouterMulticastDomainSourcesSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterMulticastDomainSourcesSource] {
+	return pulumix.Output[[]GetTransitRouterMulticastDomainSourcesSource]{
+		OutputState: i.ToGetTransitRouterMulticastDomainSourcesSourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTransitRouterMulticastDomainSourcesSourceOutput struct{ *pulumi.OutputState }
 
 func (GetTransitRouterMulticastDomainSourcesSourceOutput) ElementType() reflect.Type {
@@ -3829,6 +4394,12 @@ func (o GetTransitRouterMulticastDomainSourcesSourceOutput) ToGetTransitRouterMu
 
 func (o GetTransitRouterMulticastDomainSourcesSourceOutput) ToGetTransitRouterMulticastDomainSourcesSourceOutputWithContext(ctx context.Context) GetTransitRouterMulticastDomainSourcesSourceOutput {
 	return o
+}
+
+func (o GetTransitRouterMulticastDomainSourcesSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterMulticastDomainSourcesSource] {
+	return pulumix.Output[GetTransitRouterMulticastDomainSourcesSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP address of the multicast group to which the multicast source belongs. Value range: **224.0.0.1** to **239.255.255.254**. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you.
@@ -3872,6 +4443,12 @@ func (o GetTransitRouterMulticastDomainSourcesSourceArrayOutput) ToGetTransitRou
 
 func (o GetTransitRouterMulticastDomainSourcesSourceArrayOutput) ToGetTransitRouterMulticastDomainSourcesSourceArrayOutputWithContext(ctx context.Context) GetTransitRouterMulticastDomainSourcesSourceArrayOutput {
 	return o
+}
+
+func (o GetTransitRouterMulticastDomainSourcesSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterMulticastDomainSourcesSource] {
+	return pulumix.Output[[]GetTransitRouterMulticastDomainSourcesSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTransitRouterMulticastDomainSourcesSourceArrayOutput) Index(i pulumi.IntInput) GetTransitRouterMulticastDomainSourcesSourceOutput {
@@ -3933,6 +4510,12 @@ func (i GetTransitRouterMulticastDomainsDomainArgs) ToGetTransitRouterMulticastD
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterMulticastDomainsDomainOutput)
 }
 
+func (i GetTransitRouterMulticastDomainsDomainArgs) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterMulticastDomainsDomain] {
+	return pulumix.Output[GetTransitRouterMulticastDomainsDomain]{
+		OutputState: i.ToGetTransitRouterMulticastDomainsDomainOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTransitRouterMulticastDomainsDomainArrayInput is an input type that accepts GetTransitRouterMulticastDomainsDomainArray and GetTransitRouterMulticastDomainsDomainArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterMulticastDomainsDomainArrayInput` via:
 //
@@ -3958,6 +4541,12 @@ func (i GetTransitRouterMulticastDomainsDomainArray) ToGetTransitRouterMulticast
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterMulticastDomainsDomainArrayOutput)
 }
 
+func (i GetTransitRouterMulticastDomainsDomainArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterMulticastDomainsDomain] {
+	return pulumix.Output[[]GetTransitRouterMulticastDomainsDomain]{
+		OutputState: i.ToGetTransitRouterMulticastDomainsDomainArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTransitRouterMulticastDomainsDomainOutput struct{ *pulumi.OutputState }
 
 func (GetTransitRouterMulticastDomainsDomainOutput) ElementType() reflect.Type {
@@ -3970,6 +4559,12 @@ func (o GetTransitRouterMulticastDomainsDomainOutput) ToGetTransitRouterMulticas
 
 func (o GetTransitRouterMulticastDomainsDomainOutput) ToGetTransitRouterMulticastDomainsDomainOutputWithContext(ctx context.Context) GetTransitRouterMulticastDomainsDomainOutput {
 	return o
+}
+
+func (o GetTransitRouterMulticastDomainsDomainOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterMulticastDomainsDomain] {
+	return pulumix.Output[GetTransitRouterMulticastDomainsDomain]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Transit Router Multicast Domain.
@@ -4016,6 +4611,12 @@ func (o GetTransitRouterMulticastDomainsDomainArrayOutput) ToGetTransitRouterMul
 
 func (o GetTransitRouterMulticastDomainsDomainArrayOutput) ToGetTransitRouterMulticastDomainsDomainArrayOutputWithContext(ctx context.Context) GetTransitRouterMulticastDomainsDomainArrayOutput {
 	return o
+}
+
+func (o GetTransitRouterMulticastDomainsDomainArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterMulticastDomainsDomain] {
+	return pulumix.Output[[]GetTransitRouterMulticastDomainsDomain]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTransitRouterMulticastDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetTransitRouterMulticastDomainsDomainOutput {
@@ -4109,6 +4710,12 @@ func (i GetTransitRouterPeerAttachmentsAttachmentArgs) ToGetTransitRouterPeerAtt
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterPeerAttachmentsAttachmentOutput)
 }
 
+func (i GetTransitRouterPeerAttachmentsAttachmentArgs) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterPeerAttachmentsAttachment] {
+	return pulumix.Output[GetTransitRouterPeerAttachmentsAttachment]{
+		OutputState: i.ToGetTransitRouterPeerAttachmentsAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTransitRouterPeerAttachmentsAttachmentArrayInput is an input type that accepts GetTransitRouterPeerAttachmentsAttachmentArray and GetTransitRouterPeerAttachmentsAttachmentArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterPeerAttachmentsAttachmentArrayInput` via:
 //
@@ -4134,6 +4741,12 @@ func (i GetTransitRouterPeerAttachmentsAttachmentArray) ToGetTransitRouterPeerAt
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterPeerAttachmentsAttachmentArrayOutput)
 }
 
+func (i GetTransitRouterPeerAttachmentsAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterPeerAttachmentsAttachment] {
+	return pulumix.Output[[]GetTransitRouterPeerAttachmentsAttachment]{
+		OutputState: i.ToGetTransitRouterPeerAttachmentsAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTransitRouterPeerAttachmentsAttachmentOutput struct{ *pulumi.OutputState }
 
 func (GetTransitRouterPeerAttachmentsAttachmentOutput) ElementType() reflect.Type {
@@ -4146,6 +4759,12 @@ func (o GetTransitRouterPeerAttachmentsAttachmentOutput) ToGetTransitRouterPeerA
 
 func (o GetTransitRouterPeerAttachmentsAttachmentOutput) ToGetTransitRouterPeerAttachmentsAttachmentOutputWithContext(ctx context.Context) GetTransitRouterPeerAttachmentsAttachmentOutput {
 	return o
+}
+
+func (o GetTransitRouterPeerAttachmentsAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterPeerAttachmentsAttachment] {
+	return pulumix.Output[GetTransitRouterPeerAttachmentsAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Auto publish route enabled.
@@ -4232,6 +4851,12 @@ func (o GetTransitRouterPeerAttachmentsAttachmentArrayOutput) ToGetTransitRouter
 	return o
 }
 
+func (o GetTransitRouterPeerAttachmentsAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterPeerAttachmentsAttachment] {
+	return pulumix.Output[[]GetTransitRouterPeerAttachmentsAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetTransitRouterPeerAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) GetTransitRouterPeerAttachmentsAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTransitRouterPeerAttachmentsAttachment {
 		return vs[0].([]GetTransitRouterPeerAttachmentsAttachment)[vs[1].(int)]
@@ -4303,6 +4928,12 @@ func (i GetTransitRouterPrefixListAssociationsAssociationArgs) ToGetTransitRoute
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterPrefixListAssociationsAssociationOutput)
 }
 
+func (i GetTransitRouterPrefixListAssociationsAssociationArgs) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterPrefixListAssociationsAssociation] {
+	return pulumix.Output[GetTransitRouterPrefixListAssociationsAssociation]{
+		OutputState: i.ToGetTransitRouterPrefixListAssociationsAssociationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTransitRouterPrefixListAssociationsAssociationArrayInput is an input type that accepts GetTransitRouterPrefixListAssociationsAssociationArray and GetTransitRouterPrefixListAssociationsAssociationArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterPrefixListAssociationsAssociationArrayInput` via:
 //
@@ -4328,6 +4959,12 @@ func (i GetTransitRouterPrefixListAssociationsAssociationArray) ToGetTransitRout
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterPrefixListAssociationsAssociationArrayOutput)
 }
 
+func (i GetTransitRouterPrefixListAssociationsAssociationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterPrefixListAssociationsAssociation] {
+	return pulumix.Output[[]GetTransitRouterPrefixListAssociationsAssociation]{
+		OutputState: i.ToGetTransitRouterPrefixListAssociationsAssociationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTransitRouterPrefixListAssociationsAssociationOutput struct{ *pulumi.OutputState }
 
 func (GetTransitRouterPrefixListAssociationsAssociationOutput) ElementType() reflect.Type {
@@ -4340,6 +4977,12 @@ func (o GetTransitRouterPrefixListAssociationsAssociationOutput) ToGetTransitRou
 
 func (o GetTransitRouterPrefixListAssociationsAssociationOutput) ToGetTransitRouterPrefixListAssociationsAssociationOutputWithContext(ctx context.Context) GetTransitRouterPrefixListAssociationsAssociationOutput {
 	return o
+}
+
+func (o GetTransitRouterPrefixListAssociationsAssociationOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterPrefixListAssociationsAssociation] {
+	return pulumix.Output[GetTransitRouterPrefixListAssociationsAssociation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Cen Transit Router Prefix List Association. It formats as `<prefix_list_id>:<transit_router_id>:<transit_router_table_id>:<next_hop>`.
@@ -4399,6 +5042,12 @@ func (o GetTransitRouterPrefixListAssociationsAssociationArrayOutput) ToGetTrans
 
 func (o GetTransitRouterPrefixListAssociationsAssociationArrayOutput) ToGetTransitRouterPrefixListAssociationsAssociationArrayOutputWithContext(ctx context.Context) GetTransitRouterPrefixListAssociationsAssociationArrayOutput {
 	return o
+}
+
+func (o GetTransitRouterPrefixListAssociationsAssociationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterPrefixListAssociationsAssociation] {
+	return pulumix.Output[[]GetTransitRouterPrefixListAssociationsAssociation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTransitRouterPrefixListAssociationsAssociationArrayOutput) Index(i pulumi.IntInput) GetTransitRouterPrefixListAssociationsAssociationOutput {
@@ -4462,6 +5111,12 @@ func (i GetTransitRouterRouteEntriesEntryArgs) ToGetTransitRouterRouteEntriesEnt
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterRouteEntriesEntryOutput)
 }
 
+func (i GetTransitRouterRouteEntriesEntryArgs) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterRouteEntriesEntry] {
+	return pulumix.Output[GetTransitRouterRouteEntriesEntry]{
+		OutputState: i.ToGetTransitRouterRouteEntriesEntryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTransitRouterRouteEntriesEntryArrayInput is an input type that accepts GetTransitRouterRouteEntriesEntryArray and GetTransitRouterRouteEntriesEntryArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterRouteEntriesEntryArrayInput` via:
 //
@@ -4487,6 +5142,12 @@ func (i GetTransitRouterRouteEntriesEntryArray) ToGetTransitRouterRouteEntriesEn
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterRouteEntriesEntryArrayOutput)
 }
 
+func (i GetTransitRouterRouteEntriesEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterRouteEntriesEntry] {
+	return pulumix.Output[[]GetTransitRouterRouteEntriesEntry]{
+		OutputState: i.ToGetTransitRouterRouteEntriesEntryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTransitRouterRouteEntriesEntryOutput struct{ *pulumi.OutputState }
 
 func (GetTransitRouterRouteEntriesEntryOutput) ElementType() reflect.Type {
@@ -4499,6 +5160,12 @@ func (o GetTransitRouterRouteEntriesEntryOutput) ToGetTransitRouterRouteEntriesE
 
 func (o GetTransitRouterRouteEntriesEntryOutput) ToGetTransitRouterRouteEntriesEntryOutputWithContext(ctx context.Context) GetTransitRouterRouteEntriesEntryOutput {
 	return o
+}
+
+func (o GetTransitRouterRouteEntriesEntryOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterRouteEntriesEntry] {
+	return pulumix.Output[GetTransitRouterRouteEntriesEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTransitRouterRouteEntriesEntryOutput) Id() pulumi.StringOutput {
@@ -4553,6 +5220,12 @@ func (o GetTransitRouterRouteEntriesEntryArrayOutput) ToGetTransitRouterRouteEnt
 
 func (o GetTransitRouterRouteEntriesEntryArrayOutput) ToGetTransitRouterRouteEntriesEntryArrayOutputWithContext(ctx context.Context) GetTransitRouterRouteEntriesEntryArrayOutput {
 	return o
+}
+
+func (o GetTransitRouterRouteEntriesEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterRouteEntriesEntry] {
+	return pulumix.Output[[]GetTransitRouterRouteEntriesEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTransitRouterRouteEntriesEntryArrayOutput) Index(i pulumi.IntInput) GetTransitRouterRouteEntriesEntryOutput {
@@ -4612,6 +5285,12 @@ func (i GetTransitRouterRouteTableAssociationsAssociationArgs) ToGetTransitRoute
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterRouteTableAssociationsAssociationOutput)
 }
 
+func (i GetTransitRouterRouteTableAssociationsAssociationArgs) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterRouteTableAssociationsAssociation] {
+	return pulumix.Output[GetTransitRouterRouteTableAssociationsAssociation]{
+		OutputState: i.ToGetTransitRouterRouteTableAssociationsAssociationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTransitRouterRouteTableAssociationsAssociationArrayInput is an input type that accepts GetTransitRouterRouteTableAssociationsAssociationArray and GetTransitRouterRouteTableAssociationsAssociationArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterRouteTableAssociationsAssociationArrayInput` via:
 //
@@ -4637,6 +5316,12 @@ func (i GetTransitRouterRouteTableAssociationsAssociationArray) ToGetTransitRout
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterRouteTableAssociationsAssociationArrayOutput)
 }
 
+func (i GetTransitRouterRouteTableAssociationsAssociationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterRouteTableAssociationsAssociation] {
+	return pulumix.Output[[]GetTransitRouterRouteTableAssociationsAssociation]{
+		OutputState: i.ToGetTransitRouterRouteTableAssociationsAssociationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTransitRouterRouteTableAssociationsAssociationOutput struct{ *pulumi.OutputState }
 
 func (GetTransitRouterRouteTableAssociationsAssociationOutput) ElementType() reflect.Type {
@@ -4649,6 +5334,12 @@ func (o GetTransitRouterRouteTableAssociationsAssociationOutput) ToGetTransitRou
 
 func (o GetTransitRouterRouteTableAssociationsAssociationOutput) ToGetTransitRouterRouteTableAssociationsAssociationOutputWithContext(ctx context.Context) GetTransitRouterRouteTableAssociationsAssociationOutput {
 	return o
+}
+
+func (o GetTransitRouterRouteTableAssociationsAssociationOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterRouteTableAssociationsAssociation] {
+	return pulumix.Output[GetTransitRouterRouteTableAssociationsAssociation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTransitRouterRouteTableAssociationsAssociationOutput) Id() pulumi.StringOutput {
@@ -4692,6 +5383,12 @@ func (o GetTransitRouterRouteTableAssociationsAssociationArrayOutput) ToGetTrans
 
 func (o GetTransitRouterRouteTableAssociationsAssociationArrayOutput) ToGetTransitRouterRouteTableAssociationsAssociationArrayOutputWithContext(ctx context.Context) GetTransitRouterRouteTableAssociationsAssociationArrayOutput {
 	return o
+}
+
+func (o GetTransitRouterRouteTableAssociationsAssociationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterRouteTableAssociationsAssociation] {
+	return pulumix.Output[[]GetTransitRouterRouteTableAssociationsAssociation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTransitRouterRouteTableAssociationsAssociationArrayOutput) Index(i pulumi.IntInput) GetTransitRouterRouteTableAssociationsAssociationOutput {
@@ -4747,6 +5444,12 @@ func (i GetTransitRouterRouteTablePropagationsPropagationArgs) ToGetTransitRoute
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterRouteTablePropagationsPropagationOutput)
 }
 
+func (i GetTransitRouterRouteTablePropagationsPropagationArgs) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterRouteTablePropagationsPropagation] {
+	return pulumix.Output[GetTransitRouterRouteTablePropagationsPropagation]{
+		OutputState: i.ToGetTransitRouterRouteTablePropagationsPropagationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTransitRouterRouteTablePropagationsPropagationArrayInput is an input type that accepts GetTransitRouterRouteTablePropagationsPropagationArray and GetTransitRouterRouteTablePropagationsPropagationArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterRouteTablePropagationsPropagationArrayInput` via:
 //
@@ -4772,6 +5475,12 @@ func (i GetTransitRouterRouteTablePropagationsPropagationArray) ToGetTransitRout
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterRouteTablePropagationsPropagationArrayOutput)
 }
 
+func (i GetTransitRouterRouteTablePropagationsPropagationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterRouteTablePropagationsPropagation] {
+	return pulumix.Output[[]GetTransitRouterRouteTablePropagationsPropagation]{
+		OutputState: i.ToGetTransitRouterRouteTablePropagationsPropagationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTransitRouterRouteTablePropagationsPropagationOutput struct{ *pulumi.OutputState }
 
 func (GetTransitRouterRouteTablePropagationsPropagationOutput) ElementType() reflect.Type {
@@ -4784,6 +5493,12 @@ func (o GetTransitRouterRouteTablePropagationsPropagationOutput) ToGetTransitRou
 
 func (o GetTransitRouterRouteTablePropagationsPropagationOutput) ToGetTransitRouterRouteTablePropagationsPropagationOutputWithContext(ctx context.Context) GetTransitRouterRouteTablePropagationsPropagationOutput {
 	return o
+}
+
+func (o GetTransitRouterRouteTablePropagationsPropagationOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterRouteTablePropagationsPropagation] {
+	return pulumix.Output[GetTransitRouterRouteTablePropagationsPropagation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTransitRouterRouteTablePropagationsPropagationOutput) Id() pulumi.StringOutput {
@@ -4822,6 +5537,12 @@ func (o GetTransitRouterRouteTablePropagationsPropagationArrayOutput) ToGetTrans
 
 func (o GetTransitRouterRouteTablePropagationsPropagationArrayOutput) ToGetTransitRouterRouteTablePropagationsPropagationArrayOutputWithContext(ctx context.Context) GetTransitRouterRouteTablePropagationsPropagationArrayOutput {
 	return o
+}
+
+func (o GetTransitRouterRouteTablePropagationsPropagationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterRouteTablePropagationsPropagation] {
+	return pulumix.Output[[]GetTransitRouterRouteTablePropagationsPropagation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTransitRouterRouteTablePropagationsPropagationArrayOutput) Index(i pulumi.IntInput) GetTransitRouterRouteTablePropagationsPropagationOutput {
@@ -4881,6 +5602,12 @@ func (i GetTransitRouterRouteTablesTableArgs) ToGetTransitRouterRouteTablesTable
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterRouteTablesTableOutput)
 }
 
+func (i GetTransitRouterRouteTablesTableArgs) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterRouteTablesTable] {
+	return pulumix.Output[GetTransitRouterRouteTablesTable]{
+		OutputState: i.ToGetTransitRouterRouteTablesTableOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTransitRouterRouteTablesTableArrayInput is an input type that accepts GetTransitRouterRouteTablesTableArray and GetTransitRouterRouteTablesTableArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterRouteTablesTableArrayInput` via:
 //
@@ -4906,6 +5633,12 @@ func (i GetTransitRouterRouteTablesTableArray) ToGetTransitRouterRouteTablesTabl
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterRouteTablesTableArrayOutput)
 }
 
+func (i GetTransitRouterRouteTablesTableArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterRouteTablesTable] {
+	return pulumix.Output[[]GetTransitRouterRouteTablesTable]{
+		OutputState: i.ToGetTransitRouterRouteTablesTableArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTransitRouterRouteTablesTableOutput struct{ *pulumi.OutputState }
 
 func (GetTransitRouterRouteTablesTableOutput) ElementType() reflect.Type {
@@ -4918,6 +5651,12 @@ func (o GetTransitRouterRouteTablesTableOutput) ToGetTransitRouterRouteTablesTab
 
 func (o GetTransitRouterRouteTablesTableOutput) ToGetTransitRouterRouteTablesTableOutputWithContext(ctx context.Context) GetTransitRouterRouteTablesTableOutput {
 	return o
+}
+
+func (o GetTransitRouterRouteTablesTableOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterRouteTablesTable] {
+	return pulumix.Output[GetTransitRouterRouteTablesTable]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID of resource.
@@ -4961,6 +5700,12 @@ func (o GetTransitRouterRouteTablesTableArrayOutput) ToGetTransitRouterRouteTabl
 
 func (o GetTransitRouterRouteTablesTableArrayOutput) ToGetTransitRouterRouteTablesTableArrayOutputWithContext(ctx context.Context) GetTransitRouterRouteTablesTableArrayOutput {
 	return o
+}
+
+func (o GetTransitRouterRouteTablesTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterRouteTablesTable] {
+	return pulumix.Output[[]GetTransitRouterRouteTablesTable]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTransitRouterRouteTablesTableArrayOutput) Index(i pulumi.IntInput) GetTransitRouterRouteTablesTableOutput {
@@ -5030,6 +5775,12 @@ func (i GetTransitRouterVbrAttachmentsAttachmentArgs) ToGetTransitRouterVbrAttac
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterVbrAttachmentsAttachmentOutput)
 }
 
+func (i GetTransitRouterVbrAttachmentsAttachmentArgs) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterVbrAttachmentsAttachment] {
+	return pulumix.Output[GetTransitRouterVbrAttachmentsAttachment]{
+		OutputState: i.ToGetTransitRouterVbrAttachmentsAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTransitRouterVbrAttachmentsAttachmentArrayInput is an input type that accepts GetTransitRouterVbrAttachmentsAttachmentArray and GetTransitRouterVbrAttachmentsAttachmentArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterVbrAttachmentsAttachmentArrayInput` via:
 //
@@ -5055,6 +5806,12 @@ func (i GetTransitRouterVbrAttachmentsAttachmentArray) ToGetTransitRouterVbrAtta
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterVbrAttachmentsAttachmentArrayOutput)
 }
 
+func (i GetTransitRouterVbrAttachmentsAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterVbrAttachmentsAttachment] {
+	return pulumix.Output[[]GetTransitRouterVbrAttachmentsAttachment]{
+		OutputState: i.ToGetTransitRouterVbrAttachmentsAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTransitRouterVbrAttachmentsAttachmentOutput struct{ *pulumi.OutputState }
 
 func (GetTransitRouterVbrAttachmentsAttachmentOutput) ElementType() reflect.Type {
@@ -5067,6 +5824,12 @@ func (o GetTransitRouterVbrAttachmentsAttachmentOutput) ToGetTransitRouterVbrAtt
 
 func (o GetTransitRouterVbrAttachmentsAttachmentOutput) ToGetTransitRouterVbrAttachmentsAttachmentOutputWithContext(ctx context.Context) GetTransitRouterVbrAttachmentsAttachmentOutput {
 	return o
+}
+
+func (o GetTransitRouterVbrAttachmentsAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterVbrAttachmentsAttachment] {
+	return pulumix.Output[GetTransitRouterVbrAttachmentsAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID of the region where the conflicted VBR is located.
@@ -5124,6 +5887,12 @@ func (o GetTransitRouterVbrAttachmentsAttachmentArrayOutput) ToGetTransitRouterV
 
 func (o GetTransitRouterVbrAttachmentsAttachmentArrayOutput) ToGetTransitRouterVbrAttachmentsAttachmentArrayOutputWithContext(ctx context.Context) GetTransitRouterVbrAttachmentsAttachmentArrayOutput {
 	return o
+}
+
+func (o GetTransitRouterVbrAttachmentsAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterVbrAttachmentsAttachment] {
+	return pulumix.Output[[]GetTransitRouterVbrAttachmentsAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTransitRouterVbrAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) GetTransitRouterVbrAttachmentsAttachmentOutput {
@@ -5201,6 +5970,12 @@ func (i GetTransitRouterVpcAttachmentsAttachmentArgs) ToGetTransitRouterVpcAttac
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterVpcAttachmentsAttachmentOutput)
 }
 
+func (i GetTransitRouterVpcAttachmentsAttachmentArgs) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterVpcAttachmentsAttachment] {
+	return pulumix.Output[GetTransitRouterVpcAttachmentsAttachment]{
+		OutputState: i.ToGetTransitRouterVpcAttachmentsAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTransitRouterVpcAttachmentsAttachmentArrayInput is an input type that accepts GetTransitRouterVpcAttachmentsAttachmentArray and GetTransitRouterVpcAttachmentsAttachmentArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterVpcAttachmentsAttachmentArrayInput` via:
 //
@@ -5226,6 +6001,12 @@ func (i GetTransitRouterVpcAttachmentsAttachmentArray) ToGetTransitRouterVpcAtta
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterVpcAttachmentsAttachmentArrayOutput)
 }
 
+func (i GetTransitRouterVpcAttachmentsAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterVpcAttachmentsAttachment] {
+	return pulumix.Output[[]GetTransitRouterVpcAttachmentsAttachment]{
+		OutputState: i.ToGetTransitRouterVpcAttachmentsAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTransitRouterVpcAttachmentsAttachmentOutput struct{ *pulumi.OutputState }
 
 func (GetTransitRouterVpcAttachmentsAttachmentOutput) ElementType() reflect.Type {
@@ -5238,6 +6019,12 @@ func (o GetTransitRouterVpcAttachmentsAttachmentOutput) ToGetTransitRouterVpcAtt
 
 func (o GetTransitRouterVpcAttachmentsAttachmentOutput) ToGetTransitRouterVpcAttachmentsAttachmentOutputWithContext(ctx context.Context) GetTransitRouterVpcAttachmentsAttachmentOutput {
 	return o
+}
+
+func (o GetTransitRouterVpcAttachmentsAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterVpcAttachmentsAttachment] {
+	return pulumix.Output[GetTransitRouterVpcAttachmentsAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the transit router.
@@ -5306,6 +6093,12 @@ func (o GetTransitRouterVpcAttachmentsAttachmentArrayOutput) ToGetTransitRouterV
 	return o
 }
 
+func (o GetTransitRouterVpcAttachmentsAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterVpcAttachmentsAttachment] {
+	return pulumix.Output[[]GetTransitRouterVpcAttachmentsAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetTransitRouterVpcAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) GetTransitRouterVpcAttachmentsAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTransitRouterVpcAttachmentsAttachment {
 		return vs[0].([]GetTransitRouterVpcAttachmentsAttachment)[vs[1].(int)]
@@ -5349,6 +6142,12 @@ func (i GetTransitRouterVpcAttachmentsAttachmentZoneMappingArgs) ToGetTransitRou
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput)
 }
 
+func (i GetTransitRouterVpcAttachmentsAttachmentZoneMappingArgs) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterVpcAttachmentsAttachmentZoneMapping] {
+	return pulumix.Output[GetTransitRouterVpcAttachmentsAttachmentZoneMapping]{
+		OutputState: i.ToGetTransitRouterVpcAttachmentsAttachmentZoneMappingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayInput is an input type that accepts GetTransitRouterVpcAttachmentsAttachmentZoneMappingArray and GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayInput` via:
 //
@@ -5374,6 +6173,12 @@ func (i GetTransitRouterVpcAttachmentsAttachmentZoneMappingArray) ToGetTransitRo
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput)
 }
 
+func (i GetTransitRouterVpcAttachmentsAttachmentZoneMappingArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterVpcAttachmentsAttachmentZoneMapping] {
+	return pulumix.Output[[]GetTransitRouterVpcAttachmentsAttachmentZoneMapping]{
+		OutputState: i.ToGetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput struct{ *pulumi.OutputState }
 
 func (GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput) ElementType() reflect.Type {
@@ -5386,6 +6191,12 @@ func (o GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput) ToGetTransitR
 
 func (o GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput) ToGetTransitRouterVpcAttachmentsAttachmentZoneMappingOutputWithContext(ctx context.Context) GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput {
 	return o
+}
+
+func (o GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterVpcAttachmentsAttachmentZoneMapping] {
+	return pulumix.Output[GetTransitRouterVpcAttachmentsAttachmentZoneMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The VSwitch ID.
@@ -5410,6 +6221,12 @@ func (o GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput) ToGetTra
 
 func (o GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput) ToGetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutputWithContext(ctx context.Context) GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput {
 	return o
+}
+
+func (o GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterVpcAttachmentsAttachmentZoneMapping] {
+	return pulumix.Output[[]GetTransitRouterVpcAttachmentsAttachmentZoneMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput) Index(i pulumi.IntInput) GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput {
@@ -5491,6 +6308,12 @@ func (i GetTransitRouterVpnAttachmentsAttachmentArgs) ToGetTransitRouterVpnAttac
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterVpnAttachmentsAttachmentOutput)
 }
 
+func (i GetTransitRouterVpnAttachmentsAttachmentArgs) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterVpnAttachmentsAttachment] {
+	return pulumix.Output[GetTransitRouterVpnAttachmentsAttachment]{
+		OutputState: i.ToGetTransitRouterVpnAttachmentsAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTransitRouterVpnAttachmentsAttachmentArrayInput is an input type that accepts GetTransitRouterVpnAttachmentsAttachmentArray and GetTransitRouterVpnAttachmentsAttachmentArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterVpnAttachmentsAttachmentArrayInput` via:
 //
@@ -5516,6 +6339,12 @@ func (i GetTransitRouterVpnAttachmentsAttachmentArray) ToGetTransitRouterVpnAtta
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterVpnAttachmentsAttachmentArrayOutput)
 }
 
+func (i GetTransitRouterVpnAttachmentsAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterVpnAttachmentsAttachment] {
+	return pulumix.Output[[]GetTransitRouterVpnAttachmentsAttachment]{
+		OutputState: i.ToGetTransitRouterVpnAttachmentsAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTransitRouterVpnAttachmentsAttachmentOutput struct{ *pulumi.OutputState }
 
 func (GetTransitRouterVpnAttachmentsAttachmentOutput) ElementType() reflect.Type {
@@ -5528,6 +6357,12 @@ func (o GetTransitRouterVpnAttachmentsAttachmentOutput) ToGetTransitRouterVpnAtt
 
 func (o GetTransitRouterVpnAttachmentsAttachmentOutput) ToGetTransitRouterVpnAttachmentsAttachmentOutputWithContext(ctx context.Context) GetTransitRouterVpnAttachmentsAttachmentOutput {
 	return o
+}
+
+func (o GetTransitRouterVpnAttachmentsAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterVpnAttachmentsAttachment] {
+	return pulumix.Output[GetTransitRouterVpnAttachmentsAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to allow the forwarding router instance to automatically publish routing entries to IPsec connections.
@@ -5604,6 +6439,12 @@ func (o GetTransitRouterVpnAttachmentsAttachmentArrayOutput) ToGetTransitRouterV
 	return o
 }
 
+func (o GetTransitRouterVpnAttachmentsAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterVpnAttachmentsAttachment] {
+	return pulumix.Output[[]GetTransitRouterVpnAttachmentsAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetTransitRouterVpnAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) GetTransitRouterVpnAttachmentsAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTransitRouterVpnAttachmentsAttachment {
 		return vs[0].([]GetTransitRouterVpnAttachmentsAttachment)[vs[1].(int)]
@@ -5643,6 +6484,12 @@ func (i GetTransitRouterVpnAttachmentsAttachmentZoneArgs) ToGetTransitRouterVpnA
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterVpnAttachmentsAttachmentZoneOutput)
 }
 
+func (i GetTransitRouterVpnAttachmentsAttachmentZoneArgs) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterVpnAttachmentsAttachmentZone] {
+	return pulumix.Output[GetTransitRouterVpnAttachmentsAttachmentZone]{
+		OutputState: i.ToGetTransitRouterVpnAttachmentsAttachmentZoneOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTransitRouterVpnAttachmentsAttachmentZoneArrayInput is an input type that accepts GetTransitRouterVpnAttachmentsAttachmentZoneArray and GetTransitRouterVpnAttachmentsAttachmentZoneArrayOutput values.
 // You can construct a concrete instance of `GetTransitRouterVpnAttachmentsAttachmentZoneArrayInput` via:
 //
@@ -5668,6 +6515,12 @@ func (i GetTransitRouterVpnAttachmentsAttachmentZoneArray) ToGetTransitRouterVpn
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterVpnAttachmentsAttachmentZoneArrayOutput)
 }
 
+func (i GetTransitRouterVpnAttachmentsAttachmentZoneArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterVpnAttachmentsAttachmentZone] {
+	return pulumix.Output[[]GetTransitRouterVpnAttachmentsAttachmentZone]{
+		OutputState: i.ToGetTransitRouterVpnAttachmentsAttachmentZoneArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTransitRouterVpnAttachmentsAttachmentZoneOutput struct{ *pulumi.OutputState }
 
 func (GetTransitRouterVpnAttachmentsAttachmentZoneOutput) ElementType() reflect.Type {
@@ -5680,6 +6533,12 @@ func (o GetTransitRouterVpnAttachmentsAttachmentZoneOutput) ToGetTransitRouterVp
 
 func (o GetTransitRouterVpnAttachmentsAttachmentZoneOutput) ToGetTransitRouterVpnAttachmentsAttachmentZoneOutputWithContext(ctx context.Context) GetTransitRouterVpnAttachmentsAttachmentZoneOutput {
 	return o
+}
+
+func (o GetTransitRouterVpnAttachmentsAttachmentZoneOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterVpnAttachmentsAttachmentZone] {
+	return pulumix.Output[GetTransitRouterVpnAttachmentsAttachmentZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The id of the zone.
@@ -5699,6 +6558,12 @@ func (o GetTransitRouterVpnAttachmentsAttachmentZoneArrayOutput) ToGetTransitRou
 
 func (o GetTransitRouterVpnAttachmentsAttachmentZoneArrayOutput) ToGetTransitRouterVpnAttachmentsAttachmentZoneArrayOutputWithContext(ctx context.Context) GetTransitRouterVpnAttachmentsAttachmentZoneArrayOutput {
 	return o
+}
+
+func (o GetTransitRouterVpnAttachmentsAttachmentZoneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRouterVpnAttachmentsAttachmentZone] {
+	return pulumix.Output[[]GetTransitRouterVpnAttachmentsAttachmentZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTransitRouterVpnAttachmentsAttachmentZoneArrayOutput) Index(i pulumi.IntInput) GetTransitRouterVpnAttachmentsAttachmentZoneOutput {
@@ -5772,6 +6637,12 @@ func (i GetTransitRoutersTransitRouterArgs) ToGetTransitRoutersTransitRouterOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRoutersTransitRouterOutput)
 }
 
+func (i GetTransitRoutersTransitRouterArgs) ToOutput(ctx context.Context) pulumix.Output[GetTransitRoutersTransitRouter] {
+	return pulumix.Output[GetTransitRoutersTransitRouter]{
+		OutputState: i.ToGetTransitRoutersTransitRouterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTransitRoutersTransitRouterArrayInput is an input type that accepts GetTransitRoutersTransitRouterArray and GetTransitRoutersTransitRouterArrayOutput values.
 // You can construct a concrete instance of `GetTransitRoutersTransitRouterArrayInput` via:
 //
@@ -5797,6 +6668,12 @@ func (i GetTransitRoutersTransitRouterArray) ToGetTransitRoutersTransitRouterArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRoutersTransitRouterArrayOutput)
 }
 
+func (i GetTransitRoutersTransitRouterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRoutersTransitRouter] {
+	return pulumix.Output[[]GetTransitRoutersTransitRouter]{
+		OutputState: i.ToGetTransitRoutersTransitRouterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTransitRoutersTransitRouterOutput struct{ *pulumi.OutputState }
 
 func (GetTransitRoutersTransitRouterOutput) ElementType() reflect.Type {
@@ -5809,6 +6686,12 @@ func (o GetTransitRoutersTransitRouterOutput) ToGetTransitRoutersTransitRouterOu
 
 func (o GetTransitRoutersTransitRouterOutput) ToGetTransitRoutersTransitRouterOutputWithContext(ctx context.Context) GetTransitRoutersTransitRouterOutput {
 	return o
+}
+
+func (o GetTransitRoutersTransitRouterOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRoutersTransitRouter] {
+	return pulumix.Output[GetTransitRoutersTransitRouter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The UID of the Aliyun.
@@ -5868,6 +6751,12 @@ func (o GetTransitRoutersTransitRouterArrayOutput) ToGetTransitRoutersTransitRou
 
 func (o GetTransitRoutersTransitRouterArrayOutput) ToGetTransitRoutersTransitRouterArrayOutputWithContext(ctx context.Context) GetTransitRoutersTransitRouterArrayOutput {
 	return o
+}
+
+func (o GetTransitRoutersTransitRouterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTransitRoutersTransitRouter] {
+	return pulumix.Output[[]GetTransitRoutersTransitRouter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTransitRoutersTransitRouterArrayOutput) Index(i pulumi.IntInput) GetTransitRoutersTransitRouterOutput {
@@ -5937,6 +6826,12 @@ func (i GetVbrHealthChecksCheckArgs) ToGetVbrHealthChecksCheckOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetVbrHealthChecksCheckOutput)
 }
 
+func (i GetVbrHealthChecksCheckArgs) ToOutput(ctx context.Context) pulumix.Output[GetVbrHealthChecksCheck] {
+	return pulumix.Output[GetVbrHealthChecksCheck]{
+		OutputState: i.ToGetVbrHealthChecksCheckOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetVbrHealthChecksCheckArrayInput is an input type that accepts GetVbrHealthChecksCheckArray and GetVbrHealthChecksCheckArrayOutput values.
 // You can construct a concrete instance of `GetVbrHealthChecksCheckArrayInput` via:
 //
@@ -5962,6 +6857,12 @@ func (i GetVbrHealthChecksCheckArray) ToGetVbrHealthChecksCheckArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetVbrHealthChecksCheckArrayOutput)
 }
 
+func (i GetVbrHealthChecksCheckArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVbrHealthChecksCheck] {
+	return pulumix.Output[[]GetVbrHealthChecksCheck]{
+		OutputState: i.ToGetVbrHealthChecksCheckArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetVbrHealthChecksCheckOutput struct{ *pulumi.OutputState }
 
 func (GetVbrHealthChecksCheckOutput) ElementType() reflect.Type {
@@ -5974,6 +6875,12 @@ func (o GetVbrHealthChecksCheckOutput) ToGetVbrHealthChecksCheckOutput() GetVbrH
 
 func (o GetVbrHealthChecksCheckOutput) ToGetVbrHealthChecksCheckOutputWithContext(ctx context.Context) GetVbrHealthChecksCheckOutput {
 	return o
+}
+
+func (o GetVbrHealthChecksCheckOutput) ToOutput(ctx context.Context) pulumix.Output[GetVbrHealthChecksCheck] {
+	return pulumix.Output[GetVbrHealthChecksCheck]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Cloud Enterprise Network (CEN) instance.
@@ -6028,6 +6935,12 @@ func (o GetVbrHealthChecksCheckArrayOutput) ToGetVbrHealthChecksCheckArrayOutput
 
 func (o GetVbrHealthChecksCheckArrayOutput) ToGetVbrHealthChecksCheckArrayOutputWithContext(ctx context.Context) GetVbrHealthChecksCheckArrayOutput {
 	return o
+}
+
+func (o GetVbrHealthChecksCheckArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVbrHealthChecksCheck] {
+	return pulumix.Output[[]GetVbrHealthChecksCheck]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetVbrHealthChecksCheckArrayOutput) Index(i pulumi.IntInput) GetVbrHealthChecksCheckOutput {

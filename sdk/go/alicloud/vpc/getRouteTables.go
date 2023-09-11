@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of Route Tables owned by an Alibaba Cloud account.
@@ -183,6 +184,12 @@ func (o GetRouteTablesResultOutput) ToGetRouteTablesResultOutput() GetRouteTable
 
 func (o GetRouteTablesResultOutput) ToGetRouteTablesResultOutputWithContext(ctx context.Context) GetRouteTablesResultOutput {
 	return o
+}
+
+func (o GetRouteTablesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRouteTablesResult] {
+	return pulumix.Output[GetRouteTablesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

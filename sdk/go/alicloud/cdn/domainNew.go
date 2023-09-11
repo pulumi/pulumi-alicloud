@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a CDN Domain resource. CDN domain name.
@@ -267,6 +268,12 @@ func (i *DomainNew) ToDomainNewOutputWithContext(ctx context.Context) DomainNewO
 	return pulumi.ToOutputWithContext(ctx, i).(DomainNewOutput)
 }
 
+func (i *DomainNew) ToOutput(ctx context.Context) pulumix.Output[*DomainNew] {
+	return pulumix.Output[*DomainNew]{
+		OutputState: i.ToDomainNewOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DomainNewArrayInput is an input type that accepts DomainNewArray and DomainNewArrayOutput values.
 // You can construct a concrete instance of `DomainNewArrayInput` via:
 //
@@ -290,6 +297,12 @@ func (i DomainNewArray) ToDomainNewArrayOutput() DomainNewArrayOutput {
 
 func (i DomainNewArray) ToDomainNewArrayOutputWithContext(ctx context.Context) DomainNewArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainNewArrayOutput)
+}
+
+func (i DomainNewArray) ToOutput(ctx context.Context) pulumix.Output[[]*DomainNew] {
+	return pulumix.Output[[]*DomainNew]{
+		OutputState: i.ToDomainNewArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DomainNewMapInput is an input type that accepts DomainNewMap and DomainNewMapOutput values.
@@ -317,6 +330,12 @@ func (i DomainNewMap) ToDomainNewMapOutputWithContext(ctx context.Context) Domai
 	return pulumi.ToOutputWithContext(ctx, i).(DomainNewMapOutput)
 }
 
+func (i DomainNewMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DomainNew] {
+	return pulumix.Output[map[string]*DomainNew]{
+		OutputState: i.ToDomainNewMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DomainNewOutput struct{ *pulumi.OutputState }
 
 func (DomainNewOutput) ElementType() reflect.Type {
@@ -329,6 +348,12 @@ func (o DomainNewOutput) ToDomainNewOutput() DomainNewOutput {
 
 func (o DomainNewOutput) ToDomainNewOutputWithContext(ctx context.Context) DomainNewOutput {
 	return o
+}
+
+func (o DomainNewOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainNew] {
+	return pulumix.Output[*DomainNew]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
@@ -399,6 +424,12 @@ func (o DomainNewArrayOutput) ToDomainNewArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o DomainNewArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DomainNew] {
+	return pulumix.Output[[]*DomainNew]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DomainNewArrayOutput) Index(i pulumi.IntInput) DomainNewOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DomainNew {
 		return vs[0].([]*DomainNew)[vs[1].(int)]
@@ -417,6 +448,12 @@ func (o DomainNewMapOutput) ToDomainNewMapOutput() DomainNewMapOutput {
 
 func (o DomainNewMapOutput) ToDomainNewMapOutputWithContext(ctx context.Context) DomainNewMapOutput {
 	return o
+}
+
+func (o DomainNewMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DomainNew] {
+	return pulumix.Output[map[string]*DomainNew]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DomainNewMapOutput) MapIndex(k pulumi.StringInput) DomainNewOutput {

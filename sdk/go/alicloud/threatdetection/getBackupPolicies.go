@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
@@ -147,6 +148,12 @@ func (o GetBackupPoliciesResultOutput) ToGetBackupPoliciesResultOutput() GetBack
 
 func (o GetBackupPoliciesResultOutput) ToGetBackupPoliciesResultOutputWithContext(ctx context.Context) GetBackupPoliciesResultOutput {
 	return o
+}
+
+func (o GetBackupPoliciesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBackupPoliciesResult] {
+	return pulumix.Output[GetBackupPoliciesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetBackupPoliciesResultOutput) CurrentPage() pulumi.IntPtrOutput {

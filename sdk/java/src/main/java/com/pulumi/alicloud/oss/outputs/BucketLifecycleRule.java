@@ -5,6 +5,7 @@ package com.pulumi.alicloud.oss.outputs;
 
 import com.pulumi.alicloud.oss.outputs.BucketLifecycleRuleAbortMultipartUpload;
 import com.pulumi.alicloud.oss.outputs.BucketLifecycleRuleExpiration;
+import com.pulumi.alicloud.oss.outputs.BucketLifecycleRuleFilter;
 import com.pulumi.alicloud.oss.outputs.BucketLifecycleRuleNoncurrentVersionExpiration;
 import com.pulumi.alicloud.oss.outputs.BucketLifecycleRuleNoncurrentVersionTransition;
 import com.pulumi.alicloud.oss.outputs.BucketLifecycleRuleTransition;
@@ -36,6 +37,13 @@ public final class BucketLifecycleRule {
      */
     private @Nullable List<BucketLifecycleRuleExpiration> expirations;
     /**
+     * @return Configuration block used to identify objects that a Lifecycle rule applies to. See `filter` below.
+     * 
+     * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+     * 
+     */
+    private @Nullable BucketLifecycleRuleFilter filter;
+    /**
      * @return Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
      * 
      */
@@ -51,14 +59,12 @@ public final class BucketLifecycleRule {
      */
     private @Nullable List<BucketLifecycleRuleNoncurrentVersionTransition> noncurrentVersionTransitions;
     /**
-     * @return Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+     * @return The prefix in the names of the objects to which the lifecycle rule does not apply.
      * 
      */
     private @Nullable String prefix;
     /**
      * @return Key-value map of resource tags. All of these tags must exist in the object&#39;s tag set in order for the rule to apply.
-     * 
-     * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
      * 
      */
     private @Nullable Map<String,Object> tags;
@@ -91,6 +97,15 @@ public final class BucketLifecycleRule {
         return this.expirations == null ? List.of() : this.expirations;
     }
     /**
+     * @return Configuration block used to identify objects that a Lifecycle rule applies to. See `filter` below.
+     * 
+     * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+     * 
+     */
+    public Optional<BucketLifecycleRuleFilter> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+    /**
      * @return Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
      * 
      */
@@ -112,7 +127,7 @@ public final class BucketLifecycleRule {
         return this.noncurrentVersionTransitions == null ? List.of() : this.noncurrentVersionTransitions;
     }
     /**
-     * @return Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+     * @return The prefix in the names of the objects to which the lifecycle rule does not apply.
      * 
      */
     public Optional<String> prefix() {
@@ -120,8 +135,6 @@ public final class BucketLifecycleRule {
     }
     /**
      * @return Key-value map of resource tags. All of these tags must exist in the object&#39;s tag set in order for the rule to apply.
-     * 
-     * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
      * 
      */
     public Map<String,Object> tags() {
@@ -147,6 +160,7 @@ public final class BucketLifecycleRule {
         private @Nullable List<BucketLifecycleRuleAbortMultipartUpload> abortMultipartUploads;
         private Boolean enabled;
         private @Nullable List<BucketLifecycleRuleExpiration> expirations;
+        private @Nullable BucketLifecycleRuleFilter filter;
         private @Nullable String id;
         private @Nullable List<BucketLifecycleRuleNoncurrentVersionExpiration> noncurrentVersionExpirations;
         private @Nullable List<BucketLifecycleRuleNoncurrentVersionTransition> noncurrentVersionTransitions;
@@ -159,6 +173,7 @@ public final class BucketLifecycleRule {
     	      this.abortMultipartUploads = defaults.abortMultipartUploads;
     	      this.enabled = defaults.enabled;
     	      this.expirations = defaults.expirations;
+    	      this.filter = defaults.filter;
     	      this.id = defaults.id;
     	      this.noncurrentVersionExpirations = defaults.noncurrentVersionExpirations;
     	      this.noncurrentVersionTransitions = defaults.noncurrentVersionTransitions;
@@ -187,6 +202,11 @@ public final class BucketLifecycleRule {
         }
         public Builder expirations(BucketLifecycleRuleExpiration... expirations) {
             return expirations(List.of(expirations));
+        }
+        @CustomType.Setter
+        public Builder filter(@Nullable BucketLifecycleRuleFilter filter) {
+            this.filter = filter;
+            return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
@@ -232,6 +252,7 @@ public final class BucketLifecycleRule {
             o.abortMultipartUploads = abortMultipartUploads;
             o.enabled = enabled;
             o.expirations = expirations;
+            o.filter = filter;
             o.id = id;
             o.noncurrentVersionExpirations = noncurrentVersionExpirations;
             o.noncurrentVersionTransitions = noncurrentVersionTransitions;

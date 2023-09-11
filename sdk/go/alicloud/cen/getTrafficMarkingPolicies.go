@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cen Traffic Marking Policies of the current Alibaba Cloud user.
@@ -141,6 +142,12 @@ func (o GetTrafficMarkingPoliciesResultOutput) ToGetTrafficMarkingPoliciesResult
 
 func (o GetTrafficMarkingPoliciesResultOutput) ToGetTrafficMarkingPoliciesResultOutputWithContext(ctx context.Context) GetTrafficMarkingPoliciesResultOutput {
 	return o
+}
+
+func (o GetTrafficMarkingPoliciesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTrafficMarkingPoliciesResult] {
+	return pulumix.Output[GetTrafficMarkingPoliciesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTrafficMarkingPoliciesResultOutput) Description() pulumi.StringPtrOutput {

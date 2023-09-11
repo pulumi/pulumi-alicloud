@@ -28,7 +28,7 @@ public final class GreyTagRouteDubboRuleItem {
      */
     private @Nullable Integer index;
     /**
-     * @return The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`
+     * @return The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
      * 
      */
     private @Nullable String operator;
@@ -61,7 +61,7 @@ public final class GreyTagRouteDubboRuleItem {
         return Optional.ofNullable(this.index);
     }
     /**
-     * @return The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`
+     * @return The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
      * 
      */
     public Optional<String> operator() {

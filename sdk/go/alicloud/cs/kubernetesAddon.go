@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource will help you to manage addon in Kubernetes Cluster, see [What is kubernetes addon](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-install-a-component-in-an-ack-cluster).
@@ -165,6 +166,12 @@ func (i *KubernetesAddon) ToKubernetesAddonOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAddonOutput)
 }
 
+func (i *KubernetesAddon) ToOutput(ctx context.Context) pulumix.Output[*KubernetesAddon] {
+	return pulumix.Output[*KubernetesAddon]{
+		OutputState: i.ToKubernetesAddonOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KubernetesAddonArrayInput is an input type that accepts KubernetesAddonArray and KubernetesAddonArrayOutput values.
 // You can construct a concrete instance of `KubernetesAddonArrayInput` via:
 //
@@ -188,6 +195,12 @@ func (i KubernetesAddonArray) ToKubernetesAddonArrayOutput() KubernetesAddonArra
 
 func (i KubernetesAddonArray) ToKubernetesAddonArrayOutputWithContext(ctx context.Context) KubernetesAddonArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAddonArrayOutput)
+}
+
+func (i KubernetesAddonArray) ToOutput(ctx context.Context) pulumix.Output[[]*KubernetesAddon] {
+	return pulumix.Output[[]*KubernetesAddon]{
+		OutputState: i.ToKubernetesAddonArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // KubernetesAddonMapInput is an input type that accepts KubernetesAddonMap and KubernetesAddonMapOutput values.
@@ -215,6 +228,12 @@ func (i KubernetesAddonMap) ToKubernetesAddonMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAddonMapOutput)
 }
 
+func (i KubernetesAddonMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KubernetesAddon] {
+	return pulumix.Output[map[string]*KubernetesAddon]{
+		OutputState: i.ToKubernetesAddonMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KubernetesAddonOutput struct{ *pulumi.OutputState }
 
 func (KubernetesAddonOutput) ElementType() reflect.Type {
@@ -227,6 +246,12 @@ func (o KubernetesAddonOutput) ToKubernetesAddonOutput() KubernetesAddonOutput {
 
 func (o KubernetesAddonOutput) ToKubernetesAddonOutputWithContext(ctx context.Context) KubernetesAddonOutput {
 	return o
+}
+
+func (o KubernetesAddonOutput) ToOutput(ctx context.Context) pulumix.Output[*KubernetesAddon] {
+	return pulumix.Output[*KubernetesAddon]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Is the addon ready for upgrade.
@@ -278,6 +303,12 @@ func (o KubernetesAddonArrayOutput) ToKubernetesAddonArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o KubernetesAddonArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KubernetesAddon] {
+	return pulumix.Output[[]*KubernetesAddon]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KubernetesAddonArrayOutput) Index(i pulumi.IntInput) KubernetesAddonOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KubernetesAddon {
 		return vs[0].([]*KubernetesAddon)[vs[1].(int)]
@@ -296,6 +327,12 @@ func (o KubernetesAddonMapOutput) ToKubernetesAddonMapOutput() KubernetesAddonMa
 
 func (o KubernetesAddonMapOutput) ToKubernetesAddonMapOutputWithContext(ctx context.Context) KubernetesAddonMapOutput {
 	return o
+}
+
+func (o KubernetesAddonMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KubernetesAddon] {
+	return pulumix.Output[map[string]*KubernetesAddon]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KubernetesAddonMapOutput) MapIndex(k pulumi.StringInput) KubernetesAddonOutput {

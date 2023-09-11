@@ -16,9 +16,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a ENS Key Pair resource.
  * 
- * For information about ENS Key Pair and how to use it, see [What is Key Pair](https://help.aliyun.com/product/62684.html).
+ * For information about ENS Key Pair and how to use it, see [What is Key Pair](https://www.alibabacloud.com/help/en/ens/latest/createkeypair).
  * 
- * &gt; **NOTE:** Available in v1.133.0+.
+ * &gt; **NOTE:** Available since v1.133.0.
  * 
  * ## Example Usage
  * 
@@ -44,9 +44,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         var example = new KeyPair(&#34;example&#34;, KeyPairArgs.builder()        
- *             .keyPairName(&#34;example_value&#34;)
- *             .version(&#34;example_value&#34;)
+ *             .keyPairName(name)
+ *             .version(&#34;2017-11-10&#34;)
  *             .build());
  * 
  *     }

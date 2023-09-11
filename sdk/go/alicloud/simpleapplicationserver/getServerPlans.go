@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
@@ -142,6 +143,12 @@ func (o GetServerPlansResultOutput) ToGetServerPlansResultOutput() GetServerPlan
 
 func (o GetServerPlansResultOutput) ToGetServerPlansResultOutputWithContext(ctx context.Context) GetServerPlansResultOutput {
 	return o
+}
+
+func (o GetServerPlansResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServerPlansResult] {
+	return pulumix.Output[GetServerPlansResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetServerPlansResultOutput) Bandwidth() pulumi.IntPtrOutput {

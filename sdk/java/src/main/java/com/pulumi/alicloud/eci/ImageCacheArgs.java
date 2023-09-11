@@ -64,14 +64,14 @@ public final class ImageCacheArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Image Registry parameters about the image to be cached.
+     * The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
      * 
      */
     @Import(name="imageRegistryCredentials")
     private @Nullable Output<List<ImageCacheImageRegistryCredentialArgs>> imageRegistryCredentials;
 
     /**
-     * @return The Image Registry parameters about the image to be cached.
+     * @return The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
      * 
      */
     public Optional<Output<List<ImageCacheImageRegistryCredentialArgs>>> imageRegistryCredentials() {
@@ -265,7 +265,7 @@ public final class ImageCacheArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageRegistryCredentials The Image Registry parameters about the image to be cached.
+         * @param imageRegistryCredentials The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class ImageCacheArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageRegistryCredentials The Image Registry parameters about the image to be cached.
+         * @param imageRegistryCredentials The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
          * 
          * @return builder
          * 
@@ -286,7 +286,7 @@ public final class ImageCacheArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageRegistryCredentials The Image Registry parameters about the image to be cached.
+         * @param imageRegistryCredentials The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
          * 
          * @return builder
          * 

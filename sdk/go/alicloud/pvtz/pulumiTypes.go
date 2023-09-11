@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -58,6 +59,12 @@ func (i EndpointIpConfigArgs) ToEndpointIpConfigOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointIpConfigOutput)
 }
 
+func (i EndpointIpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EndpointIpConfig] {
+	return pulumix.Output[EndpointIpConfig]{
+		OutputState: i.ToEndpointIpConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EndpointIpConfigArrayInput is an input type that accepts EndpointIpConfigArray and EndpointIpConfigArrayOutput values.
 // You can construct a concrete instance of `EndpointIpConfigArrayInput` via:
 //
@@ -83,6 +90,12 @@ func (i EndpointIpConfigArray) ToEndpointIpConfigArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointIpConfigArrayOutput)
 }
 
+func (i EndpointIpConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]EndpointIpConfig] {
+	return pulumix.Output[[]EndpointIpConfig]{
+		OutputState: i.ToEndpointIpConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EndpointIpConfigOutput struct{ *pulumi.OutputState }
 
 func (EndpointIpConfigOutput) ElementType() reflect.Type {
@@ -95,6 +108,12 @@ func (o EndpointIpConfigOutput) ToEndpointIpConfigOutput() EndpointIpConfigOutpu
 
 func (o EndpointIpConfigOutput) ToEndpointIpConfigOutputWithContext(ctx context.Context) EndpointIpConfigOutput {
 	return o
+}
+
+func (o EndpointIpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointIpConfig] {
+	return pulumix.Output[EndpointIpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Subnet mask.
@@ -129,6 +148,12 @@ func (o EndpointIpConfigArrayOutput) ToEndpointIpConfigArrayOutput() EndpointIpC
 
 func (o EndpointIpConfigArrayOutput) ToEndpointIpConfigArrayOutputWithContext(ctx context.Context) EndpointIpConfigArrayOutput {
 	return o
+}
+
+func (o EndpointIpConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EndpointIpConfig] {
+	return pulumix.Output[[]EndpointIpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EndpointIpConfigArrayOutput) Index(i pulumi.IntInput) EndpointIpConfigOutput {
@@ -174,6 +199,12 @@ func (i RuleAttachmentVpcArgs) ToRuleAttachmentVpcOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(RuleAttachmentVpcOutput)
 }
 
+func (i RuleAttachmentVpcArgs) ToOutput(ctx context.Context) pulumix.Output[RuleAttachmentVpc] {
+	return pulumix.Output[RuleAttachmentVpc]{
+		OutputState: i.ToRuleAttachmentVpcOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RuleAttachmentVpcArrayInput is an input type that accepts RuleAttachmentVpcArray and RuleAttachmentVpcArrayOutput values.
 // You can construct a concrete instance of `RuleAttachmentVpcArrayInput` via:
 //
@@ -199,6 +230,12 @@ func (i RuleAttachmentVpcArray) ToRuleAttachmentVpcArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(RuleAttachmentVpcArrayOutput)
 }
 
+func (i RuleAttachmentVpcArray) ToOutput(ctx context.Context) pulumix.Output[[]RuleAttachmentVpc] {
+	return pulumix.Output[[]RuleAttachmentVpc]{
+		OutputState: i.ToRuleAttachmentVpcArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuleAttachmentVpcOutput struct{ *pulumi.OutputState }
 
 func (RuleAttachmentVpcOutput) ElementType() reflect.Type {
@@ -211,6 +248,12 @@ func (o RuleAttachmentVpcOutput) ToRuleAttachmentVpcOutput() RuleAttachmentVpcOu
 
 func (o RuleAttachmentVpcOutput) ToRuleAttachmentVpcOutputWithContext(ctx context.Context) RuleAttachmentVpcOutput {
 	return o
+}
+
+func (o RuleAttachmentVpcOutput) ToOutput(ctx context.Context) pulumix.Output[RuleAttachmentVpc] {
+	return pulumix.Output[RuleAttachmentVpc]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The region of the vpc. If not set, the current region will instead of.
@@ -235,6 +278,12 @@ func (o RuleAttachmentVpcArrayOutput) ToRuleAttachmentVpcArrayOutput() RuleAttac
 
 func (o RuleAttachmentVpcArrayOutput) ToRuleAttachmentVpcArrayOutputWithContext(ctx context.Context) RuleAttachmentVpcArrayOutput {
 	return o
+}
+
+func (o RuleAttachmentVpcArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RuleAttachmentVpc] {
+	return pulumix.Output[[]RuleAttachmentVpc]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuleAttachmentVpcArrayOutput) Index(i pulumi.IntInput) RuleAttachmentVpcOutput {
@@ -280,6 +329,12 @@ func (i RuleForwardIpArgs) ToRuleForwardIpOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(RuleForwardIpOutput)
 }
 
+func (i RuleForwardIpArgs) ToOutput(ctx context.Context) pulumix.Output[RuleForwardIp] {
+	return pulumix.Output[RuleForwardIp]{
+		OutputState: i.ToRuleForwardIpOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RuleForwardIpArrayInput is an input type that accepts RuleForwardIpArray and RuleForwardIpArrayOutput values.
 // You can construct a concrete instance of `RuleForwardIpArrayInput` via:
 //
@@ -305,6 +360,12 @@ func (i RuleForwardIpArray) ToRuleForwardIpArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(RuleForwardIpArrayOutput)
 }
 
+func (i RuleForwardIpArray) ToOutput(ctx context.Context) pulumix.Output[[]RuleForwardIp] {
+	return pulumix.Output[[]RuleForwardIp]{
+		OutputState: i.ToRuleForwardIpArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuleForwardIpOutput struct{ *pulumi.OutputState }
 
 func (RuleForwardIpOutput) ElementType() reflect.Type {
@@ -317,6 +378,12 @@ func (o RuleForwardIpOutput) ToRuleForwardIpOutput() RuleForwardIpOutput {
 
 func (o RuleForwardIpOutput) ToRuleForwardIpOutputWithContext(ctx context.Context) RuleForwardIpOutput {
 	return o
+}
+
+func (o RuleForwardIpOutput) ToOutput(ctx context.Context) pulumix.Output[RuleForwardIp] {
+	return pulumix.Output[RuleForwardIp]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ip of the forwarding destination.
@@ -341,6 +408,12 @@ func (o RuleForwardIpArrayOutput) ToRuleForwardIpArrayOutput() RuleForwardIpArra
 
 func (o RuleForwardIpArrayOutput) ToRuleForwardIpArrayOutputWithContext(ctx context.Context) RuleForwardIpArrayOutput {
 	return o
+}
+
+func (o RuleForwardIpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RuleForwardIp] {
+	return pulumix.Output[[]RuleForwardIp]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuleForwardIpArrayOutput) Index(i pulumi.IntInput) RuleForwardIpOutput {
@@ -390,6 +463,12 @@ func (i ZoneAttachmentVpcArgs) ToZoneAttachmentVpcOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneAttachmentVpcOutput)
 }
 
+func (i ZoneAttachmentVpcArgs) ToOutput(ctx context.Context) pulumix.Output[ZoneAttachmentVpc] {
+	return pulumix.Output[ZoneAttachmentVpc]{
+		OutputState: i.ToZoneAttachmentVpcOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ZoneAttachmentVpcArrayInput is an input type that accepts ZoneAttachmentVpcArray and ZoneAttachmentVpcArrayOutput values.
 // You can construct a concrete instance of `ZoneAttachmentVpcArrayInput` via:
 //
@@ -415,6 +494,12 @@ func (i ZoneAttachmentVpcArray) ToZoneAttachmentVpcArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneAttachmentVpcArrayOutput)
 }
 
+func (i ZoneAttachmentVpcArray) ToOutput(ctx context.Context) pulumix.Output[[]ZoneAttachmentVpc] {
+	return pulumix.Output[[]ZoneAttachmentVpc]{
+		OutputState: i.ToZoneAttachmentVpcArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ZoneAttachmentVpcOutput struct{ *pulumi.OutputState }
 
 func (ZoneAttachmentVpcOutput) ElementType() reflect.Type {
@@ -427,6 +512,12 @@ func (o ZoneAttachmentVpcOutput) ToZoneAttachmentVpcOutput() ZoneAttachmentVpcOu
 
 func (o ZoneAttachmentVpcOutput) ToZoneAttachmentVpcOutputWithContext(ctx context.Context) ZoneAttachmentVpcOutput {
 	return o
+}
+
+func (o ZoneAttachmentVpcOutput) ToOutput(ctx context.Context) pulumix.Output[ZoneAttachmentVpc] {
+	return pulumix.Output[ZoneAttachmentVpc]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The region of the vpc. If not set, the current region will instead of.
@@ -453,6 +544,12 @@ func (o ZoneAttachmentVpcArrayOutput) ToZoneAttachmentVpcArrayOutput() ZoneAttac
 
 func (o ZoneAttachmentVpcArrayOutput) ToZoneAttachmentVpcArrayOutputWithContext(ctx context.Context) ZoneAttachmentVpcArrayOutput {
 	return o
+}
+
+func (o ZoneAttachmentVpcArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ZoneAttachmentVpc] {
+	return pulumix.Output[[]ZoneAttachmentVpc]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ZoneAttachmentVpcArrayOutput) Index(i pulumi.IntInput) ZoneAttachmentVpcOutput {
@@ -498,6 +595,12 @@ func (i ZoneUserInfoArgs) ToZoneUserInfoOutputWithContext(ctx context.Context) Z
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneUserInfoOutput)
 }
 
+func (i ZoneUserInfoArgs) ToOutput(ctx context.Context) pulumix.Output[ZoneUserInfo] {
+	return pulumix.Output[ZoneUserInfo]{
+		OutputState: i.ToZoneUserInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ZoneUserInfoArrayInput is an input type that accepts ZoneUserInfoArray and ZoneUserInfoArrayOutput values.
 // You can construct a concrete instance of `ZoneUserInfoArrayInput` via:
 //
@@ -523,6 +626,12 @@ func (i ZoneUserInfoArray) ToZoneUserInfoArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneUserInfoArrayOutput)
 }
 
+func (i ZoneUserInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]ZoneUserInfo] {
+	return pulumix.Output[[]ZoneUserInfo]{
+		OutputState: i.ToZoneUserInfoArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ZoneUserInfoOutput struct{ *pulumi.OutputState }
 
 func (ZoneUserInfoOutput) ElementType() reflect.Type {
@@ -535,6 +644,12 @@ func (o ZoneUserInfoOutput) ToZoneUserInfoOutput() ZoneUserInfoOutput {
 
 func (o ZoneUserInfoOutput) ToZoneUserInfoOutputWithContext(ctx context.Context) ZoneUserInfoOutput {
 	return o
+}
+
+func (o ZoneUserInfoOutput) ToOutput(ctx context.Context) pulumix.Output[ZoneUserInfo] {
+	return pulumix.Output[ZoneUserInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of the region IDs.
@@ -559,6 +674,12 @@ func (o ZoneUserInfoArrayOutput) ToZoneUserInfoArrayOutput() ZoneUserInfoArrayOu
 
 func (o ZoneUserInfoArrayOutput) ToZoneUserInfoArrayOutputWithContext(ctx context.Context) ZoneUserInfoArrayOutput {
 	return o
+}
+
+func (o ZoneUserInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ZoneUserInfo] {
+	return pulumix.Output[[]ZoneUserInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ZoneUserInfoArrayOutput) Index(i pulumi.IntInput) ZoneUserInfoOutput {
@@ -630,6 +751,12 @@ func (i GetEndpointsEndpointArgs) ToGetEndpointsEndpointOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetEndpointsEndpointOutput)
 }
 
+func (i GetEndpointsEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[GetEndpointsEndpoint] {
+	return pulumix.Output[GetEndpointsEndpoint]{
+		OutputState: i.ToGetEndpointsEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetEndpointsEndpointArrayInput is an input type that accepts GetEndpointsEndpointArray and GetEndpointsEndpointArrayOutput values.
 // You can construct a concrete instance of `GetEndpointsEndpointArrayInput` via:
 //
@@ -655,6 +782,12 @@ func (i GetEndpointsEndpointArray) ToGetEndpointsEndpointArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetEndpointsEndpointArrayOutput)
 }
 
+func (i GetEndpointsEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEndpointsEndpoint] {
+	return pulumix.Output[[]GetEndpointsEndpoint]{
+		OutputState: i.ToGetEndpointsEndpointArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetEndpointsEndpointOutput struct{ *pulumi.OutputState }
 
 func (GetEndpointsEndpointOutput) ElementType() reflect.Type {
@@ -667,6 +800,12 @@ func (o GetEndpointsEndpointOutput) ToGetEndpointsEndpointOutput() GetEndpointsE
 
 func (o GetEndpointsEndpointOutput) ToGetEndpointsEndpointOutputWithContext(ctx context.Context) GetEndpointsEndpointOutput {
 	return o
+}
+
+func (o GetEndpointsEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[GetEndpointsEndpoint] {
+	return pulumix.Output[GetEndpointsEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation time of the resource.
@@ -727,6 +866,12 @@ func (o GetEndpointsEndpointArrayOutput) ToGetEndpointsEndpointArrayOutputWithCo
 	return o
 }
 
+func (o GetEndpointsEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEndpointsEndpoint] {
+	return pulumix.Output[[]GetEndpointsEndpoint]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetEndpointsEndpointArrayOutput) Index(i pulumi.IntInput) GetEndpointsEndpointOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEndpointsEndpoint {
 		return vs[0].([]GetEndpointsEndpoint)[vs[1].(int)]
@@ -778,6 +923,12 @@ func (i GetEndpointsEndpointIpConfigArgs) ToGetEndpointsEndpointIpConfigOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetEndpointsEndpointIpConfigOutput)
 }
 
+func (i GetEndpointsEndpointIpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetEndpointsEndpointIpConfig] {
+	return pulumix.Output[GetEndpointsEndpointIpConfig]{
+		OutputState: i.ToGetEndpointsEndpointIpConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetEndpointsEndpointIpConfigArrayInput is an input type that accepts GetEndpointsEndpointIpConfigArray and GetEndpointsEndpointIpConfigArrayOutput values.
 // You can construct a concrete instance of `GetEndpointsEndpointIpConfigArrayInput` via:
 //
@@ -803,6 +954,12 @@ func (i GetEndpointsEndpointIpConfigArray) ToGetEndpointsEndpointIpConfigArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetEndpointsEndpointIpConfigArrayOutput)
 }
 
+func (i GetEndpointsEndpointIpConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEndpointsEndpointIpConfig] {
+	return pulumix.Output[[]GetEndpointsEndpointIpConfig]{
+		OutputState: i.ToGetEndpointsEndpointIpConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetEndpointsEndpointIpConfigOutput struct{ *pulumi.OutputState }
 
 func (GetEndpointsEndpointIpConfigOutput) ElementType() reflect.Type {
@@ -815,6 +972,12 @@ func (o GetEndpointsEndpointIpConfigOutput) ToGetEndpointsEndpointIpConfigOutput
 
 func (o GetEndpointsEndpointIpConfigOutput) ToGetEndpointsEndpointIpConfigOutputWithContext(ctx context.Context) GetEndpointsEndpointIpConfigOutput {
 	return o
+}
+
+func (o GetEndpointsEndpointIpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetEndpointsEndpointIpConfig] {
+	return pulumix.Output[GetEndpointsEndpointIpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Subnet mask.
@@ -849,6 +1012,12 @@ func (o GetEndpointsEndpointIpConfigArrayOutput) ToGetEndpointsEndpointIpConfigA
 
 func (o GetEndpointsEndpointIpConfigArrayOutput) ToGetEndpointsEndpointIpConfigArrayOutputWithContext(ctx context.Context) GetEndpointsEndpointIpConfigArrayOutput {
 	return o
+}
+
+func (o GetEndpointsEndpointIpConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEndpointsEndpointIpConfig] {
+	return pulumix.Output[[]GetEndpointsEndpointIpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetEndpointsEndpointIpConfigArrayOutput) Index(i pulumi.IntInput) GetEndpointsEndpointIpConfigOutput {
@@ -894,6 +1063,12 @@ func (i GetResolverZonesZoneArgs) ToGetResolverZonesZoneOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetResolverZonesZoneOutput)
 }
 
+func (i GetResolverZonesZoneArgs) ToOutput(ctx context.Context) pulumix.Output[GetResolverZonesZone] {
+	return pulumix.Output[GetResolverZonesZone]{
+		OutputState: i.ToGetResolverZonesZoneOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResolverZonesZoneArrayInput is an input type that accepts GetResolverZonesZoneArray and GetResolverZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetResolverZonesZoneArrayInput` via:
 //
@@ -919,6 +1094,12 @@ func (i GetResolverZonesZoneArray) ToGetResolverZonesZoneArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetResolverZonesZoneArrayOutput)
 }
 
+func (i GetResolverZonesZoneArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResolverZonesZone] {
+	return pulumix.Output[[]GetResolverZonesZone]{
+		OutputState: i.ToGetResolverZonesZoneArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResolverZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetResolverZonesZoneOutput) ElementType() reflect.Type {
@@ -931,6 +1112,12 @@ func (o GetResolverZonesZoneOutput) ToGetResolverZonesZoneOutput() GetResolverZo
 
 func (o GetResolverZonesZoneOutput) ToGetResolverZonesZoneOutputWithContext(ctx context.Context) GetResolverZonesZoneOutput {
 	return o
+}
+
+func (o GetResolverZonesZoneOutput) ToOutput(ctx context.Context) pulumix.Output[GetResolverZonesZone] {
+	return pulumix.Output[GetResolverZonesZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The status of the Zone.
@@ -955,6 +1142,12 @@ func (o GetResolverZonesZoneArrayOutput) ToGetResolverZonesZoneArrayOutput() Get
 
 func (o GetResolverZonesZoneArrayOutput) ToGetResolverZonesZoneArrayOutputWithContext(ctx context.Context) GetResolverZonesZoneArrayOutput {
 	return o
+}
+
+func (o GetResolverZonesZoneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResolverZonesZone] {
+	return pulumix.Output[[]GetResolverZonesZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResolverZonesZoneArrayOutput) Index(i pulumi.IntInput) GetResolverZonesZoneOutput {
@@ -1030,6 +1223,12 @@ func (i GetRulesRuleArgs) ToGetRulesRuleOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleOutput)
 }
 
+func (i GetRulesRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetRulesRule] {
+	return pulumix.Output[GetRulesRule]{
+		OutputState: i.ToGetRulesRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRulesRuleArrayInput is an input type that accepts GetRulesRuleArray and GetRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetRulesRuleArrayInput` via:
 //
@@ -1055,6 +1254,12 @@ func (i GetRulesRuleArray) ToGetRulesRuleArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleArrayOutput)
 }
 
+func (i GetRulesRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesRule] {
+	return pulumix.Output[[]GetRulesRule]{
+		OutputState: i.ToGetRulesRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRulesRuleOutput struct{ *pulumi.OutputState }
 
 func (GetRulesRuleOutput) ElementType() reflect.Type {
@@ -1067,6 +1272,12 @@ func (o GetRulesRuleOutput) ToGetRulesRuleOutput() GetRulesRuleOutput {
 
 func (o GetRulesRuleOutput) ToGetRulesRuleOutputWithContext(ctx context.Context) GetRulesRuleOutput {
 	return o
+}
+
+func (o GetRulesRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetRulesRule] {
+	return pulumix.Output[GetRulesRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The List of the VPC. See the following `Block bindVpcs`. **NOTE:** Available in v1.158.0+.
@@ -1132,6 +1343,12 @@ func (o GetRulesRuleArrayOutput) ToGetRulesRuleArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o GetRulesRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesRule] {
+	return pulumix.Output[[]GetRulesRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetRulesRuleArrayOutput) Index(i pulumi.IntInput) GetRulesRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRule {
 		return vs[0].([]GetRulesRule)[vs[1].(int)]
@@ -1183,6 +1400,12 @@ func (i GetRulesRuleBindVpcArgs) ToGetRulesRuleBindVpcOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleBindVpcOutput)
 }
 
+func (i GetRulesRuleBindVpcArgs) ToOutput(ctx context.Context) pulumix.Output[GetRulesRuleBindVpc] {
+	return pulumix.Output[GetRulesRuleBindVpc]{
+		OutputState: i.ToGetRulesRuleBindVpcOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRulesRuleBindVpcArrayInput is an input type that accepts GetRulesRuleBindVpcArray and GetRulesRuleBindVpcArrayOutput values.
 // You can construct a concrete instance of `GetRulesRuleBindVpcArrayInput` via:
 //
@@ -1208,6 +1431,12 @@ func (i GetRulesRuleBindVpcArray) ToGetRulesRuleBindVpcArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleBindVpcArrayOutput)
 }
 
+func (i GetRulesRuleBindVpcArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesRuleBindVpc] {
+	return pulumix.Output[[]GetRulesRuleBindVpc]{
+		OutputState: i.ToGetRulesRuleBindVpcArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRulesRuleBindVpcOutput struct{ *pulumi.OutputState }
 
 func (GetRulesRuleBindVpcOutput) ElementType() reflect.Type {
@@ -1220,6 +1449,12 @@ func (o GetRulesRuleBindVpcOutput) ToGetRulesRuleBindVpcOutput() GetRulesRuleBin
 
 func (o GetRulesRuleBindVpcOutput) ToGetRulesRuleBindVpcOutputWithContext(ctx context.Context) GetRulesRuleBindVpcOutput {
 	return o
+}
+
+func (o GetRulesRuleBindVpcOutput) ToOutput(ctx context.Context) pulumix.Output[GetRulesRuleBindVpc] {
+	return pulumix.Output[GetRulesRuleBindVpc]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The region ID of the vpc.
@@ -1254,6 +1489,12 @@ func (o GetRulesRuleBindVpcArrayOutput) ToGetRulesRuleBindVpcArrayOutput() GetRu
 
 func (o GetRulesRuleBindVpcArrayOutput) ToGetRulesRuleBindVpcArrayOutputWithContext(ctx context.Context) GetRulesRuleBindVpcArrayOutput {
 	return o
+}
+
+func (o GetRulesRuleBindVpcArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesRuleBindVpc] {
+	return pulumix.Output[[]GetRulesRuleBindVpc]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRulesRuleBindVpcArrayOutput) Index(i pulumi.IntInput) GetRulesRuleBindVpcOutput {
@@ -1295,6 +1536,12 @@ func (i GetRulesRuleForwardIpArgs) ToGetRulesRuleForwardIpOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleForwardIpOutput)
 }
 
+func (i GetRulesRuleForwardIpArgs) ToOutput(ctx context.Context) pulumix.Output[GetRulesRuleForwardIp] {
+	return pulumix.Output[GetRulesRuleForwardIp]{
+		OutputState: i.ToGetRulesRuleForwardIpOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRulesRuleForwardIpArrayInput is an input type that accepts GetRulesRuleForwardIpArray and GetRulesRuleForwardIpArrayOutput values.
 // You can construct a concrete instance of `GetRulesRuleForwardIpArrayInput` via:
 //
@@ -1320,6 +1567,12 @@ func (i GetRulesRuleForwardIpArray) ToGetRulesRuleForwardIpArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleForwardIpArrayOutput)
 }
 
+func (i GetRulesRuleForwardIpArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesRuleForwardIp] {
+	return pulumix.Output[[]GetRulesRuleForwardIp]{
+		OutputState: i.ToGetRulesRuleForwardIpArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRulesRuleForwardIpOutput struct{ *pulumi.OutputState }
 
 func (GetRulesRuleForwardIpOutput) ElementType() reflect.Type {
@@ -1332,6 +1585,12 @@ func (o GetRulesRuleForwardIpOutput) ToGetRulesRuleForwardIpOutput() GetRulesRul
 
 func (o GetRulesRuleForwardIpOutput) ToGetRulesRuleForwardIpOutputWithContext(ctx context.Context) GetRulesRuleForwardIpOutput {
 	return o
+}
+
+func (o GetRulesRuleForwardIpOutput) ToOutput(ctx context.Context) pulumix.Output[GetRulesRuleForwardIp] {
+	return pulumix.Output[GetRulesRuleForwardIp]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRulesRuleForwardIpOutput) Ip() pulumi.StringOutput {
@@ -1354,6 +1613,12 @@ func (o GetRulesRuleForwardIpArrayOutput) ToGetRulesRuleForwardIpArrayOutput() G
 
 func (o GetRulesRuleForwardIpArrayOutput) ToGetRulesRuleForwardIpArrayOutputWithContext(ctx context.Context) GetRulesRuleForwardIpArrayOutput {
 	return o
+}
+
+func (o GetRulesRuleForwardIpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesRuleForwardIp] {
+	return pulumix.Output[[]GetRulesRuleForwardIp]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRulesRuleForwardIpArrayOutput) Index(i pulumi.IntInput) GetRulesRuleForwardIpOutput {
@@ -1435,6 +1700,12 @@ func (i GetZoneRecordsRecordArgs) ToGetZoneRecordsRecordOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetZoneRecordsRecordOutput)
 }
 
+func (i GetZoneRecordsRecordArgs) ToOutput(ctx context.Context) pulumix.Output[GetZoneRecordsRecord] {
+	return pulumix.Output[GetZoneRecordsRecord]{
+		OutputState: i.ToGetZoneRecordsRecordOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetZoneRecordsRecordArrayInput is an input type that accepts GetZoneRecordsRecordArray and GetZoneRecordsRecordArrayOutput values.
 // You can construct a concrete instance of `GetZoneRecordsRecordArrayInput` via:
 //
@@ -1460,6 +1731,12 @@ func (i GetZoneRecordsRecordArray) ToGetZoneRecordsRecordArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetZoneRecordsRecordArrayOutput)
 }
 
+func (i GetZoneRecordsRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]GetZoneRecordsRecord] {
+	return pulumix.Output[[]GetZoneRecordsRecord]{
+		OutputState: i.ToGetZoneRecordsRecordArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetZoneRecordsRecordOutput struct{ *pulumi.OutputState }
 
 func (GetZoneRecordsRecordOutput) ElementType() reflect.Type {
@@ -1472,6 +1749,12 @@ func (o GetZoneRecordsRecordOutput) ToGetZoneRecordsRecordOutput() GetZoneRecord
 
 func (o GetZoneRecordsRecordOutput) ToGetZoneRecordsRecordOutputWithContext(ctx context.Context) GetZoneRecordsRecordOutput {
 	return o
+}
+
+func (o GetZoneRecordsRecordOutput) ToOutput(ctx context.Context) pulumix.Output[GetZoneRecordsRecord] {
+	return pulumix.Output[GetZoneRecordsRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID of the Private Zone Record.
@@ -1538,6 +1821,12 @@ func (o GetZoneRecordsRecordArrayOutput) ToGetZoneRecordsRecordArrayOutput() Get
 
 func (o GetZoneRecordsRecordArrayOutput) ToGetZoneRecordsRecordArrayOutputWithContext(ctx context.Context) GetZoneRecordsRecordArrayOutput {
 	return o
+}
+
+func (o GetZoneRecordsRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetZoneRecordsRecord] {
+	return pulumix.Output[[]GetZoneRecordsRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetZoneRecordsRecordArrayOutput) Index(i pulumi.IntInput) GetZoneRecordsRecordOutput {
@@ -1631,6 +1920,12 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneOutput)
 }
 
+func (i GetZonesZoneArgs) ToOutput(ctx context.Context) pulumix.Output[GetZonesZone] {
+	return pulumix.Output[GetZonesZone]{
+		OutputState: i.ToGetZonesZoneOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
@@ -1656,6 +1951,12 @@ func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
 }
 
+func (i GetZonesZoneArray) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZone] {
+	return pulumix.Output[[]GetZonesZone]{
+		OutputState: i.ToGetZonesZoneArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneOutput) ElementType() reflect.Type {
@@ -1668,6 +1969,12 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutput() GetZonesZoneOutput {
 
 func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
 	return o
+}
+
+func (o GetZonesZoneOutput) ToOutput(ctx context.Context) pulumix.Output[GetZonesZone] {
+	return pulumix.Output[GetZonesZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of the VPCs is bound to the Private Zone:
@@ -1757,6 +2064,12 @@ func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o GetZonesZoneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZone] {
+	return pulumix.Output[[]GetZonesZone]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZonesZone {
 		return vs[0].([]GetZonesZone)[vs[1].(int)]
@@ -1806,6 +2119,12 @@ func (i GetZonesZoneBindVpcArgs) ToGetZonesZoneBindVpcOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneBindVpcOutput)
 }
 
+func (i GetZonesZoneBindVpcArgs) ToOutput(ctx context.Context) pulumix.Output[GetZonesZoneBindVpc] {
+	return pulumix.Output[GetZonesZoneBindVpc]{
+		OutputState: i.ToGetZonesZoneBindVpcOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetZonesZoneBindVpcArrayInput is an input type that accepts GetZonesZoneBindVpcArray and GetZonesZoneBindVpcArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneBindVpcArrayInput` via:
 //
@@ -1831,6 +2150,12 @@ func (i GetZonesZoneBindVpcArray) ToGetZonesZoneBindVpcArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneBindVpcArrayOutput)
 }
 
+func (i GetZonesZoneBindVpcArray) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZoneBindVpc] {
+	return pulumix.Output[[]GetZonesZoneBindVpc]{
+		OutputState: i.ToGetZonesZoneBindVpcArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetZonesZoneBindVpcOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneBindVpcOutput) ElementType() reflect.Type {
@@ -1843,6 +2168,12 @@ func (o GetZonesZoneBindVpcOutput) ToGetZonesZoneBindVpcOutput() GetZonesZoneBin
 
 func (o GetZonesZoneBindVpcOutput) ToGetZonesZoneBindVpcOutputWithContext(ctx context.Context) GetZonesZoneBindVpcOutput {
 	return o
+}
+
+func (o GetZonesZoneBindVpcOutput) ToOutput(ctx context.Context) pulumix.Output[GetZonesZoneBindVpc] {
+	return pulumix.Output[GetZonesZoneBindVpc]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Binding the regionId of VPC.
@@ -1876,6 +2207,12 @@ func (o GetZonesZoneBindVpcArrayOutput) ToGetZonesZoneBindVpcArrayOutput() GetZo
 
 func (o GetZonesZoneBindVpcArrayOutput) ToGetZonesZoneBindVpcArrayOutputWithContext(ctx context.Context) GetZonesZoneBindVpcArrayOutput {
 	return o
+}
+
+func (o GetZonesZoneBindVpcArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZoneBindVpc] {
+	return pulumix.Output[[]GetZonesZoneBindVpc]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetZonesZoneBindVpcArrayOutput) Index(i pulumi.IntInput) GetZonesZoneBindVpcOutput {

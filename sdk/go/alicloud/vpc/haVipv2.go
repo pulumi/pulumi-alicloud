@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Vpc Ha Vip resource. Highly available virtual IP
@@ -320,6 +321,12 @@ func (i *HaVipv2) ToHaVipv2OutputWithContext(ctx context.Context) HaVipv2Output 
 	return pulumi.ToOutputWithContext(ctx, i).(HaVipv2Output)
 }
 
+func (i *HaVipv2) ToOutput(ctx context.Context) pulumix.Output[*HaVipv2] {
+	return pulumix.Output[*HaVipv2]{
+		OutputState: i.ToHaVipv2OutputWithContext(ctx).OutputState,
+	}
+}
+
 // HaVipv2ArrayInput is an input type that accepts HaVipv2Array and HaVipv2ArrayOutput values.
 // You can construct a concrete instance of `HaVipv2ArrayInput` via:
 //
@@ -343,6 +350,12 @@ func (i HaVipv2Array) ToHaVipv2ArrayOutput() HaVipv2ArrayOutput {
 
 func (i HaVipv2Array) ToHaVipv2ArrayOutputWithContext(ctx context.Context) HaVipv2ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HaVipv2ArrayOutput)
+}
+
+func (i HaVipv2Array) ToOutput(ctx context.Context) pulumix.Output[[]*HaVipv2] {
+	return pulumix.Output[[]*HaVipv2]{
+		OutputState: i.ToHaVipv2ArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // HaVipv2MapInput is an input type that accepts HaVipv2Map and HaVipv2MapOutput values.
@@ -370,6 +383,12 @@ func (i HaVipv2Map) ToHaVipv2MapOutputWithContext(ctx context.Context) HaVipv2Ma
 	return pulumi.ToOutputWithContext(ctx, i).(HaVipv2MapOutput)
 }
 
+func (i HaVipv2Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*HaVipv2] {
+	return pulumix.Output[map[string]*HaVipv2]{
+		OutputState: i.ToHaVipv2MapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HaVipv2Output struct{ *pulumi.OutputState }
 
 func (HaVipv2Output) ElementType() reflect.Type {
@@ -382,6 +401,12 @@ func (o HaVipv2Output) ToHaVipv2Output() HaVipv2Output {
 
 func (o HaVipv2Output) ToHaVipv2OutputWithContext(ctx context.Context) HaVipv2Output {
 	return o
+}
+
+func (o HaVipv2Output) ToOutput(ctx context.Context) pulumix.Output[*HaVipv2] {
+	return pulumix.Output[*HaVipv2]{
+		OutputState: o.OutputState,
+	}
 }
 
 // EIP bound to HaVip.
@@ -477,6 +502,12 @@ func (o HaVipv2ArrayOutput) ToHaVipv2ArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o HaVipv2ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HaVipv2] {
+	return pulumix.Output[[]*HaVipv2]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HaVipv2ArrayOutput) Index(i pulumi.IntInput) HaVipv2Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HaVipv2 {
 		return vs[0].([]*HaVipv2)[vs[1].(int)]
@@ -495,6 +526,12 @@ func (o HaVipv2MapOutput) ToHaVipv2MapOutput() HaVipv2MapOutput {
 
 func (o HaVipv2MapOutput) ToHaVipv2MapOutputWithContext(ctx context.Context) HaVipv2MapOutput {
 	return o
+}
+
+func (o HaVipv2MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HaVipv2] {
+	return pulumix.Output[map[string]*HaVipv2]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HaVipv2MapOutput) MapIndex(k pulumi.StringInput) HaVipv2Output {

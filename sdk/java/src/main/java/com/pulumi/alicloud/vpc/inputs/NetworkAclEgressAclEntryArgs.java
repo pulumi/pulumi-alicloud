@@ -16,14 +16,14 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
     public static final NetworkAclEgressAclEntryArgs Empty = new NetworkAclEgressAclEntryArgs();
 
     /**
-     * The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * The description of the outbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * @return The description of the outbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     public Optional<Output<String>> description() {
@@ -64,8 +64,6 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
      * Authorization policy. Value:
      * - accept: Allow.
      * - drop: Refused.
-     * - accept: Allow.
-     * - drop: Refused.
      * 
      */
     @Import(name="policy")
@@ -73,8 +71,6 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
 
     /**
      * @return Authorization policy. Value:
-     * - accept: Allow.
-     * - drop: Refused.
      * - accept: Allow.
      * - drop: Refused.
      * 
@@ -106,24 +102,12 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
      * - udp: User Datagram Protocol.
      * - all: Supports all protocols.
      * 
-     * - icmp: Network Control Message Protocol.
-     * - gre: Generic Routing Encapsulation Protocol.
-     * - tcp: Transmission Control Protocol.
-     * - udp: User Datagram Protocol.
-     * - all: Supports all protocols.
-     * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
      * @return The protocol type. Value:
-     * - icmp: Network Control Message Protocol.
-     * - gre: Generic Routing Encapsulation Protocol.
-     * - tcp: Transmission Control Protocol.
-     * - udp: User Datagram Protocol.
-     * - all: Supports all protocols.
-     * 
      * - icmp: Network Control Message Protocol.
      * - gre: Generic Routing Encapsulation Protocol.
      * - tcp: Transmission Control Protocol.
@@ -165,7 +149,7 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param description The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+         * @param description The description of the outbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -176,7 +160,7 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param description The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+         * @param description The description of the outbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -231,8 +215,6 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
          * @param policy Authorization policy. Value:
          * - accept: Allow.
          * - drop: Refused.
-         * - accept: Allow.
-         * - drop: Refused.
          * 
          * @return builder
          * 
@@ -244,8 +226,6 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
 
         /**
          * @param policy Authorization policy. Value:
-         * - accept: Allow.
-         * - drop: Refused.
          * - accept: Allow.
          * - drop: Refused.
          * 
@@ -285,12 +265,6 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
          * - udp: User Datagram Protocol.
          * - all: Supports all protocols.
          * 
-         * - icmp: Network Control Message Protocol.
-         * - gre: Generic Routing Encapsulation Protocol.
-         * - tcp: Transmission Control Protocol.
-         * - udp: User Datagram Protocol.
-         * - all: Supports all protocols.
-         * 
          * @return builder
          * 
          */
@@ -301,12 +275,6 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
 
         /**
          * @param protocol The protocol type. Value:
-         * - icmp: Network Control Message Protocol.
-         * - gre: Generic Routing Encapsulation Protocol.
-         * - tcp: Transmission Control Protocol.
-         * - udp: User Datagram Protocol.
-         * - all: Supports all protocols.
-         * 
          * - icmp: Network Control Message Protocol.
          * - gre: Generic Routing Encapsulation Protocol.
          * - tcp: Transmission Control Protocol.

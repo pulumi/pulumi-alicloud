@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
@@ -136,6 +137,12 @@ func (o GetIndustrialPidLoopsResultOutput) ToGetIndustrialPidLoopsResultOutput()
 
 func (o GetIndustrialPidLoopsResultOutput) ToGetIndustrialPidLoopsResultOutputWithContext(ctx context.Context) GetIndustrialPidLoopsResultOutput {
 	return o
+}
+
+func (o GetIndustrialPidLoopsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIndustrialPidLoopsResult] {
+	return pulumix.Output[GetIndustrialPidLoopsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetIndustrialPidLoopsResultOutput) EnableDetails() pulumi.BoolPtrOutput {

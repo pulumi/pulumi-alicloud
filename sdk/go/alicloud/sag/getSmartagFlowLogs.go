@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Smartag Flow Logs of the current Alibaba Cloud user.
@@ -139,6 +140,12 @@ func (o GetSmartagFlowLogsResultOutput) ToGetSmartagFlowLogsResultOutput() GetSm
 
 func (o GetSmartagFlowLogsResultOutput) ToGetSmartagFlowLogsResultOutputWithContext(ctx context.Context) GetSmartagFlowLogsResultOutput {
 	return o
+}
+
+func (o GetSmartagFlowLogsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSmartagFlowLogsResult] {
+	return pulumix.Output[GetSmartagFlowLogsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSmartagFlowLogsResultOutput) Description() pulumi.StringPtrOutput {

@@ -28,6 +28,68 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines, or the number of nodes at the same time.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.lindorm.Instance;
+ * import com.pulumi.alicloud.lindorm.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var region = &#34;cn-hangzhou&#34;;
+ * 
+ *         final var zoneId = &#34;cn-hangzhou-h&#34;;
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(zoneId)
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .diskCategory(&#34;cloud_efficiency&#34;)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .zoneId(zoneId)
+ *             .vswitchId(defaultSwitch.id())
+ *             .vpcId(defaultNetwork.id())
+ *             .instanceName(name)
+ *             .tableEngineSpecification(&#34;lindorm.g.4xlarge&#34;)
+ *             .tableEngineNodeCount(&#34;2&#34;)
+ *             .instanceStorage(&#34;1920&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Lindorm Instance can be imported using the id, e.g.

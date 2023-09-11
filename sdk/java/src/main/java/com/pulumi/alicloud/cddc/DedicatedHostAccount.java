@@ -18,11 +18,104 @@ import javax.annotation.Nullable;
 /**
  * Provides a ApsaraDB for MyBase Dedicated Host Account resource.
  * 
- * For information about ApsaraDB for MyBase Dedicated Host Account and how to use it, see [What is Dedicated Host Account](https://www.alibabacloud.com/help/en/doc-detail/196877.html).
+ * For information about ApsaraDB for MyBase Dedicated Host Account and how to use it, see [What is Dedicated Host Account](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/creatededicatedhostaccount).
  * 
- * &gt; **NOTE:** Available in v1.148.0+.
+ * &gt; **NOTE:** Available since v1.148.0.
  * 
  * &gt; **NOTE:** Each Dedicated host can have only one account. Before you create an account for a host, make sure that the existing account is deleted.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cddc.CddcFunctions;
+ * import com.pulumi.alicloud.cddc.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.cddc.DedicatedHostGroup;
+ * import com.pulumi.alicloud.cddc.DedicatedHostGroupArgs;
+ * import com.pulumi.alicloud.cddc.inputs.GetHostEcsLevelInfosArgs;
+ * import com.pulumi.alicloud.cddc.DedicatedHost;
+ * import com.pulumi.alicloud.cddc.DedicatedHostArgs;
+ * import com.pulumi.alicloud.cddc.DedicatedHostAccount;
+ * import com.pulumi.alicloud.cddc.DedicatedHostAccountArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var defaultZones = CddcFunctions.getZones();
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *             .build());
+ * 
+ *         var defaultDedicatedHostGroup = new DedicatedHostGroup(&#34;defaultDedicatedHostGroup&#34;, DedicatedHostGroupArgs.builder()        
+ *             .engine(&#34;MySQL&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .cpuAllocationRatio(101)
+ *             .memAllocationRatio(50)
+ *             .diskAllocationRatio(200)
+ *             .allocationPolicy(&#34;Evenly&#34;)
+ *             .hostReplacePolicy(&#34;Manual&#34;)
+ *             .dedicatedHostGroupDesc(name)
+ *             .openPermission(true)
+ *             .build());
+ * 
+ *         final var defaultHostEcsLevelInfos = CddcFunctions.getHostEcsLevelInfos(GetHostEcsLevelInfosArgs.builder()
+ *             .dbType(&#34;mysql&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *             .storageType(&#34;cloud_essd&#34;)
+ *             .build());
+ * 
+ *         var defaultDedicatedHost = new DedicatedHost(&#34;defaultDedicatedHost&#34;, DedicatedHostArgs.builder()        
+ *             .hostName(name)
+ *             .dedicatedHostGroupId(defaultDedicatedHostGroup.id())
+ *             .hostClass(defaultHostEcsLevelInfos.applyValue(getHostEcsLevelInfosResult -&gt; getHostEcsLevelInfosResult.infos()[0].resClassCode()))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *             .vswitchId(defaultSwitch.id())
+ *             .paymentType(&#34;Subscription&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;CDDC_DEDICATED&#34;)
+ *             ))
+ *             .build());
+ * 
+ *         var defaultDedicatedHostAccount = new DedicatedHostAccount(&#34;defaultDedicatedHostAccount&#34;, DedicatedHostAccountArgs.builder()        
+ *             .accountName(name)
+ *             .accountPassword(&#34;Password1234&#34;)
+ *             .dedicatedHostId(defaultDedicatedHost.dedicatedHostId())
+ *             .accountType(&#34;Normal&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

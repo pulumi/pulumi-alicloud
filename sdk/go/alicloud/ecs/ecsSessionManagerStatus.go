@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECS Session Manager Status resource.
@@ -156,6 +157,12 @@ func (i *EcsSessionManagerStatus) ToEcsSessionManagerStatusOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(EcsSessionManagerStatusOutput)
 }
 
+func (i *EcsSessionManagerStatus) ToOutput(ctx context.Context) pulumix.Output[*EcsSessionManagerStatus] {
+	return pulumix.Output[*EcsSessionManagerStatus]{
+		OutputState: i.ToEcsSessionManagerStatusOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EcsSessionManagerStatusArrayInput is an input type that accepts EcsSessionManagerStatusArray and EcsSessionManagerStatusArrayOutput values.
 // You can construct a concrete instance of `EcsSessionManagerStatusArrayInput` via:
 //
@@ -179,6 +186,12 @@ func (i EcsSessionManagerStatusArray) ToEcsSessionManagerStatusArrayOutput() Ecs
 
 func (i EcsSessionManagerStatusArray) ToEcsSessionManagerStatusArrayOutputWithContext(ctx context.Context) EcsSessionManagerStatusArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsSessionManagerStatusArrayOutput)
+}
+
+func (i EcsSessionManagerStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]*EcsSessionManagerStatus] {
+	return pulumix.Output[[]*EcsSessionManagerStatus]{
+		OutputState: i.ToEcsSessionManagerStatusArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EcsSessionManagerStatusMapInput is an input type that accepts EcsSessionManagerStatusMap and EcsSessionManagerStatusMapOutput values.
@@ -206,6 +219,12 @@ func (i EcsSessionManagerStatusMap) ToEcsSessionManagerStatusMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(EcsSessionManagerStatusMapOutput)
 }
 
+func (i EcsSessionManagerStatusMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsSessionManagerStatus] {
+	return pulumix.Output[map[string]*EcsSessionManagerStatus]{
+		OutputState: i.ToEcsSessionManagerStatusMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EcsSessionManagerStatusOutput struct{ *pulumi.OutputState }
 
 func (EcsSessionManagerStatusOutput) ElementType() reflect.Type {
@@ -218,6 +237,12 @@ func (o EcsSessionManagerStatusOutput) ToEcsSessionManagerStatusOutput() EcsSess
 
 func (o EcsSessionManagerStatusOutput) ToEcsSessionManagerStatusOutputWithContext(ctx context.Context) EcsSessionManagerStatusOutput {
 	return o
+}
+
+func (o EcsSessionManagerStatusOutput) ToOutput(ctx context.Context) pulumix.Output[*EcsSessionManagerStatus] {
+	return pulumix.Output[*EcsSessionManagerStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource. Valid values: `sessionManagerStatus`.
@@ -244,6 +269,12 @@ func (o EcsSessionManagerStatusArrayOutput) ToEcsSessionManagerStatusArrayOutput
 	return o
 }
 
+func (o EcsSessionManagerStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EcsSessionManagerStatus] {
+	return pulumix.Output[[]*EcsSessionManagerStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EcsSessionManagerStatusArrayOutput) Index(i pulumi.IntInput) EcsSessionManagerStatusOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsSessionManagerStatus {
 		return vs[0].([]*EcsSessionManagerStatus)[vs[1].(int)]
@@ -262,6 +293,12 @@ func (o EcsSessionManagerStatusMapOutput) ToEcsSessionManagerStatusMapOutput() E
 
 func (o EcsSessionManagerStatusMapOutput) ToEcsSessionManagerStatusMapOutputWithContext(ctx context.Context) EcsSessionManagerStatusMapOutput {
 	return o
+}
+
+func (o EcsSessionManagerStatusMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsSessionManagerStatus] {
+	return pulumix.Output[map[string]*EcsSessionManagerStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EcsSessionManagerStatusMapOutput) MapIndex(k pulumi.StringInput) EcsSessionManagerStatusOutput {

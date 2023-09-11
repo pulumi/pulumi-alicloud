@@ -20,14 +20,14 @@ public final class ApplicationScalingRuleScalingRuleMetricArgs extends com.pulum
     public static final ApplicationScalingRuleScalingRuleMetricArgs Empty = new ApplicationScalingRuleScalingRuleMetricArgs();
 
     /**
-     * Maximum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+     * Maximum number of instances applied.
      * 
      */
     @Import(name="maxReplicas")
     private @Nullable Output<Integer> maxReplicas;
 
     /**
-     * @return Maximum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+     * @return Maximum number of instances applied.
      * 
      */
     public Optional<Output<Integer>> maxReplicas() {
@@ -35,14 +35,14 @@ public final class ApplicationScalingRuleScalingRuleMetricArgs extends com.pulum
     }
 
     /**
-     * Indicator rule configuration. See the following `Block metrics`.
+     * Indicator rule configuration. See `metrics` below.
      * 
      */
     @Import(name="metrics")
     private @Nullable Output<List<ApplicationScalingRuleScalingRuleMetricMetricArgs>> metrics;
 
     /**
-     * @return Indicator rule configuration. See the following `Block metrics`.
+     * @return Indicator rule configuration. See `metrics` below.
      * 
      */
     public Optional<Output<List<ApplicationScalingRuleScalingRuleMetricMetricArgs>>> metrics() {
@@ -50,14 +50,14 @@ public final class ApplicationScalingRuleScalingRuleMetricArgs extends com.pulum
     }
 
     /**
-     * Minimum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+     * Minimum number of instances applied.
      * 
      */
     @Import(name="minReplicas")
     private @Nullable Output<Integer> minReplicas;
 
     /**
-     * @return Minimum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+     * @return Minimum number of instances applied.
      * 
      */
     public Optional<Output<Integer>> minReplicas() {
@@ -65,14 +65,14 @@ public final class ApplicationScalingRuleScalingRuleMetricArgs extends com.pulum
     }
 
     /**
-     * Apply shrink rules. See the following `Block scale_down_rules`.
+     * Apply shrink rules. See `scale_down_rules` below.
      * 
      */
     @Import(name="scaleDownRules")
     private @Nullable Output<ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs> scaleDownRules;
 
     /**
-     * @return Apply shrink rules. See the following `Block scale_down_rules`.
+     * @return Apply shrink rules. See `scale_down_rules` below.
      * 
      */
     public Optional<Output<ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs>> scaleDownRules() {
@@ -80,14 +80,14 @@ public final class ApplicationScalingRuleScalingRuleMetricArgs extends com.pulum
     }
 
     /**
-     * Apply expansion rules. See the following `Block scale_up_rules`.
+     * Apply expansion rules. See `scale_up_rules` below.
      * 
      */
     @Import(name="scaleUpRules")
     private @Nullable Output<ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs> scaleUpRules;
 
     /**
-     * @return Apply expansion rules. See the following `Block scale_up_rules`.
+     * @return Apply expansion rules. See `scale_up_rules` below.
      * 
      */
     public Optional<Output<ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs>> scaleUpRules() {
@@ -123,7 +123,7 @@ public final class ApplicationScalingRuleScalingRuleMetricArgs extends com.pulum
         }
 
         /**
-         * @param maxReplicas Maximum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+         * @param maxReplicas Maximum number of instances applied.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class ApplicationScalingRuleScalingRuleMetricArgs extends com.pulum
         }
 
         /**
-         * @param maxReplicas Maximum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+         * @param maxReplicas Maximum number of instances applied.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class ApplicationScalingRuleScalingRuleMetricArgs extends com.pulum
         }
 
         /**
-         * @param metrics Indicator rule configuration. See the following `Block metrics`.
+         * @param metrics Indicator rule configuration. See `metrics` below.
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class ApplicationScalingRuleScalingRuleMetricArgs extends com.pulum
         }
 
         /**
-         * @param metrics Indicator rule configuration. See the following `Block metrics`.
+         * @param metrics Indicator rule configuration. See `metrics` below.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class ApplicationScalingRuleScalingRuleMetricArgs extends com.pulum
         }
 
         /**
-         * @param metrics Indicator rule configuration. See the following `Block metrics`.
+         * @param metrics Indicator rule configuration. See `metrics` below.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class ApplicationScalingRuleScalingRuleMetricArgs extends com.pulum
         }
 
         /**
-         * @param minReplicas Minimum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+         * @param minReplicas Minimum number of instances applied.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class ApplicationScalingRuleScalingRuleMetricArgs extends com.pulum
         }
 
         /**
-         * @param minReplicas Minimum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+         * @param minReplicas Minimum number of instances applied.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class ApplicationScalingRuleScalingRuleMetricArgs extends com.pulum
         }
 
         /**
-         * @param scaleDownRules Apply shrink rules. See the following `Block scale_down_rules`.
+         * @param scaleDownRules Apply shrink rules. See `scale_down_rules` below.
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class ApplicationScalingRuleScalingRuleMetricArgs extends com.pulum
         }
 
         /**
-         * @param scaleDownRules Apply shrink rules. See the following `Block scale_down_rules`.
+         * @param scaleDownRules Apply shrink rules. See `scale_down_rules` below.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class ApplicationScalingRuleScalingRuleMetricArgs extends com.pulum
         }
 
         /**
-         * @param scaleUpRules Apply expansion rules. See the following `Block scale_up_rules`.
+         * @param scaleUpRules Apply expansion rules. See `scale_up_rules` below.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class ApplicationScalingRuleScalingRuleMetricArgs extends com.pulum
         }
 
         /**
-         * @param scaleUpRules Apply expansion rules. See the following `Block scale_up_rules`.
+         * @param scaleUpRules Apply expansion rules. See `scale_up_rules` below.
          * 
          * @return builder
          * 

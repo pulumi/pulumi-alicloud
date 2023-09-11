@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Serverless App Engine (SAE) GreyTagRoute resource.
@@ -301,6 +302,12 @@ func (i *GreyTagRoute) ToGreyTagRouteOutputWithContext(ctx context.Context) Grey
 	return pulumi.ToOutputWithContext(ctx, i).(GreyTagRouteOutput)
 }
 
+func (i *GreyTagRoute) ToOutput(ctx context.Context) pulumix.Output[*GreyTagRoute] {
+	return pulumix.Output[*GreyTagRoute]{
+		OutputState: i.ToGreyTagRouteOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GreyTagRouteArrayInput is an input type that accepts GreyTagRouteArray and GreyTagRouteArrayOutput values.
 // You can construct a concrete instance of `GreyTagRouteArrayInput` via:
 //
@@ -324,6 +331,12 @@ func (i GreyTagRouteArray) ToGreyTagRouteArrayOutput() GreyTagRouteArrayOutput {
 
 func (i GreyTagRouteArray) ToGreyTagRouteArrayOutputWithContext(ctx context.Context) GreyTagRouteArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GreyTagRouteArrayOutput)
+}
+
+func (i GreyTagRouteArray) ToOutput(ctx context.Context) pulumix.Output[[]*GreyTagRoute] {
+	return pulumix.Output[[]*GreyTagRoute]{
+		OutputState: i.ToGreyTagRouteArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GreyTagRouteMapInput is an input type that accepts GreyTagRouteMap and GreyTagRouteMapOutput values.
@@ -351,6 +364,12 @@ func (i GreyTagRouteMap) ToGreyTagRouteMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GreyTagRouteMapOutput)
 }
 
+func (i GreyTagRouteMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GreyTagRoute] {
+	return pulumix.Output[map[string]*GreyTagRoute]{
+		OutputState: i.ToGreyTagRouteMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GreyTagRouteOutput struct{ *pulumi.OutputState }
 
 func (GreyTagRouteOutput) ElementType() reflect.Type {
@@ -363,6 +382,12 @@ func (o GreyTagRouteOutput) ToGreyTagRouteOutput() GreyTagRouteOutput {
 
 func (o GreyTagRouteOutput) ToGreyTagRouteOutputWithContext(ctx context.Context) GreyTagRouteOutput {
 	return o
+}
+
+func (o GreyTagRouteOutput) ToOutput(ctx context.Context) pulumix.Output[*GreyTagRoute] {
+	return pulumix.Output[*GreyTagRoute]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID  of the SAE Application.
@@ -404,6 +429,12 @@ func (o GreyTagRouteArrayOutput) ToGreyTagRouteArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o GreyTagRouteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GreyTagRoute] {
+	return pulumix.Output[[]*GreyTagRoute]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GreyTagRouteArrayOutput) Index(i pulumi.IntInput) GreyTagRouteOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GreyTagRoute {
 		return vs[0].([]*GreyTagRoute)[vs[1].(int)]
@@ -422,6 +453,12 @@ func (o GreyTagRouteMapOutput) ToGreyTagRouteMapOutput() GreyTagRouteMapOutput {
 
 func (o GreyTagRouteMapOutput) ToGreyTagRouteMapOutputWithContext(ctx context.Context) GreyTagRouteMapOutput {
 	return o
+}
+
+func (o GreyTagRouteMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GreyTagRoute] {
+	return pulumix.Output[map[string]*GreyTagRoute]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GreyTagRouteMapOutput) MapIndex(k pulumi.StringInput) GreyTagRouteOutput {

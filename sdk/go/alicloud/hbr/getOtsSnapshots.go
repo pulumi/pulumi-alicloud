@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Hbr Ots Snapshots of the current Alibaba Cloud user.
@@ -113,6 +114,12 @@ func (o GetOtsSnapshotsResultOutput) ToGetOtsSnapshotsResultOutput() GetOtsSnaps
 
 func (o GetOtsSnapshotsResultOutput) ToGetOtsSnapshotsResultOutputWithContext(ctx context.Context) GetOtsSnapshotsResultOutput {
 	return o
+}
+
+func (o GetOtsSnapshotsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetOtsSnapshotsResult] {
+	return pulumix.Output[GetOtsSnapshotsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetOtsSnapshotsResultOutput) EndTime() pulumi.StringPtrOutput {

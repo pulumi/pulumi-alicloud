@@ -18,13 +18,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * BGP-Line Anti-DDoS instance resource. &#34;Ddoscoo&#34; is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/doc-detail/69319.htm).
+ * BGP-Line Anti-DDoS instance resource. &#34;Ddoscoo&#34; is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-describeinstances).
  * 
  * &gt; **NOTE:** The product region only support cn-hangzhou.
  * 
  * &gt; **NOTE:** The endpoint of bssopenapi used only support &#34;business.aliyuncs.com&#34; at present.
  * 
- * &gt; **NOTE:** Available in 1.37.0+ .
+ * &gt; **NOTE:** Available since v1.37.0.
  * 
  * ## Example Usage
  * 
@@ -50,14 +50,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var newInstance = new DdosCooInstance(&#34;newInstance&#34;, DdosCooInstanceArgs.builder()        
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         var default_ = new DdosCooInstance(&#34;default&#34;, DdosCooInstanceArgs.builder()        
  *             .bandwidth(&#34;30&#34;)
  *             .baseBandwidth(&#34;30&#34;)
+ *             .serviceBandwidth(&#34;100&#34;)
+ *             .portCount(&#34;50&#34;)
  *             .domainCount(&#34;50&#34;)
  *             .period(&#34;1&#34;)
- *             .portCount(&#34;50&#34;)
  *             .productType(&#34;ddoscoo&#34;)
- *             .serviceBandwidth(&#34;100&#34;)
  *             .build());
  * 
  *     }

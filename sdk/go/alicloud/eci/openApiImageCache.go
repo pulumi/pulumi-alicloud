@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type OpenApiImageCache struct {
@@ -154,6 +155,12 @@ func (i *OpenApiImageCache) ToOpenApiImageCacheOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(OpenApiImageCacheOutput)
 }
 
+func (i *OpenApiImageCache) ToOutput(ctx context.Context) pulumix.Output[*OpenApiImageCache] {
+	return pulumix.Output[*OpenApiImageCache]{
+		OutputState: i.ToOpenApiImageCacheOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OpenApiImageCacheArrayInput is an input type that accepts OpenApiImageCacheArray and OpenApiImageCacheArrayOutput values.
 // You can construct a concrete instance of `OpenApiImageCacheArrayInput` via:
 //
@@ -177,6 +184,12 @@ func (i OpenApiImageCacheArray) ToOpenApiImageCacheArrayOutput() OpenApiImageCac
 
 func (i OpenApiImageCacheArray) ToOpenApiImageCacheArrayOutputWithContext(ctx context.Context) OpenApiImageCacheArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OpenApiImageCacheArrayOutput)
+}
+
+func (i OpenApiImageCacheArray) ToOutput(ctx context.Context) pulumix.Output[[]*OpenApiImageCache] {
+	return pulumix.Output[[]*OpenApiImageCache]{
+		OutputState: i.ToOpenApiImageCacheArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // OpenApiImageCacheMapInput is an input type that accepts OpenApiImageCacheMap and OpenApiImageCacheMapOutput values.
@@ -204,6 +217,12 @@ func (i OpenApiImageCacheMap) ToOpenApiImageCacheMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(OpenApiImageCacheMapOutput)
 }
 
+func (i OpenApiImageCacheMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OpenApiImageCache] {
+	return pulumix.Output[map[string]*OpenApiImageCache]{
+		OutputState: i.ToOpenApiImageCacheMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OpenApiImageCacheOutput struct{ *pulumi.OutputState }
 
 func (OpenApiImageCacheOutput) ElementType() reflect.Type {
@@ -216,6 +235,12 @@ func (o OpenApiImageCacheOutput) ToOpenApiImageCacheOutput() OpenApiImageCacheOu
 
 func (o OpenApiImageCacheOutput) ToOpenApiImageCacheOutputWithContext(ctx context.Context) OpenApiImageCacheOutput {
 	return o
+}
+
+func (o OpenApiImageCacheOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenApiImageCache] {
+	return pulumix.Output[*OpenApiImageCache]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OpenApiImageCacheOutput) ContainerGroupId() pulumi.StringOutput {
@@ -282,6 +307,12 @@ func (o OpenApiImageCacheArrayOutput) ToOpenApiImageCacheArrayOutputWithContext(
 	return o
 }
 
+func (o OpenApiImageCacheArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OpenApiImageCache] {
+	return pulumix.Output[[]*OpenApiImageCache]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OpenApiImageCacheArrayOutput) Index(i pulumi.IntInput) OpenApiImageCacheOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OpenApiImageCache {
 		return vs[0].([]*OpenApiImageCache)[vs[1].(int)]
@@ -300,6 +331,12 @@ func (o OpenApiImageCacheMapOutput) ToOpenApiImageCacheMapOutput() OpenApiImageC
 
 func (o OpenApiImageCacheMapOutput) ToOpenApiImageCacheMapOutputWithContext(ctx context.Context) OpenApiImageCacheMapOutput {
 	return o
+}
+
+func (o OpenApiImageCacheMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OpenApiImageCache] {
+	return pulumix.Output[map[string]*OpenApiImageCache]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OpenApiImageCacheMapOutput) MapIndex(k pulumi.StringInput) OpenApiImageCacheOutput {

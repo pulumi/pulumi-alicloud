@@ -48,14 +48,14 @@ public final class GreyTagRouteDubboRuleArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * A list of conditions items. The details see Block `dubbo_rules_items`.
+     * A list of conditions items. See `items` below.
      * 
      */
     @Import(name="items")
     private @Nullable Output<List<GreyTagRouteDubboRuleItemArgs>> items;
 
     /**
-     * @return A list of conditions items. The details see Block `dubbo_rules_items`.
+     * @return A list of conditions items. See `items` below.
      * 
      */
     public Optional<Output<List<GreyTagRouteDubboRuleItemArgs>>> items() {
@@ -179,7 +179,7 @@ public final class GreyTagRouteDubboRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param items A list of conditions items. The details see Block `dubbo_rules_items`.
+         * @param items A list of conditions items. See `items` below.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class GreyTagRouteDubboRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param items A list of conditions items. The details see Block `dubbo_rules_items`.
+         * @param items A list of conditions items. See `items` below.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class GreyTagRouteDubboRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param items A list of conditions items. The details see Block `dubbo_rules_items`.
+         * @param items A list of conditions items. See `items` below.
          * 
          * @return builder
          * 

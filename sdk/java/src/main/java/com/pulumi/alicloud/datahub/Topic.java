@@ -18,19 +18,21 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The topic is the basic unit of Datahub data source and is used to define one kind of data or stream. It contains a set of subscriptions. You can manage the datahub source of an application by using topics. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
+ * The topic is the basic unit of Datahub data source and is used to define one kind of data or stream. It contains a set of subscriptions. You can manage the datahub source of an application by using topics. [Refer to details](https://www.alibabacloud.com/help/en/datahub/latest/nerbcz).
+ * 
+ * &gt; **NOTE:** Available since v1.19.0.
  * 
  * ## Example Usage
  * 
  * Basic Usage
- * 
- * - BLob Topic
  * ```java
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.datahub.Project;
+ * import com.pulumi.alicloud.datahub.ProjectArgs;
  * import com.pulumi.alicloud.datahub.Topic;
  * import com.pulumi.alicloud.datahub.TopicArgs;
  * import java.util.List;
@@ -46,52 +48,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Topic(&#34;example&#34;, TopicArgs.builder()        
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
  *             .comment(&#34;created by terraform&#34;)
- *             .lifeCycle(7)
- *             .projectName(&#34;tf_datahub_project&#34;)
- *             .recordType(&#34;BLOB&#34;)
- *             .shardCount(3)
  *             .build());
  * 
- *     }
- * }
- * ```
- * - Tuple Topic
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.datahub.Topic;
- * import com.pulumi.alicloud.datahub.TopicArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new Topic(&#34;example&#34;, TopicArgs.builder()        
- *             .comment(&#34;created by terraform&#34;)
+ *         var exampleBlob = new Topic(&#34;exampleBlob&#34;, TopicArgs.builder()        
+ *             .projectName(example.name())
+ *             .recordType(&#34;BLOB&#34;)
+ *             .shardCount(3)
  *             .lifeCycle(7)
- *             .projectName(&#34;tf_datahub_project&#34;)
+ *             .comment(&#34;created by terraform&#34;)
+ *             .build());
+ * 
+ *         var exampleTuple = new Topic(&#34;exampleTuple&#34;, TopicArgs.builder()        
+ *             .projectName(example.name())
+ *             .recordType(&#34;TUPLE&#34;)
  *             .recordSchema(Map.ofEntries(
  *                 Map.entry(&#34;bigint_field&#34;, &#34;BIGINT&#34;),
- *                 Map.entry(&#34;boolean_field&#34;, &#34;BOOLEAN&#34;),
- *                 Map.entry(&#34;double_field&#34;, &#34;DOUBLE&#34;),
+ *                 Map.entry(&#34;timestamp_field&#34;, &#34;TIMESTAMP&#34;),
  *                 Map.entry(&#34;string_field&#34;, &#34;STRING&#34;),
- *                 Map.entry(&#34;timestamp_field&#34;, &#34;TIMESTAMP&#34;)
+ *                 Map.entry(&#34;double_field&#34;, &#34;DOUBLE&#34;),
+ *                 Map.entry(&#34;boolean_field&#34;, &#34;BOOLEAN&#34;)
  *             ))
- *             .recordType(&#34;TUPLE&#34;)
  *             .shardCount(3)
+ *             .lifeCycle(7)
+ *             .comment(&#34;created by terraform&#34;)
  *             .build());
  * 
  *     }

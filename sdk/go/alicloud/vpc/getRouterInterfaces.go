@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
@@ -161,6 +162,12 @@ func (o GetRouterInterfacesResultOutput) ToGetRouterInterfacesResultOutput() Get
 
 func (o GetRouterInterfacesResultOutput) ToGetRouterInterfacesResultOutputWithContext(ctx context.Context) GetRouterInterfacesResultOutput {
 	return o
+}
+
+func (o GetRouterInterfacesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRouterInterfacesResult] {
+	return pulumix.Output[GetRouterInterfacesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

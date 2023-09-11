@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Cen Child Instance Route Entry To Attachment available to the user.[What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenchildinstancerouteentrytoattachment)
@@ -133,6 +134,12 @@ func (o GetChildInstanceRouteEntryToAttachmentsResultOutput) ToGetChildInstanceR
 
 func (o GetChildInstanceRouteEntryToAttachmentsResultOutput) ToGetChildInstanceRouteEntryToAttachmentsResultOutputWithContext(ctx context.Context) GetChildInstanceRouteEntryToAttachmentsResultOutput {
 	return o
+}
+
+func (o GetChildInstanceRouteEntryToAttachmentsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetChildInstanceRouteEntryToAttachmentsResult] {
+	return pulumix.Output[GetChildInstanceRouteEntryToAttachmentsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of Child Instance Route Entry To Attachment Entries. Each element contains the following attributes:

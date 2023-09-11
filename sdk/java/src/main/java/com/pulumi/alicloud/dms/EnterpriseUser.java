@@ -17,9 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a DMS Enterprise User resource. For information about Alidms Enterprise User and how to use it, see [What is Resource Alidms Enterprise User](https://www.alibabacloud.com/help/doc-detail/98001.htm).
+ * Provides a DMS Enterprise User resource. For information about Alidms Enterprise User and how to use it, see [What is Resource Alidms Enterprise User](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-registeruser).
  * 
- * &gt; **NOTE:** Available in 1.90.0+.
+ * &gt; **NOTE:** Available since v1.90.0.
  * 
  * ## Example Usage
  * ```java
@@ -28,6 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ram.User;
+ * import com.pulumi.alicloud.ram.UserArgs;
  * import com.pulumi.alicloud.dms.EnterpriseUser;
  * import com.pulumi.alicloud.dms.EnterpriseUserArgs;
  * import java.util.List;
@@ -43,11 +45,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new EnterpriseUser(&#34;example&#34;, EnterpriseUserArgs.builder()        
- *             .mobile(&#34;1591066xxxx&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexamplename&#34;);
+ *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
+ *             .displayName(name)
+ *             .mobile(&#34;86-18688888888&#34;)
+ *             .email(&#34;hello.uuu@aaa.com&#34;)
+ *             .comments(&#34;example&#34;)
+ *             .build());
+ * 
+ *         var defaultEnterpriseUser = new EnterpriseUser(&#34;defaultEnterpriseUser&#34;, EnterpriseUserArgs.builder()        
+ *             .uid(defaultUser.id())
+ *             .userName(name)
  *             .roleNames(&#34;DBA&#34;)
- *             .uid(&#34;uid&#34;)
- *             .userName(&#34;tf-test&#34;)
+ *             .mobile(&#34;86-18688888888&#34;)
  *             .build());
  * 
  *     }

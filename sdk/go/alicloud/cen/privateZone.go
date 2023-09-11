@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This topic describes how to configure PrivateZone access.
@@ -233,6 +234,12 @@ func (i *PrivateZone) ToPrivateZoneOutputWithContext(ctx context.Context) Privat
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateZoneOutput)
 }
 
+func (i *PrivateZone) ToOutput(ctx context.Context) pulumix.Output[*PrivateZone] {
+	return pulumix.Output[*PrivateZone]{
+		OutputState: i.ToPrivateZoneOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrivateZoneArrayInput is an input type that accepts PrivateZoneArray and PrivateZoneArrayOutput values.
 // You can construct a concrete instance of `PrivateZoneArrayInput` via:
 //
@@ -256,6 +263,12 @@ func (i PrivateZoneArray) ToPrivateZoneArrayOutput() PrivateZoneArrayOutput {
 
 func (i PrivateZoneArray) ToPrivateZoneArrayOutputWithContext(ctx context.Context) PrivateZoneArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateZoneArrayOutput)
+}
+
+func (i PrivateZoneArray) ToOutput(ctx context.Context) pulumix.Output[[]*PrivateZone] {
+	return pulumix.Output[[]*PrivateZone]{
+		OutputState: i.ToPrivateZoneArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PrivateZoneMapInput is an input type that accepts PrivateZoneMap and PrivateZoneMapOutput values.
@@ -283,6 +296,12 @@ func (i PrivateZoneMap) ToPrivateZoneMapOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateZoneMapOutput)
 }
 
+func (i PrivateZoneMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrivateZone] {
+	return pulumix.Output[map[string]*PrivateZone]{
+		OutputState: i.ToPrivateZoneMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateZoneOutput struct{ *pulumi.OutputState }
 
 func (PrivateZoneOutput) ElementType() reflect.Type {
@@ -295,6 +314,12 @@ func (o PrivateZoneOutput) ToPrivateZoneOutput() PrivateZoneOutput {
 
 func (o PrivateZoneOutput) ToPrivateZoneOutputWithContext(ctx context.Context) PrivateZoneOutput {
 	return o
+}
+
+func (o PrivateZoneOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateZone] {
+	return pulumix.Output[*PrivateZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
@@ -338,6 +363,12 @@ func (o PrivateZoneArrayOutput) ToPrivateZoneArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o PrivateZoneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PrivateZone] {
+	return pulumix.Output[[]*PrivateZone]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PrivateZoneArrayOutput) Index(i pulumi.IntInput) PrivateZoneOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PrivateZone {
 		return vs[0].([]*PrivateZone)[vs[1].(int)]
@@ -356,6 +387,12 @@ func (o PrivateZoneMapOutput) ToPrivateZoneMapOutput() PrivateZoneMapOutput {
 
 func (o PrivateZoneMapOutput) ToPrivateZoneMapOutputWithContext(ctx context.Context) PrivateZoneMapOutput {
 	return o
+}
+
+func (o PrivateZoneMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrivateZone] {
+	return pulumix.Output[map[string]*PrivateZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateZoneMapOutput) MapIndex(k pulumi.StringInput) PrivateZoneOutput {

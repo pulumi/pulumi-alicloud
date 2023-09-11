@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Simple Application Server Disks of the current Alibaba Cloud user.
@@ -159,6 +160,12 @@ func (o GetServerDisksResultOutput) ToGetServerDisksResultOutput() GetServerDisk
 
 func (o GetServerDisksResultOutput) ToGetServerDisksResultOutputWithContext(ctx context.Context) GetServerDisksResultOutput {
 	return o
+}
+
+func (o GetServerDisksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServerDisksResult] {
+	return pulumix.Output[GetServerDisksResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetServerDisksResultOutput) DiskType() pulumi.StringPtrOutput {

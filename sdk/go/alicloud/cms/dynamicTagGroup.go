@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Monitor Service Dynamic Tag Group resource.
@@ -211,6 +212,12 @@ func (i *DynamicTagGroup) ToDynamicTagGroupOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DynamicTagGroupOutput)
 }
 
+func (i *DynamicTagGroup) ToOutput(ctx context.Context) pulumix.Output[*DynamicTagGroup] {
+	return pulumix.Output[*DynamicTagGroup]{
+		OutputState: i.ToDynamicTagGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DynamicTagGroupArrayInput is an input type that accepts DynamicTagGroupArray and DynamicTagGroupArrayOutput values.
 // You can construct a concrete instance of `DynamicTagGroupArrayInput` via:
 //
@@ -234,6 +241,12 @@ func (i DynamicTagGroupArray) ToDynamicTagGroupArrayOutput() DynamicTagGroupArra
 
 func (i DynamicTagGroupArray) ToDynamicTagGroupArrayOutputWithContext(ctx context.Context) DynamicTagGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DynamicTagGroupArrayOutput)
+}
+
+func (i DynamicTagGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*DynamicTagGroup] {
+	return pulumix.Output[[]*DynamicTagGroup]{
+		OutputState: i.ToDynamicTagGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DynamicTagGroupMapInput is an input type that accepts DynamicTagGroupMap and DynamicTagGroupMapOutput values.
@@ -261,6 +274,12 @@ func (i DynamicTagGroupMap) ToDynamicTagGroupMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DynamicTagGroupMapOutput)
 }
 
+func (i DynamicTagGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DynamicTagGroup] {
+	return pulumix.Output[map[string]*DynamicTagGroup]{
+		OutputState: i.ToDynamicTagGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DynamicTagGroupOutput struct{ *pulumi.OutputState }
 
 func (DynamicTagGroupOutput) ElementType() reflect.Type {
@@ -273,6 +292,12 @@ func (o DynamicTagGroupOutput) ToDynamicTagGroupOutput() DynamicTagGroupOutput {
 
 func (o DynamicTagGroupOutput) ToDynamicTagGroupOutputWithContext(ctx context.Context) DynamicTagGroupOutput {
 	return o
+}
+
+func (o DynamicTagGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*DynamicTagGroup] {
+	return pulumix.Output[*DynamicTagGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Alarm contact group. The value range of N is 1~100. The alarm notification of the application group is sent to the alarm contact in the alarm contact group.
@@ -319,6 +344,12 @@ func (o DynamicTagGroupArrayOutput) ToDynamicTagGroupArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o DynamicTagGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DynamicTagGroup] {
+	return pulumix.Output[[]*DynamicTagGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DynamicTagGroupArrayOutput) Index(i pulumi.IntInput) DynamicTagGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DynamicTagGroup {
 		return vs[0].([]*DynamicTagGroup)[vs[1].(int)]
@@ -337,6 +368,12 @@ func (o DynamicTagGroupMapOutput) ToDynamicTagGroupMapOutput() DynamicTagGroupMa
 
 func (o DynamicTagGroupMapOutput) ToDynamicTagGroupMapOutputWithContext(ctx context.Context) DynamicTagGroupMapOutput {
 	return o
+}
+
+func (o DynamicTagGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DynamicTagGroup] {
+	return pulumix.Output[map[string]*DynamicTagGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DynamicTagGroupMapOutput) MapIndex(k pulumi.StringInput) DynamicTagGroupOutput {

@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * For information about VPC Traffic Mirror Session and how to use it, see [What is Traffic Mirror Session](https://www.alibabacloud.com/help/en/doc-detail/261364.htm).
  * 
- * &gt; **NOTE:** Available in v1.142.0+.
+ * &gt; **NOTE:** Available since v1.142.0.
  * 
  * ## Example Usage
  * 
@@ -39,9 +39,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
@@ -69,6 +70,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .instanceTypeFamily(&#34;ecs.g7&#34;)
  *             .build());
@@ -78,20 +81,21 @@ import javax.annotation.Nullable;
  *             .availableInstanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
  *             .build());
  * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;default-NODELETING&#34;)
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
  *             .build());
  * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         final var vswitchId = defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]);
- * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
- *             .description(&#34;New security group&#34;)
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .description(name)
+ *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
@@ -103,12 +107,12 @@ import javax.annotation.Nullable;
  *         for (var i = 0; i &lt; 2; i++) {
  *             new Instance(&#34;defaultInstance-&#34; + i, InstanceArgs.builder()            
  *                 .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *                 .instanceName(&#34;example_value&#34;)
- *                 .hostName(&#34;tf-testAcc&#34;)
+ *                 .instanceName(name)
+ *                 .hostName(name)
  *                 .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
  *                 .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
  *                 .securityGroups(defaultSecurityGroup.id())
- *                 .vswitchId(vswitchId)
+ *                 .vswitchId(defaultSwitch.id())
  *                 .systemDiskCategory(&#34;cloud_essd&#34;)
  *                 .build());
  * 
@@ -116,8 +120,8 @@ import javax.annotation.Nullable;
  * }
  *         for (var i = 0; i &lt; 2; i++) {
  *             new EcsNetworkInterface(&#34;defaultEcsNetworkInterface-&#34; + i, EcsNetworkInterfaceArgs.builder()            
- *                 .networkInterfaceName(&#34;example_value&#34;)
- *                 .vswitchId(vswitchId)
+ *                 .networkInterfaceName(name)
+ *                 .vswitchId(defaultSwitch.id())
  *                 .securityGroupIds(defaultSecurityGroup.id())
  *                 .build());
  * 
@@ -125,22 +129,22 @@ import javax.annotation.Nullable;
  * }
  *         for (var i = 0; i &lt; 2; i++) {
  *             new EcsNetworkInterfaceAttachment(&#34;defaultEcsNetworkInterfaceAttachment-&#34; + i, EcsNetworkInterfaceAttachmentArgs.builder()            
- *                 .instanceId(defaultInstance.stream().map(element -&gt; element.id()).collect(toList())[range.value()])
- *                 .networkInterfaceId(defaultEcsNetworkInterface.stream().map(element -&gt; element.id()).collect(toList())[range.value()])
+ *                 .instanceId(defaultInstance[range.value()].id())
+ *                 .networkInterfaceId(defaultEcsNetworkInterface[range.value()].id())
  *                 .build());
  * 
  *         
  * }
  *         var defaultTrafficMirrorFilter = new TrafficMirrorFilter(&#34;defaultTrafficMirrorFilter&#34;, TrafficMirrorFilterArgs.builder()        
- *             .trafficMirrorFilterName(&#34;example_value&#34;)
- *             .trafficMirrorFilterDescription(&#34;example_value&#34;)
+ *             .trafficMirrorFilterName(name)
+ *             .trafficMirrorFilterDescription(name)
  *             .build());
  * 
  *         var defaultTrafficMirrorSession = new TrafficMirrorSession(&#34;defaultTrafficMirrorSession&#34;, TrafficMirrorSessionArgs.builder()        
  *             .priority(1)
  *             .virtualNetworkId(10)
- *             .trafficMirrorSessionDescription(&#34;example_value&#34;)
- *             .trafficMirrorSessionName(&#34;example_value&#34;)
+ *             .trafficMirrorSessionDescription(name)
+ *             .trafficMirrorSessionName(name)
  *             .trafficMirrorTargetId(defaultEcsNetworkInterfaceAttachment[0].networkInterfaceId())
  *             .trafficMirrorSourceIds(defaultEcsNetworkInterfaceAttachment[1].networkInterfaceId())
  *             .trafficMirrorFilterId(defaultTrafficMirrorFilter.id())

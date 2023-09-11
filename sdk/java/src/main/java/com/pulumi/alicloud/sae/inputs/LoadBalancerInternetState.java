@@ -63,14 +63,14 @@ public final class LoadBalancerInternetState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The bound private network SLB. See the following `Block internet`.
+     * The bound private network SLB. See `internet` below.
      * 
      */
     @Import(name="internets")
     private @Nullable Output<List<LoadBalancerInternetInternetArgs>> internets;
 
     /**
-     * @return The bound private network SLB. See the following `Block internet`.
+     * @return The bound private network SLB. See `internet` below.
      * 
      */
     public Optional<Output<List<LoadBalancerInternetInternetArgs>>> internets() {
@@ -168,7 +168,7 @@ public final class LoadBalancerInternetState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param internets The bound private network SLB. See the following `Block internet`.
+         * @param internets The bound private network SLB. See `internet` below.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class LoadBalancerInternetState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param internets The bound private network SLB. See the following `Block internet`.
+         * @param internets The bound private network SLB. See `internet` below.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class LoadBalancerInternetState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param internets The bound private network SLB. See the following `Block internet`.
+         * @param internets The bound private network SLB. See `internet` below.
          * 
          * @return builder
          * 

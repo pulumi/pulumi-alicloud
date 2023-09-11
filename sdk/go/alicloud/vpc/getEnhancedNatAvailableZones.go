@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetEnhancedNatAvailableZones(ctx *pulumi.Context, args *GetEnhancedNatAvailableZonesArgs, opts ...pulumi.InvokeOption) (*GetEnhancedNatAvailableZonesResult, error) {
@@ -70,6 +71,12 @@ func (o GetEnhancedNatAvailableZonesResultOutput) ToGetEnhancedNatAvailableZones
 
 func (o GetEnhancedNatAvailableZonesResultOutput) ToGetEnhancedNatAvailableZonesResultOutputWithContext(ctx context.Context) GetEnhancedNatAvailableZonesResultOutput {
 	return o
+}
+
+func (o GetEnhancedNatAvailableZonesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnhancedNatAvailableZonesResult] {
+	return pulumix.Output[GetEnhancedNatAvailableZonesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

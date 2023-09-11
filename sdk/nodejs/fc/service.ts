@@ -6,253 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Alicloud Function Compute Service resource. The resource is the base of launching Function and Trigger configuration.
- *  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createservice).
- *
- * > **NOTE:** The resource requires a provider field 'account_id'. See account_id.
- *
- * > **NOTE:** If you happen the error "Argument 'internetAccess' is not supported", you need to log on web console and click button "Apply VPC Function"
- * which is in the upper of [Function Service Web Console](https://fc.console.aliyun.com/) page.
- *
- * > **NOTE:** Currently not all regions support Function Compute Service.
- * For more details supported regions, see [Service endpoints](https://www.alibabacloud.com/help/doc-detail/52984.htm)
- *
- * > **NOTE:** Available since v1.93.0.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * import * as random from "@pulumi/random";
- *
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
- *     max: 99999,
- *     min: 10000,
- * });
- * const defaultProject = new alicloud.log.Project("defaultProject", {});
- * const defaultStore = new alicloud.log.Store("defaultStore", {project: defaultProject.name});
- * const slsDefaultToken = `, '";=()[]{}?@&<>/:
- * 	`;
- * const example = new alicloud.log.StoreIndex("example", {
- *     project: defaultProject.name,
- *     logstore: defaultStore.name,
- *     fullText: {
- *         caseSensitive: false,
- *         token: slsDefaultToken,
- *     },
- *     fieldSearches: [
- *         {
- *             name: "aggPeriodSeconds",
- *             enableAnalytics: true,
- *             type: "long",
- *             token: slsDefaultToken,
- *         },
- *         {
- *             name: "concurrentRequests",
- *             enableAnalytics: true,
- *             type: "long",
- *             token: slsDefaultToken,
- *         },
- *         {
- *             name: "cpuPercent",
- *             enableAnalytics: true,
- *             type: "double",
- *             token: slsDefaultToken,
- *         },
- *         {
- *             name: "cpuQuotaPercent",
- *             enableAnalytics: true,
- *             type: "double",
- *             token: slsDefaultToken,
- *         },
- *         {
- *             name: "functionName",
- *             enableAnalytics: true,
- *             type: "text",
- *             token: slsDefaultToken,
- *             caseSensitive: true,
- *         },
- *         {
- *             name: "hostname",
- *             enableAnalytics: true,
- *             type: "text",
- *             token: slsDefaultToken,
- *         },
- *         {
- *             name: "instanceID",
- *             enableAnalytics: true,
- *             type: "text",
- *             token: slsDefaultToken,
- *         },
- *         {
- *             name: "ipAddress",
- *             enableAnalytics: true,
- *             type: "text",
- *             token: slsDefaultToken,
- *         },
- *         {
- *             name: "memoryLimitMB",
- *             enableAnalytics: true,
- *             type: "double",
- *             token: slsDefaultToken,
- *         },
- *         {
- *             name: "memoryUsageMB",
- *             enableAnalytics: true,
- *             type: "double",
- *             token: slsDefaultToken,
- *         },
- *         {
- *             name: "memoryUsagePercent",
- *             enableAnalytics: true,
- *             type: "double",
- *             token: slsDefaultToken,
- *         },
- *         {
- *             name: "operation",
- *             enableAnalytics: true,
- *             type: "text",
- *             token: slsDefaultToken,
- *         },
- *         {
- *             name: "qualifier",
- *             enableAnalytics: true,
- *             type: "text",
- *             token: slsDefaultToken,
- *             caseSensitive: true,
- *         },
- *         {
- *             name: "rxBytes",
- *             enableAnalytics: true,
- *             type: "long",
- *             token: slsDefaultToken,
- *         },
- *         {
- *             name: "rxTotalBytes",
- *             enableAnalytics: true,
- *             type: "long",
- *             token: slsDefaultToken,
- *         },
- *         {
- *             name: "serviceName",
- *             enableAnalytics: true,
- *             type: "text",
- *             token: slsDefaultToken,
- *             caseSensitive: true,
- *         },
- *         {
- *             name: "txBytes",
- *             enableAnalytics: true,
- *             type: "long",
- *             token: slsDefaultToken,
- *         },
- *         {
- *             name: "txTotalBytes",
- *             enableAnalytics: true,
- *             type: "long",
- *             token: slsDefaultToken,
- *         },
- *         {
- *             name: "versionId",
- *             enableAnalytics: true,
- *             type: "text",
- *             token: slsDefaultToken,
- *         },
- *         {
- *             name: "events",
- *             enableAnalytics: true,
- *             type: "json",
- *             token: slsDefaultToken,
- *         },
- *         {
- *             name: "isColdStart",
- *             enableAnalytics: true,
- *             type: "text",
- *             token: slsDefaultToken,
- *         },
- *         {
- *             name: "hasFunctionError",
- *             enableAnalytics: true,
- *             type: "text",
- *             token: slsDefaultToken,
- *         },
- *         {
- *             name: "errorType",
- *             enableAnalytics: true,
- *             type: "text",
- *             token: slsDefaultToken,
- *         },
- *         {
- *             name: "triggerType",
- *             enableAnalytics: true,
- *             type: "text",
- *             token: slsDefaultToken,
- *         },
- *         {
- *             name: "durationMs",
- *             enableAnalytics: true,
- *             type: "double",
- *             token: slsDefaultToken,
- *         },
- *         {
- *             name: "statusCode",
- *             enableAnalytics: true,
- *             type: "long",
- *             token: slsDefaultToken,
- *         },
- *     ],
- * });
- * const defaultRole = new alicloud.ram.Role("defaultRole", {
- *     document: `  {
- *       "Statement": [
- *         {
- *           "Action": "sts:AssumeRole",
- *           "Effect": "Allow",
- *           "Principal": {
- *             "Service": [
- *               "fc.aliyuncs.com"
- *             ]
- *           }
- *         }
- *       ],
- *       "Version": "1"
- *   }
- * `,
- *     description: "this is a example",
- *     force: true,
- * });
- * const defaultRolePolicyAttachment = new alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment", {
- *     roleName: defaultRole.name,
- *     policyName: "AliyunLogFullAccess",
- *     policyType: "System",
- * });
- * const defaultService = new alicloud.fc.Service("defaultService", {
- *     description: "example-value",
- *     role: defaultRole.arn,
- *     logConfig: {
- *         project: defaultProject.name,
- *         logstore: defaultStore.name,
- *         enableInstanceMetrics: true,
- *         enableRequestMetrics: true,
- *     },
- * });
- * ```
- * ## Module Support
- *
- * You can use to the existing fc module to create a service and a function quickly and then set several triggers for it.
- *
- * ## Import
- *
- * Function Compute Service can be imported using the id or name, e.g.
- *
- * ```sh
- *  $ pulumi import alicloud:fc/service:Service foo my-fc-service
- * ```
- */
 export class Service extends pulumi.CustomResource {
     /**
      * Get an existing Service resource's state with the given name, ID, and optional extra
@@ -281,57 +34,18 @@ export class Service extends pulumi.CustomResource {
         return obj['__pulumiType'] === Service.__pulumiType;
     }
 
-    /**
-     * The Function Compute Service description.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * Whether to allow the Service to access Internet. Default to "true".
-     */
     public readonly internetAccess!: pulumi.Output<boolean | undefined>;
-    /**
-     * The date this resource was last modified.
-     */
     public /*out*/ readonly lastModified!: pulumi.Output<string>;
-    /**
-     * Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `logConfig` requires the following: (**NOTE:** If both `project` and `logstore` are empty, logConfig is considered to be empty or unset.). See `logConfig` below.
-     */
     public readonly logConfig!: pulumi.Output<outputs.fc.ServiceLogConfig | undefined>;
-    /**
-     * The Function Compute Service name. It is the only in one Alicloud account and is conflict with `namePrefix`.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Setting a prefix to get a only name. It is conflict with `name`.
-     */
     public readonly namePrefix!: pulumi.Output<string | undefined>;
-    /**
-     * Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. See `nasConfig` below.
-     */
     public readonly nasConfig!: pulumi.Output<outputs.fc.ServiceNasConfig | undefined>;
-    /**
-     * Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
-     */
     public readonly publish!: pulumi.Output<boolean | undefined>;
-    /**
-     * RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
-     */
     public readonly role!: pulumi.Output<string | undefined>;
-    /**
-     * The Function Compute Service ID.
-     */
     public /*out*/ readonly serviceId!: pulumi.Output<string>;
-    /**
-     * Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracingConfig` requires the following: (**NOTE:** If both `type` and `params` are empty, tracingConfig is considered to be empty or unset.). See `tracingConfig` below.
-     */
     public readonly tracingConfig!: pulumi.Output<outputs.fc.ServiceTracingConfig | undefined>;
-    /**
-     * The latest published version of your Function Compute Service.
-     */
     public /*out*/ readonly version!: pulumi.Output<string>;
-    /**
-     * Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpcConfig` requires the following: (**NOTE:** If both `vswitchIds` and `securityGroupId` are empty, vpcConfig is considered to be empty or unset.). See `vpcConfig` below.
-     */
     public readonly vpcConfig!: pulumi.Output<outputs.fc.ServiceVpcConfig | undefined>;
 
     /**
@@ -381,61 +95,19 @@ export class Service extends pulumi.CustomResource {
     }
 }
 
-/**
- * Input properties used for looking up and filtering Service resources.
- */
 export interface ServiceState {
-    /**
-     * The Function Compute Service description.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Whether to allow the Service to access Internet. Default to "true".
-     */
     internetAccess?: pulumi.Input<boolean>;
-    /**
-     * The date this resource was last modified.
-     */
     lastModified?: pulumi.Input<string>;
-    /**
-     * Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `logConfig` requires the following: (**NOTE:** If both `project` and `logstore` are empty, logConfig is considered to be empty or unset.). See `logConfig` below.
-     */
     logConfig?: pulumi.Input<inputs.fc.ServiceLogConfig>;
-    /**
-     * The Function Compute Service name. It is the only in one Alicloud account and is conflict with `namePrefix`.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Setting a prefix to get a only name. It is conflict with `name`.
-     */
     namePrefix?: pulumi.Input<string>;
-    /**
-     * Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. See `nasConfig` below.
-     */
     nasConfig?: pulumi.Input<inputs.fc.ServiceNasConfig>;
-    /**
-     * Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
-     */
     publish?: pulumi.Input<boolean>;
-    /**
-     * RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
-     */
     role?: pulumi.Input<string>;
-    /**
-     * The Function Compute Service ID.
-     */
     serviceId?: pulumi.Input<string>;
-    /**
-     * Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracingConfig` requires the following: (**NOTE:** If both `type` and `params` are empty, tracingConfig is considered to be empty or unset.). See `tracingConfig` below.
-     */
     tracingConfig?: pulumi.Input<inputs.fc.ServiceTracingConfig>;
-    /**
-     * The latest published version of your Function Compute Service.
-     */
     version?: pulumi.Input<string>;
-    /**
-     * Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpcConfig` requires the following: (**NOTE:** If both `vswitchIds` and `securityGroupId` are empty, vpcConfig is considered to be empty or unset.). See `vpcConfig` below.
-     */
     vpcConfig?: pulumi.Input<inputs.fc.ServiceVpcConfig>;
 }
 
@@ -443,44 +115,14 @@ export interface ServiceState {
  * The set of arguments for constructing a Service resource.
  */
 export interface ServiceArgs {
-    /**
-     * The Function Compute Service description.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Whether to allow the Service to access Internet. Default to "true".
-     */
     internetAccess?: pulumi.Input<boolean>;
-    /**
-     * Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `logConfig` requires the following: (**NOTE:** If both `project` and `logstore` are empty, logConfig is considered to be empty or unset.). See `logConfig` below.
-     */
     logConfig?: pulumi.Input<inputs.fc.ServiceLogConfig>;
-    /**
-     * The Function Compute Service name. It is the only in one Alicloud account and is conflict with `namePrefix`.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Setting a prefix to get a only name. It is conflict with `name`.
-     */
     namePrefix?: pulumi.Input<string>;
-    /**
-     * Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. See `nasConfig` below.
-     */
     nasConfig?: pulumi.Input<inputs.fc.ServiceNasConfig>;
-    /**
-     * Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
-     */
     publish?: pulumi.Input<boolean>;
-    /**
-     * RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
-     */
     role?: pulumi.Input<string>;
-    /**
-     * Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracingConfig` requires the following: (**NOTE:** If both `type` and `params` are empty, tracingConfig is considered to be empty or unset.). See `tracingConfig` below.
-     */
     tracingConfig?: pulumi.Input<inputs.fc.ServiceTracingConfig>;
-    /**
-     * Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpcConfig` requires the following: (**NOTE:** If both `vswitchIds` and `securityGroupId` are empty, vpcConfig is considered to be empty or unset.). See `vpcConfig` below.
-     */
     vpcConfig?: pulumi.Input<inputs.fc.ServiceVpcConfig>;
 }

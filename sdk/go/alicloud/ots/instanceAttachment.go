@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource will help you to bind a VPC to an OTS instance.
@@ -194,6 +195,12 @@ func (i *InstanceAttachment) ToInstanceAttachmentOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceAttachmentOutput)
 }
 
+func (i *InstanceAttachment) ToOutput(ctx context.Context) pulumix.Output[*InstanceAttachment] {
+	return pulumix.Output[*InstanceAttachment]{
+		OutputState: i.ToInstanceAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceAttachmentArrayInput is an input type that accepts InstanceAttachmentArray and InstanceAttachmentArrayOutput values.
 // You can construct a concrete instance of `InstanceAttachmentArrayInput` via:
 //
@@ -217,6 +224,12 @@ func (i InstanceAttachmentArray) ToInstanceAttachmentArrayOutput() InstanceAttac
 
 func (i InstanceAttachmentArray) ToInstanceAttachmentArrayOutputWithContext(ctx context.Context) InstanceAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceAttachmentArrayOutput)
+}
+
+func (i InstanceAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceAttachment] {
+	return pulumix.Output[[]*InstanceAttachment]{
+		OutputState: i.ToInstanceAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // InstanceAttachmentMapInput is an input type that accepts InstanceAttachmentMap and InstanceAttachmentMapOutput values.
@@ -244,6 +257,12 @@ func (i InstanceAttachmentMap) ToInstanceAttachmentMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceAttachmentMapOutput)
 }
 
+func (i InstanceAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceAttachment] {
+	return pulumix.Output[map[string]*InstanceAttachment]{
+		OutputState: i.ToInstanceAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceAttachmentOutput struct{ *pulumi.OutputState }
 
 func (InstanceAttachmentOutput) ElementType() reflect.Type {
@@ -256,6 +275,12 @@ func (o InstanceAttachmentOutput) ToInstanceAttachmentOutput() InstanceAttachmen
 
 func (o InstanceAttachmentOutput) ToInstanceAttachmentOutputWithContext(ctx context.Context) InstanceAttachmentOutput {
 	return o
+}
+
+func (o InstanceAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceAttachment] {
+	return pulumix.Output[*InstanceAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the OTS instance.
@@ -292,6 +317,12 @@ func (o InstanceAttachmentArrayOutput) ToInstanceAttachmentArrayOutputWithContex
 	return o
 }
 
+func (o InstanceAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceAttachment] {
+	return pulumix.Output[[]*InstanceAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceAttachmentArrayOutput) Index(i pulumi.IntInput) InstanceAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceAttachment {
 		return vs[0].([]*InstanceAttachment)[vs[1].(int)]
@@ -310,6 +341,12 @@ func (o InstanceAttachmentMapOutput) ToInstanceAttachmentMapOutput() InstanceAtt
 
 func (o InstanceAttachmentMapOutput) ToInstanceAttachmentMapOutputWithContext(ctx context.Context) InstanceAttachmentMapOutput {
 	return o
+}
+
+func (o InstanceAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceAttachment] {
+	return pulumix.Output[map[string]*InstanceAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceAttachmentMapOutput) MapIndex(k pulumi.StringInput) InstanceAttachmentOutput {

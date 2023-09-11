@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Amqp Exchanges of the current Alibaba Cloud user.
@@ -138,6 +139,12 @@ func (o GetExchangesResultOutput) ToGetExchangesResultOutput() GetExchangesResul
 
 func (o GetExchangesResultOutput) ToGetExchangesResultOutputWithContext(ctx context.Context) GetExchangesResultOutput {
 	return o
+}
+
+func (o GetExchangesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetExchangesResult] {
+	return pulumix.Output[GetExchangesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetExchangesResultOutput) Exchanges() GetExchangesExchangeArrayOutput {

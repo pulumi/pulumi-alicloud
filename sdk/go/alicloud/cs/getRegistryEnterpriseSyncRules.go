@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list Container Registry Enterprise Edition sync rules on Alibaba Cloud.
@@ -147,6 +148,12 @@ func (o GetRegistryEnterpriseSyncRulesResultOutput) ToGetRegistryEnterpriseSyncR
 
 func (o GetRegistryEnterpriseSyncRulesResultOutput) ToGetRegistryEnterpriseSyncRulesResultOutputWithContext(ctx context.Context) GetRegistryEnterpriseSyncRulesResultOutput {
 	return o
+}
+
+func (o GetRegistryEnterpriseSyncRulesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRegistryEnterpriseSyncRulesResult] {
+	return pulumix.Output[GetRegistryEnterpriseSyncRulesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

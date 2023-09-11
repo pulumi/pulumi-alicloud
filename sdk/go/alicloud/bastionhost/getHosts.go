@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Bastionhost Hosts of the current Alibaba Cloud user.
@@ -166,6 +167,12 @@ func (o GetHostsResultOutput) ToGetHostsResultOutput() GetHostsResultOutput {
 
 func (o GetHostsResultOutput) ToGetHostsResultOutputWithContext(ctx context.Context) GetHostsResultOutput {
 	return o
+}
+
+func (o GetHostsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetHostsResult] {
+	return pulumix.Output[GetHostsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHostsResultOutput) EnableDetails() pulumi.BoolPtrOutput {

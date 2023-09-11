@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
@@ -128,6 +129,12 @@ func (o GetHistoryDeliveryJobsResultOutput) ToGetHistoryDeliveryJobsResultOutput
 
 func (o GetHistoryDeliveryJobsResultOutput) ToGetHistoryDeliveryJobsResultOutputWithContext(ctx context.Context) GetHistoryDeliveryJobsResultOutput {
 	return o
+}
+
+func (o GetHistoryDeliveryJobsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetHistoryDeliveryJobsResult] {
+	return pulumix.Output[GetHistoryDeliveryJobsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHistoryDeliveryJobsResultOutput) EnableDetails() pulumi.BoolPtrOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Eipanycast Anycast Eip Address Attachment resource.
@@ -491,6 +492,12 @@ func (i *AnycastEipAddressAttachment) ToAnycastEipAddressAttachmentOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(AnycastEipAddressAttachmentOutput)
 }
 
+func (i *AnycastEipAddressAttachment) ToOutput(ctx context.Context) pulumix.Output[*AnycastEipAddressAttachment] {
+	return pulumix.Output[*AnycastEipAddressAttachment]{
+		OutputState: i.ToAnycastEipAddressAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AnycastEipAddressAttachmentArrayInput is an input type that accepts AnycastEipAddressAttachmentArray and AnycastEipAddressAttachmentArrayOutput values.
 // You can construct a concrete instance of `AnycastEipAddressAttachmentArrayInput` via:
 //
@@ -514,6 +521,12 @@ func (i AnycastEipAddressAttachmentArray) ToAnycastEipAddressAttachmentArrayOutp
 
 func (i AnycastEipAddressAttachmentArray) ToAnycastEipAddressAttachmentArrayOutputWithContext(ctx context.Context) AnycastEipAddressAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AnycastEipAddressAttachmentArrayOutput)
+}
+
+func (i AnycastEipAddressAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*AnycastEipAddressAttachment] {
+	return pulumix.Output[[]*AnycastEipAddressAttachment]{
+		OutputState: i.ToAnycastEipAddressAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AnycastEipAddressAttachmentMapInput is an input type that accepts AnycastEipAddressAttachmentMap and AnycastEipAddressAttachmentMapOutput values.
@@ -541,6 +554,12 @@ func (i AnycastEipAddressAttachmentMap) ToAnycastEipAddressAttachmentMapOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(AnycastEipAddressAttachmentMapOutput)
 }
 
+func (i AnycastEipAddressAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AnycastEipAddressAttachment] {
+	return pulumix.Output[map[string]*AnycastEipAddressAttachment]{
+		OutputState: i.ToAnycastEipAddressAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AnycastEipAddressAttachmentOutput struct{ *pulumi.OutputState }
 
 func (AnycastEipAddressAttachmentOutput) ElementType() reflect.Type {
@@ -553,6 +572,12 @@ func (o AnycastEipAddressAttachmentOutput) ToAnycastEipAddressAttachmentOutput()
 
 func (o AnycastEipAddressAttachmentOutput) ToAnycastEipAddressAttachmentOutputWithContext(ctx context.Context) AnycastEipAddressAttachmentOutput {
 	return o
+}
+
+func (o AnycastEipAddressAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*AnycastEipAddressAttachment] {
+	return pulumix.Output[*AnycastEipAddressAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Anycast EIP instance.
@@ -620,6 +645,12 @@ func (o AnycastEipAddressAttachmentArrayOutput) ToAnycastEipAddressAttachmentArr
 	return o
 }
 
+func (o AnycastEipAddressAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AnycastEipAddressAttachment] {
+	return pulumix.Output[[]*AnycastEipAddressAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AnycastEipAddressAttachmentArrayOutput) Index(i pulumi.IntInput) AnycastEipAddressAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AnycastEipAddressAttachment {
 		return vs[0].([]*AnycastEipAddressAttachment)[vs[1].(int)]
@@ -638,6 +669,12 @@ func (o AnycastEipAddressAttachmentMapOutput) ToAnycastEipAddressAttachmentMapOu
 
 func (o AnycastEipAddressAttachmentMapOutput) ToAnycastEipAddressAttachmentMapOutputWithContext(ctx context.Context) AnycastEipAddressAttachmentMapOutput {
 	return o
+}
+
+func (o AnycastEipAddressAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AnycastEipAddressAttachment] {
+	return pulumix.Output[map[string]*AnycastEipAddressAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AnycastEipAddressAttachmentMapOutput) MapIndex(k pulumi.StringInput) AnycastEipAddressAttachmentOutput {

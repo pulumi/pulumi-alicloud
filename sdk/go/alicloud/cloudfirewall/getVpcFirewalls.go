@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
@@ -161,6 +162,12 @@ func (o GetVpcFirewallsResultOutput) ToGetVpcFirewallsResultOutput() GetVpcFirew
 
 func (o GetVpcFirewallsResultOutput) ToGetVpcFirewallsResultOutputWithContext(ctx context.Context) GetVpcFirewallsResultOutput {
 	return o
+}
+
+func (o GetVpcFirewallsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallsResult] {
+	return pulumix.Output[GetVpcFirewallsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of Vpc Firewall Entries. Each element contains the following attributes:

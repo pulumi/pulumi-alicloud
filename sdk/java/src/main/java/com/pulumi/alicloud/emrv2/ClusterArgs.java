@@ -24,14 +24,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     public static final ClusterArgs Empty = new ClusterArgs();
 
     /**
-     * The application configurations of EMR cluster.
+     * The application configurations of EMR cluster. See `application_configs` below.
      * 
      */
     @Import(name="applicationConfigs")
     private @Nullable Output<List<ClusterApplicationConfigArgs>> applicationConfigs;
 
     /**
-     * @return The application configurations of EMR cluster.
+     * @return The application configurations of EMR cluster. See `application_configs` below.
      * 
      */
     public Optional<Output<List<ClusterApplicationConfigArgs>>> applicationConfigs() {
@@ -54,14 +54,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster.
+     * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
      * 
      */
     @Import(name="bootstrapScripts")
     private @Nullable Output<List<ClusterBootstrapScriptArgs>> bootstrapScripts;
 
     /**
-     * @return The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster.
+     * @return The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
      * 
      */
     public Optional<Output<List<ClusterBootstrapScriptArgs>>> bootstrapScripts() {
@@ -114,14 +114,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The node attributes of ecs instances which the emr-cluster belongs.
+     * The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
      * 
      */
     @Import(name="nodeAttributes", required=true)
     private Output<List<ClusterNodeAttributeArgs>> nodeAttributes;
 
     /**
-     * @return The node attributes of ecs instances which the emr-cluster belongs.
+     * @return The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
      * 
      */
     public Output<List<ClusterNodeAttributeArgs>> nodeAttributes() {
@@ -129,14 +129,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example).
+     * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
      * 
      */
     @Import(name="nodeGroups", required=true)
     private Output<List<ClusterNodeGroupArgs>> nodeGroups;
 
     /**
-     * @return Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example).
+     * @return Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
      * 
      */
     public Output<List<ClusterNodeGroupArgs>> nodeGroups() {
@@ -204,14 +204,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The detail configuration of subscription payment type.
+     * The detail configuration of subscription payment type. See `subscription_config` below.
      * 
      */
     @Import(name="subscriptionConfig")
     private @Nullable Output<ClusterSubscriptionConfigArgs> subscriptionConfig;
 
     /**
-     * @return The detail configuration of subscription payment type.
+     * @return The detail configuration of subscription payment type. See `subscription_config` below.
      * 
      */
     public Optional<Output<ClusterSubscriptionConfigArgs>> subscriptionConfig() {
@@ -271,7 +271,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applicationConfigs The application configurations of EMR cluster.
+         * @param applicationConfigs The application configurations of EMR cluster. See `application_configs` below.
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applicationConfigs The application configurations of EMR cluster.
+         * @param applicationConfigs The application configurations of EMR cluster. See `application_configs` below.
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applicationConfigs The application configurations of EMR cluster.
+         * @param applicationConfigs The application configurations of EMR cluster. See `application_configs` below.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bootstrapScripts The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster.
+         * @param bootstrapScripts The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bootstrapScripts The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster.
+         * @param bootstrapScripts The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bootstrapScripts The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster.
+         * @param bootstrapScripts The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
          * 
          * @return builder
          * 
@@ -427,7 +427,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeAttributes The node attributes of ecs instances which the emr-cluster belongs.
+         * @param nodeAttributes The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
          * 
          * @return builder
          * 
@@ -438,7 +438,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeAttributes The node attributes of ecs instances which the emr-cluster belongs.
+         * @param nodeAttributes The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeAttributes The node attributes of ecs instances which the emr-cluster belongs.
+         * @param nodeAttributes The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
          * 
          * @return builder
          * 
@@ -458,7 +458,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeGroups Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example).
+         * @param nodeGroups Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
          * 
          * @return builder
          * 
@@ -469,7 +469,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeGroups Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example).
+         * @param nodeGroups Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
          * 
          * @return builder
          * 
@@ -479,7 +479,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeGroups Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example).
+         * @param nodeGroups Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
          * 
          * @return builder
          * 
@@ -573,7 +573,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subscriptionConfig The detail configuration of subscription payment type.
+         * @param subscriptionConfig The detail configuration of subscription payment type. See `subscription_config` below.
          * 
          * @return builder
          * 
@@ -584,7 +584,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subscriptionConfig The detail configuration of subscription payment type.
+         * @param subscriptionConfig The detail configuration of subscription payment type. See `subscription_config` below.
          * 
          * @return builder
          * 

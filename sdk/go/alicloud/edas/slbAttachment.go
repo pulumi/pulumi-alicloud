@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Binds SLB to an EDAS application.
@@ -316,6 +317,12 @@ func (i *SlbAttachment) ToSlbAttachmentOutputWithContext(ctx context.Context) Sl
 	return pulumi.ToOutputWithContext(ctx, i).(SlbAttachmentOutput)
 }
 
+func (i *SlbAttachment) ToOutput(ctx context.Context) pulumix.Output[*SlbAttachment] {
+	return pulumix.Output[*SlbAttachment]{
+		OutputState: i.ToSlbAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SlbAttachmentArrayInput is an input type that accepts SlbAttachmentArray and SlbAttachmentArrayOutput values.
 // You can construct a concrete instance of `SlbAttachmentArrayInput` via:
 //
@@ -339,6 +346,12 @@ func (i SlbAttachmentArray) ToSlbAttachmentArrayOutput() SlbAttachmentArrayOutpu
 
 func (i SlbAttachmentArray) ToSlbAttachmentArrayOutputWithContext(ctx context.Context) SlbAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SlbAttachmentArrayOutput)
+}
+
+func (i SlbAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*SlbAttachment] {
+	return pulumix.Output[[]*SlbAttachment]{
+		OutputState: i.ToSlbAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SlbAttachmentMapInput is an input type that accepts SlbAttachmentMap and SlbAttachmentMapOutput values.
@@ -366,6 +379,12 @@ func (i SlbAttachmentMap) ToSlbAttachmentMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SlbAttachmentMapOutput)
 }
 
+func (i SlbAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SlbAttachment] {
+	return pulumix.Output[map[string]*SlbAttachment]{
+		OutputState: i.ToSlbAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SlbAttachmentOutput struct{ *pulumi.OutputState }
 
 func (SlbAttachmentOutput) ElementType() reflect.Type {
@@ -378,6 +397,12 @@ func (o SlbAttachmentOutput) ToSlbAttachmentOutput() SlbAttachmentOutput {
 
 func (o SlbAttachmentOutput) ToSlbAttachmentOutputWithContext(ctx context.Context) SlbAttachmentOutput {
 	return o
+}
+
+func (o SlbAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*SlbAttachment] {
+	return pulumix.Output[*SlbAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the application to which you want to bind an SLB instance.
@@ -434,6 +459,12 @@ func (o SlbAttachmentArrayOutput) ToSlbAttachmentArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o SlbAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SlbAttachment] {
+	return pulumix.Output[[]*SlbAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SlbAttachmentArrayOutput) Index(i pulumi.IntInput) SlbAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SlbAttachment {
 		return vs[0].([]*SlbAttachment)[vs[1].(int)]
@@ -452,6 +483,12 @@ func (o SlbAttachmentMapOutput) ToSlbAttachmentMapOutput() SlbAttachmentMapOutpu
 
 func (o SlbAttachmentMapOutput) ToSlbAttachmentMapOutputWithContext(ctx context.Context) SlbAttachmentMapOutput {
 	return o
+}
+
+func (o SlbAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SlbAttachment] {
+	return pulumix.Output[map[string]*SlbAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SlbAttachmentMapOutput) MapIndex(k pulumi.StringInput) SlbAttachmentOutput {

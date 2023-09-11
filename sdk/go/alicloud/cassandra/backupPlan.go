@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cassandra Backup Plan resource.
@@ -170,6 +171,12 @@ func (i *BackupPlan) ToBackupPlanOutputWithContext(ctx context.Context) BackupPl
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanOutput)
 }
 
+func (i *BackupPlan) ToOutput(ctx context.Context) pulumix.Output[*BackupPlan] {
+	return pulumix.Output[*BackupPlan]{
+		OutputState: i.ToBackupPlanOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BackupPlanArrayInput is an input type that accepts BackupPlanArray and BackupPlanArrayOutput values.
 // You can construct a concrete instance of `BackupPlanArrayInput` via:
 //
@@ -193,6 +200,12 @@ func (i BackupPlanArray) ToBackupPlanArrayOutput() BackupPlanArrayOutput {
 
 func (i BackupPlanArray) ToBackupPlanArrayOutputWithContext(ctx context.Context) BackupPlanArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanArrayOutput)
+}
+
+func (i BackupPlanArray) ToOutput(ctx context.Context) pulumix.Output[[]*BackupPlan] {
+	return pulumix.Output[[]*BackupPlan]{
+		OutputState: i.ToBackupPlanArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BackupPlanMapInput is an input type that accepts BackupPlanMap and BackupPlanMapOutput values.
@@ -220,6 +233,12 @@ func (i BackupPlanMap) ToBackupPlanMapOutputWithContext(ctx context.Context) Bac
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanMapOutput)
 }
 
+func (i BackupPlanMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackupPlan] {
+	return pulumix.Output[map[string]*BackupPlan]{
+		OutputState: i.ToBackupPlanMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackupPlanOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanOutput) ElementType() reflect.Type {
@@ -232,6 +251,12 @@ func (o BackupPlanOutput) ToBackupPlanOutput() BackupPlanOutput {
 
 func (o BackupPlanOutput) ToBackupPlanOutputWithContext(ctx context.Context) BackupPlanOutput {
 	return o
+}
+
+func (o BackupPlanOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupPlan] {
+	return pulumix.Output[*BackupPlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies whether to activate the backup plan. Valid values: `True`, `False`. Default value: `True`.
@@ -278,6 +303,12 @@ func (o BackupPlanArrayOutput) ToBackupPlanArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o BackupPlanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BackupPlan] {
+	return pulumix.Output[[]*BackupPlan]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackupPlanArrayOutput) Index(i pulumi.IntInput) BackupPlanOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BackupPlan {
 		return vs[0].([]*BackupPlan)[vs[1].(int)]
@@ -296,6 +327,12 @@ func (o BackupPlanMapOutput) ToBackupPlanMapOutput() BackupPlanMapOutput {
 
 func (o BackupPlanMapOutput) ToBackupPlanMapOutputWithContext(ctx context.Context) BackupPlanMapOutput {
 	return o
+}
+
+func (o BackupPlanMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackupPlan] {
+	return pulumix.Output[map[string]*BackupPlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackupPlanMapOutput) MapIndex(k pulumi.StringInput) BackupPlanOutput {

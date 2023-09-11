@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Information about RDS database exclusive agent and its usage, see [What is RDS DB Proxy](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-modifydbproxy).
@@ -581,6 +582,12 @@ func (i *RdsDbProxy) ToRdsDbProxyOutputWithContext(ctx context.Context) RdsDbPro
 	return pulumi.ToOutputWithContext(ctx, i).(RdsDbProxyOutput)
 }
 
+func (i *RdsDbProxy) ToOutput(ctx context.Context) pulumix.Output[*RdsDbProxy] {
+	return pulumix.Output[*RdsDbProxy]{
+		OutputState: i.ToRdsDbProxyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RdsDbProxyArrayInput is an input type that accepts RdsDbProxyArray and RdsDbProxyArrayOutput values.
 // You can construct a concrete instance of `RdsDbProxyArrayInput` via:
 //
@@ -604,6 +611,12 @@ func (i RdsDbProxyArray) ToRdsDbProxyArrayOutput() RdsDbProxyArrayOutput {
 
 func (i RdsDbProxyArray) ToRdsDbProxyArrayOutputWithContext(ctx context.Context) RdsDbProxyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RdsDbProxyArrayOutput)
+}
+
+func (i RdsDbProxyArray) ToOutput(ctx context.Context) pulumix.Output[[]*RdsDbProxy] {
+	return pulumix.Output[[]*RdsDbProxy]{
+		OutputState: i.ToRdsDbProxyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RdsDbProxyMapInput is an input type that accepts RdsDbProxyMap and RdsDbProxyMapOutput values.
@@ -631,6 +644,12 @@ func (i RdsDbProxyMap) ToRdsDbProxyMapOutputWithContext(ctx context.Context) Rds
 	return pulumi.ToOutputWithContext(ctx, i).(RdsDbProxyMapOutput)
 }
 
+func (i RdsDbProxyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RdsDbProxy] {
+	return pulumix.Output[map[string]*RdsDbProxy]{
+		OutputState: i.ToRdsDbProxyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RdsDbProxyOutput struct{ *pulumi.OutputState }
 
 func (RdsDbProxyOutput) ElementType() reflect.Type {
@@ -643,6 +662,12 @@ func (o RdsDbProxyOutput) ToRdsDbProxyOutput() RdsDbProxyOutput {
 
 func (o RdsDbProxyOutput) ToRdsDbProxyOutputWithContext(ctx context.Context) RdsDbProxyOutput {
 	return o
+}
+
+func (o RdsDbProxyOutput) ToOutput(ctx context.Context) pulumix.Output[*RdsDbProxy] {
+	return pulumix.Output[*RdsDbProxy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The port number that is associated with the proxy endpoint.
@@ -803,6 +828,12 @@ func (o RdsDbProxyArrayOutput) ToRdsDbProxyArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o RdsDbProxyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RdsDbProxy] {
+	return pulumix.Output[[]*RdsDbProxy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RdsDbProxyArrayOutput) Index(i pulumi.IntInput) RdsDbProxyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RdsDbProxy {
 		return vs[0].([]*RdsDbProxy)[vs[1].(int)]
@@ -821,6 +852,12 @@ func (o RdsDbProxyMapOutput) ToRdsDbProxyMapOutput() RdsDbProxyMapOutput {
 
 func (o RdsDbProxyMapOutput) ToRdsDbProxyMapOutputWithContext(ctx context.Context) RdsDbProxyMapOutput {
 	return o
+}
+
+func (o RdsDbProxyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RdsDbProxy] {
+	return pulumix.Output[map[string]*RdsDbProxy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RdsDbProxyMapOutput) MapIndex(k pulumi.StringInput) RdsDbProxyOutput {

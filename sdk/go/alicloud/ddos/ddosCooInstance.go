@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // BGP-Line Anti-DDoS instance resource. "Ddoscoo" is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-describeinstances).
@@ -259,6 +260,12 @@ func (i *DdosCooInstance) ToDdosCooInstanceOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DdosCooInstanceOutput)
 }
 
+func (i *DdosCooInstance) ToOutput(ctx context.Context) pulumix.Output[*DdosCooInstance] {
+	return pulumix.Output[*DdosCooInstance]{
+		OutputState: i.ToDdosCooInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DdosCooInstanceArrayInput is an input type that accepts DdosCooInstanceArray and DdosCooInstanceArrayOutput values.
 // You can construct a concrete instance of `DdosCooInstanceArrayInput` via:
 //
@@ -282,6 +289,12 @@ func (i DdosCooInstanceArray) ToDdosCooInstanceArrayOutput() DdosCooInstanceArra
 
 func (i DdosCooInstanceArray) ToDdosCooInstanceArrayOutputWithContext(ctx context.Context) DdosCooInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DdosCooInstanceArrayOutput)
+}
+
+func (i DdosCooInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*DdosCooInstance] {
+	return pulumix.Output[[]*DdosCooInstance]{
+		OutputState: i.ToDdosCooInstanceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DdosCooInstanceMapInput is an input type that accepts DdosCooInstanceMap and DdosCooInstanceMapOutput values.
@@ -309,6 +322,12 @@ func (i DdosCooInstanceMap) ToDdosCooInstanceMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DdosCooInstanceMapOutput)
 }
 
+func (i DdosCooInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DdosCooInstance] {
+	return pulumix.Output[map[string]*DdosCooInstance]{
+		OutputState: i.ToDdosCooInstanceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DdosCooInstanceOutput struct{ *pulumi.OutputState }
 
 func (DdosCooInstanceOutput) ElementType() reflect.Type {
@@ -321,6 +340,12 @@ func (o DdosCooInstanceOutput) ToDdosCooInstanceOutput() DdosCooInstanceOutput {
 
 func (o DdosCooInstanceOutput) ToDdosCooInstanceOutputWithContext(ctx context.Context) DdosCooInstanceOutput {
 	return o
+}
+
+func (o DdosCooInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*DdosCooInstance] {
+	return pulumix.Output[*DdosCooInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
@@ -380,6 +405,12 @@ func (o DdosCooInstanceArrayOutput) ToDdosCooInstanceArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o DdosCooInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DdosCooInstance] {
+	return pulumix.Output[[]*DdosCooInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DdosCooInstanceArrayOutput) Index(i pulumi.IntInput) DdosCooInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DdosCooInstance {
 		return vs[0].([]*DdosCooInstance)[vs[1].(int)]
@@ -398,6 +429,12 @@ func (o DdosCooInstanceMapOutput) ToDdosCooInstanceMapOutput() DdosCooInstanceMa
 
 func (o DdosCooInstanceMapOutput) ToDdosCooInstanceMapOutputWithContext(ctx context.Context) DdosCooInstanceMapOutput {
 	return o
+}
+
+func (o DdosCooInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DdosCooInstance] {
+	return pulumix.Output[map[string]*DdosCooInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DdosCooInstanceMapOutput) MapIndex(k pulumi.StringInput) DdosCooInstanceOutput {

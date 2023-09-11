@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Container Service cluster credential on Alibaba Cloud.
@@ -94,6 +95,12 @@ func (o GetClusterCredentialResultOutput) ToGetClusterCredentialResultOutput() G
 
 func (o GetClusterCredentialResultOutput) ToGetClusterCredentialResultOutputWithContext(ctx context.Context) GetClusterCredentialResultOutput {
 	return o
+}
+
+func (o GetClusterCredentialResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetClusterCredentialResult] {
+	return pulumix.Output[GetClusterCredentialResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.

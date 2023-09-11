@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DTS Subscription Job resource.
@@ -651,6 +652,12 @@ func (i *SubscriptionJob) ToSubscriptionJobOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionJobOutput)
 }
 
+func (i *SubscriptionJob) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionJob] {
+	return pulumix.Output[*SubscriptionJob]{
+		OutputState: i.ToSubscriptionJobOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SubscriptionJobArrayInput is an input type that accepts SubscriptionJobArray and SubscriptionJobArrayOutput values.
 // You can construct a concrete instance of `SubscriptionJobArrayInput` via:
 //
@@ -674,6 +681,12 @@ func (i SubscriptionJobArray) ToSubscriptionJobArrayOutput() SubscriptionJobArra
 
 func (i SubscriptionJobArray) ToSubscriptionJobArrayOutputWithContext(ctx context.Context) SubscriptionJobArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionJobArrayOutput)
+}
+
+func (i SubscriptionJobArray) ToOutput(ctx context.Context) pulumix.Output[[]*SubscriptionJob] {
+	return pulumix.Output[[]*SubscriptionJob]{
+		OutputState: i.ToSubscriptionJobArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SubscriptionJobMapInput is an input type that accepts SubscriptionJobMap and SubscriptionJobMapOutput values.
@@ -701,6 +714,12 @@ func (i SubscriptionJobMap) ToSubscriptionJobMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionJobMapOutput)
 }
 
+func (i SubscriptionJobMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SubscriptionJob] {
+	return pulumix.Output[map[string]*SubscriptionJob]{
+		OutputState: i.ToSubscriptionJobMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SubscriptionJobOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionJobOutput) ElementType() reflect.Type {
@@ -713,6 +732,12 @@ func (o SubscriptionJobOutput) ToSubscriptionJobOutput() SubscriptionJobOutput {
 
 func (o SubscriptionJobOutput) ToSubscriptionJobOutputWithContext(ctx context.Context) SubscriptionJobOutput {
 	return o
+}
+
+func (o SubscriptionJobOutput) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionJob] {
+	return pulumix.Output[*SubscriptionJob]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Subscription start time in Unix timestamp format.
@@ -924,6 +949,12 @@ func (o SubscriptionJobArrayOutput) ToSubscriptionJobArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o SubscriptionJobArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SubscriptionJob] {
+	return pulumix.Output[[]*SubscriptionJob]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SubscriptionJobArrayOutput) Index(i pulumi.IntInput) SubscriptionJobOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SubscriptionJob {
 		return vs[0].([]*SubscriptionJob)[vs[1].(int)]
@@ -942,6 +973,12 @@ func (o SubscriptionJobMapOutput) ToSubscriptionJobMapOutput() SubscriptionJobMa
 
 func (o SubscriptionJobMapOutput) ToSubscriptionJobMapOutputWithContext(ctx context.Context) SubscriptionJobMapOutput {
 	return o
+}
+
+func (o SubscriptionJobMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SubscriptionJob] {
+	return pulumix.Output[map[string]*SubscriptionJob]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubscriptionJobMapOutput) MapIndex(k pulumi.StringInput) SubscriptionJobOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **NOTE:** Available in v1.156.0+.
@@ -115,6 +116,12 @@ func (o GetMscSubContactVerificationMessageResultOutput) ToGetMscSubContactVerif
 
 func (o GetMscSubContactVerificationMessageResultOutput) ToGetMscSubContactVerificationMessageResultOutputWithContext(ctx context.Context) GetMscSubContactVerificationMessageResultOutput {
 	return o
+}
+
+func (o GetMscSubContactVerificationMessageResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMscSubContactVerificationMessageResult] {
+	return pulumix.Output[GetMscSubContactVerificationMessageResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMscSubContactVerificationMessageResultOutput) ContactId() pulumi.StringOutput {

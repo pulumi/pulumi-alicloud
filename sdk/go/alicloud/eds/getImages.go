@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ecd Images of the current Alibaba Cloud user.
@@ -199,6 +200,12 @@ func (o GetImagesResultOutput) ToGetImagesResultOutput() GetImagesResultOutput {
 
 func (o GetImagesResultOutput) ToGetImagesResultOutputWithContext(ctx context.Context) GetImagesResultOutput {
 	return o
+}
+
+func (o GetImagesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetImagesResult] {
+	return pulumix.Output[GetImagesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetImagesResultOutput) DesktopInstanceType() pulumi.StringPtrOutput {

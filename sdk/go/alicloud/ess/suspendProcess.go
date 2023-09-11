@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Suspend/Resume processes to a specified scaling group.
@@ -235,6 +236,12 @@ func (i *SuspendProcess) ToSuspendProcessOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SuspendProcessOutput)
 }
 
+func (i *SuspendProcess) ToOutput(ctx context.Context) pulumix.Output[*SuspendProcess] {
+	return pulumix.Output[*SuspendProcess]{
+		OutputState: i.ToSuspendProcessOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SuspendProcessArrayInput is an input type that accepts SuspendProcessArray and SuspendProcessArrayOutput values.
 // You can construct a concrete instance of `SuspendProcessArrayInput` via:
 //
@@ -258,6 +265,12 @@ func (i SuspendProcessArray) ToSuspendProcessArrayOutput() SuspendProcessArrayOu
 
 func (i SuspendProcessArray) ToSuspendProcessArrayOutputWithContext(ctx context.Context) SuspendProcessArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SuspendProcessArrayOutput)
+}
+
+func (i SuspendProcessArray) ToOutput(ctx context.Context) pulumix.Output[[]*SuspendProcess] {
+	return pulumix.Output[[]*SuspendProcess]{
+		OutputState: i.ToSuspendProcessArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SuspendProcessMapInput is an input type that accepts SuspendProcessMap and SuspendProcessMapOutput values.
@@ -285,6 +298,12 @@ func (i SuspendProcessMap) ToSuspendProcessMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SuspendProcessMapOutput)
 }
 
+func (i SuspendProcessMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SuspendProcess] {
+	return pulumix.Output[map[string]*SuspendProcess]{
+		OutputState: i.ToSuspendProcessMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SuspendProcessOutput struct{ *pulumi.OutputState }
 
 func (SuspendProcessOutput) ElementType() reflect.Type {
@@ -297,6 +316,12 @@ func (o SuspendProcessOutput) ToSuspendProcessOutput() SuspendProcessOutput {
 
 func (o SuspendProcessOutput) ToSuspendProcessOutputWithContext(ctx context.Context) SuspendProcessOutput {
 	return o
+}
+
+func (o SuspendProcessOutput) ToOutput(ctx context.Context) pulumix.Output[*SuspendProcess] {
+	return pulumix.Output[*SuspendProcess]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
@@ -323,6 +348,12 @@ func (o SuspendProcessArrayOutput) ToSuspendProcessArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o SuspendProcessArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SuspendProcess] {
+	return pulumix.Output[[]*SuspendProcess]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SuspendProcessArrayOutput) Index(i pulumi.IntInput) SuspendProcessOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SuspendProcess {
 		return vs[0].([]*SuspendProcess)[vs[1].(int)]
@@ -341,6 +372,12 @@ func (o SuspendProcessMapOutput) ToSuspendProcessMapOutput() SuspendProcessMapOu
 
 func (o SuspendProcessMapOutput) ToSuspendProcessMapOutputWithContext(ctx context.Context) SuspendProcessMapOutput {
 	return o
+}
+
+func (o SuspendProcessMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SuspendProcess] {
+	return pulumix.Output[map[string]*SuspendProcess]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SuspendProcessMapOutput) MapIndex(k pulumi.StringInput) SuspendProcessOutput {

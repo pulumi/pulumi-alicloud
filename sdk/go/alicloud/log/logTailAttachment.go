@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Logtail access service is a log collection agent provided by Log Service.
@@ -231,6 +232,12 @@ func (i *LogTailAttachment) ToLogTailAttachmentOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(LogTailAttachmentOutput)
 }
 
+func (i *LogTailAttachment) ToOutput(ctx context.Context) pulumix.Output[*LogTailAttachment] {
+	return pulumix.Output[*LogTailAttachment]{
+		OutputState: i.ToLogTailAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LogTailAttachmentArrayInput is an input type that accepts LogTailAttachmentArray and LogTailAttachmentArrayOutput values.
 // You can construct a concrete instance of `LogTailAttachmentArrayInput` via:
 //
@@ -254,6 +261,12 @@ func (i LogTailAttachmentArray) ToLogTailAttachmentArrayOutput() LogTailAttachme
 
 func (i LogTailAttachmentArray) ToLogTailAttachmentArrayOutputWithContext(ctx context.Context) LogTailAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogTailAttachmentArrayOutput)
+}
+
+func (i LogTailAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*LogTailAttachment] {
+	return pulumix.Output[[]*LogTailAttachment]{
+		OutputState: i.ToLogTailAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // LogTailAttachmentMapInput is an input type that accepts LogTailAttachmentMap and LogTailAttachmentMapOutput values.
@@ -281,6 +294,12 @@ func (i LogTailAttachmentMap) ToLogTailAttachmentMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(LogTailAttachmentMapOutput)
 }
 
+func (i LogTailAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogTailAttachment] {
+	return pulumix.Output[map[string]*LogTailAttachment]{
+		OutputState: i.ToLogTailAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LogTailAttachmentOutput struct{ *pulumi.OutputState }
 
 func (LogTailAttachmentOutput) ElementType() reflect.Type {
@@ -293,6 +312,12 @@ func (o LogTailAttachmentOutput) ToLogTailAttachmentOutput() LogTailAttachmentOu
 
 func (o LogTailAttachmentOutput) ToLogTailAttachmentOutputWithContext(ctx context.Context) LogTailAttachmentOutput {
 	return o
+}
+
+func (o LogTailAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*LogTailAttachment] {
+	return pulumix.Output[*LogTailAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Logtail configuration name, which is unique in the same project.
@@ -324,6 +349,12 @@ func (o LogTailAttachmentArrayOutput) ToLogTailAttachmentArrayOutputWithContext(
 	return o
 }
 
+func (o LogTailAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LogTailAttachment] {
+	return pulumix.Output[[]*LogTailAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LogTailAttachmentArrayOutput) Index(i pulumi.IntInput) LogTailAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LogTailAttachment {
 		return vs[0].([]*LogTailAttachment)[vs[1].(int)]
@@ -342,6 +373,12 @@ func (o LogTailAttachmentMapOutput) ToLogTailAttachmentMapOutput() LogTailAttach
 
 func (o LogTailAttachmentMapOutput) ToLogTailAttachmentMapOutputWithContext(ctx context.Context) LogTailAttachmentMapOutput {
 	return o
+}
+
+func (o LogTailAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogTailAttachment] {
+	return pulumix.Output[map[string]*LogTailAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogTailAttachmentMapOutput) MapIndex(k pulumi.StringInput) LogTailAttachmentOutput {

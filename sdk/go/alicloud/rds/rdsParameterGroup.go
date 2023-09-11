@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a RDS Parameter Group resource.
@@ -210,6 +211,12 @@ func (i *RdsParameterGroup) ToRdsParameterGroupOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(RdsParameterGroupOutput)
 }
 
+func (i *RdsParameterGroup) ToOutput(ctx context.Context) pulumix.Output[*RdsParameterGroup] {
+	return pulumix.Output[*RdsParameterGroup]{
+		OutputState: i.ToRdsParameterGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RdsParameterGroupArrayInput is an input type that accepts RdsParameterGroupArray and RdsParameterGroupArrayOutput values.
 // You can construct a concrete instance of `RdsParameterGroupArrayInput` via:
 //
@@ -233,6 +240,12 @@ func (i RdsParameterGroupArray) ToRdsParameterGroupArrayOutput() RdsParameterGro
 
 func (i RdsParameterGroupArray) ToRdsParameterGroupArrayOutputWithContext(ctx context.Context) RdsParameterGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RdsParameterGroupArrayOutput)
+}
+
+func (i RdsParameterGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*RdsParameterGroup] {
+	return pulumix.Output[[]*RdsParameterGroup]{
+		OutputState: i.ToRdsParameterGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RdsParameterGroupMapInput is an input type that accepts RdsParameterGroupMap and RdsParameterGroupMapOutput values.
@@ -260,6 +273,12 @@ func (i RdsParameterGroupMap) ToRdsParameterGroupMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(RdsParameterGroupMapOutput)
 }
 
+func (i RdsParameterGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RdsParameterGroup] {
+	return pulumix.Output[map[string]*RdsParameterGroup]{
+		OutputState: i.ToRdsParameterGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RdsParameterGroupOutput struct{ *pulumi.OutputState }
 
 func (RdsParameterGroupOutput) ElementType() reflect.Type {
@@ -272,6 +291,12 @@ func (o RdsParameterGroupOutput) ToRdsParameterGroupOutput() RdsParameterGroupOu
 
 func (o RdsParameterGroupOutput) ToRdsParameterGroupOutputWithContext(ctx context.Context) RdsParameterGroupOutput {
 	return o
+}
+
+func (o RdsParameterGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*RdsParameterGroup] {
+	return pulumix.Output[*RdsParameterGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
@@ -313,6 +338,12 @@ func (o RdsParameterGroupArrayOutput) ToRdsParameterGroupArrayOutputWithContext(
 	return o
 }
 
+func (o RdsParameterGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RdsParameterGroup] {
+	return pulumix.Output[[]*RdsParameterGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RdsParameterGroupArrayOutput) Index(i pulumi.IntInput) RdsParameterGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RdsParameterGroup {
 		return vs[0].([]*RdsParameterGroup)[vs[1].(int)]
@@ -331,6 +362,12 @@ func (o RdsParameterGroupMapOutput) ToRdsParameterGroupMapOutput() RdsParameterG
 
 func (o RdsParameterGroupMapOutput) ToRdsParameterGroupMapOutputWithContext(ctx context.Context) RdsParameterGroupMapOutput {
 	return o
+}
+
+func (o RdsParameterGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RdsParameterGroup] {
+	return pulumix.Output[map[string]*RdsParameterGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RdsParameterGroupMapOutput) MapIndex(k pulumi.StringInput) RdsParameterGroupOutput {

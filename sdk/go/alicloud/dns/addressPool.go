@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Alidns Address Pool resource.
@@ -256,6 +257,12 @@ func (i *AddressPool) ToAddressPoolOutputWithContext(ctx context.Context) Addres
 	return pulumi.ToOutputWithContext(ctx, i).(AddressPoolOutput)
 }
 
+func (i *AddressPool) ToOutput(ctx context.Context) pulumix.Output[*AddressPool] {
+	return pulumix.Output[*AddressPool]{
+		OutputState: i.ToAddressPoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AddressPoolArrayInput is an input type that accepts AddressPoolArray and AddressPoolArrayOutput values.
 // You can construct a concrete instance of `AddressPoolArrayInput` via:
 //
@@ -279,6 +286,12 @@ func (i AddressPoolArray) ToAddressPoolArrayOutput() AddressPoolArrayOutput {
 
 func (i AddressPoolArray) ToAddressPoolArrayOutputWithContext(ctx context.Context) AddressPoolArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AddressPoolArrayOutput)
+}
+
+func (i AddressPoolArray) ToOutput(ctx context.Context) pulumix.Output[[]*AddressPool] {
+	return pulumix.Output[[]*AddressPool]{
+		OutputState: i.ToAddressPoolArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AddressPoolMapInput is an input type that accepts AddressPoolMap and AddressPoolMapOutput values.
@@ -306,6 +319,12 @@ func (i AddressPoolMap) ToAddressPoolMapOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AddressPoolMapOutput)
 }
 
+func (i AddressPoolMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AddressPool] {
+	return pulumix.Output[map[string]*AddressPool]{
+		OutputState: i.ToAddressPoolMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AddressPoolOutput struct{ *pulumi.OutputState }
 
 func (AddressPoolOutput) ElementType() reflect.Type {
@@ -318,6 +337,12 @@ func (o AddressPoolOutput) ToAddressPoolOutput() AddressPoolOutput {
 
 func (o AddressPoolOutput) ToAddressPoolOutputWithContext(ctx context.Context) AddressPoolOutput {
 	return o
+}
+
+func (o AddressPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*AddressPool] {
+	return pulumix.Output[*AddressPool]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the address pool.
@@ -359,6 +384,12 @@ func (o AddressPoolArrayOutput) ToAddressPoolArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o AddressPoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AddressPool] {
+	return pulumix.Output[[]*AddressPool]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AddressPoolArrayOutput) Index(i pulumi.IntInput) AddressPoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AddressPool {
 		return vs[0].([]*AddressPool)[vs[1].(int)]
@@ -377,6 +408,12 @@ func (o AddressPoolMapOutput) ToAddressPoolMapOutput() AddressPoolMapOutput {
 
 func (o AddressPoolMapOutput) ToAddressPoolMapOutputWithContext(ctx context.Context) AddressPoolMapOutput {
 	return o
+}
+
+func (o AddressPoolMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AddressPool] {
+	return pulumix.Output[map[string]*AddressPool]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AddressPoolMapOutput) MapIndex(k pulumi.StringInput) AddressPoolOutput {

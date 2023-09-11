@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Hybrid Backup Recovery (HBR) Hana Backup Plan resource.
@@ -279,6 +280,12 @@ func (i *HanaBackupPlan) ToHanaBackupPlanOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(HanaBackupPlanOutput)
 }
 
+func (i *HanaBackupPlan) ToOutput(ctx context.Context) pulumix.Output[*HanaBackupPlan] {
+	return pulumix.Output[*HanaBackupPlan]{
+		OutputState: i.ToHanaBackupPlanOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HanaBackupPlanArrayInput is an input type that accepts HanaBackupPlanArray and HanaBackupPlanArrayOutput values.
 // You can construct a concrete instance of `HanaBackupPlanArrayInput` via:
 //
@@ -302,6 +309,12 @@ func (i HanaBackupPlanArray) ToHanaBackupPlanArrayOutput() HanaBackupPlanArrayOu
 
 func (i HanaBackupPlanArray) ToHanaBackupPlanArrayOutputWithContext(ctx context.Context) HanaBackupPlanArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HanaBackupPlanArrayOutput)
+}
+
+func (i HanaBackupPlanArray) ToOutput(ctx context.Context) pulumix.Output[[]*HanaBackupPlan] {
+	return pulumix.Output[[]*HanaBackupPlan]{
+		OutputState: i.ToHanaBackupPlanArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // HanaBackupPlanMapInput is an input type that accepts HanaBackupPlanMap and HanaBackupPlanMapOutput values.
@@ -329,6 +342,12 @@ func (i HanaBackupPlanMap) ToHanaBackupPlanMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(HanaBackupPlanMapOutput)
 }
 
+func (i HanaBackupPlanMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HanaBackupPlan] {
+	return pulumix.Output[map[string]*HanaBackupPlan]{
+		OutputState: i.ToHanaBackupPlanMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HanaBackupPlanOutput struct{ *pulumi.OutputState }
 
 func (HanaBackupPlanOutput) ElementType() reflect.Type {
@@ -341,6 +360,12 @@ func (o HanaBackupPlanOutput) ToHanaBackupPlanOutput() HanaBackupPlanOutput {
 
 func (o HanaBackupPlanOutput) ToHanaBackupPlanOutputWithContext(ctx context.Context) HanaBackupPlanOutput {
 	return o
+}
+
+func (o HanaBackupPlanOutput) ToOutput(ctx context.Context) pulumix.Output[*HanaBackupPlan] {
+	return pulumix.Output[*HanaBackupPlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The backup prefix.
@@ -407,6 +432,12 @@ func (o HanaBackupPlanArrayOutput) ToHanaBackupPlanArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o HanaBackupPlanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HanaBackupPlan] {
+	return pulumix.Output[[]*HanaBackupPlan]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HanaBackupPlanArrayOutput) Index(i pulumi.IntInput) HanaBackupPlanOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HanaBackupPlan {
 		return vs[0].([]*HanaBackupPlan)[vs[1].(int)]
@@ -425,6 +456,12 @@ func (o HanaBackupPlanMapOutput) ToHanaBackupPlanMapOutput() HanaBackupPlanMapOu
 
 func (o HanaBackupPlanMapOutput) ToHanaBackupPlanMapOutputWithContext(ctx context.Context) HanaBackupPlanMapOutput {
 	return o
+}
+
+func (o HanaBackupPlanMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HanaBackupPlan] {
+	return pulumix.Output[map[string]*HanaBackupPlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HanaBackupPlanMapOutput) MapIndex(k pulumi.StringInput) HanaBackupPlanOutput {

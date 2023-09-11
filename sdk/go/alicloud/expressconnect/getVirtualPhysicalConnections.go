@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Express Connect Virtual Physical Connection available to the user.
@@ -137,6 +138,12 @@ func (o GetVirtualPhysicalConnectionsResultOutput) ToGetVirtualPhysicalConnectio
 
 func (o GetVirtualPhysicalConnectionsResultOutput) ToGetVirtualPhysicalConnectionsResultOutputWithContext(ctx context.Context) GetVirtualPhysicalConnectionsResultOutput {
 	return o
+}
+
+func (o GetVirtualPhysicalConnectionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVirtualPhysicalConnectionsResult] {
+	return pulumix.Output[GetVirtualPhysicalConnectionsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The commercial status of the physical line. Value:-**Normal**: activated.-**Financialized**: Arrears locked.-**SecurityLocked**: locked for security reasons.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides CEN Transit Router Route Table Propagations available to the user.[What is Cen Transit Router Route Table Propagations](https://help.aliyun.com/document_detail/261245.html)
@@ -120,6 +121,12 @@ func (o GetTransitRouterRouteTablePropagationsResultOutput) ToGetTransitRouterRo
 
 func (o GetTransitRouterRouteTablePropagationsResultOutput) ToGetTransitRouterRouteTablePropagationsResultOutputWithContext(ctx context.Context) GetTransitRouterRouteTablePropagationsResultOutput {
 	return o
+}
+
+func (o GetTransitRouterRouteTablePropagationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterRouteTablePropagationsResult] {
+	return pulumix.Output[GetTransitRouterRouteTablePropagationsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

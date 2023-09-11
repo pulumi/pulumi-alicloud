@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
@@ -129,6 +130,12 @@ func (o GetPrefixListsResultOutput) ToGetPrefixListsResultOutput() GetPrefixList
 
 func (o GetPrefixListsResultOutput) ToGetPrefixListsResultOutputWithContext(ctx context.Context) GetPrefixListsResultOutput {
 	return o
+}
+
+func (o GetPrefixListsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrefixListsResult] {
+	return pulumix.Output[GetPrefixListsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrefixListsResultOutput) EnableDetails() pulumi.BoolPtrOutput {

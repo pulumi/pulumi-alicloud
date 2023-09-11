@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.
@@ -153,6 +154,12 @@ func (o GetInstanceClassInfosResultOutput) ToGetInstanceClassInfosResultOutput()
 
 func (o GetInstanceClassInfosResultOutput) ToGetInstanceClassInfosResultOutputWithContext(ctx context.Context) GetInstanceClassInfosResultOutput {
 	return o
+}
+
+func (o GetInstanceClassInfosResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceClassInfosResult] {
+	return pulumix.Output[GetInstanceClassInfosResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceClassInfosResultOutput) CommodityCode() pulumi.StringOutput {

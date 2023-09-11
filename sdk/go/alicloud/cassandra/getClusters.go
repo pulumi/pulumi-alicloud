@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `cassandra.getClusters` data source provides a collection of Cassandra clusters available in Alicloud account.
@@ -121,6 +122,12 @@ func (o GetClustersResultOutput) ToGetClustersResultOutput() GetClustersResultOu
 
 func (o GetClustersResultOutput) ToGetClustersResultOutputWithContext(ctx context.Context) GetClustersResultOutput {
 	return o
+}
+
+func (o GetClustersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetClustersResult] {
+	return pulumix.Output[GetClustersResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of Cassandra clusters. Its every element contains the following attributes:

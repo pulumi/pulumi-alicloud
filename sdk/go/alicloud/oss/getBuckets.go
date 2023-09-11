@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the OSS buckets of the current Alibaba Cloud user.
@@ -107,6 +108,12 @@ func (o GetBucketsResultOutput) ToGetBucketsResultOutput() GetBucketsResultOutpu
 
 func (o GetBucketsResultOutput) ToGetBucketsResultOutputWithContext(ctx context.Context) GetBucketsResultOutput {
 	return o
+}
+
+func (o GetBucketsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBucketsResult] {
+	return pulumix.Output[GetBucketsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of buckets. Each element contains the following attributes:

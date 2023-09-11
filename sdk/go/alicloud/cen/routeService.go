@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a CEN Route Service resource. The virtual border routers (VBRs) and Cloud Connect Network (CCN) instances attached to Cloud Enterprise Network (CEN) instances can access the cloud services deployed in VPCs through the CEN instances.
@@ -257,6 +258,12 @@ func (i *RouteService) ToRouteServiceOutputWithContext(ctx context.Context) Rout
 	return pulumi.ToOutputWithContext(ctx, i).(RouteServiceOutput)
 }
 
+func (i *RouteService) ToOutput(ctx context.Context) pulumix.Output[*RouteService] {
+	return pulumix.Output[*RouteService]{
+		OutputState: i.ToRouteServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RouteServiceArrayInput is an input type that accepts RouteServiceArray and RouteServiceArrayOutput values.
 // You can construct a concrete instance of `RouteServiceArrayInput` via:
 //
@@ -280,6 +287,12 @@ func (i RouteServiceArray) ToRouteServiceArrayOutput() RouteServiceArrayOutput {
 
 func (i RouteServiceArray) ToRouteServiceArrayOutputWithContext(ctx context.Context) RouteServiceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouteServiceArrayOutput)
+}
+
+func (i RouteServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]*RouteService] {
+	return pulumix.Output[[]*RouteService]{
+		OutputState: i.ToRouteServiceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RouteServiceMapInput is an input type that accepts RouteServiceMap and RouteServiceMapOutput values.
@@ -307,6 +320,12 @@ func (i RouteServiceMap) ToRouteServiceMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(RouteServiceMapOutput)
 }
 
+func (i RouteServiceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RouteService] {
+	return pulumix.Output[map[string]*RouteService]{
+		OutputState: i.ToRouteServiceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RouteServiceOutput struct{ *pulumi.OutputState }
 
 func (RouteServiceOutput) ElementType() reflect.Type {
@@ -319,6 +338,12 @@ func (o RouteServiceOutput) ToRouteServiceOutput() RouteServiceOutput {
 
 func (o RouteServiceOutput) ToRouteServiceOutputWithContext(ctx context.Context) RouteServiceOutput {
 	return o
+}
+
+func (o RouteServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*RouteService] {
+	return pulumix.Output[*RouteService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The region of the network instances that access the cloud services.
@@ -372,6 +397,12 @@ func (o RouteServiceArrayOutput) ToRouteServiceArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o RouteServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RouteService] {
+	return pulumix.Output[[]*RouteService]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RouteServiceArrayOutput) Index(i pulumi.IntInput) RouteServiceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RouteService {
 		return vs[0].([]*RouteService)[vs[1].(int)]
@@ -390,6 +421,12 @@ func (o RouteServiceMapOutput) ToRouteServiceMapOutput() RouteServiceMapOutput {
 
 func (o RouteServiceMapOutput) ToRouteServiceMapOutputWithContext(ctx context.Context) RouteServiceMapOutput {
 	return o
+}
+
+func (o RouteServiceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RouteService] {
+	return pulumix.Output[map[string]*RouteService]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RouteServiceMapOutput) MapIndex(k pulumi.StringInput) RouteServiceOutput {

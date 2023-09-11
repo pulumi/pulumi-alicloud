@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the server load balancer attachments of the current Alibaba Cloud user.
@@ -110,6 +111,12 @@ func (o GetAttachmentsResultOutput) ToGetAttachmentsResultOutput() GetAttachment
 
 func (o GetAttachmentsResultOutput) ToGetAttachmentsResultOutputWithContext(ctx context.Context) GetAttachmentsResultOutput {
 	return o
+}
+
+func (o GetAttachmentsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAttachmentsResult] {
+	return pulumix.Output[GetAttachmentsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

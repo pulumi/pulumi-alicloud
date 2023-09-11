@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DMS Enterprise Proxy resource.
@@ -310,6 +311,12 @@ func (i *EnterpriseProxy) ToEnterpriseProxyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseProxyOutput)
 }
 
+func (i *EnterpriseProxy) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseProxy] {
+	return pulumix.Output[*EnterpriseProxy]{
+		OutputState: i.ToEnterpriseProxyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnterpriseProxyArrayInput is an input type that accepts EnterpriseProxyArray and EnterpriseProxyArrayOutput values.
 // You can construct a concrete instance of `EnterpriseProxyArrayInput` via:
 //
@@ -333,6 +340,12 @@ func (i EnterpriseProxyArray) ToEnterpriseProxyArrayOutput() EnterpriseProxyArra
 
 func (i EnterpriseProxyArray) ToEnterpriseProxyArrayOutputWithContext(ctx context.Context) EnterpriseProxyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseProxyArrayOutput)
+}
+
+func (i EnterpriseProxyArray) ToOutput(ctx context.Context) pulumix.Output[[]*EnterpriseProxy] {
+	return pulumix.Output[[]*EnterpriseProxy]{
+		OutputState: i.ToEnterpriseProxyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EnterpriseProxyMapInput is an input type that accepts EnterpriseProxyMap and EnterpriseProxyMapOutput values.
@@ -360,6 +373,12 @@ func (i EnterpriseProxyMap) ToEnterpriseProxyMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseProxyMapOutput)
 }
 
+func (i EnterpriseProxyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnterpriseProxy] {
+	return pulumix.Output[map[string]*EnterpriseProxy]{
+		OutputState: i.ToEnterpriseProxyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseProxyOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseProxyOutput) ElementType() reflect.Type {
@@ -372,6 +391,12 @@ func (o EnterpriseProxyOutput) ToEnterpriseProxyOutput() EnterpriseProxyOutput {
 
 func (o EnterpriseProxyOutput) ToEnterpriseProxyOutputWithContext(ctx context.Context) EnterpriseProxyOutput {
 	return o
+}
+
+func (o EnterpriseProxyOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseProxy] {
+	return pulumix.Output[*EnterpriseProxy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the database instance.
@@ -408,6 +433,12 @@ func (o EnterpriseProxyArrayOutput) ToEnterpriseProxyArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o EnterpriseProxyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EnterpriseProxy] {
+	return pulumix.Output[[]*EnterpriseProxy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnterpriseProxyArrayOutput) Index(i pulumi.IntInput) EnterpriseProxyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EnterpriseProxy {
 		return vs[0].([]*EnterpriseProxy)[vs[1].(int)]
@@ -426,6 +457,12 @@ func (o EnterpriseProxyMapOutput) ToEnterpriseProxyMapOutput() EnterpriseProxyMa
 
 func (o EnterpriseProxyMapOutput) ToEnterpriseProxyMapOutputWithContext(ctx context.Context) EnterpriseProxyMapOutput {
 	return o
+}
+
+func (o EnterpriseProxyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnterpriseProxy] {
+	return pulumix.Output[map[string]*EnterpriseProxy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseProxyMapOutput) MapIndex(k pulumi.StringInput) EnterpriseProxyOutput {

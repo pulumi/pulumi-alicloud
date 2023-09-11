@@ -22,9 +22,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Serverless App Engine (SAE) Application resource.
  * 
- * For information about Serverless App Engine (SAE) Application and how to use it, see [What is Application](https://help.aliyun.com/document_detail/97792.html).
+ * For information about Serverless App Engine (SAE) Application and how to use it, see [What is Application](https://www.alibabacloud.com/help/en/sae/latest/createapplication).
  * 
- * &gt; **NOTE:** Available in v1.161.0+.
+ * &gt; **NOTE:** Available since v1.161.0.
  * 
  * ## Example Usage
  * 
@@ -36,11 +36,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.sae.Namespace;
  * import com.pulumi.alicloud.sae.NamespaceArgs;
  * import com.pulumi.alicloud.sae.Application;
@@ -59,37 +64,52 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;tf_testacc&#34;)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
  *             .build());
  * 
- *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
- *             .vpcId(vpc.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
  *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
- *             .namespaceDescription(name)
- *             .namespaceId(&#34;cn-hangzhou:tfacctest&#34;)
+ *             .namespaceId(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s:example%s&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),result)))
  *             .namespaceName(name)
+ *             .namespaceDescription(name)
+ *             .enableMicroRegistration(false)
  *             .build());
  * 
  *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
- *             .appDescription(&#34;tf-testaccDescription&#34;)
- *             .appName(&#34;tf-testaccAppName&#34;)
+ *             .appDescription(name)
+ *             .appName(name)
  *             .namespaceId(defaultNamespace.id())
- *             .imageUrl(&#34;registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5&#34;)
+ *             .imageUrl(String.format(&#34;registry-vpc.%s.aliyuncs.com/sae-demo-image/consumer:1.0&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id())))
  *             .packageType(&#34;Image&#34;)
- *             .vpcId(vsw.vpcId())
- *             .vswitchId(vsw.id())
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .vpcId(defaultNetwork.id())
+ *             .vswitchId(defaultSwitch.id())
  *             .timezone(&#34;Asia/Beijing&#34;)
  *             .replicas(&#34;5&#34;)
  *             .cpu(&#34;500&#34;)

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
@@ -187,6 +188,12 @@ func (o GetExecutionsResultOutput) ToGetExecutionsResultOutput() GetExecutionsRe
 
 func (o GetExecutionsResultOutput) ToGetExecutionsResultOutputWithContext(ctx context.Context) GetExecutionsResultOutput {
 	return o
+}
+
+func (o GetExecutionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetExecutionsResult] {
+	return pulumix.Output[GetExecutionsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetExecutionsResultOutput) Category() pulumi.StringPtrOutput {

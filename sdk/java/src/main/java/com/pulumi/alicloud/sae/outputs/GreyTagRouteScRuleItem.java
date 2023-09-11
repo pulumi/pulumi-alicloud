@@ -22,7 +22,7 @@ public final class GreyTagRouteScRuleItem {
      */
     private @Nullable String name;
     /**
-     * @return The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`
+     * @return The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
      * 
      */
     private @Nullable String operator;
@@ -53,7 +53,7 @@ public final class GreyTagRouteScRuleItem {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`
+     * @return The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
      * 
      */
     public Optional<String> operator() {

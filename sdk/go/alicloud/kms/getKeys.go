@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
@@ -128,6 +129,12 @@ func (o GetKeysResultOutput) ToGetKeysResultOutput() GetKeysResultOutput {
 
 func (o GetKeysResultOutput) ToGetKeysResultOutputWithContext(ctx context.Context) GetKeysResultOutput {
 	return o
+}
+
+func (o GetKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetKeysResult] {
+	return pulumix.Output[GetKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetKeysResultOutput) DescriptionRegex() pulumi.StringPtrOutput {

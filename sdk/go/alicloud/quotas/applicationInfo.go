@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type ApplicationInfo struct {
@@ -174,6 +175,12 @@ func (i *ApplicationInfo) ToApplicationInfoOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInfoOutput)
 }
 
+func (i *ApplicationInfo) ToOutput(ctx context.Context) pulumix.Output[*ApplicationInfo] {
+	return pulumix.Output[*ApplicationInfo]{
+		OutputState: i.ToApplicationInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ApplicationInfoArrayInput is an input type that accepts ApplicationInfoArray and ApplicationInfoArrayOutput values.
 // You can construct a concrete instance of `ApplicationInfoArrayInput` via:
 //
@@ -197,6 +204,12 @@ func (i ApplicationInfoArray) ToApplicationInfoArrayOutput() ApplicationInfoArra
 
 func (i ApplicationInfoArray) ToApplicationInfoArrayOutputWithContext(ctx context.Context) ApplicationInfoArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInfoArrayOutput)
+}
+
+func (i ApplicationInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationInfo] {
+	return pulumix.Output[[]*ApplicationInfo]{
+		OutputState: i.ToApplicationInfoArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ApplicationInfoMapInput is an input type that accepts ApplicationInfoMap and ApplicationInfoMapOutput values.
@@ -224,6 +237,12 @@ func (i ApplicationInfoMap) ToApplicationInfoMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInfoMapOutput)
 }
 
+func (i ApplicationInfoMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationInfo] {
+	return pulumix.Output[map[string]*ApplicationInfo]{
+		OutputState: i.ToApplicationInfoMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApplicationInfoOutput struct{ *pulumi.OutputState }
 
 func (ApplicationInfoOutput) ElementType() reflect.Type {
@@ -236,6 +255,12 @@ func (o ApplicationInfoOutput) ToApplicationInfoOutput() ApplicationInfoOutput {
 
 func (o ApplicationInfoOutput) ToApplicationInfoOutputWithContext(ctx context.Context) ApplicationInfoOutput {
 	return o
+}
+
+func (o ApplicationInfoOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationInfo] {
+	return pulumix.Output[*ApplicationInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationInfoOutput) ApproveValue() pulumi.StringOutput {
@@ -324,6 +349,12 @@ func (o ApplicationInfoArrayOutput) ToApplicationInfoArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o ApplicationInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationInfo] {
+	return pulumix.Output[[]*ApplicationInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ApplicationInfoArrayOutput) Index(i pulumi.IntInput) ApplicationInfoOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationInfo {
 		return vs[0].([]*ApplicationInfo)[vs[1].(int)]
@@ -342,6 +373,12 @@ func (o ApplicationInfoMapOutput) ToApplicationInfoMapOutput() ApplicationInfoMa
 
 func (o ApplicationInfoMapOutput) ToApplicationInfoMapOutputWithContext(ctx context.Context) ApplicationInfoMapOutput {
 	return o
+}
+
+func (o ApplicationInfoMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationInfo] {
+	return pulumix.Output[map[string]*ApplicationInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationInfoMapOutput) MapIndex(k pulumi.StringInput) ApplicationInfoOutput {

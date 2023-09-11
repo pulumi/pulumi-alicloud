@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DTS Migration Job resource.
@@ -447,6 +448,12 @@ func (i *MigrationJob) ToMigrationJobOutputWithContext(ctx context.Context) Migr
 	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobOutput)
 }
 
+func (i *MigrationJob) ToOutput(ctx context.Context) pulumix.Output[*MigrationJob] {
+	return pulumix.Output[*MigrationJob]{
+		OutputState: i.ToMigrationJobOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MigrationJobArrayInput is an input type that accepts MigrationJobArray and MigrationJobArrayOutput values.
 // You can construct a concrete instance of `MigrationJobArrayInput` via:
 //
@@ -470,6 +477,12 @@ func (i MigrationJobArray) ToMigrationJobArrayOutput() MigrationJobArrayOutput {
 
 func (i MigrationJobArray) ToMigrationJobArrayOutputWithContext(ctx context.Context) MigrationJobArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobArrayOutput)
+}
+
+func (i MigrationJobArray) ToOutput(ctx context.Context) pulumix.Output[[]*MigrationJob] {
+	return pulumix.Output[[]*MigrationJob]{
+		OutputState: i.ToMigrationJobArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MigrationJobMapInput is an input type that accepts MigrationJobMap and MigrationJobMapOutput values.
@@ -497,6 +510,12 @@ func (i MigrationJobMap) ToMigrationJobMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobMapOutput)
 }
 
+func (i MigrationJobMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MigrationJob] {
+	return pulumix.Output[map[string]*MigrationJob]{
+		OutputState: i.ToMigrationJobMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MigrationJobOutput struct{ *pulumi.OutputState }
 
 func (MigrationJobOutput) ElementType() reflect.Type {
@@ -509,6 +528,12 @@ func (o MigrationJobOutput) ToMigrationJobOutput() MigrationJobOutput {
 
 func (o MigrationJobOutput) ToMigrationJobOutputWithContext(ctx context.Context) MigrationJobOutput {
 	return o
+}
+
+func (o MigrationJobOutput) ToOutput(ctx context.Context) pulumix.Output[*MigrationJob] {
+	return pulumix.Output[*MigrationJob]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Start time in Unix timestamp format.
@@ -680,6 +705,12 @@ func (o MigrationJobArrayOutput) ToMigrationJobArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o MigrationJobArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MigrationJob] {
+	return pulumix.Output[[]*MigrationJob]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MigrationJobArrayOutput) Index(i pulumi.IntInput) MigrationJobOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MigrationJob {
 		return vs[0].([]*MigrationJob)[vs[1].(int)]
@@ -698,6 +729,12 @@ func (o MigrationJobMapOutput) ToMigrationJobMapOutput() MigrationJobMapOutput {
 
 func (o MigrationJobMapOutput) ToMigrationJobMapOutputWithContext(ctx context.Context) MigrationJobMapOutput {
 	return o
+}
+
+func (o MigrationJobMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MigrationJob] {
+	return pulumix.Output[map[string]*MigrationJob]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MigrationJobMapOutput) MapIndex(k pulumi.StringInput) MigrationJobOutput {

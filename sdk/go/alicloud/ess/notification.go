@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ESS notification resource. More about Ess notification, see [Autoscaling Notification](https://www.alibabacloud.com/help/doc-detail/71114.htm).
@@ -249,6 +250,12 @@ func (i *Notification) ToNotificationOutputWithContext(ctx context.Context) Noti
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationOutput)
 }
 
+func (i *Notification) ToOutput(ctx context.Context) pulumix.Output[*Notification] {
+	return pulumix.Output[*Notification]{
+		OutputState: i.ToNotificationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NotificationArrayInput is an input type that accepts NotificationArray and NotificationArrayOutput values.
 // You can construct a concrete instance of `NotificationArrayInput` via:
 //
@@ -272,6 +279,12 @@ func (i NotificationArray) ToNotificationArrayOutput() NotificationArrayOutput {
 
 func (i NotificationArray) ToNotificationArrayOutputWithContext(ctx context.Context) NotificationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationArrayOutput)
+}
+
+func (i NotificationArray) ToOutput(ctx context.Context) pulumix.Output[[]*Notification] {
+	return pulumix.Output[[]*Notification]{
+		OutputState: i.ToNotificationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NotificationMapInput is an input type that accepts NotificationMap and NotificationMapOutput values.
@@ -299,6 +312,12 @@ func (i NotificationMap) ToNotificationMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationMapOutput)
 }
 
+func (i NotificationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Notification] {
+	return pulumix.Output[map[string]*Notification]{
+		OutputState: i.ToNotificationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NotificationOutput struct{ *pulumi.OutputState }
 
 func (NotificationOutput) ElementType() reflect.Type {
@@ -311,6 +330,12 @@ func (o NotificationOutput) ToNotificationOutput() NotificationOutput {
 
 func (o NotificationOutput) ToNotificationOutputWithContext(ctx context.Context) NotificationOutput {
 	return o
+}
+
+func (o NotificationOutput) ToOutput(ctx context.Context) pulumix.Output[*Notification] {
+	return pulumix.Output[*Notification]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
@@ -345,6 +370,12 @@ func (o NotificationArrayOutput) ToNotificationArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o NotificationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Notification] {
+	return pulumix.Output[[]*Notification]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NotificationArrayOutput) Index(i pulumi.IntInput) NotificationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Notification {
 		return vs[0].([]*Notification)[vs[1].(int)]
@@ -363,6 +394,12 @@ func (o NotificationMapOutput) ToNotificationMapOutput() NotificationMapOutput {
 
 func (o NotificationMapOutput) ToNotificationMapOutputWithContext(ctx context.Context) NotificationMapOutput {
 	return o
+}
+
+func (o NotificationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Notification] {
+	return pulumix.Output[map[string]*Notification]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NotificationMapOutput) MapIndex(k pulumi.StringInput) NotificationOutput {

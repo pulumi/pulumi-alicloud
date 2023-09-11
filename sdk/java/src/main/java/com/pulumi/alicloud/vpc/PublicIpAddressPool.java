@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Vpc Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
  * 
- * &gt; **NOTE:** Available in v1.186.0+.
+ * &gt; **NOTE:** Available since v1.186.0.
  * 
  * ## Example Usage
  * 
@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.resourcemanager.ResourceGroup;
- * import com.pulumi.alicloud.resourcemanager.ResourceGroupArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.vpc.PublicIpAddressPool;
  * import com.pulumi.alicloud.vpc.PublicIpAddressPoolArgs;
  * import java.util.List;
@@ -51,21 +51,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultRg = new ResourceGroup(&#34;defaultRg&#34;, ResourceGroupArgs.builder()        
- *             .displayName(&#34;tf-test-acc-publicaddresspool-383&#34;)
- *             .resourceGroupName(&#34;tf-test-acc-publicaddresspool-855&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .status(&#34;OK&#34;)
  *             .build());
  * 
- *         var changeRg = new ResourceGroup(&#34;changeRg&#34;, ResourceGroupArgs.builder()        
- *             .displayName(&#34;tf-testacc-publicaddresspool-change-368&#34;)
- *             .resourceGroupName(&#34;tf-testacc-publicaddresspool-change-499&#34;)
- *             .build());
- * 
- *         var default_ = new PublicIpAddressPool(&#34;default&#34;, PublicIpAddressPoolArgs.builder()        
- *             .description(&#34;rdk-test&#34;)
- *             .publicIpAddressPoolName(&#34;rdk-test&#34;)
+ *         var defaultPublicIpAddressPool = new PublicIpAddressPool(&#34;defaultPublicIpAddressPool&#34;, PublicIpAddressPoolArgs.builder()        
+ *             .description(name)
+ *             .publicIpAddressPoolName(name)
  *             .isp(&#34;BGP&#34;)
- *             .resourceGroupId(defaultRg.id())
+ *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
  *             .build());
  * 
  *     }

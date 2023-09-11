@@ -111,14 +111,14 @@ public final class VirtualNodeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The taint. See the following `Block taints`.
+     * The taint. See `taints` below.
      * 
      */
     @Import(name="taints")
     private @Nullable Output<List<VirtualNodeTaintArgs>> taints;
 
     /**
-     * @return The taint. See the following `Block taints`.
+     * @return The taint. See `taints` below.
      * 
      */
     public Optional<Output<List<VirtualNodeTaintArgs>>> taints() {
@@ -330,7 +330,7 @@ public final class VirtualNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param taints The taint. See the following `Block taints`.
+         * @param taints The taint. See `taints` below.
          * 
          * @return builder
          * 
@@ -341,7 +341,7 @@ public final class VirtualNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param taints The taint. See the following `Block taints`.
+         * @param taints The taint. See `taints` below.
          * 
          * @return builder
          * 
@@ -351,7 +351,7 @@ public final class VirtualNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param taints The taint. See the following `Block taints`.
+         * @param taints The taint. See `taints` below.
          * 
          * @return builder
          * 

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Web Application Firewall(WAF) Protection Module resource.
@@ -254,6 +255,12 @@ func (i *ProtectionModule) ToProtectionModuleOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ProtectionModuleOutput)
 }
 
+func (i *ProtectionModule) ToOutput(ctx context.Context) pulumix.Output[*ProtectionModule] {
+	return pulumix.Output[*ProtectionModule]{
+		OutputState: i.ToProtectionModuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProtectionModuleArrayInput is an input type that accepts ProtectionModuleArray and ProtectionModuleArrayOutput values.
 // You can construct a concrete instance of `ProtectionModuleArrayInput` via:
 //
@@ -277,6 +284,12 @@ func (i ProtectionModuleArray) ToProtectionModuleArrayOutput() ProtectionModuleA
 
 func (i ProtectionModuleArray) ToProtectionModuleArrayOutputWithContext(ctx context.Context) ProtectionModuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProtectionModuleArrayOutput)
+}
+
+func (i ProtectionModuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProtectionModule] {
+	return pulumix.Output[[]*ProtectionModule]{
+		OutputState: i.ToProtectionModuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProtectionModuleMapInput is an input type that accepts ProtectionModuleMap and ProtectionModuleMapOutput values.
@@ -304,6 +317,12 @@ func (i ProtectionModuleMap) ToProtectionModuleMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ProtectionModuleMapOutput)
 }
 
+func (i ProtectionModuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProtectionModule] {
+	return pulumix.Output[map[string]*ProtectionModule]{
+		OutputState: i.ToProtectionModuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProtectionModuleOutput struct{ *pulumi.OutputState }
 
 func (ProtectionModuleOutput) ElementType() reflect.Type {
@@ -316,6 +335,12 @@ func (o ProtectionModuleOutput) ToProtectionModuleOutput() ProtectionModuleOutpu
 
 func (o ProtectionModuleOutput) ToProtectionModuleOutputWithContext(ctx context.Context) ProtectionModuleOutput {
 	return o
+}
+
+func (o ProtectionModuleOutput) ToOutput(ctx context.Context) pulumix.Output[*ProtectionModule] {
+	return pulumix.Output[*ProtectionModule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Protection Module. Valid values: `acCc`, `antifraud`, `dld`, `normalized`, `waf`.
@@ -362,6 +387,12 @@ func (o ProtectionModuleArrayOutput) ToProtectionModuleArrayOutputWithContext(ct
 	return o
 }
 
+func (o ProtectionModuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProtectionModule] {
+	return pulumix.Output[[]*ProtectionModule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProtectionModuleArrayOutput) Index(i pulumi.IntInput) ProtectionModuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProtectionModule {
 		return vs[0].([]*ProtectionModule)[vs[1].(int)]
@@ -380,6 +411,12 @@ func (o ProtectionModuleMapOutput) ToProtectionModuleMapOutput() ProtectionModul
 
 func (o ProtectionModuleMapOutput) ToProtectionModuleMapOutputWithContext(ctx context.Context) ProtectionModuleMapOutput {
 	return o
+}
+
+func (o ProtectionModuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProtectionModule] {
+	return pulumix.Output[map[string]*ProtectionModule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProtectionModuleMapOutput) MapIndex(k pulumi.StringInput) ProtectionModuleOutput {

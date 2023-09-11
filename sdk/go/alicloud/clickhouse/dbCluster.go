@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Click House DBCluster resource.
@@ -403,6 +404,12 @@ func (i *DbCluster) ToDbClusterOutputWithContext(ctx context.Context) DbClusterO
 	return pulumi.ToOutputWithContext(ctx, i).(DbClusterOutput)
 }
 
+func (i *DbCluster) ToOutput(ctx context.Context) pulumix.Output[*DbCluster] {
+	return pulumix.Output[*DbCluster]{
+		OutputState: i.ToDbClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DbClusterArrayInput is an input type that accepts DbClusterArray and DbClusterArrayOutput values.
 // You can construct a concrete instance of `DbClusterArrayInput` via:
 //
@@ -426,6 +433,12 @@ func (i DbClusterArray) ToDbClusterArrayOutput() DbClusterArrayOutput {
 
 func (i DbClusterArray) ToDbClusterArrayOutputWithContext(ctx context.Context) DbClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DbClusterArrayOutput)
+}
+
+func (i DbClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*DbCluster] {
+	return pulumix.Output[[]*DbCluster]{
+		OutputState: i.ToDbClusterArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DbClusterMapInput is an input type that accepts DbClusterMap and DbClusterMapOutput values.
@@ -453,6 +466,12 @@ func (i DbClusterMap) ToDbClusterMapOutputWithContext(ctx context.Context) DbClu
 	return pulumi.ToOutputWithContext(ctx, i).(DbClusterMapOutput)
 }
 
+func (i DbClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbCluster] {
+	return pulumix.Output[map[string]*DbCluster]{
+		OutputState: i.ToDbClusterMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DbClusterOutput struct{ *pulumi.OutputState }
 
 func (DbClusterOutput) ElementType() reflect.Type {
@@ -465,6 +484,12 @@ func (o DbClusterOutput) ToDbClusterOutput() DbClusterOutput {
 
 func (o DbClusterOutput) ToDbClusterOutputWithContext(ctx context.Context) DbClusterOutput {
 	return o
+}
+
+func (o DbClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*DbCluster] {
+	return pulumix.Output[*DbCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
@@ -588,6 +613,12 @@ func (o DbClusterArrayOutput) ToDbClusterArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o DbClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DbCluster] {
+	return pulumix.Output[[]*DbCluster]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DbClusterArrayOutput) Index(i pulumi.IntInput) DbClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DbCluster {
 		return vs[0].([]*DbCluster)[vs[1].(int)]
@@ -606,6 +637,12 @@ func (o DbClusterMapOutput) ToDbClusterMapOutput() DbClusterMapOutput {
 
 func (o DbClusterMapOutput) ToDbClusterMapOutputWithContext(ctx context.Context) DbClusterMapOutput {
 	return o
+}
+
+func (o DbClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbCluster] {
+	return pulumix.Output[map[string]*DbCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DbClusterMapOutput) MapIndex(k pulumi.StringInput) DbClusterOutput {

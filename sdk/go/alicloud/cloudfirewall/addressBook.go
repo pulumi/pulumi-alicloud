@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Firewall Address Book resource.
@@ -228,6 +229,12 @@ func (i *AddressBook) ToAddressBookOutputWithContext(ctx context.Context) Addres
 	return pulumi.ToOutputWithContext(ctx, i).(AddressBookOutput)
 }
 
+func (i *AddressBook) ToOutput(ctx context.Context) pulumix.Output[*AddressBook] {
+	return pulumix.Output[*AddressBook]{
+		OutputState: i.ToAddressBookOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AddressBookArrayInput is an input type that accepts AddressBookArray and AddressBookArrayOutput values.
 // You can construct a concrete instance of `AddressBookArrayInput` via:
 //
@@ -251,6 +258,12 @@ func (i AddressBookArray) ToAddressBookArrayOutput() AddressBookArrayOutput {
 
 func (i AddressBookArray) ToAddressBookArrayOutputWithContext(ctx context.Context) AddressBookArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AddressBookArrayOutput)
+}
+
+func (i AddressBookArray) ToOutput(ctx context.Context) pulumix.Output[[]*AddressBook] {
+	return pulumix.Output[[]*AddressBook]{
+		OutputState: i.ToAddressBookArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AddressBookMapInput is an input type that accepts AddressBookMap and AddressBookMapOutput values.
@@ -278,6 +291,12 @@ func (i AddressBookMap) ToAddressBookMapOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AddressBookMapOutput)
 }
 
+func (i AddressBookMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AddressBook] {
+	return pulumix.Output[map[string]*AddressBook]{
+		OutputState: i.ToAddressBookMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AddressBookOutput struct{ *pulumi.OutputState }
 
 func (AddressBookOutput) ElementType() reflect.Type {
@@ -290,6 +309,12 @@ func (o AddressBookOutput) ToAddressBookOutput() AddressBookOutput {
 
 func (o AddressBookOutput) ToAddressBookOutputWithContext(ctx context.Context) AddressBookOutput {
 	return o
+}
+
+func (o AddressBookOutput) ToOutput(ctx context.Context) pulumix.Output[*AddressBook] {
+	return pulumix.Output[*AddressBook]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of addresses.
@@ -346,6 +371,12 @@ func (o AddressBookArrayOutput) ToAddressBookArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o AddressBookArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AddressBook] {
+	return pulumix.Output[[]*AddressBook]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AddressBookArrayOutput) Index(i pulumi.IntInput) AddressBookOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AddressBook {
 		return vs[0].([]*AddressBook)[vs[1].(int)]
@@ -364,6 +395,12 @@ func (o AddressBookMapOutput) ToAddressBookMapOutput() AddressBookMapOutput {
 
 func (o AddressBookMapOutput) ToAddressBookMapOutputWithContext(ctx context.Context) AddressBookMapOutput {
 	return o
+}
+
+func (o AddressBookMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AddressBook] {
+	return pulumix.Output[map[string]*AddressBook]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AddressBookMapOutput) MapIndex(k pulumi.StringInput) AddressBookOutput {

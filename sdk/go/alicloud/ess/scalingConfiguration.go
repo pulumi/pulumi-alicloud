@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ESS scaling configuration resource.
@@ -741,6 +742,12 @@ func (i *ScalingConfiguration) ToScalingConfigurationOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationOutput)
 }
 
+func (i *ScalingConfiguration) ToOutput(ctx context.Context) pulumix.Output[*ScalingConfiguration] {
+	return pulumix.Output[*ScalingConfiguration]{
+		OutputState: i.ToScalingConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ScalingConfigurationArrayInput is an input type that accepts ScalingConfigurationArray and ScalingConfigurationArrayOutput values.
 // You can construct a concrete instance of `ScalingConfigurationArrayInput` via:
 //
@@ -764,6 +771,12 @@ func (i ScalingConfigurationArray) ToScalingConfigurationArrayOutput() ScalingCo
 
 func (i ScalingConfigurationArray) ToScalingConfigurationArrayOutputWithContext(ctx context.Context) ScalingConfigurationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationArrayOutput)
+}
+
+func (i ScalingConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]*ScalingConfiguration] {
+	return pulumix.Output[[]*ScalingConfiguration]{
+		OutputState: i.ToScalingConfigurationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ScalingConfigurationMapInput is an input type that accepts ScalingConfigurationMap and ScalingConfigurationMapOutput values.
@@ -791,6 +804,12 @@ func (i ScalingConfigurationMap) ToScalingConfigurationMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationMapOutput)
 }
 
+func (i ScalingConfigurationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ScalingConfiguration] {
+	return pulumix.Output[map[string]*ScalingConfiguration]{
+		OutputState: i.ToScalingConfigurationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ScalingConfigurationOutput struct{ *pulumi.OutputState }
 
 func (ScalingConfigurationOutput) ElementType() reflect.Type {
@@ -803,6 +822,12 @@ func (o ScalingConfigurationOutput) ToScalingConfigurationOutput() ScalingConfig
 
 func (o ScalingConfigurationOutput) ToScalingConfigurationOutputWithContext(ctx context.Context) ScalingConfigurationOutput {
 	return o
+}
+
+func (o ScalingConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*ScalingConfiguration] {
+	return pulumix.Output[*ScalingConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether active current scaling configuration in the specified scaling group. Default to `false`.
@@ -1051,6 +1076,12 @@ func (o ScalingConfigurationArrayOutput) ToScalingConfigurationArrayOutputWithCo
 	return o
 }
 
+func (o ScalingConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ScalingConfiguration] {
+	return pulumix.Output[[]*ScalingConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ScalingConfigurationArrayOutput) Index(i pulumi.IntInput) ScalingConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ScalingConfiguration {
 		return vs[0].([]*ScalingConfiguration)[vs[1].(int)]
@@ -1069,6 +1100,12 @@ func (o ScalingConfigurationMapOutput) ToScalingConfigurationMapOutput() Scaling
 
 func (o ScalingConfigurationMapOutput) ToScalingConfigurationMapOutputWithContext(ctx context.Context) ScalingConfigurationMapOutput {
 	return o
+}
+
+func (o ScalingConfigurationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ScalingConfiguration] {
+	return pulumix.Output[map[string]*ScalingConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScalingConfigurationMapOutput) MapIndex(k pulumi.StringInput) ScalingConfigurationOutput {

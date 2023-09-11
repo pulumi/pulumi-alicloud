@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
@@ -144,6 +145,12 @@ func (o GetMetricRuleBlackListsResultOutput) ToGetMetricRuleBlackListsResultOutp
 
 func (o GetMetricRuleBlackListsResultOutput) ToGetMetricRuleBlackListsResultOutputWithContext(ctx context.Context) GetMetricRuleBlackListsResultOutput {
 	return o
+}
+
+func (o GetMetricRuleBlackListsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMetricRuleBlackListsResult] {
+	return pulumix.Output[GetMetricRuleBlackListsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.

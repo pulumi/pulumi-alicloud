@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPN Gateway Vco Route resource.
@@ -277,6 +278,12 @@ func (i *GatewayVcoRoute) ToGatewayVcoRouteOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayVcoRouteOutput)
 }
 
+func (i *GatewayVcoRoute) ToOutput(ctx context.Context) pulumix.Output[*GatewayVcoRoute] {
+	return pulumix.Output[*GatewayVcoRoute]{
+		OutputState: i.ToGatewayVcoRouteOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GatewayVcoRouteArrayInput is an input type that accepts GatewayVcoRouteArray and GatewayVcoRouteArrayOutput values.
 // You can construct a concrete instance of `GatewayVcoRouteArrayInput` via:
 //
@@ -300,6 +307,12 @@ func (i GatewayVcoRouteArray) ToGatewayVcoRouteArrayOutput() GatewayVcoRouteArra
 
 func (i GatewayVcoRouteArray) ToGatewayVcoRouteArrayOutputWithContext(ctx context.Context) GatewayVcoRouteArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayVcoRouteArrayOutput)
+}
+
+func (i GatewayVcoRouteArray) ToOutput(ctx context.Context) pulumix.Output[[]*GatewayVcoRoute] {
+	return pulumix.Output[[]*GatewayVcoRoute]{
+		OutputState: i.ToGatewayVcoRouteArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GatewayVcoRouteMapInput is an input type that accepts GatewayVcoRouteMap and GatewayVcoRouteMapOutput values.
@@ -327,6 +340,12 @@ func (i GatewayVcoRouteMap) ToGatewayVcoRouteMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayVcoRouteMapOutput)
 }
 
+func (i GatewayVcoRouteMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewayVcoRoute] {
+	return pulumix.Output[map[string]*GatewayVcoRoute]{
+		OutputState: i.ToGatewayVcoRouteMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GatewayVcoRouteOutput struct{ *pulumi.OutputState }
 
 func (GatewayVcoRouteOutput) ElementType() reflect.Type {
@@ -339,6 +358,12 @@ func (o GatewayVcoRouteOutput) ToGatewayVcoRouteOutput() GatewayVcoRouteOutput {
 
 func (o GatewayVcoRouteOutput) ToGatewayVcoRouteOutputWithContext(ctx context.Context) GatewayVcoRouteOutput {
 	return o
+}
+
+func (o GatewayVcoRouteOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayVcoRoute] {
+	return pulumix.Output[*GatewayVcoRoute]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The next hop of the destination route.
@@ -380,6 +405,12 @@ func (o GatewayVcoRouteArrayOutput) ToGatewayVcoRouteArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o GatewayVcoRouteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GatewayVcoRoute] {
+	return pulumix.Output[[]*GatewayVcoRoute]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GatewayVcoRouteArrayOutput) Index(i pulumi.IntInput) GatewayVcoRouteOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GatewayVcoRoute {
 		return vs[0].([]*GatewayVcoRoute)[vs[1].(int)]
@@ -398,6 +429,12 @@ func (o GatewayVcoRouteMapOutput) ToGatewayVcoRouteMapOutput() GatewayVcoRouteMa
 
 func (o GatewayVcoRouteMapOutput) ToGatewayVcoRouteMapOutputWithContext(ctx context.Context) GatewayVcoRouteMapOutput {
 	return o
+}
+
+func (o GatewayVcoRouteMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewayVcoRoute] {
+	return pulumix.Output[map[string]*GatewayVcoRoute]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GatewayVcoRouteMapOutput) MapIndex(k pulumi.StringInput) GatewayVcoRouteOutput {

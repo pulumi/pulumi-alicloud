@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides CEN Private Zones available to the user.
@@ -135,6 +136,12 @@ func (o GetPrivateZonesResultOutput) ToGetPrivateZonesResultOutput() GetPrivateZ
 
 func (o GetPrivateZonesResultOutput) ToGetPrivateZonesResultOutputWithContext(ctx context.Context) GetPrivateZonesResultOutput {
 	return o
+}
+
+func (o GetPrivateZonesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrivateZonesResult] {
+	return pulumix.Output[GetPrivateZonesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the CEN instance.

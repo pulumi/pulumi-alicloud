@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Hybrid Backup Recovery (HBR) Ecs Backup Client resource.
@@ -320,6 +321,12 @@ func (i *EcsBackupClient) ToEcsBackupClientOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(EcsBackupClientOutput)
 }
 
+func (i *EcsBackupClient) ToOutput(ctx context.Context) pulumix.Output[*EcsBackupClient] {
+	return pulumix.Output[*EcsBackupClient]{
+		OutputState: i.ToEcsBackupClientOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EcsBackupClientArrayInput is an input type that accepts EcsBackupClientArray and EcsBackupClientArrayOutput values.
 // You can construct a concrete instance of `EcsBackupClientArrayInput` via:
 //
@@ -343,6 +350,12 @@ func (i EcsBackupClientArray) ToEcsBackupClientArrayOutput() EcsBackupClientArra
 
 func (i EcsBackupClientArray) ToEcsBackupClientArrayOutputWithContext(ctx context.Context) EcsBackupClientArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsBackupClientArrayOutput)
+}
+
+func (i EcsBackupClientArray) ToOutput(ctx context.Context) pulumix.Output[[]*EcsBackupClient] {
+	return pulumix.Output[[]*EcsBackupClient]{
+		OutputState: i.ToEcsBackupClientArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EcsBackupClientMapInput is an input type that accepts EcsBackupClientMap and EcsBackupClientMapOutput values.
@@ -370,6 +383,12 @@ func (i EcsBackupClientMap) ToEcsBackupClientMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EcsBackupClientMapOutput)
 }
 
+func (i EcsBackupClientMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsBackupClient] {
+	return pulumix.Output[map[string]*EcsBackupClient]{
+		OutputState: i.ToEcsBackupClientMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EcsBackupClientOutput struct{ *pulumi.OutputState }
 
 func (EcsBackupClientOutput) ElementType() reflect.Type {
@@ -382,6 +401,12 @@ func (o EcsBackupClientOutput) ToEcsBackupClientOutput() EcsBackupClientOutput {
 
 func (o EcsBackupClientOutput) ToEcsBackupClientOutputWithContext(ctx context.Context) EcsBackupClientOutput {
 	return o
+}
+
+func (o EcsBackupClientOutput) ToOutput(ctx context.Context) pulumix.Output[*EcsBackupClient] {
+	return pulumix.Output[*EcsBackupClient]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
@@ -453,6 +478,12 @@ func (o EcsBackupClientArrayOutput) ToEcsBackupClientArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o EcsBackupClientArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EcsBackupClient] {
+	return pulumix.Output[[]*EcsBackupClient]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EcsBackupClientArrayOutput) Index(i pulumi.IntInput) EcsBackupClientOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsBackupClient {
 		return vs[0].([]*EcsBackupClient)[vs[1].(int)]
@@ -471,6 +502,12 @@ func (o EcsBackupClientMapOutput) ToEcsBackupClientMapOutput() EcsBackupClientMa
 
 func (o EcsBackupClientMapOutput) ToEcsBackupClientMapOutputWithContext(ctx context.Context) EcsBackupClientMapOutput {
 	return o
+}
+
+func (o EcsBackupClientMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsBackupClient] {
+	return pulumix.Output[map[string]*EcsBackupClient]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EcsBackupClientMapOutput) MapIndex(k pulumi.StringInput) EcsBackupClientOutput {

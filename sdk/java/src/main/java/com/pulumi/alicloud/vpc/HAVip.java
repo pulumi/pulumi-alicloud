@@ -27,6 +27,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.vpc.HAVip;
  * import com.pulumi.alicloud.vpc.HAVipArgs;
  * import java.util.List;
@@ -42,9 +48,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new HAVip(&#34;foo&#34;, HAVipArgs.builder()        
- *             .description(&#34;test_havip&#34;)
- *             .vswitchId(&#34;vsw-fakeid&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         var exampleHAVip = new HAVip(&#34;exampleHAVip&#34;, HAVipArgs.builder()        
+ *             .vswitchId(exampleSwitch.id())
+ *             .description(name)
  *             .build());
  * 
  *     }
@@ -62,27 +86,59 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:vpc/hAVip:HAVip")
 public class HAVip extends com.pulumi.resources.CustomResource {
+    /**
+     * The elastic IP address (EIP) associated with the HAVIP.
+     * 
+     */
     @Export(name="associatedEipAddresses", type=List.class, parameters={String.class})
     private Output<List<String>> associatedEipAddresses;
 
+    /**
+     * @return The elastic IP address (EIP) associated with the HAVIP.
+     * 
+     */
     public Output<List<String>> associatedEipAddresses() {
         return this.associatedEipAddresses;
     }
+    /**
+     * The type of the instance with which the HAVIP is associated. Valid values:
+     * 
+     */
     @Export(name="associatedInstanceType", type=String.class, parameters={})
     private Output<String> associatedInstanceType;
 
+    /**
+     * @return The type of the instance with which the HAVIP is associated. Valid values:
+     * 
+     */
     public Output<String> associatedInstanceType() {
         return this.associatedInstanceType;
     }
+    /**
+     * The ID of the instance with which the HAVIP is associated.
+     * 
+     */
     @Export(name="associatedInstances", type=List.class, parameters={String.class})
     private Output<List<String>> associatedInstances;
 
+    /**
+     * @return The ID of the instance with which the HAVIP is associated.
+     * 
+     */
     public Output<List<String>> associatedInstances() {
         return this.associatedInstances;
     }
+    /**
+     * The time when the HAVIP was created.
+     * 
+     */
     @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
+    /**
+     * @return The time when the HAVIP was created.
+     * 
+     */
     public Output<String> createTime() {
         return this.createTime;
     }
@@ -100,15 +156,31 @@ public class HAVip extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * The ID of the HAVIP.
+     * 
+     */
     @Export(name="haVipId", type=String.class, parameters={})
     private Output<String> haVipId;
 
+    /**
+     * @return The ID of the HAVIP.
+     * 
+     */
     public Output<String> haVipId() {
         return this.haVipId;
     }
+    /**
+     * The name of the HAVIP.
+     * 
+     */
     @Export(name="haVipName", type=String.class, parameters={})
     private Output<String> haVipName;
 
+    /**
+     * @return The name of the HAVIP.
+     * 
+     */
     public Output<String> haVipName() {
         return this.haVipName;
     }
@@ -144,15 +216,31 @@ public class HAVip extends com.pulumi.resources.CustomResource {
     public Output<String> ipAddress() {
         return this.ipAddress;
     }
+    /**
+     * The ID of the active instance that is associated with the HAVIP.
+     * 
+     */
     @Export(name="masterInstanceId", type=String.class, parameters={})
     private Output<String> masterInstanceId;
 
+    /**
+     * @return The ID of the active instance that is associated with the HAVIP.
+     * 
+     */
     public Output<String> masterInstanceId() {
         return this.masterInstanceId;
     }
+    /**
+     * The ID of the resource group to which the HAVIP belongs.
+     * 
+     */
     @Export(name="resourceGroupId", type=String.class, parameters={})
     private Output<String> resourceGroupId;
 
+    /**
+     * @return The ID of the resource group to which the HAVIP belongs.
+     * 
+     */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
@@ -170,15 +258,31 @@ public class HAVip extends com.pulumi.resources.CustomResource {
     public Output<String> status() {
         return this.status;
     }
+    /**
+     * The list of tags.
+     * 
+     */
     @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> tags;
 
+    /**
+     * @return The list of tags.
+     * 
+     */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * The ID of the VPC to which the HAVIP belongs.
+     * 
+     */
     @Export(name="vpcId", type=String.class, parameters={})
     private Output<String> vpcId;
 
+    /**
+     * @return The ID of the VPC to which the HAVIP belongs.
+     * 
+     */
     public Output<String> vpcId() {
         return this.vpcId;
     }

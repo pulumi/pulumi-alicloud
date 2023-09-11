@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Event Bridge Event Source resource.
@@ -267,6 +268,12 @@ func (i *EventSource) ToEventSourceOutputWithContext(ctx context.Context) EventS
 	return pulumi.ToOutputWithContext(ctx, i).(EventSourceOutput)
 }
 
+func (i *EventSource) ToOutput(ctx context.Context) pulumix.Output[*EventSource] {
+	return pulumix.Output[*EventSource]{
+		OutputState: i.ToEventSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EventSourceArrayInput is an input type that accepts EventSourceArray and EventSourceArrayOutput values.
 // You can construct a concrete instance of `EventSourceArrayInput` via:
 //
@@ -290,6 +297,12 @@ func (i EventSourceArray) ToEventSourceArrayOutput() EventSourceArrayOutput {
 
 func (i EventSourceArray) ToEventSourceArrayOutputWithContext(ctx context.Context) EventSourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EventSourceArrayOutput)
+}
+
+func (i EventSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*EventSource] {
+	return pulumix.Output[[]*EventSource]{
+		OutputState: i.ToEventSourceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EventSourceMapInput is an input type that accepts EventSourceMap and EventSourceMapOutput values.
@@ -317,6 +330,12 @@ func (i EventSourceMap) ToEventSourceMapOutputWithContext(ctx context.Context) E
 	return pulumi.ToOutputWithContext(ctx, i).(EventSourceMapOutput)
 }
 
+func (i EventSourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EventSource] {
+	return pulumix.Output[map[string]*EventSource]{
+		OutputState: i.ToEventSourceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EventSourceOutput struct{ *pulumi.OutputState }
 
 func (EventSourceOutput) ElementType() reflect.Type {
@@ -329,6 +348,12 @@ func (o EventSourceOutput) ToEventSourceOutput() EventSourceOutput {
 
 func (o EventSourceOutput) ToEventSourceOutputWithContext(ctx context.Context) EventSourceOutput {
 	return o
+}
+
+func (o EventSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*EventSource] {
+	return pulumix.Output[*EventSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The detail describe of event source.
@@ -388,6 +413,12 @@ func (o EventSourceArrayOutput) ToEventSourceArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o EventSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EventSource] {
+	return pulumix.Output[[]*EventSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EventSourceArrayOutput) Index(i pulumi.IntInput) EventSourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EventSource {
 		return vs[0].([]*EventSource)[vs[1].(int)]
@@ -406,6 +437,12 @@ func (o EventSourceMapOutput) ToEventSourceMapOutput() EventSourceMapOutput {
 
 func (o EventSourceMapOutput) ToEventSourceMapOutputWithContext(ctx context.Context) EventSourceMapOutput {
 	return o
+}
+
+func (o EventSourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EventSource] {
+	return pulumix.Output[map[string]*EventSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EventSourceMapOutput) MapIndex(k pulumi.StringInput) EventSourceOutput {

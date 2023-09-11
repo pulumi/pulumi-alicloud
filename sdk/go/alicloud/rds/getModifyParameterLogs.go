@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
@@ -119,6 +120,12 @@ func (o GetModifyParameterLogsResultOutput) ToGetModifyParameterLogsResultOutput
 
 func (o GetModifyParameterLogsResultOutput) ToGetModifyParameterLogsResultOutputWithContext(ctx context.Context) GetModifyParameterLogsResultOutput {
 	return o
+}
+
+func (o GetModifyParameterLogsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetModifyParameterLogsResult] {
+	return pulumix.Output[GetModifyParameterLogsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetModifyParameterLogsResultOutput) DbInstanceId() pulumi.StringOutput {

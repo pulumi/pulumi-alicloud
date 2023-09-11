@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the available zones with the Private Zone Resolver of the current Alibaba Cloud user.
@@ -108,6 +109,12 @@ func (o GetResolverZonesResultOutput) ToGetResolverZonesResultOutput() GetResolv
 
 func (o GetResolverZonesResultOutput) ToGetResolverZonesResultOutputWithContext(ctx context.Context) GetResolverZonesResultOutput {
 	return o
+}
+
+func (o GetResolverZonesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetResolverZonesResult] {
+	return pulumix.Output[GetResolverZonesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

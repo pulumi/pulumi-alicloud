@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Eipanycast Anycast Eip Address resource. Anycast Elastic IP Address.
@@ -235,6 +236,12 @@ func (i *AnycastEipAddress) ToAnycastEipAddressOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AnycastEipAddressOutput)
 }
 
+func (i *AnycastEipAddress) ToOutput(ctx context.Context) pulumix.Output[*AnycastEipAddress] {
+	return pulumix.Output[*AnycastEipAddress]{
+		OutputState: i.ToAnycastEipAddressOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AnycastEipAddressArrayInput is an input type that accepts AnycastEipAddressArray and AnycastEipAddressArrayOutput values.
 // You can construct a concrete instance of `AnycastEipAddressArrayInput` via:
 //
@@ -258,6 +265,12 @@ func (i AnycastEipAddressArray) ToAnycastEipAddressArrayOutput() AnycastEipAddre
 
 func (i AnycastEipAddressArray) ToAnycastEipAddressArrayOutputWithContext(ctx context.Context) AnycastEipAddressArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AnycastEipAddressArrayOutput)
+}
+
+func (i AnycastEipAddressArray) ToOutput(ctx context.Context) pulumix.Output[[]*AnycastEipAddress] {
+	return pulumix.Output[[]*AnycastEipAddress]{
+		OutputState: i.ToAnycastEipAddressArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AnycastEipAddressMapInput is an input type that accepts AnycastEipAddressMap and AnycastEipAddressMapOutput values.
@@ -285,6 +298,12 @@ func (i AnycastEipAddressMap) ToAnycastEipAddressMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AnycastEipAddressMapOutput)
 }
 
+func (i AnycastEipAddressMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AnycastEipAddress] {
+	return pulumix.Output[map[string]*AnycastEipAddress]{
+		OutputState: i.ToAnycastEipAddressMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AnycastEipAddressOutput struct{ *pulumi.OutputState }
 
 func (AnycastEipAddressOutput) ElementType() reflect.Type {
@@ -297,6 +316,12 @@ func (o AnycastEipAddressOutput) ToAnycastEipAddressOutput() AnycastEipAddressOu
 
 func (o AnycastEipAddressOutput) ToAnycastEipAddressOutputWithContext(ctx context.Context) AnycastEipAddressOutput {
 	return o
+}
+
+func (o AnycastEipAddressOutput) ToOutput(ctx context.Context) pulumix.Output[*AnycastEipAddress] {
+	return pulumix.Output[*AnycastEipAddress]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Anycast EIP instance name.
@@ -363,6 +388,12 @@ func (o AnycastEipAddressArrayOutput) ToAnycastEipAddressArrayOutputWithContext(
 	return o
 }
 
+func (o AnycastEipAddressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AnycastEipAddress] {
+	return pulumix.Output[[]*AnycastEipAddress]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AnycastEipAddressArrayOutput) Index(i pulumi.IntInput) AnycastEipAddressOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AnycastEipAddress {
 		return vs[0].([]*AnycastEipAddress)[vs[1].(int)]
@@ -381,6 +412,12 @@ func (o AnycastEipAddressMapOutput) ToAnycastEipAddressMapOutput() AnycastEipAdd
 
 func (o AnycastEipAddressMapOutput) ToAnycastEipAddressMapOutputWithContext(ctx context.Context) AnycastEipAddressMapOutput {
 	return o
+}
+
+func (o AnycastEipAddressMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AnycastEipAddress] {
+	return pulumix.Output[map[string]*AnycastEipAddress]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AnycastEipAddressMapOutput) MapIndex(k pulumi.StringInput) AnycastEipAddressOutput {

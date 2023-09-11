@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -58,6 +59,12 @@ func (i InstanceDataDiskArgs) ToInstanceDataDiskOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDataDiskOutput)
 }
 
+func (i InstanceDataDiskArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceDataDisk] {
+	return pulumix.Output[InstanceDataDisk]{
+		OutputState: i.ToInstanceDataDiskOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceDataDiskArrayInput is an input type that accepts InstanceDataDiskArray and InstanceDataDiskArrayOutput values.
 // You can construct a concrete instance of `InstanceDataDiskArrayInput` via:
 //
@@ -83,6 +90,12 @@ func (i InstanceDataDiskArray) ToInstanceDataDiskArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDataDiskArrayOutput)
 }
 
+func (i InstanceDataDiskArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceDataDisk] {
+	return pulumix.Output[[]InstanceDataDisk]{
+		OutputState: i.ToInstanceDataDiskArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceDataDiskOutput struct{ *pulumi.OutputState }
 
 func (InstanceDataDiskOutput) ElementType() reflect.Type {
@@ -95,6 +108,12 @@ func (o InstanceDataDiskOutput) ToInstanceDataDiskOutput() InstanceDataDiskOutpu
 
 func (o InstanceDataDiskOutput) ToInstanceDataDiskOutputWithContext(ctx context.Context) InstanceDataDiskOutput {
 	return o
+}
+
+func (o InstanceDataDiskOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceDataDisk] {
+	return pulumix.Output[InstanceDataDisk]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Type of dataDisk
@@ -123,6 +142,12 @@ func (o InstanceDataDiskArrayOutput) ToInstanceDataDiskArrayOutput() InstanceDat
 
 func (o InstanceDataDiskArrayOutput) ToInstanceDataDiskArrayOutputWithContext(ctx context.Context) InstanceDataDiskArrayOutput {
 	return o
+}
+
+func (o InstanceDataDiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceDataDisk] {
+	return pulumix.Output[[]InstanceDataDisk]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceDataDiskArrayOutput) Index(i pulumi.IntInput) InstanceDataDiskOutput {
@@ -162,6 +187,12 @@ func (i InstanceSystemDiskArgs) ToInstanceSystemDiskOutput() InstanceSystemDiskO
 
 func (i InstanceSystemDiskArgs) ToInstanceSystemDiskOutputWithContext(ctx context.Context) InstanceSystemDiskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceSystemDiskOutput)
+}
+
+func (i InstanceSystemDiskArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceSystemDisk] {
+	return pulumix.Output[InstanceSystemDisk]{
+		OutputState: i.ToInstanceSystemDiskOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i InstanceSystemDiskArgs) ToInstanceSystemDiskPtrOutput() InstanceSystemDiskPtrOutput {
@@ -205,6 +236,12 @@ func (i *instanceSystemDiskPtrType) ToInstanceSystemDiskPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceSystemDiskPtrOutput)
 }
 
+func (i *instanceSystemDiskPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceSystemDisk] {
+	return pulumix.Output[*InstanceSystemDisk]{
+		OutputState: i.ToInstanceSystemDiskPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceSystemDiskOutput struct{ *pulumi.OutputState }
 
 func (InstanceSystemDiskOutput) ElementType() reflect.Type {
@@ -229,6 +266,12 @@ func (o InstanceSystemDiskOutput) ToInstanceSystemDiskPtrOutputWithContext(ctx c
 	}).(InstanceSystemDiskPtrOutput)
 }
 
+func (o InstanceSystemDiskOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceSystemDisk] {
+	return pulumix.Output[InstanceSystemDisk]{
+		OutputState: o.OutputState,
+	}
+}
+
 // System disk size, cloudEfficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
 func (o InstanceSystemDiskOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceSystemDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
@@ -246,6 +289,12 @@ func (o InstanceSystemDiskPtrOutput) ToInstanceSystemDiskPtrOutput() InstanceSys
 
 func (o InstanceSystemDiskPtrOutput) ToInstanceSystemDiskPtrOutputWithContext(ctx context.Context) InstanceSystemDiskPtrOutput {
 	return o
+}
+
+func (o InstanceSystemDiskPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceSystemDisk] {
+	return pulumix.Output[*InstanceSystemDisk]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceSystemDiskPtrOutput) Elem() InstanceSystemDiskOutput {
@@ -317,6 +366,12 @@ func (i GetKeyPairsPairArgs) ToGetKeyPairsPairOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetKeyPairsPairOutput)
 }
 
+func (i GetKeyPairsPairArgs) ToOutput(ctx context.Context) pulumix.Output[GetKeyPairsPair] {
+	return pulumix.Output[GetKeyPairsPair]{
+		OutputState: i.ToGetKeyPairsPairOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetKeyPairsPairArrayInput is an input type that accepts GetKeyPairsPairArray and GetKeyPairsPairArrayOutput values.
 // You can construct a concrete instance of `GetKeyPairsPairArrayInput` via:
 //
@@ -342,6 +397,12 @@ func (i GetKeyPairsPairArray) ToGetKeyPairsPairArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetKeyPairsPairArrayOutput)
 }
 
+func (i GetKeyPairsPairArray) ToOutput(ctx context.Context) pulumix.Output[[]GetKeyPairsPair] {
+	return pulumix.Output[[]GetKeyPairsPair]{
+		OutputState: i.ToGetKeyPairsPairArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetKeyPairsPairOutput struct{ *pulumi.OutputState }
 
 func (GetKeyPairsPairOutput) ElementType() reflect.Type {
@@ -354,6 +415,12 @@ func (o GetKeyPairsPairOutput) ToGetKeyPairsPairOutput() GetKeyPairsPairOutput {
 
 func (o GetKeyPairsPairOutput) ToGetKeyPairsPairOutputWithContext(ctx context.Context) GetKeyPairsPairOutput {
 	return o
+}
+
+func (o GetKeyPairsPairOutput) ToOutput(ctx context.Context) pulumix.Output[GetKeyPairsPair] {
+	return pulumix.Output[GetKeyPairsPair]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation time of the key pair. The date format is in accordance with ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
@@ -393,6 +460,12 @@ func (o GetKeyPairsPairArrayOutput) ToGetKeyPairsPairArrayOutput() GetKeyPairsPa
 
 func (o GetKeyPairsPairArrayOutput) ToGetKeyPairsPairArrayOutputWithContext(ctx context.Context) GetKeyPairsPairArrayOutput {
 	return o
+}
+
+func (o GetKeyPairsPairArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetKeyPairsPair] {
+	return pulumix.Output[[]GetKeyPairsPair]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetKeyPairsPairArrayOutput) Index(i pulumi.IntInput) GetKeyPairsPairOutput {

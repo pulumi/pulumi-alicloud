@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of DNS Resolution Lines in an Alibaba Cloud account according to the specified filters.
@@ -135,6 +136,12 @@ func (o GetResolutionLinesResultOutput) ToGetResolutionLinesResultOutput() GetRe
 
 func (o GetResolutionLinesResultOutput) ToGetResolutionLinesResultOutputWithContext(ctx context.Context) GetResolutionLinesResultOutput {
 	return o
+}
+
+func (o GetResolutionLinesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetResolutionLinesResult] {
+	return pulumix.Output[GetResolutionLinesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResolutionLinesResultOutput) DomainName() pulumi.StringPtrOutput {

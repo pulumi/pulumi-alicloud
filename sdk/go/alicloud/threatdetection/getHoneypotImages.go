@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-listavailablehoneypot)
@@ -121,6 +122,12 @@ func (o GetHoneypotImagesResultOutput) ToGetHoneypotImagesResultOutput() GetHone
 
 func (o GetHoneypotImagesResultOutput) ToGetHoneypotImagesResultOutputWithContext(ctx context.Context) GetHoneypotImagesResultOutput {
 	return o
+}
+
+func (o GetHoneypotImagesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetHoneypotImagesResult] {
+	return pulumix.Output[GetHoneypotImagesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Redis And Memcache (KVStore) Audit Log Config resource.
  * 
- * &gt; **NOTE:** Available in v1.130.0+.
+ * &gt; **NOTE:** Available since v1.130.0.
  * 
  * ## Example Usage
  * 
@@ -30,6 +30,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+ * import com.pulumi.alicloud.kvstore.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.kvstore.Instance;
+ * import com.pulumi.alicloud.kvstore.InstanceArgs;
  * import com.pulumi.alicloud.kvstore.AuditLogConfig;
  * import com.pulumi.alicloud.kvstore.AuditLogConfigArgs;
  * import java.util.List;
@@ -45,9 +55,48 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultZones = KvstoreFunctions.getZones();
+ * 
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .status(&#34;OK&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .dbInstanceName(name)
+ *             .vswitchId(defaultSwitch.id())
+ *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .instanceClass(&#34;redis.master.large.default&#34;)
+ *             .instanceType(&#34;Redis&#34;)
+ *             .engineVersion(&#34;5.0&#34;)
+ *             .securityIps(&#34;10.23.12.24&#34;)
+ *             .config(Map.ofEntries(
+ *                 Map.entry(&#34;appendonly&#34;, &#34;yes&#34;),
+ *                 Map.entry(&#34;lazyfree-lazy-eviction&#34;, &#34;yes&#34;)
+ *             ))
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *             ))
+ *             .build());
+ * 
  *         var example = new AuditLogConfig(&#34;example&#34;, AuditLogConfigArgs.builder()        
+ *             .instanceId(defaultInstance.id())
  *             .dbAudit(true)
- *             .instanceId(&#34;r-abc123455&#34;)
  *             .retention(1)
  *             .build());
  * 

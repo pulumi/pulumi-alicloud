@@ -20,20 +20,20 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Firewall Vpc Firewall resource.
  * 
- * For information about Cloud Firewall Vpc Firewall and how to use it, see [What is Vpc Firewall](https://help.aliyun.com/document_detail/342893.html).
+ * For information about Cloud Firewall Vpc Firewall and how to use it, see [What is Vpc Firewall](https://www.alibabacloud.com/help/en/cloud-firewall/developer-reference/api-cloudfw-2017-12-07-createvpcfirewallconfigure).
  * 
- * &gt; **NOTE:** Available in v1.194.0+.
+ * &gt; **NOTE:** Available since v1.194.0.
  * 
  * ## Example Usage
  * 
  * Basic Usage
- * 
  * ```java
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.cloudfirewall.FirewallVpcFirewall;
  * import com.pulumi.alicloud.cloudfirewall.FirewallVpcFirewallArgs;
  * import com.pulumi.alicloud.cloudfirewall.inputs.FirewallVpcFirewallLocalVpcArgs;
@@ -51,26 +51,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var current = AlicloudFunctions.getAccount();
+ * 
  *         var default_ = new FirewallVpcFirewall(&#34;default&#34;, FirewallVpcFirewallArgs.builder()        
+ *             .vpcFirewallName(&#34;tf-example&#34;)
+ *             .memberUid(current.applyValue(getAccountResult -&gt; getAccountResult.id()))
  *             .localVpc(FirewallVpcFirewallLocalVpcArgs.builder()
- *                 .localVpcCidrTableLists(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs.builder()
- *                     .localRouteEntryList(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .localRouteTableId(&#34;vtb-bp1lj0ddg846856chpzrv&#34;)
- *                     .build())
- *                 .regionNo(&#34;cn-hangzhou&#34;)
  *                 .vpcId(&#34;vpc-bp1d065m6hzn1xbw8ibfd&#34;)
- *                 .build())
- *             .memberUid(&#34;1415189284827022&#34;)
- *             .peerVpc(FirewallVpcFirewallPeerVpcArgs.builder()
- *                 .peerVpcCidrTableLists(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs.builder()
- *                     .peerRouteEntryList(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .peerRouteTableId(&#34;vtb-bp1f516f2hh4sok1ig9b5&#34;)
- *                     .build())
  *                 .regionNo(&#34;cn-hangzhou&#34;)
+ *                 .localVpcCidrTableLists(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs.builder()
+ *                     .localRouteTableId(&#34;vtb-bp1lj0ddg846856chpzrv&#34;)
+ *                     .localRouteEntryLists(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs.builder()
+ *                         .localNextHopInstanceId(&#34;ri-bp1uobww3aputjlwwkyrh&#34;)
+ *                         .localDestinationCidr(&#34;10.1.0.0/16&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .peerVpc(FirewallVpcFirewallPeerVpcArgs.builder()
  *                 .vpcId(&#34;vpc-bp1gcmm64o3caox84v0nz&#34;)
+ *                 .regionNo(&#34;cn-hangzhou&#34;)
+ *                 .peerVpcCidrTableLists(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs.builder()
+ *                     .peerRouteTableId(&#34;vtb-bp1f516f2hh4sok1ig9b5&#34;)
+ *                     .peerRouteEntryLists(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs.builder()
+ *                         .peerDestinationCidr(&#34;10.0.0.0/16&#34;)
+ *                         .peerNextHopInstanceId(&#34;ri-bp1thhtgf6ydr2or52l3n&#34;)
+ *                         .build())
+ *                     .build())
  *                 .build())
  *             .status(&#34;open&#34;)
- *             .vpcFirewallName(&#34;tf-test&#34;)
  *             .build());
  * 
  *     }
@@ -103,42 +111,42 @@ public class FirewallVpcFirewall extends com.pulumi.resources.CustomResource {
         return this.bandwidth;
     }
     /**
-     * The communication type of the VPC firewall. Valid value: **expressconnect**, which indicates Express Connect.
+     * The communication type of the VPC firewall.
      * 
      */
     @Export(name="connectType", type=String.class, parameters={})
     private Output<String> connectType;
 
     /**
-     * @return The communication type of the VPC firewall. Valid value: **expressconnect**, which indicates Express Connect.
+     * @return The communication type of the VPC firewall.
      * 
      */
     public Output<String> connectType() {
         return this.connectType;
     }
     /**
-     * The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+     * The language type of the requested and received messages. Valid values:
      * 
      */
     @Export(name="lang", type=String.class, parameters={})
-    private Output<String> lang;
+    private Output</* @Nullable */ String> lang;
 
     /**
-     * @return The language type of the requested and received messages. Value:**zh** (default): Chinese.**en**: English.
+     * @return The language type of the requested and received messages. Valid values:
      * 
      */
-    public Output<String> lang() {
-        return this.lang;
+    public Output<Optional<String>> lang() {
+        return Codegen.optional(this.lang);
     }
     /**
-     * The details of the local VPC. See the following `Block LocalVpc`.
+     * The details of the local VPC. See `local_vpc` below.
      * 
      */
     @Export(name="localVpc", type=FirewallVpcFirewallLocalVpc.class, parameters={})
     private Output<FirewallVpcFirewallLocalVpc> localVpc;
 
     /**
-     * @return The details of the local VPC. See the following `Block LocalVpc`.
+     * @return The details of the local VPC. See `local_vpc` below.
      * 
      */
     public Output<FirewallVpcFirewallLocalVpc> localVpc() {
@@ -159,42 +167,42 @@ public class FirewallVpcFirewall extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.memberUid);
     }
     /**
-     * The details of the peer VPC. See the following `Block PeerVpc`.
+     * The details of the peer VPC. See `peer_vpc` below.
      * 
      */
     @Export(name="peerVpc", type=FirewallVpcFirewallPeerVpc.class, parameters={})
     private Output<FirewallVpcFirewallPeerVpc> peerVpc;
 
     /**
-     * @return The details of the peer VPC. See the following `Block PeerVpc`.
+     * @return The details of the peer VPC. See `peer_vpc` below.
      * 
      */
     public Output<FirewallVpcFirewallPeerVpc> peerVpc() {
         return this.peerVpc;
     }
     /**
-     * The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
+     * The region is open.
      * 
      */
     @Export(name="regionStatus", type=String.class, parameters={})
     private Output<String> regionStatus;
 
     /**
-     * @return The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
+     * @return The region is open.
      * 
      */
     public Output<String> regionStatus() {
         return this.regionStatus;
     }
     /**
-     * The status of the resource
+     * The status of the resource. Valid values:
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The status of the resource. Valid values:
      * 
      */
     public Output<String> status() {

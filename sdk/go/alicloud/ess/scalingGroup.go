@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ESS scaling group resource which is a collection of ECS instances with the same application scenarios.
@@ -565,6 +566,12 @@ func (i *ScalingGroup) ToScalingGroupOutputWithContext(ctx context.Context) Scal
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupOutput)
 }
 
+func (i *ScalingGroup) ToOutput(ctx context.Context) pulumix.Output[*ScalingGroup] {
+	return pulumix.Output[*ScalingGroup]{
+		OutputState: i.ToScalingGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ScalingGroupArrayInput is an input type that accepts ScalingGroupArray and ScalingGroupArrayOutput values.
 // You can construct a concrete instance of `ScalingGroupArrayInput` via:
 //
@@ -588,6 +595,12 @@ func (i ScalingGroupArray) ToScalingGroupArrayOutput() ScalingGroupArrayOutput {
 
 func (i ScalingGroupArray) ToScalingGroupArrayOutputWithContext(ctx context.Context) ScalingGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupArrayOutput)
+}
+
+func (i ScalingGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*ScalingGroup] {
+	return pulumix.Output[[]*ScalingGroup]{
+		OutputState: i.ToScalingGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ScalingGroupMapInput is an input type that accepts ScalingGroupMap and ScalingGroupMapOutput values.
@@ -615,6 +628,12 @@ func (i ScalingGroupMap) ToScalingGroupMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupMapOutput)
 }
 
+func (i ScalingGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ScalingGroup] {
+	return pulumix.Output[map[string]*ScalingGroup]{
+		OutputState: i.ToScalingGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ScalingGroupOutput struct{ *pulumi.OutputState }
 
 func (ScalingGroupOutput) ElementType() reflect.Type {
@@ -627,6 +646,12 @@ func (o ScalingGroupOutput) ToScalingGroupOutput() ScalingGroupOutput {
 
 func (o ScalingGroupOutput) ToScalingGroupOutputWithContext(ctx context.Context) ScalingGroupOutput {
 	return o
+}
+
+func (o ScalingGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*ScalingGroup] {
+	return pulumix.Output[*ScalingGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
@@ -776,6 +801,12 @@ func (o ScalingGroupArrayOutput) ToScalingGroupArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o ScalingGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ScalingGroup] {
+	return pulumix.Output[[]*ScalingGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ScalingGroupArrayOutput) Index(i pulumi.IntInput) ScalingGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ScalingGroup {
 		return vs[0].([]*ScalingGroup)[vs[1].(int)]
@@ -794,6 +825,12 @@ func (o ScalingGroupMapOutput) ToScalingGroupMapOutput() ScalingGroupMapOutput {
 
 func (o ScalingGroupMapOutput) ToScalingGroupMapOutputWithContext(ctx context.Context) ScalingGroupMapOutput {
 	return o
+}
+
+func (o ScalingGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ScalingGroup] {
+	return pulumix.Output[map[string]*ScalingGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScalingGroupMapOutput) MapIndex(k pulumi.StringInput) ScalingGroupOutput {

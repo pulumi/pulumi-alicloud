@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -82,6 +83,12 @@ func (i GetAccessPointsPointArgs) ToGetAccessPointsPointOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccessPointsPointOutput)
 }
 
+func (i GetAccessPointsPointArgs) ToOutput(ctx context.Context) pulumix.Output[GetAccessPointsPoint] {
+	return pulumix.Output[GetAccessPointsPoint]{
+		OutputState: i.ToGetAccessPointsPointOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAccessPointsPointArrayInput is an input type that accepts GetAccessPointsPointArray and GetAccessPointsPointArrayOutput values.
 // You can construct a concrete instance of `GetAccessPointsPointArrayInput` via:
 //
@@ -107,6 +114,12 @@ func (i GetAccessPointsPointArray) ToGetAccessPointsPointArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccessPointsPointArrayOutput)
 }
 
+func (i GetAccessPointsPointArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAccessPointsPoint] {
+	return pulumix.Output[[]GetAccessPointsPoint]{
+		OutputState: i.ToGetAccessPointsPointArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAccessPointsPointOutput struct{ *pulumi.OutputState }
 
 func (GetAccessPointsPointOutput) ElementType() reflect.Type {
@@ -119,6 +132,12 @@ func (o GetAccessPointsPointOutput) ToGetAccessPointsPointOutput() GetAccessPoin
 
 func (o GetAccessPointsPointOutput) ToGetAccessPointsPointOutputWithContext(ctx context.Context) GetAccessPointsPointOutput {
 	return o
+}
+
+func (o GetAccessPointsPointOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccessPointsPoint] {
+	return pulumix.Output[GetAccessPointsPoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Query to the Access Point Feature Model.
@@ -187,6 +206,12 @@ func (o GetAccessPointsPointArrayOutput) ToGetAccessPointsPointArrayOutputWithCo
 	return o
 }
 
+func (o GetAccessPointsPointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAccessPointsPoint] {
+	return pulumix.Output[[]GetAccessPointsPoint]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetAccessPointsPointArrayOutput) Index(i pulumi.IntInput) GetAccessPointsPointOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccessPointsPoint {
 		return vs[0].([]GetAccessPointsPoint)[vs[1].(int)]
@@ -230,6 +255,12 @@ func (i GetAccessPointsPointAccessPointFeatureModelArgs) ToGetAccessPointsPointA
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccessPointsPointAccessPointFeatureModelOutput)
 }
 
+func (i GetAccessPointsPointAccessPointFeatureModelArgs) ToOutput(ctx context.Context) pulumix.Output[GetAccessPointsPointAccessPointFeatureModel] {
+	return pulumix.Output[GetAccessPointsPointAccessPointFeatureModel]{
+		OutputState: i.ToGetAccessPointsPointAccessPointFeatureModelOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAccessPointsPointAccessPointFeatureModelArrayInput is an input type that accepts GetAccessPointsPointAccessPointFeatureModelArray and GetAccessPointsPointAccessPointFeatureModelArrayOutput values.
 // You can construct a concrete instance of `GetAccessPointsPointAccessPointFeatureModelArrayInput` via:
 //
@@ -255,6 +286,12 @@ func (i GetAccessPointsPointAccessPointFeatureModelArray) ToGetAccessPointsPoint
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccessPointsPointAccessPointFeatureModelArrayOutput)
 }
 
+func (i GetAccessPointsPointAccessPointFeatureModelArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAccessPointsPointAccessPointFeatureModel] {
+	return pulumix.Output[[]GetAccessPointsPointAccessPointFeatureModel]{
+		OutputState: i.ToGetAccessPointsPointAccessPointFeatureModelArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAccessPointsPointAccessPointFeatureModelOutput struct{ *pulumi.OutputState }
 
 func (GetAccessPointsPointAccessPointFeatureModelOutput) ElementType() reflect.Type {
@@ -267,6 +304,12 @@ func (o GetAccessPointsPointAccessPointFeatureModelOutput) ToGetAccessPointsPoin
 
 func (o GetAccessPointsPointAccessPointFeatureModelOutput) ToGetAccessPointsPointAccessPointFeatureModelOutputWithContext(ctx context.Context) GetAccessPointsPointAccessPointFeatureModelOutput {
 	return o
+}
+
+func (o GetAccessPointsPointAccessPointFeatureModelOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccessPointsPointAccessPointFeatureModel] {
+	return pulumix.Output[GetAccessPointsPointAccessPointFeatureModel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Access Point Properties.
@@ -291,6 +334,12 @@ func (o GetAccessPointsPointAccessPointFeatureModelArrayOutput) ToGetAccessPoint
 
 func (o GetAccessPointsPointAccessPointFeatureModelArrayOutput) ToGetAccessPointsPointAccessPointFeatureModelArrayOutputWithContext(ctx context.Context) GetAccessPointsPointAccessPointFeatureModelArrayOutput {
 	return o
+}
+
+func (o GetAccessPointsPointAccessPointFeatureModelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAccessPointsPointAccessPointFeatureModel] {
+	return pulumix.Output[[]GetAccessPointsPointAccessPointFeatureModel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAccessPointsPointAccessPointFeatureModelArrayOutput) Index(i pulumi.IntInput) GetAccessPointsPointAccessPointFeatureModelOutput {
@@ -344,6 +393,12 @@ func (i GetGrantRuleToCensCenArgs) ToGetGrantRuleToCensCenOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetGrantRuleToCensCenOutput)
 }
 
+func (i GetGrantRuleToCensCenArgs) ToOutput(ctx context.Context) pulumix.Output[GetGrantRuleToCensCen] {
+	return pulumix.Output[GetGrantRuleToCensCen]{
+		OutputState: i.ToGetGrantRuleToCensCenOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetGrantRuleToCensCenArrayInput is an input type that accepts GetGrantRuleToCensCenArray and GetGrantRuleToCensCenArrayOutput values.
 // You can construct a concrete instance of `GetGrantRuleToCensCenArrayInput` via:
 //
@@ -369,6 +424,12 @@ func (i GetGrantRuleToCensCenArray) ToGetGrantRuleToCensCenArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetGrantRuleToCensCenArrayOutput)
 }
 
+func (i GetGrantRuleToCensCenArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGrantRuleToCensCen] {
+	return pulumix.Output[[]GetGrantRuleToCensCen]{
+		OutputState: i.ToGetGrantRuleToCensCenArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetGrantRuleToCensCenOutput struct{ *pulumi.OutputState }
 
 func (GetGrantRuleToCensCenOutput) ElementType() reflect.Type {
@@ -381,6 +442,12 @@ func (o GetGrantRuleToCensCenOutput) ToGetGrantRuleToCensCenOutput() GetGrantRul
 
 func (o GetGrantRuleToCensCenOutput) ToGetGrantRuleToCensCenOutputWithContext(ctx context.Context) GetGrantRuleToCensCenOutput {
 	return o
+}
+
+func (o GetGrantRuleToCensCenOutput) ToOutput(ctx context.Context) pulumix.Output[GetGrantRuleToCensCen] {
+	return pulumix.Output[GetGrantRuleToCensCen]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the authorized CEN instance.
@@ -415,6 +482,12 @@ func (o GetGrantRuleToCensCenArrayOutput) ToGetGrantRuleToCensCenArrayOutput() G
 
 func (o GetGrantRuleToCensCenArrayOutput) ToGetGrantRuleToCensCenArrayOutputWithContext(ctx context.Context) GetGrantRuleToCensCenArrayOutput {
 	return o
+}
+
+func (o GetGrantRuleToCensCenArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGrantRuleToCensCen] {
+	return pulumix.Output[[]GetGrantRuleToCensCen]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGrantRuleToCensCenArrayOutput) Index(i pulumi.IntInput) GetGrantRuleToCensCenOutput {
@@ -556,6 +629,12 @@ func (i GetPhysicalConnectionsConnectionArgs) ToGetPhysicalConnectionsConnection
 	return pulumi.ToOutputWithContext(ctx, i).(GetPhysicalConnectionsConnectionOutput)
 }
 
+func (i GetPhysicalConnectionsConnectionArgs) ToOutput(ctx context.Context) pulumix.Output[GetPhysicalConnectionsConnection] {
+	return pulumix.Output[GetPhysicalConnectionsConnection]{
+		OutputState: i.ToGetPhysicalConnectionsConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetPhysicalConnectionsConnectionArrayInput is an input type that accepts GetPhysicalConnectionsConnectionArray and GetPhysicalConnectionsConnectionArrayOutput values.
 // You can construct a concrete instance of `GetPhysicalConnectionsConnectionArrayInput` via:
 //
@@ -581,6 +660,12 @@ func (i GetPhysicalConnectionsConnectionArray) ToGetPhysicalConnectionsConnectio
 	return pulumi.ToOutputWithContext(ctx, i).(GetPhysicalConnectionsConnectionArrayOutput)
 }
 
+func (i GetPhysicalConnectionsConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPhysicalConnectionsConnection] {
+	return pulumix.Output[[]GetPhysicalConnectionsConnection]{
+		OutputState: i.ToGetPhysicalConnectionsConnectionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPhysicalConnectionsConnectionOutput struct{ *pulumi.OutputState }
 
 func (GetPhysicalConnectionsConnectionOutput) ElementType() reflect.Type {
@@ -593,6 +678,12 @@ func (o GetPhysicalConnectionsConnectionOutput) ToGetPhysicalConnectionsConnecti
 
 func (o GetPhysicalConnectionsConnectionOutput) ToGetPhysicalConnectionsConnectionOutputWithContext(ctx context.Context) GetPhysicalConnectionsConnectionOutput {
 	return o
+}
+
+func (o GetPhysicalConnectionsConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[GetPhysicalConnectionsConnection] {
+	return pulumix.Output[GetPhysicalConnectionsConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Physical Leased Line Access Point ID.
@@ -739,6 +830,12 @@ func (o GetPhysicalConnectionsConnectionArrayOutput) ToGetPhysicalConnectionsCon
 	return o
 }
 
+func (o GetPhysicalConnectionsConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPhysicalConnectionsConnection] {
+	return pulumix.Output[[]GetPhysicalConnectionsConnection]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetPhysicalConnectionsConnectionArrayOutput) Index(i pulumi.IntInput) GetPhysicalConnectionsConnectionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPhysicalConnectionsConnection {
 		return vs[0].([]GetPhysicalConnectionsConnection)[vs[1].(int)]
@@ -778,6 +875,12 @@ func (i GetRouterInterfacesFilterArgs) ToGetRouterInterfacesFilterOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRouterInterfacesFilterOutput)
 }
 
+func (i GetRouterInterfacesFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetRouterInterfacesFilter] {
+	return pulumix.Output[GetRouterInterfacesFilter]{
+		OutputState: i.ToGetRouterInterfacesFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRouterInterfacesFilterArrayInput is an input type that accepts GetRouterInterfacesFilterArray and GetRouterInterfacesFilterArrayOutput values.
 // You can construct a concrete instance of `GetRouterInterfacesFilterArrayInput` via:
 //
@@ -803,6 +906,12 @@ func (i GetRouterInterfacesFilterArray) ToGetRouterInterfacesFilterArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetRouterInterfacesFilterArrayOutput)
 }
 
+func (i GetRouterInterfacesFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRouterInterfacesFilter] {
+	return pulumix.Output[[]GetRouterInterfacesFilter]{
+		OutputState: i.ToGetRouterInterfacesFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRouterInterfacesFilterOutput struct{ *pulumi.OutputState }
 
 func (GetRouterInterfacesFilterOutput) ElementType() reflect.Type {
@@ -815,6 +924,12 @@ func (o GetRouterInterfacesFilterOutput) ToGetRouterInterfacesFilterOutput() Get
 
 func (o GetRouterInterfacesFilterOutput) ToGetRouterInterfacesFilterOutputWithContext(ctx context.Context) GetRouterInterfacesFilterOutput {
 	return o
+}
+
+func (o GetRouterInterfacesFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetRouterInterfacesFilter] {
+	return pulumix.Output[GetRouterInterfacesFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRouterInterfacesFilterOutput) Key() pulumi.StringPtrOutput {
@@ -837,6 +952,12 @@ func (o GetRouterInterfacesFilterArrayOutput) ToGetRouterInterfacesFilterArrayOu
 
 func (o GetRouterInterfacesFilterArrayOutput) ToGetRouterInterfacesFilterArrayOutputWithContext(ctx context.Context) GetRouterInterfacesFilterArrayOutput {
 	return o
+}
+
+func (o GetRouterInterfacesFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRouterInterfacesFilter] {
+	return pulumix.Output[[]GetRouterInterfacesFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRouterInterfacesFilterArrayOutput) Index(i pulumi.IntInput) GetRouterInterfacesFilterOutput {
@@ -1024,6 +1145,12 @@ func (i GetRouterInterfacesInterfaceArgs) ToGetRouterInterfacesInterfaceOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetRouterInterfacesInterfaceOutput)
 }
 
+func (i GetRouterInterfacesInterfaceArgs) ToOutput(ctx context.Context) pulumix.Output[GetRouterInterfacesInterface] {
+	return pulumix.Output[GetRouterInterfacesInterface]{
+		OutputState: i.ToGetRouterInterfacesInterfaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRouterInterfacesInterfaceArrayInput is an input type that accepts GetRouterInterfacesInterfaceArray and GetRouterInterfacesInterfaceArrayOutput values.
 // You can construct a concrete instance of `GetRouterInterfacesInterfaceArrayInput` via:
 //
@@ -1049,6 +1176,12 @@ func (i GetRouterInterfacesInterfaceArray) ToGetRouterInterfacesInterfaceArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetRouterInterfacesInterfaceArrayOutput)
 }
 
+func (i GetRouterInterfacesInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRouterInterfacesInterface] {
+	return pulumix.Output[[]GetRouterInterfacesInterface]{
+		OutputState: i.ToGetRouterInterfacesInterfaceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRouterInterfacesInterfaceOutput struct{ *pulumi.OutputState }
 
 func (GetRouterInterfacesInterfaceOutput) ElementType() reflect.Type {
@@ -1061,6 +1194,12 @@ func (o GetRouterInterfacesInterfaceOutput) ToGetRouterInterfacesInterfaceOutput
 
 func (o GetRouterInterfacesInterfaceOutput) ToGetRouterInterfacesInterfaceOutputWithContext(ctx context.Context) GetRouterInterfacesInterfaceOutput {
 	return o
+}
+
+func (o GetRouterInterfacesInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[GetRouterInterfacesInterface] {
+	return pulumix.Output[GetRouterInterfacesInterface]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The access point ID to which the VBR belongs.
@@ -1266,6 +1405,12 @@ func (o GetRouterInterfacesInterfaceArrayOutput) ToGetRouterInterfacesInterfaceA
 	return o
 }
 
+func (o GetRouterInterfacesInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRouterInterfacesInterface] {
+	return pulumix.Output[[]GetRouterInterfacesInterface]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetRouterInterfacesInterfaceArrayOutput) Index(i pulumi.IntInput) GetRouterInterfacesInterfaceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterInterfacesInterface {
 		return vs[0].([]GetRouterInterfacesInterface)[vs[1].(int)]
@@ -1353,6 +1498,12 @@ func (i GetVbrPconnAssociationsAssociationArgs) ToGetVbrPconnAssociationsAssocia
 	return pulumi.ToOutputWithContext(ctx, i).(GetVbrPconnAssociationsAssociationOutput)
 }
 
+func (i GetVbrPconnAssociationsAssociationArgs) ToOutput(ctx context.Context) pulumix.Output[GetVbrPconnAssociationsAssociation] {
+	return pulumix.Output[GetVbrPconnAssociationsAssociation]{
+		OutputState: i.ToGetVbrPconnAssociationsAssociationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetVbrPconnAssociationsAssociationArrayInput is an input type that accepts GetVbrPconnAssociationsAssociationArray and GetVbrPconnAssociationsAssociationArrayOutput values.
 // You can construct a concrete instance of `GetVbrPconnAssociationsAssociationArrayInput` via:
 //
@@ -1378,6 +1529,12 @@ func (i GetVbrPconnAssociationsAssociationArray) ToGetVbrPconnAssociationsAssoci
 	return pulumi.ToOutputWithContext(ctx, i).(GetVbrPconnAssociationsAssociationArrayOutput)
 }
 
+func (i GetVbrPconnAssociationsAssociationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVbrPconnAssociationsAssociation] {
+	return pulumix.Output[[]GetVbrPconnAssociationsAssociation]{
+		OutputState: i.ToGetVbrPconnAssociationsAssociationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetVbrPconnAssociationsAssociationOutput struct{ *pulumi.OutputState }
 
 func (GetVbrPconnAssociationsAssociationOutput) ElementType() reflect.Type {
@@ -1390,6 +1547,12 @@ func (o GetVbrPconnAssociationsAssociationOutput) ToGetVbrPconnAssociationsAssoc
 
 func (o GetVbrPconnAssociationsAssociationOutput) ToGetVbrPconnAssociationsAssociationOutputWithContext(ctx context.Context) GetVbrPconnAssociationsAssociationOutput {
 	return o
+}
+
+func (o GetVbrPconnAssociationsAssociationOutput) ToOutput(ctx context.Context) pulumix.Output[GetVbrPconnAssociationsAssociation] {
+	return pulumix.Output[GetVbrPconnAssociationsAssociation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The circuit code provided by the operator for the physical connection.
@@ -1471,6 +1634,12 @@ func (o GetVbrPconnAssociationsAssociationArrayOutput) ToGetVbrPconnAssociations
 	return o
 }
 
+func (o GetVbrPconnAssociationsAssociationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVbrPconnAssociationsAssociation] {
+	return pulumix.Output[[]GetVbrPconnAssociationsAssociation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetVbrPconnAssociationsAssociationArrayOutput) Index(i pulumi.IntInput) GetVbrPconnAssociationsAssociationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVbrPconnAssociationsAssociation {
 		return vs[0].([]GetVbrPconnAssociationsAssociation)[vs[1].(int)]
@@ -1516,6 +1685,12 @@ func (i GetVirtualBorderRoutersFilterArgs) ToGetVirtualBorderRoutersFilterOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualBorderRoutersFilterOutput)
 }
 
+func (i GetVirtualBorderRoutersFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetVirtualBorderRoutersFilter] {
+	return pulumix.Output[GetVirtualBorderRoutersFilter]{
+		OutputState: i.ToGetVirtualBorderRoutersFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetVirtualBorderRoutersFilterArrayInput is an input type that accepts GetVirtualBorderRoutersFilterArray and GetVirtualBorderRoutersFilterArrayOutput values.
 // You can construct a concrete instance of `GetVirtualBorderRoutersFilterArrayInput` via:
 //
@@ -1541,6 +1716,12 @@ func (i GetVirtualBorderRoutersFilterArray) ToGetVirtualBorderRoutersFilterArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualBorderRoutersFilterArrayOutput)
 }
 
+func (i GetVirtualBorderRoutersFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVirtualBorderRoutersFilter] {
+	return pulumix.Output[[]GetVirtualBorderRoutersFilter]{
+		OutputState: i.ToGetVirtualBorderRoutersFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetVirtualBorderRoutersFilterOutput struct{ *pulumi.OutputState }
 
 func (GetVirtualBorderRoutersFilterOutput) ElementType() reflect.Type {
@@ -1553,6 +1734,12 @@ func (o GetVirtualBorderRoutersFilterOutput) ToGetVirtualBorderRoutersFilterOutp
 
 func (o GetVirtualBorderRoutersFilterOutput) ToGetVirtualBorderRoutersFilterOutputWithContext(ctx context.Context) GetVirtualBorderRoutersFilterOutput {
 	return o
+}
+
+func (o GetVirtualBorderRoutersFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetVirtualBorderRoutersFilter] {
+	return pulumix.Output[GetVirtualBorderRoutersFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The key of the field to filter by, as defined by
@@ -1578,6 +1765,12 @@ func (o GetVirtualBorderRoutersFilterArrayOutput) ToGetVirtualBorderRoutersFilte
 
 func (o GetVirtualBorderRoutersFilterArrayOutput) ToGetVirtualBorderRoutersFilterArrayOutputWithContext(ctx context.Context) GetVirtualBorderRoutersFilterArrayOutput {
 	return o
+}
+
+func (o GetVirtualBorderRoutersFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVirtualBorderRoutersFilter] {
+	return pulumix.Output[[]GetVirtualBorderRoutersFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetVirtualBorderRoutersFilterArrayOutput) Index(i pulumi.IntInput) GetVirtualBorderRoutersFilterOutput {
@@ -1743,6 +1936,12 @@ func (i GetVirtualBorderRoutersRouterArgs) ToGetVirtualBorderRoutersRouterOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualBorderRoutersRouterOutput)
 }
 
+func (i GetVirtualBorderRoutersRouterArgs) ToOutput(ctx context.Context) pulumix.Output[GetVirtualBorderRoutersRouter] {
+	return pulumix.Output[GetVirtualBorderRoutersRouter]{
+		OutputState: i.ToGetVirtualBorderRoutersRouterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetVirtualBorderRoutersRouterArrayInput is an input type that accepts GetVirtualBorderRoutersRouterArray and GetVirtualBorderRoutersRouterArrayOutput values.
 // You can construct a concrete instance of `GetVirtualBorderRoutersRouterArrayInput` via:
 //
@@ -1768,6 +1967,12 @@ func (i GetVirtualBorderRoutersRouterArray) ToGetVirtualBorderRoutersRouterArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualBorderRoutersRouterArrayOutput)
 }
 
+func (i GetVirtualBorderRoutersRouterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVirtualBorderRoutersRouter] {
+	return pulumix.Output[[]GetVirtualBorderRoutersRouter]{
+		OutputState: i.ToGetVirtualBorderRoutersRouterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetVirtualBorderRoutersRouterOutput struct{ *pulumi.OutputState }
 
 func (GetVirtualBorderRoutersRouterOutput) ElementType() reflect.Type {
@@ -1780,6 +1985,12 @@ func (o GetVirtualBorderRoutersRouterOutput) ToGetVirtualBorderRoutersRouterOutp
 
 func (o GetVirtualBorderRoutersRouterOutput) ToGetVirtualBorderRoutersRouterOutputWithContext(ctx context.Context) GetVirtualBorderRoutersRouterOutput {
 	return o
+}
+
+func (o GetVirtualBorderRoutersRouterOutput) ToOutput(ctx context.Context) pulumix.Output[GetVirtualBorderRoutersRouter] {
+	return pulumix.Output[GetVirtualBorderRoutersRouter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The physical leased line access point ID.
@@ -1956,6 +2167,12 @@ func (o GetVirtualBorderRoutersRouterArrayOutput) ToGetVirtualBorderRoutersRoute
 	return o
 }
 
+func (o GetVirtualBorderRoutersRouterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVirtualBorderRoutersRouter] {
+	return pulumix.Output[[]GetVirtualBorderRoutersRouter]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetVirtualBorderRoutersRouterArrayOutput) Index(i pulumi.IntInput) GetVirtualBorderRoutersRouterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVirtualBorderRoutersRouter {
 		return vs[0].([]GetVirtualBorderRoutersRouter)[vs[1].(int)]
@@ -2115,6 +2332,12 @@ func (i GetVirtualPhysicalConnectionsConnectionArgs) ToGetVirtualPhysicalConnect
 	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualPhysicalConnectionsConnectionOutput)
 }
 
+func (i GetVirtualPhysicalConnectionsConnectionArgs) ToOutput(ctx context.Context) pulumix.Output[GetVirtualPhysicalConnectionsConnection] {
+	return pulumix.Output[GetVirtualPhysicalConnectionsConnection]{
+		OutputState: i.ToGetVirtualPhysicalConnectionsConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetVirtualPhysicalConnectionsConnectionArrayInput is an input type that accepts GetVirtualPhysicalConnectionsConnectionArray and GetVirtualPhysicalConnectionsConnectionArrayOutput values.
 // You can construct a concrete instance of `GetVirtualPhysicalConnectionsConnectionArrayInput` via:
 //
@@ -2140,6 +2363,12 @@ func (i GetVirtualPhysicalConnectionsConnectionArray) ToGetVirtualPhysicalConnec
 	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualPhysicalConnectionsConnectionArrayOutput)
 }
 
+func (i GetVirtualPhysicalConnectionsConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVirtualPhysicalConnectionsConnection] {
+	return pulumix.Output[[]GetVirtualPhysicalConnectionsConnection]{
+		OutputState: i.ToGetVirtualPhysicalConnectionsConnectionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetVirtualPhysicalConnectionsConnectionOutput struct{ *pulumi.OutputState }
 
 func (GetVirtualPhysicalConnectionsConnectionOutput) ElementType() reflect.Type {
@@ -2152,6 +2381,12 @@ func (o GetVirtualPhysicalConnectionsConnectionOutput) ToGetVirtualPhysicalConne
 
 func (o GetVirtualPhysicalConnectionsConnectionOutput) ToGetVirtualPhysicalConnectionsConnectionOutputWithContext(ctx context.Context) GetVirtualPhysicalConnectionsConnectionOutput {
 	return o
+}
+
+func (o GetVirtualPhysicalConnectionsConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[GetVirtualPhysicalConnectionsConnection] {
+	return pulumix.Output[GetVirtualPhysicalConnectionsConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the access point of the physical connection.
@@ -2312,6 +2547,12 @@ func (o GetVirtualPhysicalConnectionsConnectionArrayOutput) ToGetVirtualPhysical
 
 func (o GetVirtualPhysicalConnectionsConnectionArrayOutput) ToGetVirtualPhysicalConnectionsConnectionArrayOutputWithContext(ctx context.Context) GetVirtualPhysicalConnectionsConnectionArrayOutput {
 	return o
+}
+
+func (o GetVirtualPhysicalConnectionsConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVirtualPhysicalConnectionsConnection] {
+	return pulumix.Output[[]GetVirtualPhysicalConnectionsConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetVirtualPhysicalConnectionsConnectionArrayOutput) Index(i pulumi.IntInput) GetVirtualPhysicalConnectionsConnectionOutput {

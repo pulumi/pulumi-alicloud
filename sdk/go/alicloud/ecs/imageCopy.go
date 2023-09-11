@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Copies a custom image from one region to another. You can use copied images to perform operations in the target region, such as creating instances (RunInstances) and replacing system disks (ReplaceSystemDisk).
@@ -330,6 +331,12 @@ func (i *ImageCopy) ToImageCopyOutputWithContext(ctx context.Context) ImageCopyO
 	return pulumi.ToOutputWithContext(ctx, i).(ImageCopyOutput)
 }
 
+func (i *ImageCopy) ToOutput(ctx context.Context) pulumix.Output[*ImageCopy] {
+	return pulumix.Output[*ImageCopy]{
+		OutputState: i.ToImageCopyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ImageCopyArrayInput is an input type that accepts ImageCopyArray and ImageCopyArrayOutput values.
 // You can construct a concrete instance of `ImageCopyArrayInput` via:
 //
@@ -353,6 +360,12 @@ func (i ImageCopyArray) ToImageCopyArrayOutput() ImageCopyArrayOutput {
 
 func (i ImageCopyArray) ToImageCopyArrayOutputWithContext(ctx context.Context) ImageCopyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageCopyArrayOutput)
+}
+
+func (i ImageCopyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ImageCopy] {
+	return pulumix.Output[[]*ImageCopy]{
+		OutputState: i.ToImageCopyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ImageCopyMapInput is an input type that accepts ImageCopyMap and ImageCopyMapOutput values.
@@ -380,6 +393,12 @@ func (i ImageCopyMap) ToImageCopyMapOutputWithContext(ctx context.Context) Image
 	return pulumi.ToOutputWithContext(ctx, i).(ImageCopyMapOutput)
 }
 
+func (i ImageCopyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImageCopy] {
+	return pulumix.Output[map[string]*ImageCopy]{
+		OutputState: i.ToImageCopyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ImageCopyOutput struct{ *pulumi.OutputState }
 
 func (ImageCopyOutput) ElementType() reflect.Type {
@@ -392,6 +411,12 @@ func (o ImageCopyOutput) ToImageCopyOutput() ImageCopyOutput {
 
 func (o ImageCopyOutput) ToImageCopyOutputWithContext(ctx context.Context) ImageCopyOutput {
 	return o
+}
+
+func (o ImageCopyOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageCopy] {
+	return pulumix.Output[*ImageCopy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ImageCopyOutput) DeleteAutoSnapshot() pulumi.BoolPtrOutput {
@@ -459,6 +484,12 @@ func (o ImageCopyArrayOutput) ToImageCopyArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ImageCopyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ImageCopy] {
+	return pulumix.Output[[]*ImageCopy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ImageCopyArrayOutput) Index(i pulumi.IntInput) ImageCopyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ImageCopy {
 		return vs[0].([]*ImageCopy)[vs[1].(int)]
@@ -477,6 +508,12 @@ func (o ImageCopyMapOutput) ToImageCopyMapOutput() ImageCopyMapOutput {
 
 func (o ImageCopyMapOutput) ToImageCopyMapOutputWithContext(ctx context.Context) ImageCopyMapOutput {
 	return o
+}
+
+func (o ImageCopyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImageCopy] {
+	return pulumix.Output[map[string]*ImageCopy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ImageCopyMapOutput) MapIndex(k pulumi.StringInput) ImageCopyOutput {

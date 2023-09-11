@@ -25,12 +25,12 @@ public final class ClusterNodeGroup {
      */
     private @Nullable List<String> additionalSecurityGroupIds;
     /**
-     * @return The detail cost optimized configuration of emr cluster.
+     * @return The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below.
      * 
      */
     private @Nullable ClusterNodeGroupCostOptimizedConfig costOptimizedConfig;
     /**
-     * @return Host Ecs data disks information in this node group.
+     * @return Host Ecs data disks information in this node group. See `data_disks` below.
      * 
      */
     private List<ClusterNodeGroupDataDisk> dataDisks;
@@ -50,7 +50,7 @@ public final class ClusterNodeGroup {
      */
     private Integer nodeCount;
     /**
-     * @return The configuration effected which node group name of emr cluster.
+     * @return The node group name of emr cluster.
      * 
      */
     private String nodeGroupName;
@@ -65,7 +65,7 @@ public final class ClusterNodeGroup {
      */
     private @Nullable String paymentType;
     /**
-     * @return The spot bid prices of a PayAsYouGo instance.
+     * @return The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
      * 
      */
     private @Nullable List<ClusterNodeGroupSpotBidPrice> spotBidPrices;
@@ -75,12 +75,12 @@ public final class ClusterNodeGroup {
      */
     private @Nullable Boolean spotInstanceRemedy;
     /**
-     * @return The detail configuration of subscription payment type.
+     * @return The detail configuration of subscription payment type. See `subscription_config` below.
      * 
      */
     private @Nullable ClusterNodeGroupSubscriptionConfig subscriptionConfig;
     /**
-     * @return Host Ecs system disk information in this node group.
+     * @return Host Ecs system disk information in this node group. See `system_disk` below.
      * 
      */
     private ClusterNodeGroupSystemDisk systemDisk;
@@ -104,14 +104,14 @@ public final class ClusterNodeGroup {
         return this.additionalSecurityGroupIds == null ? List.of() : this.additionalSecurityGroupIds;
     }
     /**
-     * @return The detail cost optimized configuration of emr cluster.
+     * @return The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below.
      * 
      */
     public Optional<ClusterNodeGroupCostOptimizedConfig> costOptimizedConfig() {
         return Optional.ofNullable(this.costOptimizedConfig);
     }
     /**
-     * @return Host Ecs data disks information in this node group.
+     * @return Host Ecs data disks information in this node group. See `data_disks` below.
      * 
      */
     public List<ClusterNodeGroupDataDisk> dataDisks() {
@@ -139,7 +139,7 @@ public final class ClusterNodeGroup {
         return this.nodeCount;
     }
     /**
-     * @return The configuration effected which node group name of emr cluster.
+     * @return The node group name of emr cluster.
      * 
      */
     public String nodeGroupName() {
@@ -160,7 +160,7 @@ public final class ClusterNodeGroup {
         return Optional.ofNullable(this.paymentType);
     }
     /**
-     * @return The spot bid prices of a PayAsYouGo instance.
+     * @return The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
      * 
      */
     public List<ClusterNodeGroupSpotBidPrice> spotBidPrices() {
@@ -174,14 +174,14 @@ public final class ClusterNodeGroup {
         return Optional.ofNullable(this.spotInstanceRemedy);
     }
     /**
-     * @return The detail configuration of subscription payment type.
+     * @return The detail configuration of subscription payment type. See `subscription_config` below.
      * 
      */
     public Optional<ClusterNodeGroupSubscriptionConfig> subscriptionConfig() {
         return Optional.ofNullable(this.subscriptionConfig);
     }
     /**
-     * @return Host Ecs system disk information in this node group.
+     * @return Host Ecs system disk information in this node group. See `system_disk` below.
      * 
      */
     public ClusterNodeGroupSystemDisk systemDisk() {

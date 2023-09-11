@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Alb Ascript available to the user.
@@ -133,6 +134,12 @@ func (o GetAscriptsResultOutput) ToGetAscriptsResultOutput() GetAscriptsResultOu
 
 func (o GetAscriptsResultOutput) ToGetAscriptsResultOutputWithContext(ctx context.Context) GetAscriptsResultOutput {
 	return o
+}
+
+func (o GetAscriptsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAscriptsResult] {
+	return pulumix.Output[GetAscriptsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Script name.

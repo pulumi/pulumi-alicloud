@@ -24,7 +24,7 @@ public final class GreyTagRouteDubboRule {
      */
     private @Nullable String group;
     /**
-     * @return A list of conditions items. The details see Block `dubbo_rules_items`.
+     * @return A list of conditions items. See `items` below.
      * 
      */
     private @Nullable List<GreyTagRouteDubboRuleItem> items;
@@ -60,7 +60,7 @@ public final class GreyTagRouteDubboRule {
         return Optional.ofNullable(this.group);
     }
     /**
-     * @return A list of conditions items. The details see Block `dubbo_rules_items`.
+     * @return A list of conditions items. See `items` below.
      * 
      */
     public List<GreyTagRouteDubboRuleItem> items() {

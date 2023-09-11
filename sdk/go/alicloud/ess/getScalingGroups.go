@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides available scaling group resources.
@@ -117,6 +118,12 @@ func (o GetScalingGroupsResultOutput) ToGetScalingGroupsResultOutput() GetScalin
 
 func (o GetScalingGroupsResultOutput) ToGetScalingGroupsResultOutputWithContext(ctx context.Context) GetScalingGroupsResultOutput {
 	return o
+}
+
+func (o GetScalingGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetScalingGroupsResult] {
+	return pulumix.Output[GetScalingGroupsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of scaling groups. Each element contains the following attributes:

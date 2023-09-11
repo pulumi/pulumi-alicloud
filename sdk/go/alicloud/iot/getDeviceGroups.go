@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Iot Device Groups of the current Alibaba Cloud user.
@@ -131,6 +132,12 @@ func (o GetDeviceGroupsResultOutput) ToGetDeviceGroupsResultOutput() GetDeviceGr
 
 func (o GetDeviceGroupsResultOutput) ToGetDeviceGroupsResultOutputWithContext(ctx context.Context) GetDeviceGroupsResultOutput {
 	return o
+}
+
+func (o GetDeviceGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeviceGroupsResult] {
+	return pulumix.Output[GetDeviceGroupsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDeviceGroupsResultOutput) EnableDetails() pulumi.BoolPtrOutput {

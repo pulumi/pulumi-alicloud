@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Hybrid Backup Recovery (HBR) Hana Backup Clients of the current Alibaba Cloud user.
@@ -142,6 +143,12 @@ func (o GetHanaBackupClientsResultOutput) ToGetHanaBackupClientsResultOutput() G
 
 func (o GetHanaBackupClientsResultOutput) ToGetHanaBackupClientsResultOutputWithContext(ctx context.Context) GetHanaBackupClientsResultOutput {
 	return o
+}
+
+func (o GetHanaBackupClientsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetHanaBackupClientsResult] {
+	return pulumix.Output[GetHanaBackupClientsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the backup client.

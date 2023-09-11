@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Using this data source can open Brain Industrial service automatically. If the service has been opened, it will return opened.
@@ -107,6 +108,12 @@ func (o GetIndustrialSericeResultOutput) ToGetIndustrialSericeResultOutput() Get
 
 func (o GetIndustrialSericeResultOutput) ToGetIndustrialSericeResultOutputWithContext(ctx context.Context) GetIndustrialSericeResultOutput {
 	return o
+}
+
+func (o GetIndustrialSericeResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIndustrialSericeResult] {
+	return pulumix.Output[GetIndustrialSericeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetIndustrialSericeResultOutput) Enable() pulumi.StringPtrOutput {

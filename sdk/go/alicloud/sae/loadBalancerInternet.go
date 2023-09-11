@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an Alicloud Serverless App Engine (SAE) Application Load Balancer Attachment resource.
@@ -271,6 +272,12 @@ func (i *LoadBalancerInternet) ToLoadBalancerInternetOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerInternetOutput)
 }
 
+func (i *LoadBalancerInternet) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerInternet] {
+	return pulumix.Output[*LoadBalancerInternet]{
+		OutputState: i.ToLoadBalancerInternetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LoadBalancerInternetArrayInput is an input type that accepts LoadBalancerInternetArray and LoadBalancerInternetArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerInternetArrayInput` via:
 //
@@ -294,6 +301,12 @@ func (i LoadBalancerInternetArray) ToLoadBalancerInternetArrayOutput() LoadBalan
 
 func (i LoadBalancerInternetArray) ToLoadBalancerInternetArrayOutputWithContext(ctx context.Context) LoadBalancerInternetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerInternetArrayOutput)
+}
+
+func (i LoadBalancerInternetArray) ToOutput(ctx context.Context) pulumix.Output[[]*LoadBalancerInternet] {
+	return pulumix.Output[[]*LoadBalancerInternet]{
+		OutputState: i.ToLoadBalancerInternetArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // LoadBalancerInternetMapInput is an input type that accepts LoadBalancerInternetMap and LoadBalancerInternetMapOutput values.
@@ -321,6 +334,12 @@ func (i LoadBalancerInternetMap) ToLoadBalancerInternetMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerInternetMapOutput)
 }
 
+func (i LoadBalancerInternetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LoadBalancerInternet] {
+	return pulumix.Output[map[string]*LoadBalancerInternet]{
+		OutputState: i.ToLoadBalancerInternetMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LoadBalancerInternetOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerInternetOutput) ElementType() reflect.Type {
@@ -333,6 +352,12 @@ func (o LoadBalancerInternetOutput) ToLoadBalancerInternetOutput() LoadBalancerI
 
 func (o LoadBalancerInternetOutput) ToLoadBalancerInternetOutputWithContext(ctx context.Context) LoadBalancerInternetOutput {
 	return o
+}
+
+func (o LoadBalancerInternetOutput) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerInternet] {
+	return pulumix.Output[*LoadBalancerInternet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The target application ID that needs to be bound to the SLB.
@@ -369,6 +394,12 @@ func (o LoadBalancerInternetArrayOutput) ToLoadBalancerInternetArrayOutputWithCo
 	return o
 }
 
+func (o LoadBalancerInternetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LoadBalancerInternet] {
+	return pulumix.Output[[]*LoadBalancerInternet]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LoadBalancerInternetArrayOutput) Index(i pulumi.IntInput) LoadBalancerInternetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LoadBalancerInternet {
 		return vs[0].([]*LoadBalancerInternet)[vs[1].(int)]
@@ -387,6 +418,12 @@ func (o LoadBalancerInternetMapOutput) ToLoadBalancerInternetMapOutput() LoadBal
 
 func (o LoadBalancerInternetMapOutput) ToLoadBalancerInternetMapOutputWithContext(ctx context.Context) LoadBalancerInternetMapOutput {
 	return o
+}
+
+func (o LoadBalancerInternetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LoadBalancerInternet] {
+	return pulumix.Output[map[string]*LoadBalancerInternet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LoadBalancerInternetMapOutput) MapIndex(k pulumi.StringInput) LoadBalancerInternetOutput {

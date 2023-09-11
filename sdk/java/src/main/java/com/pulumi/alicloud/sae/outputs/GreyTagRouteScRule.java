@@ -19,7 +19,7 @@ public final class GreyTagRouteScRule {
      */
     private @Nullable String condition;
     /**
-     * @return A list of conditions items. The details see Block `sc_rules_items`.
+     * @return A list of conditions items.See `items` below.
      * 
      */
     private @Nullable List<GreyTagRouteScRuleItem> items;
@@ -38,7 +38,7 @@ public final class GreyTagRouteScRule {
         return Optional.ofNullable(this.condition);
     }
     /**
-     * @return A list of conditions items. The details see Block `sc_rules_items`.
+     * @return A list of conditions items.See `items` below.
      * 
      */
     public List<GreyTagRouteScRuleItem> items() {

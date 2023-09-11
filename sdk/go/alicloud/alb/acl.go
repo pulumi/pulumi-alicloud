@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Application Load Balancer (ALB) Acl resource.
@@ -209,6 +210,12 @@ func (i *Acl) ToAclOutputWithContext(ctx context.Context) AclOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclOutput)
 }
 
+func (i *Acl) ToOutput(ctx context.Context) pulumix.Output[*Acl] {
+	return pulumix.Output[*Acl]{
+		OutputState: i.ToAclOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AclArrayInput is an input type that accepts AclArray and AclArrayOutput values.
 // You can construct a concrete instance of `AclArrayInput` via:
 //
@@ -232,6 +239,12 @@ func (i AclArray) ToAclArrayOutput() AclArrayOutput {
 
 func (i AclArray) ToAclArrayOutputWithContext(ctx context.Context) AclArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclArrayOutput)
+}
+
+func (i AclArray) ToOutput(ctx context.Context) pulumix.Output[[]*Acl] {
+	return pulumix.Output[[]*Acl]{
+		OutputState: i.ToAclArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AclMapInput is an input type that accepts AclMap and AclMapOutput values.
@@ -259,6 +272,12 @@ func (i AclMap) ToAclMapOutputWithContext(ctx context.Context) AclMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclMapOutput)
 }
 
+func (i AclMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Acl] {
+	return pulumix.Output[map[string]*Acl]{
+		OutputState: i.ToAclMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AclOutput struct{ *pulumi.OutputState }
 
 func (AclOutput) ElementType() reflect.Type {
@@ -271,6 +290,12 @@ func (o AclOutput) ToAclOutput() AclOutput {
 
 func (o AclOutput) ToAclOutputWithContext(ctx context.Context) AclOutput {
 	return o
+}
+
+func (o AclOutput) ToOutput(ctx context.Context) pulumix.Output[*Acl] {
+	return pulumix.Output[*Acl]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of the ACL entries. You can add up to `20` entries in each call.  See `aclEntries` below for details.
@@ -320,6 +345,12 @@ func (o AclArrayOutput) ToAclArrayOutputWithContext(ctx context.Context) AclArra
 	return o
 }
 
+func (o AclArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Acl] {
+	return pulumix.Output[[]*Acl]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AclArrayOutput) Index(i pulumi.IntInput) AclOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Acl {
 		return vs[0].([]*Acl)[vs[1].(int)]
@@ -338,6 +369,12 @@ func (o AclMapOutput) ToAclMapOutput() AclMapOutput {
 
 func (o AclMapOutput) ToAclMapOutputWithContext(ctx context.Context) AclMapOutput {
 	return o
+}
+
+func (o AclMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Acl] {
+	return pulumix.Output[map[string]*Acl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AclMapOutput) MapIndex(k pulumi.StringInput) AclOutput {

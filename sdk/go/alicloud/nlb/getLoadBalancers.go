@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Nlb Load Balancers of the current Alibaba Cloud user.
@@ -178,6 +179,12 @@ func (o GetLoadBalancersResultOutput) ToGetLoadBalancersResultOutput() GetLoadBa
 
 func (o GetLoadBalancersResultOutput) ToGetLoadBalancersResultOutputWithContext(ctx context.Context) GetLoadBalancersResultOutput {
 	return o
+}
+
+func (o GetLoadBalancersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetLoadBalancersResult] {
+	return pulumix.Output[GetLoadBalancersResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetLoadBalancersResultOutput) AddressIpVersion() pulumi.StringPtrOutput {

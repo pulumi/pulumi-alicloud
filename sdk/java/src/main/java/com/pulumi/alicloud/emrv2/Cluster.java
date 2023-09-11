@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * 
  * For information about EMR New and how to use it, see [Add a domain](https://www.alibabacloud.com/help/doc-detail/28068.htm).
  * 
- * &gt; **NOTE:** Available in v1.199.0+.
+ * &gt; **NOTE:** Available since v1.199.0.
  * 
  * ## Example Usage
  * 
@@ -71,16 +71,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
- *             .status(&#34;OK&#34;)
- *             .build());
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableInstanceType(&#34;ecs.g7.xlarge&#34;)
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;TF-VPC&#34;)
+ *             .vpcName(name)
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
  *             .build());
  * 
@@ -88,11 +88,11 @@ import javax.annotation.Nullable;
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/21&#34;)
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .vswitchName(&#34;TF_VSwitch&#34;)
+ *             .vswitchName(name)
  *             .build());
  * 
  *         var defaultEcsKeyPair = new EcsKeyPair(&#34;defaultEcsKeyPair&#34;, EcsKeyPairArgs.builder()        
- *             .keyPairName(&#34;terraform-kp&#34;)
+ *             .keyPairName(name)
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
  *         &#34;Version&#34;: &#34;1&#34;
  *     }
  *             &#34;&#34;&#34;)
- *             .description(&#34;this is a role test.&#34;)
+ *             .description(&#34;this is a role example.&#34;)
  *             .force(true)
  *             .build());
  * 
@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  *             .paymentType(&#34;PayAsYouGo&#34;)
  *             .clusterType(&#34;DATALAKE&#34;)
  *             .releaseVersion(&#34;EMR-5.10.0&#34;)
- *             .clusterName(&#34;terraform-emr-cluster-v2&#34;)
+ *             .clusterName(name)
  *             .deployMode(&#34;NORMAL&#34;)
  *             .securityMode(&#34;NORMAL&#34;)
  *             .applications(            
@@ -216,14 +216,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:emrv2/cluster:Cluster")
 public class Cluster extends com.pulumi.resources.CustomResource {
     /**
-     * The application configurations of EMR cluster.
+     * The application configurations of EMR cluster. See `application_configs` below.
      * 
      */
     @Export(name="applicationConfigs", type=List.class, parameters={ClusterApplicationConfig.class})
     private Output</* @Nullable */ List<ClusterApplicationConfig>> applicationConfigs;
 
     /**
-     * @return The application configurations of EMR cluster.
+     * @return The application configurations of EMR cluster. See `application_configs` below.
      * 
      */
     public Output<Optional<List<ClusterApplicationConfig>>> applicationConfigs() {
@@ -244,14 +244,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.applications;
     }
     /**
-     * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster.
+     * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
      * 
      */
     @Export(name="bootstrapScripts", type=List.class, parameters={ClusterBootstrapScript.class})
     private Output</* @Nullable */ List<ClusterBootstrapScript>> bootstrapScripts;
 
     /**
-     * @return The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster.
+     * @return The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
      * 
      */
     public Output<Optional<List<ClusterBootstrapScript>>> bootstrapScripts() {
@@ -300,28 +300,28 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.deployMode;
     }
     /**
-     * The node attributes of ecs instances which the emr-cluster belongs.
+     * The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
      * 
      */
     @Export(name="nodeAttributes", type=List.class, parameters={ClusterNodeAttribute.class})
     private Output<List<ClusterNodeAttribute>> nodeAttributes;
 
     /**
-     * @return The node attributes of ecs instances which the emr-cluster belongs.
+     * @return The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
      * 
      */
     public Output<List<ClusterNodeAttribute>> nodeAttributes() {
         return this.nodeAttributes;
     }
     /**
-     * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example).
+     * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
      * 
      */
     @Export(name="nodeGroups", type=List.class, parameters={ClusterNodeGroup.class})
     private Output<List<ClusterNodeGroup>> nodeGroups;
 
     /**
-     * @return Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example).
+     * @return Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
      * 
      */
     public Output<List<ClusterNodeGroup>> nodeGroups() {
@@ -384,14 +384,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.securityMode;
     }
     /**
-     * The detail configuration of subscription payment type.
+     * The detail configuration of subscription payment type. See `subscription_config` below.
      * 
      */
     @Export(name="subscriptionConfig", type=ClusterSubscriptionConfig.class, parameters={})
     private Output</* @Nullable */ ClusterSubscriptionConfig> subscriptionConfig;
 
     /**
-     * @return The detail configuration of subscription payment type.
+     * @return The detail configuration of subscription payment type. See `subscription_config` below.
      * 
      */
     public Output<Optional<ClusterSubscriptionConfig>> subscriptionConfig() {

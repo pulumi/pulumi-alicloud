@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source can query the public IP of the specified KVStore DBInstance.
@@ -81,6 +82,12 @@ func (o GetConnectionsResultOutput) ToGetConnectionsResultOutput() GetConnection
 
 func (o GetConnectionsResultOutput) ToGetConnectionsResultOutputWithContext(ctx context.Context) GetConnectionsResultOutput {
 	return o
+}
+
+func (o GetConnectionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectionsResult] {
+	return pulumix.Output[GetConnectionsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Public network details of the specified resource. contains the following attributes:

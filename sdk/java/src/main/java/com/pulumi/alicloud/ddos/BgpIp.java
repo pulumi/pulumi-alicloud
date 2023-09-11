@@ -19,55 +19,9 @@ import javax.annotation.Nullable;
  * 
  * For information about Ddos Bgp Ip and how to use it, see [What is Ip](https://www.alibabacloud.com/help/en/ddos-protection/latest/addip).
  * 
- * &gt; **NOTE:** Available in v1.180.0+.
+ * &gt; **NOTE:** Available since v1.180.0.
  * 
  * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
- * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
- * import com.pulumi.alicloud.ecs.EipAddress;
- * import com.pulumi.alicloud.ecs.EipAddressArgs;
- * import com.pulumi.alicloud.ddos.DdosFunctions;
- * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
- * import com.pulumi.alicloud.ddos.BgpIp;
- * import com.pulumi.alicloud.ddos.BgpIpArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
- * 
- *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
- *             .addressName(var_.name())
- *             .build());
- * 
- *         final var defaultDdosBgpInstances = DdosFunctions.getDdosBgpInstances();
- * 
- *         var defaultBgpIp = new BgpIp(&#34;defaultBgpIp&#34;, BgpIpArgs.builder()        
- *             .instanceId(defaultDdosBgpInstances.applyValue(getDdosBgpInstancesResult -&gt; getDdosBgpInstancesResult.ids()[0]))
- *             .ip(defaultEipAddress.ipAddress())
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Import
  * 

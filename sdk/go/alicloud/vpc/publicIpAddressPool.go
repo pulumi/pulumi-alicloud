@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Vpc Public Ip Address Pool resource.
@@ -227,6 +228,12 @@ func (i *PublicIpAddressPool) ToPublicIpAddressPoolOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(PublicIpAddressPoolOutput)
 }
 
+func (i *PublicIpAddressPool) ToOutput(ctx context.Context) pulumix.Output[*PublicIpAddressPool] {
+	return pulumix.Output[*PublicIpAddressPool]{
+		OutputState: i.ToPublicIpAddressPoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PublicIpAddressPoolArrayInput is an input type that accepts PublicIpAddressPoolArray and PublicIpAddressPoolArrayOutput values.
 // You can construct a concrete instance of `PublicIpAddressPoolArrayInput` via:
 //
@@ -250,6 +257,12 @@ func (i PublicIpAddressPoolArray) ToPublicIpAddressPoolArrayOutput() PublicIpAdd
 
 func (i PublicIpAddressPoolArray) ToPublicIpAddressPoolArrayOutputWithContext(ctx context.Context) PublicIpAddressPoolArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PublicIpAddressPoolArrayOutput)
+}
+
+func (i PublicIpAddressPoolArray) ToOutput(ctx context.Context) pulumix.Output[[]*PublicIpAddressPool] {
+	return pulumix.Output[[]*PublicIpAddressPool]{
+		OutputState: i.ToPublicIpAddressPoolArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PublicIpAddressPoolMapInput is an input type that accepts PublicIpAddressPoolMap and PublicIpAddressPoolMapOutput values.
@@ -277,6 +290,12 @@ func (i PublicIpAddressPoolMap) ToPublicIpAddressPoolMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(PublicIpAddressPoolMapOutput)
 }
 
+func (i PublicIpAddressPoolMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PublicIpAddressPool] {
+	return pulumix.Output[map[string]*PublicIpAddressPool]{
+		OutputState: i.ToPublicIpAddressPoolMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PublicIpAddressPoolOutput struct{ *pulumi.OutputState }
 
 func (PublicIpAddressPoolOutput) ElementType() reflect.Type {
@@ -289,6 +308,12 @@ func (o PublicIpAddressPoolOutput) ToPublicIpAddressPoolOutput() PublicIpAddress
 
 func (o PublicIpAddressPoolOutput) ToPublicIpAddressPoolOutputWithContext(ctx context.Context) PublicIpAddressPoolOutput {
 	return o
+}
+
+func (o PublicIpAddressPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*PublicIpAddressPool] {
+	return pulumix.Output[*PublicIpAddressPool]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The creation time of the resource.
@@ -359,6 +384,12 @@ func (o PublicIpAddressPoolArrayOutput) ToPublicIpAddressPoolArrayOutputWithCont
 	return o
 }
 
+func (o PublicIpAddressPoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PublicIpAddressPool] {
+	return pulumix.Output[[]*PublicIpAddressPool]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PublicIpAddressPoolArrayOutput) Index(i pulumi.IntInput) PublicIpAddressPoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PublicIpAddressPool {
 		return vs[0].([]*PublicIpAddressPool)[vs[1].(int)]
@@ -377,6 +408,12 @@ func (o PublicIpAddressPoolMapOutput) ToPublicIpAddressPoolMapOutput() PublicIpA
 
 func (o PublicIpAddressPoolMapOutput) ToPublicIpAddressPoolMapOutputWithContext(ctx context.Context) PublicIpAddressPoolMapOutput {
 	return o
+}
+
+func (o PublicIpAddressPoolMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PublicIpAddressPool] {
+	return pulumix.Output[map[string]*PublicIpAddressPool]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PublicIpAddressPoolMapOutput) MapIndex(k pulumi.StringInput) PublicIpAddressPoolOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an EDAS deploy group resource, see [What is EDAS Deploy Group](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertdeploygroup).
@@ -199,6 +200,12 @@ func (i *DeployGroup) ToDeployGroupOutputWithContext(ctx context.Context) Deploy
 	return pulumi.ToOutputWithContext(ctx, i).(DeployGroupOutput)
 }
 
+func (i *DeployGroup) ToOutput(ctx context.Context) pulumix.Output[*DeployGroup] {
+	return pulumix.Output[*DeployGroup]{
+		OutputState: i.ToDeployGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DeployGroupArrayInput is an input type that accepts DeployGroupArray and DeployGroupArrayOutput values.
 // You can construct a concrete instance of `DeployGroupArrayInput` via:
 //
@@ -222,6 +229,12 @@ func (i DeployGroupArray) ToDeployGroupArrayOutput() DeployGroupArrayOutput {
 
 func (i DeployGroupArray) ToDeployGroupArrayOutputWithContext(ctx context.Context) DeployGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeployGroupArrayOutput)
+}
+
+func (i DeployGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*DeployGroup] {
+	return pulumix.Output[[]*DeployGroup]{
+		OutputState: i.ToDeployGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DeployGroupMapInput is an input type that accepts DeployGroupMap and DeployGroupMapOutput values.
@@ -249,6 +262,12 @@ func (i DeployGroupMap) ToDeployGroupMapOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DeployGroupMapOutput)
 }
 
+func (i DeployGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DeployGroup] {
+	return pulumix.Output[map[string]*DeployGroup]{
+		OutputState: i.ToDeployGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeployGroupOutput struct{ *pulumi.OutputState }
 
 func (DeployGroupOutput) ElementType() reflect.Type {
@@ -261,6 +280,12 @@ func (o DeployGroupOutput) ToDeployGroupOutput() DeployGroupOutput {
 
 func (o DeployGroupOutput) ToDeployGroupOutputWithContext(ctx context.Context) DeployGroupOutput {
 	return o
+}
+
+func (o DeployGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*DeployGroup] {
+	return pulumix.Output[*DeployGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the application that you want to deploy.
@@ -292,6 +317,12 @@ func (o DeployGroupArrayOutput) ToDeployGroupArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o DeployGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DeployGroup] {
+	return pulumix.Output[[]*DeployGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DeployGroupArrayOutput) Index(i pulumi.IntInput) DeployGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DeployGroup {
 		return vs[0].([]*DeployGroup)[vs[1].(int)]
@@ -310,6 +341,12 @@ func (o DeployGroupMapOutput) ToDeployGroupMapOutput() DeployGroupMapOutput {
 
 func (o DeployGroupMapOutput) ToDeployGroupMapOutputWithContext(ctx context.Context) DeployGroupMapOutput {
 	return o
+}
+
+func (o DeployGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DeployGroup] {
+	return pulumix.Output[map[string]*DeployGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeployGroupMapOutput) MapIndex(k pulumi.StringInput) DeployGroupOutput {

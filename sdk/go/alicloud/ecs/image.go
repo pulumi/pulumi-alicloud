@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a custom image. You can then use a custom image to create ECS instances (RunInstances) or change the system disk for an existing instance (ReplaceSystemDisk).
@@ -345,6 +346,12 @@ func (i *Image) ToImageOutputWithContext(ctx context.Context) ImageOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageOutput)
 }
 
+func (i *Image) ToOutput(ctx context.Context) pulumix.Output[*Image] {
+	return pulumix.Output[*Image]{
+		OutputState: i.ToImageOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ImageArrayInput is an input type that accepts ImageArray and ImageArrayOutput values.
 // You can construct a concrete instance of `ImageArrayInput` via:
 //
@@ -368,6 +375,12 @@ func (i ImageArray) ToImageArrayOutput() ImageArrayOutput {
 
 func (i ImageArray) ToImageArrayOutputWithContext(ctx context.Context) ImageArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageArrayOutput)
+}
+
+func (i ImageArray) ToOutput(ctx context.Context) pulumix.Output[[]*Image] {
+	return pulumix.Output[[]*Image]{
+		OutputState: i.ToImageArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ImageMapInput is an input type that accepts ImageMap and ImageMapOutput values.
@@ -395,6 +408,12 @@ func (i ImageMap) ToImageMapOutputWithContext(ctx context.Context) ImageMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ImageMapOutput)
 }
 
+func (i ImageMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Image] {
+	return pulumix.Output[map[string]*Image]{
+		OutputState: i.ToImageMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ImageOutput struct{ *pulumi.OutputState }
 
 func (ImageOutput) ElementType() reflect.Type {
@@ -407,6 +426,12 @@ func (o ImageOutput) ToImageOutput() ImageOutput {
 
 func (o ImageOutput) ToImageOutputWithContext(ctx context.Context) ImageOutput {
 	return o
+}
+
+func (o ImageOutput) ToOutput(ctx context.Context) pulumix.Output[*Image] {
+	return pulumix.Output[*Image]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x8664`.
@@ -488,6 +513,12 @@ func (o ImageArrayOutput) ToImageArrayOutputWithContext(ctx context.Context) Ima
 	return o
 }
 
+func (o ImageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Image] {
+	return pulumix.Output[[]*Image]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ImageArrayOutput) Index(i pulumi.IntInput) ImageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Image {
 		return vs[0].([]*Image)[vs[1].(int)]
@@ -506,6 +537,12 @@ func (o ImageMapOutput) ToImageMapOutput() ImageMapOutput {
 
 func (o ImageMapOutput) ToImageMapOutputWithContext(ctx context.Context) ImageMapOutput {
 	return o
+}
+
+func (o ImageMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Image] {
+	return pulumix.Output[map[string]*Image]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ImageMapOutput) MapIndex(k pulumi.StringInput) ImageOutput {

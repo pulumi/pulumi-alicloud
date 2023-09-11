@@ -16,14 +16,14 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
     public static final SubnetState Empty = new SubnetState();
 
     /**
-     * CIDR network segment
+     * CIDR network segment.
      * 
      */
     @Import(name="cidr")
     private @Nullable Output<String> cidr;
 
     /**
-     * @return CIDR network segment
+     * @return CIDR network segment.
      * 
      */
     public Optional<Output<String>> cidr() {
@@ -172,14 +172,14 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone ID  of the resource
+     * The zone ID  of the resource.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone ID  of the resource
+     * @return The zone ID  of the resource.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -221,7 +221,7 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cidr CIDR network segment
+         * @param cidr CIDR network segment.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cidr CIDR network segment
+         * @param cidr CIDR network segment.
          * 
          * @return builder
          * 
@@ -437,7 +437,7 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone ID  of the resource
+         * @param zoneId The zone ID  of the resource.
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone ID  of the resource
+         * @param zoneId The zone ID  of the resource.
          * 
          * @return builder
          * 

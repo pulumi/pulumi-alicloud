@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Vpn Ipsec Servers of the current Alibaba Cloud user.
@@ -133,6 +134,12 @@ func (o GetIpsecServersResultOutput) ToGetIpsecServersResultOutput() GetIpsecSer
 
 func (o GetIpsecServersResultOutput) ToGetIpsecServersResultOutputWithContext(ctx context.Context) GetIpsecServersResultOutput {
 	return o
+}
+
+func (o GetIpsecServersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIpsecServersResult] {
+	return pulumix.Output[GetIpsecServersResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

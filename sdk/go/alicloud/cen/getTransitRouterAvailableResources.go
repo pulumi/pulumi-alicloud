@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cen Transit Router Available Resources of the current Alibaba Cloud user.
@@ -102,6 +103,12 @@ func (o GetTransitRouterAvailableResourcesResultOutput) ToGetTransitRouterAvaila
 
 func (o GetTransitRouterAvailableResourcesResultOutput) ToGetTransitRouterAvailableResourcesResultOutputWithContext(ctx context.Context) GetTransitRouterAvailableResourcesResultOutput {
 	return o
+}
+
+func (o GetTransitRouterAvailableResourcesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterAvailableResourcesResult] {
+	return pulumix.Output[GetTransitRouterAvailableResourcesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

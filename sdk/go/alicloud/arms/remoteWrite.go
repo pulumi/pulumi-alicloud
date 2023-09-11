@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Application Real-Time Monitoring Service (ARMS) Remote Write resource.
@@ -236,6 +237,12 @@ func (i *RemoteWrite) ToRemoteWriteOutputWithContext(ctx context.Context) Remote
 	return pulumi.ToOutputWithContext(ctx, i).(RemoteWriteOutput)
 }
 
+func (i *RemoteWrite) ToOutput(ctx context.Context) pulumix.Output[*RemoteWrite] {
+	return pulumix.Output[*RemoteWrite]{
+		OutputState: i.ToRemoteWriteOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RemoteWriteArrayInput is an input type that accepts RemoteWriteArray and RemoteWriteArrayOutput values.
 // You can construct a concrete instance of `RemoteWriteArrayInput` via:
 //
@@ -259,6 +266,12 @@ func (i RemoteWriteArray) ToRemoteWriteArrayOutput() RemoteWriteArrayOutput {
 
 func (i RemoteWriteArray) ToRemoteWriteArrayOutputWithContext(ctx context.Context) RemoteWriteArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RemoteWriteArrayOutput)
+}
+
+func (i RemoteWriteArray) ToOutput(ctx context.Context) pulumix.Output[[]*RemoteWrite] {
+	return pulumix.Output[[]*RemoteWrite]{
+		OutputState: i.ToRemoteWriteArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RemoteWriteMapInput is an input type that accepts RemoteWriteMap and RemoteWriteMapOutput values.
@@ -286,6 +299,12 @@ func (i RemoteWriteMap) ToRemoteWriteMapOutputWithContext(ctx context.Context) R
 	return pulumi.ToOutputWithContext(ctx, i).(RemoteWriteMapOutput)
 }
 
+func (i RemoteWriteMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RemoteWrite] {
+	return pulumix.Output[map[string]*RemoteWrite]{
+		OutputState: i.ToRemoteWriteMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RemoteWriteOutput struct{ *pulumi.OutputState }
 
 func (RemoteWriteOutput) ElementType() reflect.Type {
@@ -298,6 +317,12 @@ func (o RemoteWriteOutput) ToRemoteWriteOutput() RemoteWriteOutput {
 
 func (o RemoteWriteOutput) ToRemoteWriteOutputWithContext(ctx context.Context) RemoteWriteOutput {
 	return o
+}
+
+func (o RemoteWriteOutput) ToOutput(ctx context.Context) pulumix.Output[*RemoteWrite] {
+	return pulumix.Output[*RemoteWrite]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Prometheus instance.
@@ -329,6 +354,12 @@ func (o RemoteWriteArrayOutput) ToRemoteWriteArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o RemoteWriteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RemoteWrite] {
+	return pulumix.Output[[]*RemoteWrite]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RemoteWriteArrayOutput) Index(i pulumi.IntInput) RemoteWriteOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RemoteWrite {
 		return vs[0].([]*RemoteWrite)[vs[1].(int)]
@@ -347,6 +378,12 @@ func (o RemoteWriteMapOutput) ToRemoteWriteMapOutput() RemoteWriteMapOutput {
 
 func (o RemoteWriteMapOutput) ToRemoteWriteMapOutputWithContext(ctx context.Context) RemoteWriteMapOutput {
 	return o
+}
+
+func (o RemoteWriteMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RemoteWrite] {
+	return pulumix.Output[map[string]*RemoteWrite]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RemoteWriteMapOutput) MapIndex(k pulumi.StringInput) RemoteWriteOutput {

@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Eflo Vpd resource.
  * 
- * For information about Eflo Vpd and how to use it, see [What is Vpd](https://help.aliyun.com/document_detail/604976.html).
+ * For information about Eflo Vpd and how to use it, see [What is Vpd](https://www.alibabacloud.com/help/en/pai/user-guide/overview-of-intelligent-computing-lingjun).
  * 
- * &gt; **NOTE:** Available in v1.201.0+.
+ * &gt; **NOTE:** Available since v1.201.0.
  * 
  * ## Example Usage
  * 
@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.eflo.Vpd;
  * import com.pulumi.alicloud.eflo.VpdArgs;
  * import java.util.List;
@@ -45,9 +47,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Vpd(&#34;default&#34;, VpdArgs.builder()        
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ * 
+ *         var defaultVpd = new Vpd(&#34;defaultVpd&#34;, VpdArgs.builder()        
  *             .cidr(&#34;10.0.0.0/8&#34;)
- *             .vpdName(&#34;RMC-Terraform-Test&#34;)
+ *             .vpdName(name)
+ *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
  *             .build());
  * 
  *     }
@@ -66,14 +73,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:eflo/vpd:Vpd")
 public class Vpd extends com.pulumi.resources.CustomResource {
     /**
-     * CIDR network segment
+     * CIDR network segment.
      * 
      */
     @Export(name="cidr", type=String.class, parameters={})
     private Output<String> cidr;
 
     /**
-     * @return CIDR network segment
+     * @return CIDR network segment.
      * 
      */
     public Output<String> cidr() {
@@ -108,14 +115,14 @@ public class Vpd extends com.pulumi.resources.CustomResource {
         return this.gmtModified;
     }
     /**
-     * The Resource group id
+     * The Resource group id.
      * 
      */
     @Export(name="resourceGroupId", type=String.class, parameters={})
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
-     * @return The Resource group id
+     * @return The Resource group id.
      * 
      */
     public Output<Optional<String>> resourceGroupId() {

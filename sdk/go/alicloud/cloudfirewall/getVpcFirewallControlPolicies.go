@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cloud Firewall Vpc Firewall Control Policies of the current Alibaba Cloud user.
@@ -168,6 +169,12 @@ func (o GetVpcFirewallControlPoliciesResultOutput) ToGetVpcFirewallControlPolici
 
 func (o GetVpcFirewallControlPoliciesResultOutput) ToGetVpcFirewallControlPoliciesResultOutputWithContext(ctx context.Context) GetVpcFirewallControlPoliciesResultOutput {
 	return o
+}
+
+func (o GetVpcFirewallControlPoliciesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcFirewallControlPoliciesResult] {
+	return pulumix.Output[GetVpcFirewallControlPoliciesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetVpcFirewallControlPoliciesResultOutput) AclAction() pulumi.StringPtrOutput {

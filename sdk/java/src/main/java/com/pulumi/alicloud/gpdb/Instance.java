@@ -26,6 +26,84 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.47.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.gpdb.GpdbFunctions;
+ * import com.pulumi.alicloud.gpdb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.gpdb.Instance;
+ * import com.pulumi.alicloud.gpdb.InstanceArgs;
+ * import com.pulumi.alicloud.gpdb.inputs.InstanceIpWhitelistArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ * 
+ *         final var defaultZones = GpdbFunctions.getZones();
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .dbInstanceCategory(&#34;HighAvailability&#34;)
+ *             .dbInstanceClass(&#34;gpdb.group.segsdx1&#34;)
+ *             .dbInstanceMode(&#34;StorageElastic&#34;)
+ *             .description(name)
+ *             .engine(&#34;gpdb&#34;)
+ *             .engineVersion(&#34;6.0&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *             .instanceNetworkType(&#34;VPC&#34;)
+ *             .instanceSpec(&#34;2C16G&#34;)
+ *             .masterNodeNum(1)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .privateIpAddress(&#34;1.1.1.1&#34;)
+ *             .segStorageType(&#34;cloud_essd&#34;)
+ *             .segNodeNum(4)
+ *             .storageSize(50)
+ *             .vpcId(defaultNetwork.id())
+ *             .vswitchId(defaultSwitch.id())
+ *             .ipWhitelists(InstanceIpWhitelistArgs.builder()
+ *                 .securityIpList(&#34;127.0.0.1&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * AnalyticDB for PostgreSQL can be imported using the id, e.g.

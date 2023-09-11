@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Msc Sub Contact resource.
@@ -192,6 +193,12 @@ func (i *MscSubContract) ToMscSubContractOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(MscSubContractOutput)
 }
 
+func (i *MscSubContract) ToOutput(ctx context.Context) pulumix.Output[*MscSubContract] {
+	return pulumix.Output[*MscSubContract]{
+		OutputState: i.ToMscSubContractOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MscSubContractArrayInput is an input type that accepts MscSubContractArray and MscSubContractArrayOutput values.
 // You can construct a concrete instance of `MscSubContractArrayInput` via:
 //
@@ -215,6 +222,12 @@ func (i MscSubContractArray) ToMscSubContractArrayOutput() MscSubContractArrayOu
 
 func (i MscSubContractArray) ToMscSubContractArrayOutputWithContext(ctx context.Context) MscSubContractArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MscSubContractArrayOutput)
+}
+
+func (i MscSubContractArray) ToOutput(ctx context.Context) pulumix.Output[[]*MscSubContract] {
+	return pulumix.Output[[]*MscSubContract]{
+		OutputState: i.ToMscSubContractArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MscSubContractMapInput is an input type that accepts MscSubContractMap and MscSubContractMapOutput values.
@@ -242,6 +255,12 @@ func (i MscSubContractMap) ToMscSubContractMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(MscSubContractMapOutput)
 }
 
+func (i MscSubContractMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MscSubContract] {
+	return pulumix.Output[map[string]*MscSubContract]{
+		OutputState: i.ToMscSubContractMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MscSubContractOutput struct{ *pulumi.OutputState }
 
 func (MscSubContractOutput) ElementType() reflect.Type {
@@ -254,6 +273,12 @@ func (o MscSubContractOutput) ToMscSubContractOutput() MscSubContractOutput {
 
 func (o MscSubContractOutput) ToMscSubContractOutputWithContext(ctx context.Context) MscSubContractOutput {
 	return o
+}
+
+func (o MscSubContractOutput) ToOutput(ctx context.Context) pulumix.Output[*MscSubContract] {
+	return pulumix.Output[*MscSubContract]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
@@ -292,6 +317,12 @@ func (o MscSubContractArrayOutput) ToMscSubContractArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o MscSubContractArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MscSubContract] {
+	return pulumix.Output[[]*MscSubContract]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MscSubContractArrayOutput) Index(i pulumi.IntInput) MscSubContractOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MscSubContract {
 		return vs[0].([]*MscSubContract)[vs[1].(int)]
@@ -310,6 +341,12 @@ func (o MscSubContractMapOutput) ToMscSubContractMapOutput() MscSubContractMapOu
 
 func (o MscSubContractMapOutput) ToMscSubContractMapOutputWithContext(ctx context.Context) MscSubContractMapOutput {
 	return o
+}
+
+func (o MscSubContractMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MscSubContract] {
+	return pulumix.Output[map[string]*MscSubContract]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MscSubContractMapOutput) MapIndex(k pulumi.StringInput) MscSubContractOutput {

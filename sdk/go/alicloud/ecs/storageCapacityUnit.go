@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECS Storage Capacity Unit resource.
@@ -210,6 +211,12 @@ func (i *StorageCapacityUnit) ToStorageCapacityUnitOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(StorageCapacityUnitOutput)
 }
 
+func (i *StorageCapacityUnit) ToOutput(ctx context.Context) pulumix.Output[*StorageCapacityUnit] {
+	return pulumix.Output[*StorageCapacityUnit]{
+		OutputState: i.ToStorageCapacityUnitOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StorageCapacityUnitArrayInput is an input type that accepts StorageCapacityUnitArray and StorageCapacityUnitArrayOutput values.
 // You can construct a concrete instance of `StorageCapacityUnitArrayInput` via:
 //
@@ -233,6 +240,12 @@ func (i StorageCapacityUnitArray) ToStorageCapacityUnitArrayOutput() StorageCapa
 
 func (i StorageCapacityUnitArray) ToStorageCapacityUnitArrayOutputWithContext(ctx context.Context) StorageCapacityUnitArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StorageCapacityUnitArrayOutput)
+}
+
+func (i StorageCapacityUnitArray) ToOutput(ctx context.Context) pulumix.Output[[]*StorageCapacityUnit] {
+	return pulumix.Output[[]*StorageCapacityUnit]{
+		OutputState: i.ToStorageCapacityUnitArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // StorageCapacityUnitMapInput is an input type that accepts StorageCapacityUnitMap and StorageCapacityUnitMapOutput values.
@@ -260,6 +273,12 @@ func (i StorageCapacityUnitMap) ToStorageCapacityUnitMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(StorageCapacityUnitMapOutput)
 }
 
+func (i StorageCapacityUnitMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*StorageCapacityUnit] {
+	return pulumix.Output[map[string]*StorageCapacityUnit]{
+		OutputState: i.ToStorageCapacityUnitMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StorageCapacityUnitOutput struct{ *pulumi.OutputState }
 
 func (StorageCapacityUnitOutput) ElementType() reflect.Type {
@@ -272,6 +291,12 @@ func (o StorageCapacityUnitOutput) ToStorageCapacityUnitOutput() StorageCapacity
 
 func (o StorageCapacityUnitOutput) ToStorageCapacityUnitOutputWithContext(ctx context.Context) StorageCapacityUnitOutput {
 	return o
+}
+
+func (o StorageCapacityUnitOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageCapacityUnit] {
+	return pulumix.Output[*StorageCapacityUnit]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The capacity of the Storage Capacity Unit. Unit: GiB. Valid values: `20`, `40`, `100`, `200`, `500`, `1024`, `2048`, `5120`, `10240`, `20480`, and `51200`.
@@ -325,6 +350,12 @@ func (o StorageCapacityUnitArrayOutput) ToStorageCapacityUnitArrayOutputWithCont
 	return o
 }
 
+func (o StorageCapacityUnitArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*StorageCapacityUnit] {
+	return pulumix.Output[[]*StorageCapacityUnit]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StorageCapacityUnitArrayOutput) Index(i pulumi.IntInput) StorageCapacityUnitOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StorageCapacityUnit {
 		return vs[0].([]*StorageCapacityUnit)[vs[1].(int)]
@@ -343,6 +374,12 @@ func (o StorageCapacityUnitMapOutput) ToStorageCapacityUnitMapOutput() StorageCa
 
 func (o StorageCapacityUnitMapOutput) ToStorageCapacityUnitMapOutputWithContext(ctx context.Context) StorageCapacityUnitMapOutput {
 	return o
+}
+
+func (o StorageCapacityUnitMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*StorageCapacityUnit] {
+	return pulumix.Output[map[string]*StorageCapacityUnit]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StorageCapacityUnitMapOutput) MapIndex(k pulumi.StringInput) StorageCapacityUnitOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -54,6 +55,12 @@ func (i GetDedicatedHostAccountsAccountArgs) ToGetDedicatedHostAccountsAccountOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostAccountsAccountOutput)
 }
 
+func (i GetDedicatedHostAccountsAccountArgs) ToOutput(ctx context.Context) pulumix.Output[GetDedicatedHostAccountsAccount] {
+	return pulumix.Output[GetDedicatedHostAccountsAccount]{
+		OutputState: i.ToGetDedicatedHostAccountsAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDedicatedHostAccountsAccountArrayInput is an input type that accepts GetDedicatedHostAccountsAccountArray and GetDedicatedHostAccountsAccountArrayOutput values.
 // You can construct a concrete instance of `GetDedicatedHostAccountsAccountArrayInput` via:
 //
@@ -79,6 +86,12 @@ func (i GetDedicatedHostAccountsAccountArray) ToGetDedicatedHostAccountsAccountA
 	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostAccountsAccountArrayOutput)
 }
 
+func (i GetDedicatedHostAccountsAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDedicatedHostAccountsAccount] {
+	return pulumix.Output[[]GetDedicatedHostAccountsAccount]{
+		OutputState: i.ToGetDedicatedHostAccountsAccountArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDedicatedHostAccountsAccountOutput struct{ *pulumi.OutputState }
 
 func (GetDedicatedHostAccountsAccountOutput) ElementType() reflect.Type {
@@ -91,6 +104,12 @@ func (o GetDedicatedHostAccountsAccountOutput) ToGetDedicatedHostAccountsAccount
 
 func (o GetDedicatedHostAccountsAccountOutput) ToGetDedicatedHostAccountsAccountOutputWithContext(ctx context.Context) GetDedicatedHostAccountsAccountOutput {
 	return o
+}
+
+func (o GetDedicatedHostAccountsAccountOutput) ToOutput(ctx context.Context) pulumix.Output[GetDedicatedHostAccountsAccount] {
+	return pulumix.Output[GetDedicatedHostAccountsAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the Dedicated host account.
@@ -120,6 +139,12 @@ func (o GetDedicatedHostAccountsAccountArrayOutput) ToGetDedicatedHostAccountsAc
 
 func (o GetDedicatedHostAccountsAccountArrayOutput) ToGetDedicatedHostAccountsAccountArrayOutputWithContext(ctx context.Context) GetDedicatedHostAccountsAccountArrayOutput {
 	return o
+}
+
+func (o GetDedicatedHostAccountsAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDedicatedHostAccountsAccount] {
+	return pulumix.Output[[]GetDedicatedHostAccountsAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDedicatedHostAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetDedicatedHostAccountsAccountOutput {
@@ -269,6 +294,12 @@ func (i GetDedicatedHostGroupsGroupArgs) ToGetDedicatedHostGroupsGroupOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostGroupsGroupOutput)
 }
 
+func (i GetDedicatedHostGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetDedicatedHostGroupsGroup] {
+	return pulumix.Output[GetDedicatedHostGroupsGroup]{
+		OutputState: i.ToGetDedicatedHostGroupsGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDedicatedHostGroupsGroupArrayInput is an input type that accepts GetDedicatedHostGroupsGroupArray and GetDedicatedHostGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetDedicatedHostGroupsGroupArrayInput` via:
 //
@@ -294,6 +325,12 @@ func (i GetDedicatedHostGroupsGroupArray) ToGetDedicatedHostGroupsGroupArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostGroupsGroupArrayOutput)
 }
 
+func (i GetDedicatedHostGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDedicatedHostGroupsGroup] {
+	return pulumix.Output[[]GetDedicatedHostGroupsGroup]{
+		OutputState: i.ToGetDedicatedHostGroupsGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDedicatedHostGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetDedicatedHostGroupsGroupOutput) ElementType() reflect.Type {
@@ -306,6 +343,12 @@ func (o GetDedicatedHostGroupsGroupOutput) ToGetDedicatedHostGroupsGroupOutput()
 
 func (o GetDedicatedHostGroupsGroupOutput) ToGetDedicatedHostGroupsGroupOutputWithContext(ctx context.Context) GetDedicatedHostGroupsGroupOutput {
 	return o
+}
+
+func (o GetDedicatedHostGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetDedicatedHostGroupsGroup] {
+	return pulumix.Output[GetDedicatedHostGroupsGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
@@ -464,6 +507,12 @@ func (o GetDedicatedHostGroupsGroupArrayOutput) ToGetDedicatedHostGroupsGroupArr
 	return o
 }
 
+func (o GetDedicatedHostGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDedicatedHostGroupsGroup] {
+	return pulumix.Output[[]GetDedicatedHostGroupsGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetDedicatedHostGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetDedicatedHostGroupsGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDedicatedHostGroupsGroup {
 		return vs[0].([]GetDedicatedHostGroupsGroup)[vs[1].(int)]
@@ -501,6 +550,12 @@ func (i GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArgs) ToGetD
 	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeOutput)
 }
 
+func (i GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArgs) ToOutput(ctx context.Context) pulumix.Output[GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType] {
+	return pulumix.Output[GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType]{
+		OutputState: i.ToGetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArrayInput is an input type that accepts GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArray and GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArrayOutput values.
 // You can construct a concrete instance of `GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArrayInput` via:
 //
@@ -526,6 +581,12 @@ func (i GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArray) ToGet
 	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArrayOutput)
 }
 
+func (i GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType] {
+	return pulumix.Output[[]GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType]{
+		OutputState: i.ToGetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeOutput struct{ *pulumi.OutputState }
 
 func (GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeOutput) ElementType() reflect.Type {
@@ -538,6 +599,12 @@ func (o GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeOutput) ToGe
 
 func (o GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeOutput) ToGetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeOutputWithContext(ctx context.Context) GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeOutput {
 	return o
+}
+
+func (o GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType] {
+	return pulumix.Output[GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeOutput) PlaceHolder() pulumi.StringOutput {
@@ -556,6 +623,12 @@ func (o GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArrayOutput)
 
 func (o GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArrayOutput) ToGetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArrayOutputWithContext(ctx context.Context) GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArrayOutput {
 	return o
+}
+
+func (o GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType] {
+	return pulumix.Output[[]GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArrayOutput) Index(i pulumi.IntInput) GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeOutput {
@@ -597,6 +670,12 @@ func (i GetDedicatedHostGroupsGroupZoneIdListArgs) ToGetDedicatedHostGroupsGroup
 	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostGroupsGroupZoneIdListOutput)
 }
 
+func (i GetDedicatedHostGroupsGroupZoneIdListArgs) ToOutput(ctx context.Context) pulumix.Output[GetDedicatedHostGroupsGroupZoneIdList] {
+	return pulumix.Output[GetDedicatedHostGroupsGroupZoneIdList]{
+		OutputState: i.ToGetDedicatedHostGroupsGroupZoneIdListOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDedicatedHostGroupsGroupZoneIdListArrayInput is an input type that accepts GetDedicatedHostGroupsGroupZoneIdListArray and GetDedicatedHostGroupsGroupZoneIdListArrayOutput values.
 // You can construct a concrete instance of `GetDedicatedHostGroupsGroupZoneIdListArrayInput` via:
 //
@@ -622,6 +701,12 @@ func (i GetDedicatedHostGroupsGroupZoneIdListArray) ToGetDedicatedHostGroupsGrou
 	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostGroupsGroupZoneIdListArrayOutput)
 }
 
+func (i GetDedicatedHostGroupsGroupZoneIdListArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDedicatedHostGroupsGroupZoneIdList] {
+	return pulumix.Output[[]GetDedicatedHostGroupsGroupZoneIdList]{
+		OutputState: i.ToGetDedicatedHostGroupsGroupZoneIdListArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDedicatedHostGroupsGroupZoneIdListOutput struct{ *pulumi.OutputState }
 
 func (GetDedicatedHostGroupsGroupZoneIdListOutput) ElementType() reflect.Type {
@@ -634,6 +719,12 @@ func (o GetDedicatedHostGroupsGroupZoneIdListOutput) ToGetDedicatedHostGroupsGro
 
 func (o GetDedicatedHostGroupsGroupZoneIdListOutput) ToGetDedicatedHostGroupsGroupZoneIdListOutputWithContext(ctx context.Context) GetDedicatedHostGroupsGroupZoneIdListOutput {
 	return o
+}
+
+func (o GetDedicatedHostGroupsGroupZoneIdListOutput) ToOutput(ctx context.Context) pulumix.Output[GetDedicatedHostGroupsGroupZoneIdList] {
+	return pulumix.Output[GetDedicatedHostGroupsGroupZoneIdList]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ZoneIDList of the Dedicated Host Group.
@@ -653,6 +744,12 @@ func (o GetDedicatedHostGroupsGroupZoneIdListArrayOutput) ToGetDedicatedHostGrou
 
 func (o GetDedicatedHostGroupsGroupZoneIdListArrayOutput) ToGetDedicatedHostGroupsGroupZoneIdListArrayOutputWithContext(ctx context.Context) GetDedicatedHostGroupsGroupZoneIdListArrayOutput {
 	return o
+}
+
+func (o GetDedicatedHostGroupsGroupZoneIdListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDedicatedHostGroupsGroupZoneIdList] {
+	return pulumix.Output[[]GetDedicatedHostGroupsGroupZoneIdList]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDedicatedHostGroupsGroupZoneIdListArrayOutput) Index(i pulumi.IntInput) GetDedicatedHostGroupsGroupZoneIdListOutput {
@@ -810,6 +907,12 @@ func (i GetDedicatedHostsHostArgs) ToGetDedicatedHostsHostOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostsHostOutput)
 }
 
+func (i GetDedicatedHostsHostArgs) ToOutput(ctx context.Context) pulumix.Output[GetDedicatedHostsHost] {
+	return pulumix.Output[GetDedicatedHostsHost]{
+		OutputState: i.ToGetDedicatedHostsHostOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDedicatedHostsHostArrayInput is an input type that accepts GetDedicatedHostsHostArray and GetDedicatedHostsHostArrayOutput values.
 // You can construct a concrete instance of `GetDedicatedHostsHostArrayInput` via:
 //
@@ -835,6 +938,12 @@ func (i GetDedicatedHostsHostArray) ToGetDedicatedHostsHostArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostsHostArrayOutput)
 }
 
+func (i GetDedicatedHostsHostArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDedicatedHostsHost] {
+	return pulumix.Output[[]GetDedicatedHostsHost]{
+		OutputState: i.ToGetDedicatedHostsHostArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDedicatedHostsHostOutput struct{ *pulumi.OutputState }
 
 func (GetDedicatedHostsHostOutput) ElementType() reflect.Type {
@@ -847,6 +956,12 @@ func (o GetDedicatedHostsHostOutput) ToGetDedicatedHostsHostOutput() GetDedicate
 
 func (o GetDedicatedHostsHostOutput) ToGetDedicatedHostsHostOutputWithContext(ctx context.Context) GetDedicatedHostsHostOutput {
 	return o
+}
+
+func (o GetDedicatedHostsHostOutput) ToOutput(ctx context.Context) pulumix.Output[GetDedicatedHostsHost] {
+	return pulumix.Output[GetDedicatedHostsHost]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
@@ -1013,6 +1128,12 @@ func (o GetDedicatedHostsHostArrayOutput) ToGetDedicatedHostsHostArrayOutputWith
 	return o
 }
 
+func (o GetDedicatedHostsHostArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDedicatedHostsHost] {
+	return pulumix.Output[[]GetDedicatedHostsHost]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetDedicatedHostsHostArrayOutput) Index(i pulumi.IntInput) GetDedicatedHostsHostOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDedicatedHostsHost {
 		return vs[0].([]GetDedicatedHostsHost)[vs[1].(int)]
@@ -1064,6 +1185,12 @@ func (i GetHostEcsLevelInfosInfoArgs) ToGetHostEcsLevelInfosInfoOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetHostEcsLevelInfosInfoOutput)
 }
 
+func (i GetHostEcsLevelInfosInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GetHostEcsLevelInfosInfo] {
+	return pulumix.Output[GetHostEcsLevelInfosInfo]{
+		OutputState: i.ToGetHostEcsLevelInfosInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetHostEcsLevelInfosInfoArrayInput is an input type that accepts GetHostEcsLevelInfosInfoArray and GetHostEcsLevelInfosInfoArrayOutput values.
 // You can construct a concrete instance of `GetHostEcsLevelInfosInfoArrayInput` via:
 //
@@ -1089,6 +1216,12 @@ func (i GetHostEcsLevelInfosInfoArray) ToGetHostEcsLevelInfosInfoArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetHostEcsLevelInfosInfoArrayOutput)
 }
 
+func (i GetHostEcsLevelInfosInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHostEcsLevelInfosInfo] {
+	return pulumix.Output[[]GetHostEcsLevelInfosInfo]{
+		OutputState: i.ToGetHostEcsLevelInfosInfoArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetHostEcsLevelInfosInfoOutput struct{ *pulumi.OutputState }
 
 func (GetHostEcsLevelInfosInfoOutput) ElementType() reflect.Type {
@@ -1101,6 +1234,12 @@ func (o GetHostEcsLevelInfosInfoOutput) ToGetHostEcsLevelInfosInfoOutput() GetHo
 
 func (o GetHostEcsLevelInfosInfoOutput) ToGetHostEcsLevelInfosInfoOutputWithContext(ctx context.Context) GetHostEcsLevelInfosInfoOutput {
 	return o
+}
+
+func (o GetHostEcsLevelInfosInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GetHostEcsLevelInfosInfo] {
+	return pulumix.Output[GetHostEcsLevelInfosInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the host ecs level info.
@@ -1135,6 +1274,12 @@ func (o GetHostEcsLevelInfosInfoArrayOutput) ToGetHostEcsLevelInfosInfoArrayOutp
 
 func (o GetHostEcsLevelInfosInfoArrayOutput) ToGetHostEcsLevelInfosInfoArrayOutputWithContext(ctx context.Context) GetHostEcsLevelInfosInfoArrayOutput {
 	return o
+}
+
+func (o GetHostEcsLevelInfosInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHostEcsLevelInfosInfo] {
+	return pulumix.Output[[]GetHostEcsLevelInfosInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHostEcsLevelInfosInfoArrayOutput) Index(i pulumi.IntInput) GetHostEcsLevelInfosInfoOutput {
@@ -1184,6 +1329,12 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneOutput)
 }
 
+func (i GetZonesZoneArgs) ToOutput(ctx context.Context) pulumix.Output[GetZonesZone] {
+	return pulumix.Output[GetZonesZone]{
+		OutputState: i.ToGetZonesZoneOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
@@ -1209,6 +1360,12 @@ func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
 }
 
+func (i GetZonesZoneArray) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZone] {
+	return pulumix.Output[[]GetZonesZone]{
+		OutputState: i.ToGetZonesZoneArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneOutput) ElementType() reflect.Type {
@@ -1221,6 +1378,12 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutput() GetZonesZoneOutput {
 
 func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
 	return o
+}
+
+func (o GetZonesZoneOutput) ToOutput(ctx context.Context) pulumix.Output[GetZonesZone] {
+	return pulumix.Output[GetZonesZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the zone.
@@ -1250,6 +1413,12 @@ func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOu
 
 func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
 	return o
+}
+
+func (o GetZonesZoneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZone] {
+	return pulumix.Output[[]GetZonesZone]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {

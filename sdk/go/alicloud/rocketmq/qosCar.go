@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sag qos car resource.
@@ -259,6 +260,12 @@ func (i *QosCar) ToQosCarOutputWithContext(ctx context.Context) QosCarOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QosCarOutput)
 }
 
+func (i *QosCar) ToOutput(ctx context.Context) pulumix.Output[*QosCar] {
+	return pulumix.Output[*QosCar]{
+		OutputState: i.ToQosCarOutputWithContext(ctx).OutputState,
+	}
+}
+
 // QosCarArrayInput is an input type that accepts QosCarArray and QosCarArrayOutput values.
 // You can construct a concrete instance of `QosCarArrayInput` via:
 //
@@ -282,6 +289,12 @@ func (i QosCarArray) ToQosCarArrayOutput() QosCarArrayOutput {
 
 func (i QosCarArray) ToQosCarArrayOutputWithContext(ctx context.Context) QosCarArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QosCarArrayOutput)
+}
+
+func (i QosCarArray) ToOutput(ctx context.Context) pulumix.Output[[]*QosCar] {
+	return pulumix.Output[[]*QosCar]{
+		OutputState: i.ToQosCarArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // QosCarMapInput is an input type that accepts QosCarMap and QosCarMapOutput values.
@@ -309,6 +322,12 @@ func (i QosCarMap) ToQosCarMapOutputWithContext(ctx context.Context) QosCarMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(QosCarMapOutput)
 }
 
+func (i QosCarMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*QosCar] {
+	return pulumix.Output[map[string]*QosCar]{
+		OutputState: i.ToQosCarMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type QosCarOutput struct{ *pulumi.OutputState }
 
 func (QosCarOutput) ElementType() reflect.Type {
@@ -321,6 +340,12 @@ func (o QosCarOutput) ToQosCarOutput() QosCarOutput {
 
 func (o QosCarOutput) ToQosCarOutputWithContext(ctx context.Context) QosCarOutput {
 	return o
+}
+
+func (o QosCarOutput) ToOutput(ctx context.Context) pulumix.Output[*QosCar] {
+	return pulumix.Output[*QosCar]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the QoS speed limiting rule.
@@ -387,6 +412,12 @@ func (o QosCarArrayOutput) ToQosCarArrayOutputWithContext(ctx context.Context) Q
 	return o
 }
 
+func (o QosCarArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*QosCar] {
+	return pulumix.Output[[]*QosCar]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o QosCarArrayOutput) Index(i pulumi.IntInput) QosCarOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *QosCar {
 		return vs[0].([]*QosCar)[vs[1].(int)]
@@ -405,6 +436,12 @@ func (o QosCarMapOutput) ToQosCarMapOutput() QosCarMapOutput {
 
 func (o QosCarMapOutput) ToQosCarMapOutputWithContext(ctx context.Context) QosCarMapOutput {
 	return o
+}
+
+func (o QosCarMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*QosCar] {
+	return pulumix.Output[map[string]*QosCar]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QosCarMapOutput) MapIndex(k pulumi.StringInput) QosCarOutput {

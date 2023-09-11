@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetApplicationInfos(ctx *pulumi.Context, args *GetApplicationInfosArgs, opts ...pulumi.InvokeOption) (*GetApplicationInfosResult, error) {
@@ -93,6 +94,12 @@ func (o GetApplicationInfosResultOutput) ToGetApplicationInfosResultOutput() Get
 
 func (o GetApplicationInfosResultOutput) ToGetApplicationInfosResultOutputWithContext(ctx context.Context) GetApplicationInfosResultOutput {
 	return o
+}
+
+func (o GetApplicationInfosResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationInfosResult] {
+	return pulumix.Output[GetApplicationInfosResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetApplicationInfosResultOutput) Applications() GetApplicationInfosApplicationArrayOutput {

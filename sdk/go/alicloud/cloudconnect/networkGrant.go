@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Connect Network Grant resource. If the CEN instance to be attached belongs to another account, authorization by the CEN instance is required.
@@ -215,6 +216,12 @@ func (i *NetworkGrant) ToNetworkGrantOutputWithContext(ctx context.Context) Netw
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkGrantOutput)
 }
 
+func (i *NetworkGrant) ToOutput(ctx context.Context) pulumix.Output[*NetworkGrant] {
+	return pulumix.Output[*NetworkGrant]{
+		OutputState: i.ToNetworkGrantOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NetworkGrantArrayInput is an input type that accepts NetworkGrantArray and NetworkGrantArrayOutput values.
 // You can construct a concrete instance of `NetworkGrantArrayInput` via:
 //
@@ -238,6 +245,12 @@ func (i NetworkGrantArray) ToNetworkGrantArrayOutput() NetworkGrantArrayOutput {
 
 func (i NetworkGrantArray) ToNetworkGrantArrayOutputWithContext(ctx context.Context) NetworkGrantArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkGrantArrayOutput)
+}
+
+func (i NetworkGrantArray) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkGrant] {
+	return pulumix.Output[[]*NetworkGrant]{
+		OutputState: i.ToNetworkGrantArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NetworkGrantMapInput is an input type that accepts NetworkGrantMap and NetworkGrantMapOutput values.
@@ -265,6 +278,12 @@ func (i NetworkGrantMap) ToNetworkGrantMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkGrantMapOutput)
 }
 
+func (i NetworkGrantMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkGrant] {
+	return pulumix.Output[map[string]*NetworkGrant]{
+		OutputState: i.ToNetworkGrantMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NetworkGrantOutput struct{ *pulumi.OutputState }
 
 func (NetworkGrantOutput) ElementType() reflect.Type {
@@ -277,6 +296,12 @@ func (o NetworkGrantOutput) ToNetworkGrantOutput() NetworkGrantOutput {
 
 func (o NetworkGrantOutput) ToNetworkGrantOutputWithContext(ctx context.Context) NetworkGrantOutput {
 	return o
+}
+
+func (o NetworkGrantOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkGrant] {
+	return pulumix.Output[*NetworkGrant]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the CCN instance.
@@ -308,6 +333,12 @@ func (o NetworkGrantArrayOutput) ToNetworkGrantArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o NetworkGrantArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkGrant] {
+	return pulumix.Output[[]*NetworkGrant]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkGrantArrayOutput) Index(i pulumi.IntInput) NetworkGrantOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkGrant {
 		return vs[0].([]*NetworkGrant)[vs[1].(int)]
@@ -326,6 +357,12 @@ func (o NetworkGrantMapOutput) ToNetworkGrantMapOutput() NetworkGrantMapOutput {
 
 func (o NetworkGrantMapOutput) ToNetworkGrantMapOutputWithContext(ctx context.Context) NetworkGrantMapOutput {
 	return o
+}
+
+func (o NetworkGrantMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkGrant] {
+	return pulumix.Output[map[string]*NetworkGrant]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkGrantMapOutput) MapIndex(k pulumi.StringInput) NetworkGrantOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Application Real-Time Monitoring Service (ARMS) Alert Contact Group resource.
@@ -164,6 +165,12 @@ func (i *AlertContactGroup) ToAlertContactGroupOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AlertContactGroupOutput)
 }
 
+func (i *AlertContactGroup) ToOutput(ctx context.Context) pulumix.Output[*AlertContactGroup] {
+	return pulumix.Output[*AlertContactGroup]{
+		OutputState: i.ToAlertContactGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AlertContactGroupArrayInput is an input type that accepts AlertContactGroupArray and AlertContactGroupArrayOutput values.
 // You can construct a concrete instance of `AlertContactGroupArrayInput` via:
 //
@@ -187,6 +194,12 @@ func (i AlertContactGroupArray) ToAlertContactGroupArrayOutput() AlertContactGro
 
 func (i AlertContactGroupArray) ToAlertContactGroupArrayOutputWithContext(ctx context.Context) AlertContactGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlertContactGroupArrayOutput)
+}
+
+func (i AlertContactGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*AlertContactGroup] {
+	return pulumix.Output[[]*AlertContactGroup]{
+		OutputState: i.ToAlertContactGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AlertContactGroupMapInput is an input type that accepts AlertContactGroupMap and AlertContactGroupMapOutput values.
@@ -214,6 +227,12 @@ func (i AlertContactGroupMap) ToAlertContactGroupMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AlertContactGroupMapOutput)
 }
 
+func (i AlertContactGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AlertContactGroup] {
+	return pulumix.Output[map[string]*AlertContactGroup]{
+		OutputState: i.ToAlertContactGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlertContactGroupOutput struct{ *pulumi.OutputState }
 
 func (AlertContactGroupOutput) ElementType() reflect.Type {
@@ -226,6 +245,12 @@ func (o AlertContactGroupOutput) ToAlertContactGroupOutput() AlertContactGroupOu
 
 func (o AlertContactGroupOutput) ToAlertContactGroupOutputWithContext(ctx context.Context) AlertContactGroupOutput {
 	return o
+}
+
+func (o AlertContactGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertContactGroup] {
+	return pulumix.Output[*AlertContactGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the resource.
@@ -252,6 +277,12 @@ func (o AlertContactGroupArrayOutput) ToAlertContactGroupArrayOutputWithContext(
 	return o
 }
 
+func (o AlertContactGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AlertContactGroup] {
+	return pulumix.Output[[]*AlertContactGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AlertContactGroupArrayOutput) Index(i pulumi.IntInput) AlertContactGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AlertContactGroup {
 		return vs[0].([]*AlertContactGroup)[vs[1].(int)]
@@ -270,6 +301,12 @@ func (o AlertContactGroupMapOutput) ToAlertContactGroupMapOutput() AlertContactG
 
 func (o AlertContactGroupMapOutput) ToAlertContactGroupMapOutputWithContext(ctx context.Context) AlertContactGroupMapOutput {
 	return o
+}
+
+func (o AlertContactGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AlertContactGroup] {
+	return pulumix.Output[map[string]*AlertContactGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertContactGroupMapOutput) MapIndex(k pulumi.StringInput) AlertContactGroupOutput {

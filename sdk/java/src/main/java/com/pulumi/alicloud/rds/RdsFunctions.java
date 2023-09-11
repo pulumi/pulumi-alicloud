@@ -1908,6 +1908,8 @@ public final class RdsFunctions {
      * The `alicloud.rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
      * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
      * 
+     * &gt; **NOTE:** Available since v1.7.0+
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1951,6 +1953,8 @@ public final class RdsFunctions {
     /**
      * The `alicloud.rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
      * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+     * 
+     * &gt; **NOTE:** Available since v1.7.0+
      * 
      * ## Example Usage
      * ```java
@@ -1996,6 +2000,8 @@ public final class RdsFunctions {
      * The `alicloud.rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
      * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
      * 
+     * &gt; **NOTE:** Available since v1.7.0+
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -2039,6 +2045,8 @@ public final class RdsFunctions {
     /**
      * The `alicloud.rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
      * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+     * 
+     * &gt; **NOTE:** Available since v1.7.0+
      * 
      * ## Example Usage
      * ```java
@@ -2084,6 +2092,8 @@ public final class RdsFunctions {
      * The `alicloud.rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
      * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
      * 
+     * &gt; **NOTE:** Available since v1.7.0+
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -2127,6 +2137,8 @@ public final class RdsFunctions {
     /**
      * The `alicloud.rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
      * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+     * 
+     * &gt; **NOTE:** Available since v1.7.0+
      * 
      * ## Example Usage
      * ```java
