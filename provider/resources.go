@@ -2509,11 +2509,15 @@ func Provider() tfbridge.ProviderInfo {
 				"@pulumi/pulumi": "^3.0.0",
 			},
 		},
-		Python: &tfbridge.PythonInfo{
-			Requires: map[string]string{
-				"pulumi": ">=3.0.0,<4.0.0",
-			},
-		},
+		Python: (func() *tfbridge.PythonInfo {
+			i := &tfbridge.PythonInfo{
+				Requires: map[string]string{
+					"pulumi": ">=3.0.0,<4.0.0",
+				}}
+			i.PyProject.Enabled = true
+			return i
+		})(),
+
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
 				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", alicloudPkg),
