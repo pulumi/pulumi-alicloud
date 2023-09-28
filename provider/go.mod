@@ -3,11 +3,10 @@ module github.com/pulumi/pulumi-alicloud/provider/v3
 go 1.21
 
 replace (
-	github.com/Sirupsen/logrus => github.com/sirupsen/logrus v0.0.0-20181010200618-458213699411
-	github.com/aliyun/aliyun-tablestore-go-sdk => github.com/aliyun/aliyun-tablestore-go-sdk v1.7.6
-	github.com/hashicorp/go-getter => github.com/hashicorp/go-getter v1.4.0
-	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
-	github.com/spf13/afero => github.com/spf13/afero v1.2.2
+	// We depend on the latest v1 for compatibility.
+	github.com/aliyun/aliyun-tablestore-go-sdk => github.com/aliyun/aliyun-tablestore-go-sdk v1.7.11
+	// Afero v1.5 has changes that cause linking errors against terraform-plugin-sdk@v1.17.2.
+	github.com/spf13/afero => github.com/spf13/afero v1.4.1
 )
 
 require (
