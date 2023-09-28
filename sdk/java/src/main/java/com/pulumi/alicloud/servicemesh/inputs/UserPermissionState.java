@@ -18,14 +18,14 @@ public final class UserPermissionState extends com.pulumi.resources.ResourceArgs
     public static final UserPermissionState Empty = new UserPermissionState();
 
     /**
-     * List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+     * List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
      * 
      */
     @Import(name="permissions")
     private @Nullable Output<List<UserPermissionPermissionArgs>> permissions;
 
     /**
-     * @return List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+     * @return List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
      * 
      */
     public Optional<Output<List<UserPermissionPermissionArgs>>> permissions() {
@@ -73,7 +73,7 @@ public final class UserPermissionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param permissions List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+         * @param permissions List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class UserPermissionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param permissions List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+         * @param permissions List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class UserPermissionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param permissions List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+         * @param permissions List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
          * 
          * @return builder
          * 

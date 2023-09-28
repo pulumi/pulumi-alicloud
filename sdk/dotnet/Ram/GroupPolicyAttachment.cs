@@ -28,7 +28,6 @@ namespace Pulumi.AliCloud.Ram
     ///     var @group = new AliCloud.Ram.Group("group", new()
     ///     {
     ///         Comments = "this is a group comments.",
-    ///         Force = true,
     ///     });
     /// 
     ///     var policy = new AliCloud.Ram.Policy("policy", new()
@@ -51,7 +50,6 @@ namespace Pulumi.AliCloud.Ram
     ///     }
     /// ",
     ///         Description = "this is a policy test",
-    ///         Force = true,
     ///     });
     /// 
     ///     var attach = new AliCloud.Ram.GroupPolicyAttachment("attach", new()

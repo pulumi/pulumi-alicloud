@@ -1018,25 +1018,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * Field &#39;subnet_id&#39; has been deprecated from version 1.177.0, and use field &#39;vswitch_id&#39; to replace.
-     * 
-     */
-    @Deprecated /* Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.  */
-    @Import(name="subnetId")
-    private @Nullable Output<String> subnetId;
-
-    /**
-     * @deprecated
-     * Field &#39;subnet_id&#39; has been deprecated from version 1.177.0, and use field &#39;vswitch_id&#39; to replace.
-     * 
-     */
-    @Deprecated /* Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.  */
-    public Optional<Output<String>> subnetId() {
-        return Optional.ofNullable(this.subnetId);
-    }
-
-    /**
      * The ID of the automatic snapshot policy applied to the system disk.
      * 
      */
@@ -1109,6 +1090,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> systemDiskEncrypted() {
         return Optional.ofNullable(this.systemDiskEncrypted);
+    }
+
+    /**
+     * (Available since v1.210.0) The ID of system disk.
+     * 
+     */
+    @Import(name="systemDiskId")
+    private @Nullable Output<String> systemDiskId;
+
+    /**
+     * @return (Available since v1.210.0) The ID of system disk.
+     * 
+     */
+    public Optional<Output<String>> systemDiskId() {
+        return Optional.ofNullable(this.systemDiskId);
     }
 
     /**
@@ -1309,12 +1305,12 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.spotStrategy = $.spotStrategy;
         this.status = $.status;
         this.stoppedMode = $.stoppedMode;
-        this.subnetId = $.subnetId;
         this.systemDiskAutoSnapshotPolicyId = $.systemDiskAutoSnapshotPolicyId;
         this.systemDiskCategory = $.systemDiskCategory;
         this.systemDiskDescription = $.systemDiskDescription;
         this.systemDiskEncryptAlgorithm = $.systemDiskEncryptAlgorithm;
         this.systemDiskEncrypted = $.systemDiskEncrypted;
+        this.systemDiskId = $.systemDiskId;
         this.systemDiskKmsKeyId = $.systemDiskKmsKeyId;
         this.systemDiskName = $.systemDiskName;
         this.systemDiskPerformanceLevel = $.systemDiskPerformanceLevel;
@@ -2735,31 +2731,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;subnet_id&#39; has been deprecated from version 1.177.0, and use field &#39;vswitch_id&#39; to replace.
-         * 
-         */
-        @Deprecated /* Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.  */
-        public Builder subnetId(@Nullable Output<String> subnetId) {
-            $.subnetId = subnetId;
-            return this;
-        }
-
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;subnet_id&#39; has been deprecated from version 1.177.0, and use field &#39;vswitch_id&#39; to replace.
-         * 
-         */
-        @Deprecated /* Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.  */
-        public Builder subnetId(String subnetId) {
-            return subnetId(Output.of(subnetId));
-        }
-
-        /**
          * @param systemDiskAutoSnapshotPolicyId The ID of the automatic snapshot policy applied to the system disk.
          * 
          * @return builder
@@ -2862,6 +2833,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder systemDiskEncrypted(Boolean systemDiskEncrypted) {
             return systemDiskEncrypted(Output.of(systemDiskEncrypted));
+        }
+
+        /**
+         * @param systemDiskId (Available since v1.210.0) The ID of system disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskId(@Nullable Output<String> systemDiskId) {
+            $.systemDiskId = systemDiskId;
+            return this;
+        }
+
+        /**
+         * @param systemDiskId (Available since v1.210.0) The ID of system disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskId(String systemDiskId) {
+            return systemDiskId(Output.of(systemDiskId));
         }
 
         /**

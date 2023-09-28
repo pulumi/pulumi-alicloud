@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
     /// 
     /// For information about Service Catalog Portfolio and how to use it, see [What is Portfolio](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-createportfolio).
     /// 
-    /// &gt; **NOTE:** Available in v1.204.0+.
+    /// &gt; **NOTE:** Available since v1.204.0+.
     /// 
     /// ## Example Usage
     /// 
@@ -28,10 +28,12 @@ namespace Pulumi.AliCloud.ServiceCatalog
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
     ///     var @default = new AliCloud.ServiceCatalog.Portfolio("default", new()
     ///     {
-    ///         PortfolioName = "example_value",
-    ///         ProviderName = "example_value",
+    ///         PortfolioName = name,
+    ///         ProviderName = name,
     ///     });
     /// 
     /// });

@@ -30,14 +30,14 @@ public final class HoneypotPresetArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Honeypot template custom parameters. See the following `Block meta`.
+     * Honeypot template custom parameters. See `meta` below.
      * 
      */
     @Import(name="meta", required=true)
     private Output<HoneypotPresetMetaArgs> meta;
 
     /**
-     * @return Honeypot template custom parameters. See the following `Block meta`.
+     * @return Honeypot template custom parameters. See `meta` below.
      * 
      */
     public Output<HoneypotPresetMetaArgs> meta() {
@@ -123,7 +123,7 @@ public final class HoneypotPresetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param meta Honeypot template custom parameters. See the following `Block meta`.
+         * @param meta Honeypot template custom parameters. See `meta` below.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class HoneypotPresetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param meta Honeypot template custom parameters. See the following `Block meta`.
+         * @param meta Honeypot template custom parameters. See `meta` below.
          * 
          * @return builder
          * 

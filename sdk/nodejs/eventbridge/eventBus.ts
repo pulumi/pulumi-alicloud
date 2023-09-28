@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Event Bridge Event Bus resource.
  *
- * For information about Event Bridge Event Bus and how to use it, see [What is Event Bus](https://help.aliyun.com/document_detail/167863.html).
+ * For information about Event Bridge Event Bus and how to use it, see [What is Event Bus](https://www.alibabacloud.com/help/en/eventbridge/latest/api-eventbridge-2020-04-01-createeventbus).
  *
- * > **NOTE:** Available in v1.129.0+.
+ * > **NOTE:** Available since v1.129.0.
  *
  * ## Example Usage
  *
@@ -19,7 +19,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.eventbridge.EventBus("example", {eventBusName: "my-EventBus"});
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const example = new alicloud.eventbridge.EventBus("example", {eventBusName: name});
  * ```
  *
  * ## Import

@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Event Bridge Event Source resource.
  *
- * For information about Event Bridge Event Source and how to use it, see [What is Event Source](https://www.alibabacloud.com/help/doc-detail/188425.htm).
+ * For information about Event Bridge Event Source and how to use it, see [What is Event Source](https://www.alibabacloud.com/help/en/eventbridge/latest/api-eventbridge-2020-04-01-createeventsource).
  *
- * > **NOTE:** Available in v1.130.0+.
+ * > **NOTE:** Available since v1.130.0.
  *
  * ## Example Usage
  *
@@ -19,15 +19,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.eventbridge.EventSource("example", {
- *     description: "tf-test",
- *     eventBusName: "bus_name",
- *     eventSourceName: "tftest",
- *     externalSourceConfig: {
- *         QueueName: "mns_queuqe_name",
- *     },
- *     externalSourceType: "MNS",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const exampleEventBus = new alicloud.eventbridge.EventBus("exampleEventBus", {eventBusName: name});
+ * const exampleQueue = new alicloud.mns.Queue("exampleQueue", {});
+ * const exampleEventSource = new alicloud.eventbridge.EventSource("exampleEventSource", {
+ *     eventBusName: exampleEventBus.eventBusName,
+ *     eventSourceName: name,
+ *     description: name,
  *     linkedExternalSource: true,
+ *     externalSourceType: "MNS",
+ *     externalSourceConfig: {
+ *         QueueName: exampleQueue.name,
+ *     },
  * });
  * ```
  *

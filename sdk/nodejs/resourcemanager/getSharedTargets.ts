@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Resource Manager Shared Targets of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.111.0+.
+ * > **NOTE:** Available since v1.111.0.
  *
  * ## Example Usage
  *
@@ -19,10 +19,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = alicloud.resourcemanager.getSharedTargets({
- *     ids: ["15681091********"],
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultAccounts = alicloud.resourcemanager.getAccounts({});
+ * const defaultResourceShare = new alicloud.resourcemanager.ResourceShare("defaultResourceShare", {resourceShareName: name});
+ * const defaultSharedTarget = new alicloud.resourcemanager.SharedTarget("defaultSharedTarget", {
+ *     resourceShareId: defaultResourceShare.id,
+ *     targetId: defaultAccounts.then(defaultAccounts => defaultAccounts.ids?.[0]),
  * });
- * export const firstResourceManagerSharedTargetId = example.then(example => example.targets?.[0]?.id);
+ * const ids = alicloud.resourcemanager.getSharedTargetsOutput({
+ *     ids: [defaultSharedTarget.targetId],
+ * });
+ * export const firstResourceManagerSharedTargetId = ids.apply(ids => ids.targets?.[0]?.id);
+ * const resourceShareId = alicloud.resourcemanager.getSharedTargetsOutput({
+ *     resourceShareId: defaultSharedTarget.resourceShareId,
+ * });
+ * export const secondResourceManagerSharedTargetId = resourceShareId.apply(resourceShareId => resourceShareId.targets?.[0]?.id);
  * ```
  */
 export function getSharedTargets(args?: GetSharedTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetSharedTargetsResult> {
@@ -50,11 +62,11 @@ export interface GetSharedTargetsArgs {
      */
     outputFile?: string;
     /**
-     * The resource shared ID of resource manager.
+     * The resource share ID of resource manager.
      */
     resourceShareId?: string;
     /**
-     * The status of shared target.
+     * The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
      */
     status?: string;
 }
@@ -69,14 +81,23 @@ export interface GetSharedTargetsResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * The resource shared ID of resource manager.
+     */
     readonly resourceShareId?: string;
+    /**
+     * The status of shared target.
+     */
     readonly status?: string;
+    /**
+     * A list of Resource Manager Shared Targets. Each element contains the following attributes:
+     */
     readonly targets: outputs.resourcemanager.GetSharedTargetsTarget[];
 }
 /**
  * This data source provides the Resource Manager Shared Targets of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.111.0+.
+ * > **NOTE:** Available since v1.111.0.
  *
  * ## Example Usage
  *
@@ -86,10 +107,22 @@ export interface GetSharedTargetsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = alicloud.resourcemanager.getSharedTargets({
- *     ids: ["15681091********"],
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultAccounts = alicloud.resourcemanager.getAccounts({});
+ * const defaultResourceShare = new alicloud.resourcemanager.ResourceShare("defaultResourceShare", {resourceShareName: name});
+ * const defaultSharedTarget = new alicloud.resourcemanager.SharedTarget("defaultSharedTarget", {
+ *     resourceShareId: defaultResourceShare.id,
+ *     targetId: defaultAccounts.then(defaultAccounts => defaultAccounts.ids?.[0]),
  * });
- * export const firstResourceManagerSharedTargetId = example.then(example => example.targets?.[0]?.id);
+ * const ids = alicloud.resourcemanager.getSharedTargetsOutput({
+ *     ids: [defaultSharedTarget.targetId],
+ * });
+ * export const firstResourceManagerSharedTargetId = ids.apply(ids => ids.targets?.[0]?.id);
+ * const resourceShareId = alicloud.resourcemanager.getSharedTargetsOutput({
+ *     resourceShareId: defaultSharedTarget.resourceShareId,
+ * });
+ * export const secondResourceManagerSharedTargetId = resourceShareId.apply(resourceShareId => resourceShareId.targets?.[0]?.id);
  * ```
  */
 export function getSharedTargetsOutput(args?: GetSharedTargetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSharedTargetsResult> {
@@ -109,11 +142,11 @@ export interface GetSharedTargetsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The resource shared ID of resource manager.
+     * The resource share ID of resource manager.
      */
     resourceShareId?: pulumi.Input<string>;
     /**
-     * The status of shared target.
+     * The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
      */
     status?: pulumi.Input<string>;
 }

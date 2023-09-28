@@ -120,7 +120,7 @@ def get_instance_engines(engine: Optional[str] = None,
     """
     This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
 
-    > **NOTE:** Available in v1.51.0+
+    > **NOTE:** Available since v1.51.0
 
     ## Example Usage
 
@@ -173,7 +173,7 @@ def get_instance_engines_output(engine: Optional[pulumi.Input[Optional[str]]] = 
     """
     This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
 
-    > **NOTE:** Available in v1.51.0+
+    > **NOTE:** Available since v1.51.0
 
     ## Example Usage
 

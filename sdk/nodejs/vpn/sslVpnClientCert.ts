@@ -5,17 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const foo = new alicloud.vpn.SslVpnClientCert("foo", {sslVpnServerId: "ssl_vpn_server_fake_id"});
- * ```
- *
  * ## Import
  *
  * SSL-VPN client certificates can be imported using the id, e.g.

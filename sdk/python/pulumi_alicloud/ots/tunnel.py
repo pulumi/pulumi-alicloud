@@ -264,7 +264,7 @@ class Tunnel(pulumi.CustomResource):
 
         For information about OTS tunnel and how to use it, see [Tunnel overview](https://www.alibabacloud.com/help/en/tablestore/latest/tunnel-service-overview).
 
-        > **NOTE:** Available in v1.172.0+.
+        > **NOTE:** Available since v1.172.0.
 
         ## Example Usage
 
@@ -275,17 +275,21 @@ class Tunnel(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraformtest"
-        foo_instance = alicloud.ots.Instance("fooInstance",
+            name = "tf-example"
+        default_instance = alicloud.ots.Instance("defaultInstance",
             description=name,
             accessed_by="Any",
             tags={
                 "Created": "TF",
-                "For": "acceptance test",
+                "For": "example",
             })
-        foo_table = alicloud.ots.Table("fooTable",
-            instance_name=foo_instance.name,
-            table_name=name,
+        default_table = alicloud.ots.Table("defaultTable",
+            instance_name=default_instance.name,
+            table_name="tf_example",
+            time_to_live=-1,
+            max_version=1,
+            enable_sse=True,
+            sse_key_type="SSE_KMS_SERVICE",
             primary_keys=[
                 alicloud.ots.TablePrimaryKeyArgs(
                     name="pk1",
@@ -299,14 +303,11 @@ class Tunnel(pulumi.CustomResource):
                     name="pk3",
                     type="Binary",
                 ),
-            ],
-            time_to_live=-1,
-            max_version=1,
-            deviation_cell_version_in_sec="1")
-        foo_tunnel = alicloud.ots.Tunnel("fooTunnel",
-            instance_name=foo_instance.name,
-            table_name=foo_table.table_name,
-            tunnel_name=name,
+            ])
+        default_tunnel = alicloud.ots.Tunnel("defaultTunnel",
+            instance_name=default_instance.name,
+            table_name=default_table.table_name,
+            tunnel_name="tf_example",
             tunnel_type="BaseAndStream")
         ```
 
@@ -336,7 +337,7 @@ class Tunnel(pulumi.CustomResource):
 
         For information about OTS tunnel and how to use it, see [Tunnel overview](https://www.alibabacloud.com/help/en/tablestore/latest/tunnel-service-overview).
 
-        > **NOTE:** Available in v1.172.0+.
+        > **NOTE:** Available since v1.172.0.
 
         ## Example Usage
 
@@ -347,17 +348,21 @@ class Tunnel(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraformtest"
-        foo_instance = alicloud.ots.Instance("fooInstance",
+            name = "tf-example"
+        default_instance = alicloud.ots.Instance("defaultInstance",
             description=name,
             accessed_by="Any",
             tags={
                 "Created": "TF",
-                "For": "acceptance test",
+                "For": "example",
             })
-        foo_table = alicloud.ots.Table("fooTable",
-            instance_name=foo_instance.name,
-            table_name=name,
+        default_table = alicloud.ots.Table("defaultTable",
+            instance_name=default_instance.name,
+            table_name="tf_example",
+            time_to_live=-1,
+            max_version=1,
+            enable_sse=True,
+            sse_key_type="SSE_KMS_SERVICE",
             primary_keys=[
                 alicloud.ots.TablePrimaryKeyArgs(
                     name="pk1",
@@ -371,14 +376,11 @@ class Tunnel(pulumi.CustomResource):
                     name="pk3",
                     type="Binary",
                 ),
-            ],
-            time_to_live=-1,
-            max_version=1,
-            deviation_cell_version_in_sec="1")
-        foo_tunnel = alicloud.ots.Tunnel("fooTunnel",
-            instance_name=foo_instance.name,
-            table_name=foo_table.table_name,
-            tunnel_name=name,
+            ])
+        default_tunnel = alicloud.ots.Tunnel("defaultTunnel",
+            instance_name=default_instance.name,
+            table_name=default_table.table_name,
+            tunnel_name="tf_example",
             tunnel_type="BaseAndStream")
         ```
 

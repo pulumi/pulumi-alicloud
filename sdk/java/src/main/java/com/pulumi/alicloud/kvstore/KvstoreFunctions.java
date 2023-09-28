@@ -239,7 +239,7 @@ public final class KvstoreFunctions {
     /**
      * This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.49.0+
+     * &gt; **NOTE:** Available since v1.49.0+
      * 
      * ## Example Usage
      * ```java
@@ -289,7 +289,7 @@ public final class KvstoreFunctions {
     /**
      * This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.49.0+
+     * &gt; **NOTE:** Available since v1.49.0+
      * 
      * ## Example Usage
      * ```java
@@ -339,7 +339,7 @@ public final class KvstoreFunctions {
     /**
      * This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.49.0+
+     * &gt; **NOTE:** Available since v1.49.0+
      * 
      * ## Example Usage
      * ```java
@@ -389,7 +389,7 @@ public final class KvstoreFunctions {
     /**
      * This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.49.0+
+     * &gt; **NOTE:** Available since v1.49.0+
      * 
      * ## Example Usage
      * ```java
@@ -439,7 +439,7 @@ public final class KvstoreFunctions {
     /**
      * This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.51.0+
+     * &gt; **NOTE:** Available since v1.51.0
      * 
      * ## Example Usage
      * ```java
@@ -489,7 +489,7 @@ public final class KvstoreFunctions {
     /**
      * This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.51.0+
+     * &gt; **NOTE:** Available since v1.51.0
      * 
      * ## Example Usage
      * ```java
@@ -539,7 +539,7 @@ public final class KvstoreFunctions {
     /**
      * This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.51.0+
+     * &gt; **NOTE:** Available since v1.51.0
      * 
      * ## Example Usage
      * ```java
@@ -589,7 +589,7 @@ public final class KvstoreFunctions {
     /**
      * This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.51.0+
+     * &gt; **NOTE:** Available since v1.51.0
      * 
      * ## Example Usage
      * ```java
@@ -877,7 +877,7 @@ public final class KvstoreFunctions {
      * To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance.
      * For more information, see [Associated RAM roles of ApsaraDB for Redis](https://www.alibabacloud.com/help/doc-detail/184337.htm)
      * 
-     * &gt; **NOTE:** Available in v1.128.0+
+     * &gt; **NOTE:** Available since v1.128.0
      * 
      * ## Example Usage
      * ```java
@@ -920,7 +920,7 @@ public final class KvstoreFunctions {
      * To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance.
      * For more information, see [Associated RAM roles of ApsaraDB for Redis](https://www.alibabacloud.com/help/doc-detail/184337.htm)
      * 
-     * &gt; **NOTE:** Available in v1.128.0+
+     * &gt; **NOTE:** Available since v1.128.0
      * 
      * ## Example Usage
      * ```java
@@ -963,7 +963,7 @@ public final class KvstoreFunctions {
      * To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance.
      * For more information, see [Associated RAM roles of ApsaraDB for Redis](https://www.alibabacloud.com/help/doc-detail/184337.htm)
      * 
-     * &gt; **NOTE:** Available in v1.128.0+
+     * &gt; **NOTE:** Available since v1.128.0
      * 
      * ## Example Usage
      * ```java
@@ -1006,7 +1006,7 @@ public final class KvstoreFunctions {
      * To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance.
      * For more information, see [Associated RAM roles of ApsaraDB for Redis](https://www.alibabacloud.com/help/doc-detail/184337.htm)
      * 
-     * &gt; **NOTE:** Available in v1.128.0+
+     * &gt; **NOTE:** Available since v1.128.0
      * 
      * ## Example Usage
      * ```java
@@ -1049,7 +1049,7 @@ public final class KvstoreFunctions {
      * To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance.
      * For more information, see [Associated RAM roles of ApsaraDB for Redis](https://www.alibabacloud.com/help/doc-detail/184337.htm)
      * 
-     * &gt; **NOTE:** Available in v1.128.0+
+     * &gt; **NOTE:** Available since v1.128.0
      * 
      * ## Example Usage
      * ```java
@@ -1092,7 +1092,7 @@ public final class KvstoreFunctions {
      * To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance.
      * For more information, see [Associated RAM roles of ApsaraDB for Redis](https://www.alibabacloud.com/help/doc-detail/184337.htm)
      * 
-     * &gt; **NOTE:** Available in v1.128.0+
+     * &gt; **NOTE:** Available since v1.128.0
      * 
      * ## Example Usage
      * ```java
@@ -1131,7 +1131,7 @@ public final class KvstoreFunctions {
     /**
      * This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
-     * &gt; **NOTE:** Available in v1.73.0+.
+     * &gt; **NOTE:** Available since v1.73.0.
      * 
      * ## Example Usage
      * ```java
@@ -1142,8 +1142,6 @@ public final class KvstoreFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
      * import com.pulumi.alicloud.kvstore.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.kvstore.Instance;
-     * import com.pulumi.alicloud.kvstore.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1157,10 +1155,8 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zonesIds = KvstoreFunctions.getZones();
-     * 
-     *         var kvstore = new Instance(&#34;kvstore&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
+     *             .instanceChargeType(&#34;PostPaid&#34;)
      *             .build());
      * 
      *     }
@@ -1174,7 +1170,7 @@ public final class KvstoreFunctions {
     /**
      * This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
-     * &gt; **NOTE:** Available in v1.73.0+.
+     * &gt; **NOTE:** Available since v1.73.0.
      * 
      * ## Example Usage
      * ```java
@@ -1185,8 +1181,6 @@ public final class KvstoreFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
      * import com.pulumi.alicloud.kvstore.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.kvstore.Instance;
-     * import com.pulumi.alicloud.kvstore.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1200,10 +1194,8 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zonesIds = KvstoreFunctions.getZones();
-     * 
-     *         var kvstore = new Instance(&#34;kvstore&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
+     *             .instanceChargeType(&#34;PostPaid&#34;)
      *             .build());
      * 
      *     }
@@ -1217,7 +1209,7 @@ public final class KvstoreFunctions {
     /**
      * This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
-     * &gt; **NOTE:** Available in v1.73.0+.
+     * &gt; **NOTE:** Available since v1.73.0.
      * 
      * ## Example Usage
      * ```java
@@ -1228,8 +1220,6 @@ public final class KvstoreFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
      * import com.pulumi.alicloud.kvstore.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.kvstore.Instance;
-     * import com.pulumi.alicloud.kvstore.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1243,10 +1233,8 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zonesIds = KvstoreFunctions.getZones();
-     * 
-     *         var kvstore = new Instance(&#34;kvstore&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
+     *             .instanceChargeType(&#34;PostPaid&#34;)
      *             .build());
      * 
      *     }
@@ -1260,7 +1248,7 @@ public final class KvstoreFunctions {
     /**
      * This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
-     * &gt; **NOTE:** Available in v1.73.0+.
+     * &gt; **NOTE:** Available since v1.73.0.
      * 
      * ## Example Usage
      * ```java
@@ -1271,8 +1259,6 @@ public final class KvstoreFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
      * import com.pulumi.alicloud.kvstore.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.kvstore.Instance;
-     * import com.pulumi.alicloud.kvstore.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1286,10 +1272,8 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zonesIds = KvstoreFunctions.getZones();
-     * 
-     *         var kvstore = new Instance(&#34;kvstore&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
+     *             .instanceChargeType(&#34;PostPaid&#34;)
      *             .build());
      * 
      *     }
@@ -1303,7 +1287,7 @@ public final class KvstoreFunctions {
     /**
      * This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
-     * &gt; **NOTE:** Available in v1.73.0+.
+     * &gt; **NOTE:** Available since v1.73.0.
      * 
      * ## Example Usage
      * ```java
@@ -1314,8 +1298,6 @@ public final class KvstoreFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
      * import com.pulumi.alicloud.kvstore.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.kvstore.Instance;
-     * import com.pulumi.alicloud.kvstore.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1329,10 +1311,8 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zonesIds = KvstoreFunctions.getZones();
-     * 
-     *         var kvstore = new Instance(&#34;kvstore&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
+     *             .instanceChargeType(&#34;PostPaid&#34;)
      *             .build());
      * 
      *     }
@@ -1346,7 +1326,7 @@ public final class KvstoreFunctions {
     /**
      * This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
-     * &gt; **NOTE:** Available in v1.73.0+.
+     * &gt; **NOTE:** Available since v1.73.0.
      * 
      * ## Example Usage
      * ```java
@@ -1357,8 +1337,6 @@ public final class KvstoreFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
      * import com.pulumi.alicloud.kvstore.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.kvstore.Instance;
-     * import com.pulumi.alicloud.kvstore.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1372,10 +1350,8 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zonesIds = KvstoreFunctions.getZones();
-     * 
-     *         var kvstore = new Instance(&#34;kvstore&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
+     *             .instanceChargeType(&#34;PostPaid&#34;)
      *             .build());
      * 
      *     }

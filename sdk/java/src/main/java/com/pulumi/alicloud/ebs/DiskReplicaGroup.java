@@ -20,51 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about EBS Disk Replica Group and how to use it, see [What is Disk Replica Group](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/creatediskreplicagroup).
  * 
- * &gt; **NOTE:** Available in v1.187.0+.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.ebs.EbsFunctions;
- * import com.pulumi.alicloud.ebs.inputs.GetRegionsArgs;
- * import com.pulumi.alicloud.ebs.DiskReplicaGroup;
- * import com.pulumi.alicloud.ebs.DiskReplicaGroupArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var defaultRegions = EbsFunctions.getRegions(GetRegionsArgs.builder()
- *             .regionId(&#34;cn-hangzhou&#34;)
- *             .build());
- * 
- *         var defaultDiskReplicaGroup = new DiskReplicaGroup(&#34;defaultDiskReplicaGroup&#34;, DiskReplicaGroupArgs.builder()        
- *             .sourceRegionId(var_.region())
- *             .sourceZoneId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].zones()[0].zoneId()))
- *             .destinationRegionId(var_.region())
- *             .destinationZoneId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].zones()[1].zoneId()))
- *             .groupName(&#34;group_name&#34;)
- *             .description(&#34;group_description&#34;)
- *             .rpo(900)
- *             .build());
- * 
- *     }
- * }
- * ```
+ * &gt; **NOTE:** Available since v1.187.0.
  * 
  * ## Import
  * 

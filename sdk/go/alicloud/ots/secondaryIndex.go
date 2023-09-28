@@ -17,7 +17,7 @@ import (
 //
 // For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
 //
-// > **NOTE:** Available in v1.187.0+.
+// > **NOTE:** Available since v1.187.0.
 //
 // ## Example Usage
 //
@@ -35,40 +35,28 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "terraformtest"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			pks := []string{
-//				"pk1",
-//				"pk2",
-//				"pk3",
-//			}
-//			if param := cfg.GetBool("pks"); param != nil {
-//				pks = param
-//			}
-//			definedCols := []string{
-//				"col1",
-//				"col2",
-//				"col3",
-//			}
-//			if param := cfg.GetBool("definedCols"); param != nil {
-//				definedCols = param
-//			}
-//			instance1, err := ots.NewInstance(ctx, "instance1", &ots.InstanceArgs{
+//			defaultInstance, err := ots.NewInstance(ctx, "defaultInstance", &ots.InstanceArgs{
 //				Description: pulumi.String(name),
 //				AccessedBy:  pulumi.String("Any"),
 //				Tags: pulumi.AnyMap{
 //					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("acceptance test"),
+//					"For":     pulumi.Any("example"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			table1, err := ots.NewTable(ctx, "table1", &ots.TableArgs{
-//				InstanceName: instance1.Name,
-//				TableName:    pulumi.String(name),
+//			defaultTable, err := ots.NewTable(ctx, "defaultTable", &ots.TableArgs{
+//				InstanceName: defaultInstance.Name,
+//				TableName:    pulumi.String("tf_example"),
+//				TimeToLive:   -1,
+//				MaxVersion:   pulumi.Int(1),
+//				EnableSse:    pulumi.Bool(true),
+//				SseKeyType:   pulumi.String("SSE_KMS_SERVICE"),
 //				PrimaryKeys: ots.TablePrimaryKeyArray{
 //					&ots.TablePrimaryKeyArgs{
 //						Name: pulumi.String("pk1"),
@@ -97,21 +85,26 @@ import (
 //						Type: pulumi.String("Binary"),
 //					},
 //				},
-//				TimeToLive:                -1,
-//				MaxVersion:                pulumi.Int(1),
-//				DeviationCellVersionInSec: pulumi.String("1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ots.NewSecondaryIndex(ctx, "index1", &ots.SecondaryIndexArgs{
-//				InstanceName:    instance1.Name,
-//				TableName:       table1.TableName,
-//				IndexName:       pulumi.String(name),
+//			_, err = ots.NewSecondaryIndex(ctx, "defaultSecondaryIndex", &ots.SecondaryIndexArgs{
+//				InstanceName:    defaultInstance.Name,
+//				TableName:       defaultTable.TableName,
+//				IndexName:       pulumi.String("example_index"),
 //				IndexType:       pulumi.String("Global"),
 //				IncludeBaseData: pulumi.Bool(true),
-//				PrimaryKeys:     pks,
-//				DefinedColumns:  definedCols,
+//				PrimaryKeys: pulumi.StringArray{
+//					pulumi.String("pk1"),
+//					pulumi.String("pk2"),
+//					pulumi.String("pk3"),
+//				},
+//				DefinedColumns: pulumi.StringArray{
+//					pulumi.String("col1"),
+//					pulumi.String("col2"),
+//					pulumi.String("col3"),
+//				},
 //			})
 //			if err != nil {
 //				return err

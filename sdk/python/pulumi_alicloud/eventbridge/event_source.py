@@ -284,9 +284,9 @@ class EventSource(pulumi.CustomResource):
         """
         Provides a Event Bridge Event Source resource.
 
-        For information about Event Bridge Event Source and how to use it, see [What is Event Source](https://www.alibabacloud.com/help/doc-detail/188425.htm).
+        For information about Event Bridge Event Source and how to use it, see [What is Event Source](https://www.alibabacloud.com/help/en/eventbridge/latest/api-eventbridge-2020-04-01-createeventsource).
 
-        > **NOTE:** Available in v1.130.0+.
+        > **NOTE:** Available since v1.130.0.
 
         ## Example Usage
 
@@ -296,15 +296,21 @@ class EventSource(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.eventbridge.EventSource("example",
-            description="tf-test",
-            event_bus_name="bus_name",
-            event_source_name="tftest",
-            external_source_config={
-                "QueueName": "mns_queuqe_name",
-            },
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example_event_bus = alicloud.eventbridge.EventBus("exampleEventBus", event_bus_name=name)
+        example_queue = alicloud.mns.Queue("exampleQueue")
+        example_event_source = alicloud.eventbridge.EventSource("exampleEventSource",
+            event_bus_name=example_event_bus.event_bus_name,
+            event_source_name=name,
+            description=name,
+            linked_external_source=True,
             external_source_type="MNS",
-            linked_external_source=True)
+            external_source_config={
+                "QueueName": example_queue.name,
+            })
         ```
 
         ## Import
@@ -346,9 +352,9 @@ class EventSource(pulumi.CustomResource):
         """
         Provides a Event Bridge Event Source resource.
 
-        For information about Event Bridge Event Source and how to use it, see [What is Event Source](https://www.alibabacloud.com/help/doc-detail/188425.htm).
+        For information about Event Bridge Event Source and how to use it, see [What is Event Source](https://www.alibabacloud.com/help/en/eventbridge/latest/api-eventbridge-2020-04-01-createeventsource).
 
-        > **NOTE:** Available in v1.130.0+.
+        > **NOTE:** Available since v1.130.0.
 
         ## Example Usage
 
@@ -358,15 +364,21 @@ class EventSource(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.eventbridge.EventSource("example",
-            description="tf-test",
-            event_bus_name="bus_name",
-            event_source_name="tftest",
-            external_source_config={
-                "QueueName": "mns_queuqe_name",
-            },
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example_event_bus = alicloud.eventbridge.EventBus("exampleEventBus", event_bus_name=name)
+        example_queue = alicloud.mns.Queue("exampleQueue")
+        example_event_source = alicloud.eventbridge.EventSource("exampleEventSource",
+            event_bus_name=example_event_bus.event_bus_name,
+            event_source_name=name,
+            description=name,
+            linked_external_source=True,
             external_source_type="MNS",
-            linked_external_source=True)
+            external_source_config={
+                "QueueName": example_queue.name,
+            })
         ```
 
         ## Import

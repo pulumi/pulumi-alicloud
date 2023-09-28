@@ -18,15 +18,15 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The resource shared ID of resource manager.
+        /// The resource share ID of resource manager.
         /// </summary>
         public readonly string ResourceShareId;
         /// <summary>
-        /// The status of shared target.
+        /// The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The member account ID in resource directory.
+        /// The ID of the Shared Target.
         /// </summary>
         public readonly string TargetId;
 

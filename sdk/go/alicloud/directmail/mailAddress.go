@@ -15,43 +15,9 @@ import (
 
 // Provides a Direct Mail Mail Address resource.
 //
-// For information about Direct Mail Mail Address and how to use it, see [What is Mail Address](https://www.aliyun.com/product/directmail).
+// For information about Direct Mail Mail Address and how to use it, see [What is Mail Address](https://www.alibabacloud.com/help/en/directmail/latest/set-up-sender-addresses).
 //
-// > **NOTE:** Available in v1.134.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/directmail"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := directmail.NewMailAddress(ctx, "example", &directmail.MailAddressArgs{
-//				AccountName: pulumi.String("example_value@email.com"),
-//				Sendtype:    pulumi.String("batch"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// > **Note:**
-// A maximum of 10 mailing addresses can be added.
-// Individual users: Up to 10 mailing addresses can be deleted within a month.
-// Enterprise users: Up to 10 mailing addresses can be deleted within a month.
+// > **NOTE:** Available since v1.134.0.
 //
 // ## Import
 //

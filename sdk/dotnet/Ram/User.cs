@@ -36,7 +36,6 @@ namespace Pulumi.AliCloud.Ram
     ///         Comments = "yoyoyo",
     ///         DisplayName = "user_display_name",
     ///         Email = "hello.uuu@aaa.com",
-    ///         Force = true,
     ///         Mobile = "86-18688888888",
     ///     });
     /// 

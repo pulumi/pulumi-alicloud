@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -18,16 +20,12 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
  * const name = config.get("name") || "tf-example";
  * const defaultRegions = alicloud.getRegions({
  *     current: true,
- * });
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
- *     max: 99999,
- *     min: 10000,
  * });
  * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
@@ -44,7 +42,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultNamespace = new alicloud.sae.Namespace("defaultNamespace", {
- *     namespaceId: pulumi.all([defaultRegions, defaultRandomInteger.result]).apply(([defaultRegions, result]) => `${defaultRegions.regions?.[0]?.id}:example${result}`),
+ *     namespaceId: defaultRegions.then(defaultRegions => `${defaultRegions.regions?.[0]?.id}:example`),
  *     namespaceName: name,
  *     namespaceDescription: name,
  *     enableMicroRegistration: false,
@@ -110,7 +108,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly acrInstanceId!: pulumi.Output<string | undefined>;
     /**
-     * Application description information. No more than 1024 characters.
+     * Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `appDescription` can be modified.
      */
     public readonly appDescription!: pulumi.Output<string | undefined>;
     /**
@@ -118,13 +116,13 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly appName!: pulumi.Output<string>;
     /**
-     * The auto config. Valid values: `false`, `true`.
+     * The auto config. Valid values: `true`, `false`.
      */
     public readonly autoConfig!: pulumi.Output<boolean | undefined>;
     /**
-     * The auto enable application scaling rule. Valid values: `false`, `true`.
+     * The auto enable application scaling rule. Valid values: `true`, `false`.
      */
-    public readonly autoEnableApplicationScalingRule!: pulumi.Output<boolean>;
+    public readonly autoEnableApplicationScalingRule!: pulumi.Output<boolean | undefined>;
     /**
      * The batch wait time.
      */
@@ -132,29 +130,47 @@ export class Application extends pulumi.CustomResource {
     /**
      * The change order desc.
      */
-    public readonly changeOrderDesc!: pulumi.Output<string>;
+    public readonly changeOrderDesc!: pulumi.Output<string | undefined>;
     /**
      * Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
      */
     public readonly command!: pulumi.Output<string | undefined>;
     /**
-     * Mirror startup command parameters. The parameters required for the above start command. For example: 1d.
+     * Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
+     *
+     * @deprecated Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
      */
-    public readonly commandArgs!: pulumi.Output<string | undefined>;
+    public readonly commandArgs!: pulumi.Output<string>;
     /**
-     * ConfigMap mount description.
+     * The parameters of the image startup command.
+     */
+    public readonly commandArgsV2s!: pulumi.Output<string[]>;
+    /**
+     * ConfigMap mount description. **NOTE:** Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
+     *
+     * @deprecated Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
      */
     public readonly configMapMountDesc!: pulumi.Output<string>;
     /**
-     * The CPU required for each instance, in millicores, cannot be 0. Valid values: `1000`, `16000`, `2000`, `32000`, `4000`, `500`, `8000`.
+     * The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `configMapMountDescV2` below.
+     */
+    public readonly configMapMountDescV2s!: pulumi.Output<outputs.sae.ApplicationConfigMapMountDescV2[]>;
+    /**
+     * The CPU required for each instance, in millicores, cannot be 0. Valid values: `500`, `1000`, `2000`, `4000`, `8000`, `16000`, `32000`.
      */
     public readonly cpu!: pulumi.Output<number | undefined>;
     /**
-     * Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}].
+     * Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
+     *
+     * @deprecated Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
      */
     public readonly customHostAlias!: pulumi.Output<string>;
     /**
-     * The deploy. Valid values: `false`, `true`.
+     * The custom mapping between the hostname and IP address in the container. See `customHostAliasV2` below.
+     */
+    public readonly customHostAliasV2s!: pulumi.Output<outputs.sae.ApplicationCustomHostAliasV2[]>;
+    /**
+     * The deploy. Valid values: `true`, `false`.
      */
     public readonly deploy!: pulumi.Output<boolean | undefined>;
     /**
@@ -162,17 +178,21 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly edasContainerVersion!: pulumi.Output<string | undefined>;
     /**
-     * The enable ahas.
+     * The enable ahas. Valid values: `true`, `false`.
      */
     public readonly enableAhas!: pulumi.Output<string>;
     /**
-     * The enable grey tag route.
+     * The enable grey tag route. Default value: `false`. Valid values:
      */
     public readonly enableGreyTagRoute!: pulumi.Output<boolean>;
     /**
      * Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
      */
     public readonly envs!: pulumi.Output<string>;
+    /**
+     * The ID of the corresponding Secret.
+     */
+    public readonly imagePullSecrets!: pulumi.Output<string | undefined>;
     /**
      * Mirror address. Only Image type applications can configure the mirror address.
      */
@@ -190,11 +210,22 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly jdk!: pulumi.Output<string | undefined>;
     /**
-     * Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
+     * The logging configurations of ApsaraMQ for Kafka. See `kafkaConfigs` below.
      */
-    public readonly liveness!: pulumi.Output<string | undefined>;
+    public readonly kafkaConfigs!: pulumi.Output<outputs.sae.ApplicationKafkaConfigs | undefined>;
     /**
-     * The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
+     * Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
+     * **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
+     *
+     * @deprecated Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
+     */
+    public readonly liveness!: pulumi.Output<string>;
+    /**
+     * The liveness check settings of the container. See `livenessV2` below.
+     */
+    public readonly livenessV2!: pulumi.Output<outputs.sae.ApplicationLivenessV2>;
+    /**
+     * The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `2048`, `4096`, `8192`, `12288`, `16384`, `24576`, `32768`, `65536`, `131072`.
      */
     public readonly memory!: pulumi.Output<number | undefined>;
     /**
@@ -202,7 +233,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly microRegistration!: pulumi.Output<string | undefined>;
     /**
-     * Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
+     * Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
      * * `-1`: Initialization value, indicating that percentages are not used.
      * * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
      */
@@ -212,21 +243,13 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly minReadyInstances!: pulumi.Output<number>;
     /**
-     * Mount description.
-     */
-    public readonly mountDesc!: pulumi.Output<string | undefined>;
-    /**
-     * Mount point of NAS in application VPC.
-     */
-    public readonly mountHost!: pulumi.Output<string | undefined>;
-    /**
      * SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
      */
     public readonly namespaceId!: pulumi.Output<string | undefined>;
     /**
-     * ID of the mounted NAS, Must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field is present, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
+     * The configurations for mounting the NAS file system. See `nasConfigs` below.
      */
-    public readonly nasId!: pulumi.Output<string | undefined>;
+    public readonly nasConfigs!: pulumi.Output<outputs.sae.ApplicationNasConfig[] | undefined>;
     /**
      * OSS AccessKey ID.
      */
@@ -236,11 +259,17 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly ossAkSecret!: pulumi.Output<string | undefined>;
     /**
-     * OSS mount description information.
+     * OSS mount description information. **NOTE:** Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
+     *
+     * @deprecated Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
      */
-    public readonly ossMountDescs!: pulumi.Output<string | undefined>;
+    public readonly ossMountDescs!: pulumi.Output<string>;
     /**
-     * Application package type. Support FatJar, War and Image. Valid values: `FatJar`, `Image`, `War`.
+     * The description of the mounted Object Storage Service (OSS) bucket. See `ossMountDescsV2` below.
+     */
+    public readonly ossMountDescsV2s!: pulumi.Output<outputs.sae.ApplicationOssMountDescsV2[]>;
+    /**
+     * Application package type. Valid values: `FatJar`, `War`, `Image`, `PhpZip`, `IMAGE_PHP_5_4`, `IMAGE_PHP_5_4_ALPINE`, `IMAGE_PHP_5_5`, `IMAGE_PHP_5_5_ALPINE`, `IMAGE_PHP_5_6`, `IMAGE_PHP_5_6_ALPINE`, `IMAGE_PHP_7_0`, `IMAGE_PHP_7_0_ALPINE`, `IMAGE_PHP_7_1`, `IMAGE_PHP_7_1_ALPINE`, `IMAGE_PHP_7_2`, `IMAGE_PHP_7_2_ALPINE`, `IMAGE_PHP_7_3`, `IMAGE_PHP_7_3_ALPINE`, `PythonZip`.
      */
     public readonly packageType!: pulumi.Output<string>;
     /**
@@ -252,9 +281,13 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly packageVersion!: pulumi.Output<string>;
     /**
+     * The Php environment.
+     */
+    public readonly php!: pulumi.Output<string | undefined>;
+    /**
      * The PHP application monitors the mount path, and you need to ensure that the PHP server will load the configuration file of this path. You don't need to pay attention to the configuration content, SAE will automatically render the correct configuration file.
      */
-    public readonly phpArmsConfigLocation!: pulumi.Output<string | undefined>;
+    public readonly phpArmsConfigLocation!: pulumi.Output<string>;
     /**
      * PHP configuration file content.
      */
@@ -264,17 +297,44 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly phpConfigLocation!: pulumi.Output<string | undefined>;
     /**
-     * Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
+     * Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
+     *
+     * @deprecated Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
      */
-    public readonly postStart!: pulumi.Output<string | undefined>;
+    public readonly postStart!: pulumi.Output<string>;
     /**
-     * Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
+     * The script that is run immediately after the container is started. See `postStartV2` below.
      */
-    public readonly preStop!: pulumi.Output<string | undefined>;
+    public readonly postStartV2!: pulumi.Output<outputs.sae.ApplicationPostStartV2>;
+    /**
+     * Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
+     *
+     * @deprecated Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
+     */
+    public readonly preStop!: pulumi.Output<string>;
+    /**
+     * The script that is run before the container is stopped. See `preStopV2` below.
+     */
+    public readonly preStopV2!: pulumi.Output<outputs.sae.ApplicationPreStopV2>;
+    /**
+     * The programming language that is used to create the application. Valid values: `java`, `php`, `other`.
+     */
+    public readonly programmingLanguage!: pulumi.Output<string>;
+    /**
+     * The configurations of Kubernetes Service-based service registration and discovery. See `pvtzDiscoverySvc` below.
+     */
+    public readonly pvtzDiscoverySvc!: pulumi.Output<outputs.sae.ApplicationPvtzDiscoverySvc | undefined>;
     /**
      * Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
+     * **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
+     *
+     * @deprecated Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
      */
-    public readonly readiness!: pulumi.Output<string | undefined>;
+    public readonly readiness!: pulumi.Output<string>;
+    /**
+     * The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readinessV2` below.
+     */
+    public readonly readinessV2!: pulumi.Output<outputs.sae.ApplicationReadinessV2>;
     /**
      * Initial number of instances.
      */
@@ -288,7 +348,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly slsConfigs!: pulumi.Output<string | undefined>;
     /**
-     * The status of the resource. Valid values: `RUNNING`, `STOPPED`.
+     * The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
      */
     public readonly status!: pulumi.Output<string>;
     /**
@@ -300,27 +360,36 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly terminationGracePeriodSeconds!: pulumi.Output<number>;
     /**
-     * Time zone, the default value is Asia/Shanghai.
+     * Time zone. Default value: `Asia/Shanghai`.
      */
     public readonly timezone!: pulumi.Output<string>;
     /**
      * Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
+     * **NOTE:** Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
+     *
+     * @deprecated Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
      */
-    public readonly tomcatConfig!: pulumi.Output<string | undefined>;
+    public readonly tomcatConfig!: pulumi.Output<string>;
     /**
-     * The update strategy.
+     * The Tomcat configuration. See `tomcatConfigV2` below.
+     */
+    public readonly tomcatConfigV2!: pulumi.Output<outputs.sae.ApplicationTomcatConfigV2>;
+    /**
+     * The update strategy. **NOTE:** Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
+     *
+     * @deprecated Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
      */
     public readonly updateStrategy!: pulumi.Output<string>;
     /**
-     * Application version id.
+     * The release policy. See `updateStrategyV2` below.
      */
-    public readonly versionId!: pulumi.Output<string | undefined>;
+    public readonly updateStrategyV2!: pulumi.Output<outputs.sae.ApplicationUpdateStrategyV2>;
     /**
      * The vpc id.
      */
     public readonly vpcId!: pulumi.Output<string | undefined>;
     /**
-     * The vswitch id.
+     * The vswitch id. **NOTE:** From version 1.211.0, `vswitchId` can be modified.
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
     /**
@@ -355,39 +424,50 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["changeOrderDesc"] = state ? state.changeOrderDesc : undefined;
             resourceInputs["command"] = state ? state.command : undefined;
             resourceInputs["commandArgs"] = state ? state.commandArgs : undefined;
+            resourceInputs["commandArgsV2s"] = state ? state.commandArgsV2s : undefined;
             resourceInputs["configMapMountDesc"] = state ? state.configMapMountDesc : undefined;
+            resourceInputs["configMapMountDescV2s"] = state ? state.configMapMountDescV2s : undefined;
             resourceInputs["cpu"] = state ? state.cpu : undefined;
             resourceInputs["customHostAlias"] = state ? state.customHostAlias : undefined;
+            resourceInputs["customHostAliasV2s"] = state ? state.customHostAliasV2s : undefined;
             resourceInputs["deploy"] = state ? state.deploy : undefined;
             resourceInputs["edasContainerVersion"] = state ? state.edasContainerVersion : undefined;
             resourceInputs["enableAhas"] = state ? state.enableAhas : undefined;
             resourceInputs["enableGreyTagRoute"] = state ? state.enableGreyTagRoute : undefined;
             resourceInputs["envs"] = state ? state.envs : undefined;
+            resourceInputs["imagePullSecrets"] = state ? state.imagePullSecrets : undefined;
             resourceInputs["imageUrl"] = state ? state.imageUrl : undefined;
             resourceInputs["jarStartArgs"] = state ? state.jarStartArgs : undefined;
             resourceInputs["jarStartOptions"] = state ? state.jarStartOptions : undefined;
             resourceInputs["jdk"] = state ? state.jdk : undefined;
+            resourceInputs["kafkaConfigs"] = state ? state.kafkaConfigs : undefined;
             resourceInputs["liveness"] = state ? state.liveness : undefined;
+            resourceInputs["livenessV2"] = state ? state.livenessV2 : undefined;
             resourceInputs["memory"] = state ? state.memory : undefined;
             resourceInputs["microRegistration"] = state ? state.microRegistration : undefined;
             resourceInputs["minReadyInstanceRatio"] = state ? state.minReadyInstanceRatio : undefined;
             resourceInputs["minReadyInstances"] = state ? state.minReadyInstances : undefined;
-            resourceInputs["mountDesc"] = state ? state.mountDesc : undefined;
-            resourceInputs["mountHost"] = state ? state.mountHost : undefined;
             resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
-            resourceInputs["nasId"] = state ? state.nasId : undefined;
+            resourceInputs["nasConfigs"] = state ? state.nasConfigs : undefined;
             resourceInputs["ossAkId"] = state ? state.ossAkId : undefined;
             resourceInputs["ossAkSecret"] = state ? state.ossAkSecret : undefined;
             resourceInputs["ossMountDescs"] = state ? state.ossMountDescs : undefined;
+            resourceInputs["ossMountDescsV2s"] = state ? state.ossMountDescsV2s : undefined;
             resourceInputs["packageType"] = state ? state.packageType : undefined;
             resourceInputs["packageUrl"] = state ? state.packageUrl : undefined;
             resourceInputs["packageVersion"] = state ? state.packageVersion : undefined;
+            resourceInputs["php"] = state ? state.php : undefined;
             resourceInputs["phpArmsConfigLocation"] = state ? state.phpArmsConfigLocation : undefined;
             resourceInputs["phpConfig"] = state ? state.phpConfig : undefined;
             resourceInputs["phpConfigLocation"] = state ? state.phpConfigLocation : undefined;
             resourceInputs["postStart"] = state ? state.postStart : undefined;
+            resourceInputs["postStartV2"] = state ? state.postStartV2 : undefined;
             resourceInputs["preStop"] = state ? state.preStop : undefined;
+            resourceInputs["preStopV2"] = state ? state.preStopV2 : undefined;
+            resourceInputs["programmingLanguage"] = state ? state.programmingLanguage : undefined;
+            resourceInputs["pvtzDiscoverySvc"] = state ? state.pvtzDiscoverySvc : undefined;
             resourceInputs["readiness"] = state ? state.readiness : undefined;
+            resourceInputs["readinessV2"] = state ? state.readinessV2 : undefined;
             resourceInputs["replicas"] = state ? state.replicas : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             resourceInputs["slsConfigs"] = state ? state.slsConfigs : undefined;
@@ -396,8 +476,9 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["terminationGracePeriodSeconds"] = state ? state.terminationGracePeriodSeconds : undefined;
             resourceInputs["timezone"] = state ? state.timezone : undefined;
             resourceInputs["tomcatConfig"] = state ? state.tomcatConfig : undefined;
+            resourceInputs["tomcatConfigV2"] = state ? state.tomcatConfigV2 : undefined;
             resourceInputs["updateStrategy"] = state ? state.updateStrategy : undefined;
-            resourceInputs["versionId"] = state ? state.versionId : undefined;
+            resourceInputs["updateStrategyV2"] = state ? state.updateStrategyV2 : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
             resourceInputs["warStartOptions"] = state ? state.warStartOptions : undefined;
@@ -423,39 +504,50 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["changeOrderDesc"] = args ? args.changeOrderDesc : undefined;
             resourceInputs["command"] = args ? args.command : undefined;
             resourceInputs["commandArgs"] = args ? args.commandArgs : undefined;
+            resourceInputs["commandArgsV2s"] = args ? args.commandArgsV2s : undefined;
             resourceInputs["configMapMountDesc"] = args ? args.configMapMountDesc : undefined;
+            resourceInputs["configMapMountDescV2s"] = args ? args.configMapMountDescV2s : undefined;
             resourceInputs["cpu"] = args ? args.cpu : undefined;
             resourceInputs["customHostAlias"] = args ? args.customHostAlias : undefined;
+            resourceInputs["customHostAliasV2s"] = args ? args.customHostAliasV2s : undefined;
             resourceInputs["deploy"] = args ? args.deploy : undefined;
             resourceInputs["edasContainerVersion"] = args ? args.edasContainerVersion : undefined;
             resourceInputs["enableAhas"] = args ? args.enableAhas : undefined;
             resourceInputs["enableGreyTagRoute"] = args ? args.enableGreyTagRoute : undefined;
             resourceInputs["envs"] = args ? args.envs : undefined;
+            resourceInputs["imagePullSecrets"] = args ? args.imagePullSecrets : undefined;
             resourceInputs["imageUrl"] = args ? args.imageUrl : undefined;
             resourceInputs["jarStartArgs"] = args ? args.jarStartArgs : undefined;
             resourceInputs["jarStartOptions"] = args ? args.jarStartOptions : undefined;
             resourceInputs["jdk"] = args ? args.jdk : undefined;
+            resourceInputs["kafkaConfigs"] = args ? args.kafkaConfigs : undefined;
             resourceInputs["liveness"] = args ? args.liveness : undefined;
+            resourceInputs["livenessV2"] = args ? args.livenessV2 : undefined;
             resourceInputs["memory"] = args ? args.memory : undefined;
             resourceInputs["microRegistration"] = args ? args.microRegistration : undefined;
             resourceInputs["minReadyInstanceRatio"] = args ? args.minReadyInstanceRatio : undefined;
             resourceInputs["minReadyInstances"] = args ? args.minReadyInstances : undefined;
-            resourceInputs["mountDesc"] = args ? args.mountDesc : undefined;
-            resourceInputs["mountHost"] = args ? args.mountHost : undefined;
             resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
-            resourceInputs["nasId"] = args ? args.nasId : undefined;
+            resourceInputs["nasConfigs"] = args ? args.nasConfigs : undefined;
             resourceInputs["ossAkId"] = args?.ossAkId ? pulumi.secret(args.ossAkId) : undefined;
             resourceInputs["ossAkSecret"] = args?.ossAkSecret ? pulumi.secret(args.ossAkSecret) : undefined;
             resourceInputs["ossMountDescs"] = args ? args.ossMountDescs : undefined;
+            resourceInputs["ossMountDescsV2s"] = args ? args.ossMountDescsV2s : undefined;
             resourceInputs["packageType"] = args ? args.packageType : undefined;
             resourceInputs["packageUrl"] = args ? args.packageUrl : undefined;
             resourceInputs["packageVersion"] = args ? args.packageVersion : undefined;
+            resourceInputs["php"] = args ? args.php : undefined;
             resourceInputs["phpArmsConfigLocation"] = args ? args.phpArmsConfigLocation : undefined;
             resourceInputs["phpConfig"] = args ? args.phpConfig : undefined;
             resourceInputs["phpConfigLocation"] = args ? args.phpConfigLocation : undefined;
             resourceInputs["postStart"] = args ? args.postStart : undefined;
+            resourceInputs["postStartV2"] = args ? args.postStartV2 : undefined;
             resourceInputs["preStop"] = args ? args.preStop : undefined;
+            resourceInputs["preStopV2"] = args ? args.preStopV2 : undefined;
+            resourceInputs["programmingLanguage"] = args ? args.programmingLanguage : undefined;
+            resourceInputs["pvtzDiscoverySvc"] = args ? args.pvtzDiscoverySvc : undefined;
             resourceInputs["readiness"] = args ? args.readiness : undefined;
+            resourceInputs["readinessV2"] = args ? args.readinessV2 : undefined;
             resourceInputs["replicas"] = args ? args.replicas : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             resourceInputs["slsConfigs"] = args ? args.slsConfigs : undefined;
@@ -464,8 +556,9 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["terminationGracePeriodSeconds"] = args ? args.terminationGracePeriodSeconds : undefined;
             resourceInputs["timezone"] = args ? args.timezone : undefined;
             resourceInputs["tomcatConfig"] = args ? args.tomcatConfig : undefined;
+            resourceInputs["tomcatConfigV2"] = args ? args.tomcatConfigV2 : undefined;
             resourceInputs["updateStrategy"] = args ? args.updateStrategy : undefined;
-            resourceInputs["versionId"] = args ? args.versionId : undefined;
+            resourceInputs["updateStrategyV2"] = args ? args.updateStrategyV2 : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["warStartOptions"] = args ? args.warStartOptions : undefined;
@@ -491,7 +584,7 @@ export interface ApplicationState {
      */
     acrInstanceId?: pulumi.Input<string>;
     /**
-     * Application description information. No more than 1024 characters.
+     * Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `appDescription` can be modified.
      */
     appDescription?: pulumi.Input<string>;
     /**
@@ -499,11 +592,11 @@ export interface ApplicationState {
      */
     appName?: pulumi.Input<string>;
     /**
-     * The auto config. Valid values: `false`, `true`.
+     * The auto config. Valid values: `true`, `false`.
      */
     autoConfig?: pulumi.Input<boolean>;
     /**
-     * The auto enable application scaling rule. Valid values: `false`, `true`.
+     * The auto enable application scaling rule. Valid values: `true`, `false`.
      */
     autoEnableApplicationScalingRule?: pulumi.Input<boolean>;
     /**
@@ -519,23 +612,41 @@ export interface ApplicationState {
      */
     command?: pulumi.Input<string>;
     /**
-     * Mirror startup command parameters. The parameters required for the above start command. For example: 1d.
+     * Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
+     *
+     * @deprecated Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
      */
     commandArgs?: pulumi.Input<string>;
     /**
-     * ConfigMap mount description.
+     * The parameters of the image startup command.
+     */
+    commandArgsV2s?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ConfigMap mount description. **NOTE:** Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
+     *
+     * @deprecated Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
      */
     configMapMountDesc?: pulumi.Input<string>;
     /**
-     * The CPU required for each instance, in millicores, cannot be 0. Valid values: `1000`, `16000`, `2000`, `32000`, `4000`, `500`, `8000`.
+     * The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `configMapMountDescV2` below.
+     */
+    configMapMountDescV2s?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationConfigMapMountDescV2>[]>;
+    /**
+     * The CPU required for each instance, in millicores, cannot be 0. Valid values: `500`, `1000`, `2000`, `4000`, `8000`, `16000`, `32000`.
      */
     cpu?: pulumi.Input<number>;
     /**
-     * Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}].
+     * Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
+     *
+     * @deprecated Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
      */
     customHostAlias?: pulumi.Input<string>;
     /**
-     * The deploy. Valid values: `false`, `true`.
+     * The custom mapping between the hostname and IP address in the container. See `customHostAliasV2` below.
+     */
+    customHostAliasV2s?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationCustomHostAliasV2>[]>;
+    /**
+     * The deploy. Valid values: `true`, `false`.
      */
     deploy?: pulumi.Input<boolean>;
     /**
@@ -543,17 +654,21 @@ export interface ApplicationState {
      */
     edasContainerVersion?: pulumi.Input<string>;
     /**
-     * The enable ahas.
+     * The enable ahas. Valid values: `true`, `false`.
      */
     enableAhas?: pulumi.Input<string>;
     /**
-     * The enable grey tag route.
+     * The enable grey tag route. Default value: `false`. Valid values:
      */
     enableGreyTagRoute?: pulumi.Input<boolean>;
     /**
      * Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
      */
     envs?: pulumi.Input<string>;
+    /**
+     * The ID of the corresponding Secret.
+     */
+    imagePullSecrets?: pulumi.Input<string>;
     /**
      * Mirror address. Only Image type applications can configure the mirror address.
      */
@@ -571,11 +686,22 @@ export interface ApplicationState {
      */
     jdk?: pulumi.Input<string>;
     /**
+     * The logging configurations of ApsaraMQ for Kafka. See `kafkaConfigs` below.
+     */
+    kafkaConfigs?: pulumi.Input<inputs.sae.ApplicationKafkaConfigs>;
+    /**
      * Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
+     * **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
+     *
+     * @deprecated Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
      */
     liveness?: pulumi.Input<string>;
     /**
-     * The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
+     * The liveness check settings of the container. See `livenessV2` below.
+     */
+    livenessV2?: pulumi.Input<inputs.sae.ApplicationLivenessV2>;
+    /**
+     * The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `2048`, `4096`, `8192`, `12288`, `16384`, `24576`, `32768`, `65536`, `131072`.
      */
     memory?: pulumi.Input<number>;
     /**
@@ -583,7 +709,7 @@ export interface ApplicationState {
      */
     microRegistration?: pulumi.Input<string>;
     /**
-     * Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
+     * Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
      * * `-1`: Initialization value, indicating that percentages are not used.
      * * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
      */
@@ -593,21 +719,13 @@ export interface ApplicationState {
      */
     minReadyInstances?: pulumi.Input<number>;
     /**
-     * Mount description.
-     */
-    mountDesc?: pulumi.Input<string>;
-    /**
-     * Mount point of NAS in application VPC.
-     */
-    mountHost?: pulumi.Input<string>;
-    /**
      * SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
      */
     namespaceId?: pulumi.Input<string>;
     /**
-     * ID of the mounted NAS, Must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field is present, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
+     * The configurations for mounting the NAS file system. See `nasConfigs` below.
      */
-    nasId?: pulumi.Input<string>;
+    nasConfigs?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationNasConfig>[]>;
     /**
      * OSS AccessKey ID.
      */
@@ -617,11 +735,17 @@ export interface ApplicationState {
      */
     ossAkSecret?: pulumi.Input<string>;
     /**
-     * OSS mount description information.
+     * OSS mount description information. **NOTE:** Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
+     *
+     * @deprecated Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
      */
     ossMountDescs?: pulumi.Input<string>;
     /**
-     * Application package type. Support FatJar, War and Image. Valid values: `FatJar`, `Image`, `War`.
+     * The description of the mounted Object Storage Service (OSS) bucket. See `ossMountDescsV2` below.
+     */
+    ossMountDescsV2s?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationOssMountDescsV2>[]>;
+    /**
+     * Application package type. Valid values: `FatJar`, `War`, `Image`, `PhpZip`, `IMAGE_PHP_5_4`, `IMAGE_PHP_5_4_ALPINE`, `IMAGE_PHP_5_5`, `IMAGE_PHP_5_5_ALPINE`, `IMAGE_PHP_5_6`, `IMAGE_PHP_5_6_ALPINE`, `IMAGE_PHP_7_0`, `IMAGE_PHP_7_0_ALPINE`, `IMAGE_PHP_7_1`, `IMAGE_PHP_7_1_ALPINE`, `IMAGE_PHP_7_2`, `IMAGE_PHP_7_2_ALPINE`, `IMAGE_PHP_7_3`, `IMAGE_PHP_7_3_ALPINE`, `PythonZip`.
      */
     packageType?: pulumi.Input<string>;
     /**
@@ -632,6 +756,10 @@ export interface ApplicationState {
      * The version number of the deployment package. Required when the Package Type is War and FatJar.
      */
     packageVersion?: pulumi.Input<string>;
+    /**
+     * The Php environment.
+     */
+    php?: pulumi.Input<string>;
     /**
      * The PHP application monitors the mount path, and you need to ensure that the PHP server will load the configuration file of this path. You don't need to pay attention to the configuration content, SAE will automatically render the correct configuration file.
      */
@@ -645,17 +773,44 @@ export interface ApplicationState {
      */
     phpConfigLocation?: pulumi.Input<string>;
     /**
-     * Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
+     * Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
+     *
+     * @deprecated Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
      */
     postStart?: pulumi.Input<string>;
     /**
-     * Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
+     * The script that is run immediately after the container is started. See `postStartV2` below.
+     */
+    postStartV2?: pulumi.Input<inputs.sae.ApplicationPostStartV2>;
+    /**
+     * Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
+     *
+     * @deprecated Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
      */
     preStop?: pulumi.Input<string>;
     /**
+     * The script that is run before the container is stopped. See `preStopV2` below.
+     */
+    preStopV2?: pulumi.Input<inputs.sae.ApplicationPreStopV2>;
+    /**
+     * The programming language that is used to create the application. Valid values: `java`, `php`, `other`.
+     */
+    programmingLanguage?: pulumi.Input<string>;
+    /**
+     * The configurations of Kubernetes Service-based service registration and discovery. See `pvtzDiscoverySvc` below.
+     */
+    pvtzDiscoverySvc?: pulumi.Input<inputs.sae.ApplicationPvtzDiscoverySvc>;
+    /**
      * Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
+     * **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
+     *
+     * @deprecated Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
      */
     readiness?: pulumi.Input<string>;
+    /**
+     * The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readinessV2` below.
+     */
+    readinessV2?: pulumi.Input<inputs.sae.ApplicationReadinessV2>;
     /**
      * Initial number of instances.
      */
@@ -669,7 +824,7 @@ export interface ApplicationState {
      */
     slsConfigs?: pulumi.Input<string>;
     /**
-     * The status of the resource. Valid values: `RUNNING`, `STOPPED`.
+     * The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
      */
     status?: pulumi.Input<string>;
     /**
@@ -681,27 +836,36 @@ export interface ApplicationState {
      */
     terminationGracePeriodSeconds?: pulumi.Input<number>;
     /**
-     * Time zone, the default value is Asia/Shanghai.
+     * Time zone. Default value: `Asia/Shanghai`.
      */
     timezone?: pulumi.Input<string>;
     /**
      * Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
+     * **NOTE:** Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
+     *
+     * @deprecated Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
      */
     tomcatConfig?: pulumi.Input<string>;
     /**
-     * The update strategy.
+     * The Tomcat configuration. See `tomcatConfigV2` below.
+     */
+    tomcatConfigV2?: pulumi.Input<inputs.sae.ApplicationTomcatConfigV2>;
+    /**
+     * The update strategy. **NOTE:** Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
+     *
+     * @deprecated Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
      */
     updateStrategy?: pulumi.Input<string>;
     /**
-     * Application version id.
+     * The release policy. See `updateStrategyV2` below.
      */
-    versionId?: pulumi.Input<string>;
+    updateStrategyV2?: pulumi.Input<inputs.sae.ApplicationUpdateStrategyV2>;
     /**
      * The vpc id.
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * The vswitch id.
+     * The vswitch id. **NOTE:** From version 1.211.0, `vswitchId` can be modified.
      */
     vswitchId?: pulumi.Input<string>;
     /**
@@ -727,7 +891,7 @@ export interface ApplicationArgs {
      */
     acrInstanceId?: pulumi.Input<string>;
     /**
-     * Application description information. No more than 1024 characters.
+     * Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `appDescription` can be modified.
      */
     appDescription?: pulumi.Input<string>;
     /**
@@ -735,11 +899,11 @@ export interface ApplicationArgs {
      */
     appName: pulumi.Input<string>;
     /**
-     * The auto config. Valid values: `false`, `true`.
+     * The auto config. Valid values: `true`, `false`.
      */
     autoConfig?: pulumi.Input<boolean>;
     /**
-     * The auto enable application scaling rule. Valid values: `false`, `true`.
+     * The auto enable application scaling rule. Valid values: `true`, `false`.
      */
     autoEnableApplicationScalingRule?: pulumi.Input<boolean>;
     /**
@@ -755,23 +919,41 @@ export interface ApplicationArgs {
      */
     command?: pulumi.Input<string>;
     /**
-     * Mirror startup command parameters. The parameters required for the above start command. For example: 1d.
+     * Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
+     *
+     * @deprecated Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
      */
     commandArgs?: pulumi.Input<string>;
     /**
-     * ConfigMap mount description.
+     * The parameters of the image startup command.
+     */
+    commandArgsV2s?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ConfigMap mount description. **NOTE:** Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
+     *
+     * @deprecated Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
      */
     configMapMountDesc?: pulumi.Input<string>;
     /**
-     * The CPU required for each instance, in millicores, cannot be 0. Valid values: `1000`, `16000`, `2000`, `32000`, `4000`, `500`, `8000`.
+     * The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `configMapMountDescV2` below.
+     */
+    configMapMountDescV2s?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationConfigMapMountDescV2>[]>;
+    /**
+     * The CPU required for each instance, in millicores, cannot be 0. Valid values: `500`, `1000`, `2000`, `4000`, `8000`, `16000`, `32000`.
      */
     cpu?: pulumi.Input<number>;
     /**
-     * Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}].
+     * Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
+     *
+     * @deprecated Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
      */
     customHostAlias?: pulumi.Input<string>;
     /**
-     * The deploy. Valid values: `false`, `true`.
+     * The custom mapping between the hostname and IP address in the container. See `customHostAliasV2` below.
+     */
+    customHostAliasV2s?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationCustomHostAliasV2>[]>;
+    /**
+     * The deploy. Valid values: `true`, `false`.
      */
     deploy?: pulumi.Input<boolean>;
     /**
@@ -779,17 +961,21 @@ export interface ApplicationArgs {
      */
     edasContainerVersion?: pulumi.Input<string>;
     /**
-     * The enable ahas.
+     * The enable ahas. Valid values: `true`, `false`.
      */
     enableAhas?: pulumi.Input<string>;
     /**
-     * The enable grey tag route.
+     * The enable grey tag route. Default value: `false`. Valid values:
      */
     enableGreyTagRoute?: pulumi.Input<boolean>;
     /**
      * Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
      */
     envs?: pulumi.Input<string>;
+    /**
+     * The ID of the corresponding Secret.
+     */
+    imagePullSecrets?: pulumi.Input<string>;
     /**
      * Mirror address. Only Image type applications can configure the mirror address.
      */
@@ -807,11 +993,22 @@ export interface ApplicationArgs {
      */
     jdk?: pulumi.Input<string>;
     /**
+     * The logging configurations of ApsaraMQ for Kafka. See `kafkaConfigs` below.
+     */
+    kafkaConfigs?: pulumi.Input<inputs.sae.ApplicationKafkaConfigs>;
+    /**
      * Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
+     * **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
+     *
+     * @deprecated Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
      */
     liveness?: pulumi.Input<string>;
     /**
-     * The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
+     * The liveness check settings of the container. See `livenessV2` below.
+     */
+    livenessV2?: pulumi.Input<inputs.sae.ApplicationLivenessV2>;
+    /**
+     * The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `2048`, `4096`, `8192`, `12288`, `16384`, `24576`, `32768`, `65536`, `131072`.
      */
     memory?: pulumi.Input<number>;
     /**
@@ -819,7 +1016,7 @@ export interface ApplicationArgs {
      */
     microRegistration?: pulumi.Input<string>;
     /**
-     * Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
+     * Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
      * * `-1`: Initialization value, indicating that percentages are not used.
      * * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
      */
@@ -829,21 +1026,13 @@ export interface ApplicationArgs {
      */
     minReadyInstances?: pulumi.Input<number>;
     /**
-     * Mount description.
-     */
-    mountDesc?: pulumi.Input<string>;
-    /**
-     * Mount point of NAS in application VPC.
-     */
-    mountHost?: pulumi.Input<string>;
-    /**
      * SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
      */
     namespaceId?: pulumi.Input<string>;
     /**
-     * ID of the mounted NAS, Must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field is present, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
+     * The configurations for mounting the NAS file system. See `nasConfigs` below.
      */
-    nasId?: pulumi.Input<string>;
+    nasConfigs?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationNasConfig>[]>;
     /**
      * OSS AccessKey ID.
      */
@@ -853,11 +1042,17 @@ export interface ApplicationArgs {
      */
     ossAkSecret?: pulumi.Input<string>;
     /**
-     * OSS mount description information.
+     * OSS mount description information. **NOTE:** Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
+     *
+     * @deprecated Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
      */
     ossMountDescs?: pulumi.Input<string>;
     /**
-     * Application package type. Support FatJar, War and Image. Valid values: `FatJar`, `Image`, `War`.
+     * The description of the mounted Object Storage Service (OSS) bucket. See `ossMountDescsV2` below.
+     */
+    ossMountDescsV2s?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationOssMountDescsV2>[]>;
+    /**
+     * Application package type. Valid values: `FatJar`, `War`, `Image`, `PhpZip`, `IMAGE_PHP_5_4`, `IMAGE_PHP_5_4_ALPINE`, `IMAGE_PHP_5_5`, `IMAGE_PHP_5_5_ALPINE`, `IMAGE_PHP_5_6`, `IMAGE_PHP_5_6_ALPINE`, `IMAGE_PHP_7_0`, `IMAGE_PHP_7_0_ALPINE`, `IMAGE_PHP_7_1`, `IMAGE_PHP_7_1_ALPINE`, `IMAGE_PHP_7_2`, `IMAGE_PHP_7_2_ALPINE`, `IMAGE_PHP_7_3`, `IMAGE_PHP_7_3_ALPINE`, `PythonZip`.
      */
     packageType: pulumi.Input<string>;
     /**
@@ -868,6 +1063,10 @@ export interface ApplicationArgs {
      * The version number of the deployment package. Required when the Package Type is War and FatJar.
      */
     packageVersion?: pulumi.Input<string>;
+    /**
+     * The Php environment.
+     */
+    php?: pulumi.Input<string>;
     /**
      * The PHP application monitors the mount path, and you need to ensure that the PHP server will load the configuration file of this path. You don't need to pay attention to the configuration content, SAE will automatically render the correct configuration file.
      */
@@ -881,17 +1080,44 @@ export interface ApplicationArgs {
      */
     phpConfigLocation?: pulumi.Input<string>;
     /**
-     * Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
+     * Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
+     *
+     * @deprecated Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
      */
     postStart?: pulumi.Input<string>;
     /**
-     * Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
+     * The script that is run immediately after the container is started. See `postStartV2` below.
+     */
+    postStartV2?: pulumi.Input<inputs.sae.ApplicationPostStartV2>;
+    /**
+     * Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
+     *
+     * @deprecated Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
      */
     preStop?: pulumi.Input<string>;
     /**
+     * The script that is run before the container is stopped. See `preStopV2` below.
+     */
+    preStopV2?: pulumi.Input<inputs.sae.ApplicationPreStopV2>;
+    /**
+     * The programming language that is used to create the application. Valid values: `java`, `php`, `other`.
+     */
+    programmingLanguage?: pulumi.Input<string>;
+    /**
+     * The configurations of Kubernetes Service-based service registration and discovery. See `pvtzDiscoverySvc` below.
+     */
+    pvtzDiscoverySvc?: pulumi.Input<inputs.sae.ApplicationPvtzDiscoverySvc>;
+    /**
      * Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
+     * **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
+     *
+     * @deprecated Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
      */
     readiness?: pulumi.Input<string>;
+    /**
+     * The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readinessV2` below.
+     */
+    readinessV2?: pulumi.Input<inputs.sae.ApplicationReadinessV2>;
     /**
      * Initial number of instances.
      */
@@ -905,7 +1131,7 @@ export interface ApplicationArgs {
      */
     slsConfigs?: pulumi.Input<string>;
     /**
-     * The status of the resource. Valid values: `RUNNING`, `STOPPED`.
+     * The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
      */
     status?: pulumi.Input<string>;
     /**
@@ -917,27 +1143,36 @@ export interface ApplicationArgs {
      */
     terminationGracePeriodSeconds?: pulumi.Input<number>;
     /**
-     * Time zone, the default value is Asia/Shanghai.
+     * Time zone. Default value: `Asia/Shanghai`.
      */
     timezone?: pulumi.Input<string>;
     /**
      * Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
+     * **NOTE:** Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
+     *
+     * @deprecated Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
      */
     tomcatConfig?: pulumi.Input<string>;
     /**
-     * The update strategy.
+     * The Tomcat configuration. See `tomcatConfigV2` below.
+     */
+    tomcatConfigV2?: pulumi.Input<inputs.sae.ApplicationTomcatConfigV2>;
+    /**
+     * The update strategy. **NOTE:** Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
+     *
+     * @deprecated Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
      */
     updateStrategy?: pulumi.Input<string>;
     /**
-     * Application version id.
+     * The release policy. See `updateStrategyV2` below.
      */
-    versionId?: pulumi.Input<string>;
+    updateStrategyV2?: pulumi.Input<inputs.sae.ApplicationUpdateStrategyV2>;
     /**
      * The vpc id.
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * The vswitch id.
+     * The vswitch id. **NOTE:** From version 1.211.0, `vswitchId` can be modified.
      */
     vswitchId?: pulumi.Input<string>;
     /**

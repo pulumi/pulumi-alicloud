@@ -13,8 +13,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetParameterGroupsResult {
+    /**
+     * @return The type of the database engine.
+     * 
+     */
     private @Nullable String dbType;
+    /**
+     * @return The version number of the database engine.
+     * 
+     */
     private @Nullable String dbVersion;
+    /**
+     * @return A list of PolarDB Parameter Groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetParameterGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,16 +35,32 @@ public final class GetParameterGroupsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Parameter Group names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
 
     private GetParameterGroupsResult() {}
+    /**
+     * @return The type of the database engine.
+     * 
+     */
     public Optional<String> dbType() {
         return Optional.ofNullable(this.dbType);
     }
+    /**
+     * @return The version number of the database engine.
+     * 
+     */
     public Optional<String> dbVersion() {
         return Optional.ofNullable(this.dbVersion);
     }
+    /**
+     * @return A list of PolarDB Parameter Groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetParameterGroupsGroup> groups() {
         return this.groups;
     }
@@ -49,6 +77,10 @@ public final class GetParameterGroupsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Parameter Group names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

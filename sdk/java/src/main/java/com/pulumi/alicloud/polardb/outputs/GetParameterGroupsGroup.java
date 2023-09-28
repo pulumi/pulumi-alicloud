@@ -16,12 +16,12 @@ public final class GetParameterGroupsGroup {
      */
     private String createTime;
     /**
-     * @return The type of the database engine.
+     * @return The type of the database engine. Only `MySQL` is supported.
      * 
      */
     private String dbType;
     /**
-     * @return The version number of the database engine.
+     * @return The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
      * 
      */
     private String dbVersion;
@@ -70,14 +70,14 @@ public final class GetParameterGroupsGroup {
         return this.createTime;
     }
     /**
-     * @return The type of the database engine.
+     * @return The type of the database engine. Only `MySQL` is supported.
      * 
      */
     public String dbType() {
         return this.dbType;
     }
     /**
-     * @return The version number of the database engine.
+     * @return The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
      * 
      */
     public String dbVersion() {

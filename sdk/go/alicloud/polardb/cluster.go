@@ -56,10 +56,15 @@ type Cluster struct {
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount pulumi.IntOutput `pulumi:"dbNodeCount"`
+	// The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+	DbNodeNum pulumi.IntPtrOutput `pulumi:"dbNodeNum"`
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType pulumi.StringOutput `pulumi:"dbType"`
 	// Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
 	DbVersion pulumi.StringOutput `pulumi:"dbVersion"`
+	// The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+	DefaultTimeZone pulumi.StringPtrOutput `pulumi:"defaultTimeZone"`
 	// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
 	// > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
 	DeletionLock pulumi.IntPtrOutput `pulumi:"deletionLock"`
@@ -81,10 +86,19 @@ type Cluster struct {
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
 	// **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
 	ImciSwitch pulumi.StringOutput `pulumi:"imciSwitch"`
+	// Enable the Binlog function. Valid values are `OFF`, `ON`.
+	// > **NOTE:** This parameter is valid only MySQL Engine supports.
+	LoosePolarLogBin pulumi.StringPtrOutput `pulumi:"loosePolarLogBin"`
+	// Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+	LowerCaseTableNames pulumi.IntPtrOutput `pulumi:"lowerCaseTableNames"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringOutput `pulumi:"maintainTime"`
 	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
 	ModifyType pulumi.StringPtrOutput `pulumi:"modifyType"`
+	// The ID of the parameter template
+	// > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+	ParameterGroupId pulumi.StringPtrOutput `pulumi:"parameterGroupId"`
 	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
 	Parameters ClusterParameterArrayOutput `pulumi:"parameters"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
@@ -100,6 +114,12 @@ type Cluster struct {
 	PlannedStartTime pulumi.StringPtrOutput `pulumi:"plannedStartTime"`
 	// (Available since 1.196.0+) PolarDB cluster connection port.
 	Port pulumi.StringOutput `pulumi:"port"`
+	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+	// > **NOTE:** This parameter is valid only for standard clusters.
+	ProxyClass pulumi.StringPtrOutput `pulumi:"proxyClass"`
+	// The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+	// > **NOTE:** This parameter is valid only for standard clusters.
+	ProxyType pulumi.StringPtrOutput `pulumi:"proxyType"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus pulumi.StringPtrOutput `pulumi:"renewalStatus"`
 	// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
@@ -134,8 +154,12 @@ type Cluster struct {
 	SourceResourceId pulumi.StringPtrOutput `pulumi:"sourceResourceId"`
 	// (Available since 1.204.1+) PolarDB cluster status.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+	StoragePayType pulumi.StringOutput `pulumi:"storagePayType"`
 	// Storage space charged by space (monthly package). Unit: GB.
-	StorageSpace pulumi.IntPtrOutput `pulumi:"storageSpace"`
+	// > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
+	// **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
+	StorageSpace pulumi.IntOutput `pulumi:"storageSpace"`
 	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
 	// > **NOTE:** Serverless cluster does not support this parameter.
 	StorageType pulumi.StringOutput `pulumi:"storageType"`
@@ -233,10 +257,15 @@ type clusterState struct {
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount *int `pulumi:"dbNodeCount"`
+	// The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+	DbNodeNum *int `pulumi:"dbNodeNum"`
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType *string `pulumi:"dbType"`
 	// Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
 	DbVersion *string `pulumi:"dbVersion"`
+	// The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+	DefaultTimeZone *string `pulumi:"defaultTimeZone"`
 	// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
 	// > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
 	DeletionLock *int `pulumi:"deletionLock"`
@@ -258,10 +287,19 @@ type clusterState struct {
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
 	// **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
 	ImciSwitch *string `pulumi:"imciSwitch"`
+	// Enable the Binlog function. Valid values are `OFF`, `ON`.
+	// > **NOTE:** This parameter is valid only MySQL Engine supports.
+	LoosePolarLogBin *string `pulumi:"loosePolarLogBin"`
+	// Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+	LowerCaseTableNames *int `pulumi:"lowerCaseTableNames"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime *string `pulumi:"maintainTime"`
 	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
 	ModifyType *string `pulumi:"modifyType"`
+	// The ID of the parameter template
+	// > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+	ParameterGroupId *string `pulumi:"parameterGroupId"`
 	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
 	Parameters []ClusterParameter `pulumi:"parameters"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
@@ -277,6 +315,12 @@ type clusterState struct {
 	PlannedStartTime *string `pulumi:"plannedStartTime"`
 	// (Available since 1.196.0+) PolarDB cluster connection port.
 	Port *string `pulumi:"port"`
+	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+	// > **NOTE:** This parameter is valid only for standard clusters.
+	ProxyClass *string `pulumi:"proxyClass"`
+	// The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+	// > **NOTE:** This parameter is valid only for standard clusters.
+	ProxyType *string `pulumi:"proxyType"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
@@ -311,7 +355,11 @@ type clusterState struct {
 	SourceResourceId *string `pulumi:"sourceResourceId"`
 	// (Available since 1.204.1+) PolarDB cluster status.
 	Status *string `pulumi:"status"`
+	// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+	StoragePayType *string `pulumi:"storagePayType"`
 	// Storage space charged by space (monthly package). Unit: GB.
+	// > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
+	// **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
 	StorageSpace *int `pulumi:"storageSpace"`
 	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
 	// > **NOTE:** Serverless cluster does not support this parameter.
@@ -372,10 +420,15 @@ type ClusterState struct {
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount pulumi.IntPtrInput
+	// The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+	DbNodeNum pulumi.IntPtrInput
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
 	DbVersion pulumi.StringPtrInput
+	// The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+	DefaultTimeZone pulumi.StringPtrInput
 	// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
 	// > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
 	DeletionLock pulumi.IntPtrInput
@@ -397,10 +450,19 @@ type ClusterState struct {
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
 	// **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
 	ImciSwitch pulumi.StringPtrInput
+	// Enable the Binlog function. Valid values are `OFF`, `ON`.
+	// > **NOTE:** This parameter is valid only MySQL Engine supports.
+	LoosePolarLogBin pulumi.StringPtrInput
+	// Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+	LowerCaseTableNames pulumi.IntPtrInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringPtrInput
 	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
 	ModifyType pulumi.StringPtrInput
+	// The ID of the parameter template
+	// > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+	ParameterGroupId pulumi.StringPtrInput
 	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
 	Parameters ClusterParameterArrayInput
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
@@ -416,6 +478,12 @@ type ClusterState struct {
 	PlannedStartTime pulumi.StringPtrInput
 	// (Available since 1.196.0+) PolarDB cluster connection port.
 	Port pulumi.StringPtrInput
+	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+	// > **NOTE:** This parameter is valid only for standard clusters.
+	ProxyClass pulumi.StringPtrInput
+	// The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+	// > **NOTE:** This parameter is valid only for standard clusters.
+	ProxyType pulumi.StringPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus pulumi.StringPtrInput
 	// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
@@ -450,7 +518,11 @@ type ClusterState struct {
 	SourceResourceId pulumi.StringPtrInput
 	// (Available since 1.204.1+) PolarDB cluster status.
 	Status pulumi.StringPtrInput
+	// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+	StoragePayType pulumi.StringPtrInput
 	// Storage space charged by space (monthly package). Unit: GB.
+	// > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
+	// **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
 	StorageSpace pulumi.IntPtrInput
 	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
 	// > **NOTE:** Serverless cluster does not support this parameter.
@@ -511,10 +583,15 @@ type clusterArgs struct {
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount *int `pulumi:"dbNodeCount"`
+	// The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+	DbNodeNum *int `pulumi:"dbNodeNum"`
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType string `pulumi:"dbType"`
 	// Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
 	DbVersion string `pulumi:"dbVersion"`
+	// The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+	DefaultTimeZone *string `pulumi:"defaultTimeZone"`
 	// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
 	// > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
 	DeletionLock *int `pulumi:"deletionLock"`
@@ -536,10 +613,19 @@ type clusterArgs struct {
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
 	// **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
 	ImciSwitch *string `pulumi:"imciSwitch"`
+	// Enable the Binlog function. Valid values are `OFF`, `ON`.
+	// > **NOTE:** This parameter is valid only MySQL Engine supports.
+	LoosePolarLogBin *string `pulumi:"loosePolarLogBin"`
+	// Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+	LowerCaseTableNames *int `pulumi:"lowerCaseTableNames"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime *string `pulumi:"maintainTime"`
 	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
 	ModifyType *string `pulumi:"modifyType"`
+	// The ID of the parameter template
+	// > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+	ParameterGroupId *string `pulumi:"parameterGroupId"`
 	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
 	Parameters []ClusterParameter `pulumi:"parameters"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
@@ -553,6 +639,12 @@ type clusterArgs struct {
 	// The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
 	// > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
 	PlannedStartTime *string `pulumi:"plannedStartTime"`
+	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+	// > **NOTE:** This parameter is valid only for standard clusters.
+	ProxyClass *string `pulumi:"proxyClass"`
+	// The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+	// > **NOTE:** This parameter is valid only for standard clusters.
+	ProxyType *string `pulumi:"proxyType"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
@@ -585,7 +677,11 @@ type clusterArgs struct {
 	ServerlessType *string `pulumi:"serverlessType"`
 	// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+	StoragePayType *string `pulumi:"storagePayType"`
 	// Storage space charged by space (monthly package). Unit: GB.
+	// > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
+	// **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
 	StorageSpace *int `pulumi:"storageSpace"`
 	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
 	// > **NOTE:** Serverless cluster does not support this parameter.
@@ -639,10 +735,15 @@ type ClusterArgs struct {
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount pulumi.IntPtrInput
+	// The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+	DbNodeNum pulumi.IntPtrInput
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType pulumi.StringInput
 	// Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
 	DbVersion pulumi.StringInput
+	// The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+	DefaultTimeZone pulumi.StringPtrInput
 	// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
 	// > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
 	DeletionLock pulumi.IntPtrInput
@@ -664,10 +765,19 @@ type ClusterArgs struct {
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
 	// **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
 	ImciSwitch pulumi.StringPtrInput
+	// Enable the Binlog function. Valid values are `OFF`, `ON`.
+	// > **NOTE:** This parameter is valid only MySQL Engine supports.
+	LoosePolarLogBin pulumi.StringPtrInput
+	// Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+	LowerCaseTableNames pulumi.IntPtrInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringPtrInput
 	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
 	ModifyType pulumi.StringPtrInput
+	// The ID of the parameter template
+	// > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+	ParameterGroupId pulumi.StringPtrInput
 	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
 	Parameters ClusterParameterArrayInput
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
@@ -681,6 +791,12 @@ type ClusterArgs struct {
 	// The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
 	// > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
 	PlannedStartTime pulumi.StringPtrInput
+	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+	// > **NOTE:** This parameter is valid only for standard clusters.
+	ProxyClass pulumi.StringPtrInput
+	// The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+	// > **NOTE:** This parameter is valid only for standard clusters.
+	ProxyType pulumi.StringPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus pulumi.StringPtrInput
 	// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
@@ -713,7 +829,11 @@ type ClusterArgs struct {
 	ServerlessType pulumi.StringPtrInput
 	// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
 	SourceResourceId pulumi.StringPtrInput
+	// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+	StoragePayType pulumi.StringPtrInput
 	// Storage space charged by space (monthly package). Unit: GB.
+	// > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
+	// **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
 	StorageSpace pulumi.IntPtrInput
 	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
 	// > **NOTE:** Serverless cluster does not support this parameter.
@@ -916,6 +1036,11 @@ func (o ClusterOutput) DbNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.DbNodeCount }).(pulumi.IntOutput)
 }
 
+// The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+func (o ClusterOutput) DbNodeNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.DbNodeNum }).(pulumi.IntPtrOutput)
+}
+
 // Database type. Value options: MySQL, Oracle, PostgreSQL.
 func (o ClusterOutput) DbType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DbType }).(pulumi.StringOutput)
@@ -924,6 +1049,12 @@ func (o ClusterOutput) DbType() pulumi.StringOutput {
 // Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
 func (o ClusterOutput) DbVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DbVersion }).(pulumi.StringOutput)
+}
+
+// The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+func (o ClusterOutput) DefaultTimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DefaultTimeZone }).(pulumi.StringPtrOutput)
 }
 
 // turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
@@ -971,6 +1102,18 @@ func (o ClusterOutput) ImciSwitch() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ImciSwitch }).(pulumi.StringOutput)
 }
 
+// Enable the Binlog function. Valid values are `OFF`, `ON`.
+// > **NOTE:** This parameter is valid only MySQL Engine supports.
+func (o ClusterOutput) LoosePolarLogBin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.LoosePolarLogBin }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+func (o ClusterOutput) LowerCaseTableNames() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.LowerCaseTableNames }).(pulumi.IntPtrOutput)
+}
+
 // Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 func (o ClusterOutput) MaintainTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.MaintainTime }).(pulumi.StringOutput)
@@ -979,6 +1122,12 @@ func (o ClusterOutput) MaintainTime() pulumi.StringOutput {
 // Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
 func (o ClusterOutput) ModifyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ModifyType }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the parameter template
+// > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+func (o ClusterOutput) ParameterGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ParameterGroupId }).(pulumi.StringPtrOutput)
 }
 
 // Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
@@ -1012,6 +1161,18 @@ func (o ClusterOutput) PlannedStartTime() pulumi.StringPtrOutput {
 // (Available since 1.196.0+) PolarDB cluster connection port.
 func (o ClusterOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
+}
+
+// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+// > **NOTE:** This parameter is valid only for standard clusters.
+func (o ClusterOutput) ProxyClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ProxyClass }).(pulumi.StringPtrOutput)
+}
+
+// The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+// > **NOTE:** This parameter is valid only for standard clusters.
+func (o ClusterOutput) ProxyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ProxyType }).(pulumi.StringPtrOutput)
 }
 
 // Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -1087,9 +1248,16 @@ func (o ClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
+// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+func (o ClusterOutput) StoragePayType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.StoragePayType }).(pulumi.StringOutput)
+}
+
 // Storage space charged by space (monthly package). Unit: GB.
-func (o ClusterOutput) StorageSpace() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.StorageSpace }).(pulumi.IntPtrOutput)
+// > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
+// **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
+func (o ClusterOutput) StorageSpace() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.StorageSpace }).(pulumi.IntOutput)
 }
 
 // The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.

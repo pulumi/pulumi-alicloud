@@ -46,14 +46,14 @@ public final class GetSharedTargetsPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The resource shared ID of resource manager.
+     * The resource share ID of resource manager.
      * 
      */
     @Import(name="resourceShareId")
     private @Nullable String resourceShareId;
 
     /**
-     * @return The resource shared ID of resource manager.
+     * @return The resource share ID of resource manager.
      * 
      */
     public Optional<String> resourceShareId() {
@@ -61,14 +61,14 @@ public final class GetSharedTargetsPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The status of shared target.
+     * The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of shared target.
+     * @return The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
      * 
      */
     public Optional<String> status() {
@@ -135,7 +135,7 @@ public final class GetSharedTargetsPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param resourceShareId The resource shared ID of resource manager.
+         * @param resourceShareId The resource share ID of resource manager.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class GetSharedTargetsPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param status The status of shared target.
+         * @param status The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
          * 
          * @return builder
          * 

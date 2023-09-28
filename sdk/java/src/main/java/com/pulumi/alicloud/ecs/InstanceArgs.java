@@ -898,25 +898,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * Field &#39;subnet_id&#39; has been deprecated from version 1.177.0, and use field &#39;vswitch_id&#39; to replace.
-     * 
-     */
-    @Deprecated /* Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.  */
-    @Import(name="subnetId")
-    private @Nullable Output<String> subnetId;
-
-    /**
-     * @deprecated
-     * Field &#39;subnet_id&#39; has been deprecated from version 1.177.0, and use field &#39;vswitch_id&#39; to replace.
-     * 
-     */
-    @Deprecated /* Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.  */
-    public Optional<Output<String>> subnetId() {
-        return Optional.ofNullable(this.subnetId);
-    }
-
-    /**
      * The ID of the automatic snapshot policy applied to the system disk.
      * 
      */
@@ -1181,7 +1162,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.spotStrategy = $.spotStrategy;
         this.status = $.status;
         this.stoppedMode = $.stoppedMode;
-        this.subnetId = $.subnetId;
         this.systemDiskAutoSnapshotPolicyId = $.systemDiskAutoSnapshotPolicyId;
         this.systemDiskCategory = $.systemDiskCategory;
         this.systemDiskDescription = $.systemDiskDescription;
@@ -2436,31 +2416,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder stoppedMode(String stoppedMode) {
             return stoppedMode(Output.of(stoppedMode));
-        }
-
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;subnet_id&#39; has been deprecated from version 1.177.0, and use field &#39;vswitch_id&#39; to replace.
-         * 
-         */
-        @Deprecated /* Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.  */
-        public Builder subnetId(@Nullable Output<String> subnetId) {
-            $.subnetId = subnetId;
-            return this;
-        }
-
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;subnet_id&#39; has been deprecated from version 1.177.0, and use field &#39;vswitch_id&#39; to replace.
-         * 
-         */
-        @Deprecated /* Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.  */
-        public Builder subnetId(String subnetId) {
-            return subnetId(Output.of(subnetId));
         }
 
         /**

@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * Provides a Resource Manager Policy Version resource.
  * For information about Resource Manager Policy Version and how to use it, see [What is Resource Manager Policy Version](https://www.alibabacloud.com/help/en/doc-detail/116817.htm).
  * 
- * &gt; **NOTE:** Available in v1.84.0+.
+ * &gt; **NOTE:** Available since v1.84.0.
  * 
  * &gt; **NOTE:** It is not recommended to use this resource management policy version, it is recommended to directly use the policy resource to manage your policy. Please refer to the link for usage resource_manager_policy.
  * 
@@ -49,8 +49,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
  *         var examplePolicy = new Policy(&#34;examplePolicy&#34;, PolicyArgs.builder()        
- *             .policyName(&#34;tftest&#34;)
+ *             .policyName(name)
  *             .policyDocument(&#34;&#34;&#34;
  * 		{
  * 			&#34;Statement&#34;: [{
@@ -95,8 +97,6 @@ public class PolicyVersion extends com.pulumi.resources.CustomResource {
     /**
      * Specifies whether to set the policy version as the default version. Default to `false`.
      * 
-     * &gt; **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
-     * 
      * @deprecated
      * Field &#39;is_default_version&#39; has been deprecated from provider version 1.90.0
      * 
@@ -107,8 +107,6 @@ public class PolicyVersion extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies whether to set the policy version as the default version. Default to `false`.
-     * 
-     * &gt; **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
      * 
      */
     public Output<Optional<Boolean>> isDefaultVersion() {

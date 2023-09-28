@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Imm
     /// <summary>
     /// Provides a Intelligent Media Management Project resource.
     /// 
-    /// For information about Intelligent Media Management Project and how to use it, see [What is Project](https://help.aliyun.com/document_detail/63496.html).
+    /// For information about Intelligent Media Management Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/network-intelligence-service/latest/user-overview).
     /// 
-    /// &gt; **NOTE:** Available in v1.134.0+.
+    /// &gt; **NOTE:** Available since v1.134.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,6 +28,8 @@ namespace Pulumi.AliCloud.Imm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
     ///     var role = new AliCloud.Ram.Role("role", new()
     ///     {
     ///         Document = @"  {
@@ -51,7 +53,7 @@ namespace Pulumi.AliCloud.Imm
     /// 
     ///     var example = new AliCloud.Imm.Project("example", new()
     ///     {
-    ///         ProjectName = "example_name",
+    ///         ProjectName = name,
     ///         ServiceRole = role.Name,
     ///     });
     /// 

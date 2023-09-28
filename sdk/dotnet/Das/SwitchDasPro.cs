@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Das
     /// 
     /// For information about DAS Switch Das Pro and how to use it, see [What is Switch Das Pro](https://www.alibabacloud.com/help/en/database-autonomy-service/latest/enabledaspro).
     /// 
-    /// &gt; **NOTE:** Available in v1.193.0+.
+    /// &gt; **NOTE:** Available since v1.193.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,11 +28,58 @@ namespace Pulumi.AliCloud.Das
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Das.SwitchDasPro("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
+    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var defaultNodeClasses = AliCloud.PolarDB.GetNodeClasses.Invoke(new()
     ///     {
-    ///         InstanceId = "your_sql_id",
+    ///         DbType = "MySQL",
+    ///         DbVersion = "8.0",
+    ///         PayType = "PostPaid",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultNodeClasses.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.ZoneId),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultCluster = new AliCloud.PolarDB.Cluster("defaultCluster", new()
+    ///     {
+    ///         DbType = "MySQL",
+    ///         DbVersion = "8.0",
+    ///         DbNodeClass = "polar.mysql.x4.large",
+    ///         PayType = "PostPaid",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         Description = name,
+    ///         DbClusterIpArrays = new[]
+    ///         {
+    ///             new AliCloud.PolarDB.Inputs.ClusterDbClusterIpArrayArgs
+    ///             {
+    ///                 DbClusterIpArrayName = "default",
+    ///                 SecurityIps = new[]
+    ///                 {
+    ///                     "1.2.3.4",
+    ///                     "1.2.3.5",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultSwitchDasPro = new AliCloud.Das.SwitchDasPro("defaultSwitchDasPro", new()
+    ///     {
+    ///         InstanceId = defaultCluster.Id,
     ///         SqlRetention = 30,
-    ///         UserId = "your_account_id",
+    ///         UserId = defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
     ///     });
     /// 
     /// });

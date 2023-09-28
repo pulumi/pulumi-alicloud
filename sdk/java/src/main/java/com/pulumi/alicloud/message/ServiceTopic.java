@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Message Notification Service Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-service/latest/createtopic).
  * 
- * &gt; **NOTE:** Available in v1.188.0+.
+ * &gt; **NOTE:** Available since v1.188.0.
  * 
  * ## Example Usage
  * 
@@ -47,10 +47,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         var default_ = new ServiceTopic(&#34;default&#34;, ServiceTopicArgs.builder()        
- *             .loggingEnabled(true)
+ *             .topicName(name)
  *             .maxMessageSize(12357)
- *             .topicName(&#34;tf-example-value&#34;)
+ *             .loggingEnabled(true)
  *             .build());
  * 
  *     }

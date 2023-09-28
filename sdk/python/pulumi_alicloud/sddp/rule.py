@@ -528,9 +528,9 @@ class Rule(pulumi.CustomResource):
         """
         Provides a Data Security Center Rule resource.
 
-        For information about Data Security Center Rule and how to use it, see [What is Rule](https://help.aliyun.com/product/88674.html).
+        For information about Data Security Center Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/data-security-center/latest/api-sddp-2019-01-03-createrule).
 
-        > **NOTE:** Available in v1.132.0+.
+        > **NOTE:** Available since v1.132.0.
 
         ## Example Usage
 
@@ -540,12 +540,16 @@ class Rule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example_name"
         default = alicloud.sddp.Rule("default",
             category=0,
             content="content",
-            product_code="ODPS",
+            rule_name=name,
             risk_level_id="4",
-            rule_name="rule_name")
+            product_code="OSS")
         ```
 
         ## Import
@@ -583,9 +587,9 @@ class Rule(pulumi.CustomResource):
         """
         Provides a Data Security Center Rule resource.
 
-        For information about Data Security Center Rule and how to use it, see [What is Rule](https://help.aliyun.com/product/88674.html).
+        For information about Data Security Center Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/data-security-center/latest/api-sddp-2019-01-03-createrule).
 
-        > **NOTE:** Available in v1.132.0+.
+        > **NOTE:** Available since v1.132.0.
 
         ## Example Usage
 
@@ -595,12 +599,16 @@ class Rule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example_name"
         default = alicloud.sddp.Rule("default",
             category=0,
             content="content",
-            product_code="ODPS",
+            rule_name=name,
             risk_level_id="4",
-            rule_name="rule_name")
+            product_code="OSS")
         ```
 
         ## Import

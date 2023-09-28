@@ -3363,6 +3363,172 @@ func (o GetPrometheusAlertRulesRuleLabelArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetPrometheusAlertRulesRuleLabelOutput)
 }
 
+type GetPrometheusMonitoringsPrometheusMonitoring struct {
+	// The ID of the Prometheus instance.
+	ClusterId string `pulumi:"clusterId"`
+	// The monitoring configuration. The value is a YAML string.
+	ConfigYaml string `pulumi:"configYaml"`
+	// The ID of the Prometheus Monitoring. It formats as `<cluster_id>:<monitoring_name>:<type>`.
+	Id string `pulumi:"id"`
+	// The name of the monitoring configuration.
+	MonitoringName string `pulumi:"monitoringName"`
+	// The status of the monitoring configuration. Valid values: `run`, `stop`.
+	Status string `pulumi:"status"`
+	// The type of the monitoring configuration. Valid values: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
+	Type string `pulumi:"type"`
+}
+
+// GetPrometheusMonitoringsPrometheusMonitoringInput is an input type that accepts GetPrometheusMonitoringsPrometheusMonitoringArgs and GetPrometheusMonitoringsPrometheusMonitoringOutput values.
+// You can construct a concrete instance of `GetPrometheusMonitoringsPrometheusMonitoringInput` via:
+//
+//	GetPrometheusMonitoringsPrometheusMonitoringArgs{...}
+type GetPrometheusMonitoringsPrometheusMonitoringInput interface {
+	pulumi.Input
+
+	ToGetPrometheusMonitoringsPrometheusMonitoringOutput() GetPrometheusMonitoringsPrometheusMonitoringOutput
+	ToGetPrometheusMonitoringsPrometheusMonitoringOutputWithContext(context.Context) GetPrometheusMonitoringsPrometheusMonitoringOutput
+}
+
+type GetPrometheusMonitoringsPrometheusMonitoringArgs struct {
+	// The ID of the Prometheus instance.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The monitoring configuration. The value is a YAML string.
+	ConfigYaml pulumi.StringInput `pulumi:"configYaml"`
+	// The ID of the Prometheus Monitoring. It formats as `<cluster_id>:<monitoring_name>:<type>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the monitoring configuration.
+	MonitoringName pulumi.StringInput `pulumi:"monitoringName"`
+	// The status of the monitoring configuration. Valid values: `run`, `stop`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The type of the monitoring configuration. Valid values: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetPrometheusMonitoringsPrometheusMonitoringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrometheusMonitoringsPrometheusMonitoring)(nil)).Elem()
+}
+
+func (i GetPrometheusMonitoringsPrometheusMonitoringArgs) ToGetPrometheusMonitoringsPrometheusMonitoringOutput() GetPrometheusMonitoringsPrometheusMonitoringOutput {
+	return i.ToGetPrometheusMonitoringsPrometheusMonitoringOutputWithContext(context.Background())
+}
+
+func (i GetPrometheusMonitoringsPrometheusMonitoringArgs) ToGetPrometheusMonitoringsPrometheusMonitoringOutputWithContext(ctx context.Context) GetPrometheusMonitoringsPrometheusMonitoringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheusMonitoringsPrometheusMonitoringOutput)
+}
+
+func (i GetPrometheusMonitoringsPrometheusMonitoringArgs) ToOutput(ctx context.Context) pulumix.Output[GetPrometheusMonitoringsPrometheusMonitoring] {
+	return pulumix.Output[GetPrometheusMonitoringsPrometheusMonitoring]{
+		OutputState: i.ToGetPrometheusMonitoringsPrometheusMonitoringOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetPrometheusMonitoringsPrometheusMonitoringArrayInput is an input type that accepts GetPrometheusMonitoringsPrometheusMonitoringArray and GetPrometheusMonitoringsPrometheusMonitoringArrayOutput values.
+// You can construct a concrete instance of `GetPrometheusMonitoringsPrometheusMonitoringArrayInput` via:
+//
+//	GetPrometheusMonitoringsPrometheusMonitoringArray{ GetPrometheusMonitoringsPrometheusMonitoringArgs{...} }
+type GetPrometheusMonitoringsPrometheusMonitoringArrayInput interface {
+	pulumi.Input
+
+	ToGetPrometheusMonitoringsPrometheusMonitoringArrayOutput() GetPrometheusMonitoringsPrometheusMonitoringArrayOutput
+	ToGetPrometheusMonitoringsPrometheusMonitoringArrayOutputWithContext(context.Context) GetPrometheusMonitoringsPrometheusMonitoringArrayOutput
+}
+
+type GetPrometheusMonitoringsPrometheusMonitoringArray []GetPrometheusMonitoringsPrometheusMonitoringInput
+
+func (GetPrometheusMonitoringsPrometheusMonitoringArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrometheusMonitoringsPrometheusMonitoring)(nil)).Elem()
+}
+
+func (i GetPrometheusMonitoringsPrometheusMonitoringArray) ToGetPrometheusMonitoringsPrometheusMonitoringArrayOutput() GetPrometheusMonitoringsPrometheusMonitoringArrayOutput {
+	return i.ToGetPrometheusMonitoringsPrometheusMonitoringArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrometheusMonitoringsPrometheusMonitoringArray) ToGetPrometheusMonitoringsPrometheusMonitoringArrayOutputWithContext(ctx context.Context) GetPrometheusMonitoringsPrometheusMonitoringArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheusMonitoringsPrometheusMonitoringArrayOutput)
+}
+
+func (i GetPrometheusMonitoringsPrometheusMonitoringArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPrometheusMonitoringsPrometheusMonitoring] {
+	return pulumix.Output[[]GetPrometheusMonitoringsPrometheusMonitoring]{
+		OutputState: i.ToGetPrometheusMonitoringsPrometheusMonitoringArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetPrometheusMonitoringsPrometheusMonitoringOutput struct{ *pulumi.OutputState }
+
+func (GetPrometheusMonitoringsPrometheusMonitoringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrometheusMonitoringsPrometheusMonitoring)(nil)).Elem()
+}
+
+func (o GetPrometheusMonitoringsPrometheusMonitoringOutput) ToGetPrometheusMonitoringsPrometheusMonitoringOutput() GetPrometheusMonitoringsPrometheusMonitoringOutput {
+	return o
+}
+
+func (o GetPrometheusMonitoringsPrometheusMonitoringOutput) ToGetPrometheusMonitoringsPrometheusMonitoringOutputWithContext(ctx context.Context) GetPrometheusMonitoringsPrometheusMonitoringOutput {
+	return o
+}
+
+func (o GetPrometheusMonitoringsPrometheusMonitoringOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrometheusMonitoringsPrometheusMonitoring] {
+	return pulumix.Output[GetPrometheusMonitoringsPrometheusMonitoring]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The ID of the Prometheus instance.
+func (o GetPrometheusMonitoringsPrometheusMonitoringOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusMonitoringsPrometheusMonitoring) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The monitoring configuration. The value is a YAML string.
+func (o GetPrometheusMonitoringsPrometheusMonitoringOutput) ConfigYaml() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusMonitoringsPrometheusMonitoring) string { return v.ConfigYaml }).(pulumi.StringOutput)
+}
+
+// The ID of the Prometheus Monitoring. It formats as `<cluster_id>:<monitoring_name>:<type>`.
+func (o GetPrometheusMonitoringsPrometheusMonitoringOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusMonitoringsPrometheusMonitoring) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the monitoring configuration.
+func (o GetPrometheusMonitoringsPrometheusMonitoringOutput) MonitoringName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusMonitoringsPrometheusMonitoring) string { return v.MonitoringName }).(pulumi.StringOutput)
+}
+
+// The status of the monitoring configuration. Valid values: `run`, `stop`.
+func (o GetPrometheusMonitoringsPrometheusMonitoringOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusMonitoringsPrometheusMonitoring) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The type of the monitoring configuration. Valid values: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
+func (o GetPrometheusMonitoringsPrometheusMonitoringOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusMonitoringsPrometheusMonitoring) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetPrometheusMonitoringsPrometheusMonitoringArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrometheusMonitoringsPrometheusMonitoringArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrometheusMonitoringsPrometheusMonitoring)(nil)).Elem()
+}
+
+func (o GetPrometheusMonitoringsPrometheusMonitoringArrayOutput) ToGetPrometheusMonitoringsPrometheusMonitoringArrayOutput() GetPrometheusMonitoringsPrometheusMonitoringArrayOutput {
+	return o
+}
+
+func (o GetPrometheusMonitoringsPrometheusMonitoringArrayOutput) ToGetPrometheusMonitoringsPrometheusMonitoringArrayOutputWithContext(ctx context.Context) GetPrometheusMonitoringsPrometheusMonitoringArrayOutput {
+	return o
+}
+
+func (o GetPrometheusMonitoringsPrometheusMonitoringArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPrometheusMonitoringsPrometheusMonitoring] {
+	return pulumix.Output[[]GetPrometheusMonitoringsPrometheusMonitoring]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetPrometheusMonitoringsPrometheusMonitoringArrayOutput) Index(i pulumi.IntInput) GetPrometheusMonitoringsPrometheusMonitoringOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrometheusMonitoringsPrometheusMonitoring {
+		return vs[0].([]GetPrometheusMonitoringsPrometheusMonitoring)[vs[1].(int)]
+	}).(GetPrometheusMonitoringsPrometheusMonitoringOutput)
+}
+
 type GetRemoteWritesRemoteWrite struct {
 	// The ID of the Prometheus instance.
 	ClusterId string `pulumi:"clusterId"`
@@ -3556,6 +3722,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheusAlertRulesRuleAnnotationArrayInput)(nil)).Elem(), GetPrometheusAlertRulesRuleAnnotationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheusAlertRulesRuleLabelInput)(nil)).Elem(), GetPrometheusAlertRulesRuleLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheusAlertRulesRuleLabelArrayInput)(nil)).Elem(), GetPrometheusAlertRulesRuleLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheusMonitoringsPrometheusMonitoringInput)(nil)).Elem(), GetPrometheusMonitoringsPrometheusMonitoringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheusMonitoringsPrometheusMonitoringArrayInput)(nil)).Elem(), GetPrometheusMonitoringsPrometheusMonitoringArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRemoteWritesRemoteWriteInput)(nil)).Elem(), GetRemoteWritesRemoteWriteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRemoteWritesRemoteWriteArrayInput)(nil)).Elem(), GetRemoteWritesRemoteWriteArray{})
 	pulumi.RegisterOutputType(DispatchRuleGroupRuleOutput{})
@@ -3602,6 +3770,8 @@ func init() {
 	pulumi.RegisterOutputType(GetPrometheusAlertRulesRuleAnnotationArrayOutput{})
 	pulumi.RegisterOutputType(GetPrometheusAlertRulesRuleLabelOutput{})
 	pulumi.RegisterOutputType(GetPrometheusAlertRulesRuleLabelArrayOutput{})
+	pulumi.RegisterOutputType(GetPrometheusMonitoringsPrometheusMonitoringOutput{})
+	pulumi.RegisterOutputType(GetPrometheusMonitoringsPrometheusMonitoringArrayOutput{})
 	pulumi.RegisterOutputType(GetRemoteWritesRemoteWriteOutput{})
 	pulumi.RegisterOutputType(GetRemoteWritesRemoteWriteArrayOutput{})
 }

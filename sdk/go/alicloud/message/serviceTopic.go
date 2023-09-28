@@ -17,7 +17,7 @@ import (
 //
 // For information about Message Notification Service Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-service/latest/createtopic).
 //
-// > **NOTE:** Available in v1.188.0+.
+// > **NOTE:** Available since v1.188.0.
 //
 // ## Example Usage
 //
@@ -30,15 +30,21 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/message"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := message.NewServiceTopic(ctx, "default", &message.ServiceTopicArgs{
-//				LoggingEnabled: pulumi.Bool(true),
+//				TopicName:      pulumi.String(name),
 //				MaxMessageSize: pulumi.Int(12357),
-//				TopicName:      pulumi.String("tf-example-value"),
+//				LoggingEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

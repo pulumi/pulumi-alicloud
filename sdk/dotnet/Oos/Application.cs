@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Oos
     /// <summary>
     /// Provides a OOS Application resource.
     /// 
-    /// For information about OOS Application and how to use it, see [What is Application](https://www.alibabacloud.com/help/en/doc-detail/120556.html).
+    /// For information about OOS Application and how to use it, see [What is Application](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/api-oos-2019-06-01-createapplication).
     /// 
-    /// &gt; **NOTE:** Available in v1.145.0+.
+    /// &gt; **NOTE:** Available since v1.145.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,13 +28,15 @@ namespace Pulumi.AliCloud.Oos
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
     ///     var defaultApplication = new AliCloud.Oos.Application("defaultApplication", new()
     ///     {
     ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
-    ///         ApplicationName = "terraform-example",
-    ///         Description = "terraform-example",
+    ///         ApplicationName = name,
+    ///         Description = name,
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },

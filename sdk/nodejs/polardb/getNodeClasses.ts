@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the PolarDB node classes resource available info of Alibaba Cloud.
  *
- * > **NOTE:** Available in v1.81.0+
+ * > **NOTE:** Available since v1.81.0+
  *
  * ## Example Usage
  *
@@ -45,6 +45,9 @@ export function getNodeClasses(args: GetNodeClassesArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getNodeClasses.
  */
 export interface GetNodeClassesArgs {
+    /**
+     * The PolarDB node cluster series.
+     */
     category?: string;
     /**
      * The PolarDB node class type by the user.
@@ -106,7 +109,7 @@ export interface GetNodeClassesResult {
 /**
  * This data source provides the PolarDB node classes resource available info of Alibaba Cloud.
  *
- * > **NOTE:** Available in v1.81.0+
+ * > **NOTE:** Available since v1.81.0+
  *
  * ## Example Usage
  *
@@ -131,6 +134,9 @@ export function getNodeClassesOutput(args: GetNodeClassesOutputArgs, opts?: pulu
  * A collection of arguments for invoking getNodeClasses.
  */
 export interface GetNodeClassesOutputArgs {
+    /**
+     * The PolarDB node cluster series.
+     */
     category?: pulumi.Input<string>;
     /**
      * The PolarDB node class type by the user.

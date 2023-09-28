@@ -102,7 +102,7 @@ class ResourceShare(pulumi.CustomResource):
 
         For information about Resource Manager Resource Share and how to use it, see [What is Resource Share](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
 
-        > **NOTE:** Available in v1.111.0+.
+        > **NOTE:** Available since v1.111.0.
 
         ## Example Usage
 
@@ -112,7 +112,11 @@ class ResourceShare(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.resourcemanager.ResourceShare("example", resource_share_name="example_value")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        example = alicloud.resourcemanager.ResourceShare("example", resource_share_name=name)
         ```
 
         ## Import
@@ -138,7 +142,7 @@ class ResourceShare(pulumi.CustomResource):
 
         For information about Resource Manager Resource Share and how to use it, see [What is Resource Share](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
 
-        > **NOTE:** Available in v1.111.0+.
+        > **NOTE:** Available since v1.111.0.
 
         ## Example Usage
 
@@ -148,7 +152,11 @@ class ResourceShare(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.resourcemanager.ResourceShare("example", resource_share_name="example_value")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        example = alicloud.resourcemanager.ResourceShare("example", resource_share_name=name)
         ```
 
         ## Import

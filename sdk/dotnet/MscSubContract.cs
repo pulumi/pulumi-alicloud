@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud
     /// <summary>
     /// Provides a Msc Sub Contact resource.
     /// 
-    /// &gt; **NOTE:** Available in v1.132.0+.
+    /// &gt; **NOTE:** Available since v1.132.0.
     /// 
     /// ## Example Usage
     /// 
@@ -26,12 +26,14 @@ namespace Pulumi.AliCloud
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
     ///     var @default = new AliCloud.MscSubContract("default", new()
     ///     {
-    ///         ContactName = example_value,
+    ///         ContactName = name,
     ///         Position = "CEO",
     ///         Email = "123@163.com",
-    ///         Mobile = "153xxxxx906",
+    ///         Mobile = "15388888888",
     ///     });
     /// 
     /// });

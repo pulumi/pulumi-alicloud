@@ -24,12 +24,12 @@ class CompliancePackArgs:
                  config_rules: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]] = None):
         """
         The set of arguments for constructing a CompliancePack resource.
-        :param pulumi.Input[str] compliance_pack_name: The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
+        :param pulumi.Input[str] compliance_pack_name: The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
         :param pulumi.Input[str] description: The Description of compliance pack.
-        :param pulumi.Input[int] risk_level: The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+        :param pulumi.Input[int] risk_level: The Risk Level. Valid values:
         :param pulumi.Input[str] compliance_pack_template_id: Compliance Package Template Id.
         :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
-        :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]] config_rules: A list of Config Rules. See `config_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]] config_rules: A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         """
         pulumi.set(__self__, "compliance_pack_name", compliance_pack_name)
         pulumi.set(__self__, "description", description)
@@ -39,8 +39,8 @@ class CompliancePackArgs:
         if config_rule_ids is not None:
             pulumi.set(__self__, "config_rule_ids", config_rule_ids)
         if config_rules is not None:
-            warnings.warn("""Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""", DeprecationWarning)
-            pulumi.log.warn("""config_rules is deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""")
+            warnings.warn("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""", DeprecationWarning)
+            pulumi.log.warn("""config_rules is deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
         if config_rules is not None:
             pulumi.set(__self__, "config_rules", config_rules)
 
@@ -48,7 +48,7 @@ class CompliancePackArgs:
     @pulumi.getter(name="compliancePackName")
     def compliance_pack_name(self) -> pulumi.Input[str]:
         """
-        The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
+        The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
         """
         return pulumi.get(self, "compliance_pack_name")
 
@@ -72,7 +72,7 @@ class CompliancePackArgs:
     @pulumi.getter(name="riskLevel")
     def risk_level(self) -> pulumi.Input[int]:
         """
-        The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+        The Risk Level. Valid values:
         """
         return pulumi.get(self, "risk_level")
 
@@ -108,10 +108,10 @@ class CompliancePackArgs:
     @pulumi.getter(name="configRules")
     def config_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]]:
         """
-        A list of Config Rules. See `config_rules` below.
+        A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         """
-        warnings.warn("""Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""", DeprecationWarning)
-        pulumi.log.warn("""config_rules is deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""")
+        warnings.warn("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""", DeprecationWarning)
+        pulumi.log.warn("""config_rules is deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
 
         return pulumi.get(self, "config_rules")
 
@@ -132,13 +132,13 @@ class _CompliancePackState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CompliancePack resources.
-        :param pulumi.Input[str] compliance_pack_name: The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
+        :param pulumi.Input[str] compliance_pack_name: The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
         :param pulumi.Input[str] compliance_pack_template_id: Compliance Package Template Id.
         :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
-        :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]] config_rules: A list of Config Rules. See `config_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]] config_rules: A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         :param pulumi.Input[str] description: The Description of compliance pack.
-        :param pulumi.Input[int] risk_level: The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
-        :param pulumi.Input[str] status: The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+        :param pulumi.Input[int] risk_level: The Risk Level. Valid values:
+        :param pulumi.Input[str] status: The status of the Compliance Pack.
         """
         if compliance_pack_name is not None:
             pulumi.set(__self__, "compliance_pack_name", compliance_pack_name)
@@ -147,8 +147,8 @@ class _CompliancePackState:
         if config_rule_ids is not None:
             pulumi.set(__self__, "config_rule_ids", config_rule_ids)
         if config_rules is not None:
-            warnings.warn("""Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""", DeprecationWarning)
-            pulumi.log.warn("""config_rules is deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""")
+            warnings.warn("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""", DeprecationWarning)
+            pulumi.log.warn("""config_rules is deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
         if config_rules is not None:
             pulumi.set(__self__, "config_rules", config_rules)
         if description is not None:
@@ -162,7 +162,7 @@ class _CompliancePackState:
     @pulumi.getter(name="compliancePackName")
     def compliance_pack_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
+        The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
         """
         return pulumi.get(self, "compliance_pack_name")
 
@@ -198,10 +198,10 @@ class _CompliancePackState:
     @pulumi.getter(name="configRules")
     def config_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]]:
         """
-        A list of Config Rules. See `config_rules` below.
+        A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         """
-        warnings.warn("""Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""", DeprecationWarning)
-        pulumi.log.warn("""config_rules is deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""")
+        warnings.warn("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""", DeprecationWarning)
+        pulumi.log.warn("""config_rules is deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
 
         return pulumi.get(self, "config_rules")
 
@@ -225,7 +225,7 @@ class _CompliancePackState:
     @pulumi.getter(name="riskLevel")
     def risk_level(self) -> Optional[pulumi.Input[int]]:
         """
-        The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+        The Risk Level. Valid values:
         """
         return pulumi.get(self, "risk_level")
 
@@ -237,7 +237,7 @@ class _CompliancePackState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+        The status of the Compliance Pack.
         """
         return pulumi.get(self, "status")
 
@@ -276,26 +276,45 @@ class CompliancePack(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example-config"
+            name = "tf-example-config-name"
         default_regions = alicloud.get_regions(current=True)
-        default_rule = alicloud.cfg.Rule("defaultRule",
-            description="If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.",
+        rule1 = alicloud.cfg.Rule("rule1",
+            description=name,
             source_owner="ALIYUN",
-            source_identifier="oss-bucket-public-read-prohibited",
+            source_identifier="ram-user-ak-create-date-expired-check",
             risk_level=1,
-            tag_key_scope="For",
-            tag_value_scope="example",
+            maximum_execution_frequency="TwentyFour_Hours",
             region_ids_scope=default_regions.regions[0].id,
-            config_rule_trigger_types="ConfigurationItemChangeNotification",
-            resource_types_scopes=["ACS::OSS::Bucket"],
-            rule_name="oss-bucket-public-read-prohibited")
+            config_rule_trigger_types="ScheduledNotification",
+            resource_types_scopes=["ACS::RAM::User"],
+            rule_name="ciscompliancecheck_ram-user-ak-create-date-expired-check",
+            input_parameters={
+                "days": "90",
+            })
+        rule2 = alicloud.cfg.Rule("rule2",
+            description=name,
+            source_owner="ALIYUN",
+            source_identifier="adb-cluster-maintain-time-check",
+            risk_level=2,
+            region_ids_scope=default_regions.regions[0].id,
+            config_rule_trigger_types="ScheduledNotification",
+            resource_types_scopes=["ACS::ADB::DBCluster"],
+            rule_name="governance-evaluation-adb-cluster-maintain-time-check",
+            input_parameters={
+                "maintainTimes": "02:00-04:00,06:00-08:00,12:00-13:00",
+            })
         default_compliance_pack = alicloud.cfg.CompliancePack("defaultCompliancePack",
             compliance_pack_name=name,
-            description=name,
-            risk_level=1,
-            config_rule_ids=[alicloud.cfg.CompliancePackConfigRuleIdArgs(
-                config_rule_id=default_rule.id,
-            )])
+            description="CloudGovernanceCenter evaluation",
+            risk_level=2,
+            config_rule_ids=[
+                alicloud.cfg.CompliancePackConfigRuleIdArgs(
+                    config_rule_id=rule1.id,
+                ),
+                alicloud.cfg.CompliancePackConfigRuleIdArgs(
+                    config_rule_id=rule2.id,
+                ),
+            ])
         ```
 
         ## Import
@@ -308,12 +327,12 @@ class CompliancePack(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compliance_pack_name: The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
+        :param pulumi.Input[str] compliance_pack_name: The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
         :param pulumi.Input[str] compliance_pack_template_id: Compliance Package Template Id.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleIdArgs']]]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleArgs']]]] config_rules: A list of Config Rules. See `config_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleArgs']]]] config_rules: A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         :param pulumi.Input[str] description: The Description of compliance pack.
-        :param pulumi.Input[int] risk_level: The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+        :param pulumi.Input[int] risk_level: The Risk Level. Valid values:
         """
         ...
     @overload
@@ -339,26 +358,45 @@ class CompliancePack(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example-config"
+            name = "tf-example-config-name"
         default_regions = alicloud.get_regions(current=True)
-        default_rule = alicloud.cfg.Rule("defaultRule",
-            description="If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.",
+        rule1 = alicloud.cfg.Rule("rule1",
+            description=name,
             source_owner="ALIYUN",
-            source_identifier="oss-bucket-public-read-prohibited",
+            source_identifier="ram-user-ak-create-date-expired-check",
             risk_level=1,
-            tag_key_scope="For",
-            tag_value_scope="example",
+            maximum_execution_frequency="TwentyFour_Hours",
             region_ids_scope=default_regions.regions[0].id,
-            config_rule_trigger_types="ConfigurationItemChangeNotification",
-            resource_types_scopes=["ACS::OSS::Bucket"],
-            rule_name="oss-bucket-public-read-prohibited")
+            config_rule_trigger_types="ScheduledNotification",
+            resource_types_scopes=["ACS::RAM::User"],
+            rule_name="ciscompliancecheck_ram-user-ak-create-date-expired-check",
+            input_parameters={
+                "days": "90",
+            })
+        rule2 = alicloud.cfg.Rule("rule2",
+            description=name,
+            source_owner="ALIYUN",
+            source_identifier="adb-cluster-maintain-time-check",
+            risk_level=2,
+            region_ids_scope=default_regions.regions[0].id,
+            config_rule_trigger_types="ScheduledNotification",
+            resource_types_scopes=["ACS::ADB::DBCluster"],
+            rule_name="governance-evaluation-adb-cluster-maintain-time-check",
+            input_parameters={
+                "maintainTimes": "02:00-04:00,06:00-08:00,12:00-13:00",
+            })
         default_compliance_pack = alicloud.cfg.CompliancePack("defaultCompliancePack",
             compliance_pack_name=name,
-            description=name,
-            risk_level=1,
-            config_rule_ids=[alicloud.cfg.CompliancePackConfigRuleIdArgs(
-                config_rule_id=default_rule.id,
-            )])
+            description="CloudGovernanceCenter evaluation",
+            risk_level=2,
+            config_rule_ids=[
+                alicloud.cfg.CompliancePackConfigRuleIdArgs(
+                    config_rule_id=rule1.id,
+                ),
+                alicloud.cfg.CompliancePackConfigRuleIdArgs(
+                    config_rule_id=rule2.id,
+                ),
+            ])
         ```
 
         ## Import
@@ -405,8 +443,8 @@ class CompliancePack(pulumi.CustomResource):
             __props__.__dict__["compliance_pack_template_id"] = compliance_pack_template_id
             __props__.__dict__["config_rule_ids"] = config_rule_ids
             if config_rules is not None and not opts.urn:
-                warnings.warn("""Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""", DeprecationWarning)
-                pulumi.log.warn("""config_rules is deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""")
+                warnings.warn("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""", DeprecationWarning)
+                pulumi.log.warn("""config_rules is deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
             __props__.__dict__["config_rules"] = config_rules
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
@@ -439,13 +477,13 @@ class CompliancePack(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compliance_pack_name: The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
+        :param pulumi.Input[str] compliance_pack_name: The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
         :param pulumi.Input[str] compliance_pack_template_id: Compliance Package Template Id.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleIdArgs']]]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleArgs']]]] config_rules: A list of Config Rules. See `config_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleArgs']]]] config_rules: A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         :param pulumi.Input[str] description: The Description of compliance pack.
-        :param pulumi.Input[int] risk_level: The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
-        :param pulumi.Input[str] status: The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+        :param pulumi.Input[int] risk_level: The Risk Level. Valid values:
+        :param pulumi.Input[str] status: The status of the Compliance Pack.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -464,7 +502,7 @@ class CompliancePack(pulumi.CustomResource):
     @pulumi.getter(name="compliancePackName")
     def compliance_pack_name(self) -> pulumi.Output[str]:
         """
-        The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
+        The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
         """
         return pulumi.get(self, "compliance_pack_name")
 
@@ -488,10 +526,10 @@ class CompliancePack(pulumi.CustomResource):
     @pulumi.getter(name="configRules")
     def config_rules(self) -> pulumi.Output[Optional[Sequence['outputs.CompliancePackConfigRule']]]:
         """
-        A list of Config Rules. See `config_rules` below.
+        A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         """
-        warnings.warn("""Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""", DeprecationWarning)
-        pulumi.log.warn("""config_rules is deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""")
+        warnings.warn("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""", DeprecationWarning)
+        pulumi.log.warn("""config_rules is deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
 
         return pulumi.get(self, "config_rules")
 
@@ -507,7 +545,7 @@ class CompliancePack(pulumi.CustomResource):
     @pulumi.getter(name="riskLevel")
     def risk_level(self) -> pulumi.Output[int]:
         """
-        The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+        The Risk Level. Valid values:
         """
         return pulumi.get(self, "risk_level")
 
@@ -515,7 +553,7 @@ class CompliancePack(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+        The status of the Compliance Pack.
         """
         return pulumi.get(self, "status")
 

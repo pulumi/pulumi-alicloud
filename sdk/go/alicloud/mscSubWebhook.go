@@ -15,36 +15,7 @@ import (
 
 // Provides a Msc Sub Webhook resource.
 //
-// > **NOTE:** Available in v1.141.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := alicloud.NewMscSubWebhook(ctx, "example", &alicloud.MscSubWebhookArgs{
-//				ServerUrl:   pulumi.String("example_value"),
-//				WebhookName: pulumi.String("example_value"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// > **NOTE:** Available since v1.141.0.
 //
 // ## Import
 //

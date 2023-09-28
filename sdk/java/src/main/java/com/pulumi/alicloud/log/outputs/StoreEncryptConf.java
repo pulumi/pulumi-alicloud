@@ -24,7 +24,7 @@ public final class StoreEncryptConf {
      */
     private @Nullable String encryptType;
     /**
-     * @return User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
+     * @return User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `user_cmk_info` below.
      * ```java
      * package generated_program;
      * 
@@ -47,7 +47,6 @@ public final class StoreEncryptConf {
      *     }
      * }
      * ```
-     * #### Block user_cmk_info
      * 
      */
     private @Nullable StoreEncryptConfUserCmkInfo userCmkInfo;
@@ -68,7 +67,7 @@ public final class StoreEncryptConf {
         return Optional.ofNullable(this.encryptType);
     }
     /**
-     * @return User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
+     * @return User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `user_cmk_info` below.
      * ```java
      * package generated_program;
      * 
@@ -91,7 +90,6 @@ public final class StoreEncryptConf {
      *     }
      * }
      * ```
-     * #### Block user_cmk_info
      * 
      */
     public Optional<StoreEncryptConfUserCmkInfo> userCmkInfo() {

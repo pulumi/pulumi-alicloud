@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// <summary>
     /// Provides a Threat Detection Honey Pot resource.
     /// 
-    /// For information about Threat Detection Honey Pot and how to use it, see [What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypot).
+    /// For information about Threat Detection Honey Pot and how to use it, see [What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot).
     /// 
-    /// &gt; **NOTE:** Available in v1.195.0+.
+    /// &gt; **NOTE:** Available since v1.195.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,12 +28,29 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.ThreatDetection.HoneyPot("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
+    ///     var defaultHoneypotImages = AliCloud.ThreatDetection.GetHoneypotImages.Invoke(new()
     ///     {
-    ///         HoneypotImageId = "sha256:007095d6de9c7a343e9fc1f74a7efc9c5de9d5454789d2fa505a1b3fc623730c",
-    ///         HoneypotImageName = "ruoyi",
-    ///         HoneypotName = "huangtiong-test",
-    ///         NodeId = "a44e1ab3-6945-444c-889d-5bacee7056e8",
+    ///         NameRegex = "^ruoyi",
+    ///     });
+    /// 
+    ///     var defaultHoneypotNode = new AliCloud.ThreatDetection.HoneypotNode("defaultHoneypotNode", new()
+    ///     {
+    ///         NodeName = name,
+    ///         AvailableProbeNum = 20,
+    ///         SecurityGroupProbeIpLists = new[]
+    ///         {
+    ///             "0.0.0.0/0",
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultHoneyPot = new AliCloud.ThreatDetection.HoneyPot("defaultHoneyPot", new()
+    ///     {
+    ///         HoneypotImageName = defaultHoneypotImages.Apply(getHoneypotImagesResult =&gt; getHoneypotImagesResult.Images[0]?.HoneypotImageName),
+    ///         HoneypotImageId = defaultHoneypotImages.Apply(getHoneypotImagesResult =&gt; getHoneypotImagesResult.Images[0]?.HoneypotImageId),
+    ///         HoneypotName = name,
+    ///         NodeId = defaultHoneypotNode.Id,
     ///     });
     /// 
     /// });

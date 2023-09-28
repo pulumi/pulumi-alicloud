@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about VOD Editing Project and how to use it, see [What is Editing Project](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/addeditingproject#doc-api-vod-AddEditingProject).
  * 
- * &gt; **NOTE:** Available in v1.187.0+.
+ * &gt; **NOTE:** Available since v1.187.0.
  * 
  * ## Example Usage
  * 
@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.vod.EditingProject;
  * import com.pulumi.alicloud.vod.EditingProjectArgs;
  * import java.util.List;
@@ -45,10 +47,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
  *         var example = new EditingProject(&#34;example&#34;, EditingProjectArgs.builder()        
- *             .editingProjectName(&#34;example_value&#34;)
- *             .timeline(&#34;example_value&#34;)
- *             .title(&#34;example_value&#34;)
+ *             .editingProjectName(name)
+ *             .title(name)
+ *             .timeline(&#34;&#34;&#34;
+ *   {
+ *     &#34;VideoTracks&#34;:[
+ *       {
+ *         &#34;VideoTrackClips&#34;:[
+ *           {
+ *           &#34;MediaId&#34;:&#34;0c60e6f02dae71edbfaa472190a90102&#34;,
+ *           &#34;In&#34;:2811
+ *           }
+ *         ]
+ *       }
+ *     ]
+ *   }
+ *             &#34;&#34;&#34;)
+ *             .coverUrl(&#34;https://demo.aliyundoc.com/6AB4D0E1E1C74468883516C2349D1FC2-6-2.png&#34;)
+ *             .division(default_.regions()[0].id())
  *             .build());
  * 
  *     }

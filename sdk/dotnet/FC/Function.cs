@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.FC
     ///         OssBucket = defaultBucket.Id,
     ///         OssKey = defaultBucketObject.Key,
     ///         MemorySize = 512,
-    ///         Runtime = "python2.7",
+    ///         Runtime = "python3.10",
     ///         Handler = "hello.handler",
     ///         EnvironmentVariables = 
     ///         {

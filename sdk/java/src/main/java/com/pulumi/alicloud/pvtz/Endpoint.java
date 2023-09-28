@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Private Zone Endpoint resource.
  * 
- * For information about Private Zone Endpoint and how to use it, see [What is Endpoint](https://www.alibabacloud.com/help/en/doc-detail/64611.htm).
+ * For information about Private Zone Endpoint and how to use it, see [What is Endpoint](https://www.alibabacloud.com/help/en/privatezone/latest/add-endpoint).
  * 
- * &gt; **NOTE:** Available in v1.143.0+.
+ * &gt; **NOTE:** Available since v1.143.0.
  * 
  * ## Import
  * 
@@ -48,14 +48,14 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
         return this.endpointName;
     }
     /**
-     * The Ip Configs. See the following `Block ip_configs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+     * The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
      * 
      */
     @Export(name="ipConfigs", type=List.class, parameters={EndpointIpConfig.class})
     private Output<List<EndpointIpConfig>> ipConfigs;
 
     /**
-     * @return The Ip Configs. See the following `Block ip_configs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+     * @return The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
      * 
      */
     public Output<List<EndpointIpConfig>> ipConfigs() {

@@ -12,9 +12,60 @@ namespace Pulumi.AliCloud.Eais
     /// <summary>
     /// Provides a EAIS Instance resource.
     /// 
-    /// For information about EAIS Instance and how to use it, see [What is Instance](https://help.aliyun.com/document_detail/185066.html).
+    /// For information about EAIS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/document_detail/185066.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.137.0+.
+    /// &gt; **NOTE:** Available since v1.137.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var zoneId = "cn-hangzhou-h";
+    /// 
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.0.0.0/8",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.1.0.0/16",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = zoneId,
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Eais.Instance("defaultInstance", new()
+    ///     {
+    ///         InstanceType = "eais.ei-a6.2xlarge",
+    ///         InstanceName = name,
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///         VswitchId = defaultSwitch.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

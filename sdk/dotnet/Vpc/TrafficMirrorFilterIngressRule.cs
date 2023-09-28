@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC Traffic Mirror Filter Ingress Rule resource.
+    /// Provides a VPC Traffic Mirror Filter Ingress Rule resource. Traffic mirror entry rule.
     /// 
     /// For information about VPC Traffic Mirror Filter Ingress Rule and how to use it, see [What is Traffic Mirror Filter Ingress Rule](https://www.alibabacloud.com/help/doc-detail/261357.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.141.0+.
+    /// &gt; **NOTE:** Available since v1.141.0.
     /// 
     /// ## Example Usage
     /// 
@@ -60,6 +60,12 @@ namespace Pulumi.AliCloud.Vpc
     public partial class TrafficMirrorFilterIngressRule : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+        /// </summary>
+        [Output("action")]
+        public Output<string> Action { get; private set; } = null!;
+
+        /// <summary>
         /// The destination CIDR block of the inbound traffic.
         /// </summary>
         [Output("destinationCidrBlock")]
@@ -72,7 +78,9 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> DestinationPortRange { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to pre-check this request only. Default to: `false`
+        /// Whether to PreCheck this request only. Value:
+        /// - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        /// - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
@@ -90,7 +98,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+        /// . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
         /// </summary>
         [Output("ruleAction")]
         public Output<string> RuleAction { get; private set; } = null!;
@@ -108,19 +116,21 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> SourcePortRange { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the inbound rule. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+        /// The state of the inbound rule. `Creating`, `Created`, `Modifying` and `Deleting`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the filter.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("trafficMirrorFilterId")]
         public Output<string> TrafficMirrorFilterId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the inbound rule.
+        /// The ID of the outbound rule.
         /// </summary>
         [Output("trafficMirrorFilterIngressRuleId")]
         public Output<string> TrafficMirrorFilterIngressRuleId { get; private set; } = null!;
@@ -172,6 +182,12 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class TrafficMirrorFilterIngressRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+        /// </summary>
+        [Input("action")]
+        public Input<string>? Action { get; set; }
+
+        /// <summary>
         /// The destination CIDR block of the inbound traffic.
         /// </summary>
         [Input("destinationCidrBlock", required: true)]
@@ -184,7 +200,9 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? DestinationPortRange { get; set; }
 
         /// <summary>
-        /// Whether to pre-check this request only. Default to: `false`
+        /// Whether to PreCheck this request only. Value:
+        /// - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        /// - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -202,10 +220,10 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> Protocol { get; set; } = null!;
 
         /// <summary>
-        /// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+        /// . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
         /// </summary>
-        [Input("ruleAction", required: true)]
-        public Input<string> RuleAction { get; set; } = null!;
+        [Input("ruleAction")]
+        public Input<string>? RuleAction { get; set; }
 
         /// <summary>
         /// The source CIDR block of the inbound traffic.
@@ -221,6 +239,8 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The ID of the filter.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("trafficMirrorFilterId", required: true)]
         public Input<string> TrafficMirrorFilterId { get; set; } = null!;
@@ -234,6 +254,12 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class TrafficMirrorFilterIngressRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+        /// </summary>
+        [Input("action")]
+        public Input<string>? Action { get; set; }
+
+        /// <summary>
         /// The destination CIDR block of the inbound traffic.
         /// </summary>
         [Input("destinationCidrBlock")]
@@ -246,7 +272,9 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? DestinationPortRange { get; set; }
 
         /// <summary>
-        /// Whether to pre-check this request only. Default to: `false`
+        /// Whether to PreCheck this request only. Value:
+        /// - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        /// - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -264,7 +292,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+        /// . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
         /// </summary>
         [Input("ruleAction")]
         public Input<string>? RuleAction { get; set; }
@@ -282,19 +310,21 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? SourcePortRange { get; set; }
 
         /// <summary>
-        /// The state of the inbound rule. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+        /// The state of the inbound rule. `Creating`, `Created`, `Modifying` and `Deleting`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
         /// The ID of the filter.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("trafficMirrorFilterId")]
         public Input<string>? TrafficMirrorFilterId { get; set; }
 
         /// <summary>
-        /// The ID of the inbound rule.
+        /// The ID of the outbound rule.
         /// </summary>
         [Input("trafficMirrorFilterIngressRuleId")]
         public Input<string>? TrafficMirrorFilterIngressRuleId { get; set; }

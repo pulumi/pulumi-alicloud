@@ -136,7 +136,7 @@ class ServiceTopic(pulumi.CustomResource):
 
         For information about Message Notification Service Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-service/latest/createtopic).
 
-        > **NOTE:** Available in v1.188.0+.
+        > **NOTE:** Available since v1.188.0.
 
         ## Example Usage
 
@@ -146,10 +146,14 @@ class ServiceTopic(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default = alicloud.message.ServiceTopic("default",
-            logging_enabled=True,
+            topic_name=name,
             max_message_size=12357,
-            topic_name="tf-example-value")
+            logging_enabled=True)
         ```
 
         ## Import
@@ -177,7 +181,7 @@ class ServiceTopic(pulumi.CustomResource):
 
         For information about Message Notification Service Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-service/latest/createtopic).
 
-        > **NOTE:** Available in v1.188.0+.
+        > **NOTE:** Available since v1.188.0.
 
         ## Example Usage
 
@@ -187,10 +191,14 @@ class ServiceTopic(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default = alicloud.message.ServiceTopic("default",
-            logging_enabled=True,
+            topic_name=name,
             max_message_size=12357,
-            topic_name="tf-example-value")
+            logging_enabled=True)
         ```
 
         ## Import

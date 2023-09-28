@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about VPC Traffic Mirror Filter Egress Rule and how to use it, see [What is Traffic Mirror Filter Egress Rule](https://www.alibabacloud.com/help/doc-detail/261357.htm).
  * 
- * &gt; **NOTE:** Available in v1.140.0+.
+ * &gt; **NOTE:** Available since v1.140.0.
  * 
  * ## Example Usage
  * 
@@ -49,19 +49,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleTrafficMirrorFilter = new TrafficMirrorFilter(&#34;exampleTrafficMirrorFilter&#34;, TrafficMirrorFilterArgs.builder()        
+ *         var example = new TrafficMirrorFilter(&#34;example&#34;, TrafficMirrorFilterArgs.builder()        
  *             .trafficMirrorFilterName(&#34;example_value&#34;)
  *             .build());
  * 
- *         var exampleTrafficMirrorFilterEgressRule = new TrafficMirrorFilterEgressRule(&#34;exampleTrafficMirrorFilterEgressRule&#34;, TrafficMirrorFilterEgressRuleArgs.builder()        
- *             .trafficMirrorFilterId(exampleTrafficMirrorFilter.id())
- *             .priority(&#34;1&#34;)
- *             .ruleAction(&#34;accept&#34;)
- *             .protocol(&#34;UDP&#34;)
- *             .destinationCidrBlock(&#34;10.0.0.0/24&#34;)
- *             .sourceCidrBlock(&#34;10.0.0.0/24&#34;)
- *             .destinationPortRange(&#34;1/120&#34;)
- *             .sourcePortRange(&#34;1/120&#34;)
+ *         var default_ = new TrafficMirrorFilterEgressRule(&#34;default&#34;, TrafficMirrorFilterEgressRuleArgs.builder()        
+ *             .action(&#34;drop&#34;)
+ *             .priority(&#34;2&#34;)
+ *             .sourceCidrBlock(&#34;10.0.0.0/11&#34;)
+ *             .destinationCidrBlock(&#34;10.0.0.0/12&#34;)
+ *             .trafficMirrorFilterId(example.id())
+ *             .protocol(&#34;ALL&#34;)
  *             .build());
  * 
  *     }
@@ -79,6 +77,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:vpc/trafficMirrorFilterEgressRule:TrafficMirrorFilterEgressRule")
 public class TrafficMirrorFilterEgressRule extends com.pulumi.resources.CustomResource {
+    /**
+     * The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+     * 
+     */
+    @Export(name="action", type=String.class, parameters={})
+    private Output<String> action;
+
+    /**
+     * @return The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+     * 
+     */
+    public Output<String> action() {
+        return this.action;
+    }
     /**
      * The destination CIDR block of the outbound traffic.
      * 
@@ -108,14 +120,18 @@ public class TrafficMirrorFilterEgressRule extends com.pulumi.resources.CustomRe
         return this.destinationPortRange;
     }
     /**
-     * Whether to pre-check this request only. Default to: `false`
+     * Whether to PreCheck this request only. Value:
+     * - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
      * 
      */
     @Export(name="dryRun", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return Whether to pre-check this request only. Default to: `false`
+     * @return Whether to PreCheck this request only. Value:
+     * - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
@@ -150,14 +166,18 @@ public class TrafficMirrorFilterEgressRule extends com.pulumi.resources.CustomRe
         return this.protocol;
     }
     /**
-     * The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+     * . Field &#39;rule_action&#39; has been deprecated from provider version 1.211.0. New field &#39;action&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;rule_action&#39; has been deprecated since provider version 1.211.0. New field &#39;action&#39; instead.
      * 
      */
+    @Deprecated /* Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead. */
     @Export(name="ruleAction", type=String.class, parameters={})
     private Output<String> ruleAction;
 
     /**
-     * @return The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+     * @return . Field &#39;rule_action&#39; has been deprecated from provider version 1.211.0. New field &#39;action&#39; instead.
      * 
      */
     public Output<String> ruleAction() {
@@ -192,14 +212,14 @@ public class TrafficMirrorFilterEgressRule extends com.pulumi.resources.CustomRe
         return this.sourcePortRange;
     }
     /**
-     * The state of the inbound rule. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+     * The state of the inbound rule. `Creating`, `Created`, `Modifying` and `Deleting`.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The state of the inbound rule. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+     * @return The state of the inbound rule. `Creating`, `Created`, `Modifying` and `Deleting`.
      * 
      */
     public Output<String> status() {
@@ -222,12 +242,16 @@ public class TrafficMirrorFilterEgressRule extends com.pulumi.resources.CustomRe
     /**
      * The ID of the filter.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     @Export(name="trafficMirrorFilterId", type=String.class, parameters={})
     private Output<String> trafficMirrorFilterId;
 
     /**
      * @return The ID of the filter.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<String> trafficMirrorFilterId() {

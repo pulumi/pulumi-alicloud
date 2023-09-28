@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Resource Manager Delegated Administrator and how to use it, see [What is Delegated Administrator](https://www.alibabacloud.com/help/en/resource-management/latest/registerdelegatedadministrator#doc-api-ResourceManager-RegisterDelegatedAdministrator).
  *
- * > **NOTE:** Available in v1.181.0+.
+ * > **NOTE:** Available since v1.181.0.
  *
  * ## Example Usage
  *
@@ -19,11 +19,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultAccounts = alicloud.resourcemanager.getAccounts({
- *     status: "CreateSuccess",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const displayName = config.get("displayName") || "EAccount";
+ * const exampleFolder = new alicloud.resourcemanager.Folder("exampleFolder", {folderName: name});
+ * const exampleAccount = new alicloud.resourcemanager.Account("exampleAccount", {
+ *     displayName: displayName,
+ *     folderId: exampleFolder.id,
  * });
- * const defaultDelegatedAdministrator = new alicloud.resourcemanager.DelegatedAdministrator("defaultDelegatedAdministrator", {
- *     accountId: defaultAccounts.then(defaultAccounts => defaultAccounts.accounts?.[0]?.accountId),
+ * const exampleDelegatedAdministrator = new alicloud.resourcemanager.DelegatedAdministrator("exampleDelegatedAdministrator", {
+ *     accountId: exampleAccount.id,
  *     servicePrincipal: "cloudfw.aliyuncs.com",
  * });
  * ```

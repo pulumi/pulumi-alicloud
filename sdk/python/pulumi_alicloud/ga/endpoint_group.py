@@ -595,6 +595,7 @@ class EndpointGroup(pulumi.CustomResource):
         > **NOTE:** Available since v1.113.0.
 
         > **NOTE:** Listeners that use different protocols support different types of endpoint groups:
+
         * For a TCP or UDP listener, you can create only one default endpoint group.
         * For an HTTP or HTTPS listener, you can create one default endpoint group and one virtual endpoint group. By default, you can create only one virtual endpoint group.
           * A default endpoint group refers to the endpoint group that you configure when you create an HTTP or HTTPS listener.
@@ -703,6 +704,7 @@ class EndpointGroup(pulumi.CustomResource):
         > **NOTE:** Available since v1.113.0.
 
         > **NOTE:** Listeners that use different protocols support different types of endpoint groups:
+
         * For a TCP or UDP listener, you can create only one default endpoint group.
         * For an HTTP or HTTPS listener, you can create one default endpoint group and one virtual endpoint group. By default, you can create only one virtual endpoint group.
           * A default endpoint group refers to the endpoint group that you configure when you create an HTTP or HTTPS listener.
@@ -961,7 +963,7 @@ class EndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endpointRequestProtocol")
-    def endpoint_request_protocol(self) -> pulumi.Output[Optional[str]]:
+    def endpoint_request_protocol(self) -> pulumi.Output[str]:
         """
         The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
         > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.

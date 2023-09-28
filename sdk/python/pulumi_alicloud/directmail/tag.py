@@ -70,7 +70,7 @@ class Tag(pulumi.CustomResource):
 
         For information about Direct Mail Tag and how to use it, see [What is Tag](https://www.alibabacloud.com/help/zh/doc-detail/119007.htm).
 
-        > **NOTE:** Available in v1.144.0+.
+        > **NOTE:** Available since v1.144.0.
 
         ## Example Usage
 
@@ -80,7 +80,11 @@ class Tag(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.directmail.Tag("example", tag_name="example_value")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "example"
+        example = alicloud.directmail.Tag("example", tag_name=name)
         ```
 
         ## Import
@@ -106,7 +110,7 @@ class Tag(pulumi.CustomResource):
 
         For information about Direct Mail Tag and how to use it, see [What is Tag](https://www.alibabacloud.com/help/zh/doc-detail/119007.htm).
 
-        > **NOTE:** Available in v1.144.0+.
+        > **NOTE:** Available since v1.144.0.
 
         ## Example Usage
 
@@ -116,7 +120,11 @@ class Tag(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.directmail.Tag("example", tag_name="example_value")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "example"
+        example = alicloud.directmail.Tag("example", tag_name=name)
         ```
 
         ## Import

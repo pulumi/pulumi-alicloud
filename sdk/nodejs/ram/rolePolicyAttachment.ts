@@ -34,7 +34,6 @@ import * as utilities from "../utilities";
  *     }
  * `,
  *     description: "this is a role test.",
- *     force: true,
  * });
  * const policy = new alicloud.ram.Policy("policy", {
  *     document: `  {
@@ -55,7 +54,6 @@ import * as utilities from "../utilities";
  *   }
  * `,
  *     description: "this is a policy test",
- *     force: true,
  * });
  * const attach = new alicloud.ram.RolePolicyAttachment("attach", {
  *     policyName: policy.name,

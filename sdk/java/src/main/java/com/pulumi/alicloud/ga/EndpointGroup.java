@@ -28,6 +28,7 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available since v1.113.0.
  * 
  * &gt; **NOTE:** Listeners that use different protocols support different types of endpoint groups:
+ * 
  * * For a TCP or UDP listener, you can create only one default endpoint group.
  * * For an HTTP or HTTPS listener, you can create one default endpoint group and one virtual endpoint group. By default, you can create only one virtual endpoint group.
  *   * A default endpoint group refers to the endpoint group that you configure when you create an HTTP or HTTPS listener.
@@ -222,15 +223,15 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="endpointRequestProtocol", type=String.class, parameters={})
-    private Output</* @Nullable */ String> endpointRequestProtocol;
+    private Output<String> endpointRequestProtocol;
 
     /**
      * @return The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
      * &gt; **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
      * 
      */
-    public Output<Optional<String>> endpointRequestProtocol() {
-        return Codegen.optional(this.endpointRequestProtocol);
+    public Output<String> endpointRequestProtocol() {
+        return this.endpointRequestProtocol;
     }
     /**
      * The interval between two consecutive health checks. Unit: seconds.

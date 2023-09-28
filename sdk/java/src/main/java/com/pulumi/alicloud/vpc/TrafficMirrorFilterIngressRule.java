@@ -17,11 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Traffic Mirror Filter Ingress Rule resource.
+ * Provides a VPC Traffic Mirror Filter Ingress Rule resource. Traffic mirror entry rule.
  * 
  * For information about VPC Traffic Mirror Filter Ingress Rule and how to use it, see [What is Traffic Mirror Filter Ingress Rule](https://www.alibabacloud.com/help/doc-detail/261357.htm).
  * 
- * &gt; **NOTE:** Available in v1.141.0+.
+ * &gt; **NOTE:** Available since v1.141.0.
  * 
  * ## Example Usage
  * 
@@ -80,6 +80,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/trafficMirrorFilterIngressRule:TrafficMirrorFilterIngressRule")
 public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomResource {
     /**
+     * The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+     * 
+     */
+    @Export(name="action", type=String.class, parameters={})
+    private Output<String> action;
+
+    /**
+     * @return The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+     * 
+     */
+    public Output<String> action() {
+        return this.action;
+    }
+    /**
      * The destination CIDR block of the inbound traffic.
      * 
      */
@@ -108,14 +122,18 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
         return this.destinationPortRange;
     }
     /**
-     * Whether to pre-check this request only. Default to: `false`
+     * Whether to PreCheck this request only. Value:
+     * - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
      * 
      */
     @Export(name="dryRun", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return Whether to pre-check this request only. Default to: `false`
+     * @return Whether to PreCheck this request only. Value:
+     * - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
@@ -150,14 +168,18 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
         return this.protocol;
     }
     /**
-     * The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+     * . Field &#39;rule_action&#39; has been deprecated from provider version 1.211.0. New field &#39;action&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;rule_action&#39; has been deprecated since provider version 1.211.0. New field &#39;action&#39; instead.
      * 
      */
+    @Deprecated /* Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead. */
     @Export(name="ruleAction", type=String.class, parameters={})
     private Output<String> ruleAction;
 
     /**
-     * @return The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+     * @return . Field &#39;rule_action&#39; has been deprecated from provider version 1.211.0. New field &#39;action&#39; instead.
      * 
      */
     public Output<String> ruleAction() {
@@ -192,14 +214,14 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
         return this.sourcePortRange;
     }
     /**
-     * The state of the inbound rule. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+     * The state of the inbound rule. `Creating`, `Created`, `Modifying` and `Deleting`.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The state of the inbound rule. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+     * @return The state of the inbound rule. `Creating`, `Created`, `Modifying` and `Deleting`.
      * 
      */
     public Output<String> status() {
@@ -208,6 +230,8 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
     /**
      * The ID of the filter.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     @Export(name="trafficMirrorFilterId", type=String.class, parameters={})
     private Output<String> trafficMirrorFilterId;
@@ -215,19 +239,21 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
     /**
      * @return The ID of the filter.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     public Output<String> trafficMirrorFilterId() {
         return this.trafficMirrorFilterId;
     }
     /**
-     * The ID of the inbound rule.
+     * The ID of the outbound rule.
      * 
      */
     @Export(name="trafficMirrorFilterIngressRuleId", type=String.class, parameters={})
     private Output<String> trafficMirrorFilterIngressRuleId;
 
     /**
-     * @return The ID of the inbound rule.
+     * @return The ID of the outbound rule.
      * 
      */
     public Output<String> trafficMirrorFilterIngressRuleId() {

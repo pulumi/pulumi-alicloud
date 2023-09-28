@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.FC
     ///         OssBucket = defaultBucket.Id,
     ///         OssKey = defaultBucketObject.Key,
     ///         MemorySize = 512,
-    ///         Runtime = "python2.7",
+    ///         Runtime = "python3.10",
     ///         Handler = "hello.handler",
     ///     });
     /// 
@@ -137,16 +137,15 @@ namespace Pulumi.AliCloud.FC
     ///             return $"acs:log:{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:project/{name}";
     ///         }),
     ///         Type = "log",
-    ///         Config = Output.Tuple(defaultProject.Name, sourceStore.Name, defaultProject.Name, defaultStore.Name).Apply(values =&gt;
+    ///         Config = Output.Tuple(sourceStore.Name, defaultProject.Name, defaultStore.Name).Apply(values =&gt;
     ///         {
-    ///             var defaultProjectName = values.Item1;
-    ///             var sourceStoreName = values.Item2;
-    ///             var defaultProjectName1 = values.Item3;
-    ///             var defaultStoreName = values.Item4;
+    ///             var sourceStoreName = values.Item1;
+    ///             var defaultProjectName = values.Item2;
+    ///             var defaultStoreName = values.Item3;
     ///             return @$"    {{
     ///         ""sourceConfig"": {{
-    ///             ""project"": ""{defaultProjectName}"",
-    ///             ""logstore"": ""{sourceStoreName}""
+    ///             ""logstore"": ""{sourceStoreName}"",
+    ///             ""startTime"": null
     ///         }},
     ///         ""jobConfig"": {{
     ///             ""maxRetryTime"": 3,
@@ -157,9 +156,10 @@ namespace Pulumi.AliCloud.FC
     ///             ""c"": ""d""
     ///         }},
     ///         ""logConfig"": {{
-    ///              ""project"": ""{defaultProjectName1}"",
+    ///              ""project"": ""{defaultProjectName}"",
     ///             ""logstore"": ""{defaultStoreName}""
     ///         }},
+    ///         ""targetConfig"": null,
     ///         ""enable"": true
     ///     }}
     ///   
@@ -254,7 +254,7 @@ namespace Pulumi.AliCloud.FC
     ///         OssBucket = defaultBucket.Id,
     ///         OssKey = defaultBucketObject.Key,
     ///         MemorySize = 512,
-    ///         Runtime = "python2.7",
+    ///         Runtime = "python3.10",
     ///         Handler = "hello.handler",
     ///     });
     /// 
@@ -405,7 +405,7 @@ namespace Pulumi.AliCloud.FC
     ///         OssBucket = defaultBucket.Id,
     ///         OssKey = defaultBucketObject.Key,
     ///         MemorySize = 512,
-    ///         Runtime = "python2.7",
+    ///         Runtime = "python3.10",
     ///         Handler = "hello.handler",
     ///     });
     /// 
@@ -488,7 +488,7 @@ namespace Pulumi.AliCloud.FC
     ///         OssBucket = defaultBucket.Id,
     ///         OssKey = defaultBucketObject.Key,
     ///         MemorySize = 512,
-    ///         Runtime = "python2.7",
+    ///         Runtime = "python3.10",
     ///         Handler = "hello.handler",
     ///     });
     /// 
@@ -500,7 +500,14 @@ namespace Pulumi.AliCloud.FC
     ///         Config = @"    {
     ///         ""triggerEnable"": false,
     ///         ""asyncInvocationType"": false,
-    ///         ""eventRuleFilterPattern"": ""{\""source\"":[\""acs.oss\""],\""type\"":[\""oss:BucketCreated:PutBucket\""]}"",
+    ///         ""eventRuleFilterPattern"": {
+    ///           ""source"":[
+    ///             ""acs.oss""
+    ///             ],
+    ///             ""type"":[
+    ///               ""oss:BucketCreated:PutBucket""
+    ///             ]
+    ///         },
     ///         ""eventSourceConfig"": {
     ///             ""eventSourceType"": ""Default""
     ///         }

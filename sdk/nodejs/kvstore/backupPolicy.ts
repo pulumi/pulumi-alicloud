@@ -18,26 +18,34 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const creation = config.get("creation") || "KVStore";
- * const multiAz = config.get("multiAz") || "false";
  * const name = config.get("name") || "kvstorebackuppolicyvpc";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: creation,
+ * const defaultZones = alicloud.kvstore.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: name,
  * });
  * const defaultInstance = new alicloud.kvstore.Instance("defaultInstance", {
- *     instanceClass: "Memcache",
- *     instanceName: name,
+ *     dbInstanceName: name,
  *     vswitchId: defaultSwitch.id,
- *     privateIp: "172.16.0.10",
- *     securityIps: ["10.0.0.1"],
- *     instanceType: "memcache.master.small.default",
- *     engineVersion: "2.8",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     instanceClass: "redis.master.large.default",
+ *     instanceType: "Redis",
+ *     engineVersion: "5.0",
+ *     securityIps: ["10.23.12.24"],
+ *     config: {
+ *         appendonly: "yes",
+ *         "lazyfree-lazy-eviction": "yes",
+ *     },
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
  * });
  * const defaultBackupPolicy = new alicloud.kvstore.BackupPolicy("defaultBackupPolicy", {
  *     instanceId: defaultInstance.id,

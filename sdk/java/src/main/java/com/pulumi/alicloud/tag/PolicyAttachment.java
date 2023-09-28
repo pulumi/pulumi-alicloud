@@ -23,13 +23,13 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Basic Usage
- * 
  * ```java
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.tag.Policy;
  * import com.pulumi.alicloud.tag.PolicyArgs;
  * import com.pulumi.alicloud.tag.PolicyAttachment;
@@ -47,18 +47,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var default = AlicloudFunctions.getAccount();
+ * 
  *         var examplePolicy = new Policy(&#34;examplePolicy&#34;, PolicyArgs.builder()        
- *             .policyName(&#34;tName&#34;)
- *             .policyDesc(&#34;tDesc&#34;)
+ *             .policyName(name)
+ *             .policyDesc(name)
  *             .userType(&#34;USER&#34;)
- *             .policyDocument(&#34;&#34;&#34;
+ *             .policyContent(&#34;&#34;&#34;
  * 		{&#34;tags&#34;:{&#34;CostCenter&#34;:{&#34;tag_value&#34;:{&#34;@@assign&#34;:[&#34;Beijing&#34;,&#34;Shanghai&#34;]},&#34;tag_key&#34;:{&#34;@@assign&#34;:&#34;CostCenter&#34;}}}}
  *             &#34;&#34;&#34;)
  *             .build());
  * 
  *         var examplePolicyAttachment = new PolicyAttachment(&#34;examplePolicyAttachment&#34;, PolicyAttachmentArgs.builder()        
  *             .policyId(examplePolicy.id())
- *             .targetId(&#34;151266687691****&#34;)
+ *             .targetId(default_.id())
  *             .targetType(&#34;USER&#34;)
  *             .build());
  * 

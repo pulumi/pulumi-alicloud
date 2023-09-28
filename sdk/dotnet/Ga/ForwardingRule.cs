@@ -29,6 +29,7 @@ namespace Pulumi.AliCloud.Ga
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
+    ///     var region = config.Get("region") ?? "cn-hangzhou";
     ///     var name = config.Get("name") ?? "tf-example";
     ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
@@ -80,13 +81,6 @@ namespace Pulumi.AliCloud.Ga
     ///                 ToPort = 60,
     ///             },
     ///         },
-    ///     });
-    /// 
-    ///     var exampleIpSet = new AliCloud.Ga.IpSet("exampleIpSet", new()
-    ///     {
-    ///         AccelerateRegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
-    ///         AcceleratorId = exampleBandwidthPackageAttachment.AcceleratorId,
-    ///         Bandwidth = 20,
     ///     });
     /// 
     ///     var exampleEipAddress = new AliCloud.Ecs.EipAddress("exampleEipAddress", new()
@@ -186,7 +180,7 @@ namespace Pulumi.AliCloud.Ga
     /// Ga Forwarding Rule can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ga/forwardingRule:ForwardingRule example &lt;id&gt;
+    ///  $ pulumi import alicloud:ga/forwardingRule:ForwardingRule example &lt;accelerator_id&gt;:&lt;listener_id&gt;:&lt;forwarding_rule_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ga/forwardingRule:ForwardingRule")]

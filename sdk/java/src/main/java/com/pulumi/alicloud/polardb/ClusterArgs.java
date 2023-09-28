@@ -186,6 +186,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+     * 
+     */
+    @Import(name="dbNodeNum")
+    private @Nullable Output<Integer> dbNodeNum;
+
+    /**
+     * @return The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+     * 
+     */
+    public Optional<Output<Integer>> dbNodeNum() {
+        return Optional.ofNullable(this.dbNodeNum);
+    }
+
+    /**
      * Database type. Value options: MySQL, Oracle, PostgreSQL.
      * 
      */
@@ -213,6 +228,23 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> dbVersion() {
         return this.dbVersion;
+    }
+
+    /**
+     * The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+     * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+     * 
+     */
+    @Import(name="defaultTimeZone")
+    private @Nullable Output<String> defaultTimeZone;
+
+    /**
+     * @return The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+     * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+     * 
+     */
+    public Optional<Output<String>> defaultTimeZone() {
+        return Optional.ofNullable(this.defaultTimeZone);
     }
 
     /**
@@ -346,6 +378,40 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enable the Binlog function. Valid values are `OFF`, `ON`.
+     * &gt; **NOTE:** This parameter is valid only MySQL Engine supports.
+     * 
+     */
+    @Import(name="loosePolarLogBin")
+    private @Nullable Output<String> loosePolarLogBin;
+
+    /**
+     * @return Enable the Binlog function. Valid values are `OFF`, `ON`.
+     * &gt; **NOTE:** This parameter is valid only MySQL Engine supports.
+     * 
+     */
+    public Optional<Output<String>> loosePolarLogBin() {
+        return Optional.ofNullable(this.loosePolarLogBin);
+    }
+
+    /**
+     * Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+     * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+     * 
+     */
+    @Import(name="lowerCaseTableNames")
+    private @Nullable Output<Integer> lowerCaseTableNames;
+
+    /**
+     * @return Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+     * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+     * 
+     */
+    public Optional<Output<Integer>> lowerCaseTableNames() {
+        return Optional.ofNullable(this.lowerCaseTableNames);
+    }
+
+    /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      * 
      */
@@ -373,6 +439,23 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> modifyType() {
         return Optional.ofNullable(this.modifyType);
+    }
+
+    /**
+     * The ID of the parameter template
+     * &gt; **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+     * 
+     */
+    @Import(name="parameterGroupId")
+    private @Nullable Output<String> parameterGroupId;
+
+    /**
+     * @return The ID of the parameter template
+     * &gt; **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+     * 
+     */
+    public Optional<Output<String>> parameterGroupId() {
+        return Optional.ofNullable(this.parameterGroupId);
     }
 
     /**
@@ -454,6 +537,40 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> plannedStartTime() {
         return Optional.ofNullable(this.plannedStartTime);
+    }
+
+    /**
+     * The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+     * &gt; **NOTE:** This parameter is valid only for standard clusters.
+     * 
+     */
+    @Import(name="proxyClass")
+    private @Nullable Output<String> proxyClass;
+
+    /**
+     * @return The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+     * &gt; **NOTE:** This parameter is valid only for standard clusters.
+     * 
+     */
+    public Optional<Output<String>> proxyClass() {
+        return Optional.ofNullable(this.proxyClass);
+    }
+
+    /**
+     * The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+     * &gt; **NOTE:** This parameter is valid only for standard clusters.
+     * 
+     */
+    @Import(name="proxyType")
+    private @Nullable Output<String> proxyType;
+
+    /**
+     * @return The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+     * &gt; **NOTE:** This parameter is valid only for standard clusters.
+     * 
+     */
+    public Optional<Output<String>> proxyType() {
+        return Optional.ofNullable(this.proxyType);
     }
 
     /**
@@ -653,7 +770,24 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+     * 
+     */
+    @Import(name="storagePayType")
+    private @Nullable Output<String> storagePayType;
+
+    /**
+     * @return The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+     * 
+     */
+    public Optional<Output<String>> storagePayType() {
+        return Optional.ofNullable(this.storagePayType);
+    }
+
+    /**
      * Storage space charged by space (monthly package). Unit: GB.
+     * &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
+     * **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
      * 
      */
     @Import(name="storageSpace")
@@ -661,6 +795,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Storage space charged by space (monthly package). Unit: GB.
+     * &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
+     * **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
      * 
      */
     public Optional<Output<Integer>> storageSpace() {
@@ -810,8 +946,10 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.dbClusterIpArrays = $.dbClusterIpArrays;
         this.dbNodeClass = $.dbNodeClass;
         this.dbNodeCount = $.dbNodeCount;
+        this.dbNodeNum = $.dbNodeNum;
         this.dbType = $.dbType;
         this.dbVersion = $.dbVersion;
+        this.defaultTimeZone = $.defaultTimeZone;
         this.deletionLock = $.deletionLock;
         this.description = $.description;
         this.encryptNewTables = $.encryptNewTables;
@@ -820,13 +958,18 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.gdnId = $.gdnId;
         this.hotStandbyCluster = $.hotStandbyCluster;
         this.imciSwitch = $.imciSwitch;
+        this.loosePolarLogBin = $.loosePolarLogBin;
+        this.lowerCaseTableNames = $.lowerCaseTableNames;
         this.maintainTime = $.maintainTime;
         this.modifyType = $.modifyType;
+        this.parameterGroupId = $.parameterGroupId;
         this.parameters = $.parameters;
         this.payType = $.payType;
         this.period = $.period;
         this.plannedEndTime = $.plannedEndTime;
         this.plannedStartTime = $.plannedStartTime;
+        this.proxyClass = $.proxyClass;
+        this.proxyType = $.proxyType;
         this.renewalStatus = $.renewalStatus;
         this.resourceGroupId = $.resourceGroupId;
         this.roleArn = $.roleArn;
@@ -839,6 +982,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.securityIps = $.securityIps;
         this.serverlessType = $.serverlessType;
         this.sourceResourceId = $.sourceResourceId;
+        this.storagePayType = $.storagePayType;
         this.storageSpace = $.storageSpace;
         this.storageType = $.storageType;
         this.subCategory = $.subCategory;
@@ -1103,6 +1247,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param dbNodeNum The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbNodeNum(@Nullable Output<Integer> dbNodeNum) {
+            $.dbNodeNum = dbNodeNum;
+            return this;
+        }
+
+        /**
+         * @param dbNodeNum The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbNodeNum(Integer dbNodeNum) {
+            return dbNodeNum(Output.of(dbNodeNum));
+        }
+
+        /**
          * @param dbType Database type. Value options: MySQL, Oracle, PostgreSQL.
          * 
          * @return builder
@@ -1142,6 +1307,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dbVersion(String dbVersion) {
             return dbVersion(Output.of(dbVersion));
+        }
+
+        /**
+         * @param defaultTimeZone The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+         * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultTimeZone(@Nullable Output<String> defaultTimeZone) {
+            $.defaultTimeZone = defaultTimeZone;
+            return this;
+        }
+
+        /**
+         * @param defaultTimeZone The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+         * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultTimeZone(String defaultTimeZone) {
+            return defaultTimeZone(Output.of(defaultTimeZone));
         }
 
         /**
@@ -1323,6 +1511,52 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param loosePolarLogBin Enable the Binlog function. Valid values are `OFF`, `ON`.
+         * &gt; **NOTE:** This parameter is valid only MySQL Engine supports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loosePolarLogBin(@Nullable Output<String> loosePolarLogBin) {
+            $.loosePolarLogBin = loosePolarLogBin;
+            return this;
+        }
+
+        /**
+         * @param loosePolarLogBin Enable the Binlog function. Valid values are `OFF`, `ON`.
+         * &gt; **NOTE:** This parameter is valid only MySQL Engine supports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loosePolarLogBin(String loosePolarLogBin) {
+            return loosePolarLogBin(Output.of(loosePolarLogBin));
+        }
+
+        /**
+         * @param lowerCaseTableNames Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+         * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lowerCaseTableNames(@Nullable Output<Integer> lowerCaseTableNames) {
+            $.lowerCaseTableNames = lowerCaseTableNames;
+            return this;
+        }
+
+        /**
+         * @param lowerCaseTableNames Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+         * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lowerCaseTableNames(Integer lowerCaseTableNames) {
+            return lowerCaseTableNames(Output.of(lowerCaseTableNames));
+        }
+
+        /**
          * @param maintainTime Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
          * 
          * @return builder
@@ -1362,6 +1596,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder modifyType(String modifyType) {
             return modifyType(Output.of(modifyType));
+        }
+
+        /**
+         * @param parameterGroupId The ID of the parameter template
+         * &gt; **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameterGroupId(@Nullable Output<String> parameterGroupId) {
+            $.parameterGroupId = parameterGroupId;
+            return this;
+        }
+
+        /**
+         * @param parameterGroupId The ID of the parameter template
+         * &gt; **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameterGroupId(String parameterGroupId) {
+            return parameterGroupId(Output.of(parameterGroupId));
         }
 
         /**
@@ -1483,6 +1740,52 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder plannedStartTime(String plannedStartTime) {
             return plannedStartTime(Output.of(plannedStartTime));
+        }
+
+        /**
+         * @param proxyClass The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+         * &gt; **NOTE:** This parameter is valid only for standard clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyClass(@Nullable Output<String> proxyClass) {
+            $.proxyClass = proxyClass;
+            return this;
+        }
+
+        /**
+         * @param proxyClass The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+         * &gt; **NOTE:** This parameter is valid only for standard clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyClass(String proxyClass) {
+            return proxyClass(Output.of(proxyClass));
+        }
+
+        /**
+         * @param proxyType The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+         * &gt; **NOTE:** This parameter is valid only for standard clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyType(@Nullable Output<String> proxyType) {
+            $.proxyType = proxyType;
+            return this;
+        }
+
+        /**
+         * @param proxyType The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+         * &gt; **NOTE:** This parameter is valid only for standard clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyType(String proxyType) {
+            return proxyType(Output.of(proxyType));
         }
 
         /**
@@ -1776,7 +2079,30 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param storagePayType The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storagePayType(@Nullable Output<String> storagePayType) {
+            $.storagePayType = storagePayType;
+            return this;
+        }
+
+        /**
+         * @param storagePayType The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storagePayType(String storagePayType) {
+            return storagePayType(Output.of(storagePayType));
+        }
+
+        /**
          * @param storageSpace Storage space charged by space (monthly package). Unit: GB.
+         * &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
+         * **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
          * 
          * @return builder
          * 
@@ -1788,6 +2114,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param storageSpace Storage space charged by space (monthly package). Unit: GB.
+         * &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
+         * **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
          * 
          * @return builder
          * 

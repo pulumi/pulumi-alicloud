@@ -202,16 +202,21 @@ class Instance(pulumi.CustomResource):
         This resource will help you to manager a [Table Store](https://www.alibabacloud.com/help/doc-detail/27280.htm) Instance.
         It is foundation of creating data table.
 
+        > **NOTE:** Available since v1.10.0.
+
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Create an OTS instance
-        foo = alicloud.ots.Instance("foo",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.ots.Instance("default",
+            description=name,
             accessed_by="Vpc",
-            description="for table",
             tags={
                 "Created": "TF",
                 "For": "Building table",
@@ -244,16 +249,21 @@ class Instance(pulumi.CustomResource):
         This resource will help you to manager a [Table Store](https://www.alibabacloud.com/help/doc-detail/27280.htm) Instance.
         It is foundation of creating data table.
 
+        > **NOTE:** Available since v1.10.0.
+
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Create an OTS instance
-        foo = alicloud.ots.Instance("foo",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.ots.Instance("default",
+            description=name,
             accessed_by="Vpc",
-            description="for table",
             tags={
                 "Created": "TF",
                 "For": "Building table",

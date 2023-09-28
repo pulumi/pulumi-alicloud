@@ -68,7 +68,6 @@ class InstanceArgs:
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  stopped_mode: Optional[pulumi.Input[str]] = None,
-                 subnet_id: Optional[pulumi.Input[str]] = None,
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
                  system_disk_description: Optional[pulumi.Input[str]] = None,
@@ -303,11 +302,6 @@ class InstanceArgs:
             pulumi.set(__self__, "status", status)
         if stopped_mode is not None:
             pulumi.set(__self__, "stopped_mode", stopped_mode)
-        if subnet_id is not None:
-            warnings.warn("""Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """, DeprecationWarning)
-            pulumi.log.warn("""subnet_id is deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """)
-        if subnet_id is not None:
-            pulumi.set(__self__, "subnet_id", subnet_id)
         if system_disk_auto_snapshot_policy_id is not None:
             pulumi.set(__self__, "system_disk_auto_snapshot_policy_id", system_disk_auto_snapshot_policy_id)
         if system_disk_category is not None:
@@ -1007,18 +1001,6 @@ class InstanceArgs:
         pulumi.set(self, "stopped_mode", value)
 
     @property
-    @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """, DeprecationWarning)
-        pulumi.log.warn("""subnet_id is deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """)
-
-        return pulumi.get(self, "subnet_id")
-
-    @subnet_id.setter
-    def subnet_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "subnet_id", value)
-
-    @property
     @pulumi.getter(name="systemDiskAutoSnapshotPolicyId")
     def system_disk_auto_snapshot_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1251,12 +1233,12 @@ class _InstanceState:
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  stopped_mode: Optional[pulumi.Input[str]] = None,
-                 subnet_id: Optional[pulumi.Input[str]] = None,
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
                  system_disk_description: Optional[pulumi.Input[str]] = None,
                  system_disk_encrypt_algorithm: Optional[pulumi.Input[str]] = None,
                  system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+                 system_disk_id: Optional[pulumi.Input[str]] = None,
                  system_disk_kms_key_id: Optional[pulumi.Input[str]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[str]] = None,
@@ -1371,6 +1353,7 @@ class _InstanceState:
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[str] system_disk_encrypt_algorithm: The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
         :param pulumi.Input[bool] system_disk_encrypted: Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
+        :param pulumi.Input[str] system_disk_id: (Available since v1.210.0) The ID of system disk.
         :param pulumi.Input[str] system_disk_kms_key_id: The ID of the Key Management Service (KMS) key to be used for the system disk.
         :param pulumi.Input[str] system_disk_name: The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         :param pulumi.Input[str] system_disk_performance_level: The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
@@ -1513,11 +1496,6 @@ class _InstanceState:
             pulumi.set(__self__, "status", status)
         if stopped_mode is not None:
             pulumi.set(__self__, "stopped_mode", stopped_mode)
-        if subnet_id is not None:
-            warnings.warn("""Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """, DeprecationWarning)
-            pulumi.log.warn("""subnet_id is deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """)
-        if subnet_id is not None:
-            pulumi.set(__self__, "subnet_id", subnet_id)
         if system_disk_auto_snapshot_policy_id is not None:
             pulumi.set(__self__, "system_disk_auto_snapshot_policy_id", system_disk_auto_snapshot_policy_id)
         if system_disk_category is not None:
@@ -1528,6 +1506,8 @@ class _InstanceState:
             pulumi.set(__self__, "system_disk_encrypt_algorithm", system_disk_encrypt_algorithm)
         if system_disk_encrypted is not None:
             pulumi.set(__self__, "system_disk_encrypted", system_disk_encrypted)
+        if system_disk_id is not None:
+            pulumi.set(__self__, "system_disk_id", system_disk_id)
         if system_disk_kms_key_id is not None:
             pulumi.set(__self__, "system_disk_kms_key_id", system_disk_kms_key_id)
         if system_disk_name is not None:
@@ -2313,18 +2293,6 @@ class _InstanceState:
         pulumi.set(self, "stopped_mode", value)
 
     @property
-    @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """, DeprecationWarning)
-        pulumi.log.warn("""subnet_id is deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """)
-
-        return pulumi.get(self, "subnet_id")
-
-    @subnet_id.setter
-    def subnet_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "subnet_id", value)
-
-    @property
     @pulumi.getter(name="systemDiskAutoSnapshotPolicyId")
     def system_disk_auto_snapshot_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2383,6 +2351,18 @@ class _InstanceState:
     @system_disk_encrypted.setter
     def system_disk_encrypted(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "system_disk_encrypted", value)
+
+    @property
+    @pulumi.getter(name="systemDiskId")
+    def system_disk_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.210.0) The ID of system disk.
+        """
+        return pulumi.get(self, "system_disk_id")
+
+    @system_disk_id.setter
+    def system_disk_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "system_disk_id", value)
 
     @property
     @pulumi.getter(name="systemDiskKmsKeyId")
@@ -2551,7 +2531,6 @@ class Instance(pulumi.CustomResource):
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  stopped_mode: Optional[pulumi.Input[str]] = None,
-                 subnet_id: Optional[pulumi.Input[str]] = None,
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
                  system_disk_description: Optional[pulumi.Input[str]] = None,
@@ -2884,7 +2863,6 @@ class Instance(pulumi.CustomResource):
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  stopped_mode: Optional[pulumi.Input[str]] = None,
-                 subnet_id: Optional[pulumi.Input[str]] = None,
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
                  system_disk_description: Optional[pulumi.Input[str]] = None,
@@ -2975,10 +2953,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["spot_strategy"] = spot_strategy
             __props__.__dict__["status"] = status
             __props__.__dict__["stopped_mode"] = stopped_mode
-            if subnet_id is not None and not opts.urn:
-                warnings.warn("""Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """, DeprecationWarning)
-                pulumi.log.warn("""subnet_id is deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """)
-            __props__.__dict__["subnet_id"] = subnet_id
             __props__.__dict__["system_disk_auto_snapshot_policy_id"] = system_disk_auto_snapshot_policy_id
             __props__.__dict__["system_disk_category"] = system_disk_category
             __props__.__dict__["system_disk_description"] = system_disk_description
@@ -3001,6 +2975,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["os_type"] = None
             __props__.__dict__["primary_ip_address"] = None
             __props__.__dict__["public_ip"] = None
+            __props__.__dict__["system_disk_id"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
@@ -3073,12 +3048,12 @@ class Instance(pulumi.CustomResource):
             spot_strategy: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             stopped_mode: Optional[pulumi.Input[str]] = None,
-            subnet_id: Optional[pulumi.Input[str]] = None,
             system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
             system_disk_category: Optional[pulumi.Input[str]] = None,
             system_disk_description: Optional[pulumi.Input[str]] = None,
             system_disk_encrypt_algorithm: Optional[pulumi.Input[str]] = None,
             system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+            system_disk_id: Optional[pulumi.Input[str]] = None,
             system_disk_kms_key_id: Optional[pulumi.Input[str]] = None,
             system_disk_name: Optional[pulumi.Input[str]] = None,
             system_disk_performance_level: Optional[pulumi.Input[str]] = None,
@@ -3198,6 +3173,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[str] system_disk_encrypt_algorithm: The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
         :param pulumi.Input[bool] system_disk_encrypted: Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
+        :param pulumi.Input[str] system_disk_id: (Available since v1.210.0) The ID of system disk.
         :param pulumi.Input[str] system_disk_kms_key_id: The ID of the Key Management Service (KMS) key to be used for the system disk.
         :param pulumi.Input[str] system_disk_name: The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         :param pulumi.Input[str] system_disk_performance_level: The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
@@ -3275,12 +3251,12 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["spot_strategy"] = spot_strategy
         __props__.__dict__["status"] = status
         __props__.__dict__["stopped_mode"] = stopped_mode
-        __props__.__dict__["subnet_id"] = subnet_id
         __props__.__dict__["system_disk_auto_snapshot_policy_id"] = system_disk_auto_snapshot_policy_id
         __props__.__dict__["system_disk_category"] = system_disk_category
         __props__.__dict__["system_disk_description"] = system_disk_description
         __props__.__dict__["system_disk_encrypt_algorithm"] = system_disk_encrypt_algorithm
         __props__.__dict__["system_disk_encrypted"] = system_disk_encrypted
+        __props__.__dict__["system_disk_id"] = system_disk_id
         __props__.__dict__["system_disk_kms_key_id"] = system_disk_kms_key_id
         __props__.__dict__["system_disk_name"] = system_disk_name
         __props__.__dict__["system_disk_performance_level"] = system_disk_performance_level
@@ -3818,14 +3794,6 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "stopped_mode")
 
     @property
-    @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> pulumi.Output[str]:
-        warnings.warn("""Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """, DeprecationWarning)
-        pulumi.log.warn("""subnet_id is deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """)
-
-        return pulumi.get(self, "subnet_id")
-
-    @property
     @pulumi.getter(name="systemDiskAutoSnapshotPolicyId")
     def system_disk_auto_snapshot_policy_id(self) -> pulumi.Output[Optional[str]]:
         """
@@ -3864,6 +3832,14 @@ class Instance(pulumi.CustomResource):
         Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
         """
         return pulumi.get(self, "system_disk_encrypted")
+
+    @property
+    @pulumi.getter(name="systemDiskId")
+    def system_disk_id(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.210.0) The ID of system disk.
+        """
+        return pulumi.get(self, "system_disk_id")
 
     @property
     @pulumi.getter(name="systemDiskKmsKeyId")

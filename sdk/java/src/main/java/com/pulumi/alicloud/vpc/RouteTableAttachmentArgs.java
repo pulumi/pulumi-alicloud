@@ -14,14 +14,14 @@ public final class RouteTableAttachmentArgs extends com.pulumi.resources.Resourc
     public static final RouteTableAttachmentArgs Empty = new RouteTableAttachmentArgs();
 
     /**
-     * The route_table_id of the route table attachment, the field can&#39;t be changed.
+     * The ID of the route table to be bound to the switch.
      * 
      */
     @Import(name="routeTableId", required=true)
     private Output<String> routeTableId;
 
     /**
-     * @return The route_table_id of the route table attachment, the field can&#39;t be changed.
+     * @return The ID of the route table to be bound to the switch.
      * 
      */
     public Output<String> routeTableId() {
@@ -29,14 +29,14 @@ public final class RouteTableAttachmentArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The vswitch_id of the route table attachment, the field can&#39;t be changed.
+     * The ID of the switch to bind the route table.
      * 
      */
     @Import(name="vswitchId", required=true)
     private Output<String> vswitchId;
 
     /**
-     * @return The vswitch_id of the route table attachment, the field can&#39;t be changed.
+     * @return The ID of the switch to bind the route table.
      * 
      */
     public Output<String> vswitchId() {
@@ -69,7 +69,7 @@ public final class RouteTableAttachmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param routeTableId The route_table_id of the route table attachment, the field can&#39;t be changed.
+         * @param routeTableId The ID of the route table to be bound to the switch.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class RouteTableAttachmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param routeTableId The route_table_id of the route table attachment, the field can&#39;t be changed.
+         * @param routeTableId The ID of the route table to be bound to the switch.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class RouteTableAttachmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param vswitchId The vswitch_id of the route table attachment, the field can&#39;t be changed.
+         * @param vswitchId The ID of the switch to bind the route table.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class RouteTableAttachmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param vswitchId The vswitch_id of the route table attachment, the field can&#39;t be changed.
+         * @param vswitchId The ID of the switch to bind the route table.
          * 
          * @return builder
          * 

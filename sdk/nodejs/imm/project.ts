@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Intelligent Media Management Project resource.
  *
- * For information about Intelligent Media Management Project and how to use it, see [What is Project](https://help.aliyun.com/document_detail/63496.html).
+ * For information about Intelligent Media Management Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/network-intelligence-service/latest/user-overview).
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *
@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexample";
  * const role = new alicloud.ram.Role("role", {
  *     document: `  {
  *     "Statement": [
@@ -39,7 +41,7 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * const example = new alicloud.imm.Project("example", {
- *     project: "example_name",
+ *     project: name,
  *     serviceRole: role.name,
  * });
  * ```

@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * This resource will help you to manager a [Table Store](https://www.alibabacloud.com/help/doc-detail/27280.htm) Instance.
  * It is foundation of creating data table.
  * 
+ * &gt; **NOTE:** Available since v1.10.0.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -42,9 +44,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Instance(&#34;foo&#34;, InstanceArgs.builder()        
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+ *             .description(name)
  *             .accessedBy(&#34;Vpc&#34;)
- *             .description(&#34;for table&#34;)
  *             .tags(Map.ofEntries(
  *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
  *                 Map.entry(&#34;For&#34;, &#34;Building table&#34;)

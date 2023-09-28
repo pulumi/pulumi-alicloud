@@ -17,7 +17,7 @@ import (
 //
 // For information about Resource Manager Delegated Administrator and how to use it, see [What is Delegated Administrator](https://www.alibabacloud.com/help/en/resource-management/latest/registerdelegatedadministrator#doc-api-ResourceManager-RegisterDelegatedAdministrator).
 //
-// > **NOTE:** Available in v1.181.0+.
+// > **NOTE:** Available since v1.181.0.
 //
 // ## Example Usage
 //
@@ -30,19 +30,36 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultAccounts, err := resourcemanager.GetAccounts(ctx, &resourcemanager.GetAccountsArgs{
-//				Status: pulumi.StringRef("CreateSuccess"),
-//			}, nil)
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			displayName := "EAccount"
+//			if param := cfg.Get("displayName"); param != "" {
+//				displayName = param
+//			}
+//			exampleFolder, err := resourcemanager.NewFolder(ctx, "exampleFolder", &resourcemanager.FolderArgs{
+//				FolderName: pulumi.String(name),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = resourcemanager.NewDelegatedAdministrator(ctx, "defaultDelegatedAdministrator", &resourcemanager.DelegatedAdministratorArgs{
-//				AccountId:        *pulumi.String(defaultAccounts.Accounts[0].AccountId),
+//			exampleAccount, err := resourcemanager.NewAccount(ctx, "exampleAccount", &resourcemanager.AccountArgs{
+//				DisplayName: pulumi.String(displayName),
+//				FolderId:    exampleFolder.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = resourcemanager.NewDelegatedAdministrator(ctx, "exampleDelegatedAdministrator", &resourcemanager.DelegatedAdministratorArgs{
+//				AccountId:        exampleAccount.ID(),
 //				ServicePrincipal: pulumi.String("cloudfw.aliyuncs.com"),
 //			})
 //			if err != nil {

@@ -17,7 +17,66 @@ import (
 //
 // For information about Simple Application Server Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/doc-detail/190452.htm).
 //
-// > **NOTE:** Available in v1.143.0+.
+// > **NOTE:** Available since v1.143.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/simpleapplicationserver"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultImages, err := simpleapplicationserver.GetImages(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultServerPlans, err := simpleapplicationserver.GetServerPlans(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := simpleapplicationserver.NewInstance(ctx, "defaultInstance", &simpleapplicationserver.InstanceArgs{
+//				PaymentType:  pulumi.String("Subscription"),
+//				PlanId:       *pulumi.String(defaultServerPlans.Plans[0].Id),
+//				InstanceName: pulumi.String(name),
+//				ImageId:      *pulumi.String(defaultImages.Images[0].Id),
+//				Period:       pulumi.Int(1),
+//				DataDiskSize: pulumi.Int(100),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultServerDisks := simpleapplicationserver.GetServerDisksOutput(ctx, simpleapplicationserver.GetServerDisksOutputArgs{
+//				InstanceId: defaultInstance.ID(),
+//			}, nil)
+//			_, err = simpleapplicationserver.NewSnapshot(ctx, "defaultSnapshot", &simpleapplicationserver.SnapshotArgs{
+//				DiskId: defaultServerDisks.ApplyT(func(defaultServerDisks simpleapplicationserver.GetServerDisksResult) (*string, error) {
+//					return &defaultServerDisks.Ids[0], nil
+//				}).(pulumi.StringPtrOutput),
+//				SnapshotName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

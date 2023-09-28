@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
  * Provides a Resource Manager Policy resource.\
  * For information about Resource Manager Policy and how to use it, see [What is Resource Manager Policy](https://www.alibabacloud.com/help/en/doc-detail/93732.htm).
  *
- * > **NOTE:** Available in v1.83.0+.
+ * > **NOTE:** Available since v1.83.0.
  *
  * ## Example Usage
  *
@@ -18,7 +18,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexample";
  * const example = new alicloud.resourcemanager.Policy("example", {
+ *     policyName: name,
  *     policyDocument: `		{
  * 			"Statement": [{
  * 				"Action": ["oss:*"],
@@ -27,9 +30,7 @@ import * as utilities from "../utilities";
  * 			}],
  * 			"Version": "1"
  * 		}
- *     
  * `,
- *     policyName: "abc12345",
  * });
  * ```
  *

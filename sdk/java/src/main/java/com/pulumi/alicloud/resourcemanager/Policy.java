@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * Provides a Resource Manager Policy resource.\
  * For information about Resource Manager Policy and how to use it, see [What is Resource Manager Policy](https://www.alibabacloud.com/help/en/doc-detail/93732.htm).
  * 
- * &gt; **NOTE:** Available in v1.83.0+.
+ * &gt; **NOTE:** Available since v1.83.0.
  * 
  * ## Example Usage
  * 
@@ -44,7 +44,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
  *         var example = new Policy(&#34;example&#34;, PolicyArgs.builder()        
+ *             .policyName(name)
  *             .policyDocument(&#34;&#34;&#34;
  * 		{
  * 			&#34;Statement&#34;: [{
@@ -54,9 +57,7 @@ import javax.annotation.Nullable;
  * 			}],
  * 			&#34;Version&#34;: &#34;1&#34;
  * 		}
- *     
  *             &#34;&#34;&#34;)
- *             .policyName(&#34;abc12345&#34;)
  *             .build());
  * 
  *     }

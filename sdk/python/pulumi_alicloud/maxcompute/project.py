@@ -28,10 +28,10 @@ class ProjectArgs:
         :param pulumi.Input[str] project_name: The name of the project
         :param pulumi.Input[str] comment: Comments of project
         :param pulumi.Input[str] default_quota: Default Computing Resource Group
-        :param pulumi.Input['ProjectIpWhiteListArgs'] ip_white_list: IP whitelistSee the following `Block IpWhiteList`.
+        :param pulumi.Input['ProjectIpWhiteListArgs'] ip_white_list: IP whitelist. See `ip_white_list` below.
         :param pulumi.Input[str] product_type: Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
-        :param pulumi.Input['ProjectPropertiesArgs'] properties: Project base attributesSee the following `Block Properties`.
-        :param pulumi.Input['ProjectSecurityPropertiesArgs'] security_properties: Security-related attributesSee the following `Block SecurityProperties`.
+        :param pulumi.Input['ProjectPropertiesArgs'] properties: Project base attributes. See `properties` below.
+        :param pulumi.Input['ProjectSecurityPropertiesArgs'] security_properties: Security-related attributes. See `security_properties` below.
         """
         pulumi.set(__self__, "project_name", project_name)
         if comment is not None:
@@ -87,7 +87,7 @@ class ProjectArgs:
     @pulumi.getter(name="ipWhiteList")
     def ip_white_list(self) -> Optional[pulumi.Input['ProjectIpWhiteListArgs']]:
         """
-        IP whitelistSee the following `Block IpWhiteList`.
+        IP whitelist. See `ip_white_list` below.
         """
         return pulumi.get(self, "ip_white_list")
 
@@ -111,7 +111,7 @@ class ProjectArgs:
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input['ProjectPropertiesArgs']]:
         """
-        Project base attributesSee the following `Block Properties`.
+        Project base attributes. See `properties` below.
         """
         return pulumi.get(self, "properties")
 
@@ -123,7 +123,7 @@ class ProjectArgs:
     @pulumi.getter(name="securityProperties")
     def security_properties(self) -> Optional[pulumi.Input['ProjectSecurityPropertiesArgs']]:
         """
-        Security-related attributesSee the following `Block SecurityProperties`.
+        Security-related attributes. See `security_properties` below.
         """
         return pulumi.get(self, "security_properties")
 
@@ -149,12 +149,12 @@ class _ProjectState:
         Input properties used for looking up and filtering Project resources.
         :param pulumi.Input[str] comment: Comments of project
         :param pulumi.Input[str] default_quota: Default Computing Resource Group
-        :param pulumi.Input['ProjectIpWhiteListArgs'] ip_white_list: IP whitelistSee the following `Block IpWhiteList`.
+        :param pulumi.Input['ProjectIpWhiteListArgs'] ip_white_list: IP whitelist. See `ip_white_list` below.
         :param pulumi.Input[str] owner: Project owner
         :param pulumi.Input[str] product_type: Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
         :param pulumi.Input[str] project_name: The name of the project
-        :param pulumi.Input['ProjectPropertiesArgs'] properties: Project base attributesSee the following `Block Properties`.
-        :param pulumi.Input['ProjectSecurityPropertiesArgs'] security_properties: Security-related attributesSee the following `Block SecurityProperties`.
+        :param pulumi.Input['ProjectPropertiesArgs'] properties: Project base attributes. See `properties` below.
+        :param pulumi.Input['ProjectSecurityPropertiesArgs'] security_properties: Security-related attributes. See `security_properties` below.
         :param pulumi.Input[str] status: The status of the resource
         :param pulumi.Input[str] type: Life cycle type.
         """
@@ -207,7 +207,7 @@ class _ProjectState:
     @pulumi.getter(name="ipWhiteList")
     def ip_white_list(self) -> Optional[pulumi.Input['ProjectIpWhiteListArgs']]:
         """
-        IP whitelistSee the following `Block IpWhiteList`.
+        IP whitelist. See `ip_white_list` below.
         """
         return pulumi.get(self, "ip_white_list")
 
@@ -255,7 +255,7 @@ class _ProjectState:
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input['ProjectPropertiesArgs']]:
         """
-        Project base attributesSee the following `Block Properties`.
+        Project base attributes. See `properties` below.
         """
         return pulumi.get(self, "properties")
 
@@ -267,7 +267,7 @@ class _ProjectState:
     @pulumi.getter(name="securityProperties")
     def security_properties(self) -> Optional[pulumi.Input['ProjectSecurityPropertiesArgs']]:
         """
-        Security-related attributesSee the following `Block SecurityProperties`.
+        Security-related attributes. See `security_properties` below.
         """
         return pulumi.get(self, "security_properties")
 
@@ -316,9 +316,9 @@ class Project(pulumi.CustomResource):
         """
         Provides a Max Compute Project resource.
 
-        For information about Max Compute Project and how to use it, see [What is Project](https://help.aliyun.com/document_detail/473237.html).
+        For information about Max Compute Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/maxcompute).
 
-        > **NOTE:** Available in v1.77.0+.
+        > **NOTE:** Available since v1.77.0.
 
         ## Example Usage
 
@@ -328,22 +328,26 @@ class Project(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
         default = alicloud.maxcompute.Project("default",
-            comment="test_for_terraform",
             default_quota="默认后付费Quota",
-            product_type="PAYASYOUGO",
-            project_name="test_create_spec_one")
+            project_name=name,
+            comment=name,
+            product_type="PayAsYouGo")
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Comments of project
         :param pulumi.Input[str] default_quota: Default Computing Resource Group
-        :param pulumi.Input[pulumi.InputType['ProjectIpWhiteListArgs']] ip_white_list: IP whitelistSee the following `Block IpWhiteList`.
+        :param pulumi.Input[pulumi.InputType['ProjectIpWhiteListArgs']] ip_white_list: IP whitelist. See `ip_white_list` below.
         :param pulumi.Input[str] product_type: Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
         :param pulumi.Input[str] project_name: The name of the project
-        :param pulumi.Input[pulumi.InputType['ProjectPropertiesArgs']] properties: Project base attributesSee the following `Block Properties`.
-        :param pulumi.Input[pulumi.InputType['ProjectSecurityPropertiesArgs']] security_properties: Security-related attributesSee the following `Block SecurityProperties`.
+        :param pulumi.Input[pulumi.InputType['ProjectPropertiesArgs']] properties: Project base attributes. See `properties` below.
+        :param pulumi.Input[pulumi.InputType['ProjectSecurityPropertiesArgs']] security_properties: Security-related attributes. See `security_properties` below.
         """
         ...
     @overload
@@ -354,9 +358,9 @@ class Project(pulumi.CustomResource):
         """
         Provides a Max Compute Project resource.
 
-        For information about Max Compute Project and how to use it, see [What is Project](https://help.aliyun.com/document_detail/473237.html).
+        For information about Max Compute Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/maxcompute).
 
-        > **NOTE:** Available in v1.77.0+.
+        > **NOTE:** Available since v1.77.0.
 
         ## Example Usage
 
@@ -366,11 +370,15 @@ class Project(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
         default = alicloud.maxcompute.Project("default",
-            comment="test_for_terraform",
             default_quota="默认后付费Quota",
-            product_type="PAYASYOUGO",
-            project_name="test_create_spec_one")
+            project_name=name,
+            comment=name,
+            product_type="PayAsYouGo")
         ```
 
         :param str resource_name: The name of the resource.
@@ -445,12 +453,12 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Comments of project
         :param pulumi.Input[str] default_quota: Default Computing Resource Group
-        :param pulumi.Input[pulumi.InputType['ProjectIpWhiteListArgs']] ip_white_list: IP whitelistSee the following `Block IpWhiteList`.
+        :param pulumi.Input[pulumi.InputType['ProjectIpWhiteListArgs']] ip_white_list: IP whitelist. See `ip_white_list` below.
         :param pulumi.Input[str] owner: Project owner
         :param pulumi.Input[str] product_type: Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
         :param pulumi.Input[str] project_name: The name of the project
-        :param pulumi.Input[pulumi.InputType['ProjectPropertiesArgs']] properties: Project base attributesSee the following `Block Properties`.
-        :param pulumi.Input[pulumi.InputType['ProjectSecurityPropertiesArgs']] security_properties: Security-related attributesSee the following `Block SecurityProperties`.
+        :param pulumi.Input[pulumi.InputType['ProjectPropertiesArgs']] properties: Project base attributes. See `properties` below.
+        :param pulumi.Input[pulumi.InputType['ProjectSecurityPropertiesArgs']] security_properties: Security-related attributes. See `security_properties` below.
         :param pulumi.Input[str] status: The status of the resource
         :param pulumi.Input[str] type: Life cycle type.
         """
@@ -490,7 +498,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="ipWhiteList")
     def ip_white_list(self) -> pulumi.Output[Optional['outputs.ProjectIpWhiteList']]:
         """
-        IP whitelistSee the following `Block IpWhiteList`.
+        IP whitelist. See `ip_white_list` below.
         """
         return pulumi.get(self, "ip_white_list")
 
@@ -522,7 +530,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter
     def properties(self) -> pulumi.Output['outputs.ProjectProperties']:
         """
-        Project base attributesSee the following `Block Properties`.
+        Project base attributes. See `properties` below.
         """
         return pulumi.get(self, "properties")
 
@@ -530,7 +538,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="securityProperties")
     def security_properties(self) -> pulumi.Output['outputs.ProjectSecurityProperties']:
         """
-        Security-related attributesSee the following `Block SecurityProperties`.
+        Security-related attributes. See `security_properties` below.
         """
         return pulumi.get(self, "security_properties")
 

@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Private Zone Endpoint resource.
  *
- * For information about Private Zone Endpoint and how to use it, see [What is Endpoint](https://www.alibabacloud.com/help/en/doc-detail/64611.htm).
+ * For information about Private Zone Endpoint and how to use it, see [What is Endpoint](https://www.alibabacloud.com/help/en/privatezone/latest/add-endpoint).
  *
- * > **NOTE:** Available in v1.143.0+.
+ * > **NOTE:** Available since v1.143.0.
  *
  * ## Import
  *
@@ -54,7 +54,7 @@ export class Endpoint extends pulumi.CustomResource {
      */
     public readonly endpointName!: pulumi.Output<string>;
     /**
-     * The Ip Configs. See the following `Block ipConfigs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+     * The Ip Configs. See `ipConfigs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
      */
     public readonly ipConfigs!: pulumi.Output<outputs.pvtz.EndpointIpConfig[]>;
     /**
@@ -131,7 +131,7 @@ export interface EndpointState {
      */
     endpointName?: pulumi.Input<string>;
     /**
-     * The Ip Configs. See the following `Block ipConfigs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+     * The Ip Configs. See `ipConfigs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
      */
     ipConfigs?: pulumi.Input<pulumi.Input<inputs.pvtz.EndpointIpConfig>[]>;
     /**
@@ -161,7 +161,7 @@ export interface EndpointArgs {
      */
     endpointName: pulumi.Input<string>;
     /**
-     * The Ip Configs. See the following `Block ipConfigs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+     * The Ip Configs. See `ipConfigs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
      */
     ipConfigs: pulumi.Input<pulumi.Input<inputs.pvtz.EndpointIpConfig>[]>;
     /**

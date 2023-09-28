@@ -50,6 +50,11 @@ export const getPrometheusAlertRules: typeof import("./getPrometheusAlertRules")
 export const getPrometheusAlertRulesOutput: typeof import("./getPrometheusAlertRules").getPrometheusAlertRulesOutput = null as any;
 utilities.lazyLoad(exports, ["getPrometheusAlertRules","getPrometheusAlertRulesOutput"], () => require("./getPrometheusAlertRules"));
 
+export { GetPrometheusMonitoringsArgs, GetPrometheusMonitoringsResult, GetPrometheusMonitoringsOutputArgs } from "./getPrometheusMonitorings";
+export const getPrometheusMonitorings: typeof import("./getPrometheusMonitorings").getPrometheusMonitorings = null as any;
+export const getPrometheusMonitoringsOutput: typeof import("./getPrometheusMonitorings").getPrometheusMonitoringsOutput = null as any;
+utilities.lazyLoad(exports, ["getPrometheusMonitorings","getPrometheusMonitoringsOutput"], () => require("./getPrometheusMonitorings"));
+
 export { GetRemoteWritesArgs, GetRemoteWritesResult, GetRemoteWritesOutputArgs } from "./getRemoteWrites";
 export const getRemoteWrites: typeof import("./getRemoteWrites").getRemoteWrites = null as any;
 export const getRemoteWritesOutput: typeof import("./getRemoteWrites").getRemoteWritesOutput = null as any;

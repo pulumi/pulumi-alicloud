@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:eventbridge/apiDestination:ApiDestination":
+		r = &ApiDestination{}
+	case "alicloud:eventbridge/connection:Connection":
+		r = &Connection{}
 	case "alicloud:eventbridge/eventBus:EventBus":
 		r = &EventBus{}
 	case "alicloud:eventbridge/eventSource:EventSource":
@@ -44,6 +48,16 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"eventbridge/apiDestination",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"eventbridge/connection",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"eventbridge/eventBus",

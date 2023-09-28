@@ -27,7 +27,6 @@ class InstanceArgs:
                  duration: Optional[pulumi.Input[str]] = None,
                  file_engine_node_count: Optional[pulumi.Input[int]] = None,
                  file_engine_specification: Optional[pulumi.Input[str]] = None,
-                 group_name: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_storage: Optional[pulumi.Input[str]] = None,
                  ip_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -38,8 +37,6 @@ class InstanceArgs:
                  lts_node_count: Optional[pulumi.Input[int]] = None,
                  lts_node_specification: Optional[pulumi.Input[str]] = None,
                  multi_zone_combination: Optional[pulumi.Input[str]] = None,
-                 phoenix_node_count: Optional[pulumi.Input[int]] = None,
-                 phoenix_node_specification: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
                  primary_vswitch_id: Optional[pulumi.Input[str]] = None,
                  primary_zone_id: Optional[pulumi.Input[str]] = None,
@@ -48,6 +45,8 @@ class InstanceArgs:
                  search_engine_specification: Optional[pulumi.Input[str]] = None,
                  standby_vswitch_id: Optional[pulumi.Input[str]] = None,
                  standby_zone_id: Optional[pulumi.Input[str]] = None,
+                 stream_engine_node_count: Optional[pulumi.Input[int]] = None,
+                 stream_engine_specification: Optional[pulumi.Input[str]] = None,
                  table_engine_node_count: Optional[pulumi.Input[int]] = None,
                  table_engine_specification: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -73,7 +72,6 @@ class InstanceArgs:
         :param pulumi.Input[str] duration: The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
         :param pulumi.Input[int] file_engine_node_count: The count of file engine.
         :param pulumi.Input[str] file_engine_specification: The specification of file engine. Valid values: `lindorm.c.xlarge`.
-        :param pulumi.Input[str] group_name: The group name.
         :param pulumi.Input[str] instance_name: The name of the instance.
         :param pulumi.Input[str] instance_storage: The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_white_lists: The ip white list of instance.
@@ -84,8 +82,6 @@ class InstanceArgs:
         :param pulumi.Input[int] lts_node_count: The count of lindorm tunnel service.
         :param pulumi.Input[str] lts_node_specification: The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] multi_zone_combination: The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
-        :param pulumi.Input[int] phoenix_node_count: The count of phoenix.
-        :param pulumi.Input[str] phoenix_node_specification: The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] pricing_cycle: The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
         :param pulumi.Input[str] primary_vswitch_id: Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] primary_zone_id: Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
@@ -94,6 +90,8 @@ class InstanceArgs:
         :param pulumi.Input[str] search_engine_specification: The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] standby_vswitch_id: The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] standby_zone_id: The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
+        :param pulumi.Input[int] stream_engine_node_count: The number of LindormStream nodes in the instance.
+        :param pulumi.Input[str] stream_engine_specification: The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         :param pulumi.Input[int] table_engine_node_count: The count of table engine.
         :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -126,8 +124,6 @@ class InstanceArgs:
             pulumi.set(__self__, "file_engine_node_count", file_engine_node_count)
         if file_engine_specification is not None:
             pulumi.set(__self__, "file_engine_specification", file_engine_specification)
-        if group_name is not None:
-            pulumi.set(__self__, "group_name", group_name)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
         if instance_storage is not None:
@@ -148,10 +144,6 @@ class InstanceArgs:
             pulumi.set(__self__, "lts_node_specification", lts_node_specification)
         if multi_zone_combination is not None:
             pulumi.set(__self__, "multi_zone_combination", multi_zone_combination)
-        if phoenix_node_count is not None:
-            pulumi.set(__self__, "phoenix_node_count", phoenix_node_count)
-        if phoenix_node_specification is not None:
-            pulumi.set(__self__, "phoenix_node_specification", phoenix_node_specification)
         if pricing_cycle is not None:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
         if primary_vswitch_id is not None:
@@ -168,6 +160,10 @@ class InstanceArgs:
             pulumi.set(__self__, "standby_vswitch_id", standby_vswitch_id)
         if standby_zone_id is not None:
             pulumi.set(__self__, "standby_zone_id", standby_zone_id)
+        if stream_engine_node_count is not None:
+            pulumi.set(__self__, "stream_engine_node_count", stream_engine_node_count)
+        if stream_engine_specification is not None:
+            pulumi.set(__self__, "stream_engine_specification", stream_engine_specification)
         if table_engine_node_count is not None:
             pulumi.set(__self__, "table_engine_node_count", table_engine_node_count)
         if table_engine_specification is not None:
@@ -179,8 +175,8 @@ class InstanceArgs:
         if time_series_engine_specification is not None:
             pulumi.set(__self__, "time_series_engine_specification", time_series_engine_specification)
         if time_serires_engine_specification is not None:
-            warnings.warn("""Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""", DeprecationWarning)
-            pulumi.log.warn("""time_serires_engine_specification is deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""")
+            warnings.warn("""Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""", DeprecationWarning)
+            pulumi.log.warn("""time_serires_engine_specification is deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""")
         if time_serires_engine_specification is not None:
             pulumi.set(__self__, "time_serires_engine_specification", time_serires_engine_specification)
         if vpc_id is not None:
@@ -347,18 +343,6 @@ class InstanceArgs:
         pulumi.set(self, "file_engine_specification", value)
 
     @property
-    @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The group name.
-        """
-        return pulumi.get(self, "group_name")
-
-    @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "group_name", value)
-
-    @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -479,30 +463,6 @@ class InstanceArgs:
         pulumi.set(self, "multi_zone_combination", value)
 
     @property
-    @pulumi.getter(name="phoenixNodeCount")
-    def phoenix_node_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        The count of phoenix.
-        """
-        return pulumi.get(self, "phoenix_node_count")
-
-    @phoenix_node_count.setter
-    def phoenix_node_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "phoenix_node_count", value)
-
-    @property
-    @pulumi.getter(name="phoenixNodeSpecification")
-    def phoenix_node_specification(self) -> Optional[pulumi.Input[str]]:
-        """
-        The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-        """
-        return pulumi.get(self, "phoenix_node_specification")
-
-    @phoenix_node_specification.setter
-    def phoenix_node_specification(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "phoenix_node_specification", value)
-
-    @property
     @pulumi.getter(name="pricingCycle")
     def pricing_cycle(self) -> Optional[pulumi.Input[str]]:
         """
@@ -599,6 +559,30 @@ class InstanceArgs:
         pulumi.set(self, "standby_zone_id", value)
 
     @property
+    @pulumi.getter(name="streamEngineNodeCount")
+    def stream_engine_node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of LindormStream nodes in the instance.
+        """
+        return pulumi.get(self, "stream_engine_node_count")
+
+    @stream_engine_node_count.setter
+    def stream_engine_node_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "stream_engine_node_count", value)
+
+    @property
+    @pulumi.getter(name="streamEngineSpecification")
+    def stream_engine_specification(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+        """
+        return pulumi.get(self, "stream_engine_specification")
+
+    @stream_engine_specification.setter
+    def stream_engine_specification(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stream_engine_specification", value)
+
+    @property
     @pulumi.getter(name="tableEngineNodeCount")
     def table_engine_node_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -664,8 +648,8 @@ class InstanceArgs:
         """
         Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
         """
-        warnings.warn("""Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""", DeprecationWarning)
-        pulumi.log.warn("""time_serires_engine_specification is deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""")
+        warnings.warn("""Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""", DeprecationWarning)
+        pulumi.log.warn("""time_serires_engine_specification is deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""")
 
         return pulumi.get(self, "time_serires_engine_specification")
 
@@ -713,11 +697,11 @@ class _InstanceState:
                  enabled_file_engine: Optional[pulumi.Input[bool]] = None,
                  enabled_lts_engine: Optional[pulumi.Input[bool]] = None,
                  enabled_search_engine: Optional[pulumi.Input[bool]] = None,
+                 enabled_stream_engine: Optional[pulumi.Input[bool]] = None,
                  enabled_table_engine: Optional[pulumi.Input[bool]] = None,
                  enabled_time_serires_engine: Optional[pulumi.Input[bool]] = None,
                  file_engine_node_count: Optional[pulumi.Input[int]] = None,
                  file_engine_specification: Optional[pulumi.Input[str]] = None,
-                 group_name: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_storage: Optional[pulumi.Input[str]] = None,
                  ip_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -729,8 +713,6 @@ class _InstanceState:
                  lts_node_specification: Optional[pulumi.Input[str]] = None,
                  multi_zone_combination: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
-                 phoenix_node_count: Optional[pulumi.Input[int]] = None,
-                 phoenix_node_specification: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
                  primary_vswitch_id: Optional[pulumi.Input[str]] = None,
                  primary_zone_id: Optional[pulumi.Input[str]] = None,
@@ -741,6 +723,8 @@ class _InstanceState:
                  standby_vswitch_id: Optional[pulumi.Input[str]] = None,
                  standby_zone_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 stream_engine_node_count: Optional[pulumi.Input[int]] = None,
+                 stream_engine_specification: Optional[pulumi.Input[str]] = None,
                  table_engine_node_count: Optional[pulumi.Input[int]] = None,
                  table_engine_specification: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -766,11 +750,11 @@ class _InstanceState:
         :param pulumi.Input[bool] enabled_file_engine: (Available since v1.163.0) Whether to enable file engine.
         :param pulumi.Input[bool] enabled_lts_engine: (Available since v1.163.0) Whether to enable lts engine.
         :param pulumi.Input[bool] enabled_search_engine: (Available since v1.163.0) Whether to enable search engine.
+        :param pulumi.Input[bool] enabled_stream_engine: (Available since v1.211.0) Whether to enable streaming engine.
         :param pulumi.Input[bool] enabled_table_engine: (Available since v1.163.0) Whether to enable table engine.
         :param pulumi.Input[bool] enabled_time_serires_engine: (Available since v1.163.0) Whether to enable time serires engine.
         :param pulumi.Input[int] file_engine_node_count: The count of file engine.
         :param pulumi.Input[str] file_engine_specification: The specification of file engine. Valid values: `lindorm.c.xlarge`.
-        :param pulumi.Input[str] group_name: The group name.
         :param pulumi.Input[str] instance_name: The name of the instance.
         :param pulumi.Input[str] instance_storage: The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_white_lists: The ip white list of instance.
@@ -782,8 +766,6 @@ class _InstanceState:
         :param pulumi.Input[str] lts_node_specification: The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] multi_zone_combination: The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
         :param pulumi.Input[str] payment_type: The billing method. Valid values: `PayAsYouGo` and `Subscription`.
-        :param pulumi.Input[int] phoenix_node_count: The count of phoenix.
-        :param pulumi.Input[str] phoenix_node_specification: The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] pricing_cycle: The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
         :param pulumi.Input[str] primary_vswitch_id: Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] primary_zone_id: Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
@@ -794,6 +776,8 @@ class _InstanceState:
         :param pulumi.Input[str] standby_vswitch_id: The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] standby_zone_id: The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] status: The status of Instance.
+        :param pulumi.Input[int] stream_engine_node_count: The number of LindormStream nodes in the instance.
+        :param pulumi.Input[str] stream_engine_specification: The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         :param pulumi.Input[int] table_engine_node_count: The count of table engine.
         :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -828,6 +812,8 @@ class _InstanceState:
             pulumi.set(__self__, "enabled_lts_engine", enabled_lts_engine)
         if enabled_search_engine is not None:
             pulumi.set(__self__, "enabled_search_engine", enabled_search_engine)
+        if enabled_stream_engine is not None:
+            pulumi.set(__self__, "enabled_stream_engine", enabled_stream_engine)
         if enabled_table_engine is not None:
             pulumi.set(__self__, "enabled_table_engine", enabled_table_engine)
         if enabled_time_serires_engine is not None:
@@ -836,8 +822,6 @@ class _InstanceState:
             pulumi.set(__self__, "file_engine_node_count", file_engine_node_count)
         if file_engine_specification is not None:
             pulumi.set(__self__, "file_engine_specification", file_engine_specification)
-        if group_name is not None:
-            pulumi.set(__self__, "group_name", group_name)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
         if instance_storage is not None:
@@ -860,10 +844,6 @@ class _InstanceState:
             pulumi.set(__self__, "multi_zone_combination", multi_zone_combination)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
-        if phoenix_node_count is not None:
-            pulumi.set(__self__, "phoenix_node_count", phoenix_node_count)
-        if phoenix_node_specification is not None:
-            pulumi.set(__self__, "phoenix_node_specification", phoenix_node_specification)
         if pricing_cycle is not None:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
         if primary_vswitch_id is not None:
@@ -884,6 +864,10 @@ class _InstanceState:
             pulumi.set(__self__, "standby_zone_id", standby_zone_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if stream_engine_node_count is not None:
+            pulumi.set(__self__, "stream_engine_node_count", stream_engine_node_count)
+        if stream_engine_specification is not None:
+            pulumi.set(__self__, "stream_engine_specification", stream_engine_specification)
         if table_engine_node_count is not None:
             pulumi.set(__self__, "table_engine_node_count", table_engine_node_count)
         if table_engine_specification is not None:
@@ -895,8 +879,8 @@ class _InstanceState:
         if time_series_engine_specification is not None:
             pulumi.set(__self__, "time_series_engine_specification", time_series_engine_specification)
         if time_serires_engine_specification is not None:
-            warnings.warn("""Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""", DeprecationWarning)
-            pulumi.log.warn("""time_serires_engine_specification is deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""")
+            warnings.warn("""Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""", DeprecationWarning)
+            pulumi.log.warn("""time_serires_engine_specification is deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""")
         if time_serires_engine_specification is not None:
             pulumi.set(__self__, "time_serires_engine_specification", time_serires_engine_specification)
         if vpc_id is not None:
@@ -1053,6 +1037,18 @@ class _InstanceState:
         pulumi.set(self, "enabled_search_engine", value)
 
     @property
+    @pulumi.getter(name="enabledStreamEngine")
+    def enabled_stream_engine(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Available since v1.211.0) Whether to enable streaming engine.
+        """
+        return pulumi.get(self, "enabled_stream_engine")
+
+    @enabled_stream_engine.setter
+    def enabled_stream_engine(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled_stream_engine", value)
+
+    @property
     @pulumi.getter(name="enabledTableEngine")
     def enabled_table_engine(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1099,18 +1095,6 @@ class _InstanceState:
     @file_engine_specification.setter
     def file_engine_specification(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "file_engine_specification", value)
-
-    @property
-    @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The group name.
-        """
-        return pulumi.get(self, "group_name")
-
-    @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "group_name", value)
 
     @property
     @pulumi.getter(name="instanceName")
@@ -1245,30 +1229,6 @@ class _InstanceState:
         pulumi.set(self, "payment_type", value)
 
     @property
-    @pulumi.getter(name="phoenixNodeCount")
-    def phoenix_node_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        The count of phoenix.
-        """
-        return pulumi.get(self, "phoenix_node_count")
-
-    @phoenix_node_count.setter
-    def phoenix_node_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "phoenix_node_count", value)
-
-    @property
-    @pulumi.getter(name="phoenixNodeSpecification")
-    def phoenix_node_specification(self) -> Optional[pulumi.Input[str]]:
-        """
-        The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-        """
-        return pulumi.get(self, "phoenix_node_specification")
-
-    @phoenix_node_specification.setter
-    def phoenix_node_specification(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "phoenix_node_specification", value)
-
-    @property
     @pulumi.getter(name="pricingCycle")
     def pricing_cycle(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1389,6 +1349,30 @@ class _InstanceState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter(name="streamEngineNodeCount")
+    def stream_engine_node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of LindormStream nodes in the instance.
+        """
+        return pulumi.get(self, "stream_engine_node_count")
+
+    @stream_engine_node_count.setter
+    def stream_engine_node_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "stream_engine_node_count", value)
+
+    @property
+    @pulumi.getter(name="streamEngineSpecification")
+    def stream_engine_specification(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+        """
+        return pulumi.get(self, "stream_engine_specification")
+
+    @stream_engine_specification.setter
+    def stream_engine_specification(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stream_engine_specification", value)
+
+    @property
     @pulumi.getter(name="tableEngineNodeCount")
     def table_engine_node_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1454,8 +1438,8 @@ class _InstanceState:
         """
         Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
         """
-        warnings.warn("""Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""", DeprecationWarning)
-        pulumi.log.warn("""time_serires_engine_specification is deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""")
+        warnings.warn("""Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""", DeprecationWarning)
+        pulumi.log.warn("""time_serires_engine_specification is deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""")
 
         return pulumi.get(self, "time_serires_engine_specification")
 
@@ -1516,7 +1500,6 @@ class Instance(pulumi.CustomResource):
                  duration: Optional[pulumi.Input[str]] = None,
                  file_engine_node_count: Optional[pulumi.Input[int]] = None,
                  file_engine_specification: Optional[pulumi.Input[str]] = None,
-                 group_name: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_storage: Optional[pulumi.Input[str]] = None,
                  ip_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1528,8 +1511,6 @@ class Instance(pulumi.CustomResource):
                  lts_node_specification: Optional[pulumi.Input[str]] = None,
                  multi_zone_combination: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
-                 phoenix_node_count: Optional[pulumi.Input[int]] = None,
-                 phoenix_node_specification: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
                  primary_vswitch_id: Optional[pulumi.Input[str]] = None,
                  primary_zone_id: Optional[pulumi.Input[str]] = None,
@@ -1538,6 +1519,8 @@ class Instance(pulumi.CustomResource):
                  search_engine_specification: Optional[pulumi.Input[str]] = None,
                  standby_vswitch_id: Optional[pulumi.Input[str]] = None,
                  standby_zone_id: Optional[pulumi.Input[str]] = None,
+                 stream_engine_node_count: Optional[pulumi.Input[int]] = None,
+                 stream_engine_specification: Optional[pulumi.Input[str]] = None,
                  table_engine_node_count: Optional[pulumi.Input[int]] = None,
                  table_engine_specification: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1571,20 +1554,16 @@ class Instance(pulumi.CustomResource):
             name = "tf-example"
         region = "cn-hangzhou"
         zone_id = "cn-hangzhou-h"
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
             zone_id=zone_id)
         default_instance = alicloud.lindorm.Instance("defaultInstance",
             disk_category="cloud_efficiency",
             payment_type="PayAsYouGo",
             zone_id=zone_id,
-            vswitch_id=default_switch.id,
-            vpc_id=default_network.id,
+            vswitch_id=default_switches.ids[0],
+            vpc_id=default_networks.ids[0],
             instance_name=name,
             table_engine_specification="lindorm.g.4xlarge",
             table_engine_node_count=2,
@@ -1614,7 +1593,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] duration: The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
         :param pulumi.Input[int] file_engine_node_count: The count of file engine.
         :param pulumi.Input[str] file_engine_specification: The specification of file engine. Valid values: `lindorm.c.xlarge`.
-        :param pulumi.Input[str] group_name: The group name.
         :param pulumi.Input[str] instance_name: The name of the instance.
         :param pulumi.Input[str] instance_storage: The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_white_lists: The ip white list of instance.
@@ -1626,8 +1604,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] lts_node_specification: The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] multi_zone_combination: The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
         :param pulumi.Input[str] payment_type: The billing method. Valid values: `PayAsYouGo` and `Subscription`.
-        :param pulumi.Input[int] phoenix_node_count: The count of phoenix.
-        :param pulumi.Input[str] phoenix_node_specification: The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] pricing_cycle: The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
         :param pulumi.Input[str] primary_vswitch_id: Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] primary_zone_id: Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
@@ -1636,6 +1612,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] search_engine_specification: The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] standby_vswitch_id: The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] standby_zone_id: The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
+        :param pulumi.Input[int] stream_engine_node_count: The number of LindormStream nodes in the instance.
+        :param pulumi.Input[str] stream_engine_specification: The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         :param pulumi.Input[int] table_engine_node_count: The count of table engine.
         :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -1675,20 +1653,16 @@ class Instance(pulumi.CustomResource):
             name = "tf-example"
         region = "cn-hangzhou"
         zone_id = "cn-hangzhou-h"
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
             zone_id=zone_id)
         default_instance = alicloud.lindorm.Instance("defaultInstance",
             disk_category="cloud_efficiency",
             payment_type="PayAsYouGo",
             zone_id=zone_id,
-            vswitch_id=default_switch.id,
-            vpc_id=default_network.id,
+            vswitch_id=default_switches.ids[0],
+            vpc_id=default_networks.ids[0],
             instance_name=name,
             table_engine_specification="lindorm.g.4xlarge",
             table_engine_node_count=2,
@@ -1729,7 +1703,6 @@ class Instance(pulumi.CustomResource):
                  duration: Optional[pulumi.Input[str]] = None,
                  file_engine_node_count: Optional[pulumi.Input[int]] = None,
                  file_engine_specification: Optional[pulumi.Input[str]] = None,
-                 group_name: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_storage: Optional[pulumi.Input[str]] = None,
                  ip_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1741,8 +1714,6 @@ class Instance(pulumi.CustomResource):
                  lts_node_specification: Optional[pulumi.Input[str]] = None,
                  multi_zone_combination: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
-                 phoenix_node_count: Optional[pulumi.Input[int]] = None,
-                 phoenix_node_specification: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
                  primary_vswitch_id: Optional[pulumi.Input[str]] = None,
                  primary_zone_id: Optional[pulumi.Input[str]] = None,
@@ -1751,6 +1722,8 @@ class Instance(pulumi.CustomResource):
                  search_engine_specification: Optional[pulumi.Input[str]] = None,
                  standby_vswitch_id: Optional[pulumi.Input[str]] = None,
                  standby_zone_id: Optional[pulumi.Input[str]] = None,
+                 stream_engine_node_count: Optional[pulumi.Input[int]] = None,
+                 stream_engine_specification: Optional[pulumi.Input[str]] = None,
                  table_engine_node_count: Optional[pulumi.Input[int]] = None,
                  table_engine_specification: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1782,7 +1755,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["duration"] = duration
             __props__.__dict__["file_engine_node_count"] = file_engine_node_count
             __props__.__dict__["file_engine_specification"] = file_engine_specification
-            __props__.__dict__["group_name"] = group_name
             __props__.__dict__["instance_name"] = instance_name
             __props__.__dict__["instance_storage"] = instance_storage
             __props__.__dict__["ip_white_lists"] = ip_white_lists
@@ -1796,8 +1768,6 @@ class Instance(pulumi.CustomResource):
             if payment_type is None and not opts.urn:
                 raise TypeError("Missing required property 'payment_type'")
             __props__.__dict__["payment_type"] = payment_type
-            __props__.__dict__["phoenix_node_count"] = phoenix_node_count
-            __props__.__dict__["phoenix_node_specification"] = phoenix_node_specification
             __props__.__dict__["pricing_cycle"] = pricing_cycle
             __props__.__dict__["primary_vswitch_id"] = primary_vswitch_id
             __props__.__dict__["primary_zone_id"] = primary_zone_id
@@ -1806,14 +1776,16 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["search_engine_specification"] = search_engine_specification
             __props__.__dict__["standby_vswitch_id"] = standby_vswitch_id
             __props__.__dict__["standby_zone_id"] = standby_zone_id
+            __props__.__dict__["stream_engine_node_count"] = stream_engine_node_count
+            __props__.__dict__["stream_engine_specification"] = stream_engine_specification
             __props__.__dict__["table_engine_node_count"] = table_engine_node_count
             __props__.__dict__["table_engine_specification"] = table_engine_specification
             __props__.__dict__["tags"] = tags
             __props__.__dict__["time_series_engine_node_count"] = time_series_engine_node_count
             __props__.__dict__["time_series_engine_specification"] = time_series_engine_specification
             if time_serires_engine_specification is not None and not opts.urn:
-                warnings.warn("""Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""", DeprecationWarning)
-                pulumi.log.warn("""time_serires_engine_specification is deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""")
+                warnings.warn("""Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""", DeprecationWarning)
+                pulumi.log.warn("""time_serires_engine_specification is deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""")
             __props__.__dict__["time_serires_engine_specification"] = time_serires_engine_specification
             __props__.__dict__["vpc_id"] = vpc_id
             if vswitch_id is None and not opts.urn:
@@ -1823,6 +1795,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["enabled_file_engine"] = None
             __props__.__dict__["enabled_lts_engine"] = None
             __props__.__dict__["enabled_search_engine"] = None
+            __props__.__dict__["enabled_stream_engine"] = None
             __props__.__dict__["enabled_table_engine"] = None
             __props__.__dict__["enabled_time_serires_engine"] = None
             __props__.__dict__["service_type"] = None
@@ -1849,11 +1822,11 @@ class Instance(pulumi.CustomResource):
             enabled_file_engine: Optional[pulumi.Input[bool]] = None,
             enabled_lts_engine: Optional[pulumi.Input[bool]] = None,
             enabled_search_engine: Optional[pulumi.Input[bool]] = None,
+            enabled_stream_engine: Optional[pulumi.Input[bool]] = None,
             enabled_table_engine: Optional[pulumi.Input[bool]] = None,
             enabled_time_serires_engine: Optional[pulumi.Input[bool]] = None,
             file_engine_node_count: Optional[pulumi.Input[int]] = None,
             file_engine_specification: Optional[pulumi.Input[str]] = None,
-            group_name: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             instance_storage: Optional[pulumi.Input[str]] = None,
             ip_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1865,8 +1838,6 @@ class Instance(pulumi.CustomResource):
             lts_node_specification: Optional[pulumi.Input[str]] = None,
             multi_zone_combination: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
-            phoenix_node_count: Optional[pulumi.Input[int]] = None,
-            phoenix_node_specification: Optional[pulumi.Input[str]] = None,
             pricing_cycle: Optional[pulumi.Input[str]] = None,
             primary_vswitch_id: Optional[pulumi.Input[str]] = None,
             primary_zone_id: Optional[pulumi.Input[str]] = None,
@@ -1877,6 +1848,8 @@ class Instance(pulumi.CustomResource):
             standby_vswitch_id: Optional[pulumi.Input[str]] = None,
             standby_zone_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            stream_engine_node_count: Optional[pulumi.Input[int]] = None,
+            stream_engine_specification: Optional[pulumi.Input[str]] = None,
             table_engine_node_count: Optional[pulumi.Input[int]] = None,
             table_engine_specification: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1907,11 +1880,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled_file_engine: (Available since v1.163.0) Whether to enable file engine.
         :param pulumi.Input[bool] enabled_lts_engine: (Available since v1.163.0) Whether to enable lts engine.
         :param pulumi.Input[bool] enabled_search_engine: (Available since v1.163.0) Whether to enable search engine.
+        :param pulumi.Input[bool] enabled_stream_engine: (Available since v1.211.0) Whether to enable streaming engine.
         :param pulumi.Input[bool] enabled_table_engine: (Available since v1.163.0) Whether to enable table engine.
         :param pulumi.Input[bool] enabled_time_serires_engine: (Available since v1.163.0) Whether to enable time serires engine.
         :param pulumi.Input[int] file_engine_node_count: The count of file engine.
         :param pulumi.Input[str] file_engine_specification: The specification of file engine. Valid values: `lindorm.c.xlarge`.
-        :param pulumi.Input[str] group_name: The group name.
         :param pulumi.Input[str] instance_name: The name of the instance.
         :param pulumi.Input[str] instance_storage: The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_white_lists: The ip white list of instance.
@@ -1923,8 +1896,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] lts_node_specification: The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] multi_zone_combination: The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
         :param pulumi.Input[str] payment_type: The billing method. Valid values: `PayAsYouGo` and `Subscription`.
-        :param pulumi.Input[int] phoenix_node_count: The count of phoenix.
-        :param pulumi.Input[str] phoenix_node_specification: The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] pricing_cycle: The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
         :param pulumi.Input[str] primary_vswitch_id: Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] primary_zone_id: Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
@@ -1935,6 +1906,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] standby_vswitch_id: The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] standby_zone_id: The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] status: The status of Instance.
+        :param pulumi.Input[int] stream_engine_node_count: The number of LindormStream nodes in the instance.
+        :param pulumi.Input[str] stream_engine_specification: The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         :param pulumi.Input[int] table_engine_node_count: The count of table engine.
         :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -1961,11 +1934,11 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["enabled_file_engine"] = enabled_file_engine
         __props__.__dict__["enabled_lts_engine"] = enabled_lts_engine
         __props__.__dict__["enabled_search_engine"] = enabled_search_engine
+        __props__.__dict__["enabled_stream_engine"] = enabled_stream_engine
         __props__.__dict__["enabled_table_engine"] = enabled_table_engine
         __props__.__dict__["enabled_time_serires_engine"] = enabled_time_serires_engine
         __props__.__dict__["file_engine_node_count"] = file_engine_node_count
         __props__.__dict__["file_engine_specification"] = file_engine_specification
-        __props__.__dict__["group_name"] = group_name
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["instance_storage"] = instance_storage
         __props__.__dict__["ip_white_lists"] = ip_white_lists
@@ -1977,8 +1950,6 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["lts_node_specification"] = lts_node_specification
         __props__.__dict__["multi_zone_combination"] = multi_zone_combination
         __props__.__dict__["payment_type"] = payment_type
-        __props__.__dict__["phoenix_node_count"] = phoenix_node_count
-        __props__.__dict__["phoenix_node_specification"] = phoenix_node_specification
         __props__.__dict__["pricing_cycle"] = pricing_cycle
         __props__.__dict__["primary_vswitch_id"] = primary_vswitch_id
         __props__.__dict__["primary_zone_id"] = primary_zone_id
@@ -1989,6 +1960,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["standby_vswitch_id"] = standby_vswitch_id
         __props__.__dict__["standby_zone_id"] = standby_zone_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["stream_engine_node_count"] = stream_engine_node_count
+        __props__.__dict__["stream_engine_specification"] = stream_engine_specification
         __props__.__dict__["table_engine_node_count"] = table_engine_node_count
         __props__.__dict__["table_engine_specification"] = table_engine_specification
         __props__.__dict__["tags"] = tags
@@ -2099,6 +2072,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "enabled_search_engine")
 
     @property
+    @pulumi.getter(name="enabledStreamEngine")
+    def enabled_stream_engine(self) -> pulumi.Output[bool]:
+        """
+        (Available since v1.211.0) Whether to enable streaming engine.
+        """
+        return pulumi.get(self, "enabled_stream_engine")
+
+    @property
     @pulumi.getter(name="enabledTableEngine")
     def enabled_table_engine(self) -> pulumi.Output[bool]:
         """
@@ -2129,14 +2110,6 @@ class Instance(pulumi.CustomResource):
         The specification of file engine. Valid values: `lindorm.c.xlarge`.
         """
         return pulumi.get(self, "file_engine_specification")
-
-    @property
-    @pulumi.getter(name="groupName")
-    def group_name(self) -> pulumi.Output[Optional[str]]:
-        """
-        The group name.
-        """
-        return pulumi.get(self, "group_name")
 
     @property
     @pulumi.getter(name="instanceName")
@@ -2227,22 +2200,6 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "payment_type")
 
     @property
-    @pulumi.getter(name="phoenixNodeCount")
-    def phoenix_node_count(self) -> pulumi.Output[int]:
-        """
-        The count of phoenix.
-        """
-        return pulumi.get(self, "phoenix_node_count")
-
-    @property
-    @pulumi.getter(name="phoenixNodeSpecification")
-    def phoenix_node_specification(self) -> pulumi.Output[str]:
-        """
-        The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-        """
-        return pulumi.get(self, "phoenix_node_specification")
-
-    @property
     @pulumi.getter(name="pricingCycle")
     def pricing_cycle(self) -> pulumi.Output[Optional[str]]:
         """
@@ -2323,6 +2280,22 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "status")
 
     @property
+    @pulumi.getter(name="streamEngineNodeCount")
+    def stream_engine_node_count(self) -> pulumi.Output[int]:
+        """
+        The number of LindormStream nodes in the instance.
+        """
+        return pulumi.get(self, "stream_engine_node_count")
+
+    @property
+    @pulumi.getter(name="streamEngineSpecification")
+    def stream_engine_specification(self) -> pulumi.Output[str]:
+        """
+        The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+        """
+        return pulumi.get(self, "stream_engine_specification")
+
+    @property
     @pulumi.getter(name="tableEngineNodeCount")
     def table_engine_node_count(self) -> pulumi.Output[int]:
         """
@@ -2368,8 +2341,8 @@ class Instance(pulumi.CustomResource):
         """
         Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
         """
-        warnings.warn("""Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""", DeprecationWarning)
-        pulumi.log.warn("""time_serires_engine_specification is deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""")
+        warnings.warn("""Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""", DeprecationWarning)
+        pulumi.log.warn("""time_serires_engine_specification is deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""")
 
         return pulumi.get(self, "time_serires_engine_specification")
 

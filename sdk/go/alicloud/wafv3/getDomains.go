@@ -12,11 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// This data source provides Wafv3 Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-doc-waf-openapi-2021-10-01-api-doc-createdomain)
+// This data source provides the Wafv3 Domains of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in 1.200.0+
+// > **NOTE:** Available since v1.200.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -30,14 +32,28 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := wafv3.GetDomains(ctx, &wafv3.GetDomainsArgs{
-//				Domain:     pulumi.StringRef("zctest12.wafqax.top"),
-//				InstanceId: "waf_v3prepaid_public_cn-*****",
+//			defaultInstances, err := wafv3.GetInstances(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ids, err := wafv3.GetDomains(ctx, &wafv3.GetDomainsArgs{
+//				InstanceId: defaultInstances.Ids[0],
+//				Ids: []string{
+//					"example_id",
+//				},
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("alicloudWafv3DomainExampleId", _default.Domains[0].Id)
+//			ctx.Export("wafv3DomainsId1", ids.Domains[0].Id)
+//			defaultDomains, err := wafv3.GetDomains(ctx, &wafv3.GetDomainsArgs{
+//				InstanceId: defaultInstances.Ids[0],
+//				Domain:     pulumi.StringRef("zctest12.wafqax.top"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("wafv3DomainsId2", defaultDomains.Domains[0].Id)
 //			return nil
 //		})
 //	}

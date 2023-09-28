@@ -15,7 +15,7 @@ import (
 
 // Provides a Private Zone User Vpc Authorization resource.
 //
-// > **NOTE:** Available in v1.138.0+.
+// > **NOTE:** Available since v1.138.0.
 //
 // ## Example Usage
 //
@@ -28,15 +28,20 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/pvtz"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			authorizedUserId := float64(123456789)
+//			if param := cfg.GetFloat64("authorizedUserId"); param != 0 {
+//				authorizedUserId = param
+//			}
 //			_, err := pvtz.NewUserVpcAuthorization(ctx, "example", &pvtz.UserVpcAuthorizationArgs{
+//				AuthorizedUserId: pulumi.Float64(authorizedUserId),
 //				AuthChannel:      pulumi.String("RESOURCE_DIRECTORY"),
-//				AuthType:         pulumi.String("NORMAL"),
-//				AuthorizedUserId: pulumi.String("example_value"),
 //			})
 //			if err != nil {
 //				return err

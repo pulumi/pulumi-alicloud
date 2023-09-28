@@ -66,14 +66,14 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * HealthCheck. See the following `Block health_check`.
+     * HealthCheck. See `health_check` below.
      * 
      */
     @Import(name="healthCheck", required=true)
     private Output<ServerGroupHealthCheckArgs> healthCheck;
 
     /**
-     * @return HealthCheck. See the following `Block health_check`.
+     * @return HealthCheck. See `health_check` below.
      * 
      */
     public Output<ServerGroupHealthCheckArgs> healthCheck() {
@@ -299,7 +299,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheck HealthCheck. See the following `Block health_check`.
+         * @param healthCheck HealthCheck. See `health_check` below.
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheck HealthCheck. See the following `Block health_check`.
+         * @param healthCheck HealthCheck. See `health_check` below.
          * 
          * @return builder
          * 

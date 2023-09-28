@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Private Zone Rule Attachment and how to use it, see [What is Rule Attachment](https://www.alibabacloud.com/help/en/doc-detail/177601.htm).
  * 
- * &gt; **NOTE:** Available in v1.143.0+.
+ * &gt; **NOTE:** Available since v1.143.0.
  * 
  * ## Import
  * 
@@ -48,14 +48,14 @@ public class RuleAttachment extends com.pulumi.resources.CustomResource {
         return this.ruleId;
     }
     /**
-     * The List of the VPC. See the following `Block vpcs`.
+     * The List of the VPC. See `vpcs` below.
      * 
      */
     @Export(name="vpcs", type=List.class, parameters={RuleAttachmentVpc.class})
     private Output<List<RuleAttachmentVpc>> vpcs;
 
     /**
-     * @return The List of the VPC. See the following `Block vpcs`.
+     * @return The List of the VPC. See `vpcs` below.
      * 
      */
     public Output<List<RuleAttachmentVpc>> vpcs() {

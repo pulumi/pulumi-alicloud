@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RuleRuleConditionMethodConfig {
     /**
-     * @return The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+     * @return The values of the cookie. See `values` below.
      * 
      */
     private @Nullable List<String> values;
 
     private RuleRuleConditionMethodConfig() {}
     /**
-     * @return The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+     * @return The values of the cookie. See `values` below.
      * 
      */
     public List<String> values() {

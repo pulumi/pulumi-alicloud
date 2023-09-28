@@ -15,9 +15,9 @@ import (
 
 // Provides a Resource Manager Control Policy resource.
 //
-// For information about Resource Manager Control Policy and how to use it, see [What is Control Policy](https://help.aliyun.com/document_detail/208287.html).
+// For information about Resource Manager Control Policy and how to use it, see [What is Control Policy](https://www.alibabacloud.com/help/en/resource-management/latest/api-resourcedirectorymaster-2022-04-19-createcontrolpolicy).
 //
-// > **NOTE:** Available in v1.120.0+.
+// > **NOTE:** Available since v1.120.0.
 //
 // ## Example Usage
 //
@@ -30,14 +30,20 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := resourcemanager.NewControlPolicy(ctx, "example", &resourcemanager.ControlPolicyArgs{
-//				ControlPolicyName: pulumi.String("tf-testAccRDControlPolicy"),
-//				Description:       pulumi.String("tf-testAccRDControlPolicy"),
+//				ControlPolicyName: pulumi.String(name),
+//				Description:       pulumi.String(name),
 //				EffectScope:       pulumi.String("RAM"),
 //				PolicyDocument: pulumi.String(`  {
 //	    "Version": "1",

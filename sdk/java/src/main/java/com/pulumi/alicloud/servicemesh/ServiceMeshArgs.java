@@ -37,14 +37,16 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+     * The service mesh instance specification.
+     * Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
      * 
      */
     @Import(name="clusterSpec")
     private @Nullable Output<String> clusterSpec;
 
     /**
-     * @return The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+     * @return The service mesh instance specification.
+     * Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
      * 
      */
     public Optional<Output<String>> clusterSpec() {
@@ -52,14 +54,14 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+     * The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
      * 
      */
     @Import(name="edition")
     private @Nullable Output<String> edition;
 
     /**
-     * @return The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+     * @return The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
      * 
      */
     public Optional<Output<String>> edition() {
@@ -67,14 +69,14 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configurations of additional features for the ASM instance. See the following `Block extra_configuration`.
+     * The configurations of additional features for the ASM instance. See `extra_configuration` below.
      * 
      */
     @Import(name="extraConfiguration")
     private @Nullable Output<ServiceMeshExtraConfigurationArgs> extraConfiguration;
 
     /**
-     * @return The configurations of additional features for the ASM instance. See the following `Block extra_configuration`.
+     * @return The configurations of additional features for the ASM instance. See `extra_configuration` below.
      * 
      */
     public Optional<Output<ServiceMeshExtraConfigurationArgs>> extraConfiguration() {
@@ -97,14 +99,14 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of the Load Balancer. See the following `Block load_balancer`.
+     * The configuration of the Load Balancer. See `load_balancer` below.
      * 
      */
     @Import(name="loadBalancer")
     private @Nullable Output<ServiceMeshLoadBalancerArgs> loadBalancer;
 
     /**
-     * @return The configuration of the Load Balancer. See the following `Block load_balancer`.
+     * @return The configuration of the Load Balancer. See `load_balancer` below.
      * 
      */
     public Optional<Output<ServiceMeshLoadBalancerArgs>> loadBalancer() {
@@ -112,14 +114,14 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of the Service grid. See the following `Block mesh_config`.
+     * The configuration of the Service grid. See `mesh_config` below.
      * 
      */
     @Import(name="meshConfig")
     private @Nullable Output<ServiceMeshMeshConfigArgs> meshConfig;
 
     /**
-     * @return The configuration of the Service grid. See the following `Block mesh_config`.
+     * @return The configuration of the Service grid. See `mesh_config` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigArgs>> meshConfig() {
@@ -127,14 +129,14 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The network configuration of the Service grid. See the following `Block network`.
+     * The network configuration of the Service grid. See `network` below.
      * 
      */
     @Import(name="network", required=true)
     private Output<ServiceMeshNetworkArgs> network;
 
     /**
-     * @return The network configuration of the Service grid. See the following `Block network`.
+     * @return The network configuration of the Service grid. See `network` below.
      * 
      */
     public Output<ServiceMeshNetworkArgs> network() {
@@ -236,7 +238,8 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterSpec The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+         * @param clusterSpec The service mesh instance specification.
+         * Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
          * 
          * @return builder
          * 
@@ -247,7 +250,8 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterSpec The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+         * @param clusterSpec The service mesh instance specification.
+         * Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
          * 
          * @return builder
          * 
@@ -257,7 +261,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param edition The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+         * @param edition The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
          * 
          * @return builder
          * 
@@ -268,7 +272,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param edition The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+         * @param edition The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
          * 
          * @return builder
          * 
@@ -278,7 +282,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extraConfiguration The configurations of additional features for the ASM instance. See the following `Block extra_configuration`.
+         * @param extraConfiguration The configurations of additional features for the ASM instance. See `extra_configuration` below.
          * 
          * @return builder
          * 
@@ -289,7 +293,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extraConfiguration The configurations of additional features for the ASM instance. See the following `Block extra_configuration`.
+         * @param extraConfiguration The configurations of additional features for the ASM instance. See `extra_configuration` below.
          * 
          * @return builder
          * 
@@ -320,7 +324,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancer The configuration of the Load Balancer. See the following `Block load_balancer`.
+         * @param loadBalancer The configuration of the Load Balancer. See `load_balancer` below.
          * 
          * @return builder
          * 
@@ -331,7 +335,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancer The configuration of the Load Balancer. See the following `Block load_balancer`.
+         * @param loadBalancer The configuration of the Load Balancer. See `load_balancer` below.
          * 
          * @return builder
          * 
@@ -341,7 +345,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meshConfig The configuration of the Service grid. See the following `Block mesh_config`.
+         * @param meshConfig The configuration of the Service grid. See `mesh_config` below.
          * 
          * @return builder
          * 
@@ -352,7 +356,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meshConfig The configuration of the Service grid. See the following `Block mesh_config`.
+         * @param meshConfig The configuration of the Service grid. See `mesh_config` below.
          * 
          * @return builder
          * 
@@ -362,7 +366,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param network The network configuration of the Service grid. See the following `Block network`.
+         * @param network The network configuration of the Service grid. See `network` below.
          * 
          * @return builder
          * 
@@ -373,7 +377,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param network The network configuration of the Service grid. See the following `Block network`.
+         * @param network The network configuration of the Service grid. See `network` below.
          * 
          * @return builder
          * 

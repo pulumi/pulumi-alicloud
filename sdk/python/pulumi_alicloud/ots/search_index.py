@@ -25,7 +25,7 @@ class SearchIndexArgs:
         The set of arguments for constructing a SearchIndex resource.
         :param pulumi.Input[str] index_name: The index name of the OTS Table. If changed, a new index would be created.
         :param pulumi.Input[str] instance_name: The name of the OTS instance in which table will located.
-        :param pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaArgs']]] schemas: The schema of the search index. If changed, a new index would be created.
+        :param pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaArgs']]] schemas: The schema of the search index. If changed, a new index would be created. See `schema` below.
         :param pulumi.Input[str] table_name: The name of the OTS table. If changed, a new table would be created.
         :param pulumi.Input[int] time_to_live: The index type of the OTS Table. Specifies the retention period of data in the search index. Unit: seconds. Default value: -1.
                If the retention period exceeds the TTL value, OTS automatically deletes expired data.
@@ -65,7 +65,7 @@ class SearchIndexArgs:
     @pulumi.getter
     def schemas(self) -> pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaArgs']]]:
         """
-        The schema of the search index. If changed, a new index would be created.
+        The schema of the search index. If changed, a new index would be created. See `schema` below.
         """
         return pulumi.get(self, "schemas")
 
@@ -118,7 +118,7 @@ class _SearchIndexState:
         :param pulumi.Input[str] index_id: The index id of the search index which could not be changed.
         :param pulumi.Input[str] index_name: The index name of the OTS Table. If changed, a new index would be created.
         :param pulumi.Input[str] instance_name: The name of the OTS instance in which table will located.
-        :param pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaArgs']]] schemas: The schema of the search index. If changed, a new index would be created.
+        :param pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaArgs']]] schemas: The schema of the search index. If changed, a new index would be created. See `schema` below.
         :param pulumi.Input[str] sync_phase: The search index sync phase. possible values: `Full`, `Incr`.
         :param pulumi.Input[str] table_name: The name of the OTS table. If changed, a new table would be created.
         :param pulumi.Input[int] time_to_live: The index type of the OTS Table. Specifies the retention period of data in the search index. Unit: seconds. Default value: -1.
@@ -207,7 +207,7 @@ class _SearchIndexState:
     @pulumi.getter
     def schemas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaArgs']]]]:
         """
-        The schema of the search index. If changed, a new index would be created.
+        The schema of the search index. If changed, a new index would be created. See `schema` below.
         """
         return pulumi.get(self, "schemas")
 
@@ -269,7 +269,7 @@ class SearchIndex(pulumi.CustomResource):
 
         For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
 
-        > **NOTE:** Available in v1.187.0+.
+        > **NOTE:** Available since v1.187.0.
 
         ## Example Usage
 
@@ -280,17 +280,21 @@ class SearchIndex(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraformtest"
-        instance1 = alicloud.ots.Instance("instance1",
+            name = "tf-example"
+        default_instance = alicloud.ots.Instance("defaultInstance",
             description=name,
             accessed_by="Any",
             tags={
                 "Created": "TF",
-                "For": "acceptance test",
+                "For": "example",
             })
-        table1 = alicloud.ots.Table("table1",
-            instance_name=instance1.name,
-            table_name=name,
+        default_table = alicloud.ots.Table("defaultTable",
+            instance_name=default_instance.name,
+            table_name="tf_example",
+            time_to_live=-1,
+            max_version=1,
+            enable_sse=True,
+            sse_key_type="SSE_KMS_SERVICE",
             primary_keys=[
                 alicloud.ots.TablePrimaryKeyArgs(
                     name="pk1",
@@ -300,24 +304,15 @@ class SearchIndex(pulumi.CustomResource):
                     name="pk2",
                     type="String",
                 ),
-            ],
-            defined_columns=[
-                alicloud.ots.TableDefinedColumnArgs(
-                    name="col1",
-                    type="String",
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk3",
+                    type="Binary",
                 ),
-                alicloud.ots.TableDefinedColumnArgs(
-                    name="col2",
-                    type="Integer",
-                ),
-            ],
-            time_to_live=-1,
-            max_version=1,
-            deviation_cell_version_in_sec="1")
-        default = alicloud.ots.SearchIndex("default",
-            instance_name=instance1.name,
-            table_name=table1.table_name,
-            index_name=name,
+            ])
+        default_search_index = alicloud.ots.SearchIndex("defaultSearchIndex",
+            instance_name=default_instance.name,
+            table_name=default_table.table_name,
+            index_name="example_index",
             time_to_live=-1,
             schemas=[alicloud.ots.SearchIndexSchemaArgs(
                 field_schemas=[
@@ -378,7 +373,7 @@ class SearchIndex(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] index_name: The index name of the OTS Table. If changed, a new index would be created.
         :param pulumi.Input[str] instance_name: The name of the OTS instance in which table will located.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SearchIndexSchemaArgs']]]] schemas: The schema of the search index. If changed, a new index would be created.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SearchIndexSchemaArgs']]]] schemas: The schema of the search index. If changed, a new index would be created. See `schema` below.
         :param pulumi.Input[str] table_name: The name of the OTS table. If changed, a new table would be created.
         :param pulumi.Input[int] time_to_live: The index type of the OTS Table. Specifies the retention period of data in the search index. Unit: seconds. Default value: -1.
                If the retention period exceeds the TTL value, OTS automatically deletes expired data.
@@ -394,7 +389,7 @@ class SearchIndex(pulumi.CustomResource):
 
         For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
 
-        > **NOTE:** Available in v1.187.0+.
+        > **NOTE:** Available since v1.187.0.
 
         ## Example Usage
 
@@ -405,17 +400,21 @@ class SearchIndex(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraformtest"
-        instance1 = alicloud.ots.Instance("instance1",
+            name = "tf-example"
+        default_instance = alicloud.ots.Instance("defaultInstance",
             description=name,
             accessed_by="Any",
             tags={
                 "Created": "TF",
-                "For": "acceptance test",
+                "For": "example",
             })
-        table1 = alicloud.ots.Table("table1",
-            instance_name=instance1.name,
-            table_name=name,
+        default_table = alicloud.ots.Table("defaultTable",
+            instance_name=default_instance.name,
+            table_name="tf_example",
+            time_to_live=-1,
+            max_version=1,
+            enable_sse=True,
+            sse_key_type="SSE_KMS_SERVICE",
             primary_keys=[
                 alicloud.ots.TablePrimaryKeyArgs(
                     name="pk1",
@@ -425,24 +424,15 @@ class SearchIndex(pulumi.CustomResource):
                     name="pk2",
                     type="String",
                 ),
-            ],
-            defined_columns=[
-                alicloud.ots.TableDefinedColumnArgs(
-                    name="col1",
-                    type="String",
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk3",
+                    type="Binary",
                 ),
-                alicloud.ots.TableDefinedColumnArgs(
-                    name="col2",
-                    type="Integer",
-                ),
-            ],
-            time_to_live=-1,
-            max_version=1,
-            deviation_cell_version_in_sec="1")
-        default = alicloud.ots.SearchIndex("default",
-            instance_name=instance1.name,
-            table_name=table1.table_name,
-            index_name=name,
+            ])
+        default_search_index = alicloud.ots.SearchIndex("defaultSearchIndex",
+            instance_name=default_instance.name,
+            table_name=default_table.table_name,
+            index_name="example_index",
             time_to_live=-1,
             schemas=[alicloud.ots.SearchIndexSchemaArgs(
                 field_schemas=[
@@ -576,7 +566,7 @@ class SearchIndex(pulumi.CustomResource):
         :param pulumi.Input[str] index_id: The index id of the search index which could not be changed.
         :param pulumi.Input[str] index_name: The index name of the OTS Table. If changed, a new index would be created.
         :param pulumi.Input[str] instance_name: The name of the OTS instance in which table will located.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SearchIndexSchemaArgs']]]] schemas: The schema of the search index. If changed, a new index would be created.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SearchIndexSchemaArgs']]]] schemas: The schema of the search index. If changed, a new index would be created. See `schema` below.
         :param pulumi.Input[str] sync_phase: The search index sync phase. possible values: `Full`, `Incr`.
         :param pulumi.Input[str] table_name: The name of the OTS table. If changed, a new table would be created.
         :param pulumi.Input[int] time_to_live: The index type of the OTS Table. Specifies the retention period of data in the search index. Unit: seconds. Default value: -1.
@@ -641,7 +631,7 @@ class SearchIndex(pulumi.CustomResource):
     @pulumi.getter
     def schemas(self) -> pulumi.Output[Sequence['outputs.SearchIndexSchema']]:
         """
-        The schema of the search index. If changed, a new index would be created.
+        The schema of the search index. If changed, a new index would be created. See `schema` below.
         """
         return pulumi.get(self, "schemas")
 

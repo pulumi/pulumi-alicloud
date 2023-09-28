@@ -35,8 +35,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
@@ -71,11 +69,6 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
- *             .max(99999)
- *             .min(10000)
- *             .build());
- * 
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
@@ -97,7 +90,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
- *             .namespaceId(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s:example%s&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),result)))
+ *             .namespaceId(String.format(&#34;%s:example&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id())))
  *             .namespaceName(name)
  *             .namespaceDescription(name)
  *             .enableMicroRegistration(false)

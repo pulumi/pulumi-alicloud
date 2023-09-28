@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Provides a Resource Manager Policy Version resource.
     /// For information about Resource Manager Policy Version and how to use it, see [What is Resource Manager Policy Version](https://www.alibabacloud.com/help/en/doc-detail/116817.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.84.0+.
+    /// &gt; **NOTE:** Available since v1.84.0.
     /// 
     /// &gt; **NOTE:** It is not recommended to use this resource management policy version, it is recommended to directly use the policy resource to manage your policy. Please refer to the link for usage resource_manager_policy.
     /// 
@@ -29,9 +29,11 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
     ///     var examplePolicy = new AliCloud.ResourceManager.Policy("examplePolicy", new()
     ///     {
-    ///         PolicyName = "tftest",
+    ///         PolicyName = name,
     ///         PolicyDocument = @"		{
     /// 			""Statement"": [{
     /// 				""Action"": [""oss:*""],
@@ -72,9 +74,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public partial class PolicyVersion : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether to set the policy version as the default version. Default to `false`. 
-        /// 
-        /// &gt; **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
+        /// Specifies whether to set the policy version as the default version. Default to `false`.
         /// </summary>
         [Output("isDefaultVersion")]
         public Output<bool?> IsDefaultVersion { get; private set; } = null!;
@@ -138,9 +138,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class PolicyVersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to set the policy version as the default version. Default to `false`. 
-        /// 
-        /// &gt; **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
+        /// Specifies whether to set the policy version as the default version. Default to `false`.
         /// </summary>
         [Input("isDefaultVersion")]
         public Input<bool>? IsDefaultVersion { get; set; }
@@ -166,9 +164,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class PolicyVersionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to set the policy version as the default version. Default to `false`. 
-        /// 
-        /// &gt; **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
+        /// Specifies whether to set the policy version as the default version. Default to `false`.
         /// </summary>
         [Input("isDefaultVersion")]
         public Input<bool>? IsDefaultVersion { get; set; }

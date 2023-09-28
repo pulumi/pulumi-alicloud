@@ -15,9 +15,9 @@ import (
 
 // Provides a Actiontrail History Delivery Job resource.
 //
-// For information about Actiontrail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/doc-detail/199999.htm).
+// For information about Actiontrail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createdeliveryhistoryjob).
 //
-// > **NOTE:** Available in v1.139.0+.
+// > **NOTE:** Available since v1.139.0.
 //
 // > **NOTE:** You are authorized to use the historical event delivery task feature. To use this feature, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=a2c63.p38356.0.0.e29f552bb6odNZ#/ticket/createIndex) or ask the sales manager to add you to the whitelist.
 //
@@ -40,11 +40,17 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tfexample"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			exampleRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
@@ -56,13 +62,13 @@ import (
 //				return err
 //			}
 //			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
-//				Description: pulumi.String("tf actiontrail test"),
+//				Description: pulumi.String("tf actiontrail example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleTrail, err := actiontrail.NewTrail(ctx, "exampleTrail", &actiontrail.TrailArgs{
-//				TrailName: pulumi.String("example_value"),
+//				TrailName: pulumi.String(name),
 //				SlsProjectArn: exampleProject.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("acs:log:%v:%v:project/%v", exampleRegions.Regions[0].Id, exampleAccount.Id, name), nil
 //				}).(pulumi.StringOutput),

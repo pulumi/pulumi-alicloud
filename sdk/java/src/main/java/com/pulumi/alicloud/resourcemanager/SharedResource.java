@@ -20,6 +20,70 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.111.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourceShare;
+ * import com.pulumi.alicloud.resourcemanager.ResourceShareArgs;
+ * import com.pulumi.alicloud.resourcemanager.SharedResource;
+ * import com.pulumi.alicloud.resourcemanager.SharedResourceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
+ *         final var exampleZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+ *             .vpcId(exampleNetwork.id())
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var exampleResourceShare = new ResourceShare(&#34;exampleResourceShare&#34;, ResourceShareArgs.builder()        
+ *             .resourceShareName(name)
+ *             .build());
+ * 
+ *         var exampleSharedResource = new SharedResource(&#34;exampleSharedResource&#34;, SharedResourceArgs.builder()        
+ *             .resourceId(exampleSwitch.id())
+ *             .resourceShareId(exampleResourceShare.id())
+ *             .resourceType(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Resource Manager Shared Resource can be imported using the id, e.g.

@@ -14,7 +14,7 @@ import (
 
 // This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
 //
-// > **NOTE:** Available in v1.49.0+
+// > **NOTE:** Available since v1.49.0+
 //
 // ## Example Usage
 //
@@ -91,7 +91,7 @@ type GetInstanceClassesArgs struct {
 	// The KVStore instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
 	SeriesType *string `pulumi:"seriesType"`
 	// The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
-	// * productType - (Optional, Available in v1.130.0+) The type of the service. Valid values:
+	// * productType - (Optional, Available since 1.130.0) The type of the service. Valid values:
 	// * Local: an ApsaraDB for Redis instance with a local disk.
 	// * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
 	ShardNumber *int    `pulumi:"shardNumber"`
@@ -173,7 +173,7 @@ type GetInstanceClassesOutputArgs struct {
 	// The KVStore instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
 	SeriesType pulumi.StringPtrInput `pulumi:"seriesType"`
 	// The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
-	// * productType - (Optional, Available in v1.130.0+) The type of the service. Valid values:
+	// * productType - (Optional, Available since 1.130.0) The type of the service. Valid values:
 	// * Local: an ApsaraDB for Redis instance with a local disk.
 	// * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
 	ShardNumber pulumi.IntPtrInput    `pulumi:"shardNumber"`

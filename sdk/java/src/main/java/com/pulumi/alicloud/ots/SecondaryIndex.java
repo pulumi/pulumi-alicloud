@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
  * 
- * &gt; **NOTE:** Available in v1.187.0+.
+ * &gt; **NOTE:** Available since v1.187.0.
  * 
  * ## Example Usage
  * 

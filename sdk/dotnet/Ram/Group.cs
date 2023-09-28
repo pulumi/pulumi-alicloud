@@ -30,7 +30,6 @@ namespace Pulumi.AliCloud.Ram
     ///     var @group = new AliCloud.Ram.Group("group", new()
     ///     {
     ///         Comments = "this is a group comments.",
-    ///         Force = true,
     ///     });
     /// 
     /// });

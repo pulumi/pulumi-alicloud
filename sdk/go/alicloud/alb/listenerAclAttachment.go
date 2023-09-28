@@ -13,9 +13,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Provides a Application Load Balancer (ALB) Listener Acl Attachment resource.
+// Provides a ALB Listener Acl Attachment resource. Associating ACL to listening.
 //
-// For information about Application Load Balancer (ALB) Listener Acl Attachment and how to use it, see [What is Listener Acl Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/associateaclswithlistener).
+// For information about ALB Listener Acl Attachment and how to use it, see [What is Listener Acl Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/associateaclswithlistener).
 //
 // > **NOTE:** Available since v1.163.0.
 //
@@ -25,7 +25,7 @@ import (
 //
 // ## Import
 //
-// Application Load Balancer (ALB) Listener Acl Attachment can be imported using the id, e.g.
+// ALB Listener Acl Attachment can be imported using the id, e.g.
 //
 // ```sh
 //
@@ -35,15 +35,15 @@ import (
 type ListenerAclAttachment struct {
 	pulumi.CustomResourceState
 
-	// The ID of the Acl.
+	// The ID list of the access policy group bound by the listener.
 	AclId pulumi.StringOutput `pulumi:"aclId"`
-	// The type of the ACL. Valid values:
-	// - White: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. The whitelist applies to scenarios in which you want to allow only specific IP addresses to access an application. Risks may arise if you specify an ACL as a whitelist. After a whitelist is configured, only IP addresses in the whitelist can access the Application Load Balancer (ALB) listener. If you enable a whitelist but the whitelist does not contain an IP address, the listener forwards all requests.
-	// - Black: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are blocked. The blacklist applies to scenarios in which you want to block access from specific IP addresses to an application. If you enable a blacklist but the blacklist does not contain an IP address, the listener forwards all requests.
+	// Access control type:
+	// - **White**: only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where only specific IP addresses are allowed to access. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access the load balancer listener. If whitelist access is enabled but no IP addresses are added to the access policy group, the server load balancer listener forwards all requests.
+	// - **Black**: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where only certain IP addresses are restricted. If blacklist access is enabled and no IP is added to the access policy group, the server load balancer listener forwards all requests.
 	AclType pulumi.StringOutput `pulumi:"aclType"`
-	// The ID of the ALB listener.
+	// Listener instance ID.
 	ListenerId pulumi.StringOutput `pulumi:"listenerId"`
-	// The status of the Listener Acl Attachment.
+	// Listener Status.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -86,28 +86,28 @@ func GetListenerAclAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ListenerAclAttachment resources.
 type listenerAclAttachmentState struct {
-	// The ID of the Acl.
+	// The ID list of the access policy group bound by the listener.
 	AclId *string `pulumi:"aclId"`
-	// The type of the ACL. Valid values:
-	// - White: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. The whitelist applies to scenarios in which you want to allow only specific IP addresses to access an application. Risks may arise if you specify an ACL as a whitelist. After a whitelist is configured, only IP addresses in the whitelist can access the Application Load Balancer (ALB) listener. If you enable a whitelist but the whitelist does not contain an IP address, the listener forwards all requests.
-	// - Black: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are blocked. The blacklist applies to scenarios in which you want to block access from specific IP addresses to an application. If you enable a blacklist but the blacklist does not contain an IP address, the listener forwards all requests.
+	// Access control type:
+	// - **White**: only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where only specific IP addresses are allowed to access. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access the load balancer listener. If whitelist access is enabled but no IP addresses are added to the access policy group, the server load balancer listener forwards all requests.
+	// - **Black**: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where only certain IP addresses are restricted. If blacklist access is enabled and no IP is added to the access policy group, the server load balancer listener forwards all requests.
 	AclType *string `pulumi:"aclType"`
-	// The ID of the ALB listener.
+	// Listener instance ID.
 	ListenerId *string `pulumi:"listenerId"`
-	// The status of the Listener Acl Attachment.
+	// Listener Status.
 	Status *string `pulumi:"status"`
 }
 
 type ListenerAclAttachmentState struct {
-	// The ID of the Acl.
+	// The ID list of the access policy group bound by the listener.
 	AclId pulumi.StringPtrInput
-	// The type of the ACL. Valid values:
-	// - White: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. The whitelist applies to scenarios in which you want to allow only specific IP addresses to access an application. Risks may arise if you specify an ACL as a whitelist. After a whitelist is configured, only IP addresses in the whitelist can access the Application Load Balancer (ALB) listener. If you enable a whitelist but the whitelist does not contain an IP address, the listener forwards all requests.
-	// - Black: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are blocked. The blacklist applies to scenarios in which you want to block access from specific IP addresses to an application. If you enable a blacklist but the blacklist does not contain an IP address, the listener forwards all requests.
+	// Access control type:
+	// - **White**: only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where only specific IP addresses are allowed to access. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access the load balancer listener. If whitelist access is enabled but no IP addresses are added to the access policy group, the server load balancer listener forwards all requests.
+	// - **Black**: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where only certain IP addresses are restricted. If blacklist access is enabled and no IP is added to the access policy group, the server load balancer listener forwards all requests.
 	AclType pulumi.StringPtrInput
-	// The ID of the ALB listener.
+	// Listener instance ID.
 	ListenerId pulumi.StringPtrInput
-	// The status of the Listener Acl Attachment.
+	// Listener Status.
 	Status pulumi.StringPtrInput
 }
 
@@ -116,25 +116,25 @@ func (ListenerAclAttachmentState) ElementType() reflect.Type {
 }
 
 type listenerAclAttachmentArgs struct {
-	// The ID of the Acl.
+	// The ID list of the access policy group bound by the listener.
 	AclId string `pulumi:"aclId"`
-	// The type of the ACL. Valid values:
-	// - White: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. The whitelist applies to scenarios in which you want to allow only specific IP addresses to access an application. Risks may arise if you specify an ACL as a whitelist. After a whitelist is configured, only IP addresses in the whitelist can access the Application Load Balancer (ALB) listener. If you enable a whitelist but the whitelist does not contain an IP address, the listener forwards all requests.
-	// - Black: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are blocked. The blacklist applies to scenarios in which you want to block access from specific IP addresses to an application. If you enable a blacklist but the blacklist does not contain an IP address, the listener forwards all requests.
+	// Access control type:
+	// - **White**: only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where only specific IP addresses are allowed to access. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access the load balancer listener. If whitelist access is enabled but no IP addresses are added to the access policy group, the server load balancer listener forwards all requests.
+	// - **Black**: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where only certain IP addresses are restricted. If blacklist access is enabled and no IP is added to the access policy group, the server load balancer listener forwards all requests.
 	AclType string `pulumi:"aclType"`
-	// The ID of the ALB listener.
+	// Listener instance ID.
 	ListenerId string `pulumi:"listenerId"`
 }
 
 // The set of arguments for constructing a ListenerAclAttachment resource.
 type ListenerAclAttachmentArgs struct {
-	// The ID of the Acl.
+	// The ID list of the access policy group bound by the listener.
 	AclId pulumi.StringInput
-	// The type of the ACL. Valid values:
-	// - White: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. The whitelist applies to scenarios in which you want to allow only specific IP addresses to access an application. Risks may arise if you specify an ACL as a whitelist. After a whitelist is configured, only IP addresses in the whitelist can access the Application Load Balancer (ALB) listener. If you enable a whitelist but the whitelist does not contain an IP address, the listener forwards all requests.
-	// - Black: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are blocked. The blacklist applies to scenarios in which you want to block access from specific IP addresses to an application. If you enable a blacklist but the blacklist does not contain an IP address, the listener forwards all requests.
+	// Access control type:
+	// - **White**: only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where only specific IP addresses are allowed to access. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access the load balancer listener. If whitelist access is enabled but no IP addresses are added to the access policy group, the server load balancer listener forwards all requests.
+	// - **Black**: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where only certain IP addresses are restricted. If blacklist access is enabled and no IP is added to the access policy group, the server load balancer listener forwards all requests.
 	AclType pulumi.StringInput
-	// The ID of the ALB listener.
+	// Listener instance ID.
 	ListenerId pulumi.StringInput
 }
 
@@ -249,24 +249,24 @@ func (o ListenerAclAttachmentOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
-// The ID of the Acl.
+// The ID list of the access policy group bound by the listener.
 func (o ListenerAclAttachmentOutput) AclId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ListenerAclAttachment) pulumi.StringOutput { return v.AclId }).(pulumi.StringOutput)
 }
 
-// The type of the ACL. Valid values:
-// - White: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. The whitelist applies to scenarios in which you want to allow only specific IP addresses to access an application. Risks may arise if you specify an ACL as a whitelist. After a whitelist is configured, only IP addresses in the whitelist can access the Application Load Balancer (ALB) listener. If you enable a whitelist but the whitelist does not contain an IP address, the listener forwards all requests.
-// - Black: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are blocked. The blacklist applies to scenarios in which you want to block access from specific IP addresses to an application. If you enable a blacklist but the blacklist does not contain an IP address, the listener forwards all requests.
+// Access control type:
+// - **White**: only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where only specific IP addresses are allowed to access. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access the load balancer listener. If whitelist access is enabled but no IP addresses are added to the access policy group, the server load balancer listener forwards all requests.
+// - **Black**: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where only certain IP addresses are restricted. If blacklist access is enabled and no IP is added to the access policy group, the server load balancer listener forwards all requests.
 func (o ListenerAclAttachmentOutput) AclType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ListenerAclAttachment) pulumi.StringOutput { return v.AclType }).(pulumi.StringOutput)
 }
 
-// The ID of the ALB listener.
+// Listener instance ID.
 func (o ListenerAclAttachmentOutput) ListenerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ListenerAclAttachment) pulumi.StringOutput { return v.ListenerId }).(pulumi.StringOutput)
 }
 
-// The status of the Listener Acl Attachment.
+// Listener Status.
 func (o ListenerAclAttachmentOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ListenerAclAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

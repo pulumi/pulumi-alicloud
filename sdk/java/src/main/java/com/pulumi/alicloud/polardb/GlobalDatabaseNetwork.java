@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * For information about PolarDB Global Database Network and how to use it, see [What is Global Database Network](https://www.alibabacloud.com/help/en/polardb-for-mysql/latest/createglobaldatabasenetwork).
  * 
- * &gt; **NOTE:** Available in v1.181.0+.
+ * &gt; **NOTE:** Available since v1.181.0+.
  * 
  * ## Example Usage
  * 
@@ -55,6 +55,7 @@ import javax.annotation.Nullable;
  *         final var defaultNodeClasses = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
  *             .dbType(&#34;MySQL&#34;)
  *             .dbVersion(&#34;8.0&#34;)
+ *             .category(&#34;Normal&#34;)
  *             .payType(&#34;PostPaid&#34;)
  *             .build());
  * 

@@ -58,6 +58,7 @@ namespace Pulumi.AliCloud.Cfg
     ///         ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
     ///         SourceOwner = "ALIYUN",
     ///         SourceIdentifier = "contains-tag",
+    ///         Description = name,
     ///         RiskLevel = 1,
     ///         ResourceTypesScopes = new[]
     ///         {
@@ -100,10 +101,16 @@ namespace Pulumi.AliCloud.Cfg
     public partial class AggregateCompliancePack : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
+        /// The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
         /// </summary>
         [Output("aggregateCompliancePackName")]
         public Output<string> AggregateCompliancePackName { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the compliance package.
+        /// </summary>
+        [Output("aggregatorCompliancePackId")]
+        public Output<string> AggregatorCompliancePackId { get; private set; } = null!;
 
         /// <summary>
         /// The ID of aggregator.
@@ -124,7 +131,7 @@ namespace Pulumi.AliCloud.Cfg
         public Output<ImmutableArray<Outputs.AggregateCompliancePackConfigRuleId>> ConfigRuleIds { get; private set; } = null!;
 
         /// <summary>
-        /// A list of Config Rules. See `config_rules` below.
+        /// A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         /// </summary>
         [Output("configRules")]
         public Output<ImmutableArray<Outputs.AggregateCompliancePackConfigRule>> ConfigRules { get; private set; } = null!;
@@ -136,13 +143,13 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+        /// The Risk Level. Valid values:
         /// </summary>
         [Output("riskLevel")]
         public Output<int> RiskLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+        /// The status of the Aggregate Compliance Pack.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -194,7 +201,7 @@ namespace Pulumi.AliCloud.Cfg
     public sealed class AggregateCompliancePackArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
+        /// The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
         /// </summary>
         [Input("aggregateCompliancePackName", required: true)]
         public Input<string> AggregateCompliancePackName { get; set; } = null!;
@@ -227,9 +234,9 @@ namespace Pulumi.AliCloud.Cfg
         private InputList<Inputs.AggregateCompliancePackConfigRuleArgs>? _configRules;
 
         /// <summary>
-        /// A list of Config Rules. See `config_rules` below.
+        /// A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         /// </summary>
-        [Obsolete(@"Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.")]
+        [Obsolete(@"Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.")]
         public InputList<Inputs.AggregateCompliancePackConfigRuleArgs> ConfigRules
         {
             get => _configRules ?? (_configRules = new InputList<Inputs.AggregateCompliancePackConfigRuleArgs>());
@@ -243,7 +250,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+        /// The Risk Level. Valid values:
         /// </summary>
         [Input("riskLevel", required: true)]
         public Input<int> RiskLevel { get; set; } = null!;
@@ -257,10 +264,16 @@ namespace Pulumi.AliCloud.Cfg
     public sealed class AggregateCompliancePackState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
+        /// The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
         /// </summary>
         [Input("aggregateCompliancePackName")]
         public Input<string>? AggregateCompliancePackName { get; set; }
+
+        /// <summary>
+        /// The ID of the compliance package.
+        /// </summary>
+        [Input("aggregatorCompliancePackId")]
+        public Input<string>? AggregatorCompliancePackId { get; set; }
 
         /// <summary>
         /// The ID of aggregator.
@@ -290,9 +303,9 @@ namespace Pulumi.AliCloud.Cfg
         private InputList<Inputs.AggregateCompliancePackConfigRuleGetArgs>? _configRules;
 
         /// <summary>
-        /// A list of Config Rules. See `config_rules` below.
+        /// A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         /// </summary>
-        [Obsolete(@"Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.")]
+        [Obsolete(@"Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.")]
         public InputList<Inputs.AggregateCompliancePackConfigRuleGetArgs> ConfigRules
         {
             get => _configRules ?? (_configRules = new InputList<Inputs.AggregateCompliancePackConfigRuleGetArgs>());
@@ -306,13 +319,13 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+        /// The Risk Level. Valid values:
         /// </summary>
         [Input("riskLevel")]
         public Input<int>? RiskLevel { get; set; }
 
         /// <summary>
-        /// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+        /// The status of the Aggregate Compliance Pack.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

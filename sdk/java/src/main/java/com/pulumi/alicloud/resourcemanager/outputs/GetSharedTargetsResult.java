@@ -20,8 +20,20 @@ public final class GetSharedTargetsResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return The resource shared ID of resource manager.
+     * 
+     */
     private @Nullable String resourceShareId;
+    /**
+     * @return The status of shared target.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return A list of Resource Manager Shared Targets. Each element contains the following attributes:
+     * 
+     */
     private List<GetSharedTargetsTarget> targets;
 
     private GetSharedTargetsResult() {}
@@ -38,12 +50,24 @@ public final class GetSharedTargetsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The resource shared ID of resource manager.
+     * 
+     */
     public Optional<String> resourceShareId() {
         return Optional.ofNullable(this.resourceShareId);
     }
+    /**
+     * @return The status of shared target.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return A list of Resource Manager Shared Targets. Each element contains the following attributes:
+     * 
+     */
     public List<GetSharedTargetsTarget> targets() {
         return this.targets;
     }

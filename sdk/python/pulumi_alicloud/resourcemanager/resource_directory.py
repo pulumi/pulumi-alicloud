@@ -152,24 +152,13 @@ class ResourceDirectory(pulumi.CustomResource):
 
         For information about Resource Manager Resource Directory and how to use it, see [What is Resource Manager Resource Directory](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
 
-        > **NOTE:** Available in v1.84.0+.
+        > **NOTE:** Available since v1.84.0.
 
         > **NOTE:** An account can only be used to enable a resource directory after it passes enterprise real-name verification. An account that only passed individual real-name verification cannot be used to enable a resource directory.
 
         > **NOTE:** Before you destroy the resource, make sure that the following requirements are met:
           - All member accounts must be removed from the resource directory.
           - All folders except the root folder must be deleted from the resource directory.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.resourcemanager.ResourceDirectory("example", status="Enabled")
-        ```
 
         ## Import
 
@@ -195,24 +184,13 @@ class ResourceDirectory(pulumi.CustomResource):
 
         For information about Resource Manager Resource Directory and how to use it, see [What is Resource Manager Resource Directory](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
 
-        > **NOTE:** Available in v1.84.0+.
+        > **NOTE:** Available since v1.84.0.
 
         > **NOTE:** An account can only be used to enable a resource directory after it passes enterprise real-name verification. An account that only passed individual real-name verification cannot be used to enable a resource directory.
 
         > **NOTE:** Before you destroy the resource, make sure that the following requirements are met:
           - All member accounts must be removed from the resource directory.
           - All folders except the root folder must be deleted from the resource directory.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.resourcemanager.ResourceDirectory("example", status="Enabled")
-        ```
 
         ## Import
 

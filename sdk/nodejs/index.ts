@@ -94,6 +94,7 @@ import * as clickhouse from "./clickhouse";
 import * as cloudauth from "./cloudauth";
 import * as cloudconnect from "./cloudconnect";
 import * as cloudfirewall from "./cloudfirewall";
+import * as cloudmonitor from "./cloudmonitor";
 import * as cloudsso from "./cloudsso";
 import * as cloudstoragegateway from "./cloudstoragegateway";
 import * as cms from "./cms";
@@ -142,6 +143,7 @@ import * as hbase from "./hbase";
 import * as hbr from "./hbr";
 import * as imm from "./imm";
 import * as imp from "./imp";
+import * as ims from "./ims";
 import * as iot from "./iot";
 import * as kms from "./kms";
 import * as kvstore from "./kvstore";
@@ -219,6 +221,7 @@ export {
     cloudauth,
     cloudconnect,
     cloudfirewall,
+    cloudmonitor,
     cloudsso,
     cloudstoragegateway,
     cms,
@@ -267,6 +270,7 @@ export {
     hbr,
     imm,
     imp,
+    ims,
     iot,
     kms,
     kvstore,

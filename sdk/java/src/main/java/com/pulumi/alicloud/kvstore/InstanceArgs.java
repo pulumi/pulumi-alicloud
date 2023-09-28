@@ -928,14 +928,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
+     * Specifies whether to enable TDE. Valid values: `Enabled`.
+     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+     * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
      * 
      */
     @Import(name="tdeStatus")
     private @Nullable Output<String> tdeStatus;
 
     /**
-     * @return The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
+     * @return Specifies whether to enable TDE. Valid values: `Enabled`.
+     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+     * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
      * 
      */
     public Optional<Output<String>> tdeStatus() {
@@ -2347,7 +2351,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tdeStatus The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
+         * @param tdeStatus Specifies whether to enable TDE. Valid values: `Enabled`.
+         * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+         * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
          * 
          * @return builder
          * 
@@ -2358,7 +2364,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tdeStatus The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
+         * @param tdeStatus Specifies whether to enable TDE. Valid values: `Enabled`.
+         * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+         * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
          * 
          * @return builder
          * 

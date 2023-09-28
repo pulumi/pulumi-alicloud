@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
-        /// &gt; **NOTE:** Available in v1.73.0+.
+        /// &gt; **NOTE:** Available since v1.73.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -28,15 +28,11 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var zonesIds = AliCloud.KVStore.GetZones.Invoke();
-        /// 
-        ///     // Create an KVStore instance with the first matched zone
-        ///     var kvstore = new AliCloud.KVStore.Instance("kvstore", new()
+        ///     var zonesIds = AliCloud.KVStore.GetZones.Invoke(new()
         ///     {
-        ///         AvailabilityZone = zonesIds.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         InstanceChargeType = "PostPaid",
         ///     });
         /// 
-        ///     // Other properties...
         /// });
         /// ```
         /// {{% /example %}}
@@ -48,7 +44,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
-        /// &gt; **NOTE:** Available in v1.73.0+.
+        /// &gt; **NOTE:** Available since v1.73.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -62,15 +58,11 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var zonesIds = AliCloud.KVStore.GetZones.Invoke();
-        /// 
-        ///     // Create an KVStore instance with the first matched zone
-        ///     var kvstore = new AliCloud.KVStore.Instance("kvstore", new()
+        ///     var zonesIds = AliCloud.KVStore.GetZones.Invoke(new()
         ///     {
-        ///         AvailabilityZone = zonesIds.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         InstanceChargeType = "PostPaid",
         ///     });
         /// 
-        ///     // Other properties...
         /// });
         /// ```
         /// {{% /example %}}
@@ -85,7 +77,7 @@ namespace Pulumi.AliCloud.KVStore
     {
         /// <summary>
         /// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-        /// * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
+        /// * product_type - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
         /// </summary>
         [Input("engine")]
         public string? Engine { get; set; }
@@ -121,7 +113,7 @@ namespace Pulumi.AliCloud.KVStore
     {
         /// <summary>
         /// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-        /// * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
+        /// * product_type - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }

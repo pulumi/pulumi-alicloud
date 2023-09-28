@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { ApiDestinationArgs, ApiDestinationState } from "./apiDestination";
+export type ApiDestination = import("./apiDestination").ApiDestination;
+export const ApiDestination: typeof import("./apiDestination").ApiDestination = null as any;
+utilities.lazyLoad(exports, ["ApiDestination"], () => require("./apiDestination"));
+
+export { ConnectionArgs, ConnectionState } from "./connection";
+export type Connection = import("./connection").Connection;
+export const Connection: typeof import("./connection").Connection = null as any;
+utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
+
 export { EventBusArgs, EventBusState } from "./eventBus";
 export type EventBus = import("./eventBus").EventBus;
 export const EventBus: typeof import("./eventBus").EventBus = null as any;
@@ -55,6 +65,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:eventbridge/apiDestination:ApiDestination":
+                return new ApiDestination(name, <any>undefined, { urn })
+            case "alicloud:eventbridge/connection:Connection":
+                return new Connection(name, <any>undefined, { urn })
             case "alicloud:eventbridge/eventBus:EventBus":
                 return new EventBus(name, <any>undefined, { urn })
             case "alicloud:eventbridge/eventSource:EventSource":
@@ -70,6 +84,8 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "eventbridge/apiDestination", _module)
+pulumi.runtime.registerResourceModule("alicloud", "eventbridge/connection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eventbridge/eventBus", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eventbridge/eventSource", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eventbridge/rule", _module)

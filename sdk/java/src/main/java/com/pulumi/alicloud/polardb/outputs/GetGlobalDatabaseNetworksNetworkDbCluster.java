@@ -10,7 +10,7 @@ import java.util.Objects;
 @CustomType
 public final class GetGlobalDatabaseNetworksNetworkDbCluster {
     /**
-     * @return The ID of the PolarDB cluster.
+     * @return The ID of the cluster.
      * 
      */
     private String dbClusterId;
@@ -27,7 +27,7 @@ public final class GetGlobalDatabaseNetworksNetworkDbCluster {
 
     private GetGlobalDatabaseNetworksNetworkDbCluster() {}
     /**
-     * @return The ID of the PolarDB cluster.
+     * @return The ID of the cluster.
      * 
      */
     public String dbClusterId() {

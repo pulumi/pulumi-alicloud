@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.PolarDB.Outputs
     public sealed class GetGlobalDatabaseNetworksNetworkDbClusterResult
     {
         /// <summary>
-        /// The ID of the PolarDB cluster.
+        /// The ID of the cluster.
         /// </summary>
         public readonly string DbClusterId;
         /// <summary>

@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class RuleRuleConditionHeaderConfig
     {
         /// <summary>
-        /// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+        /// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
         /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+        /// The values of the cookie. See `values` below.
         /// </summary>
         public readonly ImmutableArray<string> Values;
 

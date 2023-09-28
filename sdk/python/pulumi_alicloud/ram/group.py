@@ -146,9 +146,7 @@ class Group(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         # Create a new RAM Group.
-        group = alicloud.ram.Group("group",
-            comments="this is a group comments.",
-            force=True)
+        group = alicloud.ram.Group("group", comments="this is a group comments.")
         ```
 
         ## Import
@@ -185,9 +183,7 @@ class Group(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         # Create a new RAM Group.
-        group = alicloud.ram.Group("group",
-            comments="this is a group comments.",
-            force=True)
+        group = alicloud.ram.Group("group", comments="this is a group comments.")
         ```
 
         ## Import

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.oos.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,18 +17,33 @@ public final class PatchBaselineState extends com.pulumi.resources.ResourceArgs 
     public static final PatchBaselineState Empty = new PatchBaselineState();
 
     /**
-     * Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
+     * Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
      * 
      */
     @Import(name="approvalRules")
     private @Nullable Output<String> approvalRules;
 
     /**
-     * @return Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
+     * @return Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
      * 
      */
     public Optional<Output<String>> approvalRules() {
         return Optional.ofNullable(this.approvalRules);
+    }
+
+    /**
+     * Creation time.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return Creation time.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
     }
 
     /**
@@ -75,13 +91,46 @@ public final class PatchBaselineState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.patchBaselineName);
     }
 
+    /**
+     * Reject patches.
+     * 
+     */
+    @Import(name="rejectedPatches")
+    private @Nullable Output<List<String>> rejectedPatches;
+
+    /**
+     * @return Reject patches.
+     * 
+     */
+    public Optional<Output<List<String>>> rejectedPatches() {
+        return Optional.ofNullable(this.rejectedPatches);
+    }
+
+    /**
+     * Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
+     * 
+     */
+    @Import(name="rejectedPatchesAction")
+    private @Nullable Output<String> rejectedPatchesAction;
+
+    /**
+     * @return Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
+     * 
+     */
+    public Optional<Output<String>> rejectedPatchesAction() {
+        return Optional.ofNullable(this.rejectedPatchesAction);
+    }
+
     private PatchBaselineState() {}
 
     private PatchBaselineState(PatchBaselineState $) {
         this.approvalRules = $.approvalRules;
+        this.createTime = $.createTime;
         this.description = $.description;
         this.operationSystem = $.operationSystem;
         this.patchBaselineName = $.patchBaselineName;
+        this.rejectedPatches = $.rejectedPatches;
+        this.rejectedPatchesAction = $.rejectedPatchesAction;
     }
 
     public static Builder builder() {
@@ -103,7 +152,7 @@ public final class PatchBaselineState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param approvalRules Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
+         * @param approvalRules Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
          * 
          * @return builder
          * 
@@ -114,13 +163,34 @@ public final class PatchBaselineState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param approvalRules Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
+         * @param approvalRules Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
          * 
          * @return builder
          * 
          */
         public Builder approvalRules(String approvalRules) {
             return approvalRules(Output.of(approvalRules));
+        }
+
+        /**
+         * @param createTime Creation time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime Creation time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**
@@ -184,6 +254,58 @@ public final class PatchBaselineState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder patchBaselineName(String patchBaselineName) {
             return patchBaselineName(Output.of(patchBaselineName));
+        }
+
+        /**
+         * @param rejectedPatches Reject patches.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rejectedPatches(@Nullable Output<List<String>> rejectedPatches) {
+            $.rejectedPatches = rejectedPatches;
+            return this;
+        }
+
+        /**
+         * @param rejectedPatches Reject patches.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rejectedPatches(List<String> rejectedPatches) {
+            return rejectedPatches(Output.of(rejectedPatches));
+        }
+
+        /**
+         * @param rejectedPatches Reject patches.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rejectedPatches(String... rejectedPatches) {
+            return rejectedPatches(List.of(rejectedPatches));
+        }
+
+        /**
+         * @param rejectedPatchesAction Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rejectedPatchesAction(@Nullable Output<String> rejectedPatchesAction) {
+            $.rejectedPatchesAction = rejectedPatchesAction;
+            return this;
+        }
+
+        /**
+         * @param rejectedPatchesAction Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rejectedPatchesAction(String rejectedPatchesAction) {
+            return rejectedPatchesAction(Output.of(rejectedPatchesAction));
         }
 
         public PatchBaselineState build() {

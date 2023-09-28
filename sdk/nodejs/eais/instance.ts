@@ -7,9 +7,42 @@ import * as utilities from "../utilities";
 /**
  * Provides a EAIS Instance resource.
  *
- * For information about EAIS Instance and how to use it, see [What is Instance](https://help.aliyun.com/document_detail/185066.html).
+ * For information about EAIS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/document_detail/185066.html).
  *
- * > **NOTE:** Available in v1.137.0+.
+ * > **NOTE:** Available since v1.137.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const zoneId = "cn-hangzhou-h";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.0.0.0/8",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.1.0.0/16",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: zoneId,
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultInstance = new alicloud.eais.Instance("defaultInstance", {
+ *     instanceType: "eais.ei-a6.2xlarge",
+ *     instanceName: name,
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * ```
  *
  * ## Import
  *

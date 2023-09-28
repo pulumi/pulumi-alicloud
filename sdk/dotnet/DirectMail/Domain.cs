@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.DirectMail
     /// 
     /// For information about Direct Mail Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/doc-detail/29414.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.134.0+.
+    /// &gt; **NOTE:** Available since v1.134.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,9 +28,11 @@ namespace Pulumi.AliCloud.DirectMail
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var domainName = config.Get("domainName") ?? "alicloud-provider.online";
     ///     var example = new AliCloud.DirectMail.Domain("example", new()
     ///     {
-    ///         DomainName = "example_value",
+    ///         DomainName = domainName,
     ///     });
     /// 
     /// });

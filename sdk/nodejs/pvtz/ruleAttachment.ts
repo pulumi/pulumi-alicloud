@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about Private Zone Rule Attachment and how to use it, see [What is Rule Attachment](https://www.alibabacloud.com/help/en/doc-detail/177601.htm).
  *
- * > **NOTE:** Available in v1.143.0+.
+ * > **NOTE:** Available since v1.143.0.
  *
  * ## Import
  *
@@ -54,7 +54,7 @@ export class RuleAttachment extends pulumi.CustomResource {
      */
     public readonly ruleId!: pulumi.Output<string>;
     /**
-     * The List of the VPC. See the following `Block vpcs`.
+     * The List of the VPC. See `vpcs` below.
      */
     public readonly vpcs!: pulumi.Output<outputs.pvtz.RuleAttachmentVpc[]>;
 
@@ -98,7 +98,7 @@ export interface RuleAttachmentState {
      */
     ruleId?: pulumi.Input<string>;
     /**
-     * The List of the VPC. See the following `Block vpcs`.
+     * The List of the VPC. See `vpcs` below.
      */
     vpcs?: pulumi.Input<pulumi.Input<inputs.pvtz.RuleAttachmentVpc>[]>;
 }
@@ -112,7 +112,7 @@ export interface RuleAttachmentArgs {
      */
     ruleId: pulumi.Input<string>;
     /**
-     * The List of the VPC. See the following `Block vpcs`.
+     * The List of the VPC. See `vpcs` below.
      */
     vpcs: pulumi.Input<pulumi.Input<inputs.pvtz.RuleAttachmentVpc>[]>;
 }

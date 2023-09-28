@@ -17,7 +17,7 @@ import (
 //
 // For information about DAS Switch Das Pro and how to use it, see [What is Switch Das Pro](https://www.alibabacloud.com/help/en/database-autonomy-service/latest/enabledaspro).
 //
-// > **NOTE:** Available in v1.193.0+.
+// > **NOTE:** Available since v1.193.0.
 //
 // ## Example Usage
 //
@@ -28,17 +28,74 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/das"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := das.NewSwitchDasPro(ctx, "default", &das.SwitchDasProArgs{
-//				InstanceId:   pulumi.String("your_sql_id"),
+//			cfg := config.New(ctx, "")
+//			name := "tfexample"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNodeClasses, err := polardb.GetNodeClasses(ctx, &polardb.GetNodeClassesArgs{
+//				DbType:    pulumi.StringRef("MySQL"),
+//				DbVersion: pulumi.StringRef("8.0"),
+//				PayType:   "PostPaid",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      *pulumi.String(defaultNodeClasses.Classes[0].ZoneId),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultCluster, err := polardb.NewCluster(ctx, "defaultCluster", &polardb.ClusterArgs{
+//				DbType:      pulumi.String("MySQL"),
+//				DbVersion:   pulumi.String("8.0"),
+//				DbNodeClass: pulumi.String("polar.mysql.x4.large"),
+//				PayType:     pulumi.String("PostPaid"),
+//				VswitchId:   defaultSwitch.ID(),
+//				Description: pulumi.String(name),
+//				DbClusterIpArrays: polardb.ClusterDbClusterIpArrayArray{
+//					&polardb.ClusterDbClusterIpArrayArgs{
+//						DbClusterIpArrayName: pulumi.String("default"),
+//						SecurityIps: pulumi.StringArray{
+//							pulumi.String("1.2.3.4"),
+//							pulumi.String("1.2.3.5"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = das.NewSwitchDasPro(ctx, "defaultSwitchDasPro", &das.SwitchDasProArgs{
+//				InstanceId:   defaultCluster.ID(),
 //				SqlRetention: pulumi.Int(30),
-//				UserId:       pulumi.String("your_account_id"),
+//				UserId:       *pulumi.String(defaultAccount.Id),
 //			})
 //			if err != nil {
 //				return err

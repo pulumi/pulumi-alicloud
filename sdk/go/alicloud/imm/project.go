@@ -15,9 +15,9 @@ import (
 
 // Provides a Intelligent Media Management Project resource.
 //
-// For information about Intelligent Media Management Project and how to use it, see [What is Project](https://help.aliyun.com/document_detail/63496.html).
+// For information about Intelligent Media Management Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/network-intelligence-service/latest/user-overview).
 //
-// > **NOTE:** Available in v1.134.0+.
+// > **NOTE:** Available since v1.134.0.
 //
 // ## Example Usage
 //
@@ -31,11 +31,17 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/imm"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tfexample"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
 //				Document: pulumi.String(`  {
 //	    "Statement": [
@@ -61,7 +67,7 @@ import (
 //				return err
 //			}
 //			_, err = imm.NewProject(ctx, "example", &imm.ProjectArgs{
-//				Project:     pulumi.String("example_name"),
+//				Project:     pulumi.String(name),
 //				ServiceRole: role.Name,
 //			})
 //			if err != nil {

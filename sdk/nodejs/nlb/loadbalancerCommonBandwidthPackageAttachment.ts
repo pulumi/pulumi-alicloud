@@ -20,10 +20,57 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const _default = new alicloud.nlb.LoadbalancerCommonBandwidthPackageAttachment("default", {
- *     bandwidthPackageId: "cbwp-2zexv44uov1m4b7xnh60j",
- *     loadBalancerId: "nlb-f6gdwdsnt02uzx002l",
+ * const name = config.get("name") || "tf-example";
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultZones = alicloud.nlb.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const default1 = new alicloud.vpc.Switch("default1", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.1.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[1]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultLoadBalancer = new alicloud.nlb.LoadBalancer("defaultLoadBalancer", {
+ *     loadBalancerName: name,
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     loadBalancerType: "Network",
+ *     addressType: "Internet",
+ *     addressIpVersion: "Ipv4",
+ *     vpcId: defaultNetwork.id,
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ *     zoneMappings: [
+ *         {
+ *             vswitchId: defaultSwitch.id,
+ *             zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *         },
+ *         {
+ *             vswitchId: default1.id,
+ *             zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[1]?.id),
+ *         },
+ *     ],
+ * });
+ * const defaultCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("defaultCommonBandwithPackage", {
+ *     bandwidth: "2",
+ *     internetChargeType: "PayByBandwidth",
+ *     bandwidthPackageName: name,
+ *     description: name,
+ * });
+ * const defaultLoadbalancerCommonBandwidthPackageAttachment = new alicloud.nlb.LoadbalancerCommonBandwidthPackageAttachment("defaultLoadbalancerCommonBandwidthPackageAttachment", {
+ *     bandwidthPackageId: defaultCommonBandwithPackage.id,
+ *     loadBalancerId: defaultLoadBalancer.id,
  * });
  * ```
  *

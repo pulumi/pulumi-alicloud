@@ -199,13 +199,13 @@ type ProjectProperties struct {
 	AllowFullScan *bool `pulumi:"allowFullScan"`
 	// Whether to turn on Decimal2.0.
 	EnableDecimal2 *bool `pulumi:"enableDecimal2"`
-	// Whether encryption is turned on.See the following `Block Encryption`.
+	// Whether encryption is turned on. See `encryption` below.
 	Encryption *ProjectPropertiesEncryption `pulumi:"encryption"`
 	// Job default retention time.
 	RetentionDays *int `pulumi:"retentionDays"`
 	// SQL charge limit.
 	SqlMeteringMax *string `pulumi:"sqlMeteringMax"`
-	// Life cycle of tables.See the following `Block TableLifecycle`.
+	// Life cycle of tables. See `tableLifecycle` below.
 	TableLifecycle *ProjectPropertiesTableLifecycle `pulumi:"tableLifecycle"`
 	// Project time zone.
 	Timezone *string `pulumi:"timezone"`
@@ -229,13 +229,13 @@ type ProjectPropertiesArgs struct {
 	AllowFullScan pulumi.BoolPtrInput `pulumi:"allowFullScan"`
 	// Whether to turn on Decimal2.0.
 	EnableDecimal2 pulumi.BoolPtrInput `pulumi:"enableDecimal2"`
-	// Whether encryption is turned on.See the following `Block Encryption`.
+	// Whether encryption is turned on. See `encryption` below.
 	Encryption ProjectPropertiesEncryptionPtrInput `pulumi:"encryption"`
 	// Job default retention time.
 	RetentionDays pulumi.IntPtrInput `pulumi:"retentionDays"`
 	// SQL charge limit.
 	SqlMeteringMax pulumi.StringPtrInput `pulumi:"sqlMeteringMax"`
-	// Life cycle of tables.See the following `Block TableLifecycle`.
+	// Life cycle of tables. See `tableLifecycle` below.
 	TableLifecycle ProjectPropertiesTableLifecyclePtrInput `pulumi:"tableLifecycle"`
 	// Project time zone.
 	Timezone pulumi.StringPtrInput `pulumi:"timezone"`
@@ -348,7 +348,7 @@ func (o ProjectPropertiesOutput) EnableDecimal2() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectProperties) *bool { return v.EnableDecimal2 }).(pulumi.BoolPtrOutput)
 }
 
-// Whether encryption is turned on.See the following `Block Encryption`.
+// Whether encryption is turned on. See `encryption` below.
 func (o ProjectPropertiesOutput) Encryption() ProjectPropertiesEncryptionPtrOutput {
 	return o.ApplyT(func(v ProjectProperties) *ProjectPropertiesEncryption { return v.Encryption }).(ProjectPropertiesEncryptionPtrOutput)
 }
@@ -363,7 +363,7 @@ func (o ProjectPropertiesOutput) SqlMeteringMax() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectProperties) *string { return v.SqlMeteringMax }).(pulumi.StringPtrOutput)
 }
 
-// Life cycle of tables.See the following `Block TableLifecycle`.
+// Life cycle of tables. See `tableLifecycle` below.
 func (o ProjectPropertiesOutput) TableLifecycle() ProjectPropertiesTableLifecyclePtrOutput {
 	return o.ApplyT(func(v ProjectProperties) *ProjectPropertiesTableLifecycle { return v.TableLifecycle }).(ProjectPropertiesTableLifecyclePtrOutput)
 }
@@ -428,7 +428,7 @@ func (o ProjectPropertiesPtrOutput) EnableDecimal2() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether encryption is turned on.See the following `Block Encryption`.
+// Whether encryption is turned on. See `encryption` below.
 func (o ProjectPropertiesPtrOutput) Encryption() ProjectPropertiesEncryptionPtrOutput {
 	return o.ApplyT(func(v *ProjectProperties) *ProjectPropertiesEncryption {
 		if v == nil {
@@ -458,7 +458,7 @@ func (o ProjectPropertiesPtrOutput) SqlMeteringMax() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Life cycle of tables.See the following `Block TableLifecycle`.
+// Life cycle of tables. See `tableLifecycle` below.
 func (o ProjectPropertiesPtrOutput) TableLifecycle() ProjectPropertiesTableLifecyclePtrOutput {
 	return o.ApplyT(func(v *ProjectProperties) *ProjectPropertiesTableLifecycle {
 		if v == nil {
@@ -876,7 +876,7 @@ type ProjectSecurityProperties struct {
 	ObjectCreatorHasAccessPermission *bool `pulumi:"objectCreatorHasAccessPermission"`
 	// Does the project creator have authorization rights.
 	ObjectCreatorHasGrantPermission *bool `pulumi:"objectCreatorHasGrantPermission"`
-	// Project protection.See the following `Block ProjectProtection`.
+	// Project protection. See `projectProtection` below.
 	ProjectProtection *ProjectSecurityPropertiesProjectProtection `pulumi:"projectProtection"`
 	// Whether to turn on ACL.
 	UsingAcl *bool `pulumi:"usingAcl"`
@@ -904,7 +904,7 @@ type ProjectSecurityPropertiesArgs struct {
 	ObjectCreatorHasAccessPermission pulumi.BoolPtrInput `pulumi:"objectCreatorHasAccessPermission"`
 	// Does the project creator have authorization rights.
 	ObjectCreatorHasGrantPermission pulumi.BoolPtrInput `pulumi:"objectCreatorHasGrantPermission"`
-	// Project protection.See the following `Block ProjectProtection`.
+	// Project protection. See `projectProtection` below.
 	ProjectProtection ProjectSecurityPropertiesProjectProtectionPtrInput `pulumi:"projectProtection"`
 	// Whether to turn on ACL.
 	UsingAcl pulumi.BoolPtrInput `pulumi:"usingAcl"`
@@ -1027,7 +1027,7 @@ func (o ProjectSecurityPropertiesOutput) ObjectCreatorHasGrantPermission() pulum
 	return o.ApplyT(func(v ProjectSecurityProperties) *bool { return v.ObjectCreatorHasGrantPermission }).(pulumi.BoolPtrOutput)
 }
 
-// Project protection.See the following `Block ProjectProtection`.
+// Project protection. See `projectProtection` below.
 func (o ProjectSecurityPropertiesOutput) ProjectProtection() ProjectSecurityPropertiesProjectProtectionPtrOutput {
 	return o.ApplyT(func(v ProjectSecurityProperties) *ProjectSecurityPropertiesProjectProtection {
 		return v.ProjectProtection
@@ -1114,7 +1114,7 @@ func (o ProjectSecurityPropertiesPtrOutput) ObjectCreatorHasGrantPermission() pu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Project protection.See the following `Block ProjectProtection`.
+// Project protection. See `projectProtection` below.
 func (o ProjectSecurityPropertiesPtrOutput) ProjectProtection() ProjectSecurityPropertiesProjectProtectionPtrOutput {
 	return o.ApplyT(func(v *ProjectSecurityProperties) *ProjectSecurityPropertiesProjectProtection {
 		if v == nil {

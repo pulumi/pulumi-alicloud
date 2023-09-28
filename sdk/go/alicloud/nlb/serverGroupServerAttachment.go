@@ -17,7 +17,7 @@ import (
 //
 // For information about NLB Server Group Server Attachment and how to use it, see [What is Server Group Server Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/addserverstoservergroup-nlb).
 //
-// > **NOTE:** Available in v1.192.0+.
+// > **NOTE:** Available since v1.192.0.
 //
 // ## Example Usage
 //
@@ -32,26 +32,33 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
-//			}, nil)
-//			if err != nil {
-//				return err
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
 //			}
 //			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			defaultServerGroup, err := nlb.NewServerGroup(ctx, "defaultServerGroup", &nlb.ServerGroupArgs{
 //				ResourceGroupId: *pulumi.String(defaultResourceGroups.Ids[0]),
-//				ServerGroupName: pulumi.Any(_var.Name),
+//				ServerGroupName: pulumi.String(name),
 //				ServerGroupType: pulumi.String("Ip"),
-//				VpcId:           *pulumi.String(defaultNetworks.Ids[0]),
+//				VpcId:           defaultNetwork.ID(),
 //				Scheduler:       pulumi.String("Wrr"),
 //				Protocol:        pulumi.String("TCP"),
 //				HealthCheck: &nlb.ServerGroupHealthCheckArgs{
@@ -65,7 +72,7 @@ import (
 //			_, err = nlb.NewServerGroupServerAttachment(ctx, "defaultServerGroupServerAttachment", &nlb.ServerGroupServerAttachmentArgs{
 //				ServerType:    pulumi.String("Ip"),
 //				ServerId:      pulumi.String("10.0.0.0"),
-//				Description:   pulumi.Any(_var.Name),
+//				Description:   pulumi.String(name),
 //				Port:          pulumi.Int(80),
 //				ServerGroupId: defaultServerGroup.ID(),
 //				Weight:        pulumi.Int(100),

@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.ActionTrail
     /// <summary>
     /// Provides a Actiontrail History Delivery Job resource.
     /// 
-    /// For information about Actiontrail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/doc-detail/199999.htm).
+    /// For information about Actiontrail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createdeliveryhistoryjob).
     /// 
-    /// &gt; **NOTE:** Available in v1.139.0+.
+    /// &gt; **NOTE:** Available since v1.139.0.
     /// 
     /// &gt; **NOTE:** You are authorized to use the historical event delivery task feature. To use this feature, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=a2c63.p38356.0.0.e29f552bb6odNZ#/ticket/createIndex) or ask the sales manager to add you to the whitelist.
     /// 
@@ -34,6 +34,8 @@ namespace Pulumi.AliCloud.ActionTrail
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
     ///     var exampleRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
@@ -43,12 +45,12 @@ namespace Pulumi.AliCloud.ActionTrail
     /// 
     ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
     ///     {
-    ///         Description = "tf actiontrail test",
+    ///         Description = "tf actiontrail example",
     ///     });
     /// 
     ///     var exampleTrail = new AliCloud.ActionTrail.Trail("exampleTrail", new()
     ///     {
-    ///         TrailName = "example_value",
+    ///         TrailName = name,
     ///         SlsProjectArn = Output.Tuple(exampleRegions, exampleAccount, exampleProject.Name).Apply(values =&gt;
     ///         {
     ///             var exampleRegions = values.Item1;

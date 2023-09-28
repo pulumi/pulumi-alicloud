@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * For information about NLB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createsecuritypolicy-nlb).
  * 
- * &gt; **NOTE:** Available in v1.187.0+.
+ * &gt; **NOTE:** Available since v1.187.0.
  * 
  * ## Example Usage
  * 
@@ -50,11 +50,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         var defaultSecurityPolicy = new SecurityPolicy(&#34;defaultSecurityPolicy&#34;, SecurityPolicyArgs.builder()        
  *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
- *             .securityPolicyName(var_.name())
+ *             .securityPolicyName(name)
  *             .ciphers(            
  *                 &#34;ECDHE-RSA-AES128-SHA&#34;,
  *                 &#34;ECDHE-ECDSA-AES128-SHA&#34;)
@@ -64,7 +66,7 @@ import javax.annotation.Nullable;
  *                 &#34;TLSv1.2&#34;)
  *             .tags(Map.ofEntries(
  *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;Acceptance-test&#34;)
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
  *             ))
  *             .build());
  * 

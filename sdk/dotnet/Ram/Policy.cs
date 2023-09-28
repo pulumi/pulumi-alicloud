@@ -34,7 +34,6 @@ namespace Pulumi.AliCloud.Ram
     ///     var policy = new AliCloud.Ram.Policy("policy", new()
     ///     {
     ///         Description = "this is a policy test",
-    ///         Force = true,
     ///         PolicyDocument = @"  {
     ///     ""Statement"": [
     ///       {
@@ -122,7 +121,7 @@ namespace Pulumi.AliCloud.Ram
         /// The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
         /// </summary>
         [Output("rotateStrategy")]
-        public Output<string?> RotateStrategy { get; private set; } = null!;
+        public Output<string> RotateStrategy { get; private set; } = null!;
 
         /// <summary>
         /// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.

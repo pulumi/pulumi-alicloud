@@ -144,7 +144,7 @@ import (
 //				OssBucket:   defaultBucket.ID(),
 //				OssKey:      defaultBucketObject.Key,
 //				MemorySize:  pulumi.Int(512),
-//				Runtime:     pulumi.String("python2.7"),
+//				Runtime:     pulumi.String("python3.10"),
 //				Handler:     pulumi.String("hello.handler"),
 //			})
 //			if err != nil {
@@ -158,15 +158,14 @@ import (
 //					return fmt.Sprintf("acs:log:%v:%v:project/%v", defaultRegions.Regions[0].Id, defaultAccount.Id, name), nil
 //				}).(pulumi.StringOutput),
 //				Type: pulumi.String("log"),
-//				Config: pulumi.All(defaultProject.Name, sourceStore.Name, defaultProject.Name, defaultStore.Name).ApplyT(func(_args []interface{}) (string, error) {
-//					defaultProjectName := _args[0].(string)
-//					sourceStoreName := _args[1].(string)
-//					defaultProjectName1 := _args[2].(string)
-//					defaultStoreName := _args[3].(string)
+//				Config: pulumi.All(sourceStore.Name, defaultProject.Name, defaultStore.Name).ApplyT(func(_args []interface{}) (string, error) {
+//					sourceStoreName := _args[0].(string)
+//					defaultProjectName := _args[1].(string)
+//					defaultStoreName := _args[2].(string)
 //					return fmt.Sprintf(`    {
 //	        "sourceConfig": {
-//	            "project": "%v",
-//	            "logstore": "%v"
+//	            "logstore": "%v",
+//	            "startTime": null
 //	        },
 //	        "jobConfig": {
 //	            "maxRetryTime": 3,
@@ -180,10 +179,11 @@ import (
 //	             "project": "%v",
 //	            "logstore": "%v"
 //	        },
+//	        "targetConfig": null,
 //	        "enable": true
 //	    }
 //
-// `, defaultProjectName, sourceStoreName, defaultProjectName1, defaultStoreName), nil
+// `, sourceStoreName, defaultProjectName, defaultStoreName), nil
 //
 //				}).(pulumi.StringOutput),
 //			})
@@ -299,7 +299,7 @@ import (
 //				OssBucket:   defaultBucket.ID(),
 //				OssKey:      defaultBucketObject.Key,
 //				MemorySize:  pulumi.Int(512),
-//				Runtime:     pulumi.String("python2.7"),
+//				Runtime:     pulumi.String("python3.10"),
 //				Handler:     pulumi.String("hello.handler"),
 //			})
 //			if err != nil {
@@ -475,7 +475,7 @@ import (
 //				OssBucket:   defaultBucket.ID(),
 //				OssKey:      defaultBucketObject.Key,
 //				MemorySize:  pulumi.Int(512),
-//				Runtime:     pulumi.String("python2.7"),
+//				Runtime:     pulumi.String("python3.10"),
 //				Handler:     pulumi.String("hello.handler"),
 //			})
 //			if err != nil {
@@ -583,7 +583,7 @@ import (
 //				OssBucket:   defaultBucket.ID(),
 //				OssKey:      defaultBucketObject.Key,
 //				MemorySize:  pulumi.Int(512),
-//				Runtime:     pulumi.String("python2.7"),
+//				Runtime:     pulumi.String("python3.10"),
 //				Handler:     pulumi.String("hello.handler"),
 //			})
 //			if err != nil {
@@ -596,7 +596,14 @@ import (
 //				Config: pulumi.String(`    {
 //	        "triggerEnable": false,
 //	        "asyncInvocationType": false,
-//	        "eventRuleFilterPattern": "{\"source\":[\"acs.oss\"],\"type\":[\"oss:BucketCreated:PutBucket\"]}",
+//	        "eventRuleFilterPattern": {
+//	          "source":[
+//	            "acs.oss"
+//	            ],
+//	            "type":[
+//	              "oss:BucketCreated:PutBucket"
+//	            ]
+//	        },
 //	        "eventSourceConfig": {
 //	            "eventSourceType": "Default"
 //	        }

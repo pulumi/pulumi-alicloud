@@ -68,11 +68,11 @@ export class Rule extends pulumi.CustomResource {
      */
     public readonly priority!: pulumi.Output<number>;
     /**
-     * The actions of the forwarding rules. See `ruleActions` below for details.
+     * The actions of the forwarding rules. See `ruleActions` below.
      */
     public readonly ruleActions!: pulumi.Output<outputs.alb.RuleRuleAction[]>;
     /**
-     * The conditions of the forwarding rule. See `ruleConditions` below for details.
+     * The conditions of the forwarding rule. See `ruleConditions` below.
      */
     public readonly ruleConditions!: pulumi.Output<outputs.alb.RuleRuleCondition[]>;
     /**
@@ -157,11 +157,11 @@ export interface RuleState {
      */
     priority?: pulumi.Input<number>;
     /**
-     * The actions of the forwarding rules. See `ruleActions` below for details.
+     * The actions of the forwarding rules. See `ruleActions` below.
      */
     ruleActions?: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleAction>[]>;
     /**
-     * The conditions of the forwarding rule. See `ruleConditions` below for details.
+     * The conditions of the forwarding rule. See `ruleConditions` below.
      */
     ruleConditions?: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleCondition>[]>;
     /**
@@ -195,11 +195,11 @@ export interface RuleArgs {
      */
     priority: pulumi.Input<number>;
     /**
-     * The actions of the forwarding rules. See `ruleActions` below for details.
+     * The actions of the forwarding rules. See `ruleActions` below.
      */
     ruleActions: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleAction>[]>;
     /**
-     * The conditions of the forwarding rule. See `ruleConditions` below for details.
+     * The conditions of the forwarding rule. See `ruleConditions` below.
      */
     ruleConditions: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleCondition>[]>;
     /**

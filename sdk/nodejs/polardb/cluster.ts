@@ -99,6 +99,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly dbNodeCount!: pulumi.Output<number>;
     /**
+     * The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+     */
+    public readonly dbNodeNum!: pulumi.Output<number | undefined>;
+    /**
      * Database type. Value options: MySQL, Oracle, PostgreSQL.
      */
     public readonly dbType!: pulumi.Output<string>;
@@ -106,6 +110,11 @@ export class Cluster extends pulumi.CustomResource {
      * Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
      */
     public readonly dbVersion!: pulumi.Output<string>;
+    /**
+     * The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+     * > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+     */
+    public readonly defaultTimeZone!: pulumi.Output<string | undefined>;
     /**
      * turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
      * > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
@@ -144,6 +153,16 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly imciSwitch!: pulumi.Output<string>;
     /**
+     * Enable the Binlog function. Valid values are `OFF`, `ON`.
+     * > **NOTE:** This parameter is valid only MySQL Engine supports.
+     */
+    public readonly loosePolarLogBin!: pulumi.Output<string | undefined>;
+    /**
+     * Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+     * > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+     */
+    public readonly lowerCaseTableNames!: pulumi.Output<number | undefined>;
+    /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
     public readonly maintainTime!: pulumi.Output<string>;
@@ -151,6 +170,11 @@ export class Cluster extends pulumi.CustomResource {
      * Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
      */
     public readonly modifyType!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the parameter template
+     * > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+     */
+    public readonly parameterGroupId!: pulumi.Output<string | undefined>;
     /**
      * Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
      */
@@ -178,6 +202,16 @@ export class Cluster extends pulumi.CustomResource {
      * (Available since 1.196.0+) PolarDB cluster connection port.
      */
     public /*out*/ readonly port!: pulumi.Output<string>;
+    /**
+     * The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+     * > **NOTE:** This parameter is valid only for standard clusters.
+     */
+    public readonly proxyClass!: pulumi.Output<string | undefined>;
+    /**
+     * The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+     * > **NOTE:** This parameter is valid only for standard clusters.
+     */
+    public readonly proxyType!: pulumi.Output<string | undefined>;
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */
@@ -239,9 +273,15 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * Storage space charged by space (monthly package). Unit: GB.
+     * The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
      */
-    public readonly storageSpace!: pulumi.Output<number | undefined>;
+    public readonly storagePayType!: pulumi.Output<string>;
+    /**
+     * Storage space charged by space (monthly package). Unit: GB.
+     * > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
+     * > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
+     */
+    public readonly storageSpace!: pulumi.Output<number>;
     /**
      * The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
      * > **NOTE:** Serverless cluster does not support this parameter.
@@ -311,8 +351,10 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["dbClusterIpArrays"] = state ? state.dbClusterIpArrays : undefined;
             resourceInputs["dbNodeClass"] = state ? state.dbNodeClass : undefined;
             resourceInputs["dbNodeCount"] = state ? state.dbNodeCount : undefined;
+            resourceInputs["dbNodeNum"] = state ? state.dbNodeNum : undefined;
             resourceInputs["dbType"] = state ? state.dbType : undefined;
             resourceInputs["dbVersion"] = state ? state.dbVersion : undefined;
+            resourceInputs["defaultTimeZone"] = state ? state.defaultTimeZone : undefined;
             resourceInputs["deletionLock"] = state ? state.deletionLock : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["encryptNewTables"] = state ? state.encryptNewTables : undefined;
@@ -321,14 +363,19 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["gdnId"] = state ? state.gdnId : undefined;
             resourceInputs["hotStandbyCluster"] = state ? state.hotStandbyCluster : undefined;
             resourceInputs["imciSwitch"] = state ? state.imciSwitch : undefined;
+            resourceInputs["loosePolarLogBin"] = state ? state.loosePolarLogBin : undefined;
+            resourceInputs["lowerCaseTableNames"] = state ? state.lowerCaseTableNames : undefined;
             resourceInputs["maintainTime"] = state ? state.maintainTime : undefined;
             resourceInputs["modifyType"] = state ? state.modifyType : undefined;
+            resourceInputs["parameterGroupId"] = state ? state.parameterGroupId : undefined;
             resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["payType"] = state ? state.payType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["plannedEndTime"] = state ? state.plannedEndTime : undefined;
             resourceInputs["plannedStartTime"] = state ? state.plannedStartTime : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["proxyClass"] = state ? state.proxyClass : undefined;
+            resourceInputs["proxyType"] = state ? state.proxyType : undefined;
             resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["roleArn"] = state ? state.roleArn : undefined;
@@ -342,6 +389,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["serverlessType"] = state ? state.serverlessType : undefined;
             resourceInputs["sourceResourceId"] = state ? state.sourceResourceId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["storagePayType"] = state ? state.storagePayType : undefined;
             resourceInputs["storageSpace"] = state ? state.storageSpace : undefined;
             resourceInputs["storageType"] = state ? state.storageType : undefined;
             resourceInputs["subCategory"] = state ? state.subCategory : undefined;
@@ -373,8 +421,10 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["dbClusterIpArrays"] = args ? args.dbClusterIpArrays : undefined;
             resourceInputs["dbNodeClass"] = args ? args.dbNodeClass : undefined;
             resourceInputs["dbNodeCount"] = args ? args.dbNodeCount : undefined;
+            resourceInputs["dbNodeNum"] = args ? args.dbNodeNum : undefined;
             resourceInputs["dbType"] = args ? args.dbType : undefined;
             resourceInputs["dbVersion"] = args ? args.dbVersion : undefined;
+            resourceInputs["defaultTimeZone"] = args ? args.defaultTimeZone : undefined;
             resourceInputs["deletionLock"] = args ? args.deletionLock : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["encryptNewTables"] = args ? args.encryptNewTables : undefined;
@@ -383,13 +433,18 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["gdnId"] = args ? args.gdnId : undefined;
             resourceInputs["hotStandbyCluster"] = args ? args.hotStandbyCluster : undefined;
             resourceInputs["imciSwitch"] = args ? args.imciSwitch : undefined;
+            resourceInputs["loosePolarLogBin"] = args ? args.loosePolarLogBin : undefined;
+            resourceInputs["lowerCaseTableNames"] = args ? args.lowerCaseTableNames : undefined;
             resourceInputs["maintainTime"] = args ? args.maintainTime : undefined;
             resourceInputs["modifyType"] = args ? args.modifyType : undefined;
+            resourceInputs["parameterGroupId"] = args ? args.parameterGroupId : undefined;
             resourceInputs["parameters"] = args ? args.parameters : undefined;
             resourceInputs["payType"] = args ? args.payType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["plannedEndTime"] = args ? args.plannedEndTime : undefined;
             resourceInputs["plannedStartTime"] = args ? args.plannedStartTime : undefined;
+            resourceInputs["proxyClass"] = args ? args.proxyClass : undefined;
+            resourceInputs["proxyType"] = args ? args.proxyType : undefined;
             resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["roleArn"] = args ? args.roleArn : undefined;
@@ -402,6 +457,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["securityIps"] = args ? args.securityIps : undefined;
             resourceInputs["serverlessType"] = args ? args.serverlessType : undefined;
             resourceInputs["sourceResourceId"] = args ? args.sourceResourceId : undefined;
+            resourceInputs["storagePayType"] = args ? args.storagePayType : undefined;
             resourceInputs["storageSpace"] = args ? args.storageSpace : undefined;
             resourceInputs["storageType"] = args ? args.storageType : undefined;
             resourceInputs["subCategory"] = args ? args.subCategory : undefined;
@@ -482,6 +538,10 @@ export interface ClusterState {
      */
     dbNodeCount?: pulumi.Input<number>;
     /**
+     * The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+     */
+    dbNodeNum?: pulumi.Input<number>;
+    /**
      * Database type. Value options: MySQL, Oracle, PostgreSQL.
      */
     dbType?: pulumi.Input<string>;
@@ -489,6 +549,11 @@ export interface ClusterState {
      * Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
      */
     dbVersion?: pulumi.Input<string>;
+    /**
+     * The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+     * > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+     */
+    defaultTimeZone?: pulumi.Input<string>;
     /**
      * turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
      * > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
@@ -527,6 +592,16 @@ export interface ClusterState {
      */
     imciSwitch?: pulumi.Input<string>;
     /**
+     * Enable the Binlog function. Valid values are `OFF`, `ON`.
+     * > **NOTE:** This parameter is valid only MySQL Engine supports.
+     */
+    loosePolarLogBin?: pulumi.Input<string>;
+    /**
+     * Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+     * > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+     */
+    lowerCaseTableNames?: pulumi.Input<number>;
+    /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
     maintainTime?: pulumi.Input<string>;
@@ -534,6 +609,11 @@ export interface ClusterState {
      * Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
      */
     modifyType?: pulumi.Input<string>;
+    /**
+     * The ID of the parameter template
+     * > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+     */
+    parameterGroupId?: pulumi.Input<string>;
     /**
      * Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
      */
@@ -561,6 +641,16 @@ export interface ClusterState {
      * (Available since 1.196.0+) PolarDB cluster connection port.
      */
     port?: pulumi.Input<string>;
+    /**
+     * The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+     * > **NOTE:** This parameter is valid only for standard clusters.
+     */
+    proxyClass?: pulumi.Input<string>;
+    /**
+     * The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+     * > **NOTE:** This parameter is valid only for standard clusters.
+     */
+    proxyType?: pulumi.Input<string>;
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */
@@ -622,7 +712,13 @@ export interface ClusterState {
      */
     status?: pulumi.Input<string>;
     /**
+     * The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+     */
+    storagePayType?: pulumi.Input<string>;
+    /**
      * Storage space charged by space (monthly package). Unit: GB.
+     * > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
+     * > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
      */
     storageSpace?: pulumi.Input<number>;
     /**
@@ -722,6 +818,10 @@ export interface ClusterArgs {
      */
     dbNodeCount?: pulumi.Input<number>;
     /**
+     * The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+     */
+    dbNodeNum?: pulumi.Input<number>;
+    /**
      * Database type. Value options: MySQL, Oracle, PostgreSQL.
      */
     dbType: pulumi.Input<string>;
@@ -729,6 +829,11 @@ export interface ClusterArgs {
      * Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
      */
     dbVersion: pulumi.Input<string>;
+    /**
+     * The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+     * > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+     */
+    defaultTimeZone?: pulumi.Input<string>;
     /**
      * turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
      * > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
@@ -767,6 +872,16 @@ export interface ClusterArgs {
      */
     imciSwitch?: pulumi.Input<string>;
     /**
+     * Enable the Binlog function. Valid values are `OFF`, `ON`.
+     * > **NOTE:** This parameter is valid only MySQL Engine supports.
+     */
+    loosePolarLogBin?: pulumi.Input<string>;
+    /**
+     * Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+     * > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+     */
+    lowerCaseTableNames?: pulumi.Input<number>;
+    /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
     maintainTime?: pulumi.Input<string>;
@@ -774,6 +889,11 @@ export interface ClusterArgs {
      * Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
      */
     modifyType?: pulumi.Input<string>;
+    /**
+     * The ID of the parameter template
+     * > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+     */
+    parameterGroupId?: pulumi.Input<string>;
     /**
      * Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
      */
@@ -797,6 +917,16 @@ export interface ClusterArgs {
      * > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
      */
     plannedStartTime?: pulumi.Input<string>;
+    /**
+     * The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+     * > **NOTE:** This parameter is valid only for standard clusters.
+     */
+    proxyClass?: pulumi.Input<string>;
+    /**
+     * The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+     * > **NOTE:** This parameter is valid only for standard clusters.
+     */
+    proxyType?: pulumi.Input<string>;
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */
@@ -854,7 +984,13 @@ export interface ClusterArgs {
      */
     sourceResourceId?: pulumi.Input<string>;
     /**
+     * The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+     */
+    storagePayType?: pulumi.Input<string>;
+    /**
      * Storage space charged by space (monthly package). Unit: GB.
+     * > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
+     * > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
      */
     storageSpace?: pulumi.Input<number>;
     /**

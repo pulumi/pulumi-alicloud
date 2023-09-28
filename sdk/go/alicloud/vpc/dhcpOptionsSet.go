@@ -73,7 +73,7 @@ type DhcpOptionsSet struct {
 
 	// Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associateVpcs` below.
 	//
-	// Deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+	// Deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.211.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
 	AssociateVpcs DhcpOptionsSetAssociateVpcArrayOutput `pulumi:"associateVpcs"`
 	// The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
 	DhcpOptionsSetDescription pulumi.StringPtrOutput `pulumi:"dhcpOptionsSetDescription"`
@@ -133,7 +133,7 @@ func GetDhcpOptionsSet(ctx *pulumi.Context,
 type dhcpOptionsSetState struct {
 	// Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associateVpcs` below.
 	//
-	// Deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+	// Deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.211.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
 	AssociateVpcs []DhcpOptionsSetAssociateVpc `pulumi:"associateVpcs"`
 	// The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
 	DhcpOptionsSetDescription *string `pulumi:"dhcpOptionsSetDescription"`
@@ -164,7 +164,7 @@ type dhcpOptionsSetState struct {
 type DhcpOptionsSetState struct {
 	// Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associateVpcs` below.
 	//
-	// Deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+	// Deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.211.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
 	AssociateVpcs DhcpOptionsSetAssociateVpcArrayInput
 	// The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
 	DhcpOptionsSetDescription pulumi.StringPtrInput
@@ -199,7 +199,7 @@ func (DhcpOptionsSetState) ElementType() reflect.Type {
 type dhcpOptionsSetArgs struct {
 	// Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associateVpcs` below.
 	//
-	// Deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+	// Deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.211.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
 	AssociateVpcs []DhcpOptionsSetAssociateVpc `pulumi:"associateVpcs"`
 	// The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
 	DhcpOptionsSetDescription *string `pulumi:"dhcpOptionsSetDescription"`
@@ -227,7 +227,7 @@ type dhcpOptionsSetArgs struct {
 type DhcpOptionsSetArgs struct {
 	// Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associateVpcs` below.
 	//
-	// Deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+	// Deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.211.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
 	AssociateVpcs DhcpOptionsSetAssociateVpcArrayInput
 	// The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
 	DhcpOptionsSetDescription pulumi.StringPtrInput
@@ -364,7 +364,7 @@ func (o DhcpOptionsSetOutput) ToOutput(ctx context.Context) pulumix.Output[*Dhcp
 
 // Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associateVpcs` below.
 //
-// Deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+// Deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.211.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
 func (o DhcpOptionsSetOutput) AssociateVpcs() DhcpOptionsSetAssociateVpcArrayOutput {
 	return o.ApplyT(func(v *DhcpOptionsSet) DhcpOptionsSetAssociateVpcArrayOutput { return v.AssociateVpcs }).(DhcpOptionsSetAssociateVpcArrayOutput)
 }

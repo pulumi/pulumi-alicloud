@@ -17,7 +17,7 @@ import (
 //
 // For information about Vpc Vswitch Cidr Reservation and how to use it, see [What is Vswitch Cidr Reservation](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/610154).
 //
-// > **NOTE:** Available in v1.205.0+.
+// > **NOTE:** Available since v1.205.0.
 //
 // ## Example Usage
 //
@@ -40,7 +40,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-testacc-example"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -69,7 +69,7 @@ import (
 //			_, err = vpc.NewVswitchCidrReservation(ctx, "defaultVswitchCidrReservation", &vpc.VswitchCidrReservationArgs{
 //				IpVersion:                  pulumi.String("IPv4"),
 //				VswitchId:                  defaultVSwitch.ID(),
-//				CidrReservationDescription: pulumi.String("test"),
+//				CidrReservationDescription: pulumi.String(name),
 //				CidrReservationCidr:        pulumi.String("10.0.10.0/24"),
 //				VswitchCidrReservationName: pulumi.String(name),
 //				CidrReservationType:        pulumi.String("Prefix"),

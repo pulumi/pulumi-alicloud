@@ -28,19 +28,43 @@ namespace Pulumi.AliCloud.Ocean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Ocean.BaseInstance("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke();
+    /// 
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultBaseInstance = new AliCloud.Ocean.BaseInstance("defaultBaseInstance", new()
     ///     {
-    ///         InstanceName = @var.Name,
-    ///         Series = "normal",
-    ///         DiskSize = 200,
-    ///         InstanceClass = "14C70GB",
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
     ///         Zones = new[]
     ///         {
-    ///             "ap-southeast-1a",
-    ///             "ap-southeast-1b",
-    ///             "ap-southeast-1c",
+    ///             Output.Tuple(defaultZones, defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids).Length).Apply(values =&gt;
+    ///             {
+    ///                 var defaultZones = values.Item1;
+    ///                 var length = values.Item2;
+    ///                 return defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids)[length - 2];
+    ///             }),
+    ///             Output.Tuple(defaultZones, defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids).Length).Apply(values =&gt;
+    ///             {
+    ///                 var defaultZones = values.Item1;
+    ///                 var length = values.Item2;
+    ///                 return defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids)[length - 3];
+    ///             }),
+    ///             Output.Tuple(defaultZones, defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids).Length).Apply(values =&gt;
+    ///             {
+    ///                 var defaultZones = values.Item1;
+    ///                 var length = values.Item2;
+    ///                 return defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids)[length - 4];
+    ///             }),
     ///         },
+    ///         AutoRenew = false,
+    ///         DiskSize = 100,
     ///         PaymentType = "PayAsYouGo",
+    ///         InstanceClass = "8C32GB",
+    ///         BackupRetainMode = "delete_all",
+    ///         Series = "normal",
+    ///         InstanceName = name,
     ///     });
     /// 
     /// });
@@ -58,30 +82,34 @@ namespace Pulumi.AliCloud.Ocean
     public partial class BaseInstance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether to automatically renew.It takes effect when the parameter ChargeType is PrePaid. Value range:
+        /// Whether to automatically renew.
+        /// It takes effect when the parameter ChargeType is PrePaid. Value range:
         /// - true: automatic renewal.
         /// - false (default): no automatic renewal.
         /// </summary>
         [Output("autoRenew")]
-        public Output<bool> AutoRenew { get; private set; } = null!;
+        public Output<bool?> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.-PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.-PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
+        /// The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.
+        /// - PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.
+        /// - PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
         /// </summary>
         [Output("autoRenewPeriod")]
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The backup retain mode.
+        /// The backup retention policy after the cluster is deleted. The values are as follows:
+        /// - receive_all: Keep all backup sets;
+        /// - delete_all: delete all backup sets;
+        /// - receive_last: Keep the last backup set.
+        /// &gt; **NOTE:**   The default value is delete_all.
         /// </summary>
         [Output("backupRetainMode")]
         public Output<string?> BackupRetainMode { get; private set; } = null!;
 
         /// <summary>
-        /// The product code of the OceanBase cluster.
-        /// - oceanbase_oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package.
-        /// - oceanbase_oceanbasepost_public_cn: The domestic station cloud database is paid by the hour.
-        /// - oceanbase_obpre_public_intl: International Station Cloud Database Package Monthly Package.
+        /// The product code of the OceanBase cluster._oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package._oceanbasepost_public_cn: The domestic station cloud database is paid by the hour._obpre_public_intl: International Station Cloud Database Package Monthly Package.
         /// </summary>
         [Output("commodityCode")]
         public Output<string> CommodityCode { get; private set; } = null!;
@@ -93,54 +121,77 @@ namespace Pulumi.AliCloud.Ocean
         public Output<int> Cpu { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the resource
+        /// The creation time of the resource.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The size of the storage space, in GB.The limits of storage space vary according to the cluster specifications, as follows:
+        /// The size of the storage space, in GB.
+        /// The limits of storage space vary according to the cluster specifications, as follows:
         /// - 8C32GB:100GB ~ 10000GB
         /// - 14C70GB:200GB ~ 10000GB
         /// - 30C180GB:400GB ~ 10000GB
         /// - 62C400G:800GB ~ 10000GB.
-        /// - The default value of each package is its minimum value.
+        /// The default value of each package is its minimum value.
         /// </summary>
         [Output("diskSize")]
         public Output<int> DiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
+        /// The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+        /// Two types are currently supported:
+        /// - cloud_essd_pl1: cloud disk ESSD pl1.
+        /// - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
+        /// </summary>
+        [Output("diskType")]
+        public Output<string> DiskType { get; private set; } = null!;
+
+        /// <summary>
+        /// Cluster specification information.
+        /// Four packages are currently supported:
+        /// - 8C32GB:8 cores 32GB.
+        /// - 14C70GB (default):14 cores 70GB.
+        /// - 30C180GB:30 cores 180GB.
+        /// - 62C400GB:62 cores 400GB.
         /// </summary>
         [Output("instanceClass")]
         public Output<string> InstanceClass { get; private set; } = null!;
 
         /// <summary>
-        /// OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
+        /// OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
         /// </summary>
         [Output("instanceName")]
         public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// The number of nodes in the cluster.
+        /// The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
         /// </summary>
         [Output("nodeNum")]
         public Output<string> NodeNum { get; private set; } = null!;
 
         /// <summary>
-        /// The payment method of the instance. Valid values: `PayAsYouGo`, `Subscription`.
+        /// The OceanBase Server version number.
+        /// </summary>
+        [Output("obVersion")]
+        public Output<string> ObVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// The payment method of the instance. Value range:
+        /// - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
+        /// - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter `payment_type` takes effect only when the value is `Subscription` and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When `period_unit` = Year, Period values: {"1", "2", "3"}. When `period_unit` = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9"}.
+        /// The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {"1", "2", "3", "4"}. When PeriodUnit = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9", "12", "24", "36", "48", "60"}.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The period unit. Valid values: `Month`,`Year`.
+        /// The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
         /// </summary>
         [Output("periodUnit")]
         public Output<string?> PeriodUnit { get; private set; } = null!;
@@ -152,7 +203,7 @@ namespace Pulumi.AliCloud.Ocean
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Series of OceanBase clusters. Valid values: `normal`(default), `history`, `normal_ssd`.
+        /// Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
         /// </summary>
         [Output("series")]
         public Output<string> Series { get; private set; } = null!;
@@ -216,7 +267,8 @@ namespace Pulumi.AliCloud.Ocean
     public sealed class BaseInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to automatically renew.It takes effect when the parameter ChargeType is PrePaid. Value range:
+        /// Whether to automatically renew.
+        /// It takes effect when the parameter ChargeType is PrePaid. Value range:
         /// - true: automatic renewal.
         /// - false (default): no automatic renewal.
         /// </summary>
@@ -224,60 +276,89 @@ namespace Pulumi.AliCloud.Ocean
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.-PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.-PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
+        /// The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.
+        /// - PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.
+        /// - PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The backup retain mode.
+        /// The backup retention policy after the cluster is deleted. The values are as follows:
+        /// - receive_all: Keep all backup sets;
+        /// - delete_all: delete all backup sets;
+        /// - receive_last: Keep the last backup set.
+        /// &gt; **NOTE:**   The default value is delete_all.
         /// </summary>
         [Input("backupRetainMode")]
         public Input<string>? BackupRetainMode { get; set; }
 
         /// <summary>
-        /// The size of the storage space, in GB.The limits of storage space vary according to the cluster specifications, as follows:
+        /// The size of the storage space, in GB.
+        /// The limits of storage space vary according to the cluster specifications, as follows:
         /// - 8C32GB:100GB ~ 10000GB
         /// - 14C70GB:200GB ~ 10000GB
         /// - 30C180GB:400GB ~ 10000GB
         /// - 62C400G:800GB ~ 10000GB.
-        /// - The default value of each package is its minimum value.
+        /// The default value of each package is its minimum value.
         /// </summary>
         [Input("diskSize", required: true)]
         public Input<int> DiskSize { get; set; } = null!;
 
         /// <summary>
-        /// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
+        /// The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+        /// Two types are currently supported:
+        /// - cloud_essd_pl1: cloud disk ESSD pl1.
+        /// - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
+        /// </summary>
+        [Input("diskType")]
+        public Input<string>? DiskType { get; set; }
+
+        /// <summary>
+        /// Cluster specification information.
+        /// Four packages are currently supported:
+        /// - 8C32GB:8 cores 32GB.
+        /// - 14C70GB (default):14 cores 70GB.
+        /// - 30C180GB:30 cores 180GB.
+        /// - 62C400GB:62 cores 400GB.
         /// </summary>
         [Input("instanceClass", required: true)]
         public Input<string> InstanceClass { get; set; } = null!;
 
         /// <summary>
-        /// OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
+        /// OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The number of nodes in the cluster.
+        /// The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
         /// </summary>
         [Input("nodeNum")]
         public Input<string>? NodeNum { get; set; }
 
         /// <summary>
-        /// The payment method of the instance. Valid values: `PayAsYouGo`, `Subscription`.
+        /// The OceanBase Server version number.
+        /// </summary>
+        [Input("obVersion")]
+        public Input<string>? ObVersion { get; set; }
+
+        /// <summary>
+        /// The payment method of the instance. Value range:
+        /// - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
+        /// - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
         /// </summary>
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
 
         /// <summary>
-        /// The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter `payment_type` takes effect only when the value is `Subscription` and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When `period_unit` = Year, Period values: {"1", "2", "3"}. When `period_unit` = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9"}.
+        /// The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {"1", "2", "3", "4"}. When PeriodUnit = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9", "12", "24", "36", "48", "60"}.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The period unit. Valid values: `Month`,`Year`.
+        /// The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
@@ -289,7 +370,7 @@ namespace Pulumi.AliCloud.Ocean
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Series of OceanBase clusters. Valid values: `normal`(default), `history`, `normal_ssd`.
+        /// Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
         /// </summary>
         [Input("series", required: true)]
         public Input<string> Series { get; set; } = null!;
@@ -315,7 +396,8 @@ namespace Pulumi.AliCloud.Ocean
     public sealed class BaseInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to automatically renew.It takes effect when the parameter ChargeType is PrePaid. Value range:
+        /// Whether to automatically renew.
+        /// It takes effect when the parameter ChargeType is PrePaid. Value range:
         /// - true: automatic renewal.
         /// - false (default): no automatic renewal.
         /// </summary>
@@ -323,22 +405,25 @@ namespace Pulumi.AliCloud.Ocean
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.-PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.-PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
+        /// The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.
+        /// - PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.
+        /// - PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The backup retain mode.
+        /// The backup retention policy after the cluster is deleted. The values are as follows:
+        /// - receive_all: Keep all backup sets;
+        /// - delete_all: delete all backup sets;
+        /// - receive_last: Keep the last backup set.
+        /// &gt; **NOTE:**   The default value is delete_all.
         /// </summary>
         [Input("backupRetainMode")]
         public Input<string>? BackupRetainMode { get; set; }
 
         /// <summary>
-        /// The product code of the OceanBase cluster.
-        /// - oceanbase_oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package.
-        /// - oceanbase_oceanbasepost_public_cn: The domestic station cloud database is paid by the hour.
-        /// - oceanbase_obpre_public_intl: International Station Cloud Database Package Monthly Package.
+        /// The product code of the OceanBase cluster._oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package._oceanbasepost_public_cn: The domestic station cloud database is paid by the hour._obpre_public_intl: International Station Cloud Database Package Monthly Package.
         /// </summary>
         [Input("commodityCode")]
         public Input<string>? CommodityCode { get; set; }
@@ -350,54 +435,77 @@ namespace Pulumi.AliCloud.Ocean
         public Input<int>? Cpu { get; set; }
 
         /// <summary>
-        /// The creation time of the resource
+        /// The creation time of the resource.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The size of the storage space, in GB.The limits of storage space vary according to the cluster specifications, as follows:
+        /// The size of the storage space, in GB.
+        /// The limits of storage space vary according to the cluster specifications, as follows:
         /// - 8C32GB:100GB ~ 10000GB
         /// - 14C70GB:200GB ~ 10000GB
         /// - 30C180GB:400GB ~ 10000GB
         /// - 62C400G:800GB ~ 10000GB.
-        /// - The default value of each package is its minimum value.
+        /// The default value of each package is its minimum value.
         /// </summary>
         [Input("diskSize")]
         public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
+        /// The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+        /// Two types are currently supported:
+        /// - cloud_essd_pl1: cloud disk ESSD pl1.
+        /// - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
+        /// </summary>
+        [Input("diskType")]
+        public Input<string>? DiskType { get; set; }
+
+        /// <summary>
+        /// Cluster specification information.
+        /// Four packages are currently supported:
+        /// - 8C32GB:8 cores 32GB.
+        /// - 14C70GB (default):14 cores 70GB.
+        /// - 30C180GB:30 cores 180GB.
+        /// - 62C400GB:62 cores 400GB.
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
 
         /// <summary>
-        /// OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
+        /// OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The number of nodes in the cluster.
+        /// The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
         /// </summary>
         [Input("nodeNum")]
         public Input<string>? NodeNum { get; set; }
 
         /// <summary>
-        /// The payment method of the instance. Valid values: `PayAsYouGo`, `Subscription`.
+        /// The OceanBase Server version number.
+        /// </summary>
+        [Input("obVersion")]
+        public Input<string>? ObVersion { get; set; }
+
+        /// <summary>
+        /// The payment method of the instance. Value range:
+        /// - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
+        /// - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter `payment_type` takes effect only when the value is `Subscription` and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When `period_unit` = Year, Period values: {"1", "2", "3"}. When `period_unit` = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9"}.
+        /// The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {"1", "2", "3", "4"}. When PeriodUnit = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9", "12", "24", "36", "48", "60"}.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The period unit. Valid values: `Month`,`Year`.
+        /// The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
@@ -409,7 +517,7 @@ namespace Pulumi.AliCloud.Ocean
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Series of OceanBase clusters. Valid values: `normal`(default), `history`, `normal_ssd`.
+        /// Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
         /// </summary>
         [Input("series")]
         public Input<string>? Series { get; set; }

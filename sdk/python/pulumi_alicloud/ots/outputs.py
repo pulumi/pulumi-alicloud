@@ -58,9 +58,9 @@ class SearchIndexSchema(dict):
                  index_settings: Optional[Sequence['outputs.SearchIndexSchemaIndexSetting']] = None,
                  index_sorts: Optional[Sequence['outputs.SearchIndexSchemaIndexSort']] = None):
         """
-        :param Sequence['SearchIndexSchemaFieldSchemaArgs'] field_schemas: A list of field schemas. Each field schema contains the following parameters:
-        :param Sequence['SearchIndexSchemaIndexSettingArgs'] index_settings: The settings of the search index, including routingFields.
-        :param Sequence['SearchIndexSchemaIndexSortArgs'] index_sorts: The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default.
+        :param Sequence['SearchIndexSchemaFieldSchemaArgs'] field_schemas: A list of field schemas. See `field_schema` below.
+        :param Sequence['SearchIndexSchemaIndexSettingArgs'] index_settings: The settings of the search index, including routingFields. See `index_setting` below.
+        :param Sequence['SearchIndexSchemaIndexSortArgs'] index_sorts: The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default. See `index_sort` below.
         """
         pulumi.set(__self__, "field_schemas", field_schemas)
         if index_settings is not None:
@@ -72,7 +72,7 @@ class SearchIndexSchema(dict):
     @pulumi.getter(name="fieldSchemas")
     def field_schemas(self) -> Sequence['outputs.SearchIndexSchemaFieldSchema']:
         """
-        A list of field schemas. Each field schema contains the following parameters:
+        A list of field schemas. See `field_schema` below.
         """
         return pulumi.get(self, "field_schemas")
 
@@ -80,7 +80,7 @@ class SearchIndexSchema(dict):
     @pulumi.getter(name="indexSettings")
     def index_settings(self) -> Optional[Sequence['outputs.SearchIndexSchemaIndexSetting']]:
         """
-        The settings of the search index, including routingFields.
+        The settings of the search index, including routingFields. See `index_setting` below.
         """
         return pulumi.get(self, "index_settings")
 
@@ -88,7 +88,7 @@ class SearchIndexSchema(dict):
     @pulumi.getter(name="indexSorts")
     def index_sorts(self) -> Optional[Sequence['outputs.SearchIndexSchemaIndexSort']]:
         """
-        The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default.
+        The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default. See `index_sort` below.
         """
         return pulumi.get(self, "index_sorts")
 
@@ -127,7 +127,7 @@ class SearchIndexSchemaFieldSchema(dict):
                  is_array: Optional[bool] = None,
                  store: Optional[bool] = None):
         """
-        :param str field_name: The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+        :param str field_name: Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
         :param str field_type: Specifies the type of the field. Use FieldType.XXX to set the type.
         :param str analyzer: Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
         :param bool enable_sort_and_agg: Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
@@ -152,7 +152,7 @@ class SearchIndexSchemaFieldSchema(dict):
     @pulumi.getter(name="fieldName")
     def field_name(self) -> str:
         """
-        The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+        Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
         """
         return pulumi.get(self, "field_name")
 
@@ -246,7 +246,7 @@ class SearchIndexSchemaIndexSort(dict):
     def __init__(__self__, *,
                  sorters: Sequence['outputs.SearchIndexSchemaIndexSortSorter']):
         """
-        :param Sequence['SearchIndexSchemaIndexSortSorterArgs'] sorters: Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported.
+        :param Sequence['SearchIndexSchemaIndexSortSorterArgs'] sorters: Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `sorter` below.
         """
         pulumi.set(__self__, "sorters", sorters)
 
@@ -254,7 +254,7 @@ class SearchIndexSchemaIndexSort(dict):
     @pulumi.getter
     def sorters(self) -> Sequence['outputs.SearchIndexSchemaIndexSortSorter']:
         """
-        Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported.
+        Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `sorter` below.
         """
         return pulumi.get(self, "sorters")
 
@@ -286,7 +286,7 @@ class SearchIndexSchemaIndexSortSorter(dict):
                  order: Optional[str] = None,
                  sorter_type: Optional[str] = None):
         """
-        :param str field_name: The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+        :param str field_name: Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
         :param str mode: The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
         :param str order: The sort order. Data can be sorted in ascending(`Asc`) or descending(`Desc`) order. Default value: `Asc`.
         :param str sorter_type: Data is sorted by Which fields or keys. valid values: `PrimaryKeySort`, `FieldSort`.
@@ -304,7 +304,7 @@ class SearchIndexSchemaIndexSortSorter(dict):
     @pulumi.getter(name="fieldName")
     def field_name(self) -> Optional[str]:
         """
-        The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+        Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
         """
         return pulumi.get(self, "field_name")
 
@@ -368,8 +368,8 @@ class TablePrimaryKey(dict):
                  name: str,
                  type: str):
         """
-        :param str name: Name for defined column.
-        :param str type: Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+        :param str name: Name for primary key.
+        :param str type: Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
@@ -378,7 +378,7 @@ class TablePrimaryKey(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name for defined column.
+        Name for primary key.
         """
         return pulumi.get(self, "name")
 
@@ -386,7 +386,7 @@ class TablePrimaryKey(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+        Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
         """
         return pulumi.get(self, "type")
 

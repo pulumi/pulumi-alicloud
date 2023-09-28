@@ -14,33 +14,13 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// For information about Resource Manager Resource Directory and how to use it, see [What is Resource Manager Resource Directory](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.84.0+.
+    /// &gt; **NOTE:** Available since v1.84.0.
     /// 
     /// &gt; **NOTE:** An account can only be used to enable a resource directory after it passes enterprise real-name verification. An account that only passed individual real-name verification cannot be used to enable a resource directory.
     /// 
     /// &gt; **NOTE:** Before you destroy the resource, make sure that the following requirements are met:
     ///   - All member accounts must be removed from the resource directory.
     ///   - All folders except the root folder must be deleted from the resource directory.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.ResourceManager.ResourceDirectory("example", new()
-    ///     {
-    ///         Status = "Enabled",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

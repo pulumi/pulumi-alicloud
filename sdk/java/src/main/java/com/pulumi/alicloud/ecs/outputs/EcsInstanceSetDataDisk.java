@@ -42,6 +42,10 @@ public final class EcsInstanceSetDataDisk {
      * 
      */
     private Integer diskSize;
+    /**
+     * @return Encrypted the data in this disk. Default value: `false`.
+     * 
+     */
     private @Nullable Boolean encrypted;
     /**
      * @return The KMS key ID corresponding to the data disk.
@@ -99,6 +103,10 @@ public final class EcsInstanceSetDataDisk {
     public Integer diskSize() {
         return this.diskSize;
     }
+    /**
+     * @return Encrypted the data in this disk. Default value: `false`.
+     * 
+     */
     public Optional<Boolean> encrypted() {
         return Optional.ofNullable(this.encrypted);
     }

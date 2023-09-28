@@ -12,28 +12,7 @@ namespace Pulumi.AliCloud
     /// <summary>
     /// Provides a Msc Sub Webhook resource.
     /// 
-    /// &gt; **NOTE:** Available in v1.141.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.MscSubWebhook("example", new()
-    ///     {
-    ///         ServerUrl = "example_value",
-    ///         WebhookName = "example_value",
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// &gt; **NOTE:** Available since v1.141.0.
     /// 
     /// ## Import
     /// 

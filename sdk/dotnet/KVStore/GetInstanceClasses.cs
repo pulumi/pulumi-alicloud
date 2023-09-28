@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in v1.49.0+
+        /// &gt; **NOTE:** Available since v1.49.0+
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in v1.49.0+
+        /// &gt; **NOTE:** Available since v1.49.0+
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
-        /// * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values:
+        /// * product_type - (Optional, Available since 1.130.0) The type of the service. Valid values:
         /// * Local: an ApsaraDB for Redis instance with a local disk.
         /// * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
         /// </summary>
@@ -261,7 +261,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
-        /// * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values:
+        /// * product_type - (Optional, Available since 1.130.0) The type of the service. Valid values:
         /// * Local: an ApsaraDB for Redis instance with a local disk.
         /// * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
         /// </summary>

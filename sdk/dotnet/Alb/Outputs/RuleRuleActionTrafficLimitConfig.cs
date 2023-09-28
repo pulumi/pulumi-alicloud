@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class RuleRuleActionTrafficLimitConfig
     {
         /// <summary>
-        /// The Number of requests per second. Value range: 1~100000.
+        /// The Number of requests per second. Valid values: `1` to `100000`.
         /// </summary>
         public readonly int? Qps;
 

@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about NLB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createservergroup-nlb).
  *
- * > **NOTE:** Available in v1.186.0+.
+ * > **NOTE:** Available since v1.186.0.
  *
  * ## Example Usage
  *
@@ -21,17 +21,23 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
  * });
  * const defaultServerGroup = new alicloud.nlb.ServerGroup("defaultServerGroup", {
  *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
- *     serverGroupName: _var.name,
+ *     serverGroupName: name,
  *     serverGroupType: "Instance",
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
+ *     vpcId: defaultNetwork.id,
  *     scheduler: "Wrr",
  *     protocol: "TCP",
+ *     connectionDrain: true,
+ *     connectionDrainTimeout: 60,
+ *     addressIpVersion: "Ipv4",
  *     healthCheck: {
  *         healthCheckEnabled: true,
  *         healthCheckType: "TCP",
@@ -47,12 +53,10 @@ import * as utilities from "../utilities";
  *             "http_4xx",
  *         ],
  *     },
- *     connectionDrain: true,
- *     connectionDrainTimeout: 60,
  *     tags: {
  *         Created: "TF",
+ *         For: "example",
  *     },
- *     addressIpVersion: "Ipv4",
  * });
  * ```
  *
@@ -105,7 +109,7 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     public readonly connectionDrainTimeout!: pulumi.Output<number>;
     /**
-     * HealthCheck. See the following `Block healthCheck`.
+     * HealthCheck. See `healthCheck` below.
      */
     public readonly healthCheck!: pulumi.Output<outputs.nlb.ServerGroupHealthCheck>;
     /**
@@ -218,7 +222,7 @@ export interface ServerGroupState {
      */
     connectionDrainTimeout?: pulumi.Input<number>;
     /**
-     * HealthCheck. See the following `Block healthCheck`.
+     * HealthCheck. See `healthCheck` below.
      */
     healthCheck?: pulumi.Input<inputs.nlb.ServerGroupHealthCheck>;
     /**
@@ -276,7 +280,7 @@ export interface ServerGroupArgs {
      */
     connectionDrainTimeout?: pulumi.Input<number>;
     /**
-     * HealthCheck. See the following `Block healthCheck`.
+     * HealthCheck. See `healthCheck` below.
      */
     healthCheck: pulumi.Input<inputs.nlb.ServerGroupHealthCheck>;
     /**

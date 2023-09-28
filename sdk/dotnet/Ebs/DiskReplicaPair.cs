@@ -14,69 +14,7 @@ namespace Pulumi.AliCloud.Ebs
     /// 
     /// For information about Ebs Disk Replica Pair and how to use it, see [What is Disk Replica Pair](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/CreateDiskReplicaPair).
     /// 
-    /// &gt; **NOTE:** Available in v1.196.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultEcsDisk = new AliCloud.Ecs.EcsDisk("defaultEcsDisk", new()
-    ///     {
-    ///         ZoneId = "cn-hangzhou-onebox-nebula",
-    ///         Category = "cloud_essd",
-    ///         DeleteAutoSnapshot = true,
-    ///         DeleteWithInstance = true,
-    ///         Description = "Test For Terraform",
-    ///         DiskName = @var.Name,
-    ///         EnableAutoSnapshot = true,
-    ///         Encrypted = true,
-    ///         Size = 500,
-    ///         Tags = 
-    ///         {
-    ///             { "Created", "TF" },
-    ///             { "Environment", "Acceptance-test" },
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultone = new AliCloud.Ecs.EcsDisk("defaultone", new()
-    ///     {
-    ///         ZoneId = "cn-hangzhou-onebox-nebula-b",
-    ///         Category = "cloud_essd",
-    ///         DeleteAutoSnapshot = true,
-    ///         DeleteWithInstance = true,
-    ///         Description = "Test For Terraform",
-    ///         DiskName = @var.Name,
-    ///         EnableAutoSnapshot = true,
-    ///         Encrypted = true,
-    ///         Size = 500,
-    ///         Tags = 
-    ///         {
-    ///             { "Created", "TF" },
-    ///             { "Environment", "Acceptance-test" },
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultDiskReplicaPair = new AliCloud.Ebs.DiskReplicaPair("defaultDiskReplicaPair", new()
-    ///     {
-    ///         DestinationDiskId = defaultEcsDisk.Id,
-    ///         DestinationRegionId = "cn-hangzhou-onebox-nebula",
-    ///         Bandwidth = "10240",
-    ///         DestinationZoneId = "cn-hangzhou-onebox-nebula-e",
-    ///         SourceZoneId = "cn-hangzhou-onebox-nebula-b",
-    ///         DiskId = defaultone.Id,
-    ///         Description = "abc",
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// &gt; **NOTE:** Available since v1.196.0.
     /// 
     /// ## Import
     /// 
@@ -156,7 +94,7 @@ namespace Pulumi.AliCloud.Ebs
         public Output<string?> PeriodUnit { get; private set; } = null!;
 
         /// <summary>
-        /// The first ID of the resource
+        /// The first ID of the resource.
         /// </summary>
         [Output("replicaPairId")]
         public Output<string> ReplicaPairId { get; private set; } = null!;
@@ -292,7 +230,7 @@ namespace Pulumi.AliCloud.Ebs
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
-        /// The first ID of the resource
+        /// The first ID of the resource.
         /// </summary>
         [Input("replicaPairId")]
         public Input<string>? ReplicaPairId { get; set; }
@@ -384,7 +322,7 @@ namespace Pulumi.AliCloud.Ebs
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
-        /// The first ID of the resource
+        /// The first ID of the resource.
         /// </summary>
         [Input("replicaPairId")]
         public Input<string>? ReplicaPairId { get; set; }

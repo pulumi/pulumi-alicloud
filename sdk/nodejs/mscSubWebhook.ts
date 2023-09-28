@@ -7,21 +7,7 @@ import * as utilities from "./utilities";
 /**
  * Provides a Msc Sub Webhook resource.
  *
- * > **NOTE:** Available in v1.141.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.MscSubWebhook("example", {
- *     serverUrl: "example_value",
- *     webhookName: "example_value",
- * });
- * ```
+ * > **NOTE:** Available since v1.141.0.
  *
  * ## Import
  *

@@ -3302,7 +3302,7 @@ public final class HbrFunctions {
      * 
      * For information about HBR and how to use it, see [What is HBR](https://www.alibabacloud.com/help/en/hybrid-backup-recovery).
      * 
-     * &gt; **NOTE:** Available in v1.184.0+
+     * &gt; **NOTE:** Available since v1.184.0+
      * 
      * ## Example Usage
      * 
@@ -3345,7 +3345,7 @@ public final class HbrFunctions {
      * 
      * For information about HBR and how to use it, see [What is HBR](https://www.alibabacloud.com/help/en/hybrid-backup-recovery).
      * 
-     * &gt; **NOTE:** Available in v1.184.0+
+     * &gt; **NOTE:** Available since v1.184.0+
      * 
      * ## Example Usage
      * 
@@ -3388,7 +3388,7 @@ public final class HbrFunctions {
      * 
      * For information about HBR and how to use it, see [What is HBR](https://www.alibabacloud.com/help/en/hybrid-backup-recovery).
      * 
-     * &gt; **NOTE:** Available in v1.184.0+
+     * &gt; **NOTE:** Available since v1.184.0+
      * 
      * ## Example Usage
      * 
@@ -3431,7 +3431,7 @@ public final class HbrFunctions {
      * 
      * For information about HBR and how to use it, see [What is HBR](https://www.alibabacloud.com/help/en/hybrid-backup-recovery).
      * 
-     * &gt; **NOTE:** Available in v1.184.0+
+     * &gt; **NOTE:** Available since v1.184.0+
      * 
      * ## Example Usage
      * 
@@ -3474,7 +3474,7 @@ public final class HbrFunctions {
      * 
      * For information about HBR and how to use it, see [What is HBR](https://www.alibabacloud.com/help/en/hybrid-backup-recovery).
      * 
-     * &gt; **NOTE:** Available in v1.184.0+
+     * &gt; **NOTE:** Available since v1.184.0+
      * 
      * ## Example Usage
      * 
@@ -3517,7 +3517,7 @@ public final class HbrFunctions {
      * 
      * For information about HBR and how to use it, see [What is HBR](https://www.alibabacloud.com/help/en/hybrid-backup-recovery).
      * 
-     * &gt; **NOTE:** Available in v1.184.0+
+     * &gt; **NOTE:** Available since v1.184.0+
      * 
      * ## Example Usage
      * 

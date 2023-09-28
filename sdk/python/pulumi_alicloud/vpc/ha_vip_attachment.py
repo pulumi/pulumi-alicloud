@@ -14,41 +14,42 @@ __all__ = ['HAVipAttachmentArgs', 'HAVipAttachment']
 @pulumi.input_type
 class HAVipAttachmentArgs:
     def __init__(__self__, *,
-                 havip_id: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
-                 force: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 ha_vip_id: Optional[pulumi.Input[str]] = None,
+                 havip_id: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a HAVipAttachment resource.
-        :param pulumi.Input[str] havip_id: The havip_id of the havip attachment, the field can't be changed.
-        :param pulumi.Input[str] instance_id: The instance_id of the havip attachment, the field can't be changed.
-        :param pulumi.Input[str] force: Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
-        :param pulumi.Input[str] instance_type: The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
+        :param pulumi.Input[str] instance_id: The ID of the ECS instance bound to the HaVip instance.
+        :param pulumi.Input[bool] force: Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
+               - **True**: Force unbinding.
+               - **False** (default): unbinding is not forced.
+               > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+        :param pulumi.Input[str] ha_vip_id: The ID of the HaVip instance.
+        :param pulumi.Input[str] havip_id: . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+        :param pulumi.Input[str] instance_type: The type of the instance associated with the VIIP.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
-        pulumi.set(__self__, "havip_id", havip_id)
         pulumi.set(__self__, "instance_id", instance_id)
         if force is not None:
             pulumi.set(__self__, "force", force)
+        if ha_vip_id is not None:
+            pulumi.set(__self__, "ha_vip_id", ha_vip_id)
+        if havip_id is not None:
+            warnings.warn("""Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""", DeprecationWarning)
+            pulumi.log.warn("""havip_id is deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""")
+        if havip_id is not None:
+            pulumi.set(__self__, "havip_id", havip_id)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
-
-    @property
-    @pulumi.getter(name="havipId")
-    def havip_id(self) -> pulumi.Input[str]:
-        """
-        The havip_id of the havip attachment, the field can't be changed.
-        """
-        return pulumi.get(self, "havip_id")
-
-    @havip_id.setter
-    def havip_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "havip_id", value)
 
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[str]:
         """
-        The instance_id of the havip attachment, the field can't be changed.
+        The ID of the ECS instance bound to the HaVip instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -58,21 +59,53 @@ class HAVipAttachmentArgs:
 
     @property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[str]]:
+    def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+        Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
+        - **True**: Force unbinding.
+        - **False** (default): unbinding is not forced.
+        > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[str]]):
+    def force(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force", value)
+
+    @property
+    @pulumi.getter(name="haVipId")
+    def ha_vip_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the HaVip instance.
+        """
+        return pulumi.get(self, "ha_vip_id")
+
+    @ha_vip_id.setter
+    def ha_vip_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ha_vip_id", value)
+
+    @property
+    @pulumi.getter(name="havipId")
+    def havip_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+        """
+        warnings.warn("""Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""havip_id is deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""")
+
+        return pulumi.get(self, "havip_id")
+
+    @havip_id.setter
+    def havip_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "havip_id", value)
 
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
+        The type of the instance associated with the VIIP.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "instance_type")
 
@@ -84,21 +117,33 @@ class HAVipAttachmentArgs:
 @pulumi.input_type
 class _HAVipAttachmentState:
     def __init__(__self__, *,
-                 force: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 ha_vip_id: Optional[pulumi.Input[str]] = None,
                  havip_id: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering HAVipAttachment resources.
-        :param pulumi.Input[str] force: Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
-        :param pulumi.Input[str] havip_id: The havip_id of the havip attachment, the field can't be changed.
-        :param pulumi.Input[str] instance_id: The instance_id of the havip attachment, the field can't be changed.
-        :param pulumi.Input[str] instance_type: The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
-        :param pulumi.Input[str] status: (Available in v1.201.0+) The status of the HaVip instance.
+        :param pulumi.Input[bool] force: Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
+               - **True**: Force unbinding.
+               - **False** (default): unbinding is not forced.
+               > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+        :param pulumi.Input[str] ha_vip_id: The ID of the HaVip instance.
+        :param pulumi.Input[str] havip_id: . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+        :param pulumi.Input[str] instance_id: The ID of the ECS instance bound to the HaVip instance.
+        :param pulumi.Input[str] instance_type: The type of the instance associated with the VIIP.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[str] status: The status of the resource.
         """
         if force is not None:
             pulumi.set(__self__, "force", force)
+        if ha_vip_id is not None:
+            pulumi.set(__self__, "ha_vip_id", ha_vip_id)
+        if havip_id is not None:
+            warnings.warn("""Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""", DeprecationWarning)
+            pulumi.log.warn("""havip_id is deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""")
         if havip_id is not None:
             pulumi.set(__self__, "havip_id", havip_id)
         if instance_id is not None:
@@ -110,22 +155,40 @@ class _HAVipAttachmentState:
 
     @property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[str]]:
+    def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+        Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
+        - **True**: Force unbinding.
+        - **False** (default): unbinding is not forced.
+        > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[str]]):
+    def force(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force", value)
+
+    @property
+    @pulumi.getter(name="haVipId")
+    def ha_vip_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the HaVip instance.
+        """
+        return pulumi.get(self, "ha_vip_id")
+
+    @ha_vip_id.setter
+    def ha_vip_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ha_vip_id", value)
 
     @property
     @pulumi.getter(name="havipId")
     def havip_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The havip_id of the havip attachment, the field can't be changed.
+        . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
         """
+        warnings.warn("""Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""havip_id is deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""")
+
         return pulumi.get(self, "havip_id")
 
     @havip_id.setter
@@ -136,7 +199,7 @@ class _HAVipAttachmentState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The instance_id of the havip attachment, the field can't be changed.
+        The ID of the ECS instance bound to the HaVip instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -148,7 +211,9 @@ class _HAVipAttachmentState:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
+        The type of the instance associated with the VIIP.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "instance_type")
 
@@ -160,7 +225,7 @@ class _HAVipAttachmentState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in v1.201.0+) The status of the HaVip instance.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 
@@ -174,7 +239,8 @@ class HAVipAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 force: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 ha_vip_id: Optional[pulumi.Input[str]] = None,
                  havip_id: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
@@ -191,7 +257,7 @@ class HAVipAttachment(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         example_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=1,
@@ -230,18 +296,24 @@ class HAVipAttachment(pulumi.CustomResource):
 
         ## Import
 
-        The havip attachment can be imported using the id, e.g.
+        VPC Ha Vip Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/hAVipAttachment:HAVipAttachment foo havip-abc123456:i-abc123456
+         $ pulumi import alicloud:vpc/hAVipAttachment:HAVipAttachment example <ha_vip_id>:<instance_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] force: Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
-        :param pulumi.Input[str] havip_id: The havip_id of the havip attachment, the field can't be changed.
-        :param pulumi.Input[str] instance_id: The instance_id of the havip attachment, the field can't be changed.
-        :param pulumi.Input[str] instance_type: The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
+        :param pulumi.Input[bool] force: Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
+               - **True**: Force unbinding.
+               - **False** (default): unbinding is not forced.
+               > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+        :param pulumi.Input[str] ha_vip_id: The ID of the HaVip instance.
+        :param pulumi.Input[str] havip_id: . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+        :param pulumi.Input[str] instance_id: The ID of the ECS instance bound to the HaVip instance.
+        :param pulumi.Input[str] instance_type: The type of the instance associated with the VIIP.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         ...
     @overload
@@ -261,7 +333,7 @@ class HAVipAttachment(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         example_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=1,
@@ -300,10 +372,10 @@ class HAVipAttachment(pulumi.CustomResource):
 
         ## Import
 
-        The havip attachment can be imported using the id, e.g.
+        VPC Ha Vip Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/hAVipAttachment:HAVipAttachment foo havip-abc123456:i-abc123456
+         $ pulumi import alicloud:vpc/hAVipAttachment:HAVipAttachment example <ha_vip_id>:<instance_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -321,7 +393,8 @@ class HAVipAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 force: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 ha_vip_id: Optional[pulumi.Input[str]] = None,
                  havip_id: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
@@ -335,8 +408,10 @@ class HAVipAttachment(pulumi.CustomResource):
             __props__ = HAVipAttachmentArgs.__new__(HAVipAttachmentArgs)
 
             __props__.__dict__["force"] = force
-            if havip_id is None and not opts.urn:
-                raise TypeError("Missing required property 'havip_id'")
+            __props__.__dict__["ha_vip_id"] = ha_vip_id
+            if havip_id is not None and not opts.urn:
+                warnings.warn("""Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""", DeprecationWarning)
+                pulumi.log.warn("""havip_id is deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""")
             __props__.__dict__["havip_id"] = havip_id
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
@@ -353,7 +428,8 @@ class HAVipAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            force: Optional[pulumi.Input[str]] = None,
+            force: Optional[pulumi.Input[bool]] = None,
+            ha_vip_id: Optional[pulumi.Input[str]] = None,
             havip_id: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
@@ -365,17 +441,24 @@ class HAVipAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] force: Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
-        :param pulumi.Input[str] havip_id: The havip_id of the havip attachment, the field can't be changed.
-        :param pulumi.Input[str] instance_id: The instance_id of the havip attachment, the field can't be changed.
-        :param pulumi.Input[str] instance_type: The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
-        :param pulumi.Input[str] status: (Available in v1.201.0+) The status of the HaVip instance.
+        :param pulumi.Input[bool] force: Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
+               - **True**: Force unbinding.
+               - **False** (default): unbinding is not forced.
+               > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+        :param pulumi.Input[str] ha_vip_id: The ID of the HaVip instance.
+        :param pulumi.Input[str] havip_id: . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+        :param pulumi.Input[str] instance_id: The ID of the ECS instance bound to the HaVip instance.
+        :param pulumi.Input[str] instance_type: The type of the instance associated with the VIIP.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[str] status: The status of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _HAVipAttachmentState.__new__(_HAVipAttachmentState)
 
         __props__.__dict__["force"] = force
+        __props__.__dict__["ha_vip_id"] = ha_vip_id
         __props__.__dict__["havip_id"] = havip_id
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["instance_type"] = instance_type
@@ -384,25 +467,39 @@ class HAVipAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def force(self) -> pulumi.Output[Optional[str]]:
+    def force(self) -> pulumi.Output[Optional[bool]]:
         """
-        Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+        Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
+        - **True**: Force unbinding.
+        - **False** (default): unbinding is not forced.
+        > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
         """
         return pulumi.get(self, "force")
+
+    @property
+    @pulumi.getter(name="haVipId")
+    def ha_vip_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the HaVip instance.
+        """
+        return pulumi.get(self, "ha_vip_id")
 
     @property
     @pulumi.getter(name="havipId")
     def havip_id(self) -> pulumi.Output[str]:
         """
-        The havip_id of the havip attachment, the field can't be changed.
+        . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
         """
+        warnings.warn("""Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""havip_id is deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""")
+
         return pulumi.get(self, "havip_id")
 
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
         """
-        The instance_id of the havip attachment, the field can't be changed.
+        The ID of the ECS instance bound to the HaVip instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -410,7 +507,9 @@ class HAVipAttachment(pulumi.CustomResource):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Output[str]:
         """
-        The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
+        The type of the instance associated with the VIIP.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "instance_type")
 
@@ -418,7 +517,7 @@ class HAVipAttachment(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        (Available in v1.201.0+) The status of the HaVip instance.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 

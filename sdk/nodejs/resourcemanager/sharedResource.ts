@@ -11,6 +11,37 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.111.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexample";
+ * const exampleZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/16",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     cidrBlock: "192.168.0.0/16",
+ *     vpcId: exampleNetwork.id,
+ *     vswitchName: name,
+ * });
+ * const exampleResourceShare = new alicloud.resourcemanager.ResourceShare("exampleResourceShare", {resourceShareName: name});
+ * const exampleSharedResource = new alicloud.resourcemanager.SharedResource("exampleSharedResource", {
+ *     resourceId: exampleSwitch.id,
+ *     resourceShareId: exampleResourceShare.id,
+ *     resourceType: "VSwitch",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Resource Manager Shared Resource can be imported using the id, e.g.

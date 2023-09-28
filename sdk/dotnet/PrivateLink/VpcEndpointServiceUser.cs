@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.PrivateLink
     /// <summary>
     /// Provides a Private Link Vpc Endpoint Service User resource.
     /// 
-    /// For information about Private Link Vpc Endpoint Service User and how to use it, see [What is Vpc Endpoint Service User](https://help.aliyun.com/document_detail/183545.html).
+    /// For information about Private Link Vpc Endpoint Service User and how to use it, see [What is Vpc Endpoint Service User](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-addusertovpcendpointservice).
     /// 
-    /// &gt; **NOTE:** Available in v1.110.0+.
+    /// &gt; **NOTE:** Available since v1.110.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,10 +28,27 @@ namespace Pulumi.AliCloud.PrivateLink
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.PrivateLink.VpcEndpointServiceUser("example", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexampleuser";
+    ///     var exampleVpcEndpointService = new AliCloud.PrivateLink.VpcEndpointService("exampleVpcEndpointService", new()
     ///     {
-    ///         ServiceId = "epsrv-gw81c6xxxxxx",
-    ///         UserId = "YourRamUserId",
+    ///         ServiceDescription = name,
+    ///         ConnectBandwidth = 103,
+    ///         AutoAcceptConnection = false,
+    ///     });
+    /// 
+    ///     var exampleUser = new AliCloud.Ram.User("exampleUser", new()
+    ///     {
+    ///         DisplayName = "user_display_name",
+    ///         Mobile = "86-18688888888",
+    ///         Email = "hello.uuu@aaa.com",
+    ///         Comments = "yoyoyo",
+    ///     });
+    /// 
+    ///     var exampleVpcEndpointServiceUser = new AliCloud.PrivateLink.VpcEndpointServiceUser("exampleVpcEndpointServiceUser", new()
+    ///     {
+    ///         ServiceId = exampleVpcEndpointService.Id,
+    ///         UserId = exampleUser.Id,
     ///     });
     /// 
     /// });

@@ -23,12 +23,22 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:kms/alias:Alias":
 		r = &Alias{}
+	case "alicloud:kms/applicationAccessPoint:ApplicationAccessPoint":
+		r = &ApplicationAccessPoint{}
 	case "alicloud:kms/ciphertext:Ciphertext":
 		r = &Ciphertext{}
+	case "alicloud:kms/clientKey:ClientKey":
+		r = &ClientKey{}
+	case "alicloud:kms/instance:Instance":
+		r = &Instance{}
 	case "alicloud:kms/key:Key":
 		r = &Key{}
 	case "alicloud:kms/keyVersion:KeyVersion":
 		r = &KeyVersion{}
+	case "alicloud:kms/networkRule:NetworkRule":
+		r = &NetworkRule{}
+	case "alicloud:kms/policy:Policy":
+		r = &Policy{}
 	case "alicloud:kms/secret:Secret":
 		r = &Secret{}
 	default:
@@ -51,7 +61,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"kms/applicationAccessPoint",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"kms/ciphertext",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"kms/clientKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"kms/instance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -62,6 +87,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"kms/keyVersion",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"kms/networkRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"kms/policy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

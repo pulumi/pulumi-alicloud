@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a OOS Application Group resource.
  * 
- * For information about OOS Application Group and how to use it, see [What is Application Group](https://www.alibabacloud.com/help/en/doc-detail/120556.html).
+ * For information about OOS Application Group and how to use it, see [What is Application Group](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/api-oos-2019-06-01-createapplicationgroup).
  * 
- * &gt; **NOTE:** Available in v1.146.0+.
+ * &gt; **NOTE:** Available since v1.146.0.
  * 
  * ## Example Usage
  * 
@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.oos.Application;
  * import com.pulumi.alicloud.oos.ApplicationArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.oos.ApplicationGroup;
  * import com.pulumi.alicloud.oos.ApplicationGroupArgs;
  * import java.util.List;
@@ -49,20 +51,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
  *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
- *             .applicationName(&#34;terraform-example&#34;)
- *             .description(&#34;terraform-example&#34;)
+ *             .applicationName(name)
+ *             .description(name)
  *             .tags(Map.of(&#34;Created&#34;, &#34;TF&#34;))
  *             .build());
  * 
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
  *         var defaultApplicationGroup = new ApplicationGroup(&#34;defaultApplicationGroup&#34;, ApplicationGroupArgs.builder()        
- *             .applicationGroupName(&#34;terraform-example&#34;)
+ *             .applicationGroupName(name)
  *             .applicationName(defaultApplication.id())
- *             .deployRegionId(&#34;cn-beijing&#34;)
- *             .description(&#34;terraform-example&#34;)
+ *             .deployRegionId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .description(name)
  *             .importTagKey(&#34;example_key&#34;)
  *             .importTagValue(&#34;example_value&#34;)
  *             .build());

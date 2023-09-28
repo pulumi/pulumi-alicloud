@@ -28,24 +28,43 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ocean"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ocean.NewBaseInstance(ctx, "default", &ocean.BaseInstanceArgs{
-//				InstanceName:  pulumi.Any(_var.Name),
-//				Series:        pulumi.String("normal"),
-//				DiskSize:      pulumi.Int(200),
-//				InstanceClass: pulumi.String("14C70GB"),
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ocean.NewBaseInstance(ctx, "defaultBaseInstance", &ocean.BaseInstanceArgs{
+//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Ids[0]),
 //				Zones: pulumi.StringArray{
-//					pulumi.String("ap-southeast-1a"),
-//					pulumi.String("ap-southeast-1b"),
-//					pulumi.String("ap-southeast-1c"),
+//					defaultZones.Ids[len(defaultZones.Ids)-2],
+//					defaultZones.Ids[len(defaultZones.Ids)-3],
+//					defaultZones.Ids[len(defaultZones.Ids)-4],
 //				},
-//				PaymentType: pulumi.String("PayAsYouGo"),
+//				AutoRenew:        pulumi.Bool(false),
+//				DiskSize:         pulumi.Int(100),
+//				PaymentType:      pulumi.String("PayAsYouGo"),
+//				InstanceClass:    pulumi.String("8C32GB"),
+//				BackupRetainMode: pulumi.String("delete_all"),
+//				Series:           pulumi.String("normal"),
+//				InstanceName:     pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -68,45 +87,64 @@ import (
 type BaseInstance struct {
 	pulumi.CustomResourceState
 
-	// Whether to automatically renew.It takes effect when the parameter ChargeType is PrePaid. Value range:
+	// Whether to automatically renew.
+	// It takes effect when the parameter ChargeType is PrePaid. Value range:
 	// - true: automatic renewal.
 	// - false (default): no automatic renewal.
-	AutoRenew pulumi.BoolOutput `pulumi:"autoRenew"`
-	// The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.-PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.-PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
+	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
+	// The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.
+	// - PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.
+	// - PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
-	// The backup retain mode.
+	// The backup retention policy after the cluster is deleted. The values are as follows:
+	// - receive_all: Keep all backup sets;
+	// - delete_all: delete all backup sets;
+	// - receive_last: Keep the last backup set.
+	// > **NOTE:**   The default value is delete_all.
 	BackupRetainMode pulumi.StringPtrOutput `pulumi:"backupRetainMode"`
-	// The product code of the OceanBase cluster.
-	// - oceanbase_oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package.
-	// - oceanbase_oceanbasepost_public_cn: The domestic station cloud database is paid by the hour.
-	// - oceanbase_obpre_public_intl: International Station Cloud Database Package Monthly Package.
+	// The product code of the OceanBase cluster._oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package._oceanbasepost_public_cn: The domestic station cloud database is paid by the hour._obpre_public_intl: International Station Cloud Database Package Monthly Package.
 	CommodityCode pulumi.StringOutput `pulumi:"commodityCode"`
 	// The number of CPU cores of the cluster.
 	Cpu pulumi.IntOutput `pulumi:"cpu"`
-	// The creation time of the resource
+	// The creation time of the resource.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The size of the storage space, in GB.The limits of storage space vary according to the cluster specifications, as follows:
+	// The size of the storage space, in GB.
+	// The limits of storage space vary according to the cluster specifications, as follows:
 	// - 8C32GB:100GB ~ 10000GB
 	// - 14C70GB:200GB ~ 10000GB
 	// - 30C180GB:400GB ~ 10000GB
 	// - 62C400G:800GB ~ 10000GB.
-	// - The default value of each package is its minimum value.
+	//   The default value of each package is its minimum value.
 	DiskSize pulumi.IntOutput `pulumi:"diskSize"`
-	// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
+	// The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+	// Two types are currently supported:
+	// - cloud_essd_pl1: cloud disk ESSD pl1.
+	// - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
+	DiskType pulumi.StringOutput `pulumi:"diskType"`
+	// Cluster specification information.
+	// Four packages are currently supported:
+	// - 8C32GB:8 cores 32GB.
+	// - 14C70GB (default):14 cores 70GB.
+	// - 30C180GB:30 cores 180GB.
+	// - 62C400GB:62 cores 400GB.
 	InstanceClass pulumi.StringOutput `pulumi:"instanceClass"`
-	// OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
+	// OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
-	// The number of nodes in the cluster.
+	// The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
 	NodeNum pulumi.StringOutput `pulumi:"nodeNum"`
-	// The payment method of the instance. Valid values: `PayAsYouGo`, `Subscription`.
+	// The OceanBase Server version number.
+	ObVersion pulumi.StringOutput `pulumi:"obVersion"`
+	// The payment method of the instance. Value range:
+	// - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
+	// - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	// The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter `paymentType` takes effect only when the value is `Subscription` and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When `periodUnit` = Year, Period values: {"1", "2", "3"}. When `periodUnit` = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9"}.
+	// The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {"1", "2", "3", "4"}. When PeriodUnit = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9", "12", "24", "36", "48", "60"}.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// The period unit. Valid values: `Month`,`Year`.
+	// The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
 	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
 	// The ID of the enterprise resource group to which the instance resides.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// Series of OceanBase clusters. Valid values: `normal`(default), `history`, `normalSsd`.
+	// Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
 	Series pulumi.StringOutput `pulumi:"series"`
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -159,45 +197,64 @@ func GetBaseInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BaseInstance resources.
 type baseInstanceState struct {
-	// Whether to automatically renew.It takes effect when the parameter ChargeType is PrePaid. Value range:
+	// Whether to automatically renew.
+	// It takes effect when the parameter ChargeType is PrePaid. Value range:
 	// - true: automatic renewal.
 	// - false (default): no automatic renewal.
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.-PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.-PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
+	// The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.
+	// - PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.
+	// - PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
-	// The backup retain mode.
+	// The backup retention policy after the cluster is deleted. The values are as follows:
+	// - receive_all: Keep all backup sets;
+	// - delete_all: delete all backup sets;
+	// - receive_last: Keep the last backup set.
+	// > **NOTE:**   The default value is delete_all.
 	BackupRetainMode *string `pulumi:"backupRetainMode"`
-	// The product code of the OceanBase cluster.
-	// - oceanbase_oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package.
-	// - oceanbase_oceanbasepost_public_cn: The domestic station cloud database is paid by the hour.
-	// - oceanbase_obpre_public_intl: International Station Cloud Database Package Monthly Package.
+	// The product code of the OceanBase cluster._oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package._oceanbasepost_public_cn: The domestic station cloud database is paid by the hour._obpre_public_intl: International Station Cloud Database Package Monthly Package.
 	CommodityCode *string `pulumi:"commodityCode"`
 	// The number of CPU cores of the cluster.
 	Cpu *int `pulumi:"cpu"`
-	// The creation time of the resource
+	// The creation time of the resource.
 	CreateTime *string `pulumi:"createTime"`
-	// The size of the storage space, in GB.The limits of storage space vary according to the cluster specifications, as follows:
+	// The size of the storage space, in GB.
+	// The limits of storage space vary according to the cluster specifications, as follows:
 	// - 8C32GB:100GB ~ 10000GB
 	// - 14C70GB:200GB ~ 10000GB
 	// - 30C180GB:400GB ~ 10000GB
 	// - 62C400G:800GB ~ 10000GB.
-	// - The default value of each package is its minimum value.
+	//   The default value of each package is its minimum value.
 	DiskSize *int `pulumi:"diskSize"`
-	// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
+	// The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+	// Two types are currently supported:
+	// - cloud_essd_pl1: cloud disk ESSD pl1.
+	// - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
+	DiskType *string `pulumi:"diskType"`
+	// Cluster specification information.
+	// Four packages are currently supported:
+	// - 8C32GB:8 cores 32GB.
+	// - 14C70GB (default):14 cores 70GB.
+	// - 30C180GB:30 cores 180GB.
+	// - 62C400GB:62 cores 400GB.
 	InstanceClass *string `pulumi:"instanceClass"`
-	// OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
+	// OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
 	InstanceName *string `pulumi:"instanceName"`
-	// The number of nodes in the cluster.
+	// The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
 	NodeNum *string `pulumi:"nodeNum"`
-	// The payment method of the instance. Valid values: `PayAsYouGo`, `Subscription`.
+	// The OceanBase Server version number.
+	ObVersion *string `pulumi:"obVersion"`
+	// The payment method of the instance. Value range:
+	// - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
+	// - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
 	PaymentType *string `pulumi:"paymentType"`
-	// The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter `paymentType` takes effect only when the value is `Subscription` and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When `periodUnit` = Year, Period values: {"1", "2", "3"}. When `periodUnit` = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9"}.
+	// The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {"1", "2", "3", "4"}. When PeriodUnit = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9", "12", "24", "36", "48", "60"}.
 	Period *int `pulumi:"period"`
-	// The period unit. Valid values: `Month`,`Year`.
+	// The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
 	PeriodUnit *string `pulumi:"periodUnit"`
 	// The ID of the enterprise resource group to which the instance resides.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Series of OceanBase clusters. Valid values: `normal`(default), `history`, `normalSsd`.
+	// Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
 	Series *string `pulumi:"series"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
@@ -206,45 +263,64 @@ type baseInstanceState struct {
 }
 
 type BaseInstanceState struct {
-	// Whether to automatically renew.It takes effect when the parameter ChargeType is PrePaid. Value range:
+	// Whether to automatically renew.
+	// It takes effect when the parameter ChargeType is PrePaid. Value range:
 	// - true: automatic renewal.
 	// - false (default): no automatic renewal.
 	AutoRenew pulumi.BoolPtrInput
-	// The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.-PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.-PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
+	// The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.
+	// - PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.
+	// - PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
 	AutoRenewPeriod pulumi.IntPtrInput
-	// The backup retain mode.
+	// The backup retention policy after the cluster is deleted. The values are as follows:
+	// - receive_all: Keep all backup sets;
+	// - delete_all: delete all backup sets;
+	// - receive_last: Keep the last backup set.
+	// > **NOTE:**   The default value is delete_all.
 	BackupRetainMode pulumi.StringPtrInput
-	// The product code of the OceanBase cluster.
-	// - oceanbase_oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package.
-	// - oceanbase_oceanbasepost_public_cn: The domestic station cloud database is paid by the hour.
-	// - oceanbase_obpre_public_intl: International Station Cloud Database Package Monthly Package.
+	// The product code of the OceanBase cluster._oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package._oceanbasepost_public_cn: The domestic station cloud database is paid by the hour._obpre_public_intl: International Station Cloud Database Package Monthly Package.
 	CommodityCode pulumi.StringPtrInput
 	// The number of CPU cores of the cluster.
 	Cpu pulumi.IntPtrInput
-	// The creation time of the resource
+	// The creation time of the resource.
 	CreateTime pulumi.StringPtrInput
-	// The size of the storage space, in GB.The limits of storage space vary according to the cluster specifications, as follows:
+	// The size of the storage space, in GB.
+	// The limits of storage space vary according to the cluster specifications, as follows:
 	// - 8C32GB:100GB ~ 10000GB
 	// - 14C70GB:200GB ~ 10000GB
 	// - 30C180GB:400GB ~ 10000GB
 	// - 62C400G:800GB ~ 10000GB.
-	// - The default value of each package is its minimum value.
+	//   The default value of each package is its minimum value.
 	DiskSize pulumi.IntPtrInput
-	// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
+	// The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+	// Two types are currently supported:
+	// - cloud_essd_pl1: cloud disk ESSD pl1.
+	// - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
+	DiskType pulumi.StringPtrInput
+	// Cluster specification information.
+	// Four packages are currently supported:
+	// - 8C32GB:8 cores 32GB.
+	// - 14C70GB (default):14 cores 70GB.
+	// - 30C180GB:30 cores 180GB.
+	// - 62C400GB:62 cores 400GB.
 	InstanceClass pulumi.StringPtrInput
-	// OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
+	// OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
 	InstanceName pulumi.StringPtrInput
-	// The number of nodes in the cluster.
+	// The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
 	NodeNum pulumi.StringPtrInput
-	// The payment method of the instance. Valid values: `PayAsYouGo`, `Subscription`.
+	// The OceanBase Server version number.
+	ObVersion pulumi.StringPtrInput
+	// The payment method of the instance. Value range:
+	// - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
+	// - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
 	PaymentType pulumi.StringPtrInput
-	// The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter `paymentType` takes effect only when the value is `Subscription` and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When `periodUnit` = Year, Period values: {"1", "2", "3"}. When `periodUnit` = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9"}.
+	// The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {"1", "2", "3", "4"}. When PeriodUnit = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9", "12", "24", "36", "48", "60"}.
 	Period pulumi.IntPtrInput
-	// The period unit. Valid values: `Month`,`Year`.
+	// The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
 	PeriodUnit pulumi.StringPtrInput
 	// The ID of the enterprise resource group to which the instance resides.
 	ResourceGroupId pulumi.StringPtrInput
-	// Series of OceanBase clusters. Valid values: `normal`(default), `history`, `normalSsd`.
+	// Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
 	Series pulumi.StringPtrInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
@@ -257,36 +333,58 @@ func (BaseInstanceState) ElementType() reflect.Type {
 }
 
 type baseInstanceArgs struct {
-	// Whether to automatically renew.It takes effect when the parameter ChargeType is PrePaid. Value range:
+	// Whether to automatically renew.
+	// It takes effect when the parameter ChargeType is PrePaid. Value range:
 	// - true: automatic renewal.
 	// - false (default): no automatic renewal.
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.-PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.-PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
+	// The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.
+	// - PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.
+	// - PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
-	// The backup retain mode.
+	// The backup retention policy after the cluster is deleted. The values are as follows:
+	// - receive_all: Keep all backup sets;
+	// - delete_all: delete all backup sets;
+	// - receive_last: Keep the last backup set.
+	// > **NOTE:**   The default value is delete_all.
 	BackupRetainMode *string `pulumi:"backupRetainMode"`
-	// The size of the storage space, in GB.The limits of storage space vary according to the cluster specifications, as follows:
+	// The size of the storage space, in GB.
+	// The limits of storage space vary according to the cluster specifications, as follows:
 	// - 8C32GB:100GB ~ 10000GB
 	// - 14C70GB:200GB ~ 10000GB
 	// - 30C180GB:400GB ~ 10000GB
 	// - 62C400G:800GB ~ 10000GB.
-	// - The default value of each package is its minimum value.
+	//   The default value of each package is its minimum value.
 	DiskSize int `pulumi:"diskSize"`
-	// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
+	// The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+	// Two types are currently supported:
+	// - cloud_essd_pl1: cloud disk ESSD pl1.
+	// - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
+	DiskType *string `pulumi:"diskType"`
+	// Cluster specification information.
+	// Four packages are currently supported:
+	// - 8C32GB:8 cores 32GB.
+	// - 14C70GB (default):14 cores 70GB.
+	// - 30C180GB:30 cores 180GB.
+	// - 62C400GB:62 cores 400GB.
 	InstanceClass string `pulumi:"instanceClass"`
-	// OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
+	// OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
 	InstanceName *string `pulumi:"instanceName"`
-	// The number of nodes in the cluster.
+	// The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
 	NodeNum *string `pulumi:"nodeNum"`
-	// The payment method of the instance. Valid values: `PayAsYouGo`, `Subscription`.
+	// The OceanBase Server version number.
+	ObVersion *string `pulumi:"obVersion"`
+	// The payment method of the instance. Value range:
+	// - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
+	// - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
 	PaymentType string `pulumi:"paymentType"`
-	// The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter `paymentType` takes effect only when the value is `Subscription` and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When `periodUnit` = Year, Period values: {"1", "2", "3"}. When `periodUnit` = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9"}.
+	// The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {"1", "2", "3", "4"}. When PeriodUnit = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9", "12", "24", "36", "48", "60"}.
 	Period *int `pulumi:"period"`
-	// The period unit. Valid values: `Month`,`Year`.
+	// The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
 	PeriodUnit *string `pulumi:"periodUnit"`
 	// The ID of the enterprise resource group to which the instance resides.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Series of OceanBase clusters. Valid values: `normal`(default), `history`, `normalSsd`.
+	// Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
 	Series string `pulumi:"series"`
 	// Information about the zone where the cluster is deployed.
 	Zones []string `pulumi:"zones"`
@@ -294,36 +392,58 @@ type baseInstanceArgs struct {
 
 // The set of arguments for constructing a BaseInstance resource.
 type BaseInstanceArgs struct {
-	// Whether to automatically renew.It takes effect when the parameter ChargeType is PrePaid. Value range:
+	// Whether to automatically renew.
+	// It takes effect when the parameter ChargeType is PrePaid. Value range:
 	// - true: automatic renewal.
 	// - false (default): no automatic renewal.
 	AutoRenew pulumi.BoolPtrInput
-	// The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.-PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.-PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
+	// The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.
+	// - PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.
+	// - PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
 	AutoRenewPeriod pulumi.IntPtrInput
-	// The backup retain mode.
+	// The backup retention policy after the cluster is deleted. The values are as follows:
+	// - receive_all: Keep all backup sets;
+	// - delete_all: delete all backup sets;
+	// - receive_last: Keep the last backup set.
+	// > **NOTE:**   The default value is delete_all.
 	BackupRetainMode pulumi.StringPtrInput
-	// The size of the storage space, in GB.The limits of storage space vary according to the cluster specifications, as follows:
+	// The size of the storage space, in GB.
+	// The limits of storage space vary according to the cluster specifications, as follows:
 	// - 8C32GB:100GB ~ 10000GB
 	// - 14C70GB:200GB ~ 10000GB
 	// - 30C180GB:400GB ~ 10000GB
 	// - 62C400G:800GB ~ 10000GB.
-	// - The default value of each package is its minimum value.
+	//   The default value of each package is its minimum value.
 	DiskSize pulumi.IntInput
-	// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
+	// The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+	// Two types are currently supported:
+	// - cloud_essd_pl1: cloud disk ESSD pl1.
+	// - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
+	DiskType pulumi.StringPtrInput
+	// Cluster specification information.
+	// Four packages are currently supported:
+	// - 8C32GB:8 cores 32GB.
+	// - 14C70GB (default):14 cores 70GB.
+	// - 30C180GB:30 cores 180GB.
+	// - 62C400GB:62 cores 400GB.
 	InstanceClass pulumi.StringInput
-	// OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
+	// OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
 	InstanceName pulumi.StringPtrInput
-	// The number of nodes in the cluster.
+	// The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
 	NodeNum pulumi.StringPtrInput
-	// The payment method of the instance. Valid values: `PayAsYouGo`, `Subscription`.
+	// The OceanBase Server version number.
+	ObVersion pulumi.StringPtrInput
+	// The payment method of the instance. Value range:
+	// - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
+	// - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
 	PaymentType pulumi.StringInput
-	// The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter `paymentType` takes effect only when the value is `Subscription` and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When `periodUnit` = Year, Period values: {"1", "2", "3"}. When `periodUnit` = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9"}.
+	// The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {"1", "2", "3", "4"}. When PeriodUnit = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9", "12", "24", "36", "48", "60"}.
 	Period pulumi.IntPtrInput
-	// The period unit. Valid values: `Month`,`Year`.
+	// The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
 	PeriodUnit pulumi.StringPtrInput
 	// The ID of the enterprise resource group to which the instance resides.
 	ResourceGroupId pulumi.StringPtrInput
-	// Series of OceanBase clusters. Valid values: `normal`(default), `history`, `normalSsd`.
+	// Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
 	Series pulumi.StringInput
 	// Information about the zone where the cluster is deployed.
 	Zones pulumi.StringArrayInput
@@ -440,27 +560,31 @@ func (o BaseInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*BaseIn
 	}
 }
 
-// Whether to automatically renew.It takes effect when the parameter ChargeType is PrePaid. Value range:
+// Whether to automatically renew.
+// It takes effect when the parameter ChargeType is PrePaid. Value range:
 // - true: automatic renewal.
 // - false (default): no automatic renewal.
-func (o BaseInstanceOutput) AutoRenew() pulumi.BoolOutput {
-	return o.ApplyT(func(v *BaseInstance) pulumi.BoolOutput { return v.AutoRenew }).(pulumi.BoolOutput)
+func (o BaseInstanceOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BaseInstance) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
 }
 
-// The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.-PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.-PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
+// The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.
+// - PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.
+// - PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
 func (o BaseInstanceOutput) AutoRenewPeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BaseInstance) pulumi.IntPtrOutput { return v.AutoRenewPeriod }).(pulumi.IntPtrOutput)
 }
 
-// The backup retain mode.
+// The backup retention policy after the cluster is deleted. The values are as follows:
+// - receive_all: Keep all backup sets;
+// - delete_all: delete all backup sets;
+// - receive_last: Keep the last backup set.
+// > **NOTE:**   The default value is delete_all.
 func (o BaseInstanceOutput) BackupRetainMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BaseInstance) pulumi.StringPtrOutput { return v.BackupRetainMode }).(pulumi.StringPtrOutput)
 }
 
-// The product code of the OceanBase cluster.
-// - oceanbase_oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package.
-// - oceanbase_oceanbasepost_public_cn: The domestic station cloud database is paid by the hour.
-// - oceanbase_obpre_public_intl: International Station Cloud Database Package Monthly Package.
+// The product code of the OceanBase cluster._oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package._oceanbasepost_public_cn: The domestic station cloud database is paid by the hour._obpre_public_intl: International Station Cloud Database Package Monthly Package.
 func (o BaseInstanceOutput) CommodityCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *BaseInstance) pulumi.StringOutput { return v.CommodityCode }).(pulumi.StringOutput)
 }
@@ -470,47 +594,68 @@ func (o BaseInstanceOutput) Cpu() pulumi.IntOutput {
 	return o.ApplyT(func(v *BaseInstance) pulumi.IntOutput { return v.Cpu }).(pulumi.IntOutput)
 }
 
-// The creation time of the resource
+// The creation time of the resource.
 func (o BaseInstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *BaseInstance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The size of the storage space, in GB.The limits of storage space vary according to the cluster specifications, as follows:
-// - 8C32GB:100GB ~ 10000GB
-// - 14C70GB:200GB ~ 10000GB
-// - 30C180GB:400GB ~ 10000GB
-// - 62C400G:800GB ~ 10000GB.
-// - The default value of each package is its minimum value.
+// The size of the storage space, in GB.
+// The limits of storage space vary according to the cluster specifications, as follows:
+//   - 8C32GB:100GB ~ 10000GB
+//   - 14C70GB:200GB ~ 10000GB
+//   - 30C180GB:400GB ~ 10000GB
+//   - 62C400G:800GB ~ 10000GB.
+//     The default value of each package is its minimum value.
 func (o BaseInstanceOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *BaseInstance) pulumi.IntOutput { return v.DiskSize }).(pulumi.IntOutput)
 }
 
-// Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
+// The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+// Two types are currently supported:
+// - cloud_essd_pl1: cloud disk ESSD pl1.
+// - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
+func (o BaseInstanceOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v *BaseInstance) pulumi.StringOutput { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// Cluster specification information.
+// Four packages are currently supported:
+// - 8C32GB:8 cores 32GB.
+// - 14C70GB (default):14 cores 70GB.
+// - 30C180GB:30 cores 180GB.
+// - 62C400GB:62 cores 400GB.
 func (o BaseInstanceOutput) InstanceClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *BaseInstance) pulumi.StringOutput { return v.InstanceClass }).(pulumi.StringOutput)
 }
 
-// OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
+// OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
 func (o BaseInstanceOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *BaseInstance) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
 }
 
-// The number of nodes in the cluster.
+// The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
 func (o BaseInstanceOutput) NodeNum() pulumi.StringOutput {
 	return o.ApplyT(func(v *BaseInstance) pulumi.StringOutput { return v.NodeNum }).(pulumi.StringOutput)
 }
 
-// The payment method of the instance. Valid values: `PayAsYouGo`, `Subscription`.
+// The OceanBase Server version number.
+func (o BaseInstanceOutput) ObVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BaseInstance) pulumi.StringOutput { return v.ObVersion }).(pulumi.StringOutput)
+}
+
+// The payment method of the instance. Value range:
+// - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
+// - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
 func (o BaseInstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *BaseInstance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter `paymentType` takes effect only when the value is `Subscription` and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When `periodUnit` = Year, Period values: {"1", "2", "3"}. When `periodUnit` = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9"}.
+// The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {"1", "2", "3", "4"}. When PeriodUnit = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9", "12", "24", "36", "48", "60"}.
 func (o BaseInstanceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BaseInstance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// The period unit. Valid values: `Month`,`Year`.
+// The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
 func (o BaseInstanceOutput) PeriodUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BaseInstance) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
 }
@@ -520,7 +665,7 @@ func (o BaseInstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BaseInstance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// Series of OceanBase clusters. Valid values: `normal`(default), `history`, `normalSsd`.
+// Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
 func (o BaseInstanceOutput) Series() pulumi.StringOutput {
 	return o.ApplyT(func(v *BaseInstance) pulumi.StringOutput { return v.Series }).(pulumi.StringOutput)
 }

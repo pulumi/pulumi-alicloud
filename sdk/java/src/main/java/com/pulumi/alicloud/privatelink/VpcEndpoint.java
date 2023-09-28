@@ -20,20 +20,25 @@ import javax.annotation.Nullable;
 /**
  * Provides a Private Link Vpc Endpoint resource.
  * 
- * For information about Private Link Vpc Endpoint and how to use it, see [What is Vpc Endpoint](https://help.aliyun.com/document_detail/120479.html).
+ * For information about Private Link Vpc Endpoint and how to use it, see [What is Vpc Endpoint](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-createvpcendpoint).
  * 
- * &gt; **NOTE:** Available in v1.109.0+.
+ * &gt; **NOTE:** Available since v1.109.0.
  * 
  * ## Example Usage
  * 
  * Basic Usage
- * 
  * ```java
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.privatelink.VpcEndpointService;
+ * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.privatelink.VpcEndpoint;
  * import com.pulumi.alicloud.privatelink.VpcEndpointArgs;
  * import java.util.List;
@@ -49,10 +54,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new VpcEndpoint(&#34;example&#34;, VpcEndpointArgs.builder()        
- *             .securityGroupId(&#34;sg-ercx1234&#34;)
- *             .serviceId(&#34;YourServiceId&#34;)
- *             .vpcId(&#34;YourVpcId&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         var exampleVpcEndpointService = new VpcEndpointService(&#34;exampleVpcEndpointService&#34;, VpcEndpointServiceArgs.builder()        
+ *             .serviceDescription(name)
+ *             .connectBandwidth(103)
+ *             .autoAcceptConnection(false)
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *             .build());
+ * 
+ *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(exampleNetwork.id())
+ *             .build());
+ * 
+ *         var exampleVpcEndpoint = new VpcEndpoint(&#34;exampleVpcEndpoint&#34;, VpcEndpointArgs.builder()        
+ *             .serviceId(exampleVpcEndpointService.id())
+ *             .securityGroupIds(exampleSecurityGroup.id())
+ *             .vpcId(exampleNetwork.id())
+ *             .vpcEndpointName(name)
  *             .build());
  * 
  *     }

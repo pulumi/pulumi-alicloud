@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// <summary>
     /// Provides a Threat Detection Honeypot Node resource.
     /// 
-    /// For information about Threat Detection Honeypot Node and how to use it, see [What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotnode).
+    /// For information about Threat Detection Honeypot Node and how to use it, see [What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode).
     /// 
-    /// &gt; **NOTE:** Available in v1.195.0+.
+    /// &gt; **NOTE:** Available since v1.195.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,10 +28,12 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
     ///     var @default = new AliCloud.ThreatDetection.HoneypotNode("default", new()
     ///     {
+    ///         NodeName = name,
     ///         AvailableProbeNum = 20,
-    ///         NodeName = "apispec_test",
     ///         SecurityGroupProbeIpLists = new[]
     ///         {
     ///             "0.0.0.0/0",

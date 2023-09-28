@@ -53,7 +53,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
  *             .description(&#34;this is a policy test&#34;)
- *             .force(true)
  *             .policyDocument(&#34;&#34;&#34;
  *   {
  *     &#34;Statement&#34;: [
@@ -216,14 +215,14 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="rotateStrategy", type=String.class, parameters={})
-    private Output</* @Nullable */ String> rotateStrategy;
+    private Output<String> rotateStrategy;
 
     /**
      * @return The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
      * 
      */
-    public Output<Optional<String>> rotateStrategy() {
-        return Codegen.optional(this.rotateStrategy);
+    public Output<String> rotateStrategy() {
+        return this.rotateStrategy;
     }
     /**
      * (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.

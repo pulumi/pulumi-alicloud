@@ -19,7 +19,8 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final BaseInstanceArgs Empty = new BaseInstanceArgs();
 
     /**
-     * Whether to automatically renew.It takes effect when the parameter ChargeType is PrePaid. Value range:
+     * Whether to automatically renew.
+     * It takes effect when the parameter ChargeType is PrePaid. Value range:
      * - true: automatic renewal.
      * - false (default): no automatic renewal.
      * 
@@ -28,7 +29,8 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> autoRenew;
 
     /**
-     * @return Whether to automatically renew.It takes effect when the parameter ChargeType is PrePaid. Value range:
+     * @return Whether to automatically renew.
+     * It takes effect when the parameter ChargeType is PrePaid. Value range:
      * - true: automatic renewal.
      * - false (default): no automatic renewal.
      * 
@@ -38,14 +40,18 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.-PeriodUnit is Week, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;}.-PeriodUnit is Month, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;6&#34;, &#34;12&#34;}.
+     * The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.
+     * - PeriodUnit is Week, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;}.
+     * - PeriodUnit is Month, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;6&#34;, &#34;12&#34;}.
      * 
      */
     @Import(name="autoRenewPeriod")
     private @Nullable Output<Integer> autoRenewPeriod;
 
     /**
-     * @return The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.-PeriodUnit is Week, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;}.-PeriodUnit is Month, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;6&#34;, &#34;12&#34;}.
+     * @return The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.
+     * - PeriodUnit is Week, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;}.
+     * - PeriodUnit is Month, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;6&#34;, &#34;12&#34;}.
      * 
      */
     public Optional<Output<Integer>> autoRenewPeriod() {
@@ -53,14 +59,22 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The backup retain mode.
+     * The backup retention policy after the cluster is deleted. The values are as follows:
+     * - receive_all: Keep all backup sets;
+     * - delete_all: delete all backup sets;
+     * - receive_last: Keep the last backup set.
+     * &gt; **NOTE:**   The default value is delete_all.
      * 
      */
     @Import(name="backupRetainMode")
     private @Nullable Output<String> backupRetainMode;
 
     /**
-     * @return The backup retain mode.
+     * @return The backup retention policy after the cluster is deleted. The values are as follows:
+     * - receive_all: Keep all backup sets;
+     * - delete_all: delete all backup sets;
+     * - receive_last: Keep the last backup set.
+     * &gt; **NOTE:**   The default value is delete_all.
      * 
      */
     public Optional<Output<String>> backupRetainMode() {
@@ -68,24 +82,26 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The size of the storage space, in GB.The limits of storage space vary according to the cluster specifications, as follows:
+     * The size of the storage space, in GB.
+     * The limits of storage space vary according to the cluster specifications, as follows:
      * - 8C32GB:100GB ~ 10000GB
      * - 14C70GB:200GB ~ 10000GB
      * - 30C180GB:400GB ~ 10000GB
      * - 62C400G:800GB ~ 10000GB.
-     * - The default value of each package is its minimum value.
+     *   The default value of each package is its minimum value.
      * 
      */
     @Import(name="diskSize", required=true)
     private Output<Integer> diskSize;
 
     /**
-     * @return The size of the storage space, in GB.The limits of storage space vary according to the cluster specifications, as follows:
+     * @return The size of the storage space, in GB.
+     * The limits of storage space vary according to the cluster specifications, as follows:
      * - 8C32GB:100GB ~ 10000GB
      * - 14C70GB:200GB ~ 10000GB
      * - 30C180GB:400GB ~ 10000GB
      * - 62C400G:800GB ~ 10000GB.
-     * - The default value of each package is its minimum value.
+     *   The default value of each package is its minimum value.
      * 
      */
     public Output<Integer> diskSize() {
@@ -93,14 +109,45 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
+     * The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+     * Two types are currently supported:
+     * - cloud_essd_pl1: cloud disk ESSD pl1.
+     * - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
+     * 
+     */
+    @Import(name="diskType")
+    private @Nullable Output<String> diskType;
+
+    /**
+     * @return The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+     * Two types are currently supported:
+     * - cloud_essd_pl1: cloud disk ESSD pl1.
+     * - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
+     * 
+     */
+    public Optional<Output<String>> diskType() {
+        return Optional.ofNullable(this.diskType);
+    }
+
+    /**
+     * Cluster specification information.
+     * Four packages are currently supported:
+     * - 8C32GB:8 cores 32GB.
+     * - 14C70GB (default):14 cores 70GB.
+     * - 30C180GB:30 cores 180GB.
+     * - 62C400GB:62 cores 400GB.
      * 
      */
     @Import(name="instanceClass", required=true)
     private Output<String> instanceClass;
 
     /**
-     * @return Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
+     * @return Cluster specification information.
+     * Four packages are currently supported:
+     * - 8C32GB:8 cores 32GB.
+     * - 14C70GB (default):14 cores 70GB.
+     * - 30C180GB:30 cores 180GB.
+     * - 62C400GB:62 cores 400GB.
      * 
      */
     public Output<String> instanceClass() {
@@ -108,14 +155,14 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
+     * OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
      * 
      */
     @Import(name="instanceName")
     private @Nullable Output<String> instanceName;
 
     /**
-     * @return OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
+     * @return OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
      * 
      */
     public Optional<Output<String>> instanceName() {
@@ -123,14 +170,14 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of nodes in the cluster.
+     * The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
      * 
      */
     @Import(name="nodeNum")
     private @Nullable Output<String> nodeNum;
 
     /**
-     * @return The number of nodes in the cluster.
+     * @return The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
      * 
      */
     public Optional<Output<String>> nodeNum() {
@@ -138,14 +185,33 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The payment method of the instance. Valid values: `PayAsYouGo`, `Subscription`.
+     * The OceanBase Server version number.
+     * 
+     */
+    @Import(name="obVersion")
+    private @Nullable Output<String> obVersion;
+
+    /**
+     * @return The OceanBase Server version number.
+     * 
+     */
+    public Optional<Output<String>> obVersion() {
+        return Optional.ofNullable(this.obVersion);
+    }
+
+    /**
+     * The payment method of the instance. Value range:
+     * - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
+     * - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
      * 
      */
     @Import(name="paymentType", required=true)
     private Output<String> paymentType;
 
     /**
-     * @return The payment method of the instance. Valid values: `PayAsYouGo`, `Subscription`.
+     * @return The payment method of the instance. Value range:
+     * - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
+     * - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
      * 
      */
     public Output<String> paymentType() {
@@ -153,14 +219,14 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter `payment_type` takes effect only when the value is `Subscription` and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When `period_unit` = Year, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;}. When `period_unit` = Month, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;4&#34;, &#34;5&#34;, &#34;6&#34;, &#34;7&#34;, &#34;8&#34;, &#34;9&#34;}.
+     * The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;4&#34;}. When PeriodUnit = Month, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;4&#34;, &#34;5&#34;, &#34;6&#34;, &#34;7&#34;, &#34;8&#34;, &#34;9&#34;, &#34;12&#34;, &#34;24&#34;, &#34;36&#34;, &#34;48&#34;, &#34;60&#34;}.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter `payment_type` takes effect only when the value is `Subscription` and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When `period_unit` = Year, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;}. When `period_unit` = Month, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;4&#34;, &#34;5&#34;, &#34;6&#34;, &#34;7&#34;, &#34;8&#34;, &#34;9&#34;}.
+     * @return The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;4&#34;}. When PeriodUnit = Month, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;4&#34;, &#34;5&#34;, &#34;6&#34;, &#34;7&#34;, &#34;8&#34;, &#34;9&#34;, &#34;12&#34;, &#34;24&#34;, &#34;36&#34;, &#34;48&#34;, &#34;60&#34;}.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -168,14 +234,14 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The period unit. Valid values: `Month`,`Year`.
+     * The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
      * 
      */
     @Import(name="periodUnit")
     private @Nullable Output<String> periodUnit;
 
     /**
-     * @return The period unit. Valid values: `Month`,`Year`.
+     * @return The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
      * 
      */
     public Optional<Output<String>> periodUnit() {
@@ -198,14 +264,14 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Series of OceanBase clusters. Valid values: `normal`(default), `history`, `normal_ssd`.
+     * Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
      * 
      */
     @Import(name="series", required=true)
     private Output<String> series;
 
     /**
-     * @return Series of OceanBase clusters. Valid values: `normal`(default), `history`, `normal_ssd`.
+     * @return Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
      * 
      */
     public Output<String> series() {
@@ -234,9 +300,11 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.autoRenewPeriod = $.autoRenewPeriod;
         this.backupRetainMode = $.backupRetainMode;
         this.diskSize = $.diskSize;
+        this.diskType = $.diskType;
         this.instanceClass = $.instanceClass;
         this.instanceName = $.instanceName;
         this.nodeNum = $.nodeNum;
+        this.obVersion = $.obVersion;
         this.paymentType = $.paymentType;
         this.period = $.period;
         this.periodUnit = $.periodUnit;
@@ -264,7 +332,8 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Whether to automatically renew.It takes effect when the parameter ChargeType is PrePaid. Value range:
+         * @param autoRenew Whether to automatically renew.
+         * It takes effect when the parameter ChargeType is PrePaid. Value range:
          * - true: automatic renewal.
          * - false (default): no automatic renewal.
          * 
@@ -277,7 +346,8 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Whether to automatically renew.It takes effect when the parameter ChargeType is PrePaid. Value range:
+         * @param autoRenew Whether to automatically renew.
+         * It takes effect when the parameter ChargeType is PrePaid. Value range:
          * - true: automatic renewal.
          * - false (default): no automatic renewal.
          * 
@@ -289,7 +359,9 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewPeriod The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.-PeriodUnit is Week, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;}.-PeriodUnit is Month, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;6&#34;, &#34;12&#34;}.
+         * @param autoRenewPeriod The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.
+         * - PeriodUnit is Week, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;}.
+         * - PeriodUnit is Month, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;6&#34;, &#34;12&#34;}.
          * 
          * @return builder
          * 
@@ -300,7 +372,9 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewPeriod The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.-PeriodUnit is Week, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;}.-PeriodUnit is Month, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;6&#34;, &#34;12&#34;}.
+         * @param autoRenewPeriod The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.
+         * - PeriodUnit is Week, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;}.
+         * - PeriodUnit is Month, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;6&#34;, &#34;12&#34;}.
          * 
          * @return builder
          * 
@@ -310,7 +384,11 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupRetainMode The backup retain mode.
+         * @param backupRetainMode The backup retention policy after the cluster is deleted. The values are as follows:
+         * - receive_all: Keep all backup sets;
+         * - delete_all: delete all backup sets;
+         * - receive_last: Keep the last backup set.
+         * &gt; **NOTE:**   The default value is delete_all.
          * 
          * @return builder
          * 
@@ -321,7 +399,11 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupRetainMode The backup retain mode.
+         * @param backupRetainMode The backup retention policy after the cluster is deleted. The values are as follows:
+         * - receive_all: Keep all backup sets;
+         * - delete_all: delete all backup sets;
+         * - receive_last: Keep the last backup set.
+         * &gt; **NOTE:**   The default value is delete_all.
          * 
          * @return builder
          * 
@@ -331,12 +413,13 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskSize The size of the storage space, in GB.The limits of storage space vary according to the cluster specifications, as follows:
+         * @param diskSize The size of the storage space, in GB.
+         * The limits of storage space vary according to the cluster specifications, as follows:
          * - 8C32GB:100GB ~ 10000GB
          * - 14C70GB:200GB ~ 10000GB
          * - 30C180GB:400GB ~ 10000GB
          * - 62C400G:800GB ~ 10000GB.
-         * - The default value of each package is its minimum value.
+         *   The default value of each package is its minimum value.
          * 
          * @return builder
          * 
@@ -347,12 +430,13 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskSize The size of the storage space, in GB.The limits of storage space vary according to the cluster specifications, as follows:
+         * @param diskSize The size of the storage space, in GB.
+         * The limits of storage space vary according to the cluster specifications, as follows:
          * - 8C32GB:100GB ~ 10000GB
          * - 14C70GB:200GB ~ 10000GB
          * - 30C180GB:400GB ~ 10000GB
          * - 62C400G:800GB ~ 10000GB.
-         * - The default value of each package is its minimum value.
+         *   The default value of each package is its minimum value.
          * 
          * @return builder
          * 
@@ -362,7 +446,39 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceClass Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
+         * @param diskType The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+         * Two types are currently supported:
+         * - cloud_essd_pl1: cloud disk ESSD pl1.
+         * - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskType(@Nullable Output<String> diskType) {
+            $.diskType = diskType;
+            return this;
+        }
+
+        /**
+         * @param diskType The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+         * Two types are currently supported:
+         * - cloud_essd_pl1: cloud disk ESSD pl1.
+         * - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskType(String diskType) {
+            return diskType(Output.of(diskType));
+        }
+
+        /**
+         * @param instanceClass Cluster specification information.
+         * Four packages are currently supported:
+         * - 8C32GB:8 cores 32GB.
+         * - 14C70GB (default):14 cores 70GB.
+         * - 30C180GB:30 cores 180GB.
+         * - 62C400GB:62 cores 400GB.
          * 
          * @return builder
          * 
@@ -373,7 +489,12 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceClass Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
+         * @param instanceClass Cluster specification information.
+         * Four packages are currently supported:
+         * - 8C32GB:8 cores 32GB.
+         * - 14C70GB (default):14 cores 70GB.
+         * - 30C180GB:30 cores 180GB.
+         * - 62C400GB:62 cores 400GB.
          * 
          * @return builder
          * 
@@ -383,7 +504,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceName OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
+         * @param instanceName OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
          * 
          * @return builder
          * 
@@ -394,7 +515,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceName OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
+         * @param instanceName OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
          * 
          * @return builder
          * 
@@ -404,7 +525,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeNum The number of nodes in the cluster.
+         * @param nodeNum The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
          * 
          * @return builder
          * 
@@ -415,7 +536,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeNum The number of nodes in the cluster.
+         * @param nodeNum The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
          * 
          * @return builder
          * 
@@ -425,7 +546,30 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The payment method of the instance. Valid values: `PayAsYouGo`, `Subscription`.
+         * @param obVersion The OceanBase Server version number.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder obVersion(@Nullable Output<String> obVersion) {
+            $.obVersion = obVersion;
+            return this;
+        }
+
+        /**
+         * @param obVersion The OceanBase Server version number.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder obVersion(String obVersion) {
+            return obVersion(Output.of(obVersion));
+        }
+
+        /**
+         * @param paymentType The payment method of the instance. Value range:
+         * - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
+         * - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
          * 
          * @return builder
          * 
@@ -436,7 +580,9 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The payment method of the instance. Valid values: `PayAsYouGo`, `Subscription`.
+         * @param paymentType The payment method of the instance. Value range:
+         * - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
+         * - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
          * 
          * @return builder
          * 
@@ -446,7 +592,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter `payment_type` takes effect only when the value is `Subscription` and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When `period_unit` = Year, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;}. When `period_unit` = Month, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;4&#34;, &#34;5&#34;, &#34;6&#34;, &#34;7&#34;, &#34;8&#34;, &#34;9&#34;}.
+         * @param period The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;4&#34;}. When PeriodUnit = Month, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;4&#34;, &#34;5&#34;, &#34;6&#34;, &#34;7&#34;, &#34;8&#34;, &#34;9&#34;, &#34;12&#34;, &#34;24&#34;, &#34;36&#34;, &#34;48&#34;, &#34;60&#34;}.
          * 
          * @return builder
          * 
@@ -457,7 +603,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter `payment_type` takes effect only when the value is `Subscription` and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When `period_unit` = Year, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;}. When `period_unit` = Month, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;4&#34;, &#34;5&#34;, &#34;6&#34;, &#34;7&#34;, &#34;8&#34;, &#34;9&#34;}.
+         * @param period The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;4&#34;}. When PeriodUnit = Month, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;4&#34;, &#34;5&#34;, &#34;6&#34;, &#34;7&#34;, &#34;8&#34;, &#34;9&#34;, &#34;12&#34;, &#34;24&#34;, &#34;36&#34;, &#34;48&#34;, &#34;60&#34;}.
          * 
          * @return builder
          * 
@@ -467,7 +613,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param periodUnit The period unit. Valid values: `Month`,`Year`.
+         * @param periodUnit The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
          * 
          * @return builder
          * 
@@ -478,7 +624,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param periodUnit The period unit. Valid values: `Month`,`Year`.
+         * @param periodUnit The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
          * 
          * @return builder
          * 
@@ -509,7 +655,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param series Series of OceanBase clusters. Valid values: `normal`(default), `history`, `normal_ssd`.
+         * @param series Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
          * 
          * @return builder
          * 
@@ -520,7 +666,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param series Series of OceanBase clusters. Valid values: `normal`(default), `history`, `normal_ssd`.
+         * @param series Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
          * 
          * @return builder
          * 

@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * 
  * For information about ECS Instance Set and how to use it, see [What is Instance Set](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/runinstances).
  * 
- * &gt; **NOTE:** Available in v1.173.0+.
+ * &gt; **NOTE:** Available since v1.173.0.
  * 
  * &gt; **NOTE:** This resource is used to batch create a group of instance resources with the same configuration. However, this resource is not recommended. `alicloud.ecs.Instance` is preferred.
  * 
@@ -199,14 +199,14 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.bootCheckOsWithAssistant);
     }
     /**
-     * The list of data disks created with instance. See the following `Block data_disks`.
+     * The list of data disks created with instance. See `data_disks` below..
      * 
      */
     @Export(name="dataDisks", type=List.class, parameters={EcsInstanceSetDataDisk.class})
     private Output</* @Nullable */ List<EcsInstanceSetDataDisk>> dataDisks;
 
     /**
-     * @return The list of data disks created with instance. See the following `Block data_disks`.
+     * @return The list of data disks created with instance. See `data_disks` below..
      * 
      */
     public Output<Optional<List<EcsInstanceSetDataDisk>>> dataDisks() {
@@ -269,14 +269,14 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The instances that need to be excluded from the Instance Set. See the following `Block exclude_instance_filter`.
+     * The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
      * 
      */
     @Export(name="excludeInstanceFilter", type=EcsInstanceSetExcludeInstanceFilter.class, parameters={})
     private Output</* @Nullable */ EcsInstanceSetExcludeInstanceFilter> excludeInstanceFilter;
 
     /**
-     * @return The instances that need to be excluded from the Instance Set. See the following `Block exclude_instance_filter`.
+     * @return The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
      * 
      */
     public Output<Optional<EcsInstanceSetExcludeInstanceFilter>> excludeInstanceFilter() {
@@ -465,14 +465,14 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.launchTemplateVersion);
     }
     /**
-     * A list of NetworkInterface. See the following `Block network_interfaces`.
+     * A list of NetworkInterface. See `network_interfaces` below..
      * 
      */
     @Export(name="networkInterfaces", type=List.class, parameters={EcsInstanceSetNetworkInterface.class})
     private Output</* @Nullable */ List<EcsInstanceSetNetworkInterface>> networkInterfaces;
 
     /**
-     * @return A list of NetworkInterface. See the following `Block network_interfaces`.
+     * @return A list of NetworkInterface. See `network_interfaces` below..
      * 
      */
     public Output<Optional<List<EcsInstanceSetNetworkInterface>>> networkInterfaces() {

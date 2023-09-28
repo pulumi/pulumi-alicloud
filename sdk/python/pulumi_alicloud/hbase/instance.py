@@ -67,9 +67,6 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: The security group resource of the cluster.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The id of the VPC.
-               
-               
-               > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         :param pulumi.Input[str] vswitch_id: If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
         :param pulumi.Input[str] zone_id: The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
@@ -379,9 +376,6 @@ class InstanceArgs:
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
         The id of the VPC.
-
-
-        > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -471,15 +465,14 @@ class _InstanceState:
         :param pulumi.Input[str] password: The password of the cluster web ui account. Size [0-128].
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: The security group resource of the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceSlbConnAddrArgs']]] slb_conn_addrs: (Available in 1.105.0+) The slb service addresses of the cluster.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceUiProxyConnAddrArgs']]] ui_proxy_conn_addrs: (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
-        :param pulumi.Input[str] vpc_id: The id of the VPC.
-               
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceSlbConnAddrArgs']]] slb_conn_addrs: The slb service addresses of the cluster. See `slb_conn_addrs` below.
                
                > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceUiProxyConnAddrArgs']]] ui_proxy_conn_addrs: The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
+        :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceZkConnAddrArgs']]] zk_conn_addrs: (Available in 1.105.0+) The zookeeper addresses of the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceZkConnAddrArgs']]] zk_conn_addrs: The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
         :param pulumi.Input[str] zone_id: The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
         if account is not None:
@@ -798,7 +791,9 @@ class _InstanceState:
     @pulumi.getter(name="slbConnAddrs")
     def slb_conn_addrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSlbConnAddrArgs']]]]:
         """
-        (Available in 1.105.0+) The slb service addresses of the cluster.
+        The slb service addresses of the cluster. See `slb_conn_addrs` below.
+
+        > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         """
         return pulumi.get(self, "slb_conn_addrs")
 
@@ -822,7 +817,7 @@ class _InstanceState:
     @pulumi.getter(name="uiProxyConnAddrs")
     def ui_proxy_conn_addrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUiProxyConnAddrArgs']]]]:
         """
-        (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+        The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
         """
         return pulumi.get(self, "ui_proxy_conn_addrs")
 
@@ -835,9 +830,6 @@ class _InstanceState:
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
         The id of the VPC.
-
-
-        > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -861,7 +853,7 @@ class _InstanceState:
     @pulumi.getter(name="zkConnAddrs")
     def zk_conn_addrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceZkConnAddrArgs']]]]:
         """
-        (Available in 1.105.0+) The zookeeper addresses of the cluster.
+        The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
         """
         return pulumi.get(self, "zk_conn_addrs")
 
@@ -915,13 +907,13 @@ class Instance(pulumi.CustomResource):
         """
         Provides a HBase instance resource supports replica set instances only. The HBase provides stable, reliable, and automatic scalable database services.
         It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
-        You can see detail product introduction [here](https://help.aliyun.com/product/49055.html)
+        You can see detail product introduction [here](https://www.alibabacloud.com/help/en/apsaradb-for-hbase/latest/createcluster)
 
-        > **NOTE:**  Available in 1.67.0+
+        > **NOTE:** Available since v1.67.0.
 
         > **NOTE:**  The following regions don't support create Classic network HBase instance.
         [`cn-hangzhou`,`cn-shanghai`,`cn-qingdao`,`cn-beijing`,`cn-shenzhen`,`ap-southeast-1a`,.....]
-        The official website mark  more regions. or you can call [DescribeRegions](https://help.aliyun.com/document_detail/144489.html)
+        The official website mark  more regions. or you can call [DescribeRegions](https://www.alibabacloud.com/help/en/apsaradb-for-hbase/latest/describeregions)
 
         > **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
 
@@ -932,18 +924,28 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.hbase.Instance("default",
-            cold_storage_size=0,
-            core_disk_size=400,
-            core_disk_type="cloud_efficiency",
-            core_instance_quantity=2,
-            core_instance_type="hbase.sn2.2xlarge",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.hbase.get_zones()
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_zones.zones[0].id)
+        default_instance = alicloud.hbase.Instance("defaultInstance",
+            zone_id=default_zones.zones[0].id,
+            vswitch_id=default_switches.ids[0],
+            vpc_id=default_networks.ids[0],
             engine="hbaseue",
             engine_version="2.0",
             master_instance_type="hbase.sn2.2xlarge",
+            core_instance_type="hbase.sn2.2xlarge",
+            core_instance_quantity=2,
+            core_disk_type="cloud_efficiency",
+            core_disk_size=400,
             pay_type="PostPaid",
-            vswitch_id="vsw-123456",
-            zone_id="cn-shenzhen-b")
+            cold_storage_size=0,
+            deletion_protection=False)
         ```
 
         this is a example for class netType instance. you can find more detail with the examples/hbase dir.
@@ -983,9 +985,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: The security group resource of the cluster.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The id of the VPC.
-               
-               
-               > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         :param pulumi.Input[str] vswitch_id: If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
         :param pulumi.Input[str] zone_id: The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
@@ -998,13 +997,13 @@ class Instance(pulumi.CustomResource):
         """
         Provides a HBase instance resource supports replica set instances only. The HBase provides stable, reliable, and automatic scalable database services.
         It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
-        You can see detail product introduction [here](https://help.aliyun.com/product/49055.html)
+        You can see detail product introduction [here](https://www.alibabacloud.com/help/en/apsaradb-for-hbase/latest/createcluster)
 
-        > **NOTE:**  Available in 1.67.0+
+        > **NOTE:** Available since v1.67.0.
 
         > **NOTE:**  The following regions don't support create Classic network HBase instance.
         [`cn-hangzhou`,`cn-shanghai`,`cn-qingdao`,`cn-beijing`,`cn-shenzhen`,`ap-southeast-1a`,.....]
-        The official website mark  more regions. or you can call [DescribeRegions](https://help.aliyun.com/document_detail/144489.html)
+        The official website mark  more regions. or you can call [DescribeRegions](https://www.alibabacloud.com/help/en/apsaradb-for-hbase/latest/describeregions)
 
         > **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
 
@@ -1015,18 +1014,28 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.hbase.Instance("default",
-            cold_storage_size=0,
-            core_disk_size=400,
-            core_disk_type="cloud_efficiency",
-            core_instance_quantity=2,
-            core_instance_type="hbase.sn2.2xlarge",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.hbase.get_zones()
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_zones.zones[0].id)
+        default_instance = alicloud.hbase.Instance("defaultInstance",
+            zone_id=default_zones.zones[0].id,
+            vswitch_id=default_switches.ids[0],
+            vpc_id=default_networks.ids[0],
             engine="hbaseue",
             engine_version="2.0",
             master_instance_type="hbase.sn2.2xlarge",
+            core_instance_type="hbase.sn2.2xlarge",
+            core_instance_quantity=2,
+            core_disk_type="cloud_efficiency",
+            core_disk_size=400,
             pay_type="PostPaid",
-            vswitch_id="vsw-123456",
-            zone_id="cn-shenzhen-b")
+            cold_storage_size=0,
+            deletion_protection=False)
         ```
 
         this is a example for class netType instance. you can find more detail with the examples/hbase dir.
@@ -1192,15 +1201,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] password: The password of the cluster web ui account. Size [0-128].
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: The security group resource of the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceSlbConnAddrArgs']]]] slb_conn_addrs: (Available in 1.105.0+) The slb service addresses of the cluster.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceUiProxyConnAddrArgs']]]] ui_proxy_conn_addrs: (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
-        :param pulumi.Input[str] vpc_id: The id of the VPC.
-               
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceSlbConnAddrArgs']]]] slb_conn_addrs: The slb service addresses of the cluster. See `slb_conn_addrs` below.
                
                > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceUiProxyConnAddrArgs']]]] ui_proxy_conn_addrs: The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
+        :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceZkConnAddrArgs']]]] zk_conn_addrs: (Available in 1.105.0+) The zookeeper addresses of the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceZkConnAddrArgs']]]] zk_conn_addrs: The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
         :param pulumi.Input[str] zone_id: The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1412,7 +1420,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="slbConnAddrs")
     def slb_conn_addrs(self) -> pulumi.Output[Sequence['outputs.InstanceSlbConnAddr']]:
         """
-        (Available in 1.105.0+) The slb service addresses of the cluster.
+        The slb service addresses of the cluster. See `slb_conn_addrs` below.
+
+        > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         """
         return pulumi.get(self, "slb_conn_addrs")
 
@@ -1428,7 +1438,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="uiProxyConnAddrs")
     def ui_proxy_conn_addrs(self) -> pulumi.Output[Sequence['outputs.InstanceUiProxyConnAddr']]:
         """
-        (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+        The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
         """
         return pulumi.get(self, "ui_proxy_conn_addrs")
 
@@ -1437,9 +1447,6 @@ class Instance(pulumi.CustomResource):
     def vpc_id(self) -> pulumi.Output[Optional[str]]:
         """
         The id of the VPC.
-
-
-        > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -1455,7 +1462,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="zkConnAddrs")
     def zk_conn_addrs(self) -> pulumi.Output[Sequence['outputs.InstanceZkConnAddr']]:
         """
-        (Available in 1.105.0+) The zookeeper addresses of the cluster.
+        The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
         """
         return pulumi.get(self, "zk_conn_addrs")
 

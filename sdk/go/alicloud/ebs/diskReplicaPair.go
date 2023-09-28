@@ -17,78 +17,7 @@ import (
 //
 // For information about Ebs Disk Replica Pair and how to use it, see [What is Disk Replica Pair](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/CreateDiskReplicaPair).
 //
-// > **NOTE:** Available in v1.196.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ebs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultEcsDisk, err := ecs.NewEcsDisk(ctx, "defaultEcsDisk", &ecs.EcsDiskArgs{
-//				ZoneId:             pulumi.String("cn-hangzhou-onebox-nebula"),
-//				Category:           pulumi.String("cloud_essd"),
-//				DeleteAutoSnapshot: pulumi.Bool(true),
-//				DeleteWithInstance: pulumi.Bool(true),
-//				Description:        pulumi.String("Test For Terraform"),
-//				DiskName:           pulumi.Any(_var.Name),
-//				EnableAutoSnapshot: pulumi.Bool(true),
-//				Encrypted:          pulumi.Bool(true),
-//				Size:               pulumi.Int(500),
-//				Tags: pulumi.AnyMap{
-//					"Created":     pulumi.Any("TF"),
-//					"Environment": pulumi.Any("Acceptance-test"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultone, err := ecs.NewEcsDisk(ctx, "defaultone", &ecs.EcsDiskArgs{
-//				ZoneId:             pulumi.String("cn-hangzhou-onebox-nebula-b"),
-//				Category:           pulumi.String("cloud_essd"),
-//				DeleteAutoSnapshot: pulumi.Bool(true),
-//				DeleteWithInstance: pulumi.Bool(true),
-//				Description:        pulumi.String("Test For Terraform"),
-//				DiskName:           pulumi.Any(_var.Name),
-//				EnableAutoSnapshot: pulumi.Bool(true),
-//				Encrypted:          pulumi.Bool(true),
-//				Size:               pulumi.Int(500),
-//				Tags: pulumi.AnyMap{
-//					"Created":     pulumi.Any("TF"),
-//					"Environment": pulumi.Any("Acceptance-test"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ebs.NewDiskReplicaPair(ctx, "defaultDiskReplicaPair", &ebs.DiskReplicaPairArgs{
-//				DestinationDiskId:   defaultEcsDisk.ID(),
-//				DestinationRegionId: pulumi.String("cn-hangzhou-onebox-nebula"),
-//				Bandwidth:           pulumi.String("10240"),
-//				DestinationZoneId:   pulumi.String("cn-hangzhou-onebox-nebula-e"),
-//				SourceZoneId:        pulumi.String("cn-hangzhou-onebox-nebula-b"),
-//				DiskId:              defaultone.ID(),
-//				Description:         pulumi.String("abc"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// > **NOTE:** Available since v1.196.0.
 //
 // ## Import
 //
@@ -124,7 +53,7 @@ type DiskReplicaPair struct {
 	Period pulumi.StringPtrOutput `pulumi:"period"`
 	// The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
 	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
-	// The first ID of the resource
+	// The first ID of the resource.
 	ReplicaPairId pulumi.StringOutput `pulumi:"replicaPairId"`
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
@@ -203,7 +132,7 @@ type diskReplicaPairState struct {
 	Period *string `pulumi:"period"`
 	// The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
 	PeriodUnit *string `pulumi:"periodUnit"`
-	// The first ID of the resource
+	// The first ID of the resource.
 	ReplicaPairId *string `pulumi:"replicaPairId"`
 	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -238,7 +167,7 @@ type DiskReplicaPairState struct {
 	Period pulumi.StringPtrInput
 	// The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
 	PeriodUnit pulumi.StringPtrInput
-	// The first ID of the resource
+	// The first ID of the resource.
 	ReplicaPairId pulumi.StringPtrInput
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
@@ -275,7 +204,7 @@ type diskReplicaPairArgs struct {
 	Period *string `pulumi:"period"`
 	// The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
 	PeriodUnit *string `pulumi:"periodUnit"`
-	// The first ID of the resource
+	// The first ID of the resource.
 	ReplicaPairId *string `pulumi:"replicaPairId"`
 	// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
 	Rpo *string `pulumi:"rpo"`
@@ -305,7 +234,7 @@ type DiskReplicaPairArgs struct {
 	Period pulumi.StringPtrInput
 	// The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
 	PeriodUnit pulumi.StringPtrInput
-	// The first ID of the resource
+	// The first ID of the resource.
 	ReplicaPairId pulumi.StringPtrInput
 	// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
 	Rpo pulumi.StringPtrInput
@@ -479,7 +408,7 @@ func (o DiskReplicaPairOutput) PeriodUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DiskReplicaPair) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
 }
 
-// The first ID of the resource
+// The first ID of the resource.
 func (o DiskReplicaPairOutput) ReplicaPairId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DiskReplicaPair) pulumi.StringOutput { return v.ReplicaPairId }).(pulumi.StringOutput)
 }

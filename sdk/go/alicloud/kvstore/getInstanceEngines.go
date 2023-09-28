@@ -14,7 +14,7 @@ import (
 
 // This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
 //
-// > **NOTE:** Available in v1.51.0+
+// > **NOTE:** Available since v1.51.0
 //
 // ## Example Usage
 //

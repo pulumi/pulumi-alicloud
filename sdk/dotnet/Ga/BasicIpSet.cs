@@ -28,6 +28,8 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var region = config.Get("region") ?? "cn-hangzhou";
     ///     var defaultBasicAccelerator = new AliCloud.Ga.BasicAccelerator("defaultBasicAccelerator", new()
     ///     {
     ///         Duration = 1,
@@ -42,7 +44,7 @@ namespace Pulumi.AliCloud.Ga
     ///     var defaultBasicIpSet = new AliCloud.Ga.BasicIpSet("defaultBasicIpSet", new()
     ///     {
     ///         AcceleratorId = defaultBasicAccelerator.Id,
-    ///         AccelerateRegionId = "cn-hangzhou",
+    ///         AccelerateRegionId = region,
     ///         IspType = "BGP",
     ///         Bandwidth = 5,
     ///     });

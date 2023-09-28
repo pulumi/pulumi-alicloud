@@ -14,9 +14,17 @@ public final class GetNodeClassesPlainArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetNodeClassesPlainArgs Empty = new GetNodeClassesPlainArgs();
 
+    /**
+     * The PolarDB node cluster series.
+     * 
+     */
     @Import(name="category")
     private @Nullable String category;
 
+    /**
+     * @return The PolarDB node cluster series.
+     * 
+     */
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
@@ -157,6 +165,12 @@ public final class GetNodeClassesPlainArgs extends com.pulumi.resources.InvokeAr
             $ = new GetNodeClassesPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param category The PolarDB node cluster series.
+         * 
+         * @return builder
+         * 
+         */
         public Builder category(@Nullable String category) {
             $.category = category;
             return this;

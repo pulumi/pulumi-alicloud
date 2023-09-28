@@ -14,9 +14,9 @@ import (
 
 // Provides a Private Link Vpc Endpoint Service resource.
 //
-// For information about Private Link Vpc Endpoint Service and how to use it, see [What is Vpc Endpoint Service](https://help.aliyun.com/document_detail/183540.html).
+// For information about Private Link Vpc Endpoint Service and how to use it, see [What is Vpc Endpoint Service](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-createvpcendpointservice).
 //
-// > **NOTE:** Available in v1.109.0+.
+// > **NOTE:** Available since v1.109.0.
 //
 // ## Example Usage
 //
@@ -29,15 +29,21 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/privatelink"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := privatelink.NewVpcEndpointService(ctx, "example", &privatelink.VpcEndpointServiceArgs{
-//				AutoAcceptConnection: pulumi.Bool(false),
+//				ServiceDescription:   pulumi.String(name),
 //				ConnectBandwidth:     pulumi.Int(103),
-//				ServiceDescription:   pulumi.String("tftest"),
+//				AutoAcceptConnection: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err

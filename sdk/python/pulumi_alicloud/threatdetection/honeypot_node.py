@@ -198,9 +198,9 @@ class HoneypotNode(pulumi.CustomResource):
         """
         Provides a Threat Detection Honeypot Node resource.
 
-        For information about Threat Detection Honeypot Node and how to use it, see [What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotnode).
+        For information about Threat Detection Honeypot Node and how to use it, see [What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode).
 
-        > **NOTE:** Available in v1.195.0+.
+        > **NOTE:** Available since v1.195.0.
 
         ## Example Usage
 
@@ -210,9 +210,13 @@ class HoneypotNode(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
         default = alicloud.threatdetection.HoneypotNode("default",
+            node_name=name,
             available_probe_num=20,
-            node_name="apispec_test",
             security_group_probe_ip_lists=["0.0.0.0/0"])
         ```
 
@@ -240,9 +244,9 @@ class HoneypotNode(pulumi.CustomResource):
         """
         Provides a Threat Detection Honeypot Node resource.
 
-        For information about Threat Detection Honeypot Node and how to use it, see [What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotnode).
+        For information about Threat Detection Honeypot Node and how to use it, see [What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode).
 
-        > **NOTE:** Available in v1.195.0+.
+        > **NOTE:** Available since v1.195.0.
 
         ## Example Usage
 
@@ -252,9 +256,13 @@ class HoneypotNode(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
         default = alicloud.threatdetection.HoneypotNode("default",
+            node_name=name,
             available_probe_num=20,
-            node_name="apispec_test",
             security_group_probe_ip_lists=["0.0.0.0/0"])
         ```
 

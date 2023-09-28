@@ -118,7 +118,26 @@ class SharedTarget(pulumi.CustomResource):
 
         For information about Resource Manager Shared Target and how to use it, see [What is Shared Target](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
 
-        > **NOTE:** Available in v1.111.0+.
+        > **NOTE:** Available since v1.111.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        default = alicloud.resourcemanager.get_accounts()
+        example_resource_share = alicloud.resourcemanager.ResourceShare("exampleResourceShare", resource_share_name=name)
+        example_shared_target = alicloud.resourcemanager.SharedTarget("exampleSharedTarget",
+            resource_share_id=example_resource_share.id,
+            target_id=default.ids[0])
+        ```
 
         ## Import
 
@@ -144,7 +163,26 @@ class SharedTarget(pulumi.CustomResource):
 
         For information about Resource Manager Shared Target and how to use it, see [What is Shared Target](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
 
-        > **NOTE:** Available in v1.111.0+.
+        > **NOTE:** Available since v1.111.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        default = alicloud.resourcemanager.get_accounts()
+        example_resource_share = alicloud.resourcemanager.ResourceShare("exampleResourceShare", resource_share_name=name)
+        example_shared_target = alicloud.resourcemanager.SharedTarget("exampleSharedTarget",
+            resource_share_id=example_resource_share.id,
+            target_id=default.ids[0])
+        ```
 
         ## Import
 

@@ -18,11 +18,11 @@ namespace Pulumi.AliCloud.PolarDB.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The type of the database engine.
+        /// The type of the database engine. Only `MySQL` is supported.
         /// </summary>
         public readonly string DbType;
         /// <summary>
-        /// The version number of the database engine.
+        /// The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
         /// </summary>
         public readonly string DbVersion;
         /// <summary>

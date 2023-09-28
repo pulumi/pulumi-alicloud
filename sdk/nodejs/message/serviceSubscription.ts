@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Message Notification Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
  *
- * > **NOTE:** Available in v1.188.0+.
+ * > **NOTE:** Available since v1.188.0.
  *
  * ## Example Usage
  *
@@ -19,17 +19,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const defaultServiceTopic = new alicloud.message.ServiceTopic("defaultServiceTopic", {
- *     topicName: "tf-example-value",
+ *     topicName: name,
  *     maxMessageSize: 12357,
  *     loggingEnabled: true,
  * });
  * const defaultServiceSubscription = new alicloud.message.ServiceSubscription("defaultServiceSubscription", {
  *     topicName: defaultServiceTopic.topicName,
- *     subscriptionName: "tf-example-value",
- *     endpoint: "http://www.test.com/test",
+ *     subscriptionName: name,
+ *     endpoint: "http://example.com",
  *     pushType: "http",
- *     filterTag: "tf-test",
+ *     filterTag: "tf-example",
  *     notifyContentFormat: "XML",
  *     notifyStrategy: "BACKOFF_RETRY",
  * });

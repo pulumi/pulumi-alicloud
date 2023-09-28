@@ -15,13 +15,13 @@ import (
 
 // Provides a HBase instance resource supports replica set instances only. The HBase provides stable, reliable, and automatic scalable database services.
 // It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
-// You can see detail product introduction [here](https://help.aliyun.com/product/49055.html)
+// You can see detail product introduction [here](https://www.alibabacloud.com/help/en/apsaradb-for-hbase/latest/createcluster)
 //
-// > **NOTE:**  Available in 1.67.0+
+// > **NOTE:** Available since v1.67.0.
 //
 // > **NOTE:**  The following regions don't support create Classic network HBase instance.
 // [`cn-hangzhou`,`cn-shanghai`,`cn-qingdao`,`cn-beijing`,`cn-shenzhen`,`ap-southeast-1a`,.....]
-// The official website mark  more regions. or you can call [DescribeRegions](https://help.aliyun.com/document_detail/144489.html)
+// The official website mark  more regions. or you can call [DescribeRegions](https://www.alibabacloud.com/help/en/apsaradb-for-hbase/latest/describeregions)
 //
 // > **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
 //
@@ -34,24 +34,50 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbase"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := hbase.NewInstance(ctx, "default", &hbase.InstanceArgs{
-//				ColdStorageSize:      pulumi.Int(0),
-//				CoreDiskSize:         pulumi.Int(400),
-//				CoreDiskType:         pulumi.String("cloud_efficiency"),
-//				CoreInstanceQuantity: pulumi.Int(2),
-//				CoreInstanceType:     pulumi.String("hbase.sn2.2xlarge"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := hbase.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = hbase.NewInstance(ctx, "defaultInstance", &hbase.InstanceArgs{
+//				ZoneId:               *pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchId:            *pulumi.String(defaultSwitches.Ids[0]),
+//				VpcId:                *pulumi.String(defaultNetworks.Ids[0]),
 //				Engine:               pulumi.String("hbaseue"),
 //				EngineVersion:        pulumi.String("2.0"),
 //				MasterInstanceType:   pulumi.String("hbase.sn2.2xlarge"),
+//				CoreInstanceType:     pulumi.String("hbase.sn2.2xlarge"),
+//				CoreInstanceQuantity: pulumi.Int(2),
+//				CoreDiskType:         pulumi.String("cloud_efficiency"),
+//				CoreDiskSize:         pulumi.Int(400),
 //				PayType:              pulumi.String("PostPaid"),
-//				VswitchId:            pulumi.String("vsw-123456"),
-//				ZoneId:               pulumi.String("cn-shenzhen-b"),
+//				ColdStorageSize:      pulumi.Int(0),
+//				DeletionProtection:   pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -121,19 +147,19 @@ type Instance struct {
 	PayType pulumi.StringPtrOutput `pulumi:"payType"`
 	// The security group resource of the cluster.
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
-	// (Available in 1.105.0+) The slb service addresses of the cluster.
+	// The slb service addresses of the cluster. See `slbConnAddrs` below.
+	//
+	// > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
 	SlbConnAddrs InstanceSlbConnAddrArrayOutput `pulumi:"slbConnAddrs"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+	// The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
 	UiProxyConnAddrs InstanceUiProxyConnAddrArrayOutput `pulumi:"uiProxyConnAddrs"`
 	// The id of the VPC.
-	//
-	// > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
 	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
 	// If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
-	// (Available in 1.105.0+) The zookeeper addresses of the cluster.
+	// The zookeeper addresses of the cluster. See `zkConnAddrs` below.
 	ZkConnAddrs InstanceZkConnAddrArrayOutput `pulumi:"zkConnAddrs"`
 	// The Zone to launch the HBase instance. If vswitchId is not empty, this zoneId can be "" or consistent.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -230,19 +256,19 @@ type instanceState struct {
 	PayType *string `pulumi:"payType"`
 	// The security group resource of the cluster.
 	SecurityGroups []string `pulumi:"securityGroups"`
-	// (Available in 1.105.0+) The slb service addresses of the cluster.
+	// The slb service addresses of the cluster. See `slbConnAddrs` below.
+	//
+	// > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
 	SlbConnAddrs []InstanceSlbConnAddr `pulumi:"slbConnAddrs"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+	// The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
 	UiProxyConnAddrs []InstanceUiProxyConnAddr `pulumi:"uiProxyConnAddrs"`
 	// The id of the VPC.
-	//
-	// > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
 	VpcId *string `pulumi:"vpcId"`
 	// If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
 	VswitchId *string `pulumi:"vswitchId"`
-	// (Available in 1.105.0+) The zookeeper addresses of the cluster.
+	// The zookeeper addresses of the cluster. See `zkConnAddrs` below.
 	ZkConnAddrs []InstanceZkConnAddr `pulumi:"zkConnAddrs"`
 	// The Zone to launch the HBase instance. If vswitchId is not empty, this zoneId can be "" or consistent.
 	ZoneId *string `pulumi:"zoneId"`
@@ -294,19 +320,19 @@ type InstanceState struct {
 	PayType pulumi.StringPtrInput
 	// The security group resource of the cluster.
 	SecurityGroups pulumi.StringArrayInput
-	// (Available in 1.105.0+) The slb service addresses of the cluster.
+	// The slb service addresses of the cluster. See `slbConnAddrs` below.
+	//
+	// > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
 	SlbConnAddrs InstanceSlbConnAddrArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+	// The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
 	UiProxyConnAddrs InstanceUiProxyConnAddrArrayInput
 	// The id of the VPC.
-	//
-	// > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
 	VpcId pulumi.StringPtrInput
 	// If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
 	VswitchId pulumi.StringPtrInput
-	// (Available in 1.105.0+) The zookeeper addresses of the cluster.
+	// The zookeeper addresses of the cluster. See `zkConnAddrs` below.
 	ZkConnAddrs InstanceZkConnAddrArrayInput
 	// The Zone to launch the HBase instance. If vswitchId is not empty, this zoneId can be "" or consistent.
 	ZoneId pulumi.StringPtrInput
@@ -363,8 +389,6 @@ type instanceArgs struct {
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The id of the VPC.
-	//
-	// > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
 	VpcId *string `pulumi:"vpcId"`
 	// If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -420,8 +444,6 @@ type InstanceArgs struct {
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The id of the VPC.
-	//
-	// > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
 	VpcId pulumi.StringPtrInput
 	// If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
 	VswitchId pulumi.StringPtrInput
@@ -648,7 +670,9 @@ func (o InstanceOutput) SecurityGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityGroups }).(pulumi.StringArrayOutput)
 }
 
-// (Available in 1.105.0+) The slb service addresses of the cluster.
+// The slb service addresses of the cluster. See `slbConnAddrs` below.
+//
+// > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
 func (o InstanceOutput) SlbConnAddrs() InstanceSlbConnAddrArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceSlbConnAddrArrayOutput { return v.SlbConnAddrs }).(InstanceSlbConnAddrArrayOutput)
 }
@@ -658,14 +682,12 @@ func (o InstanceOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+// The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
 func (o InstanceOutput) UiProxyConnAddrs() InstanceUiProxyConnAddrArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceUiProxyConnAddrArrayOutput { return v.UiProxyConnAddrs }).(InstanceUiProxyConnAddrArrayOutput)
 }
 
 // The id of the VPC.
-//
-// > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
 func (o InstanceOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
 }
@@ -675,7 +697,7 @@ func (o InstanceOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
 }
 
-// (Available in 1.105.0+) The zookeeper addresses of the cluster.
+// The zookeeper addresses of the cluster. See `zkConnAddrs` below.
 func (o InstanceOutput) ZkConnAddrs() InstanceZkConnAddrArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceZkConnAddrArrayOutput { return v.ZkConnAddrs }).(InstanceZkConnAddrArrayOutput)
 }

@@ -17,7 +17,7 @@ import (
 //
 // For information about Message Notification Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
 //
-// > **NOTE:** Available in v1.188.0+.
+// > **NOTE:** Available since v1.188.0.
 //
 // ## Example Usage
 //
@@ -30,13 +30,19 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/message"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			defaultServiceTopic, err := message.NewServiceTopic(ctx, "defaultServiceTopic", &message.ServiceTopicArgs{
-//				TopicName:      pulumi.String("tf-example-value"),
+//				TopicName:      pulumi.String(name),
 //				MaxMessageSize: pulumi.Int(12357),
 //				LoggingEnabled: pulumi.Bool(true),
 //			})
@@ -45,10 +51,10 @@ import (
 //			}
 //			_, err = message.NewServiceSubscription(ctx, "defaultServiceSubscription", &message.ServiceSubscriptionArgs{
 //				TopicName:           defaultServiceTopic.TopicName,
-//				SubscriptionName:    pulumi.String("tf-example-value"),
-//				Endpoint:            pulumi.String("http://www.test.com/test"),
+//				SubscriptionName:    pulumi.String(name),
+//				Endpoint:            pulumi.String("http://example.com"),
 //				PushType:            pulumi.String("http"),
-//				FilterTag:           pulumi.String("tf-test"),
+//				FilterTag:           pulumi.String("tf-example"),
 //				NotifyContentFormat: pulumi.String("XML"),
 //				NotifyStrategy:      pulumi.String("BACKOFF_RETRY"),
 //			})

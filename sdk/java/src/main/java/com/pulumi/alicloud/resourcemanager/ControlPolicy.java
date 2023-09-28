@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Resource Manager Control Policy resource.
  * 
- * For information about Resource Manager Control Policy and how to use it, see [What is Control Policy](https://help.aliyun.com/document_detail/208287.html).
+ * For information about Resource Manager Control Policy and how to use it, see [What is Control Policy](https://www.alibabacloud.com/help/en/resource-management/latest/api-resourcedirectorymaster-2022-04-19-createcontrolpolicy).
  * 
- * &gt; **NOTE:** Available in v1.120.0+.
+ * &gt; **NOTE:** Available since v1.120.0.
  * 
  * ## Example Usage
  * 
@@ -45,9 +45,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         var example = new ControlPolicy(&#34;example&#34;, ControlPolicyArgs.builder()        
- *             .controlPolicyName(&#34;tf-testAccRDControlPolicy&#34;)
- *             .description(&#34;tf-testAccRDControlPolicy&#34;)
+ *             .controlPolicyName(name)
+ *             .description(name)
  *             .effectScope(&#34;RAM&#34;)
  *             .policyDocument(&#34;&#34;&#34;
  *   {
@@ -65,7 +67,6 @@ import javax.annotation.Nullable;
  *       }
  *     ]
  *   }
- *   
  *             &#34;&#34;&#34;)
  *             .build());
  * 

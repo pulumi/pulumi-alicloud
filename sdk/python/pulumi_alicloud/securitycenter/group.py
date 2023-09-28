@@ -104,7 +104,7 @@ class Group(pulumi.CustomResource):
 
         For information about Security Center Group and how to use it, see [What is Group](https://www.alibabacloud.com/help/doc-detail/129195.htm).
 
-        > **NOTE:** Available in v1.133.0+.
+        > **NOTE:** Available since v1.133.0.
 
         ## Example Usage
 
@@ -114,7 +114,11 @@ class Group(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.securitycenter.Group("example", group_name="example_value")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        example = alicloud.securitycenter.Group("example", group_name=name)
         ```
 
         ## Import
@@ -141,7 +145,7 @@ class Group(pulumi.CustomResource):
 
         For information about Security Center Group and how to use it, see [What is Group](https://www.alibabacloud.com/help/doc-detail/129195.htm).
 
-        > **NOTE:** Available in v1.133.0+.
+        > **NOTE:** Available since v1.133.0.
 
         ## Example Usage
 
@@ -151,7 +155,11 @@ class Group(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.securitycenter.Group("example", group_name="example_value")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        example = alicloud.securitycenter.Group("example", group_name=name)
         ```
 
         ## Import

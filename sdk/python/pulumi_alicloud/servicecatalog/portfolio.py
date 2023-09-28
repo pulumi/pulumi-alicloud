@@ -167,7 +167,7 @@ class Portfolio(pulumi.CustomResource):
 
         For information about Service Catalog Portfolio and how to use it, see [What is Portfolio](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-createportfolio).
 
-        > **NOTE:** Available in v1.204.0+.
+        > **NOTE:** Available since v1.204.0+.
 
         ## Example Usage
 
@@ -177,9 +177,13 @@ class Portfolio(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
         default = alicloud.servicecatalog.Portfolio("default",
-            portfolio_name="example_value",
-            provider_name="example_value")
+            portfolio_name=name,
+            provider_name=name)
         ```
 
         ## Import
@@ -207,7 +211,7 @@ class Portfolio(pulumi.CustomResource):
 
         For information about Service Catalog Portfolio and how to use it, see [What is Portfolio](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-createportfolio).
 
-        > **NOTE:** Available in v1.204.0+.
+        > **NOTE:** Available since v1.204.0+.
 
         ## Example Usage
 
@@ -217,9 +221,13 @@ class Portfolio(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
         default = alicloud.servicecatalog.Portfolio("default",
-            portfolio_name="example_value",
-            provider_name="example_value")
+            portfolio_name=name,
+            provider_name=name)
         ```
 
         ## Import

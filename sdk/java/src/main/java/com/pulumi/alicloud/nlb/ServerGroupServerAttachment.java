@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about NLB Server Group Server Attachment and how to use it, see [What is Server Group Server Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/addserverstoservergroup-nlb).
  * 
- * &gt; **NOTE:** Available in v1.192.0+.
+ * &gt; **NOTE:** Available since v1.192.0.
  * 
  * ## Example Usage
  * 
@@ -31,10 +31,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
  * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
  * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.nlb.ServerGroup;
  * import com.pulumi.alicloud.nlb.ServerGroupArgs;
  * import com.pulumi.alicloud.nlb.inputs.ServerGroupHealthCheckArgs;
@@ -53,17 +53,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;default-NODELETING&#34;)
- *             .build());
- * 
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
  * 
  *         var defaultServerGroup = new ServerGroup(&#34;defaultServerGroup&#34;, ServerGroupArgs.builder()        
  *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
- *             .serverGroupName(var_.name())
+ *             .serverGroupName(name)
  *             .serverGroupType(&#34;Ip&#34;)
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vpcId(defaultNetwork.id())
  *             .scheduler(&#34;Wrr&#34;)
  *             .protocol(&#34;TCP&#34;)
  *             .healthCheck(ServerGroupHealthCheckArgs.builder()
@@ -75,7 +78,7 @@ import javax.annotation.Nullable;
  *         var defaultServerGroupServerAttachment = new ServerGroupServerAttachment(&#34;defaultServerGroupServerAttachment&#34;, ServerGroupServerAttachmentArgs.builder()        
  *             .serverType(&#34;Ip&#34;)
  *             .serverId(&#34;10.0.0.0&#34;)
- *             .description(var_.name())
+ *             .description(name)
  *             .port(80)
  *             .serverGroupId(defaultServerGroup.id())
  *             .weight(100)

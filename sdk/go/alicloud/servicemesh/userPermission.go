@@ -15,9 +15,9 @@ import (
 
 // Provides a Service Mesh UserPermission resource.
 //
-// For information about Service Mesh User Permission and how to use it, see [What is User Permission](https://help.aliyun.com/document_detail/171622.html).
+// For information about Service Mesh User Permission and how to use it, see [What is User Permission](https://www.alibabacloud.com/help/en/alibaba-cloud-service-mesh/latest/api-servicemesh-2020-01-11-grantuserpermissions).
 //
-// > **NOTE:** Available in v1.174.0+.
+// > **NOTE:** Available since v1.174.0.
 //
 // ## Import
 //
@@ -31,7 +31,7 @@ import (
 type UserPermission struct {
 	pulumi.CustomResourceState
 
-	// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+	// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
 	Permissions UserPermissionPermissionArrayOutput `pulumi:"permissions"`
 	// The configuration of the Load Balancer. See the following `Block loadBalancer`.
 	SubAccountUserId pulumi.StringOutput `pulumi:"subAccountUserId"`
@@ -70,14 +70,14 @@ func GetUserPermission(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UserPermission resources.
 type userPermissionState struct {
-	// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+	// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
 	Permissions []UserPermissionPermission `pulumi:"permissions"`
 	// The configuration of the Load Balancer. See the following `Block loadBalancer`.
 	SubAccountUserId *string `pulumi:"subAccountUserId"`
 }
 
 type UserPermissionState struct {
-	// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+	// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
 	Permissions UserPermissionPermissionArrayInput
 	// The configuration of the Load Balancer. See the following `Block loadBalancer`.
 	SubAccountUserId pulumi.StringPtrInput
@@ -88,7 +88,7 @@ func (UserPermissionState) ElementType() reflect.Type {
 }
 
 type userPermissionArgs struct {
-	// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+	// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
 	Permissions []UserPermissionPermission `pulumi:"permissions"`
 	// The configuration of the Load Balancer. See the following `Block loadBalancer`.
 	SubAccountUserId string `pulumi:"subAccountUserId"`
@@ -96,7 +96,7 @@ type userPermissionArgs struct {
 
 // The set of arguments for constructing a UserPermission resource.
 type UserPermissionArgs struct {
-	// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+	// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
 	Permissions UserPermissionPermissionArrayInput
 	// The configuration of the Load Balancer. See the following `Block loadBalancer`.
 	SubAccountUserId pulumi.StringInput
@@ -213,7 +213,7 @@ func (o UserPermissionOutput) ToOutput(ctx context.Context) pulumix.Output[*User
 	}
 }
 
-// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
 func (o UserPermissionOutput) Permissions() UserPermissionPermissionArrayOutput {
 	return o.ApplyT(func(v *UserPermission) UserPermissionPermissionArrayOutput { return v.Permissions }).(UserPermissionPermissionArrayOutput)
 }

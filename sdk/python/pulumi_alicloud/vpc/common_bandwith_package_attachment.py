@@ -17,13 +17,15 @@ class CommonBandwithPackageAttachmentArgs:
                  bandwidth_package_id: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
                  bandwidth_package_bandwidth: Optional[pulumi.Input[str]] = None,
-                 cancel_common_bandwidth_package_ip_bandwidth: Optional[pulumi.Input[bool]] = None):
+                 cancel_common_bandwidth_package_ip_bandwidth: Optional[pulumi.Input[bool]] = None,
+                 ip_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CommonBandwithPackageAttachment resource.
         :param pulumi.Input[str] bandwidth_package_id: The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
         :param pulumi.Input[str] instance_id: The instance_id of the common bandwidth package attachment, the field can't be changed.
         :param pulumi.Input[str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
         :param pulumi.Input[bool] cancel_common_bandwidth_package_ip_bandwidth: Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+        :param pulumi.Input[str] ip_type: IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
         """
         pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -31,6 +33,8 @@ class CommonBandwithPackageAttachmentArgs:
             pulumi.set(__self__, "bandwidth_package_bandwidth", bandwidth_package_bandwidth)
         if cancel_common_bandwidth_package_ip_bandwidth is not None:
             pulumi.set(__self__, "cancel_common_bandwidth_package_ip_bandwidth", cancel_common_bandwidth_package_ip_bandwidth)
+        if ip_type is not None:
+            pulumi.set(__self__, "ip_type", ip_type)
 
     @property
     @pulumi.getter(name="bandwidthPackageId")
@@ -80,6 +84,18 @@ class CommonBandwithPackageAttachmentArgs:
     def cancel_common_bandwidth_package_ip_bandwidth(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "cancel_common_bandwidth_package_ip_bandwidth", value)
 
+    @property
+    @pulumi.getter(name="ipType")
+    def ip_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+        """
+        return pulumi.get(self, "ip_type")
+
+    @ip_type.setter
+    def ip_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_type", value)
+
 
 @pulumi.input_type
 class _CommonBandwithPackageAttachmentState:
@@ -87,13 +103,17 @@ class _CommonBandwithPackageAttachmentState:
                  bandwidth_package_bandwidth: Optional[pulumi.Input[str]] = None,
                  bandwidth_package_id: Optional[pulumi.Input[str]] = None,
                  cancel_common_bandwidth_package_ip_bandwidth: Optional[pulumi.Input[bool]] = None,
-                 instance_id: Optional[pulumi.Input[str]] = None):
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 ip_type: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CommonBandwithPackageAttachment resources.
         :param pulumi.Input[str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
         :param pulumi.Input[str] bandwidth_package_id: The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
         :param pulumi.Input[bool] cancel_common_bandwidth_package_ip_bandwidth: Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
         :param pulumi.Input[str] instance_id: The instance_id of the common bandwidth package attachment, the field can't be changed.
+        :param pulumi.Input[str] ip_type: IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+        :param pulumi.Input[str] status: The status of the Internet Shared Bandwidth instance.
         """
         if bandwidth_package_bandwidth is not None:
             pulumi.set(__self__, "bandwidth_package_bandwidth", bandwidth_package_bandwidth)
@@ -103,6 +123,10 @@ class _CommonBandwithPackageAttachmentState:
             pulumi.set(__self__, "cancel_common_bandwidth_package_ip_bandwidth", cancel_common_bandwidth_package_ip_bandwidth)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
+        if ip_type is not None:
+            pulumi.set(__self__, "ip_type", ip_type)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="bandwidthPackageBandwidth")
@@ -152,6 +176,30 @@ class _CommonBandwithPackageAttachmentState:
     def instance_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_id", value)
 
+    @property
+    @pulumi.getter(name="ipType")
+    def ip_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+        """
+        return pulumi.get(self, "ip_type")
+
+    @ip_type.setter
+    def ip_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_type", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the Internet Shared Bandwidth instance.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
 
 class CommonBandwithPackageAttachment(pulumi.CustomResource):
     @overload
@@ -162,6 +210,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
                  bandwidth_package_id: Optional[pulumi.Input[str]] = None,
                  cancel_common_bandwidth_package_ip_bandwidth: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 ip_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -172,24 +221,29 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("fooCommonBandwithPackage",
-            bandwidth="2",
-            bandwidth_package_name="test_common_bandwidth_package",
-            description="test_common_bandwidth_package")
-        foo_eip_address = alicloud.ecs.EipAddress("fooEipAddress",
-            bandwidth="2",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("defaultCommonBandwithPackage",
+            bandwidth="3",
             internet_charge_type="PayByBandwidth")
-        foo_common_bandwith_package_attachment = alicloud.vpc.CommonBandwithPackageAttachment("fooCommonBandwithPackageAttachment",
-            bandwidth_package_id=foo_common_bandwith_package.id,
-            instance_id=foo_eip_address.id)
+        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+            bandwidth="3",
+            internet_charge_type="PayByTraffic")
+        default_common_bandwith_package_attachment = alicloud.vpc.CommonBandwithPackageAttachment("defaultCommonBandwithPackageAttachment",
+            bandwidth_package_id=default_common_bandwith_package.id,
+            instance_id=default_eip_address.id,
+            bandwidth_package_bandwidth="2",
+            ip_type="EIP")
         ```
 
         ## Import
 
-        The common bandwidth package attachment can be imported using the id, e.g.
+        cbwp Common Bandwidth Package Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment foo <bandwidth_package_id>:<instance_id>
+         $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment example <bandwidth_package_id>:<instance_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -198,6 +252,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] bandwidth_package_id: The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
         :param pulumi.Input[bool] cancel_common_bandwidth_package_ip_bandwidth: Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
         :param pulumi.Input[str] instance_id: The instance_id of the common bandwidth package attachment, the field can't be changed.
+        :param pulumi.Input[str] ip_type: IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
         """
         ...
     @overload
@@ -214,24 +269,29 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("fooCommonBandwithPackage",
-            bandwidth="2",
-            bandwidth_package_name="test_common_bandwidth_package",
-            description="test_common_bandwidth_package")
-        foo_eip_address = alicloud.ecs.EipAddress("fooEipAddress",
-            bandwidth="2",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("defaultCommonBandwithPackage",
+            bandwidth="3",
             internet_charge_type="PayByBandwidth")
-        foo_common_bandwith_package_attachment = alicloud.vpc.CommonBandwithPackageAttachment("fooCommonBandwithPackageAttachment",
-            bandwidth_package_id=foo_common_bandwith_package.id,
-            instance_id=foo_eip_address.id)
+        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+            bandwidth="3",
+            internet_charge_type="PayByTraffic")
+        default_common_bandwith_package_attachment = alicloud.vpc.CommonBandwithPackageAttachment("defaultCommonBandwithPackageAttachment",
+            bandwidth_package_id=default_common_bandwith_package.id,
+            instance_id=default_eip_address.id,
+            bandwidth_package_bandwidth="2",
+            ip_type="EIP")
         ```
 
         ## Import
 
-        The common bandwidth package attachment can be imported using the id, e.g.
+        cbwp Common Bandwidth Package Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment foo <bandwidth_package_id>:<instance_id>
+         $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment example <bandwidth_package_id>:<instance_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -253,6 +313,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
                  bandwidth_package_id: Optional[pulumi.Input[str]] = None,
                  cancel_common_bandwidth_package_ip_bandwidth: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 ip_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -270,6 +331,8 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["ip_type"] = ip_type
+            __props__.__dict__["status"] = None
         super(CommonBandwithPackageAttachment, __self__).__init__(
             'alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment',
             resource_name,
@@ -283,7 +346,9 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
             bandwidth_package_bandwidth: Optional[pulumi.Input[str]] = None,
             bandwidth_package_id: Optional[pulumi.Input[str]] = None,
             cancel_common_bandwidth_package_ip_bandwidth: Optional[pulumi.Input[bool]] = None,
-            instance_id: Optional[pulumi.Input[str]] = None) -> 'CommonBandwithPackageAttachment':
+            instance_id: Optional[pulumi.Input[str]] = None,
+            ip_type: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None) -> 'CommonBandwithPackageAttachment':
         """
         Get an existing CommonBandwithPackageAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -295,6 +360,8 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] bandwidth_package_id: The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
         :param pulumi.Input[bool] cancel_common_bandwidth_package_ip_bandwidth: Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
         :param pulumi.Input[str] instance_id: The instance_id of the common bandwidth package attachment, the field can't be changed.
+        :param pulumi.Input[str] ip_type: IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+        :param pulumi.Input[str] status: The status of the Internet Shared Bandwidth instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -304,6 +371,8 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
         __props__.__dict__["bandwidth_package_id"] = bandwidth_package_id
         __props__.__dict__["cancel_common_bandwidth_package_ip_bandwidth"] = cancel_common_bandwidth_package_ip_bandwidth
         __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["ip_type"] = ip_type
+        __props__.__dict__["status"] = status
         return CommonBandwithPackageAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -337,4 +406,20 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
         The instance_id of the common bandwidth package attachment, the field can't be changed.
         """
         return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="ipType")
+    def ip_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+        """
+        return pulumi.get(self, "ip_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        The status of the Internet Shared Bandwidth instance.
+        """
+        return pulumi.get(self, "status")
 

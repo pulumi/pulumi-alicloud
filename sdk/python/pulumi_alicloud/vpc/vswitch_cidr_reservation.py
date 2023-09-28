@@ -332,7 +332,7 @@ class VswitchCidrReservation(pulumi.CustomResource):
 
         For information about Vpc Vswitch Cidr Reservation and how to use it, see [What is Vswitch Cidr Reservation](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/610154).
 
-        > **NOTE:** Available in v1.205.0+.
+        > **NOTE:** Available since v1.205.0.
 
         ## Example Usage
 
@@ -345,7 +345,7 @@ class VswitchCidrReservation(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testacc-example"
+            name = "tf-example"
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         default_vpc = alicloud.vpc.Network("defaultVpc",
             vpc_name=name,
@@ -358,7 +358,7 @@ class VswitchCidrReservation(pulumi.CustomResource):
         default_vswitch_cidr_reservation = alicloud.vpc.VswitchCidrReservation("defaultVswitchCidrReservation",
             ip_version="IPv4",
             vswitch_id=default_v_switch.id,
-            cidr_reservation_description="test",
+            cidr_reservation_description=name,
             cidr_reservation_cidr="10.0.10.0/24",
             vswitch_cidr_reservation_name=name,
             cidr_reservation_type="Prefix")
@@ -393,7 +393,7 @@ class VswitchCidrReservation(pulumi.CustomResource):
 
         For information about Vpc Vswitch Cidr Reservation and how to use it, see [What is Vswitch Cidr Reservation](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/610154).
 
-        > **NOTE:** Available in v1.205.0+.
+        > **NOTE:** Available since v1.205.0.
 
         ## Example Usage
 
@@ -406,7 +406,7 @@ class VswitchCidrReservation(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testacc-example"
+            name = "tf-example"
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         default_vpc = alicloud.vpc.Network("defaultVpc",
             vpc_name=name,
@@ -419,7 +419,7 @@ class VswitchCidrReservation(pulumi.CustomResource):
         default_vswitch_cidr_reservation = alicloud.vpc.VswitchCidrReservation("defaultVswitchCidrReservation",
             ip_version="IPv4",
             vswitch_id=default_v_switch.id,
-            cidr_reservation_description="test",
+            cidr_reservation_description=name,
             cidr_reservation_cidr="10.0.10.0/24",
             vswitch_cidr_reservation_name=name,
             cidr_reservation_type="Prefix")

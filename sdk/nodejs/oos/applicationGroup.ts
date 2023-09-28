@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a OOS Application Group resource.
  *
- * For information about OOS Application Group and how to use it, see [What is Application Group](https://www.alibabacloud.com/help/en/doc-detail/120556.html).
+ * For information about OOS Application Group and how to use it, see [What is Application Group](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/api-oos-2019-06-01-createapplicationgroup).
  *
- * > **NOTE:** Available in v1.146.0+.
+ * > **NOTE:** Available since v1.146.0.
  *
  * ## Example Usage
  *
@@ -19,20 +19,25 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const defaultApplication = new alicloud.oos.Application("defaultApplication", {
  *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
- *     applicationName: "terraform-example",
- *     description: "terraform-example",
+ *     applicationName: name,
+ *     description: name,
  *     tags: {
  *         Created: "TF",
  *     },
  * });
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
  * const defaultApplicationGroup = new alicloud.oos.ApplicationGroup("defaultApplicationGroup", {
- *     applicationGroupName: "terraform-example",
+ *     applicationGroupName: name,
  *     applicationName: defaultApplication.id,
- *     deployRegionId: "cn-beijing",
- *     description: "terraform-example",
+ *     deployRegionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     description: name,
  *     importTagKey: "example_key",
  *     importTagValue: "example_value",
  * });

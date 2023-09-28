@@ -28,6 +28,8 @@ class ClusterArgs:
                  creation_option: Optional[pulumi.Input[str]] = None,
                  db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]] = None,
                  db_node_count: Optional[pulumi.Input[int]] = None,
+                 db_node_num: Optional[pulumi.Input[int]] = None,
+                 default_time_zone: Optional[pulumi.Input[str]] = None,
                  deletion_lock: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_new_tables: Optional[pulumi.Input[str]] = None,
@@ -36,13 +38,18 @@ class ClusterArgs:
                  gdn_id: Optional[pulumi.Input[str]] = None,
                  hot_standby_cluster: Optional[pulumi.Input[str]] = None,
                  imci_switch: Optional[pulumi.Input[str]] = None,
+                 loose_polar_log_bin: Optional[pulumi.Input[str]] = None,
+                 lower_case_table_names: Optional[pulumi.Input[int]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
+                 parameter_group_id: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]]] = None,
                  pay_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  planned_end_time: Optional[pulumi.Input[str]] = None,
                  planned_start_time: Optional[pulumi.Input[str]] = None,
+                 proxy_class: Optional[pulumi.Input[str]] = None,
+                 proxy_type: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
@@ -55,6 +62,7 @@ class ClusterArgs:
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  serverless_type: Optional[pulumi.Input[str]] = None,
                  source_resource_id: Optional[pulumi.Input[str]] = None,
+                 storage_pay_type: Optional[pulumi.Input[str]] = None,
                  storage_space: Optional[pulumi.Input[int]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  sub_category: Optional[pulumi.Input[str]] = None,
@@ -85,6 +93,9 @@ class ClusterArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+        :param pulumi.Input[int] db_node_num: The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+        :param pulumi.Input[str] default_time_zone: The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+               > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         :param pulumi.Input[int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
                > **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
         :param pulumi.Input[str] description: The description of cluster.
@@ -98,8 +109,14 @@ class ClusterArgs:
         :param pulumi.Input[str] imci_switch: Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
                > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
                > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
+        :param pulumi.Input[str] loose_polar_log_bin: Enable the Binlog function. Valid values are `OFF`, `ON`.
+               > **NOTE:** This parameter is valid only MySQL Engine supports.
+        :param pulumi.Input[int] lower_case_table_names: Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+               > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        :param pulumi.Input[str] parameter_group_id: The ID of the parameter template
+               > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
@@ -108,6 +125,10 @@ class ClusterArgs:
                > **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
         :param pulumi.Input[str] planned_start_time: The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
                > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
+        :param pulumi.Input[str] proxy_class: The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+               > **NOTE:** This parameter is valid only for standard clusters.
+        :param pulumi.Input[str] proxy_type: The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+               > **NOTE:** This parameter is valid only for standard clusters.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
@@ -128,7 +149,10 @@ class ClusterArgs:
         :param pulumi.Input[str] serverless_type: The type of the serverless cluster. Set the value to AgileServerless.
                > **NOTE:** This parameter is valid only for serverless clusters.
         :param pulumi.Input[str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
+        :param pulumi.Input[str] storage_pay_type: The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
         :param pulumi.Input[int] storage_space: Storage space charged by space (monthly package). Unit: GB.
+               > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
+               > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
         :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
                > **NOTE:** Serverless cluster does not support this parameter.
         :param pulumi.Input[str] sub_category: The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
@@ -164,6 +188,10 @@ class ClusterArgs:
             pulumi.set(__self__, "db_cluster_ip_arrays", db_cluster_ip_arrays)
         if db_node_count is not None:
             pulumi.set(__self__, "db_node_count", db_node_count)
+        if db_node_num is not None:
+            pulumi.set(__self__, "db_node_num", db_node_num)
+        if default_time_zone is not None:
+            pulumi.set(__self__, "default_time_zone", default_time_zone)
         if deletion_lock is not None:
             pulumi.set(__self__, "deletion_lock", deletion_lock)
         if description is not None:
@@ -180,10 +208,16 @@ class ClusterArgs:
             pulumi.set(__self__, "hot_standby_cluster", hot_standby_cluster)
         if imci_switch is not None:
             pulumi.set(__self__, "imci_switch", imci_switch)
+        if loose_polar_log_bin is not None:
+            pulumi.set(__self__, "loose_polar_log_bin", loose_polar_log_bin)
+        if lower_case_table_names is not None:
+            pulumi.set(__self__, "lower_case_table_names", lower_case_table_names)
         if maintain_time is not None:
             pulumi.set(__self__, "maintain_time", maintain_time)
         if modify_type is not None:
             pulumi.set(__self__, "modify_type", modify_type)
+        if parameter_group_id is not None:
+            pulumi.set(__self__, "parameter_group_id", parameter_group_id)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
         if pay_type is not None:
@@ -194,6 +228,10 @@ class ClusterArgs:
             pulumi.set(__self__, "planned_end_time", planned_end_time)
         if planned_start_time is not None:
             pulumi.set(__self__, "planned_start_time", planned_start_time)
+        if proxy_class is not None:
+            pulumi.set(__self__, "proxy_class", proxy_class)
+        if proxy_type is not None:
+            pulumi.set(__self__, "proxy_type", proxy_type)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
         if resource_group_id is not None:
@@ -218,6 +256,8 @@ class ClusterArgs:
             pulumi.set(__self__, "serverless_type", serverless_type)
         if source_resource_id is not None:
             pulumi.set(__self__, "source_resource_id", source_resource_id)
+        if storage_pay_type is not None:
+            pulumi.set(__self__, "storage_pay_type", storage_pay_type)
         if storage_space is not None:
             pulumi.set(__self__, "storage_space", storage_space)
         if storage_type is not None:
@@ -389,6 +429,31 @@ class ClusterArgs:
         pulumi.set(self, "db_node_count", value)
 
     @property
+    @pulumi.getter(name="dbNodeNum")
+    def db_node_num(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+        """
+        return pulumi.get(self, "db_node_num")
+
+    @db_node_num.setter
+    def db_node_num(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "db_node_num", value)
+
+    @property
+    @pulumi.getter(name="defaultTimeZone")
+    def default_time_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+        > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+        """
+        return pulumi.get(self, "default_time_zone")
+
+    @default_time_zone.setter
+    def default_time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_time_zone", value)
+
+    @property
     @pulumi.getter(name="deletionLock")
     def deletion_lock(self) -> Optional[pulumi.Input[int]]:
         """
@@ -490,6 +555,32 @@ class ClusterArgs:
         pulumi.set(self, "imci_switch", value)
 
     @property
+    @pulumi.getter(name="loosePolarLogBin")
+    def loose_polar_log_bin(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enable the Binlog function. Valid values are `OFF`, `ON`.
+        > **NOTE:** This parameter is valid only MySQL Engine supports.
+        """
+        return pulumi.get(self, "loose_polar_log_bin")
+
+    @loose_polar_log_bin.setter
+    def loose_polar_log_bin(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "loose_polar_log_bin", value)
+
+    @property
+    @pulumi.getter(name="lowerCaseTableNames")
+    def lower_case_table_names(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+        > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+        """
+        return pulumi.get(self, "lower_case_table_names")
+
+    @lower_case_table_names.setter
+    def lower_case_table_names(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "lower_case_table_names", value)
+
+    @property
     @pulumi.getter(name="maintainTime")
     def maintain_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -512,6 +603,19 @@ class ClusterArgs:
     @modify_type.setter
     def modify_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "modify_type", value)
+
+    @property
+    @pulumi.getter(name="parameterGroupId")
+    def parameter_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the parameter template
+        > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+        """
+        return pulumi.get(self, "parameter_group_id")
+
+    @parameter_group_id.setter
+    def parameter_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parameter_group_id", value)
 
     @property
     @pulumi.getter
@@ -575,6 +679,32 @@ class ClusterArgs:
     @planned_start_time.setter
     def planned_start_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "planned_start_time", value)
+
+    @property
+    @pulumi.getter(name="proxyClass")
+    def proxy_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+        > **NOTE:** This parameter is valid only for standard clusters.
+        """
+        return pulumi.get(self, "proxy_class")
+
+    @proxy_class.setter
+    def proxy_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "proxy_class", value)
+
+    @property
+    @pulumi.getter(name="proxyType")
+    def proxy_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+        > **NOTE:** This parameter is valid only for standard clusters.
+        """
+        return pulumi.get(self, "proxy_type")
+
+    @proxy_type.setter
+    def proxy_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "proxy_type", value)
 
     @property
     @pulumi.getter(name="renewalStatus")
@@ -729,10 +859,24 @@ class ClusterArgs:
         pulumi.set(self, "source_resource_id", value)
 
     @property
+    @pulumi.getter(name="storagePayType")
+    def storage_pay_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+        """
+        return pulumi.get(self, "storage_pay_type")
+
+    @storage_pay_type.setter
+    def storage_pay_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_pay_type", value)
+
+    @property
     @pulumi.getter(name="storageSpace")
     def storage_space(self) -> Optional[pulumi.Input[int]]:
         """
         Storage space charged by space (monthly package). Unit: GB.
+        > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
+        > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
         """
         return pulumi.get(self, "storage_space")
 
@@ -857,8 +1001,10 @@ class _ClusterState:
                  db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]] = None,
                  db_node_class: Optional[pulumi.Input[str]] = None,
                  db_node_count: Optional[pulumi.Input[int]] = None,
+                 db_node_num: Optional[pulumi.Input[int]] = None,
                  db_type: Optional[pulumi.Input[str]] = None,
                  db_version: Optional[pulumi.Input[str]] = None,
+                 default_time_zone: Optional[pulumi.Input[str]] = None,
                  deletion_lock: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_new_tables: Optional[pulumi.Input[str]] = None,
@@ -867,14 +1013,19 @@ class _ClusterState:
                  gdn_id: Optional[pulumi.Input[str]] = None,
                  hot_standby_cluster: Optional[pulumi.Input[str]] = None,
                  imci_switch: Optional[pulumi.Input[str]] = None,
+                 loose_polar_log_bin: Optional[pulumi.Input[str]] = None,
+                 lower_case_table_names: Optional[pulumi.Input[int]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
+                 parameter_group_id: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]]] = None,
                  pay_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  planned_end_time: Optional[pulumi.Input[str]] = None,
                  planned_start_time: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
+                 proxy_class: Optional[pulumi.Input[str]] = None,
+                 proxy_type: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
@@ -888,6 +1039,7 @@ class _ClusterState:
                  serverless_type: Optional[pulumi.Input[str]] = None,
                  source_resource_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 storage_pay_type: Optional[pulumi.Input[str]] = None,
                  storage_space: Optional[pulumi.Input[int]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  sub_category: Optional[pulumi.Input[str]] = None,
@@ -919,8 +1071,11 @@ class _ClusterState:
                From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+        :param pulumi.Input[int] db_node_num: The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
+        :param pulumi.Input[str] default_time_zone: The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+               > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         :param pulumi.Input[int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
                > **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
         :param pulumi.Input[str] description: The description of cluster.
@@ -934,8 +1089,14 @@ class _ClusterState:
         :param pulumi.Input[str] imci_switch: Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
                > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
                > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
+        :param pulumi.Input[str] loose_polar_log_bin: Enable the Binlog function. Valid values are `OFF`, `ON`.
+               > **NOTE:** This parameter is valid only MySQL Engine supports.
+        :param pulumi.Input[int] lower_case_table_names: Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+               > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        :param pulumi.Input[str] parameter_group_id: The ID of the parameter template
+               > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
@@ -945,6 +1106,10 @@ class _ClusterState:
         :param pulumi.Input[str] planned_start_time: The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
                > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
         :param pulumi.Input[str] port: (Available since 1.196.0+) PolarDB cluster connection port.
+        :param pulumi.Input[str] proxy_class: The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+               > **NOTE:** This parameter is valid only for standard clusters.
+        :param pulumi.Input[str] proxy_type: The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+               > **NOTE:** This parameter is valid only for standard clusters.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
@@ -966,7 +1131,10 @@ class _ClusterState:
                > **NOTE:** This parameter is valid only for serverless clusters.
         :param pulumi.Input[str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
         :param pulumi.Input[str] status: (Available since 1.204.1+) PolarDB cluster status.
+        :param pulumi.Input[str] storage_pay_type: The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
         :param pulumi.Input[int] storage_space: Storage space charged by space (monthly package). Unit: GB.
+               > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
+               > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
         :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
                > **NOTE:** Serverless cluster does not support this parameter.
         :param pulumi.Input[str] sub_category: The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
@@ -1008,10 +1176,14 @@ class _ClusterState:
             pulumi.set(__self__, "db_node_class", db_node_class)
         if db_node_count is not None:
             pulumi.set(__self__, "db_node_count", db_node_count)
+        if db_node_num is not None:
+            pulumi.set(__self__, "db_node_num", db_node_num)
         if db_type is not None:
             pulumi.set(__self__, "db_type", db_type)
         if db_version is not None:
             pulumi.set(__self__, "db_version", db_version)
+        if default_time_zone is not None:
+            pulumi.set(__self__, "default_time_zone", default_time_zone)
         if deletion_lock is not None:
             pulumi.set(__self__, "deletion_lock", deletion_lock)
         if description is not None:
@@ -1028,10 +1200,16 @@ class _ClusterState:
             pulumi.set(__self__, "hot_standby_cluster", hot_standby_cluster)
         if imci_switch is not None:
             pulumi.set(__self__, "imci_switch", imci_switch)
+        if loose_polar_log_bin is not None:
+            pulumi.set(__self__, "loose_polar_log_bin", loose_polar_log_bin)
+        if lower_case_table_names is not None:
+            pulumi.set(__self__, "lower_case_table_names", lower_case_table_names)
         if maintain_time is not None:
             pulumi.set(__self__, "maintain_time", maintain_time)
         if modify_type is not None:
             pulumi.set(__self__, "modify_type", modify_type)
+        if parameter_group_id is not None:
+            pulumi.set(__self__, "parameter_group_id", parameter_group_id)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
         if pay_type is not None:
@@ -1044,6 +1222,10 @@ class _ClusterState:
             pulumi.set(__self__, "planned_start_time", planned_start_time)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if proxy_class is not None:
+            pulumi.set(__self__, "proxy_class", proxy_class)
+        if proxy_type is not None:
+            pulumi.set(__self__, "proxy_type", proxy_type)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
         if resource_group_id is not None:
@@ -1070,6 +1252,8 @@ class _ClusterState:
             pulumi.set(__self__, "source_resource_id", source_resource_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if storage_pay_type is not None:
+            pulumi.set(__self__, "storage_pay_type", storage_pay_type)
         if storage_space is not None:
             pulumi.set(__self__, "storage_space", storage_space)
         if storage_type is not None:
@@ -1243,6 +1427,18 @@ class _ClusterState:
         pulumi.set(self, "db_node_count", value)
 
     @property
+    @pulumi.getter(name="dbNodeNum")
+    def db_node_num(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+        """
+        return pulumi.get(self, "db_node_num")
+
+    @db_node_num.setter
+    def db_node_num(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "db_node_num", value)
+
+    @property
     @pulumi.getter(name="dbType")
     def db_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1265,6 +1461,19 @@ class _ClusterState:
     @db_version.setter
     def db_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "db_version", value)
+
+    @property
+    @pulumi.getter(name="defaultTimeZone")
+    def default_time_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+        > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+        """
+        return pulumi.get(self, "default_time_zone")
+
+    @default_time_zone.setter
+    def default_time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_time_zone", value)
 
     @property
     @pulumi.getter(name="deletionLock")
@@ -1368,6 +1577,32 @@ class _ClusterState:
         pulumi.set(self, "imci_switch", value)
 
     @property
+    @pulumi.getter(name="loosePolarLogBin")
+    def loose_polar_log_bin(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enable the Binlog function. Valid values are `OFF`, `ON`.
+        > **NOTE:** This parameter is valid only MySQL Engine supports.
+        """
+        return pulumi.get(self, "loose_polar_log_bin")
+
+    @loose_polar_log_bin.setter
+    def loose_polar_log_bin(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "loose_polar_log_bin", value)
+
+    @property
+    @pulumi.getter(name="lowerCaseTableNames")
+    def lower_case_table_names(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+        > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+        """
+        return pulumi.get(self, "lower_case_table_names")
+
+    @lower_case_table_names.setter
+    def lower_case_table_names(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "lower_case_table_names", value)
+
+    @property
     @pulumi.getter(name="maintainTime")
     def maintain_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1390,6 +1625,19 @@ class _ClusterState:
     @modify_type.setter
     def modify_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "modify_type", value)
+
+    @property
+    @pulumi.getter(name="parameterGroupId")
+    def parameter_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the parameter template
+        > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+        """
+        return pulumi.get(self, "parameter_group_id")
+
+    @parameter_group_id.setter
+    def parameter_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parameter_group_id", value)
 
     @property
     @pulumi.getter
@@ -1465,6 +1713,32 @@ class _ClusterState:
     @port.setter
     def port(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="proxyClass")
+    def proxy_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+        > **NOTE:** This parameter is valid only for standard clusters.
+        """
+        return pulumi.get(self, "proxy_class")
+
+    @proxy_class.setter
+    def proxy_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "proxy_class", value)
+
+    @property
+    @pulumi.getter(name="proxyType")
+    def proxy_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+        > **NOTE:** This parameter is valid only for standard clusters.
+        """
+        return pulumi.get(self, "proxy_type")
+
+    @proxy_type.setter
+    def proxy_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "proxy_type", value)
 
     @property
     @pulumi.getter(name="renewalStatus")
@@ -1631,10 +1905,24 @@ class _ClusterState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter(name="storagePayType")
+    def storage_pay_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+        """
+        return pulumi.get(self, "storage_pay_type")
+
+    @storage_pay_type.setter
+    def storage_pay_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_pay_type", value)
+
+    @property
     @pulumi.getter(name="storageSpace")
     def storage_space(self) -> Optional[pulumi.Input[int]]:
         """
         Storage space charged by space (monthly package). Unit: GB.
+        > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
+        > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
         """
         return pulumi.get(self, "storage_space")
 
@@ -1773,8 +2061,10 @@ class Cluster(pulumi.CustomResource):
                  db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]]] = None,
                  db_node_class: Optional[pulumi.Input[str]] = None,
                  db_node_count: Optional[pulumi.Input[int]] = None,
+                 db_node_num: Optional[pulumi.Input[int]] = None,
                  db_type: Optional[pulumi.Input[str]] = None,
                  db_version: Optional[pulumi.Input[str]] = None,
+                 default_time_zone: Optional[pulumi.Input[str]] = None,
                  deletion_lock: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_new_tables: Optional[pulumi.Input[str]] = None,
@@ -1783,13 +2073,18 @@ class Cluster(pulumi.CustomResource):
                  gdn_id: Optional[pulumi.Input[str]] = None,
                  hot_standby_cluster: Optional[pulumi.Input[str]] = None,
                  imci_switch: Optional[pulumi.Input[str]] = None,
+                 loose_polar_log_bin: Optional[pulumi.Input[str]] = None,
+                 lower_case_table_names: Optional[pulumi.Input[int]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
+                 parameter_group_id: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]]] = None,
                  pay_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  planned_end_time: Optional[pulumi.Input[str]] = None,
                  planned_start_time: Optional[pulumi.Input[str]] = None,
+                 proxy_class: Optional[pulumi.Input[str]] = None,
+                 proxy_type: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
@@ -1802,6 +2097,7 @@ class Cluster(pulumi.CustomResource):
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  serverless_type: Optional[pulumi.Input[str]] = None,
                  source_resource_id: Optional[pulumi.Input[str]] = None,
+                 storage_pay_type: Optional[pulumi.Input[str]] = None,
                  storage_space: Optional[pulumi.Input[int]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  sub_category: Optional[pulumi.Input[str]] = None,
@@ -1840,8 +2136,11 @@ class Cluster(pulumi.CustomResource):
                From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+        :param pulumi.Input[int] db_node_num: The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
+        :param pulumi.Input[str] default_time_zone: The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+               > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         :param pulumi.Input[int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
                > **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
         :param pulumi.Input[str] description: The description of cluster.
@@ -1855,8 +2154,14 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] imci_switch: Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
                > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
                > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
+        :param pulumi.Input[str] loose_polar_log_bin: Enable the Binlog function. Valid values are `OFF`, `ON`.
+               > **NOTE:** This parameter is valid only MySQL Engine supports.
+        :param pulumi.Input[int] lower_case_table_names: Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+               > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        :param pulumi.Input[str] parameter_group_id: The ID of the parameter template
+               > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
@@ -1865,6 +2170,10 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
         :param pulumi.Input[str] planned_start_time: The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
                > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
+        :param pulumi.Input[str] proxy_class: The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+               > **NOTE:** This parameter is valid only for standard clusters.
+        :param pulumi.Input[str] proxy_type: The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+               > **NOTE:** This parameter is valid only for standard clusters.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
@@ -1885,7 +2194,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] serverless_type: The type of the serverless cluster. Set the value to AgileServerless.
                > **NOTE:** This parameter is valid only for serverless clusters.
         :param pulumi.Input[str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
+        :param pulumi.Input[str] storage_pay_type: The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
         :param pulumi.Input[int] storage_space: Storage space charged by space (monthly package). Unit: GB.
+               > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
+               > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
         :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
                > **NOTE:** Serverless cluster does not support this parameter.
         :param pulumi.Input[str] sub_category: The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
@@ -1940,8 +2252,10 @@ class Cluster(pulumi.CustomResource):
                  db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]]] = None,
                  db_node_class: Optional[pulumi.Input[str]] = None,
                  db_node_count: Optional[pulumi.Input[int]] = None,
+                 db_node_num: Optional[pulumi.Input[int]] = None,
                  db_type: Optional[pulumi.Input[str]] = None,
                  db_version: Optional[pulumi.Input[str]] = None,
+                 default_time_zone: Optional[pulumi.Input[str]] = None,
                  deletion_lock: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_new_tables: Optional[pulumi.Input[str]] = None,
@@ -1950,13 +2264,18 @@ class Cluster(pulumi.CustomResource):
                  gdn_id: Optional[pulumi.Input[str]] = None,
                  hot_standby_cluster: Optional[pulumi.Input[str]] = None,
                  imci_switch: Optional[pulumi.Input[str]] = None,
+                 loose_polar_log_bin: Optional[pulumi.Input[str]] = None,
+                 lower_case_table_names: Optional[pulumi.Input[int]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
+                 parameter_group_id: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]]] = None,
                  pay_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  planned_end_time: Optional[pulumi.Input[str]] = None,
                  planned_start_time: Optional[pulumi.Input[str]] = None,
+                 proxy_class: Optional[pulumi.Input[str]] = None,
+                 proxy_type: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
@@ -1969,6 +2288,7 @@ class Cluster(pulumi.CustomResource):
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  serverless_type: Optional[pulumi.Input[str]] = None,
                  source_resource_id: Optional[pulumi.Input[str]] = None,
+                 storage_pay_type: Optional[pulumi.Input[str]] = None,
                  storage_space: Optional[pulumi.Input[int]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  sub_category: Optional[pulumi.Input[str]] = None,
@@ -1999,12 +2319,14 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'db_node_class'")
             __props__.__dict__["db_node_class"] = db_node_class
             __props__.__dict__["db_node_count"] = db_node_count
+            __props__.__dict__["db_node_num"] = db_node_num
             if db_type is None and not opts.urn:
                 raise TypeError("Missing required property 'db_type'")
             __props__.__dict__["db_type"] = db_type
             if db_version is None and not opts.urn:
                 raise TypeError("Missing required property 'db_version'")
             __props__.__dict__["db_version"] = db_version
+            __props__.__dict__["default_time_zone"] = default_time_zone
             __props__.__dict__["deletion_lock"] = deletion_lock
             __props__.__dict__["description"] = description
             __props__.__dict__["encrypt_new_tables"] = encrypt_new_tables
@@ -2013,13 +2335,18 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["gdn_id"] = gdn_id
             __props__.__dict__["hot_standby_cluster"] = hot_standby_cluster
             __props__.__dict__["imci_switch"] = imci_switch
+            __props__.__dict__["loose_polar_log_bin"] = loose_polar_log_bin
+            __props__.__dict__["lower_case_table_names"] = lower_case_table_names
             __props__.__dict__["maintain_time"] = maintain_time
             __props__.__dict__["modify_type"] = modify_type
+            __props__.__dict__["parameter_group_id"] = parameter_group_id
             __props__.__dict__["parameters"] = parameters
             __props__.__dict__["pay_type"] = pay_type
             __props__.__dict__["period"] = period
             __props__.__dict__["planned_end_time"] = planned_end_time
             __props__.__dict__["planned_start_time"] = planned_start_time
+            __props__.__dict__["proxy_class"] = proxy_class
+            __props__.__dict__["proxy_type"] = proxy_type
             __props__.__dict__["renewal_status"] = renewal_status
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["role_arn"] = role_arn
@@ -2032,6 +2359,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["security_ips"] = security_ips
             __props__.__dict__["serverless_type"] = serverless_type
             __props__.__dict__["source_resource_id"] = source_resource_id
+            __props__.__dict__["storage_pay_type"] = storage_pay_type
             __props__.__dict__["storage_space"] = storage_space
             __props__.__dict__["storage_type"] = storage_type
             __props__.__dict__["sub_category"] = sub_category
@@ -2068,8 +2396,10 @@ class Cluster(pulumi.CustomResource):
             db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]]] = None,
             db_node_class: Optional[pulumi.Input[str]] = None,
             db_node_count: Optional[pulumi.Input[int]] = None,
+            db_node_num: Optional[pulumi.Input[int]] = None,
             db_type: Optional[pulumi.Input[str]] = None,
             db_version: Optional[pulumi.Input[str]] = None,
+            default_time_zone: Optional[pulumi.Input[str]] = None,
             deletion_lock: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             encrypt_new_tables: Optional[pulumi.Input[str]] = None,
@@ -2078,14 +2408,19 @@ class Cluster(pulumi.CustomResource):
             gdn_id: Optional[pulumi.Input[str]] = None,
             hot_standby_cluster: Optional[pulumi.Input[str]] = None,
             imci_switch: Optional[pulumi.Input[str]] = None,
+            loose_polar_log_bin: Optional[pulumi.Input[str]] = None,
+            lower_case_table_names: Optional[pulumi.Input[int]] = None,
             maintain_time: Optional[pulumi.Input[str]] = None,
             modify_type: Optional[pulumi.Input[str]] = None,
+            parameter_group_id: Optional[pulumi.Input[str]] = None,
             parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]]] = None,
             pay_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             planned_end_time: Optional[pulumi.Input[str]] = None,
             planned_start_time: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[str]] = None,
+            proxy_class: Optional[pulumi.Input[str]] = None,
+            proxy_type: Optional[pulumi.Input[str]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             role_arn: Optional[pulumi.Input[str]] = None,
@@ -2099,6 +2434,7 @@ class Cluster(pulumi.CustomResource):
             serverless_type: Optional[pulumi.Input[str]] = None,
             source_resource_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            storage_pay_type: Optional[pulumi.Input[str]] = None,
             storage_space: Optional[pulumi.Input[int]] = None,
             storage_type: Optional[pulumi.Input[str]] = None,
             sub_category: Optional[pulumi.Input[str]] = None,
@@ -2135,8 +2471,11 @@ class Cluster(pulumi.CustomResource):
                From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+        :param pulumi.Input[int] db_node_num: The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
+        :param pulumi.Input[str] default_time_zone: The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+               > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         :param pulumi.Input[int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
                > **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
         :param pulumi.Input[str] description: The description of cluster.
@@ -2150,8 +2489,14 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] imci_switch: Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
                > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
                > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
+        :param pulumi.Input[str] loose_polar_log_bin: Enable the Binlog function. Valid values are `OFF`, `ON`.
+               > **NOTE:** This parameter is valid only MySQL Engine supports.
+        :param pulumi.Input[int] lower_case_table_names: Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+               > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        :param pulumi.Input[str] parameter_group_id: The ID of the parameter template
+               > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
@@ -2161,6 +2506,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] planned_start_time: The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
                > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
         :param pulumi.Input[str] port: (Available since 1.196.0+) PolarDB cluster connection port.
+        :param pulumi.Input[str] proxy_class: The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+               > **NOTE:** This parameter is valid only for standard clusters.
+        :param pulumi.Input[str] proxy_type: The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+               > **NOTE:** This parameter is valid only for standard clusters.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
@@ -2182,7 +2531,10 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:** This parameter is valid only for serverless clusters.
         :param pulumi.Input[str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
         :param pulumi.Input[str] status: (Available since 1.204.1+) PolarDB cluster status.
+        :param pulumi.Input[str] storage_pay_type: The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
         :param pulumi.Input[int] storage_space: Storage space charged by space (monthly package). Unit: GB.
+               > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
+               > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
         :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
                > **NOTE:** Serverless cluster does not support this parameter.
         :param pulumi.Input[str] sub_category: The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
@@ -2216,8 +2568,10 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["db_cluster_ip_arrays"] = db_cluster_ip_arrays
         __props__.__dict__["db_node_class"] = db_node_class
         __props__.__dict__["db_node_count"] = db_node_count
+        __props__.__dict__["db_node_num"] = db_node_num
         __props__.__dict__["db_type"] = db_type
         __props__.__dict__["db_version"] = db_version
+        __props__.__dict__["default_time_zone"] = default_time_zone
         __props__.__dict__["deletion_lock"] = deletion_lock
         __props__.__dict__["description"] = description
         __props__.__dict__["encrypt_new_tables"] = encrypt_new_tables
@@ -2226,14 +2580,19 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["gdn_id"] = gdn_id
         __props__.__dict__["hot_standby_cluster"] = hot_standby_cluster
         __props__.__dict__["imci_switch"] = imci_switch
+        __props__.__dict__["loose_polar_log_bin"] = loose_polar_log_bin
+        __props__.__dict__["lower_case_table_names"] = lower_case_table_names
         __props__.__dict__["maintain_time"] = maintain_time
         __props__.__dict__["modify_type"] = modify_type
+        __props__.__dict__["parameter_group_id"] = parameter_group_id
         __props__.__dict__["parameters"] = parameters
         __props__.__dict__["pay_type"] = pay_type
         __props__.__dict__["period"] = period
         __props__.__dict__["planned_end_time"] = planned_end_time
         __props__.__dict__["planned_start_time"] = planned_start_time
         __props__.__dict__["port"] = port
+        __props__.__dict__["proxy_class"] = proxy_class
+        __props__.__dict__["proxy_type"] = proxy_type
         __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["role_arn"] = role_arn
@@ -2247,6 +2606,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["serverless_type"] = serverless_type
         __props__.__dict__["source_resource_id"] = source_resource_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["storage_pay_type"] = storage_pay_type
         __props__.__dict__["storage_space"] = storage_space
         __props__.__dict__["storage_type"] = storage_type
         __props__.__dict__["sub_category"] = sub_category
@@ -2363,6 +2723,14 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "db_node_count")
 
     @property
+    @pulumi.getter(name="dbNodeNum")
+    def db_node_num(self) -> pulumi.Output[Optional[int]]:
+        """
+        The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+        """
+        return pulumi.get(self, "db_node_num")
+
+    @property
     @pulumi.getter(name="dbType")
     def db_type(self) -> pulumi.Output[str]:
         """
@@ -2377,6 +2745,15 @@ class Cluster(pulumi.CustomResource):
         Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
         """
         return pulumi.get(self, "db_version")
+
+    @property
+    @pulumi.getter(name="defaultTimeZone")
+    def default_time_zone(self) -> pulumi.Output[Optional[str]]:
+        """
+        The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+        > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+        """
+        return pulumi.get(self, "default_time_zone")
 
     @property
     @pulumi.getter(name="deletionLock")
@@ -2448,6 +2825,24 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "imci_switch")
 
     @property
+    @pulumi.getter(name="loosePolarLogBin")
+    def loose_polar_log_bin(self) -> pulumi.Output[Optional[str]]:
+        """
+        Enable the Binlog function. Valid values are `OFF`, `ON`.
+        > **NOTE:** This parameter is valid only MySQL Engine supports.
+        """
+        return pulumi.get(self, "loose_polar_log_bin")
+
+    @property
+    @pulumi.getter(name="lowerCaseTableNames")
+    def lower_case_table_names(self) -> pulumi.Output[Optional[int]]:
+        """
+        Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+        > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+        """
+        return pulumi.get(self, "lower_case_table_names")
+
+    @property
     @pulumi.getter(name="maintainTime")
     def maintain_time(self) -> pulumi.Output[str]:
         """
@@ -2462,6 +2857,15 @@ class Cluster(pulumi.CustomResource):
         Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         """
         return pulumi.get(self, "modify_type")
+
+    @property
+    @pulumi.getter(name="parameterGroupId")
+    def parameter_group_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the parameter template
+        > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+        """
+        return pulumi.get(self, "parameter_group_id")
 
     @property
     @pulumi.getter
@@ -2513,6 +2917,24 @@ class Cluster(pulumi.CustomResource):
         (Available since 1.196.0+) PolarDB cluster connection port.
         """
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="proxyClass")
+    def proxy_class(self) -> pulumi.Output[Optional[str]]:
+        """
+        The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+        > **NOTE:** This parameter is valid only for standard clusters.
+        """
+        return pulumi.get(self, "proxy_class")
+
+    @property
+    @pulumi.getter(name="proxyType")
+    def proxy_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+        > **NOTE:** This parameter is valid only for standard clusters.
+        """
+        return pulumi.get(self, "proxy_type")
 
     @property
     @pulumi.getter(name="renewalStatus")
@@ -2627,10 +3049,20 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "status")
 
     @property
+    @pulumi.getter(name="storagePayType")
+    def storage_pay_type(self) -> pulumi.Output[str]:
+        """
+        The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+        """
+        return pulumi.get(self, "storage_pay_type")
+
+    @property
     @pulumi.getter(name="storageSpace")
-    def storage_space(self) -> pulumi.Output[Optional[int]]:
+    def storage_space(self) -> pulumi.Output[int]:
         """
         Storage space charged by space (monthly package). Unit: GB.
+        > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
+        > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
         """
         return pulumi.get(self, "storage_space")
 

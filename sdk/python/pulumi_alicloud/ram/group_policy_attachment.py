@@ -141,9 +141,7 @@ class GroupPolicyAttachment(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         # Create a RAM Group Policy attachment.
-        group = alicloud.ram.Group("group",
-            comments="this is a group comments.",
-            force=True)
+        group = alicloud.ram.Group("group", comments="this is a group comments.")
         policy = alicloud.ram.Policy("policy",
             document=\"\"\"    {
               "Statement": [
@@ -162,8 +160,7 @@ class GroupPolicyAttachment(pulumi.CustomResource):
                 "Version": "1"
             }
         \"\"\",
-            description="this is a policy test",
-            force=True)
+            description="this is a policy test")
         attach = alicloud.ram.GroupPolicyAttachment("attach",
             policy_name=policy.name,
             policy_type=policy.type,
@@ -202,9 +199,7 @@ class GroupPolicyAttachment(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         # Create a RAM Group Policy attachment.
-        group = alicloud.ram.Group("group",
-            comments="this is a group comments.",
-            force=True)
+        group = alicloud.ram.Group("group", comments="this is a group comments.")
         policy = alicloud.ram.Policy("policy",
             document=\"\"\"    {
               "Statement": [
@@ -223,8 +218,7 @@ class GroupPolicyAttachment(pulumi.CustomResource):
                 "Version": "1"
             }
         \"\"\",
-            description="this is a policy test",
-            force=True)
+            description="this is a policy test")
         attach = alicloud.ram.GroupPolicyAttachment("attach",
             policy_name=policy.name,
             policy_type=policy.type,

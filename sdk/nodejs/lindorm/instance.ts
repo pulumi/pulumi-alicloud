@@ -25,22 +25,22 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "tf-example";
  * const region = "cn-hangzhou";
  * const zoneId = "cn-hangzhou-h";
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "10.4.0.0/16",
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vswitchName: name,
- *     cidrBlock: "10.4.0.0/24",
- *     vpcId: defaultNetwork.id,
+ * const defaultNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ * });
+ * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
+ *     vpcId: defaultNetworks.ids?.[0],
  *     zoneId: zoneId,
- * });
+ * }));
  * const defaultInstance = new alicloud.lindorm.Instance("defaultInstance", {
  *     diskCategory: "cloud_efficiency",
  *     paymentType: "PayAsYouGo",
  *     zoneId: zoneId,
- *     vswitchId: defaultSwitch.id,
- *     vpcId: defaultNetwork.id,
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
  *     instanceName: name,
  *     tableEngineSpecification: "lindorm.g.4xlarge",
  *     tableEngineNodeCount: 2,
@@ -135,6 +135,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly enabledSearchEngine!: pulumi.Output<boolean>;
     /**
+     * (Available since v1.211.0) Whether to enable streaming engine.
+     */
+    public /*out*/ readonly enabledStreamEngine!: pulumi.Output<boolean>;
+    /**
      * (Available since v1.163.0) Whether to enable table engine.
      */
     public /*out*/ readonly enabledTableEngine!: pulumi.Output<boolean>;
@@ -150,10 +154,6 @@ export class Instance extends pulumi.CustomResource {
      * The specification of file engine. Valid values: `lindorm.c.xlarge`.
      */
     public readonly fileEngineSpecification!: pulumi.Output<string>;
-    /**
-     * The group name.
-     */
-    public readonly groupName!: pulumi.Output<string | undefined>;
     /**
      * The name of the instance.
      */
@@ -199,14 +199,6 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
-     * The count of phoenix.
-     */
-    public readonly phoenixNodeCount!: pulumi.Output<number>;
-    /**
-     * The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-     */
-    public readonly phoenixNodeSpecification!: pulumi.Output<string>;
-    /**
      * The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
      */
     public readonly pricingCycle!: pulumi.Output<string | undefined>;
@@ -247,6 +239,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
+     * The number of LindormStream nodes in the instance.
+     */
+    public readonly streamEngineNodeCount!: pulumi.Output<number>;
+    /**
+     * The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+     */
+    public readonly streamEngineSpecification!: pulumi.Output<string>;
+    /**
      * The count of table engine.
      */
     public readonly tableEngineNodeCount!: pulumi.Output<number>;
@@ -269,7 +269,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
      *
-     * @deprecated Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.
+     * @deprecated Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
      */
     public readonly timeSeriresEngineSpecification!: pulumi.Output<string>;
     /**
@@ -310,11 +310,11 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["enabledFileEngine"] = state ? state.enabledFileEngine : undefined;
             resourceInputs["enabledLtsEngine"] = state ? state.enabledLtsEngine : undefined;
             resourceInputs["enabledSearchEngine"] = state ? state.enabledSearchEngine : undefined;
+            resourceInputs["enabledStreamEngine"] = state ? state.enabledStreamEngine : undefined;
             resourceInputs["enabledTableEngine"] = state ? state.enabledTableEngine : undefined;
             resourceInputs["enabledTimeSeriresEngine"] = state ? state.enabledTimeSeriresEngine : undefined;
             resourceInputs["fileEngineNodeCount"] = state ? state.fileEngineNodeCount : undefined;
             resourceInputs["fileEngineSpecification"] = state ? state.fileEngineSpecification : undefined;
-            resourceInputs["groupName"] = state ? state.groupName : undefined;
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
             resourceInputs["instanceStorage"] = state ? state.instanceStorage : undefined;
             resourceInputs["ipWhiteLists"] = state ? state.ipWhiteLists : undefined;
@@ -326,8 +326,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["ltsNodeSpecification"] = state ? state.ltsNodeSpecification : undefined;
             resourceInputs["multiZoneCombination"] = state ? state.multiZoneCombination : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["phoenixNodeCount"] = state ? state.phoenixNodeCount : undefined;
-            resourceInputs["phoenixNodeSpecification"] = state ? state.phoenixNodeSpecification : undefined;
             resourceInputs["pricingCycle"] = state ? state.pricingCycle : undefined;
             resourceInputs["primaryVswitchId"] = state ? state.primaryVswitchId : undefined;
             resourceInputs["primaryZoneId"] = state ? state.primaryZoneId : undefined;
@@ -338,6 +336,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["standbyVswitchId"] = state ? state.standbyVswitchId : undefined;
             resourceInputs["standbyZoneId"] = state ? state.standbyZoneId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["streamEngineNodeCount"] = state ? state.streamEngineNodeCount : undefined;
+            resourceInputs["streamEngineSpecification"] = state ? state.streamEngineSpecification : undefined;
             resourceInputs["tableEngineNodeCount"] = state ? state.tableEngineNodeCount : undefined;
             resourceInputs["tableEngineSpecification"] = state ? state.tableEngineSpecification : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -369,7 +369,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["duration"] = args ? args.duration : undefined;
             resourceInputs["fileEngineNodeCount"] = args ? args.fileEngineNodeCount : undefined;
             resourceInputs["fileEngineSpecification"] = args ? args.fileEngineSpecification : undefined;
-            resourceInputs["groupName"] = args ? args.groupName : undefined;
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
             resourceInputs["instanceStorage"] = args ? args.instanceStorage : undefined;
             resourceInputs["ipWhiteLists"] = args ? args.ipWhiteLists : undefined;
@@ -381,8 +380,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["ltsNodeSpecification"] = args ? args.ltsNodeSpecification : undefined;
             resourceInputs["multiZoneCombination"] = args ? args.multiZoneCombination : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["phoenixNodeCount"] = args ? args.phoenixNodeCount : undefined;
-            resourceInputs["phoenixNodeSpecification"] = args ? args.phoenixNodeSpecification : undefined;
             resourceInputs["pricingCycle"] = args ? args.pricingCycle : undefined;
             resourceInputs["primaryVswitchId"] = args ? args.primaryVswitchId : undefined;
             resourceInputs["primaryZoneId"] = args ? args.primaryZoneId : undefined;
@@ -391,6 +388,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["searchEngineSpecification"] = args ? args.searchEngineSpecification : undefined;
             resourceInputs["standbyVswitchId"] = args ? args.standbyVswitchId : undefined;
             resourceInputs["standbyZoneId"] = args ? args.standbyZoneId : undefined;
+            resourceInputs["streamEngineNodeCount"] = args ? args.streamEngineNodeCount : undefined;
+            resourceInputs["streamEngineSpecification"] = args ? args.streamEngineSpecification : undefined;
             resourceInputs["tableEngineNodeCount"] = args ? args.tableEngineNodeCount : undefined;
             resourceInputs["tableEngineSpecification"] = args ? args.tableEngineSpecification : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -403,6 +402,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["enabledFileEngine"] = undefined /*out*/;
             resourceInputs["enabledLtsEngine"] = undefined /*out*/;
             resourceInputs["enabledSearchEngine"] = undefined /*out*/;
+            resourceInputs["enabledStreamEngine"] = undefined /*out*/;
             resourceInputs["enabledTableEngine"] = undefined /*out*/;
             resourceInputs["enabledTimeSeriresEngine"] = undefined /*out*/;
             resourceInputs["serviceType"] = undefined /*out*/;
@@ -468,6 +468,10 @@ export interface InstanceState {
      */
     enabledSearchEngine?: pulumi.Input<boolean>;
     /**
+     * (Available since v1.211.0) Whether to enable streaming engine.
+     */
+    enabledStreamEngine?: pulumi.Input<boolean>;
+    /**
      * (Available since v1.163.0) Whether to enable table engine.
      */
     enabledTableEngine?: pulumi.Input<boolean>;
@@ -483,10 +487,6 @@ export interface InstanceState {
      * The specification of file engine. Valid values: `lindorm.c.xlarge`.
      */
     fileEngineSpecification?: pulumi.Input<string>;
-    /**
-     * The group name.
-     */
-    groupName?: pulumi.Input<string>;
     /**
      * The name of the instance.
      */
@@ -532,14 +532,6 @@ export interface InstanceState {
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * The count of phoenix.
-     */
-    phoenixNodeCount?: pulumi.Input<number>;
-    /**
-     * The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-     */
-    phoenixNodeSpecification?: pulumi.Input<string>;
-    /**
      * The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
      */
     pricingCycle?: pulumi.Input<string>;
@@ -580,6 +572,14 @@ export interface InstanceState {
      */
     status?: pulumi.Input<string>;
     /**
+     * The number of LindormStream nodes in the instance.
+     */
+    streamEngineNodeCount?: pulumi.Input<number>;
+    /**
+     * The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+     */
+    streamEngineSpecification?: pulumi.Input<string>;
+    /**
      * The count of table engine.
      */
     tableEngineNodeCount?: pulumi.Input<number>;
@@ -602,7 +602,7 @@ export interface InstanceState {
     /**
      * Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
      *
-     * @deprecated Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.
+     * @deprecated Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
      */
     timeSeriresEngineSpecification?: pulumi.Input<string>;
     /**
@@ -670,10 +670,6 @@ export interface InstanceArgs {
      */
     fileEngineSpecification?: pulumi.Input<string>;
     /**
-     * The group name.
-     */
-    groupName?: pulumi.Input<string>;
-    /**
      * The name of the instance.
      */
     instanceName?: pulumi.Input<string>;
@@ -718,14 +714,6 @@ export interface InstanceArgs {
      */
     paymentType: pulumi.Input<string>;
     /**
-     * The count of phoenix.
-     */
-    phoenixNodeCount?: pulumi.Input<number>;
-    /**
-     * The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-     */
-    phoenixNodeSpecification?: pulumi.Input<string>;
-    /**
      * The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
      */
     pricingCycle?: pulumi.Input<string>;
@@ -758,6 +746,14 @@ export interface InstanceArgs {
      */
     standbyZoneId?: pulumi.Input<string>;
     /**
+     * The number of LindormStream nodes in the instance.
+     */
+    streamEngineNodeCount?: pulumi.Input<number>;
+    /**
+     * The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+     */
+    streamEngineSpecification?: pulumi.Input<string>;
+    /**
      * The count of table engine.
      */
     tableEngineNodeCount?: pulumi.Input<number>;
@@ -780,7 +776,7 @@ export interface InstanceArgs {
     /**
      * Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
      *
-     * @deprecated Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.
+     * @deprecated Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
      */
     timeSeriresEngineSpecification?: pulumi.Input<string>;
     /**

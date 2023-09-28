@@ -10,6 +10,7 @@ import * as utilities from "../utilities";
  * The log store is a unit in Log Service to collect, store, and query the log data. Each log store belongs to a project,
  * and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
  *
+ * > **NOTE:** Available since v1.0.0.
  * ## Example Usage
  *
  * Basic Usage
@@ -32,7 +33,9 @@ import * as utilities from "../utilities";
  *     appendMeta: true,
  * });
  * ```
+ *
  * Encrypt Usage
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -121,7 +124,7 @@ export class Store extends pulumi.CustomResource {
      */
     public readonly enableWebTracking!: pulumi.Output<boolean | undefined>;
     /**
-     * Encrypted storage of data, providing data static protection capability, `encryptConf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
+     * Encrypted storage of data, providing data static protection capability, `encryptConf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encryptConf` below.
      */
     public readonly encryptConf!: pulumi.Output<outputs.log.StoreEncryptConf | undefined>;
     /**
@@ -133,9 +136,9 @@ export class Store extends pulumi.CustomResource {
      */
     public readonly maxSplitShardCount!: pulumi.Output<number | undefined>;
     /**
-     * The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+     * The mode of storage. Default to `standard`, must be `standard` or `query`.
      */
-    public readonly mode!: pulumi.Output<string>;
+    public readonly mode!: pulumi.Output<string | undefined>;
     /**
      * The log store, which is unique in the same project.
      */
@@ -228,7 +231,7 @@ export interface StoreState {
      */
     enableWebTracking?: pulumi.Input<boolean>;
     /**
-     * Encrypted storage of data, providing data static protection capability, `encryptConf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
+     * Encrypted storage of data, providing data static protection capability, `encryptConf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encryptConf` below.
      */
     encryptConf?: pulumi.Input<inputs.log.StoreEncryptConf>;
     /**
@@ -240,7 +243,7 @@ export interface StoreState {
      */
     maxSplitShardCount?: pulumi.Input<number>;
     /**
-     * The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+     * The mode of storage. Default to `standard`, must be `standard` or `query`.
      */
     mode?: pulumi.Input<string>;
     /**
@@ -286,7 +289,7 @@ export interface StoreArgs {
      */
     enableWebTracking?: pulumi.Input<boolean>;
     /**
-     * Encrypted storage of data, providing data static protection capability, `encryptConf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
+     * Encrypted storage of data, providing data static protection capability, `encryptConf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encryptConf` below.
      */
     encryptConf?: pulumi.Input<inputs.log.StoreEncryptConf>;
     /**
@@ -298,7 +301,7 @@ export interface StoreArgs {
      */
     maxSplitShardCount?: pulumi.Input<number>;
     /**
-     * The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+     * The mode of storage. Default to `standard`, must be `standard` or `query`.
      */
     mode?: pulumi.Input<string>;
     /**

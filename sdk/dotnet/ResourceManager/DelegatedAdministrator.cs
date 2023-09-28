@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// For information about Resource Manager Delegated Administrator and how to use it, see [What is Delegated Administrator](https://www.alibabacloud.com/help/en/resource-management/latest/registerdelegatedadministrator#doc-api-ResourceManager-RegisterDelegatedAdministrator).
     /// 
-    /// &gt; **NOTE:** Available in v1.181.0+.
+    /// &gt; **NOTE:** Available since v1.181.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,14 +28,23 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultAccounts = AliCloud.ResourceManager.GetAccounts.Invoke(new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var displayName = config.Get("displayName") ?? "EAccount";
+    ///     var exampleFolder = new AliCloud.ResourceManager.Folder("exampleFolder", new()
     ///     {
-    ///         Status = "CreateSuccess",
+    ///         FolderName = name,
     ///     });
     /// 
-    ///     var defaultDelegatedAdministrator = new AliCloud.ResourceManager.DelegatedAdministrator("defaultDelegatedAdministrator", new()
+    ///     var exampleAccount = new AliCloud.ResourceManager.Account("exampleAccount", new()
     ///     {
-    ///         AccountId = defaultAccounts.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.AccountId),
+    ///         DisplayName = displayName,
+    ///         FolderId = exampleFolder.Id,
+    ///     });
+    /// 
+    ///     var exampleDelegatedAdministrator = new AliCloud.ResourceManager.DelegatedAdministrator("exampleDelegatedAdministrator", new()
+    ///     {
+    ///         AccountId = exampleAccount.Id,
     ///         ServicePrincipal = "cloudfw.aliyuncs.com",
     ///     });
     /// 

@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Cdn
         /// 
         /// For information about CDN and how to use it, see [What is CDN](https://www.alibabacloud.com/help/product/27099.htm).
         /// 
-        /// &gt; **NOTE:** Available in v1.98.0+
+        /// &gt; **NOTE:** Available since v1.98.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Cdn
         /// 
         /// For information about CDN and how to use it, see [What is CDN](https://www.alibabacloud.com/help/product/27099.htm).
         /// 
-        /// &gt; **NOTE:** Available in v1.98.0+
+        /// &gt; **NOTE:** Available since v1.98.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

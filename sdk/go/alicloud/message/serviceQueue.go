@@ -17,7 +17,7 @@ import (
 //
 // For information about Message Notification Service Queue and how to use it, see [What is Queue](https://www.alibabacloud.com/help/en/message-service/latest/createqueue).
 //
-// > **NOTE:** Available in v1.188.0+.
+// > **NOTE:** Available since v1.188.0.
 //
 // ## Example Usage
 //
@@ -30,19 +30,25 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/message"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := message.NewServiceQueue(ctx, "queue", &message.ServiceQueueArgs{
+//				QueueName:              pulumi.String(name),
 //				DelaySeconds:           pulumi.Int(60478),
-//				LoggingEnabled:         pulumi.Bool(true),
 //				MaximumMessageSize:     pulumi.Int(12357),
 //				MessageRetentionPeriod: pulumi.Int(256000),
-//				PollingWaitSeconds:     pulumi.Int(3),
-//				QueueName:              pulumi.String("tf-example-value"),
 //				VisibilityTimeout:      pulumi.Int(30),
+//				PollingWaitSeconds:     pulumi.Int(3),
+//				LoggingEnabled:         pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

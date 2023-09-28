@@ -22,29 +22,49 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example-config";
+ * const name = config.get("name") || "tf-example-config-name";
  * const defaultRegions = alicloud.getRegions({
  *     current: true,
  * });
- * const defaultRule = new alicloud.cfg.Rule("defaultRule", {
- *     description: "If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.",
+ * const rule1 = new alicloud.cfg.Rule("rule1", {
+ *     description: name,
  *     sourceOwner: "ALIYUN",
- *     sourceIdentifier: "oss-bucket-public-read-prohibited",
+ *     sourceIdentifier: "ram-user-ak-create-date-expired-check",
  *     riskLevel: 1,
- *     tagKeyScope: "For",
- *     tagValueScope: "example",
+ *     maximumExecutionFrequency: "TwentyFour_Hours",
  *     regionIdsScope: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
- *     configRuleTriggerTypes: "ConfigurationItemChangeNotification",
- *     resourceTypesScopes: ["ACS::OSS::Bucket"],
- *     ruleName: "oss-bucket-public-read-prohibited",
+ *     configRuleTriggerTypes: "ScheduledNotification",
+ *     resourceTypesScopes: ["ACS::RAM::User"],
+ *     ruleName: "ciscompliancecheck_ram-user-ak-create-date-expired-check",
+ *     inputParameters: {
+ *         days: "90",
+ *     },
+ * });
+ * const rule2 = new alicloud.cfg.Rule("rule2", {
+ *     description: name,
+ *     sourceOwner: "ALIYUN",
+ *     sourceIdentifier: "adb-cluster-maintain-time-check",
+ *     riskLevel: 2,
+ *     regionIdsScope: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     configRuleTriggerTypes: "ScheduledNotification",
+ *     resourceTypesScopes: ["ACS::ADB::DBCluster"],
+ *     ruleName: "governance-evaluation-adb-cluster-maintain-time-check",
+ *     inputParameters: {
+ *         maintainTimes: "02:00-04:00,06:00-08:00,12:00-13:00",
+ *     },
  * });
  * const defaultCompliancePack = new alicloud.cfg.CompliancePack("defaultCompliancePack", {
  *     compliancePackName: name,
- *     description: name,
- *     riskLevel: 1,
- *     configRuleIds: [{
- *         configRuleId: defaultRule.id,
- *     }],
+ *     description: "CloudGovernanceCenter evaluation",
+ *     riskLevel: 2,
+ *     configRuleIds: [
+ *         {
+ *             configRuleId: rule1.id,
+ *         },
+ *         {
+ *             configRuleId: rule2.id,
+ *         },
+ *     ],
  * });
  * ```
  *
@@ -85,7 +105,7 @@ export class CompliancePack extends pulumi.CustomResource {
     }
 
     /**
-     * The Compliance Package Name. . **NOTE:** the `compliancePackName` supports modification since V1.146.0.
+     * The Compliance Package Name. **NOTE:** From version 1.146.0, `compliancePackName` can be modified.
      */
     public readonly compliancePackName!: pulumi.Output<string>;
     /**
@@ -97,9 +117,9 @@ export class CompliancePack extends pulumi.CustomResource {
      */
     public readonly configRuleIds!: pulumi.Output<outputs.cfg.CompliancePackConfigRuleId[] | undefined>;
     /**
-     * A list of Config Rules. See `configRules` below.
+     * A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      *
-     * @deprecated Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
+     * @deprecated Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
      */
     public readonly configRules!: pulumi.Output<outputs.cfg.CompliancePackConfigRule[] | undefined>;
     /**
@@ -107,11 +127,11 @@ export class CompliancePack extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+     * The Risk Level. Valid values:
      */
     public readonly riskLevel!: pulumi.Output<number>;
     /**
-     * The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+     * The status of the Compliance Pack.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -164,7 +184,7 @@ export class CompliancePack extends pulumi.CustomResource {
  */
 export interface CompliancePackState {
     /**
-     * The Compliance Package Name. . **NOTE:** the `compliancePackName` supports modification since V1.146.0.
+     * The Compliance Package Name. **NOTE:** From version 1.146.0, `compliancePackName` can be modified.
      */
     compliancePackName?: pulumi.Input<string>;
     /**
@@ -176,9 +196,9 @@ export interface CompliancePackState {
      */
     configRuleIds?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRuleId>[]>;
     /**
-     * A list of Config Rules. See `configRules` below.
+     * A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      *
-     * @deprecated Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
+     * @deprecated Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
      */
     configRules?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRule>[]>;
     /**
@@ -186,11 +206,11 @@ export interface CompliancePackState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+     * The Risk Level. Valid values:
      */
     riskLevel?: pulumi.Input<number>;
     /**
-     * The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+     * The status of the Compliance Pack.
      */
     status?: pulumi.Input<string>;
 }
@@ -200,7 +220,7 @@ export interface CompliancePackState {
  */
 export interface CompliancePackArgs {
     /**
-     * The Compliance Package Name. . **NOTE:** the `compliancePackName` supports modification since V1.146.0.
+     * The Compliance Package Name. **NOTE:** From version 1.146.0, `compliancePackName` can be modified.
      */
     compliancePackName: pulumi.Input<string>;
     /**
@@ -212,9 +232,9 @@ export interface CompliancePackArgs {
      */
     configRuleIds?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRuleId>[]>;
     /**
-     * A list of Config Rules. See `configRules` below.
+     * A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      *
-     * @deprecated Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
+     * @deprecated Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
      */
     configRules?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRule>[]>;
     /**
@@ -222,7 +242,7 @@ export interface CompliancePackArgs {
      */
     description: pulumi.Input<string>;
     /**
-     * The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+     * The Risk Level. Valid values:
      */
     riskLevel: pulumi.Input<number>;
 }

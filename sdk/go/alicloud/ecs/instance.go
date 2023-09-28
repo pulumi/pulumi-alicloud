@@ -291,8 +291,6 @@ type Instance struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
 	StoppedMode pulumi.StringOutput `pulumi:"stoppedMode"`
-	// Deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.
-	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available since 1.184.0+.
@@ -303,6 +301,8 @@ type Instance struct {
 	SystemDiskEncryptAlgorithm pulumi.StringPtrOutput `pulumi:"systemDiskEncryptAlgorithm"`
 	// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
 	SystemDiskEncrypted pulumi.BoolPtrOutput `pulumi:"systemDiskEncrypted"`
+	// (Available since v1.210.0) The ID of system disk.
+	SystemDiskId pulumi.StringOutput `pulumi:"systemDiskId"`
 	// The ID of the Key Management Service (KMS) key to be used for the system disk.
 	SystemDiskKmsKeyId pulumi.StringPtrOutput `pulumi:"systemDiskKmsKeyId"`
 	// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
@@ -536,8 +536,6 @@ type instanceState struct {
 	Status *string `pulumi:"status"`
 	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
 	StoppedMode *string `pulumi:"stoppedMode"`
-	// Deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.
-	SubnetId *string `pulumi:"subnetId"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available since 1.184.0+.
@@ -548,6 +546,8 @@ type instanceState struct {
 	SystemDiskEncryptAlgorithm *string `pulumi:"systemDiskEncryptAlgorithm"`
 	// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
 	SystemDiskEncrypted *bool `pulumi:"systemDiskEncrypted"`
+	// (Available since v1.210.0) The ID of system disk.
+	SystemDiskId *string `pulumi:"systemDiskId"`
 	// The ID of the Key Management Service (KMS) key to be used for the system disk.
 	SystemDiskKmsKeyId *string `pulumi:"systemDiskKmsKeyId"`
 	// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
@@ -736,8 +736,6 @@ type InstanceState struct {
 	Status pulumi.StringPtrInput
 	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
 	StoppedMode pulumi.StringPtrInput
-	// Deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.
-	SubnetId pulumi.StringPtrInput
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available since 1.184.0+.
@@ -748,6 +746,8 @@ type InstanceState struct {
 	SystemDiskEncryptAlgorithm pulumi.StringPtrInput
 	// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
 	SystemDiskEncrypted pulumi.BoolPtrInput
+	// (Available since v1.210.0) The ID of system disk.
+	SystemDiskId pulumi.StringPtrInput
 	// The ID of the Key Management Service (KMS) key to be used for the system disk.
 	SystemDiskKmsKeyId pulumi.StringPtrInput
 	// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
@@ -924,8 +924,6 @@ type instanceArgs struct {
 	Status *string `pulumi:"status"`
 	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
 	StoppedMode *string `pulumi:"stoppedMode"`
-	// Deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.
-	SubnetId *string `pulumi:"subnetId"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available since 1.184.0+.
@@ -1109,8 +1107,6 @@ type InstanceArgs struct {
 	Status pulumi.StringPtrInput
 	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
 	StoppedMode pulumi.StringPtrInput
-	// Deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.
-	SubnetId pulumi.StringPtrInput
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available since 1.184.0+.
@@ -1599,11 +1595,6 @@ func (o InstanceOutput) StoppedMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.StoppedMode }).(pulumi.StringOutput)
 }
 
-// Deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.
-func (o InstanceOutput) SubnetId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SubnetId }).(pulumi.StringOutput)
-}
-
 // The ID of the automatic snapshot policy applied to the system disk.
 func (o InstanceOutput) SystemDiskAutoSnapshotPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SystemDiskAutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
@@ -1627,6 +1618,11 @@ func (o InstanceOutput) SystemDiskEncryptAlgorithm() pulumi.StringPtrOutput {
 // Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
 func (o InstanceOutput) SystemDiskEncrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.SystemDiskEncrypted }).(pulumi.BoolPtrOutput)
+}
+
+// (Available since v1.210.0) The ID of system disk.
+func (o InstanceOutput) SystemDiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SystemDiskId }).(pulumi.StringOutput)
 }
 
 // The ID of the Key Management Service (KMS) key to be used for the system disk.

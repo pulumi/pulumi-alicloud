@@ -15,9 +15,9 @@ import (
 
 // Provides a Private Zone Rule resource.
 //
-// For information about Private Zone Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/doc-detail/177601.htm).
+// For information about Private Zone Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/privatezone/latest/add-forwarding-rule).
 //
-// > **NOTE:** Available in v1.143.0+.
+// > **NOTE:** Available since v1.143.0.
 //
 // ## Import
 //
@@ -33,7 +33,7 @@ type Rule struct {
 
 	// The ID of the Endpoint.
 	EndpointId pulumi.StringOutput `pulumi:"endpointId"`
-	// Forwarding target. See the following `Block forwardIp`.
+	// Forwarding target. See `forwardIps` below.
 	ForwardIps RuleForwardIpArrayOutput `pulumi:"forwardIps"`
 	// The name of the resource.
 	RuleName pulumi.StringOutput `pulumi:"ruleName"`
@@ -87,7 +87,7 @@ func GetRule(ctx *pulumi.Context,
 type ruleState struct {
 	// The ID of the Endpoint.
 	EndpointId *string `pulumi:"endpointId"`
-	// Forwarding target. See the following `Block forwardIp`.
+	// Forwarding target. See `forwardIps` below.
 	ForwardIps []RuleForwardIp `pulumi:"forwardIps"`
 	// The name of the resource.
 	RuleName *string `pulumi:"ruleName"`
@@ -100,7 +100,7 @@ type ruleState struct {
 type RuleState struct {
 	// The ID of the Endpoint.
 	EndpointId pulumi.StringPtrInput
-	// Forwarding target. See the following `Block forwardIp`.
+	// Forwarding target. See `forwardIps` below.
 	ForwardIps RuleForwardIpArrayInput
 	// The name of the resource.
 	RuleName pulumi.StringPtrInput
@@ -117,7 +117,7 @@ func (RuleState) ElementType() reflect.Type {
 type ruleArgs struct {
 	// The ID of the Endpoint.
 	EndpointId string `pulumi:"endpointId"`
-	// Forwarding target. See the following `Block forwardIp`.
+	// Forwarding target. See `forwardIps` below.
 	ForwardIps []RuleForwardIp `pulumi:"forwardIps"`
 	// The name of the resource.
 	RuleName string `pulumi:"ruleName"`
@@ -131,7 +131,7 @@ type ruleArgs struct {
 type RuleArgs struct {
 	// The ID of the Endpoint.
 	EndpointId pulumi.StringInput
-	// Forwarding target. See the following `Block forwardIp`.
+	// Forwarding target. See `forwardIps` below.
 	ForwardIps RuleForwardIpArrayInput
 	// The name of the resource.
 	RuleName pulumi.StringInput
@@ -257,7 +257,7 @@ func (o RuleOutput) EndpointId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.EndpointId }).(pulumi.StringOutput)
 }
 
-// Forwarding target. See the following `Block forwardIp`.
+// Forwarding target. See `forwardIps` below.
 func (o RuleOutput) ForwardIps() RuleForwardIpArrayOutput {
 	return o.ApplyT(func(v *Rule) RuleForwardIpArrayOutput { return v.ForwardIps }).(RuleForwardIpArrayOutput)
 }

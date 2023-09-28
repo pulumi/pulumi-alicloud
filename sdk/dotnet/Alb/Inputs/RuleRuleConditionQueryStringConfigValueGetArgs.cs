@@ -13,13 +13,14 @@ namespace Pulumi.AliCloud.Alb.Inputs
     public sealed class RuleRuleConditionQueryStringConfigValueGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+        /// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// The value of the values list.
+        /// The content of the inserted header field. Valid values:
+        /// * If the `value_type` is set to `SystemDefined`, the following values are used:
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

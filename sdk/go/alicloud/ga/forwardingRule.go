@@ -39,6 +39,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
+//			region := "cn-hangzhou"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
 //			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
@@ -94,14 +98,6 @@ import (
 //						ToPort:   pulumi.Int(60),
 //					},
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ga.NewIpSet(ctx, "exampleIpSet", &ga.IpSetArgs{
-//				AccelerateRegionId: *pulumi.String(_default.Regions[0].Id),
-//				AcceleratorId:      exampleBandwidthPackageAttachment.AcceleratorId,
-//				Bandwidth:          pulumi.Int(20),
 //			})
 //			if err != nil {
 //				return err
@@ -194,7 +190,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import alicloud:ga/forwardingRule:ForwardingRule example <id>
+//	$ pulumi import alicloud:ga/forwardingRule:ForwardingRule example <accelerator_id>:<listener_id>:<forwarding_rule_id>
 //
 // ```
 type ForwardingRule struct {

@@ -2199,11 +2199,11 @@ type GetResourceGroupsGroup struct {
 	Id string `pulumi:"id"`
 	// The unique identifier of the resource group.
 	Name string `pulumi:"name"`
-	// (Available in v1.114.0+) The status of the resource group in all regions.
+	// (Available since v1.114.0) The status of the resource group in all regions.
 	RegionStatuses []GetResourceGroupsGroupRegionStatus `pulumi:"regionStatuses"`
-	// (Available in v1.114.0+) The unique identifier of the resource group.
+	// (Available since v1.114.0) The unique identifier of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+	// The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
 	Status string `pulumi:"status"`
 }
 
@@ -2227,11 +2227,11 @@ type GetResourceGroupsGroupArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The unique identifier of the resource group.
 	Name pulumi.StringInput `pulumi:"name"`
-	// (Available in v1.114.0+) The status of the resource group in all regions.
+	// (Available since v1.114.0) The status of the resource group in all regions.
 	RegionStatuses GetResourceGroupsGroupRegionStatusArrayInput `pulumi:"regionStatuses"`
-	// (Available in v1.114.0+) The unique identifier of the resource group.
+	// (Available since v1.114.0) The unique identifier of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+	// The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -2324,17 +2324,17 @@ func (o GetResourceGroupsGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Available in v1.114.0+) The status of the resource group in all regions.
+// (Available since v1.114.0) The status of the resource group in all regions.
 func (o GetResourceGroupsGroupOutput) RegionStatuses() GetResourceGroupsGroupRegionStatusArrayOutput {
 	return o.ApplyT(func(v GetResourceGroupsGroup) []GetResourceGroupsGroupRegionStatus { return v.RegionStatuses }).(GetResourceGroupsGroupRegionStatusArrayOutput)
 }
 
-// (Available in v1.114.0+) The unique identifier of the resource group.
+// (Available since v1.114.0) The unique identifier of the resource group.
 func (o GetResourceGroupsGroupOutput) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceGroupsGroup) string { return v.ResourceGroupName }).(pulumi.StringOutput)
 }
 
-// The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+// The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
 func (o GetResourceGroupsGroupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceGroupsGroup) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2368,7 +2368,7 @@ func (o GetResourceGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetResourceG
 type GetResourceGroupsGroupRegionStatus struct {
 	// The region ID.
 	RegionId string `pulumi:"regionId"`
-	// The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+	// The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
 	Status string `pulumi:"status"`
 }
 
@@ -2386,7 +2386,7 @@ type GetResourceGroupsGroupRegionStatusInput interface {
 type GetResourceGroupsGroupRegionStatusArgs struct {
 	// The region ID.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
-	// The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+	// The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -2464,7 +2464,7 @@ func (o GetResourceGroupsGroupRegionStatusOutput) RegionId() pulumi.StringOutput
 	return o.ApplyT(func(v GetResourceGroupsGroupRegionStatus) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
-// The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+// The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
 func (o GetResourceGroupsGroupRegionStatusOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceGroupsGroupRegionStatus) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2837,7 +2837,7 @@ func (o GetRolesRoleArrayOutput) Index(i pulumi.IntInput) GetRolesRoleOutput {
 }
 
 type GetSharedResourcesResource struct {
-	// The ID of the Shared Resource.
+	// The ID of the Shared Resource. It formats as `<resource_id>:<resource_type>`.
 	Id string `pulumi:"id"`
 	// The ID of the shared resource.
 	ResourceId string `pulumi:"resourceId"`
@@ -2845,7 +2845,7 @@ type GetSharedResourcesResource struct {
 	ResourceShareId string `pulumi:"resourceShareId"`
 	// The type of shared resource.
 	ResourceType string `pulumi:"resourceType"`
-	// The status of shared resource.
+	// The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
 	Status string `pulumi:"status"`
 }
 
@@ -2861,7 +2861,7 @@ type GetSharedResourcesResourceInput interface {
 }
 
 type GetSharedResourcesResourceArgs struct {
-	// The ID of the Shared Resource.
+	// The ID of the Shared Resource. It formats as `<resource_id>:<resource_type>`.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The ID of the shared resource.
 	ResourceId pulumi.StringInput `pulumi:"resourceId"`
@@ -2869,7 +2869,7 @@ type GetSharedResourcesResourceArgs struct {
 	ResourceShareId pulumi.StringInput `pulumi:"resourceShareId"`
 	// The type of shared resource.
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
-	// The status of shared resource.
+	// The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -2942,7 +2942,7 @@ func (o GetSharedResourcesResourceOutput) ToOutput(ctx context.Context) pulumix.
 	}
 }
 
-// The ID of the Shared Resource.
+// The ID of the Shared Resource. It formats as `<resource_id>:<resource_type>`.
 func (o GetSharedResourcesResourceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSharedResourcesResource) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -2962,7 +2962,7 @@ func (o GetSharedResourcesResourceOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSharedResourcesResource) string { return v.ResourceType }).(pulumi.StringOutput)
 }
 
-// The status of shared resource.
+// The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
 func (o GetSharedResourcesResourceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSharedResourcesResource) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2996,11 +2996,11 @@ func (o GetSharedResourcesResourceArrayOutput) Index(i pulumi.IntInput) GetShare
 type GetSharedTargetsTarget struct {
 	// The ID of the Shared Target.
 	Id string `pulumi:"id"`
-	// The resource shared ID of resource manager.
+	// The resource share ID of resource manager.
 	ResourceShareId string `pulumi:"resourceShareId"`
-	// The status of shared target.
+	// The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
 	Status string `pulumi:"status"`
-	// The member account ID in resource directory.
+	// The ID of the Shared Target.
 	TargetId string `pulumi:"targetId"`
 }
 
@@ -3018,11 +3018,11 @@ type GetSharedTargetsTargetInput interface {
 type GetSharedTargetsTargetArgs struct {
 	// The ID of the Shared Target.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The resource shared ID of resource manager.
+	// The resource share ID of resource manager.
 	ResourceShareId pulumi.StringInput `pulumi:"resourceShareId"`
-	// The status of shared target.
+	// The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The member account ID in resource directory.
+	// The ID of the Shared Target.
 	TargetId pulumi.StringInput `pulumi:"targetId"`
 }
 
@@ -3100,17 +3100,17 @@ func (o GetSharedTargetsTargetOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSharedTargetsTarget) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The resource shared ID of resource manager.
+// The resource share ID of resource manager.
 func (o GetSharedTargetsTargetOutput) ResourceShareId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSharedTargetsTarget) string { return v.ResourceShareId }).(pulumi.StringOutput)
 }
 
-// The status of shared target.
+// The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
 func (o GetSharedTargetsTargetOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSharedTargetsTarget) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The member account ID in resource directory.
+// The ID of the Shared Target.
 func (o GetSharedTargetsTargetOutput) TargetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSharedTargetsTarget) string { return v.TargetId }).(pulumi.StringOutput)
 }

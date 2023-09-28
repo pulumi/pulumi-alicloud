@@ -10,12 +10,91 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'InstanceBindVpc',
     'GetAliasesAliasResult',
     'GetKeyVersionsVersionResult',
     'GetKeysKeyResult',
     'GetSecretVersionsVersionResult',
     'GetSecretsSecretResult',
 ]
+
+@pulumi.output_type
+class InstanceBindVpc(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "regionId":
+            suggest = "region_id"
+        elif key == "vpcId":
+            suggest = "vpc_id"
+        elif key == "vpcOwnerId":
+            suggest = "vpc_owner_id"
+        elif key == "vswitchId":
+            suggest = "vswitch_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceBindVpc. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceBindVpc.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceBindVpc.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 region_id: Optional[str] = None,
+                 vpc_id: Optional[str] = None,
+                 vpc_owner_id: Optional[int] = None,
+                 vswitch_id: Optional[str] = None):
+        """
+        :param str region_id: region id.
+        :param str vpc_id: VPC ID.
+        :param int vpc_owner_id: VPC owner root user ID.
+        :param str vswitch_id: vswitch id.
+        """
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if vpc_owner_id is not None:
+            pulumi.set(__self__, "vpc_owner_id", vpc_owner_id)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[str]:
+        """
+        region id.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[str]:
+        """
+        VPC ID.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vpcOwnerId")
+    def vpc_owner_id(self) -> Optional[int]:
+        """
+        VPC owner root user ID.
+        """
+        return pulumi.get(self, "vpc_owner_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[str]:
+        """
+        vswitch id.
+        """
+        return pulumi.get(self, "vswitch_id")
+
 
 @pulumi.output_type
 class GetAliasesAliasResult(dict):

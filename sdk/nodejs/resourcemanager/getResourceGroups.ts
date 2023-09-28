@@ -9,16 +9,18 @@ import * as utilities from "../utilities";
 /**
  * This data source provides resource groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.84.0+.
+ * > **NOTE:** Available since v1.84.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = alicloud.resourcemanager.getResourceGroups({
- *     nameRegex: "tftest",
+ *     nameRegex: "tf",
  * });
  * export const firstResourceGroupId = example.then(example => example.groups?.[0]?.id);
  * ```
@@ -41,7 +43,7 @@ export function getResourceGroups(args?: GetResourceGroupsArgs, opts?: pulumi.In
  */
 export interface GetResourceGroupsArgs {
     /**
-     * Default to `false`. Set it to true can output more details.
+     * Set it to true can output more details. Default value: `false`.
      */
     enableDetails?: boolean;
     /**
@@ -49,7 +51,7 @@ export interface GetResourceGroupsArgs {
      */
     ids?: string[];
     /**
-     * A regex string to filter results by resource group name.
+     * A regex string to filter results by resource group identifier.
      */
     nameRegex?: string;
     /**
@@ -57,7 +59,7 @@ export interface GetResourceGroupsArgs {
      */
     outputFile?: string;
     /**
-     * The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+     * The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
      */
     status?: string;
 }
@@ -81,7 +83,7 @@ export interface GetResourceGroupsResult {
     readonly ids: string[];
     readonly nameRegex?: string;
     /**
-     * A list of resource group names.
+     * A list of resource group identifiers.
      */
     readonly names: string[];
     readonly outputFile?: string;
@@ -93,16 +95,18 @@ export interface GetResourceGroupsResult {
 /**
  * This data source provides resource groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.84.0+.
+ * > **NOTE:** Available since v1.84.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = alicloud.resourcemanager.getResourceGroups({
- *     nameRegex: "tftest",
+ *     nameRegex: "tf",
  * });
  * export const firstResourceGroupId = example.then(example => example.groups?.[0]?.id);
  * ```
@@ -116,7 +120,7 @@ export function getResourceGroupsOutput(args?: GetResourceGroupsOutputArgs, opts
  */
 export interface GetResourceGroupsOutputArgs {
     /**
-     * Default to `false`. Set it to true can output more details.
+     * Set it to true can output more details. Default value: `false`.
      */
     enableDetails?: pulumi.Input<boolean>;
     /**
@@ -124,7 +128,7 @@ export interface GetResourceGroupsOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A regex string to filter results by resource group name.
+     * A regex string to filter results by resource group identifier.
      */
     nameRegex?: pulumi.Input<string>;
     /**
@@ -132,7 +136,7 @@ export interface GetResourceGroupsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+     * The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
      */
     status?: pulumi.Input<string>;
 }

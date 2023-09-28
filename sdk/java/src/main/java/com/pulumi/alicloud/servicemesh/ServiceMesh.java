@@ -23,9 +23,157 @@ import javax.annotation.Nullable;
 /**
  * Provides a Service Mesh Service Mesh resource.
  * 
- * For information about Service Mesh Service Mesh and how to use it, see [What is Service Mesh](https://help.aliyun.com/document_detail/171559.html).
+ * For information about Service Mesh Service Mesh and how to use it, see [What is Service Mesh](https://www.alibabacloud.com/help/en/alibaba-cloud-service-mesh/latest/api-servicemesh-2020-01-11-createservicemesh).
  * 
- * &gt; **NOTE:** Available in v1.138.0+.
+ * &gt; **NOTE:** Available since v1.138.0.
+ * 
+ * ## Example Usage
+ * 
+ * creating a standard cluster
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.servicemesh.ServicemeshFunctions;
+ * import com.pulumi.alicloud.servicemesh.inputs.GetVersionsArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.servicemesh.ServiceMesh;
+ * import com.pulumi.alicloud.servicemesh.ServiceMeshArgs;
+ * import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshNetworkArgs;
+ * import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshLoadBalancerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         final var defaultVersions = ServicemeshFunctions.getVersions(GetVersionsArgs.builder()
+ *             .edition(&#34;Default&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.1.0.0/16&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultServiceMesh = new ServiceMesh(&#34;defaultServiceMesh&#34;, ServiceMeshArgs.builder()        
+ *             .serviceMeshName(name)
+ *             .edition(&#34;Default&#34;)
+ *             .version(defaultVersions.applyValue(getVersionsResult -&gt; getVersionsResult.versions()[0].version()))
+ *             .clusterSpec(&#34;standard&#34;)
+ *             .network(ServiceMeshNetworkArgs.builder()
+ *                 .vpcId(defaultNetwork.id())
+ *                 .vswitcheList(defaultSwitch.id())
+ *                 .build())
+ *             .loadBalancer(ServiceMeshLoadBalancerArgs.builder()
+ *                 .pilotPublicEip(false)
+ *                 .apiServerPublicEip(false)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * creating an enterprise cluster
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.servicemesh.ServicemeshFunctions;
+ * import com.pulumi.alicloud.servicemesh.inputs.GetVersionsArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.servicemesh.ServiceMesh;
+ * import com.pulumi.alicloud.servicemesh.ServiceMeshArgs;
+ * import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshNetworkArgs;
+ * import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshLoadBalancerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         final var defaultVersions = ServicemeshFunctions.getVersions(GetVersionsArgs.builder()
+ *             .edition(&#34;Default&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.1.0.0/16&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultServiceMesh = new ServiceMesh(&#34;defaultServiceMesh&#34;, ServiceMeshArgs.builder()        
+ *             .serviceMeshName(name)
+ *             .edition(&#34;Pro&#34;)
+ *             .version(defaultVersions.applyValue(getVersionsResult -&gt; getVersionsResult.versions()[0].version()))
+ *             .clusterSpec(&#34;enterprise&#34;)
+ *             .network(ServiceMeshNetworkArgs.builder()
+ *                 .vpcId(defaultNetwork.id())
+ *                 .vswitcheList(defaultSwitch.id())
+ *                 .build())
+ *             .loadBalancer(ServiceMeshLoadBalancerArgs.builder()
+ *                 .pilotPublicEip(false)
+ *                 .apiServerPublicEip(false)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -53,42 +201,44 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
         return this.clusterIds;
     }
     /**
-     * The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+     * The service mesh instance specification.
+     * Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
      * 
      */
     @Export(name="clusterSpec", type=String.class, parameters={})
     private Output<String> clusterSpec;
 
     /**
-     * @return The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+     * @return The service mesh instance specification.
+     * Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
      * 
      */
     public Output<String> clusterSpec() {
         return this.clusterSpec;
     }
     /**
-     * The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+     * The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
      * 
      */
     @Export(name="edition", type=String.class, parameters={})
     private Output<String> edition;
 
     /**
-     * @return The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+     * @return The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
      * 
      */
     public Output<String> edition() {
         return this.edition;
     }
     /**
-     * The configurations of additional features for the ASM instance. See the following `Block extra_configuration`.
+     * The configurations of additional features for the ASM instance. See `extra_configuration` below.
      * 
      */
     @Export(name="extraConfiguration", type=ServiceMeshExtraConfiguration.class, parameters={})
     private Output<ServiceMeshExtraConfiguration> extraConfiguration;
 
     /**
-     * @return The configurations of additional features for the ASM instance. See the following `Block extra_configuration`.
+     * @return The configurations of additional features for the ASM instance. See `extra_configuration` below.
      * 
      */
     public Output<ServiceMeshExtraConfiguration> extraConfiguration() {
@@ -109,42 +259,42 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.force);
     }
     /**
-     * The configuration of the Load Balancer. See the following `Block load_balancer`.
+     * The configuration of the Load Balancer. See `load_balancer` below.
      * 
      */
     @Export(name="loadBalancer", type=ServiceMeshLoadBalancer.class, parameters={})
     private Output<ServiceMeshLoadBalancer> loadBalancer;
 
     /**
-     * @return The configuration of the Load Balancer. See the following `Block load_balancer`.
+     * @return The configuration of the Load Balancer. See `load_balancer` below.
      * 
      */
     public Output<ServiceMeshLoadBalancer> loadBalancer() {
         return this.loadBalancer;
     }
     /**
-     * The configuration of the Service grid. See the following `Block mesh_config`.
+     * The configuration of the Service grid. See `mesh_config` below.
      * 
      */
     @Export(name="meshConfig", type=ServiceMeshMeshConfig.class, parameters={})
     private Output<ServiceMeshMeshConfig> meshConfig;
 
     /**
-     * @return The configuration of the Service grid. See the following `Block mesh_config`.
+     * @return The configuration of the Service grid. See `mesh_config` below.
      * 
      */
     public Output<ServiceMeshMeshConfig> meshConfig() {
         return this.meshConfig;
     }
     /**
-     * The network configuration of the Service grid. See the following `Block network`.
+     * The network configuration of the Service grid. See `network` below.
      * 
      */
     @Export(name="network", type=ServiceMeshNetwork.class, parameters={})
     private Output<ServiceMeshNetwork> network;
 
     /**
-     * @return The network configuration of the Service grid. See the following `Block network`.
+     * @return The network configuration of the Service grid. See `network` below.
      * 
      */
     public Output<ServiceMeshNetwork> network() {

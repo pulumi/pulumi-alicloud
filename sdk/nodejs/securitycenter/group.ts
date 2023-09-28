@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Security Center Group and how to use it, see [What is Group](https://www.alibabacloud.com/help/doc-detail/129195.htm).
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *
@@ -19,7 +19,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.securitycenter.Group("example", {groupName: "example_value"});
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const example = new alicloud.securitycenter.Group("example", {groupName: name});
  * ```
  *
  * ## Import

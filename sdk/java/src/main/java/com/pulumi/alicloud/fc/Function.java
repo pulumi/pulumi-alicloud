@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
  *             .memorySize(&#34;512&#34;)
- *             .runtime(&#34;python2.7&#34;)
+ *             .runtime(&#34;python3.10&#34;)
  *             .handler(&#34;hello.handler&#34;)
  *             .environmentVariables(Map.of(&#34;prefix&#34;, &#34;terraform&#34;))
  *             .build());

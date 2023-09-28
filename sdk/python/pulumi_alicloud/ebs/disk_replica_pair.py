@@ -40,7 +40,7 @@ class DiskReplicaPairArgs:
         :param pulumi.Input[str] payment_type: The payment type of the resource
         :param pulumi.Input[str] period: The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
         :param pulumi.Input[str] period_unit: The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
-        :param pulumi.Input[str] replica_pair_id: The first ID of the resource
+        :param pulumi.Input[str] replica_pair_id: The first ID of the resource.
         :param pulumi.Input[str] rpo: The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         """
         pulumi.set(__self__, "destination_disk_id", destination_disk_id)
@@ -201,7 +201,7 @@ class DiskReplicaPairArgs:
     @pulumi.getter(name="replicaPairId")
     def replica_pair_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The first ID of the resource
+        The first ID of the resource.
         """
         return pulumi.get(self, "replica_pair_id")
 
@@ -254,7 +254,7 @@ class _DiskReplicaPairState:
         :param pulumi.Input[str] payment_type: The payment type of the resource
         :param pulumi.Input[str] period: The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
         :param pulumi.Input[str] period_unit: The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
-        :param pulumi.Input[str] replica_pair_id: The first ID of the resource
+        :param pulumi.Input[str] replica_pair_id: The first ID of the resource.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group
         :param pulumi.Input[str] rpo: The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         :param pulumi.Input[str] source_zone_id: The ID of the zone to which the production site belongs.
@@ -429,7 +429,7 @@ class _DiskReplicaPairState:
     @pulumi.getter(name="replicaPairId")
     def replica_pair_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The first ID of the resource
+        The first ID of the resource.
         """
         return pulumi.get(self, "replica_pair_id")
 
@@ -510,53 +510,7 @@ class DiskReplicaPair(pulumi.CustomResource):
 
         For information about Ebs Disk Replica Pair and how to use it, see [What is Disk Replica Pair](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/CreateDiskReplicaPair).
 
-        > **NOTE:** Available in v1.196.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_ecs_disk = alicloud.ecs.EcsDisk("defaultEcsDisk",
-            zone_id="cn-hangzhou-onebox-nebula",
-            category="cloud_essd",
-            delete_auto_snapshot=True,
-            delete_with_instance=True,
-            description="Test For Terraform",
-            disk_name=var["name"],
-            enable_auto_snapshot=True,
-            encrypted=True,
-            size=500,
-            tags={
-                "Created": "TF",
-                "Environment": "Acceptance-test",
-            })
-        defaultone = alicloud.ecs.EcsDisk("defaultone",
-            zone_id="cn-hangzhou-onebox-nebula-b",
-            category="cloud_essd",
-            delete_auto_snapshot=True,
-            delete_with_instance=True,
-            description="Test For Terraform",
-            disk_name=var["name"],
-            enable_auto_snapshot=True,
-            encrypted=True,
-            size=500,
-            tags={
-                "Created": "TF",
-                "Environment": "Acceptance-test",
-            })
-        default_disk_replica_pair = alicloud.ebs.DiskReplicaPair("defaultDiskReplicaPair",
-            destination_disk_id=default_ecs_disk.id,
-            destination_region_id="cn-hangzhou-onebox-nebula",
-            bandwidth="10240",
-            destination_zone_id="cn-hangzhou-onebox-nebula-e",
-            source_zone_id="cn-hangzhou-onebox-nebula-b",
-            disk_id=defaultone.id,
-            description="abc")
-        ```
+        > **NOTE:** Available since v1.196.0.
 
         ## Import
 
@@ -578,7 +532,7 @@ class DiskReplicaPair(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The payment type of the resource
         :param pulumi.Input[str] period: The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
         :param pulumi.Input[str] period_unit: The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
-        :param pulumi.Input[str] replica_pair_id: The first ID of the resource
+        :param pulumi.Input[str] replica_pair_id: The first ID of the resource.
         :param pulumi.Input[str] rpo: The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         :param pulumi.Input[str] source_zone_id: The ID of the zone to which the production site belongs.
         """
@@ -593,53 +547,7 @@ class DiskReplicaPair(pulumi.CustomResource):
 
         For information about Ebs Disk Replica Pair and how to use it, see [What is Disk Replica Pair](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/CreateDiskReplicaPair).
 
-        > **NOTE:** Available in v1.196.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_ecs_disk = alicloud.ecs.EcsDisk("defaultEcsDisk",
-            zone_id="cn-hangzhou-onebox-nebula",
-            category="cloud_essd",
-            delete_auto_snapshot=True,
-            delete_with_instance=True,
-            description="Test For Terraform",
-            disk_name=var["name"],
-            enable_auto_snapshot=True,
-            encrypted=True,
-            size=500,
-            tags={
-                "Created": "TF",
-                "Environment": "Acceptance-test",
-            })
-        defaultone = alicloud.ecs.EcsDisk("defaultone",
-            zone_id="cn-hangzhou-onebox-nebula-b",
-            category="cloud_essd",
-            delete_auto_snapshot=True,
-            delete_with_instance=True,
-            description="Test For Terraform",
-            disk_name=var["name"],
-            enable_auto_snapshot=True,
-            encrypted=True,
-            size=500,
-            tags={
-                "Created": "TF",
-                "Environment": "Acceptance-test",
-            })
-        default_disk_replica_pair = alicloud.ebs.DiskReplicaPair("defaultDiskReplicaPair",
-            destination_disk_id=default_ecs_disk.id,
-            destination_region_id="cn-hangzhou-onebox-nebula",
-            bandwidth="10240",
-            destination_zone_id="cn-hangzhou-onebox-nebula-e",
-            source_zone_id="cn-hangzhou-onebox-nebula-b",
-            disk_id=defaultone.id,
-            description="abc")
-        ```
+        > **NOTE:** Available since v1.196.0.
 
         ## Import
 
@@ -756,7 +664,7 @@ class DiskReplicaPair(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The payment type of the resource
         :param pulumi.Input[str] period: The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
         :param pulumi.Input[str] period_unit: The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
-        :param pulumi.Input[str] replica_pair_id: The first ID of the resource
+        :param pulumi.Input[str] replica_pair_id: The first ID of the resource.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group
         :param pulumi.Input[str] rpo: The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         :param pulumi.Input[str] source_zone_id: The ID of the zone to which the production site belongs.
@@ -876,7 +784,7 @@ class DiskReplicaPair(pulumi.CustomResource):
     @pulumi.getter(name="replicaPairId")
     def replica_pair_id(self) -> pulumi.Output[str]:
         """
-        The first ID of the resource
+        The first ID of the resource.
         """
         return pulumi.get(self, "replica_pair_id")
 

@@ -1053,18 +1053,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.stoppedMode;
     }
     /**
-     * @deprecated
-     * Field &#39;subnet_id&#39; has been deprecated from version 1.177.0, and use field &#39;vswitch_id&#39; to replace.
-     * 
-     */
-    @Deprecated /* Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.  */
-    @Export(name="subnetId", type=String.class, parameters={})
-    private Output<String> subnetId;
-
-    public Output<String> subnetId() {
-        return this.subnetId;
-    }
-    /**
      * The ID of the automatic snapshot policy applied to the system disk.
      * 
      */
@@ -1133,6 +1121,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> systemDiskEncrypted() {
         return Codegen.optional(this.systemDiskEncrypted);
+    }
+    /**
+     * (Available since v1.210.0) The ID of system disk.
+     * 
+     */
+    @Export(name="systemDiskId", type=String.class, parameters={})
+    private Output<String> systemDiskId;
+
+    /**
+     * @return (Available since v1.210.0) The ID of system disk.
+     * 
+     */
+    public Output<String> systemDiskId() {
+        return this.systemDiskId;
     }
     /**
      * The ID of the Key Management Service (KMS) key to be used for the system disk.

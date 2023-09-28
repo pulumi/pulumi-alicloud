@@ -15,9 +15,71 @@ import (
 
 // Provides a Private Link Vpc Endpoint resource.
 //
-// For information about Private Link Vpc Endpoint and how to use it, see [What is Vpc Endpoint](https://help.aliyun.com/document_detail/120479.html).
+// For information about Private Link Vpc Endpoint and how to use it, see [What is Vpc Endpoint](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-createvpcendpoint).
 //
-// > **NOTE:** Available in v1.109.0+.
+// > **NOTE:** Available since v1.109.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/privatelink"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			exampleVpcEndpointService, err := privatelink.NewVpcEndpointService(ctx, "exampleVpcEndpointService", &privatelink.VpcEndpointServiceArgs{
+//				ServiceDescription:   pulumi.String(name),
+//				ConnectBandwidth:     pulumi.Int(103),
+//				AutoAcceptConnection: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.0.0.0/8"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: exampleNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = privatelink.NewVpcEndpoint(ctx, "exampleVpcEndpoint", &privatelink.VpcEndpointArgs{
+//				ServiceId: exampleVpcEndpointService.ID(),
+//				SecurityGroupIds: pulumi.StringArray{
+//					exampleSecurityGroup.ID(),
+//				},
+//				VpcId:           exampleNetwork.ID(),
+//				VpcEndpointName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

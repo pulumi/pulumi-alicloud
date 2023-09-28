@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a ActionTrail Trail resource. For information about alicloud actiontrail trail and how to use it, see [What is Resource Alicloud ActionTrail Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
+ * Provides a ActionTrail Trail resource. For information about alicloud actiontrail trail and how to use it, see [What is Resource Alicloud ActionTrail Trail](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createtrail).
  *
- * > **NOTE:** Available in 1.95.0+
+ * > **NOTE:** Available since v1.95.0.
  *
  * > **NOTE:** You can create a trail to deliver events to Log Service, Object Storage Service (OSS), or both. Before you call this operation to create a trail, make sure that the following requirements are met.
  * - Deliver events to Log Service: A project is created in Log Service.
@@ -19,13 +19,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Create a new actiontrail trail.
- * const _default = new alicloud.actiontrail.Trail("default", {
- *     eventRw: "All",
- *     ossBucketName: "bucket_name",
- *     ossWriteRoleArn: "acs:ram::1182725xxxxxxxxxxx",
- *     trailName: "action-trail",
- *     trailRegion: "cn-hangzhou",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const exampleRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const exampleAccount = alicloud.getAccount({});
+ * const exampleProject = new alicloud.log.Project("exampleProject", {description: "tf actiontrail example"});
+ * const exampleRoles = alicloud.ram.getRoles({
+ *     nameRegex: "AliyunServiceRoleForActionTrail",
+ * });
+ * const exampleTrail = new alicloud.actiontrail.Trail("exampleTrail", {
+ *     trailName: name,
+ *     slsWriteRoleArn: exampleRoles.then(exampleRoles => exampleRoles.roles?.[0]?.arn),
+ *     slsProjectArn: pulumi.all([exampleRegions, exampleAccount, exampleProject.name]).apply(([exampleRegions, exampleAccount, name]) => `acs:log:${exampleRegions.regions?.[0]?.id}:${exampleAccount.id}:project/${name}`),
  * });
  * ```
  *

@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Pvtz
     /// <summary>
     /// Provides a Private Zone Rule resource.
     /// 
-    /// For information about Private Zone Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/doc-detail/177601.htm).
+    /// For information about Private Zone Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/privatezone/latest/add-forwarding-rule).
     /// 
-    /// &gt; **NOTE:** Available in v1.143.0+.
+    /// &gt; **NOTE:** Available since v1.143.0.
     /// 
     /// ## Import
     /// 
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Output<string> EndpointId { get; private set; } = null!;
 
         /// <summary>
-        /// Forwarding target. See the following `Block forward_ip`.
+        /// Forwarding target. See `forward_ips` below.
         /// </summary>
         [Output("forwardIps")]
         public Output<ImmutableArray<Outputs.RuleForwardIp>> ForwardIps { get; private set; } = null!;
@@ -113,7 +113,7 @@ namespace Pulumi.AliCloud.Pvtz
         private InputList<Inputs.RuleForwardIpArgs>? _forwardIps;
 
         /// <summary>
-        /// Forwarding target. See the following `Block forward_ip`.
+        /// Forwarding target. See `forward_ips` below.
         /// </summary>
         public InputList<Inputs.RuleForwardIpArgs> ForwardIps
         {
@@ -157,7 +157,7 @@ namespace Pulumi.AliCloud.Pvtz
         private InputList<Inputs.RuleForwardIpGetArgs>? _forwardIps;
 
         /// <summary>
-        /// Forwarding target. See the following `Block forward_ip`.
+        /// Forwarding target. See `forward_ips` below.
         /// </summary>
         public InputList<Inputs.RuleForwardIpGetArgs> ForwardIps
         {

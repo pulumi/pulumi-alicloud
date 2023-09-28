@@ -22,23 +22,26 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fooCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("fooCommonBandwithPackage", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("defaultCommonBandwithPackage", new()
     ///     {
-    ///         Bandwidth = "2",
-    ///         BandwidthPackageName = "test_common_bandwidth_package",
-    ///         Description = "test_common_bandwidth_package",
-    ///     });
-    /// 
-    ///     var fooEipAddress = new AliCloud.Ecs.EipAddress("fooEipAddress", new()
-    ///     {
-    ///         Bandwidth = "2",
+    ///         Bandwidth = "3",
     ///         InternetChargeType = "PayByBandwidth",
     ///     });
     /// 
-    ///     var fooCommonBandwithPackageAttachment = new AliCloud.Vpc.CommonBandwithPackageAttachment("fooCommonBandwithPackageAttachment", new()
+    ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()
     ///     {
-    ///         BandwidthPackageId = fooCommonBandwithPackage.Id,
-    ///         InstanceId = fooEipAddress.Id,
+    ///         Bandwidth = "3",
+    ///         InternetChargeType = "PayByTraffic",
+    ///     });
+    /// 
+    ///     var defaultCommonBandwithPackageAttachment = new AliCloud.Vpc.CommonBandwithPackageAttachment("defaultCommonBandwithPackageAttachment", new()
+    ///     {
+    ///         BandwidthPackageId = defaultCommonBandwithPackage.Id,
+    ///         InstanceId = defaultEipAddress.Id,
+    ///         BandwidthPackageBandwidth = "2",
+    ///         IpType = "EIP",
     ///     });
     /// 
     /// });
@@ -46,10 +49,10 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// The common bandwidth package attachment can be imported using the id, e.g.
+    /// cbwp Common Bandwidth Package Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment foo &lt;bandwidth_package_id&gt;:&lt;instance_id&gt;
+    ///  $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment example &lt;bandwidth_package_id&gt;:&lt;instance_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment")]
@@ -78,6 +81,18 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
+
+        /// <summary>
+        /// IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+        /// </summary>
+        [Output("ipType")]
+        public Output<string?> IpType { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the Internet Shared Bandwidth instance.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -149,6 +164,12 @@ namespace Pulumi.AliCloud.Vpc
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
+        /// <summary>
+        /// IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+        /// </summary>
+        [Input("ipType")]
+        public Input<string>? IpType { get; set; }
+
         public CommonBandwithPackageAttachmentArgs()
         {
         }
@@ -180,6 +201,18 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+        /// </summary>
+        [Input("ipType")]
+        public Input<string>? IpType { get; set; }
+
+        /// <summary>
+        /// The status of the Internet Shared Bandwidth instance.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public CommonBandwithPackageAttachmentState()
         {

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
  *
- * > **NOTE:** Available in v1.73.0+.
+ * > **NOTE:** Available since v1.73.0.
  *
  * ## Example Usage
  *
@@ -17,10 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const zonesIds = alicloud.kvstore.getZones({});
- * // Create an KVStore instance with the first matched zone
- * const kvstore = new alicloud.kvstore.Instance("kvstore", {availabilityZone: zonesIds.then(zonesIds => zonesIds.zones?.[0]?.id)});
- * // Other properties...
+ * const zonesIds = alicloud.kvstore.getZones({
+ *     instanceChargeType: "PostPaid",
+ * });
  * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
@@ -42,7 +41,7 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
 export interface GetZonesArgs {
     /**
      * Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-     * * productType - (Optional, Available in v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
+     * * productType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
      */
     engine?: string;
     /**
@@ -85,7 +84,7 @@ export interface GetZonesResult {
 /**
  * This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
  *
- * > **NOTE:** Available in v1.73.0+.
+ * > **NOTE:** Available since v1.73.0.
  *
  * ## Example Usage
  *
@@ -93,10 +92,9 @@ export interface GetZonesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const zonesIds = alicloud.kvstore.getZones({});
- * // Create an KVStore instance with the first matched zone
- * const kvstore = new alicloud.kvstore.Instance("kvstore", {availabilityZone: zonesIds.then(zonesIds => zonesIds.zones?.[0]?.id)});
- * // Other properties...
+ * const zonesIds = alicloud.kvstore.getZones({
+ *     instanceChargeType: "PostPaid",
+ * });
  * ```
  */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
@@ -109,7 +107,7 @@ export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOp
 export interface GetZonesOutputArgs {
     /**
      * Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-     * * productType - (Optional, Available in v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
+     * * productType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
      */
     engine?: pulumi.Input<string>;
     /**

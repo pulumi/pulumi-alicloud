@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceUiProxyConnAddr {
+    /**
+     * @return The Phoenix address.
+     * 
+     */
     private @Nullable String connAddr;
+    /**
+     * @return The number of the port over which Phoenix connects to the instance.
+     * 
+     */
     private @Nullable String connAddrPort;
+    /**
+     * @return The type of the network. Valid values:
+     * 
+     */
     private @Nullable String netType;
 
     private InstanceUiProxyConnAddr() {}
+    /**
+     * @return The Phoenix address.
+     * 
+     */
     public Optional<String> connAddr() {
         return Optional.ofNullable(this.connAddr);
     }
+    /**
+     * @return The number of the port over which Phoenix connects to the instance.
+     * 
+     */
     public Optional<String> connAddrPort() {
         return Optional.ofNullable(this.connAddrPort);
     }
+    /**
+     * @return The type of the network. Valid values:
+     * 
+     */
     public Optional<String> netType() {
         return Optional.ofNullable(this.netType);
     }

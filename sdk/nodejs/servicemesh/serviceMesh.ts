@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Service Mesh Service Mesh resource.
  *
- * For information about Service Mesh Service Mesh and how to use it, see [What is Service Mesh](https://help.aliyun.com/document_detail/171559.html).
+ * For information about Service Mesh Service Mesh and how to use it, see [What is Service Mesh](https://www.alibabacloud.com/help/en/alibaba-cloud-service-mesh/latest/api-servicemesh-2020-01-11-createservicemesh).
  *
- * > **NOTE:** Available in v1.138.0+.
+ * > **NOTE:** Available since v1.138.0.
  *
  * ## Import
  *
@@ -54,15 +54,16 @@ export class ServiceMesh extends pulumi.CustomResource {
      */
     public readonly clusterIds!: pulumi.Output<string[]>;
     /**
-     * The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+     * The service mesh instance specification. 
+     * Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
      */
     public readonly clusterSpec!: pulumi.Output<string>;
     /**
-     * The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+     * The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
      */
     public readonly edition!: pulumi.Output<string>;
     /**
-     * The configurations of additional features for the ASM instance. See the following `Block extraConfiguration`.
+     * The configurations of additional features for the ASM instance. See `extraConfiguration` below.
      */
     public readonly extraConfiguration!: pulumi.Output<outputs.servicemesh.ServiceMeshExtraConfiguration>;
     /**
@@ -70,15 +71,15 @@ export class ServiceMesh extends pulumi.CustomResource {
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
-     * The configuration of the Load Balancer. See the following `Block loadBalancer`.
+     * The configuration of the Load Balancer. See `loadBalancer` below.
      */
     public readonly loadBalancer!: pulumi.Output<outputs.servicemesh.ServiceMeshLoadBalancer>;
     /**
-     * The configuration of the Service grid. See the following `Block meshConfig`.
+     * The configuration of the Service grid. See `meshConfig` below.
      */
     public readonly meshConfig!: pulumi.Output<outputs.servicemesh.ServiceMeshMeshConfig>;
     /**
-     * The network configuration of the Service grid. See the following `Block network`.
+     * The network configuration of the Service grid. See `network` below.
      */
     public readonly network!: pulumi.Output<outputs.servicemesh.ServiceMeshNetwork>;
     /**
@@ -149,15 +150,16 @@ export interface ServiceMeshState {
      */
     clusterIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+     * The service mesh instance specification. 
+     * Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
      */
     clusterSpec?: pulumi.Input<string>;
     /**
-     * The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+     * The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
      */
     edition?: pulumi.Input<string>;
     /**
-     * The configurations of additional features for the ASM instance. See the following `Block extraConfiguration`.
+     * The configurations of additional features for the ASM instance. See `extraConfiguration` below.
      */
     extraConfiguration?: pulumi.Input<inputs.servicemesh.ServiceMeshExtraConfiguration>;
     /**
@@ -165,15 +167,15 @@ export interface ServiceMeshState {
      */
     force?: pulumi.Input<boolean>;
     /**
-     * The configuration of the Load Balancer. See the following `Block loadBalancer`.
+     * The configuration of the Load Balancer. See `loadBalancer` below.
      */
     loadBalancer?: pulumi.Input<inputs.servicemesh.ServiceMeshLoadBalancer>;
     /**
-     * The configuration of the Service grid. See the following `Block meshConfig`.
+     * The configuration of the Service grid. See `meshConfig` below.
      */
     meshConfig?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfig>;
     /**
-     * The network configuration of the Service grid. See the following `Block network`.
+     * The network configuration of the Service grid. See `network` below.
      */
     network?: pulumi.Input<inputs.servicemesh.ServiceMeshNetwork>;
     /**
@@ -199,15 +201,16 @@ export interface ServiceMeshArgs {
      */
     clusterIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+     * The service mesh instance specification. 
+     * Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
      */
     clusterSpec?: pulumi.Input<string>;
     /**
-     * The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+     * The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
      */
     edition?: pulumi.Input<string>;
     /**
-     * The configurations of additional features for the ASM instance. See the following `Block extraConfiguration`.
+     * The configurations of additional features for the ASM instance. See `extraConfiguration` below.
      */
     extraConfiguration?: pulumi.Input<inputs.servicemesh.ServiceMeshExtraConfiguration>;
     /**
@@ -215,15 +218,15 @@ export interface ServiceMeshArgs {
      */
     force?: pulumi.Input<boolean>;
     /**
-     * The configuration of the Load Balancer. See the following `Block loadBalancer`.
+     * The configuration of the Load Balancer. See `loadBalancer` below.
      */
     loadBalancer?: pulumi.Input<inputs.servicemesh.ServiceMeshLoadBalancer>;
     /**
-     * The configuration of the Service grid. See the following `Block meshConfig`.
+     * The configuration of the Service grid. See `meshConfig` below.
      */
     meshConfig?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfig>;
     /**
-     * The network configuration of the Service grid. See the following `Block network`.
+     * The network configuration of the Service grid. See `network` below.
      */
     network: pulumi.Input<inputs.servicemesh.ServiceMeshNetwork>;
     /**

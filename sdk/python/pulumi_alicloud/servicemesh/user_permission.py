@@ -21,7 +21,7 @@ class UserPermissionArgs:
         """
         The set of arguments for constructing a UserPermission resource.
         :param pulumi.Input[str] sub_account_user_id: The configuration of the Load Balancer. See the following `Block load_balancer`.
-        :param pulumi.Input[Sequence[pulumi.Input['UserPermissionPermissionArgs']]] permissions: List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+        :param pulumi.Input[Sequence[pulumi.Input['UserPermissionPermissionArgs']]] permissions: List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
         """
         pulumi.set(__self__, "sub_account_user_id", sub_account_user_id)
         if permissions is not None:
@@ -43,7 +43,7 @@ class UserPermissionArgs:
     @pulumi.getter
     def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserPermissionPermissionArgs']]]]:
         """
-        List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+        List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
         """
         return pulumi.get(self, "permissions")
 
@@ -59,7 +59,7 @@ class _UserPermissionState:
                  sub_account_user_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering UserPermission resources.
-        :param pulumi.Input[Sequence[pulumi.Input['UserPermissionPermissionArgs']]] permissions: List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+        :param pulumi.Input[Sequence[pulumi.Input['UserPermissionPermissionArgs']]] permissions: List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
         :param pulumi.Input[str] sub_account_user_id: The configuration of the Load Balancer. See the following `Block load_balancer`.
         """
         if permissions is not None:
@@ -71,7 +71,7 @@ class _UserPermissionState:
     @pulumi.getter
     def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserPermissionPermissionArgs']]]]:
         """
-        List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+        List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
         """
         return pulumi.get(self, "permissions")
 
@@ -103,9 +103,9 @@ class UserPermission(pulumi.CustomResource):
         """
         Provides a Service Mesh UserPermission resource.
 
-        For information about Service Mesh User Permission and how to use it, see [What is User Permission](https://help.aliyun.com/document_detail/171622.html).
+        For information about Service Mesh User Permission and how to use it, see [What is User Permission](https://www.alibabacloud.com/help/en/alibaba-cloud-service-mesh/latest/api-servicemesh-2020-01-11-grantuserpermissions).
 
-        > **NOTE:** Available in v1.174.0+.
+        > **NOTE:** Available since v1.174.0.
 
         ## Import
 
@@ -117,7 +117,7 @@ class UserPermission(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserPermissionPermissionArgs']]]] permissions: List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserPermissionPermissionArgs']]]] permissions: List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
         :param pulumi.Input[str] sub_account_user_id: The configuration of the Load Balancer. See the following `Block load_balancer`.
         """
         ...
@@ -129,9 +129,9 @@ class UserPermission(pulumi.CustomResource):
         """
         Provides a Service Mesh UserPermission resource.
 
-        For information about Service Mesh User Permission and how to use it, see [What is User Permission](https://help.aliyun.com/document_detail/171622.html).
+        For information about Service Mesh User Permission and how to use it, see [What is User Permission](https://www.alibabacloud.com/help/en/alibaba-cloud-service-mesh/latest/api-servicemesh-2020-01-11-grantuserpermissions).
 
-        > **NOTE:** Available in v1.174.0+.
+        > **NOTE:** Available since v1.174.0.
 
         ## Import
 
@@ -190,7 +190,7 @@ class UserPermission(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserPermissionPermissionArgs']]]] permissions: List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserPermissionPermissionArgs']]]] permissions: List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
         :param pulumi.Input[str] sub_account_user_id: The configuration of the Load Balancer. See the following `Block load_balancer`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -205,7 +205,7 @@ class UserPermission(pulumi.CustomResource):
     @pulumi.getter
     def permissions(self) -> pulumi.Output[Sequence['outputs.UserPermissionPermission']]:
         """
-        List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+        List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
         """
         return pulumi.get(self, "permissions")
 

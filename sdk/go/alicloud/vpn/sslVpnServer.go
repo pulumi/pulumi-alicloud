@@ -13,50 +13,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooGateway, err := vpn.NewGateway(ctx, "fooGateway", &vpn.GatewayArgs{
-//				VpcId:              pulumi.String("vpc-fake-id"),
-//				Bandwidth:          pulumi.Int(10),
-//				EnableSsl:          pulumi.Bool(true),
-//				InstanceChargeType: pulumi.String("PostPaid"),
-//				Description:        pulumi.String("test_create_description"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vpn.NewSslVpnServer(ctx, "fooSslVpnServer", &vpn.SslVpnServerArgs{
-//				VpnGatewayId: fooGateway.ID(),
-//				ClientIpPool: pulumi.String("192.168.0.0/16"),
-//				LocalSubnet:  pulumi.String("172.16.0.0/21"),
-//				Protocol:     pulumi.String("UDP"),
-//				Cipher:       pulumi.String("AES-128-CBC"),
-//				Port:         pulumi.Int(1194),
-//				Compress:     pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // SSL-VPN server can be imported using the id, e.g.

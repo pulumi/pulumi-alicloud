@@ -14,35 +14,35 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class RuleRuleCondition
     {
         /// <summary>
-        /// The configuration of the cookie. See See `cookie_config` below for details.
+        /// The configuration of the cookie. See See `cookie_config` below.
         /// </summary>
         public readonly Outputs.RuleRuleConditionCookieConfig? CookieConfig;
         /// <summary>
-        /// The configuration of the header field. See `header_config` below for details.
+        /// The configuration of the header field. See `header_config` below.
         /// </summary>
         public readonly Outputs.RuleRuleConditionHeaderConfig? HeaderConfig;
         /// <summary>
-        /// The configuration of the host field. See `host_config` below for details.
+        /// The configuration of the host field. See `host_config` below.
         /// </summary>
         public readonly Outputs.RuleRuleConditionHostConfig? HostConfig;
         /// <summary>
-        /// The configuration of the request method. See `method_config` below for details.
+        /// The configuration of the request method. See `method_config` below.
         /// </summary>
         public readonly Outputs.RuleRuleConditionMethodConfig? MethodConfig;
         /// <summary>
-        /// The configuration of the path for the request to be forwarded. See `path_config` below for details.
+        /// The configuration of the path for the request to be forwarded. See `path_config` below.
         /// </summary>
         public readonly Outputs.RuleRuleConditionPathConfig? PathConfig;
         /// <summary>
-        /// The configuration of the query string. See `query_string_config` below for details.
+        /// The configuration of the query string. See `query_string_config` below.
         /// </summary>
         public readonly Outputs.RuleRuleConditionQueryStringConfig? QueryStringConfig;
         /// <summary>
-        /// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below for details.
+        /// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
         /// </summary>
         public readonly Outputs.RuleRuleConditionSourceIpConfig? SourceIpConfig;
         /// <summary>
-        /// The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+        /// The type of the forwarding rule. Valid values:
         /// </summary>
         public readonly string Type;
 

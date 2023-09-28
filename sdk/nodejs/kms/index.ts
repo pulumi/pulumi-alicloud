@@ -10,10 +10,20 @@ export type Alias = import("./alias").Alias;
 export const Alias: typeof import("./alias").Alias = null as any;
 utilities.lazyLoad(exports, ["Alias"], () => require("./alias"));
 
+export { ApplicationAccessPointArgs, ApplicationAccessPointState } from "./applicationAccessPoint";
+export type ApplicationAccessPoint = import("./applicationAccessPoint").ApplicationAccessPoint;
+export const ApplicationAccessPoint: typeof import("./applicationAccessPoint").ApplicationAccessPoint = null as any;
+utilities.lazyLoad(exports, ["ApplicationAccessPoint"], () => require("./applicationAccessPoint"));
+
 export { CiphertextArgs, CiphertextState } from "./ciphertext";
 export type Ciphertext = import("./ciphertext").Ciphertext;
 export const Ciphertext: typeof import("./ciphertext").Ciphertext = null as any;
 utilities.lazyLoad(exports, ["Ciphertext"], () => require("./ciphertext"));
+
+export { ClientKeyArgs, ClientKeyState } from "./clientKey";
+export type ClientKey = import("./clientKey").ClientKey;
+export const ClientKey: typeof import("./clientKey").ClientKey = null as any;
+utilities.lazyLoad(exports, ["ClientKey"], () => require("./clientKey"));
 
 export { GetAliasesArgs, GetAliasesResult, GetAliasesOutputArgs } from "./getAliases";
 export const getAliases: typeof import("./getAliases").getAliases = null as any;
@@ -55,6 +65,11 @@ export const getService: typeof import("./getService").getService = null as any;
 export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
 utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
 
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
 export { KeyArgs, KeyState } from "./key";
 export type Key = import("./key").Key;
 export const Key: typeof import("./key").Key = null as any;
@@ -64,6 +79,16 @@ export { KeyVersionArgs, KeyVersionState } from "./keyVersion";
 export type KeyVersion = import("./keyVersion").KeyVersion;
 export const KeyVersion: typeof import("./keyVersion").KeyVersion = null as any;
 utilities.lazyLoad(exports, ["KeyVersion"], () => require("./keyVersion"));
+
+export { NetworkRuleArgs, NetworkRuleState } from "./networkRule";
+export type NetworkRule = import("./networkRule").NetworkRule;
+export const NetworkRule: typeof import("./networkRule").NetworkRule = null as any;
+utilities.lazyLoad(exports, ["NetworkRule"], () => require("./networkRule"));
+
+export { PolicyArgs, PolicyState } from "./policy";
+export type Policy = import("./policy").Policy;
+export const Policy: typeof import("./policy").Policy = null as any;
+utilities.lazyLoad(exports, ["Policy"], () => require("./policy"));
 
 export { SecretArgs, SecretState } from "./secret";
 export type Secret = import("./secret").Secret;
@@ -77,12 +102,22 @@ const _module = {
         switch (type) {
             case "alicloud:kms/alias:Alias":
                 return new Alias(name, <any>undefined, { urn })
+            case "alicloud:kms/applicationAccessPoint:ApplicationAccessPoint":
+                return new ApplicationAccessPoint(name, <any>undefined, { urn })
             case "alicloud:kms/ciphertext:Ciphertext":
                 return new Ciphertext(name, <any>undefined, { urn })
+            case "alicloud:kms/clientKey:ClientKey":
+                return new ClientKey(name, <any>undefined, { urn })
+            case "alicloud:kms/instance:Instance":
+                return new Instance(name, <any>undefined, { urn })
             case "alicloud:kms/key:Key":
                 return new Key(name, <any>undefined, { urn })
             case "alicloud:kms/keyVersion:KeyVersion":
                 return new KeyVersion(name, <any>undefined, { urn })
+            case "alicloud:kms/networkRule:NetworkRule":
+                return new NetworkRule(name, <any>undefined, { urn })
+            case "alicloud:kms/policy:Policy":
+                return new Policy(name, <any>undefined, { urn })
             case "alicloud:kms/secret:Secret":
                 return new Secret(name, <any>undefined, { urn })
             default:
@@ -91,7 +126,12 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "kms/alias", _module)
+pulumi.runtime.registerResourceModule("alicloud", "kms/applicationAccessPoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "kms/ciphertext", _module)
+pulumi.runtime.registerResourceModule("alicloud", "kms/clientKey", _module)
+pulumi.runtime.registerResourceModule("alicloud", "kms/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "kms/key", _module)
 pulumi.runtime.registerResourceModule("alicloud", "kms/keyVersion", _module)
+pulumi.runtime.registerResourceModule("alicloud", "kms/networkRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "kms/policy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "kms/secret", _module)

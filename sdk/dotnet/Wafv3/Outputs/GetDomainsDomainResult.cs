@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
         /// </summary>
         public readonly string Domain;
         /// <summary>
-        /// The ID of the domain. The value is formulated as `&lt;instance_id&gt;:&lt;domain&gt;`.
+        /// The ID of the domain. It formats as `&lt;instance_id&gt;:&lt;domain&gt;`.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDomainsDomainRedirectResult> Redirects;
         /// <summary>
-        /// The ID of the resource group
+        /// The ID of the resource group.
         /// </summary>
         public readonly string ResourceManagerResourceGroupId;
         /// <summary>

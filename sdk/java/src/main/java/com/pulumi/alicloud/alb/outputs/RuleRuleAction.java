@@ -21,128 +21,128 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RuleRuleAction {
     /**
-     * @return Request forwarding based on CORS. See `cors_config` below for details.
+     * @return Request forwarding based on CORS. See `cors_config` below.
      * 
      */
     private @Nullable RuleRuleActionCorsConfig corsConfig;
     /**
-     * @return The configuration of the fixed response. See `fixed_response_config` below for details.
+     * @return The configuration of the fixed response. See `fixed_response_config` below.
      * 
      */
     private @Nullable RuleRuleActionFixedResponseConfig fixedResponseConfig;
     /**
-     * @return The forward response action within ALB. See `forward_group_config` below for details.
+     * @return The forward response action within ALB. See `forward_group_config` below.
      * 
      */
     private @Nullable RuleRuleActionForwardGroupConfig forwardGroupConfig;
     /**
-     * @return The configuration of the inserted header field. See `insert_header_config` below for details.
+     * @return The configuration of the inserted header field. See `insert_header_config` below.
      * 
      */
     private @Nullable RuleRuleActionInsertHeaderConfig insertHeaderConfig;
     /**
-     * @return The order of the forwarding rule actions. Valid values: 1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+     * @return The order of the forwarding rule actions. Valid values: `1` to `50000`. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
      * 
      */
     private Integer order;
     /**
-     * @return The configuration of the external redirect action. See `redirect_config` below for details.
+     * @return The configuration of the external redirect action. See `redirect_config` below.
      * 
      */
     private @Nullable RuleRuleActionRedirectConfig redirectConfig;
     /**
-     * @return The redirect action within ALB. See `rewrite_config` below for details.
+     * @return The redirect action within ALB. See `rewrite_config` below.
      * 
      */
     private @Nullable RuleRuleActionRewriteConfig rewriteConfig;
     /**
-     * @return The Flow speed limit. See `traffic_limit_config` below for details.
+     * @return The Flow speed limit. See `traffic_limit_config` below.
      * 
      */
     private @Nullable RuleRuleActionTrafficLimitConfig trafficLimitConfig;
     /**
-     * @return The Traffic mirroring. See `traffic_mirror_config` below for details.
+     * @return The Traffic mirroring. See `traffic_mirror_config` below.
      * 
      */
     private @Nullable RuleRuleActionTrafficMirrorConfig trafficMirrorConfig;
     /**
-     * @return The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
-     * **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
-     * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
-     * **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
+     * @return The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
+     * **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+     * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
+     * **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
      * 
      */
     private String type;
 
     private RuleRuleAction() {}
     /**
-     * @return Request forwarding based on CORS. See `cors_config` below for details.
+     * @return Request forwarding based on CORS. See `cors_config` below.
      * 
      */
     public Optional<RuleRuleActionCorsConfig> corsConfig() {
         return Optional.ofNullable(this.corsConfig);
     }
     /**
-     * @return The configuration of the fixed response. See `fixed_response_config` below for details.
+     * @return The configuration of the fixed response. See `fixed_response_config` below.
      * 
      */
     public Optional<RuleRuleActionFixedResponseConfig> fixedResponseConfig() {
         return Optional.ofNullable(this.fixedResponseConfig);
     }
     /**
-     * @return The forward response action within ALB. See `forward_group_config` below for details.
+     * @return The forward response action within ALB. See `forward_group_config` below.
      * 
      */
     public Optional<RuleRuleActionForwardGroupConfig> forwardGroupConfig() {
         return Optional.ofNullable(this.forwardGroupConfig);
     }
     /**
-     * @return The configuration of the inserted header field. See `insert_header_config` below for details.
+     * @return The configuration of the inserted header field. See `insert_header_config` below.
      * 
      */
     public Optional<RuleRuleActionInsertHeaderConfig> insertHeaderConfig() {
         return Optional.ofNullable(this.insertHeaderConfig);
     }
     /**
-     * @return The order of the forwarding rule actions. Valid values: 1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+     * @return The order of the forwarding rule actions. Valid values: `1` to `50000`. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
      * 
      */
     public Integer order() {
         return this.order;
     }
     /**
-     * @return The configuration of the external redirect action. See `redirect_config` below for details.
+     * @return The configuration of the external redirect action. See `redirect_config` below.
      * 
      */
     public Optional<RuleRuleActionRedirectConfig> redirectConfig() {
         return Optional.ofNullable(this.redirectConfig);
     }
     /**
-     * @return The redirect action within ALB. See `rewrite_config` below for details.
+     * @return The redirect action within ALB. See `rewrite_config` below.
      * 
      */
     public Optional<RuleRuleActionRewriteConfig> rewriteConfig() {
         return Optional.ofNullable(this.rewriteConfig);
     }
     /**
-     * @return The Flow speed limit. See `traffic_limit_config` below for details.
+     * @return The Flow speed limit. See `traffic_limit_config` below.
      * 
      */
     public Optional<RuleRuleActionTrafficLimitConfig> trafficLimitConfig() {
         return Optional.ofNullable(this.trafficLimitConfig);
     }
     /**
-     * @return The Traffic mirroring. See `traffic_mirror_config` below for details.
+     * @return The Traffic mirroring. See `traffic_mirror_config` below.
      * 
      */
     public Optional<RuleRuleActionTrafficMirrorConfig> trafficMirrorConfig() {
         return Optional.ofNullable(this.trafficMirrorConfig);
     }
     /**
-     * @return The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
-     * **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
-     * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
-     * **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
+     * @return The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
+     * **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+     * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
+     * **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
      * 
      */
     public String type() {

@@ -17,7 +17,7 @@ import (
 //
 // For information about Private Zone Rule Attachment and how to use it, see [What is Rule Attachment](https://www.alibabacloud.com/help/en/doc-detail/177601.htm).
 //
-// > **NOTE:** Available in v1.143.0+.
+// > **NOTE:** Available since v1.143.0.
 //
 // ## Import
 //
@@ -33,7 +33,7 @@ type RuleAttachment struct {
 
 	// The ID of the rule.
 	RuleId pulumi.StringOutput `pulumi:"ruleId"`
-	// The List of the VPC. See the following `Block vpcs`.
+	// The List of the VPC. See `vpcs` below.
 	Vpcs RuleAttachmentVpcArrayOutput `pulumi:"vpcs"`
 }
 
@@ -75,14 +75,14 @@ func GetRuleAttachment(ctx *pulumi.Context,
 type ruleAttachmentState struct {
 	// The ID of the rule.
 	RuleId *string `pulumi:"ruleId"`
-	// The List of the VPC. See the following `Block vpcs`.
+	// The List of the VPC. See `vpcs` below.
 	Vpcs []RuleAttachmentVpc `pulumi:"vpcs"`
 }
 
 type RuleAttachmentState struct {
 	// The ID of the rule.
 	RuleId pulumi.StringPtrInput
-	// The List of the VPC. See the following `Block vpcs`.
+	// The List of the VPC. See `vpcs` below.
 	Vpcs RuleAttachmentVpcArrayInput
 }
 
@@ -93,7 +93,7 @@ func (RuleAttachmentState) ElementType() reflect.Type {
 type ruleAttachmentArgs struct {
 	// The ID of the rule.
 	RuleId string `pulumi:"ruleId"`
-	// The List of the VPC. See the following `Block vpcs`.
+	// The List of the VPC. See `vpcs` below.
 	Vpcs []RuleAttachmentVpc `pulumi:"vpcs"`
 }
 
@@ -101,7 +101,7 @@ type ruleAttachmentArgs struct {
 type RuleAttachmentArgs struct {
 	// The ID of the rule.
 	RuleId pulumi.StringInput
-	// The List of the VPC. See the following `Block vpcs`.
+	// The List of the VPC. See `vpcs` below.
 	Vpcs RuleAttachmentVpcArrayInput
 }
 
@@ -221,7 +221,7 @@ func (o RuleAttachmentOutput) RuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RuleAttachment) pulumi.StringOutput { return v.RuleId }).(pulumi.StringOutput)
 }
 
-// The List of the VPC. See the following `Block vpcs`.
+// The List of the VPC. See `vpcs` below.
 func (o RuleAttachmentOutput) Vpcs() RuleAttachmentVpcArrayOutput {
 	return o.ApplyT(func(v *RuleAttachment) RuleAttachmentVpcArrayOutput { return v.Vpcs }).(RuleAttachmentVpcArrayOutput)
 }

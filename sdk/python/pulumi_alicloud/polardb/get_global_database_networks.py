@@ -57,16 +57,25 @@ class GetGlobalDatabaseNetworksResult:
     @property
     @pulumi.getter(name="dbClusterId")
     def db_cluster_id(self) -> Optional[str]:
+        """
+        The ID of the PolarDB cluster.
+        """
         return pulumi.get(self, "db_cluster_id")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        The description of the Global Database Network.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="gdnId")
     def gdn_id(self) -> Optional[str]:
+        """
+        The ID of the Global Database Network.
+        """
         return pulumi.get(self, "gdn_id")
 
     @property
@@ -85,6 +94,9 @@ class GetGlobalDatabaseNetworksResult:
     @property
     @pulumi.getter
     def networks(self) -> Sequence['outputs.GetGlobalDatabaseNetworksNetworkResult']:
+        """
+        A list of PolarDB Global Database Networks. Each element contains the following attributes:
+        """
         return pulumi.get(self, "networks")
 
     @property
@@ -105,6 +117,9 @@ class GetGlobalDatabaseNetworksResult:
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the Global Database Network.
+        """
         return pulumi.get(self, "status")
 
 
@@ -138,7 +153,7 @@ def get_global_database_networks(db_cluster_id: Optional[str] = None,
     """
     This data source provides the PolarDB Global Database Networks of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.181.0+.
+    > **NOTE:** Available since v1.181.0+.
 
     ## Example Usage
 
@@ -148,19 +163,41 @@ def get_global_database_networks(db_cluster_id: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.polardb.get_global_database_networks(ids=["example_id"])
+    this = alicloud.polardb.get_node_classes(db_type="MySQL",
+        db_version="8.0",
+        pay_type="PostPaid",
+        category="Normal")
+    default_network = alicloud.vpc.Network("defaultNetwork",
+        vpc_name="terraform-example",
+        cidr_block="172.16.0.0/16")
+    default_switch = alicloud.vpc.Switch("defaultSwitch",
+        vpc_id=default_network.id,
+        cidr_block="172.16.0.0/24",
+        zone_id=this.classes[0].zone_id,
+        vswitch_name="terraform-example")
+    cluster = alicloud.polardb.Cluster("cluster",
+        db_type="MySQL",
+        db_version="8.0",
+        pay_type="PostPaid",
+        db_node_count=2,
+        db_node_class=this.classes[0].supported_engines[0].available_resources[0].db_node_class,
+        vswitch_id=default_switch.id)
+    default_global_database_network = alicloud.polardb.GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork",
+        db_cluster_id=cluster.id,
+        description=cluster.id)
+    ids = alicloud.polardb.get_global_database_networks_output(ids=[default_global_database_network.id])
     pulumi.export("polardbGlobalDatabaseNetworkId1", ids.networks[0].id)
-    description = alicloud.polardb.get_global_database_networks(description="example_description")
+    description = alicloud.polardb.get_global_database_networks_output(description=default_global_database_network.description)
     pulumi.export("polardbGlobalDatabaseNetworkId2", description.networks[0].id)
     ```
 
 
-    :param str db_cluster_id: The ID of the PolarDB cluster.
+    :param str db_cluster_id: The ID of the cluster.
     :param str description: The description of the Global Database Network.
     :param str gdn_id: The ID of the Global Database Network.
     :param Sequence[str] ids: A list of Global Database Network IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the Global Database Network.
+    :param str status: The status of the Global Database Network. Valid values:
     """
     __args__ = dict()
     __args__['dbClusterId'] = db_cluster_id
@@ -200,7 +237,7 @@ def get_global_database_networks_output(db_cluster_id: Optional[pulumi.Input[Opt
     """
     This data source provides the PolarDB Global Database Networks of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.181.0+.
+    > **NOTE:** Available since v1.181.0+.
 
     ## Example Usage
 
@@ -210,18 +247,40 @@ def get_global_database_networks_output(db_cluster_id: Optional[pulumi.Input[Opt
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.polardb.get_global_database_networks(ids=["example_id"])
+    this = alicloud.polardb.get_node_classes(db_type="MySQL",
+        db_version="8.0",
+        pay_type="PostPaid",
+        category="Normal")
+    default_network = alicloud.vpc.Network("defaultNetwork",
+        vpc_name="terraform-example",
+        cidr_block="172.16.0.0/16")
+    default_switch = alicloud.vpc.Switch("defaultSwitch",
+        vpc_id=default_network.id,
+        cidr_block="172.16.0.0/24",
+        zone_id=this.classes[0].zone_id,
+        vswitch_name="terraform-example")
+    cluster = alicloud.polardb.Cluster("cluster",
+        db_type="MySQL",
+        db_version="8.0",
+        pay_type="PostPaid",
+        db_node_count=2,
+        db_node_class=this.classes[0].supported_engines[0].available_resources[0].db_node_class,
+        vswitch_id=default_switch.id)
+    default_global_database_network = alicloud.polardb.GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork",
+        db_cluster_id=cluster.id,
+        description=cluster.id)
+    ids = alicloud.polardb.get_global_database_networks_output(ids=[default_global_database_network.id])
     pulumi.export("polardbGlobalDatabaseNetworkId1", ids.networks[0].id)
-    description = alicloud.polardb.get_global_database_networks(description="example_description")
+    description = alicloud.polardb.get_global_database_networks_output(description=default_global_database_network.description)
     pulumi.export("polardbGlobalDatabaseNetworkId2", description.networks[0].id)
     ```
 
 
-    :param str db_cluster_id: The ID of the PolarDB cluster.
+    :param str db_cluster_id: The ID of the cluster.
     :param str description: The description of the Global Database Network.
     :param str gdn_id: The ID of the Global Database Network.
     :param Sequence[str] ids: A list of Global Database Network IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the Global Database Network.
+    :param str status: The status of the Global Database Network. Valid values:
     """
     ...

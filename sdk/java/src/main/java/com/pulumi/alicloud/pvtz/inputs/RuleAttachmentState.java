@@ -33,14 +33,14 @@ public final class RuleAttachmentState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The List of the VPC. See the following `Block vpcs`.
+     * The List of the VPC. See `vpcs` below.
      * 
      */
     @Import(name="vpcs")
     private @Nullable Output<List<RuleAttachmentVpcArgs>> vpcs;
 
     /**
-     * @return The List of the VPC. See the following `Block vpcs`.
+     * @return The List of the VPC. See `vpcs` below.
      * 
      */
     public Optional<Output<List<RuleAttachmentVpcArgs>>> vpcs() {
@@ -94,7 +94,7 @@ public final class RuleAttachmentState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vpcs The List of the VPC. See the following `Block vpcs`.
+         * @param vpcs The List of the VPC. See `vpcs` below.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class RuleAttachmentState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vpcs The List of the VPC. See the following `Block vpcs`.
+         * @param vpcs The List of the VPC. See `vpcs` below.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class RuleAttachmentState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vpcs The List of the VPC. See the following `Block vpcs`.
+         * @param vpcs The List of the VPC. See `vpcs` below.
          * 
          * @return builder
          * 

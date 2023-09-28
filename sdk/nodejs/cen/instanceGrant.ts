@@ -20,13 +20,22 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const childAccountAk = config.get("childAccountAk") || "example-ak";
- * const childAccountSk = config.get("childAccountSk") || "example-sk";
- * const yourAccount = new alicloud.Provider("yourAccount", {});
+ * const anotherUid = config.get("anotherUid") || "xxxx";
+ * // Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
  * const childAccount = new alicloud.Provider("childAccount", {
- *     accessKey: childAccountAk,
- *     secretKey: childAccountSk,
+ *     region: "cn-hangzhou",
+ *     assumeRole: {
+ *         roleArn: `acs:ram::${anotherUid}:role/terraform-example-assume-role`,
+ *     },
  * });
+ * // Method 2: Use the target cen account's access_key, secret_key
+ * // provider "alicloud" {
+ * //   region     = "cn-hangzhou"
+ * //   access_key = "access_key"
+ * //   secret_key = "secret_key"
+ * //   alias      = "child_account"
+ * // }
+ * const yourAccount = new alicloud.Provider("yourAccount", {});
  * const yourAccountAccount = alicloud.getAccount({});
  * const childAccountAccount = alicloud.getAccount({});
  * const default = alicloud.getRegions({

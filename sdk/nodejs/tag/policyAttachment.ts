@@ -11,6 +11,30 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.204.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const default = alicloud.getAccount({});
+ * const examplePolicy = new alicloud.tag.Policy("examplePolicy", {
+ *     policyName: name,
+ *     policyDesc: name,
+ *     userType: "USER",
+ *     policyContent: "		{\"tags\":{\"CostCenter\":{\"tag_value\":{\"@@assign\":[\"Beijing\",\"Shanghai\"]},\"tag_key\":{\"@@assign\":\"CostCenter\"}}}}\n",
+ * });
+ * const examplePolicyAttachment = new alicloud.tag.PolicyAttachment("examplePolicyAttachment", {
+ *     policyId: examplePolicy.id,
+ *     targetId: _default.then(_default => _default.id),
+ *     targetType: "USER",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Tag Policy Attachment can be imported using the id, e.g.

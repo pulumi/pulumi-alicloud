@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Data Security Center Rule resource.
  * 
- * For information about Data Security Center Rule and how to use it, see [What is Rule](https://help.aliyun.com/product/88674.html).
+ * For information about Data Security Center Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/data-security-center/latest/api-sddp-2019-01-03-createrule).
  * 
- * &gt; **NOTE:** Available in v1.132.0+.
+ * &gt; **NOTE:** Available since v1.132.0.
  * 
  * ## Example Usage
  * 
@@ -46,12 +46,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example_name&#34;);
  *         var default_ = new Rule(&#34;default&#34;, RuleArgs.builder()        
  *             .category(&#34;0&#34;)
  *             .content(&#34;content&#34;)
- *             .productCode(&#34;ODPS&#34;)
+ *             .ruleName(name)
  *             .riskLevelId(&#34;4&#34;)
- *             .ruleName(&#34;rule_name&#34;)
+ *             .productCode(&#34;OSS&#34;)
  *             .build());
  * 
  *     }

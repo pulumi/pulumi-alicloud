@@ -186,9 +186,7 @@ namespace Pulumi.AliCloud.Rds
         /// - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
         /// - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
         /// 
-        /// &gt; **NOTE:**
-        /// - You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
-        /// - If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
+        /// &gt; **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
         /// </summary>
         [Output("dbTimeZone")]
         public Output<string> DbTimeZone { get; private set; } = null!;
@@ -204,11 +202,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// The instance configuration type. Valid values:
-        /// - Up
-        /// - Down
-        /// - TempUpgrade
-        /// - Serverless
+        /// The instance configuration type. Valid values: ["Up", "Down", "TempUpgrade", "Serverless"]
         /// </summary>
         [Output("direction")]
         public Output<string?> Direction { get; private set; } = null!;
@@ -230,8 +224,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
         /// 
-        /// &gt; **NOTE:**
-        /// - Available in 1.191.0+. When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
+        /// &gt; **NOTE:** When the 'engine_version' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -294,7 +287,7 @@ namespace Pulumi.AliCloud.Rds
         /// - [10, 2000] for SQL Server 2008R2;
         /// - [20,2000] for SQL Server 2012 basic single node edition
         /// Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-        /// Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instance_storage`.
+        /// Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
         /// </summary>
         [Output("instanceStorage")]
         public Output<int> InstanceStorage { get; private set; } = null!;
@@ -307,9 +300,7 @@ namespace Pulumi.AliCloud.Rds
         /// - SQLServer high availability: mssql.mem2.serverless.s2
         /// - PostgreSQL basic: pg.n2.serverless.1c
         /// 
-        /// &gt; **NOTE:**
-        /// - When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
-        /// - When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+        /// &gt; **NOTE:** When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -468,7 +459,13 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> SqlCollectorStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+        /// Actions performed on SSL functions. Valid values: 
+        /// `Open`: turn on SSL encryption;
+        /// `Close`: turn off SSL encryption;
+        /// `Update`: update SSL certificate.
+        /// See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+        /// 
+        /// &gt; **NOTE:** The attribute `ssl_action` will be ignored when setting `instance_charge_type = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
         /// </summary>
         [Output("sslAction")]
         public Output<string> SslAction { get; private set; } = null!;
@@ -502,12 +499,8 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> StorageAutoScale { get; private set; } = null!;
 
         /// <summary>
-        /// The trigger threshold (percentage) for automatic storage space expansion. Valid values:
-        /// - 10
-        /// - 20
-        /// - 30
-        /// - 40
-        /// - 50
+        /// The trigger threshold (percentage) for automatic storage space expansion.
+        /// Valid values: [10, 20, 30, 40, 50].
         /// 
         /// &gt; **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
         /// </summary>
@@ -833,9 +826,7 @@ namespace Pulumi.AliCloud.Rds
         /// - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
         /// - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
         /// 
-        /// &gt; **NOTE:**
-        /// - You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
-        /// - If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
+        /// &gt; **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
         /// </summary>
         [Input("dbTimeZone")]
         public Input<string>? DbTimeZone { get; set; }
@@ -851,11 +842,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// The instance configuration type. Valid values:
-        /// - Up
-        /// - Down
-        /// - TempUpgrade
-        /// - Serverless
+        /// The instance configuration type. Valid values: ["Up", "Down", "TempUpgrade", "Serverless"]
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
@@ -877,8 +864,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
         /// 
-        /// &gt; **NOTE:**
-        /// - Available in 1.191.0+. When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
+        /// &gt; **NOTE:** When the 'engine_version' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
@@ -941,7 +927,7 @@ namespace Pulumi.AliCloud.Rds
         /// - [10, 2000] for SQL Server 2008R2;
         /// - [20,2000] for SQL Server 2012 basic single node edition
         /// Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-        /// Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instance_storage`.
+        /// Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
         /// </summary>
         [Input("instanceStorage", required: true)]
         public Input<int> InstanceStorage { get; set; } = null!;
@@ -954,9 +940,7 @@ namespace Pulumi.AliCloud.Rds
         /// - SQLServer high availability: mssql.mem2.serverless.s2
         /// - PostgreSQL basic: pg.n2.serverless.1c
         /// 
-        /// &gt; **NOTE:**
-        /// - When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
-        /// - When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+        /// &gt; **NOTE:** When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
@@ -1145,7 +1129,13 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? SqlCollectorStatus { get; set; }
 
         /// <summary>
-        /// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+        /// Actions performed on SSL functions. Valid values: 
+        /// `Open`: turn on SSL encryption;
+        /// `Close`: turn off SSL encryption;
+        /// `Update`: update SSL certificate.
+        /// See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+        /// 
+        /// &gt; **NOTE:** The attribute `ssl_action` will be ignored when setting `instance_charge_type = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
         /// </summary>
         [Input("sslAction")]
         public Input<string>? SslAction { get; set; }
@@ -1167,12 +1157,8 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? StorageAutoScale { get; set; }
 
         /// <summary>
-        /// The trigger threshold (percentage) for automatic storage space expansion. Valid values:
-        /// - 10
-        /// - 20
-        /// - 30
-        /// - 40
-        /// - 50
+        /// The trigger threshold (percentage) for automatic storage space expansion.
+        /// Valid values: [10, 20, 30, 40, 50].
         /// 
         /// &gt; **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
         /// </summary>
@@ -1484,9 +1470,7 @@ namespace Pulumi.AliCloud.Rds
         /// - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
         /// - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
         /// 
-        /// &gt; **NOTE:**
-        /// - You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
-        /// - If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
+        /// &gt; **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
         /// </summary>
         [Input("dbTimeZone")]
         public Input<string>? DbTimeZone { get; set; }
@@ -1502,11 +1486,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// The instance configuration type. Valid values:
-        /// - Up
-        /// - Down
-        /// - TempUpgrade
-        /// - Serverless
+        /// The instance configuration type. Valid values: ["Up", "Down", "TempUpgrade", "Serverless"]
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
@@ -1528,8 +1508,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
         /// 
-        /// &gt; **NOTE:**
-        /// - Available in 1.191.0+. When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
+        /// &gt; **NOTE:** When the 'engine_version' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -1592,7 +1571,7 @@ namespace Pulumi.AliCloud.Rds
         /// - [10, 2000] for SQL Server 2008R2;
         /// - [20,2000] for SQL Server 2012 basic single node edition
         /// Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-        /// Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instance_storage`.
+        /// Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
         /// </summary>
         [Input("instanceStorage")]
         public Input<int>? InstanceStorage { get; set; }
@@ -1605,9 +1584,7 @@ namespace Pulumi.AliCloud.Rds
         /// - SQLServer high availability: mssql.mem2.serverless.s2
         /// - PostgreSQL basic: pg.n2.serverless.1c
         /// 
-        /// &gt; **NOTE:**
-        /// - When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
-        /// - When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+        /// &gt; **NOTE:** When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -1796,7 +1773,13 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? SqlCollectorStatus { get; set; }
 
         /// <summary>
-        /// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+        /// Actions performed on SSL functions. Valid values: 
+        /// `Open`: turn on SSL encryption;
+        /// `Close`: turn off SSL encryption;
+        /// `Update`: update SSL certificate.
+        /// See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+        /// 
+        /// &gt; **NOTE:** The attribute `ssl_action` will be ignored when setting `instance_charge_type = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
         /// </summary>
         [Input("sslAction")]
         public Input<string>? SslAction { get; set; }
@@ -1830,12 +1813,8 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? StorageAutoScale { get; set; }
 
         /// <summary>
-        /// The trigger threshold (percentage) for automatic storage space expansion. Valid values:
-        /// - 10
-        /// - 20
-        /// - 30
-        /// - 40
-        /// - 50
+        /// The trigger threshold (percentage) for automatic storage space expansion.
+        /// Valid values: [10, 20, 30, 40, 50].
         /// 
         /// &gt; **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
         /// </summary>

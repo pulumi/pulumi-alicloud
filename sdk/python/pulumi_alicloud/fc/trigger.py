@@ -447,7 +447,7 @@ class Trigger(pulumi.CustomResource):
             oss_bucket=default_bucket.id,
             oss_key=default_bucket_object.key,
             memory_size=512,
-            runtime="python2.7",
+            runtime="python3.10",
             handler="hello.handler")
         default_trigger = alicloud.fc.Trigger("defaultTrigger",
             service=default_service.name,
@@ -455,10 +455,10 @@ class Trigger(pulumi.CustomResource):
             role=default_role.arn,
             source_arn=default_project.name.apply(lambda name: f"acs:log:{default_regions.regions[0].id}:{default_account.id}:project/{name}"),
             type="log",
-            config=pulumi.Output.all(default_project.name, source_store.name, default_project.name, default_store.name).apply(lambda defaultProjectName, sourceStoreName, defaultProjectName1, defaultStoreName: f\"\"\"    {{
+            config=pulumi.Output.all(source_store.name, default_project.name, default_store.name).apply(lambda sourceStoreName, defaultProjectName, defaultStoreName: f\"\"\"    {{
                 "sourceConfig": {{
-                    "project": "{default_project_name}",
-                    "logstore": "{source_store_name}"
+                    "logstore": "{source_store_name}",
+                    "startTime": null
                 }},
                 "jobConfig": {{
                     "maxRetryTime": 3,
@@ -469,9 +469,10 @@ class Trigger(pulumi.CustomResource):
                     "c": "d"
                 }},
                 "logConfig": {{
-                     "project": "{default_project_name1}",
+                     "project": "{default_project_name}",
                     "logstore": "{default_store_name}"
                 }},
+                "targetConfig": null,
                 "enable": true
             }}
           
@@ -532,7 +533,7 @@ class Trigger(pulumi.CustomResource):
             oss_bucket=default_bucket.id,
             oss_key=default_bucket_object.key,
             memory_size=512,
-            runtime="python2.7",
+            runtime="python3.10",
             handler="hello.handler")
         default_trigger = alicloud.fc.Trigger("defaultTrigger",
             service=default_service.name,
@@ -631,7 +632,7 @@ class Trigger(pulumi.CustomResource):
             oss_bucket=default_bucket.id,
             oss_key=default_bucket_object.key,
             memory_size=512,
-            runtime="python2.7",
+            runtime="python3.10",
             handler="hello.handler")
         default_trigger = alicloud.fc.Trigger("defaultTrigger",
             service=default_service.name,
@@ -681,7 +682,7 @@ class Trigger(pulumi.CustomResource):
             oss_bucket=default_bucket.id,
             oss_key=default_bucket_object.key,
             memory_size=512,
-            runtime="python2.7",
+            runtime="python3.10",
             handler="hello.handler")
         oss_trigger = alicloud.fc.Trigger("ossTrigger",
             service=default_service.name,
@@ -690,7 +691,14 @@ class Trigger(pulumi.CustomResource):
             config=\"\"\"    {
                 "triggerEnable": false,
                 "asyncInvocationType": false,
-                "eventRuleFilterPattern": "{\\"source\\":[\\"acs.oss\\"],\\"type\\":[\\"oss:BucketCreated:PutBucket\\"]}",
+                "eventRuleFilterPattern": {
+                  "source":[
+                    "acs.oss"
+                    ],
+                    "type":[
+                      "oss:BucketCreated:PutBucket"
+                    ]
+                },
                 "eventSourceConfig": {
                     "eventSourceType": "Default"
                 }
@@ -897,7 +905,7 @@ class Trigger(pulumi.CustomResource):
             oss_bucket=default_bucket.id,
             oss_key=default_bucket_object.key,
             memory_size=512,
-            runtime="python2.7",
+            runtime="python3.10",
             handler="hello.handler")
         default_trigger = alicloud.fc.Trigger("defaultTrigger",
             service=default_service.name,
@@ -905,10 +913,10 @@ class Trigger(pulumi.CustomResource):
             role=default_role.arn,
             source_arn=default_project.name.apply(lambda name: f"acs:log:{default_regions.regions[0].id}:{default_account.id}:project/{name}"),
             type="log",
-            config=pulumi.Output.all(default_project.name, source_store.name, default_project.name, default_store.name).apply(lambda defaultProjectName, sourceStoreName, defaultProjectName1, defaultStoreName: f\"\"\"    {{
+            config=pulumi.Output.all(source_store.name, default_project.name, default_store.name).apply(lambda sourceStoreName, defaultProjectName, defaultStoreName: f\"\"\"    {{
                 "sourceConfig": {{
-                    "project": "{default_project_name}",
-                    "logstore": "{source_store_name}"
+                    "logstore": "{source_store_name}",
+                    "startTime": null
                 }},
                 "jobConfig": {{
                     "maxRetryTime": 3,
@@ -919,9 +927,10 @@ class Trigger(pulumi.CustomResource):
                     "c": "d"
                 }},
                 "logConfig": {{
-                     "project": "{default_project_name1}",
+                     "project": "{default_project_name}",
                     "logstore": "{default_store_name}"
                 }},
+                "targetConfig": null,
                 "enable": true
             }}
           
@@ -982,7 +991,7 @@ class Trigger(pulumi.CustomResource):
             oss_bucket=default_bucket.id,
             oss_key=default_bucket_object.key,
             memory_size=512,
-            runtime="python2.7",
+            runtime="python3.10",
             handler="hello.handler")
         default_trigger = alicloud.fc.Trigger("defaultTrigger",
             service=default_service.name,
@@ -1081,7 +1090,7 @@ class Trigger(pulumi.CustomResource):
             oss_bucket=default_bucket.id,
             oss_key=default_bucket_object.key,
             memory_size=512,
-            runtime="python2.7",
+            runtime="python3.10",
             handler="hello.handler")
         default_trigger = alicloud.fc.Trigger("defaultTrigger",
             service=default_service.name,
@@ -1131,7 +1140,7 @@ class Trigger(pulumi.CustomResource):
             oss_bucket=default_bucket.id,
             oss_key=default_bucket_object.key,
             memory_size=512,
-            runtime="python2.7",
+            runtime="python3.10",
             handler="hello.handler")
         oss_trigger = alicloud.fc.Trigger("ossTrigger",
             service=default_service.name,
@@ -1140,7 +1149,14 @@ class Trigger(pulumi.CustomResource):
             config=\"\"\"    {
                 "triggerEnable": false,
                 "asyncInvocationType": false,
-                "eventRuleFilterPattern": "{\\"source\\":[\\"acs.oss\\"],\\"type\\":[\\"oss:BucketCreated:PutBucket\\"]}",
+                "eventRuleFilterPattern": {
+                  "source":[
+                    "acs.oss"
+                    ],
+                    "type":[
+                      "oss:BucketCreated:PutBucket"
+                    ]
+                },
                 "eventSourceConfig": {
                     "eventSourceType": "Default"
                 }

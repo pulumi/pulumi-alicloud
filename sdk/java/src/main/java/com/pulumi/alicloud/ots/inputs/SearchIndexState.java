@@ -94,14 +94,14 @@ public final class SearchIndexState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The schema of the search index. If changed, a new index would be created.
+     * The schema of the search index. If changed, a new index would be created. See `schema` below.
      * 
      */
     @Import(name="schemas")
     private @Nullable Output<List<SearchIndexSchemaArgs>> schemas;
 
     /**
-     * @return The schema of the search index. If changed, a new index would be created.
+     * @return The schema of the search index. If changed, a new index would be created. See `schema` below.
      * 
      */
     public Optional<Output<List<SearchIndexSchemaArgs>>> schemas() {
@@ -293,7 +293,7 @@ public final class SearchIndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schemas The schema of the search index. If changed, a new index would be created.
+         * @param schemas The schema of the search index. If changed, a new index would be created. See `schema` below.
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class SearchIndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schemas The schema of the search index. If changed, a new index would be created.
+         * @param schemas The schema of the search index. If changed, a new index would be created. See `schema` below.
          * 
          * @return builder
          * 
@@ -314,7 +314,7 @@ public final class SearchIndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schemas The schema of the search index. If changed, a new index would be created.
+         * @param schemas The schema of the search index. If changed, a new index would be created. See `schema` below.
          * 
          * @return builder
          * 

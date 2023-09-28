@@ -20,14 +20,14 @@ public final class CompliancePackState extends com.pulumi.resources.ResourceArgs
     public static final CompliancePackState Empty = new CompliancePackState();
 
     /**
-     * The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
+     * The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
      * 
      */
     @Import(name="compliancePackName")
     private @Nullable Output<String> compliancePackName;
 
     /**
-     * @return The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
+     * @return The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
      * 
      */
     public Optional<Output<String>> compliancePackName() {
@@ -65,24 +65,24 @@ public final class CompliancePackState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * A list of Config Rules. See `config_rules` below.
+     * A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
      * 
      * @deprecated
-     * Field &#39;config_rules&#39; has been deprecated from provider version 1.141.0. New field &#39;config_rule_ids&#39; instead.
+     * Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
      * 
      */
-    @Deprecated /* Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead. */
+    @Deprecated /* Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead. */
     @Import(name="configRules")
     private @Nullable Output<List<CompliancePackConfigRuleArgs>> configRules;
 
     /**
-     * @return A list of Config Rules. See `config_rules` below.
+     * @return A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
      * 
      * @deprecated
-     * Field &#39;config_rules&#39; has been deprecated from provider version 1.141.0. New field &#39;config_rule_ids&#39; instead.
+     * Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
      * 
      */
-    @Deprecated /* Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead. */
+    @Deprecated /* Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead. */
     public Optional<Output<List<CompliancePackConfigRuleArgs>>> configRules() {
         return Optional.ofNullable(this.configRules);
     }
@@ -103,14 +103,14 @@ public final class CompliancePackState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+     * The Risk Level. Valid values:
      * 
      */
     @Import(name="riskLevel")
     private @Nullable Output<Integer> riskLevel;
 
     /**
-     * @return The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+     * @return The Risk Level. Valid values:
      * 
      */
     public Optional<Output<Integer>> riskLevel() {
@@ -118,14 +118,14 @@ public final class CompliancePackState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+     * The status of the Compliance Pack.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+     * @return The status of the Compliance Pack.
      * 
      */
     public Optional<Output<String>> status() {
@@ -163,7 +163,7 @@ public final class CompliancePackState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param compliancePackName The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
+         * @param compliancePackName The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class CompliancePackState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param compliancePackName The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
+         * @param compliancePackName The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
          * 
          * @return builder
          * 
@@ -236,44 +236,44 @@ public final class CompliancePackState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param configRules A list of Config Rules. See `config_rules` below.
+         * @param configRules A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;config_rules&#39; has been deprecated from provider version 1.141.0. New field &#39;config_rule_ids&#39; instead.
+         * Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
          * 
          */
-        @Deprecated /* Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead. */
+        @Deprecated /* Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead. */
         public Builder configRules(@Nullable Output<List<CompliancePackConfigRuleArgs>> configRules) {
             $.configRules = configRules;
             return this;
         }
 
         /**
-         * @param configRules A list of Config Rules. See `config_rules` below.
+         * @param configRules A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;config_rules&#39; has been deprecated from provider version 1.141.0. New field &#39;config_rule_ids&#39; instead.
+         * Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
          * 
          */
-        @Deprecated /* Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead. */
+        @Deprecated /* Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead. */
         public Builder configRules(List<CompliancePackConfigRuleArgs> configRules) {
             return configRules(Output.of(configRules));
         }
 
         /**
-         * @param configRules A list of Config Rules. See `config_rules` below.
+         * @param configRules A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;config_rules&#39; has been deprecated from provider version 1.141.0. New field &#39;config_rule_ids&#39; instead.
+         * Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
          * 
          */
-        @Deprecated /* Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead. */
+        @Deprecated /* Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead. */
         public Builder configRules(CompliancePackConfigRuleArgs... configRules) {
             return configRules(List.of(configRules));
         }
@@ -300,7 +300,7 @@ public final class CompliancePackState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param riskLevel The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+         * @param riskLevel The Risk Level. Valid values:
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class CompliancePackState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param riskLevel The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+         * @param riskLevel The Risk Level. Valid values:
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class CompliancePackState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param status The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+         * @param status The status of the Compliance Pack.
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class CompliancePackState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param status The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+         * @param status The status of the Compliance Pack.
          * 
          * @return builder
          * 

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// 
     /// For information about PolarDB Global Database Network and how to use it, see [What is Global Database Network](https://www.alibabacloud.com/help/en/polardb-for-mysql/latest/createglobaldatabasenetwork).
     /// 
-    /// &gt; **NOTE:** Available in v1.181.0+.
+    /// &gt; **NOTE:** Available since v1.181.0+.
     /// 
     /// ## Example Usage
     /// 
@@ -32,6 +32,7 @@ namespace Pulumi.AliCloud.PolarDB
     ///     {
     ///         DbType = "MySQL",
     ///         DbVersion = "8.0",
+    ///         Category = "Normal",
     ///         PayType = "PostPaid",
     ///     });
     /// 

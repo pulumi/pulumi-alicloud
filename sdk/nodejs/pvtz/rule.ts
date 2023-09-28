@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Private Zone Rule resource.
  *
- * For information about Private Zone Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/doc-detail/177601.htm).
+ * For information about Private Zone Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/privatezone/latest/add-forwarding-rule).
  *
- * > **NOTE:** Available in v1.143.0+.
+ * > **NOTE:** Available since v1.143.0.
  *
  * ## Import
  *
@@ -54,7 +54,7 @@ export class Rule extends pulumi.CustomResource {
      */
     public readonly endpointId!: pulumi.Output<string>;
     /**
-     * Forwarding target. See the following `Block forwardIp`.
+     * Forwarding target. See `forwardIps` below.
      */
     public readonly forwardIps!: pulumi.Output<outputs.pvtz.RuleForwardIp[]>;
     /**
@@ -122,7 +122,7 @@ export interface RuleState {
      */
     endpointId?: pulumi.Input<string>;
     /**
-     * Forwarding target. See the following `Block forwardIp`.
+     * Forwarding target. See `forwardIps` below.
      */
     forwardIps?: pulumi.Input<pulumi.Input<inputs.pvtz.RuleForwardIp>[]>;
     /**
@@ -148,7 +148,7 @@ export interface RuleArgs {
      */
     endpointId: pulumi.Input<string>;
     /**
-     * Forwarding target. See the following `Block forwardIp`.
+     * Forwarding target. See `forwardIps` below.
      */
     forwardIps: pulumi.Input<pulumi.Input<inputs.pvtz.RuleForwardIp>[]>;
     /**

@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RuleRuleActionTrafficLimitConfig {
     /**
-     * @return The Number of requests per second. Value range: 1~100000.
+     * @return The Number of requests per second. Valid values: `1` to `100000`.
      * 
      */
     private @Nullable Integer qps;
 
     private RuleRuleActionTrafficLimitConfig() {}
     /**
-     * @return The Number of requests per second. Value range: 1~100000.
+     * @return The Number of requests per second. Valid values: `1` to `100000`.
      * 
      */
     public Optional<Integer> qps() {

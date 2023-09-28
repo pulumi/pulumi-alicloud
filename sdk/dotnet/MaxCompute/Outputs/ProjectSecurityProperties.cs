@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
         /// </summary>
         public readonly bool? ObjectCreatorHasGrantPermission;
         /// <summary>
-        /// Project protection.See the following `Block ProjectProtection`.
+        /// Project protection. See `project_protection` below.
         /// </summary>
         public readonly Outputs.ProjectSecurityPropertiesProjectProtection? ProjectProtection;
         /// <summary>

@@ -56,8 +56,10 @@ class ServiceMeshLoadBalancerArgs:
                  pilot_public_eip: Optional[pulumi.Input[bool]] = None,
                  pilot_public_loadbalancer_id: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] api_server_loadbalancer_id: The ID of the SLB instance that is used when the API server is exposed to the Internet.
         :param pulumi.Input[bool] api_server_public_eip: Whether to use the IP address of a public network exposed the API Server.
         :param pulumi.Input[bool] pilot_public_eip: Whether to use the IP address of a public network exposure the Istio Pilot.
+        :param pulumi.Input[str] pilot_public_loadbalancer_id: The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
         """
         if api_server_loadbalancer_id is not None:
             pulumi.set(__self__, "api_server_loadbalancer_id", api_server_loadbalancer_id)
@@ -71,6 +73,9 @@ class ServiceMeshLoadBalancerArgs:
     @property
     @pulumi.getter(name="apiServerLoadbalancerId")
     def api_server_loadbalancer_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the SLB instance that is used when the API server is exposed to the Internet.
+        """
         return pulumi.get(self, "api_server_loadbalancer_id")
 
     @api_server_loadbalancer_id.setter
@@ -104,6 +109,9 @@ class ServiceMeshLoadBalancerArgs:
     @property
     @pulumi.getter(name="pilotPublicLoadbalancerId")
     def pilot_public_loadbalancer_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
+        """
         return pulumi.get(self, "pilot_public_loadbalancer_id")
 
     @pilot_public_loadbalancer_id.setter
@@ -128,19 +136,19 @@ class ServiceMeshMeshConfigArgs:
                  telemetry: Optional[pulumi.Input[bool]] = None,
                  tracing: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input['ServiceMeshMeshConfigAccessLogArgs'] access_log: The configuration of the access logging.
-        :param pulumi.Input['ServiceMeshMeshConfigAuditArgs'] audit: The configuration of the audit. See the following `Block audit`.
-        :param pulumi.Input['ServiceMeshMeshConfigControlPlaneLogArgs'] control_plane_log: The configuration of the control plane logging.
+        :param pulumi.Input['ServiceMeshMeshConfigAccessLogArgs'] access_log: The configuration of the access logging. See `access_log` below.
+        :param pulumi.Input['ServiceMeshMeshConfigAuditArgs'] audit: The configuration of the audit. See `audit` below.
+        :param pulumi.Input['ServiceMeshMeshConfigControlPlaneLogArgs'] control_plane_log: The configuration of the control plane logging. See `control_plane_log` below.
         :param pulumi.Input[bool] customized_zipkin: Whether to enable the use of a custom zipkin.
         :param pulumi.Input[bool] enable_locality_lb: The enable locality lb.
-        :param pulumi.Input['ServiceMeshMeshConfigKialiArgs'] kiali: The configuration of the Kiali. See the following `Block kiali`.
-        :param pulumi.Input['ServiceMeshMeshConfigOpaArgs'] opa: The open-door policy of agent (OPA) plug-in information. See the following `Block opa`.
+        :param pulumi.Input['ServiceMeshMeshConfigKialiArgs'] kiali: The configuration of the Kiali. See `kiali` below.
+        :param pulumi.Input['ServiceMeshMeshConfigOpaArgs'] opa: The open-door policy of agent (OPA) plug-in information. See `opa` below.
         :param pulumi.Input[str] outbound_traffic_policy: The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
-        :param pulumi.Input['ServiceMeshMeshConfigPilotArgs'] pilot: The configuration of the Link trace sampling. See the following `Block pilot`.
-        :param pulumi.Input['ServiceMeshMeshConfigProxyArgs'] proxy: The configuration of the Proxy. See the following `Block proxy`.
-        :param pulumi.Input['ServiceMeshMeshConfigSidecarInjectorArgs'] sidecar_injector: The configuration of the Sidecar injector. See the following `Block sidecar_injector`.
-        :param pulumi.Input[bool] telemetry: Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
-        :param pulumi.Input[bool] tracing: Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+        :param pulumi.Input['ServiceMeshMeshConfigPilotArgs'] pilot: The configuration of the Link trace sampling. See `pilot` below.
+        :param pulumi.Input['ServiceMeshMeshConfigProxyArgs'] proxy: The configuration of the Proxy. See `proxy` below.
+        :param pulumi.Input['ServiceMeshMeshConfigSidecarInjectorArgs'] sidecar_injector: The configuration of the Sidecar injector. See `sidecar_injector` below.
+        :param pulumi.Input[bool] telemetry: Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+        :param pulumi.Input[bool] tracing: Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
         """
         if access_log is not None:
             pulumi.set(__self__, "access_log", access_log)
@@ -173,7 +181,7 @@ class ServiceMeshMeshConfigArgs:
     @pulumi.getter(name="accessLog")
     def access_log(self) -> Optional[pulumi.Input['ServiceMeshMeshConfigAccessLogArgs']]:
         """
-        The configuration of the access logging.
+        The configuration of the access logging. See `access_log` below.
         """
         return pulumi.get(self, "access_log")
 
@@ -185,7 +193,7 @@ class ServiceMeshMeshConfigArgs:
     @pulumi.getter
     def audit(self) -> Optional[pulumi.Input['ServiceMeshMeshConfigAuditArgs']]:
         """
-        The configuration of the audit. See the following `Block audit`.
+        The configuration of the audit. See `audit` below.
         """
         return pulumi.get(self, "audit")
 
@@ -197,7 +205,7 @@ class ServiceMeshMeshConfigArgs:
     @pulumi.getter(name="controlPlaneLog")
     def control_plane_log(self) -> Optional[pulumi.Input['ServiceMeshMeshConfigControlPlaneLogArgs']]:
         """
-        The configuration of the control plane logging.
+        The configuration of the control plane logging. See `control_plane_log` below.
         """
         return pulumi.get(self, "control_plane_log")
 
@@ -233,7 +241,7 @@ class ServiceMeshMeshConfigArgs:
     @pulumi.getter
     def kiali(self) -> Optional[pulumi.Input['ServiceMeshMeshConfigKialiArgs']]:
         """
-        The configuration of the Kiali. See the following `Block kiali`.
+        The configuration of the Kiali. See `kiali` below.
         """
         return pulumi.get(self, "kiali")
 
@@ -245,7 +253,7 @@ class ServiceMeshMeshConfigArgs:
     @pulumi.getter
     def opa(self) -> Optional[pulumi.Input['ServiceMeshMeshConfigOpaArgs']]:
         """
-        The open-door policy of agent (OPA) plug-in information. See the following `Block opa`.
+        The open-door policy of agent (OPA) plug-in information. See `opa` below.
         """
         return pulumi.get(self, "opa")
 
@@ -269,7 +277,7 @@ class ServiceMeshMeshConfigArgs:
     @pulumi.getter
     def pilot(self) -> Optional[pulumi.Input['ServiceMeshMeshConfigPilotArgs']]:
         """
-        The configuration of the Link trace sampling. See the following `Block pilot`.
+        The configuration of the Link trace sampling. See `pilot` below.
         """
         return pulumi.get(self, "pilot")
 
@@ -281,7 +289,7 @@ class ServiceMeshMeshConfigArgs:
     @pulumi.getter
     def proxy(self) -> Optional[pulumi.Input['ServiceMeshMeshConfigProxyArgs']]:
         """
-        The configuration of the Proxy. See the following `Block proxy`.
+        The configuration of the Proxy. See `proxy` below.
         """
         return pulumi.get(self, "proxy")
 
@@ -293,7 +301,7 @@ class ServiceMeshMeshConfigArgs:
     @pulumi.getter(name="sidecarInjector")
     def sidecar_injector(self) -> Optional[pulumi.Input['ServiceMeshMeshConfigSidecarInjectorArgs']]:
         """
-        The configuration of the Sidecar injector. See the following `Block sidecar_injector`.
+        The configuration of the Sidecar injector. See `sidecar_injector` below.
         """
         return pulumi.get(self, "sidecar_injector")
 
@@ -305,7 +313,7 @@ class ServiceMeshMeshConfigArgs:
     @pulumi.getter
     def telemetry(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+        Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
         """
         return pulumi.get(self, "telemetry")
 
@@ -317,7 +325,7 @@ class ServiceMeshMeshConfigArgs:
     @pulumi.getter
     def tracing(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+        Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
         """
         return pulumi.get(self, "tracing")
 

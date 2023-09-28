@@ -51,7 +51,6 @@ import (
 // `),
 //
 //				Description: pulumi.String("this is a role test."),
-//				Force:       pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -77,7 +76,6 @@ import (
 // `),
 //
 //				Description: pulumi.String("this is a policy test"),
-//				Force:       pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

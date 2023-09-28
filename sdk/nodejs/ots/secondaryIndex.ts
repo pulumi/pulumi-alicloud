@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
  *
- * > **NOTE:** Available in v1.187.0+.
+ * > **NOTE:** Available since v1.187.0.
  *
  * ## Example Usage
  *
@@ -18,28 +18,22 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "terraformtest";
- * const pks = config.getObject<Array<string>>("pks") || [
- *     "pk1",
- *     "pk2",
- *     "pk3",
- * ];
- * const definedCols = config.getObject<Array<string>>("definedCols") || [
- *     "col1",
- *     "col2",
- *     "col3",
- * ];
- * const instance1 = new alicloud.ots.Instance("instance1", {
+ * const name = config.get("name") || "tf-example";
+ * const defaultInstance = new alicloud.ots.Instance("defaultInstance", {
  *     description: name,
  *     accessedBy: "Any",
  *     tags: {
  *         Created: "TF",
- *         For: "acceptance test",
+ *         For: "example",
  *     },
  * });
- * const table1 = new alicloud.ots.Table("table1", {
- *     instanceName: instance1.name,
- *     tableName: name,
+ * const defaultTable = new alicloud.ots.Table("defaultTable", {
+ *     instanceName: defaultInstance.name,
+ *     tableName: "tf_example",
+ *     timeToLive: -1,
+ *     maxVersion: 1,
+ *     enableSse: true,
+ *     sseKeyType: "SSE_KMS_SERVICE",
  *     primaryKeys: [
  *         {
  *             name: "pk1",
@@ -68,18 +62,23 @@ import * as utilities from "../utilities";
  *             type: "Binary",
  *         },
  *     ],
- *     timeToLive: -1,
- *     maxVersion: 1,
- *     deviationCellVersionInSec: "1",
  * });
- * const index1 = new alicloud.ots.SecondaryIndex("index1", {
- *     instanceName: instance1.name,
- *     tableName: table1.tableName,
- *     indexName: name,
+ * const defaultSecondaryIndex = new alicloud.ots.SecondaryIndex("defaultSecondaryIndex", {
+ *     instanceName: defaultInstance.name,
+ *     tableName: defaultTable.tableName,
+ *     indexName: "example_index",
  *     indexType: "Global",
  *     includeBaseData: true,
- *     primaryKeys: pks,
- *     definedColumns: definedCols,
+ *     primaryKeys: [
+ *         "pk1",
+ *         "pk2",
+ *         "pk3",
+ *     ],
+ *     definedColumns: [
+ *         "col1",
+ *         "col2",
+ *         "col3",
+ *     ],
  * });
  * ```
  *

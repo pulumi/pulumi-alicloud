@@ -10,6 +10,11 @@ export type Account = import("./account").Account;
 export const Account: typeof import("./account").Account = null as any;
 utilities.lazyLoad(exports, ["Account"], () => require("./account"));
 
+export { BackupPolicyArgs, BackupPolicyState } from "./backupPolicy";
+export type BackupPolicy = import("./backupPolicy").BackupPolicy;
+export const BackupPolicy: typeof import("./backupPolicy").BackupPolicy = null as any;
+utilities.lazyLoad(exports, ["BackupPolicy"], () => require("./backupPolicy"));
+
 export { ConnectionArgs, ConnectionState } from "./connection";
 export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
@@ -57,6 +62,8 @@ const _module = {
         switch (type) {
             case "alicloud:gpdb/account:Account":
                 return new Account(name, <any>undefined, { urn })
+            case "alicloud:gpdb/backupPolicy:BackupPolicy":
+                return new BackupPolicy(name, <any>undefined, { urn })
             case "alicloud:gpdb/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
             case "alicloud:gpdb/dbInstancePlan:DbInstancePlan":
@@ -71,6 +78,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/account", _module)
+pulumi.runtime.registerResourceModule("alicloud", "gpdb/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/connection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/dbInstancePlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/elasticInstance", _module)

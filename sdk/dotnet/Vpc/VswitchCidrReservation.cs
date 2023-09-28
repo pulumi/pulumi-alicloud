@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// For information about Vpc Vswitch Cidr Reservation and how to use it, see [What is Vswitch Cidr Reservation](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/610154).
     /// 
-    /// &gt; **NOTE:** Available in v1.205.0+.
+    /// &gt; **NOTE:** Available since v1.205.0.
     /// 
     /// ## Example Usage
     /// 
@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Vpc
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testacc-example";
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.Vpc
     ///     {
     ///         IpVersion = "IPv4",
     ///         VswitchId = defaultVSwitch.Id,
-    ///         CidrReservationDescription = "test",
+    ///         CidrReservationDescription = name,
     ///         CidrReservationCidr = "10.0.10.0/24",
     ///         VswitchCidrReservationName = name,
     ///         CidrReservationType = "Prefix",

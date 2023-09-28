@@ -80,7 +80,7 @@ import * as utilities from "../utilities";
  *     ossBucket: defaultBucket.id,
  *     ossKey: defaultBucketObject.key,
  *     memorySize: 512,
- *     runtime: "python2.7",
+ *     runtime: "python3.10",
  *     handler: "hello.handler",
  *     environmentVariables: {
  *         prefix: "terraform",

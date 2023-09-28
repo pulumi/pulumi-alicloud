@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Resource Manager Control Policy resource.
  *
- * For information about Resource Manager Control Policy and how to use it, see [What is Control Policy](https://help.aliyun.com/document_detail/208287.html).
+ * For information about Resource Manager Control Policy and how to use it, see [What is Control Policy](https://www.alibabacloud.com/help/en/resource-management/latest/api-resourcedirectorymaster-2022-04-19-createcontrolpolicy).
  *
- * > **NOTE:** Available in v1.120.0+.
+ * > **NOTE:** Available since v1.120.0.
  *
  * ## Example Usage
  *
@@ -19,9 +19,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const example = new alicloud.resourcemanager.ControlPolicy("example", {
- *     controlPolicyName: "tf-testAccRDControlPolicy",
- *     description: "tf-testAccRDControlPolicy",
+ *     controlPolicyName: name,
+ *     description: name,
  *     effectScope: "RAM",
  *     policyDocument: `  {
  *     "Version": "1",
@@ -38,7 +40,6 @@ import * as utilities from "../utilities";
  *       }
  *     ]
  *   }
- *   
  * `,
  * });
  * ```

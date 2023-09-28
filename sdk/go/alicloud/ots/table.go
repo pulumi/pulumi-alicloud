@@ -18,6 +18,8 @@ import (
 // > **NOTE:** From Provider version 1.10.0, the provider field 'ots_instance_name' has been deprecated and
 // you should use resource alicloud_ots_table's new field 'instance_name' and 'table_name' to re-import this resource.
 //
+// > **NOTE:** Available since v1.9.2.
+//
 // ## Example Usage
 //
 // ```go
@@ -34,24 +36,28 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "terraformtest"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			foo, err := ots.NewInstance(ctx, "foo", &ots.InstanceArgs{
+//			defaultInstance, err := ots.NewInstance(ctx, "defaultInstance", &ots.InstanceArgs{
 //				Description: pulumi.String(name),
 //				AccessedBy:  pulumi.String("Any"),
 //				Tags: pulumi.AnyMap{
 //					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("acceptance test"),
+//					"For":     pulumi.Any("example"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ots.NewTable(ctx, "basic", &ots.TableArgs{
-//				InstanceName: foo.Name,
-//				TableName:    pulumi.String(name),
+//			_, err = ots.NewTable(ctx, "defaultTable", &ots.TableArgs{
+//				InstanceName: defaultInstance.Name,
+//				TableName:    pulumi.String("tf_example"),
+//				TimeToLive:   -1,
+//				MaxVersion:   pulumi.Int(1),
+//				EnableSse:    pulumi.Bool(true),
+//				SseKeyType:   pulumi.String("SSE_KMS_SERVICE"),
 //				PrimaryKeys: ots.TablePrimaryKeyArray{
 //					&ots.TablePrimaryKeyArgs{
 //						Name: pulumi.String("pk1"),
@@ -80,11 +86,6 @@ import (
 //						Type: pulumi.String("Binary"),
 //					},
 //				},
-//				TimeToLive:                -1,
-//				MaxVersion:                pulumi.Int(1),
-//				DeviationCellVersionInSec: pulumi.String("1"),
-//				EnableSse:                 pulumi.Bool(true),
-//				SseKeyType:                pulumi.String("SSE_KMS_SERVICE"),
 //			})
 //			if err != nil {
 //				return err
@@ -107,7 +108,7 @@ import (
 type Table struct {
 	pulumi.CustomResourceState
 
-	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32.
+	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
 	DefinedColumns TableDefinedColumnArrayOutput `pulumi:"definedColumns"`
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
 	DeviationCellVersionInSec pulumi.StringPtrOutput `pulumi:"deviationCellVersionInSec"`
@@ -117,7 +118,7 @@ type Table struct {
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// The maximum number of versions stored in this table. The valid value is 1-2147483647.
 	MaxVersion pulumi.IntOutput `pulumi:"maxVersion"`
-	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four.
+	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
 	PrimaryKeys TablePrimaryKeyArrayOutput `pulumi:"primaryKeys"`
 	// The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
 	SseKeyType pulumi.StringPtrOutput `pulumi:"sseKeyType"`
@@ -172,7 +173,7 @@ func GetTable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Table resources.
 type tableState struct {
-	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32.
+	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
 	DefinedColumns []TableDefinedColumn `pulumi:"definedColumns"`
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
 	DeviationCellVersionInSec *string `pulumi:"deviationCellVersionInSec"`
@@ -182,7 +183,7 @@ type tableState struct {
 	InstanceName *string `pulumi:"instanceName"`
 	// The maximum number of versions stored in this table. The valid value is 1-2147483647.
 	MaxVersion *int `pulumi:"maxVersion"`
-	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four.
+	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
 	PrimaryKeys []TablePrimaryKey `pulumi:"primaryKeys"`
 	// The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
 	SseKeyType *string `pulumi:"sseKeyType"`
@@ -193,7 +194,7 @@ type tableState struct {
 }
 
 type TableState struct {
-	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32.
+	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
 	DefinedColumns TableDefinedColumnArrayInput
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
 	DeviationCellVersionInSec pulumi.StringPtrInput
@@ -203,7 +204,7 @@ type TableState struct {
 	InstanceName pulumi.StringPtrInput
 	// The maximum number of versions stored in this table. The valid value is 1-2147483647.
 	MaxVersion pulumi.IntPtrInput
-	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four.
+	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
 	PrimaryKeys TablePrimaryKeyArrayInput
 	// The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
 	SseKeyType pulumi.StringPtrInput
@@ -218,7 +219,7 @@ func (TableState) ElementType() reflect.Type {
 }
 
 type tableArgs struct {
-	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32.
+	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
 	DefinedColumns []TableDefinedColumn `pulumi:"definedColumns"`
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
 	DeviationCellVersionInSec *string `pulumi:"deviationCellVersionInSec"`
@@ -228,7 +229,7 @@ type tableArgs struct {
 	InstanceName string `pulumi:"instanceName"`
 	// The maximum number of versions stored in this table. The valid value is 1-2147483647.
 	MaxVersion int `pulumi:"maxVersion"`
-	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four.
+	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
 	PrimaryKeys []TablePrimaryKey `pulumi:"primaryKeys"`
 	// The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
 	SseKeyType *string `pulumi:"sseKeyType"`
@@ -240,7 +241,7 @@ type tableArgs struct {
 
 // The set of arguments for constructing a Table resource.
 type TableArgs struct {
-	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32.
+	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
 	DefinedColumns TableDefinedColumnArrayInput
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
 	DeviationCellVersionInSec pulumi.StringPtrInput
@@ -250,7 +251,7 @@ type TableArgs struct {
 	InstanceName pulumi.StringInput
 	// The maximum number of versions stored in this table. The valid value is 1-2147483647.
 	MaxVersion pulumi.IntInput
-	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four.
+	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
 	PrimaryKeys TablePrimaryKeyArrayInput
 	// The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
 	SseKeyType pulumi.StringPtrInput
@@ -371,7 +372,7 @@ func (o TableOutput) ToOutput(ctx context.Context) pulumix.Output[*Table] {
 	}
 }
 
-// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32.
+// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
 func (o TableOutput) DefinedColumns() TableDefinedColumnArrayOutput {
 	return o.ApplyT(func(v *Table) TableDefinedColumnArrayOutput { return v.DefinedColumns }).(TableDefinedColumnArrayOutput)
 }
@@ -396,7 +397,7 @@ func (o TableOutput) MaxVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v *Table) pulumi.IntOutput { return v.MaxVersion }).(pulumi.IntOutput)
 }
 
-// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four.
+// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
 func (o TableOutput) PrimaryKeys() TablePrimaryKeyArrayOutput {
 	return o.ApplyT(func(v *Table) TablePrimaryKeyArrayOutput { return v.PrimaryKeys }).(TablePrimaryKeyArrayOutput)
 }

@@ -14,9 +14,9 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Application Load Balancer (ALB) Listener Acl Attachment resource.
+ * Provides a ALB Listener Acl Attachment resource. Associating ACL to listening.
  * 
- * For information about Application Load Balancer (ALB) Listener Acl Attachment and how to use it, see [What is Listener Acl Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/associateaclswithlistener).
+ * For information about ALB Listener Acl Attachment and how to use it, see [What is Listener Acl Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/associateaclswithlistener).
  * 
  * &gt; **NOTE:** Available since v1.163.0.
  * 
@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Application Load Balancer (ALB) Listener Acl Attachment can be imported using the id, e.g.
+ * ALB Listener Acl Attachment can be imported using the id, e.g.
  * 
  * ```sh
  *  $ pulumi import alicloud:alb/listenerAclAttachment:ListenerAclAttachment example &lt;listener_id&gt;:&lt;acl_id&gt;
@@ -36,60 +36,60 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:alb/listenerAclAttachment:ListenerAclAttachment")
 public class ListenerAclAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the Acl.
+     * The ID list of the access policy group bound by the listener.
      * 
      */
     @Export(name="aclId", type=String.class, parameters={})
     private Output<String> aclId;
 
     /**
-     * @return The ID of the Acl.
+     * @return The ID list of the access policy group bound by the listener.
      * 
      */
     public Output<String> aclId() {
         return this.aclId;
     }
     /**
-     * The type of the ACL. Valid values:
-     * - White: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. The whitelist applies to scenarios in which you want to allow only specific IP addresses to access an application. Risks may arise if you specify an ACL as a whitelist. After a whitelist is configured, only IP addresses in the whitelist can access the Application Load Balancer (ALB) listener. If you enable a whitelist but the whitelist does not contain an IP address, the listener forwards all requests.
-     * - Black: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are blocked. The blacklist applies to scenarios in which you want to block access from specific IP addresses to an application. If you enable a blacklist but the blacklist does not contain an IP address, the listener forwards all requests.
+     * Access control type:
+     * - **White**: only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where only specific IP addresses are allowed to access. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access the load balancer listener. If whitelist access is enabled but no IP addresses are added to the access policy group, the server load balancer listener forwards all requests.
+     * - **Black**: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where only certain IP addresses are restricted. If blacklist access is enabled and no IP is added to the access policy group, the server load balancer listener forwards all requests.
      * 
      */
     @Export(name="aclType", type=String.class, parameters={})
     private Output<String> aclType;
 
     /**
-     * @return The type of the ACL. Valid values:
-     * - White: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. The whitelist applies to scenarios in which you want to allow only specific IP addresses to access an application. Risks may arise if you specify an ACL as a whitelist. After a whitelist is configured, only IP addresses in the whitelist can access the Application Load Balancer (ALB) listener. If you enable a whitelist but the whitelist does not contain an IP address, the listener forwards all requests.
-     * - Black: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are blocked. The blacklist applies to scenarios in which you want to block access from specific IP addresses to an application. If you enable a blacklist but the blacklist does not contain an IP address, the listener forwards all requests.
+     * @return Access control type:
+     * - **White**: only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where only specific IP addresses are allowed to access. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access the load balancer listener. If whitelist access is enabled but no IP addresses are added to the access policy group, the server load balancer listener forwards all requests.
+     * - **Black**: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where only certain IP addresses are restricted. If blacklist access is enabled and no IP is added to the access policy group, the server load balancer listener forwards all requests.
      * 
      */
     public Output<String> aclType() {
         return this.aclType;
     }
     /**
-     * The ID of the ALB listener.
+     * Listener instance ID.
      * 
      */
     @Export(name="listenerId", type=String.class, parameters={})
     private Output<String> listenerId;
 
     /**
-     * @return The ID of the ALB listener.
+     * @return Listener instance ID.
      * 
      */
     public Output<String> listenerId() {
         return this.listenerId;
     }
     /**
-     * The status of the Listener Acl Attachment.
+     * Listener Status.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The status of the Listener Acl Attachment.
+     * @return Listener Status.
      * 
      */
     public Output<String> status() {

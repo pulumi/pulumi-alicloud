@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// <summary>
         /// This data source provides the Resource Manager Shared Targets of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.111.0+.
+        /// &gt; **NOTE:** Available since v1.111.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -30,17 +30,38 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AliCloud.ResourceManager.GetSharedTargets.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-example";
+        ///     var defaultAccounts = AliCloud.ResourceManager.GetAccounts.Invoke();
+        /// 
+        ///     var defaultResourceShare = new AliCloud.ResourceManager.ResourceShare("defaultResourceShare", new()
+        ///     {
+        ///         ResourceShareName = name,
+        ///     });
+        /// 
+        ///     var defaultSharedTarget = new AliCloud.ResourceManager.SharedTarget("defaultSharedTarget", new()
+        ///     {
+        ///         ResourceShareId = defaultResourceShare.Id,
+        ///         TargetId = defaultAccounts.Apply(getAccountsResult =&gt; getAccountsResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var ids = AliCloud.ResourceManager.GetSharedTargets.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "15681091********",
+        ///             defaultSharedTarget.TargetId,
         ///         },
+        ///     });
+        /// 
+        ///     var resourceShareId = AliCloud.ResourceManager.GetSharedTargets.Invoke(new()
+        ///     {
+        ///         ResourceShareId = defaultSharedTarget.ResourceShareId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstResourceManagerSharedTargetId"] = example.Apply(getSharedTargetsResult =&gt; getSharedTargetsResult.Targets[0]?.Id),
+        ///         ["firstResourceManagerSharedTargetId"] = ids.Apply(getSharedTargetsResult =&gt; getSharedTargetsResult.Targets[0]?.Id),
+        ///         ["secondResourceManagerSharedTargetId"] = resourceShareId.Apply(getSharedTargetsResult =&gt; getSharedTargetsResult.Targets[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -53,7 +74,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// <summary>
         /// This data source provides the Resource Manager Shared Targets of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.111.0+.
+        /// &gt; **NOTE:** Available since v1.111.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -69,17 +90,38 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AliCloud.ResourceManager.GetSharedTargets.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-example";
+        ///     var defaultAccounts = AliCloud.ResourceManager.GetAccounts.Invoke();
+        /// 
+        ///     var defaultResourceShare = new AliCloud.ResourceManager.ResourceShare("defaultResourceShare", new()
+        ///     {
+        ///         ResourceShareName = name,
+        ///     });
+        /// 
+        ///     var defaultSharedTarget = new AliCloud.ResourceManager.SharedTarget("defaultSharedTarget", new()
+        ///     {
+        ///         ResourceShareId = defaultResourceShare.Id,
+        ///         TargetId = defaultAccounts.Apply(getAccountsResult =&gt; getAccountsResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var ids = AliCloud.ResourceManager.GetSharedTargets.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "15681091********",
+        ///             defaultSharedTarget.TargetId,
         ///         },
+        ///     });
+        /// 
+        ///     var resourceShareId = AliCloud.ResourceManager.GetSharedTargets.Invoke(new()
+        ///     {
+        ///         ResourceShareId = defaultSharedTarget.ResourceShareId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstResourceManagerSharedTargetId"] = example.Apply(getSharedTargetsResult =&gt; getSharedTargetsResult.Targets[0]?.Id),
+        ///         ["firstResourceManagerSharedTargetId"] = ids.Apply(getSharedTargetsResult =&gt; getSharedTargetsResult.Targets[0]?.Id),
+        ///         ["secondResourceManagerSharedTargetId"] = resourceShareId.Apply(getSharedTargetsResult =&gt; getSharedTargetsResult.Targets[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -112,13 +154,13 @@ namespace Pulumi.AliCloud.ResourceManager
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The resource shared ID of resource manager.
+        /// The resource share ID of resource manager.
         /// </summary>
         [Input("resourceShareId")]
         public string? ResourceShareId { get; set; }
 
         /// <summary>
-        /// The status of shared target.
+        /// The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -150,13 +192,13 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The resource shared ID of resource manager.
+        /// The resource share ID of resource manager.
         /// </summary>
         [Input("resourceShareId")]
         public Input<string>? ResourceShareId { get; set; }
 
         /// <summary>
-        /// The status of shared target.
+        /// The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -177,8 +219,17 @@ namespace Pulumi.AliCloud.ResourceManager
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The resource shared ID of resource manager.
+        /// </summary>
         public readonly string? ResourceShareId;
+        /// <summary>
+        /// The status of shared target.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// A list of Resource Manager Shared Targets. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetSharedTargetsTargetResult> Targets;
 
         [OutputConstructor]

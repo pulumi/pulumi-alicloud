@@ -89,8 +89,8 @@ import (
 //				return err
 //			}
 //			_, err = ga.NewAclAttachment(ctx, "defaultAclAttachment", &ga.AclAttachmentArgs{
-//				AclId:      defaultAcl.ID(),
 //				ListenerId: defaultListener.ID(),
+//				AclId:      defaultAcl.ID(),
 //				AclType:    pulumi.String("white"),
 //			})
 //			if err != nil {
@@ -104,11 +104,11 @@ import (
 //
 // ## Import
 //
-// Global Accelerator (GA) Acl Attachment can be imported using the id. Format to `<listener_id>:<acl_id>`, e.g.
+// Global Accelerator (GA) Acl Attachment can be imported using the id, e.g.
 //
 // ```sh
 //
-//	$ pulumi import alicloud:ga/aclAttachment:AclAttachment example your_listener_id:your_acl_id
+//	$ pulumi import alicloud:ga/aclAttachment:AclAttachment example <listener_id>:<acl_id>
 //
 // ```
 type AclAttachment struct {
@@ -116,13 +116,13 @@ type AclAttachment struct {
 
 	// The ID of an ACL.
 	AclId pulumi.StringOutput `pulumi:"aclId"`
-	// The type of the ACL. Valid values: `white`, `black`.
+	// The type of the ACL. Valid values:
 	AclType pulumi.StringOutput `pulumi:"aclType"`
 	// The dry run.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The ID of the listener.
 	ListenerId pulumi.StringOutput `pulumi:"listenerId"`
-	// The status of the resource.
+	// The status of the Acl Attachment.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -167,26 +167,26 @@ func GetAclAttachment(ctx *pulumi.Context,
 type aclAttachmentState struct {
 	// The ID of an ACL.
 	AclId *string `pulumi:"aclId"`
-	// The type of the ACL. Valid values: `white`, `black`.
+	// The type of the ACL. Valid values:
 	AclType *string `pulumi:"aclType"`
 	// The dry run.
 	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the listener.
 	ListenerId *string `pulumi:"listenerId"`
-	// The status of the resource.
+	// The status of the Acl Attachment.
 	Status *string `pulumi:"status"`
 }
 
 type AclAttachmentState struct {
 	// The ID of an ACL.
 	AclId pulumi.StringPtrInput
-	// The type of the ACL. Valid values: `white`, `black`.
+	// The type of the ACL. Valid values:
 	AclType pulumi.StringPtrInput
 	// The dry run.
 	DryRun pulumi.BoolPtrInput
 	// The ID of the listener.
 	ListenerId pulumi.StringPtrInput
-	// The status of the resource.
+	// The status of the Acl Attachment.
 	Status pulumi.StringPtrInput
 }
 
@@ -197,7 +197,7 @@ func (AclAttachmentState) ElementType() reflect.Type {
 type aclAttachmentArgs struct {
 	// The ID of an ACL.
 	AclId string `pulumi:"aclId"`
-	// The type of the ACL. Valid values: `white`, `black`.
+	// The type of the ACL. Valid values:
 	AclType string `pulumi:"aclType"`
 	// The dry run.
 	DryRun *bool `pulumi:"dryRun"`
@@ -209,7 +209,7 @@ type aclAttachmentArgs struct {
 type AclAttachmentArgs struct {
 	// The ID of an ACL.
 	AclId pulumi.StringInput
-	// The type of the ACL. Valid values: `white`, `black`.
+	// The type of the ACL. Valid values:
 	AclType pulumi.StringInput
 	// The dry run.
 	DryRun pulumi.BoolPtrInput
@@ -333,7 +333,7 @@ func (o AclAttachmentOutput) AclId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AclAttachment) pulumi.StringOutput { return v.AclId }).(pulumi.StringOutput)
 }
 
-// The type of the ACL. Valid values: `white`, `black`.
+// The type of the ACL. Valid values:
 func (o AclAttachmentOutput) AclType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AclAttachment) pulumi.StringOutput { return v.AclType }).(pulumi.StringOutput)
 }
@@ -348,7 +348,7 @@ func (o AclAttachmentOutput) ListenerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AclAttachment) pulumi.StringOutput { return v.ListenerId }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the Acl Attachment.
 func (o AclAttachmentOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *AclAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

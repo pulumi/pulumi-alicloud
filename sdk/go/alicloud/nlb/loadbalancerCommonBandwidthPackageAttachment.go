@@ -28,7 +28,10 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nlb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -37,13 +40,86 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "terraform-example"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := nlb.NewLoadbalancerCommonBandwidthPackageAttachment(ctx, "default", &nlb.LoadbalancerCommonBandwidthPackageAttachmentArgs{
-//				BandwidthPackageId: pulumi.String("cbwp-2zexv44uov1m4b7xnh60j"),
-//				LoadBalancerId:     pulumi.String("nlb-f6gdwdsnt02uzx002l"),
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultZones, err := nlb.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			default1, err := vpc.NewSwitch(ctx, "default1", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.1.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[1].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultLoadBalancer, err := nlb.NewLoadBalancer(ctx, "defaultLoadBalancer", &nlb.LoadBalancerArgs{
+//				LoadBalancerName: pulumi.String(name),
+//				ResourceGroupId:  *pulumi.String(defaultResourceGroups.Ids[0]),
+//				LoadBalancerType: pulumi.String("Network"),
+//				AddressType:      pulumi.String("Internet"),
+//				AddressIpVersion: pulumi.String("Ipv4"),
+//				VpcId:            defaultNetwork.ID(),
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
+//				},
+//				ZoneMappings: nlb.LoadBalancerZoneMappingArray{
+//					&nlb.LoadBalancerZoneMappingArgs{
+//						VswitchId: defaultSwitch.ID(),
+//						ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
+//					},
+//					&nlb.LoadBalancerZoneMappingArgs{
+//						VswitchId: default1.ID(),
+//						ZoneId:    *pulumi.String(defaultZones.Zones[1].Id),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultCommonBandwithPackage, err := vpc.NewCommonBandwithPackage(ctx, "defaultCommonBandwithPackage", &vpc.CommonBandwithPackageArgs{
+//				Bandwidth:            pulumi.String("2"),
+//				InternetChargeType:   pulumi.String("PayByBandwidth"),
+//				BandwidthPackageName: pulumi.String(name),
+//				Description:          pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = nlb.NewLoadbalancerCommonBandwidthPackageAttachment(ctx, "defaultLoadbalancerCommonBandwidthPackageAttachment", &nlb.LoadbalancerCommonBandwidthPackageAttachmentArgs{
+//				BandwidthPackageId: defaultCommonBandwithPackage.ID(),
+//				LoadBalancerId:     defaultLoadBalancer.ID(),
 //			})
 //			if err != nil {
 //				return err

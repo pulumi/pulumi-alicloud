@@ -48,7 +48,7 @@ public final class StoreEncryptConfArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
+     * User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `user_cmk_info` below.
      * ```java
      * package generated_program;
      * 
@@ -71,14 +71,13 @@ public final class StoreEncryptConfArgs extends com.pulumi.resources.ResourceArg
      *     }
      * }
      * ```
-     * #### Block user_cmk_info
      * 
      */
     @Import(name="userCmkInfo")
     private @Nullable Output<StoreEncryptConfUserCmkInfoArgs> userCmkInfo;
 
     /**
-     * @return User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
+     * @return User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `user_cmk_info` below.
      * ```java
      * package generated_program;
      * 
@@ -101,7 +100,6 @@ public final class StoreEncryptConfArgs extends com.pulumi.resources.ResourceArg
      *     }
      * }
      * ```
-     * #### Block user_cmk_info
      * 
      */
     public Optional<Output<StoreEncryptConfUserCmkInfoArgs>> userCmkInfo() {
@@ -177,7 +175,7 @@ public final class StoreEncryptConfArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param userCmkInfo User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
+         * @param userCmkInfo User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `user_cmk_info` below.
          * ```java
          * package generated_program;
          * 
@@ -200,7 +198,6 @@ public final class StoreEncryptConfArgs extends com.pulumi.resources.ResourceArg
          *     }
          * }
          * ```
-         * #### Block user_cmk_info
          * 
          * @return builder
          * 
@@ -211,7 +208,7 @@ public final class StoreEncryptConfArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param userCmkInfo User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
+         * @param userCmkInfo User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `user_cmk_info` below.
          * ```java
          * package generated_program;
          * 
@@ -234,7 +231,6 @@ public final class StoreEncryptConfArgs extends com.pulumi.resources.ResourceArg
          *     }
          * }
          * ```
-         * #### Block user_cmk_info
          * 
          * @return builder
          * 

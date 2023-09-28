@@ -105,6 +105,7 @@ class ListenerXForwardedForArgs:
                  retrive_slb_ip: Optional[pulumi.Input[bool]] = None,
                  retrive_slb_proto: Optional[pulumi.Input[bool]] = None):
         """
+        :param pulumi.Input[bool] retrive_client_ip: Whether to retrieve the client ip. It is read-only attribute.
         :param pulumi.Input[bool] retrive_slb_id: Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
         :param pulumi.Input[bool] retrive_slb_ip: Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
         :param pulumi.Input[bool] retrive_slb_proto: Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
@@ -121,6 +122,9 @@ class ListenerXForwardedForArgs:
     @property
     @pulumi.getter(name="retriveClientIp")
     def retrive_client_ip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to retrieve the client ip. It is read-only attribute.
+        """
         return pulumi.get(self, "retrive_client_ip")
 
     @retrive_client_ip.setter

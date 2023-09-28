@@ -1037,9 +1037,9 @@ class GetResourceGroupsGroupResult(dict):
         :param str display_name: The display name of the resource group.
         :param str id: The ID of the resource group.
         :param str name: The unique identifier of the resource group.
-        :param Sequence['GetResourceGroupsGroupRegionStatusArgs'] region_statuses: (Available in v1.114.0+) The status of the resource group in all regions.
-        :param str resource_group_name: (Available in v1.114.0+) The unique identifier of the resource group.
-        :param str status: The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+        :param Sequence['GetResourceGroupsGroupRegionStatusArgs'] region_statuses: (Available since v1.114.0) The status of the resource group in all regions.
+        :param str resource_group_name: (Available since v1.114.0) The unique identifier of the resource group.
+        :param str status: The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "display_name", display_name)
@@ -1085,7 +1085,7 @@ class GetResourceGroupsGroupResult(dict):
     @pulumi.getter(name="regionStatuses")
     def region_statuses(self) -> Sequence['outputs.GetResourceGroupsGroupRegionStatusResult']:
         """
-        (Available in v1.114.0+) The status of the resource group in all regions.
+        (Available since v1.114.0) The status of the resource group in all regions.
         """
         return pulumi.get(self, "region_statuses")
 
@@ -1093,7 +1093,7 @@ class GetResourceGroupsGroupResult(dict):
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> str:
         """
-        (Available in v1.114.0+) The unique identifier of the resource group.
+        (Available since v1.114.0) The unique identifier of the resource group.
         """
         return pulumi.get(self, "resource_group_name")
 
@@ -1101,7 +1101,7 @@ class GetResourceGroupsGroupResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+        The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
         """
         return pulumi.get(self, "status")
 
@@ -1113,7 +1113,7 @@ class GetResourceGroupsGroupRegionStatusResult(dict):
                  status: str):
         """
         :param str region_id: The region ID.
-        :param str status: The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+        :param str status: The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
         """
         pulumi.set(__self__, "region_id", region_id)
         pulumi.set(__self__, "status", status)
@@ -1130,7 +1130,7 @@ class GetResourceGroupsGroupRegionStatusResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+        The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
         """
         return pulumi.get(self, "status")
 
@@ -1301,11 +1301,11 @@ class GetSharedResourcesResourceResult(dict):
                  resource_type: str,
                  status: str):
         """
-        :param str id: The ID of the Shared Resource.
+        :param str id: The ID of the Shared Resource. It formats as `<resource_id>:<resource_type>`.
         :param str resource_id: The ID of the shared resource.
         :param str resource_share_id: The resource share ID of resource manager.
         :param str resource_type: The type of shared resource.
-        :param str status: The status of shared resource.
+        :param str status: The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "resource_id", resource_id)
@@ -1317,7 +1317,7 @@ class GetSharedResourcesResourceResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The ID of the Shared Resource.
+        The ID of the Shared Resource. It formats as `<resource_id>:<resource_type>`.
         """
         return pulumi.get(self, "id")
 
@@ -1349,7 +1349,7 @@ class GetSharedResourcesResourceResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of shared resource.
+        The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
         """
         return pulumi.get(self, "status")
 
@@ -1363,9 +1363,9 @@ class GetSharedTargetsTargetResult(dict):
                  target_id: str):
         """
         :param str id: The ID of the Shared Target.
-        :param str resource_share_id: The resource shared ID of resource manager.
-        :param str status: The status of shared target.
-        :param str target_id: The member account ID in resource directory.
+        :param str resource_share_id: The resource share ID of resource manager.
+        :param str status: The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
+        :param str target_id: The ID of the Shared Target.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "resource_share_id", resource_share_id)
@@ -1384,7 +1384,7 @@ class GetSharedTargetsTargetResult(dict):
     @pulumi.getter(name="resourceShareId")
     def resource_share_id(self) -> str:
         """
-        The resource shared ID of resource manager.
+        The resource share ID of resource manager.
         """
         return pulumi.get(self, "resource_share_id")
 
@@ -1392,7 +1392,7 @@ class GetSharedTargetsTargetResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of shared target.
+        The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
         """
         return pulumi.get(self, "status")
 
@@ -1400,7 +1400,7 @@ class GetSharedTargetsTargetResult(dict):
     @pulumi.getter(name="targetId")
     def target_id(self) -> str:
         """
-        The member account ID in resource directory.
+        The ID of the Shared Target.
         """
         return pulumi.get(self, "target_id")
 

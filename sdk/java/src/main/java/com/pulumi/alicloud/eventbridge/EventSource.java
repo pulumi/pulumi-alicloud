@@ -20,9 +20,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Event Bridge Event Source resource.
  * 
- * For information about Event Bridge Event Source and how to use it, see [What is Event Source](https://www.alibabacloud.com/help/doc-detail/188425.htm).
+ * For information about Event Bridge Event Source and how to use it, see [What is Event Source](https://www.alibabacloud.com/help/en/eventbridge/latest/api-eventbridge-2020-04-01-createeventsource).
  * 
- * &gt; **NOTE:** Available in v1.130.0+.
+ * &gt; **NOTE:** Available since v1.130.0.
  * 
  * ## Example Usage
  * 
@@ -33,6 +33,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.eventbridge.EventBus;
+ * import com.pulumi.alicloud.eventbridge.EventBusArgs;
+ * import com.pulumi.alicloud.mns.Queue;
  * import com.pulumi.alicloud.eventbridge.EventSource;
  * import com.pulumi.alicloud.eventbridge.EventSourceArgs;
  * import java.util.List;
@@ -48,13 +51,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new EventSource(&#34;example&#34;, EventSourceArgs.builder()        
- *             .description(&#34;tf-test&#34;)
- *             .eventBusName(&#34;bus_name&#34;)
- *             .eventSourceName(&#34;tftest&#34;)
- *             .externalSourceConfig(Map.of(&#34;QueueName&#34;, &#34;mns_queuqe_name&#34;))
- *             .externalSourceType(&#34;MNS&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         var exampleEventBus = new EventBus(&#34;exampleEventBus&#34;, EventBusArgs.builder()        
+ *             .eventBusName(name)
+ *             .build());
+ * 
+ *         var exampleQueue = new Queue(&#34;exampleQueue&#34;);
+ * 
+ *         var exampleEventSource = new EventSource(&#34;exampleEventSource&#34;, EventSourceArgs.builder()        
+ *             .eventBusName(exampleEventBus.eventBusName())
+ *             .eventSourceName(name)
+ *             .description(name)
  *             .linkedExternalSource(true)
+ *             .externalSourceType(&#34;MNS&#34;)
+ *             .externalSourceConfig(Map.of(&#34;QueueName&#34;, exampleQueue.name()))
  *             .build());
  * 
  *     }

@@ -346,7 +346,7 @@ class Account(pulumi.CustomResource):
         Provides a Resource Manager Account resource. Member accounts are containers for resources in a resource directory. These accounts isolate resources and serve as organizational units in the resource directory. You can create member accounts in a folder and then manage them in a unified manner.
         For information about Resource Manager Account and how to use it, see [What is Resource Manager Account](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
 
-        > **NOTE:** Available in v1.83.0+.
+        > **NOTE:** Available since v1.83.0.
 
         > **NOTE:** From version 1.188.0, the resource can be destroyed. The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial. see [how to destroy it](https://www.alibabacloud.com/help/en/resource-management/latest/delete-account).
 
@@ -356,11 +356,17 @@ class Account(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Add a Resource Manager Account.
-        f1 = alicloud.resourcemanager.Folder("f1", folder_name="test1")
-        example = alicloud.resourcemanager.Account("example",
-            display_name="RDAccount",
-            folder_id=f1.id)
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        display_name = config.get("displayName")
+        if display_name is None:
+            display_name = "EAccount"
+        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=name)
+        example_account = alicloud.resourcemanager.Account("exampleAccount",
+            display_name=display_name,
+            folder_id=example_folder.id)
         ```
         ### Deleting `resourcemanager.Account` or removing it from your configuration
 
@@ -400,7 +406,7 @@ class Account(pulumi.CustomResource):
         Provides a Resource Manager Account resource. Member accounts are containers for resources in a resource directory. These accounts isolate resources and serve as organizational units in the resource directory. You can create member accounts in a folder and then manage them in a unified manner.
         For information about Resource Manager Account and how to use it, see [What is Resource Manager Account](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
 
-        > **NOTE:** Available in v1.83.0+.
+        > **NOTE:** Available since v1.83.0.
 
         > **NOTE:** From version 1.188.0, the resource can be destroyed. The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial. see [how to destroy it](https://www.alibabacloud.com/help/en/resource-management/latest/delete-account).
 
@@ -410,11 +416,17 @@ class Account(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Add a Resource Manager Account.
-        f1 = alicloud.resourcemanager.Folder("f1", folder_name="test1")
-        example = alicloud.resourcemanager.Account("example",
-            display_name="RDAccount",
-            folder_id=f1.id)
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        display_name = config.get("displayName")
+        if display_name is None:
+            display_name = "EAccount"
+        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=name)
+        example_account = alicloud.resourcemanager.Account("exampleAccount",
+            display_name=display_name,
+            folder_id=example_folder.id)
         ```
         ### Deleting `resourcemanager.Account` or removing it from your configuration
 

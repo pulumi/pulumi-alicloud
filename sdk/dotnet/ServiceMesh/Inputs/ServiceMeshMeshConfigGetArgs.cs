@@ -13,19 +13,19 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
     public sealed class ServiceMeshMeshConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration of the access logging.
+        /// The configuration of the access logging. See `access_log` below.
         /// </summary>
         [Input("accessLog")]
         public Input<Inputs.ServiceMeshMeshConfigAccessLogGetArgs>? AccessLog { get; set; }
 
         /// <summary>
-        /// The configuration of the audit. See the following `Block audit`.
+        /// The configuration of the audit. See `audit` below.
         /// </summary>
         [Input("audit")]
         public Input<Inputs.ServiceMeshMeshConfigAuditGetArgs>? Audit { get; set; }
 
         /// <summary>
-        /// The configuration of the control plane logging.
+        /// The configuration of the control plane logging. See `control_plane_log` below.
         /// </summary>
         [Input("controlPlaneLog")]
         public Input<Inputs.ServiceMeshMeshConfigControlPlaneLogGetArgs>? ControlPlaneLog { get; set; }
@@ -43,13 +43,13 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public Input<bool>? EnableLocalityLb { get; set; }
 
         /// <summary>
-        /// The configuration of the Kiali. See the following `Block kiali`.
+        /// The configuration of the Kiali. See `kiali` below.
         /// </summary>
         [Input("kiali")]
         public Input<Inputs.ServiceMeshMeshConfigKialiGetArgs>? Kiali { get; set; }
 
         /// <summary>
-        /// The open-door policy of agent (OPA) plug-in information. See the following `Block opa`.
+        /// The open-door policy of agent (OPA) plug-in information. See `opa` below.
         /// </summary>
         [Input("opa")]
         public Input<Inputs.ServiceMeshMeshConfigOpaGetArgs>? Opa { get; set; }
@@ -61,31 +61,31 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public Input<string>? OutboundTrafficPolicy { get; set; }
 
         /// <summary>
-        /// The configuration of the Link trace sampling. See the following `Block pilot`.
+        /// The configuration of the Link trace sampling. See `pilot` below.
         /// </summary>
         [Input("pilot")]
         public Input<Inputs.ServiceMeshMeshConfigPilotGetArgs>? Pilot { get; set; }
 
         /// <summary>
-        /// The configuration of the Proxy. See the following `Block proxy`.
+        /// The configuration of the Proxy. See `proxy` below.
         /// </summary>
         [Input("proxy")]
         public Input<Inputs.ServiceMeshMeshConfigProxyGetArgs>? Proxy { get; set; }
 
         /// <summary>
-        /// The configuration of the Sidecar injector. See the following `Block sidecar_injector`.
+        /// The configuration of the Sidecar injector. See `sidecar_injector` below.
         /// </summary>
         [Input("sidecarInjector")]
         public Input<Inputs.ServiceMeshMeshConfigSidecarInjectorGetArgs>? SidecarInjector { get; set; }
 
         /// <summary>
-        /// Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+        /// Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
         /// </summary>
         [Input("telemetry")]
         public Input<bool>? Telemetry { get; set; }
 
         /// <summary>
-        /// Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+        /// Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
         /// </summary>
         [Input("tracing")]
         public Input<bool>? Tracing { get; set; }

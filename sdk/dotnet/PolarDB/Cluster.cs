@@ -101,6 +101,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<int> DbNodeCount { get; private set; } = null!;
 
         /// <summary>
+        /// The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+        /// </summary>
+        [Output("dbNodeNum")]
+        public Output<int?> DbNodeNum { get; private set; } = null!;
+
+        /// <summary>
         /// Database type. Value options: MySQL, Oracle, PostgreSQL.
         /// </summary>
         [Output("dbType")]
@@ -111,6 +117,13 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Output("dbVersion")]
         public Output<string> DbVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+        /// &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+        /// </summary>
+        [Output("defaultTimeZone")]
+        public Output<string?> DefaultTimeZone { get; private set; } = null!;
 
         /// <summary>
         /// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
@@ -166,6 +179,20 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> ImciSwitch { get; private set; } = null!;
 
         /// <summary>
+        /// Enable the Binlog function. Valid values are `OFF`, `ON`.
+        /// &gt; **NOTE:** This parameter is valid only MySQL Engine supports.
+        /// </summary>
+        [Output("loosePolarLogBin")]
+        public Output<string?> LoosePolarLogBin { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+        /// &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+        /// </summary>
+        [Output("lowerCaseTableNames")]
+        public Output<int?> LowerCaseTableNames { get; private set; } = null!;
+
+        /// <summary>
         /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         /// </summary>
         [Output("maintainTime")]
@@ -176,6 +203,13 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Output("modifyType")]
         public Output<string?> ModifyType { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the parameter template
+        /// &gt; **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+        /// </summary>
+        [Output("parameterGroupId")]
+        public Output<string?> ParameterGroupId { get; private set; } = null!;
 
         /// <summary>
         /// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
@@ -215,6 +249,20 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Output("port")]
         public Output<string> Port { get; private set; } = null!;
+
+        /// <summary>
+        /// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+        /// &gt; **NOTE:** This parameter is valid only for standard clusters.
+        /// </summary>
+        [Output("proxyClass")]
+        public Output<string?> ProxyClass { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+        /// &gt; **NOTE:** This parameter is valid only for standard clusters.
+        /// </summary>
+        [Output("proxyType")]
+        public Output<string?> ProxyType { get; private set; } = null!;
 
         /// <summary>
         /// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -303,10 +351,18 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
+        /// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+        /// </summary>
+        [Output("storagePayType")]
+        public Output<string> StoragePayType { get; private set; } = null!;
+
+        /// <summary>
         /// Storage space charged by space (monthly package). Unit: GB.
+        /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
+        /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
         /// </summary>
         [Output("storageSpace")]
-        public Output<int?> StorageSpace { get; private set; } = null!;
+        public Output<int> StorageSpace { get; private set; } = null!;
 
         /// <summary>
         /// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
@@ -489,6 +545,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<int>? DbNodeCount { get; set; }
 
         /// <summary>
+        /// The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+        /// </summary>
+        [Input("dbNodeNum")]
+        public Input<int>? DbNodeNum { get; set; }
+
+        /// <summary>
         /// Database type. Value options: MySQL, Oracle, PostgreSQL.
         /// </summary>
         [Input("dbType", required: true)]
@@ -499,6 +561,13 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("dbVersion", required: true)]
         public Input<string> DbVersion { get; set; } = null!;
+
+        /// <summary>
+        /// The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+        /// &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+        /// </summary>
+        [Input("defaultTimeZone")]
+        public Input<string>? DefaultTimeZone { get; set; }
 
         /// <summary>
         /// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
@@ -554,6 +623,20 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? ImciSwitch { get; set; }
 
         /// <summary>
+        /// Enable the Binlog function. Valid values are `OFF`, `ON`.
+        /// &gt; **NOTE:** This parameter is valid only MySQL Engine supports.
+        /// </summary>
+        [Input("loosePolarLogBin")]
+        public Input<string>? LoosePolarLogBin { get; set; }
+
+        /// <summary>
+        /// Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+        /// &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+        /// </summary>
+        [Input("lowerCaseTableNames")]
+        public Input<int>? LowerCaseTableNames { get; set; }
+
+        /// <summary>
         /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         /// </summary>
         [Input("maintainTime")]
@@ -564,6 +647,13 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("modifyType")]
         public Input<string>? ModifyType { get; set; }
+
+        /// <summary>
+        /// The ID of the parameter template
+        /// &gt; **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+        /// </summary>
+        [Input("parameterGroupId")]
+        public Input<string>? ParameterGroupId { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.ClusterParameterArgs>? _parameters;
@@ -603,6 +693,20 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("plannedStartTime")]
         public Input<string>? PlannedStartTime { get; set; }
+
+        /// <summary>
+        /// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+        /// &gt; **NOTE:** This parameter is valid only for standard clusters.
+        /// </summary>
+        [Input("proxyClass")]
+        public Input<string>? ProxyClass { get; set; }
+
+        /// <summary>
+        /// The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+        /// &gt; **NOTE:** This parameter is valid only for standard clusters.
+        /// </summary>
+        [Input("proxyType")]
+        public Input<string>? ProxyType { get; set; }
 
         /// <summary>
         /// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -697,7 +801,15 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? SourceResourceId { get; set; }
 
         /// <summary>
+        /// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+        /// </summary>
+        [Input("storagePayType")]
+        public Input<string>? StoragePayType { get; set; }
+
+        /// <summary>
         /// Storage space charged by space (monthly package). Unit: GB.
+        /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
+        /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
         /// </summary>
         [Input("storageSpace")]
         public Input<int>? StorageSpace { get; set; }
@@ -855,6 +967,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<int>? DbNodeCount { get; set; }
 
         /// <summary>
+        /// The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+        /// </summary>
+        [Input("dbNodeNum")]
+        public Input<int>? DbNodeNum { get; set; }
+
+        /// <summary>
         /// Database type. Value options: MySQL, Oracle, PostgreSQL.
         /// </summary>
         [Input("dbType")]
@@ -865,6 +983,13 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("dbVersion")]
         public Input<string>? DbVersion { get; set; }
+
+        /// <summary>
+        /// The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+        /// &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+        /// </summary>
+        [Input("defaultTimeZone")]
+        public Input<string>? DefaultTimeZone { get; set; }
 
         /// <summary>
         /// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
@@ -920,6 +1045,20 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? ImciSwitch { get; set; }
 
         /// <summary>
+        /// Enable the Binlog function. Valid values are `OFF`, `ON`.
+        /// &gt; **NOTE:** This parameter is valid only MySQL Engine supports.
+        /// </summary>
+        [Input("loosePolarLogBin")]
+        public Input<string>? LoosePolarLogBin { get; set; }
+
+        /// <summary>
+        /// Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+        /// &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+        /// </summary>
+        [Input("lowerCaseTableNames")]
+        public Input<int>? LowerCaseTableNames { get; set; }
+
+        /// <summary>
         /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         /// </summary>
         [Input("maintainTime")]
@@ -930,6 +1069,13 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("modifyType")]
         public Input<string>? ModifyType { get; set; }
+
+        /// <summary>
+        /// The ID of the parameter template
+        /// &gt; **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+        /// </summary>
+        [Input("parameterGroupId")]
+        public Input<string>? ParameterGroupId { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.ClusterParameterGetArgs>? _parameters;
@@ -975,6 +1121,20 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
+
+        /// <summary>
+        /// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+        /// &gt; **NOTE:** This parameter is valid only for standard clusters.
+        /// </summary>
+        [Input("proxyClass")]
+        public Input<string>? ProxyClass { get; set; }
+
+        /// <summary>
+        /// The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+        /// &gt; **NOTE:** This parameter is valid only for standard clusters.
+        /// </summary>
+        [Input("proxyType")]
+        public Input<string>? ProxyType { get; set; }
 
         /// <summary>
         /// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -1075,7 +1235,15 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? Status { get; set; }
 
         /// <summary>
+        /// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+        /// </summary>
+        [Input("storagePayType")]
+        public Input<string>? StoragePayType { get; set; }
+
+        /// <summary>
         /// Storage space charged by space (monthly package). Unit: GB.
+        /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
+        /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
         /// </summary>
         [Input("storageSpace")]
         public Input<int>? StorageSpace { get; set; }

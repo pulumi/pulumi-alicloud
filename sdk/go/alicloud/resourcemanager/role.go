@@ -16,7 +16,7 @@ import (
 // Provides a Resource Manager role resource. Members are resource containers in the resource directory, which can physically isolate resources to form an independent resource grouping unit. You can create members in the resource folder to manage them in a unified manner.
 // For information about Resource Manager role and how to use it, see [What is Resource Manager role](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
 //
-// > **NOTE:** Available in v1.82.0+.
+// > **NOTE:** Available since v1.82.0.
 //
 // ## Example Usage
 //
@@ -25,23 +25,36 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := resourcemanager.NewRole(ctx, "example", &resourcemanager.RoleArgs{
-//				AssumeRolePolicyDocument: pulumi.String(`     {
+//			cfg := config.New(ctx, "")
+//			name := "tfexample"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = resourcemanager.NewRole(ctx, "example", &resourcemanager.RoleArgs{
+//				RoleName: pulumi.String(name),
+//				AssumeRolePolicyDocument: pulumi.String(fmt.Sprintf(`     {
 //	          "Statement": [
 //	               {
 //	                    "Action": "sts:AssumeRole",
 //	                    "Effect": "Allow",
 //	                    "Principal": {
 //	                        "RAM":[
-//	                                "acs:ram::103755469187****:root"，
-//	                                "acs:ram::104408977069****:root"
+//	                                "acs:ram::%v:root"
 //	                        ]
 //	                    }
 //	                }
@@ -49,9 +62,8 @@ import (
 //	          "Version": "1"
 //	     }
 //
-// `),
+// `, _default.Id)),
 //
-//				RoleName: pulumi.String("testrd"),
 //			})
 //			if err != nil {
 //				return err

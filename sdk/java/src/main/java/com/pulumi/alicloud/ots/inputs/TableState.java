@@ -21,14 +21,14 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     public static final TableState Empty = new TableState();
 
     /**
-     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
      * 
      */
     @Import(name="definedColumns")
     private @Nullable Output<List<TableDefinedColumnArgs>> definedColumns;
 
     /**
-     * @return The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+     * @return The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
      * 
      */
     public Optional<Output<List<TableDefinedColumnArgs>>> definedColumns() {
@@ -96,14 +96,14 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
+     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
      * 
      */
     @Import(name="primaryKeys")
     private @Nullable Output<List<TablePrimaryKeyArgs>> primaryKeys;
 
     /**
-     * @return The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
+     * @return The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
      * 
      */
     public Optional<Output<List<TablePrimaryKeyArgs>>> primaryKeys() {
@@ -188,7 +188,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param definedColumns The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+         * @param definedColumns The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param definedColumns The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+         * @param definedColumns The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param definedColumns The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+         * @param definedColumns The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
          * 
          * @return builder
          * 
@@ -303,7 +303,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param primaryKeys The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
+         * @param primaryKeys The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
          * 
          * @return builder
          * 
@@ -314,7 +314,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param primaryKeys The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
+         * @param primaryKeys The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
          * 
          * @return builder
          * 
@@ -324,7 +324,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param primaryKeys The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
+         * @param primaryKeys The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
          * 
          * @return builder
          * 

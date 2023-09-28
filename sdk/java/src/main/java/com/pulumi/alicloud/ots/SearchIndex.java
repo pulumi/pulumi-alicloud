@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
  * 
- * &gt; **NOTE:** Available in v1.187.0+.
+ * &gt; **NOTE:** Available since v1.187.0.
  * 
  * ## Example Usage
  * 
@@ -108,14 +108,14 @@ public class SearchIndex extends com.pulumi.resources.CustomResource {
         return this.instanceName;
     }
     /**
-     * The schema of the search index. If changed, a new index would be created.
+     * The schema of the search index. If changed, a new index would be created. See `schema` below.
      * 
      */
     @Export(name="schemas", type=List.class, parameters={SearchIndexSchema.class})
     private Output<List<SearchIndexSchema>> schemas;
 
     /**
-     * @return The schema of the search index. If changed, a new index would be created.
+     * @return The schema of the search index. If changed, a new index would be created. See `schema` below.
      * 
      */
     public Output<List<SearchIndexSchema>> schemas() {

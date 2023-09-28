@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SearchIndexSchema {
     /**
-     * @return A list of field schemas. Each field schema contains the following parameters:
+     * @return A list of field schemas. See `field_schema` below.
      * 
      */
     private List<SearchIndexSchemaFieldSchema> fieldSchemas;
     /**
-     * @return The settings of the search index, including routingFields.
+     * @return The settings of the search index, including routingFields. See `index_setting` below.
      * 
      */
     private @Nullable List<SearchIndexSchemaIndexSetting> indexSettings;
     /**
-     * @return The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default.
+     * @return The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default. See `index_sort` below.
      * 
      */
     private @Nullable List<SearchIndexSchemaIndexSort> indexSorts;
 
     private SearchIndexSchema() {}
     /**
-     * @return A list of field schemas. Each field schema contains the following parameters:
+     * @return A list of field schemas. See `field_schema` below.
      * 
      */
     public List<SearchIndexSchemaFieldSchema> fieldSchemas() {
         return this.fieldSchemas;
     }
     /**
-     * @return The settings of the search index, including routingFields.
+     * @return The settings of the search index, including routingFields. See `index_setting` below.
      * 
      */
     public List<SearchIndexSchemaIndexSetting> indexSettings() {
         return this.indexSettings == null ? List.of() : this.indexSettings;
     }
     /**
-     * @return The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default.
+     * @return The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default. See `index_sort` below.
      * 
      */
     public List<SearchIndexSchemaIndexSort> indexSorts() {

@@ -15,9 +15,9 @@ import (
 
 // Provides a Private Zone Endpoint resource.
 //
-// For information about Private Zone Endpoint and how to use it, see [What is Endpoint](https://www.alibabacloud.com/help/en/doc-detail/64611.htm).
+// For information about Private Zone Endpoint and how to use it, see [What is Endpoint](https://www.alibabacloud.com/help/en/privatezone/latest/add-endpoint).
 //
-// > **NOTE:** Available in v1.143.0+.
+// > **NOTE:** Available since v1.143.0.
 //
 // ## Import
 //
@@ -33,7 +33,7 @@ type Endpoint struct {
 
 	// The name of the resource.
 	EndpointName pulumi.StringOutput `pulumi:"endpointName"`
-	// The Ip Configs. See the following `Block ipConfigs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+	// The Ip Configs. See `ipConfigs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
 	IpConfigs EndpointIpConfigArrayOutput `pulumi:"ipConfigs"`
 	// The ID of the Security Group.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
@@ -92,7 +92,7 @@ func GetEndpoint(ctx *pulumi.Context,
 type endpointState struct {
 	// The name of the resource.
 	EndpointName *string `pulumi:"endpointName"`
-	// The Ip Configs. See the following `Block ipConfigs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+	// The Ip Configs. See `ipConfigs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
 	IpConfigs []EndpointIpConfig `pulumi:"ipConfigs"`
 	// The ID of the Security Group.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -107,7 +107,7 @@ type endpointState struct {
 type EndpointState struct {
 	// The name of the resource.
 	EndpointName pulumi.StringPtrInput
-	// The Ip Configs. See the following `Block ipConfigs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+	// The Ip Configs. See `ipConfigs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
 	IpConfigs EndpointIpConfigArrayInput
 	// The ID of the Security Group.
 	SecurityGroupId pulumi.StringPtrInput
@@ -126,7 +126,7 @@ func (EndpointState) ElementType() reflect.Type {
 type endpointArgs struct {
 	// The name of the resource.
 	EndpointName string `pulumi:"endpointName"`
-	// The Ip Configs. See the following `Block ipConfigs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+	// The Ip Configs. See `ipConfigs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
 	IpConfigs []EndpointIpConfig `pulumi:"ipConfigs"`
 	// The ID of the Security Group.
 	SecurityGroupId string `pulumi:"securityGroupId"`
@@ -140,7 +140,7 @@ type endpointArgs struct {
 type EndpointArgs struct {
 	// The name of the resource.
 	EndpointName pulumi.StringInput
-	// The Ip Configs. See the following `Block ipConfigs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+	// The Ip Configs. See `ipConfigs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
 	IpConfigs EndpointIpConfigArrayInput
 	// The ID of the Security Group.
 	SecurityGroupId pulumi.StringInput
@@ -266,7 +266,7 @@ func (o EndpointOutput) EndpointName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.EndpointName }).(pulumi.StringOutput)
 }
 
-// The Ip Configs. See the following `Block ipConfigs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+// The Ip Configs. See `ipConfigs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
 func (o EndpointOutput) IpConfigs() EndpointIpConfigArrayOutput {
 	return o.ApplyT(func(v *Endpoint) EndpointIpConfigArrayOutput { return v.IpConfigs }).(EndpointIpConfigArrayOutput)
 }

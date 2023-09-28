@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Slb.Outputs
     [OutputType]
     public sealed class ListenerXForwardedFor
     {
+        /// <summary>
+        /// Whether to retrieve the client ip. It is read-only attribute.
+        /// </summary>
         public readonly bool? RetriveClientIp;
         /// <summary>
         /// Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.

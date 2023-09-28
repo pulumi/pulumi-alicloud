@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about ECS Instance Set and how to use it, see [What is Instance Set](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/runinstances).
  *
- * > **NOTE:** Available in v1.173.0+.
+ * > **NOTE:** Available since v1.173.0.
  *
  * > **NOTE:** This resource is used to batch create a group of instance resources with the same configuration. However, this resource is not recommended. `alicloud.ecs.Instance` is preferred.
  *
@@ -118,7 +118,7 @@ export class EcsInstanceSet extends pulumi.CustomResource {
      */
     public readonly bootCheckOsWithAssistant!: pulumi.Output<boolean | undefined>;
     /**
-     * The list of data disks created with instance. See the following `Block dataDisks`.
+     * The list of data disks created with instance. See `dataDisks` below..
      */
     public readonly dataDisks!: pulumi.Output<outputs.ecs.EcsInstanceSetDataDisk[] | undefined>;
     /**
@@ -138,7 +138,7 @@ export class EcsInstanceSet extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The instances that need to be excluded from the Instance Set. See the following `Block excludeInstanceFilter`.
+     * The instances that need to be excluded from the Instance Set.  See `excludeInstanceFilter` below.
      */
     public readonly excludeInstanceFilter!: pulumi.Output<outputs.ecs.EcsInstanceSetExcludeInstanceFilter | undefined>;
     /**
@@ -194,7 +194,7 @@ export class EcsInstanceSet extends pulumi.CustomResource {
      */
     public readonly launchTemplateVersion!: pulumi.Output<string | undefined>;
     /**
-     * A list of NetworkInterface. See the following `Block networkInterfaces`.
+     * A list of NetworkInterface. See `networkInterfaces` below..
      */
     public readonly networkInterfaces!: pulumi.Output<outputs.ecs.EcsInstanceSetNetworkInterface[] | undefined>;
     /**
@@ -429,7 +429,7 @@ export interface EcsInstanceSetState {
      */
     bootCheckOsWithAssistant?: pulumi.Input<boolean>;
     /**
-     * The list of data disks created with instance. See the following `Block dataDisks`.
+     * The list of data disks created with instance. See `dataDisks` below..
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.EcsInstanceSetDataDisk>[]>;
     /**
@@ -449,7 +449,7 @@ export interface EcsInstanceSetState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The instances that need to be excluded from the Instance Set. See the following `Block excludeInstanceFilter`.
+     * The instances that need to be excluded from the Instance Set.  See `excludeInstanceFilter` below.
      */
     excludeInstanceFilter?: pulumi.Input<inputs.ecs.EcsInstanceSetExcludeInstanceFilter>;
     /**
@@ -505,7 +505,7 @@ export interface EcsInstanceSetState {
      */
     launchTemplateVersion?: pulumi.Input<string>;
     /**
-     * A list of NetworkInterface. See the following `Block networkInterfaces`.
+     * A list of NetworkInterface. See `networkInterfaces` below..
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.ecs.EcsInstanceSetNetworkInterface>[]>;
     /**
@@ -619,7 +619,7 @@ export interface EcsInstanceSetArgs {
      */
     bootCheckOsWithAssistant?: pulumi.Input<boolean>;
     /**
-     * The list of data disks created with instance. See the following `Block dataDisks`.
+     * The list of data disks created with instance. See `dataDisks` below..
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.EcsInstanceSetDataDisk>[]>;
     /**
@@ -639,7 +639,7 @@ export interface EcsInstanceSetArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The instances that need to be excluded from the Instance Set. See the following `Block excludeInstanceFilter`.
+     * The instances that need to be excluded from the Instance Set.  See `excludeInstanceFilter` below.
      */
     excludeInstanceFilter?: pulumi.Input<inputs.ecs.EcsInstanceSetExcludeInstanceFilter>;
     /**
@@ -691,7 +691,7 @@ export interface EcsInstanceSetArgs {
      */
     launchTemplateVersion?: pulumi.Input<string>;
     /**
-     * A list of NetworkInterface. See the following `Block networkInterfaces`.
+     * A list of NetworkInterface. See `networkInterfaces` below..
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.ecs.EcsInstanceSetNetworkInterface>[]>;
     /**

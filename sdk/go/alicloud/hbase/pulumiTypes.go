@@ -15,9 +15,12 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type InstanceSlbConnAddr struct {
-	ConnAddr     *string `pulumi:"connAddr"`
+	// The Phoenix address.
+	ConnAddr *string `pulumi:"connAddr"`
+	// The number of the port over which Phoenix connects to the instance.
 	ConnAddrPort *string `pulumi:"connAddrPort"`
-	NetType      *string `pulumi:"netType"`
+	// The type of the network. Valid values:
+	NetType *string `pulumi:"netType"`
 }
 
 // InstanceSlbConnAddrInput is an input type that accepts InstanceSlbConnAddrArgs and InstanceSlbConnAddrOutput values.
@@ -32,9 +35,12 @@ type InstanceSlbConnAddrInput interface {
 }
 
 type InstanceSlbConnAddrArgs struct {
-	ConnAddr     pulumi.StringPtrInput `pulumi:"connAddr"`
+	// The Phoenix address.
+	ConnAddr pulumi.StringPtrInput `pulumi:"connAddr"`
+	// The number of the port over which Phoenix connects to the instance.
 	ConnAddrPort pulumi.StringPtrInput `pulumi:"connAddrPort"`
-	NetType      pulumi.StringPtrInput `pulumi:"netType"`
+	// The type of the network. Valid values:
+	NetType pulumi.StringPtrInput `pulumi:"netType"`
 }
 
 func (InstanceSlbConnAddrArgs) ElementType() reflect.Type {
@@ -106,14 +112,17 @@ func (o InstanceSlbConnAddrOutput) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
+// The Phoenix address.
 func (o InstanceSlbConnAddrOutput) ConnAddr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceSlbConnAddr) *string { return v.ConnAddr }).(pulumi.StringPtrOutput)
 }
 
+// The number of the port over which Phoenix connects to the instance.
 func (o InstanceSlbConnAddrOutput) ConnAddrPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceSlbConnAddr) *string { return v.ConnAddrPort }).(pulumi.StringPtrOutput)
 }
 
+// The type of the network. Valid values:
 func (o InstanceSlbConnAddrOutput) NetType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceSlbConnAddr) *string { return v.NetType }).(pulumi.StringPtrOutput)
 }
@@ -145,9 +154,12 @@ func (o InstanceSlbConnAddrArrayOutput) Index(i pulumi.IntInput) InstanceSlbConn
 }
 
 type InstanceUiProxyConnAddr struct {
-	ConnAddr     *string `pulumi:"connAddr"`
+	// The Phoenix address.
+	ConnAddr *string `pulumi:"connAddr"`
+	// The number of the port over which Phoenix connects to the instance.
 	ConnAddrPort *string `pulumi:"connAddrPort"`
-	NetType      *string `pulumi:"netType"`
+	// The type of the network. Valid values:
+	NetType *string `pulumi:"netType"`
 }
 
 // InstanceUiProxyConnAddrInput is an input type that accepts InstanceUiProxyConnAddrArgs and InstanceUiProxyConnAddrOutput values.
@@ -162,9 +174,12 @@ type InstanceUiProxyConnAddrInput interface {
 }
 
 type InstanceUiProxyConnAddrArgs struct {
-	ConnAddr     pulumi.StringPtrInput `pulumi:"connAddr"`
+	// The Phoenix address.
+	ConnAddr pulumi.StringPtrInput `pulumi:"connAddr"`
+	// The number of the port over which Phoenix connects to the instance.
 	ConnAddrPort pulumi.StringPtrInput `pulumi:"connAddrPort"`
-	NetType      pulumi.StringPtrInput `pulumi:"netType"`
+	// The type of the network. Valid values:
+	NetType pulumi.StringPtrInput `pulumi:"netType"`
 }
 
 func (InstanceUiProxyConnAddrArgs) ElementType() reflect.Type {
@@ -236,14 +251,17 @@ func (o InstanceUiProxyConnAddrOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
+// The Phoenix address.
 func (o InstanceUiProxyConnAddrOutput) ConnAddr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceUiProxyConnAddr) *string { return v.ConnAddr }).(pulumi.StringPtrOutput)
 }
 
+// The number of the port over which Phoenix connects to the instance.
 func (o InstanceUiProxyConnAddrOutput) ConnAddrPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceUiProxyConnAddr) *string { return v.ConnAddrPort }).(pulumi.StringPtrOutput)
 }
 
+// The type of the network. Valid values:
 func (o InstanceUiProxyConnAddrOutput) NetType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceUiProxyConnAddr) *string { return v.NetType }).(pulumi.StringPtrOutput)
 }
@@ -275,9 +293,12 @@ func (o InstanceUiProxyConnAddrArrayOutput) Index(i pulumi.IntInput) InstanceUiP
 }
 
 type InstanceZkConnAddr struct {
-	ConnAddr     *string `pulumi:"connAddr"`
+	// The Phoenix address.
+	ConnAddr *string `pulumi:"connAddr"`
+	// The number of the port over which Phoenix connects to the instance.
 	ConnAddrPort *string `pulumi:"connAddrPort"`
-	NetType      *string `pulumi:"netType"`
+	// The type of the network. Valid values:
+	NetType *string `pulumi:"netType"`
 }
 
 // InstanceZkConnAddrInput is an input type that accepts InstanceZkConnAddrArgs and InstanceZkConnAddrOutput values.
@@ -292,9 +313,12 @@ type InstanceZkConnAddrInput interface {
 }
 
 type InstanceZkConnAddrArgs struct {
-	ConnAddr     pulumi.StringPtrInput `pulumi:"connAddr"`
+	// The Phoenix address.
+	ConnAddr pulumi.StringPtrInput `pulumi:"connAddr"`
+	// The number of the port over which Phoenix connects to the instance.
 	ConnAddrPort pulumi.StringPtrInput `pulumi:"connAddrPort"`
-	NetType      pulumi.StringPtrInput `pulumi:"netType"`
+	// The type of the network. Valid values:
+	NetType pulumi.StringPtrInput `pulumi:"netType"`
 }
 
 func (InstanceZkConnAddrArgs) ElementType() reflect.Type {
@@ -366,14 +390,17 @@ func (o InstanceZkConnAddrOutput) ToOutput(ctx context.Context) pulumix.Output[I
 	}
 }
 
+// The Phoenix address.
 func (o InstanceZkConnAddrOutput) ConnAddr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceZkConnAddr) *string { return v.ConnAddr }).(pulumi.StringPtrOutput)
 }
 
+// The number of the port over which Phoenix connects to the instance.
 func (o InstanceZkConnAddrOutput) ConnAddrPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceZkConnAddr) *string { return v.ConnAddrPort }).(pulumi.StringPtrOutput)
 }
 
+// The type of the network. Valid values:
 func (o InstanceZkConnAddrOutput) NetType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceZkConnAddr) *string { return v.NetType }).(pulumi.StringPtrOutput)
 }

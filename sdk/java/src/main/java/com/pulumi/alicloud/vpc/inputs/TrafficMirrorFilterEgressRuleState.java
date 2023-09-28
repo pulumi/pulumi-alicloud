@@ -18,6 +18,21 @@ public final class TrafficMirrorFilterEgressRuleState extends com.pulumi.resourc
     public static final TrafficMirrorFilterEgressRuleState Empty = new TrafficMirrorFilterEgressRuleState();
 
     /**
+     * The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+     * 
+     */
+    @Import(name="action")
+    private @Nullable Output<String> action;
+
+    /**
+     * @return The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+     * 
+     */
+    public Optional<Output<String>> action() {
+        return Optional.ofNullable(this.action);
+    }
+
+    /**
      * The destination CIDR block of the outbound traffic.
      * 
      */
@@ -48,14 +63,18 @@ public final class TrafficMirrorFilterEgressRuleState extends com.pulumi.resourc
     }
 
     /**
-     * Whether to pre-check this request only. Default to: `false`
+     * Whether to PreCheck this request only. Value:
+     * - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Whether to pre-check this request only. Default to: `false`
+     * @return Whether to PreCheck this request only. Value:
+     * - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -93,16 +112,24 @@ public final class TrafficMirrorFilterEgressRuleState extends com.pulumi.resourc
     }
 
     /**
-     * The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+     * . Field &#39;rule_action&#39; has been deprecated from provider version 1.211.0. New field &#39;action&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;rule_action&#39; has been deprecated since provider version 1.211.0. New field &#39;action&#39; instead.
      * 
      */
+    @Deprecated /* Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead. */
     @Import(name="ruleAction")
     private @Nullable Output<String> ruleAction;
 
     /**
-     * @return The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+     * @return . Field &#39;rule_action&#39; has been deprecated from provider version 1.211.0. New field &#39;action&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;rule_action&#39; has been deprecated since provider version 1.211.0. New field &#39;action&#39; instead.
      * 
      */
+    @Deprecated /* Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead. */
     public Optional<Output<String>> ruleAction() {
         return Optional.ofNullable(this.ruleAction);
     }
@@ -138,14 +165,14 @@ public final class TrafficMirrorFilterEgressRuleState extends com.pulumi.resourc
     }
 
     /**
-     * The state of the inbound rule. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+     * The state of the inbound rule. `Creating`, `Created`, `Modifying` and `Deleting`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The state of the inbound rule. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+     * @return The state of the inbound rule. `Creating`, `Created`, `Modifying` and `Deleting`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -170,12 +197,16 @@ public final class TrafficMirrorFilterEgressRuleState extends com.pulumi.resourc
     /**
      * The ID of the filter.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     @Import(name="trafficMirrorFilterId")
     private @Nullable Output<String> trafficMirrorFilterId;
 
     /**
      * @return The ID of the filter.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<String>> trafficMirrorFilterId() {
@@ -185,6 +216,7 @@ public final class TrafficMirrorFilterEgressRuleState extends com.pulumi.resourc
     private TrafficMirrorFilterEgressRuleState() {}
 
     private TrafficMirrorFilterEgressRuleState(TrafficMirrorFilterEgressRuleState $) {
+        this.action = $.action;
         this.destinationCidrBlock = $.destinationCidrBlock;
         this.destinationPortRange = $.destinationPortRange;
         this.dryRun = $.dryRun;
@@ -214,6 +246,27 @@ public final class TrafficMirrorFilterEgressRuleState extends com.pulumi.resourc
 
         public Builder(TrafficMirrorFilterEgressRuleState defaults) {
             $ = new TrafficMirrorFilterEgressRuleState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param action The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder action(@Nullable Output<String> action) {
+            $.action = action;
+            return this;
+        }
+
+        /**
+         * @param action The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder action(String action) {
+            return action(Output.of(action));
         }
 
         /**
@@ -259,7 +312,9 @@ public final class TrafficMirrorFilterEgressRuleState extends com.pulumi.resourc
         }
 
         /**
-         * @param dryRun Whether to pre-check this request only. Default to: `false`
+         * @param dryRun Whether to PreCheck this request only. Value:
+         * - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+         * - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
          * 
          * @return builder
          * 
@@ -270,7 +325,9 @@ public final class TrafficMirrorFilterEgressRuleState extends com.pulumi.resourc
         }
 
         /**
-         * @param dryRun Whether to pre-check this request only. Default to: `false`
+         * @param dryRun Whether to PreCheck this request only. Value:
+         * - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+         * - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
          * 
          * @return builder
          * 
@@ -322,22 +379,30 @@ public final class TrafficMirrorFilterEgressRuleState extends com.pulumi.resourc
         }
 
         /**
-         * @param ruleAction The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+         * @param ruleAction . Field &#39;rule_action&#39; has been deprecated from provider version 1.211.0. New field &#39;action&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;rule_action&#39; has been deprecated since provider version 1.211.0. New field &#39;action&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead. */
         public Builder ruleAction(@Nullable Output<String> ruleAction) {
             $.ruleAction = ruleAction;
             return this;
         }
 
         /**
-         * @param ruleAction The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+         * @param ruleAction . Field &#39;rule_action&#39; has been deprecated from provider version 1.211.0. New field &#39;action&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;rule_action&#39; has been deprecated since provider version 1.211.0. New field &#39;action&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead. */
         public Builder ruleAction(String ruleAction) {
             return ruleAction(Output.of(ruleAction));
         }
@@ -385,7 +450,7 @@ public final class TrafficMirrorFilterEgressRuleState extends com.pulumi.resourc
         }
 
         /**
-         * @param status The state of the inbound rule. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+         * @param status The state of the inbound rule. `Creating`, `Created`, `Modifying` and `Deleting`.
          * 
          * @return builder
          * 
@@ -396,7 +461,7 @@ public final class TrafficMirrorFilterEgressRuleState extends com.pulumi.resourc
         }
 
         /**
-         * @param status The state of the inbound rule. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+         * @param status The state of the inbound rule. `Creating`, `Created`, `Modifying` and `Deleting`.
          * 
          * @return builder
          * 
@@ -429,6 +494,8 @@ public final class TrafficMirrorFilterEgressRuleState extends com.pulumi.resourc
         /**
          * @param trafficMirrorFilterId The ID of the filter.
          * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
          * @return builder
          * 
          */
@@ -439,6 +506,8 @@ public final class TrafficMirrorFilterEgressRuleState extends com.pulumi.resourc
 
         /**
          * @param trafficMirrorFilterId The ID of the filter.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

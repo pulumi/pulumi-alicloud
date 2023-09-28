@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Direct Mail Tag and how to use it, see [What is Tag](https://www.alibabacloud.com/help/zh/doc-detail/119007.htm).
  *
- * > **NOTE:** Available in v1.144.0+.
+ * > **NOTE:** Available since v1.144.0.
  *
  * ## Example Usage
  *
@@ -19,7 +19,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.directmail.Tag("example", {tagName: "example_value"});
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "example";
+ * const example = new alicloud.directmail.Tag("example", {tagName: name});
  * ```
  *
  * ## Import

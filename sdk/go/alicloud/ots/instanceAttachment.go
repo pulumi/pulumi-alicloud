@@ -15,6 +15,8 @@ import (
 
 // This resource will help you to bind a VPC to an OTS instance.
 //
+// > **NOTE:** Available since v1.10.0.
+//
 // ## Example Usage
 //
 // ```go
@@ -26,47 +28,54 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooInstance, err := ots.NewInstance(ctx, "fooInstance", &ots.InstanceArgs{
-//				Description: pulumi.String("for table"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultInstance, err := ots.NewInstance(ctx, "defaultInstance", &ots.InstanceArgs{
+//				Description: pulumi.String(name),
 //				AccessedBy:  pulumi.String("Vpc"),
 //				Tags: pulumi.AnyMap{
 //					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("Building table"),
+//					"For":     pulumi.Any("example"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			fooZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
-//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
-//				VpcId:       fooNetwork.ID(),
-//				VswitchName: pulumi.String("for-ots-instance"),
-//				CidrBlock:   pulumi.String("172.16.1.0/24"),
-//				ZoneId:      *pulumi.String(fooZones.Zones[0].Id),
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ots.NewInstanceAttachment(ctx, "fooInstanceAttachment", &ots.InstanceAttachmentArgs{
-//				InstanceName: fooInstance.Name,
-//				VpcName:      pulumi.String("attachment1"),
-//				VswitchId:    fooSwitch.ID(),
+//			_, err = ots.NewInstanceAttachment(ctx, "defaultInstanceAttachment", &ots.InstanceAttachmentArgs{
+//				InstanceName: defaultInstance.Name,
+//				VpcName:      pulumi.String("examplename"),
+//				VswitchId:    defaultSwitch.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -83,7 +92,7 @@ type InstanceAttachment struct {
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// The ID of attaching VPC to instance.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
-	// The name of attaching VPC to instance.
+	// The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
 	VpcName pulumi.StringOutput `pulumi:"vpcName"`
 	// The ID of attaching VSwitch to instance.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
@@ -132,7 +141,7 @@ type instanceAttachmentState struct {
 	InstanceName *string `pulumi:"instanceName"`
 	// The ID of attaching VPC to instance.
 	VpcId *string `pulumi:"vpcId"`
-	// The name of attaching VPC to instance.
+	// The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
 	VpcName *string `pulumi:"vpcName"`
 	// The ID of attaching VSwitch to instance.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -143,7 +152,7 @@ type InstanceAttachmentState struct {
 	InstanceName pulumi.StringPtrInput
 	// The ID of attaching VPC to instance.
 	VpcId pulumi.StringPtrInput
-	// The name of attaching VPC to instance.
+	// The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
 	VpcName pulumi.StringPtrInput
 	// The ID of attaching VSwitch to instance.
 	VswitchId pulumi.StringPtrInput
@@ -156,7 +165,7 @@ func (InstanceAttachmentState) ElementType() reflect.Type {
 type instanceAttachmentArgs struct {
 	// The name of the OTS instance.
 	InstanceName string `pulumi:"instanceName"`
-	// The name of attaching VPC to instance.
+	// The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
 	VpcName string `pulumi:"vpcName"`
 	// The ID of attaching VSwitch to instance.
 	VswitchId string `pulumi:"vswitchId"`
@@ -166,7 +175,7 @@ type instanceAttachmentArgs struct {
 type InstanceAttachmentArgs struct {
 	// The name of the OTS instance.
 	InstanceName pulumi.StringInput
-	// The name of attaching VPC to instance.
+	// The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
 	VpcName pulumi.StringInput
 	// The ID of attaching VSwitch to instance.
 	VswitchId pulumi.StringInput
@@ -293,7 +302,7 @@ func (o InstanceAttachmentOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The name of attaching VPC to instance.
+// The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
 func (o InstanceAttachmentOutput) VpcName() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.VpcName }).(pulumi.StringOutput)
 }

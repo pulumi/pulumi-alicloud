@@ -12,9 +12,55 @@ namespace Pulumi.AliCloud.PrivateLink
     /// <summary>
     /// Provides a Private Link Vpc Endpoint resource.
     /// 
-    /// For information about Private Link Vpc Endpoint and how to use it, see [What is Vpc Endpoint](https://help.aliyun.com/document_detail/120479.html).
+    /// For information about Private Link Vpc Endpoint and how to use it, see [What is Vpc Endpoint](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-createvpcendpoint).
     /// 
-    /// &gt; **NOTE:** Available in v1.109.0+.
+    /// &gt; **NOTE:** Available since v1.109.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var exampleVpcEndpointService = new AliCloud.PrivateLink.VpcEndpointService("exampleVpcEndpointService", new()
+    ///     {
+    ///         ServiceDescription = name,
+    ///         ConnectBandwidth = 103,
+    ///         AutoAcceptConnection = false,
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.0.0.0/8",
+    ///     });
+    /// 
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("exampleSecurityGroup", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///     });
+    /// 
+    ///     var exampleVpcEndpoint = new AliCloud.PrivateLink.VpcEndpoint("exampleVpcEndpoint", new()
+    ///     {
+    ///         ServiceId = exampleVpcEndpointService.Id,
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             exampleSecurityGroup.Id,
+    ///         },
+    ///         VpcId = exampleNetwork.Id,
+    ///         VpcEndpointName = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

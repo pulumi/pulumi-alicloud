@@ -12,30 +12,9 @@ namespace Pulumi.AliCloud.CloudAuth
     /// <summary>
     /// Provides a Cloudauth Face Config resource.
     /// 
-    /// For information about Cloudauth Face Config and how to use it, see [What is Face Config](https://help.aliyun.com/document_detail/99173.html).
+    /// For information about Cloudauth Face Config and how to use it, see [What is Face Config](https://www.alibabacloud.com/help/en/document_detail/99173.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.137.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.CloudAuth.FaceConfig("example", new()
-    ///     {
-    ///         BizName = "example_value",
-    ///         BizType = "example_value",
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// &gt; **NOTE:** Available since v1.137.0.
     /// 
     /// ## Import
     /// 

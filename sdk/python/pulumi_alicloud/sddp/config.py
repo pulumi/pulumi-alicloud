@@ -168,9 +168,9 @@ class Config(pulumi.CustomResource):
         """
         Provides a Data Security Center Config resource.
 
-        For information about Data Security Center Config and how to use it, see [What is Config](https://help.aliyun.com/product/88674.html).
+        For information about Data Security Center Config and how to use it, see [What is Config](https://www.alibabacloud.com/help/en/data-security-center/latest/api-sddp-2019-01-03-createconfig).
 
-        > **NOTE:** Available in v1.133.0+.
+        > **NOTE:** Available since v1.133.0.
 
         ## Example Usage
 
@@ -209,9 +209,9 @@ class Config(pulumi.CustomResource):
         """
         Provides a Data Security Center Config resource.
 
-        For information about Data Security Center Config and how to use it, see [What is Config](https://help.aliyun.com/product/88674.html).
+        For information about Data Security Center Config and how to use it, see [What is Config](https://www.alibabacloud.com/help/en/data-security-center/latest/api-sddp-2019-01-03-createconfig).
 
-        > **NOTE:** Available in v1.133.0+.
+        > **NOTE:** Available since v1.133.0.
 
         ## Example Usage
 

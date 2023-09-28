@@ -17,7 +17,7 @@ import (
 //
 // For information about VPC Traffic Mirror Filter Egress Rule and how to use it, see [What is Traffic Mirror Filter Egress Rule](https://www.alibabacloud.com/help/doc-detail/261357.htm).
 //
-// > **NOTE:** Available in v1.140.0+.
+// > **NOTE:** Available since v1.140.0.
 //
 // ## Example Usage
 //
@@ -35,21 +35,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleTrafficMirrorFilter, err := vpc.NewTrafficMirrorFilter(ctx, "exampleTrafficMirrorFilter", &vpc.TrafficMirrorFilterArgs{
+//			example, err := vpc.NewTrafficMirrorFilter(ctx, "example", &vpc.TrafficMirrorFilterArgs{
 //				TrafficMirrorFilterName: pulumi.String("example_value"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewTrafficMirrorFilterEgressRule(ctx, "exampleTrafficMirrorFilterEgressRule", &vpc.TrafficMirrorFilterEgressRuleArgs{
-//				TrafficMirrorFilterId: exampleTrafficMirrorFilter.ID(),
-//				Priority:              pulumi.Int(1),
-//				RuleAction:            pulumi.String("accept"),
-//				Protocol:              pulumi.String("UDP"),
-//				DestinationCidrBlock:  pulumi.String("10.0.0.0/24"),
-//				SourceCidrBlock:       pulumi.String("10.0.0.0/24"),
-//				DestinationPortRange:  pulumi.String("1/120"),
-//				SourcePortRange:       pulumi.String("1/120"),
+//			_, err = vpc.NewTrafficMirrorFilterEgressRule(ctx, "default", &vpc.TrafficMirrorFilterEgressRuleArgs{
+//				Action:                pulumi.String("drop"),
+//				Priority:              pulumi.Int(2),
+//				SourceCidrBlock:       pulumi.String("10.0.0.0/11"),
+//				DestinationCidrBlock:  pulumi.String("10.0.0.0/12"),
+//				TrafficMirrorFilterId: example.ID(),
+//				Protocol:              pulumi.String("ALL"),
 //			})
 //			if err != nil {
 //				return err
@@ -72,27 +70,35 @@ import (
 type TrafficMirrorFilterEgressRule struct {
 	pulumi.CustomResourceState
 
+	// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+	Action pulumi.StringOutput `pulumi:"action"`
 	// The destination CIDR block of the outbound traffic.
 	DestinationCidrBlock pulumi.StringOutput `pulumi:"destinationCidrBlock"`
 	// The destination CIDR block of the outbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
 	DestinationPortRange pulumi.StringOutput `pulumi:"destinationPortRange"`
-	// Whether to pre-check this request only. Default to: `false`
+	// Whether to PreCheck this request only. Value:
+	// - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
 	Priority pulumi.IntOutput `pulumi:"priority"`
 	// The transport protocol used by outbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
-	// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+	// . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+	//
+	// Deprecated: Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.
 	RuleAction pulumi.StringOutput `pulumi:"ruleAction"`
 	// The source CIDR block of the outbound traffic.
 	SourceCidrBlock pulumi.StringOutput `pulumi:"sourceCidrBlock"`
 	// The source port range of the outbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
 	SourcePortRange pulumi.StringOutput `pulumi:"sourcePortRange"`
-	// The state of the inbound rule. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+	// The state of the inbound rule. `Creating`, `Created`, `Modifying` and `Deleting`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The ID of the outbound rule.
 	TrafficMirrorFilterEgressRuleId pulumi.StringOutput `pulumi:"trafficMirrorFilterEgressRuleId"`
 	// The ID of the filter.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	TrafficMirrorFilterId pulumi.StringOutput `pulumi:"trafficMirrorFilterId"`
 }
 
@@ -111,9 +117,6 @@ func NewTrafficMirrorFilterEgressRule(ctx *pulumi.Context,
 	}
 	if args.Protocol == nil {
 		return nil, errors.New("invalid value for required argument 'Protocol'")
-	}
-	if args.RuleAction == nil {
-		return nil, errors.New("invalid value for required argument 'RuleAction'")
 	}
 	if args.SourceCidrBlock == nil {
 		return nil, errors.New("invalid value for required argument 'SourceCidrBlock'")
@@ -144,52 +147,68 @@ func GetTrafficMirrorFilterEgressRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TrafficMirrorFilterEgressRule resources.
 type trafficMirrorFilterEgressRuleState struct {
+	// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+	Action *string `pulumi:"action"`
 	// The destination CIDR block of the outbound traffic.
 	DestinationCidrBlock *string `pulumi:"destinationCidrBlock"`
 	// The destination CIDR block of the outbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
 	DestinationPortRange *string `pulumi:"destinationPortRange"`
-	// Whether to pre-check this request only. Default to: `false`
+	// Whether to PreCheck this request only. Value:
+	// - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
 	DryRun *bool `pulumi:"dryRun"`
 	// The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
 	Priority *int `pulumi:"priority"`
 	// The transport protocol used by outbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
 	Protocol *string `pulumi:"protocol"`
-	// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+	// . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+	//
+	// Deprecated: Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.
 	RuleAction *string `pulumi:"ruleAction"`
 	// The source CIDR block of the outbound traffic.
 	SourceCidrBlock *string `pulumi:"sourceCidrBlock"`
 	// The source port range of the outbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
 	SourcePortRange *string `pulumi:"sourcePortRange"`
-	// The state of the inbound rule. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+	// The state of the inbound rule. `Creating`, `Created`, `Modifying` and `Deleting`.
 	Status *string `pulumi:"status"`
 	// The ID of the outbound rule.
 	TrafficMirrorFilterEgressRuleId *string `pulumi:"trafficMirrorFilterEgressRuleId"`
 	// The ID of the filter.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	TrafficMirrorFilterId *string `pulumi:"trafficMirrorFilterId"`
 }
 
 type TrafficMirrorFilterEgressRuleState struct {
+	// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+	Action pulumi.StringPtrInput
 	// The destination CIDR block of the outbound traffic.
 	DestinationCidrBlock pulumi.StringPtrInput
 	// The destination CIDR block of the outbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
 	DestinationPortRange pulumi.StringPtrInput
-	// Whether to pre-check this request only. Default to: `false`
+	// Whether to PreCheck this request only. Value:
+	// - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
 	DryRun pulumi.BoolPtrInput
 	// The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
 	Priority pulumi.IntPtrInput
 	// The transport protocol used by outbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
 	Protocol pulumi.StringPtrInput
-	// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+	// . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+	//
+	// Deprecated: Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.
 	RuleAction pulumi.StringPtrInput
 	// The source CIDR block of the outbound traffic.
 	SourceCidrBlock pulumi.StringPtrInput
 	// The source port range of the outbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
 	SourcePortRange pulumi.StringPtrInput
-	// The state of the inbound rule. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+	// The state of the inbound rule. `Creating`, `Created`, `Modifying` and `Deleting`.
 	Status pulumi.StringPtrInput
 	// The ID of the outbound rule.
 	TrafficMirrorFilterEgressRuleId pulumi.StringPtrInput
 	// The ID of the filter.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	TrafficMirrorFilterId pulumi.StringPtrInput
 }
 
@@ -198,45 +217,61 @@ func (TrafficMirrorFilterEgressRuleState) ElementType() reflect.Type {
 }
 
 type trafficMirrorFilterEgressRuleArgs struct {
+	// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+	Action *string `pulumi:"action"`
 	// The destination CIDR block of the outbound traffic.
 	DestinationCidrBlock string `pulumi:"destinationCidrBlock"`
 	// The destination CIDR block of the outbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
 	DestinationPortRange *string `pulumi:"destinationPortRange"`
-	// Whether to pre-check this request only. Default to: `false`
+	// Whether to PreCheck this request only. Value:
+	// - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
 	DryRun *bool `pulumi:"dryRun"`
 	// The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
 	Priority int `pulumi:"priority"`
 	// The transport protocol used by outbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
 	Protocol string `pulumi:"protocol"`
-	// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
-	RuleAction string `pulumi:"ruleAction"`
+	// . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+	//
+	// Deprecated: Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.
+	RuleAction *string `pulumi:"ruleAction"`
 	// The source CIDR block of the outbound traffic.
 	SourceCidrBlock string `pulumi:"sourceCidrBlock"`
 	// The source port range of the outbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
 	SourcePortRange *string `pulumi:"sourcePortRange"`
 	// The ID of the filter.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	TrafficMirrorFilterId string `pulumi:"trafficMirrorFilterId"`
 }
 
 // The set of arguments for constructing a TrafficMirrorFilterEgressRule resource.
 type TrafficMirrorFilterEgressRuleArgs struct {
+	// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+	Action pulumi.StringPtrInput
 	// The destination CIDR block of the outbound traffic.
 	DestinationCidrBlock pulumi.StringInput
 	// The destination CIDR block of the outbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
 	DestinationPortRange pulumi.StringPtrInput
-	// Whether to pre-check this request only. Default to: `false`
+	// Whether to PreCheck this request only. Value:
+	// - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
 	DryRun pulumi.BoolPtrInput
 	// The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
 	Priority pulumi.IntInput
 	// The transport protocol used by outbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
 	Protocol pulumi.StringInput
-	// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
-	RuleAction pulumi.StringInput
+	// . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+	//
+	// Deprecated: Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.
+	RuleAction pulumi.StringPtrInput
 	// The source CIDR block of the outbound traffic.
 	SourceCidrBlock pulumi.StringInput
 	// The source port range of the outbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
 	SourcePortRange pulumi.StringPtrInput
 	// The ID of the filter.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	TrafficMirrorFilterId pulumi.StringInput
 }
 
@@ -351,6 +386,11 @@ func (o TrafficMirrorFilterEgressRuleOutput) ToOutput(ctx context.Context) pulum
 	}
 }
 
+// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+func (o TrafficMirrorFilterEgressRuleOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrafficMirrorFilterEgressRule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
+}
+
 // The destination CIDR block of the outbound traffic.
 func (o TrafficMirrorFilterEgressRuleOutput) DestinationCidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrafficMirrorFilterEgressRule) pulumi.StringOutput { return v.DestinationCidrBlock }).(pulumi.StringOutput)
@@ -361,7 +401,9 @@ func (o TrafficMirrorFilterEgressRuleOutput) DestinationPortRange() pulumi.Strin
 	return o.ApplyT(func(v *TrafficMirrorFilterEgressRule) pulumi.StringOutput { return v.DestinationPortRange }).(pulumi.StringOutput)
 }
 
-// Whether to pre-check this request only. Default to: `false`
+// Whether to PreCheck this request only. Value:
+// - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+// - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
 func (o TrafficMirrorFilterEgressRuleOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TrafficMirrorFilterEgressRule) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
@@ -376,7 +418,9 @@ func (o TrafficMirrorFilterEgressRuleOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrafficMirrorFilterEgressRule) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }
 
-// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+// . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+//
+// Deprecated: Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.
 func (o TrafficMirrorFilterEgressRuleOutput) RuleAction() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrafficMirrorFilterEgressRule) pulumi.StringOutput { return v.RuleAction }).(pulumi.StringOutput)
 }
@@ -391,7 +435,7 @@ func (o TrafficMirrorFilterEgressRuleOutput) SourcePortRange() pulumi.StringOutp
 	return o.ApplyT(func(v *TrafficMirrorFilterEgressRule) pulumi.StringOutput { return v.SourcePortRange }).(pulumi.StringOutput)
 }
 
-// The state of the inbound rule. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+// The state of the inbound rule. `Creating`, `Created`, `Modifying` and `Deleting`.
 func (o TrafficMirrorFilterEgressRuleOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrafficMirrorFilterEgressRule) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -402,6 +446,8 @@ func (o TrafficMirrorFilterEgressRuleOutput) TrafficMirrorFilterEgressRuleId() p
 }
 
 // The ID of the filter.
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o TrafficMirrorFilterEgressRuleOutput) TrafficMirrorFilterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrafficMirrorFilterEgressRule) pulumi.StringOutput { return v.TrafficMirrorFilterId }).(pulumi.StringOutput)
 }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Nlb
     /// 
     /// For information about NLB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createservergroup-nlb).
     /// 
-    /// &gt; **NOTE:** Available in v1.186.0+.
+    /// &gt; **NOTE:** Available since v1.186.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,21 +28,27 @@ namespace Pulumi.AliCloud.Nlb
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         NameRegex = "default-NODELETING",
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
     ///     var defaultServerGroup = new AliCloud.Nlb.ServerGroup("defaultServerGroup", new()
     ///     {
     ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
-    ///         ServerGroupName = @var.Name,
+    ///         ServerGroupName = name,
     ///         ServerGroupType = "Instance",
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcId = defaultNetwork.Id,
     ///         Scheduler = "Wrr",
     ///         Protocol = "TCP",
+    ///         ConnectionDrain = true,
+    ///         ConnectionDrainTimeout = 60,
+    ///         AddressIpVersion = "Ipv4",
     ///         HealthCheck = new AliCloud.Nlb.Inputs.ServerGroupHealthCheckArgs
     ///         {
     ///             HealthCheckEnabled = true,
@@ -60,13 +66,11 @@ namespace Pulumi.AliCloud.Nlb
     ///                 "http_4xx",
     ///             },
     ///         },
-    ///         ConnectionDrain = true,
-    ///         ConnectionDrainTimeout = 60,
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },
+    ///             { "For", "example" },
     ///         },
-    ///         AddressIpVersion = "Ipv4",
     ///     });
     /// 
     /// });
@@ -102,7 +106,7 @@ namespace Pulumi.AliCloud.Nlb
         public Output<int> ConnectionDrainTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// HealthCheck. See the following `Block health_check`.
+        /// HealthCheck. See `health_check` below.
         /// </summary>
         [Output("healthCheck")]
         public Output<Outputs.ServerGroupHealthCheck> HealthCheck { get; private set; } = null!;
@@ -226,7 +230,7 @@ namespace Pulumi.AliCloud.Nlb
         public Input<int>? ConnectionDrainTimeout { get; set; }
 
         /// <summary>
-        /// HealthCheck. See the following `Block health_check`.
+        /// HealthCheck. See `health_check` below.
         /// </summary>
         [Input("healthCheck", required: true)]
         public Input<Inputs.ServerGroupHealthCheckArgs> HealthCheck { get; set; } = null!;
@@ -312,7 +316,7 @@ namespace Pulumi.AliCloud.Nlb
         public Input<int>? ConnectionDrainTimeout { get; set; }
 
         /// <summary>
-        /// HealthCheck. See the following `Block health_check`.
+        /// HealthCheck. See `health_check` below.
         /// </summary>
         [Input("healthCheck")]
         public Input<Inputs.ServerGroupHealthCheckGetArgs>? HealthCheck { get; set; }

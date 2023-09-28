@@ -139,7 +139,9 @@ class InstanceArgs:
         :param pulumi.Input[str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
                **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] tde_status: The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
+        :param pulumi.Input[str] tde_status: Specifies whether to enable TDE. Valid values: `Enabled`.
+               **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+               your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
         :param pulumi.Input[str] vpc_auth_mode: Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[str] zone_id: The ID of the zone.
@@ -988,7 +990,9 @@ class InstanceArgs:
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> Optional[pulumi.Input[str]]:
         """
-        The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
+        Specifies whether to enable TDE. Valid values: `Enabled`.
+        **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+        your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
         """
         return pulumi.get(self, "tde_status")
 
@@ -1179,7 +1183,9 @@ class _InstanceState:
                **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
         :param pulumi.Input[str] status: The status of KVStore DBInstance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] tde_status: The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
+        :param pulumi.Input[str] tde_status: Specifies whether to enable TDE. Valid values: `Enabled`.
+               **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+               your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
         :param pulumi.Input[str] vpc_auth_mode: Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[str] zone_id: The ID of the zone.
@@ -2126,7 +2132,9 @@ class _InstanceState:
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> Optional[pulumi.Input[str]]:
         """
-        The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
+        Specifies whether to enable TDE. Valid values: `Enabled`.
+        **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+        your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
         """
         return pulumi.get(self, "tde_status")
 
@@ -2309,7 +2317,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
                **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] tde_status: The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
+        :param pulumi.Input[str] tde_status: Specifies whether to enable TDE. Valid values: `Enabled`.
+               **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+               your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
         :param pulumi.Input[str] vpc_auth_mode: Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[str] zone_id: The ID of the zone.
@@ -2660,7 +2670,9 @@ class Instance(pulumi.CustomResource):
                **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
         :param pulumi.Input[str] status: The status of KVStore DBInstance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] tde_status: The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
+        :param pulumi.Input[str] tde_status: Specifies whether to enable TDE. Valid values: `Enabled`.
+               **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+               your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
         :param pulumi.Input[str] vpc_auth_mode: Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[str] zone_id: The ID of the zone.
@@ -3016,7 +3028,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceReleaseProtection")
-    def instance_release_protection(self) -> pulumi.Output[bool]:
+    def instance_release_protection(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to open the release protection.
         """
@@ -3247,7 +3259,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sslEnable")
-    def ssl_enable(self) -> pulumi.Output[Optional[str]]:
+    def ssl_enable(self) -> pulumi.Output[str]:
         """
         Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
         **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
@@ -3274,7 +3286,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> pulumi.Output[str]:
         """
-        The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
+        Specifies whether to enable TDE. Valid values: `Enabled`.
+        **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+        your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
         """
         return pulumi.get(self, "tde_status")
 

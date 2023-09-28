@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
  * Provides a Resource Manager Account resource. Member accounts are containers for resources in a resource directory. These accounts isolate resources and serve as organizational units in the resource directory. You can create member accounts in a folder and then manage them in a unified manner.
  * For information about Resource Manager Account and how to use it, see [What is Resource Manager Account](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
  *
- * > **NOTE:** Available in v1.83.0+.
+ * > **NOTE:** Available since v1.83.0.
  *
  * > **NOTE:** From version 1.188.0, the resource can be destroyed. The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial. see [how to destroy it](https://www.alibabacloud.com/help/en/resource-management/latest/delete-account).
  *
@@ -18,11 +18,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Add a Resource Manager Account.
- * const f1 = new alicloud.resourcemanager.Folder("f1", {folderName: "test1"});
- * const example = new alicloud.resourcemanager.Account("example", {
- *     displayName: "RDAccount",
- *     folderId: f1.id,
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const displayName = config.get("displayName") || "EAccount";
+ * const exampleFolder = new alicloud.resourcemanager.Folder("exampleFolder", {folderName: name});
+ * const exampleAccount = new alicloud.resourcemanager.Account("exampleAccount", {
+ *     displayName: displayName,
+ *     folderId: exampleFolder.id,
  * });
  * ```
  * ### Deleting `alicloud.resourcemanager.Account` or removing it from your configuration

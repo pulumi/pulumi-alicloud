@@ -14,14 +14,14 @@ public final class ListenerAclAttachmentArgs extends com.pulumi.resources.Resour
     public static final ListenerAclAttachmentArgs Empty = new ListenerAclAttachmentArgs();
 
     /**
-     * The ID of the Acl.
+     * The ID list of the access policy group bound by the listener.
      * 
      */
     @Import(name="aclId", required=true)
     private Output<String> aclId;
 
     /**
-     * @return The ID of the Acl.
+     * @return The ID list of the access policy group bound by the listener.
      * 
      */
     public Output<String> aclId() {
@@ -29,18 +29,18 @@ public final class ListenerAclAttachmentArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The type of the ACL. Valid values:
-     * - White: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. The whitelist applies to scenarios in which you want to allow only specific IP addresses to access an application. Risks may arise if you specify an ACL as a whitelist. After a whitelist is configured, only IP addresses in the whitelist can access the Application Load Balancer (ALB) listener. If you enable a whitelist but the whitelist does not contain an IP address, the listener forwards all requests.
-     * - Black: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are blocked. The blacklist applies to scenarios in which you want to block access from specific IP addresses to an application. If you enable a blacklist but the blacklist does not contain an IP address, the listener forwards all requests.
+     * Access control type:
+     * - **White**: only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where only specific IP addresses are allowed to access. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access the load balancer listener. If whitelist access is enabled but no IP addresses are added to the access policy group, the server load balancer listener forwards all requests.
+     * - **Black**: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where only certain IP addresses are restricted. If blacklist access is enabled and no IP is added to the access policy group, the server load balancer listener forwards all requests.
      * 
      */
     @Import(name="aclType", required=true)
     private Output<String> aclType;
 
     /**
-     * @return The type of the ACL. Valid values:
-     * - White: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. The whitelist applies to scenarios in which you want to allow only specific IP addresses to access an application. Risks may arise if you specify an ACL as a whitelist. After a whitelist is configured, only IP addresses in the whitelist can access the Application Load Balancer (ALB) listener. If you enable a whitelist but the whitelist does not contain an IP address, the listener forwards all requests.
-     * - Black: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are blocked. The blacklist applies to scenarios in which you want to block access from specific IP addresses to an application. If you enable a blacklist but the blacklist does not contain an IP address, the listener forwards all requests.
+     * @return Access control type:
+     * - **White**: only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where only specific IP addresses are allowed to access. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access the load balancer listener. If whitelist access is enabled but no IP addresses are added to the access policy group, the server load balancer listener forwards all requests.
+     * - **Black**: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where only certain IP addresses are restricted. If blacklist access is enabled and no IP is added to the access policy group, the server load balancer listener forwards all requests.
      * 
      */
     public Output<String> aclType() {
@@ -48,14 +48,14 @@ public final class ListenerAclAttachmentArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The ID of the ALB listener.
+     * Listener instance ID.
      * 
      */
     @Import(name="listenerId", required=true)
     private Output<String> listenerId;
 
     /**
-     * @return The ID of the ALB listener.
+     * @return Listener instance ID.
      * 
      */
     public Output<String> listenerId() {
@@ -89,7 +89,7 @@ public final class ListenerAclAttachmentArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param aclId The ID of the Acl.
+         * @param aclId The ID list of the access policy group bound by the listener.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class ListenerAclAttachmentArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param aclId The ID of the Acl.
+         * @param aclId The ID list of the access policy group bound by the listener.
          * 
          * @return builder
          * 
@@ -110,9 +110,9 @@ public final class ListenerAclAttachmentArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param aclType The type of the ACL. Valid values:
-         * - White: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. The whitelist applies to scenarios in which you want to allow only specific IP addresses to access an application. Risks may arise if you specify an ACL as a whitelist. After a whitelist is configured, only IP addresses in the whitelist can access the Application Load Balancer (ALB) listener. If you enable a whitelist but the whitelist does not contain an IP address, the listener forwards all requests.
-         * - Black: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are blocked. The blacklist applies to scenarios in which you want to block access from specific IP addresses to an application. If you enable a blacklist but the blacklist does not contain an IP address, the listener forwards all requests.
+         * @param aclType Access control type:
+         * - **White**: only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where only specific IP addresses are allowed to access. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access the load balancer listener. If whitelist access is enabled but no IP addresses are added to the access policy group, the server load balancer listener forwards all requests.
+         * - **Black**: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where only certain IP addresses are restricted. If blacklist access is enabled and no IP is added to the access policy group, the server load balancer listener forwards all requests.
          * 
          * @return builder
          * 
@@ -123,9 +123,9 @@ public final class ListenerAclAttachmentArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param aclType The type of the ACL. Valid values:
-         * - White: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. The whitelist applies to scenarios in which you want to allow only specific IP addresses to access an application. Risks may arise if you specify an ACL as a whitelist. After a whitelist is configured, only IP addresses in the whitelist can access the Application Load Balancer (ALB) listener. If you enable a whitelist but the whitelist does not contain an IP address, the listener forwards all requests.
-         * - Black: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are blocked. The blacklist applies to scenarios in which you want to block access from specific IP addresses to an application. If you enable a blacklist but the blacklist does not contain an IP address, the listener forwards all requests.
+         * @param aclType Access control type:
+         * - **White**: only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where only specific IP addresses are allowed to access. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access the load balancer listener. If whitelist access is enabled but no IP addresses are added to the access policy group, the server load balancer listener forwards all requests.
+         * - **Black**: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where only certain IP addresses are restricted. If blacklist access is enabled and no IP is added to the access policy group, the server load balancer listener forwards all requests.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ListenerAclAttachmentArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param listenerId The ID of the ALB listener.
+         * @param listenerId Listener instance ID.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class ListenerAclAttachmentArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param listenerId The ID of the ALB listener.
+         * @param listenerId Listener instance ID.
          * 
          * @return builder
          * 

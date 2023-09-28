@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ots.Outputs
     public sealed class SearchIndexSchemaIndexSortSorter
     {
         /// <summary>
-        /// The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+        /// Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
         /// </summary>
         public readonly string? FieldName;
         /// <summary>

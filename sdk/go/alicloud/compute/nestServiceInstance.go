@@ -15,9 +15,9 @@ import (
 
 // Provides a Compute Nest Service Instance resource.
 //
-// For information about Compute Nest Service Instance and how to use it, see [What is Service Instance](https://help.aliyun.com/document_detail/396194.html).
+// For information about Compute Nest Service Instance and how to use it, see [What is Service Instance](https://www.alibabacloud.com/help/en/compute-nest/developer-reference/api-computenest-2021-06-01-createserviceinstance).
 //
-// > **NOTE:** Available in v1.205.0+.
+// > **NOTE:** Available since v1.205.0.
 //
 // ## Example Usage
 //
@@ -36,10 +36,16 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "tfexample";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
 // defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil);
 // if err != nil {
 // return err
@@ -60,27 +66,29 @@ import (
 // }
 // defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
 // NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
-// MostRecent: pulumi.BoolRef(true),
 // Owners: pulumi.StringRef("system"),
 // }, nil);
 // if err != nil {
 // return err
 // }
-// defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// NameRegex: pulumi.StringRef("your_name_regex"),
-// }, nil);
+// defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// VpcName: pulumi.String(name),
+// CidrBlock: pulumi.String("10.0.0.0/8"),
+// })
 // if err != nil {
 // return err
 // }
-// defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
-// ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
-// }, nil);
+// defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// VswitchName: pulumi.String(name),
+// CidrBlock: pulumi.String("10.1.0.0/16"),
+// VpcId: defaultNetwork.ID(),
+// ZoneId: *pulumi.String(defaultZones.Zones[0].Id),
+// })
 // if err != nil {
 // return err
 // }
 // defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-// VpcId: *pulumi.String(defaultNetworks.Ids[0]),
+// VpcId: defaultNetwork.ID(),
 // })
 // if err != nil {
 // return err
@@ -98,7 +106,7 @@ import (
 // AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
 // InstanceChargeType: pulumi.String("PostPaid"),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
-// VswitchId: *pulumi.String(defaultSwitches.Ids[0]),
+// VswitchId: defaultSwitch.ID(),
 // })
 // if err != nil {
 // return err
@@ -106,14 +114,25 @@ import (
 // _, err = compute.NewNestServiceInstance(ctx, "defaultNestServiceInstance", &compute.NestServiceInstanceArgs{
 // ServiceId: pulumi.String("service-dd475e6e468348799f0f"),
 // ServiceVersion: pulumi.String("1"),
-// ServiceInstanceName: pulumi.Any(_var.Name),
+// ServiceInstanceName: pulumi.String(name),
 // ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
 // PaymentType: pulumi.String("Permanent"),
 // OperationMetadata: &compute.NestServiceInstanceOperationMetadataArgs{
 // OperationStartTime: pulumi.String("1681281179000"),
 // OperationEndTime: pulumi.String("1681367579000"),
 // Resources: defaultInstance.ID().ApplyT(func(id string) (string, error) {
-// return fmt.Sprintf("{\"Type\":\"ResourceIds\",\"ResourceIds\":{\"ALIYUN::ECS::INSTANCE\":[\"%v\"]},\"RegionId\":\"cn-hangzhou\"}", id), nil
+//
+//	return fmt.Sprintf(`    {
+//	      "Type": "ResourceIds",
+//	      "RegionId": "cn-hangzhou",
+//	      "ResourceIds": {
+//	      "ALIYUN::ECS::INSTANCE": [
+//	        "%v"
+//	        ]
+//	      }
+//	    }
+//
+// `, id), nil
 // }).(pulumi.StringOutput),
 // },
 // Tags: pulumi.AnyMap{
@@ -141,13 +160,13 @@ import (
 type NestServiceInstance struct {
 	pulumi.CustomResourceState
 
-	// The order information of cloud market. See the following `Block commodity`.
+	// The order information of cloud market. See `commodity` below.
 	Commodity NestServiceInstanceCommodityPtrOutput `pulumi:"commodity"`
 	// Whether the service instance has the O&M function. Default value: `false`. Valid values:
 	EnableInstanceOps pulumi.BoolOutput `pulumi:"enableInstanceOps"`
 	// Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
 	EnableUserPrometheus pulumi.BoolOutput `pulumi:"enableUserPrometheus"`
-	// The configuration of O&M. See the following `Block operationMetadata`.
+	// The configuration of O&M. See `operationMetadata` below.
 	OperationMetadata NestServiceInstanceOperationMetadataOutput `pulumi:"operationMetadata"`
 	// The parameters entered by the deployment service instance.
 	Parameters pulumi.StringPtrOutput `pulumi:"parameters"`
@@ -207,13 +226,13 @@ func GetNestServiceInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NestServiceInstance resources.
 type nestServiceInstanceState struct {
-	// The order information of cloud market. See the following `Block commodity`.
+	// The order information of cloud market. See `commodity` below.
 	Commodity *NestServiceInstanceCommodity `pulumi:"commodity"`
 	// Whether the service instance has the O&M function. Default value: `false`. Valid values:
 	EnableInstanceOps *bool `pulumi:"enableInstanceOps"`
 	// Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
 	EnableUserPrometheus *bool `pulumi:"enableUserPrometheus"`
-	// The configuration of O&M. See the following `Block operationMetadata`.
+	// The configuration of O&M. See `operationMetadata` below.
 	OperationMetadata *NestServiceInstanceOperationMetadata `pulumi:"operationMetadata"`
 	// The parameters entered by the deployment service instance.
 	Parameters *string `pulumi:"parameters"`
@@ -238,13 +257,13 @@ type nestServiceInstanceState struct {
 }
 
 type NestServiceInstanceState struct {
-	// The order information of cloud market. See the following `Block commodity`.
+	// The order information of cloud market. See `commodity` below.
 	Commodity NestServiceInstanceCommodityPtrInput
 	// Whether the service instance has the O&M function. Default value: `false`. Valid values:
 	EnableInstanceOps pulumi.BoolPtrInput
 	// Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
 	EnableUserPrometheus pulumi.BoolPtrInput
-	// The configuration of O&M. See the following `Block operationMetadata`.
+	// The configuration of O&M. See `operationMetadata` below.
 	OperationMetadata NestServiceInstanceOperationMetadataPtrInput
 	// The parameters entered by the deployment service instance.
 	Parameters pulumi.StringPtrInput
@@ -273,13 +292,13 @@ func (NestServiceInstanceState) ElementType() reflect.Type {
 }
 
 type nestServiceInstanceArgs struct {
-	// The order information of cloud market. See the following `Block commodity`.
+	// The order information of cloud market. See `commodity` below.
 	Commodity *NestServiceInstanceCommodity `pulumi:"commodity"`
 	// Whether the service instance has the O&M function. Default value: `false`. Valid values:
 	EnableInstanceOps *bool `pulumi:"enableInstanceOps"`
 	// Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
 	EnableUserPrometheus *bool `pulumi:"enableUserPrometheus"`
-	// The configuration of O&M. See the following `Block operationMetadata`.
+	// The configuration of O&M. See `operationMetadata` below.
 	OperationMetadata *NestServiceInstanceOperationMetadata `pulumi:"operationMetadata"`
 	// The parameters entered by the deployment service instance.
 	Parameters *string `pulumi:"parameters"`
@@ -303,13 +322,13 @@ type nestServiceInstanceArgs struct {
 
 // The set of arguments for constructing a NestServiceInstance resource.
 type NestServiceInstanceArgs struct {
-	// The order information of cloud market. See the following `Block commodity`.
+	// The order information of cloud market. See `commodity` below.
 	Commodity NestServiceInstanceCommodityPtrInput
 	// Whether the service instance has the O&M function. Default value: `false`. Valid values:
 	EnableInstanceOps pulumi.BoolPtrInput
 	// Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
 	EnableUserPrometheus pulumi.BoolPtrInput
-	// The configuration of O&M. See the following `Block operationMetadata`.
+	// The configuration of O&M. See `operationMetadata` below.
 	OperationMetadata NestServiceInstanceOperationMetadataPtrInput
 	// The parameters entered by the deployment service instance.
 	Parameters pulumi.StringPtrInput
@@ -442,7 +461,7 @@ func (o NestServiceInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
-// The order information of cloud market. See the following `Block commodity`.
+// The order information of cloud market. See `commodity` below.
 func (o NestServiceInstanceOutput) Commodity() NestServiceInstanceCommodityPtrOutput {
 	return o.ApplyT(func(v *NestServiceInstance) NestServiceInstanceCommodityPtrOutput { return v.Commodity }).(NestServiceInstanceCommodityPtrOutput)
 }
@@ -457,7 +476,7 @@ func (o NestServiceInstanceOutput) EnableUserPrometheus() pulumi.BoolOutput {
 	return o.ApplyT(func(v *NestServiceInstance) pulumi.BoolOutput { return v.EnableUserPrometheus }).(pulumi.BoolOutput)
 }
 
-// The configuration of O&M. See the following `Block operationMetadata`.
+// The configuration of O&M. See `operationMetadata` below.
 func (o NestServiceInstanceOutput) OperationMetadata() NestServiceInstanceOperationMetadataOutput {
 	return o.ApplyT(func(v *NestServiceInstance) NestServiceInstanceOperationMetadataOutput { return v.OperationMetadata }).(NestServiceInstanceOperationMetadataOutput)
 }

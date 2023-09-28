@@ -1879,7 +1879,7 @@ type GetGlobalDatabaseNetworksNetwork struct {
 	GdnId string `pulumi:"gdnId"`
 	// The ID of the Global Database Network.
 	Id string `pulumi:"id"`
-	// The status of the Global Database Network.
+	// The status of the Global Database Network. Valid values:
 	Status string `pulumi:"status"`
 }
 
@@ -1909,7 +1909,7 @@ type GetGlobalDatabaseNetworksNetworkArgs struct {
 	GdnId pulumi.StringInput `pulumi:"gdnId"`
 	// The ID of the Global Database Network.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The status of the Global Database Network.
+	// The status of the Global Database Network. Valid values:
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -2019,7 +2019,7 @@ func (o GetGlobalDatabaseNetworksNetworkOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGlobalDatabaseNetworksNetwork) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The status of the Global Database Network.
+// The status of the Global Database Network. Valid values:
 func (o GetGlobalDatabaseNetworksNetworkOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGlobalDatabaseNetworksNetwork) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2051,7 +2051,7 @@ func (o GetGlobalDatabaseNetworksNetworkArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetGlobalDatabaseNetworksNetworkDbCluster struct {
-	// The ID of the PolarDB cluster.
+	// The ID of the cluster.
 	DbClusterId string `pulumi:"dbClusterId"`
 	// The region ID of the cluster.
 	RegionId string `pulumi:"regionId"`
@@ -2071,7 +2071,7 @@ type GetGlobalDatabaseNetworksNetworkDbClusterInput interface {
 }
 
 type GetGlobalDatabaseNetworksNetworkDbClusterArgs struct {
-	// The ID of the PolarDB cluster.
+	// The ID of the cluster.
 	DbClusterId pulumi.StringInput `pulumi:"dbClusterId"`
 	// The region ID of the cluster.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
@@ -2148,7 +2148,7 @@ func (o GetGlobalDatabaseNetworksNetworkDbClusterOutput) ToOutput(ctx context.Co
 	}
 }
 
-// The ID of the PolarDB cluster.
+// The ID of the cluster.
 func (o GetGlobalDatabaseNetworksNetworkDbClusterOutput) DbClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGlobalDatabaseNetworksNetworkDbCluster) string { return v.DbClusterId }).(pulumi.StringOutput)
 }
@@ -2575,9 +2575,9 @@ func (o GetNodeClassesClassSupportedEngineAvailableResourceArrayOutput) Index(i 
 type GetParameterGroupsGroup struct {
 	// The time when the parameter template was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	CreateTime string `pulumi:"createTime"`
-	// The type of the database engine.
+	// The type of the database engine. Only `MySQL` is supported.
 	DbType string `pulumi:"dbType"`
-	// The version number of the database engine.
+	// The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
 	DbVersion string `pulumi:"dbVersion"`
 	// Indicates whether to restart the cluster when this parameter template is applied.
 	ForceRestart string `pulumi:"forceRestart"`
@@ -2609,9 +2609,9 @@ type GetParameterGroupsGroupInput interface {
 type GetParameterGroupsGroupArgs struct {
 	// The time when the parameter template was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// The type of the database engine.
+	// The type of the database engine. Only `MySQL` is supported.
 	DbType pulumi.StringInput `pulumi:"dbType"`
-	// The version number of the database engine.
+	// The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
 	DbVersion pulumi.StringInput `pulumi:"dbVersion"`
 	// Indicates whether to restart the cluster when this parameter template is applied.
 	ForceRestart pulumi.StringInput `pulumi:"forceRestart"`
@@ -2703,12 +2703,12 @@ func (o GetParameterGroupsGroupOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetParameterGroupsGroup) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The type of the database engine.
+// The type of the database engine. Only `MySQL` is supported.
 func (o GetParameterGroupsGroupOutput) DbType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetParameterGroupsGroup) string { return v.DbType }).(pulumi.StringOutput)
 }
 
-// The version number of the database engine.
+// The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
 func (o GetParameterGroupsGroupOutput) DbVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetParameterGroupsGroup) string { return v.DbVersion }).(pulumi.StringOutput)
 }

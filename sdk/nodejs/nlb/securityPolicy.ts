@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about NLB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createsecuritypolicy-nlb).
  *
- * > **NOTE:** Available in v1.187.0+.
+ * > **NOTE:** Available since v1.187.0.
  *
  * ## Example Usage
  *
@@ -19,10 +19,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const defaultSecurityPolicy = new alicloud.nlb.SecurityPolicy("defaultSecurityPolicy", {
  *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
- *     securityPolicyName: _var.name,
+ *     securityPolicyName: name,
  *     ciphers: [
  *         "ECDHE-RSA-AES128-SHA",
  *         "ECDHE-ECDSA-AES128-SHA",
@@ -34,7 +36,7 @@ import * as utilities from "../utilities";
  *     ],
  *     tags: {
  *         Created: "TF",
- *         For: "Acceptance-test",
+ *         For: "example",
  *     },
  * });
  * ```

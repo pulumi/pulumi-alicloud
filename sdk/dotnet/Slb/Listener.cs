@@ -21,6 +21,8 @@ namespace Pulumi.AliCloud.Slb
     /// * [Configure a TCP Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
     /// * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
     /// 
+    /// &gt; **NOTE:** Available since v1.0.0.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -35,7 +37,7 @@ namespace Pulumi.AliCloud.Slb
     ///     var slbListenerName = config.Get("slbListenerName") ?? "forSlbListener";
     ///     var listenerApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("listenerApplicationLoadBalancer", new()
     ///     {
-    ///         LoadBalancerName = "tf-testAccSlbListenerHttp",
+    ///         LoadBalancerName = "tf-exampleSlbListenerHttp",
     ///         InternetChargeType = "PayByTraffic",
     ///         AddressType = "internet",
     ///         InstanceChargeType = "PayByCLCU",
@@ -56,7 +58,7 @@ namespace Pulumi.AliCloud.Slb
     ///         StickySession = "on",
     ///         StickySessionType = "insert",
     ///         CookieTimeout = 86400,
-    ///         Cookie = "testslblistenercookie",
+    ///         Cookie = "tfslblistenercookie",
     ///         HealthCheck = "on",
     ///         HealthCheckDomain = "ali.com",
     ///         HealthCheckUri = "/cons",
@@ -232,7 +234,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<int> FrontendPort { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+        /// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
         /// </summary>
         [Output("gzip")]
         public Output<bool?> Gzip { get; private set; } = null!;
@@ -302,9 +304,6 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         [Output("idleTimeout")]
         public Output<int?> IdleTimeout { get; private set; } = null!;
-
-        [Output("instancePort")]
-        public Output<int?> InstancePort { get; private set; } = null!;
 
         [Output("lbPort")]
         public Output<int?> LbPort { get; private set; } = null!;
@@ -408,7 +407,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<int?> UnhealthyThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
+        /// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
         /// </summary>
         [Output("xForwardedFor")]
         public Output<Outputs.ListenerXForwardedFor> XForwardedFor { get; private set; } = null!;
@@ -544,7 +543,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<int> FrontendPort { get; set; } = null!;
 
         /// <summary>
-        /// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+        /// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
         /// </summary>
         [Input("gzip")]
         public Input<bool>? Gzip { get; set; }
@@ -614,9 +613,6 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         [Input("idleTimeout")]
         public Input<int>? IdleTimeout { get; set; }
-
-        [Input("instancePort")]
-        public Input<int>? InstancePort { get; set; }
 
         [Input("lbPort")]
         public Input<int>? LbPort { get; set; }
@@ -720,7 +716,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<int>? UnhealthyThreshold { get; set; }
 
         /// <summary>
-        /// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
+        /// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
         /// </summary>
         [Input("xForwardedFor")]
         public Input<Inputs.ListenerXForwardedForArgs>? XForwardedFor { get; set; }
@@ -818,7 +814,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<int>? FrontendPort { get; set; }
 
         /// <summary>
-        /// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+        /// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
         /// </summary>
         [Input("gzip")]
         public Input<bool>? Gzip { get; set; }
@@ -888,9 +884,6 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         [Input("idleTimeout")]
         public Input<int>? IdleTimeout { get; set; }
-
-        [Input("instancePort")]
-        public Input<int>? InstancePort { get; set; }
 
         [Input("lbPort")]
         public Input<int>? LbPort { get; set; }
@@ -994,7 +987,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<int>? UnhealthyThreshold { get; set; }
 
         /// <summary>
-        /// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
+        /// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
         /// </summary>
         [Input("xForwardedFor")]
         public Input<Inputs.ListenerXForwardedForGetArgs>? XForwardedFor { get; set; }

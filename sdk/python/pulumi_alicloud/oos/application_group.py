@@ -235,9 +235,9 @@ class ApplicationGroup(pulumi.CustomResource):
         """
         Provides a OOS Application Group resource.
 
-        For information about OOS Application Group and how to use it, see [What is Application Group](https://www.alibabacloud.com/help/en/doc-detail/120556.html).
+        For information about OOS Application Group and how to use it, see [What is Application Group](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/api-oos-2019-06-01-createapplicationgroup).
 
-        > **NOTE:** Available in v1.146.0+.
+        > **NOTE:** Available since v1.146.0.
 
         ## Example Usage
 
@@ -247,19 +247,24 @@ class ApplicationGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
         default_application = alicloud.oos.Application("defaultApplication",
             resource_group_id=default_resource_groups.groups[0].id,
-            application_name="terraform-example",
-            description="terraform-example",
+            application_name=name,
+            description=name,
             tags={
                 "Created": "TF",
             })
+        default_regions = alicloud.get_regions(current=True)
         default_application_group = alicloud.oos.ApplicationGroup("defaultApplicationGroup",
-            application_group_name="terraform-example",
+            application_group_name=name,
             application_name=default_application.id,
-            deploy_region_id="cn-beijing",
-            description="terraform-example",
+            deploy_region_id=default_regions.regions[0].id,
+            description=name,
             import_tag_key="example_key",
             import_tag_value="example_value")
         ```
@@ -291,9 +296,9 @@ class ApplicationGroup(pulumi.CustomResource):
         """
         Provides a OOS Application Group resource.
 
-        For information about OOS Application Group and how to use it, see [What is Application Group](https://www.alibabacloud.com/help/en/doc-detail/120556.html).
+        For information about OOS Application Group and how to use it, see [What is Application Group](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/api-oos-2019-06-01-createapplicationgroup).
 
-        > **NOTE:** Available in v1.146.0+.
+        > **NOTE:** Available since v1.146.0.
 
         ## Example Usage
 
@@ -303,19 +308,24 @@ class ApplicationGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
         default_application = alicloud.oos.Application("defaultApplication",
             resource_group_id=default_resource_groups.groups[0].id,
-            application_name="terraform-example",
-            description="terraform-example",
+            application_name=name,
+            description=name,
             tags={
                 "Created": "TF",
             })
+        default_regions = alicloud.get_regions(current=True)
         default_application_group = alicloud.oos.ApplicationGroup("defaultApplicationGroup",
-            application_group_name="terraform-example",
+            application_group_name=name,
             application_name=default_application.id,
-            deploy_region_id="cn-beijing",
-            description="terraform-example",
+            deploy_region_id=default_regions.regions[0].id,
+            description=name,
             import_tag_key="example_key",
             import_tag_value="example_value")
         ```

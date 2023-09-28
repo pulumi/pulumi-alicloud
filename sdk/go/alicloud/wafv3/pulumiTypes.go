@@ -1072,13 +1072,13 @@ func (o DomainRedirectRequestHeaderArrayOutput) Index(i pulumi.IntInput) DomainR
 type GetDomainsDomain struct {
 	// The name of the domain name to query.
 	Domain string `pulumi:"domain"`
-	// The ID of the domain. The value is formulated as `<instance_id>:<domain>`.
+	// The ID of the domain. It formats as `<instance_id>:<domain>`.
 	Id string `pulumi:"id"`
 	// Configure listening information
 	Listens []GetDomainsDomainListen `pulumi:"listens"`
 	// Configure forwarding information.
 	Redirects []GetDomainsDomainRedirect `pulumi:"redirects"`
-	// The ID of the resource group
+	// The ID of the resource group.
 	ResourceManagerResourceGroupId string `pulumi:"resourceManagerResourceGroupId"`
 	// The status of the domain.
 	Status string `pulumi:"status"`
@@ -1098,13 +1098,13 @@ type GetDomainsDomainInput interface {
 type GetDomainsDomainArgs struct {
 	// The name of the domain name to query.
 	Domain pulumi.StringInput `pulumi:"domain"`
-	// The ID of the domain. The value is formulated as `<instance_id>:<domain>`.
+	// The ID of the domain. It formats as `<instance_id>:<domain>`.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Configure listening information
 	Listens GetDomainsDomainListenArrayInput `pulumi:"listens"`
 	// Configure forwarding information.
 	Redirects GetDomainsDomainRedirectArrayInput `pulumi:"redirects"`
-	// The ID of the resource group
+	// The ID of the resource group.
 	ResourceManagerResourceGroupId pulumi.StringInput `pulumi:"resourceManagerResourceGroupId"`
 	// The status of the domain.
 	Status pulumi.StringInput `pulumi:"status"`
@@ -1184,7 +1184,7 @@ func (o GetDomainsDomainOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.Domain }).(pulumi.StringOutput)
 }
 
-// The ID of the domain. The value is formulated as `<instance_id>:<domain>`.
+// The ID of the domain. It formats as `<instance_id>:<domain>`.
 func (o GetDomainsDomainOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1199,7 +1199,7 @@ func (o GetDomainsDomainOutput) Redirects() GetDomainsDomainRedirectArrayOutput 
 	return o.ApplyT(func(v GetDomainsDomain) []GetDomainsDomainRedirect { return v.Redirects }).(GetDomainsDomainRedirectArrayOutput)
 }
 
-// The ID of the resource group
+// The ID of the resource group.
 func (o GetDomainsDomainOutput) ResourceManagerResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.ResourceManagerResourceGroupId }).(pulumi.StringOutput)
 }

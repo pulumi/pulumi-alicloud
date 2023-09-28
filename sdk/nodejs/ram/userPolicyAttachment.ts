@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a RAM User Policy attachment resource.
  *
- * > **NOTE:** Available since v1.0.0+.
+ * > **NOTE:** Available since v1.0.0.
  *
  * ## Example Usage
  *
@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *     mobile: "86-18688888888",
  *     email: "hello.uuu@aaa.com",
  *     comments: "yoyoyo",
- *     force: true,
  * });
  * const policy = new alicloud.ram.Policy("policy", {
  *     document: `  {
@@ -42,7 +41,6 @@ import * as utilities from "../utilities";
  *   }
  * `,
  *     description: "this is a policy test",
- *     force: true,
  * });
  * const attach = new alicloud.ram.UserPolicyAttachment("attach", {
  *     policyName: policy.name,

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vod
     /// 
     /// For information about VOD Editing Project and how to use it, see [What is Editing Project](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/addeditingproject#doc-api-vod-AddEditingProject).
     /// 
-    /// &gt; **NOTE:** Available in v1.187.0+.
+    /// &gt; **NOTE:** Available since v1.187.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,11 +28,32 @@ namespace Pulumi.AliCloud.Vod
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
     ///     var example = new AliCloud.Vod.EditingProject("example", new()
     ///     {
-    ///         EditingProjectName = "example_value",
-    ///         Timeline = "example_value",
-    ///         Title = "example_value",
+    ///         EditingProjectName = name,
+    ///         Title = name,
+    ///         Timeline = @"  {
+    ///     ""VideoTracks"":[
+    ///       {
+    ///         ""VideoTrackClips"":[
+    ///           {
+    ///           ""MediaId"":""0c60e6f02dae71edbfaa472190a90102"",
+    ///           ""In"":2811
+    ///           }
+    ///         ]
+    ///       }
+    ///     ]
+    ///   }
+    /// ",
+    ///         CoverUrl = "https://demo.aliyundoc.com/6AB4D0E1E1C74468883516C2349D1FC2-6-2.png",
+    ///         Division = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
     ///     });
     /// 
     /// });

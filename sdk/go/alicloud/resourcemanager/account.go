@@ -16,7 +16,7 @@ import (
 // Provides a Resource Manager Account resource. Member accounts are containers for resources in a resource directory. These accounts isolate resources and serve as organizational units in the resource directory. You can create member accounts in a folder and then manage them in a unified manner.
 // For information about Resource Manager Account and how to use it, see [What is Resource Manager Account](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
 //
-// > **NOTE:** Available in v1.83.0+.
+// > **NOTE:** Available since v1.83.0.
 //
 // > **NOTE:** From version 1.188.0, the resource can be destroyed. The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial. see [how to destroy it](https://www.alibabacloud.com/help/en/resource-management/latest/delete-account).
 //
@@ -29,20 +29,30 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			f1, err := resourcemanager.NewFolder(ctx, "f1", &resourcemanager.FolderArgs{
-//				FolderName: pulumi.String("test1"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			displayName := "EAccount"
+//			if param := cfg.Get("displayName"); param != "" {
+//				displayName = param
+//			}
+//			exampleFolder, err := resourcemanager.NewFolder(ctx, "exampleFolder", &resourcemanager.FolderArgs{
+//				FolderName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = resourcemanager.NewAccount(ctx, "example", &resourcemanager.AccountArgs{
-//				DisplayName: pulumi.String("RDAccount"),
-//				FolderId:    f1.ID(),
+//			_, err = resourcemanager.NewAccount(ctx, "exampleAccount", &resourcemanager.AccountArgs{
+//				DisplayName: pulumi.String(displayName),
+//				FolderId:    exampleFolder.ID(),
 //			})
 //			if err != nil {
 //				return err

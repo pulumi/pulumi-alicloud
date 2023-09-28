@@ -15,7 +15,7 @@ import (
 
 // Provides a RAM User Policy attachment resource.
 //
-// > **NOTE:** Available since v1.0.0+.
+// > **NOTE:** Available since v1.0.0.
 //
 // ## Example Usage
 //
@@ -36,7 +36,6 @@ import (
 //				Mobile:      pulumi.String("86-18688888888"),
 //				Email:       pulumi.String("hello.uuu@aaa.com"),
 //				Comments:    pulumi.String("yoyoyo"),
-//				Force:       pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -62,7 +61,6 @@ import (
 // `),
 //
 //				Description: pulumi.String("this is a policy test"),
-//				Force:       pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

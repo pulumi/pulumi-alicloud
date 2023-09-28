@@ -15,14 +15,14 @@ public final class SearchIndexSchemaIndexSortArgs extends com.pulumi.resources.R
     public static final SearchIndexSchemaIndexSortArgs Empty = new SearchIndexSchemaIndexSortArgs();
 
     /**
-     * Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported.
+     * Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `sorter` below.
      * 
      */
     @Import(name="sorters", required=true)
     private Output<List<SearchIndexSchemaIndexSortSorterArgs>> sorters;
 
     /**
-     * @return Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported.
+     * @return Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `sorter` below.
      * 
      */
     public Output<List<SearchIndexSchemaIndexSortSorterArgs>> sorters() {
@@ -54,7 +54,7 @@ public final class SearchIndexSchemaIndexSortArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param sorters Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported.
+         * @param sorters Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `sorter` below.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class SearchIndexSchemaIndexSortArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param sorters Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported.
+         * @param sorters Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `sorter` below.
          * 
          * @return builder
          * 
@@ -75,7 +75,7 @@ public final class SearchIndexSchemaIndexSortArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param sorters Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported.
+         * @param sorters Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `sorter` below.
          * 
          * @return builder
          * 

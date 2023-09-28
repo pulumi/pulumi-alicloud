@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Message Notification Service Queue and how to use it, see [What is Queue](https://www.alibabacloud.com/help/en/message-service/latest/createqueue).
  * 
- * &gt; **NOTE:** Available in v1.188.0+.
+ * &gt; **NOTE:** Available since v1.188.0.
  * 
  * ## Example Usage
  * 
@@ -47,14 +47,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         var queue = new ServiceQueue(&#34;queue&#34;, ServiceQueueArgs.builder()        
+ *             .queueName(name)
  *             .delaySeconds(60478)
- *             .loggingEnabled(true)
  *             .maximumMessageSize(12357)
  *             .messageRetentionPeriod(256000)
- *             .pollingWaitSeconds(3)
- *             .queueName(&#34;tf-example-value&#34;)
  *             .visibilityTimeout(30)
+ *             .pollingWaitSeconds(3)
+ *             .loggingEnabled(true)
  *             .build());
  * 
  *     }

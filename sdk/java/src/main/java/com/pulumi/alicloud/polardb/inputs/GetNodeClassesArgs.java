@@ -15,9 +15,17 @@ public final class GetNodeClassesArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetNodeClassesArgs Empty = new GetNodeClassesArgs();
 
+    /**
+     * The PolarDB node cluster series.
+     * 
+     */
     @Import(name="category")
     private @Nullable Output<String> category;
 
+    /**
+     * @return The PolarDB node cluster series.
+     * 
+     */
     public Optional<Output<String>> category() {
         return Optional.ofNullable(this.category);
     }
@@ -158,11 +166,23 @@ public final class GetNodeClassesArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetNodeClassesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param category The PolarDB node cluster series.
+         * 
+         * @return builder
+         * 
+         */
         public Builder category(@Nullable Output<String> category) {
             $.category = category;
             return this;
         }
 
+        /**
+         * @param category The PolarDB node cluster series.
+         * 
+         * @return builder
+         * 
+         */
         public Builder category(String category) {
             return category(Output.of(category));
         }

@@ -18,14 +18,14 @@ public final class GetGlobalDatabaseNetworksArgs extends com.pulumi.resources.In
     public static final GetGlobalDatabaseNetworksArgs Empty = new GetGlobalDatabaseNetworksArgs();
 
     /**
-     * The ID of the PolarDB cluster.
+     * The ID of the cluster.
      * 
      */
     @Import(name="dbClusterId")
     private @Nullable Output<String> dbClusterId;
 
     /**
-     * @return The ID of the PolarDB cluster.
+     * @return The ID of the cluster.
      * 
      */
     public Optional<Output<String>> dbClusterId() {
@@ -107,14 +107,14 @@ public final class GetGlobalDatabaseNetworksArgs extends com.pulumi.resources.In
     }
 
     /**
-     * The status of the Global Database Network.
+     * The status of the Global Database Network. Valid values:
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the Global Database Network.
+     * @return The status of the Global Database Network. Valid values:
      * 
      */
     public Optional<Output<String>> status() {
@@ -153,7 +153,7 @@ public final class GetGlobalDatabaseNetworksArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param dbClusterId The ID of the PolarDB cluster.
+         * @param dbClusterId The ID of the cluster.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class GetGlobalDatabaseNetworksArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param dbClusterId The ID of the PolarDB cluster.
+         * @param dbClusterId The ID of the cluster.
          * 
          * @return builder
          * 
@@ -286,7 +286,7 @@ public final class GetGlobalDatabaseNetworksArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param status The status of the Global Database Network.
+         * @param status The status of the Global Database Network. Valid values:
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class GetGlobalDatabaseNetworksArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param status The status of the Global Database Network.
+         * @param status The status of the Global Database Network. Valid values:
          * 
          * @return builder
          * 

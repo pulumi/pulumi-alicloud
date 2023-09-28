@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Private Link Vpc Endpoint Service User resource.
  * 
- * For information about Private Link Vpc Endpoint Service User and how to use it, see [What is Vpc Endpoint Service User](https://help.aliyun.com/document_detail/183545.html).
+ * For information about Private Link Vpc Endpoint Service User and how to use it, see [What is Vpc Endpoint Service User](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-addusertovpcendpointservice).
  * 
- * &gt; **NOTE:** Available in v1.110.0+.
+ * &gt; **NOTE:** Available since v1.110.0.
  * 
  * ## Example Usage
  * 
@@ -31,6 +31,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.privatelink.VpcEndpointService;
+ * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
+ * import com.pulumi.alicloud.ram.User;
+ * import com.pulumi.alicloud.ram.UserArgs;
  * import com.pulumi.alicloud.privatelink.VpcEndpointServiceUser;
  * import com.pulumi.alicloud.privatelink.VpcEndpointServiceUserArgs;
  * import java.util.List;
@@ -46,9 +50,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new VpcEndpointServiceUser(&#34;example&#34;, VpcEndpointServiceUserArgs.builder()        
- *             .serviceId(&#34;epsrv-gw81c6xxxxxx&#34;)
- *             .userId(&#34;YourRamUserId&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexampleuser&#34;);
+ *         var exampleVpcEndpointService = new VpcEndpointService(&#34;exampleVpcEndpointService&#34;, VpcEndpointServiceArgs.builder()        
+ *             .serviceDescription(name)
+ *             .connectBandwidth(103)
+ *             .autoAcceptConnection(false)
+ *             .build());
+ * 
+ *         var exampleUser = new User(&#34;exampleUser&#34;, UserArgs.builder()        
+ *             .displayName(&#34;user_display_name&#34;)
+ *             .mobile(&#34;86-18688888888&#34;)
+ *             .email(&#34;hello.uuu@aaa.com&#34;)
+ *             .comments(&#34;yoyoyo&#34;)
+ *             .build());
+ * 
+ *         var exampleVpcEndpointServiceUser = new VpcEndpointServiceUser(&#34;exampleVpcEndpointServiceUser&#34;, VpcEndpointServiceUserArgs.builder()        
+ *             .serviceId(exampleVpcEndpointService.id())
+ *             .userId(exampleUser.id())
  *             .build());
  * 
  *     }

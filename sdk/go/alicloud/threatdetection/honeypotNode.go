@@ -15,9 +15,9 @@ import (
 
 // Provides a Threat Detection Honeypot Node resource.
 //
-// For information about Threat Detection Honeypot Node and how to use it, see [What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotnode).
+// For information about Threat Detection Honeypot Node and how to use it, see [What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode).
 //
-// > **NOTE:** Available in v1.195.0+.
+// > **NOTE:** Available since v1.195.0.
 //
 // ## Example Usage
 //
@@ -30,14 +30,20 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := threatdetection.NewHoneypotNode(ctx, "default", &threatdetection.HoneypotNodeArgs{
+//				NodeName:          pulumi.String(name),
 //				AvailableProbeNum: pulumi.Int(20),
-//				NodeName:          pulumi.String("apispec_test"),
 //				SecurityGroupProbeIpLists: pulumi.StringArray{
 //					pulumi.String("0.0.0.0/0"),
 //				},

@@ -25,13 +25,13 @@ import javax.annotation.Nullable;
 /**
  * Provides a HBase instance resource supports replica set instances only. The HBase provides stable, reliable, and automatic scalable database services.
  * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
- * You can see detail product introduction [here](https://help.aliyun.com/product/49055.html)
+ * You can see detail product introduction [here](https://www.alibabacloud.com/help/en/apsaradb-for-hbase/latest/createcluster)
  * 
- * &gt; **NOTE:**  Available in 1.67.0+
+ * &gt; **NOTE:** Available since v1.67.0.
  * 
  * &gt; **NOTE:**  The following regions don&#39;t support create Classic network HBase instance.
  * [`cn-hangzhou`,`cn-shanghai`,`cn-qingdao`,`cn-beijing`,`cn-shenzhen`,`ap-southeast-1a`,.....]
- * The official website mark  more regions. or you can call [DescribeRegions](https://help.aliyun.com/document_detail/144489.html)
+ * The official website mark  more regions. or you can call [DescribeRegions](https://www.alibabacloud.com/help/en/apsaradb-for-hbase/latest/describeregions)
  * 
  * &gt; **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
  * 
@@ -43,6 +43,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.hbase.HbaseFunctions;
+ * import com.pulumi.alicloud.hbase.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
  * import com.pulumi.alicloud.hbase.Instance;
  * import com.pulumi.alicloud.hbase.InstanceArgs;
  * import java.util.List;
@@ -58,18 +63,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
- *             .coldStorageSize(0)
- *             .coreDiskSize(400)
- *             .coreDiskType(&#34;cloud_efficiency&#34;)
- *             .coreInstanceQuantity(2)
- *             .coreInstanceType(&#34;hbase.sn2.2xlarge&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultZones = HbaseFunctions.getZones();
+ * 
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;^default-NODELETING$&#34;)
+ *             .build());
+ * 
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
  *             .engine(&#34;hbaseue&#34;)
  *             .engineVersion(&#34;2.0&#34;)
  *             .masterInstanceType(&#34;hbase.sn2.2xlarge&#34;)
+ *             .coreInstanceType(&#34;hbase.sn2.2xlarge&#34;)
+ *             .coreInstanceQuantity(2)
+ *             .coreDiskType(&#34;cloud_efficiency&#34;)
+ *             .coreDiskSize(400)
  *             .payType(&#34;PostPaid&#34;)
- *             .vswitchId(&#34;vsw-123456&#34;)
- *             .zoneId(&#34;cn-shenzhen-b&#34;)
+ *             .coldStorageSize(0)
+ *             .deletionProtection(&#34;false&#34;)
  *             .build());
  * 
  *     }
@@ -390,14 +410,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.securityGroups;
     }
     /**
-     * (Available in 1.105.0+) The slb service addresses of the cluster.
+     * The slb service addresses of the cluster. See `slb_conn_addrs` below.
+     * 
+     * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
      * 
      */
     @Export(name="slbConnAddrs", type=List.class, parameters={InstanceSlbConnAddr.class})
     private Output<List<InstanceSlbConnAddr>> slbConnAddrs;
 
     /**
-     * @return (Available in 1.105.0+) The slb service addresses of the cluster.
+     * @return The slb service addresses of the cluster. See `slb_conn_addrs` below.
+     * 
+     * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
      * 
      */
     public Output<List<InstanceSlbConnAddr>> slbConnAddrs() {
@@ -418,14 +442,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+     * The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
      * 
      */
     @Export(name="uiProxyConnAddrs", type=List.class, parameters={InstanceUiProxyConnAddr.class})
     private Output<List<InstanceUiProxyConnAddr>> uiProxyConnAddrs;
 
     /**
-     * @return (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+     * @return The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
      * 
      */
     public Output<List<InstanceUiProxyConnAddr>> uiProxyConnAddrs() {
@@ -434,16 +458,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The id of the VPC.
      * 
-     * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
-     * 
      */
     @Export(name="vpcId", type=String.class, parameters={})
     private Output</* @Nullable */ String> vpcId;
 
     /**
      * @return The id of the VPC.
-     * 
-     * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
      * 
      */
     public Output<Optional<String>> vpcId() {
@@ -464,14 +484,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.vswitchId);
     }
     /**
-     * (Available in 1.105.0+) The zookeeper addresses of the cluster.
+     * The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
      * 
      */
     @Export(name="zkConnAddrs", type=List.class, parameters={InstanceZkConnAddr.class})
     private Output<List<InstanceZkConnAddr>> zkConnAddrs;
 
     /**
-     * @return (Available in 1.105.0+) The zookeeper addresses of the cluster.
+     * @return The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
      * 
      */
     public Output<List<InstanceZkConnAddr>> zkConnAddrs() {

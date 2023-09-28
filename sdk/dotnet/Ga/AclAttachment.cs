@@ -79,8 +79,8 @@ namespace Pulumi.AliCloud.Ga
     /// 
     ///     var defaultAclAttachment = new AliCloud.Ga.AclAttachment("defaultAclAttachment", new()
     ///     {
-    ///         AclId = defaultAcl.Id,
     ///         ListenerId = defaultListener.Id,
+    ///         AclId = defaultAcl.Id,
     ///         AclType = "white",
     ///     });
     /// 
@@ -89,10 +89,10 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// ## Import
     /// 
-    /// Global Accelerator (GA) Acl Attachment can be imported using the id. Format to `&lt;listener_id&gt;:&lt;acl_id&gt;`, e.g.
+    /// Global Accelerator (GA) Acl Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ga/aclAttachment:AclAttachment example your_listener_id:your_acl_id
+    ///  $ pulumi import alicloud:ga/aclAttachment:AclAttachment example &lt;listener_id&gt;:&lt;acl_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ga/aclAttachment:AclAttachment")]
@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string> AclId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the ACL. Valid values: `white`, `black`.
+        /// The type of the ACL. Valid values:
         /// </summary>
         [Output("aclType")]
         public Output<string> AclType { get; private set; } = null!;
@@ -123,7 +123,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string> ListenerId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the Acl Attachment.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -181,7 +181,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string> AclId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the ACL. Valid values: `white`, `black`.
+        /// The type of the ACL. Valid values:
         /// </summary>
         [Input("aclType", required: true)]
         public Input<string> AclType { get; set; } = null!;
@@ -213,7 +213,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? AclId { get; set; }
 
         /// <summary>
-        /// The type of the ACL. Valid values: `white`, `black`.
+        /// The type of the ACL. Valid values:
         /// </summary>
         [Input("aclType")]
         public Input<string>? AclType { get; set; }
@@ -231,7 +231,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? ListenerId { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the Acl Attachment.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

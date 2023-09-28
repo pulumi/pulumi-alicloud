@@ -49,14 +49,14 @@ public final class SearchIndexArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The schema of the search index. If changed, a new index would be created.
+     * The schema of the search index. If changed, a new index would be created. See `schema` below.
      * 
      */
     @Import(name="schemas", required=true)
     private Output<List<SearchIndexSchemaArgs>> schemas;
 
     /**
-     * @return The schema of the search index. If changed, a new index would be created.
+     * @return The schema of the search index. If changed, a new index would be created. See `schema` below.
      * 
      */
     public Output<List<SearchIndexSchemaArgs>> schemas() {
@@ -166,7 +166,7 @@ public final class SearchIndexArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schemas The schema of the search index. If changed, a new index would be created.
+         * @param schemas The schema of the search index. If changed, a new index would be created. See `schema` below.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class SearchIndexArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schemas The schema of the search index. If changed, a new index would be created.
+         * @param schemas The schema of the search index. If changed, a new index would be created. See `schema` below.
          * 
          * @return builder
          * 
@@ -187,7 +187,7 @@ public final class SearchIndexArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schemas The schema of the search index. If changed, a new index would be created.
+         * @param schemas The schema of the search index. If changed, a new index would be created. See `schema` below.
          * 
          * @return builder
          * 

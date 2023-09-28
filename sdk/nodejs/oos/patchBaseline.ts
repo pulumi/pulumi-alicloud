@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a OOS Patch Baseline resource.
  *
- * For information about OOS Patch Baseline and how to use it, see [What is Patch Baseline](https://www.alibabacloud.com/help/en/doc-detail/268700.html).
+ * For information about OOS Patch Baseline and how to use it, see [What is Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/patch-manager-overview).
  *
- * > **NOTE:** Available in v1.146.0+.
+ * > **NOTE:** Available since v1.146.0.
  *
  * ## Example Usage
  *
@@ -19,10 +19,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.oos.PatchBaseline("example", {
- *     approvalRules: "{\"PatchRules\":[{\"PatchFilterGroup\":[{\"Key\":\"PatchSet\",\"Values\":[\"OS\"]},{\"Key\":\"ProductFamily\",\"Values\":[\"Windows\"]},{\"Key\":\"Product\",\"Values\":[\"Windows 10\",\"Windows 7\"]},{\"Key\":\"Classification\",\"Values\":[\"Security Updates\",\"Updates\",\"Update Rollups\",\"Critical Updates\"]},{\"Key\":\"Severity\",\"Values\":[\"Critical\",\"Important\",\"Moderate\"]}],\"ApproveAfterDays\":7,\"EnableNonSecurity\":true,\"ComplianceLevel\":\"Medium\"}]}",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.oos.PatchBaseline("default", {
+ *     patchBaselineName: name,
  *     operationSystem: "Windows",
- *     patchBaselineName: "terraform-example",
+ *     approvalRules: "{\"PatchRules\":[{\"EnableNonSecurity\":true,\"PatchFilterGroup\":[{\"Values\":[\"*\"],\"Key\":\"Product\"},{\"Values\":[\"Security\",\"Bugfix\"],\"Key\":\"Classification\"},{\"Values\":[\"Critical\",\"Important\"],\"Key\":\"Severity\"}],\"ApproveAfterDays\":7,\"ComplianceLevel\":\"Unspecified\"}]}",
  * });
  * ```
  *
@@ -31,7 +33,7 @@ import * as utilities from "../utilities";
  * OOS Patch Baseline can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <patch_baseline_name>
+ *  $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <id>
  * ```
  */
 export class PatchBaseline extends pulumi.CustomResource {
@@ -63,9 +65,13 @@ export class PatchBaseline extends pulumi.CustomResource {
     }
 
     /**
-     * Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
+     * Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
      */
     public readonly approvalRules!: pulumi.Output<string>;
+    /**
+     * Creation time.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Patches baseline description information.
      */
@@ -78,6 +84,14 @@ export class PatchBaseline extends pulumi.CustomResource {
      * The name of the patch baseline.
      */
     public readonly patchBaselineName!: pulumi.Output<string>;
+    /**
+     * Reject patches.
+     */
+    public readonly rejectedPatches!: pulumi.Output<string[] | undefined>;
+    /**
+     * Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
+     */
+    public readonly rejectedPatchesAction!: pulumi.Output<string>;
 
     /**
      * Create a PatchBaseline resource with the given unique name, arguments, and options.
@@ -93,9 +107,12 @@ export class PatchBaseline extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PatchBaselineState | undefined;
             resourceInputs["approvalRules"] = state ? state.approvalRules : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["operationSystem"] = state ? state.operationSystem : undefined;
             resourceInputs["patchBaselineName"] = state ? state.patchBaselineName : undefined;
+            resourceInputs["rejectedPatches"] = state ? state.rejectedPatches : undefined;
+            resourceInputs["rejectedPatchesAction"] = state ? state.rejectedPatchesAction : undefined;
         } else {
             const args = argsOrState as PatchBaselineArgs | undefined;
             if ((!args || args.approvalRules === undefined) && !opts.urn) {
@@ -111,6 +128,9 @@ export class PatchBaseline extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["operationSystem"] = args ? args.operationSystem : undefined;
             resourceInputs["patchBaselineName"] = args ? args.patchBaselineName : undefined;
+            resourceInputs["rejectedPatches"] = args ? args.rejectedPatches : undefined;
+            resourceInputs["rejectedPatchesAction"] = args ? args.rejectedPatchesAction : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PatchBaseline.__pulumiType, name, resourceInputs, opts);
@@ -122,9 +142,13 @@ export class PatchBaseline extends pulumi.CustomResource {
  */
 export interface PatchBaselineState {
     /**
-     * Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
+     * Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
      */
     approvalRules?: pulumi.Input<string>;
+    /**
+     * Creation time.
+     */
+    createTime?: pulumi.Input<string>;
     /**
      * Patches baseline description information.
      */
@@ -137,6 +161,14 @@ export interface PatchBaselineState {
      * The name of the patch baseline.
      */
     patchBaselineName?: pulumi.Input<string>;
+    /**
+     * Reject patches.
+     */
+    rejectedPatches?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
+     */
+    rejectedPatchesAction?: pulumi.Input<string>;
 }
 
 /**
@@ -144,7 +176,7 @@ export interface PatchBaselineState {
  */
 export interface PatchBaselineArgs {
     /**
-     * Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
+     * Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
      */
     approvalRules: pulumi.Input<string>;
     /**
@@ -159,4 +191,12 @@ export interface PatchBaselineArgs {
      * The name of the patch baseline.
      */
     patchBaselineName: pulumi.Input<string>;
+    /**
+     * Reject patches.
+     */
+    rejectedPatches?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
+     */
+    rejectedPatchesAction?: pulumi.Input<string>;
 }

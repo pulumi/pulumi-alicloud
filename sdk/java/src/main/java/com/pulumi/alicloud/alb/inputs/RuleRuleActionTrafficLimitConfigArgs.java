@@ -16,14 +16,14 @@ public final class RuleRuleActionTrafficLimitConfigArgs extends com.pulumi.resou
     public static final RuleRuleActionTrafficLimitConfigArgs Empty = new RuleRuleActionTrafficLimitConfigArgs();
 
     /**
-     * The Number of requests per second. Value range: 1~100000.
+     * The Number of requests per second. Valid values: `1` to `100000`.
      * 
      */
     @Import(name="qps")
     private @Nullable Output<Integer> qps;
 
     /**
-     * @return The Number of requests per second. Value range: 1~100000.
+     * @return The Number of requests per second. Valid values: `1` to `100000`.
      * 
      */
     public Optional<Output<Integer>> qps() {
@@ -55,7 +55,7 @@ public final class RuleRuleActionTrafficLimitConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param qps The Number of requests per second. Value range: 1~100000.
+         * @param qps The Number of requests per second. Valid values: `1` to `100000`.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class RuleRuleActionTrafficLimitConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param qps The Number of requests per second. Value range: 1~100000.
+         * @param qps The Number of requests per second. Valid values: `1` to `100000`.
          * 
          * @return builder
          * 

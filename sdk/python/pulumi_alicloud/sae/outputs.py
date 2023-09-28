@@ -11,12 +11,35 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'ApplicationConfigMapMountDescV2',
+    'ApplicationCustomHostAliasV2',
+    'ApplicationKafkaConfigs',
+    'ApplicationKafkaConfigsKafkaConfig',
+    'ApplicationLivenessV2',
+    'ApplicationLivenessV2Exec',
+    'ApplicationLivenessV2HttpGet',
+    'ApplicationLivenessV2TcpSocket',
+    'ApplicationNasConfig',
+    'ApplicationOssMountDescsV2',
+    'ApplicationPostStartV2',
+    'ApplicationPostStartV2Exec',
+    'ApplicationPreStopV2',
+    'ApplicationPreStopV2Exec',
+    'ApplicationPvtzDiscoverySvc',
+    'ApplicationPvtzDiscoverySvcPortProtocol',
+    'ApplicationReadinessV2',
+    'ApplicationReadinessV2Exec',
+    'ApplicationReadinessV2HttpGet',
+    'ApplicationReadinessV2TcpSocket',
     'ApplicationScalingRuleScalingRuleMetric',
     'ApplicationScalingRuleScalingRuleMetricMetric',
     'ApplicationScalingRuleScalingRuleMetricScaleDownRules',
     'ApplicationScalingRuleScalingRuleMetricScaleUpRules',
     'ApplicationScalingRuleScalingRuleTimer',
     'ApplicationScalingRuleScalingRuleTimerSchedule',
+    'ApplicationTomcatConfigV2',
+    'ApplicationUpdateStrategyV2',
+    'ApplicationUpdateStrategyV2BatchUpdate',
     'GreyTagRouteDubboRule',
     'GreyTagRouteDubboRuleItem',
     'GreyTagRouteScRule',
@@ -48,6 +71,1091 @@ __all__ = [
     'GetInstanceSpecificationsSpecificationResult',
     'GetNamespacesNamespaceResult',
 ]
+
+@pulumi.output_type
+class ApplicationConfigMapMountDescV2(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configMapId":
+            suggest = "config_map_id"
+        elif key == "mountPath":
+            suggest = "mount_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationConfigMapMountDescV2. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationConfigMapMountDescV2.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationConfigMapMountDescV2.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 config_map_id: Optional[str] = None,
+                 key: Optional[str] = None,
+                 mount_path: Optional[str] = None):
+        """
+        :param str config_map_id: The ID of the ConfigMap.
+        :param str key: The key.
+        :param str mount_path: The path of the container in SAE.
+        """
+        if config_map_id is not None:
+            pulumi.set(__self__, "config_map_id", config_map_id)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if mount_path is not None:
+            pulumi.set(__self__, "mount_path", mount_path)
+
+    @property
+    @pulumi.getter(name="configMapId")
+    def config_map_id(self) -> Optional[str]:
+        """
+        The ID of the ConfigMap.
+        """
+        return pulumi.get(self, "config_map_id")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The key.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> Optional[str]:
+        """
+        The path of the container in SAE.
+        """
+        return pulumi.get(self, "mount_path")
+
+
+@pulumi.output_type
+class ApplicationCustomHostAliasV2(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostName":
+            suggest = "host_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationCustomHostAliasV2. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationCustomHostAliasV2.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationCustomHostAliasV2.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host_name: Optional[str] = None,
+                 ip: Optional[str] = None):
+        """
+        :param str host_name: The domain name or hostname.
+        :param str ip: The IP address.
+        """
+        if host_name is not None:
+            pulumi.set(__self__, "host_name", host_name)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+
+    @property
+    @pulumi.getter(name="hostName")
+    def host_name(self) -> Optional[str]:
+        """
+        The domain name or hostname.
+        """
+        return pulumi.get(self, "host_name")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[str]:
+        """
+        The IP address.
+        """
+        return pulumi.get(self, "ip")
+
+
+@pulumi.output_type
+class ApplicationKafkaConfigs(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaConfigs":
+            suggest = "kafka_configs"
+        elif key == "kafkaEndpoint":
+            suggest = "kafka_endpoint"
+        elif key == "kafkaInstanceId":
+            suggest = "kafka_instance_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationKafkaConfigs. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationKafkaConfigs.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationKafkaConfigs.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kafka_configs: Optional[Sequence['outputs.ApplicationKafkaConfigsKafkaConfig']] = None,
+                 kafka_endpoint: Optional[str] = None,
+                 kafka_instance_id: Optional[str] = None):
+        """
+        :param Sequence['ApplicationKafkaConfigsKafkaConfigArgs'] kafka_configs: One or more logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
+        :param str kafka_endpoint: The endpoint of the ApsaraMQ for Kafka API.
+        :param str kafka_instance_id: The  ID of the ApsaraMQ for Kafka instance.
+        """
+        if kafka_configs is not None:
+            pulumi.set(__self__, "kafka_configs", kafka_configs)
+        if kafka_endpoint is not None:
+            pulumi.set(__self__, "kafka_endpoint", kafka_endpoint)
+        if kafka_instance_id is not None:
+            pulumi.set(__self__, "kafka_instance_id", kafka_instance_id)
+
+    @property
+    @pulumi.getter(name="kafkaConfigs")
+    def kafka_configs(self) -> Optional[Sequence['outputs.ApplicationKafkaConfigsKafkaConfig']]:
+        """
+        One or more logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
+        """
+        return pulumi.get(self, "kafka_configs")
+
+    @property
+    @pulumi.getter(name="kafkaEndpoint")
+    def kafka_endpoint(self) -> Optional[str]:
+        """
+        The endpoint of the ApsaraMQ for Kafka API.
+        """
+        return pulumi.get(self, "kafka_endpoint")
+
+    @property
+    @pulumi.getter(name="kafkaInstanceId")
+    def kafka_instance_id(self) -> Optional[str]:
+        """
+        The  ID of the ApsaraMQ for Kafka instance.
+        """
+        return pulumi.get(self, "kafka_instance_id")
+
+
+@pulumi.output_type
+class ApplicationKafkaConfigsKafkaConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaTopic":
+            suggest = "kafka_topic"
+        elif key == "logDir":
+            suggest = "log_dir"
+        elif key == "logType":
+            suggest = "log_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationKafkaConfigsKafkaConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationKafkaConfigsKafkaConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationKafkaConfigsKafkaConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kafka_topic: Optional[str] = None,
+                 log_dir: Optional[str] = None,
+                 log_type: Optional[str] = None):
+        """
+        :param str kafka_topic: The topic of the Kafka.
+        :param str log_dir: The path in which logs are stored.
+        :param str log_type: The type of the log.
+        """
+        if kafka_topic is not None:
+            pulumi.set(__self__, "kafka_topic", kafka_topic)
+        if log_dir is not None:
+            pulumi.set(__self__, "log_dir", log_dir)
+        if log_type is not None:
+            pulumi.set(__self__, "log_type", log_type)
+
+    @property
+    @pulumi.getter(name="kafkaTopic")
+    def kafka_topic(self) -> Optional[str]:
+        """
+        The topic of the Kafka.
+        """
+        return pulumi.get(self, "kafka_topic")
+
+    @property
+    @pulumi.getter(name="logDir")
+    def log_dir(self) -> Optional[str]:
+        """
+        The path in which logs are stored.
+        """
+        return pulumi.get(self, "log_dir")
+
+    @property
+    @pulumi.getter(name="logType")
+    def log_type(self) -> Optional[str]:
+        """
+        The type of the log.
+        """
+        return pulumi.get(self, "log_type")
+
+
+@pulumi.output_type
+class ApplicationLivenessV2(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exec":
+            suggest = "exec_"
+        elif key == "httpGet":
+            suggest = "http_get"
+        elif key == "initialDelaySeconds":
+            suggest = "initial_delay_seconds"
+        elif key == "periodSeconds":
+            suggest = "period_seconds"
+        elif key == "tcpSocket":
+            suggest = "tcp_socket"
+        elif key == "timeoutSeconds":
+            suggest = "timeout_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationLivenessV2. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationLivenessV2.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationLivenessV2.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 exec_: Optional['outputs.ApplicationLivenessV2Exec'] = None,
+                 http_get: Optional['outputs.ApplicationLivenessV2HttpGet'] = None,
+                 initial_delay_seconds: Optional[int] = None,
+                 period_seconds: Optional[int] = None,
+                 tcp_socket: Optional['outputs.ApplicationLivenessV2TcpSocket'] = None,
+                 timeout_seconds: Optional[int] = None):
+        """
+        :param 'ApplicationLivenessV2ExecArgs' exec_: Execute. See `exec` below.
+        :param 'ApplicationLivenessV2HttpGetArgs' http_get: The liveness check settings of the container. See `http_get` below.
+        :param int initial_delay_seconds: The delay of the health check.
+        :param int period_seconds: The interval at which the health check is performed.
+        :param 'ApplicationLivenessV2TcpSocketArgs' tcp_socket: The liveness check settings of the container. See `tcp_socket` below.
+        :param int timeout_seconds: The timeout period of the health check.
+        """
+        if exec_ is not None:
+            pulumi.set(__self__, "exec_", exec_)
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if tcp_socket is not None:
+            pulumi.set(__self__, "tcp_socket", tcp_socket)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="exec")
+    def exec_(self) -> Optional['outputs.ApplicationLivenessV2Exec']:
+        """
+        Execute. See `exec` below.
+        """
+        return pulumi.get(self, "exec_")
+
+    @property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> Optional['outputs.ApplicationLivenessV2HttpGet']:
+        """
+        The liveness check settings of the container. See `http_get` below.
+        """
+        return pulumi.get(self, "http_get")
+
+    @property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[int]:
+        """
+        The delay of the health check.
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[int]:
+        """
+        The interval at which the health check is performed.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @property
+    @pulumi.getter(name="tcpSocket")
+    def tcp_socket(self) -> Optional['outputs.ApplicationLivenessV2TcpSocket']:
+        """
+        The liveness check settings of the container. See `tcp_socket` below.
+        """
+        return pulumi.get(self, "tcp_socket")
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[int]:
+        """
+        The timeout period of the health check.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+
+@pulumi.output_type
+class ApplicationLivenessV2Exec(dict):
+    def __init__(__self__, *,
+                 commands: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] commands: Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+        """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[str]]:
+        """
+        Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+        """
+        return pulumi.get(self, "commands")
+
+
+@pulumi.output_type
+class ApplicationLivenessV2HttpGet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isContainKeyWord":
+            suggest = "is_contain_key_word"
+        elif key == "keyWord":
+            suggest = "key_word"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationLivenessV2HttpGet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationLivenessV2HttpGet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationLivenessV2HttpGet.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_contain_key_word: Optional[bool] = None,
+                 key_word: Optional[str] = None,
+                 path: Optional[str] = None,
+                 port: Optional[int] = None,
+                 scheme: Optional[str] = None):
+        """
+        :param bool is_contain_key_word: Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
+        :param str key_word: The custom keywords.
+        :param str path: The request path.
+        :param int port: The port that is used to check the status of TCP connections.
+        :param str scheme: The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
+        """
+        if is_contain_key_word is not None:
+            pulumi.set(__self__, "is_contain_key_word", is_contain_key_word)
+        if key_word is not None:
+            pulumi.set(__self__, "key_word", key_word)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+
+    @property
+    @pulumi.getter(name="isContainKeyWord")
+    def is_contain_key_word(self) -> Optional[bool]:
+        """
+        Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
+        """
+        return pulumi.get(self, "is_contain_key_word")
+
+    @property
+    @pulumi.getter(name="keyWord")
+    def key_word(self) -> Optional[str]:
+        """
+        The custom keywords.
+        """
+        return pulumi.get(self, "key_word")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        The request path.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port that is used to check the status of TCP connections.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> Optional[str]:
+        """
+        The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
+        """
+        return pulumi.get(self, "scheme")
+
+
+@pulumi.output_type
+class ApplicationLivenessV2TcpSocket(dict):
+    def __init__(__self__, *,
+                 port: Optional[int] = None):
+        """
+        :param int port: The port that is used to check the status of TCP connections.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port that is used to check the status of TCP connections.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class ApplicationNasConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mountDomain":
+            suggest = "mount_domain"
+        elif key == "mountPath":
+            suggest = "mount_path"
+        elif key == "nasId":
+            suggest = "nas_id"
+        elif key == "nasPath":
+            suggest = "nas_path"
+        elif key == "readOnly":
+            suggest = "read_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationNasConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationNasConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationNasConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mount_domain: Optional[str] = None,
+                 mount_path: Optional[str] = None,
+                 nas_id: Optional[str] = None,
+                 nas_path: Optional[str] = None,
+                 read_only: Optional[bool] = None):
+        """
+        :param str mount_domain: The domain name of the mount target.
+        :param str mount_path: The mount path of the container.
+        :param str nas_id: The ID of the NAS file system.
+        :param str nas_path: The directory in the NAS file system.
+        :param bool read_only: Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `read_only` to `false`, the application has the read and write permissions.
+        """
+        if mount_domain is not None:
+            pulumi.set(__self__, "mount_domain", mount_domain)
+        if mount_path is not None:
+            pulumi.set(__self__, "mount_path", mount_path)
+        if nas_id is not None:
+            pulumi.set(__self__, "nas_id", nas_id)
+        if nas_path is not None:
+            pulumi.set(__self__, "nas_path", nas_path)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter(name="mountDomain")
+    def mount_domain(self) -> Optional[str]:
+        """
+        The domain name of the mount target.
+        """
+        return pulumi.get(self, "mount_domain")
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> Optional[str]:
+        """
+        The mount path of the container.
+        """
+        return pulumi.get(self, "mount_path")
+
+    @property
+    @pulumi.getter(name="nasId")
+    def nas_id(self) -> Optional[str]:
+        """
+        The ID of the NAS file system.
+        """
+        return pulumi.get(self, "nas_id")
+
+    @property
+    @pulumi.getter(name="nasPath")
+    def nas_path(self) -> Optional[str]:
+        """
+        The directory in the NAS file system.
+        """
+        return pulumi.get(self, "nas_path")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[bool]:
+        """
+        Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `read_only` to `false`, the application has the read and write permissions.
+        """
+        return pulumi.get(self, "read_only")
+
+
+@pulumi.output_type
+class ApplicationOssMountDescsV2(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketName":
+            suggest = "bucket_name"
+        elif key == "bucketPath":
+            suggest = "bucket_path"
+        elif key == "mountPath":
+            suggest = "mount_path"
+        elif key == "readOnly":
+            suggest = "read_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationOssMountDescsV2. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationOssMountDescsV2.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationOssMountDescsV2.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bucket_name: Optional[str] = None,
+                 bucket_path: Optional[str] = None,
+                 mount_path: Optional[str] = None,
+                 read_only: Optional[bool] = None):
+        """
+        :param str bucket_name: The name of the OSS bucket.
+        :param str bucket_path: The directory or object in OSS.
+        :param str mount_path: The path of the container in SAE.
+        :param bool read_only: Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
+        """
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if bucket_path is not None:
+            pulumi.set(__self__, "bucket_path", bucket_path)
+        if mount_path is not None:
+            pulumi.set(__self__, "mount_path", mount_path)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[str]:
+        """
+        The name of the OSS bucket.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @property
+    @pulumi.getter(name="bucketPath")
+    def bucket_path(self) -> Optional[str]:
+        """
+        The directory or object in OSS.
+        """
+        return pulumi.get(self, "bucket_path")
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> Optional[str]:
+        """
+        The path of the container in SAE.
+        """
+        return pulumi.get(self, "mount_path")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[bool]:
+        """
+        Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
+        """
+        return pulumi.get(self, "read_only")
+
+
+@pulumi.output_type
+class ApplicationPostStartV2(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exec":
+            suggest = "exec_"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationPostStartV2. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationPostStartV2.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationPostStartV2.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 exec_: Optional['outputs.ApplicationPostStartV2Exec'] = None):
+        """
+        :param 'ApplicationPostStartV2ExecArgs' exec_: Execute. See `exec` below.
+        """
+        if exec_ is not None:
+            pulumi.set(__self__, "exec_", exec_)
+
+    @property
+    @pulumi.getter(name="exec")
+    def exec_(self) -> Optional['outputs.ApplicationPostStartV2Exec']:
+        """
+        Execute. See `exec` below.
+        """
+        return pulumi.get(self, "exec_")
+
+
+@pulumi.output_type
+class ApplicationPostStartV2Exec(dict):
+    def __init__(__self__, *,
+                 commands: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] commands: Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+        """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[str]]:
+        """
+        Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+        """
+        return pulumi.get(self, "commands")
+
+
+@pulumi.output_type
+class ApplicationPreStopV2(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exec":
+            suggest = "exec_"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationPreStopV2. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationPreStopV2.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationPreStopV2.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 exec_: Optional['outputs.ApplicationPreStopV2Exec'] = None):
+        """
+        :param 'ApplicationPreStopV2ExecArgs' exec_: Execute. See `exec` below.
+        """
+        if exec_ is not None:
+            pulumi.set(__self__, "exec_", exec_)
+
+    @property
+    @pulumi.getter(name="exec")
+    def exec_(self) -> Optional['outputs.ApplicationPreStopV2Exec']:
+        """
+        Execute. See `exec` below.
+        """
+        return pulumi.get(self, "exec_")
+
+
+@pulumi.output_type
+class ApplicationPreStopV2Exec(dict):
+    def __init__(__self__, *,
+                 commands: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] commands: Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+        """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[str]]:
+        """
+        Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+        """
+        return pulumi.get(self, "commands")
+
+
+@pulumi.output_type
+class ApplicationPvtzDiscoverySvc(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "namespaceId":
+            suggest = "namespace_id"
+        elif key == "portProtocols":
+            suggest = "port_protocols"
+        elif key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationPvtzDiscoverySvc. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationPvtzDiscoverySvc.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationPvtzDiscoverySvc.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable: Optional[bool] = None,
+                 namespace_id: Optional[str] = None,
+                 port_protocols: Optional[Sequence['outputs.ApplicationPvtzDiscoverySvcPortProtocol']] = None,
+                 service_name: Optional[str] = None):
+        """
+        :param bool enable: Enables the Kubernetes Service-based registration and discovery feature.
+        :param str namespace_id: The ID of the namespace.
+        :param Sequence['ApplicationPvtzDiscoverySvcPortProtocolArgs'] port_protocols: The port number and protocol. See `port_protocols` below.
+        :param str service_name: The name of the Service.
+        """
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if namespace_id is not None:
+            pulumi.set(__self__, "namespace_id", namespace_id)
+        if port_protocols is not None:
+            pulumi.set(__self__, "port_protocols", port_protocols)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[bool]:
+        """
+        Enables the Kubernetes Service-based registration and discovery feature.
+        """
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> Optional[str]:
+        """
+        The ID of the namespace.
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @property
+    @pulumi.getter(name="portProtocols")
+    def port_protocols(self) -> Optional[Sequence['outputs.ApplicationPvtzDiscoverySvcPortProtocol']]:
+        """
+        The port number and protocol. See `port_protocols` below.
+        """
+        return pulumi.get(self, "port_protocols")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[str]:
+        """
+        The name of the Service.
+        """
+        return pulumi.get(self, "service_name")
+
+
+@pulumi.output_type
+class ApplicationPvtzDiscoverySvcPortProtocol(dict):
+    def __init__(__self__, *,
+                 port: Optional[int] = None,
+                 protocol: Optional[str] = None):
+        """
+        :param int port: The port that is used to check the status of TCP connections.
+        :param str protocol: The protocol. Valid values: `TCP` and `UDP`.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port that is used to check the status of TCP connections.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[str]:
+        """
+        The protocol. Valid values: `TCP` and `UDP`.
+        """
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class ApplicationReadinessV2(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exec":
+            suggest = "exec_"
+        elif key == "httpGet":
+            suggest = "http_get"
+        elif key == "initialDelaySeconds":
+            suggest = "initial_delay_seconds"
+        elif key == "periodSeconds":
+            suggest = "period_seconds"
+        elif key == "tcpSocket":
+            suggest = "tcp_socket"
+        elif key == "timeoutSeconds":
+            suggest = "timeout_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationReadinessV2. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationReadinessV2.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationReadinessV2.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 exec_: Optional['outputs.ApplicationReadinessV2Exec'] = None,
+                 http_get: Optional['outputs.ApplicationReadinessV2HttpGet'] = None,
+                 initial_delay_seconds: Optional[int] = None,
+                 period_seconds: Optional[int] = None,
+                 tcp_socket: Optional['outputs.ApplicationReadinessV2TcpSocket'] = None,
+                 timeout_seconds: Optional[int] = None):
+        """
+        :param 'ApplicationReadinessV2ExecArgs' exec_: Execute. See `exec` below.
+        :param 'ApplicationReadinessV2HttpGetArgs' http_get: The liveness check settings of the container. See `http_get` below.
+        :param int initial_delay_seconds: The delay of the health check.
+        :param int period_seconds: The interval at which the health check is performed.
+        :param 'ApplicationReadinessV2TcpSocketArgs' tcp_socket: The liveness check settings of the container. See `tcp_socket` below.
+        :param int timeout_seconds: The timeout period of the health check.
+        """
+        if exec_ is not None:
+            pulumi.set(__self__, "exec_", exec_)
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if tcp_socket is not None:
+            pulumi.set(__self__, "tcp_socket", tcp_socket)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="exec")
+    def exec_(self) -> Optional['outputs.ApplicationReadinessV2Exec']:
+        """
+        Execute. See `exec` below.
+        """
+        return pulumi.get(self, "exec_")
+
+    @property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> Optional['outputs.ApplicationReadinessV2HttpGet']:
+        """
+        The liveness check settings of the container. See `http_get` below.
+        """
+        return pulumi.get(self, "http_get")
+
+    @property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[int]:
+        """
+        The delay of the health check.
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[int]:
+        """
+        The interval at which the health check is performed.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @property
+    @pulumi.getter(name="tcpSocket")
+    def tcp_socket(self) -> Optional['outputs.ApplicationReadinessV2TcpSocket']:
+        """
+        The liveness check settings of the container. See `tcp_socket` below.
+        """
+        return pulumi.get(self, "tcp_socket")
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[int]:
+        """
+        The timeout period of the health check.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+
+@pulumi.output_type
+class ApplicationReadinessV2Exec(dict):
+    def __init__(__self__, *,
+                 commands: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] commands: Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+        """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[str]]:
+        """
+        Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+        """
+        return pulumi.get(self, "commands")
+
+
+@pulumi.output_type
+class ApplicationReadinessV2HttpGet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isContainKeyWord":
+            suggest = "is_contain_key_word"
+        elif key == "keyWord":
+            suggest = "key_word"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationReadinessV2HttpGet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationReadinessV2HttpGet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationReadinessV2HttpGet.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_contain_key_word: Optional[bool] = None,
+                 key_word: Optional[str] = None,
+                 path: Optional[str] = None,
+                 port: Optional[int] = None,
+                 scheme: Optional[str] = None):
+        """
+        :param bool is_contain_key_word: Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
+        :param str key_word: The custom keywords.
+        :param str path: The request path.
+        :param int port: The port that is used to check the status of TCP connections.
+        :param str scheme: The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
+        """
+        if is_contain_key_word is not None:
+            pulumi.set(__self__, "is_contain_key_word", is_contain_key_word)
+        if key_word is not None:
+            pulumi.set(__self__, "key_word", key_word)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+
+    @property
+    @pulumi.getter(name="isContainKeyWord")
+    def is_contain_key_word(self) -> Optional[bool]:
+        """
+        Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
+        """
+        return pulumi.get(self, "is_contain_key_word")
+
+    @property
+    @pulumi.getter(name="keyWord")
+    def key_word(self) -> Optional[str]:
+        """
+        The custom keywords.
+        """
+        return pulumi.get(self, "key_word")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        The request path.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port that is used to check the status of TCP connections.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> Optional[str]:
+        """
+        The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
+        """
+        return pulumi.get(self, "scheme")
+
+
+@pulumi.output_type
+class ApplicationReadinessV2TcpSocket(dict):
+    def __init__(__self__, *,
+                 port: Optional[int] = None):
+        """
+        :param int port: The port that is used to check the status of TCP connections.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port that is used to check the status of TCP connections.
+        """
+        return pulumi.get(self, "port")
+
 
 @pulumi.output_type
 class ApplicationScalingRuleScalingRuleMetric(dict):
@@ -536,6 +1644,206 @@ class ApplicationScalingRuleScalingRuleTimerSchedule(dict):
 
 
 @pulumi.output_type
+class ApplicationTomcatConfigV2(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contextPath":
+            suggest = "context_path"
+        elif key == "maxThreads":
+            suggest = "max_threads"
+        elif key == "uriEncoding":
+            suggest = "uri_encoding"
+        elif key == "useBodyEncodingForUri":
+            suggest = "use_body_encoding_for_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationTomcatConfigV2. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationTomcatConfigV2.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationTomcatConfigV2.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 context_path: Optional[str] = None,
+                 max_threads: Optional[int] = None,
+                 port: Optional[int] = None,
+                 uri_encoding: Optional[str] = None,
+                 use_body_encoding_for_uri: Optional[str] = None):
+        """
+        :param str context_path: The path.
+        :param int max_threads: The maximum number of connections in the connection pool.
+        :param int port: The port that is used to check the status of TCP connections.
+        :param str uri_encoding: The URI encoding scheme in the Tomcat container.
+        :param str use_body_encoding_for_uri: Specifies whether to use the encoding scheme that is specified by BodyEncoding for URL.
+        """
+        if context_path is not None:
+            pulumi.set(__self__, "context_path", context_path)
+        if max_threads is not None:
+            pulumi.set(__self__, "max_threads", max_threads)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if uri_encoding is not None:
+            pulumi.set(__self__, "uri_encoding", uri_encoding)
+        if use_body_encoding_for_uri is not None:
+            pulumi.set(__self__, "use_body_encoding_for_uri", use_body_encoding_for_uri)
+
+    @property
+    @pulumi.getter(name="contextPath")
+    def context_path(self) -> Optional[str]:
+        """
+        The path.
+        """
+        return pulumi.get(self, "context_path")
+
+    @property
+    @pulumi.getter(name="maxThreads")
+    def max_threads(self) -> Optional[int]:
+        """
+        The maximum number of connections in the connection pool.
+        """
+        return pulumi.get(self, "max_threads")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port that is used to check the status of TCP connections.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="uriEncoding")
+    def uri_encoding(self) -> Optional[str]:
+        """
+        The URI encoding scheme in the Tomcat container.
+        """
+        return pulumi.get(self, "uri_encoding")
+
+    @property
+    @pulumi.getter(name="useBodyEncodingForUri")
+    def use_body_encoding_for_uri(self) -> Optional[str]:
+        """
+        Specifies whether to use the encoding scheme that is specified by BodyEncoding for URL.
+        """
+        return pulumi.get(self, "use_body_encoding_for_uri")
+
+
+@pulumi.output_type
+class ApplicationUpdateStrategyV2(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "batchUpdate":
+            suggest = "batch_update"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationUpdateStrategyV2. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationUpdateStrategyV2.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationUpdateStrategyV2.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 batch_update: Optional['outputs.ApplicationUpdateStrategyV2BatchUpdate'] = None,
+                 type: Optional[str] = None):
+        """
+        :param 'ApplicationUpdateStrategyV2BatchUpdateArgs' batch_update: The phased release policy. See `batch_update` below.
+        :param str type: The type of the release policy. Valid values: `GrayBatchUpdate` and `BatchUpdate`.
+        """
+        if batch_update is not None:
+            pulumi.set(__self__, "batch_update", batch_update)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="batchUpdate")
+    def batch_update(self) -> Optional['outputs.ApplicationUpdateStrategyV2BatchUpdate']:
+        """
+        The phased release policy. See `batch_update` below.
+        """
+        return pulumi.get(self, "batch_update")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of the release policy. Valid values: `GrayBatchUpdate` and `BatchUpdate`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ApplicationUpdateStrategyV2BatchUpdate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "batchWaitTime":
+            suggest = "batch_wait_time"
+        elif key == "releaseType":
+            suggest = "release_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationUpdateStrategyV2BatchUpdate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationUpdateStrategyV2BatchUpdate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationUpdateStrategyV2BatchUpdate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 batch: Optional[int] = None,
+                 batch_wait_time: Optional[int] = None,
+                 release_type: Optional[str] = None):
+        """
+        :param int batch: The number of batches in which you want to release the instances.
+        :param int batch_wait_time: The batch wait time.
+        :param str release_type: The processing method for the batches. Valid values: `auto` and `manual`.
+        """
+        if batch is not None:
+            pulumi.set(__self__, "batch", batch)
+        if batch_wait_time is not None:
+            pulumi.set(__self__, "batch_wait_time", batch_wait_time)
+        if release_type is not None:
+            pulumi.set(__self__, "release_type", release_type)
+
+    @property
+    @pulumi.getter
+    def batch(self) -> Optional[int]:
+        """
+        The number of batches in which you want to release the instances.
+        """
+        return pulumi.get(self, "batch")
+
+    @property
+    @pulumi.getter(name="batchWaitTime")
+    def batch_wait_time(self) -> Optional[int]:
+        """
+        The batch wait time.
+        """
+        return pulumi.get(self, "batch_wait_time")
+
+    @property
+    @pulumi.getter(name="releaseType")
+    def release_type(self) -> Optional[str]:
+        """
+        The processing method for the batches. Valid values: `auto` and `manual`.
+        """
+        return pulumi.get(self, "release_type")
+
+
+@pulumi.output_type
 class GreyTagRouteDubboRule(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -708,7 +2016,7 @@ class GreyTagRouteScRule(dict):
                  path: Optional[str] = None):
         """
         :param str condition: The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
-        :param Sequence['GreyTagRouteScRuleItemArgs'] items: A list of conditions items.See `items` below.
+        :param Sequence['GreyTagRouteScRuleItemArgs'] items: A list of conditions items. See `items` below.
         :param str path: The path corresponding to the grayscale rule.
         """
         if condition is not None:
@@ -730,7 +2038,7 @@ class GreyTagRouteScRule(dict):
     @pulumi.getter
     def items(self) -> Optional[Sequence['outputs.GreyTagRouteScRuleItem']]:
         """
-        A list of conditions items.See `items` below.
+        A list of conditions items. See `items` below.
         """
         return pulumi.get(self, "items")
 

@@ -24,23 +24,16 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			zonesDs, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableDiskCategory: pulumi.StringRef("cloud_ssd"),
 //				AvailableInstanceType: pulumi.StringRef("ecs.n4.large"),
 //			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ecs.NewInstance(ctx, "instance", &ecs.InstanceArgs{
-//				AvailabilityZone: *pulumi.String(zonesDs.Zones[0].Id),
-//			})
 //			if err != nil {
 //				return err
 //			}

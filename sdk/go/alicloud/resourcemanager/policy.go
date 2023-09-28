@@ -16,7 +16,7 @@ import (
 // Provides a Resource Manager Policy resource.\
 // For information about Resource Manager Policy and how to use it, see [What is Resource Manager Policy](https://www.alibabacloud.com/help/en/doc-detail/93732.htm).
 //
-// > **NOTE:** Available in v1.83.0+.
+// > **NOTE:** Available since v1.83.0.
 //
 // ## Example Usage
 //
@@ -29,12 +29,19 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tfexample"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := resourcemanager.NewPolicy(ctx, "example", &resourcemanager.PolicyArgs{
+//				PolicyName: pulumi.String(name),
 //				PolicyDocument: pulumi.String(`		{
 //				"Statement": [{
 //					"Action": ["oss:*"],
@@ -46,7 +53,6 @@ import (
 //
 // `),
 //
-//				PolicyName: pulumi.String("abc12345"),
 //			})
 //			if err != nil {
 //				return err

@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.PrivateLink
     /// <summary>
     /// Provides a Private Link Vpc Endpoint Service resource.
     /// 
-    /// For information about Private Link Vpc Endpoint Service and how to use it, see [What is Vpc Endpoint Service](https://help.aliyun.com/document_detail/183540.html).
+    /// For information about Private Link Vpc Endpoint Service and how to use it, see [What is Vpc Endpoint Service](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-createvpcendpointservice).
     /// 
-    /// &gt; **NOTE:** Available in v1.109.0+.
+    /// &gt; **NOTE:** Available since v1.109.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,11 +28,13 @@ namespace Pulumi.AliCloud.PrivateLink
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
     ///     var example = new AliCloud.PrivateLink.VpcEndpointService("example", new()
     ///     {
-    ///         AutoAcceptConnection = false,
+    ///         ServiceDescription = name,
     ///         ConnectBandwidth = 103,
-    ///         ServiceDescription = "tftest",
+    ///         AutoAcceptConnection = false,
     ///     });
     /// 
     /// });

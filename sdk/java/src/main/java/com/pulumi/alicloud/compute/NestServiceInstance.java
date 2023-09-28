@@ -22,9 +22,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Compute Nest Service Instance resource.
  * 
- * For information about Compute Nest Service Instance and how to use it, see [What is Service Instance](https://help.aliyun.com/document_detail/396194.html).
+ * For information about Compute Nest Service Instance and how to use it, see [What is Service Instance](https://www.alibabacloud.com/help/en/compute-nest/developer-reference/api-computenest-2021-06-01-createserviceinstance).
  * 
- * &gt; **NOTE:** Available in v1.205.0+.
+ * &gt; **NOTE:** Available since v1.205.0.
  * 
  * ## Example Usage
  * 
@@ -42,9 +42,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
  * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ecs.Instance;
@@ -65,6 +66,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
  *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
@@ -79,21 +82,23 @@ import javax.annotation.Nullable;
  * 
  *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
  *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
- *             .mostRecent(true)
  *             .owners(&#34;system&#34;)
  *             .build());
  * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;your_name_regex&#34;)
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.0.0.0/8&#34;)
  *             .build());
  * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.1.0.0/16&#34;)
+ *             .vpcId(defaultNetwork.id())
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
@@ -105,19 +110,29 @@ import javax.annotation.Nullable;
  *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .instanceChargeType(&#34;PostPaid&#34;)
  *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
- *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .vswitchId(defaultSwitch.id())
  *             .build());
  * 
  *         var defaultNestServiceInstance = new NestServiceInstance(&#34;defaultNestServiceInstance&#34;, NestServiceInstanceArgs.builder()        
  *             .serviceId(&#34;service-dd475e6e468348799f0f&#34;)
  *             .serviceVersion(&#34;1&#34;)
- *             .serviceInstanceName(var_.name())
+ *             .serviceInstanceName(name)
  *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
  *             .paymentType(&#34;Permanent&#34;)
  *             .operationMetadata(NestServiceInstanceOperationMetadataArgs.builder()
  *                 .operationStartTime(&#34;1681281179000&#34;)
  *                 .operationEndTime(&#34;1681367579000&#34;)
- *                 .resources(defaultInstance.id().applyValue(id -&gt; String.format(&#34;{{\&#34;Type\&#34;:\&#34;ResourceIds\&#34;,\&#34;ResourceIds\&#34;:{{\&#34;ALIYUN::ECS::INSTANCE\&#34;:[\&#34;%s\&#34;]}},\&#34;RegionId\&#34;:\&#34;cn-hangzhou\&#34;}}&#34;, id)))
+ *                 .resources(defaultInstance.id().applyValue(id -&gt; &#34;&#34;&#34;
+ *     {
+ *       &#34;Type&#34;: &#34;ResourceIds&#34;,
+ *       &#34;RegionId&#34;: &#34;cn-hangzhou&#34;,
+ *       &#34;ResourceIds&#34;: {
+ *       &#34;ALIYUN::ECS::INSTANCE&#34;: [
+ *         &#34;%s&#34;
+ *         ]
+ *       } 
+ *     }
+ * &#34;, id)))
  *                 .build())
  *             .tags(Map.ofEntries(
  *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
@@ -141,14 +156,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:compute/nestServiceInstance:NestServiceInstance")
 public class NestServiceInstance extends com.pulumi.resources.CustomResource {
     /**
-     * The order information of cloud market. See the following `Block commodity`.
+     * The order information of cloud market. See `commodity` below.
      * 
      */
     @Export(name="commodity", type=NestServiceInstanceCommodity.class, parameters={})
     private Output</* @Nullable */ NestServiceInstanceCommodity> commodity;
 
     /**
-     * @return The order information of cloud market. See the following `Block commodity`.
+     * @return The order information of cloud market. See `commodity` below.
      * 
      */
     public Output<Optional<NestServiceInstanceCommodity>> commodity() {
@@ -183,14 +198,14 @@ public class NestServiceInstance extends com.pulumi.resources.CustomResource {
         return this.enableUserPrometheus;
     }
     /**
-     * The configuration of O&amp;M. See the following `Block operation_metadata`.
+     * The configuration of O&amp;M. See `operation_metadata` below.
      * 
      */
     @Export(name="operationMetadata", type=NestServiceInstanceOperationMetadata.class, parameters={})
     private Output<NestServiceInstanceOperationMetadata> operationMetadata;
 
     /**
-     * @return The configuration of O&amp;M. See the following `Block operation_metadata`.
+     * @return The configuration of O&amp;M. See `operation_metadata` below.
      * 
      */
     public Output<NestServiceInstanceOperationMetadata> operationMetadata() {

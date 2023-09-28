@@ -41,9 +41,9 @@ type Rule struct {
 	ListenerId pulumi.StringOutput `pulumi:"listenerId"`
 	// The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
 	Priority pulumi.IntOutput `pulumi:"priority"`
-	// The actions of the forwarding rules. See `ruleActions` below for details.
+	// The actions of the forwarding rules. See `ruleActions` below.
 	RuleActions RuleRuleActionArrayOutput `pulumi:"ruleActions"`
-	// The conditions of the forwarding rule. See `ruleConditions` below for details.
+	// The conditions of the forwarding rule. See `ruleConditions` below.
 	RuleConditions RuleRuleConditionArrayOutput `pulumi:"ruleConditions"`
 	// The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 	RuleName pulumi.StringOutput `pulumi:"ruleName"`
@@ -104,9 +104,9 @@ type ruleState struct {
 	ListenerId *string `pulumi:"listenerId"`
 	// The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
 	Priority *int `pulumi:"priority"`
-	// The actions of the forwarding rules. See `ruleActions` below for details.
+	// The actions of the forwarding rules. See `ruleActions` below.
 	RuleActions []RuleRuleAction `pulumi:"ruleActions"`
-	// The conditions of the forwarding rule. See `ruleConditions` below for details.
+	// The conditions of the forwarding rule. See `ruleConditions` below.
 	RuleConditions []RuleRuleCondition `pulumi:"ruleConditions"`
 	// The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 	RuleName *string `pulumi:"ruleName"`
@@ -123,9 +123,9 @@ type RuleState struct {
 	ListenerId pulumi.StringPtrInput
 	// The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
 	Priority pulumi.IntPtrInput
-	// The actions of the forwarding rules. See `ruleActions` below for details.
+	// The actions of the forwarding rules. See `ruleActions` below.
 	RuleActions RuleRuleActionArrayInput
-	// The conditions of the forwarding rule. See `ruleConditions` below for details.
+	// The conditions of the forwarding rule. See `ruleConditions` below.
 	RuleConditions RuleRuleConditionArrayInput
 	// The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 	RuleName pulumi.StringPtrInput
@@ -146,9 +146,9 @@ type ruleArgs struct {
 	ListenerId string `pulumi:"listenerId"`
 	// The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
 	Priority int `pulumi:"priority"`
-	// The actions of the forwarding rules. See `ruleActions` below for details.
+	// The actions of the forwarding rules. See `ruleActions` below.
 	RuleActions []RuleRuleAction `pulumi:"ruleActions"`
-	// The conditions of the forwarding rule. See `ruleConditions` below for details.
+	// The conditions of the forwarding rule. See `ruleConditions` below.
 	RuleConditions []RuleRuleCondition `pulumi:"ruleConditions"`
 	// The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 	RuleName string `pulumi:"ruleName"`
@@ -164,9 +164,9 @@ type RuleArgs struct {
 	ListenerId pulumi.StringInput
 	// The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
 	Priority pulumi.IntInput
-	// The actions of the forwarding rules. See `ruleActions` below for details.
+	// The actions of the forwarding rules. See `ruleActions` below.
 	RuleActions RuleRuleActionArrayInput
-	// The conditions of the forwarding rule. See `ruleConditions` below for details.
+	// The conditions of the forwarding rule. See `ruleConditions` below.
 	RuleConditions RuleRuleConditionArrayInput
 	// The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 	RuleName pulumi.StringInput
@@ -303,12 +303,12 @@ func (o RuleOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v *Rule) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }
 
-// The actions of the forwarding rules. See `ruleActions` below for details.
+// The actions of the forwarding rules. See `ruleActions` below.
 func (o RuleOutput) RuleActions() RuleRuleActionArrayOutput {
 	return o.ApplyT(func(v *Rule) RuleRuleActionArrayOutput { return v.RuleActions }).(RuleRuleActionArrayOutput)
 }
 
-// The conditions of the forwarding rule. See `ruleConditions` below for details.
+// The conditions of the forwarding rule. See `ruleConditions` below.
 func (o RuleOutput) RuleConditions() RuleRuleConditionArrayOutput {
 	return o.ApplyT(func(v *Rule) RuleRuleConditionArrayOutput { return v.RuleConditions }).(RuleRuleConditionArrayOutput)
 }

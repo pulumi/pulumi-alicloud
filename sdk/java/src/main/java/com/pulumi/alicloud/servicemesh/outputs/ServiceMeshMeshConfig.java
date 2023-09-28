@@ -21,17 +21,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceMeshMeshConfig {
     /**
-     * @return The configuration of the access logging.
+     * @return The configuration of the access logging. See `access_log` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigAccessLog accessLog;
     /**
-     * @return The configuration of the audit. See the following `Block audit`.
+     * @return The configuration of the audit. See `audit` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigAudit audit;
     /**
-     * @return The configuration of the control plane logging.
+     * @return The configuration of the control plane logging. See `control_plane_log` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigControlPlaneLog controlPlaneLog;
@@ -46,12 +46,12 @@ public final class ServiceMeshMeshConfig {
      */
     private @Nullable Boolean enableLocalityLb;
     /**
-     * @return The configuration of the Kiali. See the following `Block kiali`.
+     * @return The configuration of the Kiali. See `kiali` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigKiali kiali;
     /**
-     * @return The open-door policy of agent (OPA) plug-in information. See the following `Block opa`.
+     * @return The open-door policy of agent (OPA) plug-in information. See `opa` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigOpa opa;
@@ -61,48 +61,48 @@ public final class ServiceMeshMeshConfig {
      */
     private @Nullable String outboundTrafficPolicy;
     /**
-     * @return The configuration of the Link trace sampling. See the following `Block pilot`.
+     * @return The configuration of the Link trace sampling. See `pilot` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigPilot pilot;
     /**
-     * @return The configuration of the Proxy. See the following `Block proxy`.
+     * @return The configuration of the Proxy. See `proxy` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigProxy proxy;
     /**
-     * @return The configuration of the Sidecar injector. See the following `Block sidecar_injector`.
+     * @return The configuration of the Sidecar injector. See `sidecar_injector` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigSidecarInjector sidecarInjector;
     /**
-     * @return Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+     * @return Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
      * 
      */
     private @Nullable Boolean telemetry;
     /**
-     * @return Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+     * @return Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
      * 
      */
     private @Nullable Boolean tracing;
 
     private ServiceMeshMeshConfig() {}
     /**
-     * @return The configuration of the access logging.
+     * @return The configuration of the access logging. See `access_log` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigAccessLog> accessLog() {
         return Optional.ofNullable(this.accessLog);
     }
     /**
-     * @return The configuration of the audit. See the following `Block audit`.
+     * @return The configuration of the audit. See `audit` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigAudit> audit() {
         return Optional.ofNullable(this.audit);
     }
     /**
-     * @return The configuration of the control plane logging.
+     * @return The configuration of the control plane logging. See `control_plane_log` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigControlPlaneLog> controlPlaneLog() {
@@ -123,14 +123,14 @@ public final class ServiceMeshMeshConfig {
         return Optional.ofNullable(this.enableLocalityLb);
     }
     /**
-     * @return The configuration of the Kiali. See the following `Block kiali`.
+     * @return The configuration of the Kiali. See `kiali` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigKiali> kiali() {
         return Optional.ofNullable(this.kiali);
     }
     /**
-     * @return The open-door policy of agent (OPA) plug-in information. See the following `Block opa`.
+     * @return The open-door policy of agent (OPA) plug-in information. See `opa` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigOpa> opa() {
@@ -144,35 +144,35 @@ public final class ServiceMeshMeshConfig {
         return Optional.ofNullable(this.outboundTrafficPolicy);
     }
     /**
-     * @return The configuration of the Link trace sampling. See the following `Block pilot`.
+     * @return The configuration of the Link trace sampling. See `pilot` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigPilot> pilot() {
         return Optional.ofNullable(this.pilot);
     }
     /**
-     * @return The configuration of the Proxy. See the following `Block proxy`.
+     * @return The configuration of the Proxy. See `proxy` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigProxy> proxy() {
         return Optional.ofNullable(this.proxy);
     }
     /**
-     * @return The configuration of the Sidecar injector. See the following `Block sidecar_injector`.
+     * @return The configuration of the Sidecar injector. See `sidecar_injector` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigSidecarInjector> sidecarInjector() {
         return Optional.ofNullable(this.sidecarInjector);
     }
     /**
-     * @return Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+     * @return Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
      * 
      */
     public Optional<Boolean> telemetry() {
         return Optional.ofNullable(this.telemetry);
     }
     /**
-     * @return Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+     * @return Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
      * 
      */
     public Optional<Boolean> tracing() {

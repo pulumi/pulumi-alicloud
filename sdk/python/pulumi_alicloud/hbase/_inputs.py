@@ -21,6 +21,11 @@ class InstanceSlbConnAddrArgs:
                  conn_addr: Optional[pulumi.Input[str]] = None,
                  conn_addr_port: Optional[pulumi.Input[str]] = None,
                  net_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] conn_addr: The Phoenix address.
+        :param pulumi.Input[str] conn_addr_port: The number of the port over which Phoenix connects to the instance.
+        :param pulumi.Input[str] net_type: The type of the network. Valid values:
+        """
         if conn_addr is not None:
             pulumi.set(__self__, "conn_addr", conn_addr)
         if conn_addr_port is not None:
@@ -31,6 +36,9 @@ class InstanceSlbConnAddrArgs:
     @property
     @pulumi.getter(name="connAddr")
     def conn_addr(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Phoenix address.
+        """
         return pulumi.get(self, "conn_addr")
 
     @conn_addr.setter
@@ -40,6 +48,9 @@ class InstanceSlbConnAddrArgs:
     @property
     @pulumi.getter(name="connAddrPort")
     def conn_addr_port(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of the port over which Phoenix connects to the instance.
+        """
         return pulumi.get(self, "conn_addr_port")
 
     @conn_addr_port.setter
@@ -49,6 +60,9 @@ class InstanceSlbConnAddrArgs:
     @property
     @pulumi.getter(name="netType")
     def net_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the network. Valid values:
+        """
         return pulumi.get(self, "net_type")
 
     @net_type.setter
@@ -62,6 +76,11 @@ class InstanceUiProxyConnAddrArgs:
                  conn_addr: Optional[pulumi.Input[str]] = None,
                  conn_addr_port: Optional[pulumi.Input[str]] = None,
                  net_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] conn_addr: The Phoenix address.
+        :param pulumi.Input[str] conn_addr_port: The number of the port over which Phoenix connects to the instance.
+        :param pulumi.Input[str] net_type: The type of the network. Valid values:
+        """
         if conn_addr is not None:
             pulumi.set(__self__, "conn_addr", conn_addr)
         if conn_addr_port is not None:
@@ -72,6 +91,9 @@ class InstanceUiProxyConnAddrArgs:
     @property
     @pulumi.getter(name="connAddr")
     def conn_addr(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Phoenix address.
+        """
         return pulumi.get(self, "conn_addr")
 
     @conn_addr.setter
@@ -81,6 +103,9 @@ class InstanceUiProxyConnAddrArgs:
     @property
     @pulumi.getter(name="connAddrPort")
     def conn_addr_port(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of the port over which Phoenix connects to the instance.
+        """
         return pulumi.get(self, "conn_addr_port")
 
     @conn_addr_port.setter
@@ -90,6 +115,9 @@ class InstanceUiProxyConnAddrArgs:
     @property
     @pulumi.getter(name="netType")
     def net_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the network. Valid values:
+        """
         return pulumi.get(self, "net_type")
 
     @net_type.setter
@@ -103,6 +131,11 @@ class InstanceZkConnAddrArgs:
                  conn_addr: Optional[pulumi.Input[str]] = None,
                  conn_addr_port: Optional[pulumi.Input[str]] = None,
                  net_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] conn_addr: The Phoenix address.
+        :param pulumi.Input[str] conn_addr_port: The number of the port over which Phoenix connects to the instance.
+        :param pulumi.Input[str] net_type: The type of the network. Valid values:
+        """
         if conn_addr is not None:
             pulumi.set(__self__, "conn_addr", conn_addr)
         if conn_addr_port is not None:
@@ -113,6 +146,9 @@ class InstanceZkConnAddrArgs:
     @property
     @pulumi.getter(name="connAddr")
     def conn_addr(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Phoenix address.
+        """
         return pulumi.get(self, "conn_addr")
 
     @conn_addr.setter
@@ -122,6 +158,9 @@ class InstanceZkConnAddrArgs:
     @property
     @pulumi.getter(name="connAddrPort")
     def conn_addr_port(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of the port over which Phoenix connects to the instance.
+        """
         return pulumi.get(self, "conn_addr_port")
 
     @conn_addr_port.setter
@@ -131,6 +170,9 @@ class InstanceZkConnAddrArgs:
     @property
     @pulumi.getter(name="netType")
     def net_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the network. Valid values:
+        """
         return pulumi.get(self, "net_type")
 
     @net_type.setter

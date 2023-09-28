@@ -17,47 +17,7 @@ import (
 //
 // For information about EBS Disk Replica Group and how to use it, see [What is Disk Replica Group](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/creatediskreplicagroup).
 //
-// > **NOTE:** Available in v1.187.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ebs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultRegions, err := ebs.GetRegions(ctx, &ebs.GetRegionsArgs{
-//				RegionId: pulumi.StringRef("cn-hangzhou"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ebs.NewDiskReplicaGroup(ctx, "defaultDiskReplicaGroup", &ebs.DiskReplicaGroupArgs{
-//				SourceRegionId:      pulumi.Any(_var.Region),
-//				SourceZoneId:        *pulumi.String(defaultRegions.Regions[0].Zones[0].ZoneId),
-//				DestinationRegionId: pulumi.Any(_var.Region),
-//				DestinationZoneId:   *pulumi.String(defaultRegions.Regions[0].Zones[1].ZoneId),
-//				GroupName:           pulumi.String("group_name"),
-//				Description:         pulumi.String("group_description"),
-//				Rpo:                 pulumi.Int(900),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// > **NOTE:** Available since v1.187.0.
 //
 // ## Import
 //

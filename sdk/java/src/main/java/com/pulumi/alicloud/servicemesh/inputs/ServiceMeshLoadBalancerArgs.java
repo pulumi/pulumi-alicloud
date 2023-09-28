@@ -16,9 +16,17 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
 
     public static final ServiceMeshLoadBalancerArgs Empty = new ServiceMeshLoadBalancerArgs();
 
+    /**
+     * The ID of the SLB instance that is used when the API server is exposed to the Internet.
+     * 
+     */
     @Import(name="apiServerLoadbalancerId")
     private @Nullable Output<String> apiServerLoadbalancerId;
 
+    /**
+     * @return The ID of the SLB instance that is used when the API server is exposed to the Internet.
+     * 
+     */
     public Optional<Output<String>> apiServerLoadbalancerId() {
         return Optional.ofNullable(this.apiServerLoadbalancerId);
     }
@@ -53,9 +61,17 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.pilotPublicEip);
     }
 
+    /**
+     * The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
+     * 
+     */
     @Import(name="pilotPublicLoadbalancerId")
     private @Nullable Output<String> pilotPublicLoadbalancerId;
 
+    /**
+     * @return The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
+     * 
+     */
     public Optional<Output<String>> pilotPublicLoadbalancerId() {
         return Optional.ofNullable(this.pilotPublicLoadbalancerId);
     }
@@ -87,11 +103,23 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
             $ = new ServiceMeshLoadBalancerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param apiServerLoadbalancerId The ID of the SLB instance that is used when the API server is exposed to the Internet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiServerLoadbalancerId(@Nullable Output<String> apiServerLoadbalancerId) {
             $.apiServerLoadbalancerId = apiServerLoadbalancerId;
             return this;
         }
 
+        /**
+         * @param apiServerLoadbalancerId The ID of the SLB instance that is used when the API server is exposed to the Internet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiServerLoadbalancerId(String apiServerLoadbalancerId) {
             return apiServerLoadbalancerId(Output.of(apiServerLoadbalancerId));
         }
@@ -138,11 +166,23 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
             return pilotPublicEip(Output.of(pilotPublicEip));
         }
 
+        /**
+         * @param pilotPublicLoadbalancerId The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pilotPublicLoadbalancerId(@Nullable Output<String> pilotPublicLoadbalancerId) {
             $.pilotPublicLoadbalancerId = pilotPublicLoadbalancerId;
             return this;
         }
 
+        /**
+         * @param pilotPublicLoadbalancerId The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pilotPublicLoadbalancerId(String pilotPublicLoadbalancerId) {
             return pilotPublicLoadbalancerId(Output.of(pilotPublicLoadbalancerId));
         }

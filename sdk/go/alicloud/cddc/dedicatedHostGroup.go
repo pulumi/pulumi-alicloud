@@ -88,7 +88,7 @@ type DedicatedHostGroup struct {
 	DedicatedHostGroupDesc pulumi.StringPtrOutput `pulumi:"dedicatedHostGroupDesc"`
 	// The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
 	DiskAllocationRatio pulumi.IntOutput `pulumi:"diskAllocationRatio"`
-	// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+	// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
 	HostReplacePolicy pulumi.StringOutput `pulumi:"hostReplacePolicy"`
@@ -145,7 +145,7 @@ type dedicatedHostGroupState struct {
 	DedicatedHostGroupDesc *string `pulumi:"dedicatedHostGroupDesc"`
 	// The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
 	DiskAllocationRatio *int `pulumi:"diskAllocationRatio"`
-	// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+	// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
 	Engine *string `pulumi:"engine"`
 	// The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
 	HostReplacePolicy *string `pulumi:"hostReplacePolicy"`
@@ -167,7 +167,7 @@ type DedicatedHostGroupState struct {
 	DedicatedHostGroupDesc pulumi.StringPtrInput
 	// The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
 	DiskAllocationRatio pulumi.IntPtrInput
-	// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+	// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
 	Engine pulumi.StringPtrInput
 	// The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
 	HostReplacePolicy pulumi.StringPtrInput
@@ -193,7 +193,7 @@ type dedicatedHostGroupArgs struct {
 	DedicatedHostGroupDesc *string `pulumi:"dedicatedHostGroupDesc"`
 	// The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
 	DiskAllocationRatio *int `pulumi:"diskAllocationRatio"`
-	// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+	// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
 	Engine string `pulumi:"engine"`
 	// The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
 	HostReplacePolicy *string `pulumi:"hostReplacePolicy"`
@@ -216,7 +216,7 @@ type DedicatedHostGroupArgs struct {
 	DedicatedHostGroupDesc pulumi.StringPtrInput
 	// The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
 	DiskAllocationRatio pulumi.IntPtrInput
-	// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+	// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
 	Engine pulumi.StringInput
 	// The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
 	HostReplacePolicy pulumi.StringPtrInput
@@ -360,7 +360,7 @@ func (o DedicatedHostGroupOutput) DiskAllocationRatio() pulumi.IntOutput {
 	return o.ApplyT(func(v *DedicatedHostGroup) pulumi.IntOutput { return v.DiskAllocationRatio }).(pulumi.IntOutput)
 }
 
-// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
 func (o DedicatedHostGroupOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *DedicatedHostGroup) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }

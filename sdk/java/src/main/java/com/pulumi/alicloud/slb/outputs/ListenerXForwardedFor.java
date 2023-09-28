@@ -11,6 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ListenerXForwardedFor {
+    /**
+     * @return Whether to retrieve the client ip. It is read-only attribute.
+     * 
+     */
     private @Nullable Boolean retriveClientIp;
     /**
      * @return Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
@@ -29,6 +33,10 @@ public final class ListenerXForwardedFor {
     private @Nullable Boolean retriveSlbProto;
 
     private ListenerXForwardedFor() {}
+    /**
+     * @return Whether to retrieve the client ip. It is read-only attribute.
+     * 
+     */
     public Optional<Boolean> retriveClientIp() {
         return Optional.ofNullable(this.retriveClientIp);
     }

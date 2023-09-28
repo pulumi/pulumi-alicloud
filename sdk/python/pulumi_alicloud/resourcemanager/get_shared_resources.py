@@ -63,16 +63,25 @@ class GetSharedResourcesResult:
     @property
     @pulumi.getter(name="resourceShareId")
     def resource_share_id(self) -> Optional[str]:
+        """
+        The resource share ID of resource manager.
+        """
         return pulumi.get(self, "resource_share_id")
 
     @property
     @pulumi.getter
     def resources(self) -> Sequence['outputs.GetSharedResourcesResourceResult']:
+        """
+        A list of Resource Manager Shared Resources. Each element contains the following attributes:
+        """
         return pulumi.get(self, "resources")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of shared resource.
+        """
         return pulumi.get(self, "status")
 
 
@@ -98,26 +107,13 @@ def get_shared_resources(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.111.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    this = alicloud.resourcemanager.get_shared_resources(resource_share_id="rs-V2NV******",
-        ids=["vsw-bp1mzouzpmvie********:VSwitch"])
-    pulumi.export("firstResourceManagerSharedResourceId", data["alicloud_resource_manager_shared_resources"]["example"]["resources"][0]["id"])
-    ```
+    > **NOTE:** Available since v1.111.0.
 
 
-    :param Sequence[str] ids: A list of shared resource ID.
+    :param Sequence[str] ids: A list of shared resource IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_share_id: The resource share ID of resource manager.
-    :param str status: The status of shared resource.
+    :param str status: The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -145,25 +141,12 @@ def get_shared_resources_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     """
     This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.111.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    this = alicloud.resourcemanager.get_shared_resources(resource_share_id="rs-V2NV******",
-        ids=["vsw-bp1mzouzpmvie********:VSwitch"])
-    pulumi.export("firstResourceManagerSharedResourceId", data["alicloud_resource_manager_shared_resources"]["example"]["resources"][0]["id"])
-    ```
+    > **NOTE:** Available since v1.111.0.
 
 
-    :param Sequence[str] ids: A list of shared resource ID.
+    :param Sequence[str] ids: A list of shared resource IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_share_id: The resource share ID of resource manager.
-    :param str status: The status of shared resource.
+    :param str status: The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
     """
     ...

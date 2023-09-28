@@ -31,14 +31,14 @@ public final class PolicyAttachmentState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+     * The type of the policy. Valid values: `Custom`, `System`.
      * 
      */
     @Import(name="policyType")
     private @Nullable Output<String> policyType;
 
     /**
-     * @return - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+     * @return The type of the policy. Valid values: `Custom`, `System`.
      * 
      */
     public Optional<Output<String>> policyType() {
@@ -140,7 +140,7 @@ public final class PolicyAttachmentState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param policyType - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+         * @param policyType The type of the policy. Valid values: `Custom`, `System`.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class PolicyAttachmentState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param policyType - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+         * @param policyType The type of the policy. Valid values: `Custom`, `System`.
          * 
          * @return builder
          * 

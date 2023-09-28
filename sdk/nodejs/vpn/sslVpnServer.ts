@@ -5,32 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const fooGateway = new alicloud.vpn.Gateway("fooGateway", {
- *     vpcId: "vpc-fake-id",
- *     bandwidth: 10,
- *     enableSsl: true,
- *     instanceChargeType: "PostPaid",
- *     description: "test_create_description",
- * });
- * const fooSslVpnServer = new alicloud.vpn.SslVpnServer("fooSslVpnServer", {
- *     vpnGatewayId: fooGateway.id,
- *     clientIpPool: "192.168.0.0/16",
- *     localSubnet: "172.16.0.0/21",
- *     protocol: "UDP",
- *     cipher: "AES-128-CBC",
- *     port: 1194,
- *     compress: false,
- * });
- * ```
- *
  * ## Import
  *
  * SSL-VPN server can be imported using the id, e.g.

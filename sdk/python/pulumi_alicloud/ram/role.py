@@ -397,8 +397,7 @@ class Role(pulumi.CustomResource):
             "Version": "1"
           }
           
-        \"\"\",
-            force=True)
+        \"\"\")
         ```
 
         ## Import
@@ -458,8 +457,7 @@ class Role(pulumi.CustomResource):
             "Version": "1"
           }
           
-        \"\"\",
-            force=True)
+        \"\"\")
         ```
 
         ## Import

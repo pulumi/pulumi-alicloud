@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Iot Device Group and how to use it, see [What is Device Group](https://www.alibabacloud.com/help/product/30520.htm).
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *
@@ -19,7 +19,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.iot.DeviceGroup("example", {groupName: "example_value"});
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexample";
+ * const example = new alicloud.iot.DeviceGroup("example", {groupName: name});
  * ```
  *
  * ## Import

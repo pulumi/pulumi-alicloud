@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Msc Sub Subscription resource.
  * 
- * &gt; **NOTE:** Available in v1.135.0+.
+ * &gt; **NOTE:** Available since v1.135.0.
  * 
  * ## Example Usage
  * 

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about FC and how to use it, see [What is FC](https://www.alibabacloud.com/help/en/product/50980.htm).
  *
- * > **NOTE:** Available in v1.112.0+
+ * > **NOTE:** Available since v1.112.0+
  *
  * ## Example Usage
  *
@@ -62,7 +62,7 @@ export interface GetServiceResult {
  *
  * For information about FC and how to use it, see [What is FC](https://www.alibabacloud.com/help/en/product/50980.htm).
  *
- * > **NOTE:** Available in v1.112.0+
+ * > **NOTE:** Available since v1.112.0+
  *
  * ## Example Usage
  *

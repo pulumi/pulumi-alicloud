@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about VOD Editing Project and how to use it, see [What is Editing Project](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/addeditingproject#doc-api-vod-AddEditingProject).
  *
- * > **NOTE:** Available in v1.187.0+.
+ * > **NOTE:** Available since v1.187.0.
  *
  * ## Example Usage
  *
@@ -19,10 +19,29 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexample";
+ * const default = alicloud.getRegions({
+ *     current: true,
+ * });
  * const example = new alicloud.vod.EditingProject("example", {
- *     editingProjectName: "example_value",
- *     timeline: "example_value",
- *     title: "example_value",
+ *     editingProjectName: name,
+ *     title: name,
+ *     timeline: `  {
+ *     "VideoTracks":[
+ *       {
+ *         "VideoTrackClips":[
+ *           {
+ *           "MediaId":"0c60e6f02dae71edbfaa472190a90102",
+ *           "In":2811
+ *           }
+ *         ]
+ *       }
+ *     ]
+ *   }
+ * `,
+ *     coverUrl: "https://demo.aliyundoc.com/6AB4D0E1E1C74468883516C2349D1FC2-6-2.png",
+ *     division: _default.then(_default => _default.regions?.[0]?.id),
  * });
  * ```
  *

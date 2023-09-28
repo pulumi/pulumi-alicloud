@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Direct Mail Tag and how to use it, see [What is Tag](https://www.alibabacloud.com/help/zh/doc-detail/119007.htm).
  * 
- * &gt; **NOTE:** Available in v1.144.0+.
+ * &gt; **NOTE:** Available since v1.144.0.
  * 
  * ## Example Usage
  * 
@@ -44,8 +44,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;example&#34;);
  *         var example = new Tag(&#34;example&#34;, TagArgs.builder()        
- *             .tagName(&#34;example_value&#34;)
+ *             .tagName(name)
  *             .build());
  * 
  *     }

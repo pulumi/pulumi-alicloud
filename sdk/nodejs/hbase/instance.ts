@@ -9,13 +9,13 @@ import * as utilities from "../utilities";
 /**
  * Provides a HBase instance resource supports replica set instances only. The HBase provides stable, reliable, and automatic scalable database services.
  * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
- * You can see detail product introduction [here](https://help.aliyun.com/product/49055.html)
+ * You can see detail product introduction [here](https://www.alibabacloud.com/help/en/apsaradb-for-hbase/latest/createcluster)
  *
- * > **NOTE:**  Available in 1.67.0+
+ * > **NOTE:** Available since v1.67.0.
  *
  * > **NOTE:**  The following regions don't support create Classic network HBase instance.
  * [`cn-hangzhou`,`cn-shanghai`,`cn-qingdao`,`cn-beijing`,`cn-shenzhen`,`ap-southeast-1a`,.....]
- * The official website mark  more regions. or you can call [DescribeRegions](https://help.aliyun.com/document_detail/144489.html)
+ * The official website mark  more regions. or you can call [DescribeRegions](https://www.alibabacloud.com/help/en/apsaradb-for-hbase/latest/describeregions)
  *
  * > **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
  *
@@ -26,18 +26,30 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.hbase.Instance("default", {
- *     coldStorageSize: 0,
- *     coreDiskSize: 400,
- *     coreDiskType: "cloud_efficiency",
- *     coreInstanceQuantity: 2,
- *     coreInstanceType: "hbase.sn2.2xlarge",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.hbase.getZones({});
+ * const defaultNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ * });
+ * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.zones?.[0]?.id,
+ * }));
+ * const defaultInstance = new alicloud.hbase.Instance("defaultInstance", {
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
  *     engine: "hbaseue",
  *     engineVersion: "2.0",
  *     masterInstanceType: "hbase.sn2.2xlarge",
+ *     coreInstanceType: "hbase.sn2.2xlarge",
+ *     coreInstanceQuantity: 2,
+ *     coreDiskType: "cloud_efficiency",
+ *     coreDiskSize: 400,
  *     payType: "PostPaid",
- *     vswitchId: "vsw-123456",
- *     zoneId: "cn-shenzhen-b",
+ *     coldStorageSize: 0,
+ *     deletionProtection: false,
  * });
  * ```
  *
@@ -167,7 +179,9 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly securityGroups!: pulumi.Output<string[]>;
     /**
-     * (Available in 1.105.0+) The slb service addresses of the cluster.
+     * The slb service addresses of the cluster. See `slbConnAddrs` below.
+     *
+     * > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
      */
     public /*out*/ readonly slbConnAddrs!: pulumi.Output<outputs.hbase.InstanceSlbConnAddr[]>;
     /**
@@ -175,14 +189,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+     * The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
      */
     public /*out*/ readonly uiProxyConnAddrs!: pulumi.Output<outputs.hbase.InstanceUiProxyConnAddr[]>;
     /**
      * The id of the VPC.
-     *
-     *
-     * > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
      */
     public readonly vpcId!: pulumi.Output<string | undefined>;
     /**
@@ -190,7 +201,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
     /**
-     * (Available in 1.105.0+) The zookeeper addresses of the cluster.
+     * The zookeeper addresses of the cluster. See `zkConnAddrs` below.
      */
     public /*out*/ readonly zkConnAddrs!: pulumi.Output<outputs.hbase.InstanceZkConnAddr[]>;
     /**
@@ -378,7 +389,9 @@ export interface InstanceState {
      */
     securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * (Available in 1.105.0+) The slb service addresses of the cluster.
+     * The slb service addresses of the cluster. See `slbConnAddrs` below.
+     *
+     * > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
      */
     slbConnAddrs?: pulumi.Input<pulumi.Input<inputs.hbase.InstanceSlbConnAddr>[]>;
     /**
@@ -386,14 +399,11 @@ export interface InstanceState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+     * The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
      */
     uiProxyConnAddrs?: pulumi.Input<pulumi.Input<inputs.hbase.InstanceUiProxyConnAddr>[]>;
     /**
      * The id of the VPC.
-     *
-     *
-     * > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
      */
     vpcId?: pulumi.Input<string>;
     /**
@@ -401,7 +411,7 @@ export interface InstanceState {
      */
     vswitchId?: pulumi.Input<string>;
     /**
-     * (Available in 1.105.0+) The zookeeper addresses of the cluster.
+     * The zookeeper addresses of the cluster. See `zkConnAddrs` below.
      */
     zkConnAddrs?: pulumi.Input<pulumi.Input<inputs.hbase.InstanceZkConnAddr>[]>;
     /**
@@ -503,9 +513,6 @@ export interface InstanceArgs {
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The id of the VPC.
-     *
-     *
-     * > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
      */
     vpcId?: pulumi.Input<string>;
     /**

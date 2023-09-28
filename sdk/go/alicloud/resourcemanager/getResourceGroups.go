@@ -14,9 +14,11 @@ import (
 
 // This data source provides resource groups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.84.0+.
+// > **NOTE:** Available since v1.84.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -31,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			example, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
-//				NameRegex: pulumi.StringRef("tftest"),
+//				NameRegex: pulumi.StringRef("tf"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -54,15 +56,15 @@ func GetResourceGroups(ctx *pulumi.Context, args *GetResourceGroupsArgs, opts ..
 
 // A collection of arguments for invoking getResourceGroups.
 type GetResourceGroupsArgs struct {
-	// Default to `false`. Set it to true can output more details.
+	// Set it to true can output more details. Default value: `false`.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of resource group IDs.
 	Ids []string `pulumi:"ids"`
-	// A regex string to filter results by resource group name.
+	// A regex string to filter results by resource group identifier.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+	// The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
 	Status *string `pulumi:"status"`
 }
 
@@ -76,7 +78,7 @@ type GetResourceGroupsResult struct {
 	// A list of resource group IDs.
 	Ids       []string `pulumi:"ids"`
 	NameRegex *string  `pulumi:"nameRegex"`
-	// A list of resource group names.
+	// A list of resource group identifiers.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	// The status of the regional resource group.
@@ -98,15 +100,15 @@ func GetResourceGroupsOutput(ctx *pulumi.Context, args GetResourceGroupsOutputAr
 
 // A collection of arguments for invoking getResourceGroups.
 type GetResourceGroupsOutputArgs struct {
-	// Default to `false`. Set it to true can output more details.
+	// Set it to true can output more details. Default value: `false`.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of resource group IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// A regex string to filter results by resource group name.
+	// A regex string to filter results by resource group identifier.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+	// The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -158,7 +160,7 @@ func (o GetResourceGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
-// A list of resource group names.
+// A list of resource group identifiers.
 func (o GetResourceGroupsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetResourceGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

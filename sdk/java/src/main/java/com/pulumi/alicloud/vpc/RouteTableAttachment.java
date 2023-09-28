@@ -14,6 +14,12 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a VPC Route Table Attachment resource. Routing table associated resource type.
+ * 
+ * For information about VPC Route Table Attachment and how to use it, see [What is Route Table Attachment](https://www.alibabacloud.com/help/doc-detail/174112.htm).
+ * 
+ * &gt; **NOTE:** Available since v1.194.0.
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -47,7 +53,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;route-table-attachment-example-name&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
  *             .build());
@@ -79,38 +85,52 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * The route table attachment can be imported using the id, e.g.
+ * VPC Route Table Attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment foo vtb-abc123456:vsw-abc123456
+ *  $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment example &lt;route_table_id&gt;:&lt;vswitch_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:vpc/routeTableAttachment:RouteTableAttachment")
 public class RouteTableAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * The route_table_id of the route table attachment, the field can&#39;t be changed.
+     * The ID of the route table to be bound to the switch.
      * 
      */
     @Export(name="routeTableId", type=String.class, parameters={})
     private Output<String> routeTableId;
 
     /**
-     * @return The route_table_id of the route table attachment, the field can&#39;t be changed.
+     * @return The ID of the route table to be bound to the switch.
      * 
      */
     public Output<String> routeTableId() {
         return this.routeTableId;
     }
     /**
-     * The vswitch_id of the route table attachment, the field can&#39;t be changed.
+     * The status of the resource.
+     * 
+     */
+    @Export(name="status", type=String.class, parameters={})
+    private Output<String> status;
+
+    /**
+     * @return The status of the resource.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
+    }
+    /**
+     * The ID of the switch to bind the route table.
      * 
      */
     @Export(name="vswitchId", type=String.class, parameters={})
     private Output<String> vswitchId;
 
     /**
-     * @return The vswitch_id of the route table attachment, the field can&#39;t be changed.
+     * @return The ID of the switch to bind the route table.
      * 
      */
     public Output<String> vswitchId() {

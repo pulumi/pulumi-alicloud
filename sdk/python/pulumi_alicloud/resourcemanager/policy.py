@@ -195,7 +195,7 @@ class Policy(pulumi.CustomResource):
         Provides a Resource Manager Policy resource.\\
         For information about Resource Manager Policy and how to use it, see [What is Resource Manager Policy](https://www.alibabacloud.com/help/en/doc-detail/93732.htm).
 
-        > **NOTE:** Available in v1.83.0+.
+        > **NOTE:** Available since v1.83.0.
 
         ## Example Usage
 
@@ -205,7 +205,12 @@ class Policy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
         example = alicloud.resourcemanager.Policy("example",
+            policy_name=name,
             policy_document=\"\"\"		{
         			"Statement": [{
         				"Action": ["oss:*"],
@@ -214,9 +219,7 @@ class Policy(pulumi.CustomResource):
         			}],
         			"Version": "1"
         		}
-            
-        \"\"\",
-            policy_name="abc12345")
+        \"\"\")
         ```
 
         ## Import
@@ -244,7 +247,7 @@ class Policy(pulumi.CustomResource):
         Provides a Resource Manager Policy resource.\\
         For information about Resource Manager Policy and how to use it, see [What is Resource Manager Policy](https://www.alibabacloud.com/help/en/doc-detail/93732.htm).
 
-        > **NOTE:** Available in v1.83.0+.
+        > **NOTE:** Available since v1.83.0.
 
         ## Example Usage
 
@@ -254,7 +257,12 @@ class Policy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
         example = alicloud.resourcemanager.Policy("example",
+            policy_name=name,
             policy_document=\"\"\"		{
         			"Statement": [{
         				"Action": ["oss:*"],
@@ -263,9 +271,7 @@ class Policy(pulumi.CustomResource):
         			}],
         			"Version": "1"
         		}
-            
-        \"\"\",
-            policy_name="abc12345")
+        \"\"\")
         ```
 
         ## Import

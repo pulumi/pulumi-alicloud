@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.Ots.Outputs
     public sealed class SearchIndexSchema
     {
         /// <summary>
-        /// A list of field schemas. Each field schema contains the following parameters:
+        /// A list of field schemas. See `field_schema` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.SearchIndexSchemaFieldSchema> FieldSchemas;
         /// <summary>
-        /// The settings of the search index, including routingFields.
+        /// The settings of the search index, including routingFields. See `index_setting` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.SearchIndexSchemaIndexSetting> IndexSettings;
         /// <summary>
-        /// The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default.
+        /// The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default. See `index_sort` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.SearchIndexSchemaIndexSort> IndexSorts;
 

@@ -215,7 +215,7 @@ class Role(pulumi.CustomResource):
         Provides a Resource Manager role resource. Members are resource containers in the resource directory, which can physically isolate resources to form an independent resource grouping unit. You can create members in the resource folder to manage them in a unified manner.
         For information about Resource Manager role and how to use it, see [What is Resource Manager role](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
 
-        > **NOTE:** Available in v1.82.0+.
+        > **NOTE:** Available since v1.82.0.
 
         ## Example Usage
 
@@ -223,26 +223,28 @@ class Role(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Add a Resource Manager role.
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        default = alicloud.get_account()
         example = alicloud.resourcemanager.Role("example",
-            assume_role_policy_document=\"\"\"     {
+            role_name=name,
+            assume_role_policy_document=f\"\"\"     {{
                   "Statement": [
-                       {
+                       {{
                             "Action": "sts:AssumeRole",
                             "Effect": "Allow",
-                            "Principal": {
+                            "Principal": {{
                                 "RAM":[
-                                        "acs:ram::103755469187****:root"，
-                                        "acs:ram::104408977069****:root"
+                                        "acs:ram::{default.id}:root"
                                 ]
-                            }
-                        }
+                            }}
+                        }}
                   ],
                   "Version": "1"
-             }
-        	 
-        \"\"\",
-            role_name="testrd")
+             }}
+        \"\"\")
         ```
 
         ## Import
@@ -270,7 +272,7 @@ class Role(pulumi.CustomResource):
         Provides a Resource Manager role resource. Members are resource containers in the resource directory, which can physically isolate resources to form an independent resource grouping unit. You can create members in the resource folder to manage them in a unified manner.
         For information about Resource Manager role and how to use it, see [What is Resource Manager role](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
 
-        > **NOTE:** Available in v1.82.0+.
+        > **NOTE:** Available since v1.82.0.
 
         ## Example Usage
 
@@ -278,26 +280,28 @@ class Role(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Add a Resource Manager role.
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        default = alicloud.get_account()
         example = alicloud.resourcemanager.Role("example",
-            assume_role_policy_document=\"\"\"     {
+            role_name=name,
+            assume_role_policy_document=f\"\"\"     {{
                   "Statement": [
-                       {
+                       {{
                             "Action": "sts:AssumeRole",
                             "Effect": "Allow",
-                            "Principal": {
+                            "Principal": {{
                                 "RAM":[
-                                        "acs:ram::103755469187****:root"，
-                                        "acs:ram::104408977069****:root"
+                                        "acs:ram::{default.id}:root"
                                 ]
-                            }
-                        }
+                            }}
+                        }}
                   ],
                   "Version": "1"
-             }
-        	 
-        \"\"\",
-            role_name="testrd")
+             }}
+        \"\"\")
         ```
 
         ## Import

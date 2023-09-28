@@ -52,7 +52,6 @@ import javax.annotation.Nullable;
  *             .comments(&#34;yoyoyo&#34;)
  *             .displayName(&#34;user_display_name&#34;)
  *             .email(&#34;hello.uuu@aaa.com&#34;)
- *             .force(true)
  *             .mobile(&#34;86-18688888888&#34;)
  *             .build());
  * 

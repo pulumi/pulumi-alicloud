@@ -86,7 +86,7 @@ class GetResourceGroupsResult:
     @pulumi.getter
     def names(self) -> Sequence[str]:
         """
-        A list of resource group names.
+        A list of resource group identifiers.
         """
         return pulumi.get(self, "names")
 
@@ -129,24 +129,26 @@ def get_resource_groups(enable_details: Optional[bool] = None,
     """
     This data source provides resource groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.84.0+.
+    > **NOTE:** Available since v1.84.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.resourcemanager.get_resource_groups(name_regex="tftest")
+    example = alicloud.resourcemanager.get_resource_groups(name_regex="tf")
     pulumi.export("firstResourceGroupId", example.groups[0].id)
     ```
 
 
-    :param bool enable_details: Default to `false`. Set it to true can output more details.
+    :param bool enable_details: Set it to true can output more details. Default value: `false`.
     :param Sequence[str] ids: A list of resource group IDs.
-    :param str name_regex: A regex string to filter results by resource group name.
+    :param str name_regex: A regex string to filter results by resource group identifier.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+    :param str status: The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -178,23 +180,25 @@ def get_resource_groups_output(enable_details: Optional[pulumi.Input[Optional[bo
     """
     This data source provides resource groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.84.0+.
+    > **NOTE:** Available since v1.84.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.resourcemanager.get_resource_groups(name_regex="tftest")
+    example = alicloud.resourcemanager.get_resource_groups(name_regex="tf")
     pulumi.export("firstResourceGroupId", example.groups[0].id)
     ```
 
 
-    :param bool enable_details: Default to `false`. Set it to true can output more details.
+    :param bool enable_details: Set it to true can output more details. Default value: `false`.
     :param Sequence[str] ids: A list of resource group IDs.
-    :param str name_regex: A regex string to filter results by resource group name.
+    :param str name_regex: A regex string to filter results by resource group identifier.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+    :param str status: The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
     """
     ...

@@ -372,7 +372,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
             oss_bucket=default_bucket.id,
             oss_key=default_bucket_object.key,
             memory_size=512,
-            runtime="python2.7",
+            runtime="python3.10",
             handler="hello.handler")
         default_queue = alicloud.mns.Queue("defaultQueue")
         default_topic = alicloud.mns.Topic("defaultTopic")
@@ -386,42 +386,11 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
                 on_success=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs(
                     destination=default_topic.name.apply(lambda name: f"acs:mns:{default_regions.regions[0].id}:{default_account.id}:/topics/{name}/messages"),
                 ),
-            ))
-        ```
-        ### Error Handling Configuration
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.fc.FunctionAsyncInvokeConfig("example",
-            service_name=alicloud_fc_service["example"]["name"],
-            function_name=alicloud_fc_function["example"]["name"],
+            ),
             maximum_event_age_in_seconds=60,
-            maximum_retry_attempts=0)
-        ```
-        ### Async Job Configuration
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.fc.FunctionAsyncInvokeConfig("example",
-            service_name=alicloud_fc_service["example"]["name"],
-            function_name=alicloud_fc_function["example"]["name"],
-            stateful_invocation=True)
-        ```
-        ### Configuration for Function Latest Unpublished Version
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.fc.FunctionAsyncInvokeConfig("example",
-            service_name=alicloud_fc_service["example"]["name"],
-            function_name=alicloud_fc_function["example"]["name"],
+            maximum_retry_attempts=0,
+            stateful_invocation=True,
             qualifier="LATEST")
-        # ... other configuration ...
         ```
 
         ## Import
@@ -524,7 +493,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
             oss_bucket=default_bucket.id,
             oss_key=default_bucket_object.key,
             memory_size=512,
-            runtime="python2.7",
+            runtime="python3.10",
             handler="hello.handler")
         default_queue = alicloud.mns.Queue("defaultQueue")
         default_topic = alicloud.mns.Topic("defaultTopic")
@@ -538,42 +507,11 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
                 on_success=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs(
                     destination=default_topic.name.apply(lambda name: f"acs:mns:{default_regions.regions[0].id}:{default_account.id}:/topics/{name}/messages"),
                 ),
-            ))
-        ```
-        ### Error Handling Configuration
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.fc.FunctionAsyncInvokeConfig("example",
-            service_name=alicloud_fc_service["example"]["name"],
-            function_name=alicloud_fc_function["example"]["name"],
+            ),
             maximum_event_age_in_seconds=60,
-            maximum_retry_attempts=0)
-        ```
-        ### Async Job Configuration
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.fc.FunctionAsyncInvokeConfig("example",
-            service_name=alicloud_fc_service["example"]["name"],
-            function_name=alicloud_fc_function["example"]["name"],
-            stateful_invocation=True)
-        ```
-        ### Configuration for Function Latest Unpublished Version
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.fc.FunctionAsyncInvokeConfig("example",
-            service_name=alicloud_fc_service["example"]["name"],
-            function_name=alicloud_fc_function["example"]["name"],
+            maximum_retry_attempts=0,
+            stateful_invocation=True,
             qualifier="LATEST")
-        # ... other configuration ...
         ```
 
         ## Import

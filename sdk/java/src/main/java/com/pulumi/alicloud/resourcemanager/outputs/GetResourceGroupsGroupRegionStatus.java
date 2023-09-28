@@ -15,7 +15,7 @@ public final class GetResourceGroupsGroupRegionStatus {
      */
     private String regionId;
     /**
-     * @return The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+     * @return The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
      * 
      */
     private String status;
@@ -29,7 +29,7 @@ public final class GetResourceGroupsGroupRegionStatus {
         return this.regionId;
     }
     /**
-     * @return The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+     * @return The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
      * 
      */
     public String status() {

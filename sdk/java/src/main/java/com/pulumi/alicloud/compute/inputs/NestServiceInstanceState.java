@@ -21,14 +21,14 @@ public final class NestServiceInstanceState extends com.pulumi.resources.Resourc
     public static final NestServiceInstanceState Empty = new NestServiceInstanceState();
 
     /**
-     * The order information of cloud market. See the following `Block commodity`.
+     * The order information of cloud market. See `commodity` below.
      * 
      */
     @Import(name="commodity")
     private @Nullable Output<NestServiceInstanceCommodityArgs> commodity;
 
     /**
-     * @return The order information of cloud market. See the following `Block commodity`.
+     * @return The order information of cloud market. See `commodity` below.
      * 
      */
     public Optional<Output<NestServiceInstanceCommodityArgs>> commodity() {
@@ -66,14 +66,14 @@ public final class NestServiceInstanceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The configuration of O&amp;M. See the following `Block operation_metadata`.
+     * The configuration of O&amp;M. See `operation_metadata` below.
      * 
      */
     @Import(name="operationMetadata")
     private @Nullable Output<NestServiceInstanceOperationMetadataArgs> operationMetadata;
 
     /**
-     * @return The configuration of O&amp;M. See the following `Block operation_metadata`.
+     * @return The configuration of O&amp;M. See `operation_metadata` below.
      * 
      */
     public Optional<Output<NestServiceInstanceOperationMetadataArgs>> operationMetadata() {
@@ -268,7 +268,7 @@ public final class NestServiceInstanceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param commodity The order information of cloud market. See the following `Block commodity`.
+         * @param commodity The order information of cloud market. See `commodity` below.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class NestServiceInstanceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param commodity The order information of cloud market. See the following `Block commodity`.
+         * @param commodity The order information of cloud market. See `commodity` below.
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class NestServiceInstanceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param operationMetadata The configuration of O&amp;M. See the following `Block operation_metadata`.
+         * @param operationMetadata The configuration of O&amp;M. See `operation_metadata` below.
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class NestServiceInstanceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param operationMetadata The configuration of O&amp;M. See the following `Block operation_metadata`.
+         * @param operationMetadata The configuration of O&amp;M. See `operation_metadata` below.
          * 
          * @return builder
          * 

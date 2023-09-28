@@ -15,9 +15,9 @@ import (
 
 // Provides a Private Link Vpc Endpoint Connection resource.
 //
-// For information about Private Link Vpc Endpoint Connection and how to use it, see [What is Vpc Endpoint Connection](https://help.aliyun.com/document_detail/183551.html).
+// For information about Private Link Vpc Endpoint Connection and how to use it, see [What is Vpc Endpoint Connection](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-enablevpcendpointzoneconnection).
 //
-// > **NOTE:** Available in v1.110.0+.
+// > **NOTE:** Available since v1.110.0.
 //
 // ## Example Usage
 //
@@ -28,17 +28,91 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/privatelink"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := privatelink.NewVpcEndpointServiceConnection(ctx, "example", &privatelink.VpcEndpointServiceConnectionArgs{
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			exampleZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleVpcEndpointService, err := privatelink.NewVpcEndpointService(ctx, "exampleVpcEndpointService", &privatelink.VpcEndpointServiceArgs{
+//				ServiceDescription:   pulumi.String(name),
+//				ConnectBandwidth:     pulumi.Int(103),
+//				AutoAcceptConnection: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.0.0.0/8"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.1.0.0/16"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: exampleNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "exampleApplicationLoadBalancer", &slb.ApplicationLoadBalancerArgs{
+//				LoadBalancerName: pulumi.String(name),
+//				VswitchId:        exampleSwitch.ID(),
+//				LoadBalancerSpec: pulumi.String("slb.s2.small"),
+//				AddressType:      pulumi.String("intranet"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleVpcEndpointServiceResource, err := privatelink.NewVpcEndpointServiceResource(ctx, "exampleVpcEndpointServiceResource", &privatelink.VpcEndpointServiceResourceArgs{
+//				ServiceId:    exampleVpcEndpointService.ID(),
+//				ResourceId:   exampleApplicationLoadBalancer.ID(),
+//				ResourceType: pulumi.String("slb"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleVpcEndpoint, err := privatelink.NewVpcEndpoint(ctx, "exampleVpcEndpoint", &privatelink.VpcEndpointArgs{
+//				ServiceId: exampleVpcEndpointServiceResource.ServiceId,
+//				SecurityGroupIds: pulumi.StringArray{
+//					exampleSecurityGroup.ID(),
+//				},
+//				VpcId:           exampleNetwork.ID(),
+//				VpcEndpointName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = privatelink.NewVpcEndpointServiceConnection(ctx, "exampleVpcEndpointServiceConnection", &privatelink.VpcEndpointServiceConnectionArgs{
+//				EndpointId: exampleVpcEndpoint.ID(),
+//				ServiceId:  exampleVpcEndpoint.ServiceId,
 //				Bandwidth:  pulumi.Int(1024),
-//				EndpointId: pulumi.String("example_value"),
-//				ServiceId:  pulumi.String("example_value"),
 //			})
 //			if err != nil {
 //				return err

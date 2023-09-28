@@ -25,13 +25,13 @@ class AggregateCompliancePackArgs:
                  config_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]]] = None):
         """
         The set of arguments for constructing a AggregateCompliancePack resource.
-        :param pulumi.Input[str] aggregate_compliance_pack_name: The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
+        :param pulumi.Input[str] aggregate_compliance_pack_name: The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
         :param pulumi.Input[str] aggregator_id: The ID of aggregator.
         :param pulumi.Input[str] description: The description of compliance package.
-        :param pulumi.Input[int] risk_level: The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+        :param pulumi.Input[int] risk_level: The Risk Level. Valid values:
         :param pulumi.Input[str] compliance_pack_template_id: The Template ID of compliance package.
         :param pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
-        :param pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]] config_rules: A list of Config Rules. See `config_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]] config_rules: A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         """
         pulumi.set(__self__, "aggregate_compliance_pack_name", aggregate_compliance_pack_name)
         pulumi.set(__self__, "aggregator_id", aggregator_id)
@@ -42,8 +42,8 @@ class AggregateCompliancePackArgs:
         if config_rule_ids is not None:
             pulumi.set(__self__, "config_rule_ids", config_rule_ids)
         if config_rules is not None:
-            warnings.warn("""Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""", DeprecationWarning)
-            pulumi.log.warn("""config_rules is deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""")
+            warnings.warn("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""", DeprecationWarning)
+            pulumi.log.warn("""config_rules is deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
         if config_rules is not None:
             pulumi.set(__self__, "config_rules", config_rules)
 
@@ -51,7 +51,7 @@ class AggregateCompliancePackArgs:
     @pulumi.getter(name="aggregateCompliancePackName")
     def aggregate_compliance_pack_name(self) -> pulumi.Input[str]:
         """
-        The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
+        The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
         """
         return pulumi.get(self, "aggregate_compliance_pack_name")
 
@@ -87,7 +87,7 @@ class AggregateCompliancePackArgs:
     @pulumi.getter(name="riskLevel")
     def risk_level(self) -> pulumi.Input[int]:
         """
-        The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+        The Risk Level. Valid values:
         """
         return pulumi.get(self, "risk_level")
 
@@ -123,10 +123,10 @@ class AggregateCompliancePackArgs:
     @pulumi.getter(name="configRules")
     def config_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]]]:
         """
-        A list of Config Rules. See `config_rules` below.
+        A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         """
-        warnings.warn("""Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""", DeprecationWarning)
-        pulumi.log.warn("""config_rules is deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""")
+        warnings.warn("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""", DeprecationWarning)
+        pulumi.log.warn("""config_rules is deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
 
         return pulumi.get(self, "config_rules")
 
@@ -139,6 +139,7 @@ class AggregateCompliancePackArgs:
 class _AggregateCompliancePackState:
     def __init__(__self__, *,
                  aggregate_compliance_pack_name: Optional[pulumi.Input[str]] = None,
+                 aggregator_compliance_pack_id: Optional[pulumi.Input[str]] = None,
                  aggregator_id: Optional[pulumi.Input[str]] = None,
                  compliance_pack_template_id: Optional[pulumi.Input[str]] = None,
                  config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]]] = None,
@@ -148,17 +149,20 @@ class _AggregateCompliancePackState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AggregateCompliancePack resources.
-        :param pulumi.Input[str] aggregate_compliance_pack_name: The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
+        :param pulumi.Input[str] aggregate_compliance_pack_name: The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
+        :param pulumi.Input[str] aggregator_compliance_pack_id: The ID of the compliance package.
         :param pulumi.Input[str] aggregator_id: The ID of aggregator.
         :param pulumi.Input[str] compliance_pack_template_id: The Template ID of compliance package.
         :param pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
-        :param pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]] config_rules: A list of Config Rules. See `config_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]] config_rules: A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         :param pulumi.Input[str] description: The description of compliance package.
-        :param pulumi.Input[int] risk_level: The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
-        :param pulumi.Input[str] status: The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+        :param pulumi.Input[int] risk_level: The Risk Level. Valid values:
+        :param pulumi.Input[str] status: The status of the Aggregate Compliance Pack.
         """
         if aggregate_compliance_pack_name is not None:
             pulumi.set(__self__, "aggregate_compliance_pack_name", aggregate_compliance_pack_name)
+        if aggregator_compliance_pack_id is not None:
+            pulumi.set(__self__, "aggregator_compliance_pack_id", aggregator_compliance_pack_id)
         if aggregator_id is not None:
             pulumi.set(__self__, "aggregator_id", aggregator_id)
         if compliance_pack_template_id is not None:
@@ -166,8 +170,8 @@ class _AggregateCompliancePackState:
         if config_rule_ids is not None:
             pulumi.set(__self__, "config_rule_ids", config_rule_ids)
         if config_rules is not None:
-            warnings.warn("""Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""", DeprecationWarning)
-            pulumi.log.warn("""config_rules is deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""")
+            warnings.warn("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""", DeprecationWarning)
+            pulumi.log.warn("""config_rules is deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
         if config_rules is not None:
             pulumi.set(__self__, "config_rules", config_rules)
         if description is not None:
@@ -181,13 +185,25 @@ class _AggregateCompliancePackState:
     @pulumi.getter(name="aggregateCompliancePackName")
     def aggregate_compliance_pack_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
+        The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
         """
         return pulumi.get(self, "aggregate_compliance_pack_name")
 
     @aggregate_compliance_pack_name.setter
     def aggregate_compliance_pack_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "aggregate_compliance_pack_name", value)
+
+    @property
+    @pulumi.getter(name="aggregatorCompliancePackId")
+    def aggregator_compliance_pack_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the compliance package.
+        """
+        return pulumi.get(self, "aggregator_compliance_pack_id")
+
+    @aggregator_compliance_pack_id.setter
+    def aggregator_compliance_pack_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aggregator_compliance_pack_id", value)
 
     @property
     @pulumi.getter(name="aggregatorId")
@@ -229,10 +245,10 @@ class _AggregateCompliancePackState:
     @pulumi.getter(name="configRules")
     def config_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]]]:
         """
-        A list of Config Rules. See `config_rules` below.
+        A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         """
-        warnings.warn("""Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""", DeprecationWarning)
-        pulumi.log.warn("""config_rules is deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""")
+        warnings.warn("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""", DeprecationWarning)
+        pulumi.log.warn("""config_rules is deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
 
         return pulumi.get(self, "config_rules")
 
@@ -256,7 +272,7 @@ class _AggregateCompliancePackState:
     @pulumi.getter(name="riskLevel")
     def risk_level(self) -> Optional[pulumi.Input[int]]:
         """
-        The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+        The Risk Level. Valid values:
         """
         return pulumi.get(self, "risk_level")
 
@@ -268,7 +284,7 @@ class _AggregateCompliancePackState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+        The status of the Aggregate Compliance Pack.
         """
         return pulumi.get(self, "status")
 
@@ -325,6 +341,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
             config_rule_trigger_types="ConfigurationItemChangeNotification",
             source_owner="ALIYUN",
             source_identifier="contains-tag",
+            description=name,
             risk_level=1,
             resource_types_scopes=["ACS::ECS::Instance"],
             input_parameters={
@@ -351,13 +368,13 @@ class AggregateCompliancePack(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] aggregate_compliance_pack_name: The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
+        :param pulumi.Input[str] aggregate_compliance_pack_name: The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
         :param pulumi.Input[str] aggregator_id: The ID of aggregator.
         :param pulumi.Input[str] compliance_pack_template_id: The Template ID of compliance package.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleIdArgs']]]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleArgs']]]] config_rules: A list of Config Rules. See `config_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleArgs']]]] config_rules: A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         :param pulumi.Input[str] description: The description of compliance package.
-        :param pulumi.Input[int] risk_level: The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+        :param pulumi.Input[int] risk_level: The Risk Level. Valid values:
         """
         ...
     @overload
@@ -400,6 +417,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
             config_rule_trigger_types="ConfigurationItemChangeNotification",
             source_owner="ALIYUN",
             source_identifier="contains-tag",
+            description=name,
             risk_level=1,
             resource_types_scopes=["ACS::ECS::Instance"],
             input_parameters={
@@ -464,8 +482,8 @@ class AggregateCompliancePack(pulumi.CustomResource):
             __props__.__dict__["compliance_pack_template_id"] = compliance_pack_template_id
             __props__.__dict__["config_rule_ids"] = config_rule_ids
             if config_rules is not None and not opts.urn:
-                warnings.warn("""Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""", DeprecationWarning)
-                pulumi.log.warn("""config_rules is deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""")
+                warnings.warn("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""", DeprecationWarning)
+                pulumi.log.warn("""config_rules is deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
             __props__.__dict__["config_rules"] = config_rules
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
@@ -473,6 +491,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
             if risk_level is None and not opts.urn:
                 raise TypeError("Missing required property 'risk_level'")
             __props__.__dict__["risk_level"] = risk_level
+            __props__.__dict__["aggregator_compliance_pack_id"] = None
             __props__.__dict__["status"] = None
         super(AggregateCompliancePack, __self__).__init__(
             'alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack',
@@ -485,6 +504,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             aggregate_compliance_pack_name: Optional[pulumi.Input[str]] = None,
+            aggregator_compliance_pack_id: Optional[pulumi.Input[str]] = None,
             aggregator_id: Optional[pulumi.Input[str]] = None,
             compliance_pack_template_id: Optional[pulumi.Input[str]] = None,
             config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleIdArgs']]]]] = None,
@@ -499,20 +519,22 @@ class AggregateCompliancePack(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] aggregate_compliance_pack_name: The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
+        :param pulumi.Input[str] aggregate_compliance_pack_name: The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
+        :param pulumi.Input[str] aggregator_compliance_pack_id: The ID of the compliance package.
         :param pulumi.Input[str] aggregator_id: The ID of aggregator.
         :param pulumi.Input[str] compliance_pack_template_id: The Template ID of compliance package.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleIdArgs']]]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleArgs']]]] config_rules: A list of Config Rules. See `config_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleArgs']]]] config_rules: A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         :param pulumi.Input[str] description: The description of compliance package.
-        :param pulumi.Input[int] risk_level: The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
-        :param pulumi.Input[str] status: The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+        :param pulumi.Input[int] risk_level: The Risk Level. Valid values:
+        :param pulumi.Input[str] status: The status of the Aggregate Compliance Pack.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _AggregateCompliancePackState.__new__(_AggregateCompliancePackState)
 
         __props__.__dict__["aggregate_compliance_pack_name"] = aggregate_compliance_pack_name
+        __props__.__dict__["aggregator_compliance_pack_id"] = aggregator_compliance_pack_id
         __props__.__dict__["aggregator_id"] = aggregator_id
         __props__.__dict__["compliance_pack_template_id"] = compliance_pack_template_id
         __props__.__dict__["config_rule_ids"] = config_rule_ids
@@ -526,9 +548,17 @@ class AggregateCompliancePack(pulumi.CustomResource):
     @pulumi.getter(name="aggregateCompliancePackName")
     def aggregate_compliance_pack_name(self) -> pulumi.Output[str]:
         """
-        The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
+        The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
         """
         return pulumi.get(self, "aggregate_compliance_pack_name")
+
+    @property
+    @pulumi.getter(name="aggregatorCompliancePackId")
+    def aggregator_compliance_pack_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the compliance package.
+        """
+        return pulumi.get(self, "aggregator_compliance_pack_id")
 
     @property
     @pulumi.getter(name="aggregatorId")
@@ -558,10 +588,10 @@ class AggregateCompliancePack(pulumi.CustomResource):
     @pulumi.getter(name="configRules")
     def config_rules(self) -> pulumi.Output[Optional[Sequence['outputs.AggregateCompliancePackConfigRule']]]:
         """
-        A list of Config Rules. See `config_rules` below.
+        A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         """
-        warnings.warn("""Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""", DeprecationWarning)
-        pulumi.log.warn("""config_rules is deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.""")
+        warnings.warn("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""", DeprecationWarning)
+        pulumi.log.warn("""config_rules is deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
 
         return pulumi.get(self, "config_rules")
 
@@ -577,7 +607,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
     @pulumi.getter(name="riskLevel")
     def risk_level(self) -> pulumi.Output[int]:
         """
-        The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+        The Risk Level. Valid values:
         """
         return pulumi.get(self, "risk_level")
 
@@ -585,7 +615,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+        The status of the Aggregate Compliance Pack.
         """
         return pulumi.get(self, "status")
 

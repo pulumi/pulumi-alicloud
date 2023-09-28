@@ -12,26 +12,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RuleRuleConditionCookieConfigValue {
     /**
-     * @return The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+     * @return The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
      * 
      */
     private @Nullable String key;
     /**
-     * @return The value of the values list.
+     * @return The content of the inserted header field. Valid values:
+     * * If the `value_type` is set to `SystemDefined`, the following values are used:
      * 
      */
     private @Nullable String value;
 
     private RuleRuleConditionCookieConfigValue() {}
     /**
-     * @return The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+     * @return The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
      * 
      */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return The value of the values list.
+     * @return The content of the inserted header field. Valid values:
+     * * If the `value_type` is set to `SystemDefined`, the following values are used:
      * 
      */
     public Optional<String> value() {

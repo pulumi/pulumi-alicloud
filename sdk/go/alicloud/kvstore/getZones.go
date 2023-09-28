@@ -14,7 +14,7 @@ import (
 
 // This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 //
-// > **NOTE:** Available in v1.73.0+.
+// > **NOTE:** Available since v1.73.0.
 //
 // ## Example Usage
 //
@@ -30,13 +30,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			zonesIds, err := kvstore.GetZones(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = kvstore.NewInstance(ctx, "kvstore", &kvstore.InstanceArgs{
-//				AvailabilityZone: *pulumi.String(zonesIds.Zones[0].Id),
-//			})
+//			_, err := kvstore.GetZones(ctx, &kvstore.GetZonesArgs{
+//				InstanceChargeType: pulumi.StringRef("PostPaid"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -58,7 +54,7 @@ func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOpti
 // A collection of arguments for invoking getZones.
 type GetZonesArgs struct {
 	// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-	// * productType - (Optional, Available in v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
+	// * productType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
 	Engine *string `pulumi:"engine"`
 	// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
@@ -100,7 +96,7 @@ func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi
 // A collection of arguments for invoking getZones.
 type GetZonesOutputArgs struct {
 	// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-	// * productType - (Optional, Available in v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
+	// * productType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
 	Engine pulumi.StringPtrInput `pulumi:"engine"`
 	// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Pvtz
     /// 
     /// For information about Private Zone Rule Attachment and how to use it, see [What is Rule Attachment](https://www.alibabacloud.com/help/en/doc-detail/177601.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.143.0+.
+    /// &gt; **NOTE:** Available since v1.143.0.
     /// 
     /// ## Import
     /// 
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Output<string> RuleId { get; private set; } = null!;
 
         /// <summary>
-        /// The List of the VPC. See the following `Block vpcs`.
+        /// The List of the VPC. See `vpcs` below.
         /// </summary>
         [Output("vpcs")]
         public Output<ImmutableArray<Outputs.RuleAttachmentVpc>> Vpcs { get; private set; } = null!;
@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.Pvtz
         private InputList<Inputs.RuleAttachmentVpcArgs>? _vpcs;
 
         /// <summary>
-        /// The List of the VPC. See the following `Block vpcs`.
+        /// The List of the VPC. See `vpcs` below.
         /// </summary>
         public InputList<Inputs.RuleAttachmentVpcArgs> Vpcs
         {
@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.Pvtz
         private InputList<Inputs.RuleAttachmentVpcGetArgs>? _vpcs;
 
         /// <summary>
-        /// The List of the VPC. See the following `Block vpcs`.
+        /// The List of the VPC. See `vpcs` below.
         /// </summary>
         public InputList<Inputs.RuleAttachmentVpcGetArgs> Vpcs
         {

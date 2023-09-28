@@ -132,7 +132,7 @@ class UserPolicyAttachment(pulumi.CustomResource):
         """
         Provides a RAM User Policy attachment resource.
 
-        > **NOTE:** Available since v1.0.0+.
+        > **NOTE:** Available since v1.0.0.
 
         ## Example Usage
 
@@ -145,8 +145,7 @@ class UserPolicyAttachment(pulumi.CustomResource):
             display_name="user_display_name",
             mobile="86-18688888888",
             email="hello.uuu@aaa.com",
-            comments="yoyoyo",
-            force=True)
+            comments="yoyoyo")
         policy = alicloud.ram.Policy("policy",
             document=\"\"\"  {
             "Statement": [
@@ -165,8 +164,7 @@ class UserPolicyAttachment(pulumi.CustomResource):
               "Version": "1"
           }
         \"\"\",
-            description="this is a policy test",
-            force=True)
+            description="this is a policy test")
         attach = alicloud.ram.UserPolicyAttachment("attach",
             policy_name=policy.name,
             policy_type=policy.type,
@@ -196,7 +194,7 @@ class UserPolicyAttachment(pulumi.CustomResource):
         """
         Provides a RAM User Policy attachment resource.
 
-        > **NOTE:** Available since v1.0.0+.
+        > **NOTE:** Available since v1.0.0.
 
         ## Example Usage
 
@@ -209,8 +207,7 @@ class UserPolicyAttachment(pulumi.CustomResource):
             display_name="user_display_name",
             mobile="86-18688888888",
             email="hello.uuu@aaa.com",
-            comments="yoyoyo",
-            force=True)
+            comments="yoyoyo")
         policy = alicloud.ram.Policy("policy",
             document=\"\"\"  {
             "Statement": [
@@ -229,8 +226,7 @@ class UserPolicyAttachment(pulumi.CustomResource):
               "Version": "1"
           }
         \"\"\",
-            description="this is a policy test",
-            force=True)
+            description="this is a policy test")
         attach = alicloud.ram.UserPolicyAttachment("attach",
             policy_name=policy.name,
             policy_type=policy.type,

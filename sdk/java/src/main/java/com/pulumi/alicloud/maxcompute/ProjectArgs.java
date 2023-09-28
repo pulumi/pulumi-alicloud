@@ -49,14 +49,14 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IP whitelistSee the following `Block IpWhiteList`.
+     * IP whitelist. See `ip_white_list` below.
      * 
      */
     @Import(name="ipWhiteList")
     private @Nullable Output<ProjectIpWhiteListArgs> ipWhiteList;
 
     /**
-     * @return IP whitelistSee the following `Block IpWhiteList`.
+     * @return IP whitelist. See `ip_white_list` below.
      * 
      */
     public Optional<Output<ProjectIpWhiteListArgs>> ipWhiteList() {
@@ -94,14 +94,14 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Project base attributesSee the following `Block Properties`.
+     * Project base attributes. See `properties` below.
      * 
      */
     @Import(name="properties")
     private @Nullable Output<ProjectPropertiesArgs> properties;
 
     /**
-     * @return Project base attributesSee the following `Block Properties`.
+     * @return Project base attributes. See `properties` below.
      * 
      */
     public Optional<Output<ProjectPropertiesArgs>> properties() {
@@ -109,14 +109,14 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Security-related attributesSee the following `Block SecurityProperties`.
+     * Security-related attributes. See `security_properties` below.
      * 
      */
     @Import(name="securityProperties")
     private @Nullable Output<ProjectSecurityPropertiesArgs> securityProperties;
 
     /**
-     * @return Security-related attributesSee the following `Block SecurityProperties`.
+     * @return Security-related attributes. See `security_properties` below.
      * 
      */
     public Optional<Output<ProjectSecurityPropertiesArgs>> securityProperties() {
@@ -196,7 +196,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipWhiteList IP whitelistSee the following `Block IpWhiteList`.
+         * @param ipWhiteList IP whitelist. See `ip_white_list` below.
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipWhiteList IP whitelistSee the following `Block IpWhiteList`.
+         * @param ipWhiteList IP whitelist. See `ip_white_list` below.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param properties Project base attributesSee the following `Block Properties`.
+         * @param properties Project base attributes. See `properties` below.
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param properties Project base attributesSee the following `Block Properties`.
+         * @param properties Project base attributes. See `properties` below.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityProperties Security-related attributesSee the following `Block SecurityProperties`.
+         * @param securityProperties Security-related attributes. See `security_properties` below.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityProperties Security-related attributesSee the following `Block SecurityProperties`.
+         * @param securityProperties Security-related attributes. See `security_properties` below.
          * 
          * @return builder
          * 

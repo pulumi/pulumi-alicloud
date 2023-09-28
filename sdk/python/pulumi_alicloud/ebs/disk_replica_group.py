@@ -281,26 +281,7 @@ class DiskReplicaGroup(pulumi.CustomResource):
 
         For information about EBS Disk Replica Group and how to use it, see [What is Disk Replica Group](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/creatediskreplicagroup).
 
-        > **NOTE:** Available in v1.187.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_regions = alicloud.ebs.get_regions(region_id="cn-hangzhou")
-        default_disk_replica_group = alicloud.ebs.DiskReplicaGroup("defaultDiskReplicaGroup",
-            source_region_id=var["region"],
-            source_zone_id=default_regions.regions[0].zones[0].zone_id,
-            destination_region_id=var["region"],
-            destination_zone_id=default_regions.regions[0].zones[1].zone_id,
-            group_name="group_name",
-            description="group_description",
-            rpo=900)
-        ```
+        > **NOTE:** Available since v1.187.0.
 
         ## Import
 
@@ -331,26 +312,7 @@ class DiskReplicaGroup(pulumi.CustomResource):
 
         For information about EBS Disk Replica Group and how to use it, see [What is Disk Replica Group](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/creatediskreplicagroup).
 
-        > **NOTE:** Available in v1.187.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_regions = alicloud.ebs.get_regions(region_id="cn-hangzhou")
-        default_disk_replica_group = alicloud.ebs.DiskReplicaGroup("defaultDiskReplicaGroup",
-            source_region_id=var["region"],
-            source_zone_id=default_regions.regions[0].zones[0].zone_id,
-            destination_region_id=var["region"],
-            destination_zone_id=default_regions.regions[0].zones[1].zone_id,
-            group_name="group_name",
-            description="group_description",
-            rpo=900)
-        ```
+        > **NOTE:** Available since v1.187.0.
 
         ## Import
 

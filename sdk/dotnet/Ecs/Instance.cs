@@ -504,9 +504,6 @@ namespace Pulumi.AliCloud.Ecs
         [Output("stoppedMode")]
         public Output<string> StoppedMode { get; private set; } = null!;
 
-        [Output("subnetId")]
-        public Output<string> SubnetId { get; private set; } = null!;
-
         /// <summary>
         /// The ID of the automatic snapshot policy applied to the system disk.
         /// </summary>
@@ -536,6 +533,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("systemDiskEncrypted")]
         public Output<bool?> SystemDiskEncrypted { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.210.0) The ID of system disk.
+        /// </summary>
+        [Output("systemDiskId")]
+        public Output<string> SystemDiskId { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the Key Management Service (KMS) key to be used for the system disk.
@@ -1029,9 +1032,6 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("stoppedMode")]
         public Input<string>? StoppedMode { get; set; }
-
-        [Input("subnetId")]
-        public Input<string>? SubnetId { get; set; }
 
         /// <summary>
         /// The ID of the automatic snapshot policy applied to the system disk.
@@ -1574,9 +1574,6 @@ namespace Pulumi.AliCloud.Ecs
         [Input("stoppedMode")]
         public Input<string>? StoppedMode { get; set; }
 
-        [Input("subnetId")]
-        public Input<string>? SubnetId { get; set; }
-
         /// <summary>
         /// The ID of the automatic snapshot policy applied to the system disk.
         /// </summary>
@@ -1606,6 +1603,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("systemDiskEncrypted")]
         public Input<bool>? SystemDiskEncrypted { get; set; }
+
+        /// <summary>
+        /// (Available since v1.210.0) The ID of system disk.
+        /// </summary>
+        [Input("systemDiskId")]
+        public Input<string>? SystemDiskId { get; set; }
 
         /// <summary>
         /// The ID of the Key Management Service (KMS) key to be used for the system disk.

@@ -15,9 +15,9 @@ import (
 
 // Provides a Data Security Center Rule resource.
 //
-// For information about Data Security Center Rule and how to use it, see [What is Rule](https://help.aliyun.com/product/88674.html).
+// For information about Data Security Center Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/data-security-center/latest/api-sddp-2019-01-03-createrule).
 //
-// > **NOTE:** Available in v1.132.0+.
+// > **NOTE:** Available since v1.132.0.
 //
 // ## Example Usage
 //
@@ -30,17 +30,23 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sddp"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example_name"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := sddp.NewRule(ctx, "default", &sddp.RuleArgs{
 //				Category:    pulumi.Int(0),
 //				Content:     pulumi.String("content"),
-//				ProductCode: pulumi.String("ODPS"),
+//				RuleName:    pulumi.String(name),
 //				RiskLevelId: pulumi.String("4"),
-//				RuleName:    pulumi.String("rule_name"),
+//				ProductCode: pulumi.String("OSS"),
 //			})
 //			if err != nil {
 //				return err

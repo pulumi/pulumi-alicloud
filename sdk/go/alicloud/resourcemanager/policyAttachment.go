@@ -16,7 +16,7 @@ import (
 // Provides a Resource Manager Policy Attachment resource to attaches a policy to an object. After you attach a policy to an object, the object has the operation permissions on the current resource group or the resources under the current account.
 // For information about Resource Manager Policy Attachment and how to use it, see [How to authorize and manage resource groups](https://www.alibabacloud.com/help/en/doc-detail/94490.htm).
 //
-// > **NOTE:** Available in v1.93.0+.
+// > **NOTE:** Available since v1.93.0.
 //
 // ## Import
 //
@@ -32,7 +32,7 @@ type PolicyAttachment struct {
 
 	// The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
 	PolicyName pulumi.StringOutput `pulumi:"policyName"`
-	// - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+	// The type of the policy. Valid values: `Custom`, `System`.
 	PolicyType pulumi.StringOutput `pulumi:"policyType"`
 	// The name of the object to which you want to attach the policy.
 	PrincipalName pulumi.StringOutput `pulumi:"principalName"`
@@ -89,7 +89,7 @@ func GetPolicyAttachment(ctx *pulumi.Context,
 type policyAttachmentState struct {
 	// The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
 	PolicyName *string `pulumi:"policyName"`
-	// - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+	// The type of the policy. Valid values: `Custom`, `System`.
 	PolicyType *string `pulumi:"policyType"`
 	// The name of the object to which you want to attach the policy.
 	PrincipalName *string `pulumi:"principalName"`
@@ -102,7 +102,7 @@ type policyAttachmentState struct {
 type PolicyAttachmentState struct {
 	// The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
 	PolicyName pulumi.StringPtrInput
-	// - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+	// The type of the policy. Valid values: `Custom`, `System`.
 	PolicyType pulumi.StringPtrInput
 	// The name of the object to which you want to attach the policy.
 	PrincipalName pulumi.StringPtrInput
@@ -119,7 +119,7 @@ func (PolicyAttachmentState) ElementType() reflect.Type {
 type policyAttachmentArgs struct {
 	// The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
 	PolicyName string `pulumi:"policyName"`
-	// - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+	// The type of the policy. Valid values: `Custom`, `System`.
 	PolicyType string `pulumi:"policyType"`
 	// The name of the object to which you want to attach the policy.
 	PrincipalName string `pulumi:"principalName"`
@@ -133,7 +133,7 @@ type policyAttachmentArgs struct {
 type PolicyAttachmentArgs struct {
 	// The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
 	PolicyName pulumi.StringInput
-	// - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+	// The type of the policy. Valid values: `Custom`, `System`.
 	PolicyType pulumi.StringInput
 	// The name of the object to which you want to attach the policy.
 	PrincipalName pulumi.StringInput
@@ -259,7 +259,7 @@ func (o PolicyAttachmentOutput) PolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyAttachment) pulumi.StringOutput { return v.PolicyName }).(pulumi.StringOutput)
 }
 
-// - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+// The type of the policy. Valid values: `Custom`, `System`.
 func (o PolicyAttachmentOutput) PolicyType() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyAttachment) pulumi.StringOutput { return v.PolicyType }).(pulumi.StringOutput)
 }

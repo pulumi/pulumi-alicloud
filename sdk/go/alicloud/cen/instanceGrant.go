@@ -28,6 +28,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
@@ -39,22 +41,20 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			childAccountAk := "example-ak"
-//			if param := cfg.Get("childAccountAk"); param != "" {
-//				childAccountAk = param
+//			anotherUid := "xxxx"
+//			if param := cfg.Get("anotherUid"); param != "" {
+//				anotherUid = param
 //			}
-//			childAccountSk := "example-sk"
-//			if param := cfg.Get("childAccountSk"); param != "" {
-//				childAccountSk = param
-//			}
-//			_, err := alicloud.NewProvider(ctx, "yourAccount", nil)
+//			_, err := alicloud.NewProvider(ctx, "childAccount", &alicloud.ProviderArgs{
+//				Region: pulumi.String("cn-hangzhou"),
+//				AssumeRole: &alicloud.ProviderAssumeRoleArgs{
+//					RoleArn: pulumi.String(fmt.Sprintf("acs:ram::%v:role/terraform-example-assume-role", anotherUid)),
+//				},
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = alicloud.NewProvider(ctx, "childAccount", &alicloud.ProviderArgs{
-//				AccessKey: pulumi.String(childAccountAk),
-//				SecretKey: pulumi.String(childAccountSk),
-//			})
+//			_, err = alicloud.NewProvider(ctx, "yourAccount", nil)
 //			if err != nil {
 //				return err
 //			}

@@ -248,17 +248,23 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         accepting_region = config.get("acceptingRegion")
         if accepting_region is None:
             accepting_region = "cn-beijing"
-        accepting_account_access_key = config.get("acceptingAccountAccessKey")
-        if accepting_account_access_key is None:
-            accepting_account_access_key = "access_key"
-        accepting_account_secret_key = config.get("acceptingAccountSecretKey")
-        if accepting_account_secret_key is None:
-            accepting_account_secret_key = "secret_key"
-        local = alicloud.Provider("local", region="cn-hangzhou")
+        accept_uid = config.get("acceptUid")
+        if accept_uid is None:
+            accept_uid = "xxxx"
+        # Method 1: Use assume_role to operate resources in the target account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
         accepting = alicloud.Provider("accepting",
             region=accepting_region,
-            access_key=accepting_account_access_key,
-            secret_key=accepting_account_secret_key)
+            assume_role=alicloud.ProviderAssumeRoleArgs(
+                role_arn=f"acs:ram::{accept_uid}:role/terraform-example-assume-role",
+            ))
+        # Method 2: Use the target account's access_key, secret_key
+        # provider "alicloud" {
+        #   region     = "cn-hangzhou"
+        #   access_key = "access_key"
+        #   secret_key = "secret_key"
+        #   alias      = "accepting"
+        # }
+        local = alicloud.Provider("local", region="cn-hangzhou")
         local_network = alicloud.vpc.Network("localNetwork",
             vpc_name=name,
             cidr_block="10.4.0.0/16",
@@ -321,17 +327,23 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         accepting_region = config.get("acceptingRegion")
         if accepting_region is None:
             accepting_region = "cn-beijing"
-        accepting_account_access_key = config.get("acceptingAccountAccessKey")
-        if accepting_account_access_key is None:
-            accepting_account_access_key = "access_key"
-        accepting_account_secret_key = config.get("acceptingAccountSecretKey")
-        if accepting_account_secret_key is None:
-            accepting_account_secret_key = "secret_key"
-        local = alicloud.Provider("local", region="cn-hangzhou")
+        accept_uid = config.get("acceptUid")
+        if accept_uid is None:
+            accept_uid = "xxxx"
+        # Method 1: Use assume_role to operate resources in the target account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
         accepting = alicloud.Provider("accepting",
             region=accepting_region,
-            access_key=accepting_account_access_key,
-            secret_key=accepting_account_secret_key)
+            assume_role=alicloud.ProviderAssumeRoleArgs(
+                role_arn=f"acs:ram::{accept_uid}:role/terraform-example-assume-role",
+            ))
+        # Method 2: Use the target account's access_key, secret_key
+        # provider "alicloud" {
+        #   region     = "cn-hangzhou"
+        #   access_key = "access_key"
+        #   secret_key = "secret_key"
+        #   alias      = "accepting"
+        # }
+        local = alicloud.Provider("local", region="cn-hangzhou")
         local_network = alicloud.vpc.Network("localNetwork",
             vpc_name=name,
             cidr_block="10.4.0.0/16",

@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// For information about HBR and how to use it, see [What is HBR](https://www.alibabacloud.com/help/en/hybrid-backup-recovery).
         /// 
-        /// &gt; **NOTE:** Available in v1.184.0+
+        /// &gt; **NOTE:** Available since v1.184.0+
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// For information about HBR and how to use it, see [What is HBR](https://www.alibabacloud.com/help/en/hybrid-backup-recovery).
         /// 
-        /// &gt; **NOTE:** Available in v1.184.0+
+        /// &gt; **NOTE:** Available since v1.184.0+
         /// 
         /// {{% examples %}}
         /// ## Example Usage

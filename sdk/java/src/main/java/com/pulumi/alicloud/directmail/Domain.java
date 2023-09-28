@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Direct Mail Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/doc-detail/29414.htm).
  * 
- * &gt; **NOTE:** Available in v1.134.0+.
+ * &gt; **NOTE:** Available since v1.134.0.
  * 
  * ## Example Usage
  * 
@@ -44,8 +44,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var domainName = config.get(&#34;domainName&#34;).orElse(&#34;alicloud-provider.online&#34;);
  *         var example = new Domain(&#34;example&#34;, DomainArgs.builder()        
- *             .domainName(&#34;example_value&#34;)
+ *             .domainName(domainName)
  *             .build());
  * 
  *     }

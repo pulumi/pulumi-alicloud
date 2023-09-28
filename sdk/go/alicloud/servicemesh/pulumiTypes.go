@@ -176,11 +176,13 @@ func (o ServiceMeshExtraConfigurationPtrOutput) CrAggregationEnabled() pulumi.Bo
 }
 
 type ServiceMeshLoadBalancer struct {
+	// The ID of the SLB instance that is used when the API server is exposed to the Internet.
 	ApiServerLoadbalancerId *string `pulumi:"apiServerLoadbalancerId"`
 	// Whether to use the IP address of a public network exposed the API Server.
 	ApiServerPublicEip *bool `pulumi:"apiServerPublicEip"`
 	// Whether to use the IP address of a public network exposure the Istio Pilot.
-	PilotPublicEip            *bool   `pulumi:"pilotPublicEip"`
+	PilotPublicEip *bool `pulumi:"pilotPublicEip"`
+	// The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
 	PilotPublicLoadbalancerId *string `pulumi:"pilotPublicLoadbalancerId"`
 }
 
@@ -196,11 +198,13 @@ type ServiceMeshLoadBalancerInput interface {
 }
 
 type ServiceMeshLoadBalancerArgs struct {
+	// The ID of the SLB instance that is used when the API server is exposed to the Internet.
 	ApiServerLoadbalancerId pulumi.StringPtrInput `pulumi:"apiServerLoadbalancerId"`
 	// Whether to use the IP address of a public network exposed the API Server.
 	ApiServerPublicEip pulumi.BoolPtrInput `pulumi:"apiServerPublicEip"`
 	// Whether to use the IP address of a public network exposure the Istio Pilot.
-	PilotPublicEip            pulumi.BoolPtrInput   `pulumi:"pilotPublicEip"`
+	PilotPublicEip pulumi.BoolPtrInput `pulumi:"pilotPublicEip"`
+	// The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
 	PilotPublicLoadbalancerId pulumi.StringPtrInput `pulumi:"pilotPublicLoadbalancerId"`
 }
 
@@ -299,6 +303,7 @@ func (o ServiceMeshLoadBalancerOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
+// The ID of the SLB instance that is used when the API server is exposed to the Internet.
 func (o ServiceMeshLoadBalancerOutput) ApiServerLoadbalancerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshLoadBalancer) *string { return v.ApiServerLoadbalancerId }).(pulumi.StringPtrOutput)
 }
@@ -313,6 +318,7 @@ func (o ServiceMeshLoadBalancerOutput) PilotPublicEip() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshLoadBalancer) *bool { return v.PilotPublicEip }).(pulumi.BoolPtrOutput)
 }
 
+// The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
 func (o ServiceMeshLoadBalancerOutput) PilotPublicLoadbalancerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshLoadBalancer) *string { return v.PilotPublicLoadbalancerId }).(pulumi.StringPtrOutput)
 }
@@ -347,6 +353,7 @@ func (o ServiceMeshLoadBalancerPtrOutput) Elem() ServiceMeshLoadBalancerOutput {
 	}).(ServiceMeshLoadBalancerOutput)
 }
 
+// The ID of the SLB instance that is used when the API server is exposed to the Internet.
 func (o ServiceMeshLoadBalancerPtrOutput) ApiServerLoadbalancerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshLoadBalancer) *string {
 		if v == nil {
@@ -376,6 +383,7 @@ func (o ServiceMeshLoadBalancerPtrOutput) PilotPublicEip() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
 func (o ServiceMeshLoadBalancerPtrOutput) PilotPublicLoadbalancerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshLoadBalancer) *string {
 		if v == nil {
@@ -386,31 +394,31 @@ func (o ServiceMeshLoadBalancerPtrOutput) PilotPublicLoadbalancerId() pulumi.Str
 }
 
 type ServiceMeshMeshConfig struct {
-	// The configuration of the access logging.
+	// The configuration of the access logging. See `accessLog` below.
 	AccessLog *ServiceMeshMeshConfigAccessLog `pulumi:"accessLog"`
-	// The configuration of the audit. See the following `Block audit`.
+	// The configuration of the audit. See `audit` below.
 	Audit *ServiceMeshMeshConfigAudit `pulumi:"audit"`
-	// The configuration of the control plane logging.
+	// The configuration of the control plane logging. See `controlPlaneLog` below.
 	ControlPlaneLog *ServiceMeshMeshConfigControlPlaneLog `pulumi:"controlPlaneLog"`
 	// Whether to enable the use of a custom zipkin.
 	CustomizedZipkin *bool `pulumi:"customizedZipkin"`
 	// The enable locality lb.
 	EnableLocalityLb *bool `pulumi:"enableLocalityLb"`
-	// The configuration of the Kiali. See the following `Block kiali`.
+	// The configuration of the Kiali. See `kiali` below.
 	Kiali *ServiceMeshMeshConfigKiali `pulumi:"kiali"`
-	// The open-door policy of agent (OPA) plug-in information. See the following `Block opa`.
+	// The open-door policy of agent (OPA) plug-in information. See `opa` below.
 	Opa *ServiceMeshMeshConfigOpa `pulumi:"opa"`
 	// The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
 	OutboundTrafficPolicy *string `pulumi:"outboundTrafficPolicy"`
-	// The configuration of the Link trace sampling. See the following `Block pilot`.
+	// The configuration of the Link trace sampling. See `pilot` below.
 	Pilot *ServiceMeshMeshConfigPilot `pulumi:"pilot"`
-	// The configuration of the Proxy. See the following `Block proxy`.
+	// The configuration of the Proxy. See `proxy` below.
 	Proxy *ServiceMeshMeshConfigProxy `pulumi:"proxy"`
-	// The configuration of the Sidecar injector. See the following `Block sidecarInjector`.
+	// The configuration of the Sidecar injector. See `sidecarInjector` below.
 	SidecarInjector *ServiceMeshMeshConfigSidecarInjector `pulumi:"sidecarInjector"`
-	// Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+	// Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
 	Telemetry *bool `pulumi:"telemetry"`
-	// Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+	// Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
 	Tracing *bool `pulumi:"tracing"`
 }
 
@@ -426,31 +434,31 @@ type ServiceMeshMeshConfigInput interface {
 }
 
 type ServiceMeshMeshConfigArgs struct {
-	// The configuration of the access logging.
+	// The configuration of the access logging. See `accessLog` below.
 	AccessLog ServiceMeshMeshConfigAccessLogPtrInput `pulumi:"accessLog"`
-	// The configuration of the audit. See the following `Block audit`.
+	// The configuration of the audit. See `audit` below.
 	Audit ServiceMeshMeshConfigAuditPtrInput `pulumi:"audit"`
-	// The configuration of the control plane logging.
+	// The configuration of the control plane logging. See `controlPlaneLog` below.
 	ControlPlaneLog ServiceMeshMeshConfigControlPlaneLogPtrInput `pulumi:"controlPlaneLog"`
 	// Whether to enable the use of a custom zipkin.
 	CustomizedZipkin pulumi.BoolPtrInput `pulumi:"customizedZipkin"`
 	// The enable locality lb.
 	EnableLocalityLb pulumi.BoolPtrInput `pulumi:"enableLocalityLb"`
-	// The configuration of the Kiali. See the following `Block kiali`.
+	// The configuration of the Kiali. See `kiali` below.
 	Kiali ServiceMeshMeshConfigKialiPtrInput `pulumi:"kiali"`
-	// The open-door policy of agent (OPA) plug-in information. See the following `Block opa`.
+	// The open-door policy of agent (OPA) plug-in information. See `opa` below.
 	Opa ServiceMeshMeshConfigOpaPtrInput `pulumi:"opa"`
 	// The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
 	OutboundTrafficPolicy pulumi.StringPtrInput `pulumi:"outboundTrafficPolicy"`
-	// The configuration of the Link trace sampling. See the following `Block pilot`.
+	// The configuration of the Link trace sampling. See `pilot` below.
 	Pilot ServiceMeshMeshConfigPilotPtrInput `pulumi:"pilot"`
-	// The configuration of the Proxy. See the following `Block proxy`.
+	// The configuration of the Proxy. See `proxy` below.
 	Proxy ServiceMeshMeshConfigProxyPtrInput `pulumi:"proxy"`
-	// The configuration of the Sidecar injector. See the following `Block sidecarInjector`.
+	// The configuration of the Sidecar injector. See `sidecarInjector` below.
 	SidecarInjector ServiceMeshMeshConfigSidecarInjectorPtrInput `pulumi:"sidecarInjector"`
-	// Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+	// Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
 	Telemetry pulumi.BoolPtrInput `pulumi:"telemetry"`
-	// Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+	// Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
 	Tracing pulumi.BoolPtrInput `pulumi:"tracing"`
 }
 
@@ -549,17 +557,17 @@ func (o ServiceMeshMeshConfigOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
-// The configuration of the access logging.
+// The configuration of the access logging. See `accessLog` below.
 func (o ServiceMeshMeshConfigOutput) AccessLog() ServiceMeshMeshConfigAccessLogPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigAccessLog { return v.AccessLog }).(ServiceMeshMeshConfigAccessLogPtrOutput)
 }
 
-// The configuration of the audit. See the following `Block audit`.
+// The configuration of the audit. See `audit` below.
 func (o ServiceMeshMeshConfigOutput) Audit() ServiceMeshMeshConfigAuditPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigAudit { return v.Audit }).(ServiceMeshMeshConfigAuditPtrOutput)
 }
 
-// The configuration of the control plane logging.
+// The configuration of the control plane logging. See `controlPlaneLog` below.
 func (o ServiceMeshMeshConfigOutput) ControlPlaneLog() ServiceMeshMeshConfigControlPlaneLogPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigControlPlaneLog { return v.ControlPlaneLog }).(ServiceMeshMeshConfigControlPlaneLogPtrOutput)
 }
@@ -574,12 +582,12 @@ func (o ServiceMeshMeshConfigOutput) EnableLocalityLb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *bool { return v.EnableLocalityLb }).(pulumi.BoolPtrOutput)
 }
 
-// The configuration of the Kiali. See the following `Block kiali`.
+// The configuration of the Kiali. See `kiali` below.
 func (o ServiceMeshMeshConfigOutput) Kiali() ServiceMeshMeshConfigKialiPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigKiali { return v.Kiali }).(ServiceMeshMeshConfigKialiPtrOutput)
 }
 
-// The open-door policy of agent (OPA) plug-in information. See the following `Block opa`.
+// The open-door policy of agent (OPA) plug-in information. See `opa` below.
 func (o ServiceMeshMeshConfigOutput) Opa() ServiceMeshMeshConfigOpaPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigOpa { return v.Opa }).(ServiceMeshMeshConfigOpaPtrOutput)
 }
@@ -589,27 +597,27 @@ func (o ServiceMeshMeshConfigOutput) OutboundTrafficPolicy() pulumi.StringPtrOut
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *string { return v.OutboundTrafficPolicy }).(pulumi.StringPtrOutput)
 }
 
-// The configuration of the Link trace sampling. See the following `Block pilot`.
+// The configuration of the Link trace sampling. See `pilot` below.
 func (o ServiceMeshMeshConfigOutput) Pilot() ServiceMeshMeshConfigPilotPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigPilot { return v.Pilot }).(ServiceMeshMeshConfigPilotPtrOutput)
 }
 
-// The configuration of the Proxy. See the following `Block proxy`.
+// The configuration of the Proxy. See `proxy` below.
 func (o ServiceMeshMeshConfigOutput) Proxy() ServiceMeshMeshConfigProxyPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigProxy { return v.Proxy }).(ServiceMeshMeshConfigProxyPtrOutput)
 }
 
-// The configuration of the Sidecar injector. See the following `Block sidecarInjector`.
+// The configuration of the Sidecar injector. See `sidecarInjector` below.
 func (o ServiceMeshMeshConfigOutput) SidecarInjector() ServiceMeshMeshConfigSidecarInjectorPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigSidecarInjector { return v.SidecarInjector }).(ServiceMeshMeshConfigSidecarInjectorPtrOutput)
 }
 
-// Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+// Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
 func (o ServiceMeshMeshConfigOutput) Telemetry() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *bool { return v.Telemetry }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+// Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
 func (o ServiceMeshMeshConfigOutput) Tracing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *bool { return v.Tracing }).(pulumi.BoolPtrOutput)
 }
@@ -644,7 +652,7 @@ func (o ServiceMeshMeshConfigPtrOutput) Elem() ServiceMeshMeshConfigOutput {
 	}).(ServiceMeshMeshConfigOutput)
 }
 
-// The configuration of the access logging.
+// The configuration of the access logging. See `accessLog` below.
 func (o ServiceMeshMeshConfigPtrOutput) AccessLog() ServiceMeshMeshConfigAccessLogPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigAccessLog {
 		if v == nil {
@@ -654,7 +662,7 @@ func (o ServiceMeshMeshConfigPtrOutput) AccessLog() ServiceMeshMeshConfigAccessL
 	}).(ServiceMeshMeshConfigAccessLogPtrOutput)
 }
 
-// The configuration of the audit. See the following `Block audit`.
+// The configuration of the audit. See `audit` below.
 func (o ServiceMeshMeshConfigPtrOutput) Audit() ServiceMeshMeshConfigAuditPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigAudit {
 		if v == nil {
@@ -664,7 +672,7 @@ func (o ServiceMeshMeshConfigPtrOutput) Audit() ServiceMeshMeshConfigAuditPtrOut
 	}).(ServiceMeshMeshConfigAuditPtrOutput)
 }
 
-// The configuration of the control plane logging.
+// The configuration of the control plane logging. See `controlPlaneLog` below.
 func (o ServiceMeshMeshConfigPtrOutput) ControlPlaneLog() ServiceMeshMeshConfigControlPlaneLogPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigControlPlaneLog {
 		if v == nil {
@@ -694,7 +702,7 @@ func (o ServiceMeshMeshConfigPtrOutput) EnableLocalityLb() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The configuration of the Kiali. See the following `Block kiali`.
+// The configuration of the Kiali. See `kiali` below.
 func (o ServiceMeshMeshConfigPtrOutput) Kiali() ServiceMeshMeshConfigKialiPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigKiali {
 		if v == nil {
@@ -704,7 +712,7 @@ func (o ServiceMeshMeshConfigPtrOutput) Kiali() ServiceMeshMeshConfigKialiPtrOut
 	}).(ServiceMeshMeshConfigKialiPtrOutput)
 }
 
-// The open-door policy of agent (OPA) plug-in information. See the following `Block opa`.
+// The open-door policy of agent (OPA) plug-in information. See `opa` below.
 func (o ServiceMeshMeshConfigPtrOutput) Opa() ServiceMeshMeshConfigOpaPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigOpa {
 		if v == nil {
@@ -724,7 +732,7 @@ func (o ServiceMeshMeshConfigPtrOutput) OutboundTrafficPolicy() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The configuration of the Link trace sampling. See the following `Block pilot`.
+// The configuration of the Link trace sampling. See `pilot` below.
 func (o ServiceMeshMeshConfigPtrOutput) Pilot() ServiceMeshMeshConfigPilotPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigPilot {
 		if v == nil {
@@ -734,7 +742,7 @@ func (o ServiceMeshMeshConfigPtrOutput) Pilot() ServiceMeshMeshConfigPilotPtrOut
 	}).(ServiceMeshMeshConfigPilotPtrOutput)
 }
 
-// The configuration of the Proxy. See the following `Block proxy`.
+// The configuration of the Proxy. See `proxy` below.
 func (o ServiceMeshMeshConfigPtrOutput) Proxy() ServiceMeshMeshConfigProxyPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigProxy {
 		if v == nil {
@@ -744,7 +752,7 @@ func (o ServiceMeshMeshConfigPtrOutput) Proxy() ServiceMeshMeshConfigProxyPtrOut
 	}).(ServiceMeshMeshConfigProxyPtrOutput)
 }
 
-// The configuration of the Sidecar injector. See the following `Block sidecarInjector`.
+// The configuration of the Sidecar injector. See `sidecarInjector` below.
 func (o ServiceMeshMeshConfigPtrOutput) SidecarInjector() ServiceMeshMeshConfigSidecarInjectorPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigSidecarInjector {
 		if v == nil {
@@ -754,7 +762,7 @@ func (o ServiceMeshMeshConfigPtrOutput) SidecarInjector() ServiceMeshMeshConfigS
 	}).(ServiceMeshMeshConfigSidecarInjectorPtrOutput)
 }
 
-// Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+// Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
 func (o ServiceMeshMeshConfigPtrOutput) Telemetry() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *bool {
 		if v == nil {
@@ -764,7 +772,7 @@ func (o ServiceMeshMeshConfigPtrOutput) Telemetry() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+// Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
 func (o ServiceMeshMeshConfigPtrOutput) Tracing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *bool {
 		if v == nil {

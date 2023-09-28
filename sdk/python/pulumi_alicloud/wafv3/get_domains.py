@@ -142,19 +142,25 @@ def get_domains(backend: Optional[str] = None,
                 page_size: Optional[int] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainsResult:
     """
-    This data source provides Wafv3 Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-doc-waf-openapi-2021-10-01-api-doc-createdomain)
+    This data source provides the Wafv3 Domains of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in 1.200.0+
+    > **NOTE:** Available since v1.200.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.wafv3.get_domains(domain="zctest12.wafqax.top",
-        instance_id="waf_v3prepaid_public_cn-*****")
-    pulumi.export("alicloudWafv3DomainExampleId", default.domains[0].id)
+    default_instances = alicloud.wafv3.get_instances()
+    ids = alicloud.wafv3.get_domains(instance_id=default_instances.ids[0],
+        ids=["example_id"])
+    pulumi.export("wafv3DomainsId1", ids.domains[0].id)
+    default_domains = alicloud.wafv3.get_domains(instance_id=default_instances.ids[0],
+        domain="zctest12.wafqax.top")
+    pulumi.export("wafv3DomainsId2", default_domains.domains[0].id)
     ```
 
 
@@ -201,19 +207,25 @@ def get_domains_output(backend: Optional[pulumi.Input[Optional[str]]] = None,
                        page_size: Optional[pulumi.Input[Optional[int]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainsResult]:
     """
-    This data source provides Wafv3 Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-doc-waf-openapi-2021-10-01-api-doc-createdomain)
+    This data source provides the Wafv3 Domains of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in 1.200.0+
+    > **NOTE:** Available since v1.200.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.wafv3.get_domains(domain="zctest12.wafqax.top",
-        instance_id="waf_v3prepaid_public_cn-*****")
-    pulumi.export("alicloudWafv3DomainExampleId", default.domains[0].id)
+    default_instances = alicloud.wafv3.get_instances()
+    ids = alicloud.wafv3.get_domains(instance_id=default_instances.ids[0],
+        ids=["example_id"])
+    pulumi.export("wafv3DomainsId1", ids.domains[0].id)
+    default_domains = alicloud.wafv3.get_domains(instance_id=default_instances.ids[0],
+        domain="zctest12.wafqax.top")
+    pulumi.export("wafv3DomainsId2", default_domains.domains[0].id)
     ```
 
 

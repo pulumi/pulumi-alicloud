@@ -20,18 +20,33 @@ public final class AggregateCompliancePackState extends com.pulumi.resources.Res
     public static final AggregateCompliancePackState Empty = new AggregateCompliancePackState();
 
     /**
-     * The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
+     * The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
      * 
      */
     @Import(name="aggregateCompliancePackName")
     private @Nullable Output<String> aggregateCompliancePackName;
 
     /**
-     * @return The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
+     * @return The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
      * 
      */
     public Optional<Output<String>> aggregateCompliancePackName() {
         return Optional.ofNullable(this.aggregateCompliancePackName);
+    }
+
+    /**
+     * The ID of the compliance package.
+     * 
+     */
+    @Import(name="aggregatorCompliancePackId")
+    private @Nullable Output<String> aggregatorCompliancePackId;
+
+    /**
+     * @return The ID of the compliance package.
+     * 
+     */
+    public Optional<Output<String>> aggregatorCompliancePackId() {
+        return Optional.ofNullable(this.aggregatorCompliancePackId);
     }
 
     /**
@@ -80,24 +95,24 @@ public final class AggregateCompliancePackState extends com.pulumi.resources.Res
     }
 
     /**
-     * A list of Config Rules. See `config_rules` below.
+     * A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
      * 
      * @deprecated
-     * Field &#39;config_rules&#39; has been deprecated from provider version 1.141.0. New field &#39;config_rule_ids&#39; instead.
+     * Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
      * 
      */
-    @Deprecated /* Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead. */
+    @Deprecated /* Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead. */
     @Import(name="configRules")
     private @Nullable Output<List<AggregateCompliancePackConfigRuleArgs>> configRules;
 
     /**
-     * @return A list of Config Rules. See `config_rules` below.
+     * @return A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
      * 
      * @deprecated
-     * Field &#39;config_rules&#39; has been deprecated from provider version 1.141.0. New field &#39;config_rule_ids&#39; instead.
+     * Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
      * 
      */
-    @Deprecated /* Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead. */
+    @Deprecated /* Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead. */
     public Optional<Output<List<AggregateCompliancePackConfigRuleArgs>>> configRules() {
         return Optional.ofNullable(this.configRules);
     }
@@ -118,14 +133,14 @@ public final class AggregateCompliancePackState extends com.pulumi.resources.Res
     }
 
     /**
-     * The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+     * The Risk Level. Valid values:
      * 
      */
     @Import(name="riskLevel")
     private @Nullable Output<Integer> riskLevel;
 
     /**
-     * @return The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+     * @return The Risk Level. Valid values:
      * 
      */
     public Optional<Output<Integer>> riskLevel() {
@@ -133,14 +148,14 @@ public final class AggregateCompliancePackState extends com.pulumi.resources.Res
     }
 
     /**
-     * The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+     * The status of the Aggregate Compliance Pack.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+     * @return The status of the Aggregate Compliance Pack.
      * 
      */
     public Optional<Output<String>> status() {
@@ -151,6 +166,7 @@ public final class AggregateCompliancePackState extends com.pulumi.resources.Res
 
     private AggregateCompliancePackState(AggregateCompliancePackState $) {
         this.aggregateCompliancePackName = $.aggregateCompliancePackName;
+        this.aggregatorCompliancePackId = $.aggregatorCompliancePackId;
         this.aggregatorId = $.aggregatorId;
         this.compliancePackTemplateId = $.compliancePackTemplateId;
         this.configRuleIds = $.configRuleIds;
@@ -179,7 +195,7 @@ public final class AggregateCompliancePackState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param aggregateCompliancePackName The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
+         * @param aggregateCompliancePackName The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
          * 
          * @return builder
          * 
@@ -190,13 +206,34 @@ public final class AggregateCompliancePackState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param aggregateCompliancePackName The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
+         * @param aggregateCompliancePackName The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
          * 
          * @return builder
          * 
          */
         public Builder aggregateCompliancePackName(String aggregateCompliancePackName) {
             return aggregateCompliancePackName(Output.of(aggregateCompliancePackName));
+        }
+
+        /**
+         * @param aggregatorCompliancePackId The ID of the compliance package.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aggregatorCompliancePackId(@Nullable Output<String> aggregatorCompliancePackId) {
+            $.aggregatorCompliancePackId = aggregatorCompliancePackId;
+            return this;
+        }
+
+        /**
+         * @param aggregatorCompliancePackId The ID of the compliance package.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aggregatorCompliancePackId(String aggregatorCompliancePackId) {
+            return aggregatorCompliancePackId(Output.of(aggregatorCompliancePackId));
         }
 
         /**
@@ -273,44 +310,44 @@ public final class AggregateCompliancePackState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param configRules A list of Config Rules. See `config_rules` below.
+         * @param configRules A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;config_rules&#39; has been deprecated from provider version 1.141.0. New field &#39;config_rule_ids&#39; instead.
+         * Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
          * 
          */
-        @Deprecated /* Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead. */
+        @Deprecated /* Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead. */
         public Builder configRules(@Nullable Output<List<AggregateCompliancePackConfigRuleArgs>> configRules) {
             $.configRules = configRules;
             return this;
         }
 
         /**
-         * @param configRules A list of Config Rules. See `config_rules` below.
+         * @param configRules A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;config_rules&#39; has been deprecated from provider version 1.141.0. New field &#39;config_rule_ids&#39; instead.
+         * Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
          * 
          */
-        @Deprecated /* Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead. */
+        @Deprecated /* Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead. */
         public Builder configRules(List<AggregateCompliancePackConfigRuleArgs> configRules) {
             return configRules(Output.of(configRules));
         }
 
         /**
-         * @param configRules A list of Config Rules. See `config_rules` below.
+         * @param configRules A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;config_rules&#39; has been deprecated from provider version 1.141.0. New field &#39;config_rule_ids&#39; instead.
+         * Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
          * 
          */
-        @Deprecated /* Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead. */
+        @Deprecated /* Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead. */
         public Builder configRules(AggregateCompliancePackConfigRuleArgs... configRules) {
             return configRules(List.of(configRules));
         }
@@ -337,7 +374,7 @@ public final class AggregateCompliancePackState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param riskLevel The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+         * @param riskLevel The Risk Level. Valid values:
          * 
          * @return builder
          * 
@@ -348,7 +385,7 @@ public final class AggregateCompliancePackState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param riskLevel The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+         * @param riskLevel The Risk Level. Valid values:
          * 
          * @return builder
          * 
@@ -358,7 +395,7 @@ public final class AggregateCompliancePackState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param status The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+         * @param status The status of the Aggregate Compliance Pack.
          * 
          * @return builder
          * 
@@ -369,7 +406,7 @@ public final class AggregateCompliancePackState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param status The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+         * @param status The status of the Aggregate Compliance Pack.
          * 
          * @return builder
          * 

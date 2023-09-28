@@ -5,11 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPC Ipv4 Cidr Block resource.
+ * Provides a VPC Ipv4 Cidr Block resource. VPC IPv4 additional network segment.
  *
  * For information about VPC Ipv4 Cidr Block and how to use it, see [What is Ipv4 Cidr Block](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/associatevpccidrblock).
  *
- * > **NOTE:** Available in v1.185.0+.
+ * > **NOTE:** Available since v1.185.0.
  *
  * ## Example Usage
  *
@@ -19,13 +19,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.vpc.Network("default", {
- *     cidrBlock: "192.168.0.0/24",
- *     vpcName: "terraform-example",
- * });
- * const example = new alicloud.vpc.Ipv4CidrBlock("example", {
- *     vpcId: _default.id,
- *     secondaryCidrBlock: "192.163.0.0/16",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultvpc = new alicloud.vpc.Network("defaultvpc", {description: name});
+ * const _default = new alicloud.vpc.Ipv4CidrBlock("default", {
+ *     secondaryCidrBlock: "192.168.0.0/16",
+ *     vpcId: defaultvpc.id,
  * });
  * ```
  *
