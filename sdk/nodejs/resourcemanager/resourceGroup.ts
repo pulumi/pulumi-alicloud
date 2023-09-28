@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * Provides a Resource Manager Resource Group resource. If you need to group cloud resources according to business departments, projects, and other dimensions, you can create resource groups.
  * For information about Resource Manager Resoource Group and how to use it, see [What is Resource Manager Resource Group](https://www.alibabacloud.com/help/en/doc-detail/94485.htm)
  *
- * > **NOTE:** Available in v1.82.0+.
+ * > **NOTE:** Available since v1.82.0.
  *
  * ## Example Usage
  *
@@ -20,9 +20,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexample";
  * const example = new alicloud.resourcemanager.ResourceGroup("example", {
- *     displayName: "testrd",
- *     resourceGroupName: "testrd",
+ *     resourceGroupName: name,
+ *     displayName: name,
  * });
  * ```
  *
@@ -77,7 +79,7 @@ export class ResourceGroup extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The status of the resource group in all regions.
+     * The status of the resource group in all regions. See `regionStatuses` below.
      */
     public /*out*/ readonly regionStatuses!: pulumi.Output<outputs.resourcemanager.ResourceGroupRegionStatus[]>;
     /**
@@ -144,7 +146,7 @@ export interface ResourceGroupState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The status of the resource group in all regions.
+     * The status of the resource group in all regions. See `regionStatuses` below.
      */
     regionStatuses?: pulumi.Input<pulumi.Input<inputs.resourcemanager.ResourceGroupRegionStatus>[]>;
     /**

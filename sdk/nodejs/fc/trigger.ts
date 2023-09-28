@@ -83,7 +83,7 @@ import * as utilities from "../utilities";
  *     ossBucket: defaultBucket.id,
  *     ossKey: defaultBucketObject.key,
  *     memorySize: 512,
- *     runtime: "python2.7",
+ *     runtime: "python3.10",
  *     handler: "hello.handler",
  * });
  * const defaultTrigger = new alicloud.fc.Trigger("defaultTrigger", {
@@ -94,8 +94,8 @@ import * as utilities from "../utilities";
  *     type: "log",
  *     config: pulumi.interpolate`    {
  *         "sourceConfig": {
- *             "project": "${defaultProject.name}",
- *             "logstore": "${sourceStore.name}"
+ *             "logstore": "${sourceStore.name}",
+ *             "startTime": null
  *         },
  *         "jobConfig": {
  *             "maxRetryTime": 3,
@@ -109,6 +109,7 @@ import * as utilities from "../utilities";
  *              "project": "${defaultProject.name}",
  *             "logstore": "${defaultStore.name}"
  *         },
+ *         "targetConfig": null,
  *         "enable": true
  *     }
  *   
@@ -177,7 +178,7 @@ import * as utilities from "../utilities";
  *     ossBucket: defaultBucket.id,
  *     ossKey: defaultBucketObject.key,
  *     memorySize: 512,
- *     runtime: "python2.7",
+ *     runtime: "python3.10",
  *     handler: "hello.handler",
  * });
  * const defaultTrigger = new alicloud.fc.Trigger("defaultTrigger", {
@@ -285,7 +286,7 @@ import * as utilities from "../utilities";
  *     ossBucket: defaultBucket.id,
  *     ossKey: defaultBucketObject.key,
  *     memorySize: 512,
- *     runtime: "python2.7",
+ *     runtime: "python3.10",
  *     handler: "hello.handler",
  * });
  * const defaultTrigger = new alicloud.fc.Trigger("defaultTrigger", {
@@ -342,7 +343,7 @@ import * as utilities from "../utilities";
  *     ossBucket: defaultBucket.id,
  *     ossKey: defaultBucketObject.key,
  *     memorySize: 512,
- *     runtime: "python2.7",
+ *     runtime: "python3.10",
  *     handler: "hello.handler",
  * });
  * const ossTrigger = new alicloud.fc.Trigger("ossTrigger", {
@@ -352,7 +353,14 @@ import * as utilities from "../utilities";
  *     config: `    {
  *         "triggerEnable": false,
  *         "asyncInvocationType": false,
- *         "eventRuleFilterPattern": "{\\"source\\":[\\"acs.oss\\"],\\"type\\":[\\"oss:BucketCreated:PutBucket\\"]}",
+ *         "eventRuleFilterPattern": {
+ *           "source":[
+ *             "acs.oss"
+ *             ],
+ *             "type":[
+ *               "oss:BucketCreated:PutBucket"
+ *             ]
+ *         },
  *         "eventSourceConfig": {
  *             "eventSourceType": "Default"
  *         }

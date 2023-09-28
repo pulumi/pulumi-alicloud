@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about DAS Switch Das Pro and how to use it, see [What is Switch Das Pro](https://www.alibabacloud.com/help/en/database-autonomy-service/latest/enabledaspro).
  * 
- * &gt; **NOTE:** Available in v1.193.0+.
+ * &gt; **NOTE:** Available since v1.193.0.
  * 
  * ## Example Usage
  * 
@@ -31,6 +31,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.polardb.PolardbFunctions;
+ * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.polardb.Cluster;
+ * import com.pulumi.alicloud.polardb.ClusterArgs;
+ * import com.pulumi.alicloud.polardb.inputs.ClusterDbClusterIpArrayArgs;
  * import com.pulumi.alicloud.das.SwitchDasPro;
  * import com.pulumi.alicloud.das.SwitchDasProArgs;
  * import java.util.List;
@@ -46,10 +56,47 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SwitchDasPro(&#34;default&#34;, SwitchDasProArgs.builder()        
- *             .instanceId(&#34;your_sql_id&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
+ *         final var defaultAccount = AlicloudFunctions.getAccount();
+ * 
+ *         final var defaultNodeClasses = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
+ *             .dbType(&#34;MySQL&#34;)
+ *             .dbVersion(&#34;8.0&#34;)
+ *             .payType(&#34;PostPaid&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .zoneId(defaultNodeClasses.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].zoneId()))
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
+ *             .dbType(&#34;MySQL&#34;)
+ *             .dbVersion(&#34;8.0&#34;)
+ *             .dbNodeClass(&#34;polar.mysql.x4.large&#34;)
+ *             .payType(&#34;PostPaid&#34;)
+ *             .vswitchId(defaultSwitch.id())
+ *             .description(name)
+ *             .dbClusterIpArrays(ClusterDbClusterIpArrayArgs.builder()
+ *                 .dbClusterIpArrayName(&#34;default&#34;)
+ *                 .securityIps(                
+ *                     &#34;1.2.3.4&#34;,
+ *                     &#34;1.2.3.5&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultSwitchDasPro = new SwitchDasPro(&#34;defaultSwitchDasPro&#34;, SwitchDasProArgs.builder()        
+ *             .instanceId(defaultCluster.id())
  *             .sqlRetention(30)
- *             .userId(&#34;your_account_id&#34;)
+ *             .userId(defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
  *             .build());
  * 
  *     }

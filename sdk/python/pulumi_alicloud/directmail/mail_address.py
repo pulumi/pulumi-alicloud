@@ -182,27 +182,9 @@ class MailAddress(pulumi.CustomResource):
         """
         Provides a Direct Mail Mail Address resource.
 
-        For information about Direct Mail Mail Address and how to use it, see [What is Mail Address](https://www.aliyun.com/product/directmail).
+        For information about Direct Mail Mail Address and how to use it, see [What is Mail Address](https://www.alibabacloud.com/help/en/directmail/latest/set-up-sender-addresses).
 
-        > **NOTE:** Available in v1.134.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.directmail.MailAddress("example",
-            account_name="example_value@email.com",
-            sendtype="batch")
-        ```
-
-        > **Note:**
-        A maximum of 10 mailing addresses can be added.
-        Individual users: Up to 10 mailing addresses can be deleted within a month.
-        Enterprise users: Up to 10 mailing addresses can be deleted within a month.
+        > **NOTE:** Available since v1.134.0.
 
         ## Import
 
@@ -228,27 +210,9 @@ class MailAddress(pulumi.CustomResource):
         """
         Provides a Direct Mail Mail Address resource.
 
-        For information about Direct Mail Mail Address and how to use it, see [What is Mail Address](https://www.aliyun.com/product/directmail).
+        For information about Direct Mail Mail Address and how to use it, see [What is Mail Address](https://www.alibabacloud.com/help/en/directmail/latest/set-up-sender-addresses).
 
-        > **NOTE:** Available in v1.134.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.directmail.MailAddress("example",
-            account_name="example_value@email.com",
-            sendtype="batch")
-        ```
-
-        > **Note:**
-        A maximum of 10 mailing addresses can be added.
-        Individual users: Up to 10 mailing addresses can be deleted within a month.
-        Enterprise users: Up to 10 mailing addresses can be deleted within a month.
+        > **NOTE:** Available since v1.134.0.
 
         ## Import
 

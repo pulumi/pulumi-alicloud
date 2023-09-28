@@ -263,7 +263,7 @@ class SecondaryIndex(pulumi.CustomResource):
 
         For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
 
-        > **NOTE:** Available in v1.187.0+.
+        > **NOTE:** Available since v1.187.0.
 
         ## Example Usage
 
@@ -274,31 +274,21 @@ class SecondaryIndex(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraformtest"
-        pks = config.get_object("pks")
-        if pks is None:
-            pks = [
-                "pk1",
-                "pk2",
-                "pk3",
-            ]
-        defined_cols = config.get_object("definedCols")
-        if defined_cols is None:
-            defined_cols = [
-                "col1",
-                "col2",
-                "col3",
-            ]
-        instance1 = alicloud.ots.Instance("instance1",
+            name = "tf-example"
+        default_instance = alicloud.ots.Instance("defaultInstance",
             description=name,
             accessed_by="Any",
             tags={
                 "Created": "TF",
-                "For": "acceptance test",
+                "For": "example",
             })
-        table1 = alicloud.ots.Table("table1",
-            instance_name=instance1.name,
-            table_name=name,
+        default_table = alicloud.ots.Table("defaultTable",
+            instance_name=default_instance.name,
+            table_name="tf_example",
+            time_to_live=-1,
+            max_version=1,
+            enable_sse=True,
+            sse_key_type="SSE_KMS_SERVICE",
             primary_keys=[
                 alicloud.ots.TablePrimaryKeyArgs(
                     name="pk1",
@@ -326,18 +316,23 @@ class SecondaryIndex(pulumi.CustomResource):
                     name="col3",
                     type="Binary",
                 ),
-            ],
-            time_to_live=-1,
-            max_version=1,
-            deviation_cell_version_in_sec="1")
-        index1 = alicloud.ots.SecondaryIndex("index1",
-            instance_name=instance1.name,
-            table_name=table1.table_name,
-            index_name=name,
+            ])
+        default_secondary_index = alicloud.ots.SecondaryIndex("defaultSecondaryIndex",
+            instance_name=default_instance.name,
+            table_name=default_table.table_name,
+            index_name="example_index",
             index_type="Global",
             include_base_data=True,
-            primary_keys=pks,
-            defined_columns=defined_cols)
+            primary_keys=[
+                "pk1",
+                "pk2",
+                "pk3",
+            ],
+            defined_columns=[
+                "col1",
+                "col2",
+                "col3",
+            ])
         ```
 
         ## Import
@@ -369,7 +364,7 @@ class SecondaryIndex(pulumi.CustomResource):
 
         For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
 
-        > **NOTE:** Available in v1.187.0+.
+        > **NOTE:** Available since v1.187.0.
 
         ## Example Usage
 
@@ -380,31 +375,21 @@ class SecondaryIndex(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraformtest"
-        pks = config.get_object("pks")
-        if pks is None:
-            pks = [
-                "pk1",
-                "pk2",
-                "pk3",
-            ]
-        defined_cols = config.get_object("definedCols")
-        if defined_cols is None:
-            defined_cols = [
-                "col1",
-                "col2",
-                "col3",
-            ]
-        instance1 = alicloud.ots.Instance("instance1",
+            name = "tf-example"
+        default_instance = alicloud.ots.Instance("defaultInstance",
             description=name,
             accessed_by="Any",
             tags={
                 "Created": "TF",
-                "For": "acceptance test",
+                "For": "example",
             })
-        table1 = alicloud.ots.Table("table1",
-            instance_name=instance1.name,
-            table_name=name,
+        default_table = alicloud.ots.Table("defaultTable",
+            instance_name=default_instance.name,
+            table_name="tf_example",
+            time_to_live=-1,
+            max_version=1,
+            enable_sse=True,
+            sse_key_type="SSE_KMS_SERVICE",
             primary_keys=[
                 alicloud.ots.TablePrimaryKeyArgs(
                     name="pk1",
@@ -432,18 +417,23 @@ class SecondaryIndex(pulumi.CustomResource):
                     name="col3",
                     type="Binary",
                 ),
-            ],
-            time_to_live=-1,
-            max_version=1,
-            deviation_cell_version_in_sec="1")
-        index1 = alicloud.ots.SecondaryIndex("index1",
-            instance_name=instance1.name,
-            table_name=table1.table_name,
-            index_name=name,
+            ])
+        default_secondary_index = alicloud.ots.SecondaryIndex("defaultSecondaryIndex",
+            instance_name=default_instance.name,
+            table_name=default_table.table_name,
+            index_name="example_index",
             index_type="Global",
             include_base_data=True,
-            primary_keys=pks,
-            defined_columns=defined_cols)
+            primary_keys=[
+                "pk1",
+                "pk2",
+                "pk3",
+            ],
+            defined_columns=[
+                "col1",
+                "col2",
+                "col3",
+            ])
         ```
 
         ## Import

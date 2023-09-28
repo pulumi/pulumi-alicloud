@@ -74,7 +74,7 @@ def get_permission(enable: Optional[str] = None,
     To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance.
     For more information, see [Associated RAM roles of ApsaraDB for Redis](https://www.alibabacloud.com/help/doc-detail/184337.htm)
 
-    > **NOTE:** Available in v1.128.0+
+    > **NOTE:** Available since v1.128.0
 
     ## Example Usage
 
@@ -109,7 +109,7 @@ def get_permission_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
     To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance.
     For more information, see [Associated RAM roles of ApsaraDB for Redis](https://www.alibabacloud.com/help/doc-detail/184337.htm)
 
-    > **NOTE:** Available in v1.128.0+
+    > **NOTE:** Available since v1.128.0
 
     ## Example Usage
 

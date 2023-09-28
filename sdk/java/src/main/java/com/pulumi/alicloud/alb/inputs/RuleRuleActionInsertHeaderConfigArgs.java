@@ -16,14 +16,14 @@ public final class RuleRuleActionInsertHeaderConfigArgs extends com.pulumi.resou
     public static final RuleRuleActionInsertHeaderConfigArgs Empty = new RuleRuleActionInsertHeaderConfigArgs();
 
     /**
-     * The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+     * The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+     * @return The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
      * 
      */
     public Optional<Output<String>> key() {
@@ -31,14 +31,16 @@ public final class RuleRuleActionInsertHeaderConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * The value of the values list.
+     * The content of the inserted header field. Valid values:
+     * * If the `value_type` is set to `SystemDefined`, the following values are used:
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The value of the values list.
+     * @return The content of the inserted header field. Valid values:
+     * * If the `value_type` is set to `SystemDefined`, the following values are used:
      * 
      */
     public Optional<Output<String>> value() {
@@ -46,14 +48,14 @@ public final class RuleRuleActionInsertHeaderConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
+     * The value type of the inserted header field. Valid values:
      * 
      */
     @Import(name="valueType")
     private @Nullable Output<String> valueType;
 
     /**
-     * @return Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
+     * @return The value type of the inserted header field. Valid values:
      * 
      */
     public Optional<Output<String>> valueType() {
@@ -87,7 +89,7 @@ public final class RuleRuleActionInsertHeaderConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param key The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+         * @param key The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
          * 
          * @return builder
          * 
@@ -98,7 +100,7 @@ public final class RuleRuleActionInsertHeaderConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param key The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+         * @param key The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
          * 
          * @return builder
          * 
@@ -108,7 +110,8 @@ public final class RuleRuleActionInsertHeaderConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param value The value of the values list.
+         * @param value The content of the inserted header field. Valid values:
+         * * If the `value_type` is set to `SystemDefined`, the following values are used:
          * 
          * @return builder
          * 
@@ -119,7 +122,8 @@ public final class RuleRuleActionInsertHeaderConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param value The value of the values list.
+         * @param value The content of the inserted header field. Valid values:
+         * * If the `value_type` is set to `SystemDefined`, the following values are used:
          * 
          * @return builder
          * 
@@ -129,7 +133,7 @@ public final class RuleRuleActionInsertHeaderConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param valueType Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
+         * @param valueType The value type of the inserted header field. Valid values:
          * 
          * @return builder
          * 
@@ -140,7 +144,7 @@ public final class RuleRuleActionInsertHeaderConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param valueType Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
+         * @param valueType The value type of the inserted header field. Valid values:
          * 
          * @return builder
          * 

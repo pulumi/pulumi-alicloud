@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Pvtz
     /// <summary>
     /// Provides a Private Zone User Vpc Authorization resource.
     /// 
-    /// &gt; **NOTE:** Available in v1.138.0+.
+    /// &gt; **NOTE:** Available since v1.138.0.
     /// 
     /// ## Example Usage
     /// 
@@ -26,11 +26,12 @@ namespace Pulumi.AliCloud.Pvtz
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var authorizedUserId = config.GetDouble("authorizedUserId") ?? 123456789;
     ///     var example = new AliCloud.Pvtz.UserVpcAuthorization("example", new()
     ///     {
+    ///         AuthorizedUserId = authorizedUserId,
     ///         AuthChannel = "RESOURCE_DIRECTORY",
-    ///         AuthType = "NORMAL",
-    ///         AuthorizedUserId = "example_value",
     ///     });
     /// 
     /// });

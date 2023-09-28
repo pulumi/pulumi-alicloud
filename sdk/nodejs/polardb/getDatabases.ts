@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * The `alicloud.polardb.getDatabases` data source provides a collection of PolarDB cluster database available in Alibaba Cloud account.
  * Filters support regular expression for the database name, searches by clusterId.
  *
- * > **NOTE:** Available in v1.70.0+.
+ * > **NOTE:** Available since v1.70.0+.
  *
  * ## Example Usage
  *
@@ -18,14 +18,44 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const polardbClustersDs = alicloud.polardb.getClusters({
- *     descriptionRegex: "pc-\\w+",
+ * const this = alicloud.polardb.getNodeClasses({
+ *     dbType: "MySQL",
+ *     dbVersion: "8.0",
+ *     payType: "PostPaid",
+ *     category: "Normal",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: _this.then(_this => _this.classes?.[0]?.zoneId),
+ *     vswitchName: "terraform-example",
+ * });
+ * const cluster = new alicloud.polardb.Cluster("cluster", {
+ *     dbType: "MySQL",
+ *     dbVersion: "8.0",
+ *     payType: "PostPaid",
+ *     dbNodeCount: 2,
+ *     dbNodeClass: _this.then(_this => _this.classes?.[0]?.supportedEngines?.[0]?.availableResources?.[0]?.dbNodeClass),
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * const polardbClustersDs = alicloud.polardb.getClustersOutput({
+ *     descriptionRegex: cluster.description,
  *     status: "Running",
  * });
- * const default = polardbClustersDs.then(polardbClustersDs => alicloud.polardb.getDatabases({
+ * const defaultDatabase = new alicloud.polardb.Database("defaultDatabase", {
+ *     dbClusterId: polardbClustersDs.apply(polardbClustersDs => polardbClustersDs.clusters?.[0]?.id),
+ *     dbName: polardbClustersDs.apply(polardbClustersDs => `tfaccountpri_${polardbClustersDs.clusters?.[0]?.id}`),
+ *     dbDescription: "from terraform",
+ * });
+ * const defaultDatabases = pulumi.all([polardbClustersDs, defaultDatabase.dbName]).apply(([polardbClustersDs, dbName]) => alicloud.polardb.getDatabasesOutput({
  *     dbClusterId: polardbClustersDs.clusters?.[0]?.id,
+ *     nameRegex: dbName,
  * }));
- * export const database = _default.then(_default => _default.databases?.[0]?.dbName);
+ * export const database = defaultDatabases.apply(defaultDatabases => defaultDatabases.databases?.[0]?.dbName);
  * ```
  */
 export function getDatabases(args: GetDatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabasesResult> {
@@ -74,7 +104,7 @@ export interface GetDatabasesResult {
  * The `alicloud.polardb.getDatabases` data source provides a collection of PolarDB cluster database available in Alibaba Cloud account.
  * Filters support regular expression for the database name, searches by clusterId.
  *
- * > **NOTE:** Available in v1.70.0+.
+ * > **NOTE:** Available since v1.70.0+.
  *
  * ## Example Usage
  *
@@ -82,14 +112,44 @@ export interface GetDatabasesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const polardbClustersDs = alicloud.polardb.getClusters({
- *     descriptionRegex: "pc-\\w+",
+ * const this = alicloud.polardb.getNodeClasses({
+ *     dbType: "MySQL",
+ *     dbVersion: "8.0",
+ *     payType: "PostPaid",
+ *     category: "Normal",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: _this.then(_this => _this.classes?.[0]?.zoneId),
+ *     vswitchName: "terraform-example",
+ * });
+ * const cluster = new alicloud.polardb.Cluster("cluster", {
+ *     dbType: "MySQL",
+ *     dbVersion: "8.0",
+ *     payType: "PostPaid",
+ *     dbNodeCount: 2,
+ *     dbNodeClass: _this.then(_this => _this.classes?.[0]?.supportedEngines?.[0]?.availableResources?.[0]?.dbNodeClass),
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * const polardbClustersDs = alicloud.polardb.getClustersOutput({
+ *     descriptionRegex: cluster.description,
  *     status: "Running",
  * });
- * const default = polardbClustersDs.then(polardbClustersDs => alicloud.polardb.getDatabases({
+ * const defaultDatabase = new alicloud.polardb.Database("defaultDatabase", {
+ *     dbClusterId: polardbClustersDs.apply(polardbClustersDs => polardbClustersDs.clusters?.[0]?.id),
+ *     dbName: polardbClustersDs.apply(polardbClustersDs => `tfaccountpri_${polardbClustersDs.clusters?.[0]?.id}`),
+ *     dbDescription: "from terraform",
+ * });
+ * const defaultDatabases = pulumi.all([polardbClustersDs, defaultDatabase.dbName]).apply(([polardbClustersDs, dbName]) => alicloud.polardb.getDatabasesOutput({
  *     dbClusterId: polardbClustersDs.clusters?.[0]?.id,
+ *     nameRegex: dbName,
  * }));
- * export const database = _default.then(_default => _default.databases?.[0]?.dbName);
+ * export const database = defaultDatabases.apply(defaultDatabases => defaultDatabases.databases?.[0]?.dbName);
  * ```
  */
 export function getDatabasesOutput(args: GetDatabasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabasesResult> {

@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a RAM User Policy attachment resource.
  * 
- * &gt; **NOTE:** Available since v1.0.0+.
+ * &gt; **NOTE:** Available since v1.0.0.
  * 
  * ## Example Usage
  * ```java
@@ -49,7 +49,6 @@ import javax.annotation.Nullable;
  *             .mobile(&#34;86-18688888888&#34;)
  *             .email(&#34;hello.uuu@aaa.com&#34;)
  *             .comments(&#34;yoyoyo&#34;)
- *             .force(true)
  *             .build());
  * 
  *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
@@ -72,7 +71,6 @@ import javax.annotation.Nullable;
  *   }
  *             &#34;&#34;&#34;)
  *             .description(&#34;this is a policy test&#34;)
- *             .force(true)
  *             .build());
  * 
  *         var attach = new UserPolicyAttachment(&#34;attach&#34;, UserPolicyAttachmentArgs.builder()        

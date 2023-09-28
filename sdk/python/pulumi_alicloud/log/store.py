@@ -34,10 +34,10 @@ class StoreArgs:
         :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `false`.
         :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
-        :param pulumi.Input['StoreEncryptConfArgs'] encrypt_conf: Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
+        :param pulumi.Input['StoreEncryptConfArgs'] encrypt_conf: Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
         :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
-        :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+        :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`.
         :param pulumi.Input[str] name: The log store, which is unique in the same project.
         :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
         :param pulumi.Input[int] shard_count: The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
@@ -119,7 +119,7 @@ class StoreArgs:
     @pulumi.getter(name="encryptConf")
     def encrypt_conf(self) -> Optional[pulumi.Input['StoreEncryptConfArgs']]:
         """
-        Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
+        Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
         """
         return pulumi.get(self, "encrypt_conf")
 
@@ -155,7 +155,7 @@ class StoreArgs:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+        The mode of storage. Default to `standard`, must be `standard` or `query`.
         """
         return pulumi.get(self, "mode")
 
@@ -233,10 +233,10 @@ class _StoreState:
         :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `false`.
         :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
-        :param pulumi.Input['StoreEncryptConfArgs'] encrypt_conf: Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
+        :param pulumi.Input['StoreEncryptConfArgs'] encrypt_conf: Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
         :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
-        :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+        :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`.
         :param pulumi.Input[str] name: The log store, which is unique in the same project.
         :param pulumi.Input[str] project: The project name to the log store belongs.
         :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
@@ -311,7 +311,7 @@ class _StoreState:
     @pulumi.getter(name="encryptConf")
     def encrypt_conf(self) -> Optional[pulumi.Input['StoreEncryptConfArgs']]:
         """
-        Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
+        Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
         """
         return pulumi.get(self, "encrypt_conf")
 
@@ -347,7 +347,7 @@ class _StoreState:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+        The mode of storage. Default to `standard`, must be `standard` or `query`.
         """
         return pulumi.get(self, "mode")
 
@@ -450,6 +450,7 @@ class Store(pulumi.CustomResource):
         The log store is a unit in Log Service to collect, store, and query the log data. Each log store belongs to a project,
         and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
 
+        > **NOTE:** Available since v1.0.0.
         ## Example Usage
 
         Basic Usage
@@ -470,7 +471,9 @@ class Store(pulumi.CustomResource):
             max_split_shard_count=60,
             append_meta=True)
         ```
+
         Encrypt Usage
+
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -522,10 +525,10 @@ class Store(pulumi.CustomResource):
         :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `false`.
         :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
-        :param pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']] encrypt_conf: Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
+        :param pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']] encrypt_conf: Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
         :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
-        :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+        :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`.
         :param pulumi.Input[str] name: The log store, which is unique in the same project.
         :param pulumi.Input[str] project: The project name to the log store belongs.
         :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
@@ -542,6 +545,7 @@ class Store(pulumi.CustomResource):
         The log store is a unit in Log Service to collect, store, and query the log data. Each log store belongs to a project,
         and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
 
+        > **NOTE:** Available since v1.0.0.
         ## Example Usage
 
         Basic Usage
@@ -562,7 +566,9 @@ class Store(pulumi.CustomResource):
             max_split_shard_count=60,
             append_meta=True)
         ```
+
         Encrypt Usage
+
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -693,10 +699,10 @@ class Store(pulumi.CustomResource):
         :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `false`.
         :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
-        :param pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']] encrypt_conf: Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
+        :param pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']] encrypt_conf: Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
         :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
-        :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+        :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`.
         :param pulumi.Input[str] name: The log store, which is unique in the same project.
         :param pulumi.Input[str] project: The project name to the log store belongs.
         :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
@@ -751,7 +757,7 @@ class Store(pulumi.CustomResource):
     @pulumi.getter(name="encryptConf")
     def encrypt_conf(self) -> pulumi.Output[Optional['outputs.StoreEncryptConf']]:
         """
-        Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
+        Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
         """
         return pulumi.get(self, "encrypt_conf")
 
@@ -773,9 +779,9 @@ class Store(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mode(self) -> pulumi.Output[str]:
+    def mode(self) -> pulumi.Output[Optional[str]]:
         """
-        The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+        The mode of storage. Default to `standard`, must be `standard` or `query`.
         """
         return pulumi.get(self, "mode")
 

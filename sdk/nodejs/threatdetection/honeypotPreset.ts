@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Threat Detection Honeypot Preset resource.
  *
- * For information about Threat Detection Honeypot Preset and how to use it, see [What is Honeypot Preset](https://help.aliyun.com/document_detail/468960.html).
+ * For information about Threat Detection Honeypot Preset and how to use it, see [What is Honeypot Preset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotpreset).
  *
- * > **NOTE:** Available in v1.195.0+.
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -21,19 +21,24 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexample";
+ * const defaultHoneypotImages = alicloud.threatdetection.getHoneypotImages({
+ *     nameRegex: "^ruoyi",
+ * });
  * const defaultHoneypotNode = new alicloud.threatdetection.HoneypotNode("defaultHoneypotNode", {
- *     nodeName: _var.name,
+ *     nodeName: name,
  *     availableProbeNum: 20,
  *     securityGroupProbeIpLists: ["0.0.0.0/0"],
  * });
  * const defaultHoneypotPreset = new alicloud.threatdetection.HoneypotPreset("defaultHoneypotPreset", {
- *     honeypotImageName: "shiro",
+ *     presetName: name,
+ *     nodeId: defaultHoneypotNode.id,
+ *     honeypotImageName: defaultHoneypotImages.then(defaultHoneypotImages => defaultHoneypotImages.images?.[0]?.honeypotImageName),
  *     meta: {
  *         portraitOption: true,
  *         burp: "open",
  *     },
- *     nodeId: defaultHoneypotNode.id,
- *     presetName: "apiapec_test",
  * });
  * ```
  *
@@ -82,7 +87,7 @@ export class HoneypotPreset extends pulumi.CustomResource {
      */
     public /*out*/ readonly honeypotPresetId!: pulumi.Output<string>;
     /**
-     * Honeypot template custom parameters. See the following `Block meta`.
+     * Honeypot template custom parameters. See `meta` below.
      */
     public readonly meta!: pulumi.Output<outputs.threatdetection.HoneypotPresetMeta>;
     /**
@@ -150,7 +155,7 @@ export interface HoneypotPresetState {
      */
     honeypotPresetId?: pulumi.Input<string>;
     /**
-     * Honeypot template custom parameters. See the following `Block meta`.
+     * Honeypot template custom parameters. See `meta` below.
      */
     meta?: pulumi.Input<inputs.threatdetection.HoneypotPresetMeta>;
     /**
@@ -172,7 +177,7 @@ export interface HoneypotPresetArgs {
      */
     honeypotImageName: pulumi.Input<string>;
     /**
-     * Honeypot template custom parameters. See the following `Block meta`.
+     * Honeypot template custom parameters. See `meta` below.
      */
     meta: pulumi.Input<inputs.threatdetection.HoneypotPresetMeta>;
     /**

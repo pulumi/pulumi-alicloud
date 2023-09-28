@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Message Notification Service Queue and how to use it, see [What is Queue](https://www.alibabacloud.com/help/en/message-service/latest/createqueue).
  *
- * > **NOTE:** Available in v1.188.0+.
+ * > **NOTE:** Available since v1.188.0.
  *
  * ## Example Usage
  *
@@ -19,14 +19,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const queue = new alicloud.message.ServiceQueue("queue", {
+ *     queueName: name,
  *     delaySeconds: 60478,
- *     loggingEnabled: true,
  *     maximumMessageSize: 12357,
  *     messageRetentionPeriod: 256000,
- *     pollingWaitSeconds: 3,
- *     queueName: "tf-example-value",
  *     visibilityTimeout: 30,
+ *     pollingWaitSeconds: 3,
+ *     loggingEnabled: true,
  * });
  * ```
  *

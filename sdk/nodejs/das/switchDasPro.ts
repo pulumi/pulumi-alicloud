@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about DAS Switch Das Pro and how to use it, see [What is Switch Das Pro](https://www.alibabacloud.com/help/en/database-autonomy-service/latest/enabledaspro).
  *
- * > **NOTE:** Available in v1.193.0+.
+ * > **NOTE:** Available since v1.193.0.
  *
  * ## Example Usage
  *
@@ -19,10 +19,43 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.das.SwitchDasPro("default", {
- *     instanceId: "your_sql_id",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexample";
+ * const defaultAccount = alicloud.getAccount({});
+ * const defaultNodeClasses = alicloud.polardb.getNodeClasses({
+ *     dbType: "MySQL",
+ *     dbVersion: "8.0",
+ *     payType: "PostPaid",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: defaultNodeClasses.then(defaultNodeClasses => defaultNodeClasses.classes?.[0]?.zoneId),
+ *     vswitchName: name,
+ * });
+ * const defaultCluster = new alicloud.polardb.Cluster("defaultCluster", {
+ *     dbType: "MySQL",
+ *     dbVersion: "8.0",
+ *     dbNodeClass: "polar.mysql.x4.large",
+ *     payType: "PostPaid",
+ *     vswitchId: defaultSwitch.id,
+ *     description: name,
+ *     dbClusterIpArrays: [{
+ *         dbClusterIpArrayName: "default",
+ *         securityIps: [
+ *             "1.2.3.4",
+ *             "1.2.3.5",
+ *         ],
+ *     }],
+ * });
+ * const defaultSwitchDasPro = new alicloud.das.SwitchDasPro("defaultSwitchDasPro", {
+ *     instanceId: defaultCluster.id,
  *     sqlRetention: 30,
- *     userId: "your_account_id",
+ *     userId: defaultAccount.then(defaultAccount => defaultAccount.id),
  * });
  * ```
  *

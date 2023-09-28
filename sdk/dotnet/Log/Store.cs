@@ -13,6 +13,7 @@ namespace Pulumi.AliCloud.Log
     /// The log store is a unit in Log Service to collect, store, and query the log data. Each log store belongs to a project,
     /// and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
     /// 
+    /// &gt; **NOTE:** Available since v1.0.0.
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -48,7 +49,9 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// });
     /// ```
+    /// 
     /// Encrypt Usage
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -136,7 +139,7 @@ namespace Pulumi.AliCloud.Log
         public Output<bool?> EnableWebTracking { get; private set; } = null!;
 
         /// <summary>
-        /// Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
+        /// Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
         /// </summary>
         [Output("encryptConf")]
         public Output<Outputs.StoreEncryptConf?> EncryptConf { get; private set; } = null!;
@@ -154,10 +157,10 @@ namespace Pulumi.AliCloud.Log
         public Output<int?> MaxSplitShardCount { get; private set; } = null!;
 
         /// <summary>
-        /// The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+        /// The mode of storage. Default to `standard`, must be `standard` or `query`.
         /// </summary>
         [Output("mode")]
-        public Output<string> Mode { get; private set; } = null!;
+        public Output<string?> Mode { get; private set; } = null!;
 
         /// <summary>
         /// The log store, which is unique in the same project.
@@ -260,7 +263,7 @@ namespace Pulumi.AliCloud.Log
         public Input<bool>? EnableWebTracking { get; set; }
 
         /// <summary>
-        /// Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
+        /// Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
         /// </summary>
         [Input("encryptConf")]
         public Input<Inputs.StoreEncryptConfArgs>? EncryptConf { get; set; }
@@ -278,7 +281,7 @@ namespace Pulumi.AliCloud.Log
         public Input<int>? MaxSplitShardCount { get; set; }
 
         /// <summary>
-        /// The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+        /// The mode of storage. Default to `standard`, must be `standard` or `query`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -340,7 +343,7 @@ namespace Pulumi.AliCloud.Log
         public Input<bool>? EnableWebTracking { get; set; }
 
         /// <summary>
-        /// Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
+        /// Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
         /// </summary>
         [Input("encryptConf")]
         public Input<Inputs.StoreEncryptConfGetArgs>? EncryptConf { get; set; }
@@ -358,7 +361,7 @@ namespace Pulumi.AliCloud.Log
         public Input<int>? MaxSplitShardCount { get; set; }
 
         /// <summary>
-        /// The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+        /// The mode of storage. Default to `standard`, must be `standard` or `query`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }

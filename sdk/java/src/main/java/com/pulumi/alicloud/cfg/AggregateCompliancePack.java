@@ -80,6 +80,7 @@ import javax.annotation.Nullable;
  *             .configRuleTriggerTypes(&#34;ConfigurationItemChangeNotification&#34;)
  *             .sourceOwner(&#34;ALIYUN&#34;)
  *             .sourceIdentifier(&#34;contains-tag&#34;)
+ *             .description(name)
  *             .riskLevel(1)
  *             .resourceTypesScopes(&#34;ACS::ECS::Instance&#34;)
  *             .inputParameters(Map.ofEntries(
@@ -114,18 +115,32 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack")
 public class AggregateCompliancePack extends com.pulumi.resources.CustomResource {
     /**
-     * The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
+     * The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
      * 
      */
     @Export(name="aggregateCompliancePackName", type=String.class, parameters={})
     private Output<String> aggregateCompliancePackName;
 
     /**
-     * @return The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
+     * @return The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
      * 
      */
     public Output<String> aggregateCompliancePackName() {
         return this.aggregateCompliancePackName;
+    }
+    /**
+     * The ID of the compliance package.
+     * 
+     */
+    @Export(name="aggregatorCompliancePackId", type=String.class, parameters={})
+    private Output<String> aggregatorCompliancePackId;
+
+    /**
+     * @return The ID of the compliance package.
+     * 
+     */
+    public Output<String> aggregatorCompliancePackId() {
+        return this.aggregatorCompliancePackId;
     }
     /**
      * The ID of aggregator.
@@ -170,18 +185,18 @@ public class AggregateCompliancePack extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.configRuleIds);
     }
     /**
-     * A list of Config Rules. See `config_rules` below.
+     * A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
      * 
      * @deprecated
-     * Field &#39;config_rules&#39; has been deprecated from provider version 1.141.0. New field &#39;config_rule_ids&#39; instead.
+     * Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
      * 
      */
-    @Deprecated /* Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead. */
+    @Deprecated /* Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead. */
     @Export(name="configRules", type=List.class, parameters={AggregateCompliancePackConfigRule.class})
     private Output</* @Nullable */ List<AggregateCompliancePackConfigRule>> configRules;
 
     /**
-     * @return A list of Config Rules. See `config_rules` below.
+     * @return A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
      * 
      */
     public Output<Optional<List<AggregateCompliancePackConfigRule>>> configRules() {
@@ -202,28 +217,28 @@ public class AggregateCompliancePack extends com.pulumi.resources.CustomResource
         return this.description;
     }
     /**
-     * The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+     * The Risk Level. Valid values:
      * 
      */
     @Export(name="riskLevel", type=Integer.class, parameters={})
     private Output<Integer> riskLevel;
 
     /**
-     * @return The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+     * @return The Risk Level. Valid values:
      * 
      */
     public Output<Integer> riskLevel() {
         return this.riskLevel;
     }
     /**
-     * The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+     * The status of the Aggregate Compliance Pack.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+     * @return The status of the Aggregate Compliance Pack.
      * 
      */
     public Output<String> status() {

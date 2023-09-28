@@ -14,39 +14,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// <summary>
         /// This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.111.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = AliCloud.ResourceManager.GetSharedResources.Invoke(new()
-        ///     {
-        ///         ResourceShareId = "rs-V2NV******",
-        ///         Ids = new[]
-        ///         {
-        ///             "vsw-bp1mzouzpmvie********:VSwitch",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstResourceManagerSharedResourceId"] = data.Alicloud_resource_manager_shared_resources.Example.Resources[0].Id,
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &gt; **NOTE:** Available since v1.111.0.
         /// </summary>
         public static Task<GetSharedResourcesResult> InvokeAsync(GetSharedResourcesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSharedResourcesResult>("alicloud:resourcemanager/getSharedResources:getSharedResources", args ?? new GetSharedResourcesArgs(), options.WithDefaults());
@@ -54,39 +22,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// <summary>
         /// This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.111.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = AliCloud.ResourceManager.GetSharedResources.Invoke(new()
-        ///     {
-        ///         ResourceShareId = "rs-V2NV******",
-        ///         Ids = new[]
-        ///         {
-        ///             "vsw-bp1mzouzpmvie********:VSwitch",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstResourceManagerSharedResourceId"] = data.Alicloud_resource_manager_shared_resources.Example.Resources[0].Id,
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &gt; **NOTE:** Available since v1.111.0.
         /// </summary>
         public static Output<GetSharedResourcesResult> Invoke(GetSharedResourcesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSharedResourcesResult>("alicloud:resourcemanager/getSharedResources:getSharedResources", args ?? new GetSharedResourcesInvokeArgs(), options.WithDefaults());
@@ -99,7 +35,7 @@ namespace Pulumi.AliCloud.ResourceManager
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of shared resource ID.
+        /// A list of shared resource IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -120,7 +56,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public string? ResourceShareId { get; set; }
 
         /// <summary>
-        /// The status of shared resource.
+        /// The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -137,7 +73,7 @@ namespace Pulumi.AliCloud.ResourceManager
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of shared resource ID.
+        /// A list of shared resource IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -158,7 +94,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? ResourceShareId { get; set; }
 
         /// <summary>
-        /// The status of shared resource.
+        /// The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -179,8 +115,17 @@ namespace Pulumi.AliCloud.ResourceManager
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The resource share ID of resource manager.
+        /// </summary>
         public readonly string? ResourceShareId;
+        /// <summary>
+        /// A list of Resource Manager Shared Resources. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetSharedResourcesResourceResult> Resources;
+        /// <summary>
+        /// The status of shared resource.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

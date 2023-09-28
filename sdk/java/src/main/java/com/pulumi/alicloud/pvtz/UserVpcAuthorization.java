@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Private Zone User Vpc Authorization resource.
  * 
- * &gt; **NOTE:** Available in v1.138.0+.
+ * &gt; **NOTE:** Available since v1.138.0.
  * 
  * ## Example Usage
  * 
@@ -43,10 +43,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var authorizedUserId = config.get(&#34;authorizedUserId&#34;).orElse(123456789);
  *         var example = new UserVpcAuthorization(&#34;example&#34;, UserVpcAuthorizationArgs.builder()        
+ *             .authorizedUserId(authorizedUserId)
  *             .authChannel(&#34;RESOURCE_DIRECTORY&#34;)
- *             .authType(&#34;NORMAL&#34;)
- *             .authorizedUserId(&#34;example_value&#34;)
  *             .build());
  * 
  *     }

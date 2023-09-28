@@ -50,14 +50,14 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether encryption is turned on.See the following `Block Encryption`.
+     * Whether encryption is turned on. See `encryption` below.
      * 
      */
     @Import(name="encryption")
     private @Nullable Output<ProjectPropertiesEncryptionArgs> encryption;
 
     /**
-     * @return Whether encryption is turned on.See the following `Block Encryption`.
+     * @return Whether encryption is turned on. See `encryption` below.
      * 
      */
     public Optional<Output<ProjectPropertiesEncryptionArgs>> encryption() {
@@ -95,14 +95,14 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Life cycle of tables.See the following `Block TableLifecycle`.
+     * Life cycle of tables. See `table_lifecycle` below.
      * 
      */
     @Import(name="tableLifecycle")
     private @Nullable Output<ProjectPropertiesTableLifecycleArgs> tableLifecycle;
 
     /**
-     * @return Life cycle of tables.See the following `Block TableLifecycle`.
+     * @return Life cycle of tables. See `table_lifecycle` below.
      * 
      */
     public Optional<Output<ProjectPropertiesTableLifecycleArgs>> tableLifecycle() {
@@ -213,7 +213,7 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param encryption Whether encryption is turned on.See the following `Block Encryption`.
+         * @param encryption Whether encryption is turned on. See `encryption` below.
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param encryption Whether encryption is turned on.See the following `Block Encryption`.
+         * @param encryption Whether encryption is turned on. See `encryption` below.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tableLifecycle Life cycle of tables.See the following `Block TableLifecycle`.
+         * @param tableLifecycle Life cycle of tables. See `table_lifecycle` below.
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tableLifecycle Life cycle of tables.See the following `Block TableLifecycle`.
+         * @param tableLifecycle Life cycle of tables. See `table_lifecycle` below.
          * 
          * @return builder
          * 

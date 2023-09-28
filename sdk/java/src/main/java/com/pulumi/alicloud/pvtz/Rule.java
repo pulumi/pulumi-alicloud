@@ -19,9 +19,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Private Zone Rule resource.
  * 
- * For information about Private Zone Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/doc-detail/177601.htm).
+ * For information about Private Zone Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/privatezone/latest/add-forwarding-rule).
  * 
- * &gt; **NOTE:** Available in v1.143.0+.
+ * &gt; **NOTE:** Available since v1.143.0.
  * 
  * ## Import
  * 
@@ -49,14 +49,14 @@ public class Rule extends com.pulumi.resources.CustomResource {
         return this.endpointId;
     }
     /**
-     * Forwarding target. See the following `Block forward_ip`.
+     * Forwarding target. See `forward_ips` below.
      * 
      */
     @Export(name="forwardIps", type=List.class, parameters={RuleForwardIp.class})
     private Output<List<RuleForwardIp>> forwardIps;
 
     /**
-     * @return Forwarding target. See the following `Block forward_ip`.
+     * @return Forwarding target. See `forward_ips` below.
      * 
      */
     public Output<List<RuleForwardIp>> forwardIps() {

@@ -300,7 +300,8 @@ type EcsInstanceSetDataDisk struct {
 	// - When `diskCategory` is `cloudSsd`, Valid values: `20` to `32768`.
 	// - When `diskCategory` is `cloudEssd`, Valid values: `20` to `32768`.
 	// - When `diskCategory` is `cloud`, Valid values: `5` to `200`.
-	DiskSize  int   `pulumi:"diskSize"`
+	DiskSize int `pulumi:"diskSize"`
+	// Encrypted the data in this disk. Default value: `false`.
 	Encrypted *bool `pulumi:"encrypted"`
 	// The KMS key ID corresponding to the data disk.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
@@ -335,7 +336,8 @@ type EcsInstanceSetDataDiskArgs struct {
 	// - When `diskCategory` is `cloudSsd`, Valid values: `20` to `32768`.
 	// - When `diskCategory` is `cloudEssd`, Valid values: `20` to `32768`.
 	// - When `diskCategory` is `cloud`, Valid values: `5` to `200`.
-	DiskSize  pulumi.IntInput     `pulumi:"diskSize"`
+	DiskSize pulumi.IntInput `pulumi:"diskSize"`
+	// Encrypted the data in this disk. Default value: `false`.
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
 	// The KMS key ID corresponding to the data disk.
 	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
@@ -443,6 +445,7 @@ func (o EcsInstanceSetDataDiskOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v EcsInstanceSetDataDisk) int { return v.DiskSize }).(pulumi.IntOutput)
 }
 
+// Encrypted the data in this disk. Default value: `false`.
 func (o EcsInstanceSetDataDiskOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EcsInstanceSetDataDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }

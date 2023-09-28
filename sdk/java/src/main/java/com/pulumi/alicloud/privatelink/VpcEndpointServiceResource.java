@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Private Link Vpc Endpoint Service Resource resource.
  * 
- * For information about Private Link Vpc Endpoint Service Resource and how to use it, see [What is Vpc Endpoint Service Resource](https://help.aliyun.com/document_detail/183548.html).
+ * For information about Private Link Vpc Endpoint Service Resource and how to use it, see [What is Vpc Endpoint Service Resource](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-attachresourcetovpcendpointservice).
  * 
- * &gt; **NOTE:** Available in v1.110.0+.
+ * &gt; **NOTE:** Available since v1.110.0.
  * 
  * ## Example Usage
  * 
@@ -31,6 +31,20 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.privatelink.VpcEndpointService;
+ * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.slb.ApplicationLoadBalancer;
+ * import com.pulumi.alicloud.slb.ApplicationLoadBalancerArgs;
+ * import com.pulumi.alicloud.privatelink.VpcEndpoint;
+ * import com.pulumi.alicloud.privatelink.VpcEndpointArgs;
  * import com.pulumi.alicloud.privatelink.VpcEndpointServiceResource;
  * import com.pulumi.alicloud.privatelink.VpcEndpointServiceResourceArgs;
  * import java.util.List;
@@ -46,10 +60,52 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new VpcEndpointServiceResource(&#34;example&#34;, VpcEndpointServiceResourceArgs.builder()        
- *             .resourceId(&#34;lb-gw8nuym5xxxxx&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var exampleZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var exampleVpcEndpointService = new VpcEndpointService(&#34;exampleVpcEndpointService&#34;, VpcEndpointServiceArgs.builder()        
+ *             .serviceDescription(name)
+ *             .connectBandwidth(103)
+ *             .autoAcceptConnection(false)
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *             .build());
+ * 
+ *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.1.0.0/16&#34;)
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(exampleNetwork.id())
+ *             .build());
+ * 
+ *         var exampleApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;exampleApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+ *             .loadBalancerName(name)
+ *             .vswitchId(exampleSwitch.id())
+ *             .loadBalancerSpec(&#34;slb.s2.small&#34;)
+ *             .addressType(&#34;intranet&#34;)
+ *             .build());
+ * 
+ *         var exampleVpcEndpoint = new VpcEndpoint(&#34;exampleVpcEndpoint&#34;, VpcEndpointArgs.builder()        
+ *             .serviceId(exampleVpcEndpointService.id())
+ *             .securityGroupIds(exampleSecurityGroup.id())
+ *             .vpcId(exampleNetwork.id())
+ *             .vpcEndpointName(name)
+ *             .build());
+ * 
+ *         var exampleVpcEndpointServiceResource = new VpcEndpointServiceResource(&#34;exampleVpcEndpointServiceResource&#34;, VpcEndpointServiceResourceArgs.builder()        
+ *             .serviceId(exampleVpcEndpointService.id())
+ *             .resourceId(exampleApplicationLoadBalancer.id())
  *             .resourceType(&#34;slb&#34;)
- *             .serviceId(&#34;epsrv-gw8ii1xxxx&#34;)
  *             .build());
  * 
  *     }

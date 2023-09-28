@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in v1.51.0+
+        /// &gt; **NOTE:** Available since v1.51.0
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in v1.51.0+
+        /// &gt; **NOTE:** Available since v1.51.0
         /// 
         /// {{% examples %}}
         /// ## Example Usage

@@ -19,98 +19,98 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RuleRuleCondition {
     /**
-     * @return The configuration of the cookie. See See `cookie_config` below for details.
+     * @return The configuration of the cookie. See See `cookie_config` below.
      * 
      */
     private @Nullable RuleRuleConditionCookieConfig cookieConfig;
     /**
-     * @return The configuration of the header field. See `header_config` below for details.
+     * @return The configuration of the header field. See `header_config` below.
      * 
      */
     private @Nullable RuleRuleConditionHeaderConfig headerConfig;
     /**
-     * @return The configuration of the host field. See `host_config` below for details.
+     * @return The configuration of the host field. See `host_config` below.
      * 
      */
     private @Nullable RuleRuleConditionHostConfig hostConfig;
     /**
-     * @return The configuration of the request method. See `method_config` below for details.
+     * @return The configuration of the request method. See `method_config` below.
      * 
      */
     private @Nullable RuleRuleConditionMethodConfig methodConfig;
     /**
-     * @return The configuration of the path for the request to be forwarded. See `path_config` below for details.
+     * @return The configuration of the path for the request to be forwarded. See `path_config` below.
      * 
      */
     private @Nullable RuleRuleConditionPathConfig pathConfig;
     /**
-     * @return The configuration of the query string. See `query_string_config` below for details.
+     * @return The configuration of the query string. See `query_string_config` below.
      * 
      */
     private @Nullable RuleRuleConditionQueryStringConfig queryStringConfig;
     /**
-     * @return The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below for details.
+     * @return The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
      * 
      */
     private @Nullable RuleRuleConditionSourceIpConfig sourceIpConfig;
     /**
-     * @return The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+     * @return The type of the forwarding rule. Valid values:
      * 
      */
     private String type;
 
     private RuleRuleCondition() {}
     /**
-     * @return The configuration of the cookie. See See `cookie_config` below for details.
+     * @return The configuration of the cookie. See See `cookie_config` below.
      * 
      */
     public Optional<RuleRuleConditionCookieConfig> cookieConfig() {
         return Optional.ofNullable(this.cookieConfig);
     }
     /**
-     * @return The configuration of the header field. See `header_config` below for details.
+     * @return The configuration of the header field. See `header_config` below.
      * 
      */
     public Optional<RuleRuleConditionHeaderConfig> headerConfig() {
         return Optional.ofNullable(this.headerConfig);
     }
     /**
-     * @return The configuration of the host field. See `host_config` below for details.
+     * @return The configuration of the host field. See `host_config` below.
      * 
      */
     public Optional<RuleRuleConditionHostConfig> hostConfig() {
         return Optional.ofNullable(this.hostConfig);
     }
     /**
-     * @return The configuration of the request method. See `method_config` below for details.
+     * @return The configuration of the request method. See `method_config` below.
      * 
      */
     public Optional<RuleRuleConditionMethodConfig> methodConfig() {
         return Optional.ofNullable(this.methodConfig);
     }
     /**
-     * @return The configuration of the path for the request to be forwarded. See `path_config` below for details.
+     * @return The configuration of the path for the request to be forwarded. See `path_config` below.
      * 
      */
     public Optional<RuleRuleConditionPathConfig> pathConfig() {
         return Optional.ofNullable(this.pathConfig);
     }
     /**
-     * @return The configuration of the query string. See `query_string_config` below for details.
+     * @return The configuration of the query string. See `query_string_config` below.
      * 
      */
     public Optional<RuleRuleConditionQueryStringConfig> queryStringConfig() {
         return Optional.ofNullable(this.queryStringConfig);
     }
     /**
-     * @return The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below for details.
+     * @return The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
      * 
      */
     public Optional<RuleRuleConditionSourceIpConfig> sourceIpConfig() {
         return Optional.ofNullable(this.sourceIpConfig);
     }
     /**
-     * @return The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+     * @return The type of the forwarding rule. Valid values:
      * 
      */
     public String type() {

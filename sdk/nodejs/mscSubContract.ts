@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * Provides a Msc Sub Contact resource.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *
@@ -17,11 +17,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexample";
  * const _default = new alicloud.MscSubContract("default", {
- *     contactName: example_value,
+ *     contactName: name,
  *     position: "CEO",
  *     email: "123@163.com",
- *     mobile: "153xxxxx906",
+ *     mobile: "15388888888",
  * });
  * ```
  *

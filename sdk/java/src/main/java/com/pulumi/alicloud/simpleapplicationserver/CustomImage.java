@@ -17,9 +17,77 @@ import javax.annotation.Nullable;
 /**
  * Provides a Simple Application Server Custom Image resource.
  * 
- * For information about Simple Application Server Custom Image and how to use it, see [What is Custom Image](https://www.alibabacloud.com/help/zh/doc-detail/333535.htm).
+ * For information about Simple Application Server Custom Image and how to use it, see [What is Custom Image](https://www.alibabacloud.com/help/en/doc-detail/333535.htm).
  * 
- * &gt; **NOTE:** Available in v1.143.0+.
+ * &gt; **NOTE:** Available since v1.143.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+ * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerPlansArgs;
+ * import com.pulumi.alicloud.simpleapplicationserver.Instance;
+ * import com.pulumi.alicloud.simpleapplicationserver.InstanceArgs;
+ * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerDisksArgs;
+ * import com.pulumi.alicloud.simpleapplicationserver.Snapshot;
+ * import com.pulumi.alicloud.simpleapplicationserver.SnapshotArgs;
+ * import com.pulumi.alicloud.simpleapplicationserver.CustomImage;
+ * import com.pulumi.alicloud.simpleapplicationserver.CustomImageArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var defaultImages = SimpleapplicationserverFunctions.getImages();
+ * 
+ *         final var defaultServerPlans = SimpleapplicationserverFunctions.getServerPlans();
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .paymentType(&#34;Subscription&#34;)
+ *             .planId(defaultServerPlans.applyValue(getServerPlansResult -&gt; getServerPlansResult.plans()[0].id()))
+ *             .instanceName(name)
+ *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .period(1)
+ *             .dataDiskSize(100)
+ *             .build());
+ * 
+ *         final var defaultServerDisks = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+ *             .instanceId(defaultInstance.id())
+ *             .build());
+ * 
+ *         var defaultSnapshot = new Snapshot(&#34;defaultSnapshot&#34;, SnapshotArgs.builder()        
+ *             .diskId(defaultServerDisks.applyValue(getServerDisksResult -&gt; getServerDisksResult).applyValue(defaultServerDisks -&gt; defaultServerDisks.applyValue(getServerDisksResult -&gt; getServerDisksResult.ids()[0])))
+ *             .snapshotName(name)
+ *             .build());
+ * 
+ *         var defaultCustomImage = new CustomImage(&#34;defaultCustomImage&#34;, CustomImageArgs.builder()        
+ *             .customImageName(name)
+ *             .instanceId(defaultInstance.id())
+ *             .systemSnapshotId(defaultSnapshot.id())
+ *             .status(&#34;Share&#34;)
+ *             .description(name)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

@@ -34,6 +34,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.Provider;
  * import com.pulumi.alicloud.ProviderArgs;
+ * import com.pulumi.alicloud.inputs.ProviderAssumeRoleArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
@@ -58,16 +59,16 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var acceptingRegion = config.get(&#34;acceptingRegion&#34;).orElse(&#34;cn-beijing&#34;);
- *         final var acceptingAccountAccessKey = config.get(&#34;acceptingAccountAccessKey&#34;).orElse(&#34;access_key&#34;);
- *         final var acceptingAccountSecretKey = config.get(&#34;acceptingAccountSecretKey&#34;).orElse(&#34;secret_key&#34;);
- *         var local = new Provider(&#34;local&#34;, ProviderArgs.builder()        
- *             .region(&#34;cn-hangzhou&#34;)
- *             .build());
- * 
+ *         final var acceptUid = config.get(&#34;acceptUid&#34;).orElse(&#34;xxxx&#34;);
  *         var accepting = new Provider(&#34;accepting&#34;, ProviderArgs.builder()        
  *             .region(acceptingRegion)
- *             .accessKey(acceptingAccountAccessKey)
- *             .secretKey(acceptingAccountSecretKey)
+ *             .assumeRole(ProviderAssumeRoleArgs.builder()
+ *                 .roleArn(String.format(&#34;acs:ram::%s:role/terraform-example-assume-role&#34;, acceptUid))
+ *                 .build())
+ *             .build());
+ * 
+ *         var local = new Provider(&#34;local&#34;, ProviderArgs.builder()        
+ *             .region(&#34;cn-hangzhou&#34;)
  *             .build());
  * 
  *         var localNetwork = new Network(&#34;localNetwork&#34;, NetworkArgs.builder()        

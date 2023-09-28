@@ -5,6 +5,8 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .api_destination import *
+from .connection import *
 from .event_bus import *
 from .event_source import *
 from .get_event_buses import *

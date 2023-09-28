@@ -7,21 +7,29 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides Wafv3 Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-doc-waf-openapi-2021-10-01-api-doc-createdomain)
+ * This data source provides the Wafv3 Domains of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in 1.200.0+
+ * > **NOTE:** Available since v1.200.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.wafv3.getDomains({
+ * const defaultInstances = alicloud.wafv3.getInstances({});
+ * const ids = defaultInstances.then(defaultInstances => alicloud.wafv3.getDomains({
+ *     instanceId: defaultInstances.ids?.[0],
+ *     ids: ["example_id"],
+ * }));
+ * export const wafv3DomainsId1 = ids.then(ids => ids.domains?.[0]?.id);
+ * const defaultDomains = defaultInstances.then(defaultInstances => alicloud.wafv3.getDomains({
+ *     instanceId: defaultInstances.ids?.[0],
  *     domain: "zctest12.wafqax.top",
- *     instanceId: "waf_v3prepaid_public_cn-*****",
- * });
- * export const alicloudWafv3DomainExampleId = _default.then(_default => _default.domains?.[0]?.id);
+ * }));
+ * export const wafv3DomainsId2 = defaultDomains.then(defaultDomains => defaultDomains.domains?.[0]?.id);
  * ```
  */
 export function getDomains(args: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
@@ -96,21 +104,29 @@ export interface GetDomainsResult {
     readonly pageSize?: number;
 }
 /**
- * This data source provides Wafv3 Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-doc-waf-openapi-2021-10-01-api-doc-createdomain)
+ * This data source provides the Wafv3 Domains of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in 1.200.0+
+ * > **NOTE:** Available since v1.200.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.wafv3.getDomains({
+ * const defaultInstances = alicloud.wafv3.getInstances({});
+ * const ids = defaultInstances.then(defaultInstances => alicloud.wafv3.getDomains({
+ *     instanceId: defaultInstances.ids?.[0],
+ *     ids: ["example_id"],
+ * }));
+ * export const wafv3DomainsId1 = ids.then(ids => ids.domains?.[0]?.id);
+ * const defaultDomains = defaultInstances.then(defaultInstances => alicloud.wafv3.getDomains({
+ *     instanceId: defaultInstances.ids?.[0],
  *     domain: "zctest12.wafqax.top",
- *     instanceId: "waf_v3prepaid_public_cn-*****",
- * });
- * export const alicloudWafv3DomainExampleId = _default.then(_default => _default.domains?.[0]?.id);
+ * }));
+ * export const wafv3DomainsId2 = defaultDomains.then(defaultDomains => defaultDomains.domains?.[0]?.id);
  * ```
  */
 export function getDomainsOutput(args: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {

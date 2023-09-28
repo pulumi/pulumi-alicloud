@@ -14,7 +14,7 @@ import (
 
 // This data source provides the PolarDB Parameter Groups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.183.0+.
+// > **NOTE:** Available since v1.183.0+.
 //
 // ## Example Usage
 //
@@ -29,29 +29,34 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := polardb.GetParameterGroups(ctx, &polardb.GetParameterGroupsArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("polardbParameterGroupId1", ids.Groups[0].Id)
-//			nameRegex, err := polardb.GetParameterGroups(ctx, &polardb.GetParameterGroupsArgs{
-//				NameRegex: pulumi.StringRef("example_name"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("polardbParameterGroupId2", nameRegex.Groups[0].Id)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _default, err := polardb.GetParameterGroups(ctx, &polardb.GetParameterGroupsArgs{
+// DbType: pulumi.StringRef("MySQL"),
+// DbVersion: pulumi.StringRef("8.0"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ids, err := polardb.GetParameterGroups(ctx, &polardb.GetParameterGroupsArgs{
+// Ids: interface{}{
+// _default.Groups[0].Id,
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("polardbParameterGroupId1", ids.Groups[0].Id)
+// nameRegex, err := polardb.GetParameterGroups(ctx, &polardb.GetParameterGroupsArgs{
+// NameRegex: pulumi.StringRef(_default.Groups[0].ParameterGroupName),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("polardbParameterGroupId2", nameRegex.Groups[0].Id)
+// return nil
+// })
+// }
 // ```
 func GetParameterGroups(ctx *pulumi.Context, args *GetParameterGroupsArgs, opts ...pulumi.InvokeOption) (*GetParameterGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
@@ -65,9 +70,9 @@ func GetParameterGroups(ctx *pulumi.Context, args *GetParameterGroupsArgs, opts 
 
 // A collection of arguments for invoking getParameterGroups.
 type GetParameterGroupsArgs struct {
-	// The type of the database engine.
+	// The type of the database engine. Only `MySQL` is supported.
 	DbType *string `pulumi:"dbType"`
-	// The version number of the database engine.
+	// The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
 	DbVersion *string `pulumi:"dbVersion"`
 	// A list of Parameter Group IDs.
 	Ids []string `pulumi:"ids"`
@@ -79,13 +84,17 @@ type GetParameterGroupsArgs struct {
 
 // A collection of values returned by getParameterGroups.
 type GetParameterGroupsResult struct {
-	DbType    *string                   `pulumi:"dbType"`
-	DbVersion *string                   `pulumi:"dbVersion"`
-	Groups    []GetParameterGroupsGroup `pulumi:"groups"`
+	// The type of the database engine.
+	DbType *string `pulumi:"dbType"`
+	// The version number of the database engine.
+	DbVersion *string `pulumi:"dbVersion"`
+	// A list of PolarDB Parameter Groups. Each element contains the following attributes:
+	Groups []GetParameterGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Parameter Group names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 }
@@ -105,9 +114,9 @@ func GetParameterGroupsOutput(ctx *pulumi.Context, args GetParameterGroupsOutput
 
 // A collection of arguments for invoking getParameterGroups.
 type GetParameterGroupsOutputArgs struct {
-	// The type of the database engine.
+	// The type of the database engine. Only `MySQL` is supported.
 	DbType pulumi.StringPtrInput `pulumi:"dbType"`
-	// The version number of the database engine.
+	// The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
 	DbVersion pulumi.StringPtrInput `pulumi:"dbVersion"`
 	// A list of Parameter Group IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -142,14 +151,17 @@ func (o GetParameterGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
+// The type of the database engine.
 func (o GetParameterGroupsResultOutput) DbType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetParameterGroupsResult) *string { return v.DbType }).(pulumi.StringPtrOutput)
 }
 
+// The version number of the database engine.
 func (o GetParameterGroupsResultOutput) DbVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetParameterGroupsResult) *string { return v.DbVersion }).(pulumi.StringPtrOutput)
 }
 
+// A list of PolarDB Parameter Groups. Each element contains the following attributes:
 func (o GetParameterGroupsResultOutput) Groups() GetParameterGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetParameterGroupsResult) []GetParameterGroupsGroup { return v.Groups }).(GetParameterGroupsGroupArrayOutput)
 }
@@ -167,6 +179,7 @@ func (o GetParameterGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetParameterGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Parameter Group names.
 func (o GetParameterGroupsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetParameterGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

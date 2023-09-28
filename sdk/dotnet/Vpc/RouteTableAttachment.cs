@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
+    /// Provides a VPC Route Table Attachment resource. Routing table associated resource type.
+    /// 
+    /// For information about VPC Route Table Attachment and how to use it, see [What is Route Table Attachment](https://www.alibabacloud.com/help/doc-detail/174112.htm).
+    /// 
+    /// &gt; **NOTE:** Available since v1.194.0.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -23,7 +29,7 @@ namespace Pulumi.AliCloud.Vpc
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "route-table-attachment-example-name";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
     ///     {
     ///         CidrBlock = "172.16.0.0/12",
@@ -59,23 +65,29 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// The route table attachment can be imported using the id, e.g.
+    /// VPC Route Table Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment foo vtb-abc123456:vsw-abc123456
+    ///  $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment example &lt;route_table_id&gt;:&lt;vswitch_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/routeTableAttachment:RouteTableAttachment")]
     public partial class RouteTableAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The route_table_id of the route table attachment, the field can't be changed.
+        /// The ID of the route table to be bound to the switch.
         /// </summary>
         [Output("routeTableId")]
         public Output<string> RouteTableId { get; private set; } = null!;
 
         /// <summary>
-        /// The vswitch_id of the route table attachment, the field can't be changed.
+        /// The status of the resource.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the switch to bind the route table.
         /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
@@ -127,13 +139,13 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class RouteTableAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The route_table_id of the route table attachment, the field can't be changed.
+        /// The ID of the route table to be bound to the switch.
         /// </summary>
         [Input("routeTableId", required: true)]
         public Input<string> RouteTableId { get; set; } = null!;
 
         /// <summary>
-        /// The vswitch_id of the route table attachment, the field can't be changed.
+        /// The ID of the switch to bind the route table.
         /// </summary>
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
@@ -147,13 +159,19 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class RouteTableAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The route_table_id of the route table attachment, the field can't be changed.
+        /// The ID of the route table to be bound to the switch.
         /// </summary>
         [Input("routeTableId")]
         public Input<string>? RouteTableId { get; set; }
 
         /// <summary>
-        /// The vswitch_id of the route table attachment, the field can't be changed.
+        /// The status of the resource.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The ID of the switch to bind the route table.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

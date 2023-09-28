@@ -345,14 +345,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in 1.105.0+) The slb service addresses of the cluster.
+     * The slb service addresses of the cluster. See `slb_conn_addrs` below.
+     * 
+     * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
      * 
      */
     @Import(name="slbConnAddrs")
     private @Nullable Output<List<InstanceSlbConnAddrArgs>> slbConnAddrs;
 
     /**
-     * @return (Available in 1.105.0+) The slb service addresses of the cluster.
+     * @return The slb service addresses of the cluster. See `slb_conn_addrs` below.
+     * 
+     * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
      * 
      */
     public Optional<Output<List<InstanceSlbConnAddrArgs>>> slbConnAddrs() {
@@ -375,14 +379,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+     * The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
      * 
      */
     @Import(name="uiProxyConnAddrs")
     private @Nullable Output<List<InstanceUiProxyConnAddrArgs>> uiProxyConnAddrs;
 
     /**
-     * @return (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+     * @return The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
      * 
      */
     public Optional<Output<List<InstanceUiProxyConnAddrArgs>>> uiProxyConnAddrs() {
@@ -392,16 +396,12 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The id of the VPC.
      * 
-     * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
-     * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
      * @return The id of the VPC.
-     * 
-     * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -424,14 +424,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in 1.105.0+) The zookeeper addresses of the cluster.
+     * The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
      * 
      */
     @Import(name="zkConnAddrs")
     private @Nullable Output<List<InstanceZkConnAddrArgs>> zkConnAddrs;
 
     /**
-     * @return (Available in 1.105.0+) The zookeeper addresses of the cluster.
+     * @return The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
      * 
      */
     public Optional<Output<List<InstanceZkConnAddrArgs>>> zkConnAddrs() {
@@ -962,7 +962,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slbConnAddrs (Available in 1.105.0+) The slb service addresses of the cluster.
+         * @param slbConnAddrs The slb service addresses of the cluster. See `slb_conn_addrs` below.
+         * 
+         * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
          * 
          * @return builder
          * 
@@ -973,7 +975,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slbConnAddrs (Available in 1.105.0+) The slb service addresses of the cluster.
+         * @param slbConnAddrs The slb service addresses of the cluster. See `slb_conn_addrs` below.
+         * 
+         * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
          * 
          * @return builder
          * 
@@ -983,7 +987,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slbConnAddrs (Available in 1.105.0+) The slb service addresses of the cluster.
+         * @param slbConnAddrs The slb service addresses of the cluster. See `slb_conn_addrs` below.
+         * 
+         * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
          * 
          * @return builder
          * 
@@ -1014,7 +1020,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uiProxyConnAddrs (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+         * @param uiProxyConnAddrs The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
          * 
          * @return builder
          * 
@@ -1025,7 +1031,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uiProxyConnAddrs (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+         * @param uiProxyConnAddrs The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
          * 
          * @return builder
          * 
@@ -1035,7 +1041,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uiProxyConnAddrs (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+         * @param uiProxyConnAddrs The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
          * 
          * @return builder
          * 
@@ -1047,8 +1053,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param vpcId The id of the VPC.
          * 
-         * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
-         * 
          * @return builder
          * 
          */
@@ -1059,8 +1063,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param vpcId The id of the VPC.
-         * 
-         * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
          * 
          * @return builder
          * 
@@ -1091,7 +1093,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zkConnAddrs (Available in 1.105.0+) The zookeeper addresses of the cluster.
+         * @param zkConnAddrs The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
          * 
          * @return builder
          * 
@@ -1102,7 +1104,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zkConnAddrs (Available in 1.105.0+) The zookeeper addresses of the cluster.
+         * @param zkConnAddrs The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
          * 
          * @return builder
          * 
@@ -1112,7 +1114,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zkConnAddrs (Available in 1.105.0+) The zookeeper addresses of the cluster.
+         * @param zkConnAddrs The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
          * 
          * @return builder
          * 

@@ -17,7 +17,7 @@ import (
 //
 // For information about Direct Mail Tag and how to use it, see [What is Tag](https://www.alibabacloud.com/help/zh/doc-detail/119007.htm).
 //
-// > **NOTE:** Available in v1.144.0+.
+// > **NOTE:** Available since v1.144.0.
 //
 // ## Example Usage
 //
@@ -30,13 +30,19 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/directmail"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := directmail.NewTag(ctx, "example", &directmail.TagArgs{
-//				TagName: pulumi.String("example_value"),
+//				TagName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

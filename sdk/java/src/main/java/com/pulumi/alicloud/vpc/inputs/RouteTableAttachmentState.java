@@ -16,14 +16,14 @@ public final class RouteTableAttachmentState extends com.pulumi.resources.Resour
     public static final RouteTableAttachmentState Empty = new RouteTableAttachmentState();
 
     /**
-     * The route_table_id of the route table attachment, the field can&#39;t be changed.
+     * The ID of the route table to be bound to the switch.
      * 
      */
     @Import(name="routeTableId")
     private @Nullable Output<String> routeTableId;
 
     /**
-     * @return The route_table_id of the route table attachment, the field can&#39;t be changed.
+     * @return The ID of the route table to be bound to the switch.
      * 
      */
     public Optional<Output<String>> routeTableId() {
@@ -31,14 +31,29 @@ public final class RouteTableAttachmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The vswitch_id of the route table attachment, the field can&#39;t be changed.
+     * The status of the resource.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return The status of the resource.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * The ID of the switch to bind the route table.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The vswitch_id of the route table attachment, the field can&#39;t be changed.
+     * @return The ID of the switch to bind the route table.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -49,6 +64,7 @@ public final class RouteTableAttachmentState extends com.pulumi.resources.Resour
 
     private RouteTableAttachmentState(RouteTableAttachmentState $) {
         this.routeTableId = $.routeTableId;
+        this.status = $.status;
         this.vswitchId = $.vswitchId;
     }
 
@@ -71,7 +87,7 @@ public final class RouteTableAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param routeTableId The route_table_id of the route table attachment, the field can&#39;t be changed.
+         * @param routeTableId The ID of the route table to be bound to the switch.
          * 
          * @return builder
          * 
@@ -82,7 +98,7 @@ public final class RouteTableAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param routeTableId The route_table_id of the route table attachment, the field can&#39;t be changed.
+         * @param routeTableId The ID of the route table to be bound to the switch.
          * 
          * @return builder
          * 
@@ -92,7 +108,28 @@ public final class RouteTableAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param vswitchId The vswitch_id of the route table attachment, the field can&#39;t be changed.
+         * @param status The status of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status The status of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
+        }
+
+        /**
+         * @param vswitchId The ID of the switch to bind the route table.
          * 
          * @return builder
          * 
@@ -103,7 +140,7 @@ public final class RouteTableAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param vswitchId The vswitch_id of the route table attachment, the field can&#39;t be changed.
+         * @param vswitchId The ID of the switch to bind the route table.
          * 
          * @return builder
          * 

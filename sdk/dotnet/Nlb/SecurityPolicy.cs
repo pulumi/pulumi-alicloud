@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Nlb
     /// 
     /// For information about NLB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createsecuritypolicy-nlb).
     /// 
-    /// &gt; **NOTE:** Available in v1.187.0+.
+    /// &gt; **NOTE:** Available since v1.187.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,12 +28,14 @@ namespace Pulumi.AliCloud.Nlb
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
     ///     var defaultSecurityPolicy = new AliCloud.Nlb.SecurityPolicy("defaultSecurityPolicy", new()
     ///     {
     ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
-    ///         SecurityPolicyName = @var.Name,
+    ///         SecurityPolicyName = name,
     ///         Ciphers = new[]
     ///         {
     ///             "ECDHE-RSA-AES128-SHA",
@@ -48,7 +50,7 @@ namespace Pulumi.AliCloud.Nlb
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },
-    ///             { "For", "Acceptance-test" },
+    ///             { "For", "example" },
     ///         },
     ///     });
     /// 

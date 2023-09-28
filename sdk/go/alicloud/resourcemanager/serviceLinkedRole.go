@@ -17,7 +17,7 @@ import (
 //
 // For information about Resource Manager Service Linked Role and how to use it, see [What is Service Linked Role.](https://www.alibabacloud.com/help/en/doc-detail/171226.htm).
 //
-// > **NOTE:** Available in v1.157.0+.
+// > **NOTE:** Available since v1.157.0.
 //
 // ## Example Usage
 //

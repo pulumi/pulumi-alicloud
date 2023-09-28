@@ -69,6 +69,7 @@ import (
 //				ConfigRuleTriggerTypes:  pulumi.String("ConfigurationItemChangeNotification"),
 //				SourceOwner:             pulumi.String("ALIYUN"),
 //				SourceIdentifier:        pulumi.String("contains-tag"),
+//				Description:             pulumi.String(name),
 //				RiskLevel:               pulumi.Int(1),
 //				ResourceTypesScopes: pulumi.StringArray{
 //					pulumi.String("ACS::ECS::Instance"),
@@ -113,23 +114,25 @@ import (
 type AggregateCompliancePack struct {
 	pulumi.CustomResourceState
 
-	// The name of compliance package name. **NOTE:** the `aggregateCompliancePackName` supports modification since V1.145.0.
+	// The name of compliance package name. **NOTE:** From version 1.145.0, `aggregateCompliancePackName` can be modified.
 	AggregateCompliancePackName pulumi.StringOutput `pulumi:"aggregateCompliancePackName"`
+	// The ID of the compliance package.
+	AggregatorCompliancePackId pulumi.StringOutput `pulumi:"aggregatorCompliancePackId"`
 	// The ID of aggregator.
 	AggregatorId pulumi.StringOutput `pulumi:"aggregatorId"`
 	// The Template ID of compliance package.
 	CompliancePackTemplateId pulumi.StringPtrOutput `pulumi:"compliancePackTemplateId"`
 	// A list of Config Rule IDs. See `configRuleIds` below.
 	ConfigRuleIds AggregateCompliancePackConfigRuleIdArrayOutput `pulumi:"configRuleIds"`
-	// A list of Config Rules. See `configRules` below.
+	// A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	//
-	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
+	// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
 	ConfigRules AggregateCompliancePackConfigRuleArrayOutput `pulumi:"configRules"`
 	// The description of compliance package.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+	// The Risk Level. Valid values:
 	RiskLevel pulumi.IntOutput `pulumi:"riskLevel"`
-	// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+	// The status of the Aggregate Compliance Pack.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -175,44 +178,48 @@ func GetAggregateCompliancePack(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AggregateCompliancePack resources.
 type aggregateCompliancePackState struct {
-	// The name of compliance package name. **NOTE:** the `aggregateCompliancePackName` supports modification since V1.145.0.
+	// The name of compliance package name. **NOTE:** From version 1.145.0, `aggregateCompliancePackName` can be modified.
 	AggregateCompliancePackName *string `pulumi:"aggregateCompliancePackName"`
+	// The ID of the compliance package.
+	AggregatorCompliancePackId *string `pulumi:"aggregatorCompliancePackId"`
 	// The ID of aggregator.
 	AggregatorId *string `pulumi:"aggregatorId"`
 	// The Template ID of compliance package.
 	CompliancePackTemplateId *string `pulumi:"compliancePackTemplateId"`
 	// A list of Config Rule IDs. See `configRuleIds` below.
 	ConfigRuleIds []AggregateCompliancePackConfigRuleId `pulumi:"configRuleIds"`
-	// A list of Config Rules. See `configRules` below.
+	// A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	//
-	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
+	// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
 	ConfigRules []AggregateCompliancePackConfigRule `pulumi:"configRules"`
 	// The description of compliance package.
 	Description *string `pulumi:"description"`
-	// The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+	// The Risk Level. Valid values:
 	RiskLevel *int `pulumi:"riskLevel"`
-	// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+	// The status of the Aggregate Compliance Pack.
 	Status *string `pulumi:"status"`
 }
 
 type AggregateCompliancePackState struct {
-	// The name of compliance package name. **NOTE:** the `aggregateCompliancePackName` supports modification since V1.145.0.
+	// The name of compliance package name. **NOTE:** From version 1.145.0, `aggregateCompliancePackName` can be modified.
 	AggregateCompliancePackName pulumi.StringPtrInput
+	// The ID of the compliance package.
+	AggregatorCompliancePackId pulumi.StringPtrInput
 	// The ID of aggregator.
 	AggregatorId pulumi.StringPtrInput
 	// The Template ID of compliance package.
 	CompliancePackTemplateId pulumi.StringPtrInput
 	// A list of Config Rule IDs. See `configRuleIds` below.
 	ConfigRuleIds AggregateCompliancePackConfigRuleIdArrayInput
-	// A list of Config Rules. See `configRules` below.
+	// A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	//
-	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
+	// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
 	ConfigRules AggregateCompliancePackConfigRuleArrayInput
 	// The description of compliance package.
 	Description pulumi.StringPtrInput
-	// The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+	// The Risk Level. Valid values:
 	RiskLevel pulumi.IntPtrInput
-	// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+	// The status of the Aggregate Compliance Pack.
 	Status pulumi.StringPtrInput
 }
 
@@ -221,7 +228,7 @@ func (AggregateCompliancePackState) ElementType() reflect.Type {
 }
 
 type aggregateCompliancePackArgs struct {
-	// The name of compliance package name. **NOTE:** the `aggregateCompliancePackName` supports modification since V1.145.0.
+	// The name of compliance package name. **NOTE:** From version 1.145.0, `aggregateCompliancePackName` can be modified.
 	AggregateCompliancePackName string `pulumi:"aggregateCompliancePackName"`
 	// The ID of aggregator.
 	AggregatorId string `pulumi:"aggregatorId"`
@@ -229,19 +236,19 @@ type aggregateCompliancePackArgs struct {
 	CompliancePackTemplateId *string `pulumi:"compliancePackTemplateId"`
 	// A list of Config Rule IDs. See `configRuleIds` below.
 	ConfigRuleIds []AggregateCompliancePackConfigRuleId `pulumi:"configRuleIds"`
-	// A list of Config Rules. See `configRules` below.
+	// A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	//
-	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
+	// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
 	ConfigRules []AggregateCompliancePackConfigRule `pulumi:"configRules"`
 	// The description of compliance package.
 	Description string `pulumi:"description"`
-	// The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+	// The Risk Level. Valid values:
 	RiskLevel int `pulumi:"riskLevel"`
 }
 
 // The set of arguments for constructing a AggregateCompliancePack resource.
 type AggregateCompliancePackArgs struct {
-	// The name of compliance package name. **NOTE:** the `aggregateCompliancePackName` supports modification since V1.145.0.
+	// The name of compliance package name. **NOTE:** From version 1.145.0, `aggregateCompliancePackName` can be modified.
 	AggregateCompliancePackName pulumi.StringInput
 	// The ID of aggregator.
 	AggregatorId pulumi.StringInput
@@ -249,13 +256,13 @@ type AggregateCompliancePackArgs struct {
 	CompliancePackTemplateId pulumi.StringPtrInput
 	// A list of Config Rule IDs. See `configRuleIds` below.
 	ConfigRuleIds AggregateCompliancePackConfigRuleIdArrayInput
-	// A list of Config Rules. See `configRules` below.
+	// A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	//
-	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
+	// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
 	ConfigRules AggregateCompliancePackConfigRuleArrayInput
 	// The description of compliance package.
 	Description pulumi.StringInput
-	// The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+	// The Risk Level. Valid values:
 	RiskLevel pulumi.IntInput
 }
 
@@ -370,9 +377,14 @@ func (o AggregateCompliancePackOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
-// The name of compliance package name. **NOTE:** the `aggregateCompliancePackName` supports modification since V1.145.0.
+// The name of compliance package name. **NOTE:** From version 1.145.0, `aggregateCompliancePackName` can be modified.
 func (o AggregateCompliancePackOutput) AggregateCompliancePackName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AggregateCompliancePack) pulumi.StringOutput { return v.AggregateCompliancePackName }).(pulumi.StringOutput)
+}
+
+// The ID of the compliance package.
+func (o AggregateCompliancePackOutput) AggregatorCompliancePackId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AggregateCompliancePack) pulumi.StringOutput { return v.AggregatorCompliancePackId }).(pulumi.StringOutput)
 }
 
 // The ID of aggregator.
@@ -392,9 +404,9 @@ func (o AggregateCompliancePackOutput) ConfigRuleIds() AggregateCompliancePackCo
 	}).(AggregateCompliancePackConfigRuleIdArrayOutput)
 }
 
-// A list of Config Rules. See `configRules` below.
+// A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 //
-// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
+// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
 func (o AggregateCompliancePackOutput) ConfigRules() AggregateCompliancePackConfigRuleArrayOutput {
 	return o.ApplyT(func(v *AggregateCompliancePack) AggregateCompliancePackConfigRuleArrayOutput { return v.ConfigRules }).(AggregateCompliancePackConfigRuleArrayOutput)
 }
@@ -404,12 +416,12 @@ func (o AggregateCompliancePackOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *AggregateCompliancePack) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+// The Risk Level. Valid values:
 func (o AggregateCompliancePackOutput) RiskLevel() pulumi.IntOutput {
 	return o.ApplyT(func(v *AggregateCompliancePack) pulumi.IntOutput { return v.RiskLevel }).(pulumi.IntOutput)
 }
 
-// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+// The status of the Aggregate Compliance Pack.
 func (o AggregateCompliancePackOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *AggregateCompliancePack) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

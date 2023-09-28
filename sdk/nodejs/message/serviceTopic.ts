@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Message Notification Service Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-service/latest/createtopic).
  *
- * > **NOTE:** Available in v1.188.0+.
+ * > **NOTE:** Available since v1.188.0.
  *
  * ## Example Usage
  *
@@ -19,10 +19,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const _default = new alicloud.message.ServiceTopic("default", {
- *     loggingEnabled: true,
+ *     topicName: name,
  *     maxMessageSize: 12357,
- *     topicName: "tf-example-value",
+ *     loggingEnabled: true,
  * });
  * ```
  *

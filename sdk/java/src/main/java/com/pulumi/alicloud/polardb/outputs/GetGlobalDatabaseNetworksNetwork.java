@@ -47,7 +47,7 @@ public final class GetGlobalDatabaseNetworksNetwork {
      */
     private String id;
     /**
-     * @return The status of the Global Database Network.
+     * @return The status of the Global Database Network. Valid values:
      * 
      */
     private String status;
@@ -103,7 +103,7 @@ public final class GetGlobalDatabaseNetworksNetwork {
         return this.id;
     }
     /**
-     * @return The status of the Global Database Network.
+     * @return The status of the Global Database Network. Valid values:
      * 
      */
     public String status() {

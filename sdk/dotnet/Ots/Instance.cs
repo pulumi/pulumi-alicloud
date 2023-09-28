@@ -13,6 +13,8 @@ namespace Pulumi.AliCloud.Ots
     /// This resource will help you to manager a [Table Store](https://www.alibabacloud.com/help/doc-detail/27280.htm) Instance.
     /// It is foundation of creating data table.
     /// 
+    /// &gt; **NOTE:** Available since v1.10.0.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -23,11 +25,12 @@ namespace Pulumi.AliCloud.Ots
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create an OTS instance
-    ///     var foo = new AliCloud.Ots.Instance("foo", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = new AliCloud.Ots.Instance("default", new()
     ///     {
+    ///         Description = name,
     ///         AccessedBy = "Vpc",
-    ///         Description = "for table",
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },

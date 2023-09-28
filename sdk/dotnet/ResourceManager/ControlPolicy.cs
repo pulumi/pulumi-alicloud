@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.ResourceManager
     /// <summary>
     /// Provides a Resource Manager Control Policy resource.
     /// 
-    /// For information about Resource Manager Control Policy and how to use it, see [What is Control Policy](https://help.aliyun.com/document_detail/208287.html).
+    /// For information about Resource Manager Control Policy and how to use it, see [What is Control Policy](https://www.alibabacloud.com/help/en/resource-management/latest/api-resourcedirectorymaster-2022-04-19-createcontrolpolicy).
     /// 
-    /// &gt; **NOTE:** Available in v1.120.0+.
+    /// &gt; **NOTE:** Available since v1.120.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,10 +28,12 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var example = new AliCloud.ResourceManager.ControlPolicy("example", new()
     ///     {
-    ///         ControlPolicyName = "tf-testAccRDControlPolicy",
-    ///         Description = "tf-testAccRDControlPolicy",
+    ///         ControlPolicyName = name,
+    ///         Description = name,
     ///         EffectScope = "RAM",
     ///         PolicyDocument = @"  {
     ///     ""Version"": ""1"",
@@ -48,7 +50,6 @@ namespace Pulumi.AliCloud.ResourceManager
     ///       }
     ///     ]
     ///   }
-    ///   
     /// ",
     ///     });
     /// 

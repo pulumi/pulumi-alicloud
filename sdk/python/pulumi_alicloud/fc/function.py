@@ -797,7 +797,7 @@ class Function(pulumi.CustomResource):
             oss_bucket=default_bucket.id,
             oss_key=default_bucket_object.key,
             memory_size=512,
-            runtime="python2.7",
+            runtime="python3.10",
             handler="hello.handler",
             environment_variables={
                 "prefix": "terraform",
@@ -915,7 +915,7 @@ class Function(pulumi.CustomResource):
             oss_bucket=default_bucket.id,
             oss_key=default_bucket_object.key,
             memory_size=512,
-            runtime="python2.7",
+            runtime="python3.10",
             handler="hello.handler",
             environment_variables={
                 "prefix": "terraform",

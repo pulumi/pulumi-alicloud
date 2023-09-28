@@ -32,7 +32,7 @@ public final class GetResourceGroupsResult {
     private List<String> ids;
     private @Nullable String nameRegex;
     /**
-     * @return A list of resource group names.
+     * @return A list of resource group identifiers.
      * 
      */
     private List<String> names;
@@ -72,7 +72,7 @@ public final class GetResourceGroupsResult {
         return Optional.ofNullable(this.nameRegex);
     }
     /**
-     * @return A list of resource group names.
+     * @return A list of resource group identifiers.
      * 
      */
     public List<String> names() {

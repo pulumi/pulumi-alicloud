@@ -119,7 +119,7 @@ class GlobalDatabaseNetwork(pulumi.CustomResource):
 
         For information about PolarDB Global Database Network and how to use it, see [What is Global Database Network](https://www.alibabacloud.com/help/en/polardb-for-mysql/latest/createglobaldatabasenetwork).
 
-        > **NOTE:** Available in v1.181.0+.
+        > **NOTE:** Available since v1.181.0+.
 
         ## Example Usage
 
@@ -131,6 +131,7 @@ class GlobalDatabaseNetwork(pulumi.CustomResource):
 
         default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
             db_version="8.0",
+            category="Normal",
             pay_type="PostPaid")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name="terraform-example",
@@ -176,7 +177,7 @@ class GlobalDatabaseNetwork(pulumi.CustomResource):
 
         For information about PolarDB Global Database Network and how to use it, see [What is Global Database Network](https://www.alibabacloud.com/help/en/polardb-for-mysql/latest/createglobaldatabasenetwork).
 
-        > **NOTE:** Available in v1.181.0+.
+        > **NOTE:** Available since v1.181.0+.
 
         ## Example Usage
 
@@ -188,6 +189,7 @@ class GlobalDatabaseNetwork(pulumi.CustomResource):
 
         default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
             db_version="8.0",
+            category="Normal",
             pay_type="PostPaid")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name="terraform-example",

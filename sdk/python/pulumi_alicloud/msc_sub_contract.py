@@ -172,7 +172,7 @@ class MscSubContract(pulumi.CustomResource):
         """
         Provides a Msc Sub Contact resource.
 
-        > **NOTE:** Available in v1.132.0+.
+        > **NOTE:** Available since v1.132.0.
 
         ## Example Usage
 
@@ -182,11 +182,15 @@ class MscSubContract(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
         default = alicloud.MscSubContract("default",
-            contact_name=example_value,
+            contact_name=name,
             position="CEO",
             email="123@163.com",
-            mobile="153xxxxx906")
+            mobile="15388888888")
         ```
 
         ## Import
@@ -215,7 +219,7 @@ class MscSubContract(pulumi.CustomResource):
         """
         Provides a Msc Sub Contact resource.
 
-        > **NOTE:** Available in v1.132.0+.
+        > **NOTE:** Available since v1.132.0.
 
         ## Example Usage
 
@@ -225,11 +229,15 @@ class MscSubContract(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
         default = alicloud.MscSubContract("default",
-            contact_name=example_value,
+            contact_name=name,
             position="CEO",
             email="123@163.com",
-            mobile="153xxxxx906")
+            mobile="15388888888")
         ```
 
         ## Import

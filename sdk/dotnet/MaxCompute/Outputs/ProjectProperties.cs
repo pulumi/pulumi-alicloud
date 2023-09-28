@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
         /// </summary>
         public readonly bool? EnableDecimal2;
         /// <summary>
-        /// Whether encryption is turned on.See the following `Block Encryption`.
+        /// Whether encryption is turned on. See `encryption` below.
         /// </summary>
         public readonly Outputs.ProjectPropertiesEncryption? Encryption;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
         /// </summary>
         public readonly string? SqlMeteringMax;
         /// <summary>
-        /// Life cycle of tables.See the following `Block TableLifecycle`.
+        /// Life cycle of tables. See `table_lifecycle` below.
         /// </summary>
         public readonly Outputs.ProjectPropertiesTableLifecycle? TableLifecycle;
         /// <summary>

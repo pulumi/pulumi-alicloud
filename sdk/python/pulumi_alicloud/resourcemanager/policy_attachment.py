@@ -22,7 +22,7 @@ class PolicyAttachmentArgs:
         """
         The set of arguments for constructing a PolicyAttachment resource.
         :param pulumi.Input[str] policy_name: The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
-        :param pulumi.Input[str] policy_type: - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+        :param pulumi.Input[str] policy_type: The type of the policy. Valid values: `Custom`, `System`.
         :param pulumi.Input[str] principal_name: The name of the object to which you want to attach the policy.
         :param pulumi.Input[str] principal_type: The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
@@ -49,7 +49,7 @@ class PolicyAttachmentArgs:
     @pulumi.getter(name="policyType")
     def policy_type(self) -> pulumi.Input[str]:
         """
-        - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+        The type of the policy. Valid values: `Custom`, `System`.
         """
         return pulumi.get(self, "policy_type")
 
@@ -105,7 +105,7 @@ class _PolicyAttachmentState:
         """
         Input properties used for looking up and filtering PolicyAttachment resources.
         :param pulumi.Input[str] policy_name: The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
-        :param pulumi.Input[str] policy_type: - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+        :param pulumi.Input[str] policy_type: The type of the policy. Valid values: `Custom`, `System`.
         :param pulumi.Input[str] principal_name: The name of the object to which you want to attach the policy.
         :param pulumi.Input[str] principal_type: The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
@@ -137,7 +137,7 @@ class _PolicyAttachmentState:
     @pulumi.getter(name="policyType")
     def policy_type(self) -> Optional[pulumi.Input[str]]:
         """
-        - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+        The type of the policy. Valid values: `Custom`, `System`.
         """
         return pulumi.get(self, "policy_type")
 
@@ -197,7 +197,7 @@ class PolicyAttachment(pulumi.CustomResource):
         Provides a Resource Manager Policy Attachment resource to attaches a policy to an object. After you attach a policy to an object, the object has the operation permissions on the current resource group or the resources under the current account.
         For information about Resource Manager Policy Attachment and how to use it, see [How to authorize and manage resource groups](https://www.alibabacloud.com/help/en/doc-detail/94490.htm).
 
-        > **NOTE:** Available in v1.93.0+.
+        > **NOTE:** Available since v1.93.0.
 
         ## Import
 
@@ -210,7 +210,7 @@ class PolicyAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] policy_name: The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
-        :param pulumi.Input[str] policy_type: - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+        :param pulumi.Input[str] policy_type: The type of the policy. Valid values: `Custom`, `System`.
         :param pulumi.Input[str] principal_name: The name of the object to which you want to attach the policy.
         :param pulumi.Input[str] principal_type: The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
@@ -225,7 +225,7 @@ class PolicyAttachment(pulumi.CustomResource):
         Provides a Resource Manager Policy Attachment resource to attaches a policy to an object. After you attach a policy to an object, the object has the operation permissions on the current resource group or the resources under the current account.
         For information about Resource Manager Policy Attachment and how to use it, see [How to authorize and manage resource groups](https://www.alibabacloud.com/help/en/doc-detail/94490.htm).
 
-        > **NOTE:** Available in v1.93.0+.
+        > **NOTE:** Available since v1.93.0.
 
         ## Import
 
@@ -302,7 +302,7 @@ class PolicyAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] policy_name: The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
-        :param pulumi.Input[str] policy_type: - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+        :param pulumi.Input[str] policy_type: The type of the policy. Valid values: `Custom`, `System`.
         :param pulumi.Input[str] principal_name: The name of the object to which you want to attach the policy.
         :param pulumi.Input[str] principal_type: The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
@@ -330,7 +330,7 @@ class PolicyAttachment(pulumi.CustomResource):
     @pulumi.getter(name="policyType")
     def policy_type(self) -> pulumi.Output[str]:
         """
-        - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+        The type of the policy. Valid values: `Custom`, `System`.
         """
         return pulumi.get(self, "policy_type")
 

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
     public sealed class GetSharedResourcesResourceResult
     {
         /// <summary>
-        /// The ID of the Shared Resource.
+        /// The ID of the Shared Resource. It formats as `&lt;resource_id&gt;:&lt;resource_type&gt;`.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// </summary>
         public readonly string ResourceType;
         /// <summary>
-        /// The status of shared resource.
+        /// The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
         /// </summary>
         public readonly string Status;
 

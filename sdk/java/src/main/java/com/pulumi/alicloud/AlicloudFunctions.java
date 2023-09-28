@@ -1857,8 +1857,6 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.ecs.Instance;
-     * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1875,10 +1873,6 @@ public final class AlicloudFunctions {
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory(&#34;cloud_ssd&#34;)
      *             .availableInstanceType(&#34;ecs.n4.large&#34;)
-     *             .build());
-     * 
-     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(zonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
@@ -1903,8 +1897,6 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.ecs.Instance;
-     * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1921,10 +1913,6 @@ public final class AlicloudFunctions {
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory(&#34;cloud_ssd&#34;)
      *             .availableInstanceType(&#34;ecs.n4.large&#34;)
-     *             .build());
-     * 
-     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(zonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
@@ -1949,8 +1937,6 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.ecs.Instance;
-     * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1967,10 +1953,6 @@ public final class AlicloudFunctions {
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory(&#34;cloud_ssd&#34;)
      *             .availableInstanceType(&#34;ecs.n4.large&#34;)
-     *             .build());
-     * 
-     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(zonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
@@ -1995,8 +1977,6 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.ecs.Instance;
-     * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2013,10 +1993,6 @@ public final class AlicloudFunctions {
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory(&#34;cloud_ssd&#34;)
      *             .availableInstanceType(&#34;ecs.n4.large&#34;)
-     *             .build());
-     * 
-     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(zonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
@@ -2041,8 +2017,6 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.ecs.Instance;
-     * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2059,10 +2033,6 @@ public final class AlicloudFunctions {
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory(&#34;cloud_ssd&#34;)
      *             .availableInstanceType(&#34;ecs.n4.large&#34;)
-     *             .build());
-     * 
-     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(zonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
@@ -2087,8 +2057,6 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.ecs.Instance;
-     * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2105,10 +2073,6 @@ public final class AlicloudFunctions {
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory(&#34;cloud_ssd&#34;)
      *             .availableInstanceType(&#34;ecs.n4.large&#34;)
-     *             .build());
-     * 
-     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(zonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }

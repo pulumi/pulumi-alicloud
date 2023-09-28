@@ -14,6 +14,154 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type InstanceBindVpc struct {
+	// region id.
+	RegionId *string `pulumi:"regionId"`
+	// VPC ID.
+	VpcId *string `pulumi:"vpcId"`
+	// VPC owner root user ID.
+	VpcOwnerId *int `pulumi:"vpcOwnerId"`
+	// vswitch id.
+	VswitchId *string `pulumi:"vswitchId"`
+}
+
+// InstanceBindVpcInput is an input type that accepts InstanceBindVpcArgs and InstanceBindVpcOutput values.
+// You can construct a concrete instance of `InstanceBindVpcInput` via:
+//
+//	InstanceBindVpcArgs{...}
+type InstanceBindVpcInput interface {
+	pulumi.Input
+
+	ToInstanceBindVpcOutput() InstanceBindVpcOutput
+	ToInstanceBindVpcOutputWithContext(context.Context) InstanceBindVpcOutput
+}
+
+type InstanceBindVpcArgs struct {
+	// region id.
+	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
+	// VPC ID.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	// VPC owner root user ID.
+	VpcOwnerId pulumi.IntPtrInput `pulumi:"vpcOwnerId"`
+	// vswitch id.
+	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
+}
+
+func (InstanceBindVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceBindVpc)(nil)).Elem()
+}
+
+func (i InstanceBindVpcArgs) ToInstanceBindVpcOutput() InstanceBindVpcOutput {
+	return i.ToInstanceBindVpcOutputWithContext(context.Background())
+}
+
+func (i InstanceBindVpcArgs) ToInstanceBindVpcOutputWithContext(ctx context.Context) InstanceBindVpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceBindVpcOutput)
+}
+
+func (i InstanceBindVpcArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceBindVpc] {
+	return pulumix.Output[InstanceBindVpc]{
+		OutputState: i.ToInstanceBindVpcOutputWithContext(ctx).OutputState,
+	}
+}
+
+// InstanceBindVpcArrayInput is an input type that accepts InstanceBindVpcArray and InstanceBindVpcArrayOutput values.
+// You can construct a concrete instance of `InstanceBindVpcArrayInput` via:
+//
+//	InstanceBindVpcArray{ InstanceBindVpcArgs{...} }
+type InstanceBindVpcArrayInput interface {
+	pulumi.Input
+
+	ToInstanceBindVpcArrayOutput() InstanceBindVpcArrayOutput
+	ToInstanceBindVpcArrayOutputWithContext(context.Context) InstanceBindVpcArrayOutput
+}
+
+type InstanceBindVpcArray []InstanceBindVpcInput
+
+func (InstanceBindVpcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceBindVpc)(nil)).Elem()
+}
+
+func (i InstanceBindVpcArray) ToInstanceBindVpcArrayOutput() InstanceBindVpcArrayOutput {
+	return i.ToInstanceBindVpcArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceBindVpcArray) ToInstanceBindVpcArrayOutputWithContext(ctx context.Context) InstanceBindVpcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceBindVpcArrayOutput)
+}
+
+func (i InstanceBindVpcArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceBindVpc] {
+	return pulumix.Output[[]InstanceBindVpc]{
+		OutputState: i.ToInstanceBindVpcArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type InstanceBindVpcOutput struct{ *pulumi.OutputState }
+
+func (InstanceBindVpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceBindVpc)(nil)).Elem()
+}
+
+func (o InstanceBindVpcOutput) ToInstanceBindVpcOutput() InstanceBindVpcOutput {
+	return o
+}
+
+func (o InstanceBindVpcOutput) ToInstanceBindVpcOutputWithContext(ctx context.Context) InstanceBindVpcOutput {
+	return o
+}
+
+func (o InstanceBindVpcOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceBindVpc] {
+	return pulumix.Output[InstanceBindVpc]{
+		OutputState: o.OutputState,
+	}
+}
+
+// region id.
+func (o InstanceBindVpcOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceBindVpc) *string { return v.RegionId }).(pulumi.StringPtrOutput)
+}
+
+// VPC ID.
+func (o InstanceBindVpcOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceBindVpc) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+// VPC owner root user ID.
+func (o InstanceBindVpcOutput) VpcOwnerId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceBindVpc) *int { return v.VpcOwnerId }).(pulumi.IntPtrOutput)
+}
+
+// vswitch id.
+func (o InstanceBindVpcOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceBindVpc) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+type InstanceBindVpcArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceBindVpcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceBindVpc)(nil)).Elem()
+}
+
+func (o InstanceBindVpcArrayOutput) ToInstanceBindVpcArrayOutput() InstanceBindVpcArrayOutput {
+	return o
+}
+
+func (o InstanceBindVpcArrayOutput) ToInstanceBindVpcArrayOutputWithContext(ctx context.Context) InstanceBindVpcArrayOutput {
+	return o
+}
+
+func (o InstanceBindVpcArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceBindVpc] {
+	return pulumix.Output[[]InstanceBindVpc]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o InstanceBindVpcArrayOutput) Index(i pulumi.IntInput) InstanceBindVpcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceBindVpc {
+		return vs[0].([]InstanceBindVpc)[vs[1].(int)]
+	}).(InstanceBindVpcOutput)
+}
+
 type GetAliasesAlias struct {
 	// The unique identifier of the alias.
 	AliasName string `pulumi:"aliasName"`
@@ -962,6 +1110,8 @@ func (o GetSecretsSecretArrayOutput) Index(i pulumi.IntInput) GetSecretsSecretOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBindVpcInput)(nil)).Elem(), InstanceBindVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBindVpcArrayInput)(nil)).Elem(), InstanceBindVpcArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAliasesAliasInput)(nil)).Elem(), GetAliasesAliasArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAliasesAliasArrayInput)(nil)).Elem(), GetAliasesAliasArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyVersionsVersionInput)(nil)).Elem(), GetKeyVersionsVersionArgs{})
@@ -972,6 +1122,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretVersionsVersionArrayInput)(nil)).Elem(), GetSecretVersionsVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretsSecretInput)(nil)).Elem(), GetSecretsSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretsSecretArrayInput)(nil)).Elem(), GetSecretsSecretArray{})
+	pulumi.RegisterOutputType(InstanceBindVpcOutput{})
+	pulumi.RegisterOutputType(InstanceBindVpcArrayOutput{})
 	pulumi.RegisterOutputType(GetAliasesAliasOutput{})
 	pulumi.RegisterOutputType(GetAliasesAliasArrayOutput{})
 	pulumi.RegisterOutputType(GetKeyVersionsVersionOutput{})

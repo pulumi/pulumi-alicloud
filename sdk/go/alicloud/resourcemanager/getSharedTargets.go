@@ -14,7 +14,7 @@ import (
 
 // This data source provides the Resource Manager Shared Targets of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.111.0+.
+// > **NOTE:** Available since v1.111.0.
 //
 // ## Example Usage
 //
@@ -27,20 +27,48 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := resourcemanager.GetSharedTargets(ctx, &resourcemanager.GetSharedTargetsArgs{
-//				Ids: []string{
-//					"15681091********",
-//				},
-//			}, nil)
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultAccounts, err := resourcemanager.GetAccounts(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstResourceManagerSharedTargetId", example.Targets[0].Id)
+//			defaultResourceShare, err := resourcemanager.NewResourceShare(ctx, "defaultResourceShare", &resourcemanager.ResourceShareArgs{
+//				ResourceShareName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSharedTarget, err := resourcemanager.NewSharedTarget(ctx, "defaultSharedTarget", &resourcemanager.SharedTargetArgs{
+//				ResourceShareId: defaultResourceShare.ID(),
+//				TargetId:        *pulumi.String(defaultAccounts.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := resourcemanager.GetSharedTargetsOutput(ctx, resourcemanager.GetSharedTargetsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultSharedTarget.TargetId,
+//				},
+//			}, nil)
+//			ctx.Export("firstResourceManagerSharedTargetId", ids.ApplyT(func(ids resourcemanager.GetSharedTargetsResult) (*string, error) {
+//				return &ids.Targets[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			resourceShareId := resourcemanager.GetSharedTargetsOutput(ctx, resourcemanager.GetSharedTargetsOutputArgs{
+//				ResourceShareId: defaultSharedTarget.ResourceShareId,
+//			}, nil)
+//			ctx.Export("secondResourceManagerSharedTargetId", resourceShareId.ApplyT(func(resourceShareId resourcemanager.GetSharedTargetsResult) (*string, error) {
+//				return &resourceShareId.Targets[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -62,21 +90,24 @@ type GetSharedTargetsArgs struct {
 	Ids []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The resource shared ID of resource manager.
+	// The resource share ID of resource manager.
 	ResourceShareId *string `pulumi:"resourceShareId"`
-	// The status of shared target.
+	// The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
 	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getSharedTargets.
 type GetSharedTargetsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                   `pulumi:"id"`
-	Ids             []string                 `pulumi:"ids"`
-	OutputFile      *string                  `pulumi:"outputFile"`
-	ResourceShareId *string                  `pulumi:"resourceShareId"`
-	Status          *string                  `pulumi:"status"`
-	Targets         []GetSharedTargetsTarget `pulumi:"targets"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The resource shared ID of resource manager.
+	ResourceShareId *string `pulumi:"resourceShareId"`
+	// The status of shared target.
+	Status *string `pulumi:"status"`
+	// A list of Resource Manager Shared Targets. Each element contains the following attributes:
+	Targets []GetSharedTargetsTarget `pulumi:"targets"`
 }
 
 func GetSharedTargetsOutput(ctx *pulumi.Context, args GetSharedTargetsOutputArgs, opts ...pulumi.InvokeOption) GetSharedTargetsResultOutput {
@@ -98,9 +129,9 @@ type GetSharedTargetsOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The resource shared ID of resource manager.
+	// The resource share ID of resource manager.
 	ResourceShareId pulumi.StringPtrInput `pulumi:"resourceShareId"`
-	// The status of shared target.
+	// The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -142,14 +173,17 @@ func (o GetSharedTargetsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSharedTargetsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The resource shared ID of resource manager.
 func (o GetSharedTargetsResultOutput) ResourceShareId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSharedTargetsResult) *string { return v.ResourceShareId }).(pulumi.StringPtrOutput)
 }
 
+// The status of shared target.
 func (o GetSharedTargetsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSharedTargetsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// A list of Resource Manager Shared Targets. Each element contains the following attributes:
 func (o GetSharedTargetsResultOutput) Targets() GetSharedTargetsTargetArrayOutput {
 	return o.ApplyT(func(v GetSharedTargetsResult) []GetSharedTargetsTarget { return v.Targets }).(GetSharedTargetsTargetArrayOutput)
 }

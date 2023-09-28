@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Oos
     /// <summary>
     /// Provides a OOS Patch Baseline resource.
     /// 
-    /// For information about OOS Patch Baseline and how to use it, see [What is Patch Baseline](https://www.alibabacloud.com/help/en/doc-detail/268700.html).
+    /// For information about OOS Patch Baseline and how to use it, see [What is Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/patch-manager-overview).
     /// 
-    /// &gt; **NOTE:** Available in v1.146.0+.
+    /// &gt; **NOTE:** Available since v1.146.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,11 +28,13 @@ namespace Pulumi.AliCloud.Oos
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.Oos.PatchBaseline("example", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.Oos.PatchBaseline("default", new()
     ///     {
-    ///         ApprovalRules = "{\"PatchRules\":[{\"PatchFilterGroup\":[{\"Key\":\"PatchSet\",\"Values\":[\"OS\"]},{\"Key\":\"ProductFamily\",\"Values\":[\"Windows\"]},{\"Key\":\"Product\",\"Values\":[\"Windows 10\",\"Windows 7\"]},{\"Key\":\"Classification\",\"Values\":[\"Security Updates\",\"Updates\",\"Update Rollups\",\"Critical Updates\"]},{\"Key\":\"Severity\",\"Values\":[\"Critical\",\"Important\",\"Moderate\"]}],\"ApproveAfterDays\":7,\"EnableNonSecurity\":true,\"ComplianceLevel\":\"Medium\"}]}",
+    ///         PatchBaselineName = name,
     ///         OperationSystem = "Windows",
-    ///         PatchBaselineName = "terraform-example",
+    ///         ApprovalRules = "{\"PatchRules\":[{\"EnableNonSecurity\":true,\"PatchFilterGroup\":[{\"Values\":[\"*\"],\"Key\":\"Product\"},{\"Values\":[\"Security\",\"Bugfix\"],\"Key\":\"Classification\"},{\"Values\":[\"Critical\",\"Important\"],\"Key\":\"Severity\"}],\"ApproveAfterDays\":7,\"ComplianceLevel\":\"Unspecified\"}]}",
     ///     });
     /// 
     /// });
@@ -43,17 +45,23 @@ namespace Pulumi.AliCloud.Oos
     /// OOS Patch Baseline can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example &lt;patch_baseline_name&gt;
+    ///  $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:oos/patchBaseline:PatchBaseline")]
     public partial class PatchBaseline : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
+        /// Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
         /// </summary>
         [Output("approvalRules")]
         public Output<string> ApprovalRules { get; private set; } = null!;
+
+        /// <summary>
+        /// Creation time.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
         /// Patches baseline description information.
@@ -72,6 +80,18 @@ namespace Pulumi.AliCloud.Oos
         /// </summary>
         [Output("patchBaselineName")]
         public Output<string> PatchBaselineName { get; private set; } = null!;
+
+        /// <summary>
+        /// Reject patches.
+        /// </summary>
+        [Output("rejectedPatches")]
+        public Output<ImmutableArray<string>> RejectedPatches { get; private set; } = null!;
+
+        /// <summary>
+        /// Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
+        /// </summary>
+        [Output("rejectedPatchesAction")]
+        public Output<string> RejectedPatchesAction { get; private set; } = null!;
 
 
         /// <summary>
@@ -120,7 +140,7 @@ namespace Pulumi.AliCloud.Oos
     public sealed class PatchBaselineArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
+        /// Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
         /// </summary>
         [Input("approvalRules", required: true)]
         public Input<string> ApprovalRules { get; set; } = null!;
@@ -143,6 +163,24 @@ namespace Pulumi.AliCloud.Oos
         [Input("patchBaselineName", required: true)]
         public Input<string> PatchBaselineName { get; set; } = null!;
 
+        [Input("rejectedPatches")]
+        private InputList<string>? _rejectedPatches;
+
+        /// <summary>
+        /// Reject patches.
+        /// </summary>
+        public InputList<string> RejectedPatches
+        {
+            get => _rejectedPatches ?? (_rejectedPatches = new InputList<string>());
+            set => _rejectedPatches = value;
+        }
+
+        /// <summary>
+        /// Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
+        /// </summary>
+        [Input("rejectedPatchesAction")]
+        public Input<string>? RejectedPatchesAction { get; set; }
+
         public PatchBaselineArgs()
         {
         }
@@ -152,10 +190,16 @@ namespace Pulumi.AliCloud.Oos
     public sealed class PatchBaselineState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
+        /// Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
         /// </summary>
         [Input("approvalRules")]
         public Input<string>? ApprovalRules { get; set; }
+
+        /// <summary>
+        /// Creation time.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// Patches baseline description information.
@@ -174,6 +218,24 @@ namespace Pulumi.AliCloud.Oos
         /// </summary>
         [Input("patchBaselineName")]
         public Input<string>? PatchBaselineName { get; set; }
+
+        [Input("rejectedPatches")]
+        private InputList<string>? _rejectedPatches;
+
+        /// <summary>
+        /// Reject patches.
+        /// </summary>
+        public InputList<string> RejectedPatches
+        {
+            get => _rejectedPatches ?? (_rejectedPatches = new InputList<string>());
+            set => _rejectedPatches = value;
+        }
+
+        /// <summary>
+        /// Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
+        /// </summary>
+        [Input("rejectedPatchesAction")]
+        public Input<string>? RejectedPatchesAction { get; set; }
 
         public PatchBaselineState()
         {

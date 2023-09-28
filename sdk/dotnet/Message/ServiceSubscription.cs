@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Message
     /// 
     /// For information about Message Notification Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
     /// 
-    /// &gt; **NOTE:** Available in v1.188.0+.
+    /// &gt; **NOTE:** Available since v1.188.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,9 +28,11 @@ namespace Pulumi.AliCloud.Message
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var defaultServiceTopic = new AliCloud.Message.ServiceTopic("defaultServiceTopic", new()
     ///     {
-    ///         TopicName = "tf-example-value",
+    ///         TopicName = name,
     ///         MaxMessageSize = 12357,
     ///         LoggingEnabled = true,
     ///     });
@@ -38,10 +40,10 @@ namespace Pulumi.AliCloud.Message
     ///     var defaultServiceSubscription = new AliCloud.Message.ServiceSubscription("defaultServiceSubscription", new()
     ///     {
     ///         TopicName = defaultServiceTopic.TopicName,
-    ///         SubscriptionName = "tf-example-value",
-    ///         Endpoint = "http://www.test.com/test",
+    ///         SubscriptionName = name,
+    ///         Endpoint = "http://example.com",
     ///         PushType = "http",
-    ///         FilterTag = "tf-test",
+    ///         FilterTag = "tf-example",
     ///         NotifyContentFormat = "XML",
     ///         NotifyStrategy = "BACKOFF_RETRY",
     ///     });

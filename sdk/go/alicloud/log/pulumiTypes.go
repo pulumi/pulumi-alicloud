@@ -2291,8 +2291,7 @@ type StoreEncryptConf struct {
 	Enable *bool `pulumi:"enable"`
 	// Supported encryption type, only supports `default(AES)`,`  m4 `
 	EncryptType *string `pulumi:"encryptType"`
-	// User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
-	//
+	// User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `userCmkInfo` below.
 	// ```go
 	// package main
 	//
@@ -2306,7 +2305,6 @@ type StoreEncryptConf struct {
 	// 	})
 	// }
 	// ```
-	// #### Block user_cmk_info
 	UserCmkInfo *StoreEncryptConfUserCmkInfo `pulumi:"userCmkInfo"`
 }
 
@@ -2326,8 +2324,7 @@ type StoreEncryptConfArgs struct {
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 	// Supported encryption type, only supports `default(AES)`,`  m4 `
 	EncryptType pulumi.StringPtrInput `pulumi:"encryptType"`
-	// User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
-	//
+	// User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `userCmkInfo` below.
 	// ```go
 	// package main
 	//
@@ -2341,7 +2338,6 @@ type StoreEncryptConfArgs struct {
 	// 	})
 	// }
 	// ```
-	// #### Block user_cmk_info
 	UserCmkInfo StoreEncryptConfUserCmkInfoPtrInput `pulumi:"userCmkInfo"`
 }
 
@@ -2450,8 +2446,7 @@ func (o StoreEncryptConfOutput) EncryptType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StoreEncryptConf) *string { return v.EncryptType }).(pulumi.StringPtrOutput)
 }
 
-// User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
-//
+// User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `userCmkInfo` below.
 // ```go
 // package main
 //
@@ -2468,7 +2463,6 @@ func (o StoreEncryptConfOutput) EncryptType() pulumi.StringPtrOutput {
 //	}
 //
 // ```
-// #### Block user_cmk_info
 func (o StoreEncryptConfOutput) UserCmkInfo() StoreEncryptConfUserCmkInfoPtrOutput {
 	return o.ApplyT(func(v StoreEncryptConf) *StoreEncryptConfUserCmkInfo { return v.UserCmkInfo }).(StoreEncryptConfUserCmkInfoPtrOutput)
 }
@@ -2523,8 +2517,7 @@ func (o StoreEncryptConfPtrOutput) EncryptType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
-//
+// User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `userCmkInfo` below.
 // ```go
 // package main
 //
@@ -2541,7 +2534,6 @@ func (o StoreEncryptConfPtrOutput) EncryptType() pulumi.StringPtrOutput {
 //	}
 //
 // ```
-// #### Block user_cmk_info
 func (o StoreEncryptConfPtrOutput) UserCmkInfo() StoreEncryptConfUserCmkInfoPtrOutput {
 	return o.ApplyT(func(v *StoreEncryptConf) *StoreEncryptConfUserCmkInfo {
 		if v == nil {

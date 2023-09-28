@@ -16,9 +16,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a ActionTrail Trail resource. For information about alicloud actiontrail trail and how to use it, see [What is Resource Alicloud ActionTrail Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
+ * Provides a ActionTrail Trail resource. For information about alicloud actiontrail trail and how to use it, see [What is Resource Alicloud ActionTrail Trail](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createtrail).
  * 
- * &gt; **NOTE:** Available in 1.95.0+
+ * &gt; **NOTE:** Available since v1.95.0.
  * 
  * &gt; **NOTE:** You can create a trail to deliver events to Log Service, Object Storage Service (OSS), or both. Before you call this operation to create a trail, make sure that the following requirements are met.
  * - Deliver events to Log Service: A project is created in Log Service.
@@ -31,6 +31,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
+ * import com.pulumi.alicloud.ram.RamFunctions;
+ * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
  * import com.pulumi.alicloud.actiontrail.Trail;
  * import com.pulumi.alicloud.actiontrail.TrailArgs;
  * import java.util.List;
@@ -46,12 +52,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Trail(&#34;default&#34;, TrailArgs.builder()        
- *             .eventRw(&#34;All&#34;)
- *             .ossBucketName(&#34;bucket_name&#34;)
- *             .ossWriteRoleArn(&#34;acs:ram::1182725xxxxxxxxxxx&#34;)
- *             .trailName(&#34;action-trail&#34;)
- *             .trailRegion(&#34;cn-hangzhou&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var exampleRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         final var exampleAccount = AlicloudFunctions.getAccount();
+ * 
+ *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
+ *             .description(&#34;tf actiontrail example&#34;)
+ *             .build());
+ * 
+ *         final var exampleRoles = RamFunctions.getRoles(GetRolesArgs.builder()
+ *             .nameRegex(&#34;AliyunServiceRoleForActionTrail&#34;)
+ *             .build());
+ * 
+ *         var exampleTrail = new Trail(&#34;exampleTrail&#34;, TrailArgs.builder()        
+ *             .trailName(name)
+ *             .slsWriteRoleArn(exampleRoles.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].arn()))
+ *             .slsProjectArn(exampleProject.name().applyValue(name -&gt; String.format(&#34;acs:log:%s:%s:project/%s&#34;, exampleRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),exampleAccount.applyValue(getAccountResult -&gt; getAccountResult.id()),name)))
  *             .build());
  * 
  *     }

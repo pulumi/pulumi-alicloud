@@ -16,7 +16,7 @@ import (
 //
 // For information about CDN and how to use it, see [What is CDN](https://www.alibabacloud.com/help/product/27099.htm).
 //
-// > **NOTE:** Available in v1.98.0+
+// > **NOTE:** Available since v1.98.0.
 //
 // ## Example Usage
 //

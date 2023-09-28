@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Resource Manager Resource Share and how to use it, see [What is Resource Share](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
  * 
- * &gt; **NOTE:** Available in v1.111.0+.
+ * &gt; **NOTE:** Available since v1.111.0.
  * 
  * ## Example Usage
  * 
@@ -44,8 +44,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
  *         var example = new ResourceShare(&#34;example&#34;, ResourceShareArgs.builder()        
- *             .resourceShareName(&#34;example_value&#34;)
+ *             .resourceShareName(name)
  *             .build());
  * 
  *     }

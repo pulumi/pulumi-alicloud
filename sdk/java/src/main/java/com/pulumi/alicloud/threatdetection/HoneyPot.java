@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Threat Detection Honey Pot resource.
  * 
- * For information about Threat Detection Honey Pot and how to use it, see [What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypot).
+ * For information about Threat Detection Honey Pot and how to use it, see [What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot).
  * 
- * &gt; **NOTE:** Available in v1.195.0+.
+ * &gt; **NOTE:** Available since v1.195.0.
  * 
  * ## Example Usage
  * 
@@ -30,6 +30,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+ * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotImagesArgs;
+ * import com.pulumi.alicloud.threatdetection.HoneypotNode;
+ * import com.pulumi.alicloud.threatdetection.HoneypotNodeArgs;
  * import com.pulumi.alicloud.threatdetection.HoneyPot;
  * import com.pulumi.alicloud.threatdetection.HoneyPotArgs;
  * import java.util.List;
@@ -45,11 +49,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HoneyPot(&#34;default&#34;, HoneyPotArgs.builder()        
- *             .honeypotImageId(&#34;sha256:007095d6de9c7a343e9fc1f74a7efc9c5de9d5454789d2fa505a1b3fc623730c&#34;)
- *             .honeypotImageName(&#34;ruoyi&#34;)
- *             .honeypotName(&#34;huangtiong-test&#34;)
- *             .nodeId(&#34;a44e1ab3-6945-444c-889d-5bacee7056e8&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
+ *         final var defaultHoneypotImages = ThreatdetectionFunctions.getHoneypotImages(GetHoneypotImagesArgs.builder()
+ *             .nameRegex(&#34;^ruoyi&#34;)
+ *             .build());
+ * 
+ *         var defaultHoneypotNode = new HoneypotNode(&#34;defaultHoneypotNode&#34;, HoneypotNodeArgs.builder()        
+ *             .nodeName(name)
+ *             .availableProbeNum(20)
+ *             .securityGroupProbeIpLists(&#34;0.0.0.0/0&#34;)
+ *             .build());
+ * 
+ *         var defaultHoneyPot = new HoneyPot(&#34;defaultHoneyPot&#34;, HoneyPotArgs.builder()        
+ *             .honeypotImageName(defaultHoneypotImages.applyValue(getHoneypotImagesResult -&gt; getHoneypotImagesResult.images()[0].honeypotImageName()))
+ *             .honeypotImageId(defaultHoneypotImages.applyValue(getHoneypotImagesResult -&gt; getHoneypotImagesResult.images()[0].honeypotImageId()))
+ *             .honeypotName(name)
+ *             .nodeId(defaultHoneypotNode.id())
  *             .build());
  * 
  *     }

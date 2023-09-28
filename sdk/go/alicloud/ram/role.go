@@ -52,7 +52,6 @@ import (
 //
 // `),
 //
-//				Force: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

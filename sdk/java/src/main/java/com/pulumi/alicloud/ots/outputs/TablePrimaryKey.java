@@ -10,26 +10,26 @@ import java.util.Objects;
 @CustomType
 public final class TablePrimaryKey {
     /**
-     * @return Name for defined column.
+     * @return Name for primary key.
      * 
      */
     private String name;
     /**
-     * @return Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+     * @return Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
      * 
      */
     private String type;
 
     private TablePrimaryKey() {}
     /**
-     * @return Name for defined column.
+     * @return Name for primary key.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+     * @return Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
      * 
      */
     public String type() {

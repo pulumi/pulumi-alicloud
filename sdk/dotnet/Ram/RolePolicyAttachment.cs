@@ -44,7 +44,6 @@ namespace Pulumi.AliCloud.Ram
     ///     }
     /// ",
     ///         Description = "this is a role test.",
-    ///         Force = true,
     ///     });
     /// 
     ///     var policy = new AliCloud.Ram.Policy("policy", new()
@@ -67,7 +66,6 @@ namespace Pulumi.AliCloud.Ram
     ///   }
     /// ",
     ///         Description = "this is a policy test",
-    ///         Force = true,
     ///     });
     /// 
     ///     var attach = new AliCloud.Ram.RolePolicyAttachment("attach", new()

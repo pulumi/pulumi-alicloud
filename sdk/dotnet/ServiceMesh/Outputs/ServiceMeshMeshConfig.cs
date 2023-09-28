@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     public sealed class ServiceMeshMeshConfig
     {
         /// <summary>
-        /// The configuration of the access logging.
+        /// The configuration of the access logging. See `access_log` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigAccessLog? AccessLog;
         /// <summary>
-        /// The configuration of the audit. See the following `Block audit`.
+        /// The configuration of the audit. See `audit` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigAudit? Audit;
         /// <summary>
-        /// The configuration of the control plane logging.
+        /// The configuration of the control plane logging. See `control_plane_log` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigControlPlaneLog? ControlPlaneLog;
         /// <summary>
@@ -34,11 +34,11 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly bool? EnableLocalityLb;
         /// <summary>
-        /// The configuration of the Kiali. See the following `Block kiali`.
+        /// The configuration of the Kiali. See `kiali` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigKiali? Kiali;
         /// <summary>
-        /// The open-door policy of agent (OPA) plug-in information. See the following `Block opa`.
+        /// The open-door policy of agent (OPA) plug-in information. See `opa` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigOpa? Opa;
         /// <summary>
@@ -46,23 +46,23 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly string? OutboundTrafficPolicy;
         /// <summary>
-        /// The configuration of the Link trace sampling. See the following `Block pilot`.
+        /// The configuration of the Link trace sampling. See `pilot` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigPilot? Pilot;
         /// <summary>
-        /// The configuration of the Proxy. See the following `Block proxy`.
+        /// The configuration of the Proxy. See `proxy` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigProxy? Proxy;
         /// <summary>
-        /// The configuration of the Sidecar injector. See the following `Block sidecar_injector`.
+        /// The configuration of the Sidecar injector. See `sidecar_injector` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigSidecarInjector? SidecarInjector;
         /// <summary>
-        /// Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+        /// Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
         /// </summary>
         public readonly bool? Telemetry;
         /// <summary>
-        /// Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+        /// Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
         /// </summary>
         public readonly bool? Tracing;
 

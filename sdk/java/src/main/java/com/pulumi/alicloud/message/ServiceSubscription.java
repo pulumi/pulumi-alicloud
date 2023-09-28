@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Message Notification Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
  * 
- * &gt; **NOTE:** Available in v1.188.0+.
+ * &gt; **NOTE:** Available since v1.188.0.
  * 
  * ## Example Usage
  * 
@@ -47,18 +47,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         var defaultServiceTopic = new ServiceTopic(&#34;defaultServiceTopic&#34;, ServiceTopicArgs.builder()        
- *             .topicName(&#34;tf-example-value&#34;)
+ *             .topicName(name)
  *             .maxMessageSize(12357)
  *             .loggingEnabled(true)
  *             .build());
  * 
  *         var defaultServiceSubscription = new ServiceSubscription(&#34;defaultServiceSubscription&#34;, ServiceSubscriptionArgs.builder()        
  *             .topicName(defaultServiceTopic.topicName())
- *             .subscriptionName(&#34;tf-example-value&#34;)
- *             .endpoint(&#34;http://www.test.com/test&#34;)
+ *             .subscriptionName(name)
+ *             .endpoint(&#34;http://example.com&#34;)
  *             .pushType(&#34;http&#34;)
- *             .filterTag(&#34;tf-test&#34;)
+ *             .filterTag(&#34;tf-example&#34;)
  *             .notifyContentFormat(&#34;XML&#34;)
  *             .notifyStrategy(&#34;BACKOFF_RETRY&#34;)
  *             .build());

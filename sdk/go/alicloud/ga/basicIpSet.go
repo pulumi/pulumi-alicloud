@@ -30,11 +30,17 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			region := "cn-hangzhou"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
 //			defaultBasicAccelerator, err := ga.NewBasicAccelerator(ctx, "defaultBasicAccelerator", &ga.BasicAcceleratorArgs{
 //				Duration:             pulumi.Int(1),
 //				PricingCycle:         pulumi.String("Month"),
@@ -49,7 +55,7 @@ import (
 //			}
 //			_, err = ga.NewBasicIpSet(ctx, "defaultBasicIpSet", &ga.BasicIpSetArgs{
 //				AcceleratorId:      defaultBasicAccelerator.ID(),
-//				AccelerateRegionId: pulumi.String("cn-hangzhou"),
+//				AccelerateRegionId: pulumi.String(region),
 //				IspType:            pulumi.String("BGP"),
 //				Bandwidth:          pulumi.Int(5),
 //			})

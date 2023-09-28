@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Actiontrail History Delivery Job resource.
  * 
- * For information about Actiontrail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/doc-detail/199999.htm).
+ * For information about Actiontrail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createdeliveryhistoryjob).
  * 
- * &gt; **NOTE:** Available in v1.139.0+.
+ * &gt; **NOTE:** Available since v1.139.0.
  * 
  * &gt; **NOTE:** You are authorized to use the historical event delivery task feature. To use this feature, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=a2c63.p38356.0.0.e29f552bb6odNZ#/ticket/createIndex) or ask the sales manager to add you to the whitelist.
  * 
@@ -57,6 +57,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
  *         final var exampleRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
@@ -64,11 +66,11 @@ import javax.annotation.Nullable;
  *         final var exampleAccount = AlicloudFunctions.getAccount();
  * 
  *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
- *             .description(&#34;tf actiontrail test&#34;)
+ *             .description(&#34;tf actiontrail example&#34;)
  *             .build());
  * 
  *         var exampleTrail = new Trail(&#34;exampleTrail&#34;, TrailArgs.builder()        
- *             .trailName(&#34;example_value&#34;)
+ *             .trailName(name)
  *             .slsProjectArn(exampleProject.name().applyValue(name -&gt; String.format(&#34;acs:log:%s:%s:project/%s&#34;, exampleRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),exampleAccount.applyValue(getAccountResult -&gt; getAccountResult.id()),name)))
  *             .build());
  * 

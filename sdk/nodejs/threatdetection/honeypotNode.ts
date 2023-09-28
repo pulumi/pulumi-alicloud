@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Threat Detection Honeypot Node resource.
  *
- * For information about Threat Detection Honeypot Node and how to use it, see [What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotnode).
+ * For information about Threat Detection Honeypot Node and how to use it, see [What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode).
  *
- * > **NOTE:** Available in v1.195.0+.
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -19,9 +19,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
  * const _default = new alicloud.threatdetection.HoneypotNode("default", {
+ *     nodeName: name,
  *     availableProbeNum: 20,
- *     nodeName: "apispec_test",
  *     securityGroupProbeIpLists: ["0.0.0.0/0"],
  * });
  * ```

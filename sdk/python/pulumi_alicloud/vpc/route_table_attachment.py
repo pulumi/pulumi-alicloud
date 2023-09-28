@@ -18,8 +18,8 @@ class RouteTableAttachmentArgs:
                  vswitch_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a RouteTableAttachment resource.
-        :param pulumi.Input[str] route_table_id: The route_table_id of the route table attachment, the field can't be changed.
-        :param pulumi.Input[str] vswitch_id: The vswitch_id of the route table attachment, the field can't be changed.
+        :param pulumi.Input[str] route_table_id: The ID of the route table to be bound to the switch.
+        :param pulumi.Input[str] vswitch_id: The ID of the switch to bind the route table.
         """
         pulumi.set(__self__, "route_table_id", route_table_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
@@ -28,7 +28,7 @@ class RouteTableAttachmentArgs:
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> pulumi.Input[str]:
         """
-        The route_table_id of the route table attachment, the field can't be changed.
+        The ID of the route table to be bound to the switch.
         """
         return pulumi.get(self, "route_table_id")
 
@@ -40,7 +40,7 @@ class RouteTableAttachmentArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[str]:
         """
-        The vswitch_id of the route table attachment, the field can't be changed.
+        The ID of the switch to bind the route table.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -53,14 +53,18 @@ class RouteTableAttachmentArgs:
 class _RouteTableAttachmentState:
     def __init__(__self__, *,
                  route_table_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RouteTableAttachment resources.
-        :param pulumi.Input[str] route_table_id: The route_table_id of the route table attachment, the field can't be changed.
-        :param pulumi.Input[str] vswitch_id: The vswitch_id of the route table attachment, the field can't be changed.
+        :param pulumi.Input[str] route_table_id: The ID of the route table to be bound to the switch.
+        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[str] vswitch_id: The ID of the switch to bind the route table.
         """
         if route_table_id is not None:
             pulumi.set(__self__, "route_table_id", route_table_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
 
@@ -68,7 +72,7 @@ class _RouteTableAttachmentState:
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The route_table_id of the route table attachment, the field can't be changed.
+        The ID of the route table to be bound to the switch.
         """
         return pulumi.get(self, "route_table_id")
 
@@ -77,10 +81,22 @@ class _RouteTableAttachmentState:
         pulumi.set(self, "route_table_id", value)
 
     @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The vswitch_id of the route table attachment, the field can't be changed.
+        The ID of the switch to bind the route table.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -98,6 +114,12 @@ class RouteTableAttachment(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Provides a VPC Route Table Attachment resource. Routing table associated resource type.
+
+        For information about VPC Route Table Attachment and how to use it, see [What is Route Table Attachment](https://www.alibabacloud.com/help/doc-detail/174112.htm).
+
+        > **NOTE:** Available since v1.194.0.
+
         ## Example Usage
 
         Basic Usage
@@ -109,7 +131,7 @@ class RouteTableAttachment(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "route-table-attachment-example-name"
+            name = "terraform-example"
         foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/12")
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         foo_switch = alicloud.vpc.Switch("fooSwitch",
@@ -127,16 +149,16 @@ class RouteTableAttachment(pulumi.CustomResource):
 
         ## Import
 
-        The route table attachment can be imported using the id, e.g.
+        VPC Route Table Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment foo vtb-abc123456:vsw-abc123456
+         $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment example <route_table_id>:<vswitch_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] route_table_id: The route_table_id of the route table attachment, the field can't be changed.
-        :param pulumi.Input[str] vswitch_id: The vswitch_id of the route table attachment, the field can't be changed.
+        :param pulumi.Input[str] route_table_id: The ID of the route table to be bound to the switch.
+        :param pulumi.Input[str] vswitch_id: The ID of the switch to bind the route table.
         """
         ...
     @overload
@@ -145,6 +167,12 @@ class RouteTableAttachment(pulumi.CustomResource):
                  args: RouteTableAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a VPC Route Table Attachment resource. Routing table associated resource type.
+
+        For information about VPC Route Table Attachment and how to use it, see [What is Route Table Attachment](https://www.alibabacloud.com/help/doc-detail/174112.htm).
+
+        > **NOTE:** Available since v1.194.0.
+
         ## Example Usage
 
         Basic Usage
@@ -156,7 +184,7 @@ class RouteTableAttachment(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "route-table-attachment-example-name"
+            name = "terraform-example"
         foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/12")
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         foo_switch = alicloud.vpc.Switch("fooSwitch",
@@ -174,10 +202,10 @@ class RouteTableAttachment(pulumi.CustomResource):
 
         ## Import
 
-        The route table attachment can be imported using the id, e.g.
+        VPC Route Table Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment foo vtb-abc123456:vsw-abc123456
+         $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment example <route_table_id>:<vswitch_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -212,6 +240,7 @@ class RouteTableAttachment(pulumi.CustomResource):
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
+            __props__.__dict__["status"] = None
         super(RouteTableAttachment, __self__).__init__(
             'alicloud:vpc/routeTableAttachment:RouteTableAttachment',
             resource_name,
@@ -223,6 +252,7 @@ class RouteTableAttachment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             route_table_id: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None) -> 'RouteTableAttachment':
         """
         Get an existing RouteTableAttachment resource's state with the given name, id, and optional extra
@@ -231,14 +261,16 @@ class RouteTableAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] route_table_id: The route_table_id of the route table attachment, the field can't be changed.
-        :param pulumi.Input[str] vswitch_id: The vswitch_id of the route table attachment, the field can't be changed.
+        :param pulumi.Input[str] route_table_id: The ID of the route table to be bound to the switch.
+        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[str] vswitch_id: The ID of the switch to bind the route table.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _RouteTableAttachmentState.__new__(_RouteTableAttachmentState)
 
         __props__.__dict__["route_table_id"] = route_table_id
+        __props__.__dict__["status"] = status
         __props__.__dict__["vswitch_id"] = vswitch_id
         return RouteTableAttachment(resource_name, opts=opts, __props__=__props__)
 
@@ -246,15 +278,23 @@ class RouteTableAttachment(pulumi.CustomResource):
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> pulumi.Output[str]:
         """
-        The route_table_id of the route table attachment, the field can't be changed.
+        The ID of the route table to be bound to the switch.
         """
         return pulumi.get(self, "route_table_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[str]:
         """
-        The vswitch_id of the route table attachment, the field can't be changed.
+        The ID of the switch to bind the route table.
         """
         return pulumi.get(self, "vswitch_id")
 

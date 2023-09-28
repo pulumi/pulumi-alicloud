@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Vpc Vswitch Cidr Reservation and how to use it, see [What is Vswitch Cidr Reservation](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/610154).
  * 
- * &gt; **NOTE:** Available in v1.205.0+.
+ * &gt; **NOTE:** Available since v1.205.0.
  * 
  * ## Example Usage
  * 
@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc-example&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *         var defaultVswitchCidrReservation = new VswitchCidrReservation(&#34;defaultVswitchCidrReservation&#34;, VswitchCidrReservationArgs.builder()        
  *             .ipVersion(&#34;IPv4&#34;)
  *             .vswitchId(defaultVSwitch.id())
- *             .cidrReservationDescription(&#34;test&#34;)
+ *             .cidrReservationDescription(name)
  *             .cidrReservationCidr(&#34;10.0.10.0/24&#34;)
  *             .vswitchCidrReservationName(name)
  *             .cidrReservationType(&#34;Prefix&#34;)

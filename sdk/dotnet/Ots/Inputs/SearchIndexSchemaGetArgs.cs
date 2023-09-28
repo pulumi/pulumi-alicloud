@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Ots.Inputs
         private InputList<Inputs.SearchIndexSchemaFieldSchemaGetArgs>? _fieldSchemas;
 
         /// <summary>
-        /// A list of field schemas. Each field schema contains the following parameters:
+        /// A list of field schemas. See `field_schema` below.
         /// </summary>
         public InputList<Inputs.SearchIndexSchemaFieldSchemaGetArgs> FieldSchemas
         {
@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Ots.Inputs
         private InputList<Inputs.SearchIndexSchemaIndexSettingGetArgs>? _indexSettings;
 
         /// <summary>
-        /// The settings of the search index, including routingFields.
+        /// The settings of the search index, including routingFields. See `index_setting` below.
         /// </summary>
         public InputList<Inputs.SearchIndexSchemaIndexSettingGetArgs> IndexSettings
         {
@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Ots.Inputs
         private InputList<Inputs.SearchIndexSchemaIndexSortGetArgs>? _indexSorts;
 
         /// <summary>
-        /// The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default.
+        /// The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default. See `index_sort` below.
         /// </summary>
         public InputList<Inputs.SearchIndexSchemaIndexSortGetArgs> IndexSorts
         {

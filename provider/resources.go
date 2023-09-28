@@ -58,6 +58,7 @@ const (
 	cloudAuthMod           = "CloudAuth"
 	cloudConnectMod        = "CloudConnect"
 	cloudFirewallMod       = "CloudFirewall"
+	cloudMonitorMod        = "CloudMonitor"
 	cloudStorageGatewayMod = "CloudStorageGateway"
 	cloudSsoMod            = "CloudSso"
 	cmsMod                 = "Cms"
@@ -105,6 +106,7 @@ const (
 	iotMod                 = "Iot"
 	immMod                 = "Imm"
 	impMod                 = "Imp"
+	imsMod                 = "Ims"
 	kmsMod                 = "Kms"
 	kvstoreMod             = "KVStore"
 	lindormMod             = "Lindorm"
@@ -181,6 +183,7 @@ var mappedMods = map[string]string{
 	"clickhouse":            clickHouseMod,
 	"cloud_connect":         cloudConnectMod,
 	"cloud_firewall":        cloudFirewallMod,
+	"cloud_monitor":         cloudMonitorMod,
 	"cloud_sso":             cloudSsoMod,
 	"cloud_storage_gateway": cloudStorageGatewayMod,
 	"cloudauth":             cloudAuthMod,
@@ -229,6 +232,7 @@ var mappedMods = map[string]string{
 	"hbr":                   hbrMod,
 	"imm":                   immMod,
 	"imp":                   impMod,
+	"ims":                   imsMod,
 	"iot":                   iotMod,
 	"kms":                   kmsMod,
 	"kvstore":               kvstoreMod,

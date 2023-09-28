@@ -30,6 +30,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/lindorm"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -46,19 +47,22 @@ import (
 //			}
 //			_ := "cn-hangzhou"
 //			zoneId := "cn-hangzhou-h"
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("10.4.0.0/16"),
-//			})
+//			_, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
-//				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(zoneId),
-//			})
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(zoneId),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -66,8 +70,8 @@ import (
 //				DiskCategory:             pulumi.String("cloud_efficiency"),
 //				PaymentType:              pulumi.String("PayAsYouGo"),
 //				ZoneId:                   pulumi.String(zoneId),
-//				VswitchId:                defaultSwitch.ID(),
-//				VpcId:                    defaultNetwork.ID(),
+//				VswitchId:                *pulumi.String(defaultSwitches.Ids[0]),
+//				VpcId:                    *pulumi.String(defaultNetworks.Ids[0]),
 //				InstanceName:             pulumi.String(name),
 //				TableEngineSpecification: pulumi.String("lindorm.g.4xlarge"),
 //				TableEngineNodeCount:     pulumi.Int(2),
@@ -120,6 +124,8 @@ type Instance struct {
 	EnabledLtsEngine pulumi.BoolOutput `pulumi:"enabledLtsEngine"`
 	// (Available since v1.163.0) Whether to enable search engine.
 	EnabledSearchEngine pulumi.BoolOutput `pulumi:"enabledSearchEngine"`
+	// (Available since v1.211.0) Whether to enable streaming engine.
+	EnabledStreamEngine pulumi.BoolOutput `pulumi:"enabledStreamEngine"`
 	// (Available since v1.163.0) Whether to enable table engine.
 	EnabledTableEngine pulumi.BoolOutput `pulumi:"enabledTableEngine"`
 	// (Available since v1.163.0) Whether to enable time serires engine.
@@ -128,8 +134,6 @@ type Instance struct {
 	FileEngineNodeCount pulumi.IntOutput `pulumi:"fileEngineNodeCount"`
 	// The specification of file engine. Valid values: `lindorm.c.xlarge`.
 	FileEngineSpecification pulumi.StringOutput `pulumi:"fileEngineSpecification"`
-	// The group name.
-	GroupName pulumi.StringPtrOutput `pulumi:"groupName"`
 	// The name of the instance.
 	InstanceName pulumi.StringPtrOutput `pulumi:"instanceName"`
 	// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
@@ -152,10 +156,6 @@ type Instance struct {
 	MultiZoneCombination pulumi.StringPtrOutput `pulumi:"multiZoneCombination"`
 	// The billing method. Valid values: `PayAsYouGo` and `Subscription`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	// The count of phoenix.
-	PhoenixNodeCount pulumi.IntOutput `pulumi:"phoenixNodeCount"`
-	// The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-	PhoenixNodeSpecification pulumi.StringOutput `pulumi:"phoenixNodeSpecification"`
 	// The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
 	PricingCycle pulumi.StringPtrOutput `pulumi:"pricingCycle"`
 	// Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
@@ -176,6 +176,10 @@ type Instance struct {
 	StandbyZoneId pulumi.StringPtrOutput `pulumi:"standbyZoneId"`
 	// The status of Instance.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The number of LindormStream nodes in the instance.
+	StreamEngineNodeCount pulumi.IntOutput `pulumi:"streamEngineNodeCount"`
+	// The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+	StreamEngineSpecification pulumi.StringOutput `pulumi:"streamEngineSpecification"`
 	// The count of table engine.
 	TableEngineNodeCount pulumi.IntOutput `pulumi:"tableEngineNodeCount"`
 	// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
@@ -188,7 +192,7 @@ type Instance struct {
 	TimeSeriesEngineSpecification pulumi.StringOutput `pulumi:"timeSeriesEngineSpecification"`
 	// Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	//
-	// Deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.
+	// Deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
 	TimeSeriresEngineSpecification pulumi.StringOutput `pulumi:"timeSeriresEngineSpecification"`
 	// The VPC ID of the instance.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
@@ -263,6 +267,8 @@ type instanceState struct {
 	EnabledLtsEngine *bool `pulumi:"enabledLtsEngine"`
 	// (Available since v1.163.0) Whether to enable search engine.
 	EnabledSearchEngine *bool `pulumi:"enabledSearchEngine"`
+	// (Available since v1.211.0) Whether to enable streaming engine.
+	EnabledStreamEngine *bool `pulumi:"enabledStreamEngine"`
 	// (Available since v1.163.0) Whether to enable table engine.
 	EnabledTableEngine *bool `pulumi:"enabledTableEngine"`
 	// (Available since v1.163.0) Whether to enable time serires engine.
@@ -271,8 +277,6 @@ type instanceState struct {
 	FileEngineNodeCount *int `pulumi:"fileEngineNodeCount"`
 	// The specification of file engine. Valid values: `lindorm.c.xlarge`.
 	FileEngineSpecification *string `pulumi:"fileEngineSpecification"`
-	// The group name.
-	GroupName *string `pulumi:"groupName"`
 	// The name of the instance.
 	InstanceName *string `pulumi:"instanceName"`
 	// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
@@ -295,10 +299,6 @@ type instanceState struct {
 	MultiZoneCombination *string `pulumi:"multiZoneCombination"`
 	// The billing method. Valid values: `PayAsYouGo` and `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
-	// The count of phoenix.
-	PhoenixNodeCount *int `pulumi:"phoenixNodeCount"`
-	// The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-	PhoenixNodeSpecification *string `pulumi:"phoenixNodeSpecification"`
 	// The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
 	PricingCycle *string `pulumi:"pricingCycle"`
 	// Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
@@ -319,6 +319,10 @@ type instanceState struct {
 	StandbyZoneId *string `pulumi:"standbyZoneId"`
 	// The status of Instance.
 	Status *string `pulumi:"status"`
+	// The number of LindormStream nodes in the instance.
+	StreamEngineNodeCount *int `pulumi:"streamEngineNodeCount"`
+	// The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+	StreamEngineSpecification *string `pulumi:"streamEngineSpecification"`
 	// The count of table engine.
 	TableEngineNodeCount *int `pulumi:"tableEngineNodeCount"`
 	// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
@@ -331,7 +335,7 @@ type instanceState struct {
 	TimeSeriesEngineSpecification *string `pulumi:"timeSeriesEngineSpecification"`
 	// Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	//
-	// Deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.
+	// Deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
 	TimeSeriresEngineSpecification *string `pulumi:"timeSeriresEngineSpecification"`
 	// The VPC ID of the instance.
 	VpcId *string `pulumi:"vpcId"`
@@ -368,6 +372,8 @@ type InstanceState struct {
 	EnabledLtsEngine pulumi.BoolPtrInput
 	// (Available since v1.163.0) Whether to enable search engine.
 	EnabledSearchEngine pulumi.BoolPtrInput
+	// (Available since v1.211.0) Whether to enable streaming engine.
+	EnabledStreamEngine pulumi.BoolPtrInput
 	// (Available since v1.163.0) Whether to enable table engine.
 	EnabledTableEngine pulumi.BoolPtrInput
 	// (Available since v1.163.0) Whether to enable time serires engine.
@@ -376,8 +382,6 @@ type InstanceState struct {
 	FileEngineNodeCount pulumi.IntPtrInput
 	// The specification of file engine. Valid values: `lindorm.c.xlarge`.
 	FileEngineSpecification pulumi.StringPtrInput
-	// The group name.
-	GroupName pulumi.StringPtrInput
 	// The name of the instance.
 	InstanceName pulumi.StringPtrInput
 	// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
@@ -400,10 +404,6 @@ type InstanceState struct {
 	MultiZoneCombination pulumi.StringPtrInput
 	// The billing method. Valid values: `PayAsYouGo` and `Subscription`.
 	PaymentType pulumi.StringPtrInput
-	// The count of phoenix.
-	PhoenixNodeCount pulumi.IntPtrInput
-	// The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-	PhoenixNodeSpecification pulumi.StringPtrInput
 	// The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
 	PricingCycle pulumi.StringPtrInput
 	// Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
@@ -424,6 +424,10 @@ type InstanceState struct {
 	StandbyZoneId pulumi.StringPtrInput
 	// The status of Instance.
 	Status pulumi.StringPtrInput
+	// The number of LindormStream nodes in the instance.
+	StreamEngineNodeCount pulumi.IntPtrInput
+	// The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+	StreamEngineSpecification pulumi.StringPtrInput
 	// The count of table engine.
 	TableEngineNodeCount pulumi.IntPtrInput
 	// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
@@ -436,7 +440,7 @@ type InstanceState struct {
 	TimeSeriesEngineSpecification pulumi.StringPtrInput
 	// Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	//
-	// Deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.
+	// Deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
 	TimeSeriresEngineSpecification pulumi.StringPtrInput
 	// The VPC ID of the instance.
 	VpcId pulumi.StringPtrInput
@@ -475,8 +479,6 @@ type instanceArgs struct {
 	FileEngineNodeCount *int `pulumi:"fileEngineNodeCount"`
 	// The specification of file engine. Valid values: `lindorm.c.xlarge`.
 	FileEngineSpecification *string `pulumi:"fileEngineSpecification"`
-	// The group name.
-	GroupName *string `pulumi:"groupName"`
 	// The name of the instance.
 	InstanceName *string `pulumi:"instanceName"`
 	// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
@@ -499,10 +501,6 @@ type instanceArgs struct {
 	MultiZoneCombination *string `pulumi:"multiZoneCombination"`
 	// The billing method. Valid values: `PayAsYouGo` and `Subscription`.
 	PaymentType string `pulumi:"paymentType"`
-	// The count of phoenix.
-	PhoenixNodeCount *int `pulumi:"phoenixNodeCount"`
-	// The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-	PhoenixNodeSpecification *string `pulumi:"phoenixNodeSpecification"`
 	// The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
 	PricingCycle *string `pulumi:"pricingCycle"`
 	// Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
@@ -519,6 +517,10 @@ type instanceArgs struct {
 	StandbyVswitchId *string `pulumi:"standbyVswitchId"`
 	// The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
 	StandbyZoneId *string `pulumi:"standbyZoneId"`
+	// The number of LindormStream nodes in the instance.
+	StreamEngineNodeCount *int `pulumi:"streamEngineNodeCount"`
+	// The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+	StreamEngineSpecification *string `pulumi:"streamEngineSpecification"`
 	// The count of table engine.
 	TableEngineNodeCount *int `pulumi:"tableEngineNodeCount"`
 	// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
@@ -531,7 +533,7 @@ type instanceArgs struct {
 	TimeSeriesEngineSpecification *string `pulumi:"timeSeriesEngineSpecification"`
 	// Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	//
-	// Deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.
+	// Deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
 	TimeSeriresEngineSpecification *string `pulumi:"timeSeriresEngineSpecification"`
 	// The VPC ID of the instance.
 	VpcId *string `pulumi:"vpcId"`
@@ -567,8 +569,6 @@ type InstanceArgs struct {
 	FileEngineNodeCount pulumi.IntPtrInput
 	// The specification of file engine. Valid values: `lindorm.c.xlarge`.
 	FileEngineSpecification pulumi.StringPtrInput
-	// The group name.
-	GroupName pulumi.StringPtrInput
 	// The name of the instance.
 	InstanceName pulumi.StringPtrInput
 	// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
@@ -591,10 +591,6 @@ type InstanceArgs struct {
 	MultiZoneCombination pulumi.StringPtrInput
 	// The billing method. Valid values: `PayAsYouGo` and `Subscription`.
 	PaymentType pulumi.StringInput
-	// The count of phoenix.
-	PhoenixNodeCount pulumi.IntPtrInput
-	// The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-	PhoenixNodeSpecification pulumi.StringPtrInput
 	// The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
 	PricingCycle pulumi.StringPtrInput
 	// Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
@@ -611,6 +607,10 @@ type InstanceArgs struct {
 	StandbyVswitchId pulumi.StringPtrInput
 	// The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
 	StandbyZoneId pulumi.StringPtrInput
+	// The number of LindormStream nodes in the instance.
+	StreamEngineNodeCount pulumi.IntPtrInput
+	// The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+	StreamEngineSpecification pulumi.StringPtrInput
 	// The count of table engine.
 	TableEngineNodeCount pulumi.IntPtrInput
 	// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
@@ -623,7 +623,7 @@ type InstanceArgs struct {
 	TimeSeriesEngineSpecification pulumi.StringPtrInput
 	// Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	//
-	// Deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.
+	// Deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
 	TimeSeriresEngineSpecification pulumi.StringPtrInput
 	// The VPC ID of the instance.
 	VpcId pulumi.StringPtrInput
@@ -806,6 +806,11 @@ func (o InstanceOutput) EnabledSearchEngine() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnabledSearchEngine }).(pulumi.BoolOutput)
 }
 
+// (Available since v1.211.0) Whether to enable streaming engine.
+func (o InstanceOutput) EnabledStreamEngine() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnabledStreamEngine }).(pulumi.BoolOutput)
+}
+
 // (Available since v1.163.0) Whether to enable table engine.
 func (o InstanceOutput) EnabledTableEngine() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnabledTableEngine }).(pulumi.BoolOutput)
@@ -824,11 +829,6 @@ func (o InstanceOutput) FileEngineNodeCount() pulumi.IntOutput {
 // The specification of file engine. Valid values: `lindorm.c.xlarge`.
 func (o InstanceOutput) FileEngineSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.FileEngineSpecification }).(pulumi.StringOutput)
-}
-
-// The group name.
-func (o InstanceOutput) GroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.GroupName }).(pulumi.StringPtrOutput)
 }
 
 // The name of the instance.
@@ -886,16 +886,6 @@ func (o InstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// The count of phoenix.
-func (o InstanceOutput) PhoenixNodeCount() pulumi.IntOutput {
-	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.PhoenixNodeCount }).(pulumi.IntOutput)
-}
-
-// The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-func (o InstanceOutput) PhoenixNodeSpecification() pulumi.StringOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PhoenixNodeSpecification }).(pulumi.StringOutput)
-}
-
 // The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
 func (o InstanceOutput) PricingCycle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PricingCycle }).(pulumi.StringPtrOutput)
@@ -946,6 +936,16 @@ func (o InstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
+// The number of LindormStream nodes in the instance.
+func (o InstanceOutput) StreamEngineNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.StreamEngineNodeCount }).(pulumi.IntOutput)
+}
+
+// The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+func (o InstanceOutput) StreamEngineSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.StreamEngineSpecification }).(pulumi.StringOutput)
+}
+
 // The count of table engine.
 func (o InstanceOutput) TableEngineNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.TableEngineNodeCount }).(pulumi.IntOutput)
@@ -973,7 +973,7 @@ func (o InstanceOutput) TimeSeriesEngineSpecification() pulumi.StringOutput {
 
 // Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 //
-// Deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.
+// Deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
 func (o InstanceOutput) TimeSeriresEngineSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TimeSeriresEngineSpecification }).(pulumi.StringOutput)
 }

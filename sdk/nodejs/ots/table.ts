@@ -12,6 +12,8 @@ import * as utilities from "../utilities";
  * > **NOTE:** From Provider version 1.10.0, the provider field 'ots_instance_name' has been deprecated and
  * you should use resource alicloud_ots_table's new field 'instance_name' and 'table_name' to re-import this resource.
  *
+ * > **NOTE:** Available since v1.9.2.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,18 +21,22 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "terraformtest";
- * const foo = new alicloud.ots.Instance("foo", {
+ * const name = config.get("name") || "tf-example";
+ * const defaultInstance = new alicloud.ots.Instance("defaultInstance", {
  *     description: name,
  *     accessedBy: "Any",
  *     tags: {
  *         Created: "TF",
- *         For: "acceptance test",
+ *         For: "example",
  *     },
  * });
- * const basic = new alicloud.ots.Table("basic", {
- *     instanceName: foo.name,
- *     tableName: name,
+ * const defaultTable = new alicloud.ots.Table("defaultTable", {
+ *     instanceName: defaultInstance.name,
+ *     tableName: "tf_example",
+ *     timeToLive: -1,
+ *     maxVersion: 1,
+ *     enableSse: true,
+ *     sseKeyType: "SSE_KMS_SERVICE",
  *     primaryKeys: [
  *         {
  *             name: "pk1",
@@ -59,11 +65,6 @@ import * as utilities from "../utilities";
  *             type: "Binary",
  *         },
  *     ],
- *     timeToLive: -1,
- *     maxVersion: 1,
- *     deviationCellVersionInSec: "1",
- *     enableSse: true,
- *     sseKeyType: "SSE_KMS_SERVICE",
  * });
  * ```
  *
@@ -104,7 +105,7 @@ export class Table extends pulumi.CustomResource {
     }
 
     /**
-     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32.
+     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
      */
     public readonly definedColumns!: pulumi.Output<outputs.ots.TableDefinedColumn[] | undefined>;
     /**
@@ -124,7 +125,7 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly maxVersion!: pulumi.Output<number>;
     /**
-     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four.
+     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
      */
     public readonly primaryKeys!: pulumi.Output<outputs.ots.TablePrimaryKey[]>;
     /**
@@ -199,7 +200,7 @@ export class Table extends pulumi.CustomResource {
  */
 export interface TableState {
     /**
-     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32.
+     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
      */
     definedColumns?: pulumi.Input<pulumi.Input<inputs.ots.TableDefinedColumn>[]>;
     /**
@@ -219,7 +220,7 @@ export interface TableState {
      */
     maxVersion?: pulumi.Input<number>;
     /**
-     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four.
+     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
      */
     primaryKeys?: pulumi.Input<pulumi.Input<inputs.ots.TablePrimaryKey>[]>;
     /**
@@ -241,7 +242,7 @@ export interface TableState {
  */
 export interface TableArgs {
     /**
-     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32.
+     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
      */
     definedColumns?: pulumi.Input<pulumi.Input<inputs.ots.TableDefinedColumn>[]>;
     /**
@@ -261,7 +262,7 @@ export interface TableArgs {
      */
     maxVersion: pulumi.Input<number>;
     /**
-     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four.
+     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
      */
     primaryKeys: pulumi.Input<pulumi.Input<inputs.ots.TablePrimaryKey>[]>;
     /**

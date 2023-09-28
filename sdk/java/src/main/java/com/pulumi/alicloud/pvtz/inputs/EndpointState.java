@@ -33,14 +33,14 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Ip Configs. See the following `Block ip_configs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+     * The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
      * 
      */
     @Import(name="ipConfigs")
     private @Nullable Output<List<EndpointIpConfigArgs>> ipConfigs;
 
     /**
-     * @return The Ip Configs. See the following `Block ip_configs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+     * @return The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
      * 
      */
     public Optional<Output<List<EndpointIpConfigArgs>>> ipConfigs() {
@@ -158,7 +158,7 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipConfigs The Ip Configs. See the following `Block ip_configs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+         * @param ipConfigs The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipConfigs The Ip Configs. See the following `Block ip_configs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+         * @param ipConfigs The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipConfigs The Ip Configs. See the following `Block ip_configs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+         * @param ipConfigs The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
          * 
          * @return builder
          * 

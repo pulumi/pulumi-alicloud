@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Threat Detection Honeypot Preset resource.
  * 
- * For information about Threat Detection Honeypot Preset and how to use it, see [What is Honeypot Preset](https://help.aliyun.com/document_detail/468960.html).
+ * For information about Threat Detection Honeypot Preset and how to use it, see [What is Honeypot Preset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotpreset).
  * 
- * &gt; **NOTE:** Available in v1.195.0+.
+ * &gt; **NOTE:** Available since v1.195.0.
  * 
  * ## Example Usage
  * 
@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+ * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotImagesArgs;
  * import com.pulumi.alicloud.threatdetection.HoneypotNode;
  * import com.pulumi.alicloud.threatdetection.HoneypotNodeArgs;
  * import com.pulumi.alicloud.threatdetection.HoneypotPreset;
@@ -48,20 +50,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
+ *         final var defaultHoneypotImages = ThreatdetectionFunctions.getHoneypotImages(GetHoneypotImagesArgs.builder()
+ *             .nameRegex(&#34;^ruoyi&#34;)
+ *             .build());
+ * 
  *         var defaultHoneypotNode = new HoneypotNode(&#34;defaultHoneypotNode&#34;, HoneypotNodeArgs.builder()        
- *             .nodeName(var_.name())
+ *             .nodeName(name)
  *             .availableProbeNum(20)
  *             .securityGroupProbeIpLists(&#34;0.0.0.0/0&#34;)
  *             .build());
  * 
  *         var defaultHoneypotPreset = new HoneypotPreset(&#34;defaultHoneypotPreset&#34;, HoneypotPresetArgs.builder()        
- *             .honeypotImageName(&#34;shiro&#34;)
+ *             .presetName(name)
+ *             .nodeId(defaultHoneypotNode.id())
+ *             .honeypotImageName(defaultHoneypotImages.applyValue(getHoneypotImagesResult -&gt; getHoneypotImagesResult.images()[0].honeypotImageName()))
  *             .meta(HoneypotPresetMetaArgs.builder()
  *                 .portraitOption(true)
  *                 .burp(&#34;open&#34;)
  *                 .build())
- *             .nodeId(defaultHoneypotNode.id())
- *             .presetName(&#34;apiapec_test&#34;)
  *             .build());
  * 
  *     }
@@ -108,14 +116,14 @@ public class HoneypotPreset extends com.pulumi.resources.CustomResource {
         return this.honeypotPresetId;
     }
     /**
-     * Honeypot template custom parameters. See the following `Block meta`.
+     * Honeypot template custom parameters. See `meta` below.
      * 
      */
     @Export(name="meta", type=HoneypotPresetMeta.class, parameters={})
     private Output<HoneypotPresetMeta> meta;
 
     /**
-     * @return Honeypot template custom parameters. See the following `Block meta`.
+     * @return Honeypot template custom parameters. See `meta` below.
      * 
      */
     public Output<HoneypotPresetMeta> meta() {

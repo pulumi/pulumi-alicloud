@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about OTS tunnel and how to use it, see [Tunnel overview](https://www.alibabacloud.com/help/en/tablestore/latest/tunnel-service-overview).
  *
- * > **NOTE:** Available in v1.172.0+.
+ * > **NOTE:** Available since v1.172.0.
  *
  * ## Example Usage
  *
@@ -20,18 +20,22 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "terraformtest";
- * const fooInstance = new alicloud.ots.Instance("fooInstance", {
+ * const name = config.get("name") || "tf-example";
+ * const defaultInstance = new alicloud.ots.Instance("defaultInstance", {
  *     description: name,
  *     accessedBy: "Any",
  *     tags: {
  *         Created: "TF",
- *         For: "acceptance test",
+ *         For: "example",
  *     },
  * });
- * const fooTable = new alicloud.ots.Table("fooTable", {
- *     instanceName: fooInstance.name,
- *     tableName: name,
+ * const defaultTable = new alicloud.ots.Table("defaultTable", {
+ *     instanceName: defaultInstance.name,
+ *     tableName: "tf_example",
+ *     timeToLive: -1,
+ *     maxVersion: 1,
+ *     enableSse: true,
+ *     sseKeyType: "SSE_KMS_SERVICE",
  *     primaryKeys: [
  *         {
  *             name: "pk1",
@@ -46,14 +50,11 @@ import * as utilities from "../utilities";
  *             type: "Binary",
  *         },
  *     ],
- *     timeToLive: -1,
- *     maxVersion: 1,
- *     deviationCellVersionInSec: "1",
  * });
- * const fooTunnel = new alicloud.ots.Tunnel("fooTunnel", {
- *     instanceName: fooInstance.name,
- *     tableName: fooTable.tableName,
- *     tunnelName: name,
+ * const defaultTunnel = new alicloud.ots.Tunnel("defaultTunnel", {
+ *     instanceName: defaultInstance.name,
+ *     tableName: defaultTable.tableName,
+ *     tunnelName: "tf_example",
  *     tunnelType: "BaseAndStream",
  * });
  * ```

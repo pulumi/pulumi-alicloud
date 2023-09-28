@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Provides a ActionTrail Trail resource. For information about alicloud actiontrail trail and how to use it, see [What is Resource Alicloud ActionTrail Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
+// Provides a ActionTrail Trail resource. For information about alicloud actiontrail trail and how to use it, see [What is Resource Alicloud ActionTrail Trail](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createtrail).
 //
-// > **NOTE:** Available in 1.95.0+
+// > **NOTE:** Available since v1.95.0.
 //
 // > **NOTE:** You can create a trail to deliver events to Log Service, Object Storage Service (OSS), or both. Before you call this operation to create a trail, make sure that the following requirements are met.
 // - Deliver events to Log Service: A project is created in Log Service.
@@ -27,19 +27,52 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := actiontrail.NewTrail(ctx, "default", &actiontrail.TrailArgs{
-//				EventRw:         pulumi.String("All"),
-//				OssBucketName:   pulumi.String("bucket_name"),
-//				OssWriteRoleArn: pulumi.String("acs:ram::1182725xxxxxxxxxxx"),
-//				TrailName:       pulumi.String("action-trail"),
-//				TrailRegion:     pulumi.String("cn-hangzhou"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			exampleRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
+//				Description: pulumi.String("tf actiontrail example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleRoles, err := ram.GetRoles(ctx, &ram.GetRolesArgs{
+//				NameRegex: pulumi.StringRef("AliyunServiceRoleForActionTrail"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = actiontrail.NewTrail(ctx, "exampleTrail", &actiontrail.TrailArgs{
+//				TrailName:       pulumi.String(name),
+//				SlsWriteRoleArn: *pulumi.String(exampleRoles.Roles[0].Arn),
+//				SlsProjectArn: exampleProject.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("acs:log:%v:%v:project/%v", exampleRegions.Regions[0].Id, exampleAccount.Id, name), nil
+//				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
 //				return err

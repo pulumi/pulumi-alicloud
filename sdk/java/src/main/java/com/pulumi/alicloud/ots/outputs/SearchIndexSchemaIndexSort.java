@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class SearchIndexSchemaIndexSort {
     /**
-     * @return Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported.
+     * @return Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `sorter` below.
      * 
      */
     private List<SearchIndexSchemaIndexSortSorter> sorters;
 
     private SearchIndexSchemaIndexSort() {}
     /**
-     * @return Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported.
+     * @return Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `sorter` below.
      * 
      */
     public List<SearchIndexSchemaIndexSortSorter> sorters() {

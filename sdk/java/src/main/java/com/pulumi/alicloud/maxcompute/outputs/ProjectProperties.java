@@ -26,7 +26,7 @@ public final class ProjectProperties {
      */
     private @Nullable Boolean enableDecimal2;
     /**
-     * @return Whether encryption is turned on.See the following `Block Encryption`.
+     * @return Whether encryption is turned on. See `encryption` below.
      * 
      */
     private @Nullable ProjectPropertiesEncryption encryption;
@@ -41,7 +41,7 @@ public final class ProjectProperties {
      */
     private @Nullable String sqlMeteringMax;
     /**
-     * @return Life cycle of tables.See the following `Block TableLifecycle`.
+     * @return Life cycle of tables. See `table_lifecycle` below.
      * 
      */
     private @Nullable ProjectPropertiesTableLifecycle tableLifecycle;
@@ -72,7 +72,7 @@ public final class ProjectProperties {
         return Optional.ofNullable(this.enableDecimal2);
     }
     /**
-     * @return Whether encryption is turned on.See the following `Block Encryption`.
+     * @return Whether encryption is turned on. See `encryption` below.
      * 
      */
     public Optional<ProjectPropertiesEncryption> encryption() {
@@ -93,7 +93,7 @@ public final class ProjectProperties {
         return Optional.ofNullable(this.sqlMeteringMax);
     }
     /**
-     * @return Life cycle of tables.See the following `Block TableLifecycle`.
+     * @return Life cycle of tables. See `table_lifecycle` below.
      * 
      */
     public Optional<ProjectPropertiesTableLifecycle> tableLifecycle() {

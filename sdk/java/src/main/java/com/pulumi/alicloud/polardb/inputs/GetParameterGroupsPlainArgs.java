@@ -16,14 +16,14 @@ public final class GetParameterGroupsPlainArgs extends com.pulumi.resources.Invo
     public static final GetParameterGroupsPlainArgs Empty = new GetParameterGroupsPlainArgs();
 
     /**
-     * The type of the database engine.
+     * The type of the database engine. Only `MySQL` is supported.
      * 
      */
     @Import(name="dbType")
     private @Nullable String dbType;
 
     /**
-     * @return The type of the database engine.
+     * @return The type of the database engine. Only `MySQL` is supported.
      * 
      */
     public Optional<String> dbType() {
@@ -31,14 +31,14 @@ public final class GetParameterGroupsPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The version number of the database engine.
+     * The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
      * 
      */
     @Import(name="dbVersion")
     private @Nullable String dbVersion;
 
     /**
-     * @return The version number of the database engine.
+     * @return The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
      * 
      */
     public Optional<String> dbVersion() {
@@ -119,7 +119,7 @@ public final class GetParameterGroupsPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param dbType The type of the database engine.
+         * @param dbType The type of the database engine. Only `MySQL` is supported.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class GetParameterGroupsPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param dbVersion The version number of the database engine.
+         * @param dbVersion The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
          * 
          * @return builder
          * 

@@ -17,7 +17,7 @@ import (
 //
 // For information about NLB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createsecuritypolicy-nlb).
 //
-// > **NOTE:** Available in v1.187.0+.
+// > **NOTE:** Available since v1.187.0.
 //
 // ## Example Usage
 //
@@ -31,18 +31,24 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nlb"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = nlb.NewSecurityPolicy(ctx, "defaultSecurityPolicy", &nlb.SecurityPolicyArgs{
 //				ResourceGroupId:    *pulumi.String(defaultResourceGroups.Ids[0]),
-//				SecurityPolicyName: pulumi.Any(_var.Name),
+//				SecurityPolicyName: pulumi.String(name),
 //				Ciphers: pulumi.StringArray{
 //					pulumi.String("ECDHE-RSA-AES128-SHA"),
 //					pulumi.String("ECDHE-ECDSA-AES128-SHA"),
@@ -54,7 +60,7 @@ import (
 //				},
 //				Tags: pulumi.AnyMap{
 //					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("Acceptance-test"),
+//					"For":     pulumi.Any("example"),
 //				},
 //			})
 //			if err != nil {

@@ -21,7 +21,7 @@ class AclAttachmentArgs:
         """
         The set of arguments for constructing a AclAttachment resource.
         :param pulumi.Input[str] acl_id: The ID of an ACL.
-        :param pulumi.Input[str] acl_type: The type of the ACL. Valid values: `white`, `black`.
+        :param pulumi.Input[str] acl_type: The type of the ACL. Valid values:
         :param pulumi.Input[str] listener_id: The ID of the listener.
         :param pulumi.Input[bool] dry_run: The dry run.
         """
@@ -47,7 +47,7 @@ class AclAttachmentArgs:
     @pulumi.getter(name="aclType")
     def acl_type(self) -> pulumi.Input[str]:
         """
-        The type of the ACL. Valid values: `white`, `black`.
+        The type of the ACL. Valid values:
         """
         return pulumi.get(self, "acl_type")
 
@@ -91,10 +91,10 @@ class _AclAttachmentState:
         """
         Input properties used for looking up and filtering AclAttachment resources.
         :param pulumi.Input[str] acl_id: The ID of an ACL.
-        :param pulumi.Input[str] acl_type: The type of the ACL. Valid values: `white`, `black`.
+        :param pulumi.Input[str] acl_type: The type of the ACL. Valid values:
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] listener_id: The ID of the listener.
-        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[str] status: The status of the Acl Attachment.
         """
         if acl_id is not None:
             pulumi.set(__self__, "acl_id", acl_id)
@@ -123,7 +123,7 @@ class _AclAttachmentState:
     @pulumi.getter(name="aclType")
     def acl_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the ACL. Valid values: `white`, `black`.
+        The type of the ACL. Valid values:
         """
         return pulumi.get(self, "acl_type")
 
@@ -159,7 +159,7 @@ class _AclAttachmentState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource.
+        The status of the Acl Attachment.
         """
         return pulumi.get(self, "status")
 
@@ -221,23 +221,23 @@ class AclAttachment(pulumi.CustomResource):
             entry="192.168.1.1/32",
             entry_description="terraform-example")
         default_acl_attachment = alicloud.ga.AclAttachment("defaultAclAttachment",
-            acl_id=default_acl.id,
             listener_id=default_listener.id,
+            acl_id=default_acl.id,
             acl_type="white")
         ```
 
         ## Import
 
-        Global Accelerator (GA) Acl Attachment can be imported using the id. Format to `<listener_id>:<acl_id>`, e.g.
+        Global Accelerator (GA) Acl Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/aclAttachment:AclAttachment example your_listener_id:your_acl_id
+         $ pulumi import alicloud:ga/aclAttachment:AclAttachment example <listener_id>:<acl_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl_id: The ID of an ACL.
-        :param pulumi.Input[str] acl_type: The type of the ACL. Valid values: `white`, `black`.
+        :param pulumi.Input[str] acl_type: The type of the ACL. Valid values:
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] listener_id: The ID of the listener.
         """
@@ -290,17 +290,17 @@ class AclAttachment(pulumi.CustomResource):
             entry="192.168.1.1/32",
             entry_description="terraform-example")
         default_acl_attachment = alicloud.ga.AclAttachment("defaultAclAttachment",
-            acl_id=default_acl.id,
             listener_id=default_listener.id,
+            acl_id=default_acl.id,
             acl_type="white")
         ```
 
         ## Import
 
-        Global Accelerator (GA) Acl Attachment can be imported using the id. Format to `<listener_id>:<acl_id>`, e.g.
+        Global Accelerator (GA) Acl Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/aclAttachment:AclAttachment example your_listener_id:your_acl_id
+         $ pulumi import alicloud:ga/aclAttachment:AclAttachment example <listener_id>:<acl_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -365,10 +365,10 @@ class AclAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl_id: The ID of an ACL.
-        :param pulumi.Input[str] acl_type: The type of the ACL. Valid values: `white`, `black`.
+        :param pulumi.Input[str] acl_type: The type of the ACL. Valid values:
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] listener_id: The ID of the listener.
-        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[str] status: The status of the Acl Attachment.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -393,7 +393,7 @@ class AclAttachment(pulumi.CustomResource):
     @pulumi.getter(name="aclType")
     def acl_type(self) -> pulumi.Output[str]:
         """
-        The type of the ACL. Valid values: `white`, `black`.
+        The type of the ACL. Valid values:
         """
         return pulumi.get(self, "acl_type")
 
@@ -417,7 +417,7 @@ class AclAttachment(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource.
+        The status of the Acl Attachment.
         """
         return pulumi.get(self, "status")
 

@@ -5,11 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPC Traffic Mirror Filter Ingress Rule resource.
+ * Provides a VPC Traffic Mirror Filter Ingress Rule resource. Traffic mirror entry rule.
  *
  * For information about VPC Traffic Mirror Filter Ingress Rule and how to use it, see [What is Traffic Mirror Filter Ingress Rule](https://www.alibabacloud.com/help/doc-detail/261357.htm).
  *
- * > **NOTE:** Available in v1.141.0+.
+ * > **NOTE:** Available since v1.141.0.
  *
  * ## Example Usage
  *
@@ -69,6 +69,10 @@ export class TrafficMirrorFilterIngressRule extends pulumi.CustomResource {
     }
 
     /**
+     * The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+     */
+    public readonly action!: pulumi.Output<string>;
+    /**
      * The destination CIDR block of the inbound traffic.
      */
     public readonly destinationCidrBlock!: pulumi.Output<string>;
@@ -77,7 +81,9 @@ export class TrafficMirrorFilterIngressRule extends pulumi.CustomResource {
      */
     public readonly destinationPortRange!: pulumi.Output<string>;
     /**
-     * Whether to pre-check this request only. Default to: `false`
+     * Whether to PreCheck this request only. Value:
+     * - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+     * - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
@@ -89,7 +95,9 @@ export class TrafficMirrorFilterIngressRule extends pulumi.CustomResource {
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
-     * The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+     * . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+     *
+     * @deprecated Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.
      */
     public readonly ruleAction!: pulumi.Output<string>;
     /**
@@ -101,15 +109,17 @@ export class TrafficMirrorFilterIngressRule extends pulumi.CustomResource {
      */
     public readonly sourcePortRange!: pulumi.Output<string>;
     /**
-     * The state of the inbound rule. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+     * The state of the inbound rule. `Creating`, `Created`, `Modifying` and `Deleting`.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The ID of the filter.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     public readonly trafficMirrorFilterId!: pulumi.Output<string>;
     /**
-     * The ID of the inbound rule.
+     * The ID of the outbound rule.
      */
     public /*out*/ readonly trafficMirrorFilterIngressRuleId!: pulumi.Output<string>;
 
@@ -126,6 +136,7 @@ export class TrafficMirrorFilterIngressRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TrafficMirrorFilterIngressRuleState | undefined;
+            resourceInputs["action"] = state ? state.action : undefined;
             resourceInputs["destinationCidrBlock"] = state ? state.destinationCidrBlock : undefined;
             resourceInputs["destinationPortRange"] = state ? state.destinationPortRange : undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
@@ -148,15 +159,13 @@ export class TrafficMirrorFilterIngressRule extends pulumi.CustomResource {
             if ((!args || args.protocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if ((!args || args.ruleAction === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'ruleAction'");
-            }
             if ((!args || args.sourceCidrBlock === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceCidrBlock'");
             }
             if ((!args || args.trafficMirrorFilterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'trafficMirrorFilterId'");
             }
+            resourceInputs["action"] = args ? args.action : undefined;
             resourceInputs["destinationCidrBlock"] = args ? args.destinationCidrBlock : undefined;
             resourceInputs["destinationPortRange"] = args ? args.destinationPortRange : undefined;
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
@@ -179,6 +188,10 @@ export class TrafficMirrorFilterIngressRule extends pulumi.CustomResource {
  */
 export interface TrafficMirrorFilterIngressRuleState {
     /**
+     * The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+     */
+    action?: pulumi.Input<string>;
+    /**
      * The destination CIDR block of the inbound traffic.
      */
     destinationCidrBlock?: pulumi.Input<string>;
@@ -187,7 +200,9 @@ export interface TrafficMirrorFilterIngressRuleState {
      */
     destinationPortRange?: pulumi.Input<string>;
     /**
-     * Whether to pre-check this request only. Default to: `false`
+     * Whether to PreCheck this request only. Value:
+     * - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+     * - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
@@ -199,7 +214,9 @@ export interface TrafficMirrorFilterIngressRuleState {
      */
     protocol?: pulumi.Input<string>;
     /**
-     * The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+     * . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+     *
+     * @deprecated Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.
      */
     ruleAction?: pulumi.Input<string>;
     /**
@@ -211,15 +228,17 @@ export interface TrafficMirrorFilterIngressRuleState {
      */
     sourcePortRange?: pulumi.Input<string>;
     /**
-     * The state of the inbound rule. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+     * The state of the inbound rule. `Creating`, `Created`, `Modifying` and `Deleting`.
      */
     status?: pulumi.Input<string>;
     /**
      * The ID of the filter.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     trafficMirrorFilterId?: pulumi.Input<string>;
     /**
-     * The ID of the inbound rule.
+     * The ID of the outbound rule.
      */
     trafficMirrorFilterIngressRuleId?: pulumi.Input<string>;
 }
@@ -229,6 +248,10 @@ export interface TrafficMirrorFilterIngressRuleState {
  */
 export interface TrafficMirrorFilterIngressRuleArgs {
     /**
+     * The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+     */
+    action?: pulumi.Input<string>;
+    /**
      * The destination CIDR block of the inbound traffic.
      */
     destinationCidrBlock: pulumi.Input<string>;
@@ -237,7 +260,9 @@ export interface TrafficMirrorFilterIngressRuleArgs {
      */
     destinationPortRange?: pulumi.Input<string>;
     /**
-     * Whether to pre-check this request only. Default to: `false`
+     * Whether to PreCheck this request only. Value:
+     * - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+     * - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
@@ -249,9 +274,11 @@ export interface TrafficMirrorFilterIngressRuleArgs {
      */
     protocol: pulumi.Input<string>;
     /**
-     * The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
+     * . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+     *
+     * @deprecated Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.
      */
-    ruleAction: pulumi.Input<string>;
+    ruleAction?: pulumi.Input<string>;
     /**
      * The source CIDR block of the inbound traffic.
      */
@@ -262,6 +289,8 @@ export interface TrafficMirrorFilterIngressRuleArgs {
     sourcePortRange?: pulumi.Input<string>;
     /**
      * The ID of the filter.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     trafficMirrorFilterId: pulumi.Input<string>;
 }

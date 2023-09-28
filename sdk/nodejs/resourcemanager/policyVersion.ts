@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
  * Provides a Resource Manager Policy Version resource.
  * For information about Resource Manager Policy Version and how to use it, see [What is Resource Manager Policy Version](https://www.alibabacloud.com/help/en/doc-detail/116817.htm).
  *
- * > **NOTE:** Available in v1.84.0+.
+ * > **NOTE:** Available since v1.84.0.
  *
  * > **NOTE:** It is not recommended to use this resource management policy version, it is recommended to directly use the policy resource to manage your policy. Please refer to the link for usage resource_manager_policy.
  *
@@ -20,8 +20,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexample";
  * const examplePolicy = new alicloud.resourcemanager.Policy("examplePolicy", {
- *     policyName: "tftest",
+ *     policyName: name,
  *     policyDocument: `		{
  * 			"Statement": [{
  * 				"Action": ["oss:*"],
@@ -83,9 +85,7 @@ export class PolicyVersion extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies whether to set the policy version as the default version. Default to `false`. 
-     *
-     * > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
+     * Specifies whether to set the policy version as the default version. Default to `false`.
      *
      * @deprecated Field 'is_default_version' has been deprecated from provider version 1.90.0
      */
@@ -137,9 +137,7 @@ export class PolicyVersion extends pulumi.CustomResource {
  */
 export interface PolicyVersionState {
     /**
-     * Specifies whether to set the policy version as the default version. Default to `false`. 
-     *
-     * > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
+     * Specifies whether to set the policy version as the default version. Default to `false`.
      *
      * @deprecated Field 'is_default_version' has been deprecated from provider version 1.90.0
      */
@@ -159,9 +157,7 @@ export interface PolicyVersionState {
  */
 export interface PolicyVersionArgs {
     /**
-     * Specifies whether to set the policy version as the default version. Default to `false`. 
-     *
-     * > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
+     * Specifies whether to set the policy version as the default version. Default to `false`.
      *
      * @deprecated Field 'is_default_version' has been deprecated from provider version 1.90.0
      */

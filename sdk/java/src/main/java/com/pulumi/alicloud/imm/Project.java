@@ -16,9 +16,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Intelligent Media Management Project resource.
  * 
- * For information about Intelligent Media Management Project and how to use it, see [What is Project](https://help.aliyun.com/document_detail/63496.html).
+ * For information about Intelligent Media Management Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/network-intelligence-service/latest/user-overview).
  * 
- * &gt; **NOTE:** Available in v1.134.0+.
+ * &gt; **NOTE:** Available since v1.134.0.
  * 
  * ## Example Usage
  * 
@@ -46,6 +46,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
  *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
  *             .document(&#34;&#34;&#34;
  *   {
@@ -68,7 +70,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
- *             .project(&#34;example_name&#34;)
+ *             .project(name)
  *             .serviceRole(role.name())
  *             .build());
  * 

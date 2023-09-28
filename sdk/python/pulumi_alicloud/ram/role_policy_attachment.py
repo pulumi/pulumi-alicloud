@@ -158,8 +158,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
               "Version": "1"
             }
         \"\"\",
-            description="this is a role test.",
-            force=True)
+            description="this is a role test.")
         policy = alicloud.ram.Policy("policy",
             document=\"\"\"  {
             "Statement": [
@@ -178,8 +177,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
               "Version": "1"
           }
         \"\"\",
-            description="this is a policy test",
-            force=True)
+            description="this is a policy test")
         attach = alicloud.ram.RolePolicyAttachment("attach",
             policy_name=policy.name,
             policy_type=policy.type,
@@ -235,8 +233,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
               "Version": "1"
             }
         \"\"\",
-            description="this is a role test.",
-            force=True)
+            description="this is a role test.")
         policy = alicloud.ram.Policy("policy",
             document=\"\"\"  {
             "Statement": [
@@ -255,8 +252,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
               "Version": "1"
           }
         \"\"\",
-            description="this is a policy test",
-            force=True)
+            description="this is a policy test")
         attach = alicloud.ram.RolePolicyAttachment("attach",
             policy_name=policy.name,
             policy_type=policy.type,

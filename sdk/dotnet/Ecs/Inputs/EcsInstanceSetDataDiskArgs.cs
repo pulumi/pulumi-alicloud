@@ -46,6 +46,9 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         [Input("diskSize", required: true)]
         public Input<int> DiskSize { get; set; } = null!;
 
+        /// <summary>
+        /// Encrypted the data in this disk. Default value: `false`.
+        /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
 

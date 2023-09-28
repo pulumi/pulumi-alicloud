@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
  * Provides a Resource Manager Folder resource. A folder is an organizational unit in a resource directory. You can use folders to build an organizational structure for resources.
  * For information about Resource Manager Foler and how to use it, see [What is Resource Manager Folder](https://www.alibabacloud.com/help/en/doc-detail/111221.htm).
  * 
- * &gt; **NOTE:** Available in v1.82.0+.
+ * &gt; **NOTE:** Available since v1.82.0.
  * 
  * &gt; **NOTE:** A maximum of five levels of folders can be created under the root folder.
  * 
@@ -45,8 +45,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         var example = new Folder(&#34;example&#34;, FolderArgs.builder()        
- *             .folderName(&#34;test&#34;)
+ *             .folderName(name)
  *             .build());
  * 
  *     }

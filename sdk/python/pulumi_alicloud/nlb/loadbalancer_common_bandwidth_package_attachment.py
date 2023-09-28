@@ -131,10 +131,52 @@ class LoadbalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraform-example"
-        default = alicloud.nlb.LoadbalancerCommonBandwidthPackageAttachment("default",
-            bandwidth_package_id="cbwp-2zexv44uov1m4b7xnh60j",
-            load_balancer_id="nlb-f6gdwdsnt02uzx002l")
+            name = "tf-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_zones = alicloud.nlb.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default1 = alicloud.vpc.Switch("default1",
+            vswitch_name=name,
+            cidr_block="10.4.1.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[1].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_load_balancer = alicloud.nlb.LoadBalancer("defaultLoadBalancer",
+            load_balancer_name=name,
+            resource_group_id=default_resource_groups.ids[0],
+            load_balancer_type="Network",
+            address_type="Internet",
+            address_ip_version="Ipv4",
+            vpc_id=default_network.id,
+            tags={
+                "Created": "TF",
+                "For": "example",
+            },
+            zone_mappings=[
+                alicloud.nlb.LoadBalancerZoneMappingArgs(
+                    vswitch_id=default_switch.id,
+                    zone_id=default_zones.zones[0].id,
+                ),
+                alicloud.nlb.LoadBalancerZoneMappingArgs(
+                    vswitch_id=default1.id,
+                    zone_id=default_zones.zones[1].id,
+                ),
+            ])
+        default_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("defaultCommonBandwithPackage",
+            bandwidth="2",
+            internet_charge_type="PayByBandwidth",
+            bandwidth_package_name=name,
+            description=name)
+        default_loadbalancer_common_bandwidth_package_attachment = alicloud.nlb.LoadbalancerCommonBandwidthPackageAttachment("defaultLoadbalancerCommonBandwidthPackageAttachment",
+            bandwidth_package_id=default_common_bandwith_package.id,
+            load_balancer_id=default_load_balancer.id)
         ```
 
         ## Import
@@ -174,10 +216,52 @@ class LoadbalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraform-example"
-        default = alicloud.nlb.LoadbalancerCommonBandwidthPackageAttachment("default",
-            bandwidth_package_id="cbwp-2zexv44uov1m4b7xnh60j",
-            load_balancer_id="nlb-f6gdwdsnt02uzx002l")
+            name = "tf-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_zones = alicloud.nlb.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default1 = alicloud.vpc.Switch("default1",
+            vswitch_name=name,
+            cidr_block="10.4.1.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[1].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_load_balancer = alicloud.nlb.LoadBalancer("defaultLoadBalancer",
+            load_balancer_name=name,
+            resource_group_id=default_resource_groups.ids[0],
+            load_balancer_type="Network",
+            address_type="Internet",
+            address_ip_version="Ipv4",
+            vpc_id=default_network.id,
+            tags={
+                "Created": "TF",
+                "For": "example",
+            },
+            zone_mappings=[
+                alicloud.nlb.LoadBalancerZoneMappingArgs(
+                    vswitch_id=default_switch.id,
+                    zone_id=default_zones.zones[0].id,
+                ),
+                alicloud.nlb.LoadBalancerZoneMappingArgs(
+                    vswitch_id=default1.id,
+                    zone_id=default_zones.zones[1].id,
+                ),
+            ])
+        default_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("defaultCommonBandwithPackage",
+            bandwidth="2",
+            internet_charge_type="PayByBandwidth",
+            bandwidth_package_name=name,
+            description=name)
+        default_loadbalancer_common_bandwidth_package_attachment = alicloud.nlb.LoadbalancerCommonBandwidthPackageAttachment("defaultLoadbalancerCommonBandwidthPackageAttachment",
+            bandwidth_package_id=default_common_bandwith_package.id,
+            load_balancer_id=default_load_balancer.id)
         ```
 
         ## Import

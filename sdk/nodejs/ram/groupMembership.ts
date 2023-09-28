@@ -9,40 +9,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.0.0+.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * // Create a RAM Group membership.
- * const group = new alicloud.ram.Group("group", {
- *     comments: "this is a group comments.",
- *     force: true,
- * });
- * const user = new alicloud.ram.User("user", {
- *     displayName: "user_display_name",
- *     mobile: "86-18688888888",
- *     email: "hello.uuu@aaa.com",
- *     comments: "yoyoyo",
- *     force: true,
- * });
- * const user1 = new alicloud.ram.User("user1", {
- *     displayName: "user_display_name1",
- *     mobile: "86-18688888889",
- *     email: "hello.uuu@aaa.com",
- *     comments: "yoyoyo",
- *     force: true,
- * });
- * const membership = new alicloud.ram.GroupMembership("membership", {
- *     groupName: group.name,
- *     userNames: [
- *         user.name,
- *         user1.name,
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * RAM Group membership can be imported using the id, e.g.

@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Iot Device Group and how to use it, see [What is Device Group](https://www.alibabacloud.com/help/product/30520.htm).
  * 
- * &gt; **NOTE:** Available in v1.134.0+.
+ * &gt; **NOTE:** Available since v1.134.0.
  * 
  * ## Example Usage
  * 
@@ -45,8 +45,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
  *         var example = new DeviceGroup(&#34;example&#34;, DeviceGroupArgs.builder()        
- *             .groupName(&#34;example_value&#34;)
+ *             .groupName(name)
  *             .build());
  * 
  *     }

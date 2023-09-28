@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Private Link Vpc Endpoint Connection resource.
  *
- * For information about Private Link Vpc Endpoint Connection and how to use it, see [What is Vpc Endpoint Connection](https://help.aliyun.com/document_detail/183551.html).
+ * For information about Private Link Vpc Endpoint Connection and how to use it, see [What is Vpc Endpoint Connection](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-enablevpcendpointzoneconnection).
  *
- * > **NOTE:** Available in v1.110.0+.
+ * > **NOTE:** Available since v1.110.0.
  *
  * ## Example Usage
  *
@@ -19,10 +19,48 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.privatelink.VpcEndpointServiceConnection("example", {
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const exampleZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const exampleVpcEndpointService = new alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService", {
+ *     serviceDescription: name,
+ *     connectBandwidth: 103,
+ *     autoAcceptConnection: false,
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.0.0.0/8",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.1.0.0/16",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ * });
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
+ * const exampleApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("exampleApplicationLoadBalancer", {
+ *     loadBalancerName: name,
+ *     vswitchId: exampleSwitch.id,
+ *     loadBalancerSpec: "slb.s2.small",
+ *     addressType: "intranet",
+ * });
+ * const exampleVpcEndpointServiceResource = new alicloud.privatelink.VpcEndpointServiceResource("exampleVpcEndpointServiceResource", {
+ *     serviceId: exampleVpcEndpointService.id,
+ *     resourceId: exampleApplicationLoadBalancer.id,
+ *     resourceType: "slb",
+ * });
+ * const exampleVpcEndpoint = new alicloud.privatelink.VpcEndpoint("exampleVpcEndpoint", {
+ *     serviceId: exampleVpcEndpointServiceResource.serviceId,
+ *     securityGroupIds: [exampleSecurityGroup.id],
+ *     vpcId: exampleNetwork.id,
+ *     vpcEndpointName: name,
+ * });
+ * const exampleVpcEndpointServiceConnection = new alicloud.privatelink.VpcEndpointServiceConnection("exampleVpcEndpointServiceConnection", {
+ *     endpointId: exampleVpcEndpoint.id,
+ *     serviceId: exampleVpcEndpoint.serviceId,
  *     bandwidth: 1024,
- *     endpointId: "example_value",
- *     serviceId: "example_value",
  * });
  * ```
  *

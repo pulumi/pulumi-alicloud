@@ -9,29 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about EBS Disk Replica Group and how to use it, see [What is Disk Replica Group](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/creatediskreplicagroup).
  *
- * > **NOTE:** Available in v1.187.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultRegions = alicloud.ebs.getRegions({
- *     regionId: "cn-hangzhou",
- * });
- * const defaultDiskReplicaGroup = new alicloud.ebs.DiskReplicaGroup("defaultDiskReplicaGroup", {
- *     sourceRegionId: _var.region,
- *     sourceZoneId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.zones?.[0]?.zoneId),
- *     destinationRegionId: _var.region,
- *     destinationZoneId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.zones?.[1]?.zoneId),
- *     groupName: "group_name",
- *     description: "group_description",
- *     rpo: 900,
- * });
- * ```
+ * > **NOTE:** Available since v1.187.0.
  *
  * ## Import
  *

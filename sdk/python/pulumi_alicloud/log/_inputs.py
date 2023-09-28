@@ -1020,12 +1020,10 @@ class StoreEncryptConfArgs:
         """
         :param pulumi.Input[bool] enable: enable encryption. Default `false`
         :param pulumi.Input[str] encrypt_type: Supported encryption type, only supports `default(AES)`,` m4`
-        :param pulumi.Input['StoreEncryptConfUserCmkInfoArgs'] user_cmk_info: User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
-               
+        :param pulumi.Input['StoreEncryptConfUserCmkInfoArgs'] user_cmk_info: User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `user_cmk_info` below.
                ```python
                import pulumi
                ```
-               #### Block user_cmk_info
         """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
@@ -1062,12 +1060,10 @@ class StoreEncryptConfArgs:
     @pulumi.getter(name="userCmkInfo")
     def user_cmk_info(self) -> Optional[pulumi.Input['StoreEncryptConfUserCmkInfoArgs']]:
         """
-        User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
-
+        User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `user_cmk_info` below.
         ```python
         import pulumi
         ```
-        #### Block user_cmk_info
         """
         return pulumi.get(self, "user_cmk_info")
 

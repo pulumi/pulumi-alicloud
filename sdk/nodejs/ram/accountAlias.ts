@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a RAM cloud account alias.
  *
- * > **NOTE:** Available since v1.0.0+.
+ * > **NOTE:** Available since v1.0.0.
  *
  * ## Example Usage
  *
@@ -15,8 +15,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Create a alias for cloud account.
- * const alias = new alicloud.ram.AccountAlias("alias", {accountAlias: "hallo"});
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexample";
+ * const alias = new alicloud.ram.AccountAlias("alias", {accountAlias: name});
  * ```
  *
  * ## Import

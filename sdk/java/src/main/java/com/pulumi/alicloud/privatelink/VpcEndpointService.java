@@ -19,9 +19,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Private Link Vpc Endpoint Service resource.
  * 
- * For information about Private Link Vpc Endpoint Service and how to use it, see [What is Vpc Endpoint Service](https://help.aliyun.com/document_detail/183540.html).
+ * For information about Private Link Vpc Endpoint Service and how to use it, see [What is Vpc Endpoint Service](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-createvpcendpointservice).
  * 
- * &gt; **NOTE:** Available in v1.109.0+.
+ * &gt; **NOTE:** Available since v1.109.0.
  * 
  * ## Example Usage
  * 
@@ -47,10 +47,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
  *         var example = new VpcEndpointService(&#34;example&#34;, VpcEndpointServiceArgs.builder()        
- *             .autoAcceptConnection(false)
+ *             .serviceDescription(name)
  *             .connectBandwidth(103)
- *             .serviceDescription(&#34;tftest&#34;)
+ *             .autoAcceptConnection(false)
  *             .build());
  * 
  *     }

@@ -18,10 +18,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Create a new RAM Group.
- * const group = new alicloud.ram.Group("group", {
- *     comments: "this is a group comments.",
- *     force: true,
- * });
+ * const group = new alicloud.ram.Group("group", {comments: "this is a group comments."});
  * ```
  *
  * ## Import

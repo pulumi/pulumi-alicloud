@@ -14,6 +14,3540 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ApplicationConfigMapMountDescV2 struct {
+	// The ID of the ConfigMap.
+	ConfigMapId *string `pulumi:"configMapId"`
+	// The key.
+	Key *string `pulumi:"key"`
+	// The path of the container in SAE.
+	MountPath *string `pulumi:"mountPath"`
+}
+
+// ApplicationConfigMapMountDescV2Input is an input type that accepts ApplicationConfigMapMountDescV2Args and ApplicationConfigMapMountDescV2Output values.
+// You can construct a concrete instance of `ApplicationConfigMapMountDescV2Input` via:
+//
+//	ApplicationConfigMapMountDescV2Args{...}
+type ApplicationConfigMapMountDescV2Input interface {
+	pulumi.Input
+
+	ToApplicationConfigMapMountDescV2Output() ApplicationConfigMapMountDescV2Output
+	ToApplicationConfigMapMountDescV2OutputWithContext(context.Context) ApplicationConfigMapMountDescV2Output
+}
+
+type ApplicationConfigMapMountDescV2Args struct {
+	// The ID of the ConfigMap.
+	ConfigMapId pulumi.StringPtrInput `pulumi:"configMapId"`
+	// The key.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The path of the container in SAE.
+	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
+}
+
+func (ApplicationConfigMapMountDescV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationConfigMapMountDescV2)(nil)).Elem()
+}
+
+func (i ApplicationConfigMapMountDescV2Args) ToApplicationConfigMapMountDescV2Output() ApplicationConfigMapMountDescV2Output {
+	return i.ToApplicationConfigMapMountDescV2OutputWithContext(context.Background())
+}
+
+func (i ApplicationConfigMapMountDescV2Args) ToApplicationConfigMapMountDescV2OutputWithContext(ctx context.Context) ApplicationConfigMapMountDescV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationConfigMapMountDescV2Output)
+}
+
+func (i ApplicationConfigMapMountDescV2Args) ToOutput(ctx context.Context) pulumix.Output[ApplicationConfigMapMountDescV2] {
+	return pulumix.Output[ApplicationConfigMapMountDescV2]{
+		OutputState: i.ToApplicationConfigMapMountDescV2OutputWithContext(ctx).OutputState,
+	}
+}
+
+// ApplicationConfigMapMountDescV2ArrayInput is an input type that accepts ApplicationConfigMapMountDescV2Array and ApplicationConfigMapMountDescV2ArrayOutput values.
+// You can construct a concrete instance of `ApplicationConfigMapMountDescV2ArrayInput` via:
+//
+//	ApplicationConfigMapMountDescV2Array{ ApplicationConfigMapMountDescV2Args{...} }
+type ApplicationConfigMapMountDescV2ArrayInput interface {
+	pulumi.Input
+
+	ToApplicationConfigMapMountDescV2ArrayOutput() ApplicationConfigMapMountDescV2ArrayOutput
+	ToApplicationConfigMapMountDescV2ArrayOutputWithContext(context.Context) ApplicationConfigMapMountDescV2ArrayOutput
+}
+
+type ApplicationConfigMapMountDescV2Array []ApplicationConfigMapMountDescV2Input
+
+func (ApplicationConfigMapMountDescV2Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationConfigMapMountDescV2)(nil)).Elem()
+}
+
+func (i ApplicationConfigMapMountDescV2Array) ToApplicationConfigMapMountDescV2ArrayOutput() ApplicationConfigMapMountDescV2ArrayOutput {
+	return i.ToApplicationConfigMapMountDescV2ArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationConfigMapMountDescV2Array) ToApplicationConfigMapMountDescV2ArrayOutputWithContext(ctx context.Context) ApplicationConfigMapMountDescV2ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationConfigMapMountDescV2ArrayOutput)
+}
+
+func (i ApplicationConfigMapMountDescV2Array) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationConfigMapMountDescV2] {
+	return pulumix.Output[[]ApplicationConfigMapMountDescV2]{
+		OutputState: i.ToApplicationConfigMapMountDescV2ArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ApplicationConfigMapMountDescV2Output struct{ *pulumi.OutputState }
+
+func (ApplicationConfigMapMountDescV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationConfigMapMountDescV2)(nil)).Elem()
+}
+
+func (o ApplicationConfigMapMountDescV2Output) ToApplicationConfigMapMountDescV2Output() ApplicationConfigMapMountDescV2Output {
+	return o
+}
+
+func (o ApplicationConfigMapMountDescV2Output) ToApplicationConfigMapMountDescV2OutputWithContext(ctx context.Context) ApplicationConfigMapMountDescV2Output {
+	return o
+}
+
+func (o ApplicationConfigMapMountDescV2Output) ToOutput(ctx context.Context) pulumix.Output[ApplicationConfigMapMountDescV2] {
+	return pulumix.Output[ApplicationConfigMapMountDescV2]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The ID of the ConfigMap.
+func (o ApplicationConfigMapMountDescV2Output) ConfigMapId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationConfigMapMountDescV2) *string { return v.ConfigMapId }).(pulumi.StringPtrOutput)
+}
+
+// The key.
+func (o ApplicationConfigMapMountDescV2Output) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationConfigMapMountDescV2) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The path of the container in SAE.
+func (o ApplicationConfigMapMountDescV2Output) MountPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationConfigMapMountDescV2) *string { return v.MountPath }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationConfigMapMountDescV2ArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationConfigMapMountDescV2ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationConfigMapMountDescV2)(nil)).Elem()
+}
+
+func (o ApplicationConfigMapMountDescV2ArrayOutput) ToApplicationConfigMapMountDescV2ArrayOutput() ApplicationConfigMapMountDescV2ArrayOutput {
+	return o
+}
+
+func (o ApplicationConfigMapMountDescV2ArrayOutput) ToApplicationConfigMapMountDescV2ArrayOutputWithContext(ctx context.Context) ApplicationConfigMapMountDescV2ArrayOutput {
+	return o
+}
+
+func (o ApplicationConfigMapMountDescV2ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationConfigMapMountDescV2] {
+	return pulumix.Output[[]ApplicationConfigMapMountDescV2]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplicationConfigMapMountDescV2ArrayOutput) Index(i pulumi.IntInput) ApplicationConfigMapMountDescV2Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationConfigMapMountDescV2 {
+		return vs[0].([]ApplicationConfigMapMountDescV2)[vs[1].(int)]
+	}).(ApplicationConfigMapMountDescV2Output)
+}
+
+type ApplicationCustomHostAliasV2 struct {
+	// The domain name or hostname.
+	HostName *string `pulumi:"hostName"`
+	// The IP address.
+	Ip *string `pulumi:"ip"`
+}
+
+// ApplicationCustomHostAliasV2Input is an input type that accepts ApplicationCustomHostAliasV2Args and ApplicationCustomHostAliasV2Output values.
+// You can construct a concrete instance of `ApplicationCustomHostAliasV2Input` via:
+//
+//	ApplicationCustomHostAliasV2Args{...}
+type ApplicationCustomHostAliasV2Input interface {
+	pulumi.Input
+
+	ToApplicationCustomHostAliasV2Output() ApplicationCustomHostAliasV2Output
+	ToApplicationCustomHostAliasV2OutputWithContext(context.Context) ApplicationCustomHostAliasV2Output
+}
+
+type ApplicationCustomHostAliasV2Args struct {
+	// The domain name or hostname.
+	HostName pulumi.StringPtrInput `pulumi:"hostName"`
+	// The IP address.
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+}
+
+func (ApplicationCustomHostAliasV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationCustomHostAliasV2)(nil)).Elem()
+}
+
+func (i ApplicationCustomHostAliasV2Args) ToApplicationCustomHostAliasV2Output() ApplicationCustomHostAliasV2Output {
+	return i.ToApplicationCustomHostAliasV2OutputWithContext(context.Background())
+}
+
+func (i ApplicationCustomHostAliasV2Args) ToApplicationCustomHostAliasV2OutputWithContext(ctx context.Context) ApplicationCustomHostAliasV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationCustomHostAliasV2Output)
+}
+
+func (i ApplicationCustomHostAliasV2Args) ToOutput(ctx context.Context) pulumix.Output[ApplicationCustomHostAliasV2] {
+	return pulumix.Output[ApplicationCustomHostAliasV2]{
+		OutputState: i.ToApplicationCustomHostAliasV2OutputWithContext(ctx).OutputState,
+	}
+}
+
+// ApplicationCustomHostAliasV2ArrayInput is an input type that accepts ApplicationCustomHostAliasV2Array and ApplicationCustomHostAliasV2ArrayOutput values.
+// You can construct a concrete instance of `ApplicationCustomHostAliasV2ArrayInput` via:
+//
+//	ApplicationCustomHostAliasV2Array{ ApplicationCustomHostAliasV2Args{...} }
+type ApplicationCustomHostAliasV2ArrayInput interface {
+	pulumi.Input
+
+	ToApplicationCustomHostAliasV2ArrayOutput() ApplicationCustomHostAliasV2ArrayOutput
+	ToApplicationCustomHostAliasV2ArrayOutputWithContext(context.Context) ApplicationCustomHostAliasV2ArrayOutput
+}
+
+type ApplicationCustomHostAliasV2Array []ApplicationCustomHostAliasV2Input
+
+func (ApplicationCustomHostAliasV2Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationCustomHostAliasV2)(nil)).Elem()
+}
+
+func (i ApplicationCustomHostAliasV2Array) ToApplicationCustomHostAliasV2ArrayOutput() ApplicationCustomHostAliasV2ArrayOutput {
+	return i.ToApplicationCustomHostAliasV2ArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationCustomHostAliasV2Array) ToApplicationCustomHostAliasV2ArrayOutputWithContext(ctx context.Context) ApplicationCustomHostAliasV2ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationCustomHostAliasV2ArrayOutput)
+}
+
+func (i ApplicationCustomHostAliasV2Array) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationCustomHostAliasV2] {
+	return pulumix.Output[[]ApplicationCustomHostAliasV2]{
+		OutputState: i.ToApplicationCustomHostAliasV2ArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ApplicationCustomHostAliasV2Output struct{ *pulumi.OutputState }
+
+func (ApplicationCustomHostAliasV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationCustomHostAliasV2)(nil)).Elem()
+}
+
+func (o ApplicationCustomHostAliasV2Output) ToApplicationCustomHostAliasV2Output() ApplicationCustomHostAliasV2Output {
+	return o
+}
+
+func (o ApplicationCustomHostAliasV2Output) ToApplicationCustomHostAliasV2OutputWithContext(ctx context.Context) ApplicationCustomHostAliasV2Output {
+	return o
+}
+
+func (o ApplicationCustomHostAliasV2Output) ToOutput(ctx context.Context) pulumix.Output[ApplicationCustomHostAliasV2] {
+	return pulumix.Output[ApplicationCustomHostAliasV2]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The domain name or hostname.
+func (o ApplicationCustomHostAliasV2Output) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationCustomHostAliasV2) *string { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+// The IP address.
+func (o ApplicationCustomHostAliasV2Output) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationCustomHostAliasV2) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationCustomHostAliasV2ArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationCustomHostAliasV2ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationCustomHostAliasV2)(nil)).Elem()
+}
+
+func (o ApplicationCustomHostAliasV2ArrayOutput) ToApplicationCustomHostAliasV2ArrayOutput() ApplicationCustomHostAliasV2ArrayOutput {
+	return o
+}
+
+func (o ApplicationCustomHostAliasV2ArrayOutput) ToApplicationCustomHostAliasV2ArrayOutputWithContext(ctx context.Context) ApplicationCustomHostAliasV2ArrayOutput {
+	return o
+}
+
+func (o ApplicationCustomHostAliasV2ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationCustomHostAliasV2] {
+	return pulumix.Output[[]ApplicationCustomHostAliasV2]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplicationCustomHostAliasV2ArrayOutput) Index(i pulumi.IntInput) ApplicationCustomHostAliasV2Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationCustomHostAliasV2 {
+		return vs[0].([]ApplicationCustomHostAliasV2)[vs[1].(int)]
+	}).(ApplicationCustomHostAliasV2Output)
+}
+
+type ApplicationKafkaConfigs struct {
+	// One or more logging configurations of ApsaraMQ for Kafka. See `kafkaConfigs` below.
+	KafkaConfigs []ApplicationKafkaConfigsKafkaConfig `pulumi:"kafkaConfigs"`
+	// The endpoint of the ApsaraMQ for Kafka API.
+	KafkaEndpoint *string `pulumi:"kafkaEndpoint"`
+	// The  ID of the ApsaraMQ for Kafka instance.
+	KafkaInstanceId *string `pulumi:"kafkaInstanceId"`
+}
+
+// ApplicationKafkaConfigsInput is an input type that accepts ApplicationKafkaConfigsArgs and ApplicationKafkaConfigsOutput values.
+// You can construct a concrete instance of `ApplicationKafkaConfigsInput` via:
+//
+//	ApplicationKafkaConfigsArgs{...}
+type ApplicationKafkaConfigsInput interface {
+	pulumi.Input
+
+	ToApplicationKafkaConfigsOutput() ApplicationKafkaConfigsOutput
+	ToApplicationKafkaConfigsOutputWithContext(context.Context) ApplicationKafkaConfigsOutput
+}
+
+type ApplicationKafkaConfigsArgs struct {
+	// One or more logging configurations of ApsaraMQ for Kafka. See `kafkaConfigs` below.
+	KafkaConfigs ApplicationKafkaConfigsKafkaConfigArrayInput `pulumi:"kafkaConfigs"`
+	// The endpoint of the ApsaraMQ for Kafka API.
+	KafkaEndpoint pulumi.StringPtrInput `pulumi:"kafkaEndpoint"`
+	// The  ID of the ApsaraMQ for Kafka instance.
+	KafkaInstanceId pulumi.StringPtrInput `pulumi:"kafkaInstanceId"`
+}
+
+func (ApplicationKafkaConfigsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationKafkaConfigs)(nil)).Elem()
+}
+
+func (i ApplicationKafkaConfigsArgs) ToApplicationKafkaConfigsOutput() ApplicationKafkaConfigsOutput {
+	return i.ToApplicationKafkaConfigsOutputWithContext(context.Background())
+}
+
+func (i ApplicationKafkaConfigsArgs) ToApplicationKafkaConfigsOutputWithContext(ctx context.Context) ApplicationKafkaConfigsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationKafkaConfigsOutput)
+}
+
+func (i ApplicationKafkaConfigsArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationKafkaConfigs] {
+	return pulumix.Output[ApplicationKafkaConfigs]{
+		OutputState: i.ToApplicationKafkaConfigsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ApplicationKafkaConfigsArgs) ToApplicationKafkaConfigsPtrOutput() ApplicationKafkaConfigsPtrOutput {
+	return i.ToApplicationKafkaConfigsPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationKafkaConfigsArgs) ToApplicationKafkaConfigsPtrOutputWithContext(ctx context.Context) ApplicationKafkaConfigsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationKafkaConfigsOutput).ToApplicationKafkaConfigsPtrOutputWithContext(ctx)
+}
+
+// ApplicationKafkaConfigsPtrInput is an input type that accepts ApplicationKafkaConfigsArgs, ApplicationKafkaConfigsPtr and ApplicationKafkaConfigsPtrOutput values.
+// You can construct a concrete instance of `ApplicationKafkaConfigsPtrInput` via:
+//
+//	        ApplicationKafkaConfigsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationKafkaConfigsPtrInput interface {
+	pulumi.Input
+
+	ToApplicationKafkaConfigsPtrOutput() ApplicationKafkaConfigsPtrOutput
+	ToApplicationKafkaConfigsPtrOutputWithContext(context.Context) ApplicationKafkaConfigsPtrOutput
+}
+
+type applicationKafkaConfigsPtrType ApplicationKafkaConfigsArgs
+
+func ApplicationKafkaConfigsPtr(v *ApplicationKafkaConfigsArgs) ApplicationKafkaConfigsPtrInput {
+	return (*applicationKafkaConfigsPtrType)(v)
+}
+
+func (*applicationKafkaConfigsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationKafkaConfigs)(nil)).Elem()
+}
+
+func (i *applicationKafkaConfigsPtrType) ToApplicationKafkaConfigsPtrOutput() ApplicationKafkaConfigsPtrOutput {
+	return i.ToApplicationKafkaConfigsPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationKafkaConfigsPtrType) ToApplicationKafkaConfigsPtrOutputWithContext(ctx context.Context) ApplicationKafkaConfigsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationKafkaConfigsPtrOutput)
+}
+
+func (i *applicationKafkaConfigsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationKafkaConfigs] {
+	return pulumix.Output[*ApplicationKafkaConfigs]{
+		OutputState: i.ToApplicationKafkaConfigsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ApplicationKafkaConfigsOutput struct{ *pulumi.OutputState }
+
+func (ApplicationKafkaConfigsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationKafkaConfigs)(nil)).Elem()
+}
+
+func (o ApplicationKafkaConfigsOutput) ToApplicationKafkaConfigsOutput() ApplicationKafkaConfigsOutput {
+	return o
+}
+
+func (o ApplicationKafkaConfigsOutput) ToApplicationKafkaConfigsOutputWithContext(ctx context.Context) ApplicationKafkaConfigsOutput {
+	return o
+}
+
+func (o ApplicationKafkaConfigsOutput) ToApplicationKafkaConfigsPtrOutput() ApplicationKafkaConfigsPtrOutput {
+	return o.ToApplicationKafkaConfigsPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationKafkaConfigsOutput) ToApplicationKafkaConfigsPtrOutputWithContext(ctx context.Context) ApplicationKafkaConfigsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationKafkaConfigs) *ApplicationKafkaConfigs {
+		return &v
+	}).(ApplicationKafkaConfigsPtrOutput)
+}
+
+func (o ApplicationKafkaConfigsOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationKafkaConfigs] {
+	return pulumix.Output[ApplicationKafkaConfigs]{
+		OutputState: o.OutputState,
+	}
+}
+
+// One or more logging configurations of ApsaraMQ for Kafka. See `kafkaConfigs` below.
+func (o ApplicationKafkaConfigsOutput) KafkaConfigs() ApplicationKafkaConfigsKafkaConfigArrayOutput {
+	return o.ApplyT(func(v ApplicationKafkaConfigs) []ApplicationKafkaConfigsKafkaConfig { return v.KafkaConfigs }).(ApplicationKafkaConfigsKafkaConfigArrayOutput)
+}
+
+// The endpoint of the ApsaraMQ for Kafka API.
+func (o ApplicationKafkaConfigsOutput) KafkaEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationKafkaConfigs) *string { return v.KafkaEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// The  ID of the ApsaraMQ for Kafka instance.
+func (o ApplicationKafkaConfigsOutput) KafkaInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationKafkaConfigs) *string { return v.KafkaInstanceId }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationKafkaConfigsPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationKafkaConfigsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationKafkaConfigs)(nil)).Elem()
+}
+
+func (o ApplicationKafkaConfigsPtrOutput) ToApplicationKafkaConfigsPtrOutput() ApplicationKafkaConfigsPtrOutput {
+	return o
+}
+
+func (o ApplicationKafkaConfigsPtrOutput) ToApplicationKafkaConfigsPtrOutputWithContext(ctx context.Context) ApplicationKafkaConfigsPtrOutput {
+	return o
+}
+
+func (o ApplicationKafkaConfigsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationKafkaConfigs] {
+	return pulumix.Output[*ApplicationKafkaConfigs]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplicationKafkaConfigsPtrOutput) Elem() ApplicationKafkaConfigsOutput {
+	return o.ApplyT(func(v *ApplicationKafkaConfigs) ApplicationKafkaConfigs {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationKafkaConfigs
+		return ret
+	}).(ApplicationKafkaConfigsOutput)
+}
+
+// One or more logging configurations of ApsaraMQ for Kafka. See `kafkaConfigs` below.
+func (o ApplicationKafkaConfigsPtrOutput) KafkaConfigs() ApplicationKafkaConfigsKafkaConfigArrayOutput {
+	return o.ApplyT(func(v *ApplicationKafkaConfigs) []ApplicationKafkaConfigsKafkaConfig {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaConfigs
+	}).(ApplicationKafkaConfigsKafkaConfigArrayOutput)
+}
+
+// The endpoint of the ApsaraMQ for Kafka API.
+func (o ApplicationKafkaConfigsPtrOutput) KafkaEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationKafkaConfigs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The  ID of the ApsaraMQ for Kafka instance.
+func (o ApplicationKafkaConfigsPtrOutput) KafkaInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationKafkaConfigs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaInstanceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ApplicationKafkaConfigsKafkaConfig struct {
+	// The topic of the Kafka.
+	KafkaTopic *string `pulumi:"kafkaTopic"`
+	// The path in which logs are stored.
+	LogDir *string `pulumi:"logDir"`
+	// The type of the log.
+	LogType *string `pulumi:"logType"`
+}
+
+// ApplicationKafkaConfigsKafkaConfigInput is an input type that accepts ApplicationKafkaConfigsKafkaConfigArgs and ApplicationKafkaConfigsKafkaConfigOutput values.
+// You can construct a concrete instance of `ApplicationKafkaConfigsKafkaConfigInput` via:
+//
+//	ApplicationKafkaConfigsKafkaConfigArgs{...}
+type ApplicationKafkaConfigsKafkaConfigInput interface {
+	pulumi.Input
+
+	ToApplicationKafkaConfigsKafkaConfigOutput() ApplicationKafkaConfigsKafkaConfigOutput
+	ToApplicationKafkaConfigsKafkaConfigOutputWithContext(context.Context) ApplicationKafkaConfigsKafkaConfigOutput
+}
+
+type ApplicationKafkaConfigsKafkaConfigArgs struct {
+	// The topic of the Kafka.
+	KafkaTopic pulumi.StringPtrInput `pulumi:"kafkaTopic"`
+	// The path in which logs are stored.
+	LogDir pulumi.StringPtrInput `pulumi:"logDir"`
+	// The type of the log.
+	LogType pulumi.StringPtrInput `pulumi:"logType"`
+}
+
+func (ApplicationKafkaConfigsKafkaConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationKafkaConfigsKafkaConfig)(nil)).Elem()
+}
+
+func (i ApplicationKafkaConfigsKafkaConfigArgs) ToApplicationKafkaConfigsKafkaConfigOutput() ApplicationKafkaConfigsKafkaConfigOutput {
+	return i.ToApplicationKafkaConfigsKafkaConfigOutputWithContext(context.Background())
+}
+
+func (i ApplicationKafkaConfigsKafkaConfigArgs) ToApplicationKafkaConfigsKafkaConfigOutputWithContext(ctx context.Context) ApplicationKafkaConfigsKafkaConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationKafkaConfigsKafkaConfigOutput)
+}
+
+func (i ApplicationKafkaConfigsKafkaConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationKafkaConfigsKafkaConfig] {
+	return pulumix.Output[ApplicationKafkaConfigsKafkaConfig]{
+		OutputState: i.ToApplicationKafkaConfigsKafkaConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ApplicationKafkaConfigsKafkaConfigArrayInput is an input type that accepts ApplicationKafkaConfigsKafkaConfigArray and ApplicationKafkaConfigsKafkaConfigArrayOutput values.
+// You can construct a concrete instance of `ApplicationKafkaConfigsKafkaConfigArrayInput` via:
+//
+//	ApplicationKafkaConfigsKafkaConfigArray{ ApplicationKafkaConfigsKafkaConfigArgs{...} }
+type ApplicationKafkaConfigsKafkaConfigArrayInput interface {
+	pulumi.Input
+
+	ToApplicationKafkaConfigsKafkaConfigArrayOutput() ApplicationKafkaConfigsKafkaConfigArrayOutput
+	ToApplicationKafkaConfigsKafkaConfigArrayOutputWithContext(context.Context) ApplicationKafkaConfigsKafkaConfigArrayOutput
+}
+
+type ApplicationKafkaConfigsKafkaConfigArray []ApplicationKafkaConfigsKafkaConfigInput
+
+func (ApplicationKafkaConfigsKafkaConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationKafkaConfigsKafkaConfig)(nil)).Elem()
+}
+
+func (i ApplicationKafkaConfigsKafkaConfigArray) ToApplicationKafkaConfigsKafkaConfigArrayOutput() ApplicationKafkaConfigsKafkaConfigArrayOutput {
+	return i.ToApplicationKafkaConfigsKafkaConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationKafkaConfigsKafkaConfigArray) ToApplicationKafkaConfigsKafkaConfigArrayOutputWithContext(ctx context.Context) ApplicationKafkaConfigsKafkaConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationKafkaConfigsKafkaConfigArrayOutput)
+}
+
+func (i ApplicationKafkaConfigsKafkaConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationKafkaConfigsKafkaConfig] {
+	return pulumix.Output[[]ApplicationKafkaConfigsKafkaConfig]{
+		OutputState: i.ToApplicationKafkaConfigsKafkaConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ApplicationKafkaConfigsKafkaConfigOutput struct{ *pulumi.OutputState }
+
+func (ApplicationKafkaConfigsKafkaConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationKafkaConfigsKafkaConfig)(nil)).Elem()
+}
+
+func (o ApplicationKafkaConfigsKafkaConfigOutput) ToApplicationKafkaConfigsKafkaConfigOutput() ApplicationKafkaConfigsKafkaConfigOutput {
+	return o
+}
+
+func (o ApplicationKafkaConfigsKafkaConfigOutput) ToApplicationKafkaConfigsKafkaConfigOutputWithContext(ctx context.Context) ApplicationKafkaConfigsKafkaConfigOutput {
+	return o
+}
+
+func (o ApplicationKafkaConfigsKafkaConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationKafkaConfigsKafkaConfig] {
+	return pulumix.Output[ApplicationKafkaConfigsKafkaConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The topic of the Kafka.
+func (o ApplicationKafkaConfigsKafkaConfigOutput) KafkaTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationKafkaConfigsKafkaConfig) *string { return v.KafkaTopic }).(pulumi.StringPtrOutput)
+}
+
+// The path in which logs are stored.
+func (o ApplicationKafkaConfigsKafkaConfigOutput) LogDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationKafkaConfigsKafkaConfig) *string { return v.LogDir }).(pulumi.StringPtrOutput)
+}
+
+// The type of the log.
+func (o ApplicationKafkaConfigsKafkaConfigOutput) LogType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationKafkaConfigsKafkaConfig) *string { return v.LogType }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationKafkaConfigsKafkaConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationKafkaConfigsKafkaConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationKafkaConfigsKafkaConfig)(nil)).Elem()
+}
+
+func (o ApplicationKafkaConfigsKafkaConfigArrayOutput) ToApplicationKafkaConfigsKafkaConfigArrayOutput() ApplicationKafkaConfigsKafkaConfigArrayOutput {
+	return o
+}
+
+func (o ApplicationKafkaConfigsKafkaConfigArrayOutput) ToApplicationKafkaConfigsKafkaConfigArrayOutputWithContext(ctx context.Context) ApplicationKafkaConfigsKafkaConfigArrayOutput {
+	return o
+}
+
+func (o ApplicationKafkaConfigsKafkaConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationKafkaConfigsKafkaConfig] {
+	return pulumix.Output[[]ApplicationKafkaConfigsKafkaConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplicationKafkaConfigsKafkaConfigArrayOutput) Index(i pulumi.IntInput) ApplicationKafkaConfigsKafkaConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationKafkaConfigsKafkaConfig {
+		return vs[0].([]ApplicationKafkaConfigsKafkaConfig)[vs[1].(int)]
+	}).(ApplicationKafkaConfigsKafkaConfigOutput)
+}
+
+type ApplicationLivenessV2 struct {
+	// Execute. See `exec` below.
+	Exec *ApplicationLivenessV2Exec `pulumi:"exec"`
+	// The liveness check settings of the container. See `httpGet` below.
+	HttpGet *ApplicationLivenessV2HttpGet `pulumi:"httpGet"`
+	// The delay of the health check.
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// The interval at which the health check is performed.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// The liveness check settings of the container. See `tcpSocket` below.
+	TcpSocket *ApplicationLivenessV2TcpSocket `pulumi:"tcpSocket"`
+	// The timeout period of the health check.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// ApplicationLivenessV2Input is an input type that accepts ApplicationLivenessV2Args and ApplicationLivenessV2Output values.
+// You can construct a concrete instance of `ApplicationLivenessV2Input` via:
+//
+//	ApplicationLivenessV2Args{...}
+type ApplicationLivenessV2Input interface {
+	pulumi.Input
+
+	ToApplicationLivenessV2Output() ApplicationLivenessV2Output
+	ToApplicationLivenessV2OutputWithContext(context.Context) ApplicationLivenessV2Output
+}
+
+type ApplicationLivenessV2Args struct {
+	// Execute. See `exec` below.
+	Exec ApplicationLivenessV2ExecPtrInput `pulumi:"exec"`
+	// The liveness check settings of the container. See `httpGet` below.
+	HttpGet ApplicationLivenessV2HttpGetPtrInput `pulumi:"httpGet"`
+	// The delay of the health check.
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// The interval at which the health check is performed.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// The liveness check settings of the container. See `tcpSocket` below.
+	TcpSocket ApplicationLivenessV2TcpSocketPtrInput `pulumi:"tcpSocket"`
+	// The timeout period of the health check.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (ApplicationLivenessV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLivenessV2)(nil)).Elem()
+}
+
+func (i ApplicationLivenessV2Args) ToApplicationLivenessV2Output() ApplicationLivenessV2Output {
+	return i.ToApplicationLivenessV2OutputWithContext(context.Background())
+}
+
+func (i ApplicationLivenessV2Args) ToApplicationLivenessV2OutputWithContext(ctx context.Context) ApplicationLivenessV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLivenessV2Output)
+}
+
+func (i ApplicationLivenessV2Args) ToOutput(ctx context.Context) pulumix.Output[ApplicationLivenessV2] {
+	return pulumix.Output[ApplicationLivenessV2]{
+		OutputState: i.ToApplicationLivenessV2OutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ApplicationLivenessV2Args) ToApplicationLivenessV2PtrOutput() ApplicationLivenessV2PtrOutput {
+	return i.ToApplicationLivenessV2PtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationLivenessV2Args) ToApplicationLivenessV2PtrOutputWithContext(ctx context.Context) ApplicationLivenessV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLivenessV2Output).ToApplicationLivenessV2PtrOutputWithContext(ctx)
+}
+
+// ApplicationLivenessV2PtrInput is an input type that accepts ApplicationLivenessV2Args, ApplicationLivenessV2Ptr and ApplicationLivenessV2PtrOutput values.
+// You can construct a concrete instance of `ApplicationLivenessV2PtrInput` via:
+//
+//	        ApplicationLivenessV2Args{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationLivenessV2PtrInput interface {
+	pulumi.Input
+
+	ToApplicationLivenessV2PtrOutput() ApplicationLivenessV2PtrOutput
+	ToApplicationLivenessV2PtrOutputWithContext(context.Context) ApplicationLivenessV2PtrOutput
+}
+
+type applicationLivenessV2PtrType ApplicationLivenessV2Args
+
+func ApplicationLivenessV2Ptr(v *ApplicationLivenessV2Args) ApplicationLivenessV2PtrInput {
+	return (*applicationLivenessV2PtrType)(v)
+}
+
+func (*applicationLivenessV2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLivenessV2)(nil)).Elem()
+}
+
+func (i *applicationLivenessV2PtrType) ToApplicationLivenessV2PtrOutput() ApplicationLivenessV2PtrOutput {
+	return i.ToApplicationLivenessV2PtrOutputWithContext(context.Background())
+}
+
+func (i *applicationLivenessV2PtrType) ToApplicationLivenessV2PtrOutputWithContext(ctx context.Context) ApplicationLivenessV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLivenessV2PtrOutput)
+}
+
+func (i *applicationLivenessV2PtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationLivenessV2] {
+	return pulumix.Output[*ApplicationLivenessV2]{
+		OutputState: i.ToApplicationLivenessV2PtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ApplicationLivenessV2Output struct{ *pulumi.OutputState }
+
+func (ApplicationLivenessV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLivenessV2)(nil)).Elem()
+}
+
+func (o ApplicationLivenessV2Output) ToApplicationLivenessV2Output() ApplicationLivenessV2Output {
+	return o
+}
+
+func (o ApplicationLivenessV2Output) ToApplicationLivenessV2OutputWithContext(ctx context.Context) ApplicationLivenessV2Output {
+	return o
+}
+
+func (o ApplicationLivenessV2Output) ToApplicationLivenessV2PtrOutput() ApplicationLivenessV2PtrOutput {
+	return o.ToApplicationLivenessV2PtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationLivenessV2Output) ToApplicationLivenessV2PtrOutputWithContext(ctx context.Context) ApplicationLivenessV2PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationLivenessV2) *ApplicationLivenessV2 {
+		return &v
+	}).(ApplicationLivenessV2PtrOutput)
+}
+
+func (o ApplicationLivenessV2Output) ToOutput(ctx context.Context) pulumix.Output[ApplicationLivenessV2] {
+	return pulumix.Output[ApplicationLivenessV2]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Execute. See `exec` below.
+func (o ApplicationLivenessV2Output) Exec() ApplicationLivenessV2ExecPtrOutput {
+	return o.ApplyT(func(v ApplicationLivenessV2) *ApplicationLivenessV2Exec { return v.Exec }).(ApplicationLivenessV2ExecPtrOutput)
+}
+
+// The liveness check settings of the container. See `httpGet` below.
+func (o ApplicationLivenessV2Output) HttpGet() ApplicationLivenessV2HttpGetPtrOutput {
+	return o.ApplyT(func(v ApplicationLivenessV2) *ApplicationLivenessV2HttpGet { return v.HttpGet }).(ApplicationLivenessV2HttpGetPtrOutput)
+}
+
+// The delay of the health check.
+func (o ApplicationLivenessV2Output) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationLivenessV2) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+// The interval at which the health check is performed.
+func (o ApplicationLivenessV2Output) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationLivenessV2) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The liveness check settings of the container. See `tcpSocket` below.
+func (o ApplicationLivenessV2Output) TcpSocket() ApplicationLivenessV2TcpSocketPtrOutput {
+	return o.ApplyT(func(v ApplicationLivenessV2) *ApplicationLivenessV2TcpSocket { return v.TcpSocket }).(ApplicationLivenessV2TcpSocketPtrOutput)
+}
+
+// The timeout period of the health check.
+func (o ApplicationLivenessV2Output) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationLivenessV2) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type ApplicationLivenessV2PtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLivenessV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLivenessV2)(nil)).Elem()
+}
+
+func (o ApplicationLivenessV2PtrOutput) ToApplicationLivenessV2PtrOutput() ApplicationLivenessV2PtrOutput {
+	return o
+}
+
+func (o ApplicationLivenessV2PtrOutput) ToApplicationLivenessV2PtrOutputWithContext(ctx context.Context) ApplicationLivenessV2PtrOutput {
+	return o
+}
+
+func (o ApplicationLivenessV2PtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationLivenessV2] {
+	return pulumix.Output[*ApplicationLivenessV2]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplicationLivenessV2PtrOutput) Elem() ApplicationLivenessV2Output {
+	return o.ApplyT(func(v *ApplicationLivenessV2) ApplicationLivenessV2 {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationLivenessV2
+		return ret
+	}).(ApplicationLivenessV2Output)
+}
+
+// Execute. See `exec` below.
+func (o ApplicationLivenessV2PtrOutput) Exec() ApplicationLivenessV2ExecPtrOutput {
+	return o.ApplyT(func(v *ApplicationLivenessV2) *ApplicationLivenessV2Exec {
+		if v == nil {
+			return nil
+		}
+		return v.Exec
+	}).(ApplicationLivenessV2ExecPtrOutput)
+}
+
+// The liveness check settings of the container. See `httpGet` below.
+func (o ApplicationLivenessV2PtrOutput) HttpGet() ApplicationLivenessV2HttpGetPtrOutput {
+	return o.ApplyT(func(v *ApplicationLivenessV2) *ApplicationLivenessV2HttpGet {
+		if v == nil {
+			return nil
+		}
+		return v.HttpGet
+	}).(ApplicationLivenessV2HttpGetPtrOutput)
+}
+
+// The delay of the health check.
+func (o ApplicationLivenessV2PtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationLivenessV2) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The interval at which the health check is performed.
+func (o ApplicationLivenessV2PtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationLivenessV2) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The liveness check settings of the container. See `tcpSocket` below.
+func (o ApplicationLivenessV2PtrOutput) TcpSocket() ApplicationLivenessV2TcpSocketPtrOutput {
+	return o.ApplyT(func(v *ApplicationLivenessV2) *ApplicationLivenessV2TcpSocket {
+		if v == nil {
+			return nil
+		}
+		return v.TcpSocket
+	}).(ApplicationLivenessV2TcpSocketPtrOutput)
+}
+
+// The timeout period of the health check.
+func (o ApplicationLivenessV2PtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationLivenessV2) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type ApplicationLivenessV2Exec struct {
+	// Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+	Commands []string `pulumi:"commands"`
+}
+
+// ApplicationLivenessV2ExecInput is an input type that accepts ApplicationLivenessV2ExecArgs and ApplicationLivenessV2ExecOutput values.
+// You can construct a concrete instance of `ApplicationLivenessV2ExecInput` via:
+//
+//	ApplicationLivenessV2ExecArgs{...}
+type ApplicationLivenessV2ExecInput interface {
+	pulumi.Input
+
+	ToApplicationLivenessV2ExecOutput() ApplicationLivenessV2ExecOutput
+	ToApplicationLivenessV2ExecOutputWithContext(context.Context) ApplicationLivenessV2ExecOutput
+}
+
+type ApplicationLivenessV2ExecArgs struct {
+	// Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+}
+
+func (ApplicationLivenessV2ExecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLivenessV2Exec)(nil)).Elem()
+}
+
+func (i ApplicationLivenessV2ExecArgs) ToApplicationLivenessV2ExecOutput() ApplicationLivenessV2ExecOutput {
+	return i.ToApplicationLivenessV2ExecOutputWithContext(context.Background())
+}
+
+func (i ApplicationLivenessV2ExecArgs) ToApplicationLivenessV2ExecOutputWithContext(ctx context.Context) ApplicationLivenessV2ExecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLivenessV2ExecOutput)
+}
+
+func (i ApplicationLivenessV2ExecArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationLivenessV2Exec] {
+	return pulumix.Output[ApplicationLivenessV2Exec]{
+		OutputState: i.ToApplicationLivenessV2ExecOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ApplicationLivenessV2ExecArgs) ToApplicationLivenessV2ExecPtrOutput() ApplicationLivenessV2ExecPtrOutput {
+	return i.ToApplicationLivenessV2ExecPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationLivenessV2ExecArgs) ToApplicationLivenessV2ExecPtrOutputWithContext(ctx context.Context) ApplicationLivenessV2ExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLivenessV2ExecOutput).ToApplicationLivenessV2ExecPtrOutputWithContext(ctx)
+}
+
+// ApplicationLivenessV2ExecPtrInput is an input type that accepts ApplicationLivenessV2ExecArgs, ApplicationLivenessV2ExecPtr and ApplicationLivenessV2ExecPtrOutput values.
+// You can construct a concrete instance of `ApplicationLivenessV2ExecPtrInput` via:
+//
+//	        ApplicationLivenessV2ExecArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationLivenessV2ExecPtrInput interface {
+	pulumi.Input
+
+	ToApplicationLivenessV2ExecPtrOutput() ApplicationLivenessV2ExecPtrOutput
+	ToApplicationLivenessV2ExecPtrOutputWithContext(context.Context) ApplicationLivenessV2ExecPtrOutput
+}
+
+type applicationLivenessV2ExecPtrType ApplicationLivenessV2ExecArgs
+
+func ApplicationLivenessV2ExecPtr(v *ApplicationLivenessV2ExecArgs) ApplicationLivenessV2ExecPtrInput {
+	return (*applicationLivenessV2ExecPtrType)(v)
+}
+
+func (*applicationLivenessV2ExecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLivenessV2Exec)(nil)).Elem()
+}
+
+func (i *applicationLivenessV2ExecPtrType) ToApplicationLivenessV2ExecPtrOutput() ApplicationLivenessV2ExecPtrOutput {
+	return i.ToApplicationLivenessV2ExecPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationLivenessV2ExecPtrType) ToApplicationLivenessV2ExecPtrOutputWithContext(ctx context.Context) ApplicationLivenessV2ExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLivenessV2ExecPtrOutput)
+}
+
+func (i *applicationLivenessV2ExecPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationLivenessV2Exec] {
+	return pulumix.Output[*ApplicationLivenessV2Exec]{
+		OutputState: i.ToApplicationLivenessV2ExecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ApplicationLivenessV2ExecOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLivenessV2ExecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLivenessV2Exec)(nil)).Elem()
+}
+
+func (o ApplicationLivenessV2ExecOutput) ToApplicationLivenessV2ExecOutput() ApplicationLivenessV2ExecOutput {
+	return o
+}
+
+func (o ApplicationLivenessV2ExecOutput) ToApplicationLivenessV2ExecOutputWithContext(ctx context.Context) ApplicationLivenessV2ExecOutput {
+	return o
+}
+
+func (o ApplicationLivenessV2ExecOutput) ToApplicationLivenessV2ExecPtrOutput() ApplicationLivenessV2ExecPtrOutput {
+	return o.ToApplicationLivenessV2ExecPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationLivenessV2ExecOutput) ToApplicationLivenessV2ExecPtrOutputWithContext(ctx context.Context) ApplicationLivenessV2ExecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationLivenessV2Exec) *ApplicationLivenessV2Exec {
+		return &v
+	}).(ApplicationLivenessV2ExecPtrOutput)
+}
+
+func (o ApplicationLivenessV2ExecOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationLivenessV2Exec] {
+	return pulumix.Output[ApplicationLivenessV2Exec]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+func (o ApplicationLivenessV2ExecOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApplicationLivenessV2Exec) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+type ApplicationLivenessV2ExecPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLivenessV2ExecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLivenessV2Exec)(nil)).Elem()
+}
+
+func (o ApplicationLivenessV2ExecPtrOutput) ToApplicationLivenessV2ExecPtrOutput() ApplicationLivenessV2ExecPtrOutput {
+	return o
+}
+
+func (o ApplicationLivenessV2ExecPtrOutput) ToApplicationLivenessV2ExecPtrOutputWithContext(ctx context.Context) ApplicationLivenessV2ExecPtrOutput {
+	return o
+}
+
+func (o ApplicationLivenessV2ExecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationLivenessV2Exec] {
+	return pulumix.Output[*ApplicationLivenessV2Exec]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplicationLivenessV2ExecPtrOutput) Elem() ApplicationLivenessV2ExecOutput {
+	return o.ApplyT(func(v *ApplicationLivenessV2Exec) ApplicationLivenessV2Exec {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationLivenessV2Exec
+		return ret
+	}).(ApplicationLivenessV2ExecOutput)
+}
+
+// Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+func (o ApplicationLivenessV2ExecPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApplicationLivenessV2Exec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+type ApplicationLivenessV2HttpGet struct {
+	// Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
+	IsContainKeyWord *bool `pulumi:"isContainKeyWord"`
+	// The custom keywords.
+	KeyWord *string `pulumi:"keyWord"`
+	// The request path.
+	Path *string `pulumi:"path"`
+	// The port that is used to check the status of TCP connections.
+	Port *int `pulumi:"port"`
+	// The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
+	Scheme *string `pulumi:"scheme"`
+}
+
+// ApplicationLivenessV2HttpGetInput is an input type that accepts ApplicationLivenessV2HttpGetArgs and ApplicationLivenessV2HttpGetOutput values.
+// You can construct a concrete instance of `ApplicationLivenessV2HttpGetInput` via:
+//
+//	ApplicationLivenessV2HttpGetArgs{...}
+type ApplicationLivenessV2HttpGetInput interface {
+	pulumi.Input
+
+	ToApplicationLivenessV2HttpGetOutput() ApplicationLivenessV2HttpGetOutput
+	ToApplicationLivenessV2HttpGetOutputWithContext(context.Context) ApplicationLivenessV2HttpGetOutput
+}
+
+type ApplicationLivenessV2HttpGetArgs struct {
+	// Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
+	IsContainKeyWord pulumi.BoolPtrInput `pulumi:"isContainKeyWord"`
+	// The custom keywords.
+	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
+	// The request path.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// The port that is used to check the status of TCP connections.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
+	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
+}
+
+func (ApplicationLivenessV2HttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLivenessV2HttpGet)(nil)).Elem()
+}
+
+func (i ApplicationLivenessV2HttpGetArgs) ToApplicationLivenessV2HttpGetOutput() ApplicationLivenessV2HttpGetOutput {
+	return i.ToApplicationLivenessV2HttpGetOutputWithContext(context.Background())
+}
+
+func (i ApplicationLivenessV2HttpGetArgs) ToApplicationLivenessV2HttpGetOutputWithContext(ctx context.Context) ApplicationLivenessV2HttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLivenessV2HttpGetOutput)
+}
+
+func (i ApplicationLivenessV2HttpGetArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationLivenessV2HttpGet] {
+	return pulumix.Output[ApplicationLivenessV2HttpGet]{
+		OutputState: i.ToApplicationLivenessV2HttpGetOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ApplicationLivenessV2HttpGetArgs) ToApplicationLivenessV2HttpGetPtrOutput() ApplicationLivenessV2HttpGetPtrOutput {
+	return i.ToApplicationLivenessV2HttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationLivenessV2HttpGetArgs) ToApplicationLivenessV2HttpGetPtrOutputWithContext(ctx context.Context) ApplicationLivenessV2HttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLivenessV2HttpGetOutput).ToApplicationLivenessV2HttpGetPtrOutputWithContext(ctx)
+}
+
+// ApplicationLivenessV2HttpGetPtrInput is an input type that accepts ApplicationLivenessV2HttpGetArgs, ApplicationLivenessV2HttpGetPtr and ApplicationLivenessV2HttpGetPtrOutput values.
+// You can construct a concrete instance of `ApplicationLivenessV2HttpGetPtrInput` via:
+//
+//	        ApplicationLivenessV2HttpGetArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationLivenessV2HttpGetPtrInput interface {
+	pulumi.Input
+
+	ToApplicationLivenessV2HttpGetPtrOutput() ApplicationLivenessV2HttpGetPtrOutput
+	ToApplicationLivenessV2HttpGetPtrOutputWithContext(context.Context) ApplicationLivenessV2HttpGetPtrOutput
+}
+
+type applicationLivenessV2HttpGetPtrType ApplicationLivenessV2HttpGetArgs
+
+func ApplicationLivenessV2HttpGetPtr(v *ApplicationLivenessV2HttpGetArgs) ApplicationLivenessV2HttpGetPtrInput {
+	return (*applicationLivenessV2HttpGetPtrType)(v)
+}
+
+func (*applicationLivenessV2HttpGetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLivenessV2HttpGet)(nil)).Elem()
+}
+
+func (i *applicationLivenessV2HttpGetPtrType) ToApplicationLivenessV2HttpGetPtrOutput() ApplicationLivenessV2HttpGetPtrOutput {
+	return i.ToApplicationLivenessV2HttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationLivenessV2HttpGetPtrType) ToApplicationLivenessV2HttpGetPtrOutputWithContext(ctx context.Context) ApplicationLivenessV2HttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLivenessV2HttpGetPtrOutput)
+}
+
+func (i *applicationLivenessV2HttpGetPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationLivenessV2HttpGet] {
+	return pulumix.Output[*ApplicationLivenessV2HttpGet]{
+		OutputState: i.ToApplicationLivenessV2HttpGetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ApplicationLivenessV2HttpGetOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLivenessV2HttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLivenessV2HttpGet)(nil)).Elem()
+}
+
+func (o ApplicationLivenessV2HttpGetOutput) ToApplicationLivenessV2HttpGetOutput() ApplicationLivenessV2HttpGetOutput {
+	return o
+}
+
+func (o ApplicationLivenessV2HttpGetOutput) ToApplicationLivenessV2HttpGetOutputWithContext(ctx context.Context) ApplicationLivenessV2HttpGetOutput {
+	return o
+}
+
+func (o ApplicationLivenessV2HttpGetOutput) ToApplicationLivenessV2HttpGetPtrOutput() ApplicationLivenessV2HttpGetPtrOutput {
+	return o.ToApplicationLivenessV2HttpGetPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationLivenessV2HttpGetOutput) ToApplicationLivenessV2HttpGetPtrOutputWithContext(ctx context.Context) ApplicationLivenessV2HttpGetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationLivenessV2HttpGet) *ApplicationLivenessV2HttpGet {
+		return &v
+	}).(ApplicationLivenessV2HttpGetPtrOutput)
+}
+
+func (o ApplicationLivenessV2HttpGetOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationLivenessV2HttpGet] {
+	return pulumix.Output[ApplicationLivenessV2HttpGet]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
+func (o ApplicationLivenessV2HttpGetOutput) IsContainKeyWord() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationLivenessV2HttpGet) *bool { return v.IsContainKeyWord }).(pulumi.BoolPtrOutput)
+}
+
+// The custom keywords.
+func (o ApplicationLivenessV2HttpGetOutput) KeyWord() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationLivenessV2HttpGet) *string { return v.KeyWord }).(pulumi.StringPtrOutput)
+}
+
+// The request path.
+func (o ApplicationLivenessV2HttpGetOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationLivenessV2HttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// The port that is used to check the status of TCP connections.
+func (o ApplicationLivenessV2HttpGetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationLivenessV2HttpGet) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
+func (o ApplicationLivenessV2HttpGetOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationLivenessV2HttpGet) *string { return v.Scheme }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationLivenessV2HttpGetPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLivenessV2HttpGetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLivenessV2HttpGet)(nil)).Elem()
+}
+
+func (o ApplicationLivenessV2HttpGetPtrOutput) ToApplicationLivenessV2HttpGetPtrOutput() ApplicationLivenessV2HttpGetPtrOutput {
+	return o
+}
+
+func (o ApplicationLivenessV2HttpGetPtrOutput) ToApplicationLivenessV2HttpGetPtrOutputWithContext(ctx context.Context) ApplicationLivenessV2HttpGetPtrOutput {
+	return o
+}
+
+func (o ApplicationLivenessV2HttpGetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationLivenessV2HttpGet] {
+	return pulumix.Output[*ApplicationLivenessV2HttpGet]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplicationLivenessV2HttpGetPtrOutput) Elem() ApplicationLivenessV2HttpGetOutput {
+	return o.ApplyT(func(v *ApplicationLivenessV2HttpGet) ApplicationLivenessV2HttpGet {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationLivenessV2HttpGet
+		return ret
+	}).(ApplicationLivenessV2HttpGetOutput)
+}
+
+// Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
+func (o ApplicationLivenessV2HttpGetPtrOutput) IsContainKeyWord() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationLivenessV2HttpGet) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsContainKeyWord
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The custom keywords.
+func (o ApplicationLivenessV2HttpGetPtrOutput) KeyWord() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationLivenessV2HttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyWord
+	}).(pulumi.StringPtrOutput)
+}
+
+// The request path.
+func (o ApplicationLivenessV2HttpGetPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationLivenessV2HttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port that is used to check the status of TCP connections.
+func (o ApplicationLivenessV2HttpGetPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationLivenessV2HttpGet) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
+func (o ApplicationLivenessV2HttpGetPtrOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationLivenessV2HttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scheme
+	}).(pulumi.StringPtrOutput)
+}
+
+type ApplicationLivenessV2TcpSocket struct {
+	// The port that is used to check the status of TCP connections.
+	Port *int `pulumi:"port"`
+}
+
+// ApplicationLivenessV2TcpSocketInput is an input type that accepts ApplicationLivenessV2TcpSocketArgs and ApplicationLivenessV2TcpSocketOutput values.
+// You can construct a concrete instance of `ApplicationLivenessV2TcpSocketInput` via:
+//
+//	ApplicationLivenessV2TcpSocketArgs{...}
+type ApplicationLivenessV2TcpSocketInput interface {
+	pulumi.Input
+
+	ToApplicationLivenessV2TcpSocketOutput() ApplicationLivenessV2TcpSocketOutput
+	ToApplicationLivenessV2TcpSocketOutputWithContext(context.Context) ApplicationLivenessV2TcpSocketOutput
+}
+
+type ApplicationLivenessV2TcpSocketArgs struct {
+	// The port that is used to check the status of TCP connections.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (ApplicationLivenessV2TcpSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLivenessV2TcpSocket)(nil)).Elem()
+}
+
+func (i ApplicationLivenessV2TcpSocketArgs) ToApplicationLivenessV2TcpSocketOutput() ApplicationLivenessV2TcpSocketOutput {
+	return i.ToApplicationLivenessV2TcpSocketOutputWithContext(context.Background())
+}
+
+func (i ApplicationLivenessV2TcpSocketArgs) ToApplicationLivenessV2TcpSocketOutputWithContext(ctx context.Context) ApplicationLivenessV2TcpSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLivenessV2TcpSocketOutput)
+}
+
+func (i ApplicationLivenessV2TcpSocketArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationLivenessV2TcpSocket] {
+	return pulumix.Output[ApplicationLivenessV2TcpSocket]{
+		OutputState: i.ToApplicationLivenessV2TcpSocketOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ApplicationLivenessV2TcpSocketArgs) ToApplicationLivenessV2TcpSocketPtrOutput() ApplicationLivenessV2TcpSocketPtrOutput {
+	return i.ToApplicationLivenessV2TcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationLivenessV2TcpSocketArgs) ToApplicationLivenessV2TcpSocketPtrOutputWithContext(ctx context.Context) ApplicationLivenessV2TcpSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLivenessV2TcpSocketOutput).ToApplicationLivenessV2TcpSocketPtrOutputWithContext(ctx)
+}
+
+// ApplicationLivenessV2TcpSocketPtrInput is an input type that accepts ApplicationLivenessV2TcpSocketArgs, ApplicationLivenessV2TcpSocketPtr and ApplicationLivenessV2TcpSocketPtrOutput values.
+// You can construct a concrete instance of `ApplicationLivenessV2TcpSocketPtrInput` via:
+//
+//	        ApplicationLivenessV2TcpSocketArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationLivenessV2TcpSocketPtrInput interface {
+	pulumi.Input
+
+	ToApplicationLivenessV2TcpSocketPtrOutput() ApplicationLivenessV2TcpSocketPtrOutput
+	ToApplicationLivenessV2TcpSocketPtrOutputWithContext(context.Context) ApplicationLivenessV2TcpSocketPtrOutput
+}
+
+type applicationLivenessV2TcpSocketPtrType ApplicationLivenessV2TcpSocketArgs
+
+func ApplicationLivenessV2TcpSocketPtr(v *ApplicationLivenessV2TcpSocketArgs) ApplicationLivenessV2TcpSocketPtrInput {
+	return (*applicationLivenessV2TcpSocketPtrType)(v)
+}
+
+func (*applicationLivenessV2TcpSocketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLivenessV2TcpSocket)(nil)).Elem()
+}
+
+func (i *applicationLivenessV2TcpSocketPtrType) ToApplicationLivenessV2TcpSocketPtrOutput() ApplicationLivenessV2TcpSocketPtrOutput {
+	return i.ToApplicationLivenessV2TcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationLivenessV2TcpSocketPtrType) ToApplicationLivenessV2TcpSocketPtrOutputWithContext(ctx context.Context) ApplicationLivenessV2TcpSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLivenessV2TcpSocketPtrOutput)
+}
+
+func (i *applicationLivenessV2TcpSocketPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationLivenessV2TcpSocket] {
+	return pulumix.Output[*ApplicationLivenessV2TcpSocket]{
+		OutputState: i.ToApplicationLivenessV2TcpSocketPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ApplicationLivenessV2TcpSocketOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLivenessV2TcpSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLivenessV2TcpSocket)(nil)).Elem()
+}
+
+func (o ApplicationLivenessV2TcpSocketOutput) ToApplicationLivenessV2TcpSocketOutput() ApplicationLivenessV2TcpSocketOutput {
+	return o
+}
+
+func (o ApplicationLivenessV2TcpSocketOutput) ToApplicationLivenessV2TcpSocketOutputWithContext(ctx context.Context) ApplicationLivenessV2TcpSocketOutput {
+	return o
+}
+
+func (o ApplicationLivenessV2TcpSocketOutput) ToApplicationLivenessV2TcpSocketPtrOutput() ApplicationLivenessV2TcpSocketPtrOutput {
+	return o.ToApplicationLivenessV2TcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationLivenessV2TcpSocketOutput) ToApplicationLivenessV2TcpSocketPtrOutputWithContext(ctx context.Context) ApplicationLivenessV2TcpSocketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationLivenessV2TcpSocket) *ApplicationLivenessV2TcpSocket {
+		return &v
+	}).(ApplicationLivenessV2TcpSocketPtrOutput)
+}
+
+func (o ApplicationLivenessV2TcpSocketOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationLivenessV2TcpSocket] {
+	return pulumix.Output[ApplicationLivenessV2TcpSocket]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The port that is used to check the status of TCP connections.
+func (o ApplicationLivenessV2TcpSocketOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationLivenessV2TcpSocket) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type ApplicationLivenessV2TcpSocketPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLivenessV2TcpSocketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLivenessV2TcpSocket)(nil)).Elem()
+}
+
+func (o ApplicationLivenessV2TcpSocketPtrOutput) ToApplicationLivenessV2TcpSocketPtrOutput() ApplicationLivenessV2TcpSocketPtrOutput {
+	return o
+}
+
+func (o ApplicationLivenessV2TcpSocketPtrOutput) ToApplicationLivenessV2TcpSocketPtrOutputWithContext(ctx context.Context) ApplicationLivenessV2TcpSocketPtrOutput {
+	return o
+}
+
+func (o ApplicationLivenessV2TcpSocketPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationLivenessV2TcpSocket] {
+	return pulumix.Output[*ApplicationLivenessV2TcpSocket]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplicationLivenessV2TcpSocketPtrOutput) Elem() ApplicationLivenessV2TcpSocketOutput {
+	return o.ApplyT(func(v *ApplicationLivenessV2TcpSocket) ApplicationLivenessV2TcpSocket {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationLivenessV2TcpSocket
+		return ret
+	}).(ApplicationLivenessV2TcpSocketOutput)
+}
+
+// The port that is used to check the status of TCP connections.
+func (o ApplicationLivenessV2TcpSocketPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationLivenessV2TcpSocket) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+type ApplicationNasConfig struct {
+	// The domain name of the mount target.
+	MountDomain *string `pulumi:"mountDomain"`
+	// The mount path of the container.
+	MountPath *string `pulumi:"mountPath"`
+	// The ID of the NAS file system.
+	NasId *string `pulumi:"nasId"`
+	// The directory in the NAS file system.
+	NasPath *string `pulumi:"nasPath"`
+	// Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `readOnly` to `false`, the application has the read and write permissions.
+	ReadOnly *bool `pulumi:"readOnly"`
+}
+
+// ApplicationNasConfigInput is an input type that accepts ApplicationNasConfigArgs and ApplicationNasConfigOutput values.
+// You can construct a concrete instance of `ApplicationNasConfigInput` via:
+//
+//	ApplicationNasConfigArgs{...}
+type ApplicationNasConfigInput interface {
+	pulumi.Input
+
+	ToApplicationNasConfigOutput() ApplicationNasConfigOutput
+	ToApplicationNasConfigOutputWithContext(context.Context) ApplicationNasConfigOutput
+}
+
+type ApplicationNasConfigArgs struct {
+	// The domain name of the mount target.
+	MountDomain pulumi.StringPtrInput `pulumi:"mountDomain"`
+	// The mount path of the container.
+	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
+	// The ID of the NAS file system.
+	NasId pulumi.StringPtrInput `pulumi:"nasId"`
+	// The directory in the NAS file system.
+	NasPath pulumi.StringPtrInput `pulumi:"nasPath"`
+	// Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `readOnly` to `false`, the application has the read and write permissions.
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+}
+
+func (ApplicationNasConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationNasConfig)(nil)).Elem()
+}
+
+func (i ApplicationNasConfigArgs) ToApplicationNasConfigOutput() ApplicationNasConfigOutput {
+	return i.ToApplicationNasConfigOutputWithContext(context.Background())
+}
+
+func (i ApplicationNasConfigArgs) ToApplicationNasConfigOutputWithContext(ctx context.Context) ApplicationNasConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationNasConfigOutput)
+}
+
+func (i ApplicationNasConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationNasConfig] {
+	return pulumix.Output[ApplicationNasConfig]{
+		OutputState: i.ToApplicationNasConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ApplicationNasConfigArrayInput is an input type that accepts ApplicationNasConfigArray and ApplicationNasConfigArrayOutput values.
+// You can construct a concrete instance of `ApplicationNasConfigArrayInput` via:
+//
+//	ApplicationNasConfigArray{ ApplicationNasConfigArgs{...} }
+type ApplicationNasConfigArrayInput interface {
+	pulumi.Input
+
+	ToApplicationNasConfigArrayOutput() ApplicationNasConfigArrayOutput
+	ToApplicationNasConfigArrayOutputWithContext(context.Context) ApplicationNasConfigArrayOutput
+}
+
+type ApplicationNasConfigArray []ApplicationNasConfigInput
+
+func (ApplicationNasConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationNasConfig)(nil)).Elem()
+}
+
+func (i ApplicationNasConfigArray) ToApplicationNasConfigArrayOutput() ApplicationNasConfigArrayOutput {
+	return i.ToApplicationNasConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationNasConfigArray) ToApplicationNasConfigArrayOutputWithContext(ctx context.Context) ApplicationNasConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationNasConfigArrayOutput)
+}
+
+func (i ApplicationNasConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationNasConfig] {
+	return pulumix.Output[[]ApplicationNasConfig]{
+		OutputState: i.ToApplicationNasConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ApplicationNasConfigOutput struct{ *pulumi.OutputState }
+
+func (ApplicationNasConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationNasConfig)(nil)).Elem()
+}
+
+func (o ApplicationNasConfigOutput) ToApplicationNasConfigOutput() ApplicationNasConfigOutput {
+	return o
+}
+
+func (o ApplicationNasConfigOutput) ToApplicationNasConfigOutputWithContext(ctx context.Context) ApplicationNasConfigOutput {
+	return o
+}
+
+func (o ApplicationNasConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationNasConfig] {
+	return pulumix.Output[ApplicationNasConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The domain name of the mount target.
+func (o ApplicationNasConfigOutput) MountDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationNasConfig) *string { return v.MountDomain }).(pulumi.StringPtrOutput)
+}
+
+// The mount path of the container.
+func (o ApplicationNasConfigOutput) MountPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationNasConfig) *string { return v.MountPath }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the NAS file system.
+func (o ApplicationNasConfigOutput) NasId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationNasConfig) *string { return v.NasId }).(pulumi.StringPtrOutput)
+}
+
+// The directory in the NAS file system.
+func (o ApplicationNasConfigOutput) NasPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationNasConfig) *string { return v.NasPath }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `readOnly` to `false`, the application has the read and write permissions.
+func (o ApplicationNasConfigOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationNasConfig) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+type ApplicationNasConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationNasConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationNasConfig)(nil)).Elem()
+}
+
+func (o ApplicationNasConfigArrayOutput) ToApplicationNasConfigArrayOutput() ApplicationNasConfigArrayOutput {
+	return o
+}
+
+func (o ApplicationNasConfigArrayOutput) ToApplicationNasConfigArrayOutputWithContext(ctx context.Context) ApplicationNasConfigArrayOutput {
+	return o
+}
+
+func (o ApplicationNasConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationNasConfig] {
+	return pulumix.Output[[]ApplicationNasConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplicationNasConfigArrayOutput) Index(i pulumi.IntInput) ApplicationNasConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationNasConfig {
+		return vs[0].([]ApplicationNasConfig)[vs[1].(int)]
+	}).(ApplicationNasConfigOutput)
+}
+
+type ApplicationOssMountDescsV2 struct {
+	// The name of the OSS bucket.
+	BucketName *string `pulumi:"bucketName"`
+	// The directory or object in OSS.
+	BucketPath *string `pulumi:"bucketPath"`
+	// The path of the container in SAE.
+	MountPath *string `pulumi:"mountPath"`
+	// Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
+	ReadOnly *bool `pulumi:"readOnly"`
+}
+
+// ApplicationOssMountDescsV2Input is an input type that accepts ApplicationOssMountDescsV2Args and ApplicationOssMountDescsV2Output values.
+// You can construct a concrete instance of `ApplicationOssMountDescsV2Input` via:
+//
+//	ApplicationOssMountDescsV2Args{...}
+type ApplicationOssMountDescsV2Input interface {
+	pulumi.Input
+
+	ToApplicationOssMountDescsV2Output() ApplicationOssMountDescsV2Output
+	ToApplicationOssMountDescsV2OutputWithContext(context.Context) ApplicationOssMountDescsV2Output
+}
+
+type ApplicationOssMountDescsV2Args struct {
+	// The name of the OSS bucket.
+	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
+	// The directory or object in OSS.
+	BucketPath pulumi.StringPtrInput `pulumi:"bucketPath"`
+	// The path of the container in SAE.
+	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
+	// Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+}
+
+func (ApplicationOssMountDescsV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationOssMountDescsV2)(nil)).Elem()
+}
+
+func (i ApplicationOssMountDescsV2Args) ToApplicationOssMountDescsV2Output() ApplicationOssMountDescsV2Output {
+	return i.ToApplicationOssMountDescsV2OutputWithContext(context.Background())
+}
+
+func (i ApplicationOssMountDescsV2Args) ToApplicationOssMountDescsV2OutputWithContext(ctx context.Context) ApplicationOssMountDescsV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOssMountDescsV2Output)
+}
+
+func (i ApplicationOssMountDescsV2Args) ToOutput(ctx context.Context) pulumix.Output[ApplicationOssMountDescsV2] {
+	return pulumix.Output[ApplicationOssMountDescsV2]{
+		OutputState: i.ToApplicationOssMountDescsV2OutputWithContext(ctx).OutputState,
+	}
+}
+
+// ApplicationOssMountDescsV2ArrayInput is an input type that accepts ApplicationOssMountDescsV2Array and ApplicationOssMountDescsV2ArrayOutput values.
+// You can construct a concrete instance of `ApplicationOssMountDescsV2ArrayInput` via:
+//
+//	ApplicationOssMountDescsV2Array{ ApplicationOssMountDescsV2Args{...} }
+type ApplicationOssMountDescsV2ArrayInput interface {
+	pulumi.Input
+
+	ToApplicationOssMountDescsV2ArrayOutput() ApplicationOssMountDescsV2ArrayOutput
+	ToApplicationOssMountDescsV2ArrayOutputWithContext(context.Context) ApplicationOssMountDescsV2ArrayOutput
+}
+
+type ApplicationOssMountDescsV2Array []ApplicationOssMountDescsV2Input
+
+func (ApplicationOssMountDescsV2Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationOssMountDescsV2)(nil)).Elem()
+}
+
+func (i ApplicationOssMountDescsV2Array) ToApplicationOssMountDescsV2ArrayOutput() ApplicationOssMountDescsV2ArrayOutput {
+	return i.ToApplicationOssMountDescsV2ArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationOssMountDescsV2Array) ToApplicationOssMountDescsV2ArrayOutputWithContext(ctx context.Context) ApplicationOssMountDescsV2ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOssMountDescsV2ArrayOutput)
+}
+
+func (i ApplicationOssMountDescsV2Array) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationOssMountDescsV2] {
+	return pulumix.Output[[]ApplicationOssMountDescsV2]{
+		OutputState: i.ToApplicationOssMountDescsV2ArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ApplicationOssMountDescsV2Output struct{ *pulumi.OutputState }
+
+func (ApplicationOssMountDescsV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationOssMountDescsV2)(nil)).Elem()
+}
+
+func (o ApplicationOssMountDescsV2Output) ToApplicationOssMountDescsV2Output() ApplicationOssMountDescsV2Output {
+	return o
+}
+
+func (o ApplicationOssMountDescsV2Output) ToApplicationOssMountDescsV2OutputWithContext(ctx context.Context) ApplicationOssMountDescsV2Output {
+	return o
+}
+
+func (o ApplicationOssMountDescsV2Output) ToOutput(ctx context.Context) pulumix.Output[ApplicationOssMountDescsV2] {
+	return pulumix.Output[ApplicationOssMountDescsV2]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of the OSS bucket.
+func (o ApplicationOssMountDescsV2Output) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationOssMountDescsV2) *string { return v.BucketName }).(pulumi.StringPtrOutput)
+}
+
+// The directory or object in OSS.
+func (o ApplicationOssMountDescsV2Output) BucketPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationOssMountDescsV2) *string { return v.BucketPath }).(pulumi.StringPtrOutput)
+}
+
+// The path of the container in SAE.
+func (o ApplicationOssMountDescsV2Output) MountPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationOssMountDescsV2) *string { return v.MountPath }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
+func (o ApplicationOssMountDescsV2Output) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationOssMountDescsV2) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+type ApplicationOssMountDescsV2ArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationOssMountDescsV2ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationOssMountDescsV2)(nil)).Elem()
+}
+
+func (o ApplicationOssMountDescsV2ArrayOutput) ToApplicationOssMountDescsV2ArrayOutput() ApplicationOssMountDescsV2ArrayOutput {
+	return o
+}
+
+func (o ApplicationOssMountDescsV2ArrayOutput) ToApplicationOssMountDescsV2ArrayOutputWithContext(ctx context.Context) ApplicationOssMountDescsV2ArrayOutput {
+	return o
+}
+
+func (o ApplicationOssMountDescsV2ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationOssMountDescsV2] {
+	return pulumix.Output[[]ApplicationOssMountDescsV2]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplicationOssMountDescsV2ArrayOutput) Index(i pulumi.IntInput) ApplicationOssMountDescsV2Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationOssMountDescsV2 {
+		return vs[0].([]ApplicationOssMountDescsV2)[vs[1].(int)]
+	}).(ApplicationOssMountDescsV2Output)
+}
+
+type ApplicationPostStartV2 struct {
+	// Execute. See `exec` below.
+	Exec *ApplicationPostStartV2Exec `pulumi:"exec"`
+}
+
+// ApplicationPostStartV2Input is an input type that accepts ApplicationPostStartV2Args and ApplicationPostStartV2Output values.
+// You can construct a concrete instance of `ApplicationPostStartV2Input` via:
+//
+//	ApplicationPostStartV2Args{...}
+type ApplicationPostStartV2Input interface {
+	pulumi.Input
+
+	ToApplicationPostStartV2Output() ApplicationPostStartV2Output
+	ToApplicationPostStartV2OutputWithContext(context.Context) ApplicationPostStartV2Output
+}
+
+type ApplicationPostStartV2Args struct {
+	// Execute. See `exec` below.
+	Exec ApplicationPostStartV2ExecPtrInput `pulumi:"exec"`
+}
+
+func (ApplicationPostStartV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationPostStartV2)(nil)).Elem()
+}
+
+func (i ApplicationPostStartV2Args) ToApplicationPostStartV2Output() ApplicationPostStartV2Output {
+	return i.ToApplicationPostStartV2OutputWithContext(context.Background())
+}
+
+func (i ApplicationPostStartV2Args) ToApplicationPostStartV2OutputWithContext(ctx context.Context) ApplicationPostStartV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPostStartV2Output)
+}
+
+func (i ApplicationPostStartV2Args) ToOutput(ctx context.Context) pulumix.Output[ApplicationPostStartV2] {
+	return pulumix.Output[ApplicationPostStartV2]{
+		OutputState: i.ToApplicationPostStartV2OutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ApplicationPostStartV2Args) ToApplicationPostStartV2PtrOutput() ApplicationPostStartV2PtrOutput {
+	return i.ToApplicationPostStartV2PtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationPostStartV2Args) ToApplicationPostStartV2PtrOutputWithContext(ctx context.Context) ApplicationPostStartV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPostStartV2Output).ToApplicationPostStartV2PtrOutputWithContext(ctx)
+}
+
+// ApplicationPostStartV2PtrInput is an input type that accepts ApplicationPostStartV2Args, ApplicationPostStartV2Ptr and ApplicationPostStartV2PtrOutput values.
+// You can construct a concrete instance of `ApplicationPostStartV2PtrInput` via:
+//
+//	        ApplicationPostStartV2Args{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationPostStartV2PtrInput interface {
+	pulumi.Input
+
+	ToApplicationPostStartV2PtrOutput() ApplicationPostStartV2PtrOutput
+	ToApplicationPostStartV2PtrOutputWithContext(context.Context) ApplicationPostStartV2PtrOutput
+}
+
+type applicationPostStartV2PtrType ApplicationPostStartV2Args
+
+func ApplicationPostStartV2Ptr(v *ApplicationPostStartV2Args) ApplicationPostStartV2PtrInput {
+	return (*applicationPostStartV2PtrType)(v)
+}
+
+func (*applicationPostStartV2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationPostStartV2)(nil)).Elem()
+}
+
+func (i *applicationPostStartV2PtrType) ToApplicationPostStartV2PtrOutput() ApplicationPostStartV2PtrOutput {
+	return i.ToApplicationPostStartV2PtrOutputWithContext(context.Background())
+}
+
+func (i *applicationPostStartV2PtrType) ToApplicationPostStartV2PtrOutputWithContext(ctx context.Context) ApplicationPostStartV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPostStartV2PtrOutput)
+}
+
+func (i *applicationPostStartV2PtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationPostStartV2] {
+	return pulumix.Output[*ApplicationPostStartV2]{
+		OutputState: i.ToApplicationPostStartV2PtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ApplicationPostStartV2Output struct{ *pulumi.OutputState }
+
+func (ApplicationPostStartV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationPostStartV2)(nil)).Elem()
+}
+
+func (o ApplicationPostStartV2Output) ToApplicationPostStartV2Output() ApplicationPostStartV2Output {
+	return o
+}
+
+func (o ApplicationPostStartV2Output) ToApplicationPostStartV2OutputWithContext(ctx context.Context) ApplicationPostStartV2Output {
+	return o
+}
+
+func (o ApplicationPostStartV2Output) ToApplicationPostStartV2PtrOutput() ApplicationPostStartV2PtrOutput {
+	return o.ToApplicationPostStartV2PtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationPostStartV2Output) ToApplicationPostStartV2PtrOutputWithContext(ctx context.Context) ApplicationPostStartV2PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationPostStartV2) *ApplicationPostStartV2 {
+		return &v
+	}).(ApplicationPostStartV2PtrOutput)
+}
+
+func (o ApplicationPostStartV2Output) ToOutput(ctx context.Context) pulumix.Output[ApplicationPostStartV2] {
+	return pulumix.Output[ApplicationPostStartV2]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Execute. See `exec` below.
+func (o ApplicationPostStartV2Output) Exec() ApplicationPostStartV2ExecPtrOutput {
+	return o.ApplyT(func(v ApplicationPostStartV2) *ApplicationPostStartV2Exec { return v.Exec }).(ApplicationPostStartV2ExecPtrOutput)
+}
+
+type ApplicationPostStartV2PtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationPostStartV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationPostStartV2)(nil)).Elem()
+}
+
+func (o ApplicationPostStartV2PtrOutput) ToApplicationPostStartV2PtrOutput() ApplicationPostStartV2PtrOutput {
+	return o
+}
+
+func (o ApplicationPostStartV2PtrOutput) ToApplicationPostStartV2PtrOutputWithContext(ctx context.Context) ApplicationPostStartV2PtrOutput {
+	return o
+}
+
+func (o ApplicationPostStartV2PtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationPostStartV2] {
+	return pulumix.Output[*ApplicationPostStartV2]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplicationPostStartV2PtrOutput) Elem() ApplicationPostStartV2Output {
+	return o.ApplyT(func(v *ApplicationPostStartV2) ApplicationPostStartV2 {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationPostStartV2
+		return ret
+	}).(ApplicationPostStartV2Output)
+}
+
+// Execute. See `exec` below.
+func (o ApplicationPostStartV2PtrOutput) Exec() ApplicationPostStartV2ExecPtrOutput {
+	return o.ApplyT(func(v *ApplicationPostStartV2) *ApplicationPostStartV2Exec {
+		if v == nil {
+			return nil
+		}
+		return v.Exec
+	}).(ApplicationPostStartV2ExecPtrOutput)
+}
+
+type ApplicationPostStartV2Exec struct {
+	// Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+	Commands []string `pulumi:"commands"`
+}
+
+// ApplicationPostStartV2ExecInput is an input type that accepts ApplicationPostStartV2ExecArgs and ApplicationPostStartV2ExecOutput values.
+// You can construct a concrete instance of `ApplicationPostStartV2ExecInput` via:
+//
+//	ApplicationPostStartV2ExecArgs{...}
+type ApplicationPostStartV2ExecInput interface {
+	pulumi.Input
+
+	ToApplicationPostStartV2ExecOutput() ApplicationPostStartV2ExecOutput
+	ToApplicationPostStartV2ExecOutputWithContext(context.Context) ApplicationPostStartV2ExecOutput
+}
+
+type ApplicationPostStartV2ExecArgs struct {
+	// Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+}
+
+func (ApplicationPostStartV2ExecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationPostStartV2Exec)(nil)).Elem()
+}
+
+func (i ApplicationPostStartV2ExecArgs) ToApplicationPostStartV2ExecOutput() ApplicationPostStartV2ExecOutput {
+	return i.ToApplicationPostStartV2ExecOutputWithContext(context.Background())
+}
+
+func (i ApplicationPostStartV2ExecArgs) ToApplicationPostStartV2ExecOutputWithContext(ctx context.Context) ApplicationPostStartV2ExecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPostStartV2ExecOutput)
+}
+
+func (i ApplicationPostStartV2ExecArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationPostStartV2Exec] {
+	return pulumix.Output[ApplicationPostStartV2Exec]{
+		OutputState: i.ToApplicationPostStartV2ExecOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ApplicationPostStartV2ExecArgs) ToApplicationPostStartV2ExecPtrOutput() ApplicationPostStartV2ExecPtrOutput {
+	return i.ToApplicationPostStartV2ExecPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationPostStartV2ExecArgs) ToApplicationPostStartV2ExecPtrOutputWithContext(ctx context.Context) ApplicationPostStartV2ExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPostStartV2ExecOutput).ToApplicationPostStartV2ExecPtrOutputWithContext(ctx)
+}
+
+// ApplicationPostStartV2ExecPtrInput is an input type that accepts ApplicationPostStartV2ExecArgs, ApplicationPostStartV2ExecPtr and ApplicationPostStartV2ExecPtrOutput values.
+// You can construct a concrete instance of `ApplicationPostStartV2ExecPtrInput` via:
+//
+//	        ApplicationPostStartV2ExecArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationPostStartV2ExecPtrInput interface {
+	pulumi.Input
+
+	ToApplicationPostStartV2ExecPtrOutput() ApplicationPostStartV2ExecPtrOutput
+	ToApplicationPostStartV2ExecPtrOutputWithContext(context.Context) ApplicationPostStartV2ExecPtrOutput
+}
+
+type applicationPostStartV2ExecPtrType ApplicationPostStartV2ExecArgs
+
+func ApplicationPostStartV2ExecPtr(v *ApplicationPostStartV2ExecArgs) ApplicationPostStartV2ExecPtrInput {
+	return (*applicationPostStartV2ExecPtrType)(v)
+}
+
+func (*applicationPostStartV2ExecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationPostStartV2Exec)(nil)).Elem()
+}
+
+func (i *applicationPostStartV2ExecPtrType) ToApplicationPostStartV2ExecPtrOutput() ApplicationPostStartV2ExecPtrOutput {
+	return i.ToApplicationPostStartV2ExecPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationPostStartV2ExecPtrType) ToApplicationPostStartV2ExecPtrOutputWithContext(ctx context.Context) ApplicationPostStartV2ExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPostStartV2ExecPtrOutput)
+}
+
+func (i *applicationPostStartV2ExecPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationPostStartV2Exec] {
+	return pulumix.Output[*ApplicationPostStartV2Exec]{
+		OutputState: i.ToApplicationPostStartV2ExecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ApplicationPostStartV2ExecOutput struct{ *pulumi.OutputState }
+
+func (ApplicationPostStartV2ExecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationPostStartV2Exec)(nil)).Elem()
+}
+
+func (o ApplicationPostStartV2ExecOutput) ToApplicationPostStartV2ExecOutput() ApplicationPostStartV2ExecOutput {
+	return o
+}
+
+func (o ApplicationPostStartV2ExecOutput) ToApplicationPostStartV2ExecOutputWithContext(ctx context.Context) ApplicationPostStartV2ExecOutput {
+	return o
+}
+
+func (o ApplicationPostStartV2ExecOutput) ToApplicationPostStartV2ExecPtrOutput() ApplicationPostStartV2ExecPtrOutput {
+	return o.ToApplicationPostStartV2ExecPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationPostStartV2ExecOutput) ToApplicationPostStartV2ExecPtrOutputWithContext(ctx context.Context) ApplicationPostStartV2ExecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationPostStartV2Exec) *ApplicationPostStartV2Exec {
+		return &v
+	}).(ApplicationPostStartV2ExecPtrOutput)
+}
+
+func (o ApplicationPostStartV2ExecOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationPostStartV2Exec] {
+	return pulumix.Output[ApplicationPostStartV2Exec]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+func (o ApplicationPostStartV2ExecOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApplicationPostStartV2Exec) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+type ApplicationPostStartV2ExecPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationPostStartV2ExecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationPostStartV2Exec)(nil)).Elem()
+}
+
+func (o ApplicationPostStartV2ExecPtrOutput) ToApplicationPostStartV2ExecPtrOutput() ApplicationPostStartV2ExecPtrOutput {
+	return o
+}
+
+func (o ApplicationPostStartV2ExecPtrOutput) ToApplicationPostStartV2ExecPtrOutputWithContext(ctx context.Context) ApplicationPostStartV2ExecPtrOutput {
+	return o
+}
+
+func (o ApplicationPostStartV2ExecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationPostStartV2Exec] {
+	return pulumix.Output[*ApplicationPostStartV2Exec]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplicationPostStartV2ExecPtrOutput) Elem() ApplicationPostStartV2ExecOutput {
+	return o.ApplyT(func(v *ApplicationPostStartV2Exec) ApplicationPostStartV2Exec {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationPostStartV2Exec
+		return ret
+	}).(ApplicationPostStartV2ExecOutput)
+}
+
+// Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+func (o ApplicationPostStartV2ExecPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApplicationPostStartV2Exec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+type ApplicationPreStopV2 struct {
+	// Execute. See `exec` below.
+	Exec *ApplicationPreStopV2Exec `pulumi:"exec"`
+}
+
+// ApplicationPreStopV2Input is an input type that accepts ApplicationPreStopV2Args and ApplicationPreStopV2Output values.
+// You can construct a concrete instance of `ApplicationPreStopV2Input` via:
+//
+//	ApplicationPreStopV2Args{...}
+type ApplicationPreStopV2Input interface {
+	pulumi.Input
+
+	ToApplicationPreStopV2Output() ApplicationPreStopV2Output
+	ToApplicationPreStopV2OutputWithContext(context.Context) ApplicationPreStopV2Output
+}
+
+type ApplicationPreStopV2Args struct {
+	// Execute. See `exec` below.
+	Exec ApplicationPreStopV2ExecPtrInput `pulumi:"exec"`
+}
+
+func (ApplicationPreStopV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationPreStopV2)(nil)).Elem()
+}
+
+func (i ApplicationPreStopV2Args) ToApplicationPreStopV2Output() ApplicationPreStopV2Output {
+	return i.ToApplicationPreStopV2OutputWithContext(context.Background())
+}
+
+func (i ApplicationPreStopV2Args) ToApplicationPreStopV2OutputWithContext(ctx context.Context) ApplicationPreStopV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPreStopV2Output)
+}
+
+func (i ApplicationPreStopV2Args) ToOutput(ctx context.Context) pulumix.Output[ApplicationPreStopV2] {
+	return pulumix.Output[ApplicationPreStopV2]{
+		OutputState: i.ToApplicationPreStopV2OutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ApplicationPreStopV2Args) ToApplicationPreStopV2PtrOutput() ApplicationPreStopV2PtrOutput {
+	return i.ToApplicationPreStopV2PtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationPreStopV2Args) ToApplicationPreStopV2PtrOutputWithContext(ctx context.Context) ApplicationPreStopV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPreStopV2Output).ToApplicationPreStopV2PtrOutputWithContext(ctx)
+}
+
+// ApplicationPreStopV2PtrInput is an input type that accepts ApplicationPreStopV2Args, ApplicationPreStopV2Ptr and ApplicationPreStopV2PtrOutput values.
+// You can construct a concrete instance of `ApplicationPreStopV2PtrInput` via:
+//
+//	        ApplicationPreStopV2Args{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationPreStopV2PtrInput interface {
+	pulumi.Input
+
+	ToApplicationPreStopV2PtrOutput() ApplicationPreStopV2PtrOutput
+	ToApplicationPreStopV2PtrOutputWithContext(context.Context) ApplicationPreStopV2PtrOutput
+}
+
+type applicationPreStopV2PtrType ApplicationPreStopV2Args
+
+func ApplicationPreStopV2Ptr(v *ApplicationPreStopV2Args) ApplicationPreStopV2PtrInput {
+	return (*applicationPreStopV2PtrType)(v)
+}
+
+func (*applicationPreStopV2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationPreStopV2)(nil)).Elem()
+}
+
+func (i *applicationPreStopV2PtrType) ToApplicationPreStopV2PtrOutput() ApplicationPreStopV2PtrOutput {
+	return i.ToApplicationPreStopV2PtrOutputWithContext(context.Background())
+}
+
+func (i *applicationPreStopV2PtrType) ToApplicationPreStopV2PtrOutputWithContext(ctx context.Context) ApplicationPreStopV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPreStopV2PtrOutput)
+}
+
+func (i *applicationPreStopV2PtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationPreStopV2] {
+	return pulumix.Output[*ApplicationPreStopV2]{
+		OutputState: i.ToApplicationPreStopV2PtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ApplicationPreStopV2Output struct{ *pulumi.OutputState }
+
+func (ApplicationPreStopV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationPreStopV2)(nil)).Elem()
+}
+
+func (o ApplicationPreStopV2Output) ToApplicationPreStopV2Output() ApplicationPreStopV2Output {
+	return o
+}
+
+func (o ApplicationPreStopV2Output) ToApplicationPreStopV2OutputWithContext(ctx context.Context) ApplicationPreStopV2Output {
+	return o
+}
+
+func (o ApplicationPreStopV2Output) ToApplicationPreStopV2PtrOutput() ApplicationPreStopV2PtrOutput {
+	return o.ToApplicationPreStopV2PtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationPreStopV2Output) ToApplicationPreStopV2PtrOutputWithContext(ctx context.Context) ApplicationPreStopV2PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationPreStopV2) *ApplicationPreStopV2 {
+		return &v
+	}).(ApplicationPreStopV2PtrOutput)
+}
+
+func (o ApplicationPreStopV2Output) ToOutput(ctx context.Context) pulumix.Output[ApplicationPreStopV2] {
+	return pulumix.Output[ApplicationPreStopV2]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Execute. See `exec` below.
+func (o ApplicationPreStopV2Output) Exec() ApplicationPreStopV2ExecPtrOutput {
+	return o.ApplyT(func(v ApplicationPreStopV2) *ApplicationPreStopV2Exec { return v.Exec }).(ApplicationPreStopV2ExecPtrOutput)
+}
+
+type ApplicationPreStopV2PtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationPreStopV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationPreStopV2)(nil)).Elem()
+}
+
+func (o ApplicationPreStopV2PtrOutput) ToApplicationPreStopV2PtrOutput() ApplicationPreStopV2PtrOutput {
+	return o
+}
+
+func (o ApplicationPreStopV2PtrOutput) ToApplicationPreStopV2PtrOutputWithContext(ctx context.Context) ApplicationPreStopV2PtrOutput {
+	return o
+}
+
+func (o ApplicationPreStopV2PtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationPreStopV2] {
+	return pulumix.Output[*ApplicationPreStopV2]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplicationPreStopV2PtrOutput) Elem() ApplicationPreStopV2Output {
+	return o.ApplyT(func(v *ApplicationPreStopV2) ApplicationPreStopV2 {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationPreStopV2
+		return ret
+	}).(ApplicationPreStopV2Output)
+}
+
+// Execute. See `exec` below.
+func (o ApplicationPreStopV2PtrOutput) Exec() ApplicationPreStopV2ExecPtrOutput {
+	return o.ApplyT(func(v *ApplicationPreStopV2) *ApplicationPreStopV2Exec {
+		if v == nil {
+			return nil
+		}
+		return v.Exec
+	}).(ApplicationPreStopV2ExecPtrOutput)
+}
+
+type ApplicationPreStopV2Exec struct {
+	// Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+	Commands []string `pulumi:"commands"`
+}
+
+// ApplicationPreStopV2ExecInput is an input type that accepts ApplicationPreStopV2ExecArgs and ApplicationPreStopV2ExecOutput values.
+// You can construct a concrete instance of `ApplicationPreStopV2ExecInput` via:
+//
+//	ApplicationPreStopV2ExecArgs{...}
+type ApplicationPreStopV2ExecInput interface {
+	pulumi.Input
+
+	ToApplicationPreStopV2ExecOutput() ApplicationPreStopV2ExecOutput
+	ToApplicationPreStopV2ExecOutputWithContext(context.Context) ApplicationPreStopV2ExecOutput
+}
+
+type ApplicationPreStopV2ExecArgs struct {
+	// Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+}
+
+func (ApplicationPreStopV2ExecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationPreStopV2Exec)(nil)).Elem()
+}
+
+func (i ApplicationPreStopV2ExecArgs) ToApplicationPreStopV2ExecOutput() ApplicationPreStopV2ExecOutput {
+	return i.ToApplicationPreStopV2ExecOutputWithContext(context.Background())
+}
+
+func (i ApplicationPreStopV2ExecArgs) ToApplicationPreStopV2ExecOutputWithContext(ctx context.Context) ApplicationPreStopV2ExecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPreStopV2ExecOutput)
+}
+
+func (i ApplicationPreStopV2ExecArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationPreStopV2Exec] {
+	return pulumix.Output[ApplicationPreStopV2Exec]{
+		OutputState: i.ToApplicationPreStopV2ExecOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ApplicationPreStopV2ExecArgs) ToApplicationPreStopV2ExecPtrOutput() ApplicationPreStopV2ExecPtrOutput {
+	return i.ToApplicationPreStopV2ExecPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationPreStopV2ExecArgs) ToApplicationPreStopV2ExecPtrOutputWithContext(ctx context.Context) ApplicationPreStopV2ExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPreStopV2ExecOutput).ToApplicationPreStopV2ExecPtrOutputWithContext(ctx)
+}
+
+// ApplicationPreStopV2ExecPtrInput is an input type that accepts ApplicationPreStopV2ExecArgs, ApplicationPreStopV2ExecPtr and ApplicationPreStopV2ExecPtrOutput values.
+// You can construct a concrete instance of `ApplicationPreStopV2ExecPtrInput` via:
+//
+//	        ApplicationPreStopV2ExecArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationPreStopV2ExecPtrInput interface {
+	pulumi.Input
+
+	ToApplicationPreStopV2ExecPtrOutput() ApplicationPreStopV2ExecPtrOutput
+	ToApplicationPreStopV2ExecPtrOutputWithContext(context.Context) ApplicationPreStopV2ExecPtrOutput
+}
+
+type applicationPreStopV2ExecPtrType ApplicationPreStopV2ExecArgs
+
+func ApplicationPreStopV2ExecPtr(v *ApplicationPreStopV2ExecArgs) ApplicationPreStopV2ExecPtrInput {
+	return (*applicationPreStopV2ExecPtrType)(v)
+}
+
+func (*applicationPreStopV2ExecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationPreStopV2Exec)(nil)).Elem()
+}
+
+func (i *applicationPreStopV2ExecPtrType) ToApplicationPreStopV2ExecPtrOutput() ApplicationPreStopV2ExecPtrOutput {
+	return i.ToApplicationPreStopV2ExecPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationPreStopV2ExecPtrType) ToApplicationPreStopV2ExecPtrOutputWithContext(ctx context.Context) ApplicationPreStopV2ExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPreStopV2ExecPtrOutput)
+}
+
+func (i *applicationPreStopV2ExecPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationPreStopV2Exec] {
+	return pulumix.Output[*ApplicationPreStopV2Exec]{
+		OutputState: i.ToApplicationPreStopV2ExecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ApplicationPreStopV2ExecOutput struct{ *pulumi.OutputState }
+
+func (ApplicationPreStopV2ExecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationPreStopV2Exec)(nil)).Elem()
+}
+
+func (o ApplicationPreStopV2ExecOutput) ToApplicationPreStopV2ExecOutput() ApplicationPreStopV2ExecOutput {
+	return o
+}
+
+func (o ApplicationPreStopV2ExecOutput) ToApplicationPreStopV2ExecOutputWithContext(ctx context.Context) ApplicationPreStopV2ExecOutput {
+	return o
+}
+
+func (o ApplicationPreStopV2ExecOutput) ToApplicationPreStopV2ExecPtrOutput() ApplicationPreStopV2ExecPtrOutput {
+	return o.ToApplicationPreStopV2ExecPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationPreStopV2ExecOutput) ToApplicationPreStopV2ExecPtrOutputWithContext(ctx context.Context) ApplicationPreStopV2ExecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationPreStopV2Exec) *ApplicationPreStopV2Exec {
+		return &v
+	}).(ApplicationPreStopV2ExecPtrOutput)
+}
+
+func (o ApplicationPreStopV2ExecOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationPreStopV2Exec] {
+	return pulumix.Output[ApplicationPreStopV2Exec]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+func (o ApplicationPreStopV2ExecOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApplicationPreStopV2Exec) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+type ApplicationPreStopV2ExecPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationPreStopV2ExecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationPreStopV2Exec)(nil)).Elem()
+}
+
+func (o ApplicationPreStopV2ExecPtrOutput) ToApplicationPreStopV2ExecPtrOutput() ApplicationPreStopV2ExecPtrOutput {
+	return o
+}
+
+func (o ApplicationPreStopV2ExecPtrOutput) ToApplicationPreStopV2ExecPtrOutputWithContext(ctx context.Context) ApplicationPreStopV2ExecPtrOutput {
+	return o
+}
+
+func (o ApplicationPreStopV2ExecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationPreStopV2Exec] {
+	return pulumix.Output[*ApplicationPreStopV2Exec]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplicationPreStopV2ExecPtrOutput) Elem() ApplicationPreStopV2ExecOutput {
+	return o.ApplyT(func(v *ApplicationPreStopV2Exec) ApplicationPreStopV2Exec {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationPreStopV2Exec
+		return ret
+	}).(ApplicationPreStopV2ExecOutput)
+}
+
+// Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+func (o ApplicationPreStopV2ExecPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApplicationPreStopV2Exec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+type ApplicationPvtzDiscoverySvc struct {
+	// Enables the Kubernetes Service-based registration and discovery feature.
+	Enable *bool `pulumi:"enable"`
+	// The ID of the namespace.
+	NamespaceId *string `pulumi:"namespaceId"`
+	// The port number and protocol. See `portProtocols` below.
+	PortProtocols []ApplicationPvtzDiscoverySvcPortProtocol `pulumi:"portProtocols"`
+	// The name of the Service.
+	ServiceName *string `pulumi:"serviceName"`
+}
+
+// ApplicationPvtzDiscoverySvcInput is an input type that accepts ApplicationPvtzDiscoverySvcArgs and ApplicationPvtzDiscoverySvcOutput values.
+// You can construct a concrete instance of `ApplicationPvtzDiscoverySvcInput` via:
+//
+//	ApplicationPvtzDiscoverySvcArgs{...}
+type ApplicationPvtzDiscoverySvcInput interface {
+	pulumi.Input
+
+	ToApplicationPvtzDiscoverySvcOutput() ApplicationPvtzDiscoverySvcOutput
+	ToApplicationPvtzDiscoverySvcOutputWithContext(context.Context) ApplicationPvtzDiscoverySvcOutput
+}
+
+type ApplicationPvtzDiscoverySvcArgs struct {
+	// Enables the Kubernetes Service-based registration and discovery feature.
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// The ID of the namespace.
+	NamespaceId pulumi.StringPtrInput `pulumi:"namespaceId"`
+	// The port number and protocol. See `portProtocols` below.
+	PortProtocols ApplicationPvtzDiscoverySvcPortProtocolArrayInput `pulumi:"portProtocols"`
+	// The name of the Service.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+}
+
+func (ApplicationPvtzDiscoverySvcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationPvtzDiscoverySvc)(nil)).Elem()
+}
+
+func (i ApplicationPvtzDiscoverySvcArgs) ToApplicationPvtzDiscoverySvcOutput() ApplicationPvtzDiscoverySvcOutput {
+	return i.ToApplicationPvtzDiscoverySvcOutputWithContext(context.Background())
+}
+
+func (i ApplicationPvtzDiscoverySvcArgs) ToApplicationPvtzDiscoverySvcOutputWithContext(ctx context.Context) ApplicationPvtzDiscoverySvcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPvtzDiscoverySvcOutput)
+}
+
+func (i ApplicationPvtzDiscoverySvcArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationPvtzDiscoverySvc] {
+	return pulumix.Output[ApplicationPvtzDiscoverySvc]{
+		OutputState: i.ToApplicationPvtzDiscoverySvcOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ApplicationPvtzDiscoverySvcArgs) ToApplicationPvtzDiscoverySvcPtrOutput() ApplicationPvtzDiscoverySvcPtrOutput {
+	return i.ToApplicationPvtzDiscoverySvcPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationPvtzDiscoverySvcArgs) ToApplicationPvtzDiscoverySvcPtrOutputWithContext(ctx context.Context) ApplicationPvtzDiscoverySvcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPvtzDiscoverySvcOutput).ToApplicationPvtzDiscoverySvcPtrOutputWithContext(ctx)
+}
+
+// ApplicationPvtzDiscoverySvcPtrInput is an input type that accepts ApplicationPvtzDiscoverySvcArgs, ApplicationPvtzDiscoverySvcPtr and ApplicationPvtzDiscoverySvcPtrOutput values.
+// You can construct a concrete instance of `ApplicationPvtzDiscoverySvcPtrInput` via:
+//
+//	        ApplicationPvtzDiscoverySvcArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationPvtzDiscoverySvcPtrInput interface {
+	pulumi.Input
+
+	ToApplicationPvtzDiscoverySvcPtrOutput() ApplicationPvtzDiscoverySvcPtrOutput
+	ToApplicationPvtzDiscoverySvcPtrOutputWithContext(context.Context) ApplicationPvtzDiscoverySvcPtrOutput
+}
+
+type applicationPvtzDiscoverySvcPtrType ApplicationPvtzDiscoverySvcArgs
+
+func ApplicationPvtzDiscoverySvcPtr(v *ApplicationPvtzDiscoverySvcArgs) ApplicationPvtzDiscoverySvcPtrInput {
+	return (*applicationPvtzDiscoverySvcPtrType)(v)
+}
+
+func (*applicationPvtzDiscoverySvcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationPvtzDiscoverySvc)(nil)).Elem()
+}
+
+func (i *applicationPvtzDiscoverySvcPtrType) ToApplicationPvtzDiscoverySvcPtrOutput() ApplicationPvtzDiscoverySvcPtrOutput {
+	return i.ToApplicationPvtzDiscoverySvcPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationPvtzDiscoverySvcPtrType) ToApplicationPvtzDiscoverySvcPtrOutputWithContext(ctx context.Context) ApplicationPvtzDiscoverySvcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPvtzDiscoverySvcPtrOutput)
+}
+
+func (i *applicationPvtzDiscoverySvcPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationPvtzDiscoverySvc] {
+	return pulumix.Output[*ApplicationPvtzDiscoverySvc]{
+		OutputState: i.ToApplicationPvtzDiscoverySvcPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ApplicationPvtzDiscoverySvcOutput struct{ *pulumi.OutputState }
+
+func (ApplicationPvtzDiscoverySvcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationPvtzDiscoverySvc)(nil)).Elem()
+}
+
+func (o ApplicationPvtzDiscoverySvcOutput) ToApplicationPvtzDiscoverySvcOutput() ApplicationPvtzDiscoverySvcOutput {
+	return o
+}
+
+func (o ApplicationPvtzDiscoverySvcOutput) ToApplicationPvtzDiscoverySvcOutputWithContext(ctx context.Context) ApplicationPvtzDiscoverySvcOutput {
+	return o
+}
+
+func (o ApplicationPvtzDiscoverySvcOutput) ToApplicationPvtzDiscoverySvcPtrOutput() ApplicationPvtzDiscoverySvcPtrOutput {
+	return o.ToApplicationPvtzDiscoverySvcPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationPvtzDiscoverySvcOutput) ToApplicationPvtzDiscoverySvcPtrOutputWithContext(ctx context.Context) ApplicationPvtzDiscoverySvcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationPvtzDiscoverySvc) *ApplicationPvtzDiscoverySvc {
+		return &v
+	}).(ApplicationPvtzDiscoverySvcPtrOutput)
+}
+
+func (o ApplicationPvtzDiscoverySvcOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationPvtzDiscoverySvc] {
+	return pulumix.Output[ApplicationPvtzDiscoverySvc]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Enables the Kubernetes Service-based registration and discovery feature.
+func (o ApplicationPvtzDiscoverySvcOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationPvtzDiscoverySvc) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the namespace.
+func (o ApplicationPvtzDiscoverySvcOutput) NamespaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationPvtzDiscoverySvc) *string { return v.NamespaceId }).(pulumi.StringPtrOutput)
+}
+
+// The port number and protocol. See `portProtocols` below.
+func (o ApplicationPvtzDiscoverySvcOutput) PortProtocols() ApplicationPvtzDiscoverySvcPortProtocolArrayOutput {
+	return o.ApplyT(func(v ApplicationPvtzDiscoverySvc) []ApplicationPvtzDiscoverySvcPortProtocol { return v.PortProtocols }).(ApplicationPvtzDiscoverySvcPortProtocolArrayOutput)
+}
+
+// The name of the Service.
+func (o ApplicationPvtzDiscoverySvcOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationPvtzDiscoverySvc) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationPvtzDiscoverySvcPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationPvtzDiscoverySvcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationPvtzDiscoverySvc)(nil)).Elem()
+}
+
+func (o ApplicationPvtzDiscoverySvcPtrOutput) ToApplicationPvtzDiscoverySvcPtrOutput() ApplicationPvtzDiscoverySvcPtrOutput {
+	return o
+}
+
+func (o ApplicationPvtzDiscoverySvcPtrOutput) ToApplicationPvtzDiscoverySvcPtrOutputWithContext(ctx context.Context) ApplicationPvtzDiscoverySvcPtrOutput {
+	return o
+}
+
+func (o ApplicationPvtzDiscoverySvcPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationPvtzDiscoverySvc] {
+	return pulumix.Output[*ApplicationPvtzDiscoverySvc]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplicationPvtzDiscoverySvcPtrOutput) Elem() ApplicationPvtzDiscoverySvcOutput {
+	return o.ApplyT(func(v *ApplicationPvtzDiscoverySvc) ApplicationPvtzDiscoverySvc {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationPvtzDiscoverySvc
+		return ret
+	}).(ApplicationPvtzDiscoverySvcOutput)
+}
+
+// Enables the Kubernetes Service-based registration and discovery feature.
+func (o ApplicationPvtzDiscoverySvcPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationPvtzDiscoverySvc) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the namespace.
+func (o ApplicationPvtzDiscoverySvcPtrOutput) NamespaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationPvtzDiscoverySvc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NamespaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port number and protocol. See `portProtocols` below.
+func (o ApplicationPvtzDiscoverySvcPtrOutput) PortProtocols() ApplicationPvtzDiscoverySvcPortProtocolArrayOutput {
+	return o.ApplyT(func(v *ApplicationPvtzDiscoverySvc) []ApplicationPvtzDiscoverySvcPortProtocol {
+		if v == nil {
+			return nil
+		}
+		return v.PortProtocols
+	}).(ApplicationPvtzDiscoverySvcPortProtocolArrayOutput)
+}
+
+// The name of the Service.
+func (o ApplicationPvtzDiscoverySvcPtrOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationPvtzDiscoverySvc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ApplicationPvtzDiscoverySvcPortProtocol struct {
+	// The port that is used to check the status of TCP connections.
+	Port *int `pulumi:"port"`
+	// The protocol. Valid values: `TCP` and `UDP`.
+	Protocol *string `pulumi:"protocol"`
+}
+
+// ApplicationPvtzDiscoverySvcPortProtocolInput is an input type that accepts ApplicationPvtzDiscoverySvcPortProtocolArgs and ApplicationPvtzDiscoverySvcPortProtocolOutput values.
+// You can construct a concrete instance of `ApplicationPvtzDiscoverySvcPortProtocolInput` via:
+//
+//	ApplicationPvtzDiscoverySvcPortProtocolArgs{...}
+type ApplicationPvtzDiscoverySvcPortProtocolInput interface {
+	pulumi.Input
+
+	ToApplicationPvtzDiscoverySvcPortProtocolOutput() ApplicationPvtzDiscoverySvcPortProtocolOutput
+	ToApplicationPvtzDiscoverySvcPortProtocolOutputWithContext(context.Context) ApplicationPvtzDiscoverySvcPortProtocolOutput
+}
+
+type ApplicationPvtzDiscoverySvcPortProtocolArgs struct {
+	// The port that is used to check the status of TCP connections.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The protocol. Valid values: `TCP` and `UDP`.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+}
+
+func (ApplicationPvtzDiscoverySvcPortProtocolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationPvtzDiscoverySvcPortProtocol)(nil)).Elem()
+}
+
+func (i ApplicationPvtzDiscoverySvcPortProtocolArgs) ToApplicationPvtzDiscoverySvcPortProtocolOutput() ApplicationPvtzDiscoverySvcPortProtocolOutput {
+	return i.ToApplicationPvtzDiscoverySvcPortProtocolOutputWithContext(context.Background())
+}
+
+func (i ApplicationPvtzDiscoverySvcPortProtocolArgs) ToApplicationPvtzDiscoverySvcPortProtocolOutputWithContext(ctx context.Context) ApplicationPvtzDiscoverySvcPortProtocolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPvtzDiscoverySvcPortProtocolOutput)
+}
+
+func (i ApplicationPvtzDiscoverySvcPortProtocolArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationPvtzDiscoverySvcPortProtocol] {
+	return pulumix.Output[ApplicationPvtzDiscoverySvcPortProtocol]{
+		OutputState: i.ToApplicationPvtzDiscoverySvcPortProtocolOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ApplicationPvtzDiscoverySvcPortProtocolArrayInput is an input type that accepts ApplicationPvtzDiscoverySvcPortProtocolArray and ApplicationPvtzDiscoverySvcPortProtocolArrayOutput values.
+// You can construct a concrete instance of `ApplicationPvtzDiscoverySvcPortProtocolArrayInput` via:
+//
+//	ApplicationPvtzDiscoverySvcPortProtocolArray{ ApplicationPvtzDiscoverySvcPortProtocolArgs{...} }
+type ApplicationPvtzDiscoverySvcPortProtocolArrayInput interface {
+	pulumi.Input
+
+	ToApplicationPvtzDiscoverySvcPortProtocolArrayOutput() ApplicationPvtzDiscoverySvcPortProtocolArrayOutput
+	ToApplicationPvtzDiscoverySvcPortProtocolArrayOutputWithContext(context.Context) ApplicationPvtzDiscoverySvcPortProtocolArrayOutput
+}
+
+type ApplicationPvtzDiscoverySvcPortProtocolArray []ApplicationPvtzDiscoverySvcPortProtocolInput
+
+func (ApplicationPvtzDiscoverySvcPortProtocolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationPvtzDiscoverySvcPortProtocol)(nil)).Elem()
+}
+
+func (i ApplicationPvtzDiscoverySvcPortProtocolArray) ToApplicationPvtzDiscoverySvcPortProtocolArrayOutput() ApplicationPvtzDiscoverySvcPortProtocolArrayOutput {
+	return i.ToApplicationPvtzDiscoverySvcPortProtocolArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationPvtzDiscoverySvcPortProtocolArray) ToApplicationPvtzDiscoverySvcPortProtocolArrayOutputWithContext(ctx context.Context) ApplicationPvtzDiscoverySvcPortProtocolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPvtzDiscoverySvcPortProtocolArrayOutput)
+}
+
+func (i ApplicationPvtzDiscoverySvcPortProtocolArray) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationPvtzDiscoverySvcPortProtocol] {
+	return pulumix.Output[[]ApplicationPvtzDiscoverySvcPortProtocol]{
+		OutputState: i.ToApplicationPvtzDiscoverySvcPortProtocolArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ApplicationPvtzDiscoverySvcPortProtocolOutput struct{ *pulumi.OutputState }
+
+func (ApplicationPvtzDiscoverySvcPortProtocolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationPvtzDiscoverySvcPortProtocol)(nil)).Elem()
+}
+
+func (o ApplicationPvtzDiscoverySvcPortProtocolOutput) ToApplicationPvtzDiscoverySvcPortProtocolOutput() ApplicationPvtzDiscoverySvcPortProtocolOutput {
+	return o
+}
+
+func (o ApplicationPvtzDiscoverySvcPortProtocolOutput) ToApplicationPvtzDiscoverySvcPortProtocolOutputWithContext(ctx context.Context) ApplicationPvtzDiscoverySvcPortProtocolOutput {
+	return o
+}
+
+func (o ApplicationPvtzDiscoverySvcPortProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationPvtzDiscoverySvcPortProtocol] {
+	return pulumix.Output[ApplicationPvtzDiscoverySvcPortProtocol]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The port that is used to check the status of TCP connections.
+func (o ApplicationPvtzDiscoverySvcPortProtocolOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationPvtzDiscoverySvcPortProtocol) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The protocol. Valid values: `TCP` and `UDP`.
+func (o ApplicationPvtzDiscoverySvcPortProtocolOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationPvtzDiscoverySvcPortProtocol) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationPvtzDiscoverySvcPortProtocolArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationPvtzDiscoverySvcPortProtocolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationPvtzDiscoverySvcPortProtocol)(nil)).Elem()
+}
+
+func (o ApplicationPvtzDiscoverySvcPortProtocolArrayOutput) ToApplicationPvtzDiscoverySvcPortProtocolArrayOutput() ApplicationPvtzDiscoverySvcPortProtocolArrayOutput {
+	return o
+}
+
+func (o ApplicationPvtzDiscoverySvcPortProtocolArrayOutput) ToApplicationPvtzDiscoverySvcPortProtocolArrayOutputWithContext(ctx context.Context) ApplicationPvtzDiscoverySvcPortProtocolArrayOutput {
+	return o
+}
+
+func (o ApplicationPvtzDiscoverySvcPortProtocolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationPvtzDiscoverySvcPortProtocol] {
+	return pulumix.Output[[]ApplicationPvtzDiscoverySvcPortProtocol]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplicationPvtzDiscoverySvcPortProtocolArrayOutput) Index(i pulumi.IntInput) ApplicationPvtzDiscoverySvcPortProtocolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationPvtzDiscoverySvcPortProtocol {
+		return vs[0].([]ApplicationPvtzDiscoverySvcPortProtocol)[vs[1].(int)]
+	}).(ApplicationPvtzDiscoverySvcPortProtocolOutput)
+}
+
+type ApplicationReadinessV2 struct {
+	// Execute. See `exec` below.
+	Exec *ApplicationReadinessV2Exec `pulumi:"exec"`
+	// The liveness check settings of the container. See `httpGet` below.
+	HttpGet *ApplicationReadinessV2HttpGet `pulumi:"httpGet"`
+	// The delay of the health check.
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// The interval at which the health check is performed.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// The liveness check settings of the container. See `tcpSocket` below.
+	TcpSocket *ApplicationReadinessV2TcpSocket `pulumi:"tcpSocket"`
+	// The timeout period of the health check.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// ApplicationReadinessV2Input is an input type that accepts ApplicationReadinessV2Args and ApplicationReadinessV2Output values.
+// You can construct a concrete instance of `ApplicationReadinessV2Input` via:
+//
+//	ApplicationReadinessV2Args{...}
+type ApplicationReadinessV2Input interface {
+	pulumi.Input
+
+	ToApplicationReadinessV2Output() ApplicationReadinessV2Output
+	ToApplicationReadinessV2OutputWithContext(context.Context) ApplicationReadinessV2Output
+}
+
+type ApplicationReadinessV2Args struct {
+	// Execute. See `exec` below.
+	Exec ApplicationReadinessV2ExecPtrInput `pulumi:"exec"`
+	// The liveness check settings of the container. See `httpGet` below.
+	HttpGet ApplicationReadinessV2HttpGetPtrInput `pulumi:"httpGet"`
+	// The delay of the health check.
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// The interval at which the health check is performed.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// The liveness check settings of the container. See `tcpSocket` below.
+	TcpSocket ApplicationReadinessV2TcpSocketPtrInput `pulumi:"tcpSocket"`
+	// The timeout period of the health check.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (ApplicationReadinessV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationReadinessV2)(nil)).Elem()
+}
+
+func (i ApplicationReadinessV2Args) ToApplicationReadinessV2Output() ApplicationReadinessV2Output {
+	return i.ToApplicationReadinessV2OutputWithContext(context.Background())
+}
+
+func (i ApplicationReadinessV2Args) ToApplicationReadinessV2OutputWithContext(ctx context.Context) ApplicationReadinessV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationReadinessV2Output)
+}
+
+func (i ApplicationReadinessV2Args) ToOutput(ctx context.Context) pulumix.Output[ApplicationReadinessV2] {
+	return pulumix.Output[ApplicationReadinessV2]{
+		OutputState: i.ToApplicationReadinessV2OutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ApplicationReadinessV2Args) ToApplicationReadinessV2PtrOutput() ApplicationReadinessV2PtrOutput {
+	return i.ToApplicationReadinessV2PtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationReadinessV2Args) ToApplicationReadinessV2PtrOutputWithContext(ctx context.Context) ApplicationReadinessV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationReadinessV2Output).ToApplicationReadinessV2PtrOutputWithContext(ctx)
+}
+
+// ApplicationReadinessV2PtrInput is an input type that accepts ApplicationReadinessV2Args, ApplicationReadinessV2Ptr and ApplicationReadinessV2PtrOutput values.
+// You can construct a concrete instance of `ApplicationReadinessV2PtrInput` via:
+//
+//	        ApplicationReadinessV2Args{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationReadinessV2PtrInput interface {
+	pulumi.Input
+
+	ToApplicationReadinessV2PtrOutput() ApplicationReadinessV2PtrOutput
+	ToApplicationReadinessV2PtrOutputWithContext(context.Context) ApplicationReadinessV2PtrOutput
+}
+
+type applicationReadinessV2PtrType ApplicationReadinessV2Args
+
+func ApplicationReadinessV2Ptr(v *ApplicationReadinessV2Args) ApplicationReadinessV2PtrInput {
+	return (*applicationReadinessV2PtrType)(v)
+}
+
+func (*applicationReadinessV2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationReadinessV2)(nil)).Elem()
+}
+
+func (i *applicationReadinessV2PtrType) ToApplicationReadinessV2PtrOutput() ApplicationReadinessV2PtrOutput {
+	return i.ToApplicationReadinessV2PtrOutputWithContext(context.Background())
+}
+
+func (i *applicationReadinessV2PtrType) ToApplicationReadinessV2PtrOutputWithContext(ctx context.Context) ApplicationReadinessV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationReadinessV2PtrOutput)
+}
+
+func (i *applicationReadinessV2PtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationReadinessV2] {
+	return pulumix.Output[*ApplicationReadinessV2]{
+		OutputState: i.ToApplicationReadinessV2PtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ApplicationReadinessV2Output struct{ *pulumi.OutputState }
+
+func (ApplicationReadinessV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationReadinessV2)(nil)).Elem()
+}
+
+func (o ApplicationReadinessV2Output) ToApplicationReadinessV2Output() ApplicationReadinessV2Output {
+	return o
+}
+
+func (o ApplicationReadinessV2Output) ToApplicationReadinessV2OutputWithContext(ctx context.Context) ApplicationReadinessV2Output {
+	return o
+}
+
+func (o ApplicationReadinessV2Output) ToApplicationReadinessV2PtrOutput() ApplicationReadinessV2PtrOutput {
+	return o.ToApplicationReadinessV2PtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationReadinessV2Output) ToApplicationReadinessV2PtrOutputWithContext(ctx context.Context) ApplicationReadinessV2PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationReadinessV2) *ApplicationReadinessV2 {
+		return &v
+	}).(ApplicationReadinessV2PtrOutput)
+}
+
+func (o ApplicationReadinessV2Output) ToOutput(ctx context.Context) pulumix.Output[ApplicationReadinessV2] {
+	return pulumix.Output[ApplicationReadinessV2]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Execute. See `exec` below.
+func (o ApplicationReadinessV2Output) Exec() ApplicationReadinessV2ExecPtrOutput {
+	return o.ApplyT(func(v ApplicationReadinessV2) *ApplicationReadinessV2Exec { return v.Exec }).(ApplicationReadinessV2ExecPtrOutput)
+}
+
+// The liveness check settings of the container. See `httpGet` below.
+func (o ApplicationReadinessV2Output) HttpGet() ApplicationReadinessV2HttpGetPtrOutput {
+	return o.ApplyT(func(v ApplicationReadinessV2) *ApplicationReadinessV2HttpGet { return v.HttpGet }).(ApplicationReadinessV2HttpGetPtrOutput)
+}
+
+// The delay of the health check.
+func (o ApplicationReadinessV2Output) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationReadinessV2) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+// The interval at which the health check is performed.
+func (o ApplicationReadinessV2Output) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationReadinessV2) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The liveness check settings of the container. See `tcpSocket` below.
+func (o ApplicationReadinessV2Output) TcpSocket() ApplicationReadinessV2TcpSocketPtrOutput {
+	return o.ApplyT(func(v ApplicationReadinessV2) *ApplicationReadinessV2TcpSocket { return v.TcpSocket }).(ApplicationReadinessV2TcpSocketPtrOutput)
+}
+
+// The timeout period of the health check.
+func (o ApplicationReadinessV2Output) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationReadinessV2) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type ApplicationReadinessV2PtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationReadinessV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationReadinessV2)(nil)).Elem()
+}
+
+func (o ApplicationReadinessV2PtrOutput) ToApplicationReadinessV2PtrOutput() ApplicationReadinessV2PtrOutput {
+	return o
+}
+
+func (o ApplicationReadinessV2PtrOutput) ToApplicationReadinessV2PtrOutputWithContext(ctx context.Context) ApplicationReadinessV2PtrOutput {
+	return o
+}
+
+func (o ApplicationReadinessV2PtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationReadinessV2] {
+	return pulumix.Output[*ApplicationReadinessV2]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplicationReadinessV2PtrOutput) Elem() ApplicationReadinessV2Output {
+	return o.ApplyT(func(v *ApplicationReadinessV2) ApplicationReadinessV2 {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationReadinessV2
+		return ret
+	}).(ApplicationReadinessV2Output)
+}
+
+// Execute. See `exec` below.
+func (o ApplicationReadinessV2PtrOutput) Exec() ApplicationReadinessV2ExecPtrOutput {
+	return o.ApplyT(func(v *ApplicationReadinessV2) *ApplicationReadinessV2Exec {
+		if v == nil {
+			return nil
+		}
+		return v.Exec
+	}).(ApplicationReadinessV2ExecPtrOutput)
+}
+
+// The liveness check settings of the container. See `httpGet` below.
+func (o ApplicationReadinessV2PtrOutput) HttpGet() ApplicationReadinessV2HttpGetPtrOutput {
+	return o.ApplyT(func(v *ApplicationReadinessV2) *ApplicationReadinessV2HttpGet {
+		if v == nil {
+			return nil
+		}
+		return v.HttpGet
+	}).(ApplicationReadinessV2HttpGetPtrOutput)
+}
+
+// The delay of the health check.
+func (o ApplicationReadinessV2PtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationReadinessV2) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The interval at which the health check is performed.
+func (o ApplicationReadinessV2PtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationReadinessV2) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The liveness check settings of the container. See `tcpSocket` below.
+func (o ApplicationReadinessV2PtrOutput) TcpSocket() ApplicationReadinessV2TcpSocketPtrOutput {
+	return o.ApplyT(func(v *ApplicationReadinessV2) *ApplicationReadinessV2TcpSocket {
+		if v == nil {
+			return nil
+		}
+		return v.TcpSocket
+	}).(ApplicationReadinessV2TcpSocketPtrOutput)
+}
+
+// The timeout period of the health check.
+func (o ApplicationReadinessV2PtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationReadinessV2) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type ApplicationReadinessV2Exec struct {
+	// Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+	Commands []string `pulumi:"commands"`
+}
+
+// ApplicationReadinessV2ExecInput is an input type that accepts ApplicationReadinessV2ExecArgs and ApplicationReadinessV2ExecOutput values.
+// You can construct a concrete instance of `ApplicationReadinessV2ExecInput` via:
+//
+//	ApplicationReadinessV2ExecArgs{...}
+type ApplicationReadinessV2ExecInput interface {
+	pulumi.Input
+
+	ToApplicationReadinessV2ExecOutput() ApplicationReadinessV2ExecOutput
+	ToApplicationReadinessV2ExecOutputWithContext(context.Context) ApplicationReadinessV2ExecOutput
+}
+
+type ApplicationReadinessV2ExecArgs struct {
+	// Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+}
+
+func (ApplicationReadinessV2ExecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationReadinessV2Exec)(nil)).Elem()
+}
+
+func (i ApplicationReadinessV2ExecArgs) ToApplicationReadinessV2ExecOutput() ApplicationReadinessV2ExecOutput {
+	return i.ToApplicationReadinessV2ExecOutputWithContext(context.Background())
+}
+
+func (i ApplicationReadinessV2ExecArgs) ToApplicationReadinessV2ExecOutputWithContext(ctx context.Context) ApplicationReadinessV2ExecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationReadinessV2ExecOutput)
+}
+
+func (i ApplicationReadinessV2ExecArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationReadinessV2Exec] {
+	return pulumix.Output[ApplicationReadinessV2Exec]{
+		OutputState: i.ToApplicationReadinessV2ExecOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ApplicationReadinessV2ExecArgs) ToApplicationReadinessV2ExecPtrOutput() ApplicationReadinessV2ExecPtrOutput {
+	return i.ToApplicationReadinessV2ExecPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationReadinessV2ExecArgs) ToApplicationReadinessV2ExecPtrOutputWithContext(ctx context.Context) ApplicationReadinessV2ExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationReadinessV2ExecOutput).ToApplicationReadinessV2ExecPtrOutputWithContext(ctx)
+}
+
+// ApplicationReadinessV2ExecPtrInput is an input type that accepts ApplicationReadinessV2ExecArgs, ApplicationReadinessV2ExecPtr and ApplicationReadinessV2ExecPtrOutput values.
+// You can construct a concrete instance of `ApplicationReadinessV2ExecPtrInput` via:
+//
+//	        ApplicationReadinessV2ExecArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationReadinessV2ExecPtrInput interface {
+	pulumi.Input
+
+	ToApplicationReadinessV2ExecPtrOutput() ApplicationReadinessV2ExecPtrOutput
+	ToApplicationReadinessV2ExecPtrOutputWithContext(context.Context) ApplicationReadinessV2ExecPtrOutput
+}
+
+type applicationReadinessV2ExecPtrType ApplicationReadinessV2ExecArgs
+
+func ApplicationReadinessV2ExecPtr(v *ApplicationReadinessV2ExecArgs) ApplicationReadinessV2ExecPtrInput {
+	return (*applicationReadinessV2ExecPtrType)(v)
+}
+
+func (*applicationReadinessV2ExecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationReadinessV2Exec)(nil)).Elem()
+}
+
+func (i *applicationReadinessV2ExecPtrType) ToApplicationReadinessV2ExecPtrOutput() ApplicationReadinessV2ExecPtrOutput {
+	return i.ToApplicationReadinessV2ExecPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationReadinessV2ExecPtrType) ToApplicationReadinessV2ExecPtrOutputWithContext(ctx context.Context) ApplicationReadinessV2ExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationReadinessV2ExecPtrOutput)
+}
+
+func (i *applicationReadinessV2ExecPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationReadinessV2Exec] {
+	return pulumix.Output[*ApplicationReadinessV2Exec]{
+		OutputState: i.ToApplicationReadinessV2ExecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ApplicationReadinessV2ExecOutput struct{ *pulumi.OutputState }
+
+func (ApplicationReadinessV2ExecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationReadinessV2Exec)(nil)).Elem()
+}
+
+func (o ApplicationReadinessV2ExecOutput) ToApplicationReadinessV2ExecOutput() ApplicationReadinessV2ExecOutput {
+	return o
+}
+
+func (o ApplicationReadinessV2ExecOutput) ToApplicationReadinessV2ExecOutputWithContext(ctx context.Context) ApplicationReadinessV2ExecOutput {
+	return o
+}
+
+func (o ApplicationReadinessV2ExecOutput) ToApplicationReadinessV2ExecPtrOutput() ApplicationReadinessV2ExecPtrOutput {
+	return o.ToApplicationReadinessV2ExecPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationReadinessV2ExecOutput) ToApplicationReadinessV2ExecPtrOutputWithContext(ctx context.Context) ApplicationReadinessV2ExecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationReadinessV2Exec) *ApplicationReadinessV2Exec {
+		return &v
+	}).(ApplicationReadinessV2ExecPtrOutput)
+}
+
+func (o ApplicationReadinessV2ExecOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationReadinessV2Exec] {
+	return pulumix.Output[ApplicationReadinessV2Exec]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+func (o ApplicationReadinessV2ExecOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApplicationReadinessV2Exec) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+type ApplicationReadinessV2ExecPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationReadinessV2ExecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationReadinessV2Exec)(nil)).Elem()
+}
+
+func (o ApplicationReadinessV2ExecPtrOutput) ToApplicationReadinessV2ExecPtrOutput() ApplicationReadinessV2ExecPtrOutput {
+	return o
+}
+
+func (o ApplicationReadinessV2ExecPtrOutput) ToApplicationReadinessV2ExecPtrOutputWithContext(ctx context.Context) ApplicationReadinessV2ExecPtrOutput {
+	return o
+}
+
+func (o ApplicationReadinessV2ExecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationReadinessV2Exec] {
+	return pulumix.Output[*ApplicationReadinessV2Exec]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplicationReadinessV2ExecPtrOutput) Elem() ApplicationReadinessV2ExecOutput {
+	return o.ApplyT(func(v *ApplicationReadinessV2Exec) ApplicationReadinessV2Exec {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationReadinessV2Exec
+		return ret
+	}).(ApplicationReadinessV2ExecOutput)
+}
+
+// Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+func (o ApplicationReadinessV2ExecPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApplicationReadinessV2Exec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+type ApplicationReadinessV2HttpGet struct {
+	// Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
+	IsContainKeyWord *bool `pulumi:"isContainKeyWord"`
+	// The custom keywords.
+	KeyWord *string `pulumi:"keyWord"`
+	// The request path.
+	Path *string `pulumi:"path"`
+	// The port that is used to check the status of TCP connections.
+	Port *int `pulumi:"port"`
+	// The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
+	Scheme *string `pulumi:"scheme"`
+}
+
+// ApplicationReadinessV2HttpGetInput is an input type that accepts ApplicationReadinessV2HttpGetArgs and ApplicationReadinessV2HttpGetOutput values.
+// You can construct a concrete instance of `ApplicationReadinessV2HttpGetInput` via:
+//
+//	ApplicationReadinessV2HttpGetArgs{...}
+type ApplicationReadinessV2HttpGetInput interface {
+	pulumi.Input
+
+	ToApplicationReadinessV2HttpGetOutput() ApplicationReadinessV2HttpGetOutput
+	ToApplicationReadinessV2HttpGetOutputWithContext(context.Context) ApplicationReadinessV2HttpGetOutput
+}
+
+type ApplicationReadinessV2HttpGetArgs struct {
+	// Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
+	IsContainKeyWord pulumi.BoolPtrInput `pulumi:"isContainKeyWord"`
+	// The custom keywords.
+	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
+	// The request path.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// The port that is used to check the status of TCP connections.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
+	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
+}
+
+func (ApplicationReadinessV2HttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationReadinessV2HttpGet)(nil)).Elem()
+}
+
+func (i ApplicationReadinessV2HttpGetArgs) ToApplicationReadinessV2HttpGetOutput() ApplicationReadinessV2HttpGetOutput {
+	return i.ToApplicationReadinessV2HttpGetOutputWithContext(context.Background())
+}
+
+func (i ApplicationReadinessV2HttpGetArgs) ToApplicationReadinessV2HttpGetOutputWithContext(ctx context.Context) ApplicationReadinessV2HttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationReadinessV2HttpGetOutput)
+}
+
+func (i ApplicationReadinessV2HttpGetArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationReadinessV2HttpGet] {
+	return pulumix.Output[ApplicationReadinessV2HttpGet]{
+		OutputState: i.ToApplicationReadinessV2HttpGetOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ApplicationReadinessV2HttpGetArgs) ToApplicationReadinessV2HttpGetPtrOutput() ApplicationReadinessV2HttpGetPtrOutput {
+	return i.ToApplicationReadinessV2HttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationReadinessV2HttpGetArgs) ToApplicationReadinessV2HttpGetPtrOutputWithContext(ctx context.Context) ApplicationReadinessV2HttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationReadinessV2HttpGetOutput).ToApplicationReadinessV2HttpGetPtrOutputWithContext(ctx)
+}
+
+// ApplicationReadinessV2HttpGetPtrInput is an input type that accepts ApplicationReadinessV2HttpGetArgs, ApplicationReadinessV2HttpGetPtr and ApplicationReadinessV2HttpGetPtrOutput values.
+// You can construct a concrete instance of `ApplicationReadinessV2HttpGetPtrInput` via:
+//
+//	        ApplicationReadinessV2HttpGetArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationReadinessV2HttpGetPtrInput interface {
+	pulumi.Input
+
+	ToApplicationReadinessV2HttpGetPtrOutput() ApplicationReadinessV2HttpGetPtrOutput
+	ToApplicationReadinessV2HttpGetPtrOutputWithContext(context.Context) ApplicationReadinessV2HttpGetPtrOutput
+}
+
+type applicationReadinessV2HttpGetPtrType ApplicationReadinessV2HttpGetArgs
+
+func ApplicationReadinessV2HttpGetPtr(v *ApplicationReadinessV2HttpGetArgs) ApplicationReadinessV2HttpGetPtrInput {
+	return (*applicationReadinessV2HttpGetPtrType)(v)
+}
+
+func (*applicationReadinessV2HttpGetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationReadinessV2HttpGet)(nil)).Elem()
+}
+
+func (i *applicationReadinessV2HttpGetPtrType) ToApplicationReadinessV2HttpGetPtrOutput() ApplicationReadinessV2HttpGetPtrOutput {
+	return i.ToApplicationReadinessV2HttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationReadinessV2HttpGetPtrType) ToApplicationReadinessV2HttpGetPtrOutputWithContext(ctx context.Context) ApplicationReadinessV2HttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationReadinessV2HttpGetPtrOutput)
+}
+
+func (i *applicationReadinessV2HttpGetPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationReadinessV2HttpGet] {
+	return pulumix.Output[*ApplicationReadinessV2HttpGet]{
+		OutputState: i.ToApplicationReadinessV2HttpGetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ApplicationReadinessV2HttpGetOutput struct{ *pulumi.OutputState }
+
+func (ApplicationReadinessV2HttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationReadinessV2HttpGet)(nil)).Elem()
+}
+
+func (o ApplicationReadinessV2HttpGetOutput) ToApplicationReadinessV2HttpGetOutput() ApplicationReadinessV2HttpGetOutput {
+	return o
+}
+
+func (o ApplicationReadinessV2HttpGetOutput) ToApplicationReadinessV2HttpGetOutputWithContext(ctx context.Context) ApplicationReadinessV2HttpGetOutput {
+	return o
+}
+
+func (o ApplicationReadinessV2HttpGetOutput) ToApplicationReadinessV2HttpGetPtrOutput() ApplicationReadinessV2HttpGetPtrOutput {
+	return o.ToApplicationReadinessV2HttpGetPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationReadinessV2HttpGetOutput) ToApplicationReadinessV2HttpGetPtrOutputWithContext(ctx context.Context) ApplicationReadinessV2HttpGetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationReadinessV2HttpGet) *ApplicationReadinessV2HttpGet {
+		return &v
+	}).(ApplicationReadinessV2HttpGetPtrOutput)
+}
+
+func (o ApplicationReadinessV2HttpGetOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationReadinessV2HttpGet] {
+	return pulumix.Output[ApplicationReadinessV2HttpGet]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
+func (o ApplicationReadinessV2HttpGetOutput) IsContainKeyWord() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationReadinessV2HttpGet) *bool { return v.IsContainKeyWord }).(pulumi.BoolPtrOutput)
+}
+
+// The custom keywords.
+func (o ApplicationReadinessV2HttpGetOutput) KeyWord() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationReadinessV2HttpGet) *string { return v.KeyWord }).(pulumi.StringPtrOutput)
+}
+
+// The request path.
+func (o ApplicationReadinessV2HttpGetOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationReadinessV2HttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// The port that is used to check the status of TCP connections.
+func (o ApplicationReadinessV2HttpGetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationReadinessV2HttpGet) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
+func (o ApplicationReadinessV2HttpGetOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationReadinessV2HttpGet) *string { return v.Scheme }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationReadinessV2HttpGetPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationReadinessV2HttpGetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationReadinessV2HttpGet)(nil)).Elem()
+}
+
+func (o ApplicationReadinessV2HttpGetPtrOutput) ToApplicationReadinessV2HttpGetPtrOutput() ApplicationReadinessV2HttpGetPtrOutput {
+	return o
+}
+
+func (o ApplicationReadinessV2HttpGetPtrOutput) ToApplicationReadinessV2HttpGetPtrOutputWithContext(ctx context.Context) ApplicationReadinessV2HttpGetPtrOutput {
+	return o
+}
+
+func (o ApplicationReadinessV2HttpGetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationReadinessV2HttpGet] {
+	return pulumix.Output[*ApplicationReadinessV2HttpGet]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplicationReadinessV2HttpGetPtrOutput) Elem() ApplicationReadinessV2HttpGetOutput {
+	return o.ApplyT(func(v *ApplicationReadinessV2HttpGet) ApplicationReadinessV2HttpGet {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationReadinessV2HttpGet
+		return ret
+	}).(ApplicationReadinessV2HttpGetOutput)
+}
+
+// Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
+func (o ApplicationReadinessV2HttpGetPtrOutput) IsContainKeyWord() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationReadinessV2HttpGet) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsContainKeyWord
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The custom keywords.
+func (o ApplicationReadinessV2HttpGetPtrOutput) KeyWord() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationReadinessV2HttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyWord
+	}).(pulumi.StringPtrOutput)
+}
+
+// The request path.
+func (o ApplicationReadinessV2HttpGetPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationReadinessV2HttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port that is used to check the status of TCP connections.
+func (o ApplicationReadinessV2HttpGetPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationReadinessV2HttpGet) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
+func (o ApplicationReadinessV2HttpGetPtrOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationReadinessV2HttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scheme
+	}).(pulumi.StringPtrOutput)
+}
+
+type ApplicationReadinessV2TcpSocket struct {
+	// The port that is used to check the status of TCP connections.
+	Port *int `pulumi:"port"`
+}
+
+// ApplicationReadinessV2TcpSocketInput is an input type that accepts ApplicationReadinessV2TcpSocketArgs and ApplicationReadinessV2TcpSocketOutput values.
+// You can construct a concrete instance of `ApplicationReadinessV2TcpSocketInput` via:
+//
+//	ApplicationReadinessV2TcpSocketArgs{...}
+type ApplicationReadinessV2TcpSocketInput interface {
+	pulumi.Input
+
+	ToApplicationReadinessV2TcpSocketOutput() ApplicationReadinessV2TcpSocketOutput
+	ToApplicationReadinessV2TcpSocketOutputWithContext(context.Context) ApplicationReadinessV2TcpSocketOutput
+}
+
+type ApplicationReadinessV2TcpSocketArgs struct {
+	// The port that is used to check the status of TCP connections.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (ApplicationReadinessV2TcpSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationReadinessV2TcpSocket)(nil)).Elem()
+}
+
+func (i ApplicationReadinessV2TcpSocketArgs) ToApplicationReadinessV2TcpSocketOutput() ApplicationReadinessV2TcpSocketOutput {
+	return i.ToApplicationReadinessV2TcpSocketOutputWithContext(context.Background())
+}
+
+func (i ApplicationReadinessV2TcpSocketArgs) ToApplicationReadinessV2TcpSocketOutputWithContext(ctx context.Context) ApplicationReadinessV2TcpSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationReadinessV2TcpSocketOutput)
+}
+
+func (i ApplicationReadinessV2TcpSocketArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationReadinessV2TcpSocket] {
+	return pulumix.Output[ApplicationReadinessV2TcpSocket]{
+		OutputState: i.ToApplicationReadinessV2TcpSocketOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ApplicationReadinessV2TcpSocketArgs) ToApplicationReadinessV2TcpSocketPtrOutput() ApplicationReadinessV2TcpSocketPtrOutput {
+	return i.ToApplicationReadinessV2TcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationReadinessV2TcpSocketArgs) ToApplicationReadinessV2TcpSocketPtrOutputWithContext(ctx context.Context) ApplicationReadinessV2TcpSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationReadinessV2TcpSocketOutput).ToApplicationReadinessV2TcpSocketPtrOutputWithContext(ctx)
+}
+
+// ApplicationReadinessV2TcpSocketPtrInput is an input type that accepts ApplicationReadinessV2TcpSocketArgs, ApplicationReadinessV2TcpSocketPtr and ApplicationReadinessV2TcpSocketPtrOutput values.
+// You can construct a concrete instance of `ApplicationReadinessV2TcpSocketPtrInput` via:
+//
+//	        ApplicationReadinessV2TcpSocketArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationReadinessV2TcpSocketPtrInput interface {
+	pulumi.Input
+
+	ToApplicationReadinessV2TcpSocketPtrOutput() ApplicationReadinessV2TcpSocketPtrOutput
+	ToApplicationReadinessV2TcpSocketPtrOutputWithContext(context.Context) ApplicationReadinessV2TcpSocketPtrOutput
+}
+
+type applicationReadinessV2TcpSocketPtrType ApplicationReadinessV2TcpSocketArgs
+
+func ApplicationReadinessV2TcpSocketPtr(v *ApplicationReadinessV2TcpSocketArgs) ApplicationReadinessV2TcpSocketPtrInput {
+	return (*applicationReadinessV2TcpSocketPtrType)(v)
+}
+
+func (*applicationReadinessV2TcpSocketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationReadinessV2TcpSocket)(nil)).Elem()
+}
+
+func (i *applicationReadinessV2TcpSocketPtrType) ToApplicationReadinessV2TcpSocketPtrOutput() ApplicationReadinessV2TcpSocketPtrOutput {
+	return i.ToApplicationReadinessV2TcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationReadinessV2TcpSocketPtrType) ToApplicationReadinessV2TcpSocketPtrOutputWithContext(ctx context.Context) ApplicationReadinessV2TcpSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationReadinessV2TcpSocketPtrOutput)
+}
+
+func (i *applicationReadinessV2TcpSocketPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationReadinessV2TcpSocket] {
+	return pulumix.Output[*ApplicationReadinessV2TcpSocket]{
+		OutputState: i.ToApplicationReadinessV2TcpSocketPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ApplicationReadinessV2TcpSocketOutput struct{ *pulumi.OutputState }
+
+func (ApplicationReadinessV2TcpSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationReadinessV2TcpSocket)(nil)).Elem()
+}
+
+func (o ApplicationReadinessV2TcpSocketOutput) ToApplicationReadinessV2TcpSocketOutput() ApplicationReadinessV2TcpSocketOutput {
+	return o
+}
+
+func (o ApplicationReadinessV2TcpSocketOutput) ToApplicationReadinessV2TcpSocketOutputWithContext(ctx context.Context) ApplicationReadinessV2TcpSocketOutput {
+	return o
+}
+
+func (o ApplicationReadinessV2TcpSocketOutput) ToApplicationReadinessV2TcpSocketPtrOutput() ApplicationReadinessV2TcpSocketPtrOutput {
+	return o.ToApplicationReadinessV2TcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationReadinessV2TcpSocketOutput) ToApplicationReadinessV2TcpSocketPtrOutputWithContext(ctx context.Context) ApplicationReadinessV2TcpSocketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationReadinessV2TcpSocket) *ApplicationReadinessV2TcpSocket {
+		return &v
+	}).(ApplicationReadinessV2TcpSocketPtrOutput)
+}
+
+func (o ApplicationReadinessV2TcpSocketOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationReadinessV2TcpSocket] {
+	return pulumix.Output[ApplicationReadinessV2TcpSocket]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The port that is used to check the status of TCP connections.
+func (o ApplicationReadinessV2TcpSocketOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationReadinessV2TcpSocket) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type ApplicationReadinessV2TcpSocketPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationReadinessV2TcpSocketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationReadinessV2TcpSocket)(nil)).Elem()
+}
+
+func (o ApplicationReadinessV2TcpSocketPtrOutput) ToApplicationReadinessV2TcpSocketPtrOutput() ApplicationReadinessV2TcpSocketPtrOutput {
+	return o
+}
+
+func (o ApplicationReadinessV2TcpSocketPtrOutput) ToApplicationReadinessV2TcpSocketPtrOutputWithContext(ctx context.Context) ApplicationReadinessV2TcpSocketPtrOutput {
+	return o
+}
+
+func (o ApplicationReadinessV2TcpSocketPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationReadinessV2TcpSocket] {
+	return pulumix.Output[*ApplicationReadinessV2TcpSocket]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplicationReadinessV2TcpSocketPtrOutput) Elem() ApplicationReadinessV2TcpSocketOutput {
+	return o.ApplyT(func(v *ApplicationReadinessV2TcpSocket) ApplicationReadinessV2TcpSocket {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationReadinessV2TcpSocket
+		return ret
+	}).(ApplicationReadinessV2TcpSocketOutput)
+}
+
+// The port that is used to check the status of TCP connections.
+func (o ApplicationReadinessV2TcpSocketPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationReadinessV2TcpSocket) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
 type ApplicationScalingRuleScalingRuleMetric struct {
 	// Maximum number of instances applied.
 	MaxReplicas *int `pulumi:"maxReplicas"`
@@ -1221,6 +4755,622 @@ func (o ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput) Index(i pulum
 	}).(ApplicationScalingRuleScalingRuleTimerScheduleOutput)
 }
 
+type ApplicationTomcatConfigV2 struct {
+	// The path.
+	ContextPath *string `pulumi:"contextPath"`
+	// The maximum number of connections in the connection pool.
+	MaxThreads *int `pulumi:"maxThreads"`
+	// The port that is used to check the status of TCP connections.
+	Port *int `pulumi:"port"`
+	// The URI encoding scheme in the Tomcat container.
+	UriEncoding *string `pulumi:"uriEncoding"`
+	// Specifies whether to use the encoding scheme that is specified by BodyEncoding for URL.
+	UseBodyEncodingForUri *string `pulumi:"useBodyEncodingForUri"`
+}
+
+// ApplicationTomcatConfigV2Input is an input type that accepts ApplicationTomcatConfigV2Args and ApplicationTomcatConfigV2Output values.
+// You can construct a concrete instance of `ApplicationTomcatConfigV2Input` via:
+//
+//	ApplicationTomcatConfigV2Args{...}
+type ApplicationTomcatConfigV2Input interface {
+	pulumi.Input
+
+	ToApplicationTomcatConfigV2Output() ApplicationTomcatConfigV2Output
+	ToApplicationTomcatConfigV2OutputWithContext(context.Context) ApplicationTomcatConfigV2Output
+}
+
+type ApplicationTomcatConfigV2Args struct {
+	// The path.
+	ContextPath pulumi.StringPtrInput `pulumi:"contextPath"`
+	// The maximum number of connections in the connection pool.
+	MaxThreads pulumi.IntPtrInput `pulumi:"maxThreads"`
+	// The port that is used to check the status of TCP connections.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The URI encoding scheme in the Tomcat container.
+	UriEncoding pulumi.StringPtrInput `pulumi:"uriEncoding"`
+	// Specifies whether to use the encoding scheme that is specified by BodyEncoding for URL.
+	UseBodyEncodingForUri pulumi.StringPtrInput `pulumi:"useBodyEncodingForUri"`
+}
+
+func (ApplicationTomcatConfigV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationTomcatConfigV2)(nil)).Elem()
+}
+
+func (i ApplicationTomcatConfigV2Args) ToApplicationTomcatConfigV2Output() ApplicationTomcatConfigV2Output {
+	return i.ToApplicationTomcatConfigV2OutputWithContext(context.Background())
+}
+
+func (i ApplicationTomcatConfigV2Args) ToApplicationTomcatConfigV2OutputWithContext(ctx context.Context) ApplicationTomcatConfigV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationTomcatConfigV2Output)
+}
+
+func (i ApplicationTomcatConfigV2Args) ToOutput(ctx context.Context) pulumix.Output[ApplicationTomcatConfigV2] {
+	return pulumix.Output[ApplicationTomcatConfigV2]{
+		OutputState: i.ToApplicationTomcatConfigV2OutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ApplicationTomcatConfigV2Args) ToApplicationTomcatConfigV2PtrOutput() ApplicationTomcatConfigV2PtrOutput {
+	return i.ToApplicationTomcatConfigV2PtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationTomcatConfigV2Args) ToApplicationTomcatConfigV2PtrOutputWithContext(ctx context.Context) ApplicationTomcatConfigV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationTomcatConfigV2Output).ToApplicationTomcatConfigV2PtrOutputWithContext(ctx)
+}
+
+// ApplicationTomcatConfigV2PtrInput is an input type that accepts ApplicationTomcatConfigV2Args, ApplicationTomcatConfigV2Ptr and ApplicationTomcatConfigV2PtrOutput values.
+// You can construct a concrete instance of `ApplicationTomcatConfigV2PtrInput` via:
+//
+//	        ApplicationTomcatConfigV2Args{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationTomcatConfigV2PtrInput interface {
+	pulumi.Input
+
+	ToApplicationTomcatConfigV2PtrOutput() ApplicationTomcatConfigV2PtrOutput
+	ToApplicationTomcatConfigV2PtrOutputWithContext(context.Context) ApplicationTomcatConfigV2PtrOutput
+}
+
+type applicationTomcatConfigV2PtrType ApplicationTomcatConfigV2Args
+
+func ApplicationTomcatConfigV2Ptr(v *ApplicationTomcatConfigV2Args) ApplicationTomcatConfigV2PtrInput {
+	return (*applicationTomcatConfigV2PtrType)(v)
+}
+
+func (*applicationTomcatConfigV2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationTomcatConfigV2)(nil)).Elem()
+}
+
+func (i *applicationTomcatConfigV2PtrType) ToApplicationTomcatConfigV2PtrOutput() ApplicationTomcatConfigV2PtrOutput {
+	return i.ToApplicationTomcatConfigV2PtrOutputWithContext(context.Background())
+}
+
+func (i *applicationTomcatConfigV2PtrType) ToApplicationTomcatConfigV2PtrOutputWithContext(ctx context.Context) ApplicationTomcatConfigV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationTomcatConfigV2PtrOutput)
+}
+
+func (i *applicationTomcatConfigV2PtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationTomcatConfigV2] {
+	return pulumix.Output[*ApplicationTomcatConfigV2]{
+		OutputState: i.ToApplicationTomcatConfigV2PtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ApplicationTomcatConfigV2Output struct{ *pulumi.OutputState }
+
+func (ApplicationTomcatConfigV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationTomcatConfigV2)(nil)).Elem()
+}
+
+func (o ApplicationTomcatConfigV2Output) ToApplicationTomcatConfigV2Output() ApplicationTomcatConfigV2Output {
+	return o
+}
+
+func (o ApplicationTomcatConfigV2Output) ToApplicationTomcatConfigV2OutputWithContext(ctx context.Context) ApplicationTomcatConfigV2Output {
+	return o
+}
+
+func (o ApplicationTomcatConfigV2Output) ToApplicationTomcatConfigV2PtrOutput() ApplicationTomcatConfigV2PtrOutput {
+	return o.ToApplicationTomcatConfigV2PtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationTomcatConfigV2Output) ToApplicationTomcatConfigV2PtrOutputWithContext(ctx context.Context) ApplicationTomcatConfigV2PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationTomcatConfigV2) *ApplicationTomcatConfigV2 {
+		return &v
+	}).(ApplicationTomcatConfigV2PtrOutput)
+}
+
+func (o ApplicationTomcatConfigV2Output) ToOutput(ctx context.Context) pulumix.Output[ApplicationTomcatConfigV2] {
+	return pulumix.Output[ApplicationTomcatConfigV2]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The path.
+func (o ApplicationTomcatConfigV2Output) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationTomcatConfigV2) *string { return v.ContextPath }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of connections in the connection pool.
+func (o ApplicationTomcatConfigV2Output) MaxThreads() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationTomcatConfigV2) *int { return v.MaxThreads }).(pulumi.IntPtrOutput)
+}
+
+// The port that is used to check the status of TCP connections.
+func (o ApplicationTomcatConfigV2Output) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationTomcatConfigV2) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The URI encoding scheme in the Tomcat container.
+func (o ApplicationTomcatConfigV2Output) UriEncoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationTomcatConfigV2) *string { return v.UriEncoding }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to use the encoding scheme that is specified by BodyEncoding for URL.
+func (o ApplicationTomcatConfigV2Output) UseBodyEncodingForUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationTomcatConfigV2) *string { return v.UseBodyEncodingForUri }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationTomcatConfigV2PtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationTomcatConfigV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationTomcatConfigV2)(nil)).Elem()
+}
+
+func (o ApplicationTomcatConfigV2PtrOutput) ToApplicationTomcatConfigV2PtrOutput() ApplicationTomcatConfigV2PtrOutput {
+	return o
+}
+
+func (o ApplicationTomcatConfigV2PtrOutput) ToApplicationTomcatConfigV2PtrOutputWithContext(ctx context.Context) ApplicationTomcatConfigV2PtrOutput {
+	return o
+}
+
+func (o ApplicationTomcatConfigV2PtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationTomcatConfigV2] {
+	return pulumix.Output[*ApplicationTomcatConfigV2]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplicationTomcatConfigV2PtrOutput) Elem() ApplicationTomcatConfigV2Output {
+	return o.ApplyT(func(v *ApplicationTomcatConfigV2) ApplicationTomcatConfigV2 {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationTomcatConfigV2
+		return ret
+	}).(ApplicationTomcatConfigV2Output)
+}
+
+// The path.
+func (o ApplicationTomcatConfigV2PtrOutput) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationTomcatConfigV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContextPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of connections in the connection pool.
+func (o ApplicationTomcatConfigV2PtrOutput) MaxThreads() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationTomcatConfigV2) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxThreads
+	}).(pulumi.IntPtrOutput)
+}
+
+// The port that is used to check the status of TCP connections.
+func (o ApplicationTomcatConfigV2PtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationTomcatConfigV2) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The URI encoding scheme in the Tomcat container.
+func (o ApplicationTomcatConfigV2PtrOutput) UriEncoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationTomcatConfigV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UriEncoding
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to use the encoding scheme that is specified by BodyEncoding for URL.
+func (o ApplicationTomcatConfigV2PtrOutput) UseBodyEncodingForUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationTomcatConfigV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UseBodyEncodingForUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type ApplicationUpdateStrategyV2 struct {
+	// The phased release policy. See `batchUpdate` below.
+	BatchUpdate *ApplicationUpdateStrategyV2BatchUpdate `pulumi:"batchUpdate"`
+	// The type of the release policy. Valid values: `GrayBatchUpdate` and `BatchUpdate`.
+	Type *string `pulumi:"type"`
+}
+
+// ApplicationUpdateStrategyV2Input is an input type that accepts ApplicationUpdateStrategyV2Args and ApplicationUpdateStrategyV2Output values.
+// You can construct a concrete instance of `ApplicationUpdateStrategyV2Input` via:
+//
+//	ApplicationUpdateStrategyV2Args{...}
+type ApplicationUpdateStrategyV2Input interface {
+	pulumi.Input
+
+	ToApplicationUpdateStrategyV2Output() ApplicationUpdateStrategyV2Output
+	ToApplicationUpdateStrategyV2OutputWithContext(context.Context) ApplicationUpdateStrategyV2Output
+}
+
+type ApplicationUpdateStrategyV2Args struct {
+	// The phased release policy. See `batchUpdate` below.
+	BatchUpdate ApplicationUpdateStrategyV2BatchUpdatePtrInput `pulumi:"batchUpdate"`
+	// The type of the release policy. Valid values: `GrayBatchUpdate` and `BatchUpdate`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ApplicationUpdateStrategyV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationUpdateStrategyV2)(nil)).Elem()
+}
+
+func (i ApplicationUpdateStrategyV2Args) ToApplicationUpdateStrategyV2Output() ApplicationUpdateStrategyV2Output {
+	return i.ToApplicationUpdateStrategyV2OutputWithContext(context.Background())
+}
+
+func (i ApplicationUpdateStrategyV2Args) ToApplicationUpdateStrategyV2OutputWithContext(ctx context.Context) ApplicationUpdateStrategyV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUpdateStrategyV2Output)
+}
+
+func (i ApplicationUpdateStrategyV2Args) ToOutput(ctx context.Context) pulumix.Output[ApplicationUpdateStrategyV2] {
+	return pulumix.Output[ApplicationUpdateStrategyV2]{
+		OutputState: i.ToApplicationUpdateStrategyV2OutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ApplicationUpdateStrategyV2Args) ToApplicationUpdateStrategyV2PtrOutput() ApplicationUpdateStrategyV2PtrOutput {
+	return i.ToApplicationUpdateStrategyV2PtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationUpdateStrategyV2Args) ToApplicationUpdateStrategyV2PtrOutputWithContext(ctx context.Context) ApplicationUpdateStrategyV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUpdateStrategyV2Output).ToApplicationUpdateStrategyV2PtrOutputWithContext(ctx)
+}
+
+// ApplicationUpdateStrategyV2PtrInput is an input type that accepts ApplicationUpdateStrategyV2Args, ApplicationUpdateStrategyV2Ptr and ApplicationUpdateStrategyV2PtrOutput values.
+// You can construct a concrete instance of `ApplicationUpdateStrategyV2PtrInput` via:
+//
+//	        ApplicationUpdateStrategyV2Args{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationUpdateStrategyV2PtrInput interface {
+	pulumi.Input
+
+	ToApplicationUpdateStrategyV2PtrOutput() ApplicationUpdateStrategyV2PtrOutput
+	ToApplicationUpdateStrategyV2PtrOutputWithContext(context.Context) ApplicationUpdateStrategyV2PtrOutput
+}
+
+type applicationUpdateStrategyV2PtrType ApplicationUpdateStrategyV2Args
+
+func ApplicationUpdateStrategyV2Ptr(v *ApplicationUpdateStrategyV2Args) ApplicationUpdateStrategyV2PtrInput {
+	return (*applicationUpdateStrategyV2PtrType)(v)
+}
+
+func (*applicationUpdateStrategyV2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationUpdateStrategyV2)(nil)).Elem()
+}
+
+func (i *applicationUpdateStrategyV2PtrType) ToApplicationUpdateStrategyV2PtrOutput() ApplicationUpdateStrategyV2PtrOutput {
+	return i.ToApplicationUpdateStrategyV2PtrOutputWithContext(context.Background())
+}
+
+func (i *applicationUpdateStrategyV2PtrType) ToApplicationUpdateStrategyV2PtrOutputWithContext(ctx context.Context) ApplicationUpdateStrategyV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUpdateStrategyV2PtrOutput)
+}
+
+func (i *applicationUpdateStrategyV2PtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationUpdateStrategyV2] {
+	return pulumix.Output[*ApplicationUpdateStrategyV2]{
+		OutputState: i.ToApplicationUpdateStrategyV2PtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ApplicationUpdateStrategyV2Output struct{ *pulumi.OutputState }
+
+func (ApplicationUpdateStrategyV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationUpdateStrategyV2)(nil)).Elem()
+}
+
+func (o ApplicationUpdateStrategyV2Output) ToApplicationUpdateStrategyV2Output() ApplicationUpdateStrategyV2Output {
+	return o
+}
+
+func (o ApplicationUpdateStrategyV2Output) ToApplicationUpdateStrategyV2OutputWithContext(ctx context.Context) ApplicationUpdateStrategyV2Output {
+	return o
+}
+
+func (o ApplicationUpdateStrategyV2Output) ToApplicationUpdateStrategyV2PtrOutput() ApplicationUpdateStrategyV2PtrOutput {
+	return o.ToApplicationUpdateStrategyV2PtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationUpdateStrategyV2Output) ToApplicationUpdateStrategyV2PtrOutputWithContext(ctx context.Context) ApplicationUpdateStrategyV2PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationUpdateStrategyV2) *ApplicationUpdateStrategyV2 {
+		return &v
+	}).(ApplicationUpdateStrategyV2PtrOutput)
+}
+
+func (o ApplicationUpdateStrategyV2Output) ToOutput(ctx context.Context) pulumix.Output[ApplicationUpdateStrategyV2] {
+	return pulumix.Output[ApplicationUpdateStrategyV2]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The phased release policy. See `batchUpdate` below.
+func (o ApplicationUpdateStrategyV2Output) BatchUpdate() ApplicationUpdateStrategyV2BatchUpdatePtrOutput {
+	return o.ApplyT(func(v ApplicationUpdateStrategyV2) *ApplicationUpdateStrategyV2BatchUpdate { return v.BatchUpdate }).(ApplicationUpdateStrategyV2BatchUpdatePtrOutput)
+}
+
+// The type of the release policy. Valid values: `GrayBatchUpdate` and `BatchUpdate`.
+func (o ApplicationUpdateStrategyV2Output) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationUpdateStrategyV2) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationUpdateStrategyV2PtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationUpdateStrategyV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationUpdateStrategyV2)(nil)).Elem()
+}
+
+func (o ApplicationUpdateStrategyV2PtrOutput) ToApplicationUpdateStrategyV2PtrOutput() ApplicationUpdateStrategyV2PtrOutput {
+	return o
+}
+
+func (o ApplicationUpdateStrategyV2PtrOutput) ToApplicationUpdateStrategyV2PtrOutputWithContext(ctx context.Context) ApplicationUpdateStrategyV2PtrOutput {
+	return o
+}
+
+func (o ApplicationUpdateStrategyV2PtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationUpdateStrategyV2] {
+	return pulumix.Output[*ApplicationUpdateStrategyV2]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplicationUpdateStrategyV2PtrOutput) Elem() ApplicationUpdateStrategyV2Output {
+	return o.ApplyT(func(v *ApplicationUpdateStrategyV2) ApplicationUpdateStrategyV2 {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationUpdateStrategyV2
+		return ret
+	}).(ApplicationUpdateStrategyV2Output)
+}
+
+// The phased release policy. See `batchUpdate` below.
+func (o ApplicationUpdateStrategyV2PtrOutput) BatchUpdate() ApplicationUpdateStrategyV2BatchUpdatePtrOutput {
+	return o.ApplyT(func(v *ApplicationUpdateStrategyV2) *ApplicationUpdateStrategyV2BatchUpdate {
+		if v == nil {
+			return nil
+		}
+		return v.BatchUpdate
+	}).(ApplicationUpdateStrategyV2BatchUpdatePtrOutput)
+}
+
+// The type of the release policy. Valid values: `GrayBatchUpdate` and `BatchUpdate`.
+func (o ApplicationUpdateStrategyV2PtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationUpdateStrategyV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type ApplicationUpdateStrategyV2BatchUpdate struct {
+	// The number of batches in which you want to release the instances.
+	Batch *int `pulumi:"batch"`
+	// The batch wait time.
+	BatchWaitTime *int `pulumi:"batchWaitTime"`
+	// The processing method for the batches. Valid values: `auto` and `manual`.
+	ReleaseType *string `pulumi:"releaseType"`
+}
+
+// ApplicationUpdateStrategyV2BatchUpdateInput is an input type that accepts ApplicationUpdateStrategyV2BatchUpdateArgs and ApplicationUpdateStrategyV2BatchUpdateOutput values.
+// You can construct a concrete instance of `ApplicationUpdateStrategyV2BatchUpdateInput` via:
+//
+//	ApplicationUpdateStrategyV2BatchUpdateArgs{...}
+type ApplicationUpdateStrategyV2BatchUpdateInput interface {
+	pulumi.Input
+
+	ToApplicationUpdateStrategyV2BatchUpdateOutput() ApplicationUpdateStrategyV2BatchUpdateOutput
+	ToApplicationUpdateStrategyV2BatchUpdateOutputWithContext(context.Context) ApplicationUpdateStrategyV2BatchUpdateOutput
+}
+
+type ApplicationUpdateStrategyV2BatchUpdateArgs struct {
+	// The number of batches in which you want to release the instances.
+	Batch pulumi.IntPtrInput `pulumi:"batch"`
+	// The batch wait time.
+	BatchWaitTime pulumi.IntPtrInput `pulumi:"batchWaitTime"`
+	// The processing method for the batches. Valid values: `auto` and `manual`.
+	ReleaseType pulumi.StringPtrInput `pulumi:"releaseType"`
+}
+
+func (ApplicationUpdateStrategyV2BatchUpdateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationUpdateStrategyV2BatchUpdate)(nil)).Elem()
+}
+
+func (i ApplicationUpdateStrategyV2BatchUpdateArgs) ToApplicationUpdateStrategyV2BatchUpdateOutput() ApplicationUpdateStrategyV2BatchUpdateOutput {
+	return i.ToApplicationUpdateStrategyV2BatchUpdateOutputWithContext(context.Background())
+}
+
+func (i ApplicationUpdateStrategyV2BatchUpdateArgs) ToApplicationUpdateStrategyV2BatchUpdateOutputWithContext(ctx context.Context) ApplicationUpdateStrategyV2BatchUpdateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUpdateStrategyV2BatchUpdateOutput)
+}
+
+func (i ApplicationUpdateStrategyV2BatchUpdateArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationUpdateStrategyV2BatchUpdate] {
+	return pulumix.Output[ApplicationUpdateStrategyV2BatchUpdate]{
+		OutputState: i.ToApplicationUpdateStrategyV2BatchUpdateOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ApplicationUpdateStrategyV2BatchUpdateArgs) ToApplicationUpdateStrategyV2BatchUpdatePtrOutput() ApplicationUpdateStrategyV2BatchUpdatePtrOutput {
+	return i.ToApplicationUpdateStrategyV2BatchUpdatePtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationUpdateStrategyV2BatchUpdateArgs) ToApplicationUpdateStrategyV2BatchUpdatePtrOutputWithContext(ctx context.Context) ApplicationUpdateStrategyV2BatchUpdatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUpdateStrategyV2BatchUpdateOutput).ToApplicationUpdateStrategyV2BatchUpdatePtrOutputWithContext(ctx)
+}
+
+// ApplicationUpdateStrategyV2BatchUpdatePtrInput is an input type that accepts ApplicationUpdateStrategyV2BatchUpdateArgs, ApplicationUpdateStrategyV2BatchUpdatePtr and ApplicationUpdateStrategyV2BatchUpdatePtrOutput values.
+// You can construct a concrete instance of `ApplicationUpdateStrategyV2BatchUpdatePtrInput` via:
+//
+//	        ApplicationUpdateStrategyV2BatchUpdateArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationUpdateStrategyV2BatchUpdatePtrInput interface {
+	pulumi.Input
+
+	ToApplicationUpdateStrategyV2BatchUpdatePtrOutput() ApplicationUpdateStrategyV2BatchUpdatePtrOutput
+	ToApplicationUpdateStrategyV2BatchUpdatePtrOutputWithContext(context.Context) ApplicationUpdateStrategyV2BatchUpdatePtrOutput
+}
+
+type applicationUpdateStrategyV2BatchUpdatePtrType ApplicationUpdateStrategyV2BatchUpdateArgs
+
+func ApplicationUpdateStrategyV2BatchUpdatePtr(v *ApplicationUpdateStrategyV2BatchUpdateArgs) ApplicationUpdateStrategyV2BatchUpdatePtrInput {
+	return (*applicationUpdateStrategyV2BatchUpdatePtrType)(v)
+}
+
+func (*applicationUpdateStrategyV2BatchUpdatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationUpdateStrategyV2BatchUpdate)(nil)).Elem()
+}
+
+func (i *applicationUpdateStrategyV2BatchUpdatePtrType) ToApplicationUpdateStrategyV2BatchUpdatePtrOutput() ApplicationUpdateStrategyV2BatchUpdatePtrOutput {
+	return i.ToApplicationUpdateStrategyV2BatchUpdatePtrOutputWithContext(context.Background())
+}
+
+func (i *applicationUpdateStrategyV2BatchUpdatePtrType) ToApplicationUpdateStrategyV2BatchUpdatePtrOutputWithContext(ctx context.Context) ApplicationUpdateStrategyV2BatchUpdatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUpdateStrategyV2BatchUpdatePtrOutput)
+}
+
+func (i *applicationUpdateStrategyV2BatchUpdatePtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationUpdateStrategyV2BatchUpdate] {
+	return pulumix.Output[*ApplicationUpdateStrategyV2BatchUpdate]{
+		OutputState: i.ToApplicationUpdateStrategyV2BatchUpdatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ApplicationUpdateStrategyV2BatchUpdateOutput struct{ *pulumi.OutputState }
+
+func (ApplicationUpdateStrategyV2BatchUpdateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationUpdateStrategyV2BatchUpdate)(nil)).Elem()
+}
+
+func (o ApplicationUpdateStrategyV2BatchUpdateOutput) ToApplicationUpdateStrategyV2BatchUpdateOutput() ApplicationUpdateStrategyV2BatchUpdateOutput {
+	return o
+}
+
+func (o ApplicationUpdateStrategyV2BatchUpdateOutput) ToApplicationUpdateStrategyV2BatchUpdateOutputWithContext(ctx context.Context) ApplicationUpdateStrategyV2BatchUpdateOutput {
+	return o
+}
+
+func (o ApplicationUpdateStrategyV2BatchUpdateOutput) ToApplicationUpdateStrategyV2BatchUpdatePtrOutput() ApplicationUpdateStrategyV2BatchUpdatePtrOutput {
+	return o.ToApplicationUpdateStrategyV2BatchUpdatePtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationUpdateStrategyV2BatchUpdateOutput) ToApplicationUpdateStrategyV2BatchUpdatePtrOutputWithContext(ctx context.Context) ApplicationUpdateStrategyV2BatchUpdatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationUpdateStrategyV2BatchUpdate) *ApplicationUpdateStrategyV2BatchUpdate {
+		return &v
+	}).(ApplicationUpdateStrategyV2BatchUpdatePtrOutput)
+}
+
+func (o ApplicationUpdateStrategyV2BatchUpdateOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationUpdateStrategyV2BatchUpdate] {
+	return pulumix.Output[ApplicationUpdateStrategyV2BatchUpdate]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The number of batches in which you want to release the instances.
+func (o ApplicationUpdateStrategyV2BatchUpdateOutput) Batch() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationUpdateStrategyV2BatchUpdate) *int { return v.Batch }).(pulumi.IntPtrOutput)
+}
+
+// The batch wait time.
+func (o ApplicationUpdateStrategyV2BatchUpdateOutput) BatchWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationUpdateStrategyV2BatchUpdate) *int { return v.BatchWaitTime }).(pulumi.IntPtrOutput)
+}
+
+// The processing method for the batches. Valid values: `auto` and `manual`.
+func (o ApplicationUpdateStrategyV2BatchUpdateOutput) ReleaseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationUpdateStrategyV2BatchUpdate) *string { return v.ReleaseType }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationUpdateStrategyV2BatchUpdatePtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationUpdateStrategyV2BatchUpdatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationUpdateStrategyV2BatchUpdate)(nil)).Elem()
+}
+
+func (o ApplicationUpdateStrategyV2BatchUpdatePtrOutput) ToApplicationUpdateStrategyV2BatchUpdatePtrOutput() ApplicationUpdateStrategyV2BatchUpdatePtrOutput {
+	return o
+}
+
+func (o ApplicationUpdateStrategyV2BatchUpdatePtrOutput) ToApplicationUpdateStrategyV2BatchUpdatePtrOutputWithContext(ctx context.Context) ApplicationUpdateStrategyV2BatchUpdatePtrOutput {
+	return o
+}
+
+func (o ApplicationUpdateStrategyV2BatchUpdatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationUpdateStrategyV2BatchUpdate] {
+	return pulumix.Output[*ApplicationUpdateStrategyV2BatchUpdate]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ApplicationUpdateStrategyV2BatchUpdatePtrOutput) Elem() ApplicationUpdateStrategyV2BatchUpdateOutput {
+	return o.ApplyT(func(v *ApplicationUpdateStrategyV2BatchUpdate) ApplicationUpdateStrategyV2BatchUpdate {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationUpdateStrategyV2BatchUpdate
+		return ret
+	}).(ApplicationUpdateStrategyV2BatchUpdateOutput)
+}
+
+// The number of batches in which you want to release the instances.
+func (o ApplicationUpdateStrategyV2BatchUpdatePtrOutput) Batch() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationUpdateStrategyV2BatchUpdate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Batch
+	}).(pulumi.IntPtrOutput)
+}
+
+// The batch wait time.
+func (o ApplicationUpdateStrategyV2BatchUpdatePtrOutput) BatchWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationUpdateStrategyV2BatchUpdate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BatchWaitTime
+	}).(pulumi.IntPtrOutput)
+}
+
+// The processing method for the batches. Valid values: `auto` and `manual`.
+func (o ApplicationUpdateStrategyV2BatchUpdatePtrOutput) ReleaseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationUpdateStrategyV2BatchUpdate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReleaseType
+	}).(pulumi.StringPtrOutput)
+}
+
 type GreyTagRouteDubboRule struct {
 	// The Conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
 	Condition *string `pulumi:"condition"`
@@ -1547,7 +5697,7 @@ func (o GreyTagRouteDubboRuleItemArrayOutput) Index(i pulumi.IntInput) GreyTagRo
 type GreyTagRouteScRule struct {
 	// The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
 	Condition *string `pulumi:"condition"`
-	// A list of conditions items.See `items` below.
+	// A list of conditions items. See `items` below.
 	Items []GreyTagRouteScRuleItem `pulumi:"items"`
 	// The path corresponding to the grayscale rule.
 	Path *string `pulumi:"path"`
@@ -1567,7 +5717,7 @@ type GreyTagRouteScRuleInput interface {
 type GreyTagRouteScRuleArgs struct {
 	// The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
 	Condition pulumi.StringPtrInput `pulumi:"condition"`
-	// A list of conditions items.See `items` below.
+	// A list of conditions items. See `items` below.
 	Items GreyTagRouteScRuleItemArrayInput `pulumi:"items"`
 	// The path corresponding to the grayscale rule.
 	Path pulumi.StringPtrInput `pulumi:"path"`
@@ -1647,7 +5797,7 @@ func (o GreyTagRouteScRuleOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteScRule) *string { return v.Condition }).(pulumi.StringPtrOutput)
 }
 
-// A list of conditions items.See `items` below.
+// A list of conditions items. See `items` below.
 func (o GreyTagRouteScRuleOutput) Items() GreyTagRouteScRuleItemArrayOutput {
 	return o.ApplyT(func(v GreyTagRouteScRule) []GreyTagRouteScRuleItem { return v.Items }).(GreyTagRouteScRuleItemArrayOutput)
 }
@@ -6387,6 +10537,46 @@ func (o GetNamespacesNamespaceArrayOutput) Index(i pulumi.IntInput) GetNamespace
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationConfigMapMountDescV2Input)(nil)).Elem(), ApplicationConfigMapMountDescV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationConfigMapMountDescV2ArrayInput)(nil)).Elem(), ApplicationConfigMapMountDescV2Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationCustomHostAliasV2Input)(nil)).Elem(), ApplicationCustomHostAliasV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationCustomHostAliasV2ArrayInput)(nil)).Elem(), ApplicationCustomHostAliasV2Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationKafkaConfigsInput)(nil)).Elem(), ApplicationKafkaConfigsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationKafkaConfigsPtrInput)(nil)).Elem(), ApplicationKafkaConfigsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationKafkaConfigsKafkaConfigInput)(nil)).Elem(), ApplicationKafkaConfigsKafkaConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationKafkaConfigsKafkaConfigArrayInput)(nil)).Elem(), ApplicationKafkaConfigsKafkaConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLivenessV2Input)(nil)).Elem(), ApplicationLivenessV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLivenessV2PtrInput)(nil)).Elem(), ApplicationLivenessV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLivenessV2ExecInput)(nil)).Elem(), ApplicationLivenessV2ExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLivenessV2ExecPtrInput)(nil)).Elem(), ApplicationLivenessV2ExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLivenessV2HttpGetInput)(nil)).Elem(), ApplicationLivenessV2HttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLivenessV2HttpGetPtrInput)(nil)).Elem(), ApplicationLivenessV2HttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLivenessV2TcpSocketInput)(nil)).Elem(), ApplicationLivenessV2TcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLivenessV2TcpSocketPtrInput)(nil)).Elem(), ApplicationLivenessV2TcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationNasConfigInput)(nil)).Elem(), ApplicationNasConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationNasConfigArrayInput)(nil)).Elem(), ApplicationNasConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationOssMountDescsV2Input)(nil)).Elem(), ApplicationOssMountDescsV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationOssMountDescsV2ArrayInput)(nil)).Elem(), ApplicationOssMountDescsV2Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationPostStartV2Input)(nil)).Elem(), ApplicationPostStartV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationPostStartV2PtrInput)(nil)).Elem(), ApplicationPostStartV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationPostStartV2ExecInput)(nil)).Elem(), ApplicationPostStartV2ExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationPostStartV2ExecPtrInput)(nil)).Elem(), ApplicationPostStartV2ExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationPreStopV2Input)(nil)).Elem(), ApplicationPreStopV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationPreStopV2PtrInput)(nil)).Elem(), ApplicationPreStopV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationPreStopV2ExecInput)(nil)).Elem(), ApplicationPreStopV2ExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationPreStopV2ExecPtrInput)(nil)).Elem(), ApplicationPreStopV2ExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationPvtzDiscoverySvcInput)(nil)).Elem(), ApplicationPvtzDiscoverySvcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationPvtzDiscoverySvcPtrInput)(nil)).Elem(), ApplicationPvtzDiscoverySvcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationPvtzDiscoverySvcPortProtocolInput)(nil)).Elem(), ApplicationPvtzDiscoverySvcPortProtocolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationPvtzDiscoverySvcPortProtocolArrayInput)(nil)).Elem(), ApplicationPvtzDiscoverySvcPortProtocolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationReadinessV2Input)(nil)).Elem(), ApplicationReadinessV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationReadinessV2PtrInput)(nil)).Elem(), ApplicationReadinessV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationReadinessV2ExecInput)(nil)).Elem(), ApplicationReadinessV2ExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationReadinessV2ExecPtrInput)(nil)).Elem(), ApplicationReadinessV2ExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationReadinessV2HttpGetInput)(nil)).Elem(), ApplicationReadinessV2HttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationReadinessV2HttpGetPtrInput)(nil)).Elem(), ApplicationReadinessV2HttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationReadinessV2TcpSocketInput)(nil)).Elem(), ApplicationReadinessV2TcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationReadinessV2TcpSocketPtrInput)(nil)).Elem(), ApplicationReadinessV2TcpSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleMetricArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricPtrInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleMetricArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricMetricInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleMetricMetricArgs{})
@@ -6399,6 +10589,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleTimerPtrInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleTimerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleTimerScheduleInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleTimerScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleTimerScheduleArrayInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleTimerScheduleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationTomcatConfigV2Input)(nil)).Elem(), ApplicationTomcatConfigV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationTomcatConfigV2PtrInput)(nil)).Elem(), ApplicationTomcatConfigV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationUpdateStrategyV2Input)(nil)).Elem(), ApplicationUpdateStrategyV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationUpdateStrategyV2PtrInput)(nil)).Elem(), ApplicationUpdateStrategyV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationUpdateStrategyV2BatchUpdateInput)(nil)).Elem(), ApplicationUpdateStrategyV2BatchUpdateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationUpdateStrategyV2BatchUpdatePtrInput)(nil)).Elem(), ApplicationUpdateStrategyV2BatchUpdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GreyTagRouteDubboRuleInput)(nil)).Elem(), GreyTagRouteDubboRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GreyTagRouteDubboRuleArrayInput)(nil)).Elem(), GreyTagRouteDubboRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GreyTagRouteDubboRuleItemInput)(nil)).Elem(), GreyTagRouteDubboRuleItemArgs{})
@@ -6459,6 +10655,46 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSpecificationsSpecificationArrayInput)(nil)).Elem(), GetInstanceSpecificationsSpecificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespaceInput)(nil)).Elem(), GetNamespacesNamespaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespaceArrayInput)(nil)).Elem(), GetNamespacesNamespaceArray{})
+	pulumi.RegisterOutputType(ApplicationConfigMapMountDescV2Output{})
+	pulumi.RegisterOutputType(ApplicationConfigMapMountDescV2ArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationCustomHostAliasV2Output{})
+	pulumi.RegisterOutputType(ApplicationCustomHostAliasV2ArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationKafkaConfigsOutput{})
+	pulumi.RegisterOutputType(ApplicationKafkaConfigsPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationKafkaConfigsKafkaConfigOutput{})
+	pulumi.RegisterOutputType(ApplicationKafkaConfigsKafkaConfigArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationLivenessV2Output{})
+	pulumi.RegisterOutputType(ApplicationLivenessV2PtrOutput{})
+	pulumi.RegisterOutputType(ApplicationLivenessV2ExecOutput{})
+	pulumi.RegisterOutputType(ApplicationLivenessV2ExecPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationLivenessV2HttpGetOutput{})
+	pulumi.RegisterOutputType(ApplicationLivenessV2HttpGetPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationLivenessV2TcpSocketOutput{})
+	pulumi.RegisterOutputType(ApplicationLivenessV2TcpSocketPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationNasConfigOutput{})
+	pulumi.RegisterOutputType(ApplicationNasConfigArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationOssMountDescsV2Output{})
+	pulumi.RegisterOutputType(ApplicationOssMountDescsV2ArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationPostStartV2Output{})
+	pulumi.RegisterOutputType(ApplicationPostStartV2PtrOutput{})
+	pulumi.RegisterOutputType(ApplicationPostStartV2ExecOutput{})
+	pulumi.RegisterOutputType(ApplicationPostStartV2ExecPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationPreStopV2Output{})
+	pulumi.RegisterOutputType(ApplicationPreStopV2PtrOutput{})
+	pulumi.RegisterOutputType(ApplicationPreStopV2ExecOutput{})
+	pulumi.RegisterOutputType(ApplicationPreStopV2ExecPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationPvtzDiscoverySvcOutput{})
+	pulumi.RegisterOutputType(ApplicationPvtzDiscoverySvcPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationPvtzDiscoverySvcPortProtocolOutput{})
+	pulumi.RegisterOutputType(ApplicationPvtzDiscoverySvcPortProtocolArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationReadinessV2Output{})
+	pulumi.RegisterOutputType(ApplicationReadinessV2PtrOutput{})
+	pulumi.RegisterOutputType(ApplicationReadinessV2ExecOutput{})
+	pulumi.RegisterOutputType(ApplicationReadinessV2ExecPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationReadinessV2HttpGetOutput{})
+	pulumi.RegisterOutputType(ApplicationReadinessV2HttpGetPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationReadinessV2TcpSocketOutput{})
+	pulumi.RegisterOutputType(ApplicationReadinessV2TcpSocketPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleMetricOutput{})
 	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleMetricPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleMetricMetricOutput{})
@@ -6471,6 +10707,12 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleTimerPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleTimerScheduleOutput{})
 	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationTomcatConfigV2Output{})
+	pulumi.RegisterOutputType(ApplicationTomcatConfigV2PtrOutput{})
+	pulumi.RegisterOutputType(ApplicationUpdateStrategyV2Output{})
+	pulumi.RegisterOutputType(ApplicationUpdateStrategyV2PtrOutput{})
+	pulumi.RegisterOutputType(ApplicationUpdateStrategyV2BatchUpdateOutput{})
+	pulumi.RegisterOutputType(ApplicationUpdateStrategyV2BatchUpdatePtrOutput{})
 	pulumi.RegisterOutputType(GreyTagRouteDubboRuleOutput{})
 	pulumi.RegisterOutputType(GreyTagRouteDubboRuleArrayOutput{})
 	pulumi.RegisterOutputType(GreyTagRouteDubboRuleItemOutput{})

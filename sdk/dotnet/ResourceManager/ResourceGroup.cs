@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Provides a Resource Manager Resource Group resource. If you need to group cloud resources according to business departments, projects, and other dimensions, you can create resource groups.
     /// For information about Resource Manager Resoource Group and how to use it, see [What is Resource Manager Resource Group](https://www.alibabacloud.com/help/en/doc-detail/94485.htm)
     /// 
-    /// &gt; **NOTE:** Available in v1.82.0+.
+    /// &gt; **NOTE:** Available since v1.82.0.
     /// 
     /// ## Example Usage
     /// 
@@ -27,10 +27,12 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
     ///     var example = new AliCloud.ResourceManager.ResourceGroup("example", new()
     ///     {
-    ///         DisplayName = "testrd",
-    ///         ResourceGroupName = "testrd",
+    ///         ResourceGroupName = name,
+    ///         DisplayName = name,
     ///     });
     /// 
     /// });
@@ -66,7 +68,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource group in all regions.
+        /// The status of the resource group in all regions. See `region_statuses` below.
         /// </summary>
         [Output("regionStatuses")]
         public Output<ImmutableArray<Outputs.ResourceGroupRegionStatus>> RegionStatuses { get; private set; } = null!;
@@ -177,7 +179,7 @@ namespace Pulumi.AliCloud.ResourceManager
         private InputList<Inputs.ResourceGroupRegionStatusGetArgs>? _regionStatuses;
 
         /// <summary>
-        /// The status of the resource group in all regions.
+        /// The status of the resource group in all regions. See `region_statuses` below.
         /// </summary>
         public InputList<Inputs.ResourceGroupRegionStatusGetArgs> RegionStatuses
         {

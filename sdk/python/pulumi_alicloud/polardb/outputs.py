@@ -922,7 +922,7 @@ class GetGlobalDatabaseNetworksNetworkResult(dict):
         :param str description: The description of the Global Database Network.
         :param str gdn_id: The ID of the Global Database Network.
         :param str id: The ID of the Global Database Network.
-        :param str status: The status of the Global Database Network.
+        :param str status: The status of the Global Database Network. Valid values:
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "db_clusters", db_clusters)
@@ -993,7 +993,7 @@ class GetGlobalDatabaseNetworksNetworkResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the Global Database Network.
+        The status of the Global Database Network. Valid values:
         """
         return pulumi.get(self, "status")
 
@@ -1005,7 +1005,7 @@ class GetGlobalDatabaseNetworksNetworkDbClusterResult(dict):
                  region_id: str,
                  role: str):
         """
-        :param str db_cluster_id: The ID of the PolarDB cluster.
+        :param str db_cluster_id: The ID of the cluster.
         :param str region_id: The region ID of the cluster.
         :param str role: The role of the cluster.
         """
@@ -1017,7 +1017,7 @@ class GetGlobalDatabaseNetworksNetworkDbClusterResult(dict):
     @pulumi.getter(name="dbClusterId")
     def db_cluster_id(self) -> str:
         """
-        The ID of the PolarDB cluster.
+        The ID of the cluster.
         """
         return pulumi.get(self, "db_cluster_id")
 
@@ -1129,8 +1129,8 @@ class GetParameterGroupsGroupResult(dict):
                  parameter_group_type: str):
         """
         :param str create_time: The time when the parameter template was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-        :param str db_type: The type of the database engine.
-        :param str db_version: The version number of the database engine.
+        :param str db_type: The type of the database engine. Only `MySQL` is supported.
+        :param str db_version: The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
         :param str force_restart: Indicates whether to restart the cluster when this parameter template is applied.
         :param str id: The ID of the Parameter Group.
         :param int parameter_counts: The number of parameters in the parameter template.
@@ -1162,7 +1162,7 @@ class GetParameterGroupsGroupResult(dict):
     @pulumi.getter(name="dbType")
     def db_type(self) -> str:
         """
-        The type of the database engine.
+        The type of the database engine. Only `MySQL` is supported.
         """
         return pulumi.get(self, "db_type")
 
@@ -1170,7 +1170,7 @@ class GetParameterGroupsGroupResult(dict):
     @pulumi.getter(name="dbVersion")
     def db_version(self) -> str:
         """
-        The version number of the database engine.
+        The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
         """
         return pulumi.get(self, "db_version")
 

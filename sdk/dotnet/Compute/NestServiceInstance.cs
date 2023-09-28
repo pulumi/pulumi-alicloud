@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Compute
     /// <summary>
     /// Provides a Compute Nest Service Instance resource.
     /// 
-    /// For information about Compute Nest Service Instance and how to use it, see [What is Service Instance](https://help.aliyun.com/document_detail/396194.html).
+    /// For information about Compute Nest Service Instance and how to use it, see [What is Service Instance](https://www.alibabacloud.com/help/en/compute-nest/developer-reference/api-computenest-2021-06-01-createserviceinstance).
     /// 
-    /// &gt; **NOTE:** Available in v1.205.0+.
+    /// &gt; **NOTE:** Available since v1.205.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,6 +28,8 @@ namespace Pulumi.AliCloud.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
     ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
     ///     var defaultZones = AliCloud.GetZones.Invoke(new()
@@ -45,24 +47,26 @@ namespace Pulumi.AliCloud.Compute
     ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
     ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
-    ///         MostRecent = true,
     ///         Owners = "system",
     ///     });
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         NameRegex = "your_name_regex",
+    ///         VpcName = name,
+    ///         CidrBlock = "10.0.0.0/8",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.1.0.0/16",
+    ///         VpcId = defaultNetwork.Id,
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
     ///     var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new()
@@ -78,21 +82,30 @@ namespace Pulumi.AliCloud.Compute
     ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         InstanceChargeType = "PostPaid",
     ///         SystemDiskCategory = "cloud_efficiency",
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         VswitchId = defaultSwitch.Id,
     ///     });
     /// 
     ///     var defaultNestServiceInstance = new AliCloud.Compute.NestServiceInstance("defaultNestServiceInstance", new()
     ///     {
     ///         ServiceId = "service-dd475e6e468348799f0f",
     ///         ServiceVersion = "1",
-    ///         ServiceInstanceName = @var.Name,
+    ///         ServiceInstanceName = name,
     ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
     ///         PaymentType = "Permanent",
     ///         OperationMetadata = new AliCloud.Compute.Inputs.NestServiceInstanceOperationMetadataArgs
     ///         {
     ///             OperationStartTime = "1681281179000",
     ///             OperationEndTime = "1681367579000",
-    ///             Resources = defaultInstance.Id.Apply(id =&gt; $"{{\"Type\":\"ResourceIds\",\"ResourceIds\":{{\"ALIYUN::ECS::INSTANCE\":[\"{id}\"]}},\"RegionId\":\"cn-hangzhou\"}}"),
+    ///             Resources = defaultInstance.Id.Apply(id =&gt; @$"    {{
+    ///       ""Type"": ""ResourceIds"",
+    ///       ""RegionId"": ""cn-hangzhou"",
+    ///       ""ResourceIds"": {{
+    ///       ""ALIYUN::ECS::INSTANCE"": [
+    ///         ""{id}""
+    ///         ]
+    ///       }} 
+    ///     }}
+    /// "),
     ///         },
     ///         Tags = 
     ///         {
@@ -116,7 +129,7 @@ namespace Pulumi.AliCloud.Compute
     public partial class NestServiceInstance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The order information of cloud market. See the following `Block commodity`.
+        /// The order information of cloud market. See `commodity` below.
         /// </summary>
         [Output("commodity")]
         public Output<Outputs.NestServiceInstanceCommodity?> Commodity { get; private set; } = null!;
@@ -134,7 +147,7 @@ namespace Pulumi.AliCloud.Compute
         public Output<bool> EnableUserPrometheus { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of O&amp;M. See the following `Block operation_metadata`.
+        /// The configuration of O&amp;M. See `operation_metadata` below.
         /// </summary>
         [Output("operationMetadata")]
         public Output<Outputs.NestServiceInstanceOperationMetadata> OperationMetadata { get; private set; } = null!;
@@ -246,7 +259,7 @@ namespace Pulumi.AliCloud.Compute
     public sealed class NestServiceInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The order information of cloud market. See the following `Block commodity`.
+        /// The order information of cloud market. See `commodity` below.
         /// </summary>
         [Input("commodity")]
         public Input<Inputs.NestServiceInstanceCommodityArgs>? Commodity { get; set; }
@@ -264,7 +277,7 @@ namespace Pulumi.AliCloud.Compute
         public Input<bool>? EnableUserPrometheus { get; set; }
 
         /// <summary>
-        /// The configuration of O&amp;M. See the following `Block operation_metadata`.
+        /// The configuration of O&amp;M. See `operation_metadata` below.
         /// </summary>
         [Input("operationMetadata")]
         public Input<Inputs.NestServiceInstanceOperationMetadataArgs>? OperationMetadata { get; set; }
@@ -338,7 +351,7 @@ namespace Pulumi.AliCloud.Compute
     public sealed class NestServiceInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The order information of cloud market. See the following `Block commodity`.
+        /// The order information of cloud market. See `commodity` below.
         /// </summary>
         [Input("commodity")]
         public Input<Inputs.NestServiceInstanceCommodityGetArgs>? Commodity { get; set; }
@@ -356,7 +369,7 @@ namespace Pulumi.AliCloud.Compute
         public Input<bool>? EnableUserPrometheus { get; set; }
 
         /// <summary>
-        /// The configuration of O&amp;M. See the following `Block operation_metadata`.
+        /// The configuration of O&amp;M. See `operation_metadata` below.
         /// </summary>
         [Input("operationMetadata")]
         public Input<Inputs.NestServiceInstanceOperationMetadataGetArgs>? OperationMetadata { get; set; }

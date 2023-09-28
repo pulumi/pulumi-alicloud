@@ -17,47 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Direct Mail Mail Address resource.
  * 
- * For information about Direct Mail Mail Address and how to use it, see [What is Mail Address](https://www.aliyun.com/product/directmail).
+ * For information about Direct Mail Mail Address and how to use it, see [What is Mail Address](https://www.alibabacloud.com/help/en/directmail/latest/set-up-sender-addresses).
  * 
- * &gt; **NOTE:** Available in v1.134.0+.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.directmail.MailAddress;
- * import com.pulumi.alicloud.directmail.MailAddressArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new MailAddress(&#34;example&#34;, MailAddressArgs.builder()        
- *             .accountName(&#34;example_value@email.com&#34;)
- *             .sendtype(&#34;batch&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * &gt; **Note:**
- * A maximum of 10 mailing addresses can be added.
- * Individual users: Up to 10 mailing addresses can be deleted within a month.
- * Enterprise users: Up to 10 mailing addresses can be deleted within a month.
+ * &gt; **NOTE:** Available since v1.134.0.
  * 
  * ## Import
  * 

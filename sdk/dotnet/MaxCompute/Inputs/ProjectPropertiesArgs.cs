@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.MaxCompute.Inputs
         public Input<bool>? EnableDecimal2 { get; set; }
 
         /// <summary>
-        /// Whether encryption is turned on.See the following `Block Encryption`.
+        /// Whether encryption is turned on. See `encryption` below.
         /// </summary>
         [Input("encryption")]
         public Input<Inputs.ProjectPropertiesEncryptionArgs>? Encryption { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.MaxCompute.Inputs
         public Input<string>? SqlMeteringMax { get; set; }
 
         /// <summary>
-        /// Life cycle of tables.See the following `Block TableLifecycle`.
+        /// Life cycle of tables. See `table_lifecycle` below.
         /// </summary>
         [Input("tableLifecycle")]
         public Input<Inputs.ProjectPropertiesTableLifecycleArgs>? TableLifecycle { get; set; }

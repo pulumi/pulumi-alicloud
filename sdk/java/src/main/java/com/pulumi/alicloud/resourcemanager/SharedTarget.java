@@ -18,7 +18,52 @@ import javax.annotation.Nullable;
  * 
  * For information about Resource Manager Shared Target and how to use it, see [What is Shared Target](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
  * 
- * &gt; **NOTE:** Available in v1.111.0+.
+ * &gt; **NOTE:** Available since v1.111.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourceShare;
+ * import com.pulumi.alicloud.resourcemanager.ResourceShareArgs;
+ * import com.pulumi.alicloud.resourcemanager.SharedTarget;
+ * import com.pulumi.alicloud.resourcemanager.SharedTargetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
+ *         final var default = ResourcemanagerFunctions.getAccounts();
+ * 
+ *         var exampleResourceShare = new ResourceShare(&#34;exampleResourceShare&#34;, ResourceShareArgs.builder()        
+ *             .resourceShareName(name)
+ *             .build());
+ * 
+ *         var exampleSharedTarget = new SharedTarget(&#34;exampleSharedTarget&#34;, SharedTargetArgs.builder()        
+ *             .resourceShareId(exampleResourceShare.id())
+ *             .targetId(default_.ids()[0])
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

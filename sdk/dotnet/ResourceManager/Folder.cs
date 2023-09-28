@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Provides a Resource Manager Folder resource. A folder is an organizational unit in a resource directory. You can use folders to build an organizational structure for resources.
     /// For information about Resource Manager Foler and how to use it, see [What is Resource Manager Folder](https://www.alibabacloud.com/help/en/doc-detail/111221.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.82.0+.
+    /// &gt; **NOTE:** Available since v1.82.0.
     /// 
     /// &gt; **NOTE:** A maximum of five levels of folders can be created under the root folder.
     /// 
@@ -29,9 +29,11 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var example = new AliCloud.ResourceManager.Folder("example", new()
     ///     {
-    ///         FolderName = "test",
+    ///         FolderName = name,
     ///     });
     /// 
     /// });

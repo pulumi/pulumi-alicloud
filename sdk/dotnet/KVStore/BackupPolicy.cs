@@ -27,16 +27,12 @@ namespace Pulumi.AliCloud.KVStore
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var creation = config.Get("creation") ?? "KVStore";
-    ///     var multiAz = config.Get("multiAz") ?? "false";
     ///     var name = config.Get("name") ?? "kvstorebackuppolicyvpc";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = creation,
-    ///     });
+    ///     var defaultZones = AliCloud.KVStore.GetZones.Invoke();
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
+    ///         VpcName = name,
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
@@ -45,20 +41,31 @@ namespace Pulumi.AliCloud.KVStore
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
     ///     });
     /// 
     ///     var defaultInstance = new AliCloud.KVStore.Instance("defaultInstance", new()
     ///     {
-    ///         InstanceClass = "Memcache",
-    ///         InstanceName = name,
+    ///         DbInstanceName = name,
     ///         VswitchId = defaultSwitch.Id,
-    ///         PrivateIp = "172.16.0.10",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         InstanceClass = "redis.master.large.default",
+    ///         InstanceType = "Redis",
+    ///         EngineVersion = "5.0",
     ///         SecurityIps = new[]
     ///         {
-    ///             "10.0.0.1",
+    ///             "10.23.12.24",
     ///         },
-    ///         InstanceType = "memcache.master.small.default",
-    ///         EngineVersion = "2.8",
+    ///         Config = 
+    ///         {
+    ///             { "appendonly", "yes" },
+    ///             { "lazyfree-lazy-eviction", "yes" },
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
     ///     });
     /// 
     ///     var defaultBackupPolicy = new AliCloud.KVStore.BackupPolicy("defaultBackupPolicy", new()

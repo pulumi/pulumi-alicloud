@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Provides a Resource Manager Account resource. Member accounts are containers for resources in a resource directory. These accounts isolate resources and serve as organizational units in the resource directory. You can create member accounts in a folder and then manage them in a unified manner.
     /// For information about Resource Manager Account and how to use it, see [What is Resource Manager Account](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.83.0+.
+    /// &gt; **NOTE:** Available since v1.83.0.
     /// 
     /// &gt; **NOTE:** From version 1.188.0, the resource can be destroyed. The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial. see [how to destroy it](https://www.alibabacloud.com/help/en/resource-management/latest/delete-account).
     /// 
@@ -27,16 +27,18 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Add a Resource Manager Account.
-    ///     var f1 = new AliCloud.ResourceManager.Folder("f1", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var displayName = config.Get("displayName") ?? "EAccount";
+    ///     var exampleFolder = new AliCloud.ResourceManager.Folder("exampleFolder", new()
     ///     {
-    ///         FolderName = "test1",
+    ///         FolderName = name,
     ///     });
     /// 
-    ///     var example = new AliCloud.ResourceManager.Account("example", new()
+    ///     var exampleAccount = new AliCloud.ResourceManager.Account("exampleAccount", new()
     ///     {
-    ///         DisplayName = "RDAccount",
-    ///         FolderId = f1.Id,
+    ///         DisplayName = displayName,
+    ///         FolderId = exampleFolder.Id,
     ///     });
     /// 
     /// });

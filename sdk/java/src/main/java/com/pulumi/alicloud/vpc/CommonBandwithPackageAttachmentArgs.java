@@ -76,6 +76,21 @@ public final class CommonBandwithPackageAttachmentArgs extends com.pulumi.resour
         return this.instanceId;
     }
 
+    /**
+     * IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+     * 
+     */
+    @Import(name="ipType")
+    private @Nullable Output<String> ipType;
+
+    /**
+     * @return IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+     * 
+     */
+    public Optional<Output<String>> ipType() {
+        return Optional.ofNullable(this.ipType);
+    }
+
     private CommonBandwithPackageAttachmentArgs() {}
 
     private CommonBandwithPackageAttachmentArgs(CommonBandwithPackageAttachmentArgs $) {
@@ -83,6 +98,7 @@ public final class CommonBandwithPackageAttachmentArgs extends com.pulumi.resour
         this.bandwidthPackageId = $.bandwidthPackageId;
         this.cancelCommonBandwidthPackageIpBandwidth = $.cancelCommonBandwidthPackageIpBandwidth;
         this.instanceId = $.instanceId;
+        this.ipType = $.ipType;
     }
 
     public static Builder builder() {
@@ -185,6 +201,27 @@ public final class CommonBandwithPackageAttachmentArgs extends com.pulumi.resour
          */
         public Builder instanceId(String instanceId) {
             return instanceId(Output.of(instanceId));
+        }
+
+        /**
+         * @param ipType IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipType(@Nullable Output<String> ipType) {
+            $.ipType = ipType;
+            return this;
+        }
+
+        /**
+         * @param ipType IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipType(String ipType) {
+            return ipType(Output.of(ipType));
         }
 
         public CommonBandwithPackageAttachmentArgs build() {

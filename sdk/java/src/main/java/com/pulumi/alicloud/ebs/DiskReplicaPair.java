@@ -19,79 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Ebs Disk Replica Pair and how to use it, see [What is Disk Replica Pair](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/CreateDiskReplicaPair).
  * 
- * &gt; **NOTE:** Available in v1.196.0+.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.ecs.EcsDisk;
- * import com.pulumi.alicloud.ecs.EcsDiskArgs;
- * import com.pulumi.alicloud.ebs.DiskReplicaPair;
- * import com.pulumi.alicloud.ebs.DiskReplicaPairArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var defaultEcsDisk = new EcsDisk(&#34;defaultEcsDisk&#34;, EcsDiskArgs.builder()        
- *             .zoneId(&#34;cn-hangzhou-onebox-nebula&#34;)
- *             .category(&#34;cloud_essd&#34;)
- *             .deleteAutoSnapshot(&#34;true&#34;)
- *             .deleteWithInstance(&#34;true&#34;)
- *             .description(&#34;Test For Terraform&#34;)
- *             .diskName(var_.name())
- *             .enableAutoSnapshot(&#34;true&#34;)
- *             .encrypted(&#34;true&#34;)
- *             .size(&#34;500&#34;)
- *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;Environment&#34;, &#34;Acceptance-test&#34;)
- *             ))
- *             .build());
- * 
- *         var defaultone = new EcsDisk(&#34;defaultone&#34;, EcsDiskArgs.builder()        
- *             .zoneId(&#34;cn-hangzhou-onebox-nebula-b&#34;)
- *             .category(&#34;cloud_essd&#34;)
- *             .deleteAutoSnapshot(&#34;true&#34;)
- *             .deleteWithInstance(&#34;true&#34;)
- *             .description(&#34;Test For Terraform&#34;)
- *             .diskName(var_.name())
- *             .enableAutoSnapshot(&#34;true&#34;)
- *             .encrypted(&#34;true&#34;)
- *             .size(&#34;500&#34;)
- *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;Environment&#34;, &#34;Acceptance-test&#34;)
- *             ))
- *             .build());
- * 
- *         var defaultDiskReplicaPair = new DiskReplicaPair(&#34;defaultDiskReplicaPair&#34;, DiskReplicaPairArgs.builder()        
- *             .destinationDiskId(defaultEcsDisk.id())
- *             .destinationRegionId(&#34;cn-hangzhou-onebox-nebula&#34;)
- *             .bandwidth(10240)
- *             .destinationZoneId(&#34;cn-hangzhou-onebox-nebula-e&#34;)
- *             .sourceZoneId(&#34;cn-hangzhou-onebox-nebula-b&#34;)
- *             .diskId(defaultone.id())
- *             .description(&#34;abc&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
+ * &gt; **NOTE:** Available since v1.196.0.
  * 
  * ## Import
  * 
@@ -259,14 +187,14 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.periodUnit);
     }
     /**
-     * The first ID of the resource
+     * The first ID of the resource.
      * 
      */
     @Export(name="replicaPairId", type=String.class, parameters={})
     private Output<String> replicaPairId;
 
     /**
-     * @return The first ID of the resource
+     * @return The first ID of the resource.
      * 
      */
     public Output<String> replicaPairId() {

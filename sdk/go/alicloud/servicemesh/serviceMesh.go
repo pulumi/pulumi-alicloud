@@ -15,9 +15,9 @@ import (
 
 // Provides a Service Mesh Service Mesh resource.
 //
-// For information about Service Mesh Service Mesh and how to use it, see [What is Service Mesh](https://help.aliyun.com/document_detail/171559.html).
+// For information about Service Mesh Service Mesh and how to use it, see [What is Service Mesh](https://www.alibabacloud.com/help/en/alibaba-cloud-service-mesh/latest/api-servicemesh-2020-01-11-createservicemesh).
 //
-// > **NOTE:** Available in v1.138.0+.
+// > **NOTE:** Available since v1.138.0.
 //
 // ## Import
 //
@@ -33,19 +33,20 @@ type ServiceMesh struct {
 
 	// The array of the cluster ids.
 	ClusterIds pulumi.StringArrayOutput `pulumi:"clusterIds"`
-	// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+	// The service mesh instance specification.
+	// Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
 	ClusterSpec pulumi.StringOutput `pulumi:"clusterSpec"`
-	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
 	Edition pulumi.StringOutput `pulumi:"edition"`
-	// The configurations of additional features for the ASM instance. See the following `Block extraConfiguration`.
+	// The configurations of additional features for the ASM instance. See `extraConfiguration` below.
 	ExtraConfiguration ServiceMeshExtraConfigurationOutput `pulumi:"extraConfiguration"`
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
-	// The configuration of the Load Balancer. See the following `Block loadBalancer`.
+	// The configuration of the Load Balancer. See `loadBalancer` below.
 	LoadBalancer ServiceMeshLoadBalancerOutput `pulumi:"loadBalancer"`
-	// The configuration of the Service grid. See the following `Block meshConfig`.
+	// The configuration of the Service grid. See `meshConfig` below.
 	MeshConfig ServiceMeshMeshConfigOutput `pulumi:"meshConfig"`
-	// The network configuration of the Service grid. See the following `Block network`.
+	// The network configuration of the Service grid. See `network` below.
 	Network ServiceMeshNetworkOutput `pulumi:"network"`
 	// The name of the resource.
 	ServiceMeshName pulumi.StringOutput `pulumi:"serviceMeshName"`
@@ -90,19 +91,20 @@ func GetServiceMesh(ctx *pulumi.Context,
 type serviceMeshState struct {
 	// The array of the cluster ids.
 	ClusterIds []string `pulumi:"clusterIds"`
-	// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+	// The service mesh instance specification.
+	// Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
 	ClusterSpec *string `pulumi:"clusterSpec"`
-	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
 	Edition *string `pulumi:"edition"`
-	// The configurations of additional features for the ASM instance. See the following `Block extraConfiguration`.
+	// The configurations of additional features for the ASM instance. See `extraConfiguration` below.
 	ExtraConfiguration *ServiceMeshExtraConfiguration `pulumi:"extraConfiguration"`
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force *bool `pulumi:"force"`
-	// The configuration of the Load Balancer. See the following `Block loadBalancer`.
+	// The configuration of the Load Balancer. See `loadBalancer` below.
 	LoadBalancer *ServiceMeshLoadBalancer `pulumi:"loadBalancer"`
-	// The configuration of the Service grid. See the following `Block meshConfig`.
+	// The configuration of the Service grid. See `meshConfig` below.
 	MeshConfig *ServiceMeshMeshConfig `pulumi:"meshConfig"`
-	// The network configuration of the Service grid. See the following `Block network`.
+	// The network configuration of the Service grid. See `network` below.
 	Network *ServiceMeshNetwork `pulumi:"network"`
 	// The name of the resource.
 	ServiceMeshName *string `pulumi:"serviceMeshName"`
@@ -115,19 +117,20 @@ type serviceMeshState struct {
 type ServiceMeshState struct {
 	// The array of the cluster ids.
 	ClusterIds pulumi.StringArrayInput
-	// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+	// The service mesh instance specification.
+	// Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
 	ClusterSpec pulumi.StringPtrInput
-	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
 	Edition pulumi.StringPtrInput
-	// The configurations of additional features for the ASM instance. See the following `Block extraConfiguration`.
+	// The configurations of additional features for the ASM instance. See `extraConfiguration` below.
 	ExtraConfiguration ServiceMeshExtraConfigurationPtrInput
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force pulumi.BoolPtrInput
-	// The configuration of the Load Balancer. See the following `Block loadBalancer`.
+	// The configuration of the Load Balancer. See `loadBalancer` below.
 	LoadBalancer ServiceMeshLoadBalancerPtrInput
-	// The configuration of the Service grid. See the following `Block meshConfig`.
+	// The configuration of the Service grid. See `meshConfig` below.
 	MeshConfig ServiceMeshMeshConfigPtrInput
-	// The network configuration of the Service grid. See the following `Block network`.
+	// The network configuration of the Service grid. See `network` below.
 	Network ServiceMeshNetworkPtrInput
 	// The name of the resource.
 	ServiceMeshName pulumi.StringPtrInput
@@ -144,19 +147,20 @@ func (ServiceMeshState) ElementType() reflect.Type {
 type serviceMeshArgs struct {
 	// The array of the cluster ids.
 	ClusterIds []string `pulumi:"clusterIds"`
-	// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+	// The service mesh instance specification.
+	// Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
 	ClusterSpec *string `pulumi:"clusterSpec"`
-	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
 	Edition *string `pulumi:"edition"`
-	// The configurations of additional features for the ASM instance. See the following `Block extraConfiguration`.
+	// The configurations of additional features for the ASM instance. See `extraConfiguration` below.
 	ExtraConfiguration *ServiceMeshExtraConfiguration `pulumi:"extraConfiguration"`
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force *bool `pulumi:"force"`
-	// The configuration of the Load Balancer. See the following `Block loadBalancer`.
+	// The configuration of the Load Balancer. See `loadBalancer` below.
 	LoadBalancer *ServiceMeshLoadBalancer `pulumi:"loadBalancer"`
-	// The configuration of the Service grid. See the following `Block meshConfig`.
+	// The configuration of the Service grid. See `meshConfig` below.
 	MeshConfig *ServiceMeshMeshConfig `pulumi:"meshConfig"`
-	// The network configuration of the Service grid. See the following `Block network`.
+	// The network configuration of the Service grid. See `network` below.
 	Network ServiceMeshNetwork `pulumi:"network"`
 	// The name of the resource.
 	ServiceMeshName *string `pulumi:"serviceMeshName"`
@@ -168,19 +172,20 @@ type serviceMeshArgs struct {
 type ServiceMeshArgs struct {
 	// The array of the cluster ids.
 	ClusterIds pulumi.StringArrayInput
-	// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+	// The service mesh instance specification.
+	// Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
 	ClusterSpec pulumi.StringPtrInput
-	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
 	Edition pulumi.StringPtrInput
-	// The configurations of additional features for the ASM instance. See the following `Block extraConfiguration`.
+	// The configurations of additional features for the ASM instance. See `extraConfiguration` below.
 	ExtraConfiguration ServiceMeshExtraConfigurationPtrInput
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force pulumi.BoolPtrInput
-	// The configuration of the Load Balancer. See the following `Block loadBalancer`.
+	// The configuration of the Load Balancer. See `loadBalancer` below.
 	LoadBalancer ServiceMeshLoadBalancerPtrInput
-	// The configuration of the Service grid. See the following `Block meshConfig`.
+	// The configuration of the Service grid. See `meshConfig` below.
 	MeshConfig ServiceMeshMeshConfigPtrInput
-	// The network configuration of the Service grid. See the following `Block network`.
+	// The network configuration of the Service grid. See `network` below.
 	Network ServiceMeshNetworkInput
 	// The name of the resource.
 	ServiceMeshName pulumi.StringPtrInput
@@ -304,17 +309,18 @@ func (o ServiceMeshOutput) ClusterIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServiceMesh) pulumi.StringArrayOutput { return v.ClusterIds }).(pulumi.StringArrayOutput)
 }
 
-// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+// The service mesh instance specification.
+// Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
 func (o ServiceMeshOutput) ClusterSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceMesh) pulumi.StringOutput { return v.ClusterSpec }).(pulumi.StringOutput)
 }
 
-// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+// The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
 func (o ServiceMeshOutput) Edition() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceMesh) pulumi.StringOutput { return v.Edition }).(pulumi.StringOutput)
 }
 
-// The configurations of additional features for the ASM instance. See the following `Block extraConfiguration`.
+// The configurations of additional features for the ASM instance. See `extraConfiguration` below.
 func (o ServiceMeshOutput) ExtraConfiguration() ServiceMeshExtraConfigurationOutput {
 	return o.ApplyT(func(v *ServiceMesh) ServiceMeshExtraConfigurationOutput { return v.ExtraConfiguration }).(ServiceMeshExtraConfigurationOutput)
 }
@@ -324,17 +330,17 @@ func (o ServiceMeshOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMesh) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
-// The configuration of the Load Balancer. See the following `Block loadBalancer`.
+// The configuration of the Load Balancer. See `loadBalancer` below.
 func (o ServiceMeshOutput) LoadBalancer() ServiceMeshLoadBalancerOutput {
 	return o.ApplyT(func(v *ServiceMesh) ServiceMeshLoadBalancerOutput { return v.LoadBalancer }).(ServiceMeshLoadBalancerOutput)
 }
 
-// The configuration of the Service grid. See the following `Block meshConfig`.
+// The configuration of the Service grid. See `meshConfig` below.
 func (o ServiceMeshOutput) MeshConfig() ServiceMeshMeshConfigOutput {
 	return o.ApplyT(func(v *ServiceMesh) ServiceMeshMeshConfigOutput { return v.MeshConfig }).(ServiceMeshMeshConfigOutput)
 }
 
-// The network configuration of the Service grid. See the following `Block network`.
+// The network configuration of the Service grid. See `network` below.
 func (o ServiceMeshOutput) Network() ServiceMeshNetworkOutput {
 	return o.ApplyT(func(v *ServiceMesh) ServiceMeshNetworkOutput { return v.Network }).(ServiceMeshNetworkOutput)
 }

@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * // Create a new RAM Policy.
  * const policy = new alicloud.ram.Policy("policy", {
  *     description: "this is a policy test",
- *     force: true,
  *     policyDocument: `  {
  *     "Statement": [
  *       {
@@ -124,7 +123,7 @@ export class Policy extends pulumi.CustomResource {
     /**
      * The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
      */
-    public readonly rotateStrategy!: pulumi.Output<string | undefined>;
+    public readonly rotateStrategy!: pulumi.Output<string>;
     /**
      * (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
      *

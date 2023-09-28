@@ -16,6 +16,8 @@ import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
 import com.pulumi.alicloud.arms.inputs.GetPrometheisPlainArgs;
 import com.pulumi.alicloud.arms.inputs.GetPrometheusAlertRulesArgs;
 import com.pulumi.alicloud.arms.inputs.GetPrometheusAlertRulesPlainArgs;
+import com.pulumi.alicloud.arms.inputs.GetPrometheusMonitoringsArgs;
+import com.pulumi.alicloud.arms.inputs.GetPrometheusMonitoringsPlainArgs;
 import com.pulumi.alicloud.arms.inputs.GetRemoteWritesArgs;
 import com.pulumi.alicloud.arms.inputs.GetRemoteWritesPlainArgs;
 import com.pulumi.alicloud.arms.outputs.GetAlertContactGroupsResult;
@@ -24,6 +26,7 @@ import com.pulumi.alicloud.arms.outputs.GetDispatchRulesResult;
 import com.pulumi.alicloud.arms.outputs.GetIntegrationExportersResult;
 import com.pulumi.alicloud.arms.outputs.GetPrometheisResult;
 import com.pulumi.alicloud.arms.outputs.GetPrometheusAlertRulesResult;
+import com.pulumi.alicloud.arms.outputs.GetPrometheusMonitoringsResult;
 import com.pulumi.alicloud.arms.outputs.GetRemoteWritesResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -1485,6 +1488,202 @@ public final class ArmsFunctions {
      */
     public static CompletableFuture<GetPrometheusAlertRulesResult> getPrometheusAlertRulesPlain(GetPrometheusAlertRulesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", TypeShape.of(GetPrometheusAlertRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Arms Prometheus Monitorings of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.210.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheusMonitoringsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getPrometheusMonitorings(GetPrometheusMonitoringsArgs.builder()
+     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheusMonitoringsId1&#34;, ids.applyValue(getPrometheusMonitoringsResult -&gt; getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getPrometheusMonitorings(GetPrometheusMonitoringsArgs.builder()
+     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheusMonitoringsId2&#34;, nameRegex.applyValue(getPrometheusMonitoringsResult -&gt; getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPrometheusMonitoringsResult> getPrometheusMonitorings(GetPrometheusMonitoringsArgs args) {
+        return getPrometheusMonitorings(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Arms Prometheus Monitorings of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.210.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheusMonitoringsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getPrometheusMonitorings(GetPrometheusMonitoringsArgs.builder()
+     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheusMonitoringsId1&#34;, ids.applyValue(getPrometheusMonitoringsResult -&gt; getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getPrometheusMonitorings(GetPrometheusMonitoringsArgs.builder()
+     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheusMonitoringsId2&#34;, nameRegex.applyValue(getPrometheusMonitoringsResult -&gt; getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPrometheusMonitoringsResult> getPrometheusMonitoringsPlain(GetPrometheusMonitoringsPlainArgs args) {
+        return getPrometheusMonitoringsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Arms Prometheus Monitorings of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.210.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheusMonitoringsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getPrometheusMonitorings(GetPrometheusMonitoringsArgs.builder()
+     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheusMonitoringsId1&#34;, ids.applyValue(getPrometheusMonitoringsResult -&gt; getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getPrometheusMonitorings(GetPrometheusMonitoringsArgs.builder()
+     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheusMonitoringsId2&#34;, nameRegex.applyValue(getPrometheusMonitoringsResult -&gt; getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPrometheusMonitoringsResult> getPrometheusMonitorings(GetPrometheusMonitoringsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getPrometheusMonitorings:getPrometheusMonitorings", TypeShape.of(GetPrometheusMonitoringsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Arms Prometheus Monitorings of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.210.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheusMonitoringsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getPrometheusMonitorings(GetPrometheusMonitoringsArgs.builder()
+     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheusMonitoringsId1&#34;, ids.applyValue(getPrometheusMonitoringsResult -&gt; getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getPrometheusMonitorings(GetPrometheusMonitoringsArgs.builder()
+     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheusMonitoringsId2&#34;, nameRegex.applyValue(getPrometheusMonitoringsResult -&gt; getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPrometheusMonitoringsResult> getPrometheusMonitoringsPlain(GetPrometheusMonitoringsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:arms/getPrometheusMonitorings:getPrometheusMonitorings", TypeShape.of(GetPrometheusMonitoringsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Arms Remote Writes of the current Alibaba Cloud user.

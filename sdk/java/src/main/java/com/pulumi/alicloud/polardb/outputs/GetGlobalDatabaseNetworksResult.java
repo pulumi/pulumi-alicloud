@@ -14,8 +14,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGlobalDatabaseNetworksResult {
+    /**
+     * @return The ID of the PolarDB cluster.
+     * 
+     */
     private @Nullable String dbClusterId;
+    /**
+     * @return The description of the Global Database Network.
+     * 
+     */
     private @Nullable String description;
+    /**
+     * @return The ID of the Global Database Network.
+     * 
+     */
     private @Nullable String gdnId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,19 +35,39 @@ public final class GetGlobalDatabaseNetworksResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of PolarDB Global Database Networks. Each element contains the following attributes:
+     * 
+     */
     private List<GetGlobalDatabaseNetworksNetwork> networks;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return The status of the Global Database Network.
+     * 
+     */
     private @Nullable String status;
 
     private GetGlobalDatabaseNetworksResult() {}
+    /**
+     * @return The ID of the PolarDB cluster.
+     * 
+     */
     public Optional<String> dbClusterId() {
         return Optional.ofNullable(this.dbClusterId);
     }
+    /**
+     * @return The description of the Global Database Network.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return The ID of the Global Database Network.
+     * 
+     */
     public Optional<String> gdnId() {
         return Optional.ofNullable(this.gdnId);
     }
@@ -49,6 +81,10 @@ public final class GetGlobalDatabaseNetworksResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of PolarDB Global Database Networks. Each element contains the following attributes:
+     * 
+     */
     public List<GetGlobalDatabaseNetworksNetwork> networks() {
         return this.networks;
     }
@@ -61,6 +97,10 @@ public final class GetGlobalDatabaseNetworksResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return The status of the Global Database Network.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

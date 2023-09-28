@@ -12,13 +12,13 @@ namespace Pulumi.AliCloud.Hbase
     /// <summary>
     /// Provides a HBase instance resource supports replica set instances only. The HBase provides stable, reliable, and automatic scalable database services.
     /// It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
-    /// You can see detail product introduction [here](https://help.aliyun.com/product/49055.html)
+    /// You can see detail product introduction [here](https://www.alibabacloud.com/help/en/apsaradb-for-hbase/latest/createcluster)
     /// 
-    /// &gt; **NOTE:**  Available in 1.67.0+
+    /// &gt; **NOTE:** Available since v1.67.0.
     /// 
     /// &gt; **NOTE:**  The following regions don't support create Classic network HBase instance.
     /// [`cn-hangzhou`,`cn-shanghai`,`cn-qingdao`,`cn-beijing`,`cn-shenzhen`,`ap-southeast-1a`,.....]
-    /// The official website mark  more regions. or you can call [DescribeRegions](https://help.aliyun.com/document_detail/144489.html)
+    /// The official website mark  more regions. or you can call [DescribeRegions](https://www.alibabacloud.com/help/en/apsaradb-for-hbase/latest/describeregions)
     /// 
     /// &gt; **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
     /// 
@@ -33,19 +33,36 @@ namespace Pulumi.AliCloud.Hbase
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Hbase.Instance("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.Hbase.GetZones.Invoke();
+    /// 
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
-    ///         ColdStorageSize = 0,
-    ///         CoreDiskSize = 400,
-    ///         CoreDiskType = "cloud_efficiency",
-    ///         CoreInstanceQuantity = 2,
-    ///         CoreInstanceType = "hbase.sn2.2xlarge",
+    ///         NameRegex = "^default-NODELETING$",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Hbase.Instance("defaultInstance", new()
+    ///     {
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///         Engine = "hbaseue",
     ///         EngineVersion = "2.0",
     ///         MasterInstanceType = "hbase.sn2.2xlarge",
+    ///         CoreInstanceType = "hbase.sn2.2xlarge",
+    ///         CoreInstanceQuantity = 2,
+    ///         CoreDiskType = "cloud_efficiency",
+    ///         CoreDiskSize = 400,
     ///         PayType = "PostPaid",
-    ///         VswitchId = "vsw-123456",
-    ///         ZoneId = "cn-shenzhen-b",
+    ///         ColdStorageSize = 0,
+    ///         DeletionProtection = false,
     ///     });
     /// 
     /// });
@@ -194,7 +211,9 @@ namespace Pulumi.AliCloud.Hbase
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.105.0+) The slb service addresses of the cluster.
+        /// The slb service addresses of the cluster. See `slb_conn_addrs` below.
+        /// 
+        /// &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         /// </summary>
         [Output("slbConnAddrs")]
         public Output<ImmutableArray<Outputs.InstanceSlbConnAddr>> SlbConnAddrs { get; private set; } = null!;
@@ -206,16 +225,13 @@ namespace Pulumi.AliCloud.Hbase
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+        /// The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
         /// </summary>
         [Output("uiProxyConnAddrs")]
         public Output<ImmutableArray<Outputs.InstanceUiProxyConnAddr>> UiProxyConnAddrs { get; private set; } = null!;
 
         /// <summary>
         /// The id of the VPC.
-        /// 
-        /// 
-        /// &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         /// </summary>
         [Output("vpcId")]
         public Output<string?> VpcId { get; private set; } = null!;
@@ -227,7 +243,7 @@ namespace Pulumi.AliCloud.Hbase
         public Output<string?> VswitchId { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.105.0+) The zookeeper addresses of the cluster.
+        /// The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
         /// </summary>
         [Output("zkConnAddrs")]
         public Output<ImmutableArray<Outputs.InstanceZkConnAddr>> ZkConnAddrs { get; private set; } = null!;
@@ -441,9 +457,6 @@ namespace Pulumi.AliCloud.Hbase
 
         /// <summary>
         /// The id of the VPC.
-        /// 
-        /// 
-        /// &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -617,7 +630,9 @@ namespace Pulumi.AliCloud.Hbase
         private InputList<Inputs.InstanceSlbConnAddrGetArgs>? _slbConnAddrs;
 
         /// <summary>
-        /// (Available in 1.105.0+) The slb service addresses of the cluster.
+        /// The slb service addresses of the cluster. See `slb_conn_addrs` below.
+        /// 
+        /// &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         /// </summary>
         public InputList<Inputs.InstanceSlbConnAddrGetArgs> SlbConnAddrs
         {
@@ -641,7 +656,7 @@ namespace Pulumi.AliCloud.Hbase
         private InputList<Inputs.InstanceUiProxyConnAddrGetArgs>? _uiProxyConnAddrs;
 
         /// <summary>
-        /// (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+        /// The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
         /// </summary>
         public InputList<Inputs.InstanceUiProxyConnAddrGetArgs> UiProxyConnAddrs
         {
@@ -651,9 +666,6 @@ namespace Pulumi.AliCloud.Hbase
 
         /// <summary>
         /// The id of the VPC.
-        /// 
-        /// 
-        /// &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -668,7 +680,7 @@ namespace Pulumi.AliCloud.Hbase
         private InputList<Inputs.InstanceZkConnAddrGetArgs>? _zkConnAddrs;
 
         /// <summary>
-        /// (Available in 1.105.0+) The zookeeper addresses of the cluster.
+        /// The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
         /// </summary>
         public InputList<Inputs.InstanceZkConnAddrGetArgs> ZkConnAddrs
         {

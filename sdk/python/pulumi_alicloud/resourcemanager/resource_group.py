@@ -88,7 +88,7 @@ class _ResourceGroupState:
         :param pulumi.Input[str] account_id: The ID of the Alibaba Cloud account to which the resource group belongs.
         :param pulumi.Input[str] display_name: The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
         :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.114.0. Use `resource_group_name` instead.
-        :param pulumi.Input[Sequence[pulumi.Input['ResourceGroupRegionStatusArgs']]] region_statuses: The status of the resource group in all regions.
+        :param pulumi.Input[Sequence[pulumi.Input['ResourceGroupRegionStatusArgs']]] region_statuses: The status of the resource group in all regions. See `region_statuses` below.
         :param pulumi.Input[str] resource_group_name: The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
         :param pulumi.Input[str] status: The status of the regional resource group.
         """
@@ -151,7 +151,7 @@ class _ResourceGroupState:
     @pulumi.getter(name="regionStatuses")
     def region_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceGroupRegionStatusArgs']]]]:
         """
-        The status of the resource group in all regions.
+        The status of the resource group in all regions. See `region_statuses` below.
         """
         return pulumi.get(self, "region_statuses")
 
@@ -197,7 +197,7 @@ class ResourceGroup(pulumi.CustomResource):
         Provides a Resource Manager Resource Group resource. If you need to group cloud resources according to business departments, projects, and other dimensions, you can create resource groups.
         For information about Resource Manager Resoource Group and how to use it, see [What is Resource Manager Resource Group](https://www.alibabacloud.com/help/en/doc-detail/94485.htm)
 
-        > **NOTE:** Available in v1.82.0+.
+        > **NOTE:** Available since v1.82.0.
 
         ## Example Usage
 
@@ -207,9 +207,13 @@ class ResourceGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
         example = alicloud.resourcemanager.ResourceGroup("example",
-            display_name="testrd",
-            resource_group_name="testrd")
+            resource_group_name=name,
+            display_name=name)
         ```
 
         ## Import
@@ -236,7 +240,7 @@ class ResourceGroup(pulumi.CustomResource):
         Provides a Resource Manager Resource Group resource. If you need to group cloud resources according to business departments, projects, and other dimensions, you can create resource groups.
         For information about Resource Manager Resoource Group and how to use it, see [What is Resource Manager Resource Group](https://www.alibabacloud.com/help/en/doc-detail/94485.htm)
 
-        > **NOTE:** Available in v1.82.0+.
+        > **NOTE:** Available since v1.82.0.
 
         ## Example Usage
 
@@ -246,9 +250,13 @@ class ResourceGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
         example = alicloud.resourcemanager.ResourceGroup("example",
-            display_name="testrd",
-            resource_group_name="testrd")
+            resource_group_name=name,
+            display_name=name)
         ```
 
         ## Import
@@ -323,7 +331,7 @@ class ResourceGroup(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The ID of the Alibaba Cloud account to which the resource group belongs.
         :param pulumi.Input[str] display_name: The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
         :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.114.0. Use `resource_group_name` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceGroupRegionStatusArgs']]]] region_statuses: The status of the resource group in all regions.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceGroupRegionStatusArgs']]]] region_statuses: The status of the resource group in all regions. See `region_statuses` below.
         :param pulumi.Input[str] resource_group_name: The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
         :param pulumi.Input[str] status: The status of the regional resource group.
         """
@@ -370,7 +378,7 @@ class ResourceGroup(pulumi.CustomResource):
     @pulumi.getter(name="regionStatuses")
     def region_statuses(self) -> pulumi.Output[Sequence['outputs.ResourceGroupRegionStatus']]:
         """
-        The status of the resource group in all regions.
+        The status of the resource group in all regions. See `region_statuses` below.
         """
         return pulumi.get(self, "region_statuses")
 

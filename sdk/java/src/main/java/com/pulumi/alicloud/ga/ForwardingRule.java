@@ -45,8 +45,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ga.Listener;
  * import com.pulumi.alicloud.ga.ListenerArgs;
  * import com.pulumi.alicloud.ga.inputs.ListenerPortRangeArgs;
- * import com.pulumi.alicloud.ga.IpSet;
- * import com.pulumi.alicloud.ga.IpSetArgs;
  * import com.pulumi.alicloud.ecs.EipAddress;
  * import com.pulumi.alicloud.ecs.EipAddressArgs;
  * import com.pulumi.alicloud.ga.EndpointGroup;
@@ -73,6 +71,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
+ *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
@@ -115,12 +114,6 @@ import javax.annotation.Nullable;
  *                 .fromPort(60)
  *                 .toPort(60)
  *                 .build())
- *             .build());
- * 
- *         var exampleIpSet = new IpSet(&#34;exampleIpSet&#34;, IpSetArgs.builder()        
- *             .accelerateRegionId(default_.regions()[0].id())
- *             .acceleratorId(exampleBandwidthPackageAttachment.acceleratorId())
- *             .bandwidth(&#34;20&#34;)
  *             .build());
  * 
  *         var exampleEipAddress = new EipAddress(&#34;exampleEipAddress&#34;, EipAddressArgs.builder()        
@@ -189,7 +182,7 @@ import javax.annotation.Nullable;
  * Ga Forwarding Rule can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ga/forwardingRule:ForwardingRule example &lt;id&gt;
+ *  $ pulumi import alicloud:ga/forwardingRule:ForwardingRule example &lt;accelerator_id&gt;:&lt;listener_id&gt;:&lt;forwarding_rule_id&gt;
  * ```
  * 
  */

@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Sddp
     /// <summary>
     /// Provides a Data Security Center Rule resource.
     /// 
-    /// For information about Data Security Center Rule and how to use it, see [What is Rule](https://help.aliyun.com/product/88674.html).
+    /// For information about Data Security Center Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/data-security-center/latest/api-sddp-2019-01-03-createrule).
     /// 
-    /// &gt; **NOTE:** Available in v1.132.0+.
+    /// &gt; **NOTE:** Available since v1.132.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,13 +28,15 @@ namespace Pulumi.AliCloud.Sddp
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example_name";
     ///     var @default = new AliCloud.Sddp.Rule("default", new()
     ///     {
     ///         Category = 0,
     ///         Content = "content",
-    ///         ProductCode = "ODPS",
+    ///         RuleName = name,
     ///         RiskLevelId = "4",
-    ///         RuleName = "rule_name",
+    ///         ProductCode = "OSS",
     ///     });
     /// 
     /// });

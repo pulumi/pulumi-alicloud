@@ -20,6 +20,11 @@ export type DedicatedHostGroup = import("./dedicatedHostGroup").DedicatedHostGro
 export const DedicatedHostGroup: typeof import("./dedicatedHostGroup").DedicatedHostGroup = null as any;
 utilities.lazyLoad(exports, ["DedicatedHostGroup"], () => require("./dedicatedHostGroup"));
 
+export { DedicatedPropreHostArgs, DedicatedPropreHostState } from "./dedicatedPropreHost";
+export type DedicatedPropreHost = import("./dedicatedPropreHost").DedicatedPropreHost;
+export const DedicatedPropreHost: typeof import("./dedicatedPropreHost").DedicatedPropreHost = null as any;
+utilities.lazyLoad(exports, ["DedicatedPropreHost"], () => require("./dedicatedPropreHost"));
+
 export { GetDedicatedHostAccountsArgs, GetDedicatedHostAccountsResult, GetDedicatedHostAccountsOutputArgs } from "./getDedicatedHostAccounts";
 export const getDedicatedHostAccounts: typeof import("./getDedicatedHostAccounts").getDedicatedHostAccounts = null as any;
 export const getDedicatedHostAccountsOutput: typeof import("./getDedicatedHostAccounts").getDedicatedHostAccountsOutput = null as any;
@@ -56,6 +61,8 @@ const _module = {
                 return new DedicatedHostAccount(name, <any>undefined, { urn })
             case "alicloud:cddc/dedicatedHostGroup:DedicatedHostGroup":
                 return new DedicatedHostGroup(name, <any>undefined, { urn })
+            case "alicloud:cddc/dedicatedPropreHost:DedicatedPropreHost":
+                return new DedicatedPropreHost(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -64,3 +71,4 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "cddc/dedicatedHost", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cddc/dedicatedHostAccount", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cddc/dedicatedHostGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cddc/dedicatedPropreHost", _module)

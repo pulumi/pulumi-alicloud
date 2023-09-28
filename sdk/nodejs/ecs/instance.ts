@@ -389,10 +389,6 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly stoppedMode!: pulumi.Output<string>;
     /**
-     * @deprecated Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. 
-     */
-    public readonly subnetId!: pulumi.Output<string>;
-    /**
      * The ID of the automatic snapshot policy applied to the system disk.
      */
     public readonly systemDiskAutoSnapshotPolicyId!: pulumi.Output<string | undefined>;
@@ -412,6 +408,10 @@ export class Instance extends pulumi.CustomResource {
      * Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
      */
     public readonly systemDiskEncrypted!: pulumi.Output<boolean | undefined>;
+    /**
+     * (Available since v1.210.0) The ID of system disk.
+     */
+    public /*out*/ readonly systemDiskId!: pulumi.Output<string>;
     /**
      * The ID of the Key Management Service (KMS) key to be used for the system disk.
      */
@@ -523,12 +523,12 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["spotStrategy"] = state ? state.spotStrategy : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["stoppedMode"] = state ? state.stoppedMode : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
             resourceInputs["systemDiskAutoSnapshotPolicyId"] = state ? state.systemDiskAutoSnapshotPolicyId : undefined;
             resourceInputs["systemDiskCategory"] = state ? state.systemDiskCategory : undefined;
             resourceInputs["systemDiskDescription"] = state ? state.systemDiskDescription : undefined;
             resourceInputs["systemDiskEncryptAlgorithm"] = state ? state.systemDiskEncryptAlgorithm : undefined;
             resourceInputs["systemDiskEncrypted"] = state ? state.systemDiskEncrypted : undefined;
+            resourceInputs["systemDiskId"] = state ? state.systemDiskId : undefined;
             resourceInputs["systemDiskKmsKeyId"] = state ? state.systemDiskKmsKeyId : undefined;
             resourceInputs["systemDiskName"] = state ? state.systemDiskName : undefined;
             resourceInputs["systemDiskPerformanceLevel"] = state ? state.systemDiskPerformanceLevel : undefined;
@@ -601,7 +601,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["spotStrategy"] = args ? args.spotStrategy : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["stoppedMode"] = args ? args.stoppedMode : undefined;
-            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
             resourceInputs["systemDiskAutoSnapshotPolicyId"] = args ? args.systemDiskAutoSnapshotPolicyId : undefined;
             resourceInputs["systemDiskCategory"] = args ? args.systemDiskCategory : undefined;
             resourceInputs["systemDiskDescription"] = args ? args.systemDiskDescription : undefined;
@@ -624,6 +623,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["osType"] = undefined /*out*/;
             resourceInputs["primaryIpAddress"] = undefined /*out*/;
             resourceInputs["publicIp"] = undefined /*out*/;
+            resourceInputs["systemDiskId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };
@@ -919,10 +919,6 @@ export interface InstanceState {
      */
     stoppedMode?: pulumi.Input<string>;
     /**
-     * @deprecated Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. 
-     */
-    subnetId?: pulumi.Input<string>;
-    /**
      * The ID of the automatic snapshot policy applied to the system disk.
      */
     systemDiskAutoSnapshotPolicyId?: pulumi.Input<string>;
@@ -942,6 +938,10 @@ export interface InstanceState {
      * Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
      */
     systemDiskEncrypted?: pulumi.Input<boolean>;
+    /**
+     * (Available since v1.210.0) The ID of system disk.
+     */
+    systemDiskId?: pulumi.Input<string>;
     /**
      * The ID of the Key Management Service (KMS) key to be used for the system disk.
      */
@@ -1235,10 +1235,6 @@ export interface InstanceArgs {
      * The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
      */
     stoppedMode?: pulumi.Input<string>;
-    /**
-     * @deprecated Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. 
-     */
-    subnetId?: pulumi.Input<string>;
     /**
      * The ID of the automatic snapshot policy applied to the system disk.
      */

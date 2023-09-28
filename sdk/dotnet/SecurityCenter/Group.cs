@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.SecurityCenter
     /// 
     /// For information about Security Center Group and how to use it, see [What is Group](https://www.alibabacloud.com/help/doc-detail/129195.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.133.0+.
+    /// &gt; **NOTE:** Available since v1.133.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,9 +28,11 @@ namespace Pulumi.AliCloud.SecurityCenter
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
     ///     var example = new AliCloud.SecurityCenter.Group("example", new()
     ///     {
-    ///         GroupName = "example_value",
+    ///         GroupName = name,
     ///     });
     /// 
     /// });

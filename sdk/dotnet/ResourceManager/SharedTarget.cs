@@ -14,7 +14,37 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// For information about Resource Manager Shared Target and how to use it, see [What is Shared Target](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.111.0+.
+    /// &gt; **NOTE:** Available since v1.111.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
+    ///     var @default = AliCloud.ResourceManager.GetAccounts.Invoke();
+    /// 
+    ///     var exampleResourceShare = new AliCloud.ResourceManager.ResourceShare("exampleResourceShare", new()
+    ///     {
+    ///         ResourceShareName = name,
+    ///     });
+    /// 
+    ///     var exampleSharedTarget = new AliCloud.ResourceManager.SharedTarget("exampleSharedTarget", new()
+    ///     {
+    ///         ResourceShareId = exampleResourceShare.Id,
+    ///         TargetId = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Ids[0])),
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

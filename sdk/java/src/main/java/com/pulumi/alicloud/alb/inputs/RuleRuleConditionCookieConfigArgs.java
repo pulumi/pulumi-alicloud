@@ -17,14 +17,14 @@ public final class RuleRuleConditionCookieConfigArgs extends com.pulumi.resource
     public static final RuleRuleConditionCookieConfigArgs Empty = new RuleRuleConditionCookieConfigArgs();
 
     /**
-     * The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+     * The values of the cookie. See `values` below.
      * 
      */
     @Import(name="values")
     private @Nullable Output<List<RuleRuleConditionCookieConfigValueArgs>> values;
 
     /**
-     * @return The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+     * @return The values of the cookie. See `values` below.
      * 
      */
     public Optional<Output<List<RuleRuleConditionCookieConfigValueArgs>>> values() {
@@ -56,7 +56,7 @@ public final class RuleRuleConditionCookieConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param values The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+         * @param values The values of the cookie. See `values` below.
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class RuleRuleConditionCookieConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param values The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+         * @param values The values of the cookie. See `values` below.
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class RuleRuleConditionCookieConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param values The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+         * @param values The values of the cookie. See `values` below.
          * 
          * @return builder
          * 

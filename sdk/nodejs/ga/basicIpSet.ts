@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
  * const defaultBasicAccelerator = new alicloud.ga.BasicAccelerator("defaultBasicAccelerator", {
  *     duration: 1,
  *     pricingCycle: "Month",
@@ -30,7 +32,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultBasicIpSet = new alicloud.ga.BasicIpSet("defaultBasicIpSet", {
  *     acceleratorId: defaultBasicAccelerator.id,
- *     accelerateRegionId: "cn-hangzhou",
+ *     accelerateRegionId: region,
  *     ispType: "BGP",
  *     bandwidth: 5,
  * });

@@ -33,19 +33,22 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
  * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
  * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
- * import com.pulumi.alicloud.nlb.ServerGroup;
- * import com.pulumi.alicloud.nlb.ServerGroupArgs;
- * import com.pulumi.alicloud.nlb.inputs.ServerGroupHealthCheckArgs;
  * import com.pulumi.alicloud.nlb.NlbFunctions;
  * import com.pulumi.alicloud.nlb.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.nlb.LoadBalancer;
  * import com.pulumi.alicloud.nlb.LoadBalancerArgs;
  * import com.pulumi.alicloud.nlb.inputs.LoadBalancerZoneMappingArgs;
+ * import com.pulumi.alicloud.nlb.ServerGroup;
+ * import com.pulumi.alicloud.nlb.ServerGroupArgs;
+ * import com.pulumi.alicloud.nlb.inputs.ServerGroupHealthCheckArgs;
  * import com.pulumi.alicloud.nlb.Listener;
  * import com.pulumi.alicloud.nlb.ListenerArgs;
  * import java.util.List;
@@ -61,22 +64,68 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;default-NODELETING&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ * 
+ *         final var defaultZones = NlbFunctions.getZones();
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
  *             .build());
  * 
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var default1 = new Switch(&#34;default1&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.1.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].id()))
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultLoadBalancer = new LoadBalancer(&#34;defaultLoadBalancer&#34;, LoadBalancerArgs.builder()        
+ *             .loadBalancerName(name)
+ *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .loadBalancerType(&#34;Network&#34;)
+ *             .addressType(&#34;Internet&#34;)
+ *             .addressIpVersion(&#34;Ipv4&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *             ))
+ *             .zoneMappings(            
+ *                 LoadBalancerZoneMappingArgs.builder()
+ *                     .vswitchId(defaultSwitch.id())
+ *                     .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *                     .build(),
+ *                 LoadBalancerZoneMappingArgs.builder()
+ *                     .vswitchId(default1.id())
+ *                     .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].id()))
+ *                     .build())
+ *             .build());
  * 
  *         var defaultServerGroup = new ServerGroup(&#34;defaultServerGroup&#34;, ServerGroupArgs.builder()        
  *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
- *             .serverGroupName(var_.name())
+ *             .serverGroupName(name)
  *             .serverGroupType(&#34;Instance&#34;)
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vpcId(defaultNetwork.id())
  *             .scheduler(&#34;Wrr&#34;)
  *             .protocol(&#34;TCP&#34;)
+ *             .connectionDrain(true)
+ *             .connectionDrainTimeout(60)
+ *             .addressIpVersion(&#34;Ipv4&#34;)
  *             .healthCheck(ServerGroupHealthCheckArgs.builder()
- *                 .healthCheckUrl(&#34;/test/index.html&#34;)
- *                 .healthCheckDomain(&#34;tf-testAcc.com&#34;)
  *                 .healthCheckEnabled(true)
  *                 .healthCheckType(&#34;TCP&#34;)
  *                 .healthCheckConnectPort(0)
@@ -90,59 +139,16 @@ import javax.annotation.Nullable;
  *                     &#34;http_3xx&#34;,
  *                     &#34;http_4xx&#34;)
  *                 .build())
- *             .connectionDrain(true)
- *             .connectionDrainTimeout(60)
- *             .preserveClientIpEnabled(true)
- *             .tags(Map.of(&#34;Created&#34;, &#34;TF&#34;))
- *             .addressIpVersion(&#34;Ipv4&#34;)
- *             .build());
- * 
- *         final var defaultZones = NlbFunctions.getZones();
- * 
- *         final var default1 = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .build());
- * 
- *         final var default2 = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].id()))
- *             .build());
- * 
- *         final var zoneId1 = defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id());
- * 
- *         final var vswitchId1 = default1.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]);
- * 
- *         final var zoneId2 = defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].id());
- * 
- *         final var vswitchId2 = default2.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]);
- * 
- *         var defaultLoadBalancer = new LoadBalancer(&#34;defaultLoadBalancer&#34;, LoadBalancerArgs.builder()        
- *             .loadBalancerName(var_.name())
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
- *             .loadBalancerType(&#34;Network&#34;)
- *             .addressType(&#34;Internet&#34;)
- *             .addressIpVersion(&#34;Ipv4&#34;)
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;tfTestAcc0&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;Tftestacc 0&#34;)
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
  *             ))
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .zoneMappings(            
- *                 LoadBalancerZoneMappingArgs.builder()
- *                     .vswitchId(vswitchId1)
- *                     .zoneId(zoneId1)
- *                     .build(),
- *                 LoadBalancerZoneMappingArgs.builder()
- *                     .vswitchId(vswitchId2)
- *                     .zoneId(zoneId2)
- *                     .build())
  *             .build());
  * 
  *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
  *             .listenerProtocol(&#34;TCP&#34;)
  *             .listenerPort(&#34;80&#34;)
- *             .listenerDescription(var_.name())
+ *             .listenerDescription(name)
  *             .loadBalancerId(defaultLoadBalancer.id())
  *             .serverGroupId(defaultServerGroup.id())
  *             .idleTimeout(&#34;900&#34;)

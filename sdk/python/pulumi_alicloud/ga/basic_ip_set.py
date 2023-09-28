@@ -194,6 +194,10 @@ class BasicIpSet(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
         default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
             duration=1,
             pricing_cycle="Month",
@@ -204,7 +208,7 @@ class BasicIpSet(pulumi.CustomResource):
             auto_renew_duration=1)
         default_basic_ip_set = alicloud.ga.BasicIpSet("defaultBasicIpSet",
             accelerator_id=default_basic_accelerator.id,
-            accelerate_region_id="cn-hangzhou",
+            accelerate_region_id=region,
             isp_type="BGP",
             bandwidth=5)
         ```
@@ -245,6 +249,10 @@ class BasicIpSet(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
         default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
             duration=1,
             pricing_cycle="Month",
@@ -255,7 +263,7 @@ class BasicIpSet(pulumi.CustomResource):
             auto_renew_duration=1)
         default_basic_ip_set = alicloud.ga.BasicIpSet("defaultBasicIpSet",
             accelerator_id=default_basic_accelerator.id,
-            accelerate_region_id="cn-hangzhou",
+            accelerate_region_id=region,
             isp_type="BGP",
             bandwidth=5)
         ```

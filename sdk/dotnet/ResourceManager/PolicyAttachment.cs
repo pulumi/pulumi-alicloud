@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Provides a Resource Manager Policy Attachment resource to attaches a policy to an object. After you attach a policy to an object, the object has the operation permissions on the current resource group or the resources under the current account.
     /// For information about Resource Manager Policy Attachment and how to use it, see [How to authorize and manage resource groups](https://www.alibabacloud.com/help/en/doc-detail/94490.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.93.0+.
+    /// &gt; **NOTE:** Available since v1.93.0.
     /// 
     /// ## Import
     /// 
@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Output<string> PolicyName { get; private set; } = null!;
 
         /// <summary>
-        /// - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+        /// The type of the policy. Valid values: `Custom`, `System`.
         /// </summary>
         [Output("policyType")]
         public Output<string> PolicyType { get; private set; } = null!;
@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string> PolicyName { get; set; } = null!;
 
         /// <summary>
-        /// - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+        /// The type of the policy. Valid values: `Custom`, `System`.
         /// </summary>
         [Input("policyType", required: true)]
         public Input<string> PolicyType { get; set; } = null!;
@@ -147,7 +147,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? PolicyName { get; set; }
 
         /// <summary>
-        /// - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+        /// The type of the policy. Valid values: `Custom`, `System`.
         /// </summary>
         [Input("policyType")]
         public Input<string>? PolicyType { get; set; }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ots
     /// 
     /// For information about OTS tunnel and how to use it, see [Tunnel overview](https://www.alibabacloud.com/help/en/tablestore/latest/tunnel-service-overview).
     /// 
-    /// &gt; **NOTE:** Available in v1.172.0+.
+    /// &gt; **NOTE:** Available since v1.172.0.
     /// 
     /// ## Example Usage
     /// 
@@ -27,22 +27,26 @@ namespace Pulumi.AliCloud.Ots
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraformtest";
-    ///     var fooInstance = new AliCloud.Ots.Instance("fooInstance", new()
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultInstance = new AliCloud.Ots.Instance("defaultInstance", new()
     ///     {
     ///         Description = name,
     ///         AccessedBy = "Any",
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },
-    ///             { "For", "acceptance test" },
+    ///             { "For", "example" },
     ///         },
     ///     });
     /// 
-    ///     var fooTable = new AliCloud.Ots.Table("fooTable", new()
+    ///     var defaultTable = new AliCloud.Ots.Table("defaultTable", new()
     ///     {
-    ///         InstanceName = fooInstance.Name,
-    ///         TableName = name,
+    ///         InstanceName = defaultInstance.Name,
+    ///         TableName = "tf_example",
+    ///         TimeToLive = -1,
+    ///         MaxVersion = 1,
+    ///         EnableSse = true,
+    ///         SseKeyType = "SSE_KMS_SERVICE",
     ///         PrimaryKeys = new[]
     ///         {
     ///             new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
@@ -61,16 +65,13 @@ namespace Pulumi.AliCloud.Ots
     ///                 Type = "Binary",
     ///             },
     ///         },
-    ///         TimeToLive = -1,
-    ///         MaxVersion = 1,
-    ///         DeviationCellVersionInSec = "1",
     ///     });
     /// 
-    ///     var fooTunnel = new AliCloud.Ots.Tunnel("fooTunnel", new()
+    ///     var defaultTunnel = new AliCloud.Ots.Tunnel("defaultTunnel", new()
     ///     {
-    ///         InstanceName = fooInstance.Name,
-    ///         TableName = fooTable.TableName,
-    ///         TunnelName = name,
+    ///         InstanceName = defaultInstance.Name,
+    ///         TableName = defaultTable.TableName,
+    ///         TunnelName = "tf_example",
     ///         TunnelType = "BaseAndStream",
     ///     });
     /// 

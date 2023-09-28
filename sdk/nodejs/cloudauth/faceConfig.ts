@@ -7,23 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloudauth Face Config resource.
  *
- * For information about Cloudauth Face Config and how to use it, see [What is Face Config](https://help.aliyun.com/document_detail/99173.html).
+ * For information about Cloudauth Face Config and how to use it, see [What is Face Config](https://www.alibabacloud.com/help/en/document_detail/99173.html).
  *
- * > **NOTE:** Available in v1.137.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.cloudauth.FaceConfig("example", {
- *     bizName: "example_value",
- *     bizType: "example_value",
- * });
- * ```
+ * > **NOTE:** Available since v1.137.0.
  *
  * ## Import
  *

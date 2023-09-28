@@ -14,14 +14,14 @@ public final class TablePrimaryKeyArgs extends com.pulumi.resources.ResourceArgs
     public static final TablePrimaryKeyArgs Empty = new TablePrimaryKeyArgs();
 
     /**
-     * Name for defined column.
+     * Name for primary key.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name for defined column.
+     * @return Name for primary key.
      * 
      */
     public Output<String> name() {
@@ -29,14 +29,14 @@ public final class TablePrimaryKeyArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+     * Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+     * @return Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
      * 
      */
     public Output<String> type() {
@@ -69,7 +69,7 @@ public final class TablePrimaryKeyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name Name for defined column.
+         * @param name Name for primary key.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class TablePrimaryKeyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name Name for defined column.
+         * @param name Name for primary key.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class TablePrimaryKeyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+         * @param type Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class TablePrimaryKeyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+         * @param type Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
          * 
          * @return builder
          * 

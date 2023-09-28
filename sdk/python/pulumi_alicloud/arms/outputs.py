@@ -33,6 +33,7 @@ __all__ = [
     'GetPrometheusAlertRulesRuleResult',
     'GetPrometheusAlertRulesRuleAnnotationResult',
     'GetPrometheusAlertRulesRuleLabelResult',
+    'GetPrometheusMonitoringsPrometheusMonitoringResult',
     'GetRemoteWritesRemoteWriteResult',
 ]
 
@@ -1326,6 +1327,79 @@ class GetPrometheusAlertRulesRuleLabelResult(dict):
         The value of the label.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetPrometheusMonitoringsPrometheusMonitoringResult(dict):
+    def __init__(__self__, *,
+                 cluster_id: str,
+                 config_yaml: str,
+                 id: str,
+                 monitoring_name: str,
+                 status: str,
+                 type: str):
+        """
+        :param str cluster_id: The ID of the Prometheus instance.
+        :param str config_yaml: The monitoring configuration. The value is a YAML string.
+        :param str id: The ID of the Prometheus Monitoring. It formats as `<cluster_id>:<monitoring_name>:<type>`.
+        :param str monitoring_name: The name of the monitoring configuration.
+        :param str status: The status of the monitoring configuration. Valid values: `run`, `stop`.
+        :param str type: The type of the monitoring configuration. Valid values: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "config_yaml", config_yaml)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "monitoring_name", monitoring_name)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        The ID of the Prometheus instance.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="configYaml")
+    def config_yaml(self) -> str:
+        """
+        The monitoring configuration. The value is a YAML string.
+        """
+        return pulumi.get(self, "config_yaml")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Prometheus Monitoring. It formats as `<cluster_id>:<monitoring_name>:<type>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="monitoringName")
+    def monitoring_name(self) -> str:
+        """
+        The name of the monitoring configuration.
+        """
+        return pulumi.get(self, "monitoring_name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the monitoring configuration. Valid values: `run`, `stop`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the monitoring configuration. Valid values: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

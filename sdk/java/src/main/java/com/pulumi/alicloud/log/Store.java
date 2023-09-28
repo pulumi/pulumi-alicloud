@@ -23,6 +23,7 @@ import javax.annotation.Nullable;
  * The log store is a unit in Log Service to collect, store, and query the log data. Each log store belongs to a project,
  * and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
  * 
+ * &gt; **NOTE:** Available since v1.0.0.
  * ## Example Usage
  * 
  * Basic Usage
@@ -71,6 +72,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * 
  * Encrypt Usage
  * ```java
  * package generated_program;
@@ -199,14 +201,14 @@ public class Store extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableWebTracking);
     }
     /**
-     * Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
+     * Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
      * 
      */
     @Export(name="encryptConf", type=StoreEncryptConf.class, parameters={})
     private Output</* @Nullable */ StoreEncryptConf> encryptConf;
 
     /**
-     * @return Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
+     * @return Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
      * 
      */
     public Output<Optional<StoreEncryptConf>> encryptConf() {
@@ -241,18 +243,18 @@ public class Store extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maxSplitShardCount);
     }
     /**
-     * The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can&#39;t be changed after created.
+     * The mode of storage. Default to `standard`, must be `standard` or `query`.
      * 
      */
     @Export(name="mode", type=String.class, parameters={})
-    private Output<String> mode;
+    private Output</* @Nullable */ String> mode;
 
     /**
-     * @return The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can&#39;t be changed after created.
+     * @return The mode of storage. Default to `standard`, must be `standard` or `query`.
      * 
      */
-    public Output<String> mode() {
-        return this.mode;
+    public Output<Optional<String>> mode() {
+        return Codegen.optional(this.mode);
     }
     /**
      * The log store, which is unique in the same project.

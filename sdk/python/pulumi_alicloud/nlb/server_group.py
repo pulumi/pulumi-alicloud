@@ -30,7 +30,7 @@ class ServerGroupArgs:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a ServerGroup resource.
-        :param pulumi.Input['ServerGroupHealthCheckArgs'] health_check: HealthCheck. See the following `Block health_check`.
+        :param pulumi.Input['ServerGroupHealthCheckArgs'] health_check: HealthCheck. See `health_check` below.
         :param pulumi.Input[str] server_group_name: The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[str] vpc_id: The id of the vpc.
         :param pulumi.Input[str] address_ip_version: The protocol version. Valid values: `Ipv4` (default), `DualStack`.
@@ -69,7 +69,7 @@ class ServerGroupArgs:
     @pulumi.getter(name="healthCheck")
     def health_check(self) -> pulumi.Input['ServerGroupHealthCheckArgs']:
         """
-        HealthCheck. See the following `Block health_check`.
+        HealthCheck. See `health_check` below.
         """
         return pulumi.get(self, "health_check")
 
@@ -231,7 +231,7 @@ class _ServerGroupState:
         :param pulumi.Input[str] address_ip_version: The protocol version. Valid values: `Ipv4` (default), `DualStack`.
         :param pulumi.Input[bool] connection_drain: Specifies whether to enable connection draining.
         :param pulumi.Input[int] connection_drain_timeout: The timeout period of connection draining. Unit: seconds. Valid values: 10 to 900.
-        :param pulumi.Input['ServerGroupHealthCheckArgs'] health_check: HealthCheck. See the following `Block health_check`.
+        :param pulumi.Input['ServerGroupHealthCheckArgs'] health_check: HealthCheck. See `health_check` below.
         :param pulumi.Input[bool] preserve_client_ip_enabled: Indicates whether client address retention is enabled.
         :param pulumi.Input[str] protocol: The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the security group belongs.
@@ -309,7 +309,7 @@ class _ServerGroupState:
     @pulumi.getter(name="healthCheck")
     def health_check(self) -> Optional[pulumi.Input['ServerGroupHealthCheckArgs']]:
         """
-        HealthCheck. See the following `Block health_check`.
+        HealthCheck. See `health_check` below.
         """
         return pulumi.get(self, "health_check")
 
@@ -449,7 +449,7 @@ class ServerGroup(pulumi.CustomResource):
 
         For information about NLB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createservergroup-nlb).
 
-        > **NOTE:** Available in v1.186.0+.
+        > **NOTE:** Available since v1.186.0.
 
         ## Example Usage
 
@@ -459,15 +459,24 @@ class ServerGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
         default_server_group = alicloud.nlb.ServerGroup("defaultServerGroup",
             resource_group_id=default_resource_groups.ids[0],
-            server_group_name=var["name"],
+            server_group_name=name,
             server_group_type="Instance",
-            vpc_id=default_networks.ids[0],
+            vpc_id=default_network.id,
             scheduler="Wrr",
             protocol="TCP",
+            connection_drain=True,
+            connection_drain_timeout=60,
+            address_ip_version="Ipv4",
             health_check=alicloud.nlb.ServerGroupHealthCheckArgs(
                 health_check_enabled=True,
                 health_check_type="TCP",
@@ -483,12 +492,10 @@ class ServerGroup(pulumi.CustomResource):
                     "http_4xx",
                 ],
             ),
-            connection_drain=True,
-            connection_drain_timeout=60,
             tags={
                 "Created": "TF",
-            },
-            address_ip_version="Ipv4")
+                "For": "example",
+            })
         ```
 
         ## Import
@@ -504,7 +511,7 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] address_ip_version: The protocol version. Valid values: `Ipv4` (default), `DualStack`.
         :param pulumi.Input[bool] connection_drain: Specifies whether to enable connection draining.
         :param pulumi.Input[int] connection_drain_timeout: The timeout period of connection draining. Unit: seconds. Valid values: 10 to 900.
-        :param pulumi.Input[pulumi.InputType['ServerGroupHealthCheckArgs']] health_check: HealthCheck. See the following `Block health_check`.
+        :param pulumi.Input[pulumi.InputType['ServerGroupHealthCheckArgs']] health_check: HealthCheck. See `health_check` below.
         :param pulumi.Input[bool] preserve_client_ip_enabled: Indicates whether client address retention is enabled.
         :param pulumi.Input[str] protocol: The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the security group belongs.
@@ -525,7 +532,7 @@ class ServerGroup(pulumi.CustomResource):
 
         For information about NLB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createservergroup-nlb).
 
-        > **NOTE:** Available in v1.186.0+.
+        > **NOTE:** Available since v1.186.0.
 
         ## Example Usage
 
@@ -535,15 +542,24 @@ class ServerGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
         default_server_group = alicloud.nlb.ServerGroup("defaultServerGroup",
             resource_group_id=default_resource_groups.ids[0],
-            server_group_name=var["name"],
+            server_group_name=name,
             server_group_type="Instance",
-            vpc_id=default_networks.ids[0],
+            vpc_id=default_network.id,
             scheduler="Wrr",
             protocol="TCP",
+            connection_drain=True,
+            connection_drain_timeout=60,
+            address_ip_version="Ipv4",
             health_check=alicloud.nlb.ServerGroupHealthCheckArgs(
                 health_check_enabled=True,
                 health_check_type="TCP",
@@ -559,12 +575,10 @@ class ServerGroup(pulumi.CustomResource):
                     "http_4xx",
                 ],
             ),
-            connection_drain=True,
-            connection_drain_timeout=60,
             tags={
                 "Created": "TF",
-            },
-            address_ip_version="Ipv4")
+                "For": "example",
+            })
         ```
 
         ## Import
@@ -663,7 +677,7 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] address_ip_version: The protocol version. Valid values: `Ipv4` (default), `DualStack`.
         :param pulumi.Input[bool] connection_drain: Specifies whether to enable connection draining.
         :param pulumi.Input[int] connection_drain_timeout: The timeout period of connection draining. Unit: seconds. Valid values: 10 to 900.
-        :param pulumi.Input[pulumi.InputType['ServerGroupHealthCheckArgs']] health_check: HealthCheck. See the following `Block health_check`.
+        :param pulumi.Input[pulumi.InputType['ServerGroupHealthCheckArgs']] health_check: HealthCheck. See `health_check` below.
         :param pulumi.Input[bool] preserve_client_ip_enabled: Indicates whether client address retention is enabled.
         :param pulumi.Input[str] protocol: The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the security group belongs.
@@ -721,7 +735,7 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter(name="healthCheck")
     def health_check(self) -> pulumi.Output['outputs.ServerGroupHealthCheck']:
         """
-        HealthCheck. See the following `Block health_check`.
+        HealthCheck. See `health_check` below.
         """
         return pulumi.get(self, "health_check")
 

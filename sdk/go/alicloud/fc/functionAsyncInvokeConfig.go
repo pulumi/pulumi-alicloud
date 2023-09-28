@@ -142,7 +142,7 @@ import (
 //				OssBucket:   defaultBucket.ID(),
 //				OssKey:      defaultBucketObject.Key,
 //				MemorySize:  pulumi.Int(512),
-//				Runtime:     pulumi.String("python2.7"),
+//				Runtime:     pulumi.String("python3.10"),
 //				Handler:     pulumi.String("hello.handler"),
 //			})
 //			if err != nil {
@@ -171,88 +171,10 @@ import (
 //						}).(pulumi.StringOutput),
 //					},
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Error Handling Configuration
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fc.NewFunctionAsyncInvokeConfig(ctx, "example", &fc.FunctionAsyncInvokeConfigArgs{
-//				ServiceName:              pulumi.Any(alicloud_fc_service.Example.Name),
-//				FunctionName:             pulumi.Any(alicloud_fc_function.Example.Name),
 //				MaximumEventAgeInSeconds: pulumi.Int(60),
 //				MaximumRetryAttempts:     pulumi.Int(0),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Async Job Configuration
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fc.NewFunctionAsyncInvokeConfig(ctx, "example", &fc.FunctionAsyncInvokeConfigArgs{
-//				ServiceName:        pulumi.Any(alicloud_fc_service.Example.Name),
-//				FunctionName:       pulumi.Any(alicloud_fc_function.Example.Name),
-//				StatefulInvocation: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Configuration for Function Latest Unpublished Version
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fc.NewFunctionAsyncInvokeConfig(ctx, "example", &fc.FunctionAsyncInvokeConfigArgs{
-//				ServiceName:  pulumi.Any(alicloud_fc_service.Example.Name),
-//				FunctionName: pulumi.Any(alicloud_fc_function.Example.Name),
-//				Qualifier:    pulumi.String("LATEST"),
+//				StatefulInvocation:       pulumi.Bool(true),
+//				Qualifier:                pulumi.String("LATEST"),
 //			})
 //			if err != nil {
 //				return err

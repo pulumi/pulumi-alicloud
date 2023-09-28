@@ -14,11 +14,11 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Ipv4 Cidr Block resource.
+ * Provides a VPC Ipv4 Cidr Block resource. VPC IPv4 additional network segment.
  * 
  * For information about VPC Ipv4 Cidr Block and how to use it, see [What is Ipv4 Cidr Block](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/associatevpccidrblock).
  * 
- * &gt; **NOTE:** Available in v1.185.0+.
+ * &gt; **NOTE:** Available since v1.185.0.
  * 
  * ## Example Usage
  * 
@@ -46,14 +46,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;192.168.0.0/24&#34;)
- *             .vpcName(&#34;terraform-example&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         var defaultvpc = new Network(&#34;defaultvpc&#34;, NetworkArgs.builder()        
+ *             .description(name)
  *             .build());
  * 
- *         var example = new Ipv4CidrBlock(&#34;example&#34;, Ipv4CidrBlockArgs.builder()        
- *             .vpcId(default_.id())
- *             .secondaryCidrBlock(&#34;192.163.0.0/16&#34;)
+ *         var default_ = new Ipv4CidrBlock(&#34;default&#34;, Ipv4CidrBlockArgs.builder()        
+ *             .secondaryCidrBlock(&#34;192.168.0.0/16&#34;)
+ *             .vpcId(defaultvpc.id())
  *             .build());
  * 
  *     }

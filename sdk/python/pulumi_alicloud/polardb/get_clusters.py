@@ -143,7 +143,7 @@ def get_clusters(db_type: Optional[str] = None,
     The `polardb_get_clusters` data source provides a collection of PolarDB clusters available in Alibaba Cloud account.
     Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
 
-    > **NOTE:** Available in v1.66.0+.
+    > **NOTE:** Available since v1.66.0+.
 
     ## Example Usage
 
@@ -151,7 +151,26 @@ def get_clusters(db_type: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    polardb_clusters_ds = alicloud.polardb.get_clusters(description_regex="pc-\\\\w+",
+    this = alicloud.polardb.get_node_classes(db_type="MySQL",
+        db_version="8.0",
+        pay_type="PostPaid",
+        category="Normal")
+    default_network = alicloud.vpc.Network("defaultNetwork",
+        vpc_name="terraform-example",
+        cidr_block="172.16.0.0/16")
+    default_switch = alicloud.vpc.Switch("defaultSwitch",
+        vpc_id=default_network.id,
+        cidr_block="172.16.0.0/24",
+        zone_id=this.classes[0].zone_id,
+        vswitch_name="terraform-example")
+    cluster = alicloud.polardb.Cluster("cluster",
+        db_type="MySQL",
+        db_version="8.0",
+        pay_type="PostPaid",
+        db_node_count=2,
+        db_node_class=this.classes[0].supported_engines[0].available_resources[0].db_node_class,
+        vswitch_id=default_switch.id)
+    polardb_clusters_ds = alicloud.polardb.get_clusters_output(description_regex=cluster.id,
         status="Running")
     pulumi.export("firstPolardbClusterId", polardb_clusters_ds.clusters[0].id)
     ```
@@ -200,7 +219,7 @@ def get_clusters_output(db_type: Optional[pulumi.Input[Optional[str]]] = None,
     The `polardb_get_clusters` data source provides a collection of PolarDB clusters available in Alibaba Cloud account.
     Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
 
-    > **NOTE:** Available in v1.66.0+.
+    > **NOTE:** Available since v1.66.0+.
 
     ## Example Usage
 
@@ -208,7 +227,26 @@ def get_clusters_output(db_type: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    polardb_clusters_ds = alicloud.polardb.get_clusters(description_regex="pc-\\\\w+",
+    this = alicloud.polardb.get_node_classes(db_type="MySQL",
+        db_version="8.0",
+        pay_type="PostPaid",
+        category="Normal")
+    default_network = alicloud.vpc.Network("defaultNetwork",
+        vpc_name="terraform-example",
+        cidr_block="172.16.0.0/16")
+    default_switch = alicloud.vpc.Switch("defaultSwitch",
+        vpc_id=default_network.id,
+        cidr_block="172.16.0.0/24",
+        zone_id=this.classes[0].zone_id,
+        vswitch_name="terraform-example")
+    cluster = alicloud.polardb.Cluster("cluster",
+        db_type="MySQL",
+        db_version="8.0",
+        pay_type="PostPaid",
+        db_node_count=2,
+        db_node_class=this.classes[0].supported_engines[0].available_resources[0].db_node_class,
+        vswitch_id=default_switch.id)
+    polardb_clusters_ds = alicloud.polardb.get_clusters_output(description_regex=cluster.id,
         status="Running")
     pulumi.export("firstPolardbClusterId", polardb_clusters_ds.clusters[0].id)
     ```

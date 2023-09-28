@@ -63,7 +63,6 @@ import javax.annotation.Nullable;
  *     }
  *             &#34;&#34;&#34;)
  *             .description(&#34;this is a role test.&#34;)
- *             .force(true)
  *             .build());
  * 
  *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
@@ -86,7 +85,6 @@ import javax.annotation.Nullable;
  *   }
  *             &#34;&#34;&#34;)
  *             .description(&#34;this is a policy test&#34;)
- *             .force(true)
  *             .build());
  * 
  *         var attach = new RolePolicyAttachment(&#34;attach&#34;, RolePolicyAttachmentArgs.builder()        

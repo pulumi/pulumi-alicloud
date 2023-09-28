@@ -7,9 +7,37 @@ import * as utilities from "../utilities";
 /**
  * Provides a Private Link Vpc Endpoint resource.
  *
- * For information about Private Link Vpc Endpoint and how to use it, see [What is Vpc Endpoint](https://help.aliyun.com/document_detail/120479.html).
+ * For information about Private Link Vpc Endpoint and how to use it, see [What is Vpc Endpoint](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-createvpcendpoint).
  *
- * > **NOTE:** Available in v1.109.0+.
+ * > **NOTE:** Available since v1.109.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const exampleVpcEndpointService = new alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService", {
+ *     serviceDescription: name,
+ *     connectBandwidth: 103,
+ *     autoAcceptConnection: false,
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.0.0.0/8",
+ * });
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
+ * const exampleVpcEndpoint = new alicloud.privatelink.VpcEndpoint("exampleVpcEndpoint", {
+ *     serviceId: exampleVpcEndpointService.id,
+ *     securityGroupIds: [exampleSecurityGroup.id],
+ *     vpcId: exampleNetwork.id,
+ *     vpcEndpointName: name,
+ * });
+ * ```
  *
  * ## Import
  *

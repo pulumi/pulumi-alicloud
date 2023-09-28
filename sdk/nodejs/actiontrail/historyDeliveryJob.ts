@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Actiontrail History Delivery Job resource.
  *
- * For information about Actiontrail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/doc-detail/199999.htm).
+ * For information about Actiontrail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createdeliveryhistoryjob).
  *
- * > **NOTE:** Available in v1.139.0+.
+ * > **NOTE:** Available since v1.139.0.
  *
  * > **NOTE:** You are authorized to use the historical event delivery task feature. To use this feature, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=a2c63.p38356.0.0.e29f552bb6odNZ#/ticket/createIndex) or ask the sales manager to add you to the whitelist.
  *
@@ -25,13 +25,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexample";
  * const exampleRegions = alicloud.getRegions({
  *     current: true,
  * });
  * const exampleAccount = alicloud.getAccount({});
- * const exampleProject = new alicloud.log.Project("exampleProject", {description: "tf actiontrail test"});
+ * const exampleProject = new alicloud.log.Project("exampleProject", {description: "tf actiontrail example"});
  * const exampleTrail = new alicloud.actiontrail.Trail("exampleTrail", {
- *     trailName: "example_value",
+ *     trailName: name,
  *     slsProjectArn: pulumi.all([exampleRegions, exampleAccount, exampleProject.name]).apply(([exampleRegions, exampleAccount, name]) => `acs:log:${exampleRegions.regions?.[0]?.id}:${exampleAccount.id}:project/${name}`),
  * });
  * const exampleHistoryDeliveryJob = new alicloud.actiontrail.HistoryDeliveryJob("exampleHistoryDeliveryJob", {trailName: exampleTrail.id});

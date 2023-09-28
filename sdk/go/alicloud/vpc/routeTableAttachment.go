@@ -13,6 +13,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Provides a VPC Route Table Attachment resource. Routing table associated resource type.
+//
+// For information about VPC Route Table Attachment and how to use it, see [What is Route Table Attachment](https://www.alibabacloud.com/help/doc-detail/174112.htm).
+//
+// > **NOTE:** Available since v1.194.0.
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -32,7 +38,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "route-table-attachment-example-name"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -79,19 +85,21 @@ import (
 //
 // ## Import
 //
-// The route table attachment can be imported using the id, e.g.
+// VPC Route Table Attachment can be imported using the id, e.g.
 //
 // ```sh
 //
-//	$ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment foo vtb-abc123456:vsw-abc123456
+//	$ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment example <route_table_id>:<vswitch_id>
 //
 // ```
 type RouteTableAttachment struct {
 	pulumi.CustomResourceState
 
-	// The routeTableId of the route table attachment, the field can't be changed.
+	// The ID of the route table to be bound to the switch.
 	RouteTableId pulumi.StringOutput `pulumi:"routeTableId"`
-	// The vswitchId of the route table attachment, the field can't be changed.
+	// The status of the resource.
+	Status pulumi.StringOutput `pulumi:"status"`
+	// The ID of the switch to bind the route table.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 }
 
@@ -131,16 +139,20 @@ func GetRouteTableAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RouteTableAttachment resources.
 type routeTableAttachmentState struct {
-	// The routeTableId of the route table attachment, the field can't be changed.
+	// The ID of the route table to be bound to the switch.
 	RouteTableId *string `pulumi:"routeTableId"`
-	// The vswitchId of the route table attachment, the field can't be changed.
+	// The status of the resource.
+	Status *string `pulumi:"status"`
+	// The ID of the switch to bind the route table.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
 type RouteTableAttachmentState struct {
-	// The routeTableId of the route table attachment, the field can't be changed.
+	// The ID of the route table to be bound to the switch.
 	RouteTableId pulumi.StringPtrInput
-	// The vswitchId of the route table attachment, the field can't be changed.
+	// The status of the resource.
+	Status pulumi.StringPtrInput
+	// The ID of the switch to bind the route table.
 	VswitchId pulumi.StringPtrInput
 }
 
@@ -149,17 +161,17 @@ func (RouteTableAttachmentState) ElementType() reflect.Type {
 }
 
 type routeTableAttachmentArgs struct {
-	// The routeTableId of the route table attachment, the field can't be changed.
+	// The ID of the route table to be bound to the switch.
 	RouteTableId string `pulumi:"routeTableId"`
-	// The vswitchId of the route table attachment, the field can't be changed.
+	// The ID of the switch to bind the route table.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
 // The set of arguments for constructing a RouteTableAttachment resource.
 type RouteTableAttachmentArgs struct {
-	// The routeTableId of the route table attachment, the field can't be changed.
+	// The ID of the route table to be bound to the switch.
 	RouteTableId pulumi.StringInput
-	// The vswitchId of the route table attachment, the field can't be changed.
+	// The ID of the switch to bind the route table.
 	VswitchId pulumi.StringInput
 }
 
@@ -274,12 +286,17 @@ func (o RouteTableAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
-// The routeTableId of the route table attachment, the field can't be changed.
+// The ID of the route table to be bound to the switch.
 func (o RouteTableAttachmentOutput) RouteTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteTableAttachment) pulumi.StringOutput { return v.RouteTableId }).(pulumi.StringOutput)
 }
 
-// The vswitchId of the route table attachment, the field can't be changed.
+// The status of the resource.
+func (o RouteTableAttachmentOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteTableAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the switch to bind the route table.
 func (o RouteTableAttachmentOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteTableAttachment) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
 }

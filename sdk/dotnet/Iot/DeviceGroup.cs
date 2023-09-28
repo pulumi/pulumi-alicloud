@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Iot
     /// 
     /// For information about Iot Device Group and how to use it, see [What is Device Group](https://www.alibabacloud.com/help/product/30520.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.134.0+.
+    /// &gt; **NOTE:** Available since v1.134.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,9 +28,11 @@ namespace Pulumi.AliCloud.Iot
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
     ///     var example = new AliCloud.Iot.DeviceGroup("example", new()
     ///     {
-    ///         GroupName = "example_value",
+    ///         GroupName = name,
     ///     });
     /// 
     /// });

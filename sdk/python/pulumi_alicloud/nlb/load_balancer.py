@@ -605,36 +605,44 @@ class LoadBalancer(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.nlb.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default1 = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+        default_zones = alicloud.nlb.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
             zone_id=default_zones.zones[0].id)
-        default2 = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+        default1 = alicloud.vpc.Switch("default1",
+            vswitch_name=name,
+            cidr_block="10.4.1.0/24",
+            vpc_id=default_network.id,
             zone_id=default_zones.zones[1].id)
-        zone_id1 = default_zones.zones[0].id
-        vswitch_id1 = default1.ids[0]
-        zone_id2 = default_zones.zones[1].id
-        vswitch_id2 = default2.ids[0]
         default_load_balancer = alicloud.nlb.LoadBalancer("defaultLoadBalancer",
-            load_balancer_name=var["name"],
+            load_balancer_name=name,
             resource_group_id=default_resource_groups.ids[0],
             load_balancer_type="Network",
             address_type="Internet",
             address_ip_version="Ipv4",
+            vpc_id=default_network.id,
             tags={
-                "Created": "tfTestAcc0",
-                "For": "Tftestacc 0",
+                "Created": "TF",
+                "For": "example",
             },
-            vpc_id=default_networks.ids[0],
             zone_mappings=[
                 alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=vswitch_id1,
-                    zone_id=zone_id1,
+                    vswitch_id=default_switch.id,
+                    zone_id=default_zones.zones[0].id,
                 ),
                 alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=vswitch_id2,
-                    zone_id=zone_id2,
+                    vswitch_id=default1.id,
+                    zone_id=default_zones.zones[1].id,
                 ),
             ])
         ```
@@ -689,36 +697,44 @@ class LoadBalancer(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.nlb.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default1 = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+        default_zones = alicloud.nlb.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
             zone_id=default_zones.zones[0].id)
-        default2 = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+        default1 = alicloud.vpc.Switch("default1",
+            vswitch_name=name,
+            cidr_block="10.4.1.0/24",
+            vpc_id=default_network.id,
             zone_id=default_zones.zones[1].id)
-        zone_id1 = default_zones.zones[0].id
-        vswitch_id1 = default1.ids[0]
-        zone_id2 = default_zones.zones[1].id
-        vswitch_id2 = default2.ids[0]
         default_load_balancer = alicloud.nlb.LoadBalancer("defaultLoadBalancer",
-            load_balancer_name=var["name"],
+            load_balancer_name=name,
             resource_group_id=default_resource_groups.ids[0],
             load_balancer_type="Network",
             address_type="Internet",
             address_ip_version="Ipv4",
+            vpc_id=default_network.id,
             tags={
-                "Created": "tfTestAcc0",
-                "For": "Tftestacc 0",
+                "Created": "TF",
+                "For": "example",
             },
-            vpc_id=default_networks.ids[0],
             zone_mappings=[
                 alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=vswitch_id1,
-                    zone_id=zone_id1,
+                    vswitch_id=default_switch.id,
+                    zone_id=default_zones.zones[0].id,
                 ),
                 alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=vswitch_id2,
-                    zone_id=zone_id2,
+                    vswitch_id=default1.id,
+                    zone_id=default_zones.zones[1].id,
                 ),
             ])
         ```

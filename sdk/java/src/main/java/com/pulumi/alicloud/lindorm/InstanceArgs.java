@@ -190,21 +190,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The group name.
-     * 
-     */
-    @Import(name="groupName")
-    private @Nullable Output<String> groupName;
-
-    /**
-     * @return The group name.
-     * 
-     */
-    public Optional<Output<String>> groupName() {
-        return Optional.ofNullable(this.groupName);
-    }
-
-    /**
      * The name of the instance.
      * 
      */
@@ -370,36 +355,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The count of phoenix.
-     * 
-     */
-    @Import(name="phoenixNodeCount")
-    private @Nullable Output<Integer> phoenixNodeCount;
-
-    /**
-     * @return The count of phoenix.
-     * 
-     */
-    public Optional<Output<Integer>> phoenixNodeCount() {
-        return Optional.ofNullable(this.phoenixNodeCount);
-    }
-
-    /**
-     * The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-     * 
-     */
-    @Import(name="phoenixNodeSpecification")
-    private @Nullable Output<String> phoenixNodeSpecification;
-
-    /**
-     * @return The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-     * 
-     */
-    public Optional<Output<String>> phoenixNodeSpecification() {
-        return Optional.ofNullable(this.phoenixNodeSpecification);
-    }
-
-    /**
      * The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
      * 
      */
@@ -520,6 +475,36 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The number of LindormStream nodes in the instance.
+     * 
+     */
+    @Import(name="streamEngineNodeCount")
+    private @Nullable Output<Integer> streamEngineNodeCount;
+
+    /**
+     * @return The number of LindormStream nodes in the instance.
+     * 
+     */
+    public Optional<Output<Integer>> streamEngineNodeCount() {
+        return Optional.ofNullable(this.streamEngineNodeCount);
+    }
+
+    /**
+     * The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+     * 
+     */
+    @Import(name="streamEngineSpecification")
+    private @Nullable Output<String> streamEngineSpecification;
+
+    /**
+     * @return The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+     * 
+     */
+    public Optional<Output<String>> streamEngineSpecification() {
+        return Optional.ofNullable(this.streamEngineSpecification);
+    }
+
+    /**
      * The count of table engine.
      * 
      */
@@ -598,10 +583,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
      * 
      * @deprecated
-     * Field &#39;time_serires_engine_specification&#39; has been deprecated from provider version 1.182.0. New field &#39;time_series_engine_specification&#39; instead.
+     * Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
      * 
      */
-    @Deprecated /* Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead. */
+    @Deprecated /* Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead. */
     @Import(name="timeSeriresEngineSpecification")
     private @Nullable Output<String> timeSeriresEngineSpecification;
 
@@ -609,10 +594,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * @return Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
      * 
      * @deprecated
-     * Field &#39;time_serires_engine_specification&#39; has been deprecated from provider version 1.182.0. New field &#39;time_series_engine_specification&#39; instead.
+     * Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
      * 
      */
-    @Deprecated /* Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead. */
+    @Deprecated /* Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead. */
     public Optional<Output<String>> timeSeriresEngineSpecification() {
         return Optional.ofNullable(this.timeSeriresEngineSpecification);
     }
@@ -676,7 +661,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.duration = $.duration;
         this.fileEngineNodeCount = $.fileEngineNodeCount;
         this.fileEngineSpecification = $.fileEngineSpecification;
-        this.groupName = $.groupName;
         this.instanceName = $.instanceName;
         this.instanceStorage = $.instanceStorage;
         this.ipWhiteLists = $.ipWhiteLists;
@@ -688,8 +672,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.ltsNodeSpecification = $.ltsNodeSpecification;
         this.multiZoneCombination = $.multiZoneCombination;
         this.paymentType = $.paymentType;
-        this.phoenixNodeCount = $.phoenixNodeCount;
-        this.phoenixNodeSpecification = $.phoenixNodeSpecification;
         this.pricingCycle = $.pricingCycle;
         this.primaryVswitchId = $.primaryVswitchId;
         this.primaryZoneId = $.primaryZoneId;
@@ -698,6 +680,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.searchEngineSpecification = $.searchEngineSpecification;
         this.standbyVswitchId = $.standbyVswitchId;
         this.standbyZoneId = $.standbyZoneId;
+        this.streamEngineNodeCount = $.streamEngineNodeCount;
+        this.streamEngineSpecification = $.streamEngineSpecification;
         this.tableEngineNodeCount = $.tableEngineNodeCount;
         this.tableEngineSpecification = $.tableEngineSpecification;
         this.tags = $.tags;
@@ -963,27 +947,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupName The group name.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder groupName(@Nullable Output<String> groupName) {
-            $.groupName = groupName;
-            return this;
-        }
-
-        /**
-         * @param groupName The group name.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder groupName(String groupName) {
-            return groupName(Output.of(groupName));
-        }
-
-        /**
          * @param instanceName The name of the instance.
          * 
          * @return builder
@@ -1225,48 +1188,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param phoenixNodeCount The count of phoenix.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder phoenixNodeCount(@Nullable Output<Integer> phoenixNodeCount) {
-            $.phoenixNodeCount = phoenixNodeCount;
-            return this;
-        }
-
-        /**
-         * @param phoenixNodeCount The count of phoenix.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder phoenixNodeCount(Integer phoenixNodeCount) {
-            return phoenixNodeCount(Output.of(phoenixNodeCount));
-        }
-
-        /**
-         * @param phoenixNodeSpecification The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder phoenixNodeSpecification(@Nullable Output<String> phoenixNodeSpecification) {
-            $.phoenixNodeSpecification = phoenixNodeSpecification;
-            return this;
-        }
-
-        /**
-         * @param phoenixNodeSpecification The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder phoenixNodeSpecification(String phoenixNodeSpecification) {
-            return phoenixNodeSpecification(Output.of(phoenixNodeSpecification));
-        }
-
-        /**
          * @param pricingCycle The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
          * 
          * @return builder
@@ -1435,6 +1356,48 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param streamEngineNodeCount The number of LindormStream nodes in the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder streamEngineNodeCount(@Nullable Output<Integer> streamEngineNodeCount) {
+            $.streamEngineNodeCount = streamEngineNodeCount;
+            return this;
+        }
+
+        /**
+         * @param streamEngineNodeCount The number of LindormStream nodes in the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder streamEngineNodeCount(Integer streamEngineNodeCount) {
+            return streamEngineNodeCount(Output.of(streamEngineNodeCount));
+        }
+
+        /**
+         * @param streamEngineSpecification The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder streamEngineSpecification(@Nullable Output<String> streamEngineSpecification) {
+            $.streamEngineSpecification = streamEngineSpecification;
+            return this;
+        }
+
+        /**
+         * @param streamEngineSpecification The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder streamEngineSpecification(String streamEngineSpecification) {
+            return streamEngineSpecification(Output.of(streamEngineSpecification));
+        }
+
+        /**
          * @param tableEngineNodeCount The count of table engine.
          * 
          * @return builder
@@ -1545,10 +1508,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;time_serires_engine_specification&#39; has been deprecated from provider version 1.182.0. New field &#39;time_series_engine_specification&#39; instead.
+         * Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
          * 
          */
-        @Deprecated /* Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead. */
+        @Deprecated /* Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead. */
         public Builder timeSeriresEngineSpecification(@Nullable Output<String> timeSeriresEngineSpecification) {
             $.timeSeriresEngineSpecification = timeSeriresEngineSpecification;
             return this;
@@ -1560,10 +1523,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;time_serires_engine_specification&#39; has been deprecated from provider version 1.182.0. New field &#39;time_series_engine_specification&#39; instead.
+         * Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
          * 
          */
-        @Deprecated /* Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead. */
+        @Deprecated /* Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead. */
         public Builder timeSeriresEngineSpecification(String timeSeriresEngineSpecification) {
             return timeSeriresEngineSpecification(Output.of(timeSeriresEngineSpecification));
         }

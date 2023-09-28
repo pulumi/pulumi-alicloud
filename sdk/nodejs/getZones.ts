@@ -21,8 +21,6 @@ import * as utilities from "./utilities";
  *     availableDiskCategory: "cloud_ssd",
  *     availableInstanceType: "ecs.n4.large",
  * });
- * // Create an ECS instance with the first matched zone
- * const instance = new alicloud.ecs.Instance("instance", {availabilityZone: zonesDs.then(zonesDs => zonesDs.zones?.[0]?.id)});
  * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
@@ -146,8 +144,6 @@ export interface GetZonesResult {
  *     availableDiskCategory: "cloud_ssd",
  *     availableInstanceType: "ecs.n4.large",
  * });
- * // Create an ECS instance with the first matched zone
- * const instance = new alicloud.ecs.Instance("instance", {availabilityZone: zonesDs.then(zonesDs => zonesDs.zones?.[0]?.id)});
  * ```
  */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {

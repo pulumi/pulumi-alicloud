@@ -17,7 +17,7 @@ import (
 //
 // For information about ECS Instance Set and how to use it, see [What is Instance Set](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/runinstances).
 //
-// > **NOTE:** Available in v1.173.0+.
+// > **NOTE:** Available since v1.173.0.
 //
 // > **NOTE:** This resource is used to batch create a group of instance resources with the same configuration. However, this resource is not recommended. `ecs.Instance` is preferred.
 //
@@ -130,7 +130,7 @@ type EcsInstanceSet struct {
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
 	// Indicate how to check instance ready to use.
 	BootCheckOsWithAssistant pulumi.BoolPtrOutput `pulumi:"bootCheckOsWithAssistant"`
-	// The list of data disks created with instance. See the following `Block dataDisks`.
+	// The list of data disks created with instance. See `dataDisks` below..
 	DataDisks EcsInstanceSetDataDiskArrayOutput `pulumi:"dataDisks"`
 	// The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
 	DedicatedHostId pulumi.StringPtrOutput `pulumi:"dedicatedHostId"`
@@ -140,7 +140,7 @@ type EcsInstanceSet struct {
 	DeploymentSetId pulumi.StringPtrOutput `pulumi:"deploymentSetId"`
 	// The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The instances that need to be excluded from the Instance Set. See the following `Block excludeInstanceFilter`.
+	// The instances that need to be excluded from the Instance Set.  See `excludeInstanceFilter` below.
 	ExcludeInstanceFilter EcsInstanceSetExcludeInstanceFilterPtrOutput `pulumi:"excludeInstanceFilter"`
 	// The hostname of instance.
 	HostName pulumi.StringOutput `pulumi:"hostName"`
@@ -168,7 +168,7 @@ type EcsInstanceSet struct {
 	LaunchTemplateName pulumi.StringPtrOutput `pulumi:"launchTemplateName"`
 	// The version of the launch template.
 	LaunchTemplateVersion pulumi.StringPtrOutput `pulumi:"launchTemplateVersion"`
-	// A list of NetworkInterface. See the following `Block networkInterfaces`.
+	// A list of NetworkInterface. See `networkInterfaces` below..
 	NetworkInterfaces EcsInstanceSetNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
 	// The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
@@ -272,7 +272,7 @@ type ecsInstanceSetState struct {
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// Indicate how to check instance ready to use.
 	BootCheckOsWithAssistant *bool `pulumi:"bootCheckOsWithAssistant"`
-	// The list of data disks created with instance. See the following `Block dataDisks`.
+	// The list of data disks created with instance. See `dataDisks` below..
 	DataDisks []EcsInstanceSetDataDisk `pulumi:"dataDisks"`
 	// The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
 	DedicatedHostId *string `pulumi:"dedicatedHostId"`
@@ -282,7 +282,7 @@ type ecsInstanceSetState struct {
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
 	// The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
 	Description *string `pulumi:"description"`
-	// The instances that need to be excluded from the Instance Set. See the following `Block excludeInstanceFilter`.
+	// The instances that need to be excluded from the Instance Set.  See `excludeInstanceFilter` below.
 	ExcludeInstanceFilter *EcsInstanceSetExcludeInstanceFilter `pulumi:"excludeInstanceFilter"`
 	// The hostname of instance.
 	HostName *string `pulumi:"hostName"`
@@ -310,7 +310,7 @@ type ecsInstanceSetState struct {
 	LaunchTemplateName *string `pulumi:"launchTemplateName"`
 	// The version of the launch template.
 	LaunchTemplateVersion *string `pulumi:"launchTemplateVersion"`
-	// A list of NetworkInterface. See the following `Block networkInterfaces`.
+	// A list of NetworkInterface. See `networkInterfaces` below..
 	NetworkInterfaces []EcsInstanceSetNetworkInterface `pulumi:"networkInterfaces"`
 	// The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
 	Password *string `pulumi:"password"`
@@ -369,7 +369,7 @@ type EcsInstanceSetState struct {
 	AutoRenewPeriod pulumi.IntPtrInput
 	// Indicate how to check instance ready to use.
 	BootCheckOsWithAssistant pulumi.BoolPtrInput
-	// The list of data disks created with instance. See the following `Block dataDisks`.
+	// The list of data disks created with instance. See `dataDisks` below..
 	DataDisks EcsInstanceSetDataDiskArrayInput
 	// The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
 	DedicatedHostId pulumi.StringPtrInput
@@ -379,7 +379,7 @@ type EcsInstanceSetState struct {
 	DeploymentSetId pulumi.StringPtrInput
 	// The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
 	Description pulumi.StringPtrInput
-	// The instances that need to be excluded from the Instance Set. See the following `Block excludeInstanceFilter`.
+	// The instances that need to be excluded from the Instance Set.  See `excludeInstanceFilter` below.
 	ExcludeInstanceFilter EcsInstanceSetExcludeInstanceFilterPtrInput
 	// The hostname of instance.
 	HostName pulumi.StringPtrInput
@@ -407,7 +407,7 @@ type EcsInstanceSetState struct {
 	LaunchTemplateName pulumi.StringPtrInput
 	// The version of the launch template.
 	LaunchTemplateVersion pulumi.StringPtrInput
-	// A list of NetworkInterface. See the following `Block networkInterfaces`.
+	// A list of NetworkInterface. See `networkInterfaces` below..
 	NetworkInterfaces EcsInstanceSetNetworkInterfaceArrayInput
 	// The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
 	Password pulumi.StringPtrInput
@@ -470,7 +470,7 @@ type ecsInstanceSetArgs struct {
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// Indicate how to check instance ready to use.
 	BootCheckOsWithAssistant *bool `pulumi:"bootCheckOsWithAssistant"`
-	// The list of data disks created with instance. See the following `Block dataDisks`.
+	// The list of data disks created with instance. See `dataDisks` below..
 	DataDisks []EcsInstanceSetDataDisk `pulumi:"dataDisks"`
 	// The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
 	DedicatedHostId *string `pulumi:"dedicatedHostId"`
@@ -480,7 +480,7 @@ type ecsInstanceSetArgs struct {
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
 	// The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
 	Description *string `pulumi:"description"`
-	// The instances that need to be excluded from the Instance Set. See the following `Block excludeInstanceFilter`.
+	// The instances that need to be excluded from the Instance Set.  See `excludeInstanceFilter` below.
 	ExcludeInstanceFilter *EcsInstanceSetExcludeInstanceFilter `pulumi:"excludeInstanceFilter"`
 	// The hostname of instance.
 	HostName *string `pulumi:"hostName"`
@@ -506,7 +506,7 @@ type ecsInstanceSetArgs struct {
 	LaunchTemplateName *string `pulumi:"launchTemplateName"`
 	// The version of the launch template.
 	LaunchTemplateVersion *string `pulumi:"launchTemplateVersion"`
-	// A list of NetworkInterface. See the following `Block networkInterfaces`.
+	// A list of NetworkInterface. See `networkInterfaces` below..
 	NetworkInterfaces []EcsInstanceSetNetworkInterface `pulumi:"networkInterfaces"`
 	// The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
 	Password *string `pulumi:"password"`
@@ -566,7 +566,7 @@ type EcsInstanceSetArgs struct {
 	AutoRenewPeriod pulumi.IntPtrInput
 	// Indicate how to check instance ready to use.
 	BootCheckOsWithAssistant pulumi.BoolPtrInput
-	// The list of data disks created with instance. See the following `Block dataDisks`.
+	// The list of data disks created with instance. See `dataDisks` below..
 	DataDisks EcsInstanceSetDataDiskArrayInput
 	// The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
 	DedicatedHostId pulumi.StringPtrInput
@@ -576,7 +576,7 @@ type EcsInstanceSetArgs struct {
 	DeploymentSetId pulumi.StringPtrInput
 	// The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
 	Description pulumi.StringPtrInput
-	// The instances that need to be excluded from the Instance Set. See the following `Block excludeInstanceFilter`.
+	// The instances that need to be excluded from the Instance Set.  See `excludeInstanceFilter` below.
 	ExcludeInstanceFilter EcsInstanceSetExcludeInstanceFilterPtrInput
 	// The hostname of instance.
 	HostName pulumi.StringPtrInput
@@ -602,7 +602,7 @@ type EcsInstanceSetArgs struct {
 	LaunchTemplateName pulumi.StringPtrInput
 	// The version of the launch template.
 	LaunchTemplateVersion pulumi.StringPtrInput
-	// A list of NetworkInterface. See the following `Block networkInterfaces`.
+	// A list of NetworkInterface. See `networkInterfaces` below..
 	NetworkInterfaces EcsInstanceSetNetworkInterfaceArrayInput
 	// The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
 	Password pulumi.StringPtrInput
@@ -786,7 +786,7 @@ func (o EcsInstanceSetOutput) BootCheckOsWithAssistant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.BoolPtrOutput { return v.BootCheckOsWithAssistant }).(pulumi.BoolPtrOutput)
 }
 
-// The list of data disks created with instance. See the following `Block dataDisks`.
+// The list of data disks created with instance. See `dataDisks` below..
 func (o EcsInstanceSetOutput) DataDisks() EcsInstanceSetDataDiskArrayOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) EcsInstanceSetDataDiskArrayOutput { return v.DataDisks }).(EcsInstanceSetDataDiskArrayOutput)
 }
@@ -811,7 +811,7 @@ func (o EcsInstanceSetOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The instances that need to be excluded from the Instance Set. See the following `Block excludeInstanceFilter`.
+// The instances that need to be excluded from the Instance Set.  See `excludeInstanceFilter` below.
 func (o EcsInstanceSetOutput) ExcludeInstanceFilter() EcsInstanceSetExcludeInstanceFilterPtrOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) EcsInstanceSetExcludeInstanceFilterPtrOutput { return v.ExcludeInstanceFilter }).(EcsInstanceSetExcludeInstanceFilterPtrOutput)
 }
@@ -881,7 +881,7 @@ func (o EcsInstanceSetOutput) LaunchTemplateVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.LaunchTemplateVersion }).(pulumi.StringPtrOutput)
 }
 
-// A list of NetworkInterface. See the following `Block networkInterfaces`.
+// A list of NetworkInterface. See `networkInterfaces` below..
 func (o EcsInstanceSetOutput) NetworkInterfaces() EcsInstanceSetNetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) EcsInstanceSetNetworkInterfaceArrayOutput { return v.NetworkInterfaces }).(EcsInstanceSetNetworkInterfaceArrayOutput)
 }

@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Ots.Inputs
         public Input<bool>? EnableSortAndAgg { get; set; }
 
         /// <summary>
-        /// The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+        /// Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
         /// </summary>
         [Input("fieldName", required: true)]
         public Input<string> FieldName { get; set; } = null!;

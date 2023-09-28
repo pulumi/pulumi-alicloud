@@ -25,7 +25,7 @@ class DedicatedHostGroupArgs:
                  open_permission: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a DedicatedHostGroup resource.
-        :param pulumi.Input[str] engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+        :param pulumi.Input[str] engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
         :param pulumi.Input[str] vpc_id: The virtual private cloud (VPC) ID of the dedicated cluster.
         :param pulumi.Input[str] allocation_policy: AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
         :param pulumi.Input[int] cpu_allocation_ratio: The CPU overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
@@ -57,7 +57,7 @@ class DedicatedHostGroupArgs:
     @pulumi.getter
     def engine(self) -> pulumi.Input[str]:
         """
-        Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+        Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
         """
         return pulumi.get(self, "engine")
 
@@ -181,7 +181,7 @@ class _DedicatedHostGroupState:
         :param pulumi.Input[int] cpu_allocation_ratio: The CPU overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
         :param pulumi.Input[str] dedicated_host_group_desc: The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[int] disk_allocation_ratio: The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
-        :param pulumi.Input[str] engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+        :param pulumi.Input[str] engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
         :param pulumi.Input[str] host_replace_policy: The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
         :param pulumi.Input[int] mem_allocation_ratio: The Memory Allocation Ratio of the Dedicated Host Group.
         :param pulumi.Input[bool] open_permission: Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
@@ -259,7 +259,7 @@ class _DedicatedHostGroupState:
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[str]]:
         """
-        Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+        Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
         """
         return pulumi.get(self, "engine")
 
@@ -379,7 +379,7 @@ class DedicatedHostGroup(pulumi.CustomResource):
         :param pulumi.Input[int] cpu_allocation_ratio: The CPU overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
         :param pulumi.Input[str] dedicated_host_group_desc: The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[int] disk_allocation_ratio: The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
-        :param pulumi.Input[str] engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+        :param pulumi.Input[str] engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
         :param pulumi.Input[str] host_replace_policy: The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
         :param pulumi.Input[int] mem_allocation_ratio: The Memory Allocation Ratio of the Dedicated Host Group.
         :param pulumi.Input[bool] open_permission: Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
@@ -509,7 +509,7 @@ class DedicatedHostGroup(pulumi.CustomResource):
         :param pulumi.Input[int] cpu_allocation_ratio: The CPU overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
         :param pulumi.Input[str] dedicated_host_group_desc: The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[int] disk_allocation_ratio: The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
-        :param pulumi.Input[str] engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+        :param pulumi.Input[str] engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
         :param pulumi.Input[str] host_replace_policy: The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
         :param pulumi.Input[int] mem_allocation_ratio: The Memory Allocation Ratio of the Dedicated Host Group.
         :param pulumi.Input[bool] open_permission: Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
@@ -567,7 +567,7 @@ class DedicatedHostGroup(pulumi.CustomResource):
     @pulumi.getter
     def engine(self) -> pulumi.Output[str]:
         """
-        Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+        Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
         """
         return pulumi.get(self, "engine")
 

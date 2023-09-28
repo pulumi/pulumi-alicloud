@@ -71,10 +71,10 @@ class ProjectPropertiesArgs:
         """
         :param pulumi.Input[bool] allow_full_scan: Whether to allow full table scan.
         :param pulumi.Input[bool] enable_decimal2: Whether to turn on Decimal2.0.
-        :param pulumi.Input['ProjectPropertiesEncryptionArgs'] encryption: Whether encryption is turned on.See the following `Block Encryption`.
+        :param pulumi.Input['ProjectPropertiesEncryptionArgs'] encryption: Whether encryption is turned on. See `encryption` below.
         :param pulumi.Input[int] retention_days: Job default retention time.
         :param pulumi.Input[str] sql_metering_max: SQL charge limit.
-        :param pulumi.Input['ProjectPropertiesTableLifecycleArgs'] table_lifecycle: Life cycle of tables.See the following `Block TableLifecycle`.
+        :param pulumi.Input['ProjectPropertiesTableLifecycleArgs'] table_lifecycle: Life cycle of tables. See `table_lifecycle` below.
         :param pulumi.Input[str] timezone: Project time zone.
         :param pulumi.Input[str] type_system: Type system.
         """
@@ -123,7 +123,7 @@ class ProjectPropertiesArgs:
     @pulumi.getter
     def encryption(self) -> Optional[pulumi.Input['ProjectPropertiesEncryptionArgs']]:
         """
-        Whether encryption is turned on.See the following `Block Encryption`.
+        Whether encryption is turned on. See `encryption` below.
         """
         return pulumi.get(self, "encryption")
 
@@ -159,7 +159,7 @@ class ProjectPropertiesArgs:
     @pulumi.getter(name="tableLifecycle")
     def table_lifecycle(self) -> Optional[pulumi.Input['ProjectPropertiesTableLifecycleArgs']]:
         """
-        Life cycle of tables.See the following `Block TableLifecycle`.
+        Life cycle of tables. See `table_lifecycle` below.
         """
         return pulumi.get(self, "table_lifecycle")
 
@@ -301,7 +301,7 @@ class ProjectSecurityPropertiesArgs:
         :param pulumi.Input[bool] label_security: Label authorization.
         :param pulumi.Input[bool] object_creator_has_access_permission: Project creator permissions.
         :param pulumi.Input[bool] object_creator_has_grant_permission: Does the project creator have authorization rights.
-        :param pulumi.Input['ProjectSecurityPropertiesProjectProtectionArgs'] project_protection: Project protection.See the following `Block ProjectProtection`.
+        :param pulumi.Input['ProjectSecurityPropertiesProjectProtectionArgs'] project_protection: Project protection. See `project_protection` below.
         :param pulumi.Input[bool] using_acl: Whether to turn on ACL.
         :param pulumi.Input[bool] using_policy: Whether to enable Policy.
         """
@@ -372,7 +372,7 @@ class ProjectSecurityPropertiesArgs:
     @pulumi.getter(name="projectProtection")
     def project_protection(self) -> Optional[pulumi.Input['ProjectSecurityPropertiesProjectProtectionArgs']]:
         """
-        Project protection.See the following `Block ProjectProtection`.
+        Project protection. See `project_protection` below.
         """
         return pulumi.get(self, "project_protection")
 

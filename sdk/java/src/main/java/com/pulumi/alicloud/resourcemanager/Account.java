@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * Provides a Resource Manager Account resource. Member accounts are containers for resources in a resource directory. These accounts isolate resources and serve as organizational units in the resource directory. You can create member accounts in a folder and then manage them in a unified manner.
  * For information about Resource Manager Account and how to use it, see [What is Resource Manager Account](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
  * 
- * &gt; **NOTE:** Available in v1.83.0+.
+ * &gt; **NOTE:** Available since v1.83.0.
  * 
  * &gt; **NOTE:** From version 1.188.0, the resource can be destroyed. The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial. see [how to destroy it](https://www.alibabacloud.com/help/en/resource-management/latest/delete-account).
  * 
@@ -49,13 +49,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var f1 = new Folder(&#34;f1&#34;, FolderArgs.builder()        
- *             .folderName(&#34;test1&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var displayName = config.get(&#34;displayName&#34;).orElse(&#34;EAccount&#34;);
+ *         var exampleFolder = new Folder(&#34;exampleFolder&#34;, FolderArgs.builder()        
+ *             .folderName(name)
  *             .build());
  * 
- *         var example = new Account(&#34;example&#34;, AccountArgs.builder()        
- *             .displayName(&#34;RDAccount&#34;)
- *             .folderId(f1.id())
+ *         var exampleAccount = new Account(&#34;exampleAccount&#34;, AccountArgs.builder()        
+ *             .displayName(displayName)
+ *             .folderId(exampleFolder.id())
  *             .build());
  * 
  *     }

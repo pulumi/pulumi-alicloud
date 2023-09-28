@@ -229,7 +229,7 @@ class SecurityPolicy(pulumi.CustomResource):
 
         For information about NLB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createsecuritypolicy-nlb).
 
-        > **NOTE:** Available in v1.187.0+.
+        > **NOTE:** Available since v1.187.0.
 
         ## Example Usage
 
@@ -239,10 +239,14 @@ class SecurityPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
         default_security_policy = alicloud.nlb.SecurityPolicy("defaultSecurityPolicy",
             resource_group_id=default_resource_groups.ids[0],
-            security_policy_name=var["name"],
+            security_policy_name=name,
             ciphers=[
                 "ECDHE-RSA-AES128-SHA",
                 "ECDHE-ECDSA-AES128-SHA",
@@ -254,7 +258,7 @@ class SecurityPolicy(pulumi.CustomResource):
             ],
             tags={
                 "Created": "TF",
-                "For": "Acceptance-test",
+                "For": "example",
             })
         ```
 
@@ -288,7 +292,7 @@ class SecurityPolicy(pulumi.CustomResource):
 
         For information about NLB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createsecuritypolicy-nlb).
 
-        > **NOTE:** Available in v1.187.0+.
+        > **NOTE:** Available since v1.187.0.
 
         ## Example Usage
 
@@ -298,10 +302,14 @@ class SecurityPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
         default_security_policy = alicloud.nlb.SecurityPolicy("defaultSecurityPolicy",
             resource_group_id=default_resource_groups.ids[0],
-            security_policy_name=var["name"],
+            security_policy_name=name,
             ciphers=[
                 "ECDHE-RSA-AES128-SHA",
                 "ECDHE-ECDSA-AES128-SHA",
@@ -313,7 +321,7 @@ class SecurityPolicy(pulumi.CustomResource):
             ],
             tags={
                 "Created": "TF",
-                "For": "Acceptance-test",
+                "For": "example",
             })
         ```
 

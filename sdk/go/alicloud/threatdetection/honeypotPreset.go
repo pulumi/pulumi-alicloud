@@ -15,9 +15,9 @@ import (
 
 // Provides a Threat Detection Honeypot Preset resource.
 //
-// For information about Threat Detection Honeypot Preset and how to use it, see [What is Honeypot Preset](https://help.aliyun.com/document_detail/468960.html).
+// For information about Threat Detection Honeypot Preset and how to use it, see [What is Honeypot Preset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotpreset).
 //
-// > **NOTE:** Available in v1.195.0+.
+// > **NOTE:** Available since v1.195.0.
 //
 // ## Example Usage
 //
@@ -30,13 +30,25 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tfexample"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultHoneypotImages, err := threatdetection.GetHoneypotImages(ctx, &threatdetection.GetHoneypotImagesArgs{
+//				NameRegex: pulumi.StringRef("^ruoyi"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			defaultHoneypotNode, err := threatdetection.NewHoneypotNode(ctx, "defaultHoneypotNode", &threatdetection.HoneypotNodeArgs{
-//				NodeName:          pulumi.Any(_var.Name),
+//				NodeName:          pulumi.String(name),
 //				AvailableProbeNum: pulumi.Int(20),
 //				SecurityGroupProbeIpLists: pulumi.StringArray{
 //					pulumi.String("0.0.0.0/0"),
@@ -46,13 +58,13 @@ import (
 //				return err
 //			}
 //			_, err = threatdetection.NewHoneypotPreset(ctx, "defaultHoneypotPreset", &threatdetection.HoneypotPresetArgs{
-//				HoneypotImageName: pulumi.String("shiro"),
+//				PresetName:        pulumi.String(name),
+//				NodeId:            defaultHoneypotNode.ID(),
+//				HoneypotImageName: *pulumi.String(defaultHoneypotImages.Images[0].HoneypotImageName),
 //				Meta: &threatdetection.HoneypotPresetMetaArgs{
 //					PortraitOption: pulumi.Bool(true),
 //					Burp:           pulumi.String("open"),
 //				},
-//				NodeId:     defaultHoneypotNode.ID(),
-//				PresetName: pulumi.String("apiapec_test"),
 //			})
 //			if err != nil {
 //				return err
@@ -79,7 +91,7 @@ type HoneypotPreset struct {
 	HoneypotImageName pulumi.StringOutput `pulumi:"honeypotImageName"`
 	// Unique ID of honeypot Template
 	HoneypotPresetId pulumi.StringOutput `pulumi:"honeypotPresetId"`
-	// Honeypot template custom parameters. See the following `Block meta`.
+	// Honeypot template custom parameters. See `meta` below.
 	Meta HoneypotPresetMetaOutput `pulumi:"meta"`
 	// Unique id of management node
 	NodeId pulumi.StringOutput `pulumi:"nodeId"`
@@ -133,7 +145,7 @@ type honeypotPresetState struct {
 	HoneypotImageName *string `pulumi:"honeypotImageName"`
 	// Unique ID of honeypot Template
 	HoneypotPresetId *string `pulumi:"honeypotPresetId"`
-	// Honeypot template custom parameters. See the following `Block meta`.
+	// Honeypot template custom parameters. See `meta` below.
 	Meta *HoneypotPresetMeta `pulumi:"meta"`
 	// Unique id of management node
 	NodeId *string `pulumi:"nodeId"`
@@ -146,7 +158,7 @@ type HoneypotPresetState struct {
 	HoneypotImageName pulumi.StringPtrInput
 	// Unique ID of honeypot Template
 	HoneypotPresetId pulumi.StringPtrInput
-	// Honeypot template custom parameters. See the following `Block meta`.
+	// Honeypot template custom parameters. See `meta` below.
 	Meta HoneypotPresetMetaPtrInput
 	// Unique id of management node
 	NodeId pulumi.StringPtrInput
@@ -161,7 +173,7 @@ func (HoneypotPresetState) ElementType() reflect.Type {
 type honeypotPresetArgs struct {
 	// Honeypot mirror name
 	HoneypotImageName string `pulumi:"honeypotImageName"`
-	// Honeypot template custom parameters. See the following `Block meta`.
+	// Honeypot template custom parameters. See `meta` below.
 	Meta HoneypotPresetMeta `pulumi:"meta"`
 	// Unique id of management node
 	NodeId string `pulumi:"nodeId"`
@@ -173,7 +185,7 @@ type honeypotPresetArgs struct {
 type HoneypotPresetArgs struct {
 	// Honeypot mirror name
 	HoneypotImageName pulumi.StringInput
-	// Honeypot template custom parameters. See the following `Block meta`.
+	// Honeypot template custom parameters. See `meta` below.
 	Meta HoneypotPresetMetaInput
 	// Unique id of management node
 	NodeId pulumi.StringInput
@@ -302,7 +314,7 @@ func (o HoneypotPresetOutput) HoneypotPresetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HoneypotPreset) pulumi.StringOutput { return v.HoneypotPresetId }).(pulumi.StringOutput)
 }
 
-// Honeypot template custom parameters. See the following `Block meta`.
+// Honeypot template custom parameters. See `meta` below.
 func (o HoneypotPresetOutput) Meta() HoneypotPresetMetaOutput {
 	return o.ApplyT(func(v *HoneypotPreset) HoneypotPresetMetaOutput { return v.Meta }).(HoneypotPresetMetaOutput)
 }

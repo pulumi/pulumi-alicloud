@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly string? Condition;
         /// <summary>
-        /// A list of conditions items.See `items` below.
+        /// A list of conditions items. See `items` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GreyTagRouteScRuleItem> Items;
         /// <summary>

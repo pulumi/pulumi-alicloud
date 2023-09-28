@@ -719,6 +719,14 @@
             "alicloud_cddc_dedicated_host_group": {
                 "current": "alicloud:cddc/dedicatedHostGroup:DedicatedHostGroup"
             },
+            "alicloud_cddc_dedicated_propre_host": {
+                "current": "alicloud:cddc/dedicatedPropreHost:DedicatedPropreHost",
+                "fields": {
+                    "ecs_class_list": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "alicloud_cdn_domain": {
                 "current": "alicloud:cdn/domain:Domain",
                 "fields": {
@@ -1097,6 +1105,9 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "alicloud_cloud_monitor_service_hybrid_double_write": {
+                "current": "alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite"
             },
             "alicloud_cloud_sso_access_assignment": {
                 "current": "alicloud:cloudsso/accessManagement:AccessManagement"
@@ -3494,6 +3505,61 @@
             "alicloud_ess_suspend_process": {
                 "current": "alicloud:ess/suspendProcess:SuspendProcess"
             },
+            "alicloud_event_bridge_api_destination": {
+                "current": "alicloud:eventbridge/apiDestination:ApiDestination",
+                "fields": {
+                    "http_api_parameters": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "alicloud_event_bridge_connection": {
+                "current": "alicloud:eventbridge/connection:Connection",
+                "fields": {
+                    "auth_parameters": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "api_key_auth_parameters": {
+                                    "maxItemsOne": true
+                                },
+                                "basic_auth_parameters": {
+                                    "maxItemsOne": true
+                                },
+                                "oauth_parameters": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "client_parameters": {
+                                                "maxItemsOne": true
+                                            },
+                                            "oauth_http_parameters": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "body_parameters": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "header_parameters": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "query_string_parameters": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "network_parameters": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "alicloud_event_bridge_event_bus": {
                 "current": "alicloud:eventbridge/eventBus:EventBus"
             },
@@ -3875,6 +3941,9 @@
             "alicloud_gpdb_account": {
                 "current": "alicloud:gpdb/account:Account"
             },
+            "alicloud_gpdb_backup_policy": {
+                "current": "alicloud:gpdb/backupPolicy:BackupPolicy"
+            },
             "alicloud_gpdb_connection": {
                 "current": "alicloud:gpdb/connection:Connection"
             },
@@ -4082,6 +4151,17 @@
                     }
                 }
             },
+            "alicloud_ims_oidc_provider": {
+                "current": "alicloud:ims/oidcProvider:OidcProvider",
+                "fields": {
+                    "client_ids": {
+                        "maxItemsOne": false
+                    },
+                    "fingerprints": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "alicloud_instance": {
                 "current": "alicloud:ecs/instance:Instance",
                 "fields": {
@@ -4119,14 +4199,58 @@
             "alicloud_kms_alias": {
                 "current": "alicloud:kms/alias:Alias"
             },
+            "alicloud_kms_application_access_point": {
+                "current": "alicloud:kms/applicationAccessPoint:ApplicationAccessPoint",
+                "fields": {
+                    "policies": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "alicloud_kms_ciphertext": {
                 "current": "alicloud:kms/ciphertext:Ciphertext"
+            },
+            "alicloud_kms_client_key": {
+                "current": "alicloud:kms/clientKey:ClientKey"
+            },
+            "alicloud_kms_instance": {
+                "current": "alicloud:kms/instance:Instance",
+                "fields": {
+                    "bind_vpcs": {
+                        "maxItemsOne": false
+                    },
+                    "vswitch_ids": {
+                        "maxItemsOne": false
+                    },
+                    "zone_ids": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_kms_key": {
                 "current": "alicloud:kms/key:Key"
             },
             "alicloud_kms_key_version": {
                 "current": "alicloud:kms/keyVersion:KeyVersion"
+            },
+            "alicloud_kms_network_rule": {
+                "current": "alicloud:kms/networkRule:NetworkRule",
+                "fields": {
+                    "source_private_ip": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_kms_policy": {
+                "current": "alicloud:kms/policy:Policy",
+                "fields": {
+                    "permissions": {
+                        "maxItemsOne": false
+                    },
+                    "resources": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_kms_secret": {
                 "current": "alicloud:kms/secret:Secret",
@@ -4711,7 +4835,12 @@
                 "current": "alicloud:oos/parameter:Parameter"
             },
             "alicloud_oos_patch_baseline": {
-                "current": "alicloud:oos/patchBaseline:PatchBaseline"
+                "current": "alicloud:oos/patchBaseline:PatchBaseline",
+                "fields": {
+                    "rejected_patches": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_oos_secret_parameter": {
                 "current": "alicloud:oos/secretParameter:SecretParameter"
@@ -5457,7 +5586,137 @@
                 "current": "alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection"
             },
             "alicloud_sae_application": {
-                "current": "alicloud:sae/application:Application"
+                "current": "alicloud:sae/application:Application",
+                "fields": {
+                    "command_args_v2": {
+                        "maxItemsOne": false
+                    },
+                    "config_map_mount_desc_v2": {
+                        "maxItemsOne": false
+                    },
+                    "custom_host_alias_v2": {
+                        "maxItemsOne": false
+                    },
+                    "kafka_configs": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "kafka_configs": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "liveness_v2": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "exec": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "command": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "http_get": {
+                                    "maxItemsOne": true
+                                },
+                                "tcp_socket": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "nas_configs": {
+                        "maxItemsOne": false
+                    },
+                    "oss_mount_descs_v2": {
+                        "maxItemsOne": false
+                    },
+                    "post_start_v2": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "exec": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "command": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "pre_stop_v2": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "exec": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "command": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "pvtz_discovery_svc": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "port_protocols": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "readiness_v2": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "exec": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "command": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "http_get": {
+                                    "maxItemsOne": true
+                                },
+                                "tcp_socket": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "tomcat_config_v2": {
+                        "maxItemsOne": true
+                    },
+                    "update_strategy_v2": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "batch_update": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "alicloud_sae_application_scaling_rule": {
                 "current": "alicloud:sae/applicationScalingRule:ApplicationScalingRule",
@@ -7375,6 +7634,20 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "alicloud_arms_prometheus_monitorings": {
+                "current": "alicloud:arms/getPrometheusMonitorings:getPrometheusMonitorings",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "names": {
+                        "maxItemsOne": false
+                    },
+                    "prometheus_monitorings": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -18182,6 +18455,7 @@
             "alicloud:cddc/dedicatedHost:DedicatedHost": "alicloud_cddc_dedicated_host",
             "alicloud:cddc/dedicatedHostAccount:DedicatedHostAccount": "alicloud_cddc_dedicated_host_account",
             "alicloud:cddc/dedicatedHostGroup:DedicatedHostGroup": "alicloud_cddc_dedicated_host_group",
+            "alicloud:cddc/dedicatedPropreHost:DedicatedPropreHost": "alicloud_cddc_dedicated_propre_host",
             "alicloud:cdn/domain:Domain": "alicloud_cdn_domain",
             "alicloud:cdn/domainConfig:DomainConfig": "alicloud_cdn_domain_config",
             "alicloud:cdn/domainNew:DomainNew": "alicloud_cdn_domain_new",
@@ -18247,6 +18521,7 @@
             "alicloud:cloudfirewall/firewallVpcFirewallControlPolicy:FirewallVpcFirewallControlPolicy": "alicloud_cloud_firewall_vpc_firewall_control_policy",
             "alicloud:cloudfirewall/instance:Instance": "alicloud_cloud_firewall_instance",
             "alicloud:cloudfirewall/instanceMember:InstanceMember": "alicloud_cloud_firewall_instance_member",
+            "alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite": "alicloud_cloud_monitor_service_hybrid_double_write",
             "alicloud:cloudsso/accessConfiguration:AccessConfiguration": "alicloud_cloud_sso_access_configuration",
             "alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning": "alicloud_cloud_sso_access_configuration_provisioning",
             "alicloud:cloudsso/accessManagement:AccessManagement": "alicloud_cloud_sso_access_assignment",
@@ -18481,6 +18756,8 @@
             "alicloud:ess/schedule:Schedule": "alicloud_ess_schedule",
             "alicloud:ess/scheduledTask:ScheduledTask": "alicloud_ess_scheduled_task",
             "alicloud:ess/suspendProcess:SuspendProcess": "alicloud_ess_suspend_process",
+            "alicloud:eventbridge/apiDestination:ApiDestination": "alicloud_event_bridge_api_destination",
+            "alicloud:eventbridge/connection:Connection": "alicloud_event_bridge_connection",
             "alicloud:eventbridge/eventBus:EventBus": "alicloud_event_bridge_event_bus",
             "alicloud:eventbridge/eventSource:EventSource": "alicloud_event_bridge_event_source",
             "alicloud:eventbridge/rule:Rule": "alicloud_event_bridge_rule",
@@ -18528,6 +18805,7 @@
             "alicloud:ga/ipSet:IpSet": "alicloud_ga_ip_set",
             "alicloud:ga/listener:Listener": "alicloud_ga_listener",
             "alicloud:gpdb/account:Account": "alicloud_gpdb_account",
+            "alicloud:gpdb/backupPolicy:BackupPolicy": "alicloud_gpdb_backup_policy",
             "alicloud:gpdb/connection:Connection": "alicloud_gpdb_connection",
             "alicloud:gpdb/dbInstancePlan:DbInstancePlan": "alicloud_gpdb_db_instance_plan",
             "alicloud:gpdb/elasticInstance:ElasticInstance": "alicloud_gpdb_elastic_instance",
@@ -18548,14 +18826,20 @@
             "alicloud:hbr/vault:Vault": "alicloud_hbr_vault",
             "alicloud:imm/project:Project": "alicloud_imm_project",
             "alicloud:imp/appTemplate:AppTemplate": "alicloud_imp_app_template",
+            "alicloud:ims/oidcProvider:OidcProvider": "alicloud_ims_oidc_provider",
             "alicloud:index/mscSubContract:MscSubContract": "alicloud_msc_sub_contact",
             "alicloud:index/mscSubSubscription:MscSubSubscription": "alicloud_msc_sub_subscription",
             "alicloud:index/mscSubWebhook:MscSubWebhook": "alicloud_msc_sub_webhook",
             "alicloud:iot/deviceGroup:DeviceGroup": "alicloud_iot_device_group",
             "alicloud:kms/alias:Alias": "alicloud_kms_alias",
+            "alicloud:kms/applicationAccessPoint:ApplicationAccessPoint": "alicloud_kms_application_access_point",
             "alicloud:kms/ciphertext:Ciphertext": "alicloud_kms_ciphertext",
+            "alicloud:kms/clientKey:ClientKey": "alicloud_kms_client_key",
+            "alicloud:kms/instance:Instance": "alicloud_kms_instance",
             "alicloud:kms/key:Key": "alicloud_kms_key",
             "alicloud:kms/keyVersion:KeyVersion": "alicloud_kms_key_version",
+            "alicloud:kms/networkRule:NetworkRule": "alicloud_kms_network_rule",
+            "alicloud:kms/policy:Policy": "alicloud_kms_policy",
             "alicloud:kms/secret:Secret": "alicloud_kms_secret",
             "alicloud:kvstore/account:Account": "alicloud_kvstore_account",
             "alicloud:kvstore/auditLogConfig:AuditLogConfig": "alicloud_kvstore_audit_log_config",
@@ -18910,6 +19194,7 @@
             "alicloud:arms/getIntegrationExporters:getIntegrationExporters": "alicloud_arms_integration_exporters",
             "alicloud:arms/getPrometheis:getPrometheis": "alicloud_arms_prometheis",
             "alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules": "alicloud_arms_prometheus_alert_rules",
+            "alicloud:arms/getPrometheusMonitorings:getPrometheusMonitorings": "alicloud_arms_prometheus_monitorings",
             "alicloud:arms/getRemoteWrites:getRemoteWrites": "alicloud_arms_remote_writes",
             "alicloud:bastionhost/getHostAccounts:getHostAccounts": "alicloud_bastionhost_host_accounts",
             "alicloud:bastionhost/getHostGroups:getHostGroups": "alicloud_bastionhost_host_groups",
@@ -21013,6 +21298,17 @@
                 "prometheusAlertRuleId": "prometheus_alert_rule_id",
                 "prometheusAlertRuleName": "prometheus_alert_rule_name"
             },
+            "alicloud:arms/getPrometheusMonitorings:getPrometheusMonitorings": {
+                "clusterId": "cluster_id",
+                "nameRegex": "name_regex",
+                "outputFile": "output_file",
+                "prometheusMonitorings": "prometheus_monitorings"
+            },
+            "alicloud:arms/getPrometheusMonitoringsPrometheusMonitoring:getPrometheusMonitoringsPrometheusMonitoring": {
+                "clusterId": "cluster_id",
+                "configYaml": "config_yaml",
+                "monitoringName": "monitoring_name"
+            },
             "alicloud:arms/getRemoteWrites:getRemoteWrites": {
                 "clusterId": "cluster_id",
                 "nameRegex": "name_regex",
@@ -21516,6 +21812,16 @@
             "alicloud:cassandra/getZonesZone:getZonesZone": {
                 "multiZoneIds": "multi_zone_ids"
             },
+            "alicloud:cddc/DedicatedPropreHostEcsClassList:DedicatedPropreHostEcsClassList": {
+                "dataDiskPerformanceLevel": "data_disk_performance_level",
+                "diskCapacity": "disk_capacity",
+                "diskCount": "disk_count",
+                "diskType": "disk_type",
+                "instanceType": "instance_type",
+                "sysDiskCapacity": "sys_disk_capacity",
+                "sysDiskType": "sys_disk_type",
+                "systemDiskPerformanceLevel": "system_disk_performance_level"
+            },
             "alicloud:cddc/dedicatedHost:DedicatedHost": {
                 "allocationStatus": "allocation_status",
                 "autoRenew": "auto_renew",
@@ -21545,6 +21851,26 @@
                 "memAllocationRatio": "mem_allocation_ratio",
                 "openPermission": "open_permission",
                 "vpcId": "vpc_id"
+            },
+            "alicloud:cddc/dedicatedPropreHost:DedicatedPropreHost": {
+                "autoRenew": "auto_renew",
+                "dedicatedHostGroupId": "dedicated_host_group_id",
+                "ecsClassLists": "ecs_class_list",
+                "ecsDeploymentSetId": "ecs_deployment_set_id",
+                "ecsHostName": "ecs_host_name",
+                "ecsInstanceId": "ecs_instance_id",
+                "ecsInstanceName": "ecs_instance_name",
+                "ecsUniqueSuffix": "ecs_unique_suffix",
+                "ecsZoneId": "ecs_zone_id",
+                "imageId": "image_id",
+                "keyPairName": "key_pair_name",
+                "osPassword": "os_password",
+                "passwordInherit": "password_inherit",
+                "paymentType": "payment_type",
+                "periodType": "period_type",
+                "securityGroupId": "security_group_id",
+                "vpcId": "vpc_id",
+                "vswitchId": "vswitch_id"
             },
             "alicloud:cddc/getDedicatedHostAccounts:getDedicatedHostAccounts": {
                 "dedicatedHostId": "dedicated_host_id",
@@ -22563,6 +22889,7 @@
             },
             "alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack": {
                 "aggregateCompliancePackName": "aggregate_compliance_pack_name",
+                "aggregatorCompliancePackId": "aggregator_compliance_pack_id",
                 "aggregatorId": "aggregator_id",
                 "compliancePackTemplateId": "compliance_pack_template_id",
                 "configRuleIds": "config_rule_ids",
@@ -23380,6 +23707,11 @@
                 "memberDisplayName": "member_display_name",
                 "memberUid": "member_uid",
                 "modifyTime": "modify_time"
+            },
+            "alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite": {
+                "sourceNamespace": "source_namespace",
+                "sourceUserId": "source_user_id",
+                "userId": "user_id"
             },
             "alicloud:cloudsso/AccessConfigurationPermissionPolicy:AccessConfigurationPermissionPolicy": {
                 "permissionPolicyDocument": "permission_policy_document",
@@ -29134,12 +29466,12 @@
                 "spotPriceLimit": "spot_price_limit",
                 "spotStrategy": "spot_strategy",
                 "stoppedMode": "stopped_mode",
-                "subnetId": "subnet_id",
                 "systemDiskAutoSnapshotPolicyId": "system_disk_auto_snapshot_policy_id",
                 "systemDiskCategory": "system_disk_category",
                 "systemDiskDescription": "system_disk_description",
                 "systemDiskEncryptAlgorithm": "system_disk_encrypt_algorithm",
                 "systemDiskEncrypted": "system_disk_encrypted",
+                "systemDiskId": "system_disk_id",
                 "systemDiskKmsKeyId": "system_disk_kms_key_id",
                 "systemDiskName": "system_disk_name",
                 "systemDiskPerformanceLevel": "system_disk_performance_level",
@@ -30943,6 +31275,46 @@
             "alicloud:ess/suspendProcess:SuspendProcess": {
                 "scalingGroupId": "scaling_group_id"
             },
+            "alicloud:eventbridge/ConnectionAuthParameters:ConnectionAuthParameters": {
+                "apiKeyAuthParameters": "api_key_auth_parameters",
+                "authorizationType": "authorization_type",
+                "basicAuthParameters": "basic_auth_parameters",
+                "oauthParameters": "oauth_parameters"
+            },
+            "alicloud:eventbridge/ConnectionAuthParametersApiKeyAuthParameters:ConnectionAuthParametersApiKeyAuthParameters": {
+                "apiKeyName": "api_key_name",
+                "apiKeyValue": "api_key_value"
+            },
+            "alicloud:eventbridge/ConnectionAuthParametersOauthParameters:ConnectionAuthParametersOauthParameters": {
+                "authorizationEndpoint": "authorization_endpoint",
+                "clientParameters": "client_parameters",
+                "httpMethod": "http_method",
+                "oauthHttpParameters": "oauth_http_parameters"
+            },
+            "alicloud:eventbridge/ConnectionAuthParametersOauthParametersClientParameters:ConnectionAuthParametersOauthParametersClientParameters": {
+                "clientId": "client_id",
+                "clientSecret": "client_secret"
+            },
+            "alicloud:eventbridge/ConnectionAuthParametersOauthParametersOauthHttpParameters:ConnectionAuthParametersOauthParametersOauthHttpParameters": {
+                "bodyParameters": "body_parameters",
+                "headerParameters": "header_parameters",
+                "queryStringParameters": "query_string_parameters"
+            },
+            "alicloud:eventbridge/ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter:ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter": {
+                "isValueSecret": "is_value_secret"
+            },
+            "alicloud:eventbridge/ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter:ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter": {
+                "isValueSecret": "is_value_secret"
+            },
+            "alicloud:eventbridge/ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter:ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter": {
+                "isValueSecret": "is_value_secret"
+            },
+            "alicloud:eventbridge/ConnectionNetworkParameters:ConnectionNetworkParameters": {
+                "networkType": "network_type",
+                "securityGroupId": "security_group_id",
+                "vpcId": "vpc_id",
+                "vswitcheId": "vswitche_id"
+            },
             "alicloud:eventbridge/RuleTarget:RuleTarget": {
                 "deadLetterQueue": "dead_letter_queue",
                 "paramLists": "param_list",
@@ -30951,6 +31323,18 @@
             },
             "alicloud:eventbridge/RuleTargetParamList:RuleTargetParamList": {
                 "resourceKey": "resource_key"
+            },
+            "alicloud:eventbridge/apiDestination:ApiDestination": {
+                "apiDestinationName": "api_destination_name",
+                "connectionName": "connection_name",
+                "createTime": "create_time",
+                "httpApiParameters": "http_api_parameters"
+            },
+            "alicloud:eventbridge/connection:Connection": {
+                "authParameters": "auth_parameters",
+                "connectionName": "connection_name",
+                "createTime": "create_time",
+                "networkParameters": "network_parameters"
             },
             "alicloud:eventbridge/eventBus:EventBus": {
                 "eventBusName": "event_bus_name"
@@ -32165,6 +32549,14 @@
                 "accountPassword": "account_password",
                 "dbInstanceId": "db_instance_id"
             },
+            "alicloud:gpdb/backupPolicy:BackupPolicy": {
+                "backupRetentionPeriod": "backup_retention_period",
+                "dbInstanceId": "db_instance_id",
+                "enableRecoveryPoint": "enable_recovery_point",
+                "preferredBackupPeriod": "preferred_backup_period",
+                "preferredBackupTime": "preferred_backup_time",
+                "recoveryPointPeriod": "recovery_point_period"
+            },
             "alicloud:gpdb/connection:Connection": {
                 "connectionPrefix": "connection_prefix",
                 "connectionString": "connection_string",
@@ -33025,6 +33417,13 @@
                 "sdkInfo": "sdk_info",
                 "standardRoomInfo": "standard_room_info"
             },
+            "alicloud:ims/oidcProvider:OidcProvider": {
+                "clientIds": "client_ids",
+                "createTime": "create_time",
+                "issuanceLimitTime": "issuance_limit_time",
+                "issuerUrl": "issuer_url",
+                "oidcProviderName": "oidc_provider_name"
+            },
             "alicloud:index/ProviderAssumeRole:ProviderAssumeRole": {
                 "externalId": "external_id",
                 "roleArn": "role_arn",
@@ -33175,14 +33574,30 @@
                 "groupId": "group_id",
                 "groupName": "group_name"
             },
+            "alicloud:kms/InstanceBindVpc:InstanceBindVpc": {
+                "regionId": "region_id",
+                "vpcId": "vpc_id",
+                "vpcOwnerId": "vpc_owner_id",
+                "vswitchId": "vswitch_id"
+            },
             "alicloud:kms/alias:Alias": {
                 "aliasName": "alias_name",
                 "keyId": "key_id"
+            },
+            "alicloud:kms/applicationAccessPoint:ApplicationAccessPoint": {
+                "applicationAccessPointName": "application_access_point_name"
             },
             "alicloud:kms/ciphertext:Ciphertext": {
                 "ciphertextBlob": "ciphertext_blob",
                 "encryptionContext": "encryption_context",
                 "keyId": "key_id"
+            },
+            "alicloud:kms/clientKey:ClientKey": {
+                "aapName": "aap_name",
+                "createTime": "create_time",
+                "notAfter": "not_after",
+                "notBefore": "not_before",
+                "privateKeyDataFile": "private_key_data_file"
             },
             "alicloud:kms/getAliases:getAliases": {
                 "nameRegex": "name_regex",
@@ -33261,6 +33676,21 @@
                 "versionId": "version_id",
                 "versionStages": "version_stages"
             },
+            "alicloud:kms/instance:Instance": {
+                "bindVpcs": "bind_vpcs",
+                "caCertificateChainPem": "ca_certificate_chain_pem",
+                "createTime": "create_time",
+                "instanceName": "instance_name",
+                "keyNum": "key_num",
+                "productVersion": "product_version",
+                "renewPeriod": "renew_period",
+                "renewStatus": "renew_status",
+                "secretNum": "secret_num",
+                "vpcId": "vpc_id",
+                "vpcNum": "vpc_num",
+                "vswitchIds": "vswitch_ids",
+                "zoneIds": "zone_ids"
+            },
             "alicloud:kms/key:Key": {
                 "automaticRotation": "automatic_rotation",
                 "creationDate": "creation_date",
@@ -33282,6 +33712,15 @@
             "alicloud:kms/keyVersion:KeyVersion": {
                 "keyId": "key_id",
                 "keyVersionId": "key_version_id"
+            },
+            "alicloud:kms/networkRule:NetworkRule": {
+                "networkRuleName": "network_rule_name",
+                "sourcePrivateIps": "source_private_ip"
+            },
+            "alicloud:kms/policy:Policy": {
+                "accessControlRules": "access_control_rules",
+                "kmsInstanceId": "kms_instance_id",
+                "policyName": "policy_name"
             },
             "alicloud:kms/secret:Secret": {
                 "dkmsInstanceId": "dkms_instance_id",
@@ -33560,11 +33999,11 @@
                 "enabledFileEngine": "enabled_file_engine",
                 "enabledLtsEngine": "enabled_lts_engine",
                 "enabledSearchEngine": "enabled_search_engine",
+                "enabledStreamEngine": "enabled_stream_engine",
                 "enabledTableEngine": "enabled_table_engine",
                 "enabledTimeSeriresEngine": "enabled_time_serires_engine",
                 "fileEngineNodeCount": "file_engine_node_count",
                 "fileEngineSpecification": "file_engine_specification",
-                "groupName": "group_name",
                 "instanceName": "instance_name",
                 "instanceStorage": "instance_storage",
                 "ipWhiteLists": "ip_white_list",
@@ -33576,8 +34015,6 @@
                 "ltsNodeSpecification": "lts_node_specification",
                 "multiZoneCombination": "multi_zone_combination",
                 "paymentType": "payment_type",
-                "phoenixNodeCount": "phoenix_node_count",
-                "phoenixNodeSpecification": "phoenix_node_specification",
                 "pricingCycle": "pricing_cycle",
                 "primaryVswitchId": "primary_vswitch_id",
                 "primaryZoneId": "primary_zone_id",
@@ -33587,6 +34024,8 @@
                 "serviceType": "service_type",
                 "standbyVswitchId": "standby_vswitch_id",
                 "standbyZoneId": "standby_zone_id",
+                "streamEngineNodeCount": "stream_engine_node_count",
+                "streamEngineSpecification": "stream_engine_specification",
                 "tableEngineNodeCount": "table_engine_node_count",
                 "tableEngineSpecification": "table_engine_specification",
                 "timeSeriesEngineNodeCount": "time_series_engine_node_count",
@@ -34953,9 +35392,11 @@
                 "commodityCode": "commodity_code",
                 "createTime": "create_time",
                 "diskSize": "disk_size",
+                "diskType": "disk_type",
                 "instanceClass": "instance_class",
                 "instanceName": "instance_name",
                 "nodeNum": "node_num",
+                "obVersion": "ob_version",
                 "paymentType": "payment_type",
                 "periodUnit": "period_unit",
                 "resourceGroupId": "resource_group_id"
@@ -35178,8 +35619,11 @@
             },
             "alicloud:oos/patchBaseline:PatchBaseline": {
                 "approvalRules": "approval_rules",
+                "createTime": "create_time",
                 "operationSystem": "operation_system",
-                "patchBaselineName": "patch_baseline_name"
+                "patchBaselineName": "patch_baseline_name",
+                "rejectedPatches": "rejected_patches",
+                "rejectedPatchesAction": "rejected_patches_action"
             },
             "alicloud:oos/secretParameter:SecretParameter": {
                 "keyId": "key_id",
@@ -35684,8 +36128,10 @@
                 "dbClusterIpArrays": "db_cluster_ip_array",
                 "dbNodeClass": "db_node_class",
                 "dbNodeCount": "db_node_count",
+                "dbNodeNum": "db_node_num",
                 "dbType": "db_type",
                 "dbVersion": "db_version",
+                "defaultTimeZone": "default_time_zone",
                 "deletionLock": "deletion_lock",
                 "encryptNewTables": "encrypt_new_tables",
                 "encryptionKey": "encryption_key",
@@ -35693,11 +36139,16 @@
                 "gdnId": "gdn_id",
                 "hotStandbyCluster": "hot_standby_cluster",
                 "imciSwitch": "imci_switch",
+                "loosePolarLogBin": "loose_polar_log_bin",
+                "lowerCaseTableNames": "lower_case_table_names",
                 "maintainTime": "maintain_time",
                 "modifyType": "modify_type",
+                "parameterGroupId": "parameter_group_id",
                 "payType": "pay_type",
                 "plannedEndTime": "planned_end_time",
                 "plannedStartTime": "planned_start_time",
+                "proxyClass": "proxy_class",
+                "proxyType": "proxy_type",
                 "renewalStatus": "renewal_status",
                 "resourceGroupId": "resource_group_id",
                 "roleArn": "role_arn",
@@ -35710,6 +36161,7 @@
                 "securityIps": "security_ips",
                 "serverlessType": "serverless_type",
                 "sourceResourceId": "source_resource_id",
+                "storagePayType": "storage_pay_type",
                 "storageSpace": "storage_space",
                 "storageType": "storage_type",
                 "subCategory": "sub_category",
@@ -37925,6 +38377,75 @@
                 "sourceTag": "source_tag",
                 "templateScratchType": "template_scratch_type"
             },
+            "alicloud:sae/ApplicationConfigMapMountDescV2:ApplicationConfigMapMountDescV2": {
+                "configMapId": "config_map_id",
+                "mountPath": "mount_path"
+            },
+            "alicloud:sae/ApplicationCustomHostAliasV2:ApplicationCustomHostAliasV2": {
+                "hostName": "host_name"
+            },
+            "alicloud:sae/ApplicationKafkaConfigs:ApplicationKafkaConfigs": {
+                "kafkaConfigs": "kafka_configs",
+                "kafkaEndpoint": "kafka_endpoint",
+                "kafkaInstanceId": "kafka_instance_id"
+            },
+            "alicloud:sae/ApplicationKafkaConfigsKafkaConfig:ApplicationKafkaConfigsKafkaConfig": {
+                "kafkaTopic": "kafka_topic",
+                "logDir": "log_dir",
+                "logType": "log_type"
+            },
+            "alicloud:sae/ApplicationLivenessV2:ApplicationLivenessV2": {
+                "httpGet": "http_get",
+                "initialDelaySeconds": "initial_delay_seconds",
+                "periodSeconds": "period_seconds",
+                "tcpSocket": "tcp_socket",
+                "timeoutSeconds": "timeout_seconds"
+            },
+            "alicloud:sae/ApplicationLivenessV2Exec:ApplicationLivenessV2Exec": {
+                "commands": "command"
+            },
+            "alicloud:sae/ApplicationLivenessV2HttpGet:ApplicationLivenessV2HttpGet": {
+                "isContainKeyWord": "is_contain_key_word",
+                "keyWord": "key_word"
+            },
+            "alicloud:sae/ApplicationNasConfig:ApplicationNasConfig": {
+                "mountDomain": "mount_domain",
+                "mountPath": "mount_path",
+                "nasId": "nas_id",
+                "nasPath": "nas_path",
+                "readOnly": "read_only"
+            },
+            "alicloud:sae/ApplicationOssMountDescsV2:ApplicationOssMountDescsV2": {
+                "bucketName": "bucket_name",
+                "bucketPath": "bucket_path",
+                "mountPath": "mount_path",
+                "readOnly": "read_only"
+            },
+            "alicloud:sae/ApplicationPostStartV2Exec:ApplicationPostStartV2Exec": {
+                "commands": "command"
+            },
+            "alicloud:sae/ApplicationPreStopV2Exec:ApplicationPreStopV2Exec": {
+                "commands": "command"
+            },
+            "alicloud:sae/ApplicationPvtzDiscoverySvc:ApplicationPvtzDiscoverySvc": {
+                "namespaceId": "namespace_id",
+                "portProtocols": "port_protocols",
+                "serviceName": "service_name"
+            },
+            "alicloud:sae/ApplicationReadinessV2:ApplicationReadinessV2": {
+                "httpGet": "http_get",
+                "initialDelaySeconds": "initial_delay_seconds",
+                "periodSeconds": "period_seconds",
+                "tcpSocket": "tcp_socket",
+                "timeoutSeconds": "timeout_seconds"
+            },
+            "alicloud:sae/ApplicationReadinessV2Exec:ApplicationReadinessV2Exec": {
+                "commands": "command"
+            },
+            "alicloud:sae/ApplicationReadinessV2HttpGet:ApplicationReadinessV2HttpGet": {
+                "isContainKeyWord": "is_contain_key_word",
+                "keyWord": "key_word"
+            },
             "alicloud:sae/ApplicationScalingRuleScalingRuleMetric:ApplicationScalingRuleScalingRuleMetric": {
                 "maxReplicas": "max_replicas",
                 "minReplicas": "min_replicas",
@@ -37953,6 +38474,19 @@
                 "maxReplicas": "max_replicas",
                 "minReplicas": "min_replicas",
                 "targetReplicas": "target_replicas"
+            },
+            "alicloud:sae/ApplicationTomcatConfigV2:ApplicationTomcatConfigV2": {
+                "contextPath": "context_path",
+                "maxThreads": "max_threads",
+                "uriEncoding": "uri_encoding",
+                "useBodyEncodingForUri": "use_body_encoding_for_uri"
+            },
+            "alicloud:sae/ApplicationUpdateStrategyV2:ApplicationUpdateStrategyV2": {
+                "batchUpdate": "batch_update"
+            },
+            "alicloud:sae/ApplicationUpdateStrategyV2BatchUpdate:ApplicationUpdateStrategyV2BatchUpdate": {
+                "batchWaitTime": "batch_wait_time",
+                "releaseType": "release_type"
             },
             "alicloud:sae/GreyTagRouteDubboRule:GreyTagRouteDubboRule": {
                 "methodName": "method_name",
@@ -37988,24 +38522,29 @@
                 "batchWaitTime": "batch_wait_time",
                 "changeOrderDesc": "change_order_desc",
                 "commandArgs": "command_args",
+                "commandArgsV2s": "command_args_v2",
                 "configMapMountDesc": "config_map_mount_desc",
+                "configMapMountDescV2s": "config_map_mount_desc_v2",
                 "customHostAlias": "custom_host_alias",
+                "customHostAliasV2s": "custom_host_alias_v2",
                 "edasContainerVersion": "edas_container_version",
                 "enableAhas": "enable_ahas",
                 "enableGreyTagRoute": "enable_grey_tag_route",
+                "imagePullSecrets": "image_pull_secrets",
                 "imageUrl": "image_url",
                 "jarStartArgs": "jar_start_args",
                 "jarStartOptions": "jar_start_options",
+                "kafkaConfigs": "kafka_configs",
+                "livenessV2": "liveness_v2",
                 "microRegistration": "micro_registration",
                 "minReadyInstanceRatio": "min_ready_instance_ratio",
                 "minReadyInstances": "min_ready_instances",
-                "mountDesc": "mount_desc",
-                "mountHost": "mount_host",
                 "namespaceId": "namespace_id",
-                "nasId": "nas_id",
+                "nasConfigs": "nas_configs",
                 "ossAkId": "oss_ak_id",
                 "ossAkSecret": "oss_ak_secret",
                 "ossMountDescs": "oss_mount_descs",
+                "ossMountDescsV2s": "oss_mount_descs_v2",
                 "packageType": "package_type",
                 "packageUrl": "package_url",
                 "packageVersion": "package_version",
@@ -38013,13 +38552,19 @@
                 "phpConfig": "php_config",
                 "phpConfigLocation": "php_config_location",
                 "postStart": "post_start",
+                "postStartV2": "post_start_v2",
                 "preStop": "pre_stop",
+                "preStopV2": "pre_stop_v2",
+                "programmingLanguage": "programming_language",
+                "pvtzDiscoverySvc": "pvtz_discovery_svc",
+                "readinessV2": "readiness_v2",
                 "securityGroupId": "security_group_id",
                 "slsConfigs": "sls_configs",
                 "terminationGracePeriodSeconds": "termination_grace_period_seconds",
                 "tomcatConfig": "tomcat_config",
+                "tomcatConfigV2": "tomcat_config_v2",
                 "updateStrategy": "update_strategy",
-                "versionId": "version_id",
+                "updateStrategyV2": "update_strategy_v2",
                 "vpcId": "vpc_id",
                 "vswitchId": "vswitch_id",
                 "warStartOptions": "war_start_options",
@@ -39322,7 +39867,6 @@
                 "healthCheckUri": "health_check_uri",
                 "healthyThreshold": "healthy_threshold",
                 "idleTimeout": "idle_timeout",
-                "instancePort": "instance_port",
                 "lbPort": "lb_port",
                 "lbProtocol": "lb_protocol",
                 "listenerForward": "listener_forward",
@@ -39925,7 +40469,8 @@
                 "bandwidthPackageBandwidth": "bandwidth_package_bandwidth",
                 "bandwidthPackageId": "bandwidth_package_id",
                 "cancelCommonBandwidthPackageIpBandwidth": "cancel_common_bandwidth_package_ip_bandwidth",
-                "instanceId": "instance_id"
+                "instanceId": "instance_id",
+                "ipType": "ip_type"
             },
             "alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet": {
                 "associateVpcs": "associate_vpcs",
@@ -40634,6 +41179,7 @@
                 "vswitchId": "vswitch_id"
             },
             "alicloud:vpc/hAVipAttachment:HAVipAttachment": {
+                "haVipId": "ha_vip_id",
                 "havipId": "havip_id",
                 "instanceId": "instance_id",
                 "instanceType": "instance_type"

@@ -145,16 +145,23 @@ class InstanceGrant(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        child_account_ak = config.get("childAccountAk")
-        if child_account_ak is None:
-            child_account_ak = "example-ak"
-        child_account_sk = config.get("childAccountSk")
-        if child_account_sk is None:
-            child_account_sk = "example-sk"
-        your_account = alicloud.Provider("yourAccount")
+        another_uid = config.get("anotherUid")
+        if another_uid is None:
+            another_uid = "xxxx"
+        # Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
         child_account = alicloud.Provider("childAccount",
-            access_key=child_account_ak,
-            secret_key=child_account_sk)
+            region="cn-hangzhou",
+            assume_role=alicloud.ProviderAssumeRoleArgs(
+                role_arn=f"acs:ram::{another_uid}:role/terraform-example-assume-role",
+            ))
+        # Method 2: Use the target cen account's access_key, secret_key
+        # provider "alicloud" {
+        #   region     = "cn-hangzhou"
+        #   access_key = "access_key"
+        #   secret_key = "secret_key"
+        #   alias      = "child_account"
+        # }
+        your_account = alicloud.Provider("yourAccount")
         your_account_account = alicloud.get_account()
         child_account_account = alicloud.get_account()
         default = alicloud.get_regions(current=True)
@@ -216,16 +223,23 @@ class InstanceGrant(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        child_account_ak = config.get("childAccountAk")
-        if child_account_ak is None:
-            child_account_ak = "example-ak"
-        child_account_sk = config.get("childAccountSk")
-        if child_account_sk is None:
-            child_account_sk = "example-sk"
-        your_account = alicloud.Provider("yourAccount")
+        another_uid = config.get("anotherUid")
+        if another_uid is None:
+            another_uid = "xxxx"
+        # Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
         child_account = alicloud.Provider("childAccount",
-            access_key=child_account_ak,
-            secret_key=child_account_sk)
+            region="cn-hangzhou",
+            assume_role=alicloud.ProviderAssumeRoleArgs(
+                role_arn=f"acs:ram::{another_uid}:role/terraform-example-assume-role",
+            ))
+        # Method 2: Use the target cen account's access_key, secret_key
+        # provider "alicloud" {
+        #   region     = "cn-hangzhou"
+        #   access_key = "access_key"
+        #   secret_key = "secret_key"
+        #   alias      = "child_account"
+        # }
+        your_account = alicloud.Provider("yourAccount")
         your_account_account = alicloud.get_account()
         child_account_account = alicloud.get_account()
         default = alicloud.get_regions(current=True)

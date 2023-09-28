@@ -193,7 +193,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Whether to open the release protection.
      */
-    public readonly instanceReleaseProtection!: pulumi.Output<boolean>;
+    public readonly instanceReleaseProtection!: pulumi.Output<boolean | undefined>;
     /**
      * The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
      */
@@ -311,7 +311,7 @@ export class Instance extends pulumi.CustomResource {
      * Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
      * **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
      */
-    public readonly sslEnable!: pulumi.Output<string | undefined>;
+    public readonly sslEnable!: pulumi.Output<string>;
     /**
      * The status of KVStore DBInstance.
      */
@@ -321,7 +321,9 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
+     * Specifies whether to enable TDE. Valid values: `Enabled`.
+     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+     * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
      */
     public readonly tdeStatus!: pulumi.Output<string>;
     /**
@@ -774,7 +776,9 @@ export interface InstanceState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
+     * Specifies whether to enable TDE. Valid values: `Enabled`.
+     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+     * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
      */
     tdeStatus?: pulumi.Input<string>;
     /**
@@ -1039,7 +1043,9 @@ export interface InstanceArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
+     * Specifies whether to enable TDE. Valid values: `Enabled`.
+     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+     * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
      */
     tdeStatus?: pulumi.Input<string>;
     /**

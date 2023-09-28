@@ -100,20 +100,7 @@ class MscSubWebhook(pulumi.CustomResource):
         """
         Provides a Msc Sub Webhook resource.
 
-        > **NOTE:** Available in v1.141.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.MscSubWebhook("example",
-            server_url="example_value",
-            webhook_name="example_value")
-        ```
+        > **NOTE:** Available since v1.141.0.
 
         ## Import
 
@@ -137,20 +124,7 @@ class MscSubWebhook(pulumi.CustomResource):
         """
         Provides a Msc Sub Webhook resource.
 
-        > **NOTE:** Available in v1.141.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.MscSubWebhook("example",
-            server_url="example_value",
-            webhook_name="example_value")
-        ```
+        > **NOTE:** Available since v1.141.0.
 
         ## Import
 

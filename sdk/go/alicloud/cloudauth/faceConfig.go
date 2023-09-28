@@ -15,38 +15,9 @@ import (
 
 // Provides a Cloudauth Face Config resource.
 //
-// For information about Cloudauth Face Config and how to use it, see [What is Face Config](https://help.aliyun.com/document_detail/99173.html).
+// For information about Cloudauth Face Config and how to use it, see [What is Face Config](https://www.alibabacloud.com/help/en/document_detail/99173.html).
 //
-// > **NOTE:** Available in v1.137.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudauth"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudauth.NewFaceConfig(ctx, "example", &cloudauth.FaceConfigArgs{
-//				BizName: pulumi.String("example_value"),
-//				BizType: pulumi.String("example_value"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// > **NOTE:** Available since v1.137.0.
 //
 // ## Import
 //

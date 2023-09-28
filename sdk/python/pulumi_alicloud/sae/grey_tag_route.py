@@ -212,16 +212,12 @@ class GreyTagRoute(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
         default_regions = alicloud.get_regions(current=True)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name=name,
@@ -233,7 +229,7 @@ class GreyTagRoute(pulumi.CustomResource):
             zone_id=default_zones.zones[0].id)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
+            namespace_id=f"{default_regions.regions[0].id}:example",
             namespace_name=name,
             namespace_description=name,
             enable_micro_registration=False)
@@ -317,16 +313,12 @@ class GreyTagRoute(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
         default_regions = alicloud.get_regions(current=True)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name=name,
@@ -338,7 +330,7 @@ class GreyTagRoute(pulumi.CustomResource):
             zone_id=default_zones.zones[0].id)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
+            namespace_id=f"{default_regions.regions[0].id}:example",
             namespace_name=name,
             namespace_description=name,
             enable_micro_registration=False)

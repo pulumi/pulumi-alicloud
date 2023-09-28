@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -55,7 +56,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
@@ -117,80 +118,108 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * The havip attachment can be imported using the id, e.g.
+ * VPC Ha Vip Attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpc/hAVipAttachment:HAVipAttachment foo havip-abc123456:i-abc123456
+ *  $ pulumi import alicloud:vpc/hAVipAttachment:HAVipAttachment example &lt;ha_vip_id&gt;:&lt;instance_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:vpc/hAVipAttachment:HAVipAttachment")
 public class HAVipAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+     * Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
+     * - **True**: Force unbinding.
+     * - **False** (default): unbinding is not forced.
+     * &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
      * 
      */
-    @Export(name="force", type=String.class, parameters={})
-    private Output</* @Nullable */ String> force;
+    @Export(name="force", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> force;
 
     /**
-     * @return Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+     * @return Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
+     * - **True**: Force unbinding.
+     * - **False** (default): unbinding is not forced.
+     * &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
      * 
      */
-    public Output<Optional<String>> force() {
+    public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }
     /**
-     * The havip_id of the havip attachment, the field can&#39;t be changed.
+     * The ID of the HaVip instance.
      * 
      */
+    @Export(name="haVipId", type=String.class, parameters={})
+    private Output<String> haVipId;
+
+    /**
+     * @return The ID of the HaVip instance.
+     * 
+     */
+    public Output<String> haVipId() {
+        return this.haVipId;
+    }
+    /**
+     * . Field &#39;havip_id&#39; has been deprecated from provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;havip_id&#39; has been deprecated since provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead. */
     @Export(name="havipId", type=String.class, parameters={})
     private Output<String> havipId;
 
     /**
-     * @return The havip_id of the havip attachment, the field can&#39;t be changed.
+     * @return . Field &#39;havip_id&#39; has been deprecated from provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
      * 
      */
     public Output<String> havipId() {
         return this.havipId;
     }
     /**
-     * The instance_id of the havip attachment, the field can&#39;t be changed.
+     * The ID of the ECS instance bound to the HaVip instance.
      * 
      */
     @Export(name="instanceId", type=String.class, parameters={})
     private Output<String> instanceId;
 
     /**
-     * @return The instance_id of the havip attachment, the field can&#39;t be changed.
+     * @return The ID of the ECS instance bound to the HaVip instance.
      * 
      */
     public Output<String> instanceId() {
         return this.instanceId;
     }
     /**
-     * The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
+     * The type of the instance associated with the VIIP.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Export(name="instanceType", type=String.class, parameters={})
     private Output<String> instanceType;
 
     /**
-     * @return The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
+     * @return The type of the instance associated with the VIIP.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<String> instanceType() {
         return this.instanceType;
     }
     /**
-     * (Available in v1.201.0+) The status of the HaVip instance.
+     * The status of the resource.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return (Available in v1.201.0+) The status of the HaVip instance.
+     * @return The status of the resource.
      * 
      */
     public Output<String> status() {

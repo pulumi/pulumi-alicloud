@@ -32,14 +32,14 @@ public final class AclAttachmentState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The type of the ACL. Valid values: `white`, `black`.
+     * The type of the ACL. Valid values:
      * 
      */
     @Import(name="aclType")
     private @Nullable Output<String> aclType;
 
     /**
-     * @return The type of the ACL. Valid values: `white`, `black`.
+     * @return The type of the ACL. Valid values:
      * 
      */
     public Optional<Output<String>> aclType() {
@@ -77,14 +77,14 @@ public final class AclAttachmentState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The status of the resource.
+     * The status of the Acl Attachment.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the Acl Attachment.
      * 
      */
     public Optional<Output<String>> status() {
@@ -141,7 +141,7 @@ public final class AclAttachmentState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param aclType The type of the ACL. Valid values: `white`, `black`.
+         * @param aclType The type of the ACL. Valid values:
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class AclAttachmentState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param aclType The type of the ACL. Valid values: `white`, `black`.
+         * @param aclType The type of the ACL. Valid values:
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class AclAttachmentState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the Acl Attachment.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class AclAttachmentState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the Acl Attachment.
          * 
          * @return builder
          * 

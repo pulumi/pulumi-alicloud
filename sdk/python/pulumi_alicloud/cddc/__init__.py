@@ -8,9 +8,11 @@ import typing
 from .dedicated_host import *
 from .dedicated_host_account import *
 from .dedicated_host_group import *
+from .dedicated_propre_host import *
 from .get_dedicated_host_accounts import *
 from .get_dedicated_host_groups import *
 from .get_dedicated_hosts import *
 from .get_host_ecs_level_infos import *
 from .get_zones import *
+from ._inputs import *
 from . import outputs

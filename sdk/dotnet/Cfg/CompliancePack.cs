@@ -29,39 +29,65 @@ namespace Pulumi.AliCloud.Cfg
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example-config";
+    ///     var name = config.Get("name") ?? "tf-example-config-name";
     ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultRule = new AliCloud.Cfg.Rule("defaultRule", new()
+    ///     var rule1 = new AliCloud.Cfg.Rule("rule1", new()
     ///     {
-    ///         Description = "If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.",
+    ///         Description = name,
     ///         SourceOwner = "ALIYUN",
-    ///         SourceIdentifier = "oss-bucket-public-read-prohibited",
+    ///         SourceIdentifier = "ram-user-ak-create-date-expired-check",
     ///         RiskLevel = 1,
-    ///         TagKeyScope = "For",
-    ///         TagValueScope = "example",
+    ///         MaximumExecutionFrequency = "TwentyFour_Hours",
     ///         RegionIdsScope = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
-    ///         ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
+    ///         ConfigRuleTriggerTypes = "ScheduledNotification",
     ///         ResourceTypesScopes = new[]
     ///         {
-    ///             "ACS::OSS::Bucket",
+    ///             "ACS::RAM::User",
     ///         },
-    ///         RuleName = "oss-bucket-public-read-prohibited",
+    ///         RuleName = "ciscompliancecheck_ram-user-ak-create-date-expired-check",
+    ///         InputParameters = 
+    ///         {
+    ///             { "days", "90" },
+    ///         },
+    ///     });
+    /// 
+    ///     var rule2 = new AliCloud.Cfg.Rule("rule2", new()
+    ///     {
+    ///         Description = name,
+    ///         SourceOwner = "ALIYUN",
+    ///         SourceIdentifier = "adb-cluster-maintain-time-check",
+    ///         RiskLevel = 2,
+    ///         RegionIdsScope = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         ConfigRuleTriggerTypes = "ScheduledNotification",
+    ///         ResourceTypesScopes = new[]
+    ///         {
+    ///             "ACS::ADB::DBCluster",
+    ///         },
+    ///         RuleName = "governance-evaluation-adb-cluster-maintain-time-check",
+    ///         InputParameters = 
+    ///         {
+    ///             { "maintainTimes", "02:00-04:00,06:00-08:00,12:00-13:00" },
+    ///         },
     ///     });
     /// 
     ///     var defaultCompliancePack = new AliCloud.Cfg.CompliancePack("defaultCompliancePack", new()
     ///     {
     ///         CompliancePackName = name,
-    ///         Description = name,
-    ///         RiskLevel = 1,
+    ///         Description = "CloudGovernanceCenter evaluation",
+    ///         RiskLevel = 2,
     ///         ConfigRuleIds = new[]
     ///         {
     ///             new AliCloud.Cfg.Inputs.CompliancePackConfigRuleIdArgs
     ///             {
-    ///                 ConfigRuleId = defaultRule.Id,
+    ///                 ConfigRuleId = rule1.Id,
+    ///             },
+    ///             new AliCloud.Cfg.Inputs.CompliancePackConfigRuleIdArgs
+    ///             {
+    ///                 ConfigRuleId = rule2.Id,
     ///             },
     ///         },
     ///     });
@@ -81,7 +107,7 @@ namespace Pulumi.AliCloud.Cfg
     public partial class CompliancePack : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
+        /// The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
         /// </summary>
         [Output("compliancePackName")]
         public Output<string> CompliancePackName { get; private set; } = null!;
@@ -99,7 +125,7 @@ namespace Pulumi.AliCloud.Cfg
         public Output<ImmutableArray<Outputs.CompliancePackConfigRuleId>> ConfigRuleIds { get; private set; } = null!;
 
         /// <summary>
-        /// A list of Config Rules. See `config_rules` below.
+        /// A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         /// </summary>
         [Output("configRules")]
         public Output<ImmutableArray<Outputs.CompliancePackConfigRule>> ConfigRules { get; private set; } = null!;
@@ -111,13 +137,13 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+        /// The Risk Level. Valid values:
         /// </summary>
         [Output("riskLevel")]
         public Output<int> RiskLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+        /// The status of the Compliance Pack.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -169,7 +195,7 @@ namespace Pulumi.AliCloud.Cfg
     public sealed class CompliancePackArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
+        /// The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
         /// </summary>
         [Input("compliancePackName", required: true)]
         public Input<string> CompliancePackName { get; set; } = null!;
@@ -196,9 +222,9 @@ namespace Pulumi.AliCloud.Cfg
         private InputList<Inputs.CompliancePackConfigRuleArgs>? _configRules;
 
         /// <summary>
-        /// A list of Config Rules. See `config_rules` below.
+        /// A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         /// </summary>
-        [Obsolete(@"Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.")]
+        [Obsolete(@"Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.")]
         public InputList<Inputs.CompliancePackConfigRuleArgs> ConfigRules
         {
             get => _configRules ?? (_configRules = new InputList<Inputs.CompliancePackConfigRuleArgs>());
@@ -212,7 +238,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+        /// The Risk Level. Valid values:
         /// </summary>
         [Input("riskLevel", required: true)]
         public Input<int> RiskLevel { get; set; } = null!;
@@ -226,7 +252,7 @@ namespace Pulumi.AliCloud.Cfg
     public sealed class CompliancePackState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
+        /// The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
         /// </summary>
         [Input("compliancePackName")]
         public Input<string>? CompliancePackName { get; set; }
@@ -253,9 +279,9 @@ namespace Pulumi.AliCloud.Cfg
         private InputList<Inputs.CompliancePackConfigRuleGetArgs>? _configRules;
 
         /// <summary>
-        /// A list of Config Rules. See `config_rules` below.
+        /// A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         /// </summary>
-        [Obsolete(@"Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.")]
+        [Obsolete(@"Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.")]
         public InputList<Inputs.CompliancePackConfigRuleGetArgs> ConfigRules
         {
             get => _configRules ?? (_configRules = new InputList<Inputs.CompliancePackConfigRuleGetArgs>());
@@ -269,13 +295,13 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+        /// The Risk Level. Valid values:
         /// </summary>
         [Input("riskLevel")]
         public Input<int>? RiskLevel { get; set; }
 
         /// <summary>
-        /// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+        /// The status of the Compliance Pack.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

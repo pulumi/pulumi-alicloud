@@ -6,6 +6,18 @@ package com.pulumi.alicloud.sae;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.sae.ApplicationArgs;
 import com.pulumi.alicloud.sae.inputs.ApplicationState;
+import com.pulumi.alicloud.sae.outputs.ApplicationConfigMapMountDescV2;
+import com.pulumi.alicloud.sae.outputs.ApplicationCustomHostAliasV2;
+import com.pulumi.alicloud.sae.outputs.ApplicationKafkaConfigs;
+import com.pulumi.alicloud.sae.outputs.ApplicationLivenessV2;
+import com.pulumi.alicloud.sae.outputs.ApplicationNasConfig;
+import com.pulumi.alicloud.sae.outputs.ApplicationOssMountDescsV2;
+import com.pulumi.alicloud.sae.outputs.ApplicationPostStartV2;
+import com.pulumi.alicloud.sae.outputs.ApplicationPreStopV2;
+import com.pulumi.alicloud.sae.outputs.ApplicationPvtzDiscoverySvc;
+import com.pulumi.alicloud.sae.outputs.ApplicationReadinessV2;
+import com.pulumi.alicloud.sae.outputs.ApplicationTomcatConfigV2;
+import com.pulumi.alicloud.sae.outputs.ApplicationUpdateStrategyV2;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -37,8 +49,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
@@ -64,14 +74,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
+ *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
- *             .build());
- * 
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
- *             .max(99999)
- *             .min(10000)
  *             .build());
  * 
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
@@ -95,7 +101,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
- *             .namespaceId(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s:example%s&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),result)))
+ *             .namespaceId(String.format(&#34;%s:example&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id())))
  *             .namespaceName(name)
  *             .namespaceDescription(name)
  *             .enableMicroRegistration(false)
@@ -160,14 +166,14 @@ public class Application extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.acrInstanceId);
     }
     /**
-     * Application description information. No more than 1024 characters.
+     * Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `app_description` can be modified.
      * 
      */
     @Export(name="appDescription", type=String.class, parameters={})
     private Output</* @Nullable */ String> appDescription;
 
     /**
-     * @return Application description information. No more than 1024 characters.
+     * @return Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `app_description` can be modified.
      * 
      */
     public Output<Optional<String>> appDescription() {
@@ -188,32 +194,32 @@ public class Application extends com.pulumi.resources.CustomResource {
         return this.appName;
     }
     /**
-     * The auto config. Valid values: `false`, `true`.
+     * The auto config. Valid values: `true`, `false`.
      * 
      */
     @Export(name="autoConfig", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> autoConfig;
 
     /**
-     * @return The auto config. Valid values: `false`, `true`.
+     * @return The auto config. Valid values: `true`, `false`.
      * 
      */
     public Output<Optional<Boolean>> autoConfig() {
         return Codegen.optional(this.autoConfig);
     }
     /**
-     * The auto enable application scaling rule. Valid values: `false`, `true`.
+     * The auto enable application scaling rule. Valid values: `true`, `false`.
      * 
      */
     @Export(name="autoEnableApplicationScalingRule", type=Boolean.class, parameters={})
-    private Output<Boolean> autoEnableApplicationScalingRule;
+    private Output</* @Nullable */ Boolean> autoEnableApplicationScalingRule;
 
     /**
-     * @return The auto enable application scaling rule. Valid values: `false`, `true`.
+     * @return The auto enable application scaling rule. Valid values: `true`, `false`.
      * 
      */
-    public Output<Boolean> autoEnableApplicationScalingRule() {
-        return this.autoEnableApplicationScalingRule;
+    public Output<Optional<Boolean>> autoEnableApplicationScalingRule() {
+        return Codegen.optional(this.autoEnableApplicationScalingRule);
     }
     /**
      * The batch wait time.
@@ -234,14 +240,14 @@ public class Application extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="changeOrderDesc", type=String.class, parameters={})
-    private Output<String> changeOrderDesc;
+    private Output</* @Nullable */ String> changeOrderDesc;
 
     /**
      * @return The change order desc.
      * 
      */
-    public Output<String> changeOrderDesc() {
-        return this.changeOrderDesc;
+    public Output<Optional<String>> changeOrderDesc() {
+        return Codegen.optional(this.changeOrderDesc);
     }
     /**
      * Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
@@ -258,70 +264,124 @@ public class Application extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.command);
     }
     /**
-     * Mirror startup command parameters. The parameters required for the above start command. For example: 1d.
+     * Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
+     * 
+     * @deprecated
+     * Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
      * 
      */
+    @Deprecated /* Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead. */
     @Export(name="commandArgs", type=String.class, parameters={})
-    private Output</* @Nullable */ String> commandArgs;
+    private Output<String> commandArgs;
 
     /**
-     * @return Mirror startup command parameters. The parameters required for the above start command. For example: 1d.
+     * @return Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
      * 
      */
-    public Output<Optional<String>> commandArgs() {
-        return Codegen.optional(this.commandArgs);
+    public Output<String> commandArgs() {
+        return this.commandArgs;
     }
     /**
-     * ConfigMap mount description.
+     * The parameters of the image startup command.
      * 
      */
+    @Export(name="commandArgsV2s", type=List.class, parameters={String.class})
+    private Output<List<String>> commandArgsV2s;
+
+    /**
+     * @return The parameters of the image startup command.
+     * 
+     */
+    public Output<List<String>> commandArgsV2s() {
+        return this.commandArgsV2s;
+    }
+    /**
+     * ConfigMap mount description. **NOTE:** Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
+     * 
+     * @deprecated
+     * Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
+     * 
+     */
+    @Deprecated /* Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead. */
     @Export(name="configMapMountDesc", type=String.class, parameters={})
     private Output<String> configMapMountDesc;
 
     /**
-     * @return ConfigMap mount description.
+     * @return ConfigMap mount description. **NOTE:** Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
      * 
      */
     public Output<String> configMapMountDesc() {
         return this.configMapMountDesc;
     }
     /**
-     * The CPU required for each instance, in millicores, cannot be 0. Valid values: `1000`, `16000`, `2000`, `32000`, `4000`, `500`, `8000`.
+     * The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `config_map_mount_desc_v2` below.
+     * 
+     */
+    @Export(name="configMapMountDescV2s", type=List.class, parameters={ApplicationConfigMapMountDescV2.class})
+    private Output<List<ApplicationConfigMapMountDescV2>> configMapMountDescV2s;
+
+    /**
+     * @return The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `config_map_mount_desc_v2` below.
+     * 
+     */
+    public Output<List<ApplicationConfigMapMountDescV2>> configMapMountDescV2s() {
+        return this.configMapMountDescV2s;
+    }
+    /**
+     * The CPU required for each instance, in millicores, cannot be 0. Valid values: `500`, `1000`, `2000`, `4000`, `8000`, `16000`, `32000`.
      * 
      */
     @Export(name="cpu", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> cpu;
 
     /**
-     * @return The CPU required for each instance, in millicores, cannot be 0. Valid values: `1000`, `16000`, `2000`, `32000`, `4000`, `500`, `8000`.
+     * @return The CPU required for each instance, in millicores, cannot be 0. Valid values: `500`, `1000`, `2000`, `4000`, `8000`, `16000`, `32000`.
      * 
      */
     public Output<Optional<Integer>> cpu() {
         return Codegen.optional(this.cpu);
     }
     /**
-     * Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}].
+     * Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
+     * 
+     * @deprecated
+     * Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
      * 
      */
+    @Deprecated /* Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead. */
     @Export(name="customHostAlias", type=String.class, parameters={})
     private Output<String> customHostAlias;
 
     /**
-     * @return Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}].
+     * @return Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
      * 
      */
     public Output<String> customHostAlias() {
         return this.customHostAlias;
     }
     /**
-     * The deploy. Valid values: `false`, `true`.
+     * The custom mapping between the hostname and IP address in the container. See `custom_host_alias_v2` below.
+     * 
+     */
+    @Export(name="customHostAliasV2s", type=List.class, parameters={ApplicationCustomHostAliasV2.class})
+    private Output<List<ApplicationCustomHostAliasV2>> customHostAliasV2s;
+
+    /**
+     * @return The custom mapping between the hostname and IP address in the container. See `custom_host_alias_v2` below.
+     * 
+     */
+    public Output<List<ApplicationCustomHostAliasV2>> customHostAliasV2s() {
+        return this.customHostAliasV2s;
+    }
+    /**
+     * The deploy. Valid values: `true`, `false`.
      * 
      */
     @Export(name="deploy", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> deploy;
 
     /**
-     * @return The deploy. Valid values: `false`, `true`.
+     * @return The deploy. Valid values: `true`, `false`.
      * 
      */
     public Output<Optional<Boolean>> deploy() {
@@ -342,28 +402,28 @@ public class Application extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.edasContainerVersion);
     }
     /**
-     * The enable ahas.
+     * The enable ahas. Valid values: `true`, `false`.
      * 
      */
     @Export(name="enableAhas", type=String.class, parameters={})
     private Output<String> enableAhas;
 
     /**
-     * @return The enable ahas.
+     * @return The enable ahas. Valid values: `true`, `false`.
      * 
      */
     public Output<String> enableAhas() {
         return this.enableAhas;
     }
     /**
-     * The enable grey tag route.
+     * The enable grey tag route. Default value: `false`. Valid values:
      * 
      */
     @Export(name="enableGreyTagRoute", type=Boolean.class, parameters={})
     private Output<Boolean> enableGreyTagRoute;
 
     /**
-     * @return The enable grey tag route.
+     * @return The enable grey tag route. Default value: `false`. Valid values:
      * 
      */
     public Output<Boolean> enableGreyTagRoute() {
@@ -382,6 +442,20 @@ public class Application extends com.pulumi.resources.CustomResource {
      */
     public Output<String> envs() {
         return this.envs;
+    }
+    /**
+     * The ID of the corresponding Secret.
+     * 
+     */
+    @Export(name="imagePullSecrets", type=String.class, parameters={})
+    private Output</* @Nullable */ String> imagePullSecrets;
+
+    /**
+     * @return The ID of the corresponding Secret.
+     * 
+     */
+    public Output<Optional<String>> imagePullSecrets() {
+        return Codegen.optional(this.imagePullSecrets);
     }
     /**
      * Mirror address. Only Image type applications can configure the mirror address.
@@ -440,28 +514,62 @@ public class Application extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.jdk);
     }
     /**
-     * Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
+     * The logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
      * 
      */
+    @Export(name="kafkaConfigs", type=ApplicationKafkaConfigs.class, parameters={})
+    private Output</* @Nullable */ ApplicationKafkaConfigs> kafkaConfigs;
+
+    /**
+     * @return The logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
+     * 
+     */
+    public Output<Optional<ApplicationKafkaConfigs>> kafkaConfigs() {
+        return Codegen.optional(this.kafkaConfigs);
+    }
+    /**
+     * Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
+     * **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
+     * 
+     * @deprecated
+     * Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
+     * 
+     */
+    @Deprecated /* Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead. */
     @Export(name="liveness", type=String.class, parameters={})
-    private Output</* @Nullable */ String> liveness;
+    private Output<String> liveness;
 
     /**
      * @return Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
+     * **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
      * 
      */
-    public Output<Optional<String>> liveness() {
-        return Codegen.optional(this.liveness);
+    public Output<String> liveness() {
+        return this.liveness;
     }
     /**
-     * The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
+     * The liveness check settings of the container. See `liveness_v2` below.
+     * 
+     */
+    @Export(name="livenessV2", type=ApplicationLivenessV2.class, parameters={})
+    private Output<ApplicationLivenessV2> livenessV2;
+
+    /**
+     * @return The liveness check settings of the container. See `liveness_v2` below.
+     * 
+     */
+    public Output<ApplicationLivenessV2> livenessV2() {
+        return this.livenessV2;
+    }
+    /**
+     * The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `2048`, `4096`, `8192`, `12288`, `16384`, `24576`, `32768`, `65536`, `131072`.
      * 
      */
     @Export(name="memory", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> memory;
 
     /**
-     * @return The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
+     * @return The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `2048`, `4096`, `8192`, `12288`, `16384`, `24576`, `32768`, `65536`, `131072`.
      * 
      */
     public Output<Optional<Integer>> memory() {
@@ -514,34 +622,6 @@ public class Application extends com.pulumi.resources.CustomResource {
         return this.minReadyInstances;
     }
     /**
-     * Mount description.
-     * 
-     */
-    @Export(name="mountDesc", type=String.class, parameters={})
-    private Output</* @Nullable */ String> mountDesc;
-
-    /**
-     * @return Mount description.
-     * 
-     */
-    public Output<Optional<String>> mountDesc() {
-        return Codegen.optional(this.mountDesc);
-    }
-    /**
-     * Mount point of NAS in application VPC.
-     * 
-     */
-    @Export(name="mountHost", type=String.class, parameters={})
-    private Output</* @Nullable */ String> mountHost;
-
-    /**
-     * @return Mount point of NAS in application VPC.
-     * 
-     */
-    public Output<Optional<String>> mountHost() {
-        return Codegen.optional(this.mountHost);
-    }
-    /**
      * SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
      * 
      */
@@ -556,18 +636,18 @@ public class Application extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.namespaceId);
     }
     /**
-     * ID of the mounted NAS, Must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field is present, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
+     * The configurations for mounting the NAS file system. See `nas_configs` below.
      * 
      */
-    @Export(name="nasId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> nasId;
+    @Export(name="nasConfigs", type=List.class, parameters={ApplicationNasConfig.class})
+    private Output</* @Nullable */ List<ApplicationNasConfig>> nasConfigs;
 
     /**
-     * @return ID of the mounted NAS, Must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field is present, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
+     * @return The configurations for mounting the NAS file system. See `nas_configs` below.
      * 
      */
-    public Output<Optional<String>> nasId() {
-        return Codegen.optional(this.nasId);
+    public Output<Optional<List<ApplicationNasConfig>>> nasConfigs() {
+        return Codegen.optional(this.nasConfigs);
     }
     /**
      * OSS AccessKey ID.
@@ -598,28 +678,46 @@ public class Application extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ossAkSecret);
     }
     /**
-     * OSS mount description information.
+     * OSS mount description information. **NOTE:** Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
+     * 
+     * @deprecated
+     * Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
      * 
      */
+    @Deprecated /* Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead. */
     @Export(name="ossMountDescs", type=String.class, parameters={})
-    private Output</* @Nullable */ String> ossMountDescs;
+    private Output<String> ossMountDescs;
 
     /**
-     * @return OSS mount description information.
+     * @return OSS mount description information. **NOTE:** Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
      * 
      */
-    public Output<Optional<String>> ossMountDescs() {
-        return Codegen.optional(this.ossMountDescs);
+    public Output<String> ossMountDescs() {
+        return this.ossMountDescs;
     }
     /**
-     * Application package type. Support FatJar, War and Image. Valid values: `FatJar`, `Image`, `War`.
+     * The description of the mounted Object Storage Service (OSS) bucket. See `oss_mount_descs_v2` below.
+     * 
+     */
+    @Export(name="ossMountDescsV2s", type=List.class, parameters={ApplicationOssMountDescsV2.class})
+    private Output<List<ApplicationOssMountDescsV2>> ossMountDescsV2s;
+
+    /**
+     * @return The description of the mounted Object Storage Service (OSS) bucket. See `oss_mount_descs_v2` below.
+     * 
+     */
+    public Output<List<ApplicationOssMountDescsV2>> ossMountDescsV2s() {
+        return this.ossMountDescsV2s;
+    }
+    /**
+     * Application package type. Valid values: `FatJar`, `War`, `Image`, `PhpZip`, `IMAGE_PHP_5_4`, `IMAGE_PHP_5_4_ALPINE`, `IMAGE_PHP_5_5`, `IMAGE_PHP_5_5_ALPINE`, `IMAGE_PHP_5_6`, `IMAGE_PHP_5_6_ALPINE`, `IMAGE_PHP_7_0`, `IMAGE_PHP_7_0_ALPINE`, `IMAGE_PHP_7_1`, `IMAGE_PHP_7_1_ALPINE`, `IMAGE_PHP_7_2`, `IMAGE_PHP_7_2_ALPINE`, `IMAGE_PHP_7_3`, `IMAGE_PHP_7_3_ALPINE`, `PythonZip`.
      * 
      */
     @Export(name="packageType", type=String.class, parameters={})
     private Output<String> packageType;
 
     /**
-     * @return Application package type. Support FatJar, War and Image. Valid values: `FatJar`, `Image`, `War`.
+     * @return Application package type. Valid values: `FatJar`, `War`, `Image`, `PhpZip`, `IMAGE_PHP_5_4`, `IMAGE_PHP_5_4_ALPINE`, `IMAGE_PHP_5_5`, `IMAGE_PHP_5_5_ALPINE`, `IMAGE_PHP_5_6`, `IMAGE_PHP_5_6_ALPINE`, `IMAGE_PHP_7_0`, `IMAGE_PHP_7_0_ALPINE`, `IMAGE_PHP_7_1`, `IMAGE_PHP_7_1_ALPINE`, `IMAGE_PHP_7_2`, `IMAGE_PHP_7_2_ALPINE`, `IMAGE_PHP_7_3`, `IMAGE_PHP_7_3_ALPINE`, `PythonZip`.
      * 
      */
     public Output<String> packageType() {
@@ -654,18 +752,32 @@ public class Application extends com.pulumi.resources.CustomResource {
         return this.packageVersion;
     }
     /**
+     * The Php environment.
+     * 
+     */
+    @Export(name="php", type=String.class, parameters={})
+    private Output</* @Nullable */ String> php;
+
+    /**
+     * @return The Php environment.
+     * 
+     */
+    public Output<Optional<String>> php() {
+        return Codegen.optional(this.php);
+    }
+    /**
      * The PHP application monitors the mount path, and you need to ensure that the PHP server will load the configuration file of this path. You don&#39;t need to pay attention to the configuration content, SAE will automatically render the correct configuration file.
      * 
      */
     @Export(name="phpArmsConfigLocation", type=String.class, parameters={})
-    private Output</* @Nullable */ String> phpArmsConfigLocation;
+    private Output<String> phpArmsConfigLocation;
 
     /**
      * @return The PHP application monitors the mount path, and you need to ensure that the PHP server will load the configuration file of this path. You don&#39;t need to pay attention to the configuration content, SAE will automatically render the correct configuration file.
      * 
      */
-    public Output<Optional<String>> phpArmsConfigLocation() {
-        return Codegen.optional(this.phpArmsConfigLocation);
+    public Output<String> phpArmsConfigLocation() {
+        return this.phpArmsConfigLocation;
     }
     /**
      * PHP configuration file content.
@@ -696,46 +808,130 @@ public class Application extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.phpConfigLocation);
     }
     /**
-     * Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}.
+     * Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
+     * 
+     * @deprecated
+     * Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
      * 
      */
+    @Deprecated /* Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead. */
     @Export(name="postStart", type=String.class, parameters={})
-    private Output</* @Nullable */ String> postStart;
+    private Output<String> postStart;
 
     /**
-     * @return Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}.
+     * @return Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
      * 
      */
-    public Output<Optional<String>> postStart() {
-        return Codegen.optional(this.postStart);
+    public Output<String> postStart() {
+        return this.postStart;
     }
     /**
-     * Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}.
+     * The script that is run immediately after the container is started. See `post_start_v2` below.
      * 
      */
-    @Export(name="preStop", type=String.class, parameters={})
-    private Output</* @Nullable */ String> preStop;
+    @Export(name="postStartV2", type=ApplicationPostStartV2.class, parameters={})
+    private Output<ApplicationPostStartV2> postStartV2;
 
     /**
-     * @return Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}.
+     * @return The script that is run immediately after the container is started. See `post_start_v2` below.
      * 
      */
-    public Output<Optional<String>> preStop() {
-        return Codegen.optional(this.preStop);
+    public Output<ApplicationPostStartV2> postStartV2() {
+        return this.postStartV2;
+    }
+    /**
+     * Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
+     * 
+     * @deprecated
+     * Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
+     * 
+     */
+    @Deprecated /* Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead. */
+    @Export(name="preStop", type=String.class, parameters={})
+    private Output<String> preStop;
+
+    /**
+     * @return Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
+     * 
+     */
+    public Output<String> preStop() {
+        return this.preStop;
+    }
+    /**
+     * The script that is run before the container is stopped. See `pre_stop_v2` below.
+     * 
+     */
+    @Export(name="preStopV2", type=ApplicationPreStopV2.class, parameters={})
+    private Output<ApplicationPreStopV2> preStopV2;
+
+    /**
+     * @return The script that is run before the container is stopped. See `pre_stop_v2` below.
+     * 
+     */
+    public Output<ApplicationPreStopV2> preStopV2() {
+        return this.preStopV2;
+    }
+    /**
+     * The programming language that is used to create the application. Valid values: `java`, `php`, `other`.
+     * 
+     */
+    @Export(name="programmingLanguage", type=String.class, parameters={})
+    private Output<String> programmingLanguage;
+
+    /**
+     * @return The programming language that is used to create the application. Valid values: `java`, `php`, `other`.
+     * 
+     */
+    public Output<String> programmingLanguage() {
+        return this.programmingLanguage;
+    }
+    /**
+     * The configurations of Kubernetes Service-based service registration and discovery. See `pvtz_discovery_svc` below.
+     * 
+     */
+    @Export(name="pvtzDiscoverySvc", type=ApplicationPvtzDiscoverySvc.class, parameters={})
+    private Output</* @Nullable */ ApplicationPvtzDiscoverySvc> pvtzDiscoverySvc;
+
+    /**
+     * @return The configurations of Kubernetes Service-based service registration and discovery. See `pvtz_discovery_svc` below.
+     * 
+     */
+    public Output<Optional<ApplicationPvtzDiscoverySvc>> pvtzDiscoverySvc() {
+        return Codegen.optional(this.pvtzDiscoverySvc);
     }
     /**
      * Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,&#34;-c&#34;,&#34;cat /home/admin/start.sh&#34;]},`initialDelaySeconds`:30,`periodSeconds`:30,&#34;timeoutSeconds &#34;:2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
+     * **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
+     * 
+     * @deprecated
+     * Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
      * 
      */
+    @Deprecated /* Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead. */
     @Export(name="readiness", type=String.class, parameters={})
-    private Output</* @Nullable */ String> readiness;
+    private Output<String> readiness;
 
     /**
      * @return Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,&#34;-c&#34;,&#34;cat /home/admin/start.sh&#34;]},`initialDelaySeconds`:30,`periodSeconds`:30,&#34;timeoutSeconds &#34;:2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
+     * **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
      * 
      */
-    public Output<Optional<String>> readiness() {
-        return Codegen.optional(this.readiness);
+    public Output<String> readiness() {
+        return this.readiness;
+    }
+    /**
+     * The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
+     * 
+     */
+    @Export(name="readinessV2", type=ApplicationReadinessV2.class, parameters={})
+    private Output<ApplicationReadinessV2> readinessV2;
+
+    /**
+     * @return The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
+     * 
+     */
+    public Output<ApplicationReadinessV2> readinessV2() {
+        return this.readinessV2;
     }
     /**
      * Initial number of instances.
@@ -780,14 +976,14 @@ public class Application extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.slsConfigs);
     }
     /**
-     * The status of the resource. Valid values: `RUNNING`, `STOPPED`.
+     * The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `RUNNING`, `STOPPED`.
+     * @return The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
      * 
      */
     public Output<String> status() {
@@ -822,14 +1018,14 @@ public class Application extends com.pulumi.resources.CustomResource {
         return this.terminationGracePeriodSeconds;
     }
     /**
-     * Time zone, the default value is Asia/Shanghai.
+     * Time zone. Default value: `Asia/Shanghai`.
      * 
      */
     @Export(name="timezone", type=String.class, parameters={})
     private Output<String> timezone;
 
     /**
-     * @return Time zone, the default value is Asia/Shanghai.
+     * @return Time zone. Default value: `Asia/Shanghai`.
      * 
      */
     public Output<String> timezone() {
@@ -837,45 +1033,69 @@ public class Application extends com.pulumi.resources.CustomResource {
     }
     /**
      * Tomcat file configuration, set to &#34;{}&#34; means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
+     * **NOTE:** Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
+     * 
+     * @deprecated
+     * Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
      * 
      */
+    @Deprecated /* Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead. */
     @Export(name="tomcatConfig", type=String.class, parameters={})
-    private Output</* @Nullable */ String> tomcatConfig;
+    private Output<String> tomcatConfig;
 
     /**
      * @return Tomcat file configuration, set to &#34;{}&#34; means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
+     * **NOTE:** Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
      * 
      */
-    public Output<Optional<String>> tomcatConfig() {
-        return Codegen.optional(this.tomcatConfig);
+    public Output<String> tomcatConfig() {
+        return this.tomcatConfig;
     }
     /**
-     * The update strategy.
+     * The Tomcat configuration. See `tomcat_config_v2` below.
      * 
      */
+    @Export(name="tomcatConfigV2", type=ApplicationTomcatConfigV2.class, parameters={})
+    private Output<ApplicationTomcatConfigV2> tomcatConfigV2;
+
+    /**
+     * @return The Tomcat configuration. See `tomcat_config_v2` below.
+     * 
+     */
+    public Output<ApplicationTomcatConfigV2> tomcatConfigV2() {
+        return this.tomcatConfigV2;
+    }
+    /**
+     * The update strategy. **NOTE:** Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
+     * 
+     * @deprecated
+     * Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
+     * 
+     */
+    @Deprecated /* Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead. */
     @Export(name="updateStrategy", type=String.class, parameters={})
     private Output<String> updateStrategy;
 
     /**
-     * @return The update strategy.
+     * @return The update strategy. **NOTE:** Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
      * 
      */
     public Output<String> updateStrategy() {
         return this.updateStrategy;
     }
     /**
-     * Application version id.
+     * The release policy. See `update_strategy_v2` below.
      * 
      */
-    @Export(name="versionId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> versionId;
+    @Export(name="updateStrategyV2", type=ApplicationUpdateStrategyV2.class, parameters={})
+    private Output<ApplicationUpdateStrategyV2> updateStrategyV2;
 
     /**
-     * @return Application version id.
+     * @return The release policy. See `update_strategy_v2` below.
      * 
      */
-    public Output<Optional<String>> versionId() {
-        return Codegen.optional(this.versionId);
+    public Output<ApplicationUpdateStrategyV2> updateStrategyV2() {
+        return this.updateStrategyV2;
     }
     /**
      * The vpc id.
@@ -892,14 +1112,14 @@ public class Application extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.vpcId);
     }
     /**
-     * The vswitch id.
+     * The vswitch id. **NOTE:** From version 1.211.0, `vswitch_id` can be modified.
      * 
      */
     @Export(name="vswitchId", type=String.class, parameters={})
     private Output</* @Nullable */ String> vswitchId;
 
     /**
-     * @return The vswitch id.
+     * @return The vswitch id. **NOTE:** From version 1.211.0, `vswitch_id` can be modified.
      * 
      */
     public Output<Optional<String>> vswitchId() {

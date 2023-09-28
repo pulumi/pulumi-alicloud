@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.PrivateLink
     /// <summary>
     /// Provides a Private Link Vpc Endpoint Connection resource.
     /// 
-    /// For information about Private Link Vpc Endpoint Connection and how to use it, see [What is Vpc Endpoint Connection](https://help.aliyun.com/document_detail/183551.html).
+    /// For information about Private Link Vpc Endpoint Connection and how to use it, see [What is Vpc Endpoint Connection](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-enablevpcendpointzoneconnection).
     /// 
-    /// &gt; **NOTE:** Available in v1.110.0+.
+    /// &gt; **NOTE:** Available since v1.110.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,11 +28,70 @@ namespace Pulumi.AliCloud.PrivateLink
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.PrivateLink.VpcEndpointServiceConnection("example", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var exampleZones = AliCloud.GetZones.Invoke(new()
     ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var exampleVpcEndpointService = new AliCloud.PrivateLink.VpcEndpointService("exampleVpcEndpointService", new()
+    ///     {
+    ///         ServiceDescription = name,
+    ///         ConnectBandwidth = 103,
+    ///         AutoAcceptConnection = false,
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.0.0.0/8",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.1.0.0/16",
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("exampleSecurityGroup", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///     });
+    /// 
+    ///     var exampleApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("exampleApplicationLoadBalancer", new()
+    ///     {
+    ///         LoadBalancerName = name,
+    ///         VswitchId = exampleSwitch.Id,
+    ///         LoadBalancerSpec = "slb.s2.small",
+    ///         AddressType = "intranet",
+    ///     });
+    /// 
+    ///     var exampleVpcEndpointServiceResource = new AliCloud.PrivateLink.VpcEndpointServiceResource("exampleVpcEndpointServiceResource", new()
+    ///     {
+    ///         ServiceId = exampleVpcEndpointService.Id,
+    ///         ResourceId = exampleApplicationLoadBalancer.Id,
+    ///         ResourceType = "slb",
+    ///     });
+    /// 
+    ///     var exampleVpcEndpoint = new AliCloud.PrivateLink.VpcEndpoint("exampleVpcEndpoint", new()
+    ///     {
+    ///         ServiceId = exampleVpcEndpointServiceResource.ServiceId,
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             exampleSecurityGroup.Id,
+    ///         },
+    ///         VpcId = exampleNetwork.Id,
+    ///         VpcEndpointName = name,
+    ///     });
+    /// 
+    ///     var exampleVpcEndpointServiceConnection = new AliCloud.PrivateLink.VpcEndpointServiceConnection("exampleVpcEndpointServiceConnection", new()
+    ///     {
+    ///         EndpointId = exampleVpcEndpoint.Id,
+    ///         ServiceId = exampleVpcEndpoint.ServiceId,
     ///         Bandwidth = 1024,
-    ///         EndpointId = "example_value",
-    ///         ServiceId = "example_value",
     ///     });
     /// 
     /// });

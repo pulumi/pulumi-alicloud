@@ -32,17 +32,17 @@ public final class GetResourceGroupsGroup {
      */
     private String name;
     /**
-     * @return (Available in v1.114.0+) The status of the resource group in all regions.
+     * @return (Available since v1.114.0) The status of the resource group in all regions.
      * 
      */
     private List<GetResourceGroupsGroupRegionStatus> regionStatuses;
     /**
-     * @return (Available in v1.114.0+) The unique identifier of the resource group.
+     * @return (Available since v1.114.0) The unique identifier of the resource group.
      * 
      */
     private String resourceGroupName;
     /**
-     * @return The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+     * @return The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
      * 
      */
     private String status;
@@ -77,21 +77,21 @@ public final class GetResourceGroupsGroup {
         return this.name;
     }
     /**
-     * @return (Available in v1.114.0+) The status of the resource group in all regions.
+     * @return (Available since v1.114.0) The status of the resource group in all regions.
      * 
      */
     public List<GetResourceGroupsGroupRegionStatus> regionStatuses() {
         return this.regionStatuses;
     }
     /**
-     * @return (Available in v1.114.0+) The unique identifier of the resource group.
+     * @return (Available since v1.114.0) The unique identifier of the resource group.
      * 
      */
     public String resourceGroupName() {
         return this.resourceGroupName;
     }
     /**
-     * @return The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+     * @return The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
      * 
      */
     public String status() {

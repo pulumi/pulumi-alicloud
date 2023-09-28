@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// For information about Resource Manager Resource Share and how to use it, see [What is Resource Share](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.111.0+.
+    /// &gt; **NOTE:** Available since v1.111.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,9 +28,11 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
     ///     var example = new AliCloud.ResourceManager.ResourceShare("example", new()
     ///     {
-    ///         ResourceShareName = "example_value",
+    ///         ResourceShareName = name,
     ///     });
     /// 
     /// });

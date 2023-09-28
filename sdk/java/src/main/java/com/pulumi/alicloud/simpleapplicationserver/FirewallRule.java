@@ -19,7 +19,62 @@ import javax.annotation.Nullable;
  * 
  * For information about Simple Application Server Firewall Rule and how to use it, see [What is Firewall Rule](https://www.alibabacloud.com/help/doc-detail/190449.htm).
  * 
- * &gt; **NOTE:** Available in v1.143.0+.
+ * &gt; **NOTE:** Available since v1.143.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+ * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerPlansArgs;
+ * import com.pulumi.alicloud.simpleapplicationserver.Instance;
+ * import com.pulumi.alicloud.simpleapplicationserver.InstanceArgs;
+ * import com.pulumi.alicloud.simpleapplicationserver.FirewallRule;
+ * import com.pulumi.alicloud.simpleapplicationserver.FirewallRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var defaultImages = SimpleapplicationserverFunctions.getImages();
+ * 
+ *         final var defaultServerPlans = SimpleapplicationserverFunctions.getServerPlans();
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .paymentType(&#34;Subscription&#34;)
+ *             .planId(defaultServerPlans.applyValue(getServerPlansResult -&gt; getServerPlansResult.plans()[0].id()))
+ *             .instanceName(name)
+ *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .period(1)
+ *             .dataDiskSize(100)
+ *             .build());
+ * 
+ *         var defaultFirewallRule = new FirewallRule(&#34;defaultFirewallRule&#34;, FirewallRuleArgs.builder()        
+ *             .instanceId(defaultInstance.id())
+ *             .ruleProtocol(&#34;Tcp&#34;)
+ *             .port(&#34;9999&#34;)
+ *             .remark(name)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

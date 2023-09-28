@@ -14,11 +14,13 @@ namespace Pulumi.AliCloud.ResourceManager
         /// <summary>
         /// This data source provides resource groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.84.0+.
+        /// &gt; **NOTE:** Available since v1.84.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -30,7 +32,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {
         ///     var example = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
         ///     {
-        ///         NameRegex = "tftest",
+        ///         NameRegex = "tf",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -48,11 +50,13 @@ namespace Pulumi.AliCloud.ResourceManager
         /// <summary>
         /// This data source provides resource groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.84.0+.
+        /// &gt; **NOTE:** Available since v1.84.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -64,7 +68,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {
         ///     var example = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
         ///     {
-        ///         NameRegex = "tftest",
+        ///         NameRegex = "tf",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -84,7 +88,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class GetResourceGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to true can output more details.
+        /// Set it to true can output more details. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -102,7 +106,7 @@ namespace Pulumi.AliCloud.ResourceManager
         }
 
         /// <summary>
-        /// A regex string to filter results by resource group name.
+        /// A regex string to filter results by resource group identifier.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
@@ -114,7 +118,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+        /// The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -128,7 +132,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class GetResourceGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to true can output more details.
+        /// Set it to true can output more details. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -146,7 +150,7 @@ namespace Pulumi.AliCloud.ResourceManager
         }
 
         /// <summary>
-        /// A regex string to filter results by resource group name.
+        /// A regex string to filter results by resource group identifier.
         /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
@@ -158,7 +162,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+        /// The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -188,7 +192,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of resource group names.
+        /// A list of resource group identifiers.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;

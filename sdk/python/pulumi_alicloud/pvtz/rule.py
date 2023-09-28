@@ -24,7 +24,7 @@ class RuleArgs:
         """
         The set of arguments for constructing a Rule resource.
         :param pulumi.Input[str] endpoint_id: The ID of the Endpoint.
-        :param pulumi.Input[Sequence[pulumi.Input['RuleForwardIpArgs']]] forward_ips: Forwarding target. See the following `Block forward_ip`.
+        :param pulumi.Input[Sequence[pulumi.Input['RuleForwardIpArgs']]] forward_ips: Forwarding target. See `forward_ips` below.
         :param pulumi.Input[str] rule_name: The name of the resource.
         :param pulumi.Input[str] zone_name: The name of the forwarding zone.
         :param pulumi.Input[str] type: The type of the rule. Valid values: `OUTBOUND`.
@@ -52,7 +52,7 @@ class RuleArgs:
     @pulumi.getter(name="forwardIps")
     def forward_ips(self) -> pulumi.Input[Sequence[pulumi.Input['RuleForwardIpArgs']]]:
         """
-        Forwarding target. See the following `Block forward_ip`.
+        Forwarding target. See `forward_ips` below.
         """
         return pulumi.get(self, "forward_ips")
 
@@ -108,7 +108,7 @@ class _RuleState:
         """
         Input properties used for looking up and filtering Rule resources.
         :param pulumi.Input[str] endpoint_id: The ID of the Endpoint.
-        :param pulumi.Input[Sequence[pulumi.Input['RuleForwardIpArgs']]] forward_ips: Forwarding target. See the following `Block forward_ip`.
+        :param pulumi.Input[Sequence[pulumi.Input['RuleForwardIpArgs']]] forward_ips: Forwarding target. See `forward_ips` below.
         :param pulumi.Input[str] rule_name: The name of the resource.
         :param pulumi.Input[str] type: The type of the rule. Valid values: `OUTBOUND`.
         :param pulumi.Input[str] zone_name: The name of the forwarding zone.
@@ -140,7 +140,7 @@ class _RuleState:
     @pulumi.getter(name="forwardIps")
     def forward_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleForwardIpArgs']]]]:
         """
-        Forwarding target. See the following `Block forward_ip`.
+        Forwarding target. See `forward_ips` below.
         """
         return pulumi.get(self, "forward_ips")
 
@@ -199,9 +199,9 @@ class Rule(pulumi.CustomResource):
         """
         Provides a Private Zone Rule resource.
 
-        For information about Private Zone Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/doc-detail/177601.htm).
+        For information about Private Zone Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/privatezone/latest/add-forwarding-rule).
 
-        > **NOTE:** Available in v1.143.0+.
+        > **NOTE:** Available since v1.143.0.
 
         ## Import
 
@@ -214,7 +214,7 @@ class Rule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] endpoint_id: The ID of the Endpoint.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleForwardIpArgs']]]] forward_ips: Forwarding target. See the following `Block forward_ip`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleForwardIpArgs']]]] forward_ips: Forwarding target. See `forward_ips` below.
         :param pulumi.Input[str] rule_name: The name of the resource.
         :param pulumi.Input[str] type: The type of the rule. Valid values: `OUTBOUND`.
         :param pulumi.Input[str] zone_name: The name of the forwarding zone.
@@ -228,9 +228,9 @@ class Rule(pulumi.CustomResource):
         """
         Provides a Private Zone Rule resource.
 
-        For information about Private Zone Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/doc-detail/177601.htm).
+        For information about Private Zone Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/privatezone/latest/add-forwarding-rule).
 
-        > **NOTE:** Available in v1.143.0+.
+        > **NOTE:** Available since v1.143.0.
 
         ## Import
 
@@ -305,7 +305,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] endpoint_id: The ID of the Endpoint.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleForwardIpArgs']]]] forward_ips: Forwarding target. See the following `Block forward_ip`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleForwardIpArgs']]]] forward_ips: Forwarding target. See `forward_ips` below.
         :param pulumi.Input[str] rule_name: The name of the resource.
         :param pulumi.Input[str] type: The type of the rule. Valid values: `OUTBOUND`.
         :param pulumi.Input[str] zone_name: The name of the forwarding zone.
@@ -333,7 +333,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="forwardIps")
     def forward_ips(self) -> pulumi.Output[Sequence['outputs.RuleForwardIp']]:
         """
-        Forwarding target. See the following `Block forward_ip`.
+        Forwarding target. See `forward_ips` below.
         """
         return pulumi.get(self, "forward_ips")
 

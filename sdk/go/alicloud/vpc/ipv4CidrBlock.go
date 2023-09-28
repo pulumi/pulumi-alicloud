@@ -13,11 +13,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Provides a VPC Ipv4 Cidr Block resource.
+// Provides a VPC Ipv4 Cidr Block resource. VPC IPv4 additional network segment.
 //
 // For information about VPC Ipv4 Cidr Block and how to use it, see [What is Ipv4 Cidr Block](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/associatevpccidrblock).
 //
-// > **NOTE:** Available in v1.185.0+.
+// > **NOTE:** Available since v1.185.0.
 //
 // ## Example Usage
 //
@@ -30,21 +30,26 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				CidrBlock: pulumi.String("192.168.0.0/24"),
-//				VpcName:   pulumi.String("terraform-example"),
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultvpc, err := vpc.NewNetwork(ctx, "defaultvpc", &vpc.NetworkArgs{
+//				Description: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewIpv4CidrBlock(ctx, "example", &vpc.Ipv4CidrBlockArgs{
-//				VpcId:              _default.ID(),
-//				SecondaryCidrBlock: pulumi.String("192.163.0.0/16"),
+//			_, err = vpc.NewIpv4CidrBlock(ctx, "default", &vpc.Ipv4CidrBlockArgs{
+//				SecondaryCidrBlock: pulumi.String("192.168.0.0/16"),
+//				VpcId:              defaultvpc.ID(),
 //			})
 //			if err != nil {
 //				return err

@@ -17,7 +17,7 @@ import (
 //
 // For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
 //
-// > **NOTE:** Available in v1.187.0+.
+// > **NOTE:** Available since v1.187.0.
 //
 // ## Example Usage
 //
@@ -35,24 +35,28 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "terraformtest"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			instance1, err := ots.NewInstance(ctx, "instance1", &ots.InstanceArgs{
+//			defaultInstance, err := ots.NewInstance(ctx, "defaultInstance", &ots.InstanceArgs{
 //				Description: pulumi.String(name),
 //				AccessedBy:  pulumi.String("Any"),
 //				Tags: pulumi.AnyMap{
 //					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("acceptance test"),
+//					"For":     pulumi.Any("example"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			table1, err := ots.NewTable(ctx, "table1", &ots.TableArgs{
-//				InstanceName: instance1.Name,
-//				TableName:    pulumi.String(name),
+//			defaultTable, err := ots.NewTable(ctx, "defaultTable", &ots.TableArgs{
+//				InstanceName: defaultInstance.Name,
+//				TableName:    pulumi.String("tf_example"),
+//				TimeToLive:   -1,
+//				MaxVersion:   pulumi.Int(1),
+//				EnableSse:    pulumi.Bool(true),
+//				SseKeyType:   pulumi.String("SSE_KMS_SERVICE"),
 //				PrimaryKeys: ots.TablePrimaryKeyArray{
 //					&ots.TablePrimaryKeyArgs{
 //						Name: pulumi.String("pk1"),
@@ -62,28 +66,19 @@ import (
 //						Name: pulumi.String("pk2"),
 //						Type: pulumi.String("String"),
 //					},
-//				},
-//				DefinedColumns: ots.TableDefinedColumnArray{
-//					&ots.TableDefinedColumnArgs{
-//						Name: pulumi.String("col1"),
-//						Type: pulumi.String("String"),
-//					},
-//					&ots.TableDefinedColumnArgs{
-//						Name: pulumi.String("col2"),
-//						Type: pulumi.String("Integer"),
+//					&ots.TablePrimaryKeyArgs{
+//						Name: pulumi.String("pk3"),
+//						Type: pulumi.String("Binary"),
 //					},
 //				},
-//				TimeToLive:                -1,
-//				MaxVersion:                pulumi.Int(1),
-//				DeviationCellVersionInSec: pulumi.String("1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ots.NewSearchIndex(ctx, "default", &ots.SearchIndexArgs{
-//				InstanceName: instance1.Name,
-//				TableName:    table1.TableName,
-//				IndexName:    pulumi.String(name),
+//			_, err = ots.NewSearchIndex(ctx, "defaultSearchIndex", &ots.SearchIndexArgs{
+//				InstanceName: defaultInstance.Name,
+//				TableName:    defaultTable.TableName,
+//				IndexName:    pulumi.String("example_index"),
 //				TimeToLive:   -1,
 //				Schemas: ots.SearchIndexSchemaArray{
 //					&ots.SearchIndexSchemaArgs{
@@ -168,7 +163,7 @@ type SearchIndex struct {
 	IndexName pulumi.StringOutput `pulumi:"indexName"`
 	// The name of the OTS instance in which table will located.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
-	// The schema of the search index. If changed, a new index would be created.
+	// The schema of the search index. If changed, a new index would be created. See `schema` below.
 	Schemas SearchIndexSchemaArrayOutput `pulumi:"schemas"`
 	// The search index sync phase. possible values: `Full`, `Incr`.
 	SyncPhase pulumi.StringOutput `pulumi:"syncPhase"`
@@ -231,7 +226,7 @@ type searchIndexState struct {
 	IndexName *string `pulumi:"indexName"`
 	// The name of the OTS instance in which table will located.
 	InstanceName *string `pulumi:"instanceName"`
-	// The schema of the search index. If changed, a new index would be created.
+	// The schema of the search index. If changed, a new index would be created. See `schema` below.
 	Schemas []SearchIndexSchema `pulumi:"schemas"`
 	// The search index sync phase. possible values: `Full`, `Incr`.
 	SyncPhase *string `pulumi:"syncPhase"`
@@ -253,7 +248,7 @@ type SearchIndexState struct {
 	IndexName pulumi.StringPtrInput
 	// The name of the OTS instance in which table will located.
 	InstanceName pulumi.StringPtrInput
-	// The schema of the search index. If changed, a new index would be created.
+	// The schema of the search index. If changed, a new index would be created. See `schema` below.
 	Schemas SearchIndexSchemaArrayInput
 	// The search index sync phase. possible values: `Full`, `Incr`.
 	SyncPhase pulumi.StringPtrInput
@@ -273,7 +268,7 @@ type searchIndexArgs struct {
 	IndexName string `pulumi:"indexName"`
 	// The name of the OTS instance in which table will located.
 	InstanceName string `pulumi:"instanceName"`
-	// The schema of the search index. If changed, a new index would be created.
+	// The schema of the search index. If changed, a new index would be created. See `schema` below.
 	Schemas []SearchIndexSchema `pulumi:"schemas"`
 	// The name of the OTS table. If changed, a new table would be created.
 	TableName string `pulumi:"tableName"`
@@ -288,7 +283,7 @@ type SearchIndexArgs struct {
 	IndexName pulumi.StringInput
 	// The name of the OTS instance in which table will located.
 	InstanceName pulumi.StringInput
-	// The schema of the search index. If changed, a new index would be created.
+	// The schema of the search index. If changed, a new index would be created. See `schema` below.
 	Schemas SearchIndexSchemaArrayInput
 	// The name of the OTS table. If changed, a new table would be created.
 	TableName pulumi.StringInput
@@ -433,7 +428,7 @@ func (o SearchIndexOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *SearchIndex) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
 }
 
-// The schema of the search index. If changed, a new index would be created.
+// The schema of the search index. If changed, a new index would be created. See `schema` below.
 func (o SearchIndexOutput) Schemas() SearchIndexSchemaArrayOutput {
 	return o.ApplyT(func(v *SearchIndex) SearchIndexSchemaArrayOutput { return v.Schemas }).(SearchIndexSchemaArrayOutput)
 }

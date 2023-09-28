@@ -345,9 +345,36 @@ class VpcEndpoint(pulumi.CustomResource):
         """
         Provides a Private Link Vpc Endpoint resource.
 
-        For information about Private Link Vpc Endpoint and how to use it, see [What is Vpc Endpoint](https://help.aliyun.com/document_detail/120479.html).
+        For information about Private Link Vpc Endpoint and how to use it, see [What is Vpc Endpoint](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-createvpcendpoint).
 
-        > **NOTE:** Available in v1.109.0+.
+        > **NOTE:** Available since v1.109.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService",
+            service_description=name,
+            connect_bandwidth=103,
+            auto_accept_connection=False)
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
+        example_vpc_endpoint = alicloud.privatelink.VpcEndpoint("exampleVpcEndpoint",
+            service_id=example_vpc_endpoint_service.id,
+            security_group_ids=[example_security_group.id],
+            vpc_id=example_network.id,
+            vpc_endpoint_name=name)
+        ```
 
         ## Import
 
@@ -376,9 +403,36 @@ class VpcEndpoint(pulumi.CustomResource):
         """
         Provides a Private Link Vpc Endpoint resource.
 
-        For information about Private Link Vpc Endpoint and how to use it, see [What is Vpc Endpoint](https://help.aliyun.com/document_detail/120479.html).
+        For information about Private Link Vpc Endpoint and how to use it, see [What is Vpc Endpoint](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-createvpcendpoint).
 
-        > **NOTE:** Available in v1.109.0+.
+        > **NOTE:** Available since v1.109.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService",
+            service_description=name,
+            connect_bandwidth=103,
+            auto_accept_connection=False)
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
+        example_vpc_endpoint = alicloud.privatelink.VpcEndpoint("exampleVpcEndpoint",
+            service_id=example_vpc_endpoint_service.id,
+            security_group_ids=[example_security_group.id],
+            vpc_id=example_network.id,
+            vpc_endpoint_name=name)
+        ```
 
         ## Import
 

@@ -18,45 +18,13 @@ import javax.annotation.Nullable;
  * 
  * For information about Resource Manager Resource Directory and how to use it, see [What is Resource Manager Resource Directory](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
  * 
- * &gt; **NOTE:** Available in v1.84.0+.
+ * &gt; **NOTE:** Available since v1.84.0.
  * 
  * &gt; **NOTE:** An account can only be used to enable a resource directory after it passes enterprise real-name verification. An account that only passed individual real-name verification cannot be used to enable a resource directory.
  * 
  * &gt; **NOTE:** Before you destroy the resource, make sure that the following requirements are met:
  *   - All member accounts must be removed from the resource directory.
  *   - All folders except the root folder must be deleted from the resource directory.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.resourcemanager.ResourceDirectory;
- * import com.pulumi.alicloud.resourcemanager.ResourceDirectoryArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new ResourceDirectory(&#34;example&#34;, ResourceDirectoryArgs.builder()        
- *             .status(&#34;Enabled&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Import
  * 

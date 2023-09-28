@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Threat Detection Honey Pot resource.
  *
- * For information about Threat Detection Honey Pot and how to use it, see [What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypot).
+ * For information about Threat Detection Honey Pot and how to use it, see [What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot).
  *
- * > **NOTE:** Available in v1.195.0+.
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -19,11 +19,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.threatdetection.HoneyPot("default", {
- *     honeypotImageId: "sha256:007095d6de9c7a343e9fc1f74a7efc9c5de9d5454789d2fa505a1b3fc623730c",
- *     honeypotImageName: "ruoyi",
- *     honeypotName: "huangtiong-test",
- *     nodeId: "a44e1ab3-6945-444c-889d-5bacee7056e8",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexample";
+ * const defaultHoneypotImages = alicloud.threatdetection.getHoneypotImages({
+ *     nameRegex: "^ruoyi",
+ * });
+ * const defaultHoneypotNode = new alicloud.threatdetection.HoneypotNode("defaultHoneypotNode", {
+ *     nodeName: name,
+ *     availableProbeNum: 20,
+ *     securityGroupProbeIpLists: ["0.0.0.0/0"],
+ * });
+ * const defaultHoneyPot = new alicloud.threatdetection.HoneyPot("defaultHoneyPot", {
+ *     honeypotImageName: defaultHoneypotImages.then(defaultHoneypotImages => defaultHoneypotImages.images?.[0]?.honeypotImageName),
+ *     honeypotImageId: defaultHoneypotImages.then(defaultHoneypotImages => defaultHoneypotImages.images?.[0]?.honeypotImageId),
+ *     honeypotName: name,
+ *     nodeId: defaultHoneypotNode.id,
  * });
  * ```
  *

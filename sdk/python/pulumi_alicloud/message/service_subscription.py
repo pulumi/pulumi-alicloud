@@ -277,7 +277,7 @@ class ServiceSubscription(pulumi.CustomResource):
 
         For information about Message Notification Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
 
-        > **NOTE:** Available in v1.188.0+.
+        > **NOTE:** Available since v1.188.0.
 
         ## Example Usage
 
@@ -287,16 +287,20 @@ class ServiceSubscription(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_service_topic = alicloud.message.ServiceTopic("defaultServiceTopic",
-            topic_name="tf-example-value",
+            topic_name=name,
             max_message_size=12357,
             logging_enabled=True)
         default_service_subscription = alicloud.message.ServiceSubscription("defaultServiceSubscription",
             topic_name=default_service_topic.topic_name,
-            subscription_name="tf-example-value",
-            endpoint="http://www.test.com/test",
+            subscription_name=name,
+            endpoint="http://example.com",
             push_type="http",
-            filter_tag="tf-test",
+            filter_tag="tf-example",
             notify_content_format="XML",
             notify_strategy="BACKOFF_RETRY")
         ```
@@ -333,7 +337,7 @@ class ServiceSubscription(pulumi.CustomResource):
 
         For information about Message Notification Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
 
-        > **NOTE:** Available in v1.188.0+.
+        > **NOTE:** Available since v1.188.0.
 
         ## Example Usage
 
@@ -343,16 +347,20 @@ class ServiceSubscription(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_service_topic = alicloud.message.ServiceTopic("defaultServiceTopic",
-            topic_name="tf-example-value",
+            topic_name=name,
             max_message_size=12357,
             logging_enabled=True)
         default_service_subscription = alicloud.message.ServiceSubscription("defaultServiceSubscription",
             topic_name=default_service_topic.topic_name,
-            subscription_name="tf-example-value",
-            endpoint="http://www.test.com/test",
+            subscription_name=name,
+            endpoint="http://example.com",
             push_type="http",
-            filter_tag="tf-test",
+            filter_tag="tf-example",
             notify_content_format="XML",
             notify_strategy="BACKOFF_RETRY")
         ```

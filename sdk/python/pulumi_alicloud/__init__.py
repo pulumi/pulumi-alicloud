@@ -67,6 +67,8 @@ if typing.TYPE_CHECKING:
     cloudconnect = __cloudconnect
     import pulumi_alicloud.cloudfirewall as __cloudfirewall
     cloudfirewall = __cloudfirewall
+    import pulumi_alicloud.cloudmonitor as __cloudmonitor
+    cloudmonitor = __cloudmonitor
     import pulumi_alicloud.cloudsso as __cloudsso
     cloudsso = __cloudsso
     import pulumi_alicloud.cloudstoragegateway as __cloudstoragegateway
@@ -163,6 +165,8 @@ if typing.TYPE_CHECKING:
     imm = __imm
     import pulumi_alicloud.imp as __imp
     imp = __imp
+    import pulumi_alicloud.ims as __ims
+    ims = __ims
     import pulumi_alicloud.iot as __iot
     iot = __iot
     import pulumi_alicloud.kms as __kms
@@ -290,6 +294,7 @@ else:
     cloudauth = _utilities.lazy_import('pulumi_alicloud.cloudauth')
     cloudconnect = _utilities.lazy_import('pulumi_alicloud.cloudconnect')
     cloudfirewall = _utilities.lazy_import('pulumi_alicloud.cloudfirewall')
+    cloudmonitor = _utilities.lazy_import('pulumi_alicloud.cloudmonitor')
     cloudsso = _utilities.lazy_import('pulumi_alicloud.cloudsso')
     cloudstoragegateway = _utilities.lazy_import('pulumi_alicloud.cloudstoragegateway')
     cms = _utilities.lazy_import('pulumi_alicloud.cms')
@@ -338,6 +343,7 @@ else:
     hbr = _utilities.lazy_import('pulumi_alicloud.hbr')
     imm = _utilities.lazy_import('pulumi_alicloud.imm')
     imp = _utilities.lazy_import('pulumi_alicloud.imp')
+    ims = _utilities.lazy_import('pulumi_alicloud.ims')
     iot = _utilities.lazy_import('pulumi_alicloud.iot')
     kms = _utilities.lazy_import('pulumi_alicloud.kms')
     kvstore = _utilities.lazy_import('pulumi_alicloud.kvstore')
@@ -1020,6 +1026,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cddc/dedicatedPropreHost",
+  "fqn": "pulumi_alicloud.cddc",
+  "classes": {
+   "alicloud:cddc/dedicatedPropreHost:DedicatedPropreHost": "DedicatedPropreHost"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cdn/domain",
   "fqn": "pulumi_alicloud.cdn",
   "classes": {
@@ -1536,6 +1550,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cloudfirewall",
   "classes": {
    "alicloud:cloudfirewall/instanceMember:InstanceMember": "InstanceMember"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudmonitor/serviceHybridDoubleWrite",
+  "fqn": "pulumi_alicloud.cloudmonitor",
+  "classes": {
+   "alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite": "ServiceHybridDoubleWrite"
   }
  },
  {
@@ -3412,6 +3434,22 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "eventbridge/apiDestination",
+  "fqn": "pulumi_alicloud.eventbridge",
+  "classes": {
+   "alicloud:eventbridge/apiDestination:ApiDestination": "ApiDestination"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "eventbridge/connection",
+  "fqn": "pulumi_alicloud.eventbridge",
+  "classes": {
+   "alicloud:eventbridge/connection:Connection": "Connection"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "eventbridge/eventBus",
   "fqn": "pulumi_alicloud.eventbridge",
   "classes": {
@@ -3788,6 +3826,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "gpdb/backupPolicy",
+  "fqn": "pulumi_alicloud.gpdb",
+  "classes": {
+   "alicloud:gpdb/backupPolicy:BackupPolicy": "BackupPolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "gpdb/connection",
   "fqn": "pulumi_alicloud.gpdb",
   "classes": {
@@ -3948,6 +3994,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "ims/oidcProvider",
+  "fqn": "pulumi_alicloud.ims",
+  "classes": {
+   "alicloud:ims/oidcProvider:OidcProvider": "OidcProvider"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "index/mscSubContract",
   "fqn": "pulumi_alicloud",
   "classes": {
@@ -3988,10 +4042,34 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "kms/applicationAccessPoint",
+  "fqn": "pulumi_alicloud.kms",
+  "classes": {
+   "alicloud:kms/applicationAccessPoint:ApplicationAccessPoint": "ApplicationAccessPoint"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "kms/ciphertext",
   "fqn": "pulumi_alicloud.kms",
   "classes": {
    "alicloud:kms/ciphertext:Ciphertext": "Ciphertext"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "kms/clientKey",
+  "fqn": "pulumi_alicloud.kms",
+  "classes": {
+   "alicloud:kms/clientKey:ClientKey": "ClientKey"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "kms/instance",
+  "fqn": "pulumi_alicloud.kms",
+  "classes": {
+   "alicloud:kms/instance:Instance": "Instance"
   }
  },
  {
@@ -4008,6 +4086,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.kms",
   "classes": {
    "alicloud:kms/keyVersion:KeyVersion": "KeyVersion"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "kms/networkRule",
+  "fqn": "pulumi_alicloud.kms",
+  "classes": {
+   "alicloud:kms/networkRule:NetworkRule": "NetworkRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "kms/policy",
+  "fqn": "pulumi_alicloud.kms",
+  "classes": {
+   "alicloud:kms/policy:Policy": "Policy"
   }
  },
  {

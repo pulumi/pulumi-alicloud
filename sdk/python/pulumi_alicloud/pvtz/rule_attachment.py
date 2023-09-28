@@ -21,7 +21,7 @@ class RuleAttachmentArgs:
         """
         The set of arguments for constructing a RuleAttachment resource.
         :param pulumi.Input[str] rule_id: The ID of the rule.
-        :param pulumi.Input[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]] vpcs: The List of the VPC. See the following `Block vpcs`.
+        :param pulumi.Input[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]] vpcs: The List of the VPC. See `vpcs` below.
         """
         pulumi.set(__self__, "rule_id", rule_id)
         pulumi.set(__self__, "vpcs", vpcs)
@@ -42,7 +42,7 @@ class RuleAttachmentArgs:
     @pulumi.getter
     def vpcs(self) -> pulumi.Input[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]]:
         """
-        The List of the VPC. See the following `Block vpcs`.
+        The List of the VPC. See `vpcs` below.
         """
         return pulumi.get(self, "vpcs")
 
@@ -59,7 +59,7 @@ class _RuleAttachmentState:
         """
         Input properties used for looking up and filtering RuleAttachment resources.
         :param pulumi.Input[str] rule_id: The ID of the rule.
-        :param pulumi.Input[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]] vpcs: The List of the VPC. See the following `Block vpcs`.
+        :param pulumi.Input[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]] vpcs: The List of the VPC. See `vpcs` below.
         """
         if rule_id is not None:
             pulumi.set(__self__, "rule_id", rule_id)
@@ -82,7 +82,7 @@ class _RuleAttachmentState:
     @pulumi.getter
     def vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]]]:
         """
-        The List of the VPC. See the following `Block vpcs`.
+        The List of the VPC. See `vpcs` below.
         """
         return pulumi.get(self, "vpcs")
 
@@ -104,7 +104,7 @@ class RuleAttachment(pulumi.CustomResource):
 
         For information about Private Zone Rule Attachment and how to use it, see [What is Rule Attachment](https://www.alibabacloud.com/help/en/doc-detail/177601.htm).
 
-        > **NOTE:** Available in v1.143.0+.
+        > **NOTE:** Available since v1.143.0.
 
         ## Import
 
@@ -117,7 +117,7 @@ class RuleAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] rule_id: The ID of the rule.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleAttachmentVpcArgs']]]] vpcs: The List of the VPC. See the following `Block vpcs`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleAttachmentVpcArgs']]]] vpcs: The List of the VPC. See `vpcs` below.
         """
         ...
     @overload
@@ -130,7 +130,7 @@ class RuleAttachment(pulumi.CustomResource):
 
         For information about Private Zone Rule Attachment and how to use it, see [What is Rule Attachment](https://www.alibabacloud.com/help/en/doc-detail/177601.htm).
 
-        > **NOTE:** Available in v1.143.0+.
+        > **NOTE:** Available since v1.143.0.
 
         ## Import
 
@@ -192,7 +192,7 @@ class RuleAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] rule_id: The ID of the rule.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleAttachmentVpcArgs']]]] vpcs: The List of the VPC. See the following `Block vpcs`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleAttachmentVpcArgs']]]] vpcs: The List of the VPC. See `vpcs` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -214,7 +214,7 @@ class RuleAttachment(pulumi.CustomResource):
     @pulumi.getter
     def vpcs(self) -> pulumi.Output[Sequence['outputs.RuleAttachmentVpc']]:
         """
-        The List of the VPC. See the following `Block vpcs`.
+        The List of the VPC. See `vpcs` below.
         """
         return pulumi.get(self, "vpcs")
 

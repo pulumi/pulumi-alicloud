@@ -592,6 +592,8 @@ class Instance(pulumi.CustomResource):
                  waf_log: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        > **DEPRECATED:**  This resource has been deprecated and using wafv3.Instance instead.
+
         Provides a WAF Instance resource to create instance in the Web Application Firewall.
 
         For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
@@ -638,6 +640,8 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **DEPRECATED:**  This resource has been deprecated and using wafv3.Instance instead.
+
         Provides a WAF Instance resource to create instance in the Web Application Firewall.
 
         For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).

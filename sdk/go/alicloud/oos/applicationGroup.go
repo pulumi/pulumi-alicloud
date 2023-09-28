@@ -15,9 +15,9 @@ import (
 
 // Provides a OOS Application Group resource.
 //
-// For information about OOS Application Group and how to use it, see [What is Application Group](https://www.alibabacloud.com/help/en/doc-detail/120556.html).
+// For information about OOS Application Group and how to use it, see [What is Application Group](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/api-oos-2019-06-01-createapplicationgroup).
 //
-// > **NOTE:** Available in v1.146.0+.
+// > **NOTE:** Available since v1.146.0.
 //
 // ## Example Usage
 //
@@ -28,22 +28,29 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
 //			defaultApplication, err := oos.NewApplication(ctx, "defaultApplication", &oos.ApplicationArgs{
 //				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
-//				ApplicationName: pulumi.String("terraform-example"),
-//				Description:     pulumi.String("terraform-example"),
+//				ApplicationName: pulumi.String(name),
+//				Description:     pulumi.String(name),
 //				Tags: pulumi.AnyMap{
 //					"Created": pulumi.Any("TF"),
 //				},
@@ -51,11 +58,17 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			_, err = oos.NewApplicationGroup(ctx, "defaultApplicationGroup", &oos.ApplicationGroupArgs{
-//				ApplicationGroupName: pulumi.String("terraform-example"),
+//				ApplicationGroupName: pulumi.String(name),
 //				ApplicationName:      defaultApplication.ID(),
-//				DeployRegionId:       pulumi.String("cn-beijing"),
-//				Description:          pulumi.String("terraform-example"),
+//				DeployRegionId:       *pulumi.String(defaultRegions.Regions[0].Id),
+//				Description:          pulumi.String(name),
 //				ImportTagKey:         pulumi.String("example_key"),
 //				ImportTagValue:       pulumi.String("example_value"),
 //			})

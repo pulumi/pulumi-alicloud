@@ -11,6 +11,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'DedicatedPropreHostEcsClassList',
     'GetDedicatedHostAccountsAccountResult',
     'GetDedicatedHostGroupsGroupResult',
     'GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeResult',
@@ -19,6 +20,153 @@ __all__ = [
     'GetHostEcsLevelInfosInfoResult',
     'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class DedicatedPropreHostEcsClassList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceType":
+            suggest = "instance_type"
+        elif key == "sysDiskCapacity":
+            suggest = "sys_disk_capacity"
+        elif key == "sysDiskType":
+            suggest = "sys_disk_type"
+        elif key == "dataDiskPerformanceLevel":
+            suggest = "data_disk_performance_level"
+        elif key == "diskCapacity":
+            suggest = "disk_capacity"
+        elif key == "diskCount":
+            suggest = "disk_count"
+        elif key == "diskType":
+            suggest = "disk_type"
+        elif key == "systemDiskPerformanceLevel":
+            suggest = "system_disk_performance_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DedicatedPropreHostEcsClassList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DedicatedPropreHostEcsClassList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DedicatedPropreHostEcsClassList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_type: str,
+                 sys_disk_capacity: int,
+                 sys_disk_type: str,
+                 data_disk_performance_level: Optional[str] = None,
+                 disk_capacity: Optional[int] = None,
+                 disk_count: Optional[int] = None,
+                 disk_type: Optional[str] = None,
+                 system_disk_performance_level: Optional[str] = None):
+        """
+        :param str instance_type: ECS specifications.
+        :param int sys_disk_capacity: System disk capacity.
+        :param str sys_disk_type: System disk type, value:
+               - **cloud_essd**: the ESSD cloud disk.
+               - **cloud_ssd**: SSD cloud disk.
+               - **cloud_efficiency**: The ultra cloud disk.
+               - **cloud_auto**: ESSD AutoPL cloud disk.
+        :param str data_disk_performance_level: Data disk PL level.
+        :param int disk_capacity: The capacity of the data disk.
+        :param int disk_count: Number of mounted data disks.
+        :param str disk_type: Data disk type, value range:
+               - **cloud_essd**: the ESSD cloud disk.
+               - **cloud_ssd**: SSD cloud disk.
+               - **cloud_efficiency**: The ultra cloud disk.
+               - **cloud_auto**: ESSD AutoPL cloud disk.
+        :param str system_disk_performance_level: System disk PL level.
+        """
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "sys_disk_capacity", sys_disk_capacity)
+        pulumi.set(__self__, "sys_disk_type", sys_disk_type)
+        if data_disk_performance_level is not None:
+            pulumi.set(__self__, "data_disk_performance_level", data_disk_performance_level)
+        if disk_capacity is not None:
+            pulumi.set(__self__, "disk_capacity", disk_capacity)
+        if disk_count is not None:
+            pulumi.set(__self__, "disk_count", disk_count)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if system_disk_performance_level is not None:
+            pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> str:
+        """
+        ECS specifications.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="sysDiskCapacity")
+    def sys_disk_capacity(self) -> int:
+        """
+        System disk capacity.
+        """
+        return pulumi.get(self, "sys_disk_capacity")
+
+    @property
+    @pulumi.getter(name="sysDiskType")
+    def sys_disk_type(self) -> str:
+        """
+        System disk type, value:
+        - **cloud_essd**: the ESSD cloud disk.
+        - **cloud_ssd**: SSD cloud disk.
+        - **cloud_efficiency**: The ultra cloud disk.
+        - **cloud_auto**: ESSD AutoPL cloud disk.
+        """
+        return pulumi.get(self, "sys_disk_type")
+
+    @property
+    @pulumi.getter(name="dataDiskPerformanceLevel")
+    def data_disk_performance_level(self) -> Optional[str]:
+        """
+        Data disk PL level.
+        """
+        return pulumi.get(self, "data_disk_performance_level")
+
+    @property
+    @pulumi.getter(name="diskCapacity")
+    def disk_capacity(self) -> Optional[int]:
+        """
+        The capacity of the data disk.
+        """
+        return pulumi.get(self, "disk_capacity")
+
+    @property
+    @pulumi.getter(name="diskCount")
+    def disk_count(self) -> Optional[int]:
+        """
+        Number of mounted data disks.
+        """
+        return pulumi.get(self, "disk_count")
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[str]:
+        """
+        Data disk type, value range:
+        - **cloud_essd**: the ESSD cloud disk.
+        - **cloud_ssd**: SSD cloud disk.
+        - **cloud_efficiency**: The ultra cloud disk.
+        - **cloud_auto**: ESSD AutoPL cloud disk.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="systemDiskPerformanceLevel")
+    def system_disk_performance_level(self) -> Optional[str]:
+        """
+        System disk PL level.
+        """
+        return pulumi.get(self, "system_disk_performance_level")
+
 
 @pulumi.output_type
 class GetDedicatedHostAccountsAccountResult(dict):

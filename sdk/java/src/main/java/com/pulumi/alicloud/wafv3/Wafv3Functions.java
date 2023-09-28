@@ -18,11 +18,13 @@ import java.util.concurrent.CompletableFuture;
 
 public final class Wafv3Functions {
     /**
-     * This data source provides Wafv3 Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-doc-waf-openapi-2021-10-01-api-doc-createdomain)
+     * This data source provides the Wafv3 Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.200.0+
+     * &gt; **NOTE:** Available since v1.200.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -30,6 +32,7 @@ public final class Wafv3Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.wafv3.Wafv3Functions;
+     * import com.pulumi.alicloud.wafv3.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.wafv3.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -44,12 +47,20 @@ public final class Wafv3Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Wafv3Functions.getDomains(GetDomainsArgs.builder()
-     *             .domain(&#34;zctest12.wafqax.top&#34;)
-     *             .instanceId(&#34;waf_v3prepaid_public_cn-*****&#34;)
+     *         final var defaultInstances = Wafv3Functions.getInstances();
+     * 
+     *         final var ids = Wafv3Functions.getDomains(GetDomainsArgs.builder()
+     *             .instanceId(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.ids()[0]))
+     *             .ids(&#34;example_id&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudWafv3DomainExampleId&#34;, default_.domains()[0].id());
+     *         ctx.export(&#34;wafv3DomainsId1&#34;, ids.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         final var defaultDomains = Wafv3Functions.getDomains(GetDomainsArgs.builder()
+     *             .instanceId(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.ids()[0]))
+     *             .domain(&#34;zctest12.wafqax.top&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;wafv3DomainsId2&#34;, defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
      *     }
      * }
      * ```
@@ -59,11 +70,13 @@ public final class Wafv3Functions {
         return getDomains(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Wafv3 Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-doc-waf-openapi-2021-10-01-api-doc-createdomain)
+     * This data source provides the Wafv3 Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.200.0+
+     * &gt; **NOTE:** Available since v1.200.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -71,6 +84,7 @@ public final class Wafv3Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.wafv3.Wafv3Functions;
+     * import com.pulumi.alicloud.wafv3.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.wafv3.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -85,12 +99,20 @@ public final class Wafv3Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Wafv3Functions.getDomains(GetDomainsArgs.builder()
-     *             .domain(&#34;zctest12.wafqax.top&#34;)
-     *             .instanceId(&#34;waf_v3prepaid_public_cn-*****&#34;)
+     *         final var defaultInstances = Wafv3Functions.getInstances();
+     * 
+     *         final var ids = Wafv3Functions.getDomains(GetDomainsArgs.builder()
+     *             .instanceId(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.ids()[0]))
+     *             .ids(&#34;example_id&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudWafv3DomainExampleId&#34;, default_.domains()[0].id());
+     *         ctx.export(&#34;wafv3DomainsId1&#34;, ids.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         final var defaultDomains = Wafv3Functions.getDomains(GetDomainsArgs.builder()
+     *             .instanceId(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.ids()[0]))
+     *             .domain(&#34;zctest12.wafqax.top&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;wafv3DomainsId2&#34;, defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
      *     }
      * }
      * ```
@@ -100,11 +122,13 @@ public final class Wafv3Functions {
         return getDomainsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Wafv3 Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-doc-waf-openapi-2021-10-01-api-doc-createdomain)
+     * This data source provides the Wafv3 Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.200.0+
+     * &gt; **NOTE:** Available since v1.200.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -112,6 +136,7 @@ public final class Wafv3Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.wafv3.Wafv3Functions;
+     * import com.pulumi.alicloud.wafv3.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.wafv3.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -126,12 +151,20 @@ public final class Wafv3Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Wafv3Functions.getDomains(GetDomainsArgs.builder()
-     *             .domain(&#34;zctest12.wafqax.top&#34;)
-     *             .instanceId(&#34;waf_v3prepaid_public_cn-*****&#34;)
+     *         final var defaultInstances = Wafv3Functions.getInstances();
+     * 
+     *         final var ids = Wafv3Functions.getDomains(GetDomainsArgs.builder()
+     *             .instanceId(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.ids()[0]))
+     *             .ids(&#34;example_id&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudWafv3DomainExampleId&#34;, default_.domains()[0].id());
+     *         ctx.export(&#34;wafv3DomainsId1&#34;, ids.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         final var defaultDomains = Wafv3Functions.getDomains(GetDomainsArgs.builder()
+     *             .instanceId(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.ids()[0]))
+     *             .domain(&#34;zctest12.wafqax.top&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;wafv3DomainsId2&#34;, defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
      *     }
      * }
      * ```
@@ -141,11 +174,13 @@ public final class Wafv3Functions {
         return Deployment.getInstance().invoke("alicloud:wafv3/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Wafv3 Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-doc-waf-openapi-2021-10-01-api-doc-createdomain)
+     * This data source provides the Wafv3 Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.200.0+
+     * &gt; **NOTE:** Available since v1.200.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -153,6 +188,7 @@ public final class Wafv3Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.wafv3.Wafv3Functions;
+     * import com.pulumi.alicloud.wafv3.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.wafv3.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -167,12 +203,20 @@ public final class Wafv3Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Wafv3Functions.getDomains(GetDomainsArgs.builder()
-     *             .domain(&#34;zctest12.wafqax.top&#34;)
-     *             .instanceId(&#34;waf_v3prepaid_public_cn-*****&#34;)
+     *         final var defaultInstances = Wafv3Functions.getInstances();
+     * 
+     *         final var ids = Wafv3Functions.getDomains(GetDomainsArgs.builder()
+     *             .instanceId(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.ids()[0]))
+     *             .ids(&#34;example_id&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudWafv3DomainExampleId&#34;, default_.domains()[0].id());
+     *         ctx.export(&#34;wafv3DomainsId1&#34;, ids.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         final var defaultDomains = Wafv3Functions.getDomains(GetDomainsArgs.builder()
+     *             .instanceId(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.ids()[0]))
+     *             .domain(&#34;zctest12.wafqax.top&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;wafv3DomainsId2&#34;, defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
      *     }
      * }
      * ```

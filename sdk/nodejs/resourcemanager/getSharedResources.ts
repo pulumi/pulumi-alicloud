@@ -9,22 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.111.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const this = alicloud.resourcemanager.getSharedResources({
- *     resourceShareId: "rs-V2NV******",
- *     ids: ["vsw-bp1mzouzpmvie********:VSwitch"],
- * });
- * export const firstResourceManagerSharedResourceId = data.alicloud_resource_manager_shared_resources.example.resources[0].id;
- * ```
+ * > **NOTE:** Available since v1.111.0.
  */
 export function getSharedResources(args?: GetSharedResourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetSharedResourcesResult> {
     args = args || {};
@@ -43,7 +28,7 @@ export function getSharedResources(args?: GetSharedResourcesArgs, opts?: pulumi.
  */
 export interface GetSharedResourcesArgs {
     /**
-     * A list of shared resource ID.
+     * A list of shared resource IDs.
      */
     ids?: string[];
     /**
@@ -55,7 +40,7 @@ export interface GetSharedResourcesArgs {
      */
     resourceShareId?: string;
     /**
-     * The status of shared resource.
+     * The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
      */
     status?: string;
 }
@@ -70,29 +55,23 @@ export interface GetSharedResourcesResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * The resource share ID of resource manager.
+     */
     readonly resourceShareId?: string;
+    /**
+     * A list of Resource Manager Shared Resources. Each element contains the following attributes:
+     */
     readonly resources: outputs.resourcemanager.GetSharedResourcesResource[];
+    /**
+     * The status of shared resource.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.111.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const this = alicloud.resourcemanager.getSharedResources({
- *     resourceShareId: "rs-V2NV******",
- *     ids: ["vsw-bp1mzouzpmvie********:VSwitch"],
- * });
- * export const firstResourceManagerSharedResourceId = data.alicloud_resource_manager_shared_resources.example.resources[0].id;
- * ```
+ * > **NOTE:** Available since v1.111.0.
  */
 export function getSharedResourcesOutput(args?: GetSharedResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSharedResourcesResult> {
     return pulumi.output(args).apply((a: any) => getSharedResources(a, opts))
@@ -103,7 +82,7 @@ export function getSharedResourcesOutput(args?: GetSharedResourcesOutputArgs, op
  */
 export interface GetSharedResourcesOutputArgs {
     /**
-     * A list of shared resource ID.
+     * A list of shared resource IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -115,7 +94,7 @@ export interface GetSharedResourcesOutputArgs {
      */
     resourceShareId?: pulumi.Input<string>;
     /**
-     * The status of shared resource.
+     * The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
      */
     status?: pulumi.Input<string>;
 }

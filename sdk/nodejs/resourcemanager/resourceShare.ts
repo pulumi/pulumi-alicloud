@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Resource Manager Resource Share and how to use it, see [What is Resource Share](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
  *
- * > **NOTE:** Available in v1.111.0+.
+ * > **NOTE:** Available since v1.111.0.
  *
  * ## Example Usage
  *
@@ -19,7 +19,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.resourcemanager.ResourceShare("example", {resourceShareName: "example_value"});
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexample";
+ * const example = new alicloud.resourcemanager.ResourceShare("example", {resourceShareName: name});
  * ```
  *
  * ## Import

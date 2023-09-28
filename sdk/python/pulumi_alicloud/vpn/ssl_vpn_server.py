@@ -355,30 +355,6 @@ class SslVpnServer(pulumi.CustomResource):
                  vpn_gateway_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo_gateway = alicloud.vpn.Gateway("fooGateway",
-            vpc_id="vpc-fake-id",
-            bandwidth=10,
-            enable_ssl=True,
-            instance_charge_type="PostPaid",
-            description="test_create_description")
-        foo_ssl_vpn_server = alicloud.vpn.SslVpnServer("fooSslVpnServer",
-            vpn_gateway_id=foo_gateway.id,
-            client_ip_pool="192.168.0.0/16",
-            local_subnet="172.16.0.0/21",
-            protocol="UDP",
-            cipher="AES-128-CBC",
-            port=1194,
-            compress=False)
-        ```
-
         ## Import
 
         SSL-VPN server can be imported using the id, e.g.
@@ -408,30 +384,6 @@ class SslVpnServer(pulumi.CustomResource):
                  args: SslVpnServerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo_gateway = alicloud.vpn.Gateway("fooGateway",
-            vpc_id="vpc-fake-id",
-            bandwidth=10,
-            enable_ssl=True,
-            instance_charge_type="PostPaid",
-            description="test_create_description")
-        foo_ssl_vpn_server = alicloud.vpn.SslVpnServer("fooSslVpnServer",
-            vpn_gateway_id=foo_gateway.id,
-            client_ip_pool="192.168.0.0/16",
-            local_subnet="172.16.0.0/21",
-            protocol="UDP",
-            cipher="AES-128-CBC",
-            port=1194,
-            compress=False)
-        ```
-
         ## Import
 
         SSL-VPN server can be imported using the id, e.g.

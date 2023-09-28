@@ -12,13 +12,15 @@ namespace Pulumi.AliCloud.Wafv3
     public static class GetDomains
     {
         /// <summary>
-        /// This data source provides Wafv3 Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-doc-waf-openapi-2021-10-01-api-doc-createdomain)
+        /// This data source provides the Wafv3 Domains of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in 1.200.0+
+        /// &gt; **NOTE:** Available since v1.200.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -28,15 +30,27 @@ namespace Pulumi.AliCloud.Wafv3
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.Wafv3.GetDomains.Invoke(new()
+        ///     var defaultInstances = AliCloud.Wafv3.GetInstances.Invoke();
+        /// 
+        ///     var ids = AliCloud.Wafv3.GetDomains.Invoke(new()
         ///     {
+        ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultDomains = AliCloud.Wafv3.GetDomains.Invoke(new()
+        ///     {
+        ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
         ///         Domain = "zctest12.wafqax.top",
-        ///         InstanceId = "waf_v3prepaid_public_cn-*****",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudWafv3DomainExampleId"] = @default.Apply(@default =&gt; @default.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id)),
+        ///         ["wafv3DomainsId1"] = ids.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
+        ///         ["wafv3DomainsId2"] = defaultDomains.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -47,13 +61,15 @@ namespace Pulumi.AliCloud.Wafv3
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:wafv3/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Wafv3 Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-doc-waf-openapi-2021-10-01-api-doc-createdomain)
+        /// This data source provides the Wafv3 Domains of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in 1.200.0+
+        /// &gt; **NOTE:** Available since v1.200.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -63,15 +79,27 @@ namespace Pulumi.AliCloud.Wafv3
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.Wafv3.GetDomains.Invoke(new()
+        ///     var defaultInstances = AliCloud.Wafv3.GetInstances.Invoke();
+        /// 
+        ///     var ids = AliCloud.Wafv3.GetDomains.Invoke(new()
         ///     {
+        ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultDomains = AliCloud.Wafv3.GetDomains.Invoke(new()
+        ///     {
+        ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
         ///         Domain = "zctest12.wafqax.top",
-        ///         InstanceId = "waf_v3prepaid_public_cn-*****",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudWafv3DomainExampleId"] = @default.Apply(@default =&gt; @default.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id)),
+        ///         ["wafv3DomainsId1"] = ids.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
+        ///         ["wafv3DomainsId2"] = defaultDomains.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
         ///     };
         /// });
         /// ```

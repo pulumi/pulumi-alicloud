@@ -16,14 +16,14 @@ public final class RuleRuleConditionQueryStringConfigValueArgs extends com.pulum
     public static final RuleRuleConditionQueryStringConfigValueArgs Empty = new RuleRuleConditionQueryStringConfigValueArgs();
 
     /**
-     * The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+     * The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+     * @return The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
      * 
      */
     public Optional<Output<String>> key() {
@@ -31,14 +31,16 @@ public final class RuleRuleConditionQueryStringConfigValueArgs extends com.pulum
     }
 
     /**
-     * The value of the values list.
+     * The content of the inserted header field. Valid values:
+     * * If the `value_type` is set to `SystemDefined`, the following values are used:
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The value of the values list.
+     * @return The content of the inserted header field. Valid values:
+     * * If the `value_type` is set to `SystemDefined`, the following values are used:
      * 
      */
     public Optional<Output<String>> value() {
@@ -71,7 +73,7 @@ public final class RuleRuleConditionQueryStringConfigValueArgs extends com.pulum
         }
 
         /**
-         * @param key The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+         * @param key The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
          * 
          * @return builder
          * 
@@ -82,7 +84,7 @@ public final class RuleRuleConditionQueryStringConfigValueArgs extends com.pulum
         }
 
         /**
-         * @param key The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+         * @param key The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
          * 
          * @return builder
          * 
@@ -92,7 +94,8 @@ public final class RuleRuleConditionQueryStringConfigValueArgs extends com.pulum
         }
 
         /**
-         * @param value The value of the values list.
+         * @param value The content of the inserted header field. Valid values:
+         * * If the `value_type` is set to `SystemDefined`, the following values are used:
          * 
          * @return builder
          * 
@@ -103,7 +106,8 @@ public final class RuleRuleConditionQueryStringConfigValueArgs extends com.pulum
         }
 
         /**
-         * @param value The value of the values list.
+         * @param value The content of the inserted header field. Valid values:
+         * * If the `value_type` is set to `SystemDefined`, the following values are used:
          * 
          * @return builder
          * 

@@ -17,25 +17,33 @@ class PatchBaselineArgs:
                  approval_rules: pulumi.Input[str],
                  operation_system: pulumi.Input[str],
                  patch_baseline_name: pulumi.Input[str],
-                 description: Optional[pulumi.Input[str]] = None):
+                 description: Optional[pulumi.Input[str]] = None,
+                 rejected_patches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 rejected_patches_action: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PatchBaseline resource.
-        :param pulumi.Input[str] approval_rules: Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
+        :param pulumi.Input[str] approval_rules: Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
         :param pulumi.Input[str] operation_system: Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
         :param pulumi.Input[str] patch_baseline_name: The name of the patch baseline.
         :param pulumi.Input[str] description: Patches baseline description information.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rejected_patches: Reject patches.
+        :param pulumi.Input[str] rejected_patches_action: Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
         """
         pulumi.set(__self__, "approval_rules", approval_rules)
         pulumi.set(__self__, "operation_system", operation_system)
         pulumi.set(__self__, "patch_baseline_name", patch_baseline_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if rejected_patches is not None:
+            pulumi.set(__self__, "rejected_patches", rejected_patches)
+        if rejected_patches_action is not None:
+            pulumi.set(__self__, "rejected_patches_action", rejected_patches_action)
 
     @property
     @pulumi.getter(name="approvalRules")
     def approval_rules(self) -> pulumi.Input[str]:
         """
-        Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
+        Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
         """
         return pulumi.get(self, "approval_rules")
 
@@ -79,41 +87,89 @@ class PatchBaselineArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+    @property
+    @pulumi.getter(name="rejectedPatches")
+    def rejected_patches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Reject patches.
+        """
+        return pulumi.get(self, "rejected_patches")
+
+    @rejected_patches.setter
+    def rejected_patches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "rejected_patches", value)
+
+    @property
+    @pulumi.getter(name="rejectedPatchesAction")
+    def rejected_patches_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
+        """
+        return pulumi.get(self, "rejected_patches_action")
+
+    @rejected_patches_action.setter
+    def rejected_patches_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rejected_patches_action", value)
+
 
 @pulumi.input_type
 class _PatchBaselineState:
     def __init__(__self__, *,
                  approval_rules: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  operation_system: Optional[pulumi.Input[str]] = None,
-                 patch_baseline_name: Optional[pulumi.Input[str]] = None):
+                 patch_baseline_name: Optional[pulumi.Input[str]] = None,
+                 rejected_patches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 rejected_patches_action: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PatchBaseline resources.
-        :param pulumi.Input[str] approval_rules: Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
+        :param pulumi.Input[str] approval_rules: Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
+        :param pulumi.Input[str] create_time: Creation time.
         :param pulumi.Input[str] description: Patches baseline description information.
         :param pulumi.Input[str] operation_system: Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
         :param pulumi.Input[str] patch_baseline_name: The name of the patch baseline.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rejected_patches: Reject patches.
+        :param pulumi.Input[str] rejected_patches_action: Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
         """
         if approval_rules is not None:
             pulumi.set(__self__, "approval_rules", approval_rules)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if operation_system is not None:
             pulumi.set(__self__, "operation_system", operation_system)
         if patch_baseline_name is not None:
             pulumi.set(__self__, "patch_baseline_name", patch_baseline_name)
+        if rejected_patches is not None:
+            pulumi.set(__self__, "rejected_patches", rejected_patches)
+        if rejected_patches_action is not None:
+            pulumi.set(__self__, "rejected_patches_action", rejected_patches_action)
 
     @property
     @pulumi.getter(name="approvalRules")
     def approval_rules(self) -> Optional[pulumi.Input[str]]:
         """
-        Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
+        Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
         """
         return pulumi.get(self, "approval_rules")
 
     @approval_rules.setter
     def approval_rules(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "approval_rules", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter
@@ -151,6 +207,30 @@ class _PatchBaselineState:
     def patch_baseline_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "patch_baseline_name", value)
 
+    @property
+    @pulumi.getter(name="rejectedPatches")
+    def rejected_patches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Reject patches.
+        """
+        return pulumi.get(self, "rejected_patches")
+
+    @rejected_patches.setter
+    def rejected_patches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "rejected_patches", value)
+
+    @property
+    @pulumi.getter(name="rejectedPatchesAction")
+    def rejected_patches_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
+        """
+        return pulumi.get(self, "rejected_patches_action")
+
+    @rejected_patches_action.setter
+    def rejected_patches_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rejected_patches_action", value)
+
 
 class PatchBaseline(pulumi.CustomResource):
     @overload
@@ -161,13 +241,15 @@ class PatchBaseline(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  operation_system: Optional[pulumi.Input[str]] = None,
                  patch_baseline_name: Optional[pulumi.Input[str]] = None,
+                 rejected_patches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 rejected_patches_action: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a OOS Patch Baseline resource.
 
-        For information about OOS Patch Baseline and how to use it, see [What is Patch Baseline](https://www.alibabacloud.com/help/en/doc-detail/268700.html).
+        For information about OOS Patch Baseline and how to use it, see [What is Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/patch-manager-overview).
 
-        > **NOTE:** Available in v1.146.0+.
+        > **NOTE:** Available since v1.146.0.
 
         ## Example Usage
 
@@ -177,10 +259,14 @@ class PatchBaseline(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.oos.PatchBaseline("example",
-            approval_rules="{\\"PatchRules\\":[{\\"PatchFilterGroup\\":[{\\"Key\\":\\"PatchSet\\",\\"Values\\":[\\"OS\\"]},{\\"Key\\":\\"ProductFamily\\",\\"Values\\":[\\"Windows\\"]},{\\"Key\\":\\"Product\\",\\"Values\\":[\\"Windows 10\\",\\"Windows 7\\"]},{\\"Key\\":\\"Classification\\",\\"Values\\":[\\"Security Updates\\",\\"Updates\\",\\"Update Rollups\\",\\"Critical Updates\\"]},{\\"Key\\":\\"Severity\\",\\"Values\\":[\\"Critical\\",\\"Important\\",\\"Moderate\\"]}],\\"ApproveAfterDays\\":7,\\"EnableNonSecurity\\":true,\\"ComplianceLevel\\":\\"Medium\\"}]}",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.oos.PatchBaseline("default",
+            patch_baseline_name=name,
             operation_system="Windows",
-            patch_baseline_name="terraform-example")
+            approval_rules="{\\"PatchRules\\":[{\\"EnableNonSecurity\\":true,\\"PatchFilterGroup\\":[{\\"Values\\":[\\"*\\"],\\"Key\\":\\"Product\\"},{\\"Values\\":[\\"Security\\",\\"Bugfix\\"],\\"Key\\":\\"Classification\\"},{\\"Values\\":[\\"Critical\\",\\"Important\\"],\\"Key\\":\\"Severity\\"}],\\"ApproveAfterDays\\":7,\\"ComplianceLevel\\":\\"Unspecified\\"}]}")
         ```
 
         ## Import
@@ -188,15 +274,17 @@ class PatchBaseline(pulumi.CustomResource):
         OOS Patch Baseline can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <patch_baseline_name>
+         $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] approval_rules: Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
+        :param pulumi.Input[str] approval_rules: Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
         :param pulumi.Input[str] description: Patches baseline description information.
         :param pulumi.Input[str] operation_system: Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
         :param pulumi.Input[str] patch_baseline_name: The name of the patch baseline.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rejected_patches: Reject patches.
+        :param pulumi.Input[str] rejected_patches_action: Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
         """
         ...
     @overload
@@ -207,9 +295,9 @@ class PatchBaseline(pulumi.CustomResource):
         """
         Provides a OOS Patch Baseline resource.
 
-        For information about OOS Patch Baseline and how to use it, see [What is Patch Baseline](https://www.alibabacloud.com/help/en/doc-detail/268700.html).
+        For information about OOS Patch Baseline and how to use it, see [What is Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/patch-manager-overview).
 
-        > **NOTE:** Available in v1.146.0+.
+        > **NOTE:** Available since v1.146.0.
 
         ## Example Usage
 
@@ -219,10 +307,14 @@ class PatchBaseline(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.oos.PatchBaseline("example",
-            approval_rules="{\\"PatchRules\\":[{\\"PatchFilterGroup\\":[{\\"Key\\":\\"PatchSet\\",\\"Values\\":[\\"OS\\"]},{\\"Key\\":\\"ProductFamily\\",\\"Values\\":[\\"Windows\\"]},{\\"Key\\":\\"Product\\",\\"Values\\":[\\"Windows 10\\",\\"Windows 7\\"]},{\\"Key\\":\\"Classification\\",\\"Values\\":[\\"Security Updates\\",\\"Updates\\",\\"Update Rollups\\",\\"Critical Updates\\"]},{\\"Key\\":\\"Severity\\",\\"Values\\":[\\"Critical\\",\\"Important\\",\\"Moderate\\"]}],\\"ApproveAfterDays\\":7,\\"EnableNonSecurity\\":true,\\"ComplianceLevel\\":\\"Medium\\"}]}",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.oos.PatchBaseline("default",
+            patch_baseline_name=name,
             operation_system="Windows",
-            patch_baseline_name="terraform-example")
+            approval_rules="{\\"PatchRules\\":[{\\"EnableNonSecurity\\":true,\\"PatchFilterGroup\\":[{\\"Values\\":[\\"*\\"],\\"Key\\":\\"Product\\"},{\\"Values\\":[\\"Security\\",\\"Bugfix\\"],\\"Key\\":\\"Classification\\"},{\\"Values\\":[\\"Critical\\",\\"Important\\"],\\"Key\\":\\"Severity\\"}],\\"ApproveAfterDays\\":7,\\"ComplianceLevel\\":\\"Unspecified\\"}]}")
         ```
 
         ## Import
@@ -230,7 +322,7 @@ class PatchBaseline(pulumi.CustomResource):
         OOS Patch Baseline can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <patch_baseline_name>
+         $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -252,6 +344,8 @@ class PatchBaseline(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  operation_system: Optional[pulumi.Input[str]] = None,
                  patch_baseline_name: Optional[pulumi.Input[str]] = None,
+                 rejected_patches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 rejected_patches_action: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -271,6 +365,9 @@ class PatchBaseline(pulumi.CustomResource):
             if patch_baseline_name is None and not opts.urn:
                 raise TypeError("Missing required property 'patch_baseline_name'")
             __props__.__dict__["patch_baseline_name"] = patch_baseline_name
+            __props__.__dict__["rejected_patches"] = rejected_patches
+            __props__.__dict__["rejected_patches_action"] = rejected_patches_action
+            __props__.__dict__["create_time"] = None
         super(PatchBaseline, __self__).__init__(
             'alicloud:oos/patchBaseline:PatchBaseline',
             resource_name,
@@ -282,9 +379,12 @@ class PatchBaseline(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             approval_rules: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             operation_system: Optional[pulumi.Input[str]] = None,
-            patch_baseline_name: Optional[pulumi.Input[str]] = None) -> 'PatchBaseline':
+            patch_baseline_name: Optional[pulumi.Input[str]] = None,
+            rejected_patches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            rejected_patches_action: Optional[pulumi.Input[str]] = None) -> 'PatchBaseline':
         """
         Get an existing PatchBaseline resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -292,28 +392,42 @@ class PatchBaseline(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] approval_rules: Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
+        :param pulumi.Input[str] approval_rules: Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
+        :param pulumi.Input[str] create_time: Creation time.
         :param pulumi.Input[str] description: Patches baseline description information.
         :param pulumi.Input[str] operation_system: Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
         :param pulumi.Input[str] patch_baseline_name: The name of the patch baseline.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rejected_patches: Reject patches.
+        :param pulumi.Input[str] rejected_patches_action: Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _PatchBaselineState.__new__(_PatchBaselineState)
 
         __props__.__dict__["approval_rules"] = approval_rules
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["operation_system"] = operation_system
         __props__.__dict__["patch_baseline_name"] = patch_baseline_name
+        __props__.__dict__["rejected_patches"] = rejected_patches
+        __props__.__dict__["rejected_patches_action"] = rejected_patches_action
         return PatchBaseline(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="approvalRules")
     def approval_rules(self) -> pulumi.Output[str]:
         """
-        Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
+        Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
         """
         return pulumi.get(self, "approval_rules")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Creation time.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
@@ -338,4 +452,20 @@ class PatchBaseline(pulumi.CustomResource):
         The name of the patch baseline.
         """
         return pulumi.get(self, "patch_baseline_name")
+
+    @property
+    @pulumi.getter(name="rejectedPatches")
+    def rejected_patches(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Reject patches.
+        """
+        return pulumi.get(self, "rejected_patches")
+
+    @property
+    @pulumi.getter(name="rejectedPatchesAction")
+    def rejected_patches_action(self) -> pulumi.Output[str]:
+        """
+        Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
+        """
+        return pulumi.get(self, "rejected_patches_action")
 

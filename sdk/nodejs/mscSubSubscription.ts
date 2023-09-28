@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * Provides a Msc Sub Subscription resource.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *

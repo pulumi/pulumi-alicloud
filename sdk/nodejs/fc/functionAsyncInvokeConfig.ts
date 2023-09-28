@@ -90,7 +90,7 @@ import * as utilities from "../utilities";
  *     ossBucket: defaultBucket.id,
  *     ossKey: defaultBucketObject.key,
  *     memorySize: 512,
- *     runtime: "python2.7",
+ *     runtime: "python3.10",
  *     handler: "hello.handler",
  * });
  * const defaultQueue = new alicloud.mns.Queue("defaultQueue", {});
@@ -106,45 +106,11 @@ import * as utilities from "../utilities";
  *             destination: pulumi.all([defaultRegions, defaultAccount, defaultTopic.name]).apply(([defaultRegions, defaultAccount, name]) => `acs:mns:${defaultRegions.regions?.[0]?.id}:${defaultAccount.id}:/topics/${name}/messages`),
  *         },
  *     },
- * });
- * ```
- * ### Error Handling Configuration
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.fc.FunctionAsyncInvokeConfig("example", {
- *     serviceName: alicloud_fc_service.example.name,
- *     functionName: alicloud_fc_function.example.name,
  *     maximumEventAgeInSeconds: 60,
  *     maximumRetryAttempts: 0,
- * });
- * ```
- * ### Async Job Configuration
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.fc.FunctionAsyncInvokeConfig("example", {
- *     serviceName: alicloud_fc_service.example.name,
- *     functionName: alicloud_fc_function.example.name,
  *     statefulInvocation: true,
- * });
- * ```
- * ### Configuration for Function Latest Unpublished Version
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.fc.FunctionAsyncInvokeConfig("example", {
- *     serviceName: alicloud_fc_service.example.name,
- *     functionName: alicloud_fc_function.example.name,
  *     qualifier: "LATEST",
  * });
- * // ... other configuration ...
  * ```
  *
  * ## Import

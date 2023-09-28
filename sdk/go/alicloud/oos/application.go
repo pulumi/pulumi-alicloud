@@ -15,9 +15,9 @@ import (
 
 // Provides a OOS Application resource.
 //
-// For information about OOS Application and how to use it, see [What is Application](https://www.alibabacloud.com/help/en/doc-detail/120556.html).
+// For information about OOS Application and how to use it, see [What is Application](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/api-oos-2019-06-01-createapplication).
 //
-// > **NOTE:** Available in v1.145.0+.
+// > **NOTE:** Available since v1.145.0.
 //
 // ## Example Usage
 //
@@ -31,19 +31,25 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = oos.NewApplication(ctx, "defaultApplication", &oos.ApplicationArgs{
 //				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
-//				ApplicationName: pulumi.String("terraform-example"),
-//				Description:     pulumi.String("terraform-example"),
+//				ApplicationName: pulumi.String(name),
+//				Description:     pulumi.String(name),
 //				Tags: pulumi.AnyMap{
 //					"Created": pulumi.Any("TF"),
 //				},

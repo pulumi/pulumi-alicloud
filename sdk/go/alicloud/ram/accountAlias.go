@@ -15,7 +15,7 @@ import (
 
 // Provides a RAM cloud account alias.
 //
-// > **NOTE:** Available since v1.0.0+.
+// > **NOTE:** Available since v1.0.0.
 //
 // ## Example Usage
 //
@@ -26,13 +26,19 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tfexample"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := ram.NewAccountAlias(ctx, "alias", &ram.AccountAliasArgs{
-//				AccountAlias: pulumi.String("hallo"),
+//				AccountAlias: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

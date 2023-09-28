@@ -37,6 +37,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// - When `disk_category` is `cloud`, Valid values: `5` to `200`.
         /// </summary>
         public readonly int DiskSize;
+        /// <summary>
+        /// Encrypted the data in this disk. Default value: `false`.
+        /// </summary>
         public readonly bool? Encrypted;
         /// <summary>
         /// The KMS key ID corresponding to the data disk.

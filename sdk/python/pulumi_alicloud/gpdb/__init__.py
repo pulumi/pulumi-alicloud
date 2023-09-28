@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .account import *
+from .backup_policy import *
 from .connection import *
 from .db_instance_plan import *
 from .elastic_instance import *

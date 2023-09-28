@@ -25,7 +25,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Basic Usage
- * 
  * ```java
  * package generated_program;
  * 
@@ -47,14 +46,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         var example = new Policy(&#34;example&#34;, PolicyArgs.builder()        
- *             .policyDesc(&#34;tDesc&#34;)
- *             .policyDocument(&#34;&#34;&#34;
- * 		{&#34;tags&#34;:{&#34;CostCenter&#34;:{&#34;tag_value&#34;:{&#34;@@assign&#34;:[&#34;Beijing&#34;,&#34;Shanghai&#34;]},&#34;tag_key&#34;:{&#34;@@assign&#34;:&#34;CostCenter&#34;}}}}
- *     
- *             &#34;&#34;&#34;)
- *             .policyName(&#34;tName&#34;)
+ *             .policyName(name)
+ *             .policyDesc(name)
  *             .userType(&#34;USER&#34;)
+ *             .policyContent(&#34;&#34;&#34;
+ * 		{&#34;tags&#34;:{&#34;CostCenter&#34;:{&#34;tag_value&#34;:{&#34;@@assign&#34;:[&#34;Beijing&#34;,&#34;Shanghai&#34;]},&#34;tag_key&#34;:{&#34;@@assign&#34;:&#34;CostCenter&#34;}}}}
+ *             &#34;&#34;&#34;)
  *             .build());
  * 
  *     }

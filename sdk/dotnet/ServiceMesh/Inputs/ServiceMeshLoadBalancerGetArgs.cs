@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
 
     public sealed class ServiceMeshLoadBalancerGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the SLB instance that is used when the API server is exposed to the Internet.
+        /// </summary>
         [Input("apiServerLoadbalancerId")]
         public Input<string>? ApiServerLoadbalancerId { get; set; }
 
@@ -27,6 +30,9 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         [Input("pilotPublicEip")]
         public Input<bool>? PilotPublicEip { get; set; }
 
+        /// <summary>
+        /// The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
+        /// </summary>
         [Input("pilotPublicLoadbalancerId")]
         public Input<string>? PilotPublicLoadbalancerId { get; set; }
 

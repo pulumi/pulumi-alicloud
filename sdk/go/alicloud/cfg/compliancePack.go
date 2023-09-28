@@ -38,7 +38,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example-config"
+//			name := "tf-example-config-name"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -48,30 +48,53 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultRule, err := cfg.NewRule(ctx, "defaultRule", &cfg.RuleArgs{
-//				Description:            pulumi.String("If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant."),
-//				SourceOwner:            pulumi.String("ALIYUN"),
-//				SourceIdentifier:       pulumi.String("oss-bucket-public-read-prohibited"),
-//				RiskLevel:              pulumi.Int(1),
-//				TagKeyScope:            pulumi.String("For"),
-//				TagValueScope:          pulumi.String("example"),
-//				RegionIdsScope:         *pulumi.String(defaultRegions.Regions[0].Id),
-//				ConfigRuleTriggerTypes: pulumi.String("ConfigurationItemChangeNotification"),
+//			rule1, err := cfg.NewRule(ctx, "rule1", &cfg.RuleArgs{
+//				Description:               pulumi.String(name),
+//				SourceOwner:               pulumi.String("ALIYUN"),
+//				SourceIdentifier:          pulumi.String("ram-user-ak-create-date-expired-check"),
+//				RiskLevel:                 pulumi.Int(1),
+//				MaximumExecutionFrequency: pulumi.String("TwentyFour_Hours"),
+//				RegionIdsScope:            *pulumi.String(defaultRegions.Regions[0].Id),
+//				ConfigRuleTriggerTypes:    pulumi.String("ScheduledNotification"),
 //				ResourceTypesScopes: pulumi.StringArray{
-//					pulumi.String("ACS::OSS::Bucket"),
+//					pulumi.String("ACS::RAM::User"),
 //				},
-//				RuleName: pulumi.String("oss-bucket-public-read-prohibited"),
+//				RuleName: pulumi.String("ciscompliancecheck_ram-user-ak-create-date-expired-check"),
+//				InputParameters: pulumi.AnyMap{
+//					"days": pulumi.Any("90"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			rule2, err := cfg.NewRule(ctx, "rule2", &cfg.RuleArgs{
+//				Description:            pulumi.String(name),
+//				SourceOwner:            pulumi.String("ALIYUN"),
+//				SourceIdentifier:       pulumi.String("adb-cluster-maintain-time-check"),
+//				RiskLevel:              pulumi.Int(2),
+//				RegionIdsScope:         *pulumi.String(defaultRegions.Regions[0].Id),
+//				ConfigRuleTriggerTypes: pulumi.String("ScheduledNotification"),
+//				ResourceTypesScopes: pulumi.StringArray{
+//					pulumi.String("ACS::ADB::DBCluster"),
+//				},
+//				RuleName: pulumi.String("governance-evaluation-adb-cluster-maintain-time-check"),
+//				InputParameters: pulumi.AnyMap{
+//					"maintainTimes": pulumi.Any("02:00-04:00,06:00-08:00,12:00-13:00"),
+//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cfg.NewCompliancePack(ctx, "defaultCompliancePack", &cfg.CompliancePackArgs{
 //				CompliancePackName: pulumi.String(name),
-//				Description:        pulumi.String(name),
-//				RiskLevel:          pulumi.Int(1),
+//				Description:        pulumi.String("CloudGovernanceCenter evaluation"),
+//				RiskLevel:          pulumi.Int(2),
 //				ConfigRuleIds: cfg.CompliancePackConfigRuleIdArray{
 //					&cfg.CompliancePackConfigRuleIdArgs{
-//						ConfigRuleId: defaultRule.ID(),
+//						ConfigRuleId: rule1.ID(),
+//					},
+//					&cfg.CompliancePackConfigRuleIdArgs{
+//						ConfigRuleId: rule2.ID(),
 //					},
 //				},
 //			})
@@ -96,21 +119,21 @@ import (
 type CompliancePack struct {
 	pulumi.CustomResourceState
 
-	// The Compliance Package Name. . **NOTE:** the `compliancePackName` supports modification since V1.146.0.
+	// The Compliance Package Name. **NOTE:** From version 1.146.0, `compliancePackName` can be modified.
 	CompliancePackName pulumi.StringOutput `pulumi:"compliancePackName"`
 	// Compliance Package Template Id.
 	CompliancePackTemplateId pulumi.StringPtrOutput `pulumi:"compliancePackTemplateId"`
 	// A list of Config Rule IDs. See `configRuleIds` below.
 	ConfigRuleIds CompliancePackConfigRuleIdArrayOutput `pulumi:"configRuleIds"`
-	// A list of Config Rules. See `configRules` below.
+	// A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	//
-	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
+	// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
 	ConfigRules CompliancePackConfigRuleArrayOutput `pulumi:"configRules"`
 	// The Description of compliance pack.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+	// The Risk Level. Valid values:
 	RiskLevel pulumi.IntOutput `pulumi:"riskLevel"`
-	// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+	// The status of the Compliance Pack.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -153,40 +176,40 @@ func GetCompliancePack(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CompliancePack resources.
 type compliancePackState struct {
-	// The Compliance Package Name. . **NOTE:** the `compliancePackName` supports modification since V1.146.0.
+	// The Compliance Package Name. **NOTE:** From version 1.146.0, `compliancePackName` can be modified.
 	CompliancePackName *string `pulumi:"compliancePackName"`
 	// Compliance Package Template Id.
 	CompliancePackTemplateId *string `pulumi:"compliancePackTemplateId"`
 	// A list of Config Rule IDs. See `configRuleIds` below.
 	ConfigRuleIds []CompliancePackConfigRuleId `pulumi:"configRuleIds"`
-	// A list of Config Rules. See `configRules` below.
+	// A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	//
-	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
+	// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
 	ConfigRules []CompliancePackConfigRule `pulumi:"configRules"`
 	// The Description of compliance pack.
 	Description *string `pulumi:"description"`
-	// The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+	// The Risk Level. Valid values:
 	RiskLevel *int `pulumi:"riskLevel"`
-	// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+	// The status of the Compliance Pack.
 	Status *string `pulumi:"status"`
 }
 
 type CompliancePackState struct {
-	// The Compliance Package Name. . **NOTE:** the `compliancePackName` supports modification since V1.146.0.
+	// The Compliance Package Name. **NOTE:** From version 1.146.0, `compliancePackName` can be modified.
 	CompliancePackName pulumi.StringPtrInput
 	// Compliance Package Template Id.
 	CompliancePackTemplateId pulumi.StringPtrInput
 	// A list of Config Rule IDs. See `configRuleIds` below.
 	ConfigRuleIds CompliancePackConfigRuleIdArrayInput
-	// A list of Config Rules. See `configRules` below.
+	// A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	//
-	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
+	// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
 	ConfigRules CompliancePackConfigRuleArrayInput
 	// The Description of compliance pack.
 	Description pulumi.StringPtrInput
-	// The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+	// The Risk Level. Valid values:
 	RiskLevel pulumi.IntPtrInput
-	// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+	// The status of the Compliance Pack.
 	Status pulumi.StringPtrInput
 }
 
@@ -195,37 +218,37 @@ func (CompliancePackState) ElementType() reflect.Type {
 }
 
 type compliancePackArgs struct {
-	// The Compliance Package Name. . **NOTE:** the `compliancePackName` supports modification since V1.146.0.
+	// The Compliance Package Name. **NOTE:** From version 1.146.0, `compliancePackName` can be modified.
 	CompliancePackName string `pulumi:"compliancePackName"`
 	// Compliance Package Template Id.
 	CompliancePackTemplateId *string `pulumi:"compliancePackTemplateId"`
 	// A list of Config Rule IDs. See `configRuleIds` below.
 	ConfigRuleIds []CompliancePackConfigRuleId `pulumi:"configRuleIds"`
-	// A list of Config Rules. See `configRules` below.
+	// A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	//
-	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
+	// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
 	ConfigRules []CompliancePackConfigRule `pulumi:"configRules"`
 	// The Description of compliance pack.
 	Description string `pulumi:"description"`
-	// The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+	// The Risk Level. Valid values:
 	RiskLevel int `pulumi:"riskLevel"`
 }
 
 // The set of arguments for constructing a CompliancePack resource.
 type CompliancePackArgs struct {
-	// The Compliance Package Name. . **NOTE:** the `compliancePackName` supports modification since V1.146.0.
+	// The Compliance Package Name. **NOTE:** From version 1.146.0, `compliancePackName` can be modified.
 	CompliancePackName pulumi.StringInput
 	// Compliance Package Template Id.
 	CompliancePackTemplateId pulumi.StringPtrInput
 	// A list of Config Rule IDs. See `configRuleIds` below.
 	ConfigRuleIds CompliancePackConfigRuleIdArrayInput
-	// A list of Config Rules. See `configRules` below.
+	// A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	//
-	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
+	// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
 	ConfigRules CompliancePackConfigRuleArrayInput
 	// The Description of compliance pack.
 	Description pulumi.StringInput
-	// The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+	// The Risk Level. Valid values:
 	RiskLevel pulumi.IntInput
 }
 
@@ -340,7 +363,7 @@ func (o CompliancePackOutput) ToOutput(ctx context.Context) pulumix.Output[*Comp
 	}
 }
 
-// The Compliance Package Name. . **NOTE:** the `compliancePackName` supports modification since V1.146.0.
+// The Compliance Package Name. **NOTE:** From version 1.146.0, `compliancePackName` can be modified.
 func (o CompliancePackOutput) CompliancePackName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CompliancePack) pulumi.StringOutput { return v.CompliancePackName }).(pulumi.StringOutput)
 }
@@ -355,9 +378,9 @@ func (o CompliancePackOutput) ConfigRuleIds() CompliancePackConfigRuleIdArrayOut
 	return o.ApplyT(func(v *CompliancePack) CompliancePackConfigRuleIdArrayOutput { return v.ConfigRuleIds }).(CompliancePackConfigRuleIdArrayOutput)
 }
 
-// A list of Config Rules. See `configRules` below.
+// A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 //
-// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
+// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
 func (o CompliancePackOutput) ConfigRules() CompliancePackConfigRuleArrayOutput {
 	return o.ApplyT(func(v *CompliancePack) CompliancePackConfigRuleArrayOutput { return v.ConfigRules }).(CompliancePackConfigRuleArrayOutput)
 }
@@ -367,12 +390,12 @@ func (o CompliancePackOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *CompliancePack) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+// The Risk Level. Valid values:
 func (o CompliancePackOutput) RiskLevel() pulumi.IntOutput {
 	return o.ApplyT(func(v *CompliancePack) pulumi.IntOutput { return v.RiskLevel }).(pulumi.IntOutput)
 }
 
-// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+// The status of the Compliance Pack.
 func (o CompliancePackOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *CompliancePack) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

@@ -992,19 +992,19 @@ class RuleRuleAction(dict):
                  traffic_limit_config: Optional['outputs.RuleRuleActionTrafficLimitConfig'] = None,
                  traffic_mirror_config: Optional['outputs.RuleRuleActionTrafficMirrorConfig'] = None):
         """
-        :param int order: The order of the forwarding rule actions. Valid values: 1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
-        :param str type: The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
-               **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
-               **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
-               **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
-        :param 'RuleRuleActionCorsConfigArgs' cors_config: Request forwarding based on CORS. See `cors_config` below for details.
-        :param 'RuleRuleActionFixedResponseConfigArgs' fixed_response_config: The configuration of the fixed response. See `fixed_response_config` below for details.
-        :param 'RuleRuleActionForwardGroupConfigArgs' forward_group_config: The forward response action within ALB. See `forward_group_config` below for details.
-        :param 'RuleRuleActionInsertHeaderConfigArgs' insert_header_config: The configuration of the inserted header field. See `insert_header_config` below for details.
-        :param 'RuleRuleActionRedirectConfigArgs' redirect_config: The configuration of the external redirect action. See `redirect_config` below for details.
-        :param 'RuleRuleActionRewriteConfigArgs' rewrite_config: The redirect action within ALB. See `rewrite_config` below for details.
-        :param 'RuleRuleActionTrafficLimitConfigArgs' traffic_limit_config: The Flow speed limit. See `traffic_limit_config` below for details.
-        :param 'RuleRuleActionTrafficMirrorConfigArgs' traffic_mirror_config: The Traffic mirroring. See `traffic_mirror_config` below for details.
+        :param int order: The order of the forwarding rule actions. Valid values: `1` to `50000`. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+        :param str type: The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
+               **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+               **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
+               **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
+        :param 'RuleRuleActionCorsConfigArgs' cors_config: Request forwarding based on CORS. See `cors_config` below.
+        :param 'RuleRuleActionFixedResponseConfigArgs' fixed_response_config: The configuration of the fixed response. See `fixed_response_config` below.
+        :param 'RuleRuleActionForwardGroupConfigArgs' forward_group_config: The forward response action within ALB. See `forward_group_config` below.
+        :param 'RuleRuleActionInsertHeaderConfigArgs' insert_header_config: The configuration of the inserted header field. See `insert_header_config` below.
+        :param 'RuleRuleActionRedirectConfigArgs' redirect_config: The configuration of the external redirect action. See `redirect_config` below.
+        :param 'RuleRuleActionRewriteConfigArgs' rewrite_config: The redirect action within ALB. See `rewrite_config` below.
+        :param 'RuleRuleActionTrafficLimitConfigArgs' traffic_limit_config: The Flow speed limit. See `traffic_limit_config` below.
+        :param 'RuleRuleActionTrafficMirrorConfigArgs' traffic_mirror_config: The Traffic mirroring. See `traffic_mirror_config` below.
         """
         pulumi.set(__self__, "order", order)
         pulumi.set(__self__, "type", type)
@@ -1029,7 +1029,7 @@ class RuleRuleAction(dict):
     @pulumi.getter
     def order(self) -> int:
         """
-        The order of the forwarding rule actions. Valid values: 1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+        The order of the forwarding rule actions. Valid values: `1` to `50000`. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
         """
         return pulumi.get(self, "order")
 
@@ -1037,10 +1037,10 @@ class RuleRuleAction(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
-        **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
-        **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
-        **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
+        The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
+        **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+        **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
+        **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
         """
         return pulumi.get(self, "type")
 
@@ -1048,7 +1048,7 @@ class RuleRuleAction(dict):
     @pulumi.getter(name="corsConfig")
     def cors_config(self) -> Optional['outputs.RuleRuleActionCorsConfig']:
         """
-        Request forwarding based on CORS. See `cors_config` below for details.
+        Request forwarding based on CORS. See `cors_config` below.
         """
         return pulumi.get(self, "cors_config")
 
@@ -1056,7 +1056,7 @@ class RuleRuleAction(dict):
     @pulumi.getter(name="fixedResponseConfig")
     def fixed_response_config(self) -> Optional['outputs.RuleRuleActionFixedResponseConfig']:
         """
-        The configuration of the fixed response. See `fixed_response_config` below for details.
+        The configuration of the fixed response. See `fixed_response_config` below.
         """
         return pulumi.get(self, "fixed_response_config")
 
@@ -1064,7 +1064,7 @@ class RuleRuleAction(dict):
     @pulumi.getter(name="forwardGroupConfig")
     def forward_group_config(self) -> Optional['outputs.RuleRuleActionForwardGroupConfig']:
         """
-        The forward response action within ALB. See `forward_group_config` below for details.
+        The forward response action within ALB. See `forward_group_config` below.
         """
         return pulumi.get(self, "forward_group_config")
 
@@ -1072,7 +1072,7 @@ class RuleRuleAction(dict):
     @pulumi.getter(name="insertHeaderConfig")
     def insert_header_config(self) -> Optional['outputs.RuleRuleActionInsertHeaderConfig']:
         """
-        The configuration of the inserted header field. See `insert_header_config` below for details.
+        The configuration of the inserted header field. See `insert_header_config` below.
         """
         return pulumi.get(self, "insert_header_config")
 
@@ -1080,7 +1080,7 @@ class RuleRuleAction(dict):
     @pulumi.getter(name="redirectConfig")
     def redirect_config(self) -> Optional['outputs.RuleRuleActionRedirectConfig']:
         """
-        The configuration of the external redirect action. See `redirect_config` below for details.
+        The configuration of the external redirect action. See `redirect_config` below.
         """
         return pulumi.get(self, "redirect_config")
 
@@ -1088,7 +1088,7 @@ class RuleRuleAction(dict):
     @pulumi.getter(name="rewriteConfig")
     def rewrite_config(self) -> Optional['outputs.RuleRuleActionRewriteConfig']:
         """
-        The redirect action within ALB. See `rewrite_config` below for details.
+        The redirect action within ALB. See `rewrite_config` below.
         """
         return pulumi.get(self, "rewrite_config")
 
@@ -1096,7 +1096,7 @@ class RuleRuleAction(dict):
     @pulumi.getter(name="trafficLimitConfig")
     def traffic_limit_config(self) -> Optional['outputs.RuleRuleActionTrafficLimitConfig']:
         """
-        The Flow speed limit. See `traffic_limit_config` below for details.
+        The Flow speed limit. See `traffic_limit_config` below.
         """
         return pulumi.get(self, "traffic_limit_config")
 
@@ -1104,7 +1104,7 @@ class RuleRuleAction(dict):
     @pulumi.getter(name="trafficMirrorConfig")
     def traffic_mirror_config(self) -> Optional['outputs.RuleRuleActionTrafficMirrorConfig']:
         """
-        The Traffic mirroring. See `traffic_mirror_config` below for details.
+        The Traffic mirroring. See `traffic_mirror_config` below.
         """
         return pulumi.get(self, "traffic_mirror_config")
 
@@ -1242,8 +1242,8 @@ class RuleRuleActionFixedResponseConfig(dict):
                  http_code: Optional[str] = None):
         """
         :param str content: The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
-        :param str content_type: The format of the fixed response.  Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
-        :param str http_code: The redirect method. Valid values:301, 302, 303, 307, and 308.
+        :param str content_type: The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+        :param str http_code: The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
         """
         pulumi.set(__self__, "content", content)
         if content_type is not None:
@@ -1263,7 +1263,7 @@ class RuleRuleActionFixedResponseConfig(dict):
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[str]:
         """
-        The format of the fixed response.  Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+        The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
         """
         return pulumi.get(self, "content_type")
 
@@ -1271,7 +1271,7 @@ class RuleRuleActionFixedResponseConfig(dict):
     @pulumi.getter(name="httpCode")
     def http_code(self) -> Optional[str]:
         """
-        The redirect method. Valid values:301, 302, 303, 307, and 308.
+        The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
         """
         return pulumi.get(self, "http_code")
 
@@ -1301,8 +1301,8 @@ class RuleRuleActionForwardGroupConfig(dict):
                  server_group_sticky_session: Optional['outputs.RuleRuleActionForwardGroupConfigServerGroupStickySession'] = None,
                  server_group_tuples: Optional[Sequence['outputs.RuleRuleActionForwardGroupConfigServerGroupTuple']] = None):
         """
-        :param 'RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs' server_group_sticky_session: The configuration of session persistence for server groups. See `server_group_sticky_session` below for details.
-        :param Sequence['RuleRuleActionForwardGroupConfigServerGroupTupleArgs'] server_group_tuples: The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
+        :param 'RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs' server_group_sticky_session: The configuration of session persistence for server groups. See `server_group_sticky_session` below.
+        :param Sequence['RuleRuleActionForwardGroupConfigServerGroupTupleArgs'] server_group_tuples: The destination server group to which requests are forwarded. See `server_group_tuples` below.
         """
         if server_group_sticky_session is not None:
             pulumi.set(__self__, "server_group_sticky_session", server_group_sticky_session)
@@ -1313,7 +1313,7 @@ class RuleRuleActionForwardGroupConfig(dict):
     @pulumi.getter(name="serverGroupStickySession")
     def server_group_sticky_session(self) -> Optional['outputs.RuleRuleActionForwardGroupConfigServerGroupStickySession']:
         """
-        The configuration of session persistence for server groups. See `server_group_sticky_session` below for details.
+        The configuration of session persistence for server groups. See `server_group_sticky_session` below.
         """
         return pulumi.get(self, "server_group_sticky_session")
 
@@ -1321,7 +1321,7 @@ class RuleRuleActionForwardGroupConfig(dict):
     @pulumi.getter(name="serverGroupTuples")
     def server_group_tuples(self) -> Optional[Sequence['outputs.RuleRuleActionForwardGroupConfigServerGroupTuple']]:
         """
-        The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
+        The destination server group to which requests are forwarded. See `server_group_tuples` below.
         """
         return pulumi.get(self, "server_group_tuples")
 
@@ -1429,9 +1429,10 @@ class RuleRuleActionInsertHeaderConfig(dict):
                  value: Optional[str] = None,
                  value_type: Optional[str] = None):
         """
-        :param str key: The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
-        :param str value: The value of the values list.
-        :param str value_type: Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
+        :param str key: The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+        :param str value: The content of the inserted header field. Valid values:
+               * If the `value_type` is set to `SystemDefined`, the following values are used:
+        :param str value_type: The value type of the inserted header field. Valid values:
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -1444,7 +1445,7 @@ class RuleRuleActionInsertHeaderConfig(dict):
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+        The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
         """
         return pulumi.get(self, "key")
 
@@ -1452,7 +1453,8 @@ class RuleRuleActionInsertHeaderConfig(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the values list.
+        The content of the inserted header field. Valid values:
+        * If the `value_type` is set to `SystemDefined`, the following values are used:
         """
         return pulumi.get(self, "value")
 
@@ -1460,7 +1462,7 @@ class RuleRuleActionInsertHeaderConfig(dict):
     @pulumi.getter(name="valueType")
     def value_type(self) -> Optional[str]:
         """
-        Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
+        The value type of the inserted header field. Valid values:
         """
         return pulumi.get(self, "value_type")
 
@@ -1492,12 +1494,12 @@ class RuleRuleActionRedirectConfig(dict):
                  protocol: Optional[str] = None,
                  query: Optional[str] = None):
         """
-        :param str host: The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
-        :param str http_code: The redirect method. Valid values:301, 302, 303, 307, and 308.
-        :param str path: The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
-        :param str port: The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
-        :param str protocol: The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
-        :param str query: The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
+        :param str host: The host name of the destination to which requests are directed. The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+        :param str http_code: The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+        :param str path: The path of the destination to which requests are directed. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+        :param str port: The port of the destination to which requests are redirected. Valid values: 1 to 63335. Default value: ${port}. You cannot use this value together with other characters at the same time.
+        :param str protocol: The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
+        :param str query: The query string of the request to be redirected. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &. Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
         """
         if host is not None:
             pulumi.set(__self__, "host", host)
@@ -1516,7 +1518,7 @@ class RuleRuleActionRedirectConfig(dict):
     @pulumi.getter
     def host(self) -> Optional[str]:
         """
-        The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+        The host name of the destination to which requests are directed. The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
         """
         return pulumi.get(self, "host")
 
@@ -1524,7 +1526,7 @@ class RuleRuleActionRedirectConfig(dict):
     @pulumi.getter(name="httpCode")
     def http_code(self) -> Optional[str]:
         """
-        The redirect method. Valid values:301, 302, 303, 307, and 308.
+        The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
         """
         return pulumi.get(self, "http_code")
 
@@ -1532,7 +1534,7 @@ class RuleRuleActionRedirectConfig(dict):
     @pulumi.getter
     def path(self) -> Optional[str]:
         """
-        The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
+        The path of the destination to which requests are directed. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
         """
         return pulumi.get(self, "path")
 
@@ -1540,7 +1542,7 @@ class RuleRuleActionRedirectConfig(dict):
     @pulumi.getter
     def port(self) -> Optional[str]:
         """
-        The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
+        The port of the destination to which requests are redirected. Valid values: 1 to 63335. Default value: ${port}. You cannot use this value together with other characters at the same time.
         """
         return pulumi.get(self, "port")
 
@@ -1548,7 +1550,7 @@ class RuleRuleActionRedirectConfig(dict):
     @pulumi.getter
     def protocol(self) -> Optional[str]:
         """
-        The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
+        The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
         """
         return pulumi.get(self, "protocol")
 
@@ -1556,7 +1558,7 @@ class RuleRuleActionRedirectConfig(dict):
     @pulumi.getter
     def query(self) -> Optional[str]:
         """
-        The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
+        The query string of the request to be redirected. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &. Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
         """
         return pulumi.get(self, "query")
 
@@ -1568,9 +1570,9 @@ class RuleRuleActionRewriteConfig(dict):
                  path: Optional[str] = None,
                  query: Optional[str] = None):
         """
-        :param str host: The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
-        :param str path: The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
-        :param str query: The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
+        :param str host: The host name of the destination to which requests are directed. The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+        :param str path: The path of the destination to which requests are directed. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+        :param str query: The query string of the request to be redirected. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &. Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
         """
         if host is not None:
             pulumi.set(__self__, "host", host)
@@ -1583,7 +1585,7 @@ class RuleRuleActionRewriteConfig(dict):
     @pulumi.getter
     def host(self) -> Optional[str]:
         """
-        The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+        The host name of the destination to which requests are directed. The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
         """
         return pulumi.get(self, "host")
 
@@ -1591,7 +1593,7 @@ class RuleRuleActionRewriteConfig(dict):
     @pulumi.getter
     def path(self) -> Optional[str]:
         """
-        The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
+        The path of the destination to which requests are directed. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
         """
         return pulumi.get(self, "path")
 
@@ -1599,7 +1601,7 @@ class RuleRuleActionRewriteConfig(dict):
     @pulumi.getter
     def query(self) -> Optional[str]:
         """
-        The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
+        The query string of the request to be redirected. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &. Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
         """
         return pulumi.get(self, "query")
 
@@ -1609,7 +1611,7 @@ class RuleRuleActionTrafficLimitConfig(dict):
     def __init__(__self__, *,
                  qps: Optional[int] = None):
         """
-        :param int qps: The Number of requests per second. Value range: 1~100000.
+        :param int qps: The Number of requests per second. Valid values: `1` to `100000`.
         """
         if qps is not None:
             pulumi.set(__self__, "qps", qps)
@@ -1618,7 +1620,7 @@ class RuleRuleActionTrafficLimitConfig(dict):
     @pulumi.getter
     def qps(self) -> Optional[int]:
         """
-        The Number of requests per second. Value range: 1~100000.
+        The Number of requests per second. Valid values: `1` to `100000`.
         """
         return pulumi.get(self, "qps")
 
@@ -1648,7 +1650,7 @@ class RuleRuleActionTrafficMirrorConfig(dict):
                  mirror_group_config: Optional['outputs.RuleRuleActionTrafficMirrorConfigMirrorGroupConfig'] = None,
                  target_type: Optional[str] = None):
         """
-        :param 'RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs' mirror_group_config: The Traffic is mirrored to the server group. See `mirror_group_config` below for details.
+        :param 'RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs' mirror_group_config: The Traffic is mirrored to the server group. See `mirror_group_config` below.
         :param str target_type: The Mirror target type.
         """
         if mirror_group_config is not None:
@@ -1660,7 +1662,7 @@ class RuleRuleActionTrafficMirrorConfig(dict):
     @pulumi.getter(name="mirrorGroupConfig")
     def mirror_group_config(self) -> Optional['outputs.RuleRuleActionTrafficMirrorConfigMirrorGroupConfig']:
         """
-        The Traffic is mirrored to the server group. See `mirror_group_config` below for details.
+        The Traffic is mirrored to the server group. See `mirror_group_config` below.
         """
         return pulumi.get(self, "mirror_group_config")
 
@@ -1695,7 +1697,7 @@ class RuleRuleActionTrafficMirrorConfigMirrorGroupConfig(dict):
     def __init__(__self__, *,
                  server_group_tuples: Optional[Sequence['outputs.RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple']] = None):
         """
-        :param Sequence['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs'] server_group_tuples: The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
+        :param Sequence['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs'] server_group_tuples: The destination server group to which requests are forwarded. See `server_group_tuples` below.
         """
         if server_group_tuples is not None:
             pulumi.set(__self__, "server_group_tuples", server_group_tuples)
@@ -1704,7 +1706,7 @@ class RuleRuleActionTrafficMirrorConfigMirrorGroupConfig(dict):
     @pulumi.getter(name="serverGroupTuples")
     def server_group_tuples(self) -> Optional[Sequence['outputs.RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple']]:
         """
-        The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
+        The destination server group to which requests are forwarded. See `server_group_tuples` below.
         """
         return pulumi.get(self, "server_group_tuples")
 
@@ -1786,14 +1788,14 @@ class RuleRuleCondition(dict):
                  query_string_config: Optional['outputs.RuleRuleConditionQueryStringConfig'] = None,
                  source_ip_config: Optional['outputs.RuleRuleConditionSourceIpConfig'] = None):
         """
-        :param str type: The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
-        :param 'RuleRuleConditionCookieConfigArgs' cookie_config: The configuration of the cookie. See See `cookie_config` below for details.
-        :param 'RuleRuleConditionHeaderConfigArgs' header_config: The configuration of the header field. See `header_config` below for details.
-        :param 'RuleRuleConditionHostConfigArgs' host_config: The configuration of the host field. See `host_config` below for details.
-        :param 'RuleRuleConditionMethodConfigArgs' method_config: The configuration of the request method. See `method_config` below for details.
-        :param 'RuleRuleConditionPathConfigArgs' path_config: The configuration of the path for the request to be forwarded. See `path_config` below for details.
-        :param 'RuleRuleConditionQueryStringConfigArgs' query_string_config: The configuration of the query string. See `query_string_config` below for details.
-        :param 'RuleRuleConditionSourceIpConfigArgs' source_ip_config: The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below for details.
+        :param str type: The type of the forwarding rule. Valid values:
+        :param 'RuleRuleConditionCookieConfigArgs' cookie_config: The configuration of the cookie. See See `cookie_config` below.
+        :param 'RuleRuleConditionHeaderConfigArgs' header_config: The configuration of the header field. See `header_config` below.
+        :param 'RuleRuleConditionHostConfigArgs' host_config: The configuration of the host field. See `host_config` below.
+        :param 'RuleRuleConditionMethodConfigArgs' method_config: The configuration of the request method. See `method_config` below.
+        :param 'RuleRuleConditionPathConfigArgs' path_config: The configuration of the path for the request to be forwarded. See `path_config` below.
+        :param 'RuleRuleConditionQueryStringConfigArgs' query_string_config: The configuration of the query string. See `query_string_config` below.
+        :param 'RuleRuleConditionSourceIpConfigArgs' source_ip_config: The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
         """
         pulumi.set(__self__, "type", type)
         if cookie_config is not None:
@@ -1815,7 +1817,7 @@ class RuleRuleCondition(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+        The type of the forwarding rule. Valid values:
         """
         return pulumi.get(self, "type")
 
@@ -1823,7 +1825,7 @@ class RuleRuleCondition(dict):
     @pulumi.getter(name="cookieConfig")
     def cookie_config(self) -> Optional['outputs.RuleRuleConditionCookieConfig']:
         """
-        The configuration of the cookie. See See `cookie_config` below for details.
+        The configuration of the cookie. See See `cookie_config` below.
         """
         return pulumi.get(self, "cookie_config")
 
@@ -1831,7 +1833,7 @@ class RuleRuleCondition(dict):
     @pulumi.getter(name="headerConfig")
     def header_config(self) -> Optional['outputs.RuleRuleConditionHeaderConfig']:
         """
-        The configuration of the header field. See `header_config` below for details.
+        The configuration of the header field. See `header_config` below.
         """
         return pulumi.get(self, "header_config")
 
@@ -1839,7 +1841,7 @@ class RuleRuleCondition(dict):
     @pulumi.getter(name="hostConfig")
     def host_config(self) -> Optional['outputs.RuleRuleConditionHostConfig']:
         """
-        The configuration of the host field. See `host_config` below for details.
+        The configuration of the host field. See `host_config` below.
         """
         return pulumi.get(self, "host_config")
 
@@ -1847,7 +1849,7 @@ class RuleRuleCondition(dict):
     @pulumi.getter(name="methodConfig")
     def method_config(self) -> Optional['outputs.RuleRuleConditionMethodConfig']:
         """
-        The configuration of the request method. See `method_config` below for details.
+        The configuration of the request method. See `method_config` below.
         """
         return pulumi.get(self, "method_config")
 
@@ -1855,7 +1857,7 @@ class RuleRuleCondition(dict):
     @pulumi.getter(name="pathConfig")
     def path_config(self) -> Optional['outputs.RuleRuleConditionPathConfig']:
         """
-        The configuration of the path for the request to be forwarded. See `path_config` below for details.
+        The configuration of the path for the request to be forwarded. See `path_config` below.
         """
         return pulumi.get(self, "path_config")
 
@@ -1863,7 +1865,7 @@ class RuleRuleCondition(dict):
     @pulumi.getter(name="queryStringConfig")
     def query_string_config(self) -> Optional['outputs.RuleRuleConditionQueryStringConfig']:
         """
-        The configuration of the query string. See `query_string_config` below for details.
+        The configuration of the query string. See `query_string_config` below.
         """
         return pulumi.get(self, "query_string_config")
 
@@ -1871,7 +1873,7 @@ class RuleRuleCondition(dict):
     @pulumi.getter(name="sourceIpConfig")
     def source_ip_config(self) -> Optional['outputs.RuleRuleConditionSourceIpConfig']:
         """
-        The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below for details.
+        The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
         """
         return pulumi.get(self, "source_ip_config")
 
@@ -1881,7 +1883,7 @@ class RuleRuleConditionCookieConfig(dict):
     def __init__(__self__, *,
                  values: Optional[Sequence['outputs.RuleRuleConditionCookieConfigValue']] = None):
         """
-        :param Sequence['RuleRuleConditionCookieConfigValueArgs'] values: The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+        :param Sequence['RuleRuleConditionCookieConfigValueArgs'] values: The values of the cookie. See `values` below.
         """
         if values is not None:
             pulumi.set(__self__, "values", values)
@@ -1890,7 +1892,7 @@ class RuleRuleConditionCookieConfig(dict):
     @pulumi.getter
     def values(self) -> Optional[Sequence['outputs.RuleRuleConditionCookieConfigValue']]:
         """
-        The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+        The values of the cookie. See `values` below.
         """
         return pulumi.get(self, "values")
 
@@ -1901,8 +1903,9 @@ class RuleRuleConditionCookieConfigValue(dict):
                  key: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str key: The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
-        :param str value: The value of the values list.
+        :param str key: The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+        :param str value: The content of the inserted header field. Valid values:
+               * If the `value_type` is set to `SystemDefined`, the following values are used:
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -1913,7 +1916,7 @@ class RuleRuleConditionCookieConfigValue(dict):
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+        The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
         """
         return pulumi.get(self, "key")
 
@@ -1921,7 +1924,8 @@ class RuleRuleConditionCookieConfigValue(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the values list.
+        The content of the inserted header field. Valid values:
+        * If the `value_type` is set to `SystemDefined`, the following values are used:
         """
         return pulumi.get(self, "value")
 
@@ -1932,8 +1936,8 @@ class RuleRuleConditionHeaderConfig(dict):
                  key: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
         """
-        :param str key: The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
-        :param Sequence[str] values: The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+        :param str key: The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+        :param Sequence[str] values: The values of the cookie. See `values` below.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -1944,7 +1948,7 @@ class RuleRuleConditionHeaderConfig(dict):
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+        The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
         """
         return pulumi.get(self, "key")
 
@@ -1952,7 +1956,7 @@ class RuleRuleConditionHeaderConfig(dict):
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
         """
-        The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+        The values of the cookie. See `values` below.
         """
         return pulumi.get(self, "values")
 
@@ -1962,7 +1966,7 @@ class RuleRuleConditionHostConfig(dict):
     def __init__(__self__, *,
                  values: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] values: The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+        :param Sequence[str] values: The values of the cookie. See `values` below.
         """
         if values is not None:
             pulumi.set(__self__, "values", values)
@@ -1971,7 +1975,7 @@ class RuleRuleConditionHostConfig(dict):
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
         """
-        The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+        The values of the cookie. See `values` below.
         """
         return pulumi.get(self, "values")
 
@@ -1981,7 +1985,7 @@ class RuleRuleConditionMethodConfig(dict):
     def __init__(__self__, *,
                  values: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] values: The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+        :param Sequence[str] values: The values of the cookie. See `values` below.
         """
         if values is not None:
             pulumi.set(__self__, "values", values)
@@ -1990,7 +1994,7 @@ class RuleRuleConditionMethodConfig(dict):
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
         """
-        The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+        The values of the cookie. See `values` below.
         """
         return pulumi.get(self, "values")
 
@@ -2000,7 +2004,7 @@ class RuleRuleConditionPathConfig(dict):
     def __init__(__self__, *,
                  values: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] values: The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+        :param Sequence[str] values: The values of the cookie. See `values` below.
         """
         if values is not None:
             pulumi.set(__self__, "values", values)
@@ -2009,7 +2013,7 @@ class RuleRuleConditionPathConfig(dict):
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
         """
-        The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+        The values of the cookie. See `values` below.
         """
         return pulumi.get(self, "values")
 
@@ -2019,7 +2023,7 @@ class RuleRuleConditionQueryStringConfig(dict):
     def __init__(__self__, *,
                  values: Optional[Sequence['outputs.RuleRuleConditionQueryStringConfigValue']] = None):
         """
-        :param Sequence['RuleRuleConditionQueryStringConfigValueArgs'] values: The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+        :param Sequence['RuleRuleConditionQueryStringConfigValueArgs'] values: The values of the cookie. See `values` below.
         """
         if values is not None:
             pulumi.set(__self__, "values", values)
@@ -2028,7 +2032,7 @@ class RuleRuleConditionQueryStringConfig(dict):
     @pulumi.getter
     def values(self) -> Optional[Sequence['outputs.RuleRuleConditionQueryStringConfigValue']]:
         """
-        The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+        The values of the cookie. See `values` below.
         """
         return pulumi.get(self, "values")
 
@@ -2039,8 +2043,9 @@ class RuleRuleConditionQueryStringConfigValue(dict):
                  key: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str key: The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
-        :param str value: The value of the values list.
+        :param str key: The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+        :param str value: The content of the inserted header field. Valid values:
+               * If the `value_type` is set to `SystemDefined`, the following values are used:
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -2051,7 +2056,7 @@ class RuleRuleConditionQueryStringConfigValue(dict):
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+        The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
         """
         return pulumi.get(self, "key")
 
@@ -2059,7 +2064,8 @@ class RuleRuleConditionQueryStringConfigValue(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the values list.
+        The content of the inserted header field. Valid values:
+        * If the `value_type` is set to `SystemDefined`, the following values are used:
         """
         return pulumi.get(self, "value")
 
@@ -2069,7 +2075,7 @@ class RuleRuleConditionSourceIpConfig(dict):
     def __init__(__self__, *,
                  values: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] values: The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+        :param Sequence[str] values: The values of the cookie. See `values` below.
         """
         if values is not None:
             pulumi.set(__self__, "values", values)
@@ -2078,7 +2084,7 @@ class RuleRuleConditionSourceIpConfig(dict):
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
         """
-        The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+        The values of the cookie. See `values` below.
         """
         return pulumi.get(self, "values")
 

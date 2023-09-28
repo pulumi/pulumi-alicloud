@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ots
     /// 
     /// For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
     /// 
-    /// &gt; **NOTE:** Available in v1.187.0+.
+    /// &gt; **NOTE:** Available since v1.187.0.
     /// 
     /// ## Example Usage
     /// 
@@ -27,22 +27,26 @@ namespace Pulumi.AliCloud.Ots
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraformtest";
-    ///     var instance1 = new AliCloud.Ots.Instance("instance1", new()
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultInstance = new AliCloud.Ots.Instance("defaultInstance", new()
     ///     {
     ///         Description = name,
     ///         AccessedBy = "Any",
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },
-    ///             { "For", "acceptance test" },
+    ///             { "For", "example" },
     ///         },
     ///     });
     /// 
-    ///     var table1 = new AliCloud.Ots.Table("table1", new()
+    ///     var defaultTable = new AliCloud.Ots.Table("defaultTable", new()
     ///     {
-    ///         InstanceName = instance1.Name,
-    ///         TableName = name,
+    ///         InstanceName = defaultInstance.Name,
+    ///         TableName = "tf_example",
+    ///         TimeToLive = -1,
+    ///         MaxVersion = 1,
+    ///         EnableSse = true,
+    ///         SseKeyType = "SSE_KMS_SERVICE",
     ///         PrimaryKeys = new[]
     ///         {
     ///             new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
@@ -55,30 +59,19 @@ namespace Pulumi.AliCloud.Ots
     ///                 Name = "pk2",
     ///                 Type = "String",
     ///             },
-    ///         },
-    ///         DefinedColumns = new[]
-    ///         {
-    ///             new AliCloud.Ots.Inputs.TableDefinedColumnArgs
+    ///             new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
     ///             {
-    ///                 Name = "col1",
-    ///                 Type = "String",
-    ///             },
-    ///             new AliCloud.Ots.Inputs.TableDefinedColumnArgs
-    ///             {
-    ///                 Name = "col2",
-    ///                 Type = "Integer",
+    ///                 Name = "pk3",
+    ///                 Type = "Binary",
     ///             },
     ///         },
-    ///         TimeToLive = -1,
-    ///         MaxVersion = 1,
-    ///         DeviationCellVersionInSec = "1",
     ///     });
     /// 
-    ///     var @default = new AliCloud.Ots.SearchIndex("default", new()
+    ///     var defaultSearchIndex = new AliCloud.Ots.SearchIndex("defaultSearchIndex", new()
     ///     {
-    ///         InstanceName = instance1.Name,
-    ///         TableName = table1.TableName,
-    ///         IndexName = name,
+    ///         InstanceName = defaultInstance.Name,
+    ///         TableName = defaultTable.TableName,
+    ///         IndexName = "example_index",
     ///         TimeToLive = -1,
     ///         Schemas = new[]
     ///         {
@@ -193,7 +186,7 @@ namespace Pulumi.AliCloud.Ots
         public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// The schema of the search index. If changed, a new index would be created.
+        /// The schema of the search index. If changed, a new index would be created. See `schema` below.
         /// </summary>
         [Output("schemas")]
         public Output<ImmutableArray<Outputs.SearchIndexSchema>> Schemas { get; private set; } = null!;
@@ -279,7 +272,7 @@ namespace Pulumi.AliCloud.Ots
         private InputList<Inputs.SearchIndexSchemaArgs>? _schemas;
 
         /// <summary>
-        /// The schema of the search index. If changed, a new index would be created.
+        /// The schema of the search index. If changed, a new index would be created. See `schema` below.
         /// </summary>
         public InputList<Inputs.SearchIndexSchemaArgs> Schemas
         {
@@ -342,7 +335,7 @@ namespace Pulumi.AliCloud.Ots
         private InputList<Inputs.SearchIndexSchemaGetArgs>? _schemas;
 
         /// <summary>
-        /// The schema of the search index. If changed, a new index would be created.
+        /// The schema of the search index. If changed, a new index would be created. See `schema` below.
         /// </summary>
         public InputList<Inputs.SearchIndexSchemaGetArgs> Schemas
         {

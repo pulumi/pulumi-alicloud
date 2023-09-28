@@ -18,6 +18,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **DEPRECATED:**  This resource has been deprecated and using alicloud.wafv3.Domain instead.
+ * 
  * Provides a WAF Domain resource to create domain in the Web Application Firewall.
  * 
  * For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).

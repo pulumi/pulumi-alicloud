@@ -12,38 +12,40 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RuleRuleActionInsertHeaderConfig {
     /**
-     * @return The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+     * @return The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
      * 
      */
     private @Nullable String key;
     /**
-     * @return The value of the values list.
+     * @return The content of the inserted header field. Valid values:
+     * * If the `value_type` is set to `SystemDefined`, the following values are used:
      * 
      */
     private @Nullable String value;
     /**
-     * @return Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
+     * @return The value type of the inserted header field. Valid values:
      * 
      */
     private @Nullable String valueType;
 
     private RuleRuleActionInsertHeaderConfig() {}
     /**
-     * @return The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+     * @return The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
      * 
      */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return The value of the values list.
+     * @return The content of the inserted header field. Valid values:
+     * * If the `value_type` is set to `SystemDefined`, the following values are used:
      * 
      */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }
     /**
-     * @return Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
+     * @return The value type of the inserted header field. Valid values:
      * 
      */
     public Optional<String> valueType() {

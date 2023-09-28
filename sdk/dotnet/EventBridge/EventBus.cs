@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.EventBridge
     /// <summary>
     /// Provides a Event Bridge Event Bus resource.
     /// 
-    /// For information about Event Bridge Event Bus and how to use it, see [What is Event Bus](https://help.aliyun.com/document_detail/167863.html).
+    /// For information about Event Bridge Event Bus and how to use it, see [What is Event Bus](https://www.alibabacloud.com/help/en/eventbridge/latest/api-eventbridge-2020-04-01-createeventbus).
     /// 
-    /// &gt; **NOTE:** Available in v1.129.0+.
+    /// &gt; **NOTE:** Available since v1.129.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,9 +28,11 @@ namespace Pulumi.AliCloud.EventBridge
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var example = new AliCloud.EventBridge.EventBus("example", new()
     ///     {
-    ///         EventBusName = "my-EventBus",
+    ///         EventBusName = name,
     ///     });
     /// 
     /// });

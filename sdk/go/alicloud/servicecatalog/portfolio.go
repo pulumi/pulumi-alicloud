@@ -17,7 +17,7 @@ import (
 //
 // For information about Service Catalog Portfolio and how to use it, see [What is Portfolio](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-createportfolio).
 //
-// > **NOTE:** Available in v1.204.0+.
+// > **NOTE:** Available since v1.204.0+.
 //
 // ## Example Usage
 //
@@ -30,14 +30,20 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/servicecatalog"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := servicecatalog.NewPortfolio(ctx, "default", &servicecatalog.PortfolioArgs{
-//				PortfolioName: pulumi.String("example_value"),
-//				ProviderName:  pulumi.String("example_value"),
+//				PortfolioName: pulumi.String(name),
+//				ProviderName:  pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

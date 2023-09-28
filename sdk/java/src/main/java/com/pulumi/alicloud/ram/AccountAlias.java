@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a RAM cloud account alias.
  * 
- * &gt; **NOTE:** Available since v1.0.0+.
+ * &gt; **NOTE:** Available since v1.0.0.
  * 
  * ## Example Usage
  * ```java
@@ -40,8 +40,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
  *         var alias = new AccountAlias(&#34;alias&#34;, AccountAliasArgs.builder()        
- *             .accountAlias(&#34;hallo&#34;)
+ *             .accountAlias(name)
  *             .build());
  * 
  *     }

@@ -17,7 +17,7 @@ import (
 //
 // For information about PolarDB Global Database Network and how to use it, see [What is Global Database Network](https://www.alibabacloud.com/help/en/polardb-for-mysql/latest/createglobaldatabasenetwork).
 //
-// > **NOTE:** Available in v1.181.0+.
+// > **NOTE:** Available since v1.181.0+.
 //
 // ## Example Usage
 //
@@ -39,6 +39,7 @@ import (
 //			defaultNodeClasses, err := polardb.GetNodeClasses(ctx, &polardb.GetNodeClassesArgs{
 //				DbType:    pulumi.StringRef("MySQL"),
 //				DbVersion: pulumi.StringRef("8.0"),
+//				Category:  pulumi.StringRef("Normal"),
 //				PayType:   "PostPaid",
 //			}, nil)
 //			if err != nil {

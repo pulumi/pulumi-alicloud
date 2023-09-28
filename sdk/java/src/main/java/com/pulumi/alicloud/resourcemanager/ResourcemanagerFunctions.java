@@ -2510,9 +2510,11 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides resource groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.84.0+.
+     * &gt; **NOTE:** Available since v1.84.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -2535,7 +2537,7 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .nameRegex(&#34;tf&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstResourceGroupId&#34;, example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()));
@@ -2550,9 +2552,11 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides resource groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.84.0+.
+     * &gt; **NOTE:** Available since v1.84.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -2575,7 +2579,7 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .nameRegex(&#34;tf&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstResourceGroupId&#34;, example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()));
@@ -2590,9 +2594,11 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides resource groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.84.0+.
+     * &gt; **NOTE:** Available since v1.84.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -2615,7 +2621,7 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .nameRegex(&#34;tf&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstResourceGroupId&#34;, example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()));
@@ -2630,9 +2636,11 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides resource groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.84.0+.
+     * &gt; **NOTE:** Available since v1.84.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -2655,7 +2663,7 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .nameRegex(&#34;tf&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstResourceGroupId&#34;, example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()));
@@ -2670,9 +2678,11 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides resource groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.84.0+.
+     * &gt; **NOTE:** Available since v1.84.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -2695,7 +2705,7 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .nameRegex(&#34;tf&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstResourceGroupId&#34;, example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()));
@@ -2710,9 +2720,11 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides resource groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.84.0+.
+     * &gt; **NOTE:** Available since v1.84.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -2735,7 +2747,7 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .nameRegex(&#34;tf&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstResourceGroupId&#34;, example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()));
@@ -3166,41 +3178,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
-     *             .resourceShareId(&#34;rs-V2NV******&#34;)
-     *             .ids(&#34;vsw-bp1mzouzpmvie********:VSwitch&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstResourceManagerSharedResourceId&#34;, data.alicloud_resource_manager_shared_resources().example().resources()[0].id());
-     *     }
-     * }
-     * ```
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      */
     public static Output<GetSharedResourcesResult> getSharedResources() {
@@ -3209,41 +3187,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
-     *             .resourceShareId(&#34;rs-V2NV******&#34;)
-     *             .ids(&#34;vsw-bp1mzouzpmvie********:VSwitch&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstResourceManagerSharedResourceId&#34;, data.alicloud_resource_manager_shared_resources().example().resources()[0].id());
-     *     }
-     * }
-     * ```
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      */
     public static CompletableFuture<GetSharedResourcesResult> getSharedResourcesPlain() {
@@ -3252,41 +3196,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
-     *             .resourceShareId(&#34;rs-V2NV******&#34;)
-     *             .ids(&#34;vsw-bp1mzouzpmvie********:VSwitch&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstResourceManagerSharedResourceId&#34;, data.alicloud_resource_manager_shared_resources().example().resources()[0].id());
-     *     }
-     * }
-     * ```
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      */
     public static Output<GetSharedResourcesResult> getSharedResources(GetSharedResourcesArgs args) {
@@ -3295,41 +3205,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
-     *             .resourceShareId(&#34;rs-V2NV******&#34;)
-     *             .ids(&#34;vsw-bp1mzouzpmvie********:VSwitch&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstResourceManagerSharedResourceId&#34;, data.alicloud_resource_manager_shared_resources().example().resources()[0].id());
-     *     }
-     * }
-     * ```
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      */
     public static CompletableFuture<GetSharedResourcesResult> getSharedResourcesPlain(GetSharedResourcesPlainArgs args) {
@@ -3338,41 +3214,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
-     *             .resourceShareId(&#34;rs-V2NV******&#34;)
-     *             .ids(&#34;vsw-bp1mzouzpmvie********:VSwitch&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstResourceManagerSharedResourceId&#34;, data.alicloud_resource_manager_shared_resources().example().resources()[0].id());
-     *     }
-     * }
-     * ```
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      */
     public static Output<GetSharedResourcesResult> getSharedResources(GetSharedResourcesArgs args, InvokeOptions options) {
@@ -3381,41 +3223,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
-     *             .resourceShareId(&#34;rs-V2NV******&#34;)
-     *             .ids(&#34;vsw-bp1mzouzpmvie********:VSwitch&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstResourceManagerSharedResourceId&#34;, data.alicloud_resource_manager_shared_resources().example().resources()[0].id());
-     *     }
-     * }
-     * ```
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      */
     public static CompletableFuture<GetSharedResourcesResult> getSharedResourcesPlain(GetSharedResourcesPlainArgs args, InvokeOptions options) {
@@ -3424,7 +3232,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Shared Targets of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -3436,6 +3244,11 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShare;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShareArgs;
+     * import com.pulumi.alicloud.resourcemanager.SharedTarget;
+     * import com.pulumi.alicloud.resourcemanager.SharedTargetArgs;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedTargetsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -3450,11 +3263,29 @@ public final class ResourcemanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
-     *             .ids(&#34;15681091********&#34;)
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultAccounts = ResourcemanagerFunctions.getAccounts();
+     * 
+     *         var defaultResourceShare = new ResourceShare(&#34;defaultResourceShare&#34;, ResourceShareArgs.builder()        
+     *             .resourceShareName(name)
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, example.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id()));
+     *         var defaultSharedTarget = new SharedTarget(&#34;defaultSharedTarget&#34;, SharedTargetArgs.builder()        
+     *             .resourceShareId(defaultResourceShare.id())
+     *             .targetId(defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.ids()[0]))
+     *             .build());
+     * 
+     *         final var ids = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
+     *             .ids(defaultSharedTarget.targetId())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(ids -&gt; ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
+     *         final var resourceShareId = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
+     *             .resourceShareId(defaultSharedTarget.resourceShareId())
+     *             .build());
+     * 
+     *         ctx.export(&#34;secondResourceManagerSharedTargetId&#34;, resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(resourceShareId -&gt; resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
      *     }
      * }
      * ```
@@ -3466,7 +3297,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Shared Targets of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -3478,6 +3309,11 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShare;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShareArgs;
+     * import com.pulumi.alicloud.resourcemanager.SharedTarget;
+     * import com.pulumi.alicloud.resourcemanager.SharedTargetArgs;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedTargetsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -3492,11 +3328,29 @@ public final class ResourcemanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
-     *             .ids(&#34;15681091********&#34;)
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultAccounts = ResourcemanagerFunctions.getAccounts();
+     * 
+     *         var defaultResourceShare = new ResourceShare(&#34;defaultResourceShare&#34;, ResourceShareArgs.builder()        
+     *             .resourceShareName(name)
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, example.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id()));
+     *         var defaultSharedTarget = new SharedTarget(&#34;defaultSharedTarget&#34;, SharedTargetArgs.builder()        
+     *             .resourceShareId(defaultResourceShare.id())
+     *             .targetId(defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.ids()[0]))
+     *             .build());
+     * 
+     *         final var ids = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
+     *             .ids(defaultSharedTarget.targetId())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(ids -&gt; ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
+     *         final var resourceShareId = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
+     *             .resourceShareId(defaultSharedTarget.resourceShareId())
+     *             .build());
+     * 
+     *         ctx.export(&#34;secondResourceManagerSharedTargetId&#34;, resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(resourceShareId -&gt; resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
      *     }
      * }
      * ```
@@ -3508,7 +3362,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Shared Targets of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -3520,6 +3374,11 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShare;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShareArgs;
+     * import com.pulumi.alicloud.resourcemanager.SharedTarget;
+     * import com.pulumi.alicloud.resourcemanager.SharedTargetArgs;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedTargetsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -3534,11 +3393,29 @@ public final class ResourcemanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
-     *             .ids(&#34;15681091********&#34;)
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultAccounts = ResourcemanagerFunctions.getAccounts();
+     * 
+     *         var defaultResourceShare = new ResourceShare(&#34;defaultResourceShare&#34;, ResourceShareArgs.builder()        
+     *             .resourceShareName(name)
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, example.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id()));
+     *         var defaultSharedTarget = new SharedTarget(&#34;defaultSharedTarget&#34;, SharedTargetArgs.builder()        
+     *             .resourceShareId(defaultResourceShare.id())
+     *             .targetId(defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.ids()[0]))
+     *             .build());
+     * 
+     *         final var ids = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
+     *             .ids(defaultSharedTarget.targetId())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(ids -&gt; ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
+     *         final var resourceShareId = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
+     *             .resourceShareId(defaultSharedTarget.resourceShareId())
+     *             .build());
+     * 
+     *         ctx.export(&#34;secondResourceManagerSharedTargetId&#34;, resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(resourceShareId -&gt; resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
      *     }
      * }
      * ```
@@ -3550,7 +3427,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Shared Targets of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -3562,6 +3439,11 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShare;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShareArgs;
+     * import com.pulumi.alicloud.resourcemanager.SharedTarget;
+     * import com.pulumi.alicloud.resourcemanager.SharedTargetArgs;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedTargetsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -3576,11 +3458,29 @@ public final class ResourcemanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
-     *             .ids(&#34;15681091********&#34;)
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultAccounts = ResourcemanagerFunctions.getAccounts();
+     * 
+     *         var defaultResourceShare = new ResourceShare(&#34;defaultResourceShare&#34;, ResourceShareArgs.builder()        
+     *             .resourceShareName(name)
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, example.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id()));
+     *         var defaultSharedTarget = new SharedTarget(&#34;defaultSharedTarget&#34;, SharedTargetArgs.builder()        
+     *             .resourceShareId(defaultResourceShare.id())
+     *             .targetId(defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.ids()[0]))
+     *             .build());
+     * 
+     *         final var ids = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
+     *             .ids(defaultSharedTarget.targetId())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(ids -&gt; ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
+     *         final var resourceShareId = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
+     *             .resourceShareId(defaultSharedTarget.resourceShareId())
+     *             .build());
+     * 
+     *         ctx.export(&#34;secondResourceManagerSharedTargetId&#34;, resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(resourceShareId -&gt; resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
      *     }
      * }
      * ```
@@ -3592,7 +3492,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Shared Targets of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -3604,6 +3504,11 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShare;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShareArgs;
+     * import com.pulumi.alicloud.resourcemanager.SharedTarget;
+     * import com.pulumi.alicloud.resourcemanager.SharedTargetArgs;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedTargetsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -3618,11 +3523,29 @@ public final class ResourcemanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
-     *             .ids(&#34;15681091********&#34;)
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultAccounts = ResourcemanagerFunctions.getAccounts();
+     * 
+     *         var defaultResourceShare = new ResourceShare(&#34;defaultResourceShare&#34;, ResourceShareArgs.builder()        
+     *             .resourceShareName(name)
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, example.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id()));
+     *         var defaultSharedTarget = new SharedTarget(&#34;defaultSharedTarget&#34;, SharedTargetArgs.builder()        
+     *             .resourceShareId(defaultResourceShare.id())
+     *             .targetId(defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.ids()[0]))
+     *             .build());
+     * 
+     *         final var ids = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
+     *             .ids(defaultSharedTarget.targetId())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(ids -&gt; ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
+     *         final var resourceShareId = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
+     *             .resourceShareId(defaultSharedTarget.resourceShareId())
+     *             .build());
+     * 
+     *         ctx.export(&#34;secondResourceManagerSharedTargetId&#34;, resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(resourceShareId -&gt; resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
      *     }
      * }
      * ```
@@ -3634,7 +3557,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Shared Targets of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -3646,6 +3569,11 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShare;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShareArgs;
+     * import com.pulumi.alicloud.resourcemanager.SharedTarget;
+     * import com.pulumi.alicloud.resourcemanager.SharedTargetArgs;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedTargetsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -3660,11 +3588,29 @@ public final class ResourcemanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
-     *             .ids(&#34;15681091********&#34;)
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultAccounts = ResourcemanagerFunctions.getAccounts();
+     * 
+     *         var defaultResourceShare = new ResourceShare(&#34;defaultResourceShare&#34;, ResourceShareArgs.builder()        
+     *             .resourceShareName(name)
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, example.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id()));
+     *         var defaultSharedTarget = new SharedTarget(&#34;defaultSharedTarget&#34;, SharedTargetArgs.builder()        
+     *             .resourceShareId(defaultResourceShare.id())
+     *             .targetId(defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.ids()[0]))
+     *             .build());
+     * 
+     *         final var ids = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
+     *             .ids(defaultSharedTarget.targetId())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(ids -&gt; ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
+     *         final var resourceShareId = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
+     *             .resourceShareId(defaultSharedTarget.resourceShareId())
+     *             .build());
+     * 
+     *         ctx.export(&#34;secondResourceManagerSharedTargetId&#34;, resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(resourceShareId -&gt; resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
      *     }
      * }
      * ```

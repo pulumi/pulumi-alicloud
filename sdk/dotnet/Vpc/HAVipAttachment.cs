@@ -23,7 +23,7 @@ namespace Pulumi.AliCloud.Vpc
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
@@ -96,41 +96,52 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// The havip attachment can be imported using the id, e.g.
+    /// VPC Ha Vip Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpc/hAVipAttachment:HAVipAttachment foo havip-abc123456:i-abc123456
+    ///  $ pulumi import alicloud:vpc/hAVipAttachment:HAVipAttachment example &lt;ha_vip_id&gt;:&lt;instance_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/hAVipAttachment:HAVipAttachment")]
     public partial class HAVipAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+        /// Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
+        /// - **True**: Force unbinding.
+        /// - **False** (default): unbinding is not forced.
+        /// &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
         /// </summary>
         [Output("force")]
-        public Output<string?> Force { get; private set; } = null!;
+        public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// The havip_id of the havip attachment, the field can't be changed.
+        /// The ID of the HaVip instance.
+        /// </summary>
+        [Output("haVipId")]
+        public Output<string> HaVipId { get; private set; } = null!;
+
+        /// <summary>
+        /// . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
         /// </summary>
         [Output("havipId")]
         public Output<string> HavipId { get; private set; } = null!;
 
         /// <summary>
-        /// The instance_id of the havip attachment, the field can't be changed.
+        /// The ID of the ECS instance bound to the HaVip instance.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
+        /// The type of the instance associated with the VIIP.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in v1.201.0+) The status of the HaVip instance.
+        /// The status of the resource.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -182,25 +193,36 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class HAVipAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+        /// Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
+        /// - **True**: Force unbinding.
+        /// - **False** (default): unbinding is not forced.
+        /// &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
         /// </summary>
         [Input("force")]
-        public Input<string>? Force { get; set; }
+        public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// The havip_id of the havip attachment, the field can't be changed.
+        /// The ID of the HaVip instance.
         /// </summary>
-        [Input("havipId", required: true)]
-        public Input<string> HavipId { get; set; } = null!;
+        [Input("haVipId")]
+        public Input<string>? HaVipId { get; set; }
 
         /// <summary>
-        /// The instance_id of the havip attachment, the field can't be changed.
+        /// . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+        /// </summary>
+        [Input("havipId")]
+        public Input<string>? HavipId { get; set; }
+
+        /// <summary>
+        /// The ID of the ECS instance bound to the HaVip instance.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
+        /// The type of the instance associated with the VIIP.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -214,31 +236,42 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class HAVipAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+        /// Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
+        /// - **True**: Force unbinding.
+        /// - **False** (default): unbinding is not forced.
+        /// &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
         /// </summary>
         [Input("force")]
-        public Input<string>? Force { get; set; }
+        public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// The havip_id of the havip attachment, the field can't be changed.
+        /// The ID of the HaVip instance.
+        /// </summary>
+        [Input("haVipId")]
+        public Input<string>? HaVipId { get; set; }
+
+        /// <summary>
+        /// . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
         /// </summary>
         [Input("havipId")]
         public Input<string>? HavipId { get; set; }
 
         /// <summary>
-        /// The instance_id of the havip attachment, the field can't be changed.
+        /// The ID of the ECS instance bound to the HaVip instance.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
+        /// The type of the instance associated with the VIIP.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// (Available in v1.201.0+) The status of the HaVip instance.
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

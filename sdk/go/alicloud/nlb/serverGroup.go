@@ -17,7 +17,7 @@ import (
 //
 // For information about NLB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createservergroup-nlb).
 //
-// > **NOTE:** Available in v1.186.0+.
+// > **NOTE:** Available since v1.186.0.
 //
 // ## Example Usage
 //
@@ -32,28 +32,38 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
-//			}, nil)
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = nlb.NewServerGroup(ctx, "defaultServerGroup", &nlb.ServerGroupArgs{
-//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Ids[0]),
-//				ServerGroupName: pulumi.Any(_var.Name),
-//				ServerGroupType: pulumi.String("Instance"),
-//				VpcId:           *pulumi.String(defaultNetworks.Ids[0]),
-//				Scheduler:       pulumi.String("Wrr"),
-//				Protocol:        pulumi.String("TCP"),
+//				ResourceGroupId:        *pulumi.String(defaultResourceGroups.Ids[0]),
+//				ServerGroupName:        pulumi.String(name),
+//				ServerGroupType:        pulumi.String("Instance"),
+//				VpcId:                  defaultNetwork.ID(),
+//				Scheduler:              pulumi.String("Wrr"),
+//				Protocol:               pulumi.String("TCP"),
+//				ConnectionDrain:        pulumi.Bool(true),
+//				ConnectionDrainTimeout: pulumi.Int(60),
+//				AddressIpVersion:       pulumi.String("Ipv4"),
 //				HealthCheck: &nlb.ServerGroupHealthCheckArgs{
 //					HealthCheckEnabled:        pulumi.Bool(true),
 //					HealthCheckType:           pulumi.String("TCP"),
@@ -69,12 +79,10 @@ import (
 //						pulumi.String("http_4xx"),
 //					},
 //				},
-//				ConnectionDrain:        pulumi.Bool(true),
-//				ConnectionDrainTimeout: pulumi.Int(60),
 //				Tags: pulumi.AnyMap{
 //					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
 //				},
-//				AddressIpVersion: pulumi.String("Ipv4"),
 //			})
 //			if err != nil {
 //				return err
@@ -103,7 +111,7 @@ type ServerGroup struct {
 	ConnectionDrain pulumi.BoolOutput `pulumi:"connectionDrain"`
 	// The timeout period of connection draining. Unit: seconds. Valid values: 10 to 900.
 	ConnectionDrainTimeout pulumi.IntOutput `pulumi:"connectionDrainTimeout"`
-	// HealthCheck. See the following `Block healthCheck`.
+	// HealthCheck. See `healthCheck` below.
 	HealthCheck ServerGroupHealthCheckOutput `pulumi:"healthCheck"`
 	// Indicates whether client address retention is enabled.
 	PreserveClientIpEnabled pulumi.BoolOutput `pulumi:"preserveClientIpEnabled"`
@@ -170,7 +178,7 @@ type serverGroupState struct {
 	ConnectionDrain *bool `pulumi:"connectionDrain"`
 	// The timeout period of connection draining. Unit: seconds. Valid values: 10 to 900.
 	ConnectionDrainTimeout *int `pulumi:"connectionDrainTimeout"`
-	// HealthCheck. See the following `Block healthCheck`.
+	// HealthCheck. See `healthCheck` below.
 	HealthCheck *ServerGroupHealthCheck `pulumi:"healthCheck"`
 	// Indicates whether client address retention is enabled.
 	PreserveClientIpEnabled *bool `pulumi:"preserveClientIpEnabled"`
@@ -199,7 +207,7 @@ type ServerGroupState struct {
 	ConnectionDrain pulumi.BoolPtrInput
 	// The timeout period of connection draining. Unit: seconds. Valid values: 10 to 900.
 	ConnectionDrainTimeout pulumi.IntPtrInput
-	// HealthCheck. See the following `Block healthCheck`.
+	// HealthCheck. See `healthCheck` below.
 	HealthCheck ServerGroupHealthCheckPtrInput
 	// Indicates whether client address retention is enabled.
 	PreserveClientIpEnabled pulumi.BoolPtrInput
@@ -232,7 +240,7 @@ type serverGroupArgs struct {
 	ConnectionDrain *bool `pulumi:"connectionDrain"`
 	// The timeout period of connection draining. Unit: seconds. Valid values: 10 to 900.
 	ConnectionDrainTimeout *int `pulumi:"connectionDrainTimeout"`
-	// HealthCheck. See the following `Block healthCheck`.
+	// HealthCheck. See `healthCheck` below.
 	HealthCheck ServerGroupHealthCheck `pulumi:"healthCheck"`
 	// Indicates whether client address retention is enabled.
 	PreserveClientIpEnabled *bool `pulumi:"preserveClientIpEnabled"`
@@ -260,7 +268,7 @@ type ServerGroupArgs struct {
 	ConnectionDrain pulumi.BoolPtrInput
 	// The timeout period of connection draining. Unit: seconds. Valid values: 10 to 900.
 	ConnectionDrainTimeout pulumi.IntPtrInput
-	// HealthCheck. See the following `Block healthCheck`.
+	// HealthCheck. See `healthCheck` below.
 	HealthCheck ServerGroupHealthCheckInput
 	// Indicates whether client address retention is enabled.
 	PreserveClientIpEnabled pulumi.BoolPtrInput
@@ -406,7 +414,7 @@ func (o ServerGroupOutput) ConnectionDrainTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.IntOutput { return v.ConnectionDrainTimeout }).(pulumi.IntOutput)
 }
 
-// HealthCheck. See the following `Block healthCheck`.
+// HealthCheck. See `healthCheck` below.
 func (o ServerGroupOutput) HealthCheck() ServerGroupHealthCheckOutput {
 	return o.ApplyT(func(v *ServerGroup) ServerGroupHealthCheckOutput { return v.HealthCheck }).(ServerGroupHealthCheckOutput)
 }

@@ -101,9 +101,9 @@ class EventBus(pulumi.CustomResource):
         """
         Provides a Event Bridge Event Bus resource.
 
-        For information about Event Bridge Event Bus and how to use it, see [What is Event Bus](https://help.aliyun.com/document_detail/167863.html).
+        For information about Event Bridge Event Bus and how to use it, see [What is Event Bus](https://www.alibabacloud.com/help/en/eventbridge/latest/api-eventbridge-2020-04-01-createeventbus).
 
-        > **NOTE:** Available in v1.129.0+.
+        > **NOTE:** Available since v1.129.0.
 
         ## Example Usage
 
@@ -113,7 +113,11 @@ class EventBus(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.eventbridge.EventBus("example", event_bus_name="my-EventBus")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example = alicloud.eventbridge.EventBus("example", event_bus_name=name)
         ```
 
         ## Import
@@ -138,9 +142,9 @@ class EventBus(pulumi.CustomResource):
         """
         Provides a Event Bridge Event Bus resource.
 
-        For information about Event Bridge Event Bus and how to use it, see [What is Event Bus](https://help.aliyun.com/document_detail/167863.html).
+        For information about Event Bridge Event Bus and how to use it, see [What is Event Bus](https://www.alibabacloud.com/help/en/eventbridge/latest/api-eventbridge-2020-04-01-createeventbus).
 
-        > **NOTE:** Available in v1.129.0+.
+        > **NOTE:** Available since v1.129.0.
 
         ## Example Usage
 
@@ -150,7 +154,11 @@ class EventBus(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.eventbridge.EventBus("example", event_bus_name="my-EventBus")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example = alicloud.eventbridge.EventBus("example", event_bus_name=name)
         ```
 
         ## Import

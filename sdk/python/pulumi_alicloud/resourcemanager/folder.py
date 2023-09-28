@@ -102,7 +102,7 @@ class Folder(pulumi.CustomResource):
         Provides a Resource Manager Folder resource. A folder is an organizational unit in a resource directory. You can use folders to build an organizational structure for resources.
         For information about Resource Manager Foler and how to use it, see [What is Resource Manager Folder](https://www.alibabacloud.com/help/en/doc-detail/111221.htm).
 
-        > **NOTE:** Available in v1.82.0+.
+        > **NOTE:** Available since v1.82.0.
 
         > **NOTE:** A maximum of five levels of folders can be created under the root folder.
 
@@ -114,7 +114,11 @@ class Folder(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.resourcemanager.Folder("example", folder_name="test")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example = alicloud.resourcemanager.Folder("example", folder_name=name)
         ```
 
         ## Import
@@ -140,7 +144,7 @@ class Folder(pulumi.CustomResource):
         Provides a Resource Manager Folder resource. A folder is an organizational unit in a resource directory. You can use folders to build an organizational structure for resources.
         For information about Resource Manager Foler and how to use it, see [What is Resource Manager Folder](https://www.alibabacloud.com/help/en/doc-detail/111221.htm).
 
-        > **NOTE:** Available in v1.82.0+.
+        > **NOTE:** Available since v1.82.0.
 
         > **NOTE:** A maximum of five levels of folders can be created under the root folder.
 
@@ -152,7 +156,11 @@ class Folder(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.resourcemanager.Folder("example", folder_name="test")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example = alicloud.resourcemanager.Folder("example", folder_name=name)
         ```
 
         ## Import

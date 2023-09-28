@@ -29,14 +29,14 @@ public final class InstanceAttachmentArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The name of attaching VPC to instance.
+     * The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
      * 
      */
     @Import(name="vpcName", required=true)
     private Output<String> vpcName;
 
     /**
-     * @return The name of attaching VPC to instance.
+     * @return The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
      * 
      */
     public Output<String> vpcName() {
@@ -106,7 +106,7 @@ public final class InstanceAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param vpcName The name of attaching VPC to instance.
+         * @param vpcName The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class InstanceAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param vpcName The name of attaching VPC to instance.
+         * @param vpcName The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
          * 
          * @return builder
          * 

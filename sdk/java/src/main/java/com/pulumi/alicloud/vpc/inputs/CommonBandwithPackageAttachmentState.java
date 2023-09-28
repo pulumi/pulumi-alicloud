@@ -76,6 +76,36 @@ public final class CommonBandwithPackageAttachmentState extends com.pulumi.resou
         return Optional.ofNullable(this.instanceId);
     }
 
+    /**
+     * IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+     * 
+     */
+    @Import(name="ipType")
+    private @Nullable Output<String> ipType;
+
+    /**
+     * @return IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+     * 
+     */
+    public Optional<Output<String>> ipType() {
+        return Optional.ofNullable(this.ipType);
+    }
+
+    /**
+     * The status of the Internet Shared Bandwidth instance.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return The status of the Internet Shared Bandwidth instance.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
     private CommonBandwithPackageAttachmentState() {}
 
     private CommonBandwithPackageAttachmentState(CommonBandwithPackageAttachmentState $) {
@@ -83,6 +113,8 @@ public final class CommonBandwithPackageAttachmentState extends com.pulumi.resou
         this.bandwidthPackageId = $.bandwidthPackageId;
         this.cancelCommonBandwidthPackageIpBandwidth = $.cancelCommonBandwidthPackageIpBandwidth;
         this.instanceId = $.instanceId;
+        this.ipType = $.ipType;
+        this.status = $.status;
     }
 
     public static Builder builder() {
@@ -185,6 +217,48 @@ public final class CommonBandwithPackageAttachmentState extends com.pulumi.resou
          */
         public Builder instanceId(String instanceId) {
             return instanceId(Output.of(instanceId));
+        }
+
+        /**
+         * @param ipType IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipType(@Nullable Output<String> ipType) {
+            $.ipType = ipType;
+            return this;
+        }
+
+        /**
+         * @param ipType IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipType(String ipType) {
+            return ipType(Output.of(ipType));
+        }
+
+        /**
+         * @param status The status of the Internet Shared Bandwidth instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status The status of the Internet Shared Bandwidth instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
         }
 
         public CommonBandwithPackageAttachmentState build() {

@@ -14,28 +14,7 @@ namespace Pulumi.AliCloud.DirectMail
     /// 
     /// For information about Direct Mail Receivers and how to use it, see [What is Direct Mail Receivers](https://www.alibabacloud.com/help/en/doc-detail/29414.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.125.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.DirectMail.Receivers("example", new()
-    ///     {
-    ///         ReceiversAlias = "tf-vme8@onaliyun.com",
-    ///         ReceiversName = "vme8",
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// &gt; **NOTE:** Available since v1.125.0.
     /// 
     /// ## Import
     /// 

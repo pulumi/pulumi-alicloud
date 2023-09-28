@@ -16,14 +16,14 @@ public final class GetSharedResourcesPlainArgs extends com.pulumi.resources.Invo
     public static final GetSharedResourcesPlainArgs Empty = new GetSharedResourcesPlainArgs();
 
     /**
-     * A list of shared resource ID.
+     * A list of shared resource IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
     /**
-     * @return A list of shared resource ID.
+     * @return A list of shared resource IDs.
      * 
      */
     public Optional<List<String>> ids() {
@@ -61,14 +61,14 @@ public final class GetSharedResourcesPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The status of shared resource.
+     * The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of shared resource.
+     * @return The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
      * 
      */
     public Optional<String> status() {
@@ -103,7 +103,7 @@ public final class GetSharedResourcesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param ids A list of shared resource ID.
+         * @param ids A list of shared resource IDs.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class GetSharedResourcesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param ids A list of shared resource ID.
+         * @param ids A list of shared resource IDs.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class GetSharedResourcesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param status The status of shared resource.
+         * @param status The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
          * 
          * @return builder
          * 

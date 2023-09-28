@@ -19,13 +19,13 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public Input<string> Content { get; set; } = null!;
 
         /// <summary>
-        /// The format of the fixed response.  Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+        /// The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
         /// <summary>
-        /// The redirect method. Valid values:301, 302, 303, 307, and 308.
+        /// The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
         /// </summary>
         [Input("httpCode")]
         public Input<string>? HttpCode { get; set; }

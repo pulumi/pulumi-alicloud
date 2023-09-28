@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  *     comments: "yoyoyo",
  *     displayName: "user_display_name",
  *     email: "hello.uuu@aaa.com",
- *     force: true,
  *     mobile: "86-18688888888",
  * });
  * ```

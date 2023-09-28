@@ -72,7 +72,7 @@ def get_service(enable: Optional[str] = None,
 
     For information about FC and how to use it, see [What is FC](https://www.alibabacloud.com/help/en/product/50980.htm).
 
-    > **NOTE:** Available in v1.112.0+
+    > **NOTE:** Available since v1.112.0+
 
     ## Example Usage
 
@@ -107,7 +107,7 @@ def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
 
     For information about FC and how to use it, see [What is FC](https://www.alibabacloud.com/help/en/product/50980.htm).
 
-    > **NOTE:** Available in v1.112.0+
+    > **NOTE:** Available since v1.112.0+
 
     ## Example Usage
 

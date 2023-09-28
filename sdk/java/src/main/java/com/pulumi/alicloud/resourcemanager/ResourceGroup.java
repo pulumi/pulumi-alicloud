@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * Provides a Resource Manager Resource Group resource. If you need to group cloud resources according to business departments, projects, and other dimensions, you can create resource groups.
  * For information about Resource Manager Resoource Group and how to use it, see [What is Resource Manager Resource Group](https://www.alibabacloud.com/help/en/doc-detail/94485.htm)
  * 
- * &gt; **NOTE:** Available in v1.82.0+.
+ * &gt; **NOTE:** Available since v1.82.0.
  * 
  * ## Example Usage
  * 
@@ -45,9 +45,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
  *         var example = new ResourceGroup(&#34;example&#34;, ResourceGroupArgs.builder()        
- *             .displayName(&#34;testrd&#34;)
- *             .resourceGroupName(&#34;testrd&#34;)
+ *             .resourceGroupName(name)
+ *             .displayName(name)
  *             .build());
  * 
  *     }
@@ -112,14 +114,14 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The status of the resource group in all regions.
+     * The status of the resource group in all regions. See `region_statuses` below.
      * 
      */
     @Export(name="regionStatuses", type=List.class, parameters={ResourceGroupRegionStatus.class})
     private Output<List<ResourceGroupRegionStatus>> regionStatuses;
 
     /**
-     * @return The status of the resource group in all regions.
+     * @return The status of the resource group in all regions. See `region_statuses` below.
      * 
      */
     public Output<List<ResourceGroupRegionStatus>> regionStatuses() {

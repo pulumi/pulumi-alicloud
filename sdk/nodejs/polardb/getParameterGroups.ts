@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the PolarDB Parameter Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.183.0+.
+ * > **NOTE:** Available since v1.183.0+.
  *
  * ## Example Usage
  *
@@ -19,13 +19,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ids = alicloud.polardb.getParameterGroups({
- *     ids: ["example_id"],
+ * const default = alicloud.polardb.getParameterGroups({
+ *     dbType: "MySQL",
+ *     dbVersion: "8.0",
  * });
+ * const ids = _default.then(_default => alicloud.polardb.getParameterGroups({
+ *     ids: [_default.groups?.[0]?.id],
+ * }));
  * export const polardbParameterGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
- * const nameRegex = alicloud.polardb.getParameterGroups({
- *     nameRegex: "example_name",
- * });
+ * const nameRegex = _default.then(_default => alicloud.polardb.getParameterGroups({
+ *     nameRegex: _default.groups?.[0]?.parameterGroupName,
+ * }));
  * export const polardbParameterGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
  */
@@ -47,11 +51,11 @@ export function getParameterGroups(args?: GetParameterGroupsArgs, opts?: pulumi.
  */
 export interface GetParameterGroupsArgs {
     /**
-     * The type of the database engine.
+     * The type of the database engine. Only `MySQL` is supported.
      */
     dbType?: string;
     /**
-     * The version number of the database engine.
+     * The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
      */
     dbVersion?: string;
     /**
@@ -72,8 +76,17 @@ export interface GetParameterGroupsArgs {
  * A collection of values returned by getParameterGroups.
  */
 export interface GetParameterGroupsResult {
+    /**
+     * The type of the database engine.
+     */
     readonly dbType?: string;
+    /**
+     * The version number of the database engine.
+     */
     readonly dbVersion?: string;
+    /**
+     * A list of PolarDB Parameter Groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.polardb.GetParameterGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -81,13 +94,16 @@ export interface GetParameterGroupsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Parameter Group names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
 }
 /**
  * This data source provides the PolarDB Parameter Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.183.0+.
+ * > **NOTE:** Available since v1.183.0+.
  *
  * ## Example Usage
  *
@@ -97,13 +113,17 @@ export interface GetParameterGroupsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ids = alicloud.polardb.getParameterGroups({
- *     ids: ["example_id"],
+ * const default = alicloud.polardb.getParameterGroups({
+ *     dbType: "MySQL",
+ *     dbVersion: "8.0",
  * });
+ * const ids = _default.then(_default => alicloud.polardb.getParameterGroups({
+ *     ids: [_default.groups?.[0]?.id],
+ * }));
  * export const polardbParameterGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
- * const nameRegex = alicloud.polardb.getParameterGroups({
- *     nameRegex: "example_name",
- * });
+ * const nameRegex = _default.then(_default => alicloud.polardb.getParameterGroups({
+ *     nameRegex: _default.groups?.[0]?.parameterGroupName,
+ * }));
  * export const polardbParameterGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
  */
@@ -116,11 +136,11 @@ export function getParameterGroupsOutput(args?: GetParameterGroupsOutputArgs, op
  */
 export interface GetParameterGroupsOutputArgs {
     /**
-     * The type of the database engine.
+     * The type of the database engine. Only `MySQL` is supported.
      */
     dbType?: pulumi.Input<string>;
     /**
-     * The version number of the database engine.
+     * The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
      */
     dbVersion?: pulumi.Input<string>;
     /**

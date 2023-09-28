@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Data Security Center Rule resource.
  *
- * For information about Data Security Center Rule and how to use it, see [What is Rule](https://help.aliyun.com/product/88674.html).
+ * For information about Data Security Center Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/data-security-center/latest/api-sddp-2019-01-03-createrule).
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *
@@ -19,12 +19,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example_name";
  * const _default = new alicloud.sddp.Rule("default", {
  *     category: 0,
  *     content: "content",
- *     productCode: "ODPS",
+ *     ruleName: name,
  *     riskLevelId: "4",
- *     ruleName: "rule_name",
+ *     productCode: "OSS",
  * });
  * ```
  *

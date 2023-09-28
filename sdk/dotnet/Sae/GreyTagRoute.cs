@@ -25,7 +25,6 @@ namespace Pulumi.AliCloud.Sae
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
-    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -34,12 +33,6 @@ namespace Pulumi.AliCloud.Sae
     ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
-    ///     });
-    /// 
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
-    ///     {
-    ///         Max = 99999,
-    ///         Min = 10000,
     ///     });
     /// 
     ///     var defaultZones = AliCloud.GetZones.Invoke(new()
@@ -68,12 +61,7 @@ namespace Pulumi.AliCloud.Sae
     /// 
     ///     var defaultNamespace = new AliCloud.Sae.Namespace("defaultNamespace", new()
     ///     {
-    ///         NamespaceId = Output.Tuple(defaultRegions, defaultRandomInteger.Result).Apply(values =&gt;
-    ///         {
-    ///             var defaultRegions = values.Item1;
-    ///             var result = values.Item2;
-    ///             return $"{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:example{result}";
-    ///         }),
+    ///         NamespaceId = $"{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:example",
     ///         NamespaceName = name,
     ///         NamespaceDescription = name,
     ///         EnableMicroRegistration = false,

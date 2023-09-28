@@ -14,7 +14,7 @@ import (
 
 // This data source provides the PolarDB node classes resource available info of Alibaba Cloud.
 //
-// > **NOTE:** Available in v1.81.0+
+// > **NOTE:** Available since v1.81.0+
 //
 // ## Example Usage
 //
@@ -57,6 +57,7 @@ func GetNodeClasses(ctx *pulumi.Context, args *GetNodeClassesArgs, opts ...pulum
 
 // A collection of arguments for invoking getNodeClasses.
 type GetNodeClassesArgs struct {
+	// The PolarDB node cluster series.
 	Category *string `pulumi:"category"`
 	// The PolarDB node class type by the user.
 	DbNodeClass *string `pulumi:"dbNodeClass"`
@@ -107,6 +108,7 @@ func GetNodeClassesOutput(ctx *pulumi.Context, args GetNodeClassesOutputArgs, op
 
 // A collection of arguments for invoking getNodeClasses.
 type GetNodeClassesOutputArgs struct {
+	// The PolarDB node cluster series.
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// The PolarDB node class type by the user.
 	DbNodeClass pulumi.StringPtrInput `pulumi:"dbNodeClass"`

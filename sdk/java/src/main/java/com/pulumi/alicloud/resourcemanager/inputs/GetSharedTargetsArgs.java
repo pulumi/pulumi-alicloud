@@ -47,14 +47,14 @@ public final class GetSharedTargetsArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The resource shared ID of resource manager.
+     * The resource share ID of resource manager.
      * 
      */
     @Import(name="resourceShareId")
     private @Nullable Output<String> resourceShareId;
 
     /**
-     * @return The resource shared ID of resource manager.
+     * @return The resource share ID of resource manager.
      * 
      */
     public Optional<Output<String>> resourceShareId() {
@@ -62,14 +62,14 @@ public final class GetSharedTargetsArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The status of shared target.
+     * The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of shared target.
+     * @return The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -156,7 +156,7 @@ public final class GetSharedTargetsArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param resourceShareId The resource shared ID of resource manager.
+         * @param resourceShareId The resource share ID of resource manager.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class GetSharedTargetsArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param resourceShareId The resource shared ID of resource manager.
+         * @param resourceShareId The resource share ID of resource manager.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class GetSharedTargetsArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param status The status of shared target.
+         * @param status The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class GetSharedTargetsArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param status The status of shared target.
+         * @param status The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
          * 
          * @return builder
          * 

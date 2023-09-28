@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** From Provider version 1.10.0, the provider field &#39;ots_instance_name&#39; has been deprecated and
  * you should use resource alicloud_ots_table&#39;s new field &#39;instance_name&#39; and &#39;table_name&#39; to re-import this resource.
  * 
+ * &gt; **NOTE:** Available since v1.9.2.
+ * 
  * ## Example Usage
  * 
  * ## Import
@@ -39,14 +41,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ots/table:Table")
 public class Table extends com.pulumi.resources.CustomResource {
     /**
-     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
      * 
      */
     @Export(name="definedColumns", type=List.class, parameters={TableDefinedColumn.class})
     private Output</* @Nullable */ List<TableDefinedColumn>> definedColumns;
 
     /**
-     * @return The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+     * @return The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
      * 
      */
     public Output<Optional<List<TableDefinedColumn>>> definedColumns() {
@@ -109,14 +111,14 @@ public class Table extends com.pulumi.resources.CustomResource {
         return this.maxVersion;
     }
     /**
-     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
+     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
      * 
      */
     @Export(name="primaryKeys", type=List.class, parameters={TablePrimaryKey.class})
     private Output<List<TablePrimaryKey>> primaryKeys;
 
     /**
-     * @return The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
+     * @return The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
      * 
      */
     public Output<List<TablePrimaryKey>> primaryKeys() {

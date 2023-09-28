@@ -169,7 +169,7 @@ class DeviceGroup(pulumi.CustomResource):
 
         For information about Iot Device Group and how to use it, see [What is Device Group](https://www.alibabacloud.com/help/product/30520.htm).
 
-        > **NOTE:** Available in v1.134.0+.
+        > **NOTE:** Available since v1.134.0.
 
         ## Example Usage
 
@@ -179,7 +179,11 @@ class DeviceGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.iot.DeviceGroup("example", group_name="example_value")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        example = alicloud.iot.DeviceGroup("example", group_name=name)
         ```
 
         ## Import
@@ -208,7 +212,7 @@ class DeviceGroup(pulumi.CustomResource):
 
         For information about Iot Device Group and how to use it, see [What is Device Group](https://www.alibabacloud.com/help/product/30520.htm).
 
-        > **NOTE:** Available in v1.134.0+.
+        > **NOTE:** Available since v1.134.0.
 
         ## Example Usage
 
@@ -218,7 +222,11 @@ class DeviceGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.iot.DeviceGroup("example", group_name="example_value")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        example = alicloud.iot.DeviceGroup("example", group_name=name)
         ```
 
         ## Import

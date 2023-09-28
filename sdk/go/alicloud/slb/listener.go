@@ -24,6 +24,8 @@ import (
 // * [Configure a TCP Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
 // * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
 //
+// > **NOTE:** Available since v1.0.0.
+//
 // ## Example Usage
 //
 // ```go
@@ -45,7 +47,7 @@ import (
 //				slbListenerName = param
 //			}
 //			listenerApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "listenerApplicationLoadBalancer", &slb.ApplicationLoadBalancerArgs{
-//				LoadBalancerName:   pulumi.String("tf-testAccSlbListenerHttp"),
+//				LoadBalancerName:   pulumi.String("tf-exampleSlbListenerHttp"),
 //				InternetChargeType: pulumi.String("PayByTraffic"),
 //				AddressType:        pulumi.String("internet"),
 //				InstanceChargeType: pulumi.String("PayByCLCU"),
@@ -68,7 +70,7 @@ import (
 //				StickySession:          pulumi.String("on"),
 //				StickySessionType:      pulumi.String("insert"),
 //				CookieTimeout:          pulumi.Int(86400),
-//				Cookie:                 pulumi.String("testslblistenercookie"),
+//				Cookie:                 pulumi.String("tfslblistenercookie"),
 //				HealthCheck:            pulumi.String("on"),
 //				HealthCheckDomain:      pulumi.String("ali.com"),
 //				HealthCheckUri:         pulumi.String("/cons"),
@@ -194,7 +196,7 @@ type Listener struct {
 	ForwardPort pulumi.IntPtrOutput `pulumi:"forwardPort"`
 	// Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
 	FrontendPort pulumi.IntOutput `pulumi:"frontendPort"`
-	// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+	// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
 	Gzip pulumi.BoolPtrOutput `pulumi:"gzip"`
 	// Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
 	HealthCheck pulumi.StringPtrOutput `pulumi:"healthCheck"`
@@ -218,11 +220,9 @@ type Listener struct {
 	HealthyThreshold pulumi.IntPtrOutput `pulumi:"healthyThreshold"`
 	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
 	IdleTimeout pulumi.IntPtrOutput `pulumi:"idleTimeout"`
-	// Deprecated: Field 'instance_port' has been deprecated, and using 'backend_port' to replace.
-	InstancePort pulumi.IntPtrOutput `pulumi:"instancePort"`
-	// Deprecated: Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.
+	// Deprecated: Field 'lb_port' has been removed since 1.211.0.
 	LbPort pulumi.IntPtrOutput `pulumi:"lbPort"`
-	// Deprecated: Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.
+	// Deprecated: Field 'lb_protocol' has been removed since 1.211.0.
 	LbProtocol pulumi.StringPtrOutput `pulumi:"lbProtocol"`
 	// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
 	ListenerForward pulumi.StringOutput `pulumi:"listenerForward"`
@@ -261,7 +261,7 @@ type Listener struct {
 	TlsCipherPolicy pulumi.StringPtrOutput `pulumi:"tlsCipherPolicy"`
 	// The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `healthCheck` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `healthCheck` parameter is set to `on`.
 	UnhealthyThreshold pulumi.IntPtrOutput `pulumi:"unhealthyThreshold"`
-	// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `xForwardedFor`.
+	// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `xForwardedFor` below.
 	XForwardedFor ListenerXForwardedForOutput `pulumi:"xForwardedFor"`
 }
 
@@ -332,7 +332,7 @@ type listenerState struct {
 	ForwardPort *int `pulumi:"forwardPort"`
 	// Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
 	FrontendPort *int `pulumi:"frontendPort"`
-	// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+	// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
 	Gzip *bool `pulumi:"gzip"`
 	// Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
 	HealthCheck *string `pulumi:"healthCheck"`
@@ -356,11 +356,9 @@ type listenerState struct {
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
 	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
 	IdleTimeout *int `pulumi:"idleTimeout"`
-	// Deprecated: Field 'instance_port' has been deprecated, and using 'backend_port' to replace.
-	InstancePort *int `pulumi:"instancePort"`
-	// Deprecated: Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.
+	// Deprecated: Field 'lb_port' has been removed since 1.211.0.
 	LbPort *int `pulumi:"lbPort"`
-	// Deprecated: Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.
+	// Deprecated: Field 'lb_protocol' has been removed since 1.211.0.
 	LbProtocol *string `pulumi:"lbProtocol"`
 	// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
 	ListenerForward *string `pulumi:"listenerForward"`
@@ -399,7 +397,7 @@ type listenerState struct {
 	TlsCipherPolicy *string `pulumi:"tlsCipherPolicy"`
 	// The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `healthCheck` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `healthCheck` parameter is set to `on`.
 	UnhealthyThreshold *int `pulumi:"unhealthyThreshold"`
-	// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `xForwardedFor`.
+	// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `xForwardedFor` below.
 	XForwardedFor *ListenerXForwardedFor `pulumi:"xForwardedFor"`
 }
 
@@ -432,7 +430,7 @@ type ListenerState struct {
 	ForwardPort pulumi.IntPtrInput
 	// Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
 	FrontendPort pulumi.IntPtrInput
-	// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+	// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
 	Gzip pulumi.BoolPtrInput
 	// Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
 	HealthCheck pulumi.StringPtrInput
@@ -456,11 +454,9 @@ type ListenerState struct {
 	HealthyThreshold pulumi.IntPtrInput
 	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
 	IdleTimeout pulumi.IntPtrInput
-	// Deprecated: Field 'instance_port' has been deprecated, and using 'backend_port' to replace.
-	InstancePort pulumi.IntPtrInput
-	// Deprecated: Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.
+	// Deprecated: Field 'lb_port' has been removed since 1.211.0.
 	LbPort pulumi.IntPtrInput
-	// Deprecated: Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.
+	// Deprecated: Field 'lb_protocol' has been removed since 1.211.0.
 	LbProtocol pulumi.StringPtrInput
 	// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
 	ListenerForward pulumi.StringPtrInput
@@ -499,7 +495,7 @@ type ListenerState struct {
 	TlsCipherPolicy pulumi.StringPtrInput
 	// The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `healthCheck` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `healthCheck` parameter is set to `on`.
 	UnhealthyThreshold pulumi.IntPtrInput
-	// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `xForwardedFor`.
+	// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `xForwardedFor` below.
 	XForwardedFor ListenerXForwardedForPtrInput
 }
 
@@ -536,7 +532,7 @@ type listenerArgs struct {
 	ForwardPort *int `pulumi:"forwardPort"`
 	// Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
 	FrontendPort int `pulumi:"frontendPort"`
-	// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+	// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
 	Gzip *bool `pulumi:"gzip"`
 	// Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
 	HealthCheck *string `pulumi:"healthCheck"`
@@ -560,11 +556,9 @@ type listenerArgs struct {
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
 	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
 	IdleTimeout *int `pulumi:"idleTimeout"`
-	// Deprecated: Field 'instance_port' has been deprecated, and using 'backend_port' to replace.
-	InstancePort *int `pulumi:"instancePort"`
-	// Deprecated: Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.
+	// Deprecated: Field 'lb_port' has been removed since 1.211.0.
 	LbPort *int `pulumi:"lbPort"`
-	// Deprecated: Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.
+	// Deprecated: Field 'lb_protocol' has been removed since 1.211.0.
 	LbProtocol *string `pulumi:"lbProtocol"`
 	// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
 	ListenerForward *string `pulumi:"listenerForward"`
@@ -603,7 +597,7 @@ type listenerArgs struct {
 	TlsCipherPolicy *string `pulumi:"tlsCipherPolicy"`
 	// The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `healthCheck` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `healthCheck` parameter is set to `on`.
 	UnhealthyThreshold *int `pulumi:"unhealthyThreshold"`
-	// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `xForwardedFor`.
+	// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `xForwardedFor` below.
 	XForwardedFor *ListenerXForwardedFor `pulumi:"xForwardedFor"`
 }
 
@@ -637,7 +631,7 @@ type ListenerArgs struct {
 	ForwardPort pulumi.IntPtrInput
 	// Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
 	FrontendPort pulumi.IntInput
-	// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+	// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
 	Gzip pulumi.BoolPtrInput
 	// Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
 	HealthCheck pulumi.StringPtrInput
@@ -661,11 +655,9 @@ type ListenerArgs struct {
 	HealthyThreshold pulumi.IntPtrInput
 	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
 	IdleTimeout pulumi.IntPtrInput
-	// Deprecated: Field 'instance_port' has been deprecated, and using 'backend_port' to replace.
-	InstancePort pulumi.IntPtrInput
-	// Deprecated: Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.
+	// Deprecated: Field 'lb_port' has been removed since 1.211.0.
 	LbPort pulumi.IntPtrInput
-	// Deprecated: Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.
+	// Deprecated: Field 'lb_protocol' has been removed since 1.211.0.
 	LbProtocol pulumi.StringPtrInput
 	// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
 	ListenerForward pulumi.StringPtrInput
@@ -704,7 +696,7 @@ type ListenerArgs struct {
 	TlsCipherPolicy pulumi.StringPtrInput
 	// The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `healthCheck` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `healthCheck` parameter is set to `on`.
 	UnhealthyThreshold pulumi.IntPtrInput
-	// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `xForwardedFor`.
+	// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `xForwardedFor` below.
 	XForwardedFor ListenerXForwardedForPtrInput
 }
 
@@ -889,7 +881,7 @@ func (o ListenerOutput) FrontendPort() pulumi.IntOutput {
 	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.FrontendPort }).(pulumi.IntOutput)
 }
 
-// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
 func (o ListenerOutput) Gzip() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.BoolPtrOutput { return v.Gzip }).(pulumi.BoolPtrOutput)
 }
@@ -949,17 +941,12 @@ func (o ListenerOutput) IdleTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.IdleTimeout }).(pulumi.IntPtrOutput)
 }
 
-// Deprecated: Field 'instance_port' has been deprecated, and using 'backend_port' to replace.
-func (o ListenerOutput) InstancePort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.InstancePort }).(pulumi.IntPtrOutput)
-}
-
-// Deprecated: Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.
+// Deprecated: Field 'lb_port' has been removed since 1.211.0.
 func (o ListenerOutput) LbPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.LbPort }).(pulumi.IntPtrOutput)
 }
 
-// Deprecated: Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.
+// Deprecated: Field 'lb_protocol' has been removed since 1.211.0.
 func (o ListenerOutput) LbProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.LbProtocol }).(pulumi.StringPtrOutput)
 }
@@ -1046,7 +1033,7 @@ func (o ListenerOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.UnhealthyThreshold }).(pulumi.IntPtrOutput)
 }
 
-// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `xForwardedFor`.
+// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `xForwardedFor` below.
 func (o ListenerOutput) XForwardedFor() ListenerXForwardedForOutput {
 	return o.ApplyT(func(v *Listener) ListenerXForwardedForOutput { return v.XForwardedFor }).(ListenerXForwardedForOutput)
 }

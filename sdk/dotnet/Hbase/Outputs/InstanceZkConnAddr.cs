@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.Hbase.Outputs
     [OutputType]
     public sealed class InstanceZkConnAddr
     {
+        /// <summary>
+        /// The Phoenix address.
+        /// </summary>
         public readonly string? ConnAddr;
+        /// <summary>
+        /// The number of the port over which Phoenix connects to the instance.
+        /// </summary>
         public readonly string? ConnAddrPort;
+        /// <summary>
+        /// The type of the network. Valid values:
+        /// </summary>
         public readonly string? NetType;
 
         [OutputConstructor]

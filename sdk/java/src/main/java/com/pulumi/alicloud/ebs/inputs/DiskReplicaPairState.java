@@ -181,14 +181,14 @@ public final class DiskReplicaPairState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The first ID of the resource
+     * The first ID of the resource.
      * 
      */
     @Import(name="replicaPairId")
     private @Nullable Output<String> replicaPairId;
 
     /**
-     * @return The first ID of the resource
+     * @return The first ID of the resource.
      * 
      */
     public Optional<Output<String>> replicaPairId() {
@@ -526,7 +526,7 @@ public final class DiskReplicaPairState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param replicaPairId The first ID of the resource
+         * @param replicaPairId The first ID of the resource.
          * 
          * @return builder
          * 
@@ -537,7 +537,7 @@ public final class DiskReplicaPairState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param replicaPairId The first ID of the resource
+         * @param replicaPairId The first ID of the resource.
          * 
          * @return builder
          * 

@@ -133,9 +133,9 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
         """
         Provides a Private Link Vpc Endpoint Service User resource.
 
-        For information about Private Link Vpc Endpoint Service User and how to use it, see [What is Vpc Endpoint Service User](https://help.aliyun.com/document_detail/183545.html).
+        For information about Private Link Vpc Endpoint Service User and how to use it, see [What is Vpc Endpoint Service User](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-addusertovpcendpointservice).
 
-        > **NOTE:** Available in v1.110.0+.
+        > **NOTE:** Available since v1.110.0.
 
         ## Example Usage
 
@@ -145,9 +145,22 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.privatelink.VpcEndpointServiceUser("example",
-            service_id="epsrv-gw81c6xxxxxx",
-            user_id="YourRamUserId")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexampleuser"
+        example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService",
+            service_description=name,
+            connect_bandwidth=103,
+            auto_accept_connection=False)
+        example_user = alicloud.ram.User("exampleUser",
+            display_name="user_display_name",
+            mobile="86-18688888888",
+            email="hello.uuu@aaa.com",
+            comments="yoyoyo")
+        example_vpc_endpoint_service_user = alicloud.privatelink.VpcEndpointServiceUser("exampleVpcEndpointServiceUser",
+            service_id=example_vpc_endpoint_service.id,
+            user_id=example_user.id)
         ```
 
         ## Import
@@ -173,9 +186,9 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
         """
         Provides a Private Link Vpc Endpoint Service User resource.
 
-        For information about Private Link Vpc Endpoint Service User and how to use it, see [What is Vpc Endpoint Service User](https://help.aliyun.com/document_detail/183545.html).
+        For information about Private Link Vpc Endpoint Service User and how to use it, see [What is Vpc Endpoint Service User](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-addusertovpcendpointservice).
 
-        > **NOTE:** Available in v1.110.0+.
+        > **NOTE:** Available since v1.110.0.
 
         ## Example Usage
 
@@ -185,9 +198,22 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.privatelink.VpcEndpointServiceUser("example",
-            service_id="epsrv-gw81c6xxxxxx",
-            user_id="YourRamUserId")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexampleuser"
+        example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService",
+            service_description=name,
+            connect_bandwidth=103,
+            auto_accept_connection=False)
+        example_user = alicloud.ram.User("exampleUser",
+            display_name="user_display_name",
+            mobile="86-18688888888",
+            email="hello.uuu@aaa.com",
+            comments="yoyoyo")
+        example_vpc_endpoint_service_user = alicloud.privatelink.VpcEndpointServiceUser("exampleVpcEndpointServiceUser",
+            service_id=example_vpc_endpoint_service.id,
+            user_id=example_user.id)
         ```
 
         ## Import

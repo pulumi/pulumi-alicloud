@@ -15,9 +15,9 @@ import (
 
 // Provides a Threat Detection Honey Pot resource.
 //
-// For information about Threat Detection Honey Pot and how to use it, see [What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypot).
+// For information about Threat Detection Honey Pot and how to use it, see [What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot).
 //
-// > **NOTE:** Available in v1.195.0+.
+// > **NOTE:** Available since v1.195.0.
 //
 // ## Example Usage
 //
@@ -30,16 +30,38 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := threatdetection.NewHoneyPot(ctx, "default", &threatdetection.HoneyPotArgs{
-//				HoneypotImageId:   pulumi.String("sha256:007095d6de9c7a343e9fc1f74a7efc9c5de9d5454789d2fa505a1b3fc623730c"),
-//				HoneypotImageName: pulumi.String("ruoyi"),
-//				HoneypotName:      pulumi.String("huangtiong-test"),
-//				NodeId:            pulumi.String("a44e1ab3-6945-444c-889d-5bacee7056e8"),
+//			cfg := config.New(ctx, "")
+//			name := "tfexample"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultHoneypotImages, err := threatdetection.GetHoneypotImages(ctx, &threatdetection.GetHoneypotImagesArgs{
+//				NameRegex: pulumi.StringRef("^ruoyi"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultHoneypotNode, err := threatdetection.NewHoneypotNode(ctx, "defaultHoneypotNode", &threatdetection.HoneypotNodeArgs{
+//				NodeName:          pulumi.String(name),
+//				AvailableProbeNum: pulumi.Int(20),
+//				SecurityGroupProbeIpLists: pulumi.StringArray{
+//					pulumi.String("0.0.0.0/0"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = threatdetection.NewHoneyPot(ctx, "defaultHoneyPot", &threatdetection.HoneyPotArgs{
+//				HoneypotImageName: *pulumi.String(defaultHoneypotImages.Images[0].HoneypotImageName),
+//				HoneypotImageId:   *pulumi.String(defaultHoneypotImages.Images[0].HoneypotImageId),
+//				HoneypotName:      pulumi.String(name),
+//				NodeId:            defaultHoneypotNode.ID(),
 //			})
 //			if err != nil {
 //				return err

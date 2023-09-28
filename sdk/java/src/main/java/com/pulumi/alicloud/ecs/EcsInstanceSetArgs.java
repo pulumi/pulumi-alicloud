@@ -103,14 +103,14 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The list of data disks created with instance. See the following `Block data_disks`.
+     * The list of data disks created with instance. See `data_disks` below..
      * 
      */
     @Import(name="dataDisks")
     private @Nullable Output<List<EcsInstanceSetDataDiskArgs>> dataDisks;
 
     /**
-     * @return The list of data disks created with instance. See the following `Block data_disks`.
+     * @return The list of data disks created with instance. See `data_disks` below..
      * 
      */
     public Optional<Output<List<EcsInstanceSetDataDiskArgs>>> dataDisks() {
@@ -178,14 +178,14 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The instances that need to be excluded from the Instance Set. See the following `Block exclude_instance_filter`.
+     * The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
      * 
      */
     @Import(name="excludeInstanceFilter")
     private @Nullable Output<EcsInstanceSetExcludeInstanceFilterArgs> excludeInstanceFilter;
 
     /**
-     * @return The instances that need to be excluded from the Instance Set. See the following `Block exclude_instance_filter`.
+     * @return The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
      * 
      */
     public Optional<Output<EcsInstanceSetExcludeInstanceFilterArgs>> excludeInstanceFilter() {
@@ -373,14 +373,14 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * A list of NetworkInterface. See the following `Block network_interfaces`.
+     * A list of NetworkInterface. See `network_interfaces` below..
      * 
      */
     @Import(name="networkInterfaces")
     private @Nullable Output<List<EcsInstanceSetNetworkInterfaceArgs>> networkInterfaces;
 
     /**
-     * @return A list of NetworkInterface. See the following `Block network_interfaces`.
+     * @return A list of NetworkInterface. See `network_interfaces` below..
      * 
      */
     public Optional<Output<List<EcsInstanceSetNetworkInterfaceArgs>>> networkInterfaces() {
@@ -868,7 +868,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance. See the following `Block data_disks`.
+         * @param dataDisks The list of data disks created with instance. See `data_disks` below..
          * 
          * @return builder
          * 
@@ -879,7 +879,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance. See the following `Block data_disks`.
+         * @param dataDisks The list of data disks created with instance. See `data_disks` below..
          * 
          * @return builder
          * 
@@ -889,7 +889,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance. See the following `Block data_disks`.
+         * @param dataDisks The list of data disks created with instance. See `data_disks` below..
          * 
          * @return builder
          * 
@@ -983,7 +983,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param excludeInstanceFilter The instances that need to be excluded from the Instance Set. See the following `Block exclude_instance_filter`.
+         * @param excludeInstanceFilter The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
          * 
          * @return builder
          * 
@@ -994,7 +994,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param excludeInstanceFilter The instances that need to be excluded from the Instance Set. See the following `Block exclude_instance_filter`.
+         * @param excludeInstanceFilter The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
          * 
          * @return builder
          * 
@@ -1256,7 +1256,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param networkInterfaces A list of NetworkInterface. See the following `Block network_interfaces`.
+         * @param networkInterfaces A list of NetworkInterface. See `network_interfaces` below..
          * 
          * @return builder
          * 
@@ -1267,7 +1267,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param networkInterfaces A list of NetworkInterface. See the following `Block network_interfaces`.
+         * @param networkInterfaces A list of NetworkInterface. See `network_interfaces` below..
          * 
          * @return builder
          * 
@@ -1277,7 +1277,7 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param networkInterfaces A list of NetworkInterface. See the following `Block network_interfaces`.
+         * @param networkInterfaces A list of NetworkInterface. See `network_interfaces` below..
          * 
          * @return builder
          * 

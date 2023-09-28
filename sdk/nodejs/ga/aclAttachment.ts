@@ -53,18 +53,18 @@ import * as utilities from "../utilities";
  *     entryDescription: "terraform-example",
  * });
  * const defaultAclAttachment = new alicloud.ga.AclAttachment("defaultAclAttachment", {
- *     aclId: defaultAcl.id,
  *     listenerId: defaultListener.id,
+ *     aclId: defaultAcl.id,
  *     aclType: "white",
  * });
  * ```
  *
  * ## Import
  *
- * Global Accelerator (GA) Acl Attachment can be imported using the id. Format to `<listener_id>:<acl_id>`, e.g.
+ * Global Accelerator (GA) Acl Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ga/aclAttachment:AclAttachment example your_listener_id:your_acl_id
+ *  $ pulumi import alicloud:ga/aclAttachment:AclAttachment example <listener_id>:<acl_id>
  * ```
  */
 export class AclAttachment extends pulumi.CustomResource {
@@ -100,7 +100,7 @@ export class AclAttachment extends pulumi.CustomResource {
      */
     public readonly aclId!: pulumi.Output<string>;
     /**
-     * The type of the ACL. Valid values: `white`, `black`.
+     * The type of the ACL. Valid values:
      */
     public readonly aclType!: pulumi.Output<string>;
     /**
@@ -112,7 +112,7 @@ export class AclAttachment extends pulumi.CustomResource {
      */
     public readonly listenerId!: pulumi.Output<string>;
     /**
-     * The status of the resource.
+     * The status of the Acl Attachment.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -165,7 +165,7 @@ export interface AclAttachmentState {
      */
     aclId?: pulumi.Input<string>;
     /**
-     * The type of the ACL. Valid values: `white`, `black`.
+     * The type of the ACL. Valid values:
      */
     aclType?: pulumi.Input<string>;
     /**
@@ -177,7 +177,7 @@ export interface AclAttachmentState {
      */
     listenerId?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the Acl Attachment.
      */
     status?: pulumi.Input<string>;
 }
@@ -191,7 +191,7 @@ export interface AclAttachmentArgs {
      */
     aclId: pulumi.Input<string>;
     /**
-     * The type of the ACL. Valid values: `white`, `black`.
+     * The type of the ACL. Valid values:
      */
     aclType: pulumi.Input<string>;
     /**

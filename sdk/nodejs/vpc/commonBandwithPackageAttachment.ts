@@ -13,27 +13,30 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const fooCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("fooCommonBandwithPackage", {
- *     bandwidth: "2",
- *     bandwidthPackageName: "test_common_bandwidth_package",
- *     description: "test_common_bandwidth_package",
- * });
- * const fooEipAddress = new alicloud.ecs.EipAddress("fooEipAddress", {
- *     bandwidth: "2",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("defaultCommonBandwithPackage", {
+ *     bandwidth: "3",
  *     internetChargeType: "PayByBandwidth",
  * });
- * const fooCommonBandwithPackageAttachment = new alicloud.vpc.CommonBandwithPackageAttachment("fooCommonBandwithPackageAttachment", {
- *     bandwidthPackageId: fooCommonBandwithPackage.id,
- *     instanceId: fooEipAddress.id,
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {
+ *     bandwidth: "3",
+ *     internetChargeType: "PayByTraffic",
+ * });
+ * const defaultCommonBandwithPackageAttachment = new alicloud.vpc.CommonBandwithPackageAttachment("defaultCommonBandwithPackageAttachment", {
+ *     bandwidthPackageId: defaultCommonBandwithPackage.id,
+ *     instanceId: defaultEipAddress.id,
+ *     bandwidthPackageBandwidth: "2",
+ *     ipType: "EIP",
  * });
  * ```
  *
  * ## Import
  *
- * The common bandwidth package attachment can be imported using the id, e.g.
+ * cbwp Common Bandwidth Package Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment foo <bandwidth_package_id>:<instance_id>
+ *  $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment example <bandwidth_package_id>:<instance_id>
  * ```
  */
 export class CommonBandwithPackageAttachment extends pulumi.CustomResource {
@@ -80,6 +83,14 @@ export class CommonBandwithPackageAttachment extends pulumi.CustomResource {
      * The instanceId of the common bandwidth package attachment, the field can't be changed.
      */
     public readonly instanceId!: pulumi.Output<string>;
+    /**
+     * IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+     */
+    public readonly ipType!: pulumi.Output<string | undefined>;
+    /**
+     * The status of the Internet Shared Bandwidth instance.
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
 
     /**
      * Create a CommonBandwithPackageAttachment resource with the given unique name, arguments, and options.
@@ -98,6 +109,8 @@ export class CommonBandwithPackageAttachment extends pulumi.CustomResource {
             resourceInputs["bandwidthPackageId"] = state ? state.bandwidthPackageId : undefined;
             resourceInputs["cancelCommonBandwidthPackageIpBandwidth"] = state ? state.cancelCommonBandwidthPackageIpBandwidth : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["ipType"] = state ? state.ipType : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as CommonBandwithPackageAttachmentArgs | undefined;
             if ((!args || args.bandwidthPackageId === undefined) && !opts.urn) {
@@ -110,6 +123,8 @@ export class CommonBandwithPackageAttachment extends pulumi.CustomResource {
             resourceInputs["bandwidthPackageId"] = args ? args.bandwidthPackageId : undefined;
             resourceInputs["cancelCommonBandwidthPackageIpBandwidth"] = args ? args.cancelCommonBandwidthPackageIpBandwidth : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["ipType"] = args ? args.ipType : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CommonBandwithPackageAttachment.__pulumiType, name, resourceInputs, opts);
@@ -136,6 +151,14 @@ export interface CommonBandwithPackageAttachmentState {
      * The instanceId of the common bandwidth package attachment, the field can't be changed.
      */
     instanceId?: pulumi.Input<string>;
+    /**
+     * IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+     */
+    ipType?: pulumi.Input<string>;
+    /**
+     * The status of the Internet Shared Bandwidth instance.
+     */
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -158,4 +181,8 @@ export interface CommonBandwithPackageAttachmentArgs {
      * The instanceId of the common bandwidth package attachment, the field can't be changed.
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+     */
+    ipType?: pulumi.Input<string>;
 }

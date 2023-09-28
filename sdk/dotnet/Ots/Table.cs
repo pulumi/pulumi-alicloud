@@ -15,6 +15,8 @@ namespace Pulumi.AliCloud.Ots
     /// &gt; **NOTE:** From Provider version 1.10.0, the provider field 'ots_instance_name' has been deprecated and
     /// you should use resource alicloud_ots_table's new field 'instance_name' and 'table_name' to re-import this resource.
     /// 
+    /// &gt; **NOTE:** Available since v1.9.2.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -26,22 +28,26 @@ namespace Pulumi.AliCloud.Ots
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraformtest";
-    ///     var foo = new AliCloud.Ots.Instance("foo", new()
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultInstance = new AliCloud.Ots.Instance("defaultInstance", new()
     ///     {
     ///         Description = name,
     ///         AccessedBy = "Any",
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },
-    ///             { "For", "acceptance test" },
+    ///             { "For", "example" },
     ///         },
     ///     });
     /// 
-    ///     var basic = new AliCloud.Ots.Table("basic", new()
+    ///     var defaultTable = new AliCloud.Ots.Table("defaultTable", new()
     ///     {
-    ///         InstanceName = foo.Name,
-    ///         TableName = name,
+    ///         InstanceName = defaultInstance.Name,
+    ///         TableName = "tf_example",
+    ///         TimeToLive = -1,
+    ///         MaxVersion = 1,
+    ///         EnableSse = true,
+    ///         SseKeyType = "SSE_KMS_SERVICE",
     ///         PrimaryKeys = new[]
     ///         {
     ///             new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
@@ -78,11 +84,6 @@ namespace Pulumi.AliCloud.Ots
     ///                 Type = "Binary",
     ///             },
     ///         },
-    ///         TimeToLive = -1,
-    ///         MaxVersion = 1,
-    ///         DeviationCellVersionInSec = "1",
-    ///         EnableSse = true,
-    ///         SseKeyType = "SSE_KMS_SERVICE",
     ///     });
     /// 
     /// });
@@ -100,7 +101,7 @@ namespace Pulumi.AliCloud.Ots
     public partial class Table : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         /// </summary>
         [Output("definedColumns")]
         public Output<ImmutableArray<Outputs.TableDefinedColumn>> DefinedColumns { get; private set; } = null!;
@@ -130,7 +131,7 @@ namespace Pulumi.AliCloud.Ots
         public Output<int> MaxVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
+        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
         /// </summary>
         [Output("primaryKeys")]
         public Output<ImmutableArray<Outputs.TablePrimaryKey>> PrimaryKeys { get; private set; } = null!;
@@ -203,7 +204,7 @@ namespace Pulumi.AliCloud.Ots
         private InputList<Inputs.TableDefinedColumnArgs>? _definedColumns;
 
         /// <summary>
-        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         /// </summary>
         public InputList<Inputs.TableDefinedColumnArgs> DefinedColumns
         {
@@ -239,7 +240,7 @@ namespace Pulumi.AliCloud.Ots
         private InputList<Inputs.TablePrimaryKeyArgs>? _primaryKeys;
 
         /// <summary>
-        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
+        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
         /// </summary>
         public InputList<Inputs.TablePrimaryKeyArgs> PrimaryKeys
         {
@@ -277,7 +278,7 @@ namespace Pulumi.AliCloud.Ots
         private InputList<Inputs.TableDefinedColumnGetArgs>? _definedColumns;
 
         /// <summary>
-        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         /// </summary>
         public InputList<Inputs.TableDefinedColumnGetArgs> DefinedColumns
         {
@@ -313,7 +314,7 @@ namespace Pulumi.AliCloud.Ots
         private InputList<Inputs.TablePrimaryKeyGetArgs>? _primaryKeys;
 
         /// <summary>
-        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
+        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
         /// </summary>
         public InputList<Inputs.TablePrimaryKeyGetArgs> PrimaryKeys
         {

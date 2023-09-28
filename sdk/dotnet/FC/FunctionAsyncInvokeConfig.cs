@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.FC
     ///         OssBucket = defaultBucket.Id,
     ///         OssKey = defaultBucketObject.Key,
     ///         MemorySize = 512,
-    ///         Runtime = "python2.7",
+    ///         Runtime = "python3.10",
     ///         Handler = "hello.handler",
     ///     });
     /// 
@@ -152,67 +152,12 @@ namespace Pulumi.AliCloud.FC
     ///                 }),
     ///             },
     ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Error Handling Configuration
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.FC.FunctionAsyncInvokeConfig("example", new()
-    ///     {
-    ///         ServiceName = alicloud_fc_service.Example.Name,
-    ///         FunctionName = alicloud_fc_function.Example.Name,
     ///         MaximumEventAgeInSeconds = 60,
     ///         MaximumRetryAttempts = 0,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Async Job Configuration
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.FC.FunctionAsyncInvokeConfig("example", new()
-    ///     {
-    ///         ServiceName = alicloud_fc_service.Example.Name,
-    ///         FunctionName = alicloud_fc_function.Example.Name,
     ///         StatefulInvocation = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Configuration for Function Latest Unpublished Version
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.FC.FunctionAsyncInvokeConfig("example", new()
-    ///     {
-    ///         ServiceName = alicloud_fc_service.Example.Name,
-    ///         FunctionName = alicloud_fc_function.Example.Name,
     ///         Qualifier = "LATEST",
     ///     });
     /// 
-    ///     // ... other configuration ...
     /// });
     /// ```
     /// 

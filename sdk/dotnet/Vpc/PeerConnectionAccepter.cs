@@ -31,18 +31,27 @@ namespace Pulumi.AliCloud.Vpc
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
     ///     var acceptingRegion = config.Get("acceptingRegion") ?? "cn-beijing";
-    ///     var acceptingAccountAccessKey = config.Get("acceptingAccountAccessKey") ?? "access_key";
-    ///     var acceptingAccountSecretKey = config.Get("acceptingAccountSecretKey") ?? "secret_key";
-    ///     var local = new AliCloud.Provider("local", new()
-    ///     {
-    ///         Region = "cn-hangzhou",
-    ///     });
-    /// 
+    ///     var acceptUid = config.Get("acceptUid") ?? "xxxx";
+    ///     // Method 1: Use assume_role to operate resources in the target account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
     ///     var accepting = new AliCloud.Provider("accepting", new()
     ///     {
     ///         Region = acceptingRegion,
-    ///         AccessKey = acceptingAccountAccessKey,
-    ///         SecretKey = acceptingAccountSecretKey,
+    ///         AssumeRole = new AliCloud.Inputs.ProviderAssumeRoleArgs
+    ///         {
+    ///             RoleArn = $"acs:ram::{acceptUid}:role/terraform-example-assume-role",
+    ///         },
+    ///     });
+    /// 
+    ///     // Method 2: Use the target account's access_key, secret_key
+    ///     // provider "alicloud" {
+    ///     //   region     = "cn-hangzhou"
+    ///     //   access_key = "access_key"
+    ///     //   secret_key = "secret_key"
+    ///     //   alias      = "accepting"
+    ///     // }
+    ///     var local = new AliCloud.Provider("local", new()
+    ///     {
+    ///         Region = "cn-hangzhou",
     ///     });
     /// 
     ///     var localNetwork = new AliCloud.Vpc.Network("localNetwork", new()

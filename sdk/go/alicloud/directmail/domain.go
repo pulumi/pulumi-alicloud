@@ -17,7 +17,7 @@ import (
 //
 // For information about Direct Mail Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/doc-detail/29414.htm).
 //
-// > **NOTE:** Available in v1.134.0+.
+// > **NOTE:** Available since v1.134.0.
 //
 // ## Example Usage
 //
@@ -30,13 +30,19 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/directmail"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			domainName := "alicloud-provider.online"
+//			if param := cfg.Get("domainName"); param != "" {
+//				domainName = param
+//			}
 //			_, err := directmail.NewDomain(ctx, "example", &directmail.DomainArgs{
-//				DomainName: pulumi.String("example_value"),
+//				DomainName: pulumi.String(domainName),
 //			})
 //			if err != nil {
 //				return err

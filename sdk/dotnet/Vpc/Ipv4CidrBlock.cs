@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC Ipv4 Cidr Block resource.
+    /// Provides a VPC Ipv4 Cidr Block resource. VPC IPv4 additional network segment.
     /// 
     /// For information about VPC Ipv4 Cidr Block and how to use it, see [What is Ipv4 Cidr Block](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/associatevpccidrblock).
     /// 
-    /// &gt; **NOTE:** Available in v1.185.0+.
+    /// &gt; **NOTE:** Available since v1.185.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,16 +28,17 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Vpc.Network("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultvpc = new AliCloud.Vpc.Network("defaultvpc", new()
     ///     {
-    ///         CidrBlock = "192.168.0.0/24",
-    ///         VpcName = "terraform-example",
+    ///         Description = name,
     ///     });
     /// 
-    ///     var example = new AliCloud.Vpc.Ipv4CidrBlock("example", new()
+    ///     var @default = new AliCloud.Vpc.Ipv4CidrBlock("default", new()
     ///     {
-    ///         VpcId = @default.Id,
-    ///         SecondaryCidrBlock = "192.163.0.0/16",
+    ///         SecondaryCidrBlock = "192.168.0.0/16",
+    ///         VpcId = defaultvpc.Id,
     ///     });
     /// 
     /// });

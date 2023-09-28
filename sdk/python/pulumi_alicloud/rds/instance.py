@@ -92,8 +92,7 @@ class InstanceArgs:
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
                
-               > **NOTE:**
-               - Available in 1.191.0+. When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
+               > **NOTE:** When the 'engine_version' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
                - MySQL: [ 5.5、5.6、5.7、8.0 ]
                - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
@@ -110,7 +109,7 @@ class InstanceArgs:
                - [10, 2000] for SQL Server 2008R2;
                - [20,2000] for SQL Server 2012 basic single node edition
                Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-               Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instance_storage`.
+               Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
                - To create a serverless instance, please pass the following values:
                - MySQL basic: mysql.n2.serverless.1c
@@ -118,9 +117,7 @@ class InstanceArgs:
                - SQLServer high availability: mssql.mem2.serverless.s2
                - PostgreSQL basic: pg.n2.serverless.1c
                
-               > **NOTE:**
-               - When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
-               - When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+               > **NOTE:** When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
         :param pulumi.Input[str] acl: The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
                - cert
                - perfer
@@ -182,19 +179,13 @@ class InstanceArgs:
                - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
                - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
                
-               > **NOTE:**
-               - You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
-               - If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
+               > **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
                
                > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
-        :param pulumi.Input[str] direction: The instance configuration type. Valid values:
-               - Up
-               - Down
-               - TempUpgrade
-               - Serverless
+        :param pulumi.Input[str] direction: The instance configuration type. Valid values: ["Up", "Down", "TempUpgrade", "Serverless"]
         :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -248,19 +239,21 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceServerlessConfigArgs']]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
-        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions. Valid values: 
+               `Open`: turn on SSL encryption;
+               `Close`: turn off SSL encryption;
+               `Update`: update SSL certificate.
+               See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+               
+               > **NOTE:** The attribute `ssl_action` will be ignored when setting `instance_charge_type = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
         :param pulumi.Input[str] ssl_connection_string: The internal or public endpoint for which the server certificate needs to be created or updated.
         :param pulumi.Input[str] storage_auto_scale: Automatic storage space expansion switch. Valid values:
                - Enable
                - Disable
                
                > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable.
-        :param pulumi.Input[int] storage_threshold: The trigger threshold (percentage) for automatic storage space expansion. Valid values:
-               - 10
-               - 20
-               - 30
-               - 40
-               - 50
+        :param pulumi.Input[int] storage_threshold: The trigger threshold (percentage) for automatic storage space expansion.
+               Valid values: [10, 20, 30, 40, 50].
                
                > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
         :param pulumi.Input[int] storage_upper_bound: The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
@@ -467,8 +460,7 @@ class InstanceArgs:
         """
         Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
 
-        > **NOTE:**
-        - Available in 1.191.0+. When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
+        > **NOTE:** When the 'engine_version' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
         """
         return pulumi.get(self, "engine")
 
@@ -507,7 +499,7 @@ class InstanceArgs:
         - [10, 2000] for SQL Server 2008R2;
         - [20,2000] for SQL Server 2012 basic single node edition
         Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-        Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instance_storage`.
+        Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
         """
         return pulumi.get(self, "instance_storage")
 
@@ -526,9 +518,7 @@ class InstanceArgs:
         - SQLServer high availability: mssql.mem2.serverless.s2
         - PostgreSQL basic: pg.n2.serverless.1c
 
-        > **NOTE:**
-        - When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
-        - When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+        > **NOTE:** When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
         """
         return pulumi.get(self, "instance_type")
 
@@ -788,9 +778,7 @@ class InstanceArgs:
         - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
         - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
 
-        > **NOTE:**
-        - You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
-        - If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
+        > **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
         """
         return pulumi.get(self, "db_time_zone")
 
@@ -818,11 +806,7 @@ class InstanceArgs:
     @pulumi.getter
     def direction(self) -> Optional[pulumi.Input[str]]:
         """
-        The instance configuration type. Valid values:
-        - Up
-        - Down
-        - TempUpgrade
-        - Serverless
+        The instance configuration type. Valid values: ["Up", "Down", "TempUpgrade", "Serverless"]
         """
         return pulumi.get(self, "direction")
 
@@ -1220,7 +1204,13 @@ class InstanceArgs:
     @pulumi.getter(name="sslAction")
     def ssl_action(self) -> Optional[pulumi.Input[str]]:
         """
-        Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+        Actions performed on SSL functions. Valid values: 
+        `Open`: turn on SSL encryption;
+        `Close`: turn off SSL encryption;
+        `Update`: update SSL certificate.
+        See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+
+        > **NOTE:** The attribute `ssl_action` will be ignored when setting `instance_charge_type = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
         """
         return pulumi.get(self, "ssl_action")
 
@@ -1260,12 +1250,8 @@ class InstanceArgs:
     @pulumi.getter(name="storageThreshold")
     def storage_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        The trigger threshold (percentage) for automatic storage space expansion. Valid values:
-        - 10
-        - 20
-        - 30
-        - 40
-        - 50
+        The trigger threshold (percentage) for automatic storage space expansion.
+        Valid values: [10, 20, 30, 40, 50].
 
         > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
         """
@@ -1629,27 +1615,20 @@ class _InstanceState:
                - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
                - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
                
-               > **NOTE:**
-               - You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
-               - If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
+               > **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
                
                > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
-        :param pulumi.Input[str] direction: The instance configuration type. Valid values:
-               - Up
-               - Down
-               - TempUpgrade
-               - Serverless
+        :param pulumi.Input[str] direction: The instance configuration type. Valid values: ["Up", "Down", "TempUpgrade", "Serverless"]
         :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
                
-               > **NOTE:**
-               - Available in 1.191.0+. When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
+               > **NOTE:** When the 'engine_version' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
                - MySQL: [ 5.5、5.6、5.7、8.0 ]
                - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
@@ -1677,7 +1656,7 @@ class _InstanceState:
                - [10, 2000] for SQL Server 2008R2;
                - [20,2000] for SQL Server 2012 basic single node edition
                Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-               Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instance_storage`.
+               Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
                - To create a serverless instance, please pass the following values:
                - MySQL basic: mysql.n2.serverless.1c
@@ -1685,9 +1664,7 @@ class _InstanceState:
                - SQLServer high availability: mssql.mem2.serverless.s2
                - PostgreSQL basic: pg.n2.serverless.1c
                
-               > **NOTE:**
-               - When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
-               - When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+               > **NOTE:** When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] manual_ha_time: The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
                
@@ -1726,7 +1703,13 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceServerlessConfigArgs']]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
-        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions. Valid values: 
+               `Open`: turn on SSL encryption;
+               `Close`: turn off SSL encryption;
+               `Update`: update SSL certificate.
+               See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+               
+               > **NOTE:** The attribute `ssl_action` will be ignored when setting `instance_charge_type = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
         :param pulumi.Input[str] ssl_connection_string: The internal or public endpoint for which the server certificate needs to be created or updated.
         :param pulumi.Input[str] ssl_status: Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
         :param pulumi.Input[str] status: (Available in 1.204.1+) The status of db instance.
@@ -1735,12 +1718,8 @@ class _InstanceState:
                - Disable
                
                > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable.
-        :param pulumi.Input[int] storage_threshold: The trigger threshold (percentage) for automatic storage space expansion. Valid values:
-               - 10
-               - 20
-               - 30
-               - 40
-               - 50
+        :param pulumi.Input[int] storage_threshold: The trigger threshold (percentage) for automatic storage space expansion.
+               Valid values: [10, 20, 30, 40, 50].
                
                > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
         :param pulumi.Input[int] storage_upper_bound: The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
@@ -2243,9 +2222,7 @@ class _InstanceState:
         - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
         - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
 
-        > **NOTE:**
-        - You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
-        - If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
+        > **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
         """
         return pulumi.get(self, "db_time_zone")
 
@@ -2273,11 +2250,7 @@ class _InstanceState:
     @pulumi.getter
     def direction(self) -> Optional[pulumi.Input[str]]:
         """
-        The instance configuration type. Valid values:
-        - Up
-        - Down
-        - TempUpgrade
-        - Serverless
+        The instance configuration type. Valid values: ["Up", "Down", "TempUpgrade", "Serverless"]
         """
         return pulumi.get(self, "direction")
 
@@ -2317,8 +2290,7 @@ class _InstanceState:
         """
         Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
 
-        > **NOTE:**
-        - Available in 1.191.0+. When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
+        > **NOTE:** When the 'engine_version' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
         """
         return pulumi.get(self, "engine")
 
@@ -2423,7 +2395,7 @@ class _InstanceState:
         - [10, 2000] for SQL Server 2008R2;
         - [20,2000] for SQL Server 2012 basic single node edition
         Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-        Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instance_storage`.
+        Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
         """
         return pulumi.get(self, "instance_storage")
 
@@ -2442,9 +2414,7 @@ class _InstanceState:
         - SQLServer high availability: mssql.mem2.serverless.s2
         - PostgreSQL basic: pg.n2.serverless.1c
 
-        > **NOTE:**
-        - When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
-        - When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+        > **NOTE:** When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
         """
         return pulumi.get(self, "instance_type")
 
@@ -2750,7 +2720,13 @@ class _InstanceState:
     @pulumi.getter(name="sslAction")
     def ssl_action(self) -> Optional[pulumi.Input[str]]:
         """
-        Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+        Actions performed on SSL functions. Valid values: 
+        `Open`: turn on SSL encryption;
+        `Close`: turn off SSL encryption;
+        `Update`: update SSL certificate.
+        See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+
+        > **NOTE:** The attribute `ssl_action` will be ignored when setting `instance_charge_type = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
         """
         return pulumi.get(self, "ssl_action")
 
@@ -2814,12 +2790,8 @@ class _InstanceState:
     @pulumi.getter(name="storageThreshold")
     def storage_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        The trigger threshold (percentage) for automatic storage space expansion. Valid values:
-        - 10
-        - 20
-        - 30
-        - 40
-        - 50
+        The trigger threshold (percentage) for automatic storage space expansion.
+        Valid values: [10, 20, 30, 40, 50].
 
         > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
         """
@@ -3187,27 +3159,20 @@ class Instance(pulumi.CustomResource):
                - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
                - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
                
-               > **NOTE:**
-               - You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
-               - If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
+               > **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
                
                > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
-        :param pulumi.Input[str] direction: The instance configuration type. Valid values:
-               - Up
-               - Down
-               - TempUpgrade
-               - Serverless
+        :param pulumi.Input[str] direction: The instance configuration type. Valid values: ["Up", "Down", "TempUpgrade", "Serverless"]
         :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
                
-               > **NOTE:**
-               - Available in 1.191.0+. When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
+               > **NOTE:** When the 'engine_version' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
                - MySQL: [ 5.5、5.6、5.7、8.0 ]
                - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
@@ -3235,7 +3200,7 @@ class Instance(pulumi.CustomResource):
                - [10, 2000] for SQL Server 2008R2;
                - [20,2000] for SQL Server 2012 basic single node edition
                Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-               Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instance_storage`.
+               Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
                - To create a serverless instance, please pass the following values:
                - MySQL basic: mysql.n2.serverless.1c
@@ -3243,9 +3208,7 @@ class Instance(pulumi.CustomResource):
                - SQLServer high availability: mssql.mem2.serverless.s2
                - PostgreSQL basic: pg.n2.serverless.1c
                
-               > **NOTE:**
-               - When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
-               - When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+               > **NOTE:** When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] manual_ha_time: The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
                
@@ -3284,19 +3247,21 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerlessConfigArgs']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
-        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions. Valid values: 
+               `Open`: turn on SSL encryption;
+               `Close`: turn off SSL encryption;
+               `Update`: update SSL certificate.
+               See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+               
+               > **NOTE:** The attribute `ssl_action` will be ignored when setting `instance_charge_type = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
         :param pulumi.Input[str] ssl_connection_string: The internal or public endpoint for which the server certificate needs to be created or updated.
         :param pulumi.Input[str] storage_auto_scale: Automatic storage space expansion switch. Valid values:
                - Enable
                - Disable
                
                > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable.
-        :param pulumi.Input[int] storage_threshold: The trigger threshold (percentage) for automatic storage space expansion. Valid values:
-               - 10
-               - 20
-               - 30
-               - 40
-               - 50
+        :param pulumi.Input[int] storage_threshold: The trigger threshold (percentage) for automatic storage space expansion.
+               Valid values: [10, 20, 30, 40, 50].
                
                > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
         :param pulumi.Input[int] storage_upper_bound: The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
@@ -3710,27 +3675,20 @@ class Instance(pulumi.CustomResource):
                - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
                - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
                
-               > **NOTE:**
-               - You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
-               - If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
+               > **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
                
                > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
-        :param pulumi.Input[str] direction: The instance configuration type. Valid values:
-               - Up
-               - Down
-               - TempUpgrade
-               - Serverless
+        :param pulumi.Input[str] direction: The instance configuration type. Valid values: ["Up", "Down", "TempUpgrade", "Serverless"]
         :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
                
-               > **NOTE:**
-               - Available in 1.191.0+. When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
+               > **NOTE:** When the 'engine_version' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
                - MySQL: [ 5.5、5.6、5.7、8.0 ]
                - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
@@ -3758,7 +3716,7 @@ class Instance(pulumi.CustomResource):
                - [10, 2000] for SQL Server 2008R2;
                - [20,2000] for SQL Server 2012 basic single node edition
                Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-               Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instance_storage`.
+               Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
                - To create a serverless instance, please pass the following values:
                - MySQL basic: mysql.n2.serverless.1c
@@ -3766,9 +3724,7 @@ class Instance(pulumi.CustomResource):
                - SQLServer high availability: mssql.mem2.serverless.s2
                - PostgreSQL basic: pg.n2.serverless.1c
                
-               > **NOTE:**
-               - When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
-               - When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+               > **NOTE:** When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] manual_ha_time: The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
                
@@ -3807,7 +3763,13 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerlessConfigArgs']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
-        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions. Valid values: 
+               `Open`: turn on SSL encryption;
+               `Close`: turn off SSL encryption;
+               `Update`: update SSL certificate.
+               See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+               
+               > **NOTE:** The attribute `ssl_action` will be ignored when setting `instance_charge_type = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
         :param pulumi.Input[str] ssl_connection_string: The internal or public endpoint for which the server certificate needs to be created or updated.
         :param pulumi.Input[str] ssl_status: Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
         :param pulumi.Input[str] status: (Available in 1.204.1+) The status of db instance.
@@ -3816,12 +3778,8 @@ class Instance(pulumi.CustomResource):
                - Disable
                
                > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable.
-        :param pulumi.Input[int] storage_threshold: The trigger threshold (percentage) for automatic storage space expansion. Valid values:
-               - 10
-               - 20
-               - 30
-               - 40
-               - 50
+        :param pulumi.Input[int] storage_threshold: The trigger threshold (percentage) for automatic storage space expansion.
+               Valid values: [10, 20, 30, 40, 50].
                
                > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
         :param pulumi.Input[int] storage_upper_bound: The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
@@ -4166,9 +4124,7 @@ class Instance(pulumi.CustomResource):
         - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
         - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
 
-        > **NOTE:**
-        - You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
-        - If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
+        > **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
         """
         return pulumi.get(self, "db_time_zone")
 
@@ -4188,11 +4144,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def direction(self) -> pulumi.Output[Optional[str]]:
         """
-        The instance configuration type. Valid values:
-        - Up
-        - Down
-        - TempUpgrade
-        - Serverless
+        The instance configuration type. Valid values: ["Up", "Down", "TempUpgrade", "Serverless"]
         """
         return pulumi.get(self, "direction")
 
@@ -4220,8 +4172,7 @@ class Instance(pulumi.CustomResource):
         """
         Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
 
-        > **NOTE:**
-        - Available in 1.191.0+. When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
+        > **NOTE:** When the 'engine_version' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
         """
         return pulumi.get(self, "engine")
 
@@ -4298,7 +4249,7 @@ class Instance(pulumi.CustomResource):
         - [10, 2000] for SQL Server 2008R2;
         - [20,2000] for SQL Server 2012 basic single node edition
         Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-        Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instance_storage`.
+        Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
         """
         return pulumi.get(self, "instance_storage")
 
@@ -4313,9 +4264,7 @@ class Instance(pulumi.CustomResource):
         - SQLServer high availability: mssql.mem2.serverless.s2
         - PostgreSQL basic: pg.n2.serverless.1c
 
-        > **NOTE:**
-        - When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
-        - When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+        > **NOTE:** When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
         """
         return pulumi.get(self, "instance_type")
 
@@ -4525,7 +4474,13 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="sslAction")
     def ssl_action(self) -> pulumi.Output[str]:
         """
-        Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+        Actions performed on SSL functions. Valid values: 
+        `Open`: turn on SSL encryption;
+        `Close`: turn off SSL encryption;
+        `Update`: update SSL certificate.
+        See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+
+        > **NOTE:** The attribute `ssl_action` will be ignored when setting `instance_charge_type = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
         """
         return pulumi.get(self, "ssl_action")
 
@@ -4569,12 +4524,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="storageThreshold")
     def storage_threshold(self) -> pulumi.Output[Optional[int]]:
         """
-        The trigger threshold (percentage) for automatic storage space expansion. Valid values:
-        - 10
-        - 20
-        - 30
-        - 40
-        - 50
+        The trigger threshold (percentage) for automatic storage space expansion.
+        Valid values: [10, 20, 30, 40, 50].
 
         > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
         """

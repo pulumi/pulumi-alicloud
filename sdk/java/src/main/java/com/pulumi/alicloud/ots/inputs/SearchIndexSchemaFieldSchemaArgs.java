@@ -47,14 +47,14 @@ public final class SearchIndexSchemaFieldSchemaArgs extends com.pulumi.resources
     }
 
     /**
-     * The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+     * Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
      * 
      */
     @Import(name="fieldName", required=true)
     private Output<String> fieldName;
 
     /**
-     * @return The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+     * @return Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
      * 
      */
     public Output<String> fieldName() {
@@ -194,7 +194,7 @@ public final class SearchIndexSchemaFieldSchemaArgs extends com.pulumi.resources
         }
 
         /**
-         * @param fieldName The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+         * @param fieldName Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class SearchIndexSchemaFieldSchemaArgs extends com.pulumi.resources
         }
 
         /**
-         * @param fieldName The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+         * @param fieldName Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
          * 
          * @return builder
          * 

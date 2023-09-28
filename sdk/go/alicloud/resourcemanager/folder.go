@@ -16,7 +16,7 @@ import (
 // Provides a Resource Manager Folder resource. A folder is an organizational unit in a resource directory. You can use folders to build an organizational structure for resources.
 // For information about Resource Manager Foler and how to use it, see [What is Resource Manager Folder](https://www.alibabacloud.com/help/en/doc-detail/111221.htm).
 //
-// > **NOTE:** Available in v1.82.0+.
+// > **NOTE:** Available since v1.82.0.
 //
 // > **NOTE:** A maximum of five levels of folders can be created under the root folder.
 //
@@ -31,13 +31,19 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := resourcemanager.NewFolder(ctx, "example", &resourcemanager.FolderArgs{
-//				FolderName: pulumi.String("test"),
+//				FolderName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

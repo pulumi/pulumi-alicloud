@@ -257,9 +257,9 @@ class VpcEndpointService(pulumi.CustomResource):
         """
         Provides a Private Link Vpc Endpoint Service resource.
 
-        For information about Private Link Vpc Endpoint Service and how to use it, see [What is Vpc Endpoint Service](https://help.aliyun.com/document_detail/183540.html).
+        For information about Private Link Vpc Endpoint Service and how to use it, see [What is Vpc Endpoint Service](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-createvpcendpointservice).
 
-        > **NOTE:** Available in v1.109.0+.
+        > **NOTE:** Available since v1.109.0.
 
         ## Example Usage
 
@@ -269,10 +269,14 @@ class VpcEndpointService(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
         example = alicloud.privatelink.VpcEndpointService("example",
-            auto_accept_connection=False,
+            service_description=name,
             connect_bandwidth=103,
-            service_description="tftest")
+            auto_accept_connection=False)
         ```
 
         ## Import
@@ -302,9 +306,9 @@ class VpcEndpointService(pulumi.CustomResource):
         """
         Provides a Private Link Vpc Endpoint Service resource.
 
-        For information about Private Link Vpc Endpoint Service and how to use it, see [What is Vpc Endpoint Service](https://help.aliyun.com/document_detail/183540.html).
+        For information about Private Link Vpc Endpoint Service and how to use it, see [What is Vpc Endpoint Service](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-createvpcendpointservice).
 
-        > **NOTE:** Available in v1.109.0+.
+        > **NOTE:** Available since v1.109.0.
 
         ## Example Usage
 
@@ -314,10 +318,14 @@ class VpcEndpointService(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
         example = alicloud.privatelink.VpcEndpointService("example",
-            auto_accept_connection=False,
+            service_description=name,
             connect_bandwidth=103,
-            service_description="tftest")
+            auto_accept_connection=False)
         ```
 
         ## Import

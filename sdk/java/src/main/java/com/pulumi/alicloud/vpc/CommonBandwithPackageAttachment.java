@@ -44,20 +44,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fooCommonBandwithPackage = new CommonBandwithPackage(&#34;fooCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
- *             .bandwidth(&#34;2&#34;)
- *             .bandwidthPackageName(&#34;test_common_bandwidth_package&#34;)
- *             .description(&#34;test_common_bandwidth_package&#34;)
- *             .build());
- * 
- *         var fooEipAddress = new EipAddress(&#34;fooEipAddress&#34;, EipAddressArgs.builder()        
- *             .bandwidth(&#34;2&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         var defaultCommonBandwithPackage = new CommonBandwithPackage(&#34;defaultCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
+ *             .bandwidth(3)
  *             .internetChargeType(&#34;PayByBandwidth&#34;)
  *             .build());
  * 
- *         var fooCommonBandwithPackageAttachment = new CommonBandwithPackageAttachment(&#34;fooCommonBandwithPackageAttachment&#34;, CommonBandwithPackageAttachmentArgs.builder()        
- *             .bandwidthPackageId(fooCommonBandwithPackage.id())
- *             .instanceId(fooEipAddress.id())
+ *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
+ *             .bandwidth(&#34;3&#34;)
+ *             .internetChargeType(&#34;PayByTraffic&#34;)
+ *             .build());
+ * 
+ *         var defaultCommonBandwithPackageAttachment = new CommonBandwithPackageAttachment(&#34;defaultCommonBandwithPackageAttachment&#34;, CommonBandwithPackageAttachmentArgs.builder()        
+ *             .bandwidthPackageId(defaultCommonBandwithPackage.id())
+ *             .instanceId(defaultEipAddress.id())
+ *             .bandwidthPackageBandwidth(&#34;2&#34;)
+ *             .ipType(&#34;EIP&#34;)
  *             .build());
  * 
  *     }
@@ -66,10 +69,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * The common bandwidth package attachment can be imported using the id, e.g.
+ * cbwp Common Bandwidth Package Attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment foo &lt;bandwidth_package_id&gt;:&lt;instance_id&gt;
+ *  $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment example &lt;bandwidth_package_id&gt;:&lt;instance_id&gt;
  * ```
  * 
  */
@@ -130,6 +133,34 @@ public class CommonBandwithPackageAttachment extends com.pulumi.resources.Custom
      */
     public Output<String> instanceId() {
         return this.instanceId;
+    }
+    /**
+     * IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+     * 
+     */
+    @Export(name="ipType", type=String.class, parameters={})
+    private Output</* @Nullable */ String> ipType;
+
+    /**
+     * @return IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+     * 
+     */
+    public Output<Optional<String>> ipType() {
+        return Codegen.optional(this.ipType);
+    }
+    /**
+     * The status of the Internet Shared Bandwidth instance.
+     * 
+     */
+    @Export(name="status", type=String.class, parameters={})
+    private Output<String> status;
+
+    /**
+     * @return The status of the Internet Shared Bandwidth instance.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
     }
 
     /**

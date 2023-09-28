@@ -12,6 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceMeshLoadBalancer {
+    /**
+     * @return The ID of the SLB instance that is used when the API server is exposed to the Internet.
+     * 
+     */
     private @Nullable String apiServerLoadbalancerId;
     /**
      * @return Whether to use the IP address of a public network exposed the API Server.
@@ -23,9 +27,17 @@ public final class ServiceMeshLoadBalancer {
      * 
      */
     private @Nullable Boolean pilotPublicEip;
+    /**
+     * @return The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
+     * 
+     */
     private @Nullable String pilotPublicLoadbalancerId;
 
     private ServiceMeshLoadBalancer() {}
+    /**
+     * @return The ID of the SLB instance that is used when the API server is exposed to the Internet.
+     * 
+     */
     public Optional<String> apiServerLoadbalancerId() {
         return Optional.ofNullable(this.apiServerLoadbalancerId);
     }
@@ -43,6 +55,10 @@ public final class ServiceMeshLoadBalancer {
     public Optional<Boolean> pilotPublicEip() {
         return Optional.ofNullable(this.pilotPublicEip);
     }
+    /**
+     * @return The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
+     * 
+     */
     public Optional<String> pilotPublicLoadbalancerId() {
         return Optional.ofNullable(this.pilotPublicLoadbalancerId);
     }

@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.FC
         /// 
         /// For information about FC and how to use it, see [What is FC](https://www.alibabacloud.com/help/en/product/50980.htm).
         /// 
-        /// &gt; **NOTE:** Available in v1.112.0+
+        /// &gt; **NOTE:** Available since v1.112.0+
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.FC
         /// 
         /// For information about FC and how to use it, see [What is FC](https://www.alibabacloud.com/help/en/product/50980.htm).
         /// 
-        /// &gt; **NOTE:** Available in v1.112.0+
+        /// &gt; **NOTE:** Available since v1.112.0+
         /// 
         /// {{% examples %}}
         /// ## Example Usage

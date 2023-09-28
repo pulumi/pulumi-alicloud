@@ -19,64 +19,6 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.0.0+.
  * 
- * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.ram.Group;
- * import com.pulumi.alicloud.ram.GroupArgs;
- * import com.pulumi.alicloud.ram.User;
- * import com.pulumi.alicloud.ram.UserArgs;
- * import com.pulumi.alicloud.ram.GroupMembership;
- * import com.pulumi.alicloud.ram.GroupMembershipArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var group = new Group(&#34;group&#34;, GroupArgs.builder()        
- *             .comments(&#34;this is a group comments.&#34;)
- *             .force(true)
- *             .build());
- * 
- *         var user = new User(&#34;user&#34;, UserArgs.builder()        
- *             .displayName(&#34;user_display_name&#34;)
- *             .mobile(&#34;86-18688888888&#34;)
- *             .email(&#34;hello.uuu@aaa.com&#34;)
- *             .comments(&#34;yoyoyo&#34;)
- *             .force(true)
- *             .build());
- * 
- *         var user1 = new User(&#34;user1&#34;, UserArgs.builder()        
- *             .displayName(&#34;user_display_name1&#34;)
- *             .mobile(&#34;86-18688888889&#34;)
- *             .email(&#34;hello.uuu@aaa.com&#34;)
- *             .comments(&#34;yoyoyo&#34;)
- *             .force(true)
- *             .build());
- * 
- *         var membership = new GroupMembership(&#34;membership&#34;, GroupMembershipArgs.builder()        
- *             .groupName(group.name())
- *             .userNames(            
- *                 user.name(),
- *                 user1.name())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
  * RAM Group membership can be imported using the id, e.g.

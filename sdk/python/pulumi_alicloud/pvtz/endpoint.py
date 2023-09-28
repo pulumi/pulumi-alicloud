@@ -24,7 +24,7 @@ class EndpointArgs:
         """
         The set of arguments for constructing a Endpoint resource.
         :param pulumi.Input[str] endpoint_name: The name of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['EndpointIpConfigArgs']]] ip_configs: The Ip Configs. See the following `Block ip_configs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+        :param pulumi.Input[Sequence[pulumi.Input['EndpointIpConfigArgs']]] ip_configs: The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
         :param pulumi.Input[str] security_group_id: The ID of the Security Group.
         :param pulumi.Input[str] vpc_id: The VPC ID.
         :param pulumi.Input[str] vpc_region_id: The Region of the VPC.
@@ -51,7 +51,7 @@ class EndpointArgs:
     @pulumi.getter(name="ipConfigs")
     def ip_configs(self) -> pulumi.Input[Sequence[pulumi.Input['EndpointIpConfigArgs']]]:
         """
-        The Ip Configs. See the following `Block ip_configs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+        The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
         """
         return pulumi.get(self, "ip_configs")
 
@@ -108,7 +108,7 @@ class _EndpointState:
         """
         Input properties used for looking up and filtering Endpoint resources.
         :param pulumi.Input[str] endpoint_name: The name of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['EndpointIpConfigArgs']]] ip_configs: The Ip Configs. See the following `Block ip_configs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+        :param pulumi.Input[Sequence[pulumi.Input['EndpointIpConfigArgs']]] ip_configs: The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
         :param pulumi.Input[str] security_group_id: The ID of the Security Group.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
         :param pulumi.Input[str] vpc_id: The VPC ID.
@@ -143,7 +143,7 @@ class _EndpointState:
     @pulumi.getter(name="ipConfigs")
     def ip_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EndpointIpConfigArgs']]]]:
         """
-        The Ip Configs. See the following `Block ip_configs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+        The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
         """
         return pulumi.get(self, "ip_configs")
 
@@ -214,9 +214,9 @@ class Endpoint(pulumi.CustomResource):
         """
         Provides a Private Zone Endpoint resource.
 
-        For information about Private Zone Endpoint and how to use it, see [What is Endpoint](https://www.alibabacloud.com/help/en/doc-detail/64611.htm).
+        For information about Private Zone Endpoint and how to use it, see [What is Endpoint](https://www.alibabacloud.com/help/en/privatezone/latest/add-endpoint).
 
-        > **NOTE:** Available in v1.143.0+.
+        > **NOTE:** Available since v1.143.0.
 
         ## Import
 
@@ -229,7 +229,7 @@ class Endpoint(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] endpoint_name: The name of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointIpConfigArgs']]]] ip_configs: The Ip Configs. See the following `Block ip_configs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointIpConfigArgs']]]] ip_configs: The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
         :param pulumi.Input[str] security_group_id: The ID of the Security Group.
         :param pulumi.Input[str] vpc_id: The VPC ID.
         :param pulumi.Input[str] vpc_region_id: The Region of the VPC.
@@ -243,9 +243,9 @@ class Endpoint(pulumi.CustomResource):
         """
         Provides a Private Zone Endpoint resource.
 
-        For information about Private Zone Endpoint and how to use it, see [What is Endpoint](https://www.alibabacloud.com/help/en/doc-detail/64611.htm).
+        For information about Private Zone Endpoint and how to use it, see [What is Endpoint](https://www.alibabacloud.com/help/en/privatezone/latest/add-endpoint).
 
-        > **NOTE:** Available in v1.143.0+.
+        > **NOTE:** Available since v1.143.0.
 
         ## Import
 
@@ -324,7 +324,7 @@ class Endpoint(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] endpoint_name: The name of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointIpConfigArgs']]]] ip_configs: The Ip Configs. See the following `Block ip_configs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointIpConfigArgs']]]] ip_configs: The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
         :param pulumi.Input[str] security_group_id: The ID of the Security Group.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
         :param pulumi.Input[str] vpc_id: The VPC ID.
@@ -354,7 +354,7 @@ class Endpoint(pulumi.CustomResource):
     @pulumi.getter(name="ipConfigs")
     def ip_configs(self) -> pulumi.Output[Sequence['outputs.EndpointIpConfig']]:
         """
-        The Ip Configs. See the following `Block ip_configs`. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
+        The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
         """
         return pulumi.get(self, "ip_configs")
 

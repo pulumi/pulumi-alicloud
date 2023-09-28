@@ -44,7 +44,6 @@ class ListenerArgs:
                  health_check_uri: Optional[pulumi.Input[str]] = None,
                  healthy_threshold: Optional[pulumi.Input[int]] = None,
                  idle_timeout: Optional[pulumi.Input[int]] = None,
-                 instance_port: Optional[pulumi.Input[int]] = None,
                  lb_port: Optional[pulumi.Input[int]] = None,
                  lb_protocol: Optional[pulumi.Input[str]] = None,
                  listener_forward: Optional[pulumi.Input[str]] = None,
@@ -79,7 +78,7 @@ class ListenerArgs:
         :param pulumi.Input[str] enable_http2: Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
         :param pulumi.Input[int] established_timeout: Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
         :param pulumi.Input[int] forward_port: The port that http redirect to https.
-        :param pulumi.Input[bool] gzip: Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+        :param pulumi.Input[bool] gzip: Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
         :param pulumi.Input[str] health_check: Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
         :param pulumi.Input[int] health_check_connect_port: The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
         :param pulumi.Input[str] health_check_domain: Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
@@ -109,7 +108,7 @@ class ListenerArgs:
         :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         :param pulumi.Input[str] tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
         :param pulumi.Input[int] unhealthy_threshold: The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
-        :param pulumi.Input['ListenerXForwardedForArgs'] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
+        :param pulumi.Input['ListenerXForwardedForArgs'] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
         """
         pulumi.set(__self__, "frontend_port", frontend_port)
         pulumi.set(__self__, "load_balancer_id", load_balancer_id)
@@ -164,19 +163,14 @@ class ListenerArgs:
             pulumi.set(__self__, "healthy_threshold", healthy_threshold)
         if idle_timeout is not None:
             pulumi.set(__self__, "idle_timeout", idle_timeout)
-        if instance_port is not None:
-            warnings.warn("""Field 'instance_port' has been deprecated, and using 'backend_port' to replace.""", DeprecationWarning)
-            pulumi.log.warn("""instance_port is deprecated: Field 'instance_port' has been deprecated, and using 'backend_port' to replace.""")
-        if instance_port is not None:
-            pulumi.set(__self__, "instance_port", instance_port)
         if lb_port is not None:
-            warnings.warn("""Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.""", DeprecationWarning)
-            pulumi.log.warn("""lb_port is deprecated: Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.""")
+            warnings.warn("""Field 'lb_port' has been removed since 1.211.0.""", DeprecationWarning)
+            pulumi.log.warn("""lb_port is deprecated: Field 'lb_port' has been removed since 1.211.0.""")
         if lb_port is not None:
             pulumi.set(__self__, "lb_port", lb_port)
         if lb_protocol is not None:
-            warnings.warn("""Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.""", DeprecationWarning)
-            pulumi.log.warn("""lb_protocol is deprecated: Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.""")
+            warnings.warn("""Field 'lb_protocol' has been removed since 1.211.0.""", DeprecationWarning)
+            pulumi.log.warn("""lb_protocol is deprecated: Field 'lb_protocol' has been removed since 1.211.0.""")
         if lb_protocol is not None:
             pulumi.set(__self__, "lb_protocol", lb_protocol)
         if listener_forward is not None:
@@ -407,7 +401,7 @@ class ListenerArgs:
     @pulumi.getter
     def gzip(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+        Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
         """
         return pulumi.get(self, "gzip")
 
@@ -548,22 +542,10 @@ class ListenerArgs:
         pulumi.set(self, "idle_timeout", value)
 
     @property
-    @pulumi.getter(name="instancePort")
-    def instance_port(self) -> Optional[pulumi.Input[int]]:
-        warnings.warn("""Field 'instance_port' has been deprecated, and using 'backend_port' to replace.""", DeprecationWarning)
-        pulumi.log.warn("""instance_port is deprecated: Field 'instance_port' has been deprecated, and using 'backend_port' to replace.""")
-
-        return pulumi.get(self, "instance_port")
-
-    @instance_port.setter
-    def instance_port(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "instance_port", value)
-
-    @property
     @pulumi.getter(name="lbPort")
     def lb_port(self) -> Optional[pulumi.Input[int]]:
-        warnings.warn("""Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.""", DeprecationWarning)
-        pulumi.log.warn("""lb_port is deprecated: Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.""")
+        warnings.warn("""Field 'lb_port' has been removed since 1.211.0.""", DeprecationWarning)
+        pulumi.log.warn("""lb_port is deprecated: Field 'lb_port' has been removed since 1.211.0.""")
 
         return pulumi.get(self, "lb_port")
 
@@ -574,8 +556,8 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="lbProtocol")
     def lb_protocol(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.""", DeprecationWarning)
-        pulumi.log.warn("""lb_protocol is deprecated: Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.""")
+        warnings.warn("""Field 'lb_protocol' has been removed since 1.211.0.""", DeprecationWarning)
+        pulumi.log.warn("""lb_protocol is deprecated: Field 'lb_protocol' has been removed since 1.211.0.""")
 
         return pulumi.get(self, "lb_protocol")
 
@@ -751,7 +733,7 @@ class ListenerArgs:
     @pulumi.getter(name="xForwardedFor")
     def x_forwarded_for(self) -> Optional[pulumi.Input['ListenerXForwardedForArgs']]:
         """
-        Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
+        Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
         """
         return pulumi.get(self, "x_forwarded_for")
 
@@ -789,7 +771,6 @@ class _ListenerState:
                  health_check_uri: Optional[pulumi.Input[str]] = None,
                  healthy_threshold: Optional[pulumi.Input[int]] = None,
                  idle_timeout: Optional[pulumi.Input[int]] = None,
-                 instance_port: Optional[pulumi.Input[int]] = None,
                  lb_port: Optional[pulumi.Input[int]] = None,
                  lb_protocol: Optional[pulumi.Input[str]] = None,
                  listener_forward: Optional[pulumi.Input[str]] = None,
@@ -824,7 +805,7 @@ class _ListenerState:
         :param pulumi.Input[int] established_timeout: Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
         :param pulumi.Input[int] forward_port: The port that http redirect to https.
         :param pulumi.Input[int] frontend_port: Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
-        :param pulumi.Input[bool] gzip: Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+        :param pulumi.Input[bool] gzip: Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
         :param pulumi.Input[str] health_check: Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
         :param pulumi.Input[int] health_check_connect_port: The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
         :param pulumi.Input[str] health_check_domain: Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
@@ -856,7 +837,7 @@ class _ListenerState:
         :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         :param pulumi.Input[str] tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
         :param pulumi.Input[int] unhealthy_threshold: The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
-        :param pulumi.Input['ListenerXForwardedForArgs'] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
+        :param pulumi.Input['ListenerXForwardedForArgs'] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
         """
         if acl_id is not None:
             pulumi.set(__self__, "acl_id", acl_id)
@@ -910,19 +891,14 @@ class _ListenerState:
             pulumi.set(__self__, "healthy_threshold", healthy_threshold)
         if idle_timeout is not None:
             pulumi.set(__self__, "idle_timeout", idle_timeout)
-        if instance_port is not None:
-            warnings.warn("""Field 'instance_port' has been deprecated, and using 'backend_port' to replace.""", DeprecationWarning)
-            pulumi.log.warn("""instance_port is deprecated: Field 'instance_port' has been deprecated, and using 'backend_port' to replace.""")
-        if instance_port is not None:
-            pulumi.set(__self__, "instance_port", instance_port)
         if lb_port is not None:
-            warnings.warn("""Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.""", DeprecationWarning)
-            pulumi.log.warn("""lb_port is deprecated: Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.""")
+            warnings.warn("""Field 'lb_port' has been removed since 1.211.0.""", DeprecationWarning)
+            pulumi.log.warn("""lb_port is deprecated: Field 'lb_port' has been removed since 1.211.0.""")
         if lb_port is not None:
             pulumi.set(__self__, "lb_port", lb_port)
         if lb_protocol is not None:
-            warnings.warn("""Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.""", DeprecationWarning)
-            pulumi.log.warn("""lb_protocol is deprecated: Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.""")
+            warnings.warn("""Field 'lb_protocol' has been removed since 1.211.0.""", DeprecationWarning)
+            pulumi.log.warn("""lb_protocol is deprecated: Field 'lb_protocol' has been removed since 1.211.0.""")
         if lb_protocol is not None:
             pulumi.set(__self__, "lb_protocol", lb_protocol)
         if listener_forward is not None:
@@ -1133,7 +1109,7 @@ class _ListenerState:
     @pulumi.getter
     def gzip(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+        Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
         """
         return pulumi.get(self, "gzip")
 
@@ -1274,22 +1250,10 @@ class _ListenerState:
         pulumi.set(self, "idle_timeout", value)
 
     @property
-    @pulumi.getter(name="instancePort")
-    def instance_port(self) -> Optional[pulumi.Input[int]]:
-        warnings.warn("""Field 'instance_port' has been deprecated, and using 'backend_port' to replace.""", DeprecationWarning)
-        pulumi.log.warn("""instance_port is deprecated: Field 'instance_port' has been deprecated, and using 'backend_port' to replace.""")
-
-        return pulumi.get(self, "instance_port")
-
-    @instance_port.setter
-    def instance_port(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "instance_port", value)
-
-    @property
     @pulumi.getter(name="lbPort")
     def lb_port(self) -> Optional[pulumi.Input[int]]:
-        warnings.warn("""Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.""", DeprecationWarning)
-        pulumi.log.warn("""lb_port is deprecated: Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.""")
+        warnings.warn("""Field 'lb_port' has been removed since 1.211.0.""", DeprecationWarning)
+        pulumi.log.warn("""lb_port is deprecated: Field 'lb_port' has been removed since 1.211.0.""")
 
         return pulumi.get(self, "lb_port")
 
@@ -1300,8 +1264,8 @@ class _ListenerState:
     @property
     @pulumi.getter(name="lbProtocol")
     def lb_protocol(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.""", DeprecationWarning)
-        pulumi.log.warn("""lb_protocol is deprecated: Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.""")
+        warnings.warn("""Field 'lb_protocol' has been removed since 1.211.0.""", DeprecationWarning)
+        pulumi.log.warn("""lb_protocol is deprecated: Field 'lb_protocol' has been removed since 1.211.0.""")
 
         return pulumi.get(self, "lb_protocol")
 
@@ -1501,7 +1465,7 @@ class _ListenerState:
     @pulumi.getter(name="xForwardedFor")
     def x_forwarded_for(self) -> Optional[pulumi.Input['ListenerXForwardedForArgs']]:
         """
-        Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
+        Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
         """
         return pulumi.get(self, "x_forwarded_for")
 
@@ -1541,7 +1505,6 @@ class Listener(pulumi.CustomResource):
                  health_check_uri: Optional[pulumi.Input[str]] = None,
                  healthy_threshold: Optional[pulumi.Input[int]] = None,
                  idle_timeout: Optional[pulumi.Input[int]] = None,
-                 instance_port: Optional[pulumi.Input[int]] = None,
                  lb_port: Optional[pulumi.Input[int]] = None,
                  lb_protocol: Optional[pulumi.Input[str]] = None,
                  listener_forward: Optional[pulumi.Input[str]] = None,
@@ -1573,6 +1536,8 @@ class Listener(pulumi.CustomResource):
         * [Configure a TCP Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
         * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
 
+        > **NOTE:** Available since v1.0.0.
+
         ## Example Usage
 
         ```python
@@ -1584,7 +1549,7 @@ class Listener(pulumi.CustomResource):
         if slb_listener_name is None:
             slb_listener_name = "forSlbListener"
         listener_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("listenerApplicationLoadBalancer",
-            load_balancer_name="tf-testAccSlbListenerHttp",
+            load_balancer_name="tf-exampleSlbListenerHttp",
             internet_charge_type="PayByTraffic",
             address_type="internet",
             instance_charge_type="PayByCLCU")
@@ -1598,7 +1563,7 @@ class Listener(pulumi.CustomResource):
             sticky_session="on",
             sticky_session_type="insert",
             cookie_timeout=86400,
-            cookie="testslblistenercookie",
+            cookie="tfslblistenercookie",
             health_check="on",
             health_check_domain="ali.com",
             health_check_uri="/cons",
@@ -1692,7 +1657,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[int] established_timeout: Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
         :param pulumi.Input[int] forward_port: The port that http redirect to https.
         :param pulumi.Input[int] frontend_port: Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
-        :param pulumi.Input[bool] gzip: Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+        :param pulumi.Input[bool] gzip: Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
         :param pulumi.Input[str] health_check: Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
         :param pulumi.Input[int] health_check_connect_port: The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
         :param pulumi.Input[str] health_check_domain: Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
@@ -1724,7 +1689,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         :param pulumi.Input[str] tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
         :param pulumi.Input[int] unhealthy_threshold: The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
-        :param pulumi.Input[pulumi.InputType['ListenerXForwardedForArgs']] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
+        :param pulumi.Input[pulumi.InputType['ListenerXForwardedForArgs']] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
         """
         ...
     @overload
@@ -1744,6 +1709,8 @@ class Listener(pulumi.CustomResource):
         * [Configure a TCP Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
         * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
 
+        > **NOTE:** Available since v1.0.0.
+
         ## Example Usage
 
         ```python
@@ -1755,7 +1722,7 @@ class Listener(pulumi.CustomResource):
         if slb_listener_name is None:
             slb_listener_name = "forSlbListener"
         listener_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("listenerApplicationLoadBalancer",
-            load_balancer_name="tf-testAccSlbListenerHttp",
+            load_balancer_name="tf-exampleSlbListenerHttp",
             internet_charge_type="PayByTraffic",
             address_type="internet",
             instance_charge_type="PayByCLCU")
@@ -1769,7 +1736,7 @@ class Listener(pulumi.CustomResource):
             sticky_session="on",
             sticky_session_type="insert",
             cookie_timeout=86400,
-            cookie="testslblistenercookie",
+            cookie="tfslblistenercookie",
             health_check="on",
             health_check_domain="ali.com",
             health_check_uri="/cons",
@@ -1888,7 +1855,6 @@ class Listener(pulumi.CustomResource):
                  health_check_uri: Optional[pulumi.Input[str]] = None,
                  healthy_threshold: Optional[pulumi.Input[int]] = None,
                  idle_timeout: Optional[pulumi.Input[int]] = None,
-                 instance_port: Optional[pulumi.Input[int]] = None,
                  lb_port: Optional[pulumi.Input[int]] = None,
                  lb_protocol: Optional[pulumi.Input[str]] = None,
                  listener_forward: Optional[pulumi.Input[str]] = None,
@@ -1944,17 +1910,13 @@ class Listener(pulumi.CustomResource):
             __props__.__dict__["health_check_uri"] = health_check_uri
             __props__.__dict__["healthy_threshold"] = healthy_threshold
             __props__.__dict__["idle_timeout"] = idle_timeout
-            if instance_port is not None and not opts.urn:
-                warnings.warn("""Field 'instance_port' has been deprecated, and using 'backend_port' to replace.""", DeprecationWarning)
-                pulumi.log.warn("""instance_port is deprecated: Field 'instance_port' has been deprecated, and using 'backend_port' to replace.""")
-            __props__.__dict__["instance_port"] = instance_port
             if lb_port is not None and not opts.urn:
-                warnings.warn("""Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.""", DeprecationWarning)
-                pulumi.log.warn("""lb_port is deprecated: Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.""")
+                warnings.warn("""Field 'lb_port' has been removed since 1.211.0.""", DeprecationWarning)
+                pulumi.log.warn("""lb_port is deprecated: Field 'lb_port' has been removed since 1.211.0.""")
             __props__.__dict__["lb_port"] = lb_port
             if lb_protocol is not None and not opts.urn:
-                warnings.warn("""Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.""", DeprecationWarning)
-                pulumi.log.warn("""lb_protocol is deprecated: Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.""")
+                warnings.warn("""Field 'lb_protocol' has been removed since 1.211.0.""", DeprecationWarning)
+                pulumi.log.warn("""lb_protocol is deprecated: Field 'lb_protocol' has been removed since 1.211.0.""")
             __props__.__dict__["lb_protocol"] = lb_protocol
             __props__.__dict__["listener_forward"] = listener_forward
             if load_balancer_id is None and not opts.urn:
@@ -2015,7 +1977,6 @@ class Listener(pulumi.CustomResource):
             health_check_uri: Optional[pulumi.Input[str]] = None,
             healthy_threshold: Optional[pulumi.Input[int]] = None,
             idle_timeout: Optional[pulumi.Input[int]] = None,
-            instance_port: Optional[pulumi.Input[int]] = None,
             lb_port: Optional[pulumi.Input[int]] = None,
             lb_protocol: Optional[pulumi.Input[str]] = None,
             listener_forward: Optional[pulumi.Input[str]] = None,
@@ -2055,7 +2016,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[int] established_timeout: Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
         :param pulumi.Input[int] forward_port: The port that http redirect to https.
         :param pulumi.Input[int] frontend_port: Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
-        :param pulumi.Input[bool] gzip: Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+        :param pulumi.Input[bool] gzip: Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
         :param pulumi.Input[str] health_check: Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
         :param pulumi.Input[int] health_check_connect_port: The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
         :param pulumi.Input[str] health_check_domain: Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
@@ -2087,7 +2048,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         :param pulumi.Input[str] tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
         :param pulumi.Input[int] unhealthy_threshold: The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
-        :param pulumi.Input[pulumi.InputType['ListenerXForwardedForArgs']] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
+        :param pulumi.Input[pulumi.InputType['ListenerXForwardedForArgs']] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2119,7 +2080,6 @@ class Listener(pulumi.CustomResource):
         __props__.__dict__["health_check_uri"] = health_check_uri
         __props__.__dict__["healthy_threshold"] = healthy_threshold
         __props__.__dict__["idle_timeout"] = idle_timeout
-        __props__.__dict__["instance_port"] = instance_port
         __props__.__dict__["lb_port"] = lb_port
         __props__.__dict__["lb_protocol"] = lb_protocol
         __props__.__dict__["listener_forward"] = listener_forward
@@ -2256,7 +2216,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter
     def gzip(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+        Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
         """
         return pulumi.get(self, "gzip")
 
@@ -2349,26 +2309,18 @@ class Listener(pulumi.CustomResource):
         return pulumi.get(self, "idle_timeout")
 
     @property
-    @pulumi.getter(name="instancePort")
-    def instance_port(self) -> pulumi.Output[Optional[int]]:
-        warnings.warn("""Field 'instance_port' has been deprecated, and using 'backend_port' to replace.""", DeprecationWarning)
-        pulumi.log.warn("""instance_port is deprecated: Field 'instance_port' has been deprecated, and using 'backend_port' to replace.""")
-
-        return pulumi.get(self, "instance_port")
-
-    @property
     @pulumi.getter(name="lbPort")
     def lb_port(self) -> pulumi.Output[Optional[int]]:
-        warnings.warn("""Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.""", DeprecationWarning)
-        pulumi.log.warn("""lb_port is deprecated: Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.""")
+        warnings.warn("""Field 'lb_port' has been removed since 1.211.0.""", DeprecationWarning)
+        pulumi.log.warn("""lb_port is deprecated: Field 'lb_port' has been removed since 1.211.0.""")
 
         return pulumi.get(self, "lb_port")
 
     @property
     @pulumi.getter(name="lbProtocol")
     def lb_protocol(self) -> pulumi.Output[Optional[str]]:
-        warnings.warn("""Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.""", DeprecationWarning)
-        pulumi.log.warn("""lb_protocol is deprecated: Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.""")
+        warnings.warn("""Field 'lb_protocol' has been removed since 1.211.0.""", DeprecationWarning)
+        pulumi.log.warn("""lb_protocol is deprecated: Field 'lb_protocol' has been removed since 1.211.0.""")
 
         return pulumi.get(self, "lb_protocol")
 
@@ -2504,7 +2456,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="xForwardedFor")
     def x_forwarded_for(self) -> pulumi.Output['outputs.ListenerXForwardedFor']:
         """
-        Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
+        Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
         """
         return pulumi.get(self, "x_forwarded_for")
 

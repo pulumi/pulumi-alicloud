@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Private Link Vpc Endpoint Service User resource.
  *
- * For information about Private Link Vpc Endpoint Service User and how to use it, see [What is Vpc Endpoint Service User](https://help.aliyun.com/document_detail/183545.html).
+ * For information about Private Link Vpc Endpoint Service User and how to use it, see [What is Vpc Endpoint Service User](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-addusertovpcendpointservice).
  *
- * > **NOTE:** Available in v1.110.0+.
+ * > **NOTE:** Available since v1.110.0.
  *
  * ## Example Usage
  *
@@ -19,9 +19,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.privatelink.VpcEndpointServiceUser("example", {
- *     serviceId: "epsrv-gw81c6xxxxxx",
- *     userId: "YourRamUserId",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexampleuser";
+ * const exampleVpcEndpointService = new alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService", {
+ *     serviceDescription: name,
+ *     connectBandwidth: 103,
+ *     autoAcceptConnection: false,
+ * });
+ * const exampleUser = new alicloud.ram.User("exampleUser", {
+ *     displayName: "user_display_name",
+ *     mobile: "86-18688888888",
+ *     email: "hello.uuu@aaa.com",
+ *     comments: "yoyoyo",
+ * });
+ * const exampleVpcEndpointServiceUser = new alicloud.privatelink.VpcEndpointServiceUser("exampleVpcEndpointServiceUser", {
+ *     serviceId: exampleVpcEndpointService.id,
+ *     userId: exampleUser.id,
  * });
  * ```
  *

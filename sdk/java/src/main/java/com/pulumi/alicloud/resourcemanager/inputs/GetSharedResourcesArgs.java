@@ -17,14 +17,14 @@ public final class GetSharedResourcesArgs extends com.pulumi.resources.InvokeArg
     public static final GetSharedResourcesArgs Empty = new GetSharedResourcesArgs();
 
     /**
-     * A list of shared resource ID.
+     * A list of shared resource IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
     /**
-     * @return A list of shared resource ID.
+     * @return A list of shared resource IDs.
      * 
      */
     public Optional<Output<List<String>>> ids() {
@@ -62,14 +62,14 @@ public final class GetSharedResourcesArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The status of shared resource.
+     * The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of shared resource.
+     * @return The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -104,7 +104,7 @@ public final class GetSharedResourcesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param ids A list of shared resource ID.
+         * @param ids A list of shared resource IDs.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class GetSharedResourcesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param ids A list of shared resource ID.
+         * @param ids A list of shared resource IDs.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class GetSharedResourcesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param ids A list of shared resource ID.
+         * @param ids A list of shared resource IDs.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class GetSharedResourcesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param status The status of shared resource.
+         * @param status The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class GetSharedResourcesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param status The status of shared resource.
+         * @param status The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
          * 
          * @return builder
          * 

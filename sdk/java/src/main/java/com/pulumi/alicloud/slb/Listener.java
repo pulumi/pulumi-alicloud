@@ -29,6 +29,8 @@ import javax.annotation.Nullable;
  * * [Configure a TCP Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
  * * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
  * 
+ * &gt; **NOTE:** Available since v1.0.0.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -61,7 +63,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var slbListenerName = config.get(&#34;slbListenerName&#34;).orElse(&#34;forSlbListener&#34;);
  *         var listenerApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;listenerApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
- *             .loadBalancerName(&#34;tf-testAccSlbListenerHttp&#34;)
+ *             .loadBalancerName(&#34;tf-exampleSlbListenerHttp&#34;)
  *             .internetChargeType(&#34;PayByTraffic&#34;)
  *             .addressType(&#34;internet&#34;)
  *             .instanceChargeType(&#34;PayByCLCU&#34;)
@@ -80,7 +82,7 @@ import javax.annotation.Nullable;
  *             .stickySession(&#34;on&#34;)
  *             .stickySessionType(&#34;insert&#34;)
  *             .cookieTimeout(86400)
- *             .cookie(&#34;testslblistenercookie&#34;)
+ *             .cookie(&#34;tfslblistenercookie&#34;)
  *             .healthCheck(&#34;on&#34;)
  *             .healthCheckDomain(&#34;ali.com&#34;)
  *             .healthCheckUri(&#34;/cons&#34;)
@@ -366,14 +368,14 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return this.frontendPort;
     }
     /**
-     * Whether to enable &#34;Gzip Compression&#34;. If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+     * Whether to enable &#34;Gzip Compression&#34;. If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
      * 
      */
     @Export(name="gzip", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> gzip;
 
     /**
-     * @return Whether to enable &#34;Gzip Compression&#34;. If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+     * @return Whether to enable &#34;Gzip Compression&#34;. If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
      * 
      */
     public Output<Optional<Boolean>> gzip() {
@@ -535,22 +537,10 @@ public class Listener extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Field &#39;instance_port&#39; has been deprecated, and using &#39;backend_port&#39; to replace.
+     * Field &#39;lb_port&#39; has been removed since 1.211.0.
      * 
      */
-    @Deprecated /* Field 'instance_port' has been deprecated, and using 'backend_port' to replace. */
-    @Export(name="instancePort", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> instancePort;
-
-    public Output<Optional<Integer>> instancePort() {
-        return Codegen.optional(this.instancePort);
-    }
-    /**
-     * @deprecated
-     * Field &#39;lb_port&#39; has been deprecated, and using &#39;frontend_port&#39; to replace.
-     * 
-     */
-    @Deprecated /* Field 'lb_port' has been deprecated, and using 'frontend_port' to replace. */
+    @Deprecated /* Field 'lb_port' has been removed since 1.211.0. */
     @Export(name="lbPort", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> lbPort;
 
@@ -559,10 +549,10 @@ public class Listener extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Field &#39;lb_protocol&#39; has been deprecated, and using &#39;protocol&#39; to replace.
+     * Field &#39;lb_protocol&#39; has been removed since 1.211.0.
      * 
      */
-    @Deprecated /* Field 'lb_protocol' has been deprecated, and using 'protocol' to replace. */
+    @Deprecated /* Field 'lb_protocol' has been removed since 1.211.0. */
     @Export(name="lbProtocol", type=String.class, parameters={})
     private Output</* @Nullable */ String> lbProtocol;
 
@@ -794,14 +784,14 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.unhealthyThreshold);
     }
     /**
-     * Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34; (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
+     * Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34; (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
      * 
      */
     @Export(name="xForwardedFor", type=ListenerXForwardedFor.class, parameters={})
     private Output<ListenerXForwardedFor> xForwardedFor;
 
     /**
-     * @return Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34; (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
+     * @return Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34; (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
      * 
      */
     public Output<ListenerXForwardedFor> xForwardedFor() {

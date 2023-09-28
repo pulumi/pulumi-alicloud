@@ -16,9 +16,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Global events storage region resource.
  * 
- * For information about global events storage region and how to use it, see [What is Global Events Storage Region](https://help.aliyun.com/document_detail/608293.html).
+ * For information about global events storage region and how to use it, see [What is Global Events Storage Region](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-updateglobaleventsstorageregion).
  * 
- * &gt; **NOTE:** Available in 1.201.0+
+ * &gt; **NOTE:** Available since v1.201.0.
  * 
  * ## Example Usage
  * ```java

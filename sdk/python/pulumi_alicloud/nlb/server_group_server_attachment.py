@@ -305,7 +305,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
 
         For information about NLB Server Group Server Attachment and how to use it, see [What is Server Group Server Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/addserverstoservergroup-nlb).
 
-        > **NOTE:** Available in v1.192.0+.
+        > **NOTE:** Available since v1.192.0.
 
         ## Example Usage
 
@@ -315,13 +315,19 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
         default_server_group = alicloud.nlb.ServerGroup("defaultServerGroup",
             resource_group_id=default_resource_groups.ids[0],
-            server_group_name=var["name"],
+            server_group_name=name,
             server_group_type="Ip",
-            vpc_id=default_networks.ids[0],
+            vpc_id=default_network.id,
             scheduler="Wrr",
             protocol="TCP",
             health_check=alicloud.nlb.ServerGroupHealthCheckArgs(
@@ -331,7 +337,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
         default_server_group_server_attachment = alicloud.nlb.ServerGroupServerAttachment("defaultServerGroupServerAttachment",
             server_type="Ip",
             server_id="10.0.0.0",
-            description=var["name"],
+            description=name,
             port=80,
             server_group_id=default_server_group.id,
             weight=100,
@@ -369,7 +375,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
 
         For information about NLB Server Group Server Attachment and how to use it, see [What is Server Group Server Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/addserverstoservergroup-nlb).
 
-        > **NOTE:** Available in v1.192.0+.
+        > **NOTE:** Available since v1.192.0.
 
         ## Example Usage
 
@@ -379,13 +385,19 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
         default_server_group = alicloud.nlb.ServerGroup("defaultServerGroup",
             resource_group_id=default_resource_groups.ids[0],
-            server_group_name=var["name"],
+            server_group_name=name,
             server_group_type="Ip",
-            vpc_id=default_networks.ids[0],
+            vpc_id=default_network.id,
             scheduler="Wrr",
             protocol="TCP",
             health_check=alicloud.nlb.ServerGroupHealthCheckArgs(
@@ -395,7 +407,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
         default_server_group_server_attachment = alicloud.nlb.ServerGroupServerAttachment("defaultServerGroupServerAttachment",
             server_type="Ip",
             server_id="10.0.0.0",
-            description=var["name"],
+            description=name,
             port=80,
             server_group_id=default_server_group.id,
             weight=100,

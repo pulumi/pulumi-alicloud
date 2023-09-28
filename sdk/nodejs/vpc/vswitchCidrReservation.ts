@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Vpc Vswitch Cidr Reservation and how to use it, see [What is Vswitch Cidr Reservation](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/610154).
  *
- * > **NOTE:** Available in v1.205.0+.
+ * > **NOTE:** Available since v1.205.0.
  *
  * ## Example Usage
  *
@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testacc-example";
+ * const name = config.get("name") || "tf-example";
  * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  * const defaultVswitchCidrReservation = new alicloud.vpc.VswitchCidrReservation("defaultVswitchCidrReservation", {
  *     ipVersion: "IPv4",
  *     vswitchId: defaultVSwitch.id,
- *     cidrReservationDescription: "test",
+ *     cidrReservationDescription: name,
  *     cidrReservationCidr: "10.0.10.0/24",
  *     vswitchCidrReservationName: name,
  *     cidrReservationType: "Prefix",

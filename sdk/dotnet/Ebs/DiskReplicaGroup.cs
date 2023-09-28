@@ -14,38 +14,7 @@ namespace Pulumi.AliCloud.Ebs
     /// 
     /// For information about EBS Disk Replica Group and how to use it, see [What is Disk Replica Group](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/creatediskreplicagroup).
     /// 
-    /// &gt; **NOTE:** Available in v1.187.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultRegions = AliCloud.Ebs.GetRegions.Invoke(new()
-    ///     {
-    ///         RegionId = "cn-hangzhou",
-    ///     });
-    /// 
-    ///     var defaultDiskReplicaGroup = new AliCloud.Ebs.DiskReplicaGroup("defaultDiskReplicaGroup", new()
-    ///     {
-    ///         SourceRegionId = @var.Region,
-    ///         SourceZoneId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Zones[0]?.ZoneId),
-    ///         DestinationRegionId = @var.Region,
-    ///         DestinationZoneId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Zones[1]?.ZoneId),
-    ///         GroupName = "group_name",
-    ///         Description = "group_description",
-    ///         Rpo = 900,
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// &gt; **NOTE:** Available since v1.187.0.
     /// 
     /// ## Import
     /// 

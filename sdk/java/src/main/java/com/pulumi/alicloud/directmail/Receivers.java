@@ -20,40 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Direct Mail Receivers and how to use it, see [What is Direct Mail Receivers](https://www.alibabacloud.com/help/en/doc-detail/29414.htm).
  * 
- * &gt; **NOTE:** Available in v1.125.0+.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.directmail.Receivers;
- * import com.pulumi.alicloud.directmail.ReceiversArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new Receivers(&#34;example&#34;, ReceiversArgs.builder()        
- *             .receiversAlias(&#34;tf-vme8@onaliyun.com&#34;)
- *             .receiversName(&#34;vme8&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
+ * &gt; **NOTE:** Available since v1.125.0.
  * 
  * ## Import
  * 

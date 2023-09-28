@@ -23,7 +23,7 @@ class HoneypotPresetArgs:
         """
         The set of arguments for constructing a HoneypotPreset resource.
         :param pulumi.Input[str] honeypot_image_name: Honeypot mirror name
-        :param pulumi.Input['HoneypotPresetMetaArgs'] meta: Honeypot template custom parameters. See the following `Block meta`.
+        :param pulumi.Input['HoneypotPresetMetaArgs'] meta: Honeypot template custom parameters. See `meta` below.
         :param pulumi.Input[str] node_id: Unique id of management node
         :param pulumi.Input[str] preset_name: Honeypot template custom name
         """
@@ -48,7 +48,7 @@ class HoneypotPresetArgs:
     @pulumi.getter
     def meta(self) -> pulumi.Input['HoneypotPresetMetaArgs']:
         """
-        Honeypot template custom parameters. See the following `Block meta`.
+        Honeypot template custom parameters. See `meta` below.
         """
         return pulumi.get(self, "meta")
 
@@ -93,7 +93,7 @@ class _HoneypotPresetState:
         Input properties used for looking up and filtering HoneypotPreset resources.
         :param pulumi.Input[str] honeypot_image_name: Honeypot mirror name
         :param pulumi.Input[str] honeypot_preset_id: Unique ID of honeypot Template
-        :param pulumi.Input['HoneypotPresetMetaArgs'] meta: Honeypot template custom parameters. See the following `Block meta`.
+        :param pulumi.Input['HoneypotPresetMetaArgs'] meta: Honeypot template custom parameters. See `meta` below.
         :param pulumi.Input[str] node_id: Unique id of management node
         :param pulumi.Input[str] preset_name: Honeypot template custom name
         """
@@ -136,7 +136,7 @@ class _HoneypotPresetState:
     @pulumi.getter
     def meta(self) -> Optional[pulumi.Input['HoneypotPresetMetaArgs']]:
         """
-        Honeypot template custom parameters. See the following `Block meta`.
+        Honeypot template custom parameters. See `meta` below.
         """
         return pulumi.get(self, "meta")
 
@@ -182,9 +182,9 @@ class HoneypotPreset(pulumi.CustomResource):
         """
         Provides a Threat Detection Honeypot Preset resource.
 
-        For information about Threat Detection Honeypot Preset and how to use it, see [What is Honeypot Preset](https://help.aliyun.com/document_detail/468960.html).
+        For information about Threat Detection Honeypot Preset and how to use it, see [What is Honeypot Preset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotpreset).
 
-        > **NOTE:** Available in v1.195.0+.
+        > **NOTE:** Available since v1.195.0.
 
         ## Example Usage
 
@@ -194,18 +194,23 @@ class HoneypotPreset(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        default_honeypot_images = alicloud.threatdetection.get_honeypot_images(name_regex="^ruoyi")
         default_honeypot_node = alicloud.threatdetection.HoneypotNode("defaultHoneypotNode",
-            node_name=var["name"],
+            node_name=name,
             available_probe_num=20,
             security_group_probe_ip_lists=["0.0.0.0/0"])
         default_honeypot_preset = alicloud.threatdetection.HoneypotPreset("defaultHoneypotPreset",
-            honeypot_image_name="shiro",
+            preset_name=name,
+            node_id=default_honeypot_node.id,
+            honeypot_image_name=default_honeypot_images.images[0].honeypot_image_name,
             meta=alicloud.threatdetection.HoneypotPresetMetaArgs(
                 portrait_option=True,
                 burp="open",
-            ),
-            node_id=default_honeypot_node.id,
-            preset_name="apiapec_test")
+            ))
         ```
 
         ## Import
@@ -219,7 +224,7 @@ class HoneypotPreset(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] honeypot_image_name: Honeypot mirror name
-        :param pulumi.Input[pulumi.InputType['HoneypotPresetMetaArgs']] meta: Honeypot template custom parameters. See the following `Block meta`.
+        :param pulumi.Input[pulumi.InputType['HoneypotPresetMetaArgs']] meta: Honeypot template custom parameters. See `meta` below.
         :param pulumi.Input[str] node_id: Unique id of management node
         :param pulumi.Input[str] preset_name: Honeypot template custom name
         """
@@ -232,9 +237,9 @@ class HoneypotPreset(pulumi.CustomResource):
         """
         Provides a Threat Detection Honeypot Preset resource.
 
-        For information about Threat Detection Honeypot Preset and how to use it, see [What is Honeypot Preset](https://help.aliyun.com/document_detail/468960.html).
+        For information about Threat Detection Honeypot Preset and how to use it, see [What is Honeypot Preset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotpreset).
 
-        > **NOTE:** Available in v1.195.0+.
+        > **NOTE:** Available since v1.195.0.
 
         ## Example Usage
 
@@ -244,18 +249,23 @@ class HoneypotPreset(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        default_honeypot_images = alicloud.threatdetection.get_honeypot_images(name_regex="^ruoyi")
         default_honeypot_node = alicloud.threatdetection.HoneypotNode("defaultHoneypotNode",
-            node_name=var["name"],
+            node_name=name,
             available_probe_num=20,
             security_group_probe_ip_lists=["0.0.0.0/0"])
         default_honeypot_preset = alicloud.threatdetection.HoneypotPreset("defaultHoneypotPreset",
-            honeypot_image_name="shiro",
+            preset_name=name,
+            node_id=default_honeypot_node.id,
+            honeypot_image_name=default_honeypot_images.images[0].honeypot_image_name,
             meta=alicloud.threatdetection.HoneypotPresetMetaArgs(
                 portrait_option=True,
                 burp="open",
-            ),
-            node_id=default_honeypot_node.id,
-            preset_name="apiapec_test")
+            ))
         ```
 
         ## Import
@@ -331,7 +341,7 @@ class HoneypotPreset(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] honeypot_image_name: Honeypot mirror name
         :param pulumi.Input[str] honeypot_preset_id: Unique ID of honeypot Template
-        :param pulumi.Input[pulumi.InputType['HoneypotPresetMetaArgs']] meta: Honeypot template custom parameters. See the following `Block meta`.
+        :param pulumi.Input[pulumi.InputType['HoneypotPresetMetaArgs']] meta: Honeypot template custom parameters. See `meta` below.
         :param pulumi.Input[str] node_id: Unique id of management node
         :param pulumi.Input[str] preset_name: Honeypot template custom name
         """
@@ -366,7 +376,7 @@ class HoneypotPreset(pulumi.CustomResource):
     @pulumi.getter
     def meta(self) -> pulumi.Output['outputs.HoneypotPresetMeta']:
         """
-        Honeypot template custom parameters. See the following `Block meta`.
+        Honeypot template custom parameters. See `meta` below.
         """
         return pulumi.get(self, "meta")
 

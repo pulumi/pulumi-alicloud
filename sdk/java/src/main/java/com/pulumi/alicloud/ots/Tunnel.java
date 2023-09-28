@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * For information about OTS tunnel and how to use it, see [Tunnel overview](https://www.alibabacloud.com/help/en/tablestore/latest/tunnel-service-overview).
  * 
- * &gt; **NOTE:** Available in v1.172.0+.
+ * &gt; **NOTE:** Available since v1.172.0.
  * 
  * ## Example Usage
  * 

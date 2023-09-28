@@ -17,7 +17,7 @@ import (
 //
 // For information about OTS tunnel and how to use it, see [Tunnel overview](https://www.alibabacloud.com/help/en/tablestore/latest/tunnel-service-overview).
 //
-// > **NOTE:** Available in v1.172.0+.
+// > **NOTE:** Available since v1.172.0.
 //
 // ## Example Usage
 //
@@ -35,24 +35,28 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "terraformtest"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			fooInstance, err := ots.NewInstance(ctx, "fooInstance", &ots.InstanceArgs{
+//			defaultInstance, err := ots.NewInstance(ctx, "defaultInstance", &ots.InstanceArgs{
 //				Description: pulumi.String(name),
 //				AccessedBy:  pulumi.String("Any"),
 //				Tags: pulumi.AnyMap{
 //					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("acceptance test"),
+//					"For":     pulumi.Any("example"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			fooTable, err := ots.NewTable(ctx, "fooTable", &ots.TableArgs{
-//				InstanceName: fooInstance.Name,
-//				TableName:    pulumi.String(name),
+//			defaultTable, err := ots.NewTable(ctx, "defaultTable", &ots.TableArgs{
+//				InstanceName: defaultInstance.Name,
+//				TableName:    pulumi.String("tf_example"),
+//				TimeToLive:   -1,
+//				MaxVersion:   pulumi.Int(1),
+//				EnableSse:    pulumi.Bool(true),
+//				SseKeyType:   pulumi.String("SSE_KMS_SERVICE"),
 //				PrimaryKeys: ots.TablePrimaryKeyArray{
 //					&ots.TablePrimaryKeyArgs{
 //						Name: pulumi.String("pk1"),
@@ -67,17 +71,14 @@ import (
 //						Type: pulumi.String("Binary"),
 //					},
 //				},
-//				TimeToLive:                -1,
-//				MaxVersion:                pulumi.Int(1),
-//				DeviationCellVersionInSec: pulumi.String("1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ots.NewTunnel(ctx, "fooTunnel", &ots.TunnelArgs{
-//				InstanceName: fooInstance.Name,
-//				TableName:    fooTable.TableName,
-//				TunnelName:   pulumi.String(name),
+//			_, err = ots.NewTunnel(ctx, "defaultTunnel", &ots.TunnelArgs{
+//				InstanceName: defaultInstance.Name,
+//				TableName:    defaultTable.TableName,
+//				TunnelName:   pulumi.String("tf_example"),
 //				TunnelType:   pulumi.String("BaseAndStream"),
 //			})
 //			if err != nil {

@@ -37,7 +37,6 @@ import * as utilities from "../utilities";
  *   }
  *   
  * `,
- *     force: true,
  * });
  * ```
  *

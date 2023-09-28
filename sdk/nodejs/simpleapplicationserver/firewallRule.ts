@@ -9,7 +9,35 @@ import * as utilities from "../utilities";
  *
  * For information about Simple Application Server Firewall Rule and how to use it, see [What is Firewall Rule](https://www.alibabacloud.com/help/doc-detail/190449.htm).
  *
- * > **NOTE:** Available in v1.143.0+.
+ * > **NOTE:** Available since v1.143.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const defaultImages = alicloud.simpleapplicationserver.getImages({});
+ * const defaultServerPlans = alicloud.simpleapplicationserver.getServerPlans({});
+ * const defaultInstance = new alicloud.simpleapplicationserver.Instance("defaultInstance", {
+ *     paymentType: "Subscription",
+ *     planId: defaultServerPlans.then(defaultServerPlans => defaultServerPlans.plans?.[0]?.id),
+ *     instanceName: name,
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     period: 1,
+ *     dataDiskSize: 100,
+ * });
+ * const defaultFirewallRule = new alicloud.simpleapplicationserver.FirewallRule("defaultFirewallRule", {
+ *     instanceId: defaultInstance.id,
+ *     ruleProtocol: "Tcp",
+ *     port: "9999",
+ *     remark: name,
+ * });
+ * ```
  *
  * ## Import
  *

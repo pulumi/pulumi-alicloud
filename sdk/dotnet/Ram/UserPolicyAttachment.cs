@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Ram
     /// <summary>
     /// Provides a RAM User Policy attachment resource.
     /// 
-    /// &gt; **NOTE:** Available since v1.0.0+.
+    /// &gt; **NOTE:** Available since v1.0.0.
     /// 
     /// ## Example Usage
     /// 
@@ -31,7 +31,6 @@ namespace Pulumi.AliCloud.Ram
     ///         Mobile = "86-18688888888",
     ///         Email = "hello.uuu@aaa.com",
     ///         Comments = "yoyoyo",
-    ///         Force = true,
     ///     });
     /// 
     ///     var policy = new AliCloud.Ram.Policy("policy", new()
@@ -54,7 +53,6 @@ namespace Pulumi.AliCloud.Ram
     ///   }
     /// ",
     ///         Description = "this is a policy test",
-    ///         Force = true,
     ///     });
     /// 
     ///     var attach = new AliCloud.Ram.UserPolicyAttachment("attach", new()

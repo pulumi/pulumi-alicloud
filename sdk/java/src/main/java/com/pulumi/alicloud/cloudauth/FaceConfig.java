@@ -16,42 +16,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloudauth Face Config resource.
  * 
- * For information about Cloudauth Face Config and how to use it, see [What is Face Config](https://help.aliyun.com/document_detail/99173.html).
+ * For information about Cloudauth Face Config and how to use it, see [What is Face Config](https://www.alibabacloud.com/help/en/document_detail/99173.html).
  * 
- * &gt; **NOTE:** Available in v1.137.0+.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.cloudauth.FaceConfig;
- * import com.pulumi.alicloud.cloudauth.FaceConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new FaceConfig(&#34;example&#34;, FaceConfigArgs.builder()        
- *             .bizName(&#34;example_value&#34;)
- *             .bizType(&#34;example_value&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
+ * &gt; **NOTE:** Available since v1.137.0.
  * 
  * ## Import
  * 

@@ -29,10 +29,10 @@ class TableArgs:
         The set of arguments for constructing a Table resource.
         :param pulumi.Input[str] instance_name: The name of the OTS instance in which table will located.
         :param pulumi.Input[int] max_version: The maximum number of versions stored in this table. The valid value is 1-2147483647.
-        :param pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
+        :param pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
         :param pulumi.Input[str] table_name: The table name of the OTS instance. If changed, a new table would be created.
         :param pulumi.Input[int] time_to_live: The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
-        :param pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+        :param pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         :param pulumi.Input[str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         :param pulumi.Input[bool] enable_sse: Whether enable OTS server side encryption. Default value is false.
         :param pulumi.Input[str] sse_key_type: The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
@@ -79,7 +79,7 @@ class TableArgs:
     @pulumi.getter(name="primaryKeys")
     def primary_keys(self) -> pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]]:
         """
-        The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
+        The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
         """
         return pulumi.get(self, "primary_keys")
 
@@ -115,7 +115,7 @@ class TableArgs:
     @pulumi.getter(name="definedColumns")
     def defined_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]]]:
         """
-        The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+        The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         """
         return pulumi.get(self, "defined_columns")
 
@@ -174,12 +174,12 @@ class _TableState:
                  time_to_live: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Table resources.
-        :param pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+        :param pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         :param pulumi.Input[str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         :param pulumi.Input[bool] enable_sse: Whether enable OTS server side encryption. Default value is false.
         :param pulumi.Input[str] instance_name: The name of the OTS instance in which table will located.
         :param pulumi.Input[int] max_version: The maximum number of versions stored in this table. The valid value is 1-2147483647.
-        :param pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
+        :param pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
         :param pulumi.Input[str] sse_key_type: The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
         :param pulumi.Input[str] table_name: The table name of the OTS instance. If changed, a new table would be created.
         :param pulumi.Input[int] time_to_live: The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
@@ -207,7 +207,7 @@ class _TableState:
     @pulumi.getter(name="definedColumns")
     def defined_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]]]:
         """
-        The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+        The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         """
         return pulumi.get(self, "defined_columns")
 
@@ -267,7 +267,7 @@ class _TableState:
     @pulumi.getter(name="primaryKeys")
     def primary_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]]]:
         """
-        The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
+        The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
         """
         return pulumi.get(self, "primary_keys")
 
@@ -333,6 +333,8 @@ class Table(pulumi.CustomResource):
         > **NOTE:** From Provider version 1.10.0, the provider field 'ots_instance_name' has been deprecated and
         you should use resource alicloud_ots_table's new field 'instance_name' and 'table_name' to re-import this resource.
 
+        > **NOTE:** Available since v1.9.2.
+
         ## Example Usage
 
         ```python
@@ -342,17 +344,21 @@ class Table(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraformtest"
-        foo = alicloud.ots.Instance("foo",
+            name = "tf-example"
+        default_instance = alicloud.ots.Instance("defaultInstance",
             description=name,
             accessed_by="Any",
             tags={
                 "Created": "TF",
-                "For": "acceptance test",
+                "For": "example",
             })
-        basic = alicloud.ots.Table("basic",
-            instance_name=foo.name,
-            table_name=name,
+        default_table = alicloud.ots.Table("defaultTable",
+            instance_name=default_instance.name,
+            table_name="tf_example",
+            time_to_live=-1,
+            max_version=1,
+            enable_sse=True,
+            sse_key_type="SSE_KMS_SERVICE",
             primary_keys=[
                 alicloud.ots.TablePrimaryKeyArgs(
                     name="pk1",
@@ -380,12 +386,7 @@ class Table(pulumi.CustomResource):
                     name="col3",
                     type="Binary",
                 ),
-            ],
-            time_to_live=-1,
-            max_version=1,
-            deviation_cell_version_in_sec="1",
-            enable_sse=True,
-            sse_key_type="SSE_KMS_SERVICE")
+            ])
         ```
 
         ## Import
@@ -398,12 +399,12 @@ class Table(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableDefinedColumnArgs']]]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableDefinedColumnArgs']]]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         :param pulumi.Input[str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         :param pulumi.Input[bool] enable_sse: Whether enable OTS server side encryption. Default value is false.
         :param pulumi.Input[str] instance_name: The name of the OTS instance in which table will located.
         :param pulumi.Input[int] max_version: The maximum number of versions stored in this table. The valid value is 1-2147483647.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TablePrimaryKeyArgs']]]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TablePrimaryKeyArgs']]]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
         :param pulumi.Input[str] sse_key_type: The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
         :param pulumi.Input[str] table_name: The table name of the OTS instance. If changed, a new table would be created.
         :param pulumi.Input[int] time_to_live: The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
@@ -420,6 +421,8 @@ class Table(pulumi.CustomResource):
         > **NOTE:** From Provider version 1.10.0, the provider field 'ots_instance_name' has been deprecated and
         you should use resource alicloud_ots_table's new field 'instance_name' and 'table_name' to re-import this resource.
 
+        > **NOTE:** Available since v1.9.2.
+
         ## Example Usage
 
         ```python
@@ -429,17 +432,21 @@ class Table(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraformtest"
-        foo = alicloud.ots.Instance("foo",
+            name = "tf-example"
+        default_instance = alicloud.ots.Instance("defaultInstance",
             description=name,
             accessed_by="Any",
             tags={
                 "Created": "TF",
-                "For": "acceptance test",
+                "For": "example",
             })
-        basic = alicloud.ots.Table("basic",
-            instance_name=foo.name,
-            table_name=name,
+        default_table = alicloud.ots.Table("defaultTable",
+            instance_name=default_instance.name,
+            table_name="tf_example",
+            time_to_live=-1,
+            max_version=1,
+            enable_sse=True,
+            sse_key_type="SSE_KMS_SERVICE",
             primary_keys=[
                 alicloud.ots.TablePrimaryKeyArgs(
                     name="pk1",
@@ -467,12 +474,7 @@ class Table(pulumi.CustomResource):
                     name="col3",
                     type="Binary",
                 ),
-            ],
-            time_to_live=-1,
-            max_version=1,
-            deviation_cell_version_in_sec="1",
-            enable_sse=True,
-            sse_key_type="SSE_KMS_SERVICE")
+            ])
         ```
 
         ## Import
@@ -561,12 +563,12 @@ class Table(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableDefinedColumnArgs']]]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableDefinedColumnArgs']]]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         :param pulumi.Input[str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         :param pulumi.Input[bool] enable_sse: Whether enable OTS server side encryption. Default value is false.
         :param pulumi.Input[str] instance_name: The name of the OTS instance in which table will located.
         :param pulumi.Input[int] max_version: The maximum number of versions stored in this table. The valid value is 1-2147483647.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TablePrimaryKeyArgs']]]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TablePrimaryKeyArgs']]]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
         :param pulumi.Input[str] sse_key_type: The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
         :param pulumi.Input[str] table_name: The table name of the OTS instance. If changed, a new table would be created.
         :param pulumi.Input[int] time_to_live: The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
@@ -590,7 +592,7 @@ class Table(pulumi.CustomResource):
     @pulumi.getter(name="definedColumns")
     def defined_columns(self) -> pulumi.Output[Optional[Sequence['outputs.TableDefinedColumn']]]:
         """
-        The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+        The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         """
         return pulumi.get(self, "defined_columns")
 
@@ -630,7 +632,7 @@ class Table(pulumi.CustomResource):
     @pulumi.getter(name="primaryKeys")
     def primary_keys(self) -> pulumi.Output[Sequence['outputs.TablePrimaryKey']]:
         """
-        The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
+        The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
         """
         return pulumi.get(self, "primary_keys")
 

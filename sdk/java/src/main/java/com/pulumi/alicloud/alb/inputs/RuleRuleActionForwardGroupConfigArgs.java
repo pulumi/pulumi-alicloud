@@ -18,14 +18,14 @@ public final class RuleRuleActionForwardGroupConfigArgs extends com.pulumi.resou
     public static final RuleRuleActionForwardGroupConfigArgs Empty = new RuleRuleActionForwardGroupConfigArgs();
 
     /**
-     * The configuration of session persistence for server groups. See `server_group_sticky_session` below for details.
+     * The configuration of session persistence for server groups. See `server_group_sticky_session` below.
      * 
      */
     @Import(name="serverGroupStickySession")
     private @Nullable Output<RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs> serverGroupStickySession;
 
     /**
-     * @return The configuration of session persistence for server groups. See `server_group_sticky_session` below for details.
+     * @return The configuration of session persistence for server groups. See `server_group_sticky_session` below.
      * 
      */
     public Optional<Output<RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs>> serverGroupStickySession() {
@@ -33,14 +33,14 @@ public final class RuleRuleActionForwardGroupConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
+     * The destination server group to which requests are forwarded. See `server_group_tuples` below.
      * 
      */
     @Import(name="serverGroupTuples")
     private @Nullable Output<List<RuleRuleActionForwardGroupConfigServerGroupTupleArgs>> serverGroupTuples;
 
     /**
-     * @return The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
+     * @return The destination server group to which requests are forwarded. See `server_group_tuples` below.
      * 
      */
     public Optional<Output<List<RuleRuleActionForwardGroupConfigServerGroupTupleArgs>>> serverGroupTuples() {
@@ -73,7 +73,7 @@ public final class RuleRuleActionForwardGroupConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param serverGroupStickySession The configuration of session persistence for server groups. See `server_group_sticky_session` below for details.
+         * @param serverGroupStickySession The configuration of session persistence for server groups. See `server_group_sticky_session` below.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class RuleRuleActionForwardGroupConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param serverGroupStickySession The configuration of session persistence for server groups. See `server_group_sticky_session` below for details.
+         * @param serverGroupStickySession The configuration of session persistence for server groups. See `server_group_sticky_session` below.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class RuleRuleActionForwardGroupConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
+         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class RuleRuleActionForwardGroupConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
+         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class RuleRuleActionForwardGroupConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
+         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below.
          * 
          * @return builder
          * 

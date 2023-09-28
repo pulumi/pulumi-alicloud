@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ots
     /// 
     /// For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
     /// 
-    /// &gt; **NOTE:** Available in v1.187.0+.
+    /// &gt; **NOTE:** Available since v1.187.0.
     /// 
     /// ## Example Usage
     /// 
@@ -27,34 +27,26 @@ namespace Pulumi.AliCloud.Ots
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraformtest";
-    ///     var pks = config.GetObject&lt;string[]&gt;("pks") ?? new[]
-    ///     {
-    ///         "pk1",
-    ///         "pk2",
-    ///         "pk3",
-    ///     };
-    ///     var definedCols = config.GetObject&lt;string[]&gt;("definedCols") ?? new[]
-    ///     {
-    ///         "col1",
-    ///         "col2",
-    ///         "col3",
-    ///     };
-    ///     var instance1 = new AliCloud.Ots.Instance("instance1", new()
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultInstance = new AliCloud.Ots.Instance("defaultInstance", new()
     ///     {
     ///         Description = name,
     ///         AccessedBy = "Any",
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },
-    ///             { "For", "acceptance test" },
+    ///             { "For", "example" },
     ///         },
     ///     });
     /// 
-    ///     var table1 = new AliCloud.Ots.Table("table1", new()
+    ///     var defaultTable = new AliCloud.Ots.Table("defaultTable", new()
     ///     {
-    ///         InstanceName = instance1.Name,
-    ///         TableName = name,
+    ///         InstanceName = defaultInstance.Name,
+    ///         TableName = "tf_example",
+    ///         TimeToLive = -1,
+    ///         MaxVersion = 1,
+    ///         EnableSse = true,
+    ///         SseKeyType = "SSE_KMS_SERVICE",
     ///         PrimaryKeys = new[]
     ///         {
     ///             new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
@@ -91,20 +83,27 @@ namespace Pulumi.AliCloud.Ots
     ///                 Type = "Binary",
     ///             },
     ///         },
-    ///         TimeToLive = -1,
-    ///         MaxVersion = 1,
-    ///         DeviationCellVersionInSec = "1",
     ///     });
     /// 
-    ///     var index1 = new AliCloud.Ots.SecondaryIndex("index1", new()
+    ///     var defaultSecondaryIndex = new AliCloud.Ots.SecondaryIndex("defaultSecondaryIndex", new()
     ///     {
-    ///         InstanceName = instance1.Name,
-    ///         TableName = table1.TableName,
-    ///         IndexName = name,
+    ///         InstanceName = defaultInstance.Name,
+    ///         TableName = defaultTable.TableName,
+    ///         IndexName = "example_index",
     ///         IndexType = "Global",
     ///         IncludeBaseData = true,
-    ///         PrimaryKeys = pks,
-    ///         DefinedColumns = definedCols,
+    ///         PrimaryKeys = new[]
+    ///         {
+    ///             "pk1",
+    ///             "pk2",
+    ///             "pk3",
+    ///         },
+    ///         DefinedColumns = new[]
+    ///         {
+    ///             "col1",
+    ///             "col2",
+    ///             "col3",
+    ///         },
     ///     });
     /// 
     /// });

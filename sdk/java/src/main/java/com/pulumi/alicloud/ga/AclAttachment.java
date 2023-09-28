@@ -99,8 +99,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultAclAttachment = new AclAttachment(&#34;defaultAclAttachment&#34;, AclAttachmentArgs.builder()        
- *             .aclId(defaultAcl.id())
  *             .listenerId(defaultListener.id())
+ *             .aclId(defaultAcl.id())
  *             .aclType(&#34;white&#34;)
  *             .build());
  * 
@@ -110,10 +110,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Global Accelerator (GA) Acl Attachment can be imported using the id. Format to `&lt;listener_id&gt;:&lt;acl_id&gt;`, e.g.
+ * Global Accelerator (GA) Acl Attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ga/aclAttachment:AclAttachment example your_listener_id:your_acl_id
+ *  $ pulumi import alicloud:ga/aclAttachment:AclAttachment example &lt;listener_id&gt;:&lt;acl_id&gt;
  * ```
  * 
  */
@@ -134,14 +134,14 @@ public class AclAttachment extends com.pulumi.resources.CustomResource {
         return this.aclId;
     }
     /**
-     * The type of the ACL. Valid values: `white`, `black`.
+     * The type of the ACL. Valid values:
      * 
      */
     @Export(name="aclType", type=String.class, parameters={})
     private Output<String> aclType;
 
     /**
-     * @return The type of the ACL. Valid values: `white`, `black`.
+     * @return The type of the ACL. Valid values:
      * 
      */
     public Output<String> aclType() {
@@ -176,14 +176,14 @@ public class AclAttachment extends com.pulumi.resources.CustomResource {
         return this.listenerId;
     }
     /**
-     * The status of the resource.
+     * The status of the Acl Attachment.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the Acl Attachment.
      * 
      */
     public Output<String> status() {

@@ -86,7 +86,7 @@ class Domain(pulumi.CustomResource):
 
         For information about Direct Mail Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/doc-detail/29414.htm).
 
-        > **NOTE:** Available in v1.134.0+.
+        > **NOTE:** Available since v1.134.0.
 
         ## Example Usage
 
@@ -96,7 +96,11 @@ class Domain(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.directmail.Domain("example", domain_name="example_value")
+        config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "alicloud-provider.online"
+        example = alicloud.directmail.Domain("example", domain_name=domain_name)
         ```
 
         ## Import
@@ -122,7 +126,7 @@ class Domain(pulumi.CustomResource):
 
         For information about Direct Mail Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/doc-detail/29414.htm).
 
-        > **NOTE:** Available in v1.134.0+.
+        > **NOTE:** Available since v1.134.0.
 
         ## Example Usage
 
@@ -132,7 +136,11 @@ class Domain(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.directmail.Domain("example", domain_name="example_value")
+        config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "alicloud-provider.online"
+        example = alicloud.directmail.Domain("example", domain_name=domain_name)
         ```
 
         ## Import

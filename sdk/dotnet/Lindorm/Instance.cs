@@ -36,17 +36,19 @@ namespace Pulumi.AliCloud.Lindorm
     /// 
     ///     var zoneId = "cn-hangzhou-h";
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "10.4.0.0/16",
+    ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
-    ///         VswitchName = name,
-    ///         CidrBlock = "10.4.0.0/24",
-    ///         VpcId = defaultNetwork.Id,
+    ///         NameRegex = "^default-NODELETING$",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///         ZoneId = zoneId,
     ///     });
     /// 
@@ -55,8 +57,8 @@ namespace Pulumi.AliCloud.Lindorm
     ///         DiskCategory = "cloud_efficiency",
     ///         PaymentType = "PayAsYouGo",
     ///         ZoneId = zoneId,
-    ///         VswitchId = defaultSwitch.Id,
-    ///         VpcId = defaultNetwork.Id,
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///         InstanceName = name,
     ///         TableEngineSpecification = "lindorm.g.4xlarge",
     ///         TableEngineNodeCount = 2,
@@ -152,6 +154,12 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<bool> EnabledSearchEngine { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.211.0) Whether to enable streaming engine.
+        /// </summary>
+        [Output("enabledStreamEngine")]
+        public Output<bool> EnabledStreamEngine { get; private set; } = null!;
+
+        /// <summary>
         /// (Available since v1.163.0) Whether to enable table engine.
         /// </summary>
         [Output("enabledTableEngine")]
@@ -174,12 +182,6 @@ namespace Pulumi.AliCloud.Lindorm
         /// </summary>
         [Output("fileEngineSpecification")]
         public Output<string> FileEngineSpecification { get; private set; } = null!;
-
-        /// <summary>
-        /// The group name.
-        /// </summary>
-        [Output("groupName")]
-        public Output<string?> GroupName { get; private set; } = null!;
 
         /// <summary>
         /// The name of the instance.
@@ -248,18 +250,6 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The count of phoenix.
-        /// </summary>
-        [Output("phoenixNodeCount")]
-        public Output<int> PhoenixNodeCount { get; private set; } = null!;
-
-        /// <summary>
-        /// The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-        /// </summary>
-        [Output("phoenixNodeSpecification")]
-        public Output<string> PhoenixNodeSpecification { get; private set; } = null!;
-
-        /// <summary>
         /// The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
         /// </summary>
         [Output("pricingCycle")]
@@ -318,6 +308,18 @@ namespace Pulumi.AliCloud.Lindorm
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of LindormStream nodes in the instance.
+        /// </summary>
+        [Output("streamEngineNodeCount")]
+        public Output<int> StreamEngineNodeCount { get; private set; } = null!;
+
+        /// <summary>
+        /// The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+        /// </summary>
+        [Output("streamEngineSpecification")]
+        public Output<string> StreamEngineSpecification { get; private set; } = null!;
 
         /// <summary>
         /// The count of table engine.
@@ -488,12 +490,6 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? FileEngineSpecification { get; set; }
 
         /// <summary>
-        /// The group name.
-        /// </summary>
-        [Input("groupName")]
-        public Input<string>? GroupName { get; set; }
-
-        /// <summary>
         /// The name of the instance.
         /// </summary>
         [Input("instanceName")]
@@ -566,18 +562,6 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string> PaymentType { get; set; } = null!;
 
         /// <summary>
-        /// The count of phoenix.
-        /// </summary>
-        [Input("phoenixNodeCount")]
-        public Input<int>? PhoenixNodeCount { get; set; }
-
-        /// <summary>
-        /// The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-        /// </summary>
-        [Input("phoenixNodeSpecification")]
-        public Input<string>? PhoenixNodeSpecification { get; set; }
-
-        /// <summary>
         /// The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
         /// </summary>
         [Input("pricingCycle")]
@@ -624,6 +608,18 @@ namespace Pulumi.AliCloud.Lindorm
         /// </summary>
         [Input("standbyZoneId")]
         public Input<string>? StandbyZoneId { get; set; }
+
+        /// <summary>
+        /// The number of LindormStream nodes in the instance.
+        /// </summary>
+        [Input("streamEngineNodeCount")]
+        public Input<int>? StreamEngineNodeCount { get; set; }
+
+        /// <summary>
+        /// The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+        /// </summary>
+        [Input("streamEngineSpecification")]
+        public Input<string>? StreamEngineSpecification { get; set; }
 
         /// <summary>
         /// The count of table engine.
@@ -768,6 +764,12 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<bool>? EnabledSearchEngine { get; set; }
 
         /// <summary>
+        /// (Available since v1.211.0) Whether to enable streaming engine.
+        /// </summary>
+        [Input("enabledStreamEngine")]
+        public Input<bool>? EnabledStreamEngine { get; set; }
+
+        /// <summary>
         /// (Available since v1.163.0) Whether to enable table engine.
         /// </summary>
         [Input("enabledTableEngine")]
@@ -790,12 +792,6 @@ namespace Pulumi.AliCloud.Lindorm
         /// </summary>
         [Input("fileEngineSpecification")]
         public Input<string>? FileEngineSpecification { get; set; }
-
-        /// <summary>
-        /// The group name.
-        /// </summary>
-        [Input("groupName")]
-        public Input<string>? GroupName { get; set; }
 
         /// <summary>
         /// The name of the instance.
@@ -870,18 +866,6 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The count of phoenix.
-        /// </summary>
-        [Input("phoenixNodeCount")]
-        public Input<int>? PhoenixNodeCount { get; set; }
-
-        /// <summary>
-        /// The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-        /// </summary>
-        [Input("phoenixNodeSpecification")]
-        public Input<string>? PhoenixNodeSpecification { get; set; }
-
-        /// <summary>
         /// The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
         /// </summary>
         [Input("pricingCycle")]
@@ -940,6 +924,18 @@ namespace Pulumi.AliCloud.Lindorm
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The number of LindormStream nodes in the instance.
+        /// </summary>
+        [Input("streamEngineNodeCount")]
+        public Input<int>? StreamEngineNodeCount { get; set; }
+
+        /// <summary>
+        /// The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+        /// </summary>
+        [Input("streamEngineSpecification")]
+        public Input<string>? StreamEngineSpecification { get; set; }
 
         /// <summary>
         /// The count of table engine.

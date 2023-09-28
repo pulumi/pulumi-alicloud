@@ -19,17 +19,24 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.ocean.BaseInstance("default", {
- *     instanceName: _var.name,
- *     series: "normal",
- *     diskSize: 200,
- *     instanceClass: "14C70GB",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultZones = alicloud.getZones({});
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultBaseInstance = new alicloud.ocean.BaseInstance("defaultBaseInstance", {
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
  *     zones: [
- *         "ap-southeast-1a",
- *         "ap-southeast-1b",
- *         "ap-southeast-1c",
+ *         Promise.all([defaultZones, defaultZones.then(defaultZones => defaultZones.ids).length]).then(([defaultZones, length]) => defaultZones.ids[length - 2]),
+ *         Promise.all([defaultZones, defaultZones.then(defaultZones => defaultZones.ids).length]).then(([defaultZones, length]) => defaultZones.ids[length - 3]),
+ *         Promise.all([defaultZones, defaultZones.then(defaultZones => defaultZones.ids).length]).then(([defaultZones, length]) => defaultZones.ids[length - 4]),
  *     ],
+ *     autoRenew: false,
+ *     diskSize: 100,
  *     paymentType: "PayAsYouGo",
+ *     instanceClass: "8C32GB",
+ *     backupRetainMode: "delete_all",
+ *     series: "normal",
+ *     instanceName: name,
  * });
  * ```
  *
@@ -70,24 +77,28 @@ export class BaseInstance extends pulumi.CustomResource {
     }
 
     /**
-     * Whether to automatically renew.It takes effect when the parameter ChargeType is PrePaid. Value range:
+     * Whether to automatically renew.
+     * It takes effect when the parameter ChargeType is PrePaid. Value range:
      * - true: automatic renewal.
      * - false (default): no automatic renewal.
      */
-    public readonly autoRenew!: pulumi.Output<boolean>;
+    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
     /**
-     * The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.-PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.-PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
+     * The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.
+     * - PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.
+     * - PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
      */
     public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
     /**
-     * The backup retain mode.
+     * The backup retention policy after the cluster is deleted. The values are as follows:
+     * - receive_all: Keep all backup sets;
+     * - delete_all: delete all backup sets;
+     * - receive_last: Keep the last backup set.
+     * > **NOTE:**   The default value is delete_all.
      */
     public readonly backupRetainMode!: pulumi.Output<string | undefined>;
     /**
-     * The product code of the OceanBase cluster.
-     * - oceanbase_oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package.
-     * - oceanbase_oceanbasepost_public_cn: The domestic station cloud database is paid by the hour.
-     * - oceanbase_obpre_public_intl: International Station Cloud Database Package Monthly Package.
+     * The product code of the OceanBase cluster._oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package._oceanbasepost_public_cn: The domestic station cloud database is paid by the hour._obpre_public_intl: International Station Cloud Database Package Monthly Package.
      */
     public /*out*/ readonly commodityCode!: pulumi.Output<string>;
     /**
@@ -95,40 +106,59 @@ export class BaseInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly cpu!: pulumi.Output<number>;
     /**
-     * The creation time of the resource
+     * The creation time of the resource.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The size of the storage space, in GB.The limits of storage space vary according to the cluster specifications, as follows:
+     * The size of the storage space, in GB.
+     * The limits of storage space vary according to the cluster specifications, as follows:
      * - 8C32GB:100GB ~ 10000GB
      * - 14C70GB:200GB ~ 10000GB
      * - 30C180GB:400GB ~ 10000GB
      * - 62C400G:800GB ~ 10000GB.
-     * - The default value of each package is its minimum value.
+     * The default value of each package is its minimum value.
      */
     public readonly diskSize!: pulumi.Output<number>;
     /**
-     * Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
+     * The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+     * Two types are currently supported:
+     * - cloud_essd_pl1: cloud disk ESSD pl1.
+     * - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
+     */
+    public readonly diskType!: pulumi.Output<string>;
+    /**
+     * Cluster specification information.
+     * Four packages are currently supported:
+     * - 8C32GB:8 cores 32GB.
+     * - 14C70GB (default):14 cores 70GB.
+     * - 30C180GB:30 cores 180GB.
+     * - 62C400GB:62 cores 400GB.
      */
     public readonly instanceClass!: pulumi.Output<string>;
     /**
-     * OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
+     * OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
      */
     public readonly instanceName!: pulumi.Output<string>;
     /**
-     * The number of nodes in the cluster.
+     * The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
      */
     public readonly nodeNum!: pulumi.Output<string>;
     /**
-     * The payment method of the instance. Valid values: `PayAsYouGo`, `Subscription`.
+     * The OceanBase Server version number.
+     */
+    public readonly obVersion!: pulumi.Output<string>;
+    /**
+     * The payment method of the instance. Value range:
+     * - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
+     * - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
-     * The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter `paymentType` takes effect only when the value is `Subscription` and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When `periodUnit` = Year, Period values: {"1", "2", "3"}. When `periodUnit` = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9"}.
+     * The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {"1", "2", "3", "4"}. When PeriodUnit = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9", "12", "24", "36", "48", "60"}.
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * The period unit. Valid values: `Month`,`Year`.
+     * The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
      */
     public readonly periodUnit!: pulumi.Output<string | undefined>;
     /**
@@ -136,7 +166,7 @@ export class BaseInstance extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * Series of OceanBase clusters. Valid values: `normal`(default), `history`, `normalSsd`.
+     * Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
      */
     public readonly series!: pulumi.Output<string>;
     /**
@@ -168,9 +198,11 @@ export class BaseInstance extends pulumi.CustomResource {
             resourceInputs["cpu"] = state ? state.cpu : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["diskSize"] = state ? state.diskSize : undefined;
+            resourceInputs["diskType"] = state ? state.diskType : undefined;
             resourceInputs["instanceClass"] = state ? state.instanceClass : undefined;
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
             resourceInputs["nodeNum"] = state ? state.nodeNum : undefined;
+            resourceInputs["obVersion"] = state ? state.obVersion : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
@@ -199,9 +231,11 @@ export class BaseInstance extends pulumi.CustomResource {
             resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             resourceInputs["backupRetainMode"] = args ? args.backupRetainMode : undefined;
             resourceInputs["diskSize"] = args ? args.diskSize : undefined;
+            resourceInputs["diskType"] = args ? args.diskType : undefined;
             resourceInputs["instanceClass"] = args ? args.instanceClass : undefined;
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
             resourceInputs["nodeNum"] = args ? args.nodeNum : undefined;
+            resourceInputs["obVersion"] = args ? args.obVersion : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
@@ -223,24 +257,28 @@ export class BaseInstance extends pulumi.CustomResource {
  */
 export interface BaseInstanceState {
     /**
-     * Whether to automatically renew.It takes effect when the parameter ChargeType is PrePaid. Value range:
+     * Whether to automatically renew.
+     * It takes effect when the parameter ChargeType is PrePaid. Value range:
      * - true: automatic renewal.
      * - false (default): no automatic renewal.
      */
     autoRenew?: pulumi.Input<boolean>;
     /**
-     * The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.-PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.-PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
+     * The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.
+     * - PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.
+     * - PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
      */
     autoRenewPeriod?: pulumi.Input<number>;
     /**
-     * The backup retain mode.
+     * The backup retention policy after the cluster is deleted. The values are as follows:
+     * - receive_all: Keep all backup sets;
+     * - delete_all: delete all backup sets;
+     * - receive_last: Keep the last backup set.
+     * > **NOTE:**   The default value is delete_all.
      */
     backupRetainMode?: pulumi.Input<string>;
     /**
-     * The product code of the OceanBase cluster.
-     * - oceanbase_oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package.
-     * - oceanbase_oceanbasepost_public_cn: The domestic station cloud database is paid by the hour.
-     * - oceanbase_obpre_public_intl: International Station Cloud Database Package Monthly Package.
+     * The product code of the OceanBase cluster._oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package._oceanbasepost_public_cn: The domestic station cloud database is paid by the hour._obpre_public_intl: International Station Cloud Database Package Monthly Package.
      */
     commodityCode?: pulumi.Input<string>;
     /**
@@ -248,40 +286,59 @@ export interface BaseInstanceState {
      */
     cpu?: pulumi.Input<number>;
     /**
-     * The creation time of the resource
+     * The creation time of the resource.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The size of the storage space, in GB.The limits of storage space vary according to the cluster specifications, as follows:
+     * The size of the storage space, in GB.
+     * The limits of storage space vary according to the cluster specifications, as follows:
      * - 8C32GB:100GB ~ 10000GB
      * - 14C70GB:200GB ~ 10000GB
      * - 30C180GB:400GB ~ 10000GB
      * - 62C400G:800GB ~ 10000GB.
-     * - The default value of each package is its minimum value.
+     * The default value of each package is its minimum value.
      */
     diskSize?: pulumi.Input<number>;
     /**
-     * Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
+     * The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+     * Two types are currently supported:
+     * - cloud_essd_pl1: cloud disk ESSD pl1.
+     * - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
+     */
+    diskType?: pulumi.Input<string>;
+    /**
+     * Cluster specification information.
+     * Four packages are currently supported:
+     * - 8C32GB:8 cores 32GB.
+     * - 14C70GB (default):14 cores 70GB.
+     * - 30C180GB:30 cores 180GB.
+     * - 62C400GB:62 cores 400GB.
      */
     instanceClass?: pulumi.Input<string>;
     /**
-     * OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
+     * OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * The number of nodes in the cluster.
+     * The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
      */
     nodeNum?: pulumi.Input<string>;
     /**
-     * The payment method of the instance. Valid values: `PayAsYouGo`, `Subscription`.
+     * The OceanBase Server version number.
+     */
+    obVersion?: pulumi.Input<string>;
+    /**
+     * The payment method of the instance. Value range:
+     * - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
+     * - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter `paymentType` takes effect only when the value is `Subscription` and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When `periodUnit` = Year, Period values: {"1", "2", "3"}. When `periodUnit` = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9"}.
+     * The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {"1", "2", "3", "4"}. When PeriodUnit = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9", "12", "24", "36", "48", "60"}.
      */
     period?: pulumi.Input<number>;
     /**
-     * The period unit. Valid values: `Month`,`Year`.
+     * The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
      */
     periodUnit?: pulumi.Input<string>;
     /**
@@ -289,7 +346,7 @@ export interface BaseInstanceState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Series of OceanBase clusters. Valid values: `normal`(default), `history`, `normalSsd`.
+     * Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
      */
     series?: pulumi.Input<string>;
     /**
@@ -307,50 +364,76 @@ export interface BaseInstanceState {
  */
 export interface BaseInstanceArgs {
     /**
-     * Whether to automatically renew.It takes effect when the parameter ChargeType is PrePaid. Value range:
+     * Whether to automatically renew.
+     * It takes effect when the parameter ChargeType is PrePaid. Value range:
      * - true: automatic renewal.
      * - false (default): no automatic renewal.
      */
     autoRenew?: pulumi.Input<boolean>;
     /**
-     * The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.-PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.-PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
+     * The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.
+     * - PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.
+     * - PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
      */
     autoRenewPeriod?: pulumi.Input<number>;
     /**
-     * The backup retain mode.
+     * The backup retention policy after the cluster is deleted. The values are as follows:
+     * - receive_all: Keep all backup sets;
+     * - delete_all: delete all backup sets;
+     * - receive_last: Keep the last backup set.
+     * > **NOTE:**   The default value is delete_all.
      */
     backupRetainMode?: pulumi.Input<string>;
     /**
-     * The size of the storage space, in GB.The limits of storage space vary according to the cluster specifications, as follows:
+     * The size of the storage space, in GB.
+     * The limits of storage space vary according to the cluster specifications, as follows:
      * - 8C32GB:100GB ~ 10000GB
      * - 14C70GB:200GB ~ 10000GB
      * - 30C180GB:400GB ~ 10000GB
      * - 62C400G:800GB ~ 10000GB.
-     * - The default value of each package is its minimum value.
+     * The default value of each package is its minimum value.
      */
     diskSize: pulumi.Input<number>;
     /**
-     * Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
+     * The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+     * Two types are currently supported:
+     * - cloud_essd_pl1: cloud disk ESSD pl1.
+     * - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
+     */
+    diskType?: pulumi.Input<string>;
+    /**
+     * Cluster specification information.
+     * Four packages are currently supported:
+     * - 8C32GB:8 cores 32GB.
+     * - 14C70GB (default):14 cores 70GB.
+     * - 30C180GB:30 cores 180GB.
+     * - 62C400GB:62 cores 400GB.
      */
     instanceClass: pulumi.Input<string>;
     /**
-     * OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
+     * OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * The number of nodes in the cluster.
+     * The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
      */
     nodeNum?: pulumi.Input<string>;
     /**
-     * The payment method of the instance. Valid values: `PayAsYouGo`, `Subscription`.
+     * The OceanBase Server version number.
+     */
+    obVersion?: pulumi.Input<string>;
+    /**
+     * The payment method of the instance. Value range:
+     * - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
+     * - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
      */
     paymentType: pulumi.Input<string>;
     /**
-     * The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter `paymentType` takes effect only when the value is `Subscription` and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When `periodUnit` = Year, Period values: {"1", "2", "3"}. When `periodUnit` = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9"}.
+     * The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {"1", "2", "3", "4"}. When PeriodUnit = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9", "12", "24", "36", "48", "60"}.
      */
     period?: pulumi.Input<number>;
     /**
-     * The period unit. Valid values: `Month`,`Year`.
+     * The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
      */
     periodUnit?: pulumi.Input<string>;
     /**
@@ -358,7 +441,7 @@ export interface BaseInstanceArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Series of OceanBase clusters. Valid values: `normal`(default), `history`, `normalSsd`.
+     * Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
      */
     series: pulumi.Input<string>;
     /**

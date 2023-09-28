@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ApplicationArgs', 'Application']
 
@@ -26,38 +28,49 @@ class ApplicationArgs:
                  change_order_desc: Optional[pulumi.Input[str]] = None,
                  command: Optional[pulumi.Input[str]] = None,
                  command_args: Optional[pulumi.Input[str]] = None,
+                 command_args_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  config_map_mount_desc: Optional[pulumi.Input[str]] = None,
+                 config_map_mount_desc_v2s: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationConfigMapMountDescV2Args']]]] = None,
                  cpu: Optional[pulumi.Input[int]] = None,
                  custom_host_alias: Optional[pulumi.Input[str]] = None,
+                 custom_host_alias_v2s: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationCustomHostAliasV2Args']]]] = None,
                  deploy: Optional[pulumi.Input[bool]] = None,
                  edas_container_version: Optional[pulumi.Input[str]] = None,
                  enable_ahas: Optional[pulumi.Input[str]] = None,
                  enable_grey_tag_route: Optional[pulumi.Input[bool]] = None,
                  envs: Optional[pulumi.Input[str]] = None,
+                 image_pull_secrets: Optional[pulumi.Input[str]] = None,
                  image_url: Optional[pulumi.Input[str]] = None,
                  jar_start_args: Optional[pulumi.Input[str]] = None,
                  jar_start_options: Optional[pulumi.Input[str]] = None,
                  jdk: Optional[pulumi.Input[str]] = None,
+                 kafka_configs: Optional[pulumi.Input['ApplicationKafkaConfigsArgs']] = None,
                  liveness: Optional[pulumi.Input[str]] = None,
+                 liveness_v2: Optional[pulumi.Input['ApplicationLivenessV2Args']] = None,
                  memory: Optional[pulumi.Input[int]] = None,
                  micro_registration: Optional[pulumi.Input[str]] = None,
                  min_ready_instance_ratio: Optional[pulumi.Input[int]] = None,
                  min_ready_instances: Optional[pulumi.Input[int]] = None,
-                 mount_desc: Optional[pulumi.Input[str]] = None,
-                 mount_host: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
-                 nas_id: Optional[pulumi.Input[str]] = None,
+                 nas_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationNasConfigArgs']]]] = None,
                  oss_ak_id: Optional[pulumi.Input[str]] = None,
                  oss_ak_secret: Optional[pulumi.Input[str]] = None,
                  oss_mount_descs: Optional[pulumi.Input[str]] = None,
+                 oss_mount_descs_v2s: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOssMountDescsV2Args']]]] = None,
                  package_url: Optional[pulumi.Input[str]] = None,
                  package_version: Optional[pulumi.Input[str]] = None,
+                 php: Optional[pulumi.Input[str]] = None,
                  php_arms_config_location: Optional[pulumi.Input[str]] = None,
                  php_config: Optional[pulumi.Input[str]] = None,
                  php_config_location: Optional[pulumi.Input[str]] = None,
                  post_start: Optional[pulumi.Input[str]] = None,
+                 post_start_v2: Optional[pulumi.Input['ApplicationPostStartV2Args']] = None,
                  pre_stop: Optional[pulumi.Input[str]] = None,
+                 pre_stop_v2: Optional[pulumi.Input['ApplicationPreStopV2Args']] = None,
+                 programming_language: Optional[pulumi.Input[str]] = None,
+                 pvtz_discovery_svc: Optional[pulumi.Input['ApplicationPvtzDiscoverySvcArgs']] = None,
                  readiness: Optional[pulumi.Input[str]] = None,
+                 readiness_v2: Optional[pulumi.Input['ApplicationReadinessV2Args']] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  sls_configs: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -65,8 +78,9 @@ class ApplicationArgs:
                  termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  tomcat_config: Optional[pulumi.Input[str]] = None,
+                 tomcat_config_v2: Optional[pulumi.Input['ApplicationTomcatConfigV2Args']] = None,
                  update_strategy: Optional[pulumi.Input[str]] = None,
-                 version_id: Optional[pulumi.Input[str]] = None,
+                 update_strategy_v2: Optional[pulumi.Input['ApplicationUpdateStrategyV2Args']] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  war_start_options: Optional[pulumi.Input[str]] = None,
@@ -74,62 +88,77 @@ class ApplicationArgs:
         """
         The set of arguments for constructing a Application resource.
         :param pulumi.Input[str] app_name: Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
-        :param pulumi.Input[str] package_type: Application package type. Support FatJar, War and Image. Valid values: `FatJar`, `Image`, `War`.
+        :param pulumi.Input[str] package_type: Application package type. Valid values: `FatJar`, `War`, `Image`, `PhpZip`, `IMAGE_PHP_5_4`, `IMAGE_PHP_5_4_ALPINE`, `IMAGE_PHP_5_5`, `IMAGE_PHP_5_5_ALPINE`, `IMAGE_PHP_5_6`, `IMAGE_PHP_5_6_ALPINE`, `IMAGE_PHP_7_0`, `IMAGE_PHP_7_0_ALPINE`, `IMAGE_PHP_7_1`, `IMAGE_PHP_7_1_ALPINE`, `IMAGE_PHP_7_2`, `IMAGE_PHP_7_2_ALPINE`, `IMAGE_PHP_7_3`, `IMAGE_PHP_7_3_ALPINE`, `PythonZip`.
         :param pulumi.Input[int] replicas: Initial number of instances.
         :param pulumi.Input[str] acr_assume_role_arn: The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
         :param pulumi.Input[str] acr_instance_id: The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
-        :param pulumi.Input[str] app_description: Application description information. No more than 1024 characters.
-        :param pulumi.Input[bool] auto_config: The auto config. Valid values: `false`, `true`.
-        :param pulumi.Input[bool] auto_enable_application_scaling_rule: The auto enable application scaling rule. Valid values: `false`, `true`.
+        :param pulumi.Input[str] app_description: Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `app_description` can be modified.
+        :param pulumi.Input[bool] auto_config: The auto config. Valid values: `true`, `false`.
+        :param pulumi.Input[bool] auto_enable_application_scaling_rule: The auto enable application scaling rule. Valid values: `true`, `false`.
         :param pulumi.Input[int] batch_wait_time: The batch wait time.
         :param pulumi.Input[str] change_order_desc: The change order desc.
         :param pulumi.Input[str] command: Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
-        :param pulumi.Input[str] command_args: Mirror startup command parameters. The parameters required for the above start command. For example: 1d.
-        :param pulumi.Input[str] config_map_mount_desc: ConfigMap mount description.
-        :param pulumi.Input[int] cpu: The CPU required for each instance, in millicores, cannot be 0. Valid values: `1000`, `16000`, `2000`, `32000`, `4000`, `500`, `8000`.
-        :param pulumi.Input[str] custom_host_alias: Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}].
-        :param pulumi.Input[bool] deploy: The deploy. Valid values: `false`, `true`.
+        :param pulumi.Input[str] command_args: Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] command_args_v2s: The parameters of the image startup command.
+        :param pulumi.Input[str] config_map_mount_desc: ConfigMap mount description. **NOTE:** Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationConfigMapMountDescV2Args']]] config_map_mount_desc_v2s: The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `config_map_mount_desc_v2` below.
+        :param pulumi.Input[int] cpu: The CPU required for each instance, in millicores, cannot be 0. Valid values: `500`, `1000`, `2000`, `4000`, `8000`, `16000`, `32000`.
+        :param pulumi.Input[str] custom_host_alias: Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationCustomHostAliasV2Args']]] custom_host_alias_v2s: The custom mapping between the hostname and IP address in the container. See `custom_host_alias_v2` below.
+        :param pulumi.Input[bool] deploy: The deploy. Valid values: `true`, `false`.
         :param pulumi.Input[str] edas_container_version: The operating environment used by the Pandora application.
-        :param pulumi.Input[str] enable_ahas: The enable ahas.
-        :param pulumi.Input[bool] enable_grey_tag_route: The enable grey tag route.
+        :param pulumi.Input[str] enable_ahas: The enable ahas. Valid values: `true`, `false`.
+        :param pulumi.Input[bool] enable_grey_tag_route: The enable grey tag route. Default value: `false`. Valid values:
         :param pulumi.Input[str] envs: Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
+        :param pulumi.Input[str] image_pull_secrets: The ID of the corresponding Secret.
         :param pulumi.Input[str] image_url: Mirror address. Only Image type applications can configure the mirror address.
         :param pulumi.Input[str] jar_start_args: The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jar_start_options: The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jdk: The JDK version that the deployment package depends on. Image type applications are not supported.
+        :param pulumi.Input['ApplicationKafkaConfigsArgs'] kafka_configs: The logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
         :param pulumi.Input[str] liveness: Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
-        :param pulumi.Input[int] memory: The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
+               **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
+        :param pulumi.Input['ApplicationLivenessV2Args'] liveness_v2: The liveness check settings of the container. See `liveness_v2` below.
+        :param pulumi.Input[int] memory: The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `2048`, `4096`, `8192`, `12288`, `16384`, `24576`, `32768`, `65536`, `131072`.
         :param pulumi.Input[str] micro_registration: Select the Nacos registry. Valid values: `0`, `1`, `2`.
-        :param pulumi.Input[int] min_ready_instance_ratio: Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
+        :param pulumi.Input[int] min_ready_instance_ratio: Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
                * `-1`: Initialization value, indicating that percentages are not used.
                * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         :param pulumi.Input[int] min_ready_instances: The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
-        :param pulumi.Input[str] mount_desc: Mount description.
-        :param pulumi.Input[str] mount_host: Mount point of NAS in application VPC.
         :param pulumi.Input[str] namespace_id: SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
-        :param pulumi.Input[str] nas_id: ID of the mounted NAS, Must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field is present, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationNasConfigArgs']]] nas_configs: The configurations for mounting the NAS file system. See `nas_configs` below.
         :param pulumi.Input[str] oss_ak_id: OSS AccessKey ID.
         :param pulumi.Input[str] oss_ak_secret: OSS  AccessKey Secret.
-        :param pulumi.Input[str] oss_mount_descs: OSS mount description information.
+        :param pulumi.Input[str] oss_mount_descs: OSS mount description information. **NOTE:** Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationOssMountDescsV2Args']]] oss_mount_descs_v2s: The description of the mounted Object Storage Service (OSS) bucket. See `oss_mount_descs_v2` below.
         :param pulumi.Input[str] package_url: Deployment package address. Only FatJar or War type applications can configure the deployment package address.
         :param pulumi.Input[str] package_version: The version number of the deployment package. Required when the Package Type is War and FatJar.
+        :param pulumi.Input[str] php: The Php environment.
         :param pulumi.Input[str] php_arms_config_location: The PHP application monitors the mount path, and you need to ensure that the PHP server will load the configuration file of this path. You don't need to pay attention to the configuration content, SAE will automatically render the correct configuration file.
         :param pulumi.Input[str] php_config: PHP configuration file content.
         :param pulumi.Input[str] php_config_location: PHP application startup configuration mount path, you need to ensure that the PHP server will start using this configuration file.
-        :param pulumi.Input[str] post_start: Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
-        :param pulumi.Input[str] pre_stop: Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
+        :param pulumi.Input[str] post_start: Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
+        :param pulumi.Input['ApplicationPostStartV2Args'] post_start_v2: The script that is run immediately after the container is started. See `post_start_v2` below.
+        :param pulumi.Input[str] pre_stop: Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
+        :param pulumi.Input['ApplicationPreStopV2Args'] pre_stop_v2: The script that is run before the container is stopped. See `pre_stop_v2` below.
+        :param pulumi.Input[str] programming_language: The programming language that is used to create the application. Valid values: `java`, `php`, `other`.
+        :param pulumi.Input['ApplicationPvtzDiscoverySvcArgs'] pvtz_discovery_svc: The configurations of Kubernetes Service-based service registration and discovery. See `pvtz_discovery_svc` below.
         :param pulumi.Input[str] readiness: Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
+               **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
+        :param pulumi.Input['ApplicationReadinessV2Args'] readiness_v2: The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
         :param pulumi.Input[str] security_group_id: Security group ID.
         :param pulumi.Input[str] sls_configs: SLS  configuration.
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `RUNNING`, `STOPPED`.
+        :param pulumi.Input[str] status: The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] termination_grace_period_seconds: Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
-        :param pulumi.Input[str] timezone: Time zone, the default value is Asia/Shanghai.
+        :param pulumi.Input[str] timezone: Time zone. Default value: `Asia/Shanghai`.
         :param pulumi.Input[str] tomcat_config: Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
-        :param pulumi.Input[str] update_strategy: The update strategy.
-        :param pulumi.Input[str] version_id: Application version id.
+               **NOTE:** Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
+        :param pulumi.Input['ApplicationTomcatConfigV2Args'] tomcat_config_v2: The Tomcat configuration. See `tomcat_config_v2` below.
+        :param pulumi.Input[str] update_strategy: The update strategy. **NOTE:** Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
+        :param pulumi.Input['ApplicationUpdateStrategyV2Args'] update_strategy_v2: The release policy. See `update_strategy_v2` below.
         :param pulumi.Input[str] vpc_id: The vpc id.
-        :param pulumi.Input[str] vswitch_id: The vswitch id.
+        :param pulumi.Input[str] vswitch_id: The vswitch id. **NOTE:** From version 1.211.0, `vswitch_id` can be modified.
         :param pulumi.Input[str] war_start_options: WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
         :param pulumi.Input[str] web_container: The version of tomcat that the deployment package depends on. Image type applications are not supported.
         """
@@ -153,13 +182,28 @@ class ApplicationArgs:
         if command is not None:
             pulumi.set(__self__, "command", command)
         if command_args is not None:
+            warnings.warn("""Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""", DeprecationWarning)
+            pulumi.log.warn("""command_args is deprecated: Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""")
+        if command_args is not None:
             pulumi.set(__self__, "command_args", command_args)
+        if command_args_v2s is not None:
+            pulumi.set(__self__, "command_args_v2s", command_args_v2s)
+        if config_map_mount_desc is not None:
+            warnings.warn("""Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""", DeprecationWarning)
+            pulumi.log.warn("""config_map_mount_desc is deprecated: Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""")
         if config_map_mount_desc is not None:
             pulumi.set(__self__, "config_map_mount_desc", config_map_mount_desc)
+        if config_map_mount_desc_v2s is not None:
+            pulumi.set(__self__, "config_map_mount_desc_v2s", config_map_mount_desc_v2s)
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
         if custom_host_alias is not None:
+            warnings.warn("""Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""", DeprecationWarning)
+            pulumi.log.warn("""custom_host_alias is deprecated: Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""")
+        if custom_host_alias is not None:
             pulumi.set(__self__, "custom_host_alias", custom_host_alias)
+        if custom_host_alias_v2s is not None:
+            pulumi.set(__self__, "custom_host_alias_v2s", custom_host_alias_v2s)
         if deploy is not None:
             pulumi.set(__self__, "deploy", deploy)
         if edas_container_version is not None:
@@ -170,6 +214,8 @@ class ApplicationArgs:
             pulumi.set(__self__, "enable_grey_tag_route", enable_grey_tag_route)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
+        if image_pull_secrets is not None:
+            pulumi.set(__self__, "image_pull_secrets", image_pull_secrets)
         if image_url is not None:
             pulumi.set(__self__, "image_url", image_url)
         if jar_start_args is not None:
@@ -178,8 +224,15 @@ class ApplicationArgs:
             pulumi.set(__self__, "jar_start_options", jar_start_options)
         if jdk is not None:
             pulumi.set(__self__, "jdk", jdk)
+        if kafka_configs is not None:
+            pulumi.set(__self__, "kafka_configs", kafka_configs)
+        if liveness is not None:
+            warnings.warn("""Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""", DeprecationWarning)
+            pulumi.log.warn("""liveness is deprecated: Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""")
         if liveness is not None:
             pulumi.set(__self__, "liveness", liveness)
+        if liveness_v2 is not None:
+            pulumi.set(__self__, "liveness_v2", liveness_v2)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
         if micro_registration is not None:
@@ -188,24 +241,27 @@ class ApplicationArgs:
             pulumi.set(__self__, "min_ready_instance_ratio", min_ready_instance_ratio)
         if min_ready_instances is not None:
             pulumi.set(__self__, "min_ready_instances", min_ready_instances)
-        if mount_desc is not None:
-            pulumi.set(__self__, "mount_desc", mount_desc)
-        if mount_host is not None:
-            pulumi.set(__self__, "mount_host", mount_host)
         if namespace_id is not None:
             pulumi.set(__self__, "namespace_id", namespace_id)
-        if nas_id is not None:
-            pulumi.set(__self__, "nas_id", nas_id)
+        if nas_configs is not None:
+            pulumi.set(__self__, "nas_configs", nas_configs)
         if oss_ak_id is not None:
             pulumi.set(__self__, "oss_ak_id", oss_ak_id)
         if oss_ak_secret is not None:
             pulumi.set(__self__, "oss_ak_secret", oss_ak_secret)
         if oss_mount_descs is not None:
+            warnings.warn("""Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""", DeprecationWarning)
+            pulumi.log.warn("""oss_mount_descs is deprecated: Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""")
+        if oss_mount_descs is not None:
             pulumi.set(__self__, "oss_mount_descs", oss_mount_descs)
+        if oss_mount_descs_v2s is not None:
+            pulumi.set(__self__, "oss_mount_descs_v2s", oss_mount_descs_v2s)
         if package_url is not None:
             pulumi.set(__self__, "package_url", package_url)
         if package_version is not None:
             pulumi.set(__self__, "package_version", package_version)
+        if php is not None:
+            pulumi.set(__self__, "php", php)
         if php_arms_config_location is not None:
             pulumi.set(__self__, "php_arms_config_location", php_arms_config_location)
         if php_config is not None:
@@ -213,11 +269,30 @@ class ApplicationArgs:
         if php_config_location is not None:
             pulumi.set(__self__, "php_config_location", php_config_location)
         if post_start is not None:
+            warnings.warn("""Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""", DeprecationWarning)
+            pulumi.log.warn("""post_start is deprecated: Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""")
+        if post_start is not None:
             pulumi.set(__self__, "post_start", post_start)
+        if post_start_v2 is not None:
+            pulumi.set(__self__, "post_start_v2", post_start_v2)
+        if pre_stop is not None:
+            warnings.warn("""Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""", DeprecationWarning)
+            pulumi.log.warn("""pre_stop is deprecated: Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""")
         if pre_stop is not None:
             pulumi.set(__self__, "pre_stop", pre_stop)
+        if pre_stop_v2 is not None:
+            pulumi.set(__self__, "pre_stop_v2", pre_stop_v2)
+        if programming_language is not None:
+            pulumi.set(__self__, "programming_language", programming_language)
+        if pvtz_discovery_svc is not None:
+            pulumi.set(__self__, "pvtz_discovery_svc", pvtz_discovery_svc)
+        if readiness is not None:
+            warnings.warn("""Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""", DeprecationWarning)
+            pulumi.log.warn("""readiness is deprecated: Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""")
         if readiness is not None:
             pulumi.set(__self__, "readiness", readiness)
+        if readiness_v2 is not None:
+            pulumi.set(__self__, "readiness_v2", readiness_v2)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if sls_configs is not None:
@@ -231,11 +306,19 @@ class ApplicationArgs:
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
         if tomcat_config is not None:
+            warnings.warn("""Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""", DeprecationWarning)
+            pulumi.log.warn("""tomcat_config is deprecated: Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""")
+        if tomcat_config is not None:
             pulumi.set(__self__, "tomcat_config", tomcat_config)
+        if tomcat_config_v2 is not None:
+            pulumi.set(__self__, "tomcat_config_v2", tomcat_config_v2)
+        if update_strategy is not None:
+            warnings.warn("""Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""", DeprecationWarning)
+            pulumi.log.warn("""update_strategy is deprecated: Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""")
         if update_strategy is not None:
             pulumi.set(__self__, "update_strategy", update_strategy)
-        if version_id is not None:
-            pulumi.set(__self__, "version_id", version_id)
+        if update_strategy_v2 is not None:
+            pulumi.set(__self__, "update_strategy_v2", update_strategy_v2)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
@@ -261,7 +344,7 @@ class ApplicationArgs:
     @pulumi.getter(name="packageType")
     def package_type(self) -> pulumi.Input[str]:
         """
-        Application package type. Support FatJar, War and Image. Valid values: `FatJar`, `Image`, `War`.
+        Application package type. Valid values: `FatJar`, `War`, `Image`, `PhpZip`, `IMAGE_PHP_5_4`, `IMAGE_PHP_5_4_ALPINE`, `IMAGE_PHP_5_5`, `IMAGE_PHP_5_5_ALPINE`, `IMAGE_PHP_5_6`, `IMAGE_PHP_5_6_ALPINE`, `IMAGE_PHP_7_0`, `IMAGE_PHP_7_0_ALPINE`, `IMAGE_PHP_7_1`, `IMAGE_PHP_7_1_ALPINE`, `IMAGE_PHP_7_2`, `IMAGE_PHP_7_2_ALPINE`, `IMAGE_PHP_7_3`, `IMAGE_PHP_7_3_ALPINE`, `PythonZip`.
         """
         return pulumi.get(self, "package_type")
 
@@ -309,7 +392,7 @@ class ApplicationArgs:
     @pulumi.getter(name="appDescription")
     def app_description(self) -> Optional[pulumi.Input[str]]:
         """
-        Application description information. No more than 1024 characters.
+        Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `app_description` can be modified.
         """
         return pulumi.get(self, "app_description")
 
@@ -321,7 +404,7 @@ class ApplicationArgs:
     @pulumi.getter(name="autoConfig")
     def auto_config(self) -> Optional[pulumi.Input[bool]]:
         """
-        The auto config. Valid values: `false`, `true`.
+        The auto config. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "auto_config")
 
@@ -333,7 +416,7 @@ class ApplicationArgs:
     @pulumi.getter(name="autoEnableApplicationScalingRule")
     def auto_enable_application_scaling_rule(self) -> Optional[pulumi.Input[bool]]:
         """
-        The auto enable application scaling rule. Valid values: `false`, `true`.
+        The auto enable application scaling rule. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "auto_enable_application_scaling_rule")
 
@@ -381,8 +464,11 @@ class ApplicationArgs:
     @pulumi.getter(name="commandArgs")
     def command_args(self) -> Optional[pulumi.Input[str]]:
         """
-        Mirror startup command parameters. The parameters required for the above start command. For example: 1d.
+        Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
         """
+        warnings.warn("""Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""command_args is deprecated: Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""")
+
         return pulumi.get(self, "command_args")
 
     @command_args.setter
@@ -390,11 +476,26 @@ class ApplicationArgs:
         pulumi.set(self, "command_args", value)
 
     @property
+    @pulumi.getter(name="commandArgsV2s")
+    def command_args_v2s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The parameters of the image startup command.
+        """
+        return pulumi.get(self, "command_args_v2s")
+
+    @command_args_v2s.setter
+    def command_args_v2s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "command_args_v2s", value)
+
+    @property
     @pulumi.getter(name="configMapMountDesc")
     def config_map_mount_desc(self) -> Optional[pulumi.Input[str]]:
         """
-        ConfigMap mount description.
+        ConfigMap mount description. **NOTE:** Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
         """
+        warnings.warn("""Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""config_map_mount_desc is deprecated: Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""")
+
         return pulumi.get(self, "config_map_mount_desc")
 
     @config_map_mount_desc.setter
@@ -402,10 +503,22 @@ class ApplicationArgs:
         pulumi.set(self, "config_map_mount_desc", value)
 
     @property
+    @pulumi.getter(name="configMapMountDescV2s")
+    def config_map_mount_desc_v2s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationConfigMapMountDescV2Args']]]]:
+        """
+        The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `config_map_mount_desc_v2` below.
+        """
+        return pulumi.get(self, "config_map_mount_desc_v2s")
+
+    @config_map_mount_desc_v2s.setter
+    def config_map_mount_desc_v2s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationConfigMapMountDescV2Args']]]]):
+        pulumi.set(self, "config_map_mount_desc_v2s", value)
+
+    @property
     @pulumi.getter
     def cpu(self) -> Optional[pulumi.Input[int]]:
         """
-        The CPU required for each instance, in millicores, cannot be 0. Valid values: `1000`, `16000`, `2000`, `32000`, `4000`, `500`, `8000`.
+        The CPU required for each instance, in millicores, cannot be 0. Valid values: `500`, `1000`, `2000`, `4000`, `8000`, `16000`, `32000`.
         """
         return pulumi.get(self, "cpu")
 
@@ -417,8 +530,11 @@ class ApplicationArgs:
     @pulumi.getter(name="customHostAlias")
     def custom_host_alias(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}].
+        Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
         """
+        warnings.warn("""Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""custom_host_alias is deprecated: Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""")
+
         return pulumi.get(self, "custom_host_alias")
 
     @custom_host_alias.setter
@@ -426,10 +542,22 @@ class ApplicationArgs:
         pulumi.set(self, "custom_host_alias", value)
 
     @property
+    @pulumi.getter(name="customHostAliasV2s")
+    def custom_host_alias_v2s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationCustomHostAliasV2Args']]]]:
+        """
+        The custom mapping between the hostname and IP address in the container. See `custom_host_alias_v2` below.
+        """
+        return pulumi.get(self, "custom_host_alias_v2s")
+
+    @custom_host_alias_v2s.setter
+    def custom_host_alias_v2s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationCustomHostAliasV2Args']]]]):
+        pulumi.set(self, "custom_host_alias_v2s", value)
+
+    @property
     @pulumi.getter
     def deploy(self) -> Optional[pulumi.Input[bool]]:
         """
-        The deploy. Valid values: `false`, `true`.
+        The deploy. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "deploy")
 
@@ -453,7 +581,7 @@ class ApplicationArgs:
     @pulumi.getter(name="enableAhas")
     def enable_ahas(self) -> Optional[pulumi.Input[str]]:
         """
-        The enable ahas.
+        The enable ahas. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_ahas")
 
@@ -465,7 +593,7 @@ class ApplicationArgs:
     @pulumi.getter(name="enableGreyTagRoute")
     def enable_grey_tag_route(self) -> Optional[pulumi.Input[bool]]:
         """
-        The enable grey tag route.
+        The enable grey tag route. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "enable_grey_tag_route")
 
@@ -484,6 +612,18 @@ class ApplicationArgs:
     @envs.setter
     def envs(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "envs", value)
+
+    @property
+    @pulumi.getter(name="imagePullSecrets")
+    def image_pull_secrets(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the corresponding Secret.
+        """
+        return pulumi.get(self, "image_pull_secrets")
+
+    @image_pull_secrets.setter
+    def image_pull_secrets(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_pull_secrets", value)
 
     @property
     @pulumi.getter(name="imageUrl")
@@ -534,11 +674,27 @@ class ApplicationArgs:
         pulumi.set(self, "jdk", value)
 
     @property
+    @pulumi.getter(name="kafkaConfigs")
+    def kafka_configs(self) -> Optional[pulumi.Input['ApplicationKafkaConfigsArgs']]:
+        """
+        The logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
+        """
+        return pulumi.get(self, "kafka_configs")
+
+    @kafka_configs.setter
+    def kafka_configs(self, value: Optional[pulumi.Input['ApplicationKafkaConfigsArgs']]):
+        pulumi.set(self, "kafka_configs", value)
+
+    @property
     @pulumi.getter
     def liveness(self) -> Optional[pulumi.Input[str]]:
         """
         Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
+        **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
         """
+        warnings.warn("""Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""liveness is deprecated: Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""")
+
         return pulumi.get(self, "liveness")
 
     @liveness.setter
@@ -546,10 +702,22 @@ class ApplicationArgs:
         pulumi.set(self, "liveness", value)
 
     @property
+    @pulumi.getter(name="livenessV2")
+    def liveness_v2(self) -> Optional[pulumi.Input['ApplicationLivenessV2Args']]:
+        """
+        The liveness check settings of the container. See `liveness_v2` below.
+        """
+        return pulumi.get(self, "liveness_v2")
+
+    @liveness_v2.setter
+    def liveness_v2(self, value: Optional[pulumi.Input['ApplicationLivenessV2Args']]):
+        pulumi.set(self, "liveness_v2", value)
+
+    @property
     @pulumi.getter
     def memory(self) -> Optional[pulumi.Input[int]]:
         """
-        The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
+        The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `2048`, `4096`, `8192`, `12288`, `16384`, `24576`, `32768`, `65536`, `131072`.
         """
         return pulumi.get(self, "memory")
 
@@ -573,7 +741,7 @@ class ApplicationArgs:
     @pulumi.getter(name="minReadyInstanceRatio")
     def min_ready_instance_ratio(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
+        Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
         * `-1`: Initialization value, indicating that percentages are not used.
         * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         """
@@ -596,30 +764,6 @@ class ApplicationArgs:
         pulumi.set(self, "min_ready_instances", value)
 
     @property
-    @pulumi.getter(name="mountDesc")
-    def mount_desc(self) -> Optional[pulumi.Input[str]]:
-        """
-        Mount description.
-        """
-        return pulumi.get(self, "mount_desc")
-
-    @mount_desc.setter
-    def mount_desc(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "mount_desc", value)
-
-    @property
-    @pulumi.getter(name="mountHost")
-    def mount_host(self) -> Optional[pulumi.Input[str]]:
-        """
-        Mount point of NAS in application VPC.
-        """
-        return pulumi.get(self, "mount_host")
-
-    @mount_host.setter
-    def mount_host(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "mount_host", value)
-
-    @property
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -632,16 +776,16 @@ class ApplicationArgs:
         pulumi.set(self, "namespace_id", value)
 
     @property
-    @pulumi.getter(name="nasId")
-    def nas_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="nasConfigs")
+    def nas_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationNasConfigArgs']]]]:
         """
-        ID of the mounted NAS, Must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field is present, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
+        The configurations for mounting the NAS file system. See `nas_configs` below.
         """
-        return pulumi.get(self, "nas_id")
+        return pulumi.get(self, "nas_configs")
 
-    @nas_id.setter
-    def nas_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "nas_id", value)
+    @nas_configs.setter
+    def nas_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationNasConfigArgs']]]]):
+        pulumi.set(self, "nas_configs", value)
 
     @property
     @pulumi.getter(name="ossAkId")
@@ -671,13 +815,28 @@ class ApplicationArgs:
     @pulumi.getter(name="ossMountDescs")
     def oss_mount_descs(self) -> Optional[pulumi.Input[str]]:
         """
-        OSS mount description information.
+        OSS mount description information. **NOTE:** Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
         """
+        warnings.warn("""Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""oss_mount_descs is deprecated: Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""")
+
         return pulumi.get(self, "oss_mount_descs")
 
     @oss_mount_descs.setter
     def oss_mount_descs(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "oss_mount_descs", value)
+
+    @property
+    @pulumi.getter(name="ossMountDescsV2s")
+    def oss_mount_descs_v2s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOssMountDescsV2Args']]]]:
+        """
+        The description of the mounted Object Storage Service (OSS) bucket. See `oss_mount_descs_v2` below.
+        """
+        return pulumi.get(self, "oss_mount_descs_v2s")
+
+    @oss_mount_descs_v2s.setter
+    def oss_mount_descs_v2s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOssMountDescsV2Args']]]]):
+        pulumi.set(self, "oss_mount_descs_v2s", value)
 
     @property
     @pulumi.getter(name="packageUrl")
@@ -702,6 +861,18 @@ class ApplicationArgs:
     @package_version.setter
     def package_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "package_version", value)
+
+    @property
+    @pulumi.getter
+    def php(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Php environment.
+        """
+        return pulumi.get(self, "php")
+
+    @php.setter
+    def php(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "php", value)
 
     @property
     @pulumi.getter(name="phpArmsConfigLocation")
@@ -743,8 +914,11 @@ class ApplicationArgs:
     @pulumi.getter(name="postStart")
     def post_start(self) -> Optional[pulumi.Input[str]]:
         """
-        Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
+        Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
         """
+        warnings.warn("""Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""post_start is deprecated: Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""")
+
         return pulumi.get(self, "post_start")
 
     @post_start.setter
@@ -752,11 +926,26 @@ class ApplicationArgs:
         pulumi.set(self, "post_start", value)
 
     @property
+    @pulumi.getter(name="postStartV2")
+    def post_start_v2(self) -> Optional[pulumi.Input['ApplicationPostStartV2Args']]:
+        """
+        The script that is run immediately after the container is started. See `post_start_v2` below.
+        """
+        return pulumi.get(self, "post_start_v2")
+
+    @post_start_v2.setter
+    def post_start_v2(self, value: Optional[pulumi.Input['ApplicationPostStartV2Args']]):
+        pulumi.set(self, "post_start_v2", value)
+
+    @property
     @pulumi.getter(name="preStop")
     def pre_stop(self) -> Optional[pulumi.Input[str]]:
         """
-        Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
+        Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
         """
+        warnings.warn("""Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""pre_stop is deprecated: Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""")
+
         return pulumi.get(self, "pre_stop")
 
     @pre_stop.setter
@@ -764,16 +953,68 @@ class ApplicationArgs:
         pulumi.set(self, "pre_stop", value)
 
     @property
+    @pulumi.getter(name="preStopV2")
+    def pre_stop_v2(self) -> Optional[pulumi.Input['ApplicationPreStopV2Args']]:
+        """
+        The script that is run before the container is stopped. See `pre_stop_v2` below.
+        """
+        return pulumi.get(self, "pre_stop_v2")
+
+    @pre_stop_v2.setter
+    def pre_stop_v2(self, value: Optional[pulumi.Input['ApplicationPreStopV2Args']]):
+        pulumi.set(self, "pre_stop_v2", value)
+
+    @property
+    @pulumi.getter(name="programmingLanguage")
+    def programming_language(self) -> Optional[pulumi.Input[str]]:
+        """
+        The programming language that is used to create the application. Valid values: `java`, `php`, `other`.
+        """
+        return pulumi.get(self, "programming_language")
+
+    @programming_language.setter
+    def programming_language(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "programming_language", value)
+
+    @property
+    @pulumi.getter(name="pvtzDiscoverySvc")
+    def pvtz_discovery_svc(self) -> Optional[pulumi.Input['ApplicationPvtzDiscoverySvcArgs']]:
+        """
+        The configurations of Kubernetes Service-based service registration and discovery. See `pvtz_discovery_svc` below.
+        """
+        return pulumi.get(self, "pvtz_discovery_svc")
+
+    @pvtz_discovery_svc.setter
+    def pvtz_discovery_svc(self, value: Optional[pulumi.Input['ApplicationPvtzDiscoverySvcArgs']]):
+        pulumi.set(self, "pvtz_discovery_svc", value)
+
+    @property
     @pulumi.getter
     def readiness(self) -> Optional[pulumi.Input[str]]:
         """
         Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
+        **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
         """
+        warnings.warn("""Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""readiness is deprecated: Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""")
+
         return pulumi.get(self, "readiness")
 
     @readiness.setter
     def readiness(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "readiness", value)
+
+    @property
+    @pulumi.getter(name="readinessV2")
+    def readiness_v2(self) -> Optional[pulumi.Input['ApplicationReadinessV2Args']]:
+        """
+        The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
+        """
+        return pulumi.get(self, "readiness_v2")
+
+    @readiness_v2.setter
+    def readiness_v2(self, value: Optional[pulumi.Input['ApplicationReadinessV2Args']]):
+        pulumi.set(self, "readiness_v2", value)
 
     @property
     @pulumi.getter(name="securityGroupId")
@@ -803,7 +1044,7 @@ class ApplicationArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource. Valid values: `RUNNING`, `STOPPED`.
+        The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
         """
         return pulumi.get(self, "status")
 
@@ -839,7 +1080,7 @@ class ApplicationArgs:
     @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
         """
-        Time zone, the default value is Asia/Shanghai.
+        Time zone. Default value: `Asia/Shanghai`.
         """
         return pulumi.get(self, "timezone")
 
@@ -852,7 +1093,11 @@ class ApplicationArgs:
     def tomcat_config(self) -> Optional[pulumi.Input[str]]:
         """
         Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
+        **NOTE:** Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
         """
+        warnings.warn("""Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""tomcat_config is deprecated: Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""")
+
         return pulumi.get(self, "tomcat_config")
 
     @tomcat_config.setter
@@ -860,11 +1105,26 @@ class ApplicationArgs:
         pulumi.set(self, "tomcat_config", value)
 
     @property
+    @pulumi.getter(name="tomcatConfigV2")
+    def tomcat_config_v2(self) -> Optional[pulumi.Input['ApplicationTomcatConfigV2Args']]:
+        """
+        The Tomcat configuration. See `tomcat_config_v2` below.
+        """
+        return pulumi.get(self, "tomcat_config_v2")
+
+    @tomcat_config_v2.setter
+    def tomcat_config_v2(self, value: Optional[pulumi.Input['ApplicationTomcatConfigV2Args']]):
+        pulumi.set(self, "tomcat_config_v2", value)
+
+    @property
     @pulumi.getter(name="updateStrategy")
     def update_strategy(self) -> Optional[pulumi.Input[str]]:
         """
-        The update strategy.
+        The update strategy. **NOTE:** Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
         """
+        warnings.warn("""Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""update_strategy is deprecated: Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""")
+
         return pulumi.get(self, "update_strategy")
 
     @update_strategy.setter
@@ -872,16 +1132,16 @@ class ApplicationArgs:
         pulumi.set(self, "update_strategy", value)
 
     @property
-    @pulumi.getter(name="versionId")
-    def version_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="updateStrategyV2")
+    def update_strategy_v2(self) -> Optional[pulumi.Input['ApplicationUpdateStrategyV2Args']]:
         """
-        Application version id.
+        The release policy. See `update_strategy_v2` below.
         """
-        return pulumi.get(self, "version_id")
+        return pulumi.get(self, "update_strategy_v2")
 
-    @version_id.setter
-    def version_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "version_id", value)
+    @update_strategy_v2.setter
+    def update_strategy_v2(self, value: Optional[pulumi.Input['ApplicationUpdateStrategyV2Args']]):
+        pulumi.set(self, "update_strategy_v2", value)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -899,7 +1159,7 @@ class ApplicationArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The vswitch id.
+        The vswitch id. **NOTE:** From version 1.211.0, `vswitch_id` can be modified.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -945,39 +1205,50 @@ class _ApplicationState:
                  change_order_desc: Optional[pulumi.Input[str]] = None,
                  command: Optional[pulumi.Input[str]] = None,
                  command_args: Optional[pulumi.Input[str]] = None,
+                 command_args_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  config_map_mount_desc: Optional[pulumi.Input[str]] = None,
+                 config_map_mount_desc_v2s: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationConfigMapMountDescV2Args']]]] = None,
                  cpu: Optional[pulumi.Input[int]] = None,
                  custom_host_alias: Optional[pulumi.Input[str]] = None,
+                 custom_host_alias_v2s: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationCustomHostAliasV2Args']]]] = None,
                  deploy: Optional[pulumi.Input[bool]] = None,
                  edas_container_version: Optional[pulumi.Input[str]] = None,
                  enable_ahas: Optional[pulumi.Input[str]] = None,
                  enable_grey_tag_route: Optional[pulumi.Input[bool]] = None,
                  envs: Optional[pulumi.Input[str]] = None,
+                 image_pull_secrets: Optional[pulumi.Input[str]] = None,
                  image_url: Optional[pulumi.Input[str]] = None,
                  jar_start_args: Optional[pulumi.Input[str]] = None,
                  jar_start_options: Optional[pulumi.Input[str]] = None,
                  jdk: Optional[pulumi.Input[str]] = None,
+                 kafka_configs: Optional[pulumi.Input['ApplicationKafkaConfigsArgs']] = None,
                  liveness: Optional[pulumi.Input[str]] = None,
+                 liveness_v2: Optional[pulumi.Input['ApplicationLivenessV2Args']] = None,
                  memory: Optional[pulumi.Input[int]] = None,
                  micro_registration: Optional[pulumi.Input[str]] = None,
                  min_ready_instance_ratio: Optional[pulumi.Input[int]] = None,
                  min_ready_instances: Optional[pulumi.Input[int]] = None,
-                 mount_desc: Optional[pulumi.Input[str]] = None,
-                 mount_host: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
-                 nas_id: Optional[pulumi.Input[str]] = None,
+                 nas_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationNasConfigArgs']]]] = None,
                  oss_ak_id: Optional[pulumi.Input[str]] = None,
                  oss_ak_secret: Optional[pulumi.Input[str]] = None,
                  oss_mount_descs: Optional[pulumi.Input[str]] = None,
+                 oss_mount_descs_v2s: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOssMountDescsV2Args']]]] = None,
                  package_type: Optional[pulumi.Input[str]] = None,
                  package_url: Optional[pulumi.Input[str]] = None,
                  package_version: Optional[pulumi.Input[str]] = None,
+                 php: Optional[pulumi.Input[str]] = None,
                  php_arms_config_location: Optional[pulumi.Input[str]] = None,
                  php_config: Optional[pulumi.Input[str]] = None,
                  php_config_location: Optional[pulumi.Input[str]] = None,
                  post_start: Optional[pulumi.Input[str]] = None,
+                 post_start_v2: Optional[pulumi.Input['ApplicationPostStartV2Args']] = None,
                  pre_stop: Optional[pulumi.Input[str]] = None,
+                 pre_stop_v2: Optional[pulumi.Input['ApplicationPreStopV2Args']] = None,
+                 programming_language: Optional[pulumi.Input[str]] = None,
+                 pvtz_discovery_svc: Optional[pulumi.Input['ApplicationPvtzDiscoverySvcArgs']] = None,
                  readiness: Optional[pulumi.Input[str]] = None,
+                 readiness_v2: Optional[pulumi.Input['ApplicationReadinessV2Args']] = None,
                  replicas: Optional[pulumi.Input[int]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  sls_configs: Optional[pulumi.Input[str]] = None,
@@ -986,8 +1257,9 @@ class _ApplicationState:
                  termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  tomcat_config: Optional[pulumi.Input[str]] = None,
+                 tomcat_config_v2: Optional[pulumi.Input['ApplicationTomcatConfigV2Args']] = None,
                  update_strategy: Optional[pulumi.Input[str]] = None,
-                 version_id: Optional[pulumi.Input[str]] = None,
+                 update_strategy_v2: Optional[pulumi.Input['ApplicationUpdateStrategyV2Args']] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  war_start_options: Optional[pulumi.Input[str]] = None,
@@ -996,61 +1268,76 @@ class _ApplicationState:
         Input properties used for looking up and filtering Application resources.
         :param pulumi.Input[str] acr_assume_role_arn: The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
         :param pulumi.Input[str] acr_instance_id: The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
-        :param pulumi.Input[str] app_description: Application description information. No more than 1024 characters.
+        :param pulumi.Input[str] app_description: Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `app_description` can be modified.
         :param pulumi.Input[str] app_name: Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
-        :param pulumi.Input[bool] auto_config: The auto config. Valid values: `false`, `true`.
-        :param pulumi.Input[bool] auto_enable_application_scaling_rule: The auto enable application scaling rule. Valid values: `false`, `true`.
+        :param pulumi.Input[bool] auto_config: The auto config. Valid values: `true`, `false`.
+        :param pulumi.Input[bool] auto_enable_application_scaling_rule: The auto enable application scaling rule. Valid values: `true`, `false`.
         :param pulumi.Input[int] batch_wait_time: The batch wait time.
         :param pulumi.Input[str] change_order_desc: The change order desc.
         :param pulumi.Input[str] command: Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
-        :param pulumi.Input[str] command_args: Mirror startup command parameters. The parameters required for the above start command. For example: 1d.
-        :param pulumi.Input[str] config_map_mount_desc: ConfigMap mount description.
-        :param pulumi.Input[int] cpu: The CPU required for each instance, in millicores, cannot be 0. Valid values: `1000`, `16000`, `2000`, `32000`, `4000`, `500`, `8000`.
-        :param pulumi.Input[str] custom_host_alias: Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}].
-        :param pulumi.Input[bool] deploy: The deploy. Valid values: `false`, `true`.
+        :param pulumi.Input[str] command_args: Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] command_args_v2s: The parameters of the image startup command.
+        :param pulumi.Input[str] config_map_mount_desc: ConfigMap mount description. **NOTE:** Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationConfigMapMountDescV2Args']]] config_map_mount_desc_v2s: The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `config_map_mount_desc_v2` below.
+        :param pulumi.Input[int] cpu: The CPU required for each instance, in millicores, cannot be 0. Valid values: `500`, `1000`, `2000`, `4000`, `8000`, `16000`, `32000`.
+        :param pulumi.Input[str] custom_host_alias: Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationCustomHostAliasV2Args']]] custom_host_alias_v2s: The custom mapping between the hostname and IP address in the container. See `custom_host_alias_v2` below.
+        :param pulumi.Input[bool] deploy: The deploy. Valid values: `true`, `false`.
         :param pulumi.Input[str] edas_container_version: The operating environment used by the Pandora application.
-        :param pulumi.Input[str] enable_ahas: The enable ahas.
-        :param pulumi.Input[bool] enable_grey_tag_route: The enable grey tag route.
+        :param pulumi.Input[str] enable_ahas: The enable ahas. Valid values: `true`, `false`.
+        :param pulumi.Input[bool] enable_grey_tag_route: The enable grey tag route. Default value: `false`. Valid values:
         :param pulumi.Input[str] envs: Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
+        :param pulumi.Input[str] image_pull_secrets: The ID of the corresponding Secret.
         :param pulumi.Input[str] image_url: Mirror address. Only Image type applications can configure the mirror address.
         :param pulumi.Input[str] jar_start_args: The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jar_start_options: The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jdk: The JDK version that the deployment package depends on. Image type applications are not supported.
+        :param pulumi.Input['ApplicationKafkaConfigsArgs'] kafka_configs: The logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
         :param pulumi.Input[str] liveness: Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
-        :param pulumi.Input[int] memory: The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
+               **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
+        :param pulumi.Input['ApplicationLivenessV2Args'] liveness_v2: The liveness check settings of the container. See `liveness_v2` below.
+        :param pulumi.Input[int] memory: The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `2048`, `4096`, `8192`, `12288`, `16384`, `24576`, `32768`, `65536`, `131072`.
         :param pulumi.Input[str] micro_registration: Select the Nacos registry. Valid values: `0`, `1`, `2`.
-        :param pulumi.Input[int] min_ready_instance_ratio: Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
+        :param pulumi.Input[int] min_ready_instance_ratio: Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
                * `-1`: Initialization value, indicating that percentages are not used.
                * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         :param pulumi.Input[int] min_ready_instances: The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
-        :param pulumi.Input[str] mount_desc: Mount description.
-        :param pulumi.Input[str] mount_host: Mount point of NAS in application VPC.
         :param pulumi.Input[str] namespace_id: SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
-        :param pulumi.Input[str] nas_id: ID of the mounted NAS, Must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field is present, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationNasConfigArgs']]] nas_configs: The configurations for mounting the NAS file system. See `nas_configs` below.
         :param pulumi.Input[str] oss_ak_id: OSS AccessKey ID.
         :param pulumi.Input[str] oss_ak_secret: OSS  AccessKey Secret.
-        :param pulumi.Input[str] oss_mount_descs: OSS mount description information.
-        :param pulumi.Input[str] package_type: Application package type. Support FatJar, War and Image. Valid values: `FatJar`, `Image`, `War`.
+        :param pulumi.Input[str] oss_mount_descs: OSS mount description information. **NOTE:** Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationOssMountDescsV2Args']]] oss_mount_descs_v2s: The description of the mounted Object Storage Service (OSS) bucket. See `oss_mount_descs_v2` below.
+        :param pulumi.Input[str] package_type: Application package type. Valid values: `FatJar`, `War`, `Image`, `PhpZip`, `IMAGE_PHP_5_4`, `IMAGE_PHP_5_4_ALPINE`, `IMAGE_PHP_5_5`, `IMAGE_PHP_5_5_ALPINE`, `IMAGE_PHP_5_6`, `IMAGE_PHP_5_6_ALPINE`, `IMAGE_PHP_7_0`, `IMAGE_PHP_7_0_ALPINE`, `IMAGE_PHP_7_1`, `IMAGE_PHP_7_1_ALPINE`, `IMAGE_PHP_7_2`, `IMAGE_PHP_7_2_ALPINE`, `IMAGE_PHP_7_3`, `IMAGE_PHP_7_3_ALPINE`, `PythonZip`.
         :param pulumi.Input[str] package_url: Deployment package address. Only FatJar or War type applications can configure the deployment package address.
         :param pulumi.Input[str] package_version: The version number of the deployment package. Required when the Package Type is War and FatJar.
+        :param pulumi.Input[str] php: The Php environment.
         :param pulumi.Input[str] php_arms_config_location: The PHP application monitors the mount path, and you need to ensure that the PHP server will load the configuration file of this path. You don't need to pay attention to the configuration content, SAE will automatically render the correct configuration file.
         :param pulumi.Input[str] php_config: PHP configuration file content.
         :param pulumi.Input[str] php_config_location: PHP application startup configuration mount path, you need to ensure that the PHP server will start using this configuration file.
-        :param pulumi.Input[str] post_start: Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
-        :param pulumi.Input[str] pre_stop: Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
+        :param pulumi.Input[str] post_start: Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
+        :param pulumi.Input['ApplicationPostStartV2Args'] post_start_v2: The script that is run immediately after the container is started. See `post_start_v2` below.
+        :param pulumi.Input[str] pre_stop: Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
+        :param pulumi.Input['ApplicationPreStopV2Args'] pre_stop_v2: The script that is run before the container is stopped. See `pre_stop_v2` below.
+        :param pulumi.Input[str] programming_language: The programming language that is used to create the application. Valid values: `java`, `php`, `other`.
+        :param pulumi.Input['ApplicationPvtzDiscoverySvcArgs'] pvtz_discovery_svc: The configurations of Kubernetes Service-based service registration and discovery. See `pvtz_discovery_svc` below.
         :param pulumi.Input[str] readiness: Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
+               **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
+        :param pulumi.Input['ApplicationReadinessV2Args'] readiness_v2: The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
         :param pulumi.Input[int] replicas: Initial number of instances.
         :param pulumi.Input[str] security_group_id: Security group ID.
         :param pulumi.Input[str] sls_configs: SLS  configuration.
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `RUNNING`, `STOPPED`.
+        :param pulumi.Input[str] status: The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] termination_grace_period_seconds: Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
-        :param pulumi.Input[str] timezone: Time zone, the default value is Asia/Shanghai.
+        :param pulumi.Input[str] timezone: Time zone. Default value: `Asia/Shanghai`.
         :param pulumi.Input[str] tomcat_config: Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
-        :param pulumi.Input[str] update_strategy: The update strategy.
-        :param pulumi.Input[str] version_id: Application version id.
+               **NOTE:** Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
+        :param pulumi.Input['ApplicationTomcatConfigV2Args'] tomcat_config_v2: The Tomcat configuration. See `tomcat_config_v2` below.
+        :param pulumi.Input[str] update_strategy: The update strategy. **NOTE:** Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
+        :param pulumi.Input['ApplicationUpdateStrategyV2Args'] update_strategy_v2: The release policy. See `update_strategy_v2` below.
         :param pulumi.Input[str] vpc_id: The vpc id.
-        :param pulumi.Input[str] vswitch_id: The vswitch id.
+        :param pulumi.Input[str] vswitch_id: The vswitch id. **NOTE:** From version 1.211.0, `vswitch_id` can be modified.
         :param pulumi.Input[str] war_start_options: WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
         :param pulumi.Input[str] web_container: The version of tomcat that the deployment package depends on. Image type applications are not supported.
         """
@@ -1073,13 +1360,28 @@ class _ApplicationState:
         if command is not None:
             pulumi.set(__self__, "command", command)
         if command_args is not None:
+            warnings.warn("""Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""", DeprecationWarning)
+            pulumi.log.warn("""command_args is deprecated: Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""")
+        if command_args is not None:
             pulumi.set(__self__, "command_args", command_args)
+        if command_args_v2s is not None:
+            pulumi.set(__self__, "command_args_v2s", command_args_v2s)
+        if config_map_mount_desc is not None:
+            warnings.warn("""Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""", DeprecationWarning)
+            pulumi.log.warn("""config_map_mount_desc is deprecated: Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""")
         if config_map_mount_desc is not None:
             pulumi.set(__self__, "config_map_mount_desc", config_map_mount_desc)
+        if config_map_mount_desc_v2s is not None:
+            pulumi.set(__self__, "config_map_mount_desc_v2s", config_map_mount_desc_v2s)
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
         if custom_host_alias is not None:
+            warnings.warn("""Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""", DeprecationWarning)
+            pulumi.log.warn("""custom_host_alias is deprecated: Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""")
+        if custom_host_alias is not None:
             pulumi.set(__self__, "custom_host_alias", custom_host_alias)
+        if custom_host_alias_v2s is not None:
+            pulumi.set(__self__, "custom_host_alias_v2s", custom_host_alias_v2s)
         if deploy is not None:
             pulumi.set(__self__, "deploy", deploy)
         if edas_container_version is not None:
@@ -1090,6 +1392,8 @@ class _ApplicationState:
             pulumi.set(__self__, "enable_grey_tag_route", enable_grey_tag_route)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
+        if image_pull_secrets is not None:
+            pulumi.set(__self__, "image_pull_secrets", image_pull_secrets)
         if image_url is not None:
             pulumi.set(__self__, "image_url", image_url)
         if jar_start_args is not None:
@@ -1098,8 +1402,15 @@ class _ApplicationState:
             pulumi.set(__self__, "jar_start_options", jar_start_options)
         if jdk is not None:
             pulumi.set(__self__, "jdk", jdk)
+        if kafka_configs is not None:
+            pulumi.set(__self__, "kafka_configs", kafka_configs)
+        if liveness is not None:
+            warnings.warn("""Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""", DeprecationWarning)
+            pulumi.log.warn("""liveness is deprecated: Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""")
         if liveness is not None:
             pulumi.set(__self__, "liveness", liveness)
+        if liveness_v2 is not None:
+            pulumi.set(__self__, "liveness_v2", liveness_v2)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
         if micro_registration is not None:
@@ -1108,26 +1419,29 @@ class _ApplicationState:
             pulumi.set(__self__, "min_ready_instance_ratio", min_ready_instance_ratio)
         if min_ready_instances is not None:
             pulumi.set(__self__, "min_ready_instances", min_ready_instances)
-        if mount_desc is not None:
-            pulumi.set(__self__, "mount_desc", mount_desc)
-        if mount_host is not None:
-            pulumi.set(__self__, "mount_host", mount_host)
         if namespace_id is not None:
             pulumi.set(__self__, "namespace_id", namespace_id)
-        if nas_id is not None:
-            pulumi.set(__self__, "nas_id", nas_id)
+        if nas_configs is not None:
+            pulumi.set(__self__, "nas_configs", nas_configs)
         if oss_ak_id is not None:
             pulumi.set(__self__, "oss_ak_id", oss_ak_id)
         if oss_ak_secret is not None:
             pulumi.set(__self__, "oss_ak_secret", oss_ak_secret)
         if oss_mount_descs is not None:
+            warnings.warn("""Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""", DeprecationWarning)
+            pulumi.log.warn("""oss_mount_descs is deprecated: Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""")
+        if oss_mount_descs is not None:
             pulumi.set(__self__, "oss_mount_descs", oss_mount_descs)
+        if oss_mount_descs_v2s is not None:
+            pulumi.set(__self__, "oss_mount_descs_v2s", oss_mount_descs_v2s)
         if package_type is not None:
             pulumi.set(__self__, "package_type", package_type)
         if package_url is not None:
             pulumi.set(__self__, "package_url", package_url)
         if package_version is not None:
             pulumi.set(__self__, "package_version", package_version)
+        if php is not None:
+            pulumi.set(__self__, "php", php)
         if php_arms_config_location is not None:
             pulumi.set(__self__, "php_arms_config_location", php_arms_config_location)
         if php_config is not None:
@@ -1135,11 +1449,30 @@ class _ApplicationState:
         if php_config_location is not None:
             pulumi.set(__self__, "php_config_location", php_config_location)
         if post_start is not None:
+            warnings.warn("""Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""", DeprecationWarning)
+            pulumi.log.warn("""post_start is deprecated: Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""")
+        if post_start is not None:
             pulumi.set(__self__, "post_start", post_start)
+        if post_start_v2 is not None:
+            pulumi.set(__self__, "post_start_v2", post_start_v2)
+        if pre_stop is not None:
+            warnings.warn("""Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""", DeprecationWarning)
+            pulumi.log.warn("""pre_stop is deprecated: Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""")
         if pre_stop is not None:
             pulumi.set(__self__, "pre_stop", pre_stop)
+        if pre_stop_v2 is not None:
+            pulumi.set(__self__, "pre_stop_v2", pre_stop_v2)
+        if programming_language is not None:
+            pulumi.set(__self__, "programming_language", programming_language)
+        if pvtz_discovery_svc is not None:
+            pulumi.set(__self__, "pvtz_discovery_svc", pvtz_discovery_svc)
+        if readiness is not None:
+            warnings.warn("""Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""", DeprecationWarning)
+            pulumi.log.warn("""readiness is deprecated: Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""")
         if readiness is not None:
             pulumi.set(__self__, "readiness", readiness)
+        if readiness_v2 is not None:
+            pulumi.set(__self__, "readiness_v2", readiness_v2)
         if replicas is not None:
             pulumi.set(__self__, "replicas", replicas)
         if security_group_id is not None:
@@ -1155,11 +1488,19 @@ class _ApplicationState:
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
         if tomcat_config is not None:
+            warnings.warn("""Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""", DeprecationWarning)
+            pulumi.log.warn("""tomcat_config is deprecated: Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""")
+        if tomcat_config is not None:
             pulumi.set(__self__, "tomcat_config", tomcat_config)
+        if tomcat_config_v2 is not None:
+            pulumi.set(__self__, "tomcat_config_v2", tomcat_config_v2)
+        if update_strategy is not None:
+            warnings.warn("""Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""", DeprecationWarning)
+            pulumi.log.warn("""update_strategy is deprecated: Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""")
         if update_strategy is not None:
             pulumi.set(__self__, "update_strategy", update_strategy)
-        if version_id is not None:
-            pulumi.set(__self__, "version_id", version_id)
+        if update_strategy_v2 is not None:
+            pulumi.set(__self__, "update_strategy_v2", update_strategy_v2)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
@@ -1197,7 +1538,7 @@ class _ApplicationState:
     @pulumi.getter(name="appDescription")
     def app_description(self) -> Optional[pulumi.Input[str]]:
         """
-        Application description information. No more than 1024 characters.
+        Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `app_description` can be modified.
         """
         return pulumi.get(self, "app_description")
 
@@ -1221,7 +1562,7 @@ class _ApplicationState:
     @pulumi.getter(name="autoConfig")
     def auto_config(self) -> Optional[pulumi.Input[bool]]:
         """
-        The auto config. Valid values: `false`, `true`.
+        The auto config. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "auto_config")
 
@@ -1233,7 +1574,7 @@ class _ApplicationState:
     @pulumi.getter(name="autoEnableApplicationScalingRule")
     def auto_enable_application_scaling_rule(self) -> Optional[pulumi.Input[bool]]:
         """
-        The auto enable application scaling rule. Valid values: `false`, `true`.
+        The auto enable application scaling rule. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "auto_enable_application_scaling_rule")
 
@@ -1281,8 +1622,11 @@ class _ApplicationState:
     @pulumi.getter(name="commandArgs")
     def command_args(self) -> Optional[pulumi.Input[str]]:
         """
-        Mirror startup command parameters. The parameters required for the above start command. For example: 1d.
+        Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
         """
+        warnings.warn("""Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""command_args is deprecated: Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""")
+
         return pulumi.get(self, "command_args")
 
     @command_args.setter
@@ -1290,11 +1634,26 @@ class _ApplicationState:
         pulumi.set(self, "command_args", value)
 
     @property
+    @pulumi.getter(name="commandArgsV2s")
+    def command_args_v2s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The parameters of the image startup command.
+        """
+        return pulumi.get(self, "command_args_v2s")
+
+    @command_args_v2s.setter
+    def command_args_v2s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "command_args_v2s", value)
+
+    @property
     @pulumi.getter(name="configMapMountDesc")
     def config_map_mount_desc(self) -> Optional[pulumi.Input[str]]:
         """
-        ConfigMap mount description.
+        ConfigMap mount description. **NOTE:** Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
         """
+        warnings.warn("""Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""config_map_mount_desc is deprecated: Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""")
+
         return pulumi.get(self, "config_map_mount_desc")
 
     @config_map_mount_desc.setter
@@ -1302,10 +1661,22 @@ class _ApplicationState:
         pulumi.set(self, "config_map_mount_desc", value)
 
     @property
+    @pulumi.getter(name="configMapMountDescV2s")
+    def config_map_mount_desc_v2s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationConfigMapMountDescV2Args']]]]:
+        """
+        The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `config_map_mount_desc_v2` below.
+        """
+        return pulumi.get(self, "config_map_mount_desc_v2s")
+
+    @config_map_mount_desc_v2s.setter
+    def config_map_mount_desc_v2s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationConfigMapMountDescV2Args']]]]):
+        pulumi.set(self, "config_map_mount_desc_v2s", value)
+
+    @property
     @pulumi.getter
     def cpu(self) -> Optional[pulumi.Input[int]]:
         """
-        The CPU required for each instance, in millicores, cannot be 0. Valid values: `1000`, `16000`, `2000`, `32000`, `4000`, `500`, `8000`.
+        The CPU required for each instance, in millicores, cannot be 0. Valid values: `500`, `1000`, `2000`, `4000`, `8000`, `16000`, `32000`.
         """
         return pulumi.get(self, "cpu")
 
@@ -1317,8 +1688,11 @@ class _ApplicationState:
     @pulumi.getter(name="customHostAlias")
     def custom_host_alias(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}].
+        Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
         """
+        warnings.warn("""Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""custom_host_alias is deprecated: Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""")
+
         return pulumi.get(self, "custom_host_alias")
 
     @custom_host_alias.setter
@@ -1326,10 +1700,22 @@ class _ApplicationState:
         pulumi.set(self, "custom_host_alias", value)
 
     @property
+    @pulumi.getter(name="customHostAliasV2s")
+    def custom_host_alias_v2s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationCustomHostAliasV2Args']]]]:
+        """
+        The custom mapping between the hostname and IP address in the container. See `custom_host_alias_v2` below.
+        """
+        return pulumi.get(self, "custom_host_alias_v2s")
+
+    @custom_host_alias_v2s.setter
+    def custom_host_alias_v2s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationCustomHostAliasV2Args']]]]):
+        pulumi.set(self, "custom_host_alias_v2s", value)
+
+    @property
     @pulumi.getter
     def deploy(self) -> Optional[pulumi.Input[bool]]:
         """
-        The deploy. Valid values: `false`, `true`.
+        The deploy. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "deploy")
 
@@ -1353,7 +1739,7 @@ class _ApplicationState:
     @pulumi.getter(name="enableAhas")
     def enable_ahas(self) -> Optional[pulumi.Input[str]]:
         """
-        The enable ahas.
+        The enable ahas. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_ahas")
 
@@ -1365,7 +1751,7 @@ class _ApplicationState:
     @pulumi.getter(name="enableGreyTagRoute")
     def enable_grey_tag_route(self) -> Optional[pulumi.Input[bool]]:
         """
-        The enable grey tag route.
+        The enable grey tag route. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "enable_grey_tag_route")
 
@@ -1384,6 +1770,18 @@ class _ApplicationState:
     @envs.setter
     def envs(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "envs", value)
+
+    @property
+    @pulumi.getter(name="imagePullSecrets")
+    def image_pull_secrets(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the corresponding Secret.
+        """
+        return pulumi.get(self, "image_pull_secrets")
+
+    @image_pull_secrets.setter
+    def image_pull_secrets(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_pull_secrets", value)
 
     @property
     @pulumi.getter(name="imageUrl")
@@ -1434,11 +1832,27 @@ class _ApplicationState:
         pulumi.set(self, "jdk", value)
 
     @property
+    @pulumi.getter(name="kafkaConfigs")
+    def kafka_configs(self) -> Optional[pulumi.Input['ApplicationKafkaConfigsArgs']]:
+        """
+        The logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
+        """
+        return pulumi.get(self, "kafka_configs")
+
+    @kafka_configs.setter
+    def kafka_configs(self, value: Optional[pulumi.Input['ApplicationKafkaConfigsArgs']]):
+        pulumi.set(self, "kafka_configs", value)
+
+    @property
     @pulumi.getter
     def liveness(self) -> Optional[pulumi.Input[str]]:
         """
         Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
+        **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
         """
+        warnings.warn("""Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""liveness is deprecated: Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""")
+
         return pulumi.get(self, "liveness")
 
     @liveness.setter
@@ -1446,10 +1860,22 @@ class _ApplicationState:
         pulumi.set(self, "liveness", value)
 
     @property
+    @pulumi.getter(name="livenessV2")
+    def liveness_v2(self) -> Optional[pulumi.Input['ApplicationLivenessV2Args']]:
+        """
+        The liveness check settings of the container. See `liveness_v2` below.
+        """
+        return pulumi.get(self, "liveness_v2")
+
+    @liveness_v2.setter
+    def liveness_v2(self, value: Optional[pulumi.Input['ApplicationLivenessV2Args']]):
+        pulumi.set(self, "liveness_v2", value)
+
+    @property
     @pulumi.getter
     def memory(self) -> Optional[pulumi.Input[int]]:
         """
-        The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
+        The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `2048`, `4096`, `8192`, `12288`, `16384`, `24576`, `32768`, `65536`, `131072`.
         """
         return pulumi.get(self, "memory")
 
@@ -1473,7 +1899,7 @@ class _ApplicationState:
     @pulumi.getter(name="minReadyInstanceRatio")
     def min_ready_instance_ratio(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
+        Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
         * `-1`: Initialization value, indicating that percentages are not used.
         * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         """
@@ -1496,30 +1922,6 @@ class _ApplicationState:
         pulumi.set(self, "min_ready_instances", value)
 
     @property
-    @pulumi.getter(name="mountDesc")
-    def mount_desc(self) -> Optional[pulumi.Input[str]]:
-        """
-        Mount description.
-        """
-        return pulumi.get(self, "mount_desc")
-
-    @mount_desc.setter
-    def mount_desc(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "mount_desc", value)
-
-    @property
-    @pulumi.getter(name="mountHost")
-    def mount_host(self) -> Optional[pulumi.Input[str]]:
-        """
-        Mount point of NAS in application VPC.
-        """
-        return pulumi.get(self, "mount_host")
-
-    @mount_host.setter
-    def mount_host(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "mount_host", value)
-
-    @property
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1532,16 +1934,16 @@ class _ApplicationState:
         pulumi.set(self, "namespace_id", value)
 
     @property
-    @pulumi.getter(name="nasId")
-    def nas_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="nasConfigs")
+    def nas_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationNasConfigArgs']]]]:
         """
-        ID of the mounted NAS, Must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field is present, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
+        The configurations for mounting the NAS file system. See `nas_configs` below.
         """
-        return pulumi.get(self, "nas_id")
+        return pulumi.get(self, "nas_configs")
 
-    @nas_id.setter
-    def nas_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "nas_id", value)
+    @nas_configs.setter
+    def nas_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationNasConfigArgs']]]]):
+        pulumi.set(self, "nas_configs", value)
 
     @property
     @pulumi.getter(name="ossAkId")
@@ -1571,8 +1973,11 @@ class _ApplicationState:
     @pulumi.getter(name="ossMountDescs")
     def oss_mount_descs(self) -> Optional[pulumi.Input[str]]:
         """
-        OSS mount description information.
+        OSS mount description information. **NOTE:** Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
         """
+        warnings.warn("""Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""oss_mount_descs is deprecated: Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""")
+
         return pulumi.get(self, "oss_mount_descs")
 
     @oss_mount_descs.setter
@@ -1580,10 +1985,22 @@ class _ApplicationState:
         pulumi.set(self, "oss_mount_descs", value)
 
     @property
+    @pulumi.getter(name="ossMountDescsV2s")
+    def oss_mount_descs_v2s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOssMountDescsV2Args']]]]:
+        """
+        The description of the mounted Object Storage Service (OSS) bucket. See `oss_mount_descs_v2` below.
+        """
+        return pulumi.get(self, "oss_mount_descs_v2s")
+
+    @oss_mount_descs_v2s.setter
+    def oss_mount_descs_v2s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOssMountDescsV2Args']]]]):
+        pulumi.set(self, "oss_mount_descs_v2s", value)
+
+    @property
     @pulumi.getter(name="packageType")
     def package_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Application package type. Support FatJar, War and Image. Valid values: `FatJar`, `Image`, `War`.
+        Application package type. Valid values: `FatJar`, `War`, `Image`, `PhpZip`, `IMAGE_PHP_5_4`, `IMAGE_PHP_5_4_ALPINE`, `IMAGE_PHP_5_5`, `IMAGE_PHP_5_5_ALPINE`, `IMAGE_PHP_5_6`, `IMAGE_PHP_5_6_ALPINE`, `IMAGE_PHP_7_0`, `IMAGE_PHP_7_0_ALPINE`, `IMAGE_PHP_7_1`, `IMAGE_PHP_7_1_ALPINE`, `IMAGE_PHP_7_2`, `IMAGE_PHP_7_2_ALPINE`, `IMAGE_PHP_7_3`, `IMAGE_PHP_7_3_ALPINE`, `PythonZip`.
         """
         return pulumi.get(self, "package_type")
 
@@ -1614,6 +2031,18 @@ class _ApplicationState:
     @package_version.setter
     def package_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "package_version", value)
+
+    @property
+    @pulumi.getter
+    def php(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Php environment.
+        """
+        return pulumi.get(self, "php")
+
+    @php.setter
+    def php(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "php", value)
 
     @property
     @pulumi.getter(name="phpArmsConfigLocation")
@@ -1655,8 +2084,11 @@ class _ApplicationState:
     @pulumi.getter(name="postStart")
     def post_start(self) -> Optional[pulumi.Input[str]]:
         """
-        Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
+        Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
         """
+        warnings.warn("""Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""post_start is deprecated: Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""")
+
         return pulumi.get(self, "post_start")
 
     @post_start.setter
@@ -1664,11 +2096,26 @@ class _ApplicationState:
         pulumi.set(self, "post_start", value)
 
     @property
+    @pulumi.getter(name="postStartV2")
+    def post_start_v2(self) -> Optional[pulumi.Input['ApplicationPostStartV2Args']]:
+        """
+        The script that is run immediately after the container is started. See `post_start_v2` below.
+        """
+        return pulumi.get(self, "post_start_v2")
+
+    @post_start_v2.setter
+    def post_start_v2(self, value: Optional[pulumi.Input['ApplicationPostStartV2Args']]):
+        pulumi.set(self, "post_start_v2", value)
+
+    @property
     @pulumi.getter(name="preStop")
     def pre_stop(self) -> Optional[pulumi.Input[str]]:
         """
-        Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
+        Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
         """
+        warnings.warn("""Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""pre_stop is deprecated: Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""")
+
         return pulumi.get(self, "pre_stop")
 
     @pre_stop.setter
@@ -1676,16 +2123,68 @@ class _ApplicationState:
         pulumi.set(self, "pre_stop", value)
 
     @property
+    @pulumi.getter(name="preStopV2")
+    def pre_stop_v2(self) -> Optional[pulumi.Input['ApplicationPreStopV2Args']]:
+        """
+        The script that is run before the container is stopped. See `pre_stop_v2` below.
+        """
+        return pulumi.get(self, "pre_stop_v2")
+
+    @pre_stop_v2.setter
+    def pre_stop_v2(self, value: Optional[pulumi.Input['ApplicationPreStopV2Args']]):
+        pulumi.set(self, "pre_stop_v2", value)
+
+    @property
+    @pulumi.getter(name="programmingLanguage")
+    def programming_language(self) -> Optional[pulumi.Input[str]]:
+        """
+        The programming language that is used to create the application. Valid values: `java`, `php`, `other`.
+        """
+        return pulumi.get(self, "programming_language")
+
+    @programming_language.setter
+    def programming_language(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "programming_language", value)
+
+    @property
+    @pulumi.getter(name="pvtzDiscoverySvc")
+    def pvtz_discovery_svc(self) -> Optional[pulumi.Input['ApplicationPvtzDiscoverySvcArgs']]:
+        """
+        The configurations of Kubernetes Service-based service registration and discovery. See `pvtz_discovery_svc` below.
+        """
+        return pulumi.get(self, "pvtz_discovery_svc")
+
+    @pvtz_discovery_svc.setter
+    def pvtz_discovery_svc(self, value: Optional[pulumi.Input['ApplicationPvtzDiscoverySvcArgs']]):
+        pulumi.set(self, "pvtz_discovery_svc", value)
+
+    @property
     @pulumi.getter
     def readiness(self) -> Optional[pulumi.Input[str]]:
         """
         Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
+        **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
         """
+        warnings.warn("""Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""readiness is deprecated: Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""")
+
         return pulumi.get(self, "readiness")
 
     @readiness.setter
     def readiness(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "readiness", value)
+
+    @property
+    @pulumi.getter(name="readinessV2")
+    def readiness_v2(self) -> Optional[pulumi.Input['ApplicationReadinessV2Args']]:
+        """
+        The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
+        """
+        return pulumi.get(self, "readiness_v2")
+
+    @readiness_v2.setter
+    def readiness_v2(self, value: Optional[pulumi.Input['ApplicationReadinessV2Args']]):
+        pulumi.set(self, "readiness_v2", value)
 
     @property
     @pulumi.getter
@@ -1727,7 +2226,7 @@ class _ApplicationState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource. Valid values: `RUNNING`, `STOPPED`.
+        The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
         """
         return pulumi.get(self, "status")
 
@@ -1763,7 +2262,7 @@ class _ApplicationState:
     @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
         """
-        Time zone, the default value is Asia/Shanghai.
+        Time zone. Default value: `Asia/Shanghai`.
         """
         return pulumi.get(self, "timezone")
 
@@ -1776,7 +2275,11 @@ class _ApplicationState:
     def tomcat_config(self) -> Optional[pulumi.Input[str]]:
         """
         Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
+        **NOTE:** Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
         """
+        warnings.warn("""Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""tomcat_config is deprecated: Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""")
+
         return pulumi.get(self, "tomcat_config")
 
     @tomcat_config.setter
@@ -1784,11 +2287,26 @@ class _ApplicationState:
         pulumi.set(self, "tomcat_config", value)
 
     @property
+    @pulumi.getter(name="tomcatConfigV2")
+    def tomcat_config_v2(self) -> Optional[pulumi.Input['ApplicationTomcatConfigV2Args']]:
+        """
+        The Tomcat configuration. See `tomcat_config_v2` below.
+        """
+        return pulumi.get(self, "tomcat_config_v2")
+
+    @tomcat_config_v2.setter
+    def tomcat_config_v2(self, value: Optional[pulumi.Input['ApplicationTomcatConfigV2Args']]):
+        pulumi.set(self, "tomcat_config_v2", value)
+
+    @property
     @pulumi.getter(name="updateStrategy")
     def update_strategy(self) -> Optional[pulumi.Input[str]]:
         """
-        The update strategy.
+        The update strategy. **NOTE:** Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
         """
+        warnings.warn("""Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""update_strategy is deprecated: Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""")
+
         return pulumi.get(self, "update_strategy")
 
     @update_strategy.setter
@@ -1796,16 +2314,16 @@ class _ApplicationState:
         pulumi.set(self, "update_strategy", value)
 
     @property
-    @pulumi.getter(name="versionId")
-    def version_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="updateStrategyV2")
+    def update_strategy_v2(self) -> Optional[pulumi.Input['ApplicationUpdateStrategyV2Args']]:
         """
-        Application version id.
+        The release policy. See `update_strategy_v2` below.
         """
-        return pulumi.get(self, "version_id")
+        return pulumi.get(self, "update_strategy_v2")
 
-    @version_id.setter
-    def version_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "version_id", value)
+    @update_strategy_v2.setter
+    def update_strategy_v2(self, value: Optional[pulumi.Input['ApplicationUpdateStrategyV2Args']]):
+        pulumi.set(self, "update_strategy_v2", value)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -1823,7 +2341,7 @@ class _ApplicationState:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The vswitch id.
+        The vswitch id. **NOTE:** From version 1.211.0, `vswitch_id` can be modified.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -1871,39 +2389,50 @@ class Application(pulumi.CustomResource):
                  change_order_desc: Optional[pulumi.Input[str]] = None,
                  command: Optional[pulumi.Input[str]] = None,
                  command_args: Optional[pulumi.Input[str]] = None,
+                 command_args_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  config_map_mount_desc: Optional[pulumi.Input[str]] = None,
+                 config_map_mount_desc_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationConfigMapMountDescV2Args']]]]] = None,
                  cpu: Optional[pulumi.Input[int]] = None,
                  custom_host_alias: Optional[pulumi.Input[str]] = None,
+                 custom_host_alias_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationCustomHostAliasV2Args']]]]] = None,
                  deploy: Optional[pulumi.Input[bool]] = None,
                  edas_container_version: Optional[pulumi.Input[str]] = None,
                  enable_ahas: Optional[pulumi.Input[str]] = None,
                  enable_grey_tag_route: Optional[pulumi.Input[bool]] = None,
                  envs: Optional[pulumi.Input[str]] = None,
+                 image_pull_secrets: Optional[pulumi.Input[str]] = None,
                  image_url: Optional[pulumi.Input[str]] = None,
                  jar_start_args: Optional[pulumi.Input[str]] = None,
                  jar_start_options: Optional[pulumi.Input[str]] = None,
                  jdk: Optional[pulumi.Input[str]] = None,
+                 kafka_configs: Optional[pulumi.Input[pulumi.InputType['ApplicationKafkaConfigsArgs']]] = None,
                  liveness: Optional[pulumi.Input[str]] = None,
+                 liveness_v2: Optional[pulumi.Input[pulumi.InputType['ApplicationLivenessV2Args']]] = None,
                  memory: Optional[pulumi.Input[int]] = None,
                  micro_registration: Optional[pulumi.Input[str]] = None,
                  min_ready_instance_ratio: Optional[pulumi.Input[int]] = None,
                  min_ready_instances: Optional[pulumi.Input[int]] = None,
-                 mount_desc: Optional[pulumi.Input[str]] = None,
-                 mount_host: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
-                 nas_id: Optional[pulumi.Input[str]] = None,
+                 nas_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationNasConfigArgs']]]]] = None,
                  oss_ak_id: Optional[pulumi.Input[str]] = None,
                  oss_ak_secret: Optional[pulumi.Input[str]] = None,
                  oss_mount_descs: Optional[pulumi.Input[str]] = None,
+                 oss_mount_descs_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOssMountDescsV2Args']]]]] = None,
                  package_type: Optional[pulumi.Input[str]] = None,
                  package_url: Optional[pulumi.Input[str]] = None,
                  package_version: Optional[pulumi.Input[str]] = None,
+                 php: Optional[pulumi.Input[str]] = None,
                  php_arms_config_location: Optional[pulumi.Input[str]] = None,
                  php_config: Optional[pulumi.Input[str]] = None,
                  php_config_location: Optional[pulumi.Input[str]] = None,
                  post_start: Optional[pulumi.Input[str]] = None,
+                 post_start_v2: Optional[pulumi.Input[pulumi.InputType['ApplicationPostStartV2Args']]] = None,
                  pre_stop: Optional[pulumi.Input[str]] = None,
+                 pre_stop_v2: Optional[pulumi.Input[pulumi.InputType['ApplicationPreStopV2Args']]] = None,
+                 programming_language: Optional[pulumi.Input[str]] = None,
+                 pvtz_discovery_svc: Optional[pulumi.Input[pulumi.InputType['ApplicationPvtzDiscoverySvcArgs']]] = None,
                  readiness: Optional[pulumi.Input[str]] = None,
+                 readiness_v2: Optional[pulumi.Input[pulumi.InputType['ApplicationReadinessV2Args']]] = None,
                  replicas: Optional[pulumi.Input[int]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  sls_configs: Optional[pulumi.Input[str]] = None,
@@ -1912,8 +2441,9 @@ class Application(pulumi.CustomResource):
                  termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  tomcat_config: Optional[pulumi.Input[str]] = None,
+                 tomcat_config_v2: Optional[pulumi.Input[pulumi.InputType['ApplicationTomcatConfigV2Args']]] = None,
                  update_strategy: Optional[pulumi.Input[str]] = None,
-                 version_id: Optional[pulumi.Input[str]] = None,
+                 update_strategy_v2: Optional[pulumi.Input[pulumi.InputType['ApplicationUpdateStrategyV2Args']]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  war_start_options: Optional[pulumi.Input[str]] = None,
@@ -1933,16 +2463,15 @@ class Application(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
         config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
         name = config.get("name")
         if name is None:
             name = "tf-example"
         default_regions = alicloud.get_regions(current=True)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name=name,
@@ -1954,7 +2483,7 @@ class Application(pulumi.CustomResource):
             zone_id=default_zones.zones[0].id)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
+            namespace_id=f"{default_regions.regions[0].id}:example",
             namespace_name=name,
             namespace_description=name,
             enable_micro_registration=False)
@@ -1985,61 +2514,76 @@ class Application(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acr_assume_role_arn: The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
         :param pulumi.Input[str] acr_instance_id: The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
-        :param pulumi.Input[str] app_description: Application description information. No more than 1024 characters.
+        :param pulumi.Input[str] app_description: Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `app_description` can be modified.
         :param pulumi.Input[str] app_name: Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
-        :param pulumi.Input[bool] auto_config: The auto config. Valid values: `false`, `true`.
-        :param pulumi.Input[bool] auto_enable_application_scaling_rule: The auto enable application scaling rule. Valid values: `false`, `true`.
+        :param pulumi.Input[bool] auto_config: The auto config. Valid values: `true`, `false`.
+        :param pulumi.Input[bool] auto_enable_application_scaling_rule: The auto enable application scaling rule. Valid values: `true`, `false`.
         :param pulumi.Input[int] batch_wait_time: The batch wait time.
         :param pulumi.Input[str] change_order_desc: The change order desc.
         :param pulumi.Input[str] command: Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
-        :param pulumi.Input[str] command_args: Mirror startup command parameters. The parameters required for the above start command. For example: 1d.
-        :param pulumi.Input[str] config_map_mount_desc: ConfigMap mount description.
-        :param pulumi.Input[int] cpu: The CPU required for each instance, in millicores, cannot be 0. Valid values: `1000`, `16000`, `2000`, `32000`, `4000`, `500`, `8000`.
-        :param pulumi.Input[str] custom_host_alias: Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}].
-        :param pulumi.Input[bool] deploy: The deploy. Valid values: `false`, `true`.
+        :param pulumi.Input[str] command_args: Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] command_args_v2s: The parameters of the image startup command.
+        :param pulumi.Input[str] config_map_mount_desc: ConfigMap mount description. **NOTE:** Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationConfigMapMountDescV2Args']]]] config_map_mount_desc_v2s: The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `config_map_mount_desc_v2` below.
+        :param pulumi.Input[int] cpu: The CPU required for each instance, in millicores, cannot be 0. Valid values: `500`, `1000`, `2000`, `4000`, `8000`, `16000`, `32000`.
+        :param pulumi.Input[str] custom_host_alias: Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationCustomHostAliasV2Args']]]] custom_host_alias_v2s: The custom mapping between the hostname and IP address in the container. See `custom_host_alias_v2` below.
+        :param pulumi.Input[bool] deploy: The deploy. Valid values: `true`, `false`.
         :param pulumi.Input[str] edas_container_version: The operating environment used by the Pandora application.
-        :param pulumi.Input[str] enable_ahas: The enable ahas.
-        :param pulumi.Input[bool] enable_grey_tag_route: The enable grey tag route.
+        :param pulumi.Input[str] enable_ahas: The enable ahas. Valid values: `true`, `false`.
+        :param pulumi.Input[bool] enable_grey_tag_route: The enable grey tag route. Default value: `false`. Valid values:
         :param pulumi.Input[str] envs: Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
+        :param pulumi.Input[str] image_pull_secrets: The ID of the corresponding Secret.
         :param pulumi.Input[str] image_url: Mirror address. Only Image type applications can configure the mirror address.
         :param pulumi.Input[str] jar_start_args: The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jar_start_options: The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jdk: The JDK version that the deployment package depends on. Image type applications are not supported.
+        :param pulumi.Input[pulumi.InputType['ApplicationKafkaConfigsArgs']] kafka_configs: The logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
         :param pulumi.Input[str] liveness: Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
-        :param pulumi.Input[int] memory: The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
+               **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
+        :param pulumi.Input[pulumi.InputType['ApplicationLivenessV2Args']] liveness_v2: The liveness check settings of the container. See `liveness_v2` below.
+        :param pulumi.Input[int] memory: The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `2048`, `4096`, `8192`, `12288`, `16384`, `24576`, `32768`, `65536`, `131072`.
         :param pulumi.Input[str] micro_registration: Select the Nacos registry. Valid values: `0`, `1`, `2`.
-        :param pulumi.Input[int] min_ready_instance_ratio: Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
+        :param pulumi.Input[int] min_ready_instance_ratio: Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
                * `-1`: Initialization value, indicating that percentages are not used.
                * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         :param pulumi.Input[int] min_ready_instances: The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
-        :param pulumi.Input[str] mount_desc: Mount description.
-        :param pulumi.Input[str] mount_host: Mount point of NAS in application VPC.
         :param pulumi.Input[str] namespace_id: SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
-        :param pulumi.Input[str] nas_id: ID of the mounted NAS, Must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field is present, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationNasConfigArgs']]]] nas_configs: The configurations for mounting the NAS file system. See `nas_configs` below.
         :param pulumi.Input[str] oss_ak_id: OSS AccessKey ID.
         :param pulumi.Input[str] oss_ak_secret: OSS  AccessKey Secret.
-        :param pulumi.Input[str] oss_mount_descs: OSS mount description information.
-        :param pulumi.Input[str] package_type: Application package type. Support FatJar, War and Image. Valid values: `FatJar`, `Image`, `War`.
+        :param pulumi.Input[str] oss_mount_descs: OSS mount description information. **NOTE:** Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOssMountDescsV2Args']]]] oss_mount_descs_v2s: The description of the mounted Object Storage Service (OSS) bucket. See `oss_mount_descs_v2` below.
+        :param pulumi.Input[str] package_type: Application package type. Valid values: `FatJar`, `War`, `Image`, `PhpZip`, `IMAGE_PHP_5_4`, `IMAGE_PHP_5_4_ALPINE`, `IMAGE_PHP_5_5`, `IMAGE_PHP_5_5_ALPINE`, `IMAGE_PHP_5_6`, `IMAGE_PHP_5_6_ALPINE`, `IMAGE_PHP_7_0`, `IMAGE_PHP_7_0_ALPINE`, `IMAGE_PHP_7_1`, `IMAGE_PHP_7_1_ALPINE`, `IMAGE_PHP_7_2`, `IMAGE_PHP_7_2_ALPINE`, `IMAGE_PHP_7_3`, `IMAGE_PHP_7_3_ALPINE`, `PythonZip`.
         :param pulumi.Input[str] package_url: Deployment package address. Only FatJar or War type applications can configure the deployment package address.
         :param pulumi.Input[str] package_version: The version number of the deployment package. Required when the Package Type is War and FatJar.
+        :param pulumi.Input[str] php: The Php environment.
         :param pulumi.Input[str] php_arms_config_location: The PHP application monitors the mount path, and you need to ensure that the PHP server will load the configuration file of this path. You don't need to pay attention to the configuration content, SAE will automatically render the correct configuration file.
         :param pulumi.Input[str] php_config: PHP configuration file content.
         :param pulumi.Input[str] php_config_location: PHP application startup configuration mount path, you need to ensure that the PHP server will start using this configuration file.
-        :param pulumi.Input[str] post_start: Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
-        :param pulumi.Input[str] pre_stop: Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
+        :param pulumi.Input[str] post_start: Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
+        :param pulumi.Input[pulumi.InputType['ApplicationPostStartV2Args']] post_start_v2: The script that is run immediately after the container is started. See `post_start_v2` below.
+        :param pulumi.Input[str] pre_stop: Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
+        :param pulumi.Input[pulumi.InputType['ApplicationPreStopV2Args']] pre_stop_v2: The script that is run before the container is stopped. See `pre_stop_v2` below.
+        :param pulumi.Input[str] programming_language: The programming language that is used to create the application. Valid values: `java`, `php`, `other`.
+        :param pulumi.Input[pulumi.InputType['ApplicationPvtzDiscoverySvcArgs']] pvtz_discovery_svc: The configurations of Kubernetes Service-based service registration and discovery. See `pvtz_discovery_svc` below.
         :param pulumi.Input[str] readiness: Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
+               **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
+        :param pulumi.Input[pulumi.InputType['ApplicationReadinessV2Args']] readiness_v2: The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
         :param pulumi.Input[int] replicas: Initial number of instances.
         :param pulumi.Input[str] security_group_id: Security group ID.
         :param pulumi.Input[str] sls_configs: SLS  configuration.
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `RUNNING`, `STOPPED`.
+        :param pulumi.Input[str] status: The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] termination_grace_period_seconds: Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
-        :param pulumi.Input[str] timezone: Time zone, the default value is Asia/Shanghai.
+        :param pulumi.Input[str] timezone: Time zone. Default value: `Asia/Shanghai`.
         :param pulumi.Input[str] tomcat_config: Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
-        :param pulumi.Input[str] update_strategy: The update strategy.
-        :param pulumi.Input[str] version_id: Application version id.
+               **NOTE:** Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
+        :param pulumi.Input[pulumi.InputType['ApplicationTomcatConfigV2Args']] tomcat_config_v2: The Tomcat configuration. See `tomcat_config_v2` below.
+        :param pulumi.Input[str] update_strategy: The update strategy. **NOTE:** Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
+        :param pulumi.Input[pulumi.InputType['ApplicationUpdateStrategyV2Args']] update_strategy_v2: The release policy. See `update_strategy_v2` below.
         :param pulumi.Input[str] vpc_id: The vpc id.
-        :param pulumi.Input[str] vswitch_id: The vswitch id.
+        :param pulumi.Input[str] vswitch_id: The vswitch id. **NOTE:** From version 1.211.0, `vswitch_id` can be modified.
         :param pulumi.Input[str] war_start_options: WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
         :param pulumi.Input[str] web_container: The version of tomcat that the deployment package depends on. Image type applications are not supported.
         """
@@ -2063,16 +2607,15 @@ class Application(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
         config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
         name = config.get("name")
         if name is None:
             name = "tf-example"
         default_regions = alicloud.get_regions(current=True)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name=name,
@@ -2084,7 +2627,7 @@ class Application(pulumi.CustomResource):
             zone_id=default_zones.zones[0].id)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
+            namespace_id=f"{default_regions.regions[0].id}:example",
             namespace_name=name,
             namespace_description=name,
             enable_micro_registration=False)
@@ -2136,39 +2679,50 @@ class Application(pulumi.CustomResource):
                  change_order_desc: Optional[pulumi.Input[str]] = None,
                  command: Optional[pulumi.Input[str]] = None,
                  command_args: Optional[pulumi.Input[str]] = None,
+                 command_args_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  config_map_mount_desc: Optional[pulumi.Input[str]] = None,
+                 config_map_mount_desc_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationConfigMapMountDescV2Args']]]]] = None,
                  cpu: Optional[pulumi.Input[int]] = None,
                  custom_host_alias: Optional[pulumi.Input[str]] = None,
+                 custom_host_alias_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationCustomHostAliasV2Args']]]]] = None,
                  deploy: Optional[pulumi.Input[bool]] = None,
                  edas_container_version: Optional[pulumi.Input[str]] = None,
                  enable_ahas: Optional[pulumi.Input[str]] = None,
                  enable_grey_tag_route: Optional[pulumi.Input[bool]] = None,
                  envs: Optional[pulumi.Input[str]] = None,
+                 image_pull_secrets: Optional[pulumi.Input[str]] = None,
                  image_url: Optional[pulumi.Input[str]] = None,
                  jar_start_args: Optional[pulumi.Input[str]] = None,
                  jar_start_options: Optional[pulumi.Input[str]] = None,
                  jdk: Optional[pulumi.Input[str]] = None,
+                 kafka_configs: Optional[pulumi.Input[pulumi.InputType['ApplicationKafkaConfigsArgs']]] = None,
                  liveness: Optional[pulumi.Input[str]] = None,
+                 liveness_v2: Optional[pulumi.Input[pulumi.InputType['ApplicationLivenessV2Args']]] = None,
                  memory: Optional[pulumi.Input[int]] = None,
                  micro_registration: Optional[pulumi.Input[str]] = None,
                  min_ready_instance_ratio: Optional[pulumi.Input[int]] = None,
                  min_ready_instances: Optional[pulumi.Input[int]] = None,
-                 mount_desc: Optional[pulumi.Input[str]] = None,
-                 mount_host: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
-                 nas_id: Optional[pulumi.Input[str]] = None,
+                 nas_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationNasConfigArgs']]]]] = None,
                  oss_ak_id: Optional[pulumi.Input[str]] = None,
                  oss_ak_secret: Optional[pulumi.Input[str]] = None,
                  oss_mount_descs: Optional[pulumi.Input[str]] = None,
+                 oss_mount_descs_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOssMountDescsV2Args']]]]] = None,
                  package_type: Optional[pulumi.Input[str]] = None,
                  package_url: Optional[pulumi.Input[str]] = None,
                  package_version: Optional[pulumi.Input[str]] = None,
+                 php: Optional[pulumi.Input[str]] = None,
                  php_arms_config_location: Optional[pulumi.Input[str]] = None,
                  php_config: Optional[pulumi.Input[str]] = None,
                  php_config_location: Optional[pulumi.Input[str]] = None,
                  post_start: Optional[pulumi.Input[str]] = None,
+                 post_start_v2: Optional[pulumi.Input[pulumi.InputType['ApplicationPostStartV2Args']]] = None,
                  pre_stop: Optional[pulumi.Input[str]] = None,
+                 pre_stop_v2: Optional[pulumi.Input[pulumi.InputType['ApplicationPreStopV2Args']]] = None,
+                 programming_language: Optional[pulumi.Input[str]] = None,
+                 pvtz_discovery_svc: Optional[pulumi.Input[pulumi.InputType['ApplicationPvtzDiscoverySvcArgs']]] = None,
                  readiness: Optional[pulumi.Input[str]] = None,
+                 readiness_v2: Optional[pulumi.Input[pulumi.InputType['ApplicationReadinessV2Args']]] = None,
                  replicas: Optional[pulumi.Input[int]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  sls_configs: Optional[pulumi.Input[str]] = None,
@@ -2177,8 +2731,9 @@ class Application(pulumi.CustomResource):
                  termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  tomcat_config: Optional[pulumi.Input[str]] = None,
+                 tomcat_config_v2: Optional[pulumi.Input[pulumi.InputType['ApplicationTomcatConfigV2Args']]] = None,
                  update_strategy: Optional[pulumi.Input[str]] = None,
-                 version_id: Optional[pulumi.Input[str]] = None,
+                 update_strategy_v2: Optional[pulumi.Input[pulumi.InputType['ApplicationUpdateStrategyV2Args']]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  war_start_options: Optional[pulumi.Input[str]] = None,
@@ -2203,42 +2758,77 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["batch_wait_time"] = batch_wait_time
             __props__.__dict__["change_order_desc"] = change_order_desc
             __props__.__dict__["command"] = command
+            if command_args is not None and not opts.urn:
+                warnings.warn("""Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""", DeprecationWarning)
+                pulumi.log.warn("""command_args is deprecated: Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""")
             __props__.__dict__["command_args"] = command_args
+            __props__.__dict__["command_args_v2s"] = command_args_v2s
+            if config_map_mount_desc is not None and not opts.urn:
+                warnings.warn("""Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""", DeprecationWarning)
+                pulumi.log.warn("""config_map_mount_desc is deprecated: Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""")
             __props__.__dict__["config_map_mount_desc"] = config_map_mount_desc
+            __props__.__dict__["config_map_mount_desc_v2s"] = config_map_mount_desc_v2s
             __props__.__dict__["cpu"] = cpu
+            if custom_host_alias is not None and not opts.urn:
+                warnings.warn("""Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""", DeprecationWarning)
+                pulumi.log.warn("""custom_host_alias is deprecated: Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""")
             __props__.__dict__["custom_host_alias"] = custom_host_alias
+            __props__.__dict__["custom_host_alias_v2s"] = custom_host_alias_v2s
             __props__.__dict__["deploy"] = deploy
             __props__.__dict__["edas_container_version"] = edas_container_version
             __props__.__dict__["enable_ahas"] = enable_ahas
             __props__.__dict__["enable_grey_tag_route"] = enable_grey_tag_route
             __props__.__dict__["envs"] = envs
+            __props__.__dict__["image_pull_secrets"] = image_pull_secrets
             __props__.__dict__["image_url"] = image_url
             __props__.__dict__["jar_start_args"] = jar_start_args
             __props__.__dict__["jar_start_options"] = jar_start_options
             __props__.__dict__["jdk"] = jdk
+            __props__.__dict__["kafka_configs"] = kafka_configs
+            if liveness is not None and not opts.urn:
+                warnings.warn("""Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""", DeprecationWarning)
+                pulumi.log.warn("""liveness is deprecated: Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""")
             __props__.__dict__["liveness"] = liveness
+            __props__.__dict__["liveness_v2"] = liveness_v2
             __props__.__dict__["memory"] = memory
             __props__.__dict__["micro_registration"] = micro_registration
             __props__.__dict__["min_ready_instance_ratio"] = min_ready_instance_ratio
             __props__.__dict__["min_ready_instances"] = min_ready_instances
-            __props__.__dict__["mount_desc"] = mount_desc
-            __props__.__dict__["mount_host"] = mount_host
             __props__.__dict__["namespace_id"] = namespace_id
-            __props__.__dict__["nas_id"] = nas_id
+            __props__.__dict__["nas_configs"] = nas_configs
             __props__.__dict__["oss_ak_id"] = None if oss_ak_id is None else pulumi.Output.secret(oss_ak_id)
             __props__.__dict__["oss_ak_secret"] = None if oss_ak_secret is None else pulumi.Output.secret(oss_ak_secret)
+            if oss_mount_descs is not None and not opts.urn:
+                warnings.warn("""Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""", DeprecationWarning)
+                pulumi.log.warn("""oss_mount_descs is deprecated: Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""")
             __props__.__dict__["oss_mount_descs"] = oss_mount_descs
+            __props__.__dict__["oss_mount_descs_v2s"] = oss_mount_descs_v2s
             if package_type is None and not opts.urn:
                 raise TypeError("Missing required property 'package_type'")
             __props__.__dict__["package_type"] = package_type
             __props__.__dict__["package_url"] = package_url
             __props__.__dict__["package_version"] = package_version
+            __props__.__dict__["php"] = php
             __props__.__dict__["php_arms_config_location"] = php_arms_config_location
             __props__.__dict__["php_config"] = php_config
             __props__.__dict__["php_config_location"] = php_config_location
+            if post_start is not None and not opts.urn:
+                warnings.warn("""Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""", DeprecationWarning)
+                pulumi.log.warn("""post_start is deprecated: Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""")
             __props__.__dict__["post_start"] = post_start
+            __props__.__dict__["post_start_v2"] = post_start_v2
+            if pre_stop is not None and not opts.urn:
+                warnings.warn("""Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""", DeprecationWarning)
+                pulumi.log.warn("""pre_stop is deprecated: Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""")
             __props__.__dict__["pre_stop"] = pre_stop
+            __props__.__dict__["pre_stop_v2"] = pre_stop_v2
+            __props__.__dict__["programming_language"] = programming_language
+            __props__.__dict__["pvtz_discovery_svc"] = pvtz_discovery_svc
+            if readiness is not None and not opts.urn:
+                warnings.warn("""Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""", DeprecationWarning)
+                pulumi.log.warn("""readiness is deprecated: Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""")
             __props__.__dict__["readiness"] = readiness
+            __props__.__dict__["readiness_v2"] = readiness_v2
             if replicas is None and not opts.urn:
                 raise TypeError("Missing required property 'replicas'")
             __props__.__dict__["replicas"] = replicas
@@ -2248,9 +2838,16 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["termination_grace_period_seconds"] = termination_grace_period_seconds
             __props__.__dict__["timezone"] = timezone
+            if tomcat_config is not None and not opts.urn:
+                warnings.warn("""Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""", DeprecationWarning)
+                pulumi.log.warn("""tomcat_config is deprecated: Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""")
             __props__.__dict__["tomcat_config"] = tomcat_config
+            __props__.__dict__["tomcat_config_v2"] = tomcat_config_v2
+            if update_strategy is not None and not opts.urn:
+                warnings.warn("""Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""", DeprecationWarning)
+                pulumi.log.warn("""update_strategy is deprecated: Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""")
             __props__.__dict__["update_strategy"] = update_strategy
-            __props__.__dict__["version_id"] = version_id
+            __props__.__dict__["update_strategy_v2"] = update_strategy_v2
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["war_start_options"] = war_start_options
@@ -2277,39 +2874,50 @@ class Application(pulumi.CustomResource):
             change_order_desc: Optional[pulumi.Input[str]] = None,
             command: Optional[pulumi.Input[str]] = None,
             command_args: Optional[pulumi.Input[str]] = None,
+            command_args_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             config_map_mount_desc: Optional[pulumi.Input[str]] = None,
+            config_map_mount_desc_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationConfigMapMountDescV2Args']]]]] = None,
             cpu: Optional[pulumi.Input[int]] = None,
             custom_host_alias: Optional[pulumi.Input[str]] = None,
+            custom_host_alias_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationCustomHostAliasV2Args']]]]] = None,
             deploy: Optional[pulumi.Input[bool]] = None,
             edas_container_version: Optional[pulumi.Input[str]] = None,
             enable_ahas: Optional[pulumi.Input[str]] = None,
             enable_grey_tag_route: Optional[pulumi.Input[bool]] = None,
             envs: Optional[pulumi.Input[str]] = None,
+            image_pull_secrets: Optional[pulumi.Input[str]] = None,
             image_url: Optional[pulumi.Input[str]] = None,
             jar_start_args: Optional[pulumi.Input[str]] = None,
             jar_start_options: Optional[pulumi.Input[str]] = None,
             jdk: Optional[pulumi.Input[str]] = None,
+            kafka_configs: Optional[pulumi.Input[pulumi.InputType['ApplicationKafkaConfigsArgs']]] = None,
             liveness: Optional[pulumi.Input[str]] = None,
+            liveness_v2: Optional[pulumi.Input[pulumi.InputType['ApplicationLivenessV2Args']]] = None,
             memory: Optional[pulumi.Input[int]] = None,
             micro_registration: Optional[pulumi.Input[str]] = None,
             min_ready_instance_ratio: Optional[pulumi.Input[int]] = None,
             min_ready_instances: Optional[pulumi.Input[int]] = None,
-            mount_desc: Optional[pulumi.Input[str]] = None,
-            mount_host: Optional[pulumi.Input[str]] = None,
             namespace_id: Optional[pulumi.Input[str]] = None,
-            nas_id: Optional[pulumi.Input[str]] = None,
+            nas_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationNasConfigArgs']]]]] = None,
             oss_ak_id: Optional[pulumi.Input[str]] = None,
             oss_ak_secret: Optional[pulumi.Input[str]] = None,
             oss_mount_descs: Optional[pulumi.Input[str]] = None,
+            oss_mount_descs_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOssMountDescsV2Args']]]]] = None,
             package_type: Optional[pulumi.Input[str]] = None,
             package_url: Optional[pulumi.Input[str]] = None,
             package_version: Optional[pulumi.Input[str]] = None,
+            php: Optional[pulumi.Input[str]] = None,
             php_arms_config_location: Optional[pulumi.Input[str]] = None,
             php_config: Optional[pulumi.Input[str]] = None,
             php_config_location: Optional[pulumi.Input[str]] = None,
             post_start: Optional[pulumi.Input[str]] = None,
+            post_start_v2: Optional[pulumi.Input[pulumi.InputType['ApplicationPostStartV2Args']]] = None,
             pre_stop: Optional[pulumi.Input[str]] = None,
+            pre_stop_v2: Optional[pulumi.Input[pulumi.InputType['ApplicationPreStopV2Args']]] = None,
+            programming_language: Optional[pulumi.Input[str]] = None,
+            pvtz_discovery_svc: Optional[pulumi.Input[pulumi.InputType['ApplicationPvtzDiscoverySvcArgs']]] = None,
             readiness: Optional[pulumi.Input[str]] = None,
+            readiness_v2: Optional[pulumi.Input[pulumi.InputType['ApplicationReadinessV2Args']]] = None,
             replicas: Optional[pulumi.Input[int]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             sls_configs: Optional[pulumi.Input[str]] = None,
@@ -2318,8 +2926,9 @@ class Application(pulumi.CustomResource):
             termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
             timezone: Optional[pulumi.Input[str]] = None,
             tomcat_config: Optional[pulumi.Input[str]] = None,
+            tomcat_config_v2: Optional[pulumi.Input[pulumi.InputType['ApplicationTomcatConfigV2Args']]] = None,
             update_strategy: Optional[pulumi.Input[str]] = None,
-            version_id: Optional[pulumi.Input[str]] = None,
+            update_strategy_v2: Optional[pulumi.Input[pulumi.InputType['ApplicationUpdateStrategyV2Args']]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             war_start_options: Optional[pulumi.Input[str]] = None,
@@ -2333,61 +2942,76 @@ class Application(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acr_assume_role_arn: The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
         :param pulumi.Input[str] acr_instance_id: The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
-        :param pulumi.Input[str] app_description: Application description information. No more than 1024 characters.
+        :param pulumi.Input[str] app_description: Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `app_description` can be modified.
         :param pulumi.Input[str] app_name: Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
-        :param pulumi.Input[bool] auto_config: The auto config. Valid values: `false`, `true`.
-        :param pulumi.Input[bool] auto_enable_application_scaling_rule: The auto enable application scaling rule. Valid values: `false`, `true`.
+        :param pulumi.Input[bool] auto_config: The auto config. Valid values: `true`, `false`.
+        :param pulumi.Input[bool] auto_enable_application_scaling_rule: The auto enable application scaling rule. Valid values: `true`, `false`.
         :param pulumi.Input[int] batch_wait_time: The batch wait time.
         :param pulumi.Input[str] change_order_desc: The change order desc.
         :param pulumi.Input[str] command: Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
-        :param pulumi.Input[str] command_args: Mirror startup command parameters. The parameters required for the above start command. For example: 1d.
-        :param pulumi.Input[str] config_map_mount_desc: ConfigMap mount description.
-        :param pulumi.Input[int] cpu: The CPU required for each instance, in millicores, cannot be 0. Valid values: `1000`, `16000`, `2000`, `32000`, `4000`, `500`, `8000`.
-        :param pulumi.Input[str] custom_host_alias: Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}].
-        :param pulumi.Input[bool] deploy: The deploy. Valid values: `false`, `true`.
+        :param pulumi.Input[str] command_args: Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] command_args_v2s: The parameters of the image startup command.
+        :param pulumi.Input[str] config_map_mount_desc: ConfigMap mount description. **NOTE:** Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationConfigMapMountDescV2Args']]]] config_map_mount_desc_v2s: The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `config_map_mount_desc_v2` below.
+        :param pulumi.Input[int] cpu: The CPU required for each instance, in millicores, cannot be 0. Valid values: `500`, `1000`, `2000`, `4000`, `8000`, `16000`, `32000`.
+        :param pulumi.Input[str] custom_host_alias: Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationCustomHostAliasV2Args']]]] custom_host_alias_v2s: The custom mapping between the hostname and IP address in the container. See `custom_host_alias_v2` below.
+        :param pulumi.Input[bool] deploy: The deploy. Valid values: `true`, `false`.
         :param pulumi.Input[str] edas_container_version: The operating environment used by the Pandora application.
-        :param pulumi.Input[str] enable_ahas: The enable ahas.
-        :param pulumi.Input[bool] enable_grey_tag_route: The enable grey tag route.
+        :param pulumi.Input[str] enable_ahas: The enable ahas. Valid values: `true`, `false`.
+        :param pulumi.Input[bool] enable_grey_tag_route: The enable grey tag route. Default value: `false`. Valid values:
         :param pulumi.Input[str] envs: Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
+        :param pulumi.Input[str] image_pull_secrets: The ID of the corresponding Secret.
         :param pulumi.Input[str] image_url: Mirror address. Only Image type applications can configure the mirror address.
         :param pulumi.Input[str] jar_start_args: The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jar_start_options: The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jdk: The JDK version that the deployment package depends on. Image type applications are not supported.
+        :param pulumi.Input[pulumi.InputType['ApplicationKafkaConfigsArgs']] kafka_configs: The logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
         :param pulumi.Input[str] liveness: Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
-        :param pulumi.Input[int] memory: The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
+               **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
+        :param pulumi.Input[pulumi.InputType['ApplicationLivenessV2Args']] liveness_v2: The liveness check settings of the container. See `liveness_v2` below.
+        :param pulumi.Input[int] memory: The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `2048`, `4096`, `8192`, `12288`, `16384`, `24576`, `32768`, `65536`, `131072`.
         :param pulumi.Input[str] micro_registration: Select the Nacos registry. Valid values: `0`, `1`, `2`.
-        :param pulumi.Input[int] min_ready_instance_ratio: Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
+        :param pulumi.Input[int] min_ready_instance_ratio: Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
                * `-1`: Initialization value, indicating that percentages are not used.
                * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         :param pulumi.Input[int] min_ready_instances: The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
-        :param pulumi.Input[str] mount_desc: Mount description.
-        :param pulumi.Input[str] mount_host: Mount point of NAS in application VPC.
         :param pulumi.Input[str] namespace_id: SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
-        :param pulumi.Input[str] nas_id: ID of the mounted NAS, Must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field is present, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationNasConfigArgs']]]] nas_configs: The configurations for mounting the NAS file system. See `nas_configs` below.
         :param pulumi.Input[str] oss_ak_id: OSS AccessKey ID.
         :param pulumi.Input[str] oss_ak_secret: OSS  AccessKey Secret.
-        :param pulumi.Input[str] oss_mount_descs: OSS mount description information.
-        :param pulumi.Input[str] package_type: Application package type. Support FatJar, War and Image. Valid values: `FatJar`, `Image`, `War`.
+        :param pulumi.Input[str] oss_mount_descs: OSS mount description information. **NOTE:** Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOssMountDescsV2Args']]]] oss_mount_descs_v2s: The description of the mounted Object Storage Service (OSS) bucket. See `oss_mount_descs_v2` below.
+        :param pulumi.Input[str] package_type: Application package type. Valid values: `FatJar`, `War`, `Image`, `PhpZip`, `IMAGE_PHP_5_4`, `IMAGE_PHP_5_4_ALPINE`, `IMAGE_PHP_5_5`, `IMAGE_PHP_5_5_ALPINE`, `IMAGE_PHP_5_6`, `IMAGE_PHP_5_6_ALPINE`, `IMAGE_PHP_7_0`, `IMAGE_PHP_7_0_ALPINE`, `IMAGE_PHP_7_1`, `IMAGE_PHP_7_1_ALPINE`, `IMAGE_PHP_7_2`, `IMAGE_PHP_7_2_ALPINE`, `IMAGE_PHP_7_3`, `IMAGE_PHP_7_3_ALPINE`, `PythonZip`.
         :param pulumi.Input[str] package_url: Deployment package address. Only FatJar or War type applications can configure the deployment package address.
         :param pulumi.Input[str] package_version: The version number of the deployment package. Required when the Package Type is War and FatJar.
+        :param pulumi.Input[str] php: The Php environment.
         :param pulumi.Input[str] php_arms_config_location: The PHP application monitors the mount path, and you need to ensure that the PHP server will load the configuration file of this path. You don't need to pay attention to the configuration content, SAE will automatically render the correct configuration file.
         :param pulumi.Input[str] php_config: PHP configuration file content.
         :param pulumi.Input[str] php_config_location: PHP application startup configuration mount path, you need to ensure that the PHP server will start using this configuration file.
-        :param pulumi.Input[str] post_start: Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
-        :param pulumi.Input[str] pre_stop: Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
+        :param pulumi.Input[str] post_start: Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
+        :param pulumi.Input[pulumi.InputType['ApplicationPostStartV2Args']] post_start_v2: The script that is run immediately after the container is started. See `post_start_v2` below.
+        :param pulumi.Input[str] pre_stop: Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
+        :param pulumi.Input[pulumi.InputType['ApplicationPreStopV2Args']] pre_stop_v2: The script that is run before the container is stopped. See `pre_stop_v2` below.
+        :param pulumi.Input[str] programming_language: The programming language that is used to create the application. Valid values: `java`, `php`, `other`.
+        :param pulumi.Input[pulumi.InputType['ApplicationPvtzDiscoverySvcArgs']] pvtz_discovery_svc: The configurations of Kubernetes Service-based service registration and discovery. See `pvtz_discovery_svc` below.
         :param pulumi.Input[str] readiness: Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
+               **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
+        :param pulumi.Input[pulumi.InputType['ApplicationReadinessV2Args']] readiness_v2: The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
         :param pulumi.Input[int] replicas: Initial number of instances.
         :param pulumi.Input[str] security_group_id: Security group ID.
         :param pulumi.Input[str] sls_configs: SLS  configuration.
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `RUNNING`, `STOPPED`.
+        :param pulumi.Input[str] status: The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] termination_grace_period_seconds: Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
-        :param pulumi.Input[str] timezone: Time zone, the default value is Asia/Shanghai.
+        :param pulumi.Input[str] timezone: Time zone. Default value: `Asia/Shanghai`.
         :param pulumi.Input[str] tomcat_config: Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
-        :param pulumi.Input[str] update_strategy: The update strategy.
-        :param pulumi.Input[str] version_id: Application version id.
+               **NOTE:** Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
+        :param pulumi.Input[pulumi.InputType['ApplicationTomcatConfigV2Args']] tomcat_config_v2: The Tomcat configuration. See `tomcat_config_v2` below.
+        :param pulumi.Input[str] update_strategy: The update strategy. **NOTE:** Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
+        :param pulumi.Input[pulumi.InputType['ApplicationUpdateStrategyV2Args']] update_strategy_v2: The release policy. See `update_strategy_v2` below.
         :param pulumi.Input[str] vpc_id: The vpc id.
-        :param pulumi.Input[str] vswitch_id: The vswitch id.
+        :param pulumi.Input[str] vswitch_id: The vswitch id. **NOTE:** From version 1.211.0, `vswitch_id` can be modified.
         :param pulumi.Input[str] war_start_options: WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
         :param pulumi.Input[str] web_container: The version of tomcat that the deployment package depends on. Image type applications are not supported.
         """
@@ -2405,39 +3029,50 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["change_order_desc"] = change_order_desc
         __props__.__dict__["command"] = command
         __props__.__dict__["command_args"] = command_args
+        __props__.__dict__["command_args_v2s"] = command_args_v2s
         __props__.__dict__["config_map_mount_desc"] = config_map_mount_desc
+        __props__.__dict__["config_map_mount_desc_v2s"] = config_map_mount_desc_v2s
         __props__.__dict__["cpu"] = cpu
         __props__.__dict__["custom_host_alias"] = custom_host_alias
+        __props__.__dict__["custom_host_alias_v2s"] = custom_host_alias_v2s
         __props__.__dict__["deploy"] = deploy
         __props__.__dict__["edas_container_version"] = edas_container_version
         __props__.__dict__["enable_ahas"] = enable_ahas
         __props__.__dict__["enable_grey_tag_route"] = enable_grey_tag_route
         __props__.__dict__["envs"] = envs
+        __props__.__dict__["image_pull_secrets"] = image_pull_secrets
         __props__.__dict__["image_url"] = image_url
         __props__.__dict__["jar_start_args"] = jar_start_args
         __props__.__dict__["jar_start_options"] = jar_start_options
         __props__.__dict__["jdk"] = jdk
+        __props__.__dict__["kafka_configs"] = kafka_configs
         __props__.__dict__["liveness"] = liveness
+        __props__.__dict__["liveness_v2"] = liveness_v2
         __props__.__dict__["memory"] = memory
         __props__.__dict__["micro_registration"] = micro_registration
         __props__.__dict__["min_ready_instance_ratio"] = min_ready_instance_ratio
         __props__.__dict__["min_ready_instances"] = min_ready_instances
-        __props__.__dict__["mount_desc"] = mount_desc
-        __props__.__dict__["mount_host"] = mount_host
         __props__.__dict__["namespace_id"] = namespace_id
-        __props__.__dict__["nas_id"] = nas_id
+        __props__.__dict__["nas_configs"] = nas_configs
         __props__.__dict__["oss_ak_id"] = oss_ak_id
         __props__.__dict__["oss_ak_secret"] = oss_ak_secret
         __props__.__dict__["oss_mount_descs"] = oss_mount_descs
+        __props__.__dict__["oss_mount_descs_v2s"] = oss_mount_descs_v2s
         __props__.__dict__["package_type"] = package_type
         __props__.__dict__["package_url"] = package_url
         __props__.__dict__["package_version"] = package_version
+        __props__.__dict__["php"] = php
         __props__.__dict__["php_arms_config_location"] = php_arms_config_location
         __props__.__dict__["php_config"] = php_config
         __props__.__dict__["php_config_location"] = php_config_location
         __props__.__dict__["post_start"] = post_start
+        __props__.__dict__["post_start_v2"] = post_start_v2
         __props__.__dict__["pre_stop"] = pre_stop
+        __props__.__dict__["pre_stop_v2"] = pre_stop_v2
+        __props__.__dict__["programming_language"] = programming_language
+        __props__.__dict__["pvtz_discovery_svc"] = pvtz_discovery_svc
         __props__.__dict__["readiness"] = readiness
+        __props__.__dict__["readiness_v2"] = readiness_v2
         __props__.__dict__["replicas"] = replicas
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["sls_configs"] = sls_configs
@@ -2446,8 +3081,9 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["termination_grace_period_seconds"] = termination_grace_period_seconds
         __props__.__dict__["timezone"] = timezone
         __props__.__dict__["tomcat_config"] = tomcat_config
+        __props__.__dict__["tomcat_config_v2"] = tomcat_config_v2
         __props__.__dict__["update_strategy"] = update_strategy
-        __props__.__dict__["version_id"] = version_id
+        __props__.__dict__["update_strategy_v2"] = update_strategy_v2
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["war_start_options"] = war_start_options
@@ -2474,7 +3110,7 @@ class Application(pulumi.CustomResource):
     @pulumi.getter(name="appDescription")
     def app_description(self) -> pulumi.Output[Optional[str]]:
         """
-        Application description information. No more than 1024 characters.
+        Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `app_description` can be modified.
         """
         return pulumi.get(self, "app_description")
 
@@ -2490,15 +3126,15 @@ class Application(pulumi.CustomResource):
     @pulumi.getter(name="autoConfig")
     def auto_config(self) -> pulumi.Output[Optional[bool]]:
         """
-        The auto config. Valid values: `false`, `true`.
+        The auto config. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "auto_config")
 
     @property
     @pulumi.getter(name="autoEnableApplicationScalingRule")
-    def auto_enable_application_scaling_rule(self) -> pulumi.Output[bool]:
+    def auto_enable_application_scaling_rule(self) -> pulumi.Output[Optional[bool]]:
         """
-        The auto enable application scaling rule. Valid values: `false`, `true`.
+        The auto enable application scaling rule. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "auto_enable_application_scaling_rule")
 
@@ -2512,7 +3148,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="changeOrderDesc")
-    def change_order_desc(self) -> pulumi.Output[str]:
+    def change_order_desc(self) -> pulumi.Output[Optional[str]]:
         """
         The change order desc.
         """
@@ -2528,25 +3164,47 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="commandArgs")
-    def command_args(self) -> pulumi.Output[Optional[str]]:
+    def command_args(self) -> pulumi.Output[str]:
         """
-        Mirror startup command parameters. The parameters required for the above start command. For example: 1d.
+        Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
         """
+        warnings.warn("""Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""command_args is deprecated: Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""")
+
         return pulumi.get(self, "command_args")
+
+    @property
+    @pulumi.getter(name="commandArgsV2s")
+    def command_args_v2s(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The parameters of the image startup command.
+        """
+        return pulumi.get(self, "command_args_v2s")
 
     @property
     @pulumi.getter(name="configMapMountDesc")
     def config_map_mount_desc(self) -> pulumi.Output[str]:
         """
-        ConfigMap mount description.
+        ConfigMap mount description. **NOTE:** Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
         """
+        warnings.warn("""Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""config_map_mount_desc is deprecated: Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""")
+
         return pulumi.get(self, "config_map_mount_desc")
+
+    @property
+    @pulumi.getter(name="configMapMountDescV2s")
+    def config_map_mount_desc_v2s(self) -> pulumi.Output[Sequence['outputs.ApplicationConfigMapMountDescV2']]:
+        """
+        The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `config_map_mount_desc_v2` below.
+        """
+        return pulumi.get(self, "config_map_mount_desc_v2s")
 
     @property
     @pulumi.getter
     def cpu(self) -> pulumi.Output[Optional[int]]:
         """
-        The CPU required for each instance, in millicores, cannot be 0. Valid values: `1000`, `16000`, `2000`, `32000`, `4000`, `500`, `8000`.
+        The CPU required for each instance, in millicores, cannot be 0. Valid values: `500`, `1000`, `2000`, `4000`, `8000`, `16000`, `32000`.
         """
         return pulumi.get(self, "cpu")
 
@@ -2554,15 +3212,26 @@ class Application(pulumi.CustomResource):
     @pulumi.getter(name="customHostAlias")
     def custom_host_alias(self) -> pulumi.Output[str]:
         """
-        Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}].
+        Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
         """
+        warnings.warn("""Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""custom_host_alias is deprecated: Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""")
+
         return pulumi.get(self, "custom_host_alias")
+
+    @property
+    @pulumi.getter(name="customHostAliasV2s")
+    def custom_host_alias_v2s(self) -> pulumi.Output[Sequence['outputs.ApplicationCustomHostAliasV2']]:
+        """
+        The custom mapping between the hostname and IP address in the container. See `custom_host_alias_v2` below.
+        """
+        return pulumi.get(self, "custom_host_alias_v2s")
 
     @property
     @pulumi.getter
     def deploy(self) -> pulumi.Output[Optional[bool]]:
         """
-        The deploy. Valid values: `false`, `true`.
+        The deploy. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "deploy")
 
@@ -2578,7 +3247,7 @@ class Application(pulumi.CustomResource):
     @pulumi.getter(name="enableAhas")
     def enable_ahas(self) -> pulumi.Output[str]:
         """
-        The enable ahas.
+        The enable ahas. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_ahas")
 
@@ -2586,7 +3255,7 @@ class Application(pulumi.CustomResource):
     @pulumi.getter(name="enableGreyTagRoute")
     def enable_grey_tag_route(self) -> pulumi.Output[bool]:
         """
-        The enable grey tag route.
+        The enable grey tag route. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "enable_grey_tag_route")
 
@@ -2597,6 +3266,14 @@ class Application(pulumi.CustomResource):
         Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
         """
         return pulumi.get(self, "envs")
+
+    @property
+    @pulumi.getter(name="imagePullSecrets")
+    def image_pull_secrets(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the corresponding Secret.
+        """
+        return pulumi.get(self, "image_pull_secrets")
 
     @property
     @pulumi.getter(name="imageUrl")
@@ -2631,18 +3308,38 @@ class Application(pulumi.CustomResource):
         return pulumi.get(self, "jdk")
 
     @property
+    @pulumi.getter(name="kafkaConfigs")
+    def kafka_configs(self) -> pulumi.Output[Optional['outputs.ApplicationKafkaConfigs']]:
+        """
+        The logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
+        """
+        return pulumi.get(self, "kafka_configs")
+
+    @property
     @pulumi.getter
-    def liveness(self) -> pulumi.Output[Optional[str]]:
+    def liveness(self) -> pulumi.Output[str]:
         """
         Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
+        **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
         """
+        warnings.warn("""Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""liveness is deprecated: Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""")
+
         return pulumi.get(self, "liveness")
+
+    @property
+    @pulumi.getter(name="livenessV2")
+    def liveness_v2(self) -> pulumi.Output['outputs.ApplicationLivenessV2']:
+        """
+        The liveness check settings of the container. See `liveness_v2` below.
+        """
+        return pulumi.get(self, "liveness_v2")
 
     @property
     @pulumi.getter
     def memory(self) -> pulumi.Output[Optional[int]]:
         """
-        The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
+        The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `2048`, `4096`, `8192`, `12288`, `16384`, `24576`, `32768`, `65536`, `131072`.
         """
         return pulumi.get(self, "memory")
 
@@ -2658,7 +3355,7 @@ class Application(pulumi.CustomResource):
     @pulumi.getter(name="minReadyInstanceRatio")
     def min_ready_instance_ratio(self) -> pulumi.Output[int]:
         """
-        Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
+        Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
         * `-1`: Initialization value, indicating that percentages are not used.
         * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         """
@@ -2673,22 +3370,6 @@ class Application(pulumi.CustomResource):
         return pulumi.get(self, "min_ready_instances")
 
     @property
-    @pulumi.getter(name="mountDesc")
-    def mount_desc(self) -> pulumi.Output[Optional[str]]:
-        """
-        Mount description.
-        """
-        return pulumi.get(self, "mount_desc")
-
-    @property
-    @pulumi.getter(name="mountHost")
-    def mount_host(self) -> pulumi.Output[Optional[str]]:
-        """
-        Mount point of NAS in application VPC.
-        """
-        return pulumi.get(self, "mount_host")
-
-    @property
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> pulumi.Output[Optional[str]]:
         """
@@ -2697,12 +3378,12 @@ class Application(pulumi.CustomResource):
         return pulumi.get(self, "namespace_id")
 
     @property
-    @pulumi.getter(name="nasId")
-    def nas_id(self) -> pulumi.Output[Optional[str]]:
+    @pulumi.getter(name="nasConfigs")
+    def nas_configs(self) -> pulumi.Output[Optional[Sequence['outputs.ApplicationNasConfig']]]:
         """
-        ID of the mounted NAS, Must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field is present, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
+        The configurations for mounting the NAS file system. See `nas_configs` below.
         """
-        return pulumi.get(self, "nas_id")
+        return pulumi.get(self, "nas_configs")
 
     @property
     @pulumi.getter(name="ossAkId")
@@ -2722,17 +3403,28 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ossMountDescs")
-    def oss_mount_descs(self) -> pulumi.Output[Optional[str]]:
+    def oss_mount_descs(self) -> pulumi.Output[str]:
         """
-        OSS mount description information.
+        OSS mount description information. **NOTE:** Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
         """
+        warnings.warn("""Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""oss_mount_descs is deprecated: Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""")
+
         return pulumi.get(self, "oss_mount_descs")
+
+    @property
+    @pulumi.getter(name="ossMountDescsV2s")
+    def oss_mount_descs_v2s(self) -> pulumi.Output[Sequence['outputs.ApplicationOssMountDescsV2']]:
+        """
+        The description of the mounted Object Storage Service (OSS) bucket. See `oss_mount_descs_v2` below.
+        """
+        return pulumi.get(self, "oss_mount_descs_v2s")
 
     @property
     @pulumi.getter(name="packageType")
     def package_type(self) -> pulumi.Output[str]:
         """
-        Application package type. Support FatJar, War and Image. Valid values: `FatJar`, `Image`, `War`.
+        Application package type. Valid values: `FatJar`, `War`, `Image`, `PhpZip`, `IMAGE_PHP_5_4`, `IMAGE_PHP_5_4_ALPINE`, `IMAGE_PHP_5_5`, `IMAGE_PHP_5_5_ALPINE`, `IMAGE_PHP_5_6`, `IMAGE_PHP_5_6_ALPINE`, `IMAGE_PHP_7_0`, `IMAGE_PHP_7_0_ALPINE`, `IMAGE_PHP_7_1`, `IMAGE_PHP_7_1_ALPINE`, `IMAGE_PHP_7_2`, `IMAGE_PHP_7_2_ALPINE`, `IMAGE_PHP_7_3`, `IMAGE_PHP_7_3_ALPINE`, `PythonZip`.
         """
         return pulumi.get(self, "package_type")
 
@@ -2753,8 +3445,16 @@ class Application(pulumi.CustomResource):
         return pulumi.get(self, "package_version")
 
     @property
+    @pulumi.getter
+    def php(self) -> pulumi.Output[Optional[str]]:
+        """
+        The Php environment.
+        """
+        return pulumi.get(self, "php")
+
+    @property
     @pulumi.getter(name="phpArmsConfigLocation")
-    def php_arms_config_location(self) -> pulumi.Output[Optional[str]]:
+    def php_arms_config_location(self) -> pulumi.Output[str]:
         """
         The PHP application monitors the mount path, and you need to ensure that the PHP server will load the configuration file of this path. You don't need to pay attention to the configuration content, SAE will automatically render the correct configuration file.
         """
@@ -2778,27 +3478,77 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="postStart")
-    def post_start(self) -> pulumi.Output[Optional[str]]:
+    def post_start(self) -> pulumi.Output[str]:
         """
-        Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
+        Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
         """
+        warnings.warn("""Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""post_start is deprecated: Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""")
+
         return pulumi.get(self, "post_start")
 
     @property
+    @pulumi.getter(name="postStartV2")
+    def post_start_v2(self) -> pulumi.Output['outputs.ApplicationPostStartV2']:
+        """
+        The script that is run immediately after the container is started. See `post_start_v2` below.
+        """
+        return pulumi.get(self, "post_start_v2")
+
+    @property
     @pulumi.getter(name="preStop")
-    def pre_stop(self) -> pulumi.Output[Optional[str]]:
+    def pre_stop(self) -> pulumi.Output[str]:
         """
-        Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
+        Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
         """
+        warnings.warn("""Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""pre_stop is deprecated: Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""")
+
         return pulumi.get(self, "pre_stop")
 
     @property
+    @pulumi.getter(name="preStopV2")
+    def pre_stop_v2(self) -> pulumi.Output['outputs.ApplicationPreStopV2']:
+        """
+        The script that is run before the container is stopped. See `pre_stop_v2` below.
+        """
+        return pulumi.get(self, "pre_stop_v2")
+
+    @property
+    @pulumi.getter(name="programmingLanguage")
+    def programming_language(self) -> pulumi.Output[str]:
+        """
+        The programming language that is used to create the application. Valid values: `java`, `php`, `other`.
+        """
+        return pulumi.get(self, "programming_language")
+
+    @property
+    @pulumi.getter(name="pvtzDiscoverySvc")
+    def pvtz_discovery_svc(self) -> pulumi.Output[Optional['outputs.ApplicationPvtzDiscoverySvc']]:
+        """
+        The configurations of Kubernetes Service-based service registration and discovery. See `pvtz_discovery_svc` below.
+        """
+        return pulumi.get(self, "pvtz_discovery_svc")
+
+    @property
     @pulumi.getter
-    def readiness(self) -> pulumi.Output[Optional[str]]:
+    def readiness(self) -> pulumi.Output[str]:
         """
         Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
+        **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
         """
+        warnings.warn("""Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""readiness is deprecated: Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""")
+
         return pulumi.get(self, "readiness")
+
+    @property
+    @pulumi.getter(name="readinessV2")
+    def readiness_v2(self) -> pulumi.Output['outputs.ApplicationReadinessV2']:
+        """
+        The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
+        """
+        return pulumi.get(self, "readiness_v2")
 
     @property
     @pulumi.getter
@@ -2828,7 +3578,7 @@ class Application(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource. Valid values: `RUNNING`, `STOPPED`.
+        The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
         """
         return pulumi.get(self, "status")
 
@@ -2852,33 +3602,48 @@ class Application(pulumi.CustomResource):
     @pulumi.getter
     def timezone(self) -> pulumi.Output[str]:
         """
-        Time zone, the default value is Asia/Shanghai.
+        Time zone. Default value: `Asia/Shanghai`.
         """
         return pulumi.get(self, "timezone")
 
     @property
     @pulumi.getter(name="tomcatConfig")
-    def tomcat_config(self) -> pulumi.Output[Optional[str]]:
+    def tomcat_config(self) -> pulumi.Output[str]:
         """
         Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
+        **NOTE:** Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
         """
+        warnings.warn("""Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""tomcat_config is deprecated: Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""")
+
         return pulumi.get(self, "tomcat_config")
+
+    @property
+    @pulumi.getter(name="tomcatConfigV2")
+    def tomcat_config_v2(self) -> pulumi.Output['outputs.ApplicationTomcatConfigV2']:
+        """
+        The Tomcat configuration. See `tomcat_config_v2` below.
+        """
+        return pulumi.get(self, "tomcat_config_v2")
 
     @property
     @pulumi.getter(name="updateStrategy")
     def update_strategy(self) -> pulumi.Output[str]:
         """
-        The update strategy.
+        The update strategy. **NOTE:** Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
         """
+        warnings.warn("""Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""", DeprecationWarning)
+        pulumi.log.warn("""update_strategy is deprecated: Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""")
+
         return pulumi.get(self, "update_strategy")
 
     @property
-    @pulumi.getter(name="versionId")
-    def version_id(self) -> pulumi.Output[Optional[str]]:
+    @pulumi.getter(name="updateStrategyV2")
+    def update_strategy_v2(self) -> pulumi.Output['outputs.ApplicationUpdateStrategyV2']:
         """
-        Application version id.
+        The release policy. See `update_strategy_v2` below.
         """
-        return pulumi.get(self, "version_id")
+        return pulumi.get(self, "update_strategy_v2")
 
     @property
     @pulumi.getter(name="vpcId")
@@ -2892,7 +3657,7 @@ class Application(pulumi.CustomResource):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The vswitch id.
+        The vswitch id. **NOTE:** From version 1.211.0, `vswitch_id` can be modified.
         """
         return pulumi.get(self, "vswitch_id")
 

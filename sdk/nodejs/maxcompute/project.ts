@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Max Compute Project resource.
  *
- * For information about Max Compute Project and how to use it, see [What is Project](https://help.aliyun.com/document_detail/473237.html).
+ * For information about Max Compute Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/maxcompute).
  *
- * > **NOTE:** Available in v1.77.0+.
+ * > **NOTE:** Available since v1.77.0.
  *
  * ## Example Usage
  *
@@ -21,11 +21,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
  * const _default = new alicloud.maxcompute.Project("default", {
- *     comment: "test_for_terraform",
  *     defaultQuota: "默认后付费Quota",
- *     productType: "PAYASYOUGO",
- *     projectName: "test_create_spec_one",
+ *     projectName: name,
+ *     comment: name,
+ *     productType: "PayAsYouGo",
  * });
  * ```
  */
@@ -66,7 +68,7 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly defaultQuota!: pulumi.Output<string | undefined>;
     /**
-     * IP whitelistSee the following `Block IpWhiteList`.
+     * IP whitelist. See `ipWhiteList` below.
      */
     public readonly ipWhiteList!: pulumi.Output<outputs.maxcompute.ProjectIpWhiteList | undefined>;
     /**
@@ -82,11 +84,11 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly projectName!: pulumi.Output<string>;
     /**
-     * Project base attributesSee the following `Block Properties`.
+     * Project base attributes. See `properties` below.
      */
     public readonly properties!: pulumi.Output<outputs.maxcompute.ProjectProperties>;
     /**
-     * Security-related attributesSee the following `Block SecurityProperties`.
+     * Security-related attributes. See `securityProperties` below.
      */
     public readonly securityProperties!: pulumi.Output<outputs.maxcompute.ProjectSecurityProperties>;
     /**
@@ -155,7 +157,7 @@ export interface ProjectState {
      */
     defaultQuota?: pulumi.Input<string>;
     /**
-     * IP whitelistSee the following `Block IpWhiteList`.
+     * IP whitelist. See `ipWhiteList` below.
      */
     ipWhiteList?: pulumi.Input<inputs.maxcompute.ProjectIpWhiteList>;
     /**
@@ -171,11 +173,11 @@ export interface ProjectState {
      */
     projectName?: pulumi.Input<string>;
     /**
-     * Project base attributesSee the following `Block Properties`.
+     * Project base attributes. See `properties` below.
      */
     properties?: pulumi.Input<inputs.maxcompute.ProjectProperties>;
     /**
-     * Security-related attributesSee the following `Block SecurityProperties`.
+     * Security-related attributes. See `securityProperties` below.
      */
     securityProperties?: pulumi.Input<inputs.maxcompute.ProjectSecurityProperties>;
     /**
@@ -201,7 +203,7 @@ export interface ProjectArgs {
      */
     defaultQuota?: pulumi.Input<string>;
     /**
-     * IP whitelistSee the following `Block IpWhiteList`.
+     * IP whitelist. See `ipWhiteList` below.
      */
     ipWhiteList?: pulumi.Input<inputs.maxcompute.ProjectIpWhiteList>;
     /**
@@ -213,11 +215,11 @@ export interface ProjectArgs {
      */
     projectName: pulumi.Input<string>;
     /**
-     * Project base attributesSee the following `Block Properties`.
+     * Project base attributes. See `properties` below.
      */
     properties?: pulumi.Input<inputs.maxcompute.ProjectProperties>;
     /**
-     * Security-related attributesSee the following `Block SecurityProperties`.
+     * Security-related attributes. See `securityProperties` below.
      */
     securityProperties?: pulumi.Input<inputs.maxcompute.ProjectSecurityProperties>;
 }

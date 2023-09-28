@@ -42,6 +42,7 @@ import * as utilities from "../utilities";
  *     configRuleTriggerTypes: "ConfigurationItemChangeNotification",
  *     sourceOwner: "ALIYUN",
  *     sourceIdentifier: "contains-tag",
+ *     description: name,
  *     riskLevel: 1,
  *     resourceTypesScopes: ["ACS::ECS::Instance"],
  *     inputParameters: {
@@ -97,9 +98,13 @@ export class AggregateCompliancePack extends pulumi.CustomResource {
     }
 
     /**
-     * The name of compliance package name. **NOTE:** the `aggregateCompliancePackName` supports modification since V1.145.0.
+     * The name of compliance package name. **NOTE:** From version 1.145.0, `aggregateCompliancePackName` can be modified.
      */
     public readonly aggregateCompliancePackName!: pulumi.Output<string>;
+    /**
+     * The ID of the compliance package.
+     */
+    public /*out*/ readonly aggregatorCompliancePackId!: pulumi.Output<string>;
     /**
      * The ID of aggregator.
      */
@@ -113,9 +118,9 @@ export class AggregateCompliancePack extends pulumi.CustomResource {
      */
     public readonly configRuleIds!: pulumi.Output<outputs.cfg.AggregateCompliancePackConfigRuleId[] | undefined>;
     /**
-     * A list of Config Rules. See `configRules` below.
+     * A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      *
-     * @deprecated Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
+     * @deprecated Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
      */
     public readonly configRules!: pulumi.Output<outputs.cfg.AggregateCompliancePackConfigRule[] | undefined>;
     /**
@@ -123,11 +128,11 @@ export class AggregateCompliancePack extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+     * The Risk Level. Valid values:
      */
     public readonly riskLevel!: pulumi.Output<number>;
     /**
-     * The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+     * The status of the Aggregate Compliance Pack.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -145,6 +150,7 @@ export class AggregateCompliancePack extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AggregateCompliancePackState | undefined;
             resourceInputs["aggregateCompliancePackName"] = state ? state.aggregateCompliancePackName : undefined;
+            resourceInputs["aggregatorCompliancePackId"] = state ? state.aggregatorCompliancePackId : undefined;
             resourceInputs["aggregatorId"] = state ? state.aggregatorId : undefined;
             resourceInputs["compliancePackTemplateId"] = state ? state.compliancePackTemplateId : undefined;
             resourceInputs["configRuleIds"] = state ? state.configRuleIds : undefined;
@@ -173,6 +179,7 @@ export class AggregateCompliancePack extends pulumi.CustomResource {
             resourceInputs["configRules"] = args ? args.configRules : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["riskLevel"] = args ? args.riskLevel : undefined;
+            resourceInputs["aggregatorCompliancePackId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -185,9 +192,13 @@ export class AggregateCompliancePack extends pulumi.CustomResource {
  */
 export interface AggregateCompliancePackState {
     /**
-     * The name of compliance package name. **NOTE:** the `aggregateCompliancePackName` supports modification since V1.145.0.
+     * The name of compliance package name. **NOTE:** From version 1.145.0, `aggregateCompliancePackName` can be modified.
      */
     aggregateCompliancePackName?: pulumi.Input<string>;
+    /**
+     * The ID of the compliance package.
+     */
+    aggregatorCompliancePackId?: pulumi.Input<string>;
     /**
      * The ID of aggregator.
      */
@@ -201,9 +212,9 @@ export interface AggregateCompliancePackState {
      */
     configRuleIds?: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRuleId>[]>;
     /**
-     * A list of Config Rules. See `configRules` below.
+     * A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      *
-     * @deprecated Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
+     * @deprecated Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
      */
     configRules?: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRule>[]>;
     /**
@@ -211,11 +222,11 @@ export interface AggregateCompliancePackState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+     * The Risk Level. Valid values:
      */
     riskLevel?: pulumi.Input<number>;
     /**
-     * The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+     * The status of the Aggregate Compliance Pack.
      */
     status?: pulumi.Input<string>;
 }
@@ -225,7 +236,7 @@ export interface AggregateCompliancePackState {
  */
 export interface AggregateCompliancePackArgs {
     /**
-     * The name of compliance package name. **NOTE:** the `aggregateCompliancePackName` supports modification since V1.145.0.
+     * The name of compliance package name. **NOTE:** From version 1.145.0, `aggregateCompliancePackName` can be modified.
      */
     aggregateCompliancePackName: pulumi.Input<string>;
     /**
@@ -241,9 +252,9 @@ export interface AggregateCompliancePackArgs {
      */
     configRuleIds?: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRuleId>[]>;
     /**
-     * A list of Config Rules. See `configRules` below.
+     * A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      *
-     * @deprecated Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
+     * @deprecated Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
      */
     configRules?: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRule>[]>;
     /**
@@ -251,7 +262,7 @@ export interface AggregateCompliancePackArgs {
      */
     description: pulumi.Input<string>;
     /**
-     * The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+     * The Risk Level. Valid values:
      */
     riskLevel: pulumi.Input<number>;
 }

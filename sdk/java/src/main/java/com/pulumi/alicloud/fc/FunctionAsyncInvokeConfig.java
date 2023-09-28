@@ -152,7 +152,7 @@ import javax.annotation.Nullable;
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
  *             .memorySize(&#34;512&#34;)
- *             .runtime(&#34;python2.7&#34;)
+ *             .runtime(&#34;python3.10&#34;)
  *             .handler(&#34;hello.handler&#34;)
  *             .build());
  * 
@@ -171,99 +171,9 @@ import javax.annotation.Nullable;
  *                     .destination(defaultTopic.name().applyValue(name -&gt; String.format(&#34;acs:mns:%s:%s:/topics/%s/messages&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()),name)))
  *                     .build())
  *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * ### Error Handling Configuration
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.fc.FunctionAsyncInvokeConfig;
- * import com.pulumi.alicloud.fc.FunctionAsyncInvokeConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new FunctionAsyncInvokeConfig(&#34;example&#34;, FunctionAsyncInvokeConfigArgs.builder()        
- *             .serviceName(alicloud_fc_service.example().name())
- *             .functionName(alicloud_fc_function.example().name())
  *             .maximumEventAgeInSeconds(60)
  *             .maximumRetryAttempts(0)
- *             .build());
- * 
- *     }
- * }
- * ```
- * ### Async Job Configuration
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.fc.FunctionAsyncInvokeConfig;
- * import com.pulumi.alicloud.fc.FunctionAsyncInvokeConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new FunctionAsyncInvokeConfig(&#34;example&#34;, FunctionAsyncInvokeConfigArgs.builder()        
- *             .serviceName(alicloud_fc_service.example().name())
- *             .functionName(alicloud_fc_function.example().name())
  *             .statefulInvocation(true)
- *             .build());
- * 
- *     }
- * }
- * ```
- * ### Configuration for Function Latest Unpublished Version
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.fc.FunctionAsyncInvokeConfig;
- * import com.pulumi.alicloud.fc.FunctionAsyncInvokeConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new FunctionAsyncInvokeConfig(&#34;example&#34;, FunctionAsyncInvokeConfigArgs.builder()        
- *             .serviceName(alicloud_fc_service.example().name())
- *             .functionName(alicloud_fc_function.example().name())
  *             .qualifier(&#34;LATEST&#34;)
  *             .build());
  * 

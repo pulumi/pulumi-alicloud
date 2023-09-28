@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Ram
     /// <summary>
     /// Provides a RAM cloud account alias.
     /// 
-    /// &gt; **NOTE:** Available since v1.0.0+.
+    /// &gt; **NOTE:** Available since v1.0.0.
     /// 
     /// ## Example Usage
     /// 
@@ -24,10 +24,11 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a alias for cloud account.
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
     ///     var @alias = new AliCloud.Ram.AccountAlias("alias", new()
     ///     {
-    ///         Alias = "hallo",
+    ///         Alias = name,
     ///     });
     /// 
     /// });

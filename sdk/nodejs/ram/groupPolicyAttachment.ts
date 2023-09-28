@@ -16,10 +16,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Create a RAM Group Policy attachment.
- * const group = new alicloud.ram.Group("group", {
- *     comments: "this is a group comments.",
- *     force: true,
- * });
+ * const group = new alicloud.ram.Group("group", {comments: "this is a group comments."});
  * const policy = new alicloud.ram.Policy("policy", {
  *     document: `    {
  *       "Statement": [
@@ -39,7 +36,6 @@ import * as utilities from "../utilities";
  *     }
  * `,
  *     description: "this is a policy test",
- *     force: true,
  * });
  * const attach = new alicloud.ram.GroupPolicyAttachment("attach", {
  *     policyName: policy.name,

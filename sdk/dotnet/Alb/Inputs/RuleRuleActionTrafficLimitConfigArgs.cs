@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
     public sealed class RuleRuleActionTrafficLimitConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Number of requests per second. Value range: 1~100000.
+        /// The Number of requests per second. Valid values: `1` to `100000`.
         /// </summary>
         [Input("qps")]
         public Input<int>? Qps { get; set; }

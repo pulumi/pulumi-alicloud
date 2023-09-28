@@ -71,14 +71,14 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The status of the resource group in all regions.
+     * The status of the resource group in all regions. See `region_statuses` below.
      * 
      */
     @Import(name="regionStatuses")
     private @Nullable Output<List<ResourceGroupRegionStatusArgs>> regionStatuses;
 
     /**
-     * @return The status of the resource group in all regions.
+     * @return The status of the resource group in all regions. See `region_statuses` below.
      * 
      */
     public Optional<Output<List<ResourceGroupRegionStatusArgs>>> regionStatuses() {
@@ -216,7 +216,7 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param regionStatuses The status of the resource group in all regions.
+         * @param regionStatuses The status of the resource group in all regions. See `region_statuses` below.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param regionStatuses The status of the resource group in all regions.
+         * @param regionStatuses The status of the resource group in all regions. See `region_statuses` below.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param regionStatuses The status of the resource group in all regions.
+         * @param regionStatuses The status of the resource group in all regions. See `region_statuses` below.
          * 
          * @return builder
          * 

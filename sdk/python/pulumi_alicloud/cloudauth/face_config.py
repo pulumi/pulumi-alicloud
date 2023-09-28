@@ -116,22 +116,9 @@ class FaceConfig(pulumi.CustomResource):
         """
         Provides a Cloudauth Face Config resource.
 
-        For information about Cloudauth Face Config and how to use it, see [What is Face Config](https://help.aliyun.com/document_detail/99173.html).
+        For information about Cloudauth Face Config and how to use it, see [What is Face Config](https://www.alibabacloud.com/help/en/document_detail/99173.html).
 
-        > **NOTE:** Available in v1.137.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.cloudauth.FaceConfig("example",
-            biz_name="example_value",
-            biz_type="example_value")
-        ```
+        > **NOTE:** Available since v1.137.0.
 
         ## Import
 
@@ -155,22 +142,9 @@ class FaceConfig(pulumi.CustomResource):
         """
         Provides a Cloudauth Face Config resource.
 
-        For information about Cloudauth Face Config and how to use it, see [What is Face Config](https://help.aliyun.com/document_detail/99173.html).
+        For information about Cloudauth Face Config and how to use it, see [What is Face Config](https://www.alibabacloud.com/help/en/document_detail/99173.html).
 
-        > **NOTE:** Available in v1.137.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.cloudauth.FaceConfig("example",
-            biz_name="example_value",
-            biz_type="example_value")
-        ```
+        > **NOTE:** Available since v1.137.0.
 
         ## Import
 

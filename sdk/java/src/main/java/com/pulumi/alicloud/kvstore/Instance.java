@@ -517,14 +517,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="instanceReleaseProtection", type=Boolean.class, parameters={})
-    private Output<Boolean> instanceReleaseProtection;
+    private Output</* @Nullable */ Boolean> instanceReleaseProtection;
 
     /**
      * @return Whether to open the release protection.
      * 
      */
-    public Output<Boolean> instanceReleaseProtection() {
-        return this.instanceReleaseProtection;
+    public Output<Optional<Boolean>> instanceReleaseProtection() {
+        return Codegen.optional(this.instanceReleaseProtection);
     }
     /**
      * The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
@@ -920,15 +920,15 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="sslEnable", type=String.class, parameters={})
-    private Output</* @Nullable */ String> sslEnable;
+    private Output<String> sslEnable;
 
     /**
      * @return Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
      * **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
      * 
      */
-    public Output<Optional<String>> sslEnable() {
-        return Codegen.optional(this.sslEnable);
+    public Output<String> sslEnable() {
+        return this.sslEnable;
     }
     /**
      * The status of KVStore DBInstance.
@@ -959,14 +959,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
+     * Specifies whether to enable TDE. Valid values: `Enabled`.
+     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+     * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
      * 
      */
     @Export(name="tdeStatus", type=String.class, parameters={})
     private Output<String> tdeStatus;
 
     /**
-     * @return The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
+     * @return Specifies whether to enable TDE. Valid values: `Enabled`.
+     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+     * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
      * 
      */
     public Output<String> tdeStatus() {

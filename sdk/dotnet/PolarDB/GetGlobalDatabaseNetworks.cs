@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// <summary>
         /// This data source provides the PolarDB Global Database Networks of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.181.0+.
+        /// &gt; **NOTE:** Available since v1.181.0+.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -30,17 +30,55 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var @this = AliCloud.PolarDB.GetNodeClasses.Invoke(new()
+        ///     {
+        ///         DbType = "MySQL",
+        ///         DbVersion = "8.0",
+        ///         PayType = "PostPaid",
+        ///         Category = "Normal",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+        ///     {
+        ///         VpcName = "terraform-example",
+        ///         CidrBlock = "172.16.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "172.16.0.0/24",
+        ///         ZoneId = @this.Apply(@this =&gt; @this.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.ZoneId)),
+        ///         VswitchName = "terraform-example",
+        ///     });
+        /// 
+        ///     var cluster = new AliCloud.PolarDB.Cluster("cluster", new()
+        ///     {
+        ///         DbType = "MySQL",
+        ///         DbVersion = "8.0",
+        ///         PayType = "PostPaid",
+        ///         DbNodeCount = 2,
+        ///         DbNodeClass = @this.Apply(@this =&gt; @this.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.SupportedEngines[0]?.AvailableResources[0]?.DbNodeClass)),
+        ///         VswitchId = defaultSwitch.Id,
+        ///     });
+        /// 
+        ///     var defaultGlobalDatabaseNetwork = new AliCloud.PolarDB.GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", new()
+        ///     {
+        ///         DbClusterId = cluster.Id,
+        ///         Description = cluster.Id,
+        ///     });
+        /// 
         ///     var ids = AliCloud.PolarDB.GetGlobalDatabaseNetworks.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "example_id",
+        ///             defaultGlobalDatabaseNetwork.Id,
         ///         },
         ///     });
         /// 
         ///     var description = AliCloud.PolarDB.GetGlobalDatabaseNetworks.Invoke(new()
         ///     {
-        ///         Description = "example_description",
+        ///         Description = defaultGlobalDatabaseNetwork.Description,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -59,7 +97,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// <summary>
         /// This data source provides the PolarDB Global Database Networks of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.181.0+.
+        /// &gt; **NOTE:** Available since v1.181.0+.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -75,17 +113,55 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var @this = AliCloud.PolarDB.GetNodeClasses.Invoke(new()
+        ///     {
+        ///         DbType = "MySQL",
+        ///         DbVersion = "8.0",
+        ///         PayType = "PostPaid",
+        ///         Category = "Normal",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+        ///     {
+        ///         VpcName = "terraform-example",
+        ///         CidrBlock = "172.16.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "172.16.0.0/24",
+        ///         ZoneId = @this.Apply(@this =&gt; @this.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.ZoneId)),
+        ///         VswitchName = "terraform-example",
+        ///     });
+        /// 
+        ///     var cluster = new AliCloud.PolarDB.Cluster("cluster", new()
+        ///     {
+        ///         DbType = "MySQL",
+        ///         DbVersion = "8.0",
+        ///         PayType = "PostPaid",
+        ///         DbNodeCount = 2,
+        ///         DbNodeClass = @this.Apply(@this =&gt; @this.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.SupportedEngines[0]?.AvailableResources[0]?.DbNodeClass)),
+        ///         VswitchId = defaultSwitch.Id,
+        ///     });
+        /// 
+        ///     var defaultGlobalDatabaseNetwork = new AliCloud.PolarDB.GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", new()
+        ///     {
+        ///         DbClusterId = cluster.Id,
+        ///         Description = cluster.Id,
+        ///     });
+        /// 
         ///     var ids = AliCloud.PolarDB.GetGlobalDatabaseNetworks.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "example_id",
+        ///             defaultGlobalDatabaseNetwork.Id,
         ///         },
         ///     });
         /// 
         ///     var description = AliCloud.PolarDB.GetGlobalDatabaseNetworks.Invoke(new()
         ///     {
-        ///         Description = "example_description",
+        ///         Description = defaultGlobalDatabaseNetwork.Description,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -106,7 +182,7 @@ namespace Pulumi.AliCloud.PolarDB
     public sealed class GetGlobalDatabaseNetworksArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the PolarDB cluster.
+        /// The ID of the cluster.
         /// </summary>
         [Input("dbClusterId")]
         public string? DbClusterId { get; set; }
@@ -148,7 +224,7 @@ namespace Pulumi.AliCloud.PolarDB
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The status of the Global Database Network.
+        /// The status of the Global Database Network. Valid values:
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -162,7 +238,7 @@ namespace Pulumi.AliCloud.PolarDB
     public sealed class GetGlobalDatabaseNetworksInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the PolarDB cluster.
+        /// The ID of the cluster.
         /// </summary>
         [Input("dbClusterId")]
         public Input<string>? DbClusterId { get; set; }
@@ -204,7 +280,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The status of the Global Database Network.
+        /// The status of the Global Database Network. Valid values:
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -219,18 +295,33 @@ namespace Pulumi.AliCloud.PolarDB
     [OutputType]
     public sealed class GetGlobalDatabaseNetworksResult
     {
+        /// <summary>
+        /// The ID of the PolarDB cluster.
+        /// </summary>
         public readonly string? DbClusterId;
+        /// <summary>
+        /// The description of the Global Database Network.
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// The ID of the Global Database Network.
+        /// </summary>
         public readonly string? GdnId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of PolarDB Global Database Networks. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGlobalDatabaseNetworksNetworkResult> Networks;
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
+        /// <summary>
+        /// The status of the Global Database Network.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

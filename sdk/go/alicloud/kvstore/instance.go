@@ -110,7 +110,7 @@ type Instance struct {
 	// Deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// Whether to open the release protection.
-	InstanceReleaseProtection pulumi.BoolOutput `pulumi:"instanceReleaseProtection"`
+	InstanceReleaseProtection pulumi.BoolPtrOutput `pulumi:"instanceReleaseProtection"`
 	// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
 	InstanceType pulumi.StringPtrOutput `pulumi:"instanceType"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
@@ -172,12 +172,14 @@ type Instance struct {
 	SrcdbInstanceId pulumi.StringPtrOutput `pulumi:"srcdbInstanceId"`
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
 	// **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
-	SslEnable pulumi.StringPtrOutput `pulumi:"sslEnable"`
+	SslEnable pulumi.StringOutput `pulumi:"sslEnable"`
 	// The status of KVStore DBInstance.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
+	// Specifies whether to enable TDE. Valid values: `Enabled`.
+	// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+	// your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
 	TdeStatus pulumi.StringOutput `pulumi:"tdeStatus"`
 	// Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
 	VpcAuthMode pulumi.StringPtrOutput `pulumi:"vpcAuthMode"`
@@ -377,7 +379,9 @@ type instanceState struct {
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
+	// Specifies whether to enable TDE. Valid values: `Enabled`.
+	// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+	// your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
 	VpcAuthMode *string `pulumi:"vpcAuthMode"`
@@ -541,7 +545,9 @@ type InstanceState struct {
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
+	// Specifies whether to enable TDE. Valid values: `Enabled`.
+	// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+	// your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
 	TdeStatus pulumi.StringPtrInput
 	// Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
 	VpcAuthMode pulumi.StringPtrInput
@@ -687,7 +693,9 @@ type instanceArgs struct {
 	SslEnable *string `pulumi:"sslEnable"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
+	// Specifies whether to enable TDE. Valid values: `Enabled`.
+	// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+	// your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
 	VpcAuthMode *string `pulumi:"vpcAuthMode"`
@@ -830,7 +838,9 @@ type InstanceArgs struct {
 	SslEnable pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
+	// Specifies whether to enable TDE. Valid values: `Enabled`.
+	// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+	// your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
 	TdeStatus pulumi.StringPtrInput
 	// Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
 	VpcAuthMode pulumi.StringPtrInput
@@ -1130,8 +1140,8 @@ func (o InstanceOutput) InstanceName() pulumi.StringOutput {
 }
 
 // Whether to open the release protection.
-func (o InstanceOutput) InstanceReleaseProtection() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.InstanceReleaseProtection }).(pulumi.BoolOutput)
+func (o InstanceOutput) InstanceReleaseProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.InstanceReleaseProtection }).(pulumi.BoolPtrOutput)
 }
 
 // The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
@@ -1276,8 +1286,8 @@ func (o InstanceOutput) SrcdbInstanceId() pulumi.StringPtrOutput {
 
 // Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
 // **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
-func (o InstanceOutput) SslEnable() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SslEnable }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) SslEnable() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SslEnable }).(pulumi.StringOutput)
 }
 
 // The status of KVStore DBInstance.
@@ -1290,7 +1300,9 @@ func (o InstanceOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// The Is the TDE encryption function on. The TDE function cannot be switched off for the time being. Please assess whether it will affect your business before switching it on. Valid values: `Enabled`, `Disabled`.
+// Specifies whether to enable TDE. Valid values: `Enabled`.
+// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+// your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
 func (o InstanceOutput) TdeStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TdeStatus }).(pulumi.StringOutput)
 }

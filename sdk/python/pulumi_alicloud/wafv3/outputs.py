@@ -540,10 +540,10 @@ class GetDomainsDomainResult(dict):
                  status: str):
         """
         :param str domain: The name of the domain name to query.
-        :param str id: The ID of the domain. The value is formulated as `<instance_id>:<domain>`.
+        :param str id: The ID of the domain. It formats as `<instance_id>:<domain>`.
         :param Sequence['GetDomainsDomainListenArgs'] listens: Configure listening information
         :param Sequence['GetDomainsDomainRedirectArgs'] redirects: Configure forwarding information.
-        :param str resource_manager_resource_group_id: The ID of the resource group
+        :param str resource_manager_resource_group_id: The ID of the resource group.
         :param str status: The status of the domain.
         """
         pulumi.set(__self__, "domain", domain)
@@ -565,7 +565,7 @@ class GetDomainsDomainResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The ID of the domain. The value is formulated as `<instance_id>:<domain>`.
+        The ID of the domain. It formats as `<instance_id>:<domain>`.
         """
         return pulumi.get(self, "id")
 
@@ -589,7 +589,7 @@ class GetDomainsDomainResult(dict):
     @pulumi.getter(name="resourceManagerResourceGroupId")
     def resource_manager_resource_group_id(self) -> str:
         """
-        The ID of the resource group
+        The ID of the resource group.
         """
         return pulumi.get(self, "resource_manager_resource_group_id")
 

@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
  * const name = config.get("name") || "tf-example";
  * const default = alicloud.getRegions({
  *     current: true,
@@ -60,11 +61,6 @@ import * as utilities from "../utilities";
  *         fromPort: 60,
  *         toPort: 60,
  *     }],
- * });
- * const exampleIpSet = new alicloud.ga.IpSet("exampleIpSet", {
- *     accelerateRegionId: _default.then(_default => _default.regions?.[0]?.id),
- *     acceleratorId: exampleBandwidthPackageAttachment.acceleratorId,
- *     bandwidth: 20,
  * });
  * const exampleEipAddress = new alicloud.ecs.EipAddress("exampleEipAddress", {
  *     bandwidth: "10",
@@ -128,7 +124,7 @@ import * as utilities from "../utilities";
  * Ga Forwarding Rule can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ga/forwardingRule:ForwardingRule example <id>
+ *  $ pulumi import alicloud:ga/forwardingRule:ForwardingRule example <accelerator_id>:<listener_id>:<forwarding_rule_id>
  * ```
  */
 export class ForwardingRule extends pulumi.CustomResource {

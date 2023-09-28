@@ -499,9 +499,9 @@ class Trail(pulumi.CustomResource):
                  trail_region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a ActionTrail Trail resource. For information about alicloud actiontrail trail and how to use it, see [What is Resource Alicloud ActionTrail Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
+        Provides a ActionTrail Trail resource. For information about alicloud actiontrail trail and how to use it, see [What is Resource Alicloud ActionTrail Trail](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createtrail).
 
-        > **NOTE:** Available in 1.95.0+
+        > **NOTE:** Available since v1.95.0.
 
         > **NOTE:** You can create a trail to deliver events to Log Service, Object Storage Service (OSS), or both. Before you call this operation to create a trail, make sure that the following requirements are met.
         - Deliver events to Log Service: A project is created in Log Service.
@@ -513,13 +513,18 @@ class Trail(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Create a new actiontrail trail.
-        default = alicloud.actiontrail.Trail("default",
-            event_rw="All",
-            oss_bucket_name="bucket_name",
-            oss_write_role_arn="acs:ram::1182725xxxxxxxxxxx",
-            trail_name="action-trail",
-            trail_region="cn-hangzhou")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example_regions = alicloud.get_regions(current=True)
+        example_account = alicloud.get_account()
+        example_project = alicloud.log.Project("exampleProject", description="tf actiontrail example")
+        example_roles = alicloud.ram.get_roles(name_regex="AliyunServiceRoleForActionTrail")
+        example_trail = alicloud.actiontrail.Trail("exampleTrail",
+            trail_name=name,
+            sls_write_role_arn=example_roles.roles[0].arn,
+            sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example_regions.regions[0].id}:{example_account.id}:project/{name}"))
         ```
 
         ## Import
@@ -553,9 +558,9 @@ class Trail(pulumi.CustomResource):
                  args: Optional[TrailArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a ActionTrail Trail resource. For information about alicloud actiontrail trail and how to use it, see [What is Resource Alicloud ActionTrail Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
+        Provides a ActionTrail Trail resource. For information about alicloud actiontrail trail and how to use it, see [What is Resource Alicloud ActionTrail Trail](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createtrail).
 
-        > **NOTE:** Available in 1.95.0+
+        > **NOTE:** Available since v1.95.0.
 
         > **NOTE:** You can create a trail to deliver events to Log Service, Object Storage Service (OSS), or both. Before you call this operation to create a trail, make sure that the following requirements are met.
         - Deliver events to Log Service: A project is created in Log Service.
@@ -567,13 +572,18 @@ class Trail(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Create a new actiontrail trail.
-        default = alicloud.actiontrail.Trail("default",
-            event_rw="All",
-            oss_bucket_name="bucket_name",
-            oss_write_role_arn="acs:ram::1182725xxxxxxxxxxx",
-            trail_name="action-trail",
-            trail_region="cn-hangzhou")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example_regions = alicloud.get_regions(current=True)
+        example_account = alicloud.get_account()
+        example_project = alicloud.log.Project("exampleProject", description="tf actiontrail example")
+        example_roles = alicloud.ram.get_roles(name_regex="AliyunServiceRoleForActionTrail")
+        example_trail = alicloud.actiontrail.Trail("exampleTrail",
+            trail_name=name,
+            sls_write_role_arn=example_roles.roles[0].arn,
+            sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example_regions.regions[0].id}:{example_account.id}:project/{name}"))
         ```
 
         ## Import

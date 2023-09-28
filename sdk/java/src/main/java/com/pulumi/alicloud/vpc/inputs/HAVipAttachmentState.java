@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,44 +17,73 @@ public final class HAVipAttachmentState extends com.pulumi.resources.ResourceArg
     public static final HAVipAttachmentState Empty = new HAVipAttachmentState();
 
     /**
-     * Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+     * Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
+     * - **True**: Force unbinding.
+     * - **False** (default): unbinding is not forced.
+     * &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
      * 
      */
     @Import(name="force")
-    private @Nullable Output<String> force;
+    private @Nullable Output<Boolean> force;
 
     /**
-     * @return Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+     * @return Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
+     * - **True**: Force unbinding.
+     * - **False** (default): unbinding is not forced.
+     * &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
      * 
      */
-    public Optional<Output<String>> force() {
+    public Optional<Output<Boolean>> force() {
         return Optional.ofNullable(this.force);
     }
 
     /**
-     * The havip_id of the havip attachment, the field can&#39;t be changed.
+     * The ID of the HaVip instance.
      * 
      */
+    @Import(name="haVipId")
+    private @Nullable Output<String> haVipId;
+
+    /**
+     * @return The ID of the HaVip instance.
+     * 
+     */
+    public Optional<Output<String>> haVipId() {
+        return Optional.ofNullable(this.haVipId);
+    }
+
+    /**
+     * . Field &#39;havip_id&#39; has been deprecated from provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;havip_id&#39; has been deprecated since provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead. */
     @Import(name="havipId")
     private @Nullable Output<String> havipId;
 
     /**
-     * @return The havip_id of the havip attachment, the field can&#39;t be changed.
+     * @return . Field &#39;havip_id&#39; has been deprecated from provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;havip_id&#39; has been deprecated since provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
      * 
      */
+    @Deprecated /* Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead. */
     public Optional<Output<String>> havipId() {
         return Optional.ofNullable(this.havipId);
     }
 
     /**
-     * The instance_id of the havip attachment, the field can&#39;t be changed.
+     * The ID of the ECS instance bound to the HaVip instance.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return The instance_id of the havip attachment, the field can&#39;t be changed.
+     * @return The ID of the ECS instance bound to the HaVip instance.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -61,14 +91,18 @@ public final class HAVipAttachmentState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
+     * The type of the instance associated with the VIIP.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
+     * @return The type of the instance associated with the VIIP.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -76,14 +110,14 @@ public final class HAVipAttachmentState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * (Available in v1.201.0+) The status of the HaVip instance.
+     * The status of the resource.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return (Available in v1.201.0+) The status of the HaVip instance.
+     * @return The status of the resource.
      * 
      */
     public Optional<Output<String>> status() {
@@ -94,6 +128,7 @@ public final class HAVipAttachmentState extends com.pulumi.resources.ResourceArg
 
     private HAVipAttachmentState(HAVipAttachmentState $) {
         this.force = $.force;
+        this.haVipId = $.haVipId;
         this.havipId = $.havipId;
         this.instanceId = $.instanceId;
         this.instanceType = $.instanceType;
@@ -119,49 +154,84 @@ public final class HAVipAttachmentState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param force Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+         * @param force Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
+         * - **True**: Force unbinding.
+         * - **False** (default): unbinding is not forced.
+         * &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
          * 
          * @return builder
          * 
          */
-        public Builder force(@Nullable Output<String> force) {
+        public Builder force(@Nullable Output<Boolean> force) {
             $.force = force;
             return this;
         }
 
         /**
-         * @param force Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+         * @param force Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
+         * - **True**: Force unbinding.
+         * - **False** (default): unbinding is not forced.
+         * &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
          * 
          * @return builder
          * 
          */
-        public Builder force(String force) {
+        public Builder force(Boolean force) {
             return force(Output.of(force));
         }
 
         /**
-         * @param havipId The havip_id of the havip attachment, the field can&#39;t be changed.
+         * @param haVipId The ID of the HaVip instance.
          * 
          * @return builder
          * 
          */
+        public Builder haVipId(@Nullable Output<String> haVipId) {
+            $.haVipId = haVipId;
+            return this;
+        }
+
+        /**
+         * @param haVipId The ID of the HaVip instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder haVipId(String haVipId) {
+            return haVipId(Output.of(haVipId));
+        }
+
+        /**
+         * @param havipId . Field &#39;havip_id&#39; has been deprecated from provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;havip_id&#39; has been deprecated since provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
+         * 
+         */
+        @Deprecated /* Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead. */
         public Builder havipId(@Nullable Output<String> havipId) {
             $.havipId = havipId;
             return this;
         }
 
         /**
-         * @param havipId The havip_id of the havip attachment, the field can&#39;t be changed.
+         * @param havipId . Field &#39;havip_id&#39; has been deprecated from provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;havip_id&#39; has been deprecated since provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead. */
         public Builder havipId(String havipId) {
             return havipId(Output.of(havipId));
         }
 
         /**
-         * @param instanceId The instance_id of the havip attachment, the field can&#39;t be changed.
+         * @param instanceId The ID of the ECS instance bound to the HaVip instance.
          * 
          * @return builder
          * 
@@ -172,7 +242,7 @@ public final class HAVipAttachmentState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instanceId The instance_id of the havip attachment, the field can&#39;t be changed.
+         * @param instanceId The ID of the ECS instance bound to the HaVip instance.
          * 
          * @return builder
          * 
@@ -182,7 +252,9 @@ public final class HAVipAttachmentState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instanceType The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
+         * @param instanceType The type of the instance associated with the VIIP.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -193,7 +265,9 @@ public final class HAVipAttachmentState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instanceType The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
+         * @param instanceType The type of the instance associated with the VIIP.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -203,7 +277,7 @@ public final class HAVipAttachmentState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param status (Available in v1.201.0+) The status of the HaVip instance.
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -214,7 +288,7 @@ public final class HAVipAttachmentState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param status (Available in v1.201.0+) The status of the HaVip instance.
+         * @param status The status of the resource.
          * 
          * @return builder
          * 

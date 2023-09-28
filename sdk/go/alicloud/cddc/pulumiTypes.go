@@ -14,6 +14,214 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type DedicatedPropreHostEcsClassList struct {
+	// Data disk PL level.
+	DataDiskPerformanceLevel *string `pulumi:"dataDiskPerformanceLevel"`
+	// The capacity of the data disk.
+	DiskCapacity *int `pulumi:"diskCapacity"`
+	// Number of mounted data disks.
+	DiskCount *int `pulumi:"diskCount"`
+	// Data disk type, value range:
+	// - **cloud_essd**: the ESSD cloud disk.
+	// - **cloud_ssd**: SSD cloud disk.
+	// - **cloud_efficiency**: The ultra cloud disk.
+	// - **cloud_auto**: ESSD AutoPL cloud disk.
+	DiskType *string `pulumi:"diskType"`
+	// ECS specifications.
+	InstanceType string `pulumi:"instanceType"`
+	// System disk capacity.
+	SysDiskCapacity int `pulumi:"sysDiskCapacity"`
+	// System disk type, value:
+	// - **cloud_essd**: the ESSD cloud disk.
+	// - **cloud_ssd**: SSD cloud disk.
+	// - **cloud_efficiency**: The ultra cloud disk.
+	// - **cloud_auto**: ESSD AutoPL cloud disk.
+	SysDiskType string `pulumi:"sysDiskType"`
+	// System disk PL level.
+	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
+}
+
+// DedicatedPropreHostEcsClassListInput is an input type that accepts DedicatedPropreHostEcsClassListArgs and DedicatedPropreHostEcsClassListOutput values.
+// You can construct a concrete instance of `DedicatedPropreHostEcsClassListInput` via:
+//
+//	DedicatedPropreHostEcsClassListArgs{...}
+type DedicatedPropreHostEcsClassListInput interface {
+	pulumi.Input
+
+	ToDedicatedPropreHostEcsClassListOutput() DedicatedPropreHostEcsClassListOutput
+	ToDedicatedPropreHostEcsClassListOutputWithContext(context.Context) DedicatedPropreHostEcsClassListOutput
+}
+
+type DedicatedPropreHostEcsClassListArgs struct {
+	// Data disk PL level.
+	DataDiskPerformanceLevel pulumi.StringPtrInput `pulumi:"dataDiskPerformanceLevel"`
+	// The capacity of the data disk.
+	DiskCapacity pulumi.IntPtrInput `pulumi:"diskCapacity"`
+	// Number of mounted data disks.
+	DiskCount pulumi.IntPtrInput `pulumi:"diskCount"`
+	// Data disk type, value range:
+	// - **cloud_essd**: the ESSD cloud disk.
+	// - **cloud_ssd**: SSD cloud disk.
+	// - **cloud_efficiency**: The ultra cloud disk.
+	// - **cloud_auto**: ESSD AutoPL cloud disk.
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// ECS specifications.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// System disk capacity.
+	SysDiskCapacity pulumi.IntInput `pulumi:"sysDiskCapacity"`
+	// System disk type, value:
+	// - **cloud_essd**: the ESSD cloud disk.
+	// - **cloud_ssd**: SSD cloud disk.
+	// - **cloud_efficiency**: The ultra cloud disk.
+	// - **cloud_auto**: ESSD AutoPL cloud disk.
+	SysDiskType pulumi.StringInput `pulumi:"sysDiskType"`
+	// System disk PL level.
+	SystemDiskPerformanceLevel pulumi.StringPtrInput `pulumi:"systemDiskPerformanceLevel"`
+}
+
+func (DedicatedPropreHostEcsClassListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DedicatedPropreHostEcsClassList)(nil)).Elem()
+}
+
+func (i DedicatedPropreHostEcsClassListArgs) ToDedicatedPropreHostEcsClassListOutput() DedicatedPropreHostEcsClassListOutput {
+	return i.ToDedicatedPropreHostEcsClassListOutputWithContext(context.Background())
+}
+
+func (i DedicatedPropreHostEcsClassListArgs) ToDedicatedPropreHostEcsClassListOutputWithContext(ctx context.Context) DedicatedPropreHostEcsClassListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DedicatedPropreHostEcsClassListOutput)
+}
+
+func (i DedicatedPropreHostEcsClassListArgs) ToOutput(ctx context.Context) pulumix.Output[DedicatedPropreHostEcsClassList] {
+	return pulumix.Output[DedicatedPropreHostEcsClassList]{
+		OutputState: i.ToDedicatedPropreHostEcsClassListOutputWithContext(ctx).OutputState,
+	}
+}
+
+// DedicatedPropreHostEcsClassListArrayInput is an input type that accepts DedicatedPropreHostEcsClassListArray and DedicatedPropreHostEcsClassListArrayOutput values.
+// You can construct a concrete instance of `DedicatedPropreHostEcsClassListArrayInput` via:
+//
+//	DedicatedPropreHostEcsClassListArray{ DedicatedPropreHostEcsClassListArgs{...} }
+type DedicatedPropreHostEcsClassListArrayInput interface {
+	pulumi.Input
+
+	ToDedicatedPropreHostEcsClassListArrayOutput() DedicatedPropreHostEcsClassListArrayOutput
+	ToDedicatedPropreHostEcsClassListArrayOutputWithContext(context.Context) DedicatedPropreHostEcsClassListArrayOutput
+}
+
+type DedicatedPropreHostEcsClassListArray []DedicatedPropreHostEcsClassListInput
+
+func (DedicatedPropreHostEcsClassListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DedicatedPropreHostEcsClassList)(nil)).Elem()
+}
+
+func (i DedicatedPropreHostEcsClassListArray) ToDedicatedPropreHostEcsClassListArrayOutput() DedicatedPropreHostEcsClassListArrayOutput {
+	return i.ToDedicatedPropreHostEcsClassListArrayOutputWithContext(context.Background())
+}
+
+func (i DedicatedPropreHostEcsClassListArray) ToDedicatedPropreHostEcsClassListArrayOutputWithContext(ctx context.Context) DedicatedPropreHostEcsClassListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DedicatedPropreHostEcsClassListArrayOutput)
+}
+
+func (i DedicatedPropreHostEcsClassListArray) ToOutput(ctx context.Context) pulumix.Output[[]DedicatedPropreHostEcsClassList] {
+	return pulumix.Output[[]DedicatedPropreHostEcsClassList]{
+		OutputState: i.ToDedicatedPropreHostEcsClassListArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type DedicatedPropreHostEcsClassListOutput struct{ *pulumi.OutputState }
+
+func (DedicatedPropreHostEcsClassListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DedicatedPropreHostEcsClassList)(nil)).Elem()
+}
+
+func (o DedicatedPropreHostEcsClassListOutput) ToDedicatedPropreHostEcsClassListOutput() DedicatedPropreHostEcsClassListOutput {
+	return o
+}
+
+func (o DedicatedPropreHostEcsClassListOutput) ToDedicatedPropreHostEcsClassListOutputWithContext(ctx context.Context) DedicatedPropreHostEcsClassListOutput {
+	return o
+}
+
+func (o DedicatedPropreHostEcsClassListOutput) ToOutput(ctx context.Context) pulumix.Output[DedicatedPropreHostEcsClassList] {
+	return pulumix.Output[DedicatedPropreHostEcsClassList]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Data disk PL level.
+func (o DedicatedPropreHostEcsClassListOutput) DataDiskPerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DedicatedPropreHostEcsClassList) *string { return v.DataDiskPerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// The capacity of the data disk.
+func (o DedicatedPropreHostEcsClassListOutput) DiskCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DedicatedPropreHostEcsClassList) *int { return v.DiskCapacity }).(pulumi.IntPtrOutput)
+}
+
+// Number of mounted data disks.
+func (o DedicatedPropreHostEcsClassListOutput) DiskCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DedicatedPropreHostEcsClassList) *int { return v.DiskCount }).(pulumi.IntPtrOutput)
+}
+
+// Data disk type, value range:
+// - **cloud_essd**: the ESSD cloud disk.
+// - **cloud_ssd**: SSD cloud disk.
+// - **cloud_efficiency**: The ultra cloud disk.
+// - **cloud_auto**: ESSD AutoPL cloud disk.
+func (o DedicatedPropreHostEcsClassListOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DedicatedPropreHostEcsClassList) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// ECS specifications.
+func (o DedicatedPropreHostEcsClassListOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v DedicatedPropreHostEcsClassList) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// System disk capacity.
+func (o DedicatedPropreHostEcsClassListOutput) SysDiskCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v DedicatedPropreHostEcsClassList) int { return v.SysDiskCapacity }).(pulumi.IntOutput)
+}
+
+// System disk type, value:
+// - **cloud_essd**: the ESSD cloud disk.
+// - **cloud_ssd**: SSD cloud disk.
+// - **cloud_efficiency**: The ultra cloud disk.
+// - **cloud_auto**: ESSD AutoPL cloud disk.
+func (o DedicatedPropreHostEcsClassListOutput) SysDiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v DedicatedPropreHostEcsClassList) string { return v.SysDiskType }).(pulumi.StringOutput)
+}
+
+// System disk PL level.
+func (o DedicatedPropreHostEcsClassListOutput) SystemDiskPerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DedicatedPropreHostEcsClassList) *string { return v.SystemDiskPerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+type DedicatedPropreHostEcsClassListArrayOutput struct{ *pulumi.OutputState }
+
+func (DedicatedPropreHostEcsClassListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DedicatedPropreHostEcsClassList)(nil)).Elem()
+}
+
+func (o DedicatedPropreHostEcsClassListArrayOutput) ToDedicatedPropreHostEcsClassListArrayOutput() DedicatedPropreHostEcsClassListArrayOutput {
+	return o
+}
+
+func (o DedicatedPropreHostEcsClassListArrayOutput) ToDedicatedPropreHostEcsClassListArrayOutputWithContext(ctx context.Context) DedicatedPropreHostEcsClassListArrayOutput {
+	return o
+}
+
+func (o DedicatedPropreHostEcsClassListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DedicatedPropreHostEcsClassList] {
+	return pulumix.Output[[]DedicatedPropreHostEcsClassList]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DedicatedPropreHostEcsClassListArrayOutput) Index(i pulumi.IntInput) DedicatedPropreHostEcsClassListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DedicatedPropreHostEcsClassList {
+		return vs[0].([]DedicatedPropreHostEcsClassList)[vs[1].(int)]
+	}).(DedicatedPropreHostEcsClassListOutput)
+}
+
 type GetDedicatedHostAccountsAccount struct {
 	// The name of the Dedicated host account.
 	AccountName string `pulumi:"accountName"`
@@ -1428,6 +1636,8 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DedicatedPropreHostEcsClassListInput)(nil)).Elem(), DedicatedPropreHostEcsClassListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DedicatedPropreHostEcsClassListArrayInput)(nil)).Elem(), DedicatedPropreHostEcsClassListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostAccountsAccountInput)(nil)).Elem(), GetDedicatedHostAccountsAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostAccountsAccountArrayInput)(nil)).Elem(), GetDedicatedHostAccountsAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostGroupsGroupInput)(nil)).Elem(), GetDedicatedHostGroupsGroupArgs{})
@@ -1442,6 +1652,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostEcsLevelInfosInfoArrayInput)(nil)).Elem(), GetHostEcsLevelInfosInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
+	pulumi.RegisterOutputType(DedicatedPropreHostEcsClassListOutput{})
+	pulumi.RegisterOutputType(DedicatedPropreHostEcsClassListArrayOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostAccountsAccountOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostAccountsAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostGroupsGroupOutput{})

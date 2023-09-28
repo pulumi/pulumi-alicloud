@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Provides a Resource Manager role resource. Members are resource containers in the resource directory, which can physically isolate resources to form an independent resource grouping unit. You can create members in the resource folder to manage them in a unified manner.
     /// For information about Resource Manager role and how to use it, see [What is Resource Manager role](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.82.0+.
+    /// &gt; **NOTE:** Available since v1.82.0.
     /// 
     /// ## Example Usage
     /// 
@@ -25,27 +25,28 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Add a Resource Manager role.
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
+    ///     var @default = AliCloud.GetAccount.Invoke();
+    /// 
     ///     var example = new AliCloud.ResourceManager.Role("example", new()
     ///     {
-    ///         AssumeRolePolicyDocument = @"     {
+    ///         RoleName = name,
+    ///         AssumeRolePolicyDocument = @default.Apply(@default =&gt; @$"     {{
     ///           ""Statement"": [
-    ///                {
+    ///                {{
     ///                     ""Action"": ""sts:AssumeRole"",
     ///                     ""Effect"": ""Allow"",
-    ///                     ""Principal"": {
+    ///                     ""Principal"": {{
     ///                         ""RAM"":[
-    ///                                 ""acs:ram::103755469187****:root""，
-    ///                                 ""acs:ram::104408977069****:root""
+    ///                                 ""acs:ram::{@default.Apply(getAccountResult =&gt; getAccountResult.Id)}:root""
     ///                         ]
-    ///                     }
-    ///                 }
+    ///                     }}
+    ///                 }}
     ///           ],
     ///           ""Version"": ""1""
-    ///      }
-    /// 	 
-    /// ",
-    ///         RoleName = "testrd",
+    ///      }}
+    /// "),
     ///     });
     /// 
     /// });

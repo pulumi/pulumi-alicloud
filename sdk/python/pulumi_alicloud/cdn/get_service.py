@@ -118,7 +118,7 @@ def get_service(enable: Optional[str] = None,
 
     For information about CDN and how to use it, see [What is CDN](https://www.alibabacloud.com/help/product/27099.htm).
 
-    > **NOTE:** Available in v1.98.0+
+    > **NOTE:** Available since v1.98.0.
 
     ## Example Usage
 
@@ -163,7 +163,7 @@ def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
 
     For information about CDN and how to use it, see [What is CDN](https://www.alibabacloud.com/help/product/27099.htm).
 
-    > **NOTE:** Available in v1.98.0+
+    > **NOTE:** Available since v1.98.0.
 
     ## Example Usage
 

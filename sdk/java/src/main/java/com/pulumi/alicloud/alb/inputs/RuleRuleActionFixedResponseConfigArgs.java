@@ -31,14 +31,14 @@ public final class RuleRuleActionFixedResponseConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * The format of the fixed response.  Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+     * The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
      * 
      */
     @Import(name="contentType")
     private @Nullable Output<String> contentType;
 
     /**
-     * @return The format of the fixed response.  Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+     * @return The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
      * 
      */
     public Optional<Output<String>> contentType() {
@@ -46,14 +46,14 @@ public final class RuleRuleActionFixedResponseConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * The redirect method. Valid values:301, 302, 303, 307, and 308.
+     * The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
      * 
      */
     @Import(name="httpCode")
     private @Nullable Output<String> httpCode;
 
     /**
-     * @return The redirect method. Valid values:301, 302, 303, 307, and 308.
+     * @return The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
      * 
      */
     public Optional<Output<String>> httpCode() {
@@ -108,7 +108,7 @@ public final class RuleRuleActionFixedResponseConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param contentType The format of the fixed response.  Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+         * @param contentType The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class RuleRuleActionFixedResponseConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param contentType The format of the fixed response.  Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+         * @param contentType The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class RuleRuleActionFixedResponseConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param httpCode The redirect method. Valid values:301, 302, 303, 307, and 308.
+         * @param httpCode The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class RuleRuleActionFixedResponseConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param httpCode The redirect method. Valid values:301, 302, 303, 307, and 308.
+         * @param httpCode The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
          * 
          * @return builder
          * 

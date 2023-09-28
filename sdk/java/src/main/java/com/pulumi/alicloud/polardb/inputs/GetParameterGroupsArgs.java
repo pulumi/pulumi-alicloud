@@ -17,14 +17,14 @@ public final class GetParameterGroupsArgs extends com.pulumi.resources.InvokeArg
     public static final GetParameterGroupsArgs Empty = new GetParameterGroupsArgs();
 
     /**
-     * The type of the database engine.
+     * The type of the database engine. Only `MySQL` is supported.
      * 
      */
     @Import(name="dbType")
     private @Nullable Output<String> dbType;
 
     /**
-     * @return The type of the database engine.
+     * @return The type of the database engine. Only `MySQL` is supported.
      * 
      */
     public Optional<Output<String>> dbType() {
@@ -32,14 +32,14 @@ public final class GetParameterGroupsArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The version number of the database engine.
+     * The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
      * 
      */
     @Import(name="dbVersion")
     private @Nullable Output<String> dbVersion;
 
     /**
-     * @return The version number of the database engine.
+     * @return The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
      * 
      */
     public Optional<Output<String>> dbVersion() {
@@ -120,7 +120,7 @@ public final class GetParameterGroupsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param dbType The type of the database engine.
+         * @param dbType The type of the database engine. Only `MySQL` is supported.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class GetParameterGroupsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param dbType The type of the database engine.
+         * @param dbType The type of the database engine. Only `MySQL` is supported.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class GetParameterGroupsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param dbVersion The version number of the database engine.
+         * @param dbVersion The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class GetParameterGroupsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param dbVersion The version number of the database engine.
+         * @param dbVersion The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
          * 
          * @return builder
          * 

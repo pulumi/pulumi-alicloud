@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Compute Nest Service Instance resource.
  *
- * For information about Compute Nest Service Instance and how to use it, see [What is Service Instance](https://help.aliyun.com/document_detail/396194.html).
+ * For information about Compute Nest Service Instance and how to use it, see [What is Service Instance](https://www.alibabacloud.com/help/en/compute-nest/developer-reference/api-computenest-2021-06-01-createserviceinstance).
  *
- * > **NOTE:** Available in v1.205.0+.
+ * > **NOTE:** Available since v1.205.0.
  *
  * ## Example Usage
  *
@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexample";
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const defaultZones = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
@@ -32,17 +34,19 @@ import * as utilities from "../utilities";
  * }));
  * const defaultImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
- *     mostRecent: true,
  *     owners: "system",
  * });
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "your_name_regex",
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.0.0.0/8",
  * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.zones?.[0]?.id,
- * }));
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0])});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.1.0.0/16",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
  *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
  *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
@@ -52,18 +56,27 @@ import * as utilities from "../utilities";
  *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     instanceChargeType: "PostPaid",
  *     systemDiskCategory: "cloud_efficiency",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     vswitchId: defaultSwitch.id,
  * });
  * const defaultNestServiceInstance = new alicloud.compute.NestServiceInstance("defaultNestServiceInstance", {
  *     serviceId: "service-dd475e6e468348799f0f",
  *     serviceVersion: "1",
- *     serviceInstanceName: _var.name,
+ *     serviceInstanceName: name,
  *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
  *     paymentType: "Permanent",
  *     operationMetadata: {
  *         operationStartTime: "1681281179000",
  *         operationEndTime: "1681367579000",
- *         resources: pulumi.interpolate`{"Type":"ResourceIds","ResourceIds":{"ALIYUN::ECS::INSTANCE":["${defaultInstance.id}"]},"RegionId":"cn-hangzhou"}`,
+ *         resources: pulumi.interpolate`    {
+ *       "Type": "ResourceIds",
+ *       "RegionId": "cn-hangzhou",
+ *       "ResourceIds": {
+ *       "ALIYUN::ECS::INSTANCE": [
+ *         "${defaultInstance.id}"
+ *         ]
+ *       } 
+ *     }
+ * `,
  *     },
  *     tags: {
  *         Created: "TF",
@@ -109,7 +122,7 @@ export class NestServiceInstance extends pulumi.CustomResource {
     }
 
     /**
-     * The order information of cloud market. See the following `Block commodity`.
+     * The order information of cloud market. See `commodity` below.
      */
     public readonly commodity!: pulumi.Output<outputs.compute.NestServiceInstanceCommodity | undefined>;
     /**
@@ -121,7 +134,7 @@ export class NestServiceInstance extends pulumi.CustomResource {
      */
     public readonly enableUserPrometheus!: pulumi.Output<boolean>;
     /**
-     * The configuration of O&M. See the following `Block operationMetadata`.
+     * The configuration of O&M. See `operationMetadata` below.
      */
     public readonly operationMetadata!: pulumi.Output<outputs.compute.NestServiceInstanceOperationMetadata>;
     /**
@@ -225,7 +238,7 @@ export class NestServiceInstance extends pulumi.CustomResource {
  */
 export interface NestServiceInstanceState {
     /**
-     * The order information of cloud market. See the following `Block commodity`.
+     * The order information of cloud market. See `commodity` below.
      */
     commodity?: pulumi.Input<inputs.compute.NestServiceInstanceCommodity>;
     /**
@@ -237,7 +250,7 @@ export interface NestServiceInstanceState {
      */
     enableUserPrometheus?: pulumi.Input<boolean>;
     /**
-     * The configuration of O&M. See the following `Block operationMetadata`.
+     * The configuration of O&M. See `operationMetadata` below.
      */
     operationMetadata?: pulumi.Input<inputs.compute.NestServiceInstanceOperationMetadata>;
     /**
@@ -287,7 +300,7 @@ export interface NestServiceInstanceState {
  */
 export interface NestServiceInstanceArgs {
     /**
-     * The order information of cloud market. See the following `Block commodity`.
+     * The order information of cloud market. See `commodity` below.
      */
     commodity?: pulumi.Input<inputs.compute.NestServiceInstanceCommodity>;
     /**
@@ -299,7 +312,7 @@ export interface NestServiceInstanceArgs {
      */
     enableUserPrometheus?: pulumi.Input<boolean>;
     /**
-     * The configuration of O&M. See the following `Block operationMetadata`.
+     * The configuration of O&M. See `operationMetadata` below.
      */
     operationMetadata?: pulumi.Input<inputs.compute.NestServiceInstanceOperationMetadata>;
     /**

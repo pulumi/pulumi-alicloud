@@ -32,14 +32,14 @@ public final class AclAttachmentArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the ACL. Valid values: `white`, `black`.
+     * The type of the ACL. Valid values:
      * 
      */
     @Import(name="aclType", required=true)
     private Output<String> aclType;
 
     /**
-     * @return The type of the ACL. Valid values: `white`, `black`.
+     * @return The type of the ACL. Valid values:
      * 
      */
     public Output<String> aclType() {
@@ -125,7 +125,7 @@ public final class AclAttachmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclType The type of the ACL. Valid values: `white`, `black`.
+         * @param aclType The type of the ACL. Valid values:
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class AclAttachmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclType The type of the ACL. Valid values: `white`, `black`.
+         * @param aclType The type of the ACL. Valid values:
          * 
          * @return builder
          * 

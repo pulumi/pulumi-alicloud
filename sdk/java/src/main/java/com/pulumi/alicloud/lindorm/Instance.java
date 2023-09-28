@@ -37,10 +37,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
  * import com.pulumi.alicloud.lindorm.Instance;
  * import com.pulumi.alicloud.lindorm.InstanceArgs;
  * import java.util.List;
@@ -62,15 +63,16 @@ import javax.annotation.Nullable;
  * 
  *         final var zoneId = &#34;cn-hangzhou-h&#34;;
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .vswitchName(name)
- *             .cidrBlock(&#34;10.4.0.0/24&#34;)
- *             .vpcId(defaultNetwork.id())
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;^default-NODELETING$&#34;)
+ *             .build());
+ * 
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
  *             .zoneId(zoneId)
  *             .build());
  * 
@@ -78,8 +80,8 @@ import javax.annotation.Nullable;
  *             .diskCategory(&#34;cloud_efficiency&#34;)
  *             .paymentType(&#34;PayAsYouGo&#34;)
  *             .zoneId(zoneId)
- *             .vswitchId(defaultSwitch.id())
- *             .vpcId(defaultNetwork.id())
+ *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
  *             .instanceName(name)
  *             .tableEngineSpecification(&#34;lindorm.g.4xlarge&#34;)
  *             .tableEngineNodeCount(&#34;2&#34;)
@@ -274,6 +276,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.enabledSearchEngine;
     }
     /**
+     * (Available since v1.211.0) Whether to enable streaming engine.
+     * 
+     */
+    @Export(name="enabledStreamEngine", type=Boolean.class, parameters={})
+    private Output<Boolean> enabledStreamEngine;
+
+    /**
+     * @return (Available since v1.211.0) Whether to enable streaming engine.
+     * 
+     */
+    public Output<Boolean> enabledStreamEngine() {
+        return this.enabledStreamEngine;
+    }
+    /**
      * (Available since v1.163.0) Whether to enable table engine.
      * 
      */
@@ -328,20 +344,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> fileEngineSpecification() {
         return this.fileEngineSpecification;
-    }
-    /**
-     * The group name.
-     * 
-     */
-    @Export(name="groupName", type=String.class, parameters={})
-    private Output</* @Nullable */ String> groupName;
-
-    /**
-     * @return The group name.
-     * 
-     */
-    public Output<Optional<String>> groupName() {
-        return Codegen.optional(this.groupName);
     }
     /**
      * The name of the instance.
@@ -498,34 +500,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.paymentType;
     }
     /**
-     * The count of phoenix.
-     * 
-     */
-    @Export(name="phoenixNodeCount", type=Integer.class, parameters={})
-    private Output<Integer> phoenixNodeCount;
-
-    /**
-     * @return The count of phoenix.
-     * 
-     */
-    public Output<Integer> phoenixNodeCount() {
-        return this.phoenixNodeCount;
-    }
-    /**
-     * The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-     * 
-     */
-    @Export(name="phoenixNodeSpecification", type=String.class, parameters={})
-    private Output<String> phoenixNodeSpecification;
-
-    /**
-     * @return The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-     * 
-     */
-    public Output<String> phoenixNodeSpecification() {
-        return this.phoenixNodeSpecification;
-    }
-    /**
      * The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
      * 
      */
@@ -666,6 +640,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
+     * The number of LindormStream nodes in the instance.
+     * 
+     */
+    @Export(name="streamEngineNodeCount", type=Integer.class, parameters={})
+    private Output<Integer> streamEngineNodeCount;
+
+    /**
+     * @return The number of LindormStream nodes in the instance.
+     * 
+     */
+    public Output<Integer> streamEngineNodeCount() {
+        return this.streamEngineNodeCount;
+    }
+    /**
+     * The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+     * 
+     */
+    @Export(name="streamEngineSpecification", type=String.class, parameters={})
+    private Output<String> streamEngineSpecification;
+
+    /**
+     * @return The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+     * 
+     */
+    public Output<String> streamEngineSpecification() {
+        return this.streamEngineSpecification;
+    }
+    /**
      * The count of table engine.
      * 
      */
@@ -739,10 +741,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
      * 
      * @deprecated
-     * Field &#39;time_serires_engine_specification&#39; has been deprecated from provider version 1.182.0. New field &#39;time_series_engine_specification&#39; instead.
+     * Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
      * 
      */
-    @Deprecated /* Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead. */
+    @Deprecated /* Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead. */
     @Export(name="timeSeriresEngineSpecification", type=String.class, parameters={})
     private Output<String> timeSeriresEngineSpecification;
 

@@ -90,7 +90,7 @@ export class DedicatedHostGroup extends pulumi.CustomResource {
      */
     public readonly diskAllocationRatio!: pulumi.Output<number>;
     /**
-     * Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+     * Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
      */
     public readonly engine!: pulumi.Output<string>;
     /**
@@ -177,7 +177,7 @@ export interface DedicatedHostGroupState {
      */
     diskAllocationRatio?: pulumi.Input<number>;
     /**
-     * Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+     * Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
      */
     engine?: pulumi.Input<string>;
     /**
@@ -220,7 +220,7 @@ export interface DedicatedHostGroupArgs {
      */
     diskAllocationRatio?: pulumi.Input<number>;
     /**
-     * Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+     * Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
      */
     engine: pulumi.Input<string>;
     /**

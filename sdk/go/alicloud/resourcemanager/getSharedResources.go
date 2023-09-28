@@ -14,39 +14,7 @@ import (
 
 // This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.111.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := resourcemanager.GetSharedResources(ctx, &resourcemanager.GetSharedResourcesArgs{
-//				ResourceShareId: pulumi.StringRef("rs-V2NV******"),
-//				Ids: []string{
-//					"vsw-bp1mzouzpmvie********:VSwitch",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstResourceManagerSharedResourceId", data.Alicloud_resource_manager_shared_resources.Example.Resources[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
+// > **NOTE:** Available since v1.111.0.
 func GetSharedResources(ctx *pulumi.Context, args *GetSharedResourcesArgs, opts ...pulumi.InvokeOption) (*GetSharedResourcesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSharedResourcesResult
@@ -59,25 +27,28 @@ func GetSharedResources(ctx *pulumi.Context, args *GetSharedResourcesArgs, opts 
 
 // A collection of arguments for invoking getSharedResources.
 type GetSharedResourcesArgs struct {
-	// A list of shared resource ID.
+	// A list of shared resource IDs.
 	Ids []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The resource share ID of resource manager.
 	ResourceShareId *string `pulumi:"resourceShareId"`
-	// The status of shared resource.
+	// The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
 	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getSharedResources.
 type GetSharedResourcesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                       `pulumi:"id"`
-	Ids             []string                     `pulumi:"ids"`
-	OutputFile      *string                      `pulumi:"outputFile"`
-	ResourceShareId *string                      `pulumi:"resourceShareId"`
-	Resources       []GetSharedResourcesResource `pulumi:"resources"`
-	Status          *string                      `pulumi:"status"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The resource share ID of resource manager.
+	ResourceShareId *string `pulumi:"resourceShareId"`
+	// A list of Resource Manager Shared Resources. Each element contains the following attributes:
+	Resources []GetSharedResourcesResource `pulumi:"resources"`
+	// The status of shared resource.
+	Status *string `pulumi:"status"`
 }
 
 func GetSharedResourcesOutput(ctx *pulumi.Context, args GetSharedResourcesOutputArgs, opts ...pulumi.InvokeOption) GetSharedResourcesResultOutput {
@@ -95,13 +66,13 @@ func GetSharedResourcesOutput(ctx *pulumi.Context, args GetSharedResourcesOutput
 
 // A collection of arguments for invoking getSharedResources.
 type GetSharedResourcesOutputArgs struct {
-	// A list of shared resource ID.
+	// A list of shared resource IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The resource share ID of resource manager.
 	ResourceShareId pulumi.StringPtrInput `pulumi:"resourceShareId"`
-	// The status of shared resource.
+	// The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -143,14 +114,17 @@ func (o GetSharedResourcesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSharedResourcesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The resource share ID of resource manager.
 func (o GetSharedResourcesResultOutput) ResourceShareId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSharedResourcesResult) *string { return v.ResourceShareId }).(pulumi.StringPtrOutput)
 }
 
+// A list of Resource Manager Shared Resources. Each element contains the following attributes:
 func (o GetSharedResourcesResultOutput) Resources() GetSharedResourcesResourceArrayOutput {
 	return o.ApplyT(func(v GetSharedResourcesResult) []GetSharedResourcesResource { return v.Resources }).(GetSharedResourcesResourceArrayOutput)
 }
 
+// The status of shared resource.
 func (o GetSharedResourcesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSharedResourcesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

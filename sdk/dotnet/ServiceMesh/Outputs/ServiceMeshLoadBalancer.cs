@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     [OutputType]
     public sealed class ServiceMeshLoadBalancer
     {
+        /// <summary>
+        /// The ID of the SLB instance that is used when the API server is exposed to the Internet.
+        /// </summary>
         public readonly string? ApiServerLoadbalancerId;
         /// <summary>
         /// Whether to use the IP address of a public network exposed the API Server.
@@ -22,6 +25,9 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// Whether to use the IP address of a public network exposure the Istio Pilot.
         /// </summary>
         public readonly bool? PilotPublicEip;
+        /// <summary>
+        /// The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
+        /// </summary>
         public readonly string? PilotPublicLoadbalancerId;
 
         [OutputConstructor]

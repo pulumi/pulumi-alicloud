@@ -38,7 +38,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
 //				Description: pulumi.String("this is a policy test"),
-//				Force:       pulumi.Bool(true),
 //				PolicyDocument: pulumi.String(`  {
 //	    "Statement": [
 //	      {
@@ -102,7 +101,7 @@ type Policy struct {
 	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
 	PolicyName pulumi.StringOutput `pulumi:"policyName"`
 	// The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
-	RotateStrategy pulumi.StringPtrOutput `pulumi:"rotateStrategy"`
+	RotateStrategy pulumi.StringOutput `pulumi:"rotateStrategy"`
 	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
 	//
 	// Deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.
@@ -439,8 +438,8 @@ func (o PolicyOutput) PolicyName() pulumi.StringOutput {
 }
 
 // The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
-func (o PolicyOutput) RotateStrategy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.RotateStrategy }).(pulumi.StringPtrOutput)
+func (o PolicyOutput) RotateStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.RotateStrategy }).(pulumi.StringOutput)
 }
 
 // (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.

@@ -136,6 +136,30 @@ class PolicyAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.204.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_account()
+        example_policy = alicloud.tag.Policy("examplePolicy",
+            policy_name=name,
+            policy_desc=name,
+            user_type="USER",
+            policy_content="		{\\"tags\\":{\\"CostCenter\\":{\\"tag_value\\":{\\"@@assign\\":[\\"Beijing\\",\\"Shanghai\\"]},\\"tag_key\\":{\\"@@assign\\":\\"CostCenter\\"}}}}\\n")
+        example_policy_attachment = alicloud.tag.PolicyAttachment("examplePolicyAttachment",
+            policy_id=example_policy.id,
+            target_id=default.id,
+            target_type="USER")
+        ```
+
         ## Import
 
         Tag Policy Attachment can be imported using the id, e.g.
@@ -162,6 +186,30 @@ class PolicyAttachment(pulumi.CustomResource):
         see [What is Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/attach-policy).
 
         > **NOTE:** Available since v1.204.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_account()
+        example_policy = alicloud.tag.Policy("examplePolicy",
+            policy_name=name,
+            policy_desc=name,
+            user_type="USER",
+            policy_content="		{\\"tags\\":{\\"CostCenter\\":{\\"tag_value\\":{\\"@@assign\\":[\\"Beijing\\",\\"Shanghai\\"]},\\"tag_key\\":{\\"@@assign\\":\\"CostCenter\\"}}}}\\n")
+        example_policy_attachment = alicloud.tag.PolicyAttachment("examplePolicyAttachment",
+            policy_id=example_policy.id,
+            target_id=default.id,
+            target_type="USER")
+        ```
 
         ## Import
 

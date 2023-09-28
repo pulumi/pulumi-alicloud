@@ -11,15 +11,16 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Provides a OOS Patch Baseline resource.
  * 
- * For information about OOS Patch Baseline and how to use it, see [What is Patch Baseline](https://www.alibabacloud.com/help/en/doc-detail/268700.html).
+ * For information about OOS Patch Baseline and how to use it, see [What is Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/patch-manager-overview).
  * 
- * &gt; **NOTE:** Available in v1.146.0+.
+ * &gt; **NOTE:** Available since v1.146.0.
  * 
  * ## Example Usage
  * 
@@ -45,10 +46,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new PatchBaseline(&#34;example&#34;, PatchBaselineArgs.builder()        
- *             .approvalRules(&#34;{\&#34;PatchRules\&#34;:[{\&#34;PatchFilterGroup\&#34;:[{\&#34;Key\&#34;:\&#34;PatchSet\&#34;,\&#34;Values\&#34;:[\&#34;OS\&#34;]},{\&#34;Key\&#34;:\&#34;ProductFamily\&#34;,\&#34;Values\&#34;:[\&#34;Windows\&#34;]},{\&#34;Key\&#34;:\&#34;Product\&#34;,\&#34;Values\&#34;:[\&#34;Windows 10\&#34;,\&#34;Windows 7\&#34;]},{\&#34;Key\&#34;:\&#34;Classification\&#34;,\&#34;Values\&#34;:[\&#34;Security Updates\&#34;,\&#34;Updates\&#34;,\&#34;Update Rollups\&#34;,\&#34;Critical Updates\&#34;]},{\&#34;Key\&#34;:\&#34;Severity\&#34;,\&#34;Values\&#34;:[\&#34;Critical\&#34;,\&#34;Important\&#34;,\&#34;Moderate\&#34;]}],\&#34;ApproveAfterDays\&#34;:7,\&#34;EnableNonSecurity\&#34;:true,\&#34;ComplianceLevel\&#34;:\&#34;Medium\&#34;}]}&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         var default_ = new PatchBaseline(&#34;default&#34;, PatchBaselineArgs.builder()        
+ *             .patchBaselineName(name)
  *             .operationSystem(&#34;Windows&#34;)
- *             .patchBaselineName(&#34;terraform-example&#34;)
+ *             .approvalRules(&#34;{\&#34;PatchRules\&#34;:[{\&#34;EnableNonSecurity\&#34;:true,\&#34;PatchFilterGroup\&#34;:[{\&#34;Values\&#34;:[\&#34;*\&#34;],\&#34;Key\&#34;:\&#34;Product\&#34;},{\&#34;Values\&#34;:[\&#34;Security\&#34;,\&#34;Bugfix\&#34;],\&#34;Key\&#34;:\&#34;Classification\&#34;},{\&#34;Values\&#34;:[\&#34;Critical\&#34;,\&#34;Important\&#34;],\&#34;Key\&#34;:\&#34;Severity\&#34;}],\&#34;ApproveAfterDays\&#34;:7,\&#34;ComplianceLevel\&#34;:\&#34;Unspecified\&#34;}]}&#34;)
  *             .build());
  * 
  *     }
@@ -60,25 +63,39 @@ import javax.annotation.Nullable;
  * OOS Patch Baseline can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example &lt;patch_baseline_name&gt;
+ *  $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:oos/patchBaseline:PatchBaseline")
 public class PatchBaseline extends com.pulumi.resources.CustomResource {
     /**
-     * Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
+     * Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
      * 
      */
     @Export(name="approvalRules", type=String.class, parameters={})
     private Output<String> approvalRules;
 
     /**
-     * @return Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
+     * @return Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
      * 
      */
     public Output<String> approvalRules() {
         return this.approvalRules;
+    }
+    /**
+     * Creation time.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return Creation time.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
     }
     /**
      * Patches baseline description information.
@@ -121,6 +138,34 @@ public class PatchBaseline extends com.pulumi.resources.CustomResource {
      */
     public Output<String> patchBaselineName() {
         return this.patchBaselineName;
+    }
+    /**
+     * Reject patches.
+     * 
+     */
+    @Export(name="rejectedPatches", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> rejectedPatches;
+
+    /**
+     * @return Reject patches.
+     * 
+     */
+    public Output<Optional<List<String>>> rejectedPatches() {
+        return Codegen.optional(this.rejectedPatches);
+    }
+    /**
+     * Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
+     * 
+     */
+    @Export(name="rejectedPatchesAction", type=String.class, parameters={})
+    private Output<String> rejectedPatchesAction;
+
+    /**
+     * @return Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
+     * 
+     */
+    public Output<String> rejectedPatchesAction() {
+        return this.rejectedPatchesAction;
     }
 
     /**

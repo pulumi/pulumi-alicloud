@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+ * import com.pulumi.alicloud.kvstore.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -53,14 +53,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;KVStore&#34;);
- *         final var multiAz = config.get(&#34;multiAz&#34;).orElse(&#34;false&#34;);
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;kvstorebackuppolicyvpc&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(creation)
- *             .build());
+ *         final var defaultZones = KvstoreFunctions.getZones();
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
@@ -68,16 +65,25 @@ import javax.annotation.Nullable;
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(name)
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .instanceClass(&#34;Memcache&#34;)
- *             .instanceName(name)
+ *             .dbInstanceName(name)
  *             .vswitchId(defaultSwitch.id())
- *             .privateIp(&#34;172.16.0.10&#34;)
- *             .securityIps(&#34;10.0.0.1&#34;)
- *             .instanceType(&#34;memcache.master.small.default&#34;)
- *             .engineVersion(&#34;2.8&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .instanceClass(&#34;redis.master.large.default&#34;)
+ *             .instanceType(&#34;Redis&#34;)
+ *             .engineVersion(&#34;5.0&#34;)
+ *             .securityIps(&#34;10.23.12.24&#34;)
+ *             .config(Map.ofEntries(
+ *                 Map.entry(&#34;appendonly&#34;, &#34;yes&#34;),
+ *                 Map.entry(&#34;lazyfree-lazy-eviction&#34;, &#34;yes&#34;)
+ *             ))
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *             ))
  *             .build());
  * 
  *         var defaultBackupPolicy = new BackupPolicy(&#34;defaultBackupPolicy&#34;, BackupPolicyArgs.builder()        

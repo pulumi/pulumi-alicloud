@@ -16,6 +16,8 @@ import javax.annotation.Nullable;
 /**
  * This resource will help you to bind a VPC to an OTS instance.
  * 
+ * &gt; **NOTE:** Available since v1.10.0.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -46,34 +48,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
- *             .description(&#34;for table&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .description(name)
  *             .accessedBy(&#34;Vpc&#34;)
  *             .tags(Map.ofEntries(
  *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;Building table&#34;)
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
  *             ))
  *             .build());
  * 
- *         final var fooZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
  *             .build());
  * 
- *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
- *             .vpcId(fooNetwork.id())
- *             .vswitchName(&#34;for-ots-instance&#34;)
- *             .cidrBlock(&#34;172.16.1.0/24&#34;)
- *             .zoneId(fooZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var fooInstanceAttachment = new InstanceAttachment(&#34;fooInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
- *             .instanceName(fooInstance.name())
- *             .vpcName(&#34;attachment1&#34;)
- *             .vswitchId(fooSwitch.id())
+ *         var defaultInstanceAttachment = new InstanceAttachment(&#34;defaultInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
+ *             .instanceName(defaultInstance.name())
+ *             .vpcName(&#34;examplename&#34;)
+ *             .vswitchId(defaultSwitch.id())
  *             .build());
  * 
  *     }
@@ -112,14 +117,14 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
         return this.vpcId;
     }
     /**
-     * The name of attaching VPC to instance.
+     * The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
      * 
      */
     @Export(name="vpcName", type=String.class, parameters={})
     private Output<String> vpcName;
 
     /**
-     * @return The name of attaching VPC to instance.
+     * @return The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
      * 
      */
     public Output<String> vpcName() {

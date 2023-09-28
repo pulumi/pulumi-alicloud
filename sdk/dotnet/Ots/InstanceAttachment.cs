@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.Ots
     /// <summary>
     /// This resource will help you to bind a VPC to an OTS instance.
     /// 
+    /// &gt; **NOTE:** Available since v1.10.0.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,41 +24,43 @@ namespace Pulumi.AliCloud.Ots
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create an OTS instance
-    ///     var fooInstance = new AliCloud.Ots.Instance("fooInstance", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultInstance = new AliCloud.Ots.Instance("defaultInstance", new()
     ///     {
-    ///         Description = "for table",
+    ///         Description = name,
     ///         AccessedBy = "Vpc",
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },
-    ///             { "For", "Building table" },
+    ///             { "For", "example" },
     ///         },
     ///     });
     /// 
-    ///     var fooZones = AliCloud.GetZones.Invoke(new()
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         CidrBlock = "172.16.0.0/16",
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
     ///     {
-    ///         VpcId = fooNetwork.Id,
-    ///         VswitchName = "for-ots-instance",
-    ///         CidrBlock = "172.16.1.0/24",
-    ///         ZoneId = fooZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
-    ///     var fooInstanceAttachment = new AliCloud.Ots.InstanceAttachment("fooInstanceAttachment", new()
+    ///     var defaultInstanceAttachment = new AliCloud.Ots.InstanceAttachment("defaultInstanceAttachment", new()
     ///     {
-    ///         InstanceName = fooInstance.Name,
-    ///         VpcName = "attachment1",
-    ///         VswitchId = fooSwitch.Id,
+    ///         InstanceName = defaultInstance.Name,
+    ///         VpcName = "examplename",
+    ///         VswitchId = defaultSwitch.Id,
     ///     });
     /// 
     /// });
@@ -78,7 +82,7 @@ namespace Pulumi.AliCloud.Ots
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of attaching VPC to instance.
+        /// The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
         /// </summary>
         [Output("vpcName")]
         public Output<string> VpcName { get; private set; } = null!;
@@ -142,7 +146,7 @@ namespace Pulumi.AliCloud.Ots
         public Input<string> InstanceName { get; set; } = null!;
 
         /// <summary>
-        /// The name of attaching VPC to instance.
+        /// The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
         /// </summary>
         [Input("vpcName", required: true)]
         public Input<string> VpcName { get; set; } = null!;
@@ -174,7 +178,7 @@ namespace Pulumi.AliCloud.Ots
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The name of attaching VPC to instance.
+        /// The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
         /// </summary>
         [Input("vpcName")]
         public Input<string>? VpcName { get; set; }

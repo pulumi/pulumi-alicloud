@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ActionTrail
 {
     /// <summary>
-    /// Provides a ActionTrail Trail resource. For information about alicloud actiontrail trail and how to use it, see [What is Resource Alicloud ActionTrail Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
+    /// Provides a ActionTrail Trail resource. For information about alicloud actiontrail trail and how to use it, see [What is Resource Alicloud ActionTrail Trail](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createtrail).
     /// 
-    /// &gt; **NOTE:** Available in 1.95.0+
+    /// &gt; **NOTE:** Available since v1.95.0.
     /// 
     /// &gt; **NOTE:** You can create a trail to deliver events to Log Service, Object Storage Service (OSS), or both. Before you call this operation to create a trail, make sure that the following requirements are met.
     /// - Deliver events to Log Service: A project is created in Log Service.
@@ -28,14 +28,36 @@ namespace Pulumi.AliCloud.ActionTrail
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a new actiontrail trail.
-    ///     var @default = new AliCloud.ActionTrail.Trail("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var exampleRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
-    ///         EventRw = "All",
-    ///         OssBucketName = "bucket_name",
-    ///         OssWriteRoleArn = "acs:ram::1182725xxxxxxxxxxx",
-    ///         TrailName = "action-trail",
-    ///         TrailRegion = "cn-hangzhou",
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var exampleAccount = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
+    ///     {
+    ///         Description = "tf actiontrail example",
+    ///     });
+    /// 
+    ///     var exampleRoles = AliCloud.Ram.GetRoles.Invoke(new()
+    ///     {
+    ///         NameRegex = "AliyunServiceRoleForActionTrail",
+    ///     });
+    /// 
+    ///     var exampleTrail = new AliCloud.ActionTrail.Trail("exampleTrail", new()
+    ///     {
+    ///         TrailName = name,
+    ///         SlsWriteRoleArn = exampleRoles.Apply(getRolesResult =&gt; getRolesResult.Roles[0]?.Arn),
+    ///         SlsProjectArn = Output.Tuple(exampleRegions, exampleAccount, exampleProject.Name).Apply(values =&gt;
+    ///         {
+    ///             var exampleRegions = values.Item1;
+    ///             var exampleAccount = values.Item2;
+    ///             var name = values.Item3;
+    ///             return $"acs:log:{exampleRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{exampleAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:project/{name}";
+    ///         }),
     ///     });
     /// 
     /// });

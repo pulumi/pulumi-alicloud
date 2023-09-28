@@ -72,12 +72,12 @@ class EcsInstanceSetArgs:
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
         :param pulumi.Input[bool] boot_check_os_with_assistant: Indicate how to check instance ready to use.
-        :param pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]] data_disks: The list of data disks created with instance. See the following `Block data_disks`.
+        :param pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below..
         :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[bool] deletion_protection: Whether to enable release protection for the instance.
         :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance.
         :param pulumi.Input[str] description: The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
-        :param pulumi.Input['EcsInstanceSetExcludeInstanceFilterArgs'] exclude_instance_filter: The instances that need to be excluded from the Instance Set. See the following `Block exclude_instance_filter`.
+        :param pulumi.Input['EcsInstanceSetExcludeInstanceFilterArgs'] exclude_instance_filter: The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
         :param pulumi.Input[str] host_name: The hostname of instance.
         :param pulumi.Input[str] hpc_cluster_id: The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
         :param pulumi.Input[str] instance_charge_type: The billing method of the instance. Valid values: `PrePaid`, `PostPaid`.
@@ -88,7 +88,7 @@ class EcsInstanceSetArgs:
         :param pulumi.Input[str] launch_template_id: The ID of the launch template.
         :param pulumi.Input[str] launch_template_name: The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
         :param pulumi.Input[str] launch_template_version: The version of the launch template.
-        :param pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]] network_interfaces: A list of NetworkInterface. See the following `Block network_interfaces`.
+        :param pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]] network_interfaces: A list of NetworkInterface. See `network_interfaces` below..
         :param pulumi.Input[str] password: The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
         :param pulumi.Input[bool] password_inherit: Whether to use the password preset in the image.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
@@ -299,7 +299,7 @@ class EcsInstanceSetArgs:
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]]]:
         """
-        The list of data disks created with instance. See the following `Block data_disks`.
+        The list of data disks created with instance. See `data_disks` below..
         """
         return pulumi.get(self, "data_disks")
 
@@ -359,7 +359,7 @@ class EcsInstanceSetArgs:
     @pulumi.getter(name="excludeInstanceFilter")
     def exclude_instance_filter(self) -> Optional[pulumi.Input['EcsInstanceSetExcludeInstanceFilterArgs']]:
         """
-        The instances that need to be excluded from the Instance Set. See the following `Block exclude_instance_filter`.
+        The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
         """
         return pulumi.get(self, "exclude_instance_filter")
 
@@ -491,7 +491,7 @@ class EcsInstanceSetArgs:
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]]]:
         """
-        A list of NetworkInterface. See the following `Block network_interfaces`.
+        A list of NetworkInterface. See `network_interfaces` below..
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -787,12 +787,12 @@ class _EcsInstanceSetState:
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
         :param pulumi.Input[bool] boot_check_os_with_assistant: Indicate how to check instance ready to use.
-        :param pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]] data_disks: The list of data disks created with instance. See the following `Block data_disks`.
+        :param pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below..
         :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[bool] deletion_protection: Whether to enable release protection for the instance.
         :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance.
         :param pulumi.Input[str] description: The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
-        :param pulumi.Input['EcsInstanceSetExcludeInstanceFilterArgs'] exclude_instance_filter: The instances that need to be excluded from the Instance Set. See the following `Block exclude_instance_filter`.
+        :param pulumi.Input['EcsInstanceSetExcludeInstanceFilterArgs'] exclude_instance_filter: The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
         :param pulumi.Input[str] host_name: The hostname of instance.
         :param pulumi.Input[str] hpc_cluster_id: The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
         :param pulumi.Input[str] image_id: The Image to use for the instance.
@@ -806,7 +806,7 @@ class _EcsInstanceSetState:
         :param pulumi.Input[str] launch_template_id: The ID of the launch template.
         :param pulumi.Input[str] launch_template_name: The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
         :param pulumi.Input[str] launch_template_version: The version of the launch template.
-        :param pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]] network_interfaces: A list of NetworkInterface. See the following `Block network_interfaces`.
+        :param pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]] network_interfaces: A list of NetworkInterface. See `network_interfaces` below..
         :param pulumi.Input[str] password: The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
         :param pulumi.Input[bool] password_inherit: Whether to use the password preset in the image.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
@@ -987,7 +987,7 @@ class _EcsInstanceSetState:
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]]]:
         """
-        The list of data disks created with instance. See the following `Block data_disks`.
+        The list of data disks created with instance. See `data_disks` below..
         """
         return pulumi.get(self, "data_disks")
 
@@ -1047,7 +1047,7 @@ class _EcsInstanceSetState:
     @pulumi.getter(name="excludeInstanceFilter")
     def exclude_instance_filter(self) -> Optional[pulumi.Input['EcsInstanceSetExcludeInstanceFilterArgs']]:
         """
-        The instances that need to be excluded from the Instance Set. See the following `Block exclude_instance_filter`.
+        The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
         """
         return pulumi.get(self, "exclude_instance_filter")
 
@@ -1215,7 +1215,7 @@ class _EcsInstanceSetState:
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]]]:
         """
-        A list of NetworkInterface. See the following `Block network_interfaces`.
+        A list of NetworkInterface. See `network_interfaces` below..
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -1521,7 +1521,7 @@ class EcsInstanceSet(pulumi.CustomResource):
 
         For information about ECS Instance Set and how to use it, see [What is Instance Set](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/runinstances).
 
-        > **NOTE:** Available in v1.173.0+.
+        > **NOTE:** Available since v1.173.0.
 
         > **NOTE:** This resource is used to batch create a group of instance resources with the same configuration. However, this resource is not recommended. `ecs.Instance` is preferred.
 
@@ -1579,12 +1579,12 @@ class EcsInstanceSet(pulumi.CustomResource):
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
         :param pulumi.Input[bool] boot_check_os_with_assistant: Indicate how to check instance ready to use.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsInstanceSetDataDiskArgs']]]] data_disks: The list of data disks created with instance. See the following `Block data_disks`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsInstanceSetDataDiskArgs']]]] data_disks: The list of data disks created with instance. See `data_disks` below..
         :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[bool] deletion_protection: Whether to enable release protection for the instance.
         :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance.
         :param pulumi.Input[str] description: The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
-        :param pulumi.Input[pulumi.InputType['EcsInstanceSetExcludeInstanceFilterArgs']] exclude_instance_filter: The instances that need to be excluded from the Instance Set. See the following `Block exclude_instance_filter`.
+        :param pulumi.Input[pulumi.InputType['EcsInstanceSetExcludeInstanceFilterArgs']] exclude_instance_filter: The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
         :param pulumi.Input[str] host_name: The hostname of instance.
         :param pulumi.Input[str] hpc_cluster_id: The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
         :param pulumi.Input[str] image_id: The Image to use for the instance.
@@ -1597,7 +1597,7 @@ class EcsInstanceSet(pulumi.CustomResource):
         :param pulumi.Input[str] launch_template_id: The ID of the launch template.
         :param pulumi.Input[str] launch_template_name: The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
         :param pulumi.Input[str] launch_template_version: The version of the launch template.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsInstanceSetNetworkInterfaceArgs']]]] network_interfaces: A list of NetworkInterface. See the following `Block network_interfaces`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsInstanceSetNetworkInterfaceArgs']]]] network_interfaces: A list of NetworkInterface. See `network_interfaces` below..
         :param pulumi.Input[str] password: The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
         :param pulumi.Input[bool] password_inherit: Whether to use the password preset in the image.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
@@ -1632,7 +1632,7 @@ class EcsInstanceSet(pulumi.CustomResource):
 
         For information about ECS Instance Set and how to use it, see [What is Instance Set](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/runinstances).
 
-        > **NOTE:** Available in v1.173.0+.
+        > **NOTE:** Available since v1.173.0.
 
         > **NOTE:** This resource is used to batch create a group of instance resources with the same configuration. However, this resource is not recommended. `ecs.Instance` is preferred.
 
@@ -1871,12 +1871,12 @@ class EcsInstanceSet(pulumi.CustomResource):
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
         :param pulumi.Input[bool] boot_check_os_with_assistant: Indicate how to check instance ready to use.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsInstanceSetDataDiskArgs']]]] data_disks: The list of data disks created with instance. See the following `Block data_disks`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsInstanceSetDataDiskArgs']]]] data_disks: The list of data disks created with instance. See `data_disks` below..
         :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[bool] deletion_protection: Whether to enable release protection for the instance.
         :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance.
         :param pulumi.Input[str] description: The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
-        :param pulumi.Input[pulumi.InputType['EcsInstanceSetExcludeInstanceFilterArgs']] exclude_instance_filter: The instances that need to be excluded from the Instance Set. See the following `Block exclude_instance_filter`.
+        :param pulumi.Input[pulumi.InputType['EcsInstanceSetExcludeInstanceFilterArgs']] exclude_instance_filter: The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
         :param pulumi.Input[str] host_name: The hostname of instance.
         :param pulumi.Input[str] hpc_cluster_id: The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
         :param pulumi.Input[str] image_id: The Image to use for the instance.
@@ -1890,7 +1890,7 @@ class EcsInstanceSet(pulumi.CustomResource):
         :param pulumi.Input[str] launch_template_id: The ID of the launch template.
         :param pulumi.Input[str] launch_template_name: The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
         :param pulumi.Input[str] launch_template_version: The version of the launch template.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsInstanceSetNetworkInterfaceArgs']]]] network_interfaces: A list of NetworkInterface. See the following `Block network_interfaces`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsInstanceSetNetworkInterfaceArgs']]]] network_interfaces: A list of NetworkInterface. See `network_interfaces` below..
         :param pulumi.Input[str] password: The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
         :param pulumi.Input[bool] password_inherit: Whether to use the password preset in the image.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
@@ -2011,7 +2011,7 @@ class EcsInstanceSet(pulumi.CustomResource):
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> pulumi.Output[Optional[Sequence['outputs.EcsInstanceSetDataDisk']]]:
         """
-        The list of data disks created with instance. See the following `Block data_disks`.
+        The list of data disks created with instance. See `data_disks` below..
         """
         return pulumi.get(self, "data_disks")
 
@@ -2051,7 +2051,7 @@ class EcsInstanceSet(pulumi.CustomResource):
     @pulumi.getter(name="excludeInstanceFilter")
     def exclude_instance_filter(self) -> pulumi.Output[Optional['outputs.EcsInstanceSetExcludeInstanceFilter']]:
         """
-        The instances that need to be excluded from the Instance Set. See the following `Block exclude_instance_filter`.
+        The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
         """
         return pulumi.get(self, "exclude_instance_filter")
 
@@ -2163,7 +2163,7 @@ class EcsInstanceSet(pulumi.CustomResource):
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> pulumi.Output[Optional[Sequence['outputs.EcsInstanceSetNetworkInterface']]]:
         """
-        A list of NetworkInterface. See the following `Block network_interfaces`.
+        A list of NetworkInterface. See `network_interfaces` below..
         """
         return pulumi.get(self, "network_interfaces")
 

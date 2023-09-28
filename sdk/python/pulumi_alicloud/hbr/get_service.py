@@ -72,7 +72,7 @@ def get_service(enable: Optional[str] = None,
 
     For information about HBR and how to use it, see [What is HBR](https://www.alibabacloud.com/help/en/hybrid-backup-recovery).
 
-    > **NOTE:** Available in v1.184.0+
+    > **NOTE:** Available since v1.184.0+
 
     ## Example Usage
 
@@ -109,7 +109,7 @@ def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
 
     For information about HBR and how to use it, see [What is HBR](https://www.alibabacloud.com/help/en/hybrid-backup-recovery).
 
-    > **NOTE:** Available in v1.184.0+
+    > **NOTE:** Available since v1.184.0+
 
     ## Example Usage
 

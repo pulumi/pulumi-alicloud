@@ -134,7 +134,7 @@ class UserVpcAuthorization(pulumi.CustomResource):
         """
         Provides a Private Zone User Vpc Authorization resource.
 
-        > **NOTE:** Available in v1.138.0+.
+        > **NOTE:** Available since v1.138.0.
 
         ## Example Usage
 
@@ -144,10 +144,13 @@ class UserVpcAuthorization(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        authorized_user_id = config.get_float("authorizedUserId")
+        if authorized_user_id is None:
+            authorized_user_id = 123456789
         example = alicloud.pvtz.UserVpcAuthorization("example",
-            auth_channel="RESOURCE_DIRECTORY",
-            auth_type="NORMAL",
-            authorized_user_id="example_value")
+            authorized_user_id=authorized_user_id,
+            auth_channel="RESOURCE_DIRECTORY")
         ```
 
         ## Import
@@ -173,7 +176,7 @@ class UserVpcAuthorization(pulumi.CustomResource):
         """
         Provides a Private Zone User Vpc Authorization resource.
 
-        > **NOTE:** Available in v1.138.0+.
+        > **NOTE:** Available since v1.138.0.
 
         ## Example Usage
 
@@ -183,10 +186,13 @@ class UserVpcAuthorization(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        authorized_user_id = config.get_float("authorizedUserId")
+        if authorized_user_id is None:
+            authorized_user_id = 123456789
         example = alicloud.pvtz.UserVpcAuthorization("example",
-            auth_channel="RESOURCE_DIRECTORY",
-            auth_type="NORMAL",
-            authorized_user_id="example_value")
+            authorized_user_id=authorized_user_id,
+            auth_channel="RESOURCE_DIRECTORY")
         ```
 
         ## Import

@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
  * Provides a Resource Manager role resource. Members are resource containers in the resource directory, which can physically isolate resources to form an independent resource grouping unit. You can create members in the resource folder to manage them in a unified manner.
  * For information about Resource Manager role and how to use it, see [What is Resource Manager role](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
  *
- * > **NOTE:** Available in v1.82.0+.
+ * > **NOTE:** Available since v1.82.0.
  *
  * ## Example Usage
  *
@@ -16,26 +16,26 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Add a Resource Manager role.
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexample";
+ * const default = alicloud.getAccount({});
  * const example = new alicloud.resourcemanager.Role("example", {
- *     assumeRolePolicyDocument: `     {
+ *     roleName: name,
+ *     assumeRolePolicyDocument: _default.then(_default => `     {
  *           "Statement": [
  *                {
  *                     "Action": "sts:AssumeRole",
  *                     "Effect": "Allow",
  *                     "Principal": {
  *                         "RAM":[
- *                                 "acs:ram::103755469187****:root"，
- *                                 "acs:ram::104408977069****:root"
+ *                                 "acs:ram::${_default.id}:root"
  *                         ]
  *                     }
  *                 }
  *           ],
  *           "Version": "1"
  *      }
- * 	 
- * `,
- *     roleName: "testrd",
+ * `),
  * });
  * ```
  *

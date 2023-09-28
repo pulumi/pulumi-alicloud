@@ -101,9 +101,9 @@ class Project(pulumi.CustomResource):
         """
         Provides a Intelligent Media Management Project resource.
 
-        For information about Intelligent Media Management Project and how to use it, see [What is Project](https://help.aliyun.com/document_detail/63496.html).
+        For information about Intelligent Media Management Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/network-intelligence-service/latest/user-overview).
 
-        > **NOTE:** Available in v1.134.0+.
+        > **NOTE:** Available since v1.134.0.
 
         ## Example Usage
 
@@ -113,6 +113,10 @@ class Project(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
         role = alicloud.ram.Role("role",
             document=\"\"\"  {
             "Statement": [
@@ -132,7 +136,7 @@ class Project(pulumi.CustomResource):
             description="this is a role test.",
             force=True)
         example = alicloud.imm.Project("example",
-            project="example_name",
+            project=name,
             service_role=role.name)
         ```
 
@@ -158,9 +162,9 @@ class Project(pulumi.CustomResource):
         """
         Provides a Intelligent Media Management Project resource.
 
-        For information about Intelligent Media Management Project and how to use it, see [What is Project](https://help.aliyun.com/document_detail/63496.html).
+        For information about Intelligent Media Management Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/network-intelligence-service/latest/user-overview).
 
-        > **NOTE:** Available in v1.134.0+.
+        > **NOTE:** Available since v1.134.0.
 
         ## Example Usage
 
@@ -170,6 +174,10 @@ class Project(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
         role = alicloud.ram.Role("role",
             document=\"\"\"  {
             "Statement": [
@@ -189,7 +197,7 @@ class Project(pulumi.CustomResource):
             description="this is a role test.",
             force=True)
         example = alicloud.imm.Project("example",
-            project="example_name",
+            project=name,
             service_role=role.name)
         ```
 

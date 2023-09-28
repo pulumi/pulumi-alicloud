@@ -20,7 +20,7 @@ class InstanceAttachmentArgs:
         """
         The set of arguments for constructing a InstanceAttachment resource.
         :param pulumi.Input[str] instance_name: The name of the OTS instance.
-        :param pulumi.Input[str] vpc_name: The name of attaching VPC to instance.
+        :param pulumi.Input[str] vpc_name: The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
         :param pulumi.Input[str] vswitch_id: The ID of attaching VSwitch to instance.
         """
         pulumi.set(__self__, "instance_name", instance_name)
@@ -43,7 +43,7 @@ class InstanceAttachmentArgs:
     @pulumi.getter(name="vpcName")
     def vpc_name(self) -> pulumi.Input[str]:
         """
-        The name of attaching VPC to instance.
+        The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
         """
         return pulumi.get(self, "vpc_name")
 
@@ -75,7 +75,7 @@ class _InstanceAttachmentState:
         Input properties used for looking up and filtering InstanceAttachment resources.
         :param pulumi.Input[str] instance_name: The name of the OTS instance.
         :param pulumi.Input[str] vpc_id: The ID of attaching VPC to instance.
-        :param pulumi.Input[str] vpc_name: The name of attaching VPC to instance.
+        :param pulumi.Input[str] vpc_name: The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
         :param pulumi.Input[str] vswitch_id: The ID of attaching VSwitch to instance.
         """
         if instance_name is not None:
@@ -115,7 +115,7 @@ class _InstanceAttachmentState:
     @pulumi.getter(name="vpcName")
     def vpc_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of attaching VPC to instance.
+        The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
         """
         return pulumi.get(self, "vpc_name")
 
@@ -148,37 +148,44 @@ class InstanceAttachment(pulumi.CustomResource):
         """
         This resource will help you to bind a VPC to an OTS instance.
 
+        > **NOTE:** Available since v1.10.0.
+
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Create an OTS instance
-        foo_instance = alicloud.ots.Instance("fooInstance",
-            description="for table",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_instance = alicloud.ots.Instance("defaultInstance",
+            description=name,
             accessed_by="Vpc",
             tags={
                 "Created": "TF",
-                "For": "Building table",
+                "For": "example",
             })
-        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/16")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
-            vpc_id=foo_network.id,
-            vswitch_name="for-ots-instance",
-            cidr_block="172.16.1.0/24",
-            zone_id=foo_zones.zones[0].id)
-        foo_instance_attachment = alicloud.ots.InstanceAttachment("fooInstanceAttachment",
-            instance_name=foo_instance.name,
-            vpc_name="attachment1",
-            vswitch_id=foo_switch.id)
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_instance_attachment = alicloud.ots.InstanceAttachment("defaultInstanceAttachment",
+            instance_name=default_instance.name,
+            vpc_name="examplename",
+            vswitch_id=default_switch.id)
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_name: The name of the OTS instance.
-        :param pulumi.Input[str] vpc_name: The name of attaching VPC to instance.
+        :param pulumi.Input[str] vpc_name: The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
         :param pulumi.Input[str] vswitch_id: The ID of attaching VSwitch to instance.
         """
         ...
@@ -190,31 +197,38 @@ class InstanceAttachment(pulumi.CustomResource):
         """
         This resource will help you to bind a VPC to an OTS instance.
 
+        > **NOTE:** Available since v1.10.0.
+
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Create an OTS instance
-        foo_instance = alicloud.ots.Instance("fooInstance",
-            description="for table",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_instance = alicloud.ots.Instance("defaultInstance",
+            description=name,
             accessed_by="Vpc",
             tags={
                 "Created": "TF",
-                "For": "Building table",
+                "For": "example",
             })
-        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/16")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
-            vpc_id=foo_network.id,
-            vswitch_name="for-ots-instance",
-            cidr_block="172.16.1.0/24",
-            zone_id=foo_zones.zones[0].id)
-        foo_instance_attachment = alicloud.ots.InstanceAttachment("fooInstanceAttachment",
-            instance_name=foo_instance.name,
-            vpc_name="attachment1",
-            vswitch_id=foo_switch.id)
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_instance_attachment = alicloud.ots.InstanceAttachment("defaultInstanceAttachment",
+            instance_name=default_instance.name,
+            vpc_name="examplename",
+            vswitch_id=default_switch.id)
         ```
 
         :param str resource_name: The name of the resource.
@@ -277,7 +291,7 @@ class InstanceAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_name: The name of the OTS instance.
         :param pulumi.Input[str] vpc_id: The ID of attaching VPC to instance.
-        :param pulumi.Input[str] vpc_name: The name of attaching VPC to instance.
+        :param pulumi.Input[str] vpc_name: The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
         :param pulumi.Input[str] vswitch_id: The ID of attaching VSwitch to instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -310,7 +324,7 @@ class InstanceAttachment(pulumi.CustomResource):
     @pulumi.getter(name="vpcName")
     def vpc_name(self) -> pulumi.Output[str]:
         """
-        The name of attaching VPC to instance.
+        The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
         """
         return pulumi.get(self, "vpc_name")
 

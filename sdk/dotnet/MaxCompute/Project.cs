@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.MaxCompute
     /// <summary>
     /// Provides a Max Compute Project resource.
     /// 
-    /// For information about Max Compute Project and how to use it, see [What is Project](https://help.aliyun.com/document_detail/473237.html).
+    /// For information about Max Compute Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/maxcompute).
     /// 
-    /// &gt; **NOTE:** Available in v1.77.0+.
+    /// &gt; **NOTE:** Available since v1.77.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,12 +28,14 @@ namespace Pulumi.AliCloud.MaxCompute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
     ///     var @default = new AliCloud.MaxCompute.Project("default", new()
     ///     {
-    ///         Comment = "test_for_terraform",
     ///         DefaultQuota = "默认后付费Quota",
-    ///         ProductType = "PAYASYOUGO",
-    ///         ProjectName = "test_create_spec_one",
+    ///         ProjectName = name,
+    ///         Comment = name,
+    ///         ProductType = "PayAsYouGo",
     ///     });
     /// 
     /// });
@@ -55,7 +57,7 @@ namespace Pulumi.AliCloud.MaxCompute
         public Output<string?> DefaultQuota { get; private set; } = null!;
 
         /// <summary>
-        /// IP whitelistSee the following `Block IpWhiteList`.
+        /// IP whitelist. See `ip_white_list` below.
         /// </summary>
         [Output("ipWhiteList")]
         public Output<Outputs.ProjectIpWhiteList?> IpWhiteList { get; private set; } = null!;
@@ -79,13 +81,13 @@ namespace Pulumi.AliCloud.MaxCompute
         public Output<string> ProjectName { get; private set; } = null!;
 
         /// <summary>
-        /// Project base attributesSee the following `Block Properties`.
+        /// Project base attributes. See `properties` below.
         /// </summary>
         [Output("properties")]
         public Output<Outputs.ProjectProperties> Properties { get; private set; } = null!;
 
         /// <summary>
-        /// Security-related attributesSee the following `Block SecurityProperties`.
+        /// Security-related attributes. See `security_properties` below.
         /// </summary>
         [Output("securityProperties")]
         public Output<Outputs.ProjectSecurityProperties> SecurityProperties { get; private set; } = null!;
@@ -161,7 +163,7 @@ namespace Pulumi.AliCloud.MaxCompute
         public Input<string>? DefaultQuota { get; set; }
 
         /// <summary>
-        /// IP whitelistSee the following `Block IpWhiteList`.
+        /// IP whitelist. See `ip_white_list` below.
         /// </summary>
         [Input("ipWhiteList")]
         public Input<Inputs.ProjectIpWhiteListArgs>? IpWhiteList { get; set; }
@@ -179,13 +181,13 @@ namespace Pulumi.AliCloud.MaxCompute
         public Input<string> ProjectName { get; set; } = null!;
 
         /// <summary>
-        /// Project base attributesSee the following `Block Properties`.
+        /// Project base attributes. See `properties` below.
         /// </summary>
         [Input("properties")]
         public Input<Inputs.ProjectPropertiesArgs>? Properties { get; set; }
 
         /// <summary>
-        /// Security-related attributesSee the following `Block SecurityProperties`.
+        /// Security-related attributes. See `security_properties` below.
         /// </summary>
         [Input("securityProperties")]
         public Input<Inputs.ProjectSecurityPropertiesArgs>? SecurityProperties { get; set; }
@@ -211,7 +213,7 @@ namespace Pulumi.AliCloud.MaxCompute
         public Input<string>? DefaultQuota { get; set; }
 
         /// <summary>
-        /// IP whitelistSee the following `Block IpWhiteList`.
+        /// IP whitelist. See `ip_white_list` below.
         /// </summary>
         [Input("ipWhiteList")]
         public Input<Inputs.ProjectIpWhiteListGetArgs>? IpWhiteList { get; set; }
@@ -235,13 +237,13 @@ namespace Pulumi.AliCloud.MaxCompute
         public Input<string>? ProjectName { get; set; }
 
         /// <summary>
-        /// Project base attributesSee the following `Block Properties`.
+        /// Project base attributes. See `properties` below.
         /// </summary>
         [Input("properties")]
         public Input<Inputs.ProjectPropertiesGetArgs>? Properties { get; set; }
 
         /// <summary>
-        /// Security-related attributesSee the following `Block SecurityProperties`.
+        /// Security-related attributes. See `security_properties` below.
         /// </summary>
         [Input("securityProperties")]
         public Input<Inputs.ProjectSecurityPropertiesGetArgs>? SecurityProperties { get; set; }

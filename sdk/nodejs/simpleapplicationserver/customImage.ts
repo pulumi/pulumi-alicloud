@@ -7,9 +7,45 @@ import * as utilities from "../utilities";
 /**
  * Provides a Simple Application Server Custom Image resource.
  *
- * For information about Simple Application Server Custom Image and how to use it, see [What is Custom Image](https://www.alibabacloud.com/help/zh/doc-detail/333535.htm).
+ * For information about Simple Application Server Custom Image and how to use it, see [What is Custom Image](https://www.alibabacloud.com/help/en/doc-detail/333535.htm).
  *
- * > **NOTE:** Available in v1.143.0+.
+ * > **NOTE:** Available since v1.143.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const defaultImages = alicloud.simpleapplicationserver.getImages({});
+ * const defaultServerPlans = alicloud.simpleapplicationserver.getServerPlans({});
+ * const defaultInstance = new alicloud.simpleapplicationserver.Instance("defaultInstance", {
+ *     paymentType: "Subscription",
+ *     planId: defaultServerPlans.then(defaultServerPlans => defaultServerPlans.plans?.[0]?.id),
+ *     instanceName: name,
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     period: 1,
+ *     dataDiskSize: 100,
+ * });
+ * const defaultServerDisks = alicloud.simpleapplicationserver.getServerDisksOutput({
+ *     instanceId: defaultInstance.id,
+ * });
+ * const defaultSnapshot = new alicloud.simpleapplicationserver.Snapshot("defaultSnapshot", {
+ *     diskId: defaultServerDisks.apply(defaultServerDisks => defaultServerDisks.ids?.[0]),
+ *     snapshotName: name,
+ * });
+ * const defaultCustomImage = new alicloud.simpleapplicationserver.CustomImage("defaultCustomImage", {
+ *     customImageName: name,
+ *     instanceId: defaultInstance.id,
+ *     systemSnapshotId: defaultSnapshot.id,
+ *     status: "Share",
+ *     description: name,
+ * });
+ * ```
  *
  * ## Import
  *

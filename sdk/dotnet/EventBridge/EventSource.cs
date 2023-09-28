@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.EventBridge
     /// <summary>
     /// Provides a Event Bridge Event Source resource.
     /// 
-    /// For information about Event Bridge Event Source and how to use it, see [What is Event Source](https://www.alibabacloud.com/help/doc-detail/188425.htm).
+    /// For information about Event Bridge Event Source and how to use it, see [What is Event Source](https://www.alibabacloud.com/help/en/eventbridge/latest/api-eventbridge-2020-04-01-createeventsource).
     /// 
-    /// &gt; **NOTE:** Available in v1.130.0+.
+    /// &gt; **NOTE:** Available since v1.130.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,17 +28,26 @@ namespace Pulumi.AliCloud.EventBridge
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.EventBridge.EventSource("example", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var exampleEventBus = new AliCloud.EventBridge.EventBus("exampleEventBus", new()
     ///     {
-    ///         Description = "tf-test",
-    ///         EventBusName = "bus_name",
-    ///         EventSourceName = "tftest",
+    ///         EventBusName = name,
+    ///     });
+    /// 
+    ///     var exampleQueue = new AliCloud.Mns.Queue("exampleQueue");
+    /// 
+    ///     var exampleEventSource = new AliCloud.EventBridge.EventSource("exampleEventSource", new()
+    ///     {
+    ///         EventBusName = exampleEventBus.EventBusName,
+    ///         EventSourceName = name,
+    ///         Description = name,
+    ///         LinkedExternalSource = true,
+    ///         ExternalSourceType = "MNS",
     ///         ExternalSourceConfig = 
     ///         {
-    ///             { "QueueName", "mns_queuqe_name" },
+    ///             { "QueueName", exampleQueue.Name },
     ///         },
-    ///         ExternalSourceType = "MNS",
-    ///         LinkedExternalSource = true,
     ///     });
     /// 
     /// });

@@ -15,9 +15,9 @@ import (
 
 // Provides a Max Compute Project resource.
 //
-// For information about Max Compute Project and how to use it, see [What is Project](https://help.aliyun.com/document_detail/473237.html).
+// For information about Max Compute Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/maxcompute).
 //
-// > **NOTE:** Available in v1.77.0+.
+// > **NOTE:** Available since v1.77.0.
 //
 // ## Example Usage
 //
@@ -30,16 +30,22 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/maxcompute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := maxcompute.NewProject(ctx, "default", &maxcompute.ProjectArgs{
-//				Comment:      pulumi.String("test_for_terraform"),
 //				DefaultQuota: pulumi.String("默认后付费Quota"),
-//				ProductType:  pulumi.String("PAYASYOUGO"),
-//				ProjectName:  pulumi.String("test_create_spec_one"),
+//				ProjectName:  pulumi.String(name),
+//				Comment:      pulumi.String(name),
+//				ProductType:  pulumi.String("PayAsYouGo"),
 //			})
 //			if err != nil {
 //				return err
@@ -56,7 +62,7 @@ type Project struct {
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// Default Computing Resource Group
 	DefaultQuota pulumi.StringPtrOutput `pulumi:"defaultQuota"`
-	// IP whitelistSee the following `Block IpWhiteList`.
+	// IP whitelist. See `ipWhiteList` below.
 	IpWhiteList ProjectIpWhiteListPtrOutput `pulumi:"ipWhiteList"`
 	// Project owner
 	Owner pulumi.StringOutput `pulumi:"owner"`
@@ -64,9 +70,9 @@ type Project struct {
 	ProductType pulumi.StringPtrOutput `pulumi:"productType"`
 	// The name of the project
 	ProjectName pulumi.StringOutput `pulumi:"projectName"`
-	// Project base attributesSee the following `Block Properties`.
+	// Project base attributes. See `properties` below.
 	Properties ProjectPropertiesOutput `pulumi:"properties"`
-	// Security-related attributesSee the following `Block SecurityProperties`.
+	// Security-related attributes. See `securityProperties` below.
 	SecurityProperties ProjectSecurityPropertiesOutput `pulumi:"securityProperties"`
 	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -111,7 +117,7 @@ type projectState struct {
 	Comment *string `pulumi:"comment"`
 	// Default Computing Resource Group
 	DefaultQuota *string `pulumi:"defaultQuota"`
-	// IP whitelistSee the following `Block IpWhiteList`.
+	// IP whitelist. See `ipWhiteList` below.
 	IpWhiteList *ProjectIpWhiteList `pulumi:"ipWhiteList"`
 	// Project owner
 	Owner *string `pulumi:"owner"`
@@ -119,9 +125,9 @@ type projectState struct {
 	ProductType *string `pulumi:"productType"`
 	// The name of the project
 	ProjectName *string `pulumi:"projectName"`
-	// Project base attributesSee the following `Block Properties`.
+	// Project base attributes. See `properties` below.
 	Properties *ProjectProperties `pulumi:"properties"`
-	// Security-related attributesSee the following `Block SecurityProperties`.
+	// Security-related attributes. See `securityProperties` below.
 	SecurityProperties *ProjectSecurityProperties `pulumi:"securityProperties"`
 	// The status of the resource
 	Status *string `pulumi:"status"`
@@ -134,7 +140,7 @@ type ProjectState struct {
 	Comment pulumi.StringPtrInput
 	// Default Computing Resource Group
 	DefaultQuota pulumi.StringPtrInput
-	// IP whitelistSee the following `Block IpWhiteList`.
+	// IP whitelist. See `ipWhiteList` below.
 	IpWhiteList ProjectIpWhiteListPtrInput
 	// Project owner
 	Owner pulumi.StringPtrInput
@@ -142,9 +148,9 @@ type ProjectState struct {
 	ProductType pulumi.StringPtrInput
 	// The name of the project
 	ProjectName pulumi.StringPtrInput
-	// Project base attributesSee the following `Block Properties`.
+	// Project base attributes. See `properties` below.
 	Properties ProjectPropertiesPtrInput
-	// Security-related attributesSee the following `Block SecurityProperties`.
+	// Security-related attributes. See `securityProperties` below.
 	SecurityProperties ProjectSecurityPropertiesPtrInput
 	// The status of the resource
 	Status pulumi.StringPtrInput
@@ -161,15 +167,15 @@ type projectArgs struct {
 	Comment *string `pulumi:"comment"`
 	// Default Computing Resource Group
 	DefaultQuota *string `pulumi:"defaultQuota"`
-	// IP whitelistSee the following `Block IpWhiteList`.
+	// IP whitelist. See `ipWhiteList` below.
 	IpWhiteList *ProjectIpWhiteList `pulumi:"ipWhiteList"`
 	// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
 	ProductType *string `pulumi:"productType"`
 	// The name of the project
 	ProjectName string `pulumi:"projectName"`
-	// Project base attributesSee the following `Block Properties`.
+	// Project base attributes. See `properties` below.
 	Properties *ProjectProperties `pulumi:"properties"`
-	// Security-related attributesSee the following `Block SecurityProperties`.
+	// Security-related attributes. See `securityProperties` below.
 	SecurityProperties *ProjectSecurityProperties `pulumi:"securityProperties"`
 }
 
@@ -179,15 +185,15 @@ type ProjectArgs struct {
 	Comment pulumi.StringPtrInput
 	// Default Computing Resource Group
 	DefaultQuota pulumi.StringPtrInput
-	// IP whitelistSee the following `Block IpWhiteList`.
+	// IP whitelist. See `ipWhiteList` below.
 	IpWhiteList ProjectIpWhiteListPtrInput
 	// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
 	ProductType pulumi.StringPtrInput
 	// The name of the project
 	ProjectName pulumi.StringInput
-	// Project base attributesSee the following `Block Properties`.
+	// Project base attributes. See `properties` below.
 	Properties ProjectPropertiesPtrInput
-	// Security-related attributesSee the following `Block SecurityProperties`.
+	// Security-related attributes. See `securityProperties` below.
 	SecurityProperties ProjectSecurityPropertiesPtrInput
 }
 
@@ -312,7 +318,7 @@ func (o ProjectOutput) DefaultQuota() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.DefaultQuota }).(pulumi.StringPtrOutput)
 }
 
-// IP whitelistSee the following `Block IpWhiteList`.
+// IP whitelist. See `ipWhiteList` below.
 func (o ProjectOutput) IpWhiteList() ProjectIpWhiteListPtrOutput {
 	return o.ApplyT(func(v *Project) ProjectIpWhiteListPtrOutput { return v.IpWhiteList }).(ProjectIpWhiteListPtrOutput)
 }
@@ -332,12 +338,12 @@ func (o ProjectOutput) ProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ProjectName }).(pulumi.StringOutput)
 }
 
-// Project base attributesSee the following `Block Properties`.
+// Project base attributes. See `properties` below.
 func (o ProjectOutput) Properties() ProjectPropertiesOutput {
 	return o.ApplyT(func(v *Project) ProjectPropertiesOutput { return v.Properties }).(ProjectPropertiesOutput)
 }
 
-// Security-related attributesSee the following `Block SecurityProperties`.
+// Security-related attributes. See `securityProperties` below.
 func (o ProjectOutput) SecurityProperties() ProjectSecurityPropertiesOutput {
 	return o.ApplyT(func(v *Project) ProjectSecurityPropertiesOutput { return v.SecurityProperties }).(ProjectSecurityPropertiesOutput)
 }

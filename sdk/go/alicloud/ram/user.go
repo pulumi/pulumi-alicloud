@@ -40,7 +40,6 @@ import (
 //				Comments:    pulumi.String("yoyoyo"),
 //				DisplayName: pulumi.String("user_display_name"),
 //				Email:       pulumi.String("hello.uuu@aaa.com"),
-//				Force:       pulumi.Bool(true),
 //				Mobile:      pulumi.String("86-18688888888"),
 //			})
 //			if err != nil {

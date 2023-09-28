@@ -18,7 +18,7 @@ public final class GetDomainsDomain {
      */
     private String domain;
     /**
-     * @return The ID of the domain. The value is formulated as `&lt;instance_id&gt;:&lt;domain&gt;`.
+     * @return The ID of the domain. It formats as `&lt;instance_id&gt;:&lt;domain&gt;`.
      * 
      */
     private String id;
@@ -33,7 +33,7 @@ public final class GetDomainsDomain {
      */
     private List<GetDomainsDomainRedirect> redirects;
     /**
-     * @return The ID of the resource group
+     * @return The ID of the resource group.
      * 
      */
     private String resourceManagerResourceGroupId;
@@ -52,7 +52,7 @@ public final class GetDomainsDomain {
         return this.domain;
     }
     /**
-     * @return The ID of the domain. The value is formulated as `&lt;instance_id&gt;:&lt;domain&gt;`.
+     * @return The ID of the domain. It formats as `&lt;instance_id&gt;:&lt;domain&gt;`.
      * 
      */
     public String id() {
@@ -73,7 +73,7 @@ public final class GetDomainsDomain {
         return this.redirects;
     }
     /**
-     * @return The ID of the resource group
+     * @return The ID of the resource group.
      * 
      */
     public String resourceManagerResourceGroupId() {

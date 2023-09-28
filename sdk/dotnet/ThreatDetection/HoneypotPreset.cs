@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// <summary>
     /// Provides a Threat Detection Honeypot Preset resource.
     /// 
-    /// For information about Threat Detection Honeypot Preset and how to use it, see [What is Honeypot Preset](https://help.aliyun.com/document_detail/468960.html).
+    /// For information about Threat Detection Honeypot Preset and how to use it, see [What is Honeypot Preset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotpreset).
     /// 
-    /// &gt; **NOTE:** Available in v1.195.0+.
+    /// &gt; **NOTE:** Available since v1.195.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,9 +28,16 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
+    ///     var defaultHoneypotImages = AliCloud.ThreatDetection.GetHoneypotImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ruoyi",
+    ///     });
+    /// 
     ///     var defaultHoneypotNode = new AliCloud.ThreatDetection.HoneypotNode("defaultHoneypotNode", new()
     ///     {
-    ///         NodeName = @var.Name,
+    ///         NodeName = name,
     ///         AvailableProbeNum = 20,
     ///         SecurityGroupProbeIpLists = new[]
     ///         {
@@ -40,14 +47,14 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// 
     ///     var defaultHoneypotPreset = new AliCloud.ThreatDetection.HoneypotPreset("defaultHoneypotPreset", new()
     ///     {
-    ///         HoneypotImageName = "shiro",
+    ///         PresetName = name,
+    ///         NodeId = defaultHoneypotNode.Id,
+    ///         HoneypotImageName = defaultHoneypotImages.Apply(getHoneypotImagesResult =&gt; getHoneypotImagesResult.Images[0]?.HoneypotImageName),
     ///         Meta = new AliCloud.ThreatDetection.Inputs.HoneypotPresetMetaArgs
     ///         {
     ///             PortraitOption = true,
     ///             Burp = "open",
     ///         },
-    ///         NodeId = defaultHoneypotNode.Id,
-    ///         PresetName = "apiapec_test",
     ///     });
     /// 
     /// });
@@ -77,7 +84,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Output<string> HoneypotPresetId { get; private set; } = null!;
 
         /// <summary>
-        /// Honeypot template custom parameters. See the following `Block meta`.
+        /// Honeypot template custom parameters. See `meta` below.
         /// </summary>
         [Output("meta")]
         public Output<Outputs.HoneypotPresetMeta> Meta { get; private set; } = null!;
@@ -147,7 +154,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string> HoneypotImageName { get; set; } = null!;
 
         /// <summary>
-        /// Honeypot template custom parameters. See the following `Block meta`.
+        /// Honeypot template custom parameters. See `meta` below.
         /// </summary>
         [Input("meta", required: true)]
         public Input<Inputs.HoneypotPresetMetaArgs> Meta { get; set; } = null!;
@@ -185,7 +192,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string>? HoneypotPresetId { get; set; }
 
         /// <summary>
-        /// Honeypot template custom parameters. See the following `Block meta`.
+        /// Honeypot template custom parameters. See `meta` below.
         /// </summary>
         [Input("meta")]
         public Input<Inputs.HoneypotPresetMetaGetArgs>? Meta { get; set; }

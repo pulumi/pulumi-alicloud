@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Resource Manager Delegated Administrator and how to use it, see [What is Delegated Administrator](https://www.alibabacloud.com/help/en/resource-management/latest/registerdelegatedadministrator#doc-api-ResourceManager-RegisterDelegatedAdministrator).
  * 
- * &gt; **NOTE:** Available in v1.181.0+.
+ * &gt; **NOTE:** Available since v1.181.0.
  * 
  * ## Example Usage
  * 
@@ -29,8 +29,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
- * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
+ * import com.pulumi.alicloud.resourcemanager.Folder;
+ * import com.pulumi.alicloud.resourcemanager.FolderArgs;
+ * import com.pulumi.alicloud.resourcemanager.Account;
+ * import com.pulumi.alicloud.resourcemanager.AccountArgs;
  * import com.pulumi.alicloud.resourcemanager.DelegatedAdministrator;
  * import com.pulumi.alicloud.resourcemanager.DelegatedAdministratorArgs;
  * import java.util.List;
@@ -46,12 +48,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultAccounts = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
- *             .status(&#34;CreateSuccess&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var displayName = config.get(&#34;displayName&#34;).orElse(&#34;EAccount&#34;);
+ *         var exampleFolder = new Folder(&#34;exampleFolder&#34;, FolderArgs.builder()        
+ *             .folderName(name)
  *             .build());
  * 
- *         var defaultDelegatedAdministrator = new DelegatedAdministrator(&#34;defaultDelegatedAdministrator&#34;, DelegatedAdministratorArgs.builder()        
- *             .accountId(defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].accountId()))
+ *         var exampleAccount = new Account(&#34;exampleAccount&#34;, AccountArgs.builder()        
+ *             .displayName(displayName)
+ *             .folderId(exampleFolder.id())
+ *             .build());
+ * 
+ *         var exampleDelegatedAdministrator = new DelegatedAdministrator(&#34;exampleDelegatedAdministrator&#34;, DelegatedAdministratorArgs.builder()        
+ *             .accountId(exampleAccount.id())
  *             .servicePrincipal(&#34;cloudfw.aliyuncs.com&#34;)
  *             .build());
  * 

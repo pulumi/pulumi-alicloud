@@ -165,9 +165,9 @@ class ControlPolicy(pulumi.CustomResource):
         """
         Provides a Resource Manager Control Policy resource.
 
-        For information about Resource Manager Control Policy and how to use it, see [What is Control Policy](https://help.aliyun.com/document_detail/208287.html).
+        For information about Resource Manager Control Policy and how to use it, see [What is Control Policy](https://www.alibabacloud.com/help/en/resource-management/latest/api-resourcedirectorymaster-2022-04-19-createcontrolpolicy).
 
-        > **NOTE:** Available in v1.120.0+.
+        > **NOTE:** Available since v1.120.0.
 
         ## Example Usage
 
@@ -177,9 +177,13 @@ class ControlPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         example = alicloud.resourcemanager.ControlPolicy("example",
-            control_policy_name="tf-testAccRDControlPolicy",
-            description="tf-testAccRDControlPolicy",
+            control_policy_name=name,
+            description=name,
             effect_scope="RAM",
             policy_document=\"\"\"  {
             "Version": "1",
@@ -196,7 +200,6 @@ class ControlPolicy(pulumi.CustomResource):
               }
             ]
           }
-          
         \"\"\")
         ```
 
@@ -224,9 +227,9 @@ class ControlPolicy(pulumi.CustomResource):
         """
         Provides a Resource Manager Control Policy resource.
 
-        For information about Resource Manager Control Policy and how to use it, see [What is Control Policy](https://help.aliyun.com/document_detail/208287.html).
+        For information about Resource Manager Control Policy and how to use it, see [What is Control Policy](https://www.alibabacloud.com/help/en/resource-management/latest/api-resourcedirectorymaster-2022-04-19-createcontrolpolicy).
 
-        > **NOTE:** Available in v1.120.0+.
+        > **NOTE:** Available since v1.120.0.
 
         ## Example Usage
 
@@ -236,9 +239,13 @@ class ControlPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         example = alicloud.resourcemanager.ControlPolicy("example",
-            control_policy_name="tf-testAccRDControlPolicy",
-            description="tf-testAccRDControlPolicy",
+            control_policy_name=name,
+            description=name,
             effect_scope="RAM",
             policy_document=\"\"\"  {
             "Version": "1",
@@ -255,7 +262,6 @@ class ControlPolicy(pulumi.CustomResource):
               }
             ]
           }
-          
         \"\"\")
         ```
 

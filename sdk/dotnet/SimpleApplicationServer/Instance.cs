@@ -10,12 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.SimpleApplicationServer
 {
     /// <summary>
-    /// Provides a Simple Application Server Instance resource.
-    /// 
-    /// For information about Simple Application Server Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/doc-detail/190440.htm).
-    /// 
-    /// &gt; **NOTE:** Available in v1.135.0+.
-    /// 
     /// ## Import
     /// 
     /// Simple Application Server Instance can be imported using the id, e.g.

@@ -15,9 +15,9 @@ import (
 
 // Provides a Event Bridge Event Source resource.
 //
-// For information about Event Bridge Event Source and how to use it, see [What is Event Source](https://www.alibabacloud.com/help/doc-detail/188425.htm).
+// For information about Event Bridge Event Source and how to use it, see [What is Event Source](https://www.alibabacloud.com/help/en/eventbridge/latest/api-eventbridge-2020-04-01-createeventsource).
 //
-// > **NOTE:** Available in v1.130.0+.
+// > **NOTE:** Available since v1.130.0.
 //
 // ## Example Usage
 //
@@ -29,21 +29,38 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eventbridge"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mns"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := eventbridge.NewEventSource(ctx, "example", &eventbridge.EventSourceArgs{
-//				Description:     pulumi.String("tf-test"),
-//				EventBusName:    pulumi.String("bus_name"),
-//				EventSourceName: pulumi.String("tftest"),
-//				ExternalSourceConfig: pulumi.AnyMap{
-//					"QueueName": pulumi.Any("mns_queuqe_name"),
-//				},
-//				ExternalSourceType:   pulumi.String("MNS"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			exampleEventBus, err := eventbridge.NewEventBus(ctx, "exampleEventBus", &eventbridge.EventBusArgs{
+//				EventBusName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleQueue, err := mns.NewQueue(ctx, "exampleQueue", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eventbridge.NewEventSource(ctx, "exampleEventSource", &eventbridge.EventSourceArgs{
+//				EventBusName:         exampleEventBus.EventBusName,
+//				EventSourceName:      pulumi.String(name),
+//				Description:          pulumi.String(name),
 //				LinkedExternalSource: pulumi.Bool(true),
+//				ExternalSourceType:   pulumi.String("MNS"),
+//				ExternalSourceConfig: pulumi.AnyMap{
+//					"QueueName": exampleQueue.Name,
+//				},
 //			})
 //			if err != nil {
 //				return err

@@ -147,7 +147,7 @@ def get_node_classes(category: Optional[str] = None,
     """
     This data source provides the PolarDB node classes resource available info of Alibaba Cloud.
 
-    > **NOTE:** Available in v1.81.0+
+    > **NOTE:** Available since v1.81.0+
 
     ## Example Usage
 
@@ -163,6 +163,7 @@ def get_node_classes(category: Optional[str] = None,
     ```
 
 
+    :param str category: The PolarDB node cluster series.
     :param str db_node_class: The PolarDB node class type by the user.
     :param str db_type: Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If db_type is set, db_version also needs to be set.
     :param str db_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If db_version is set, db_type also needs to be set.
@@ -209,7 +210,7 @@ def get_node_classes_output(category: Optional[pulumi.Input[Optional[str]]] = No
     """
     This data source provides the PolarDB node classes resource available info of Alibaba Cloud.
 
-    > **NOTE:** Available in v1.81.0+
+    > **NOTE:** Available since v1.81.0+
 
     ## Example Usage
 
@@ -225,6 +226,7 @@ def get_node_classes_output(category: Optional[pulumi.Input[Optional[str]]] = No
     ```
 
 
+    :param str category: The PolarDB node cluster series.
     :param str db_node_class: The PolarDB node class type by the user.
     :param str db_type: Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If db_type is set, db_version also needs to be set.
     :param str db_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If db_version is set, db_type also needs to be set.

@@ -33,7 +33,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			group, err := ram.NewGroup(ctx, "group", &ram.GroupArgs{
 //				Comments: pulumi.String("this is a group comments."),
-//				Force:    pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -59,7 +58,6 @@ import (
 // `),
 //
 //				Description: pulumi.String("this is a policy test"),
-//				Force:       pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

@@ -215,6 +215,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.dbNodeCount;
     }
     /**
+     * The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+     * 
+     */
+    @Export(name="dbNodeNum", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> dbNodeNum;
+
+    /**
+     * @return The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+     * 
+     */
+    public Output<Optional<Integer>> dbNodeNum() {
+        return Codegen.optional(this.dbNodeNum);
+    }
+    /**
      * Database type. Value options: MySQL, Oracle, PostgreSQL.
      * 
      */
@@ -241,6 +255,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> dbVersion() {
         return this.dbVersion;
+    }
+    /**
+     * The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+     * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+     * 
+     */
+    @Export(name="defaultTimeZone", type=String.class, parameters={})
+    private Output</* @Nullable */ String> defaultTimeZone;
+
+    /**
+     * @return The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+     * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+     * 
+     */
+    public Output<Optional<String>> defaultTimeZone() {
+        return Codegen.optional(this.defaultTimeZone);
     }
     /**
      * turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
@@ -365,6 +395,38 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.imciSwitch;
     }
     /**
+     * Enable the Binlog function. Valid values are `OFF`, `ON`.
+     * &gt; **NOTE:** This parameter is valid only MySQL Engine supports.
+     * 
+     */
+    @Export(name="loosePolarLogBin", type=String.class, parameters={})
+    private Output</* @Nullable */ String> loosePolarLogBin;
+
+    /**
+     * @return Enable the Binlog function. Valid values are `OFF`, `ON`.
+     * &gt; **NOTE:** This parameter is valid only MySQL Engine supports.
+     * 
+     */
+    public Output<Optional<String>> loosePolarLogBin() {
+        return Codegen.optional(this.loosePolarLogBin);
+    }
+    /**
+     * Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+     * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+     * 
+     */
+    @Export(name="lowerCaseTableNames", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> lowerCaseTableNames;
+
+    /**
+     * @return Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+     * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
+     * 
+     */
+    public Output<Optional<Integer>> lowerCaseTableNames() {
+        return Codegen.optional(this.lowerCaseTableNames);
+    }
+    /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      * 
      */
@@ -391,6 +453,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> modifyType() {
         return Codegen.optional(this.modifyType);
+    }
+    /**
+     * The ID of the parameter template
+     * &gt; **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+     * 
+     */
+    @Export(name="parameterGroupId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> parameterGroupId;
+
+    /**
+     * @return The ID of the parameter template
+     * &gt; **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+     * 
+     */
+    public Output<Optional<String>> parameterGroupId() {
+        return Codegen.optional(this.parameterGroupId);
     }
     /**
      * Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
@@ -481,6 +559,38 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> port() {
         return this.port;
+    }
+    /**
+     * The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+     * &gt; **NOTE:** This parameter is valid only for standard clusters.
+     * 
+     */
+    @Export(name="proxyClass", type=String.class, parameters={})
+    private Output</* @Nullable */ String> proxyClass;
+
+    /**
+     * @return The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
+     * &gt; **NOTE:** This parameter is valid only for standard clusters.
+     * 
+     */
+    public Output<Optional<String>> proxyClass() {
+        return Codegen.optional(this.proxyClass);
+    }
+    /**
+     * The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+     * &gt; **NOTE:** This parameter is valid only for standard clusters.
+     * 
+     */
+    @Export(name="proxyType", type=String.class, parameters={})
+    private Output</* @Nullable */ String> proxyType;
+
+    /**
+     * @return The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+     * &gt; **NOTE:** This parameter is valid only for standard clusters.
+     * 
+     */
+    public Output<Optional<String>> proxyType() {
+        return Codegen.optional(this.proxyType);
     }
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -681,18 +791,36 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
+     * The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+     * 
+     */
+    @Export(name="storagePayType", type=String.class, parameters={})
+    private Output<String> storagePayType;
+
+    /**
+     * @return The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+     * 
+     */
+    public Output<String> storagePayType() {
+        return this.storagePayType;
+    }
+    /**
      * Storage space charged by space (monthly package). Unit: GB.
+     * &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
+     * **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
      * 
      */
     @Export(name="storageSpace", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> storageSpace;
+    private Output<Integer> storageSpace;
 
     /**
      * @return Storage space charged by space (monthly package). Unit: GB.
+     * &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
+     * **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
      * 
      */
-    public Output<Optional<Integer>> storageSpace() {
-        return Codegen.optional(this.storageSpace);
+    public Output<Integer> storageSpace() {
+        return this.storageSpace;
     }
     /**
      * The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.

@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Service Mesh UserPermission resource.
  * 
- * For information about Service Mesh User Permission and how to use it, see [What is User Permission](https://help.aliyun.com/document_detail/171622.html).
+ * For information about Service Mesh User Permission and how to use it, see [What is User Permission](https://www.alibabacloud.com/help/en/alibaba-cloud-service-mesh/latest/api-servicemesh-2020-01-11-grantuserpermissions).
  * 
- * &gt; **NOTE:** Available in v1.174.0+.
+ * &gt; **NOTE:** Available since v1.174.0.
  * 
  * ## Example Usage
  * 
@@ -32,18 +32,19 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.servicemesh.ServicemeshFunctions;
- * import com.pulumi.alicloud.servicemesh.inputs.GetVersionsArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
- * import com.pulumi.alicloud.ram.User;
+ * import com.pulumi.alicloud.servicemesh.ServicemeshFunctions;
+ * import com.pulumi.alicloud.servicemesh.inputs.GetVersionsArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.servicemesh.ServiceMesh;
  * import com.pulumi.alicloud.servicemesh.ServiceMeshArgs;
  * import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshNetworkArgs;
  * import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshLoadBalancerArgs;
+ * import com.pulumi.alicloud.ram.User;
  * import com.pulumi.alicloud.servicemesh.UserPermission;
  * import com.pulumi.alicloud.servicemesh.UserPermissionArgs;
  * import com.pulumi.alicloud.servicemesh.inputs.UserPermissionPermissionArgs;
@@ -61,34 +62,35 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;servicemesh&#34;);
- *         final var defaultVersions = ServicemeshFunctions.getVersions(GetVersionsArgs.builder()
- *             .edition(&#34;Default&#34;)
- *             .build());
- * 
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;default-NODELETING&#34;)
+ *         final var defaultVersions = ServicemeshFunctions.getVersions(GetVersionsArgs.builder()
+ *             .edition(&#34;Default&#34;)
  *             .build());
  * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.1.0.0/16&#34;)
+ *             .vpcId(defaultNetwork.id())
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var defaultUser = new User(&#34;defaultUser&#34;);
- * 
- *         var default1 = new ServiceMesh(&#34;default1&#34;, ServiceMeshArgs.builder()        
+ *         var defaultServiceMesh = new ServiceMesh(&#34;defaultServiceMesh&#34;, ServiceMeshArgs.builder()        
  *             .serviceMeshName(name)
- *             .edition(&#34;Default&#34;)
+ *             .edition(&#34;Pro&#34;)
  *             .version(defaultVersions.applyValue(getVersionsResult -&gt; getVersionsResult.versions()[0].version()))
- *             .clusterSpec(&#34;standard&#34;)
+ *             .clusterSpec(&#34;enterprise&#34;)
  *             .network(ServiceMeshNetworkArgs.builder()
- *                 .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *                 .vswitcheList(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *                 .vpcId(defaultNetwork.id())
+ *                 .vswitcheList(defaultSwitch.id())
  *                 .build())
  *             .loadBalancer(ServiceMeshLoadBalancerArgs.builder()
  *                 .pilotPublicEip(false)
@@ -96,11 +98,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var example = new UserPermission(&#34;example&#34;, UserPermissionArgs.builder()        
+ *         var defaultUser = new User(&#34;defaultUser&#34;);
+ * 
+ *         var defaultUserPermission = new UserPermission(&#34;defaultUserPermission&#34;, UserPermissionArgs.builder()        
  *             .subAccountUserId(defaultUser.id())
  *             .permissions(UserPermissionPermissionArgs.builder()
  *                 .roleName(&#34;istio-admin&#34;)
- *                 .serviceMeshId(default1.id())
+ *                 .serviceMeshId(defaultServiceMesh.id())
  *                 .roleType(&#34;custom&#34;)
  *                 .isCustom(true)
  *                 .isRamRole(false)
@@ -123,14 +127,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:servicemesh/userPermission:UserPermission")
 public class UserPermission extends com.pulumi.resources.CustomResource {
     /**
-     * List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+     * List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
      * 
      */
     @Export(name="permissions", type=List.class, parameters={UserPermissionPermission.class})
     private Output<List<UserPermissionPermission>> permissions;
 
     /**
-     * @return List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+     * @return List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
      * 
      */
     public Output<List<UserPermissionPermission>> permissions() {

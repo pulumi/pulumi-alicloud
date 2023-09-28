@@ -33,6 +33,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.ocean.BaseInstance;
  * import com.pulumi.alicloud.ocean.BaseInstanceArgs;
  * import java.util.List;
@@ -48,16 +52,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new BaseInstance(&#34;default&#34;, BaseInstanceArgs.builder()        
- *             .instanceName(var_.name())
- *             .series(&#34;normal&#34;)
- *             .diskSize(200)
- *             .instanceClass(&#34;14C70GB&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones();
+ * 
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ * 
+ *         var defaultBaseInstance = new BaseInstance(&#34;defaultBaseInstance&#34;, BaseInstanceArgs.builder()        
+ *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
  *             .zones(            
- *                 &#34;ap-southeast-1a&#34;,
- *                 &#34;ap-southeast-1b&#34;,
- *                 &#34;ap-southeast-1c&#34;)
+ *                 defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids())[defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()).length() - 2],
+ *                 defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids())[defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()).length() - 3],
+ *                 defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids())[defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()).length() - 4])
+ *             .autoRenew(&#34;false&#34;)
+ *             .diskSize(&#34;100&#34;)
  *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .instanceClass(&#34;8C32GB&#34;)
+ *             .backupRetainMode(&#34;delete_all&#34;)
+ *             .series(&#34;normal&#34;)
+ *             .instanceName(name)
  *             .build());
  * 
  *     }
@@ -76,66 +89,74 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ocean/baseInstance:BaseInstance")
 public class BaseInstance extends com.pulumi.resources.CustomResource {
     /**
-     * Whether to automatically renew.It takes effect when the parameter ChargeType is PrePaid. Value range:
+     * Whether to automatically renew.
+     * It takes effect when the parameter ChargeType is PrePaid. Value range:
      * - true: automatic renewal.
      * - false (default): no automatic renewal.
      * 
      */
     @Export(name="autoRenew", type=Boolean.class, parameters={})
-    private Output<Boolean> autoRenew;
+    private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
-     * @return Whether to automatically renew.It takes effect when the parameter ChargeType is PrePaid. Value range:
+     * @return Whether to automatically renew.
+     * It takes effect when the parameter ChargeType is PrePaid. Value range:
      * - true: automatic renewal.
      * - false (default): no automatic renewal.
      * 
      */
-    public Output<Boolean> autoRenew() {
-        return this.autoRenew;
+    public Output<Optional<Boolean>> autoRenew() {
+        return Codegen.optional(this.autoRenew);
     }
     /**
-     * The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.-PeriodUnit is Week, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;}.-PeriodUnit is Month, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;6&#34;, &#34;12&#34;}.
+     * The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.
+     * - PeriodUnit is Week, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;}.
+     * - PeriodUnit is Month, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;6&#34;, &#34;12&#34;}.
      * 
      */
     @Export(name="autoRenewPeriod", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> autoRenewPeriod;
 
     /**
-     * @return The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.-PeriodUnit is Week, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;}.-PeriodUnit is Month, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;6&#34;, &#34;12&#34;}.
+     * @return The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.
+     * - PeriodUnit is Week, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;}.
+     * - PeriodUnit is Month, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;6&#34;, &#34;12&#34;}.
      * 
      */
     public Output<Optional<Integer>> autoRenewPeriod() {
         return Codegen.optional(this.autoRenewPeriod);
     }
     /**
-     * The backup retain mode.
+     * The backup retention policy after the cluster is deleted. The values are as follows:
+     * - receive_all: Keep all backup sets;
+     * - delete_all: delete all backup sets;
+     * - receive_last: Keep the last backup set.
+     * &gt; **NOTE:**   The default value is delete_all.
      * 
      */
     @Export(name="backupRetainMode", type=String.class, parameters={})
     private Output</* @Nullable */ String> backupRetainMode;
 
     /**
-     * @return The backup retain mode.
+     * @return The backup retention policy after the cluster is deleted. The values are as follows:
+     * - receive_all: Keep all backup sets;
+     * - delete_all: delete all backup sets;
+     * - receive_last: Keep the last backup set.
+     * &gt; **NOTE:**   The default value is delete_all.
      * 
      */
     public Output<Optional<String>> backupRetainMode() {
         return Codegen.optional(this.backupRetainMode);
     }
     /**
-     * The product code of the OceanBase cluster.
-     * - oceanbase_oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package.
-     * - oceanbase_oceanbasepost_public_cn: The domestic station cloud database is paid by the hour.
-     * - oceanbase_obpre_public_intl: International Station Cloud Database Package Monthly Package.
+     * The product code of the OceanBase cluster._oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package._oceanbasepost_public_cn: The domestic station cloud database is paid by the hour._obpre_public_intl: International Station Cloud Database Package Monthly Package.
      * 
      */
     @Export(name="commodityCode", type=String.class, parameters={})
     private Output<String> commodityCode;
 
     /**
-     * @return The product code of the OceanBase cluster.
-     * - oceanbase_oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package.
-     * - oceanbase_oceanbasepost_public_cn: The domestic station cloud database is paid by the hour.
-     * - oceanbase_obpre_public_intl: International Station Cloud Database Package Monthly Package.
+     * @return The product code of the OceanBase cluster._oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package._oceanbasepost_public_cn: The domestic station cloud database is paid by the hour._obpre_public_intl: International Station Cloud Database Package Monthly Package.
      * 
      */
     public Output<String> commodityCode() {
@@ -156,122 +177,172 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
         return this.cpu;
     }
     /**
-     * The creation time of the resource
+     * The creation time of the resource.
      * 
      */
     @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the resource
+     * @return The creation time of the resource.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * The size of the storage space, in GB.The limits of storage space vary according to the cluster specifications, as follows:
+     * The size of the storage space, in GB.
+     * The limits of storage space vary according to the cluster specifications, as follows:
      * - 8C32GB:100GB ~ 10000GB
      * - 14C70GB:200GB ~ 10000GB
      * - 30C180GB:400GB ~ 10000GB
      * - 62C400G:800GB ~ 10000GB.
-     * - The default value of each package is its minimum value.
+     *   The default value of each package is its minimum value.
      * 
      */
     @Export(name="diskSize", type=Integer.class, parameters={})
     private Output<Integer> diskSize;
 
     /**
-     * @return The size of the storage space, in GB.The limits of storage space vary according to the cluster specifications, as follows:
+     * @return The size of the storage space, in GB.
+     * The limits of storage space vary according to the cluster specifications, as follows:
      * - 8C32GB:100GB ~ 10000GB
      * - 14C70GB:200GB ~ 10000GB
      * - 30C180GB:400GB ~ 10000GB
      * - 62C400G:800GB ~ 10000GB.
-     * - The default value of each package is its minimum value.
+     *   The default value of each package is its minimum value.
      * 
      */
     public Output<Integer> diskSize() {
         return this.diskSize;
     }
     /**
-     * Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
+     * The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+     * Two types are currently supported:
+     * - cloud_essd_pl1: cloud disk ESSD pl1.
+     * - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
+     * 
+     */
+    @Export(name="diskType", type=String.class, parameters={})
+    private Output<String> diskType;
+
+    /**
+     * @return The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+     * Two types are currently supported:
+     * - cloud_essd_pl1: cloud disk ESSD pl1.
+     * - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
+     * 
+     */
+    public Output<String> diskType() {
+        return this.diskType;
+    }
+    /**
+     * Cluster specification information.
+     * Four packages are currently supported:
+     * - 8C32GB:8 cores 32GB.
+     * - 14C70GB (default):14 cores 70GB.
+     * - 30C180GB:30 cores 180GB.
+     * - 62C400GB:62 cores 400GB.
      * 
      */
     @Export(name="instanceClass", type=String.class, parameters={})
     private Output<String> instanceClass;
 
     /**
-     * @return Cluster specification information. Valid values: `14C70GB` (default), `30C180GB`, `62C400GB`, `8C32GB`, `16C70GB`, `24C120GB`, `32C160GB`, `64C380GB`, `20C32GB`, `40C64GB`, `4C16GB`.
+     * @return Cluster specification information.
+     * Four packages are currently supported:
+     * - 8C32GB:8 cores 32GB.
+     * - 14C70GB (default):14 cores 70GB.
+     * - 30C180GB:30 cores 180GB.
+     * - 62C400GB:62 cores 400GB.
      * 
      */
     public Output<String> instanceClass() {
         return this.instanceClass;
     }
     /**
-     * OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
+     * OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
      * 
      */
     @Export(name="instanceName", type=String.class, parameters={})
     private Output<String> instanceName;
 
     /**
-     * @return OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
+     * @return OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
      * 
      */
     public Output<String> instanceName() {
         return this.instanceName;
     }
     /**
-     * The number of nodes in the cluster.
+     * The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
      * 
      */
     @Export(name="nodeNum", type=String.class, parameters={})
     private Output<String> nodeNum;
 
     /**
-     * @return The number of nodes in the cluster.
+     * @return The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
      * 
      */
     public Output<String> nodeNum() {
         return this.nodeNum;
     }
     /**
-     * The payment method of the instance. Valid values: `PayAsYouGo`, `Subscription`.
+     * The OceanBase Server version number.
+     * 
+     */
+    @Export(name="obVersion", type=String.class, parameters={})
+    private Output<String> obVersion;
+
+    /**
+     * @return The OceanBase Server version number.
+     * 
+     */
+    public Output<String> obVersion() {
+        return this.obVersion;
+    }
+    /**
+     * The payment method of the instance. Value range:
+     * - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
+     * - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
      * 
      */
     @Export(name="paymentType", type=String.class, parameters={})
     private Output<String> paymentType;
 
     /**
-     * @return The payment method of the instance. Valid values: `PayAsYouGo`, `Subscription`.
+     * @return The payment method of the instance. Value range:
+     * - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
+     * - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
      * 
      */
     public Output<String> paymentType() {
         return this.paymentType;
     }
     /**
-     * The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter `payment_type` takes effect only when the value is `Subscription` and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When `period_unit` = Year, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;}. When `period_unit` = Month, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;4&#34;, &#34;5&#34;, &#34;6&#34;, &#34;7&#34;, &#34;8&#34;, &#34;9&#34;}.
+     * The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;4&#34;}. When PeriodUnit = Month, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;4&#34;, &#34;5&#34;, &#34;6&#34;, &#34;7&#34;, &#34;8&#34;, &#34;9&#34;, &#34;12&#34;, &#34;24&#34;, &#34;36&#34;, &#34;48&#34;, &#34;60&#34;}.
      * 
      */
     @Export(name="period", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter `payment_type` takes effect only when the value is `Subscription` and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When `period_unit` = Year, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;}. When `period_unit` = Month, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;4&#34;, &#34;5&#34;, &#34;6&#34;, &#34;7&#34;, &#34;8&#34;, &#34;9&#34;}.
+     * @return The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;4&#34;}. When PeriodUnit = Month, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;4&#34;, &#34;5&#34;, &#34;6&#34;, &#34;7&#34;, &#34;8&#34;, &#34;9&#34;, &#34;12&#34;, &#34;24&#34;, &#34;36&#34;, &#34;48&#34;, &#34;60&#34;}.
      * 
      */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
     /**
-     * The period unit. Valid values: `Month`,`Year`.
+     * The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
      * 
      */
     @Export(name="periodUnit", type=String.class, parameters={})
     private Output</* @Nullable */ String> periodUnit;
 
     /**
-     * @return The period unit. Valid values: `Month`,`Year`.
+     * @return The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
      * 
      */
     public Output<Optional<String>> periodUnit() {
@@ -292,14 +363,14 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * Series of OceanBase clusters. Valid values: `normal`(default), `history`, `normal_ssd`.
+     * Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
      * 
      */
     @Export(name="series", type=String.class, parameters={})
     private Output<String> series;
 
     /**
-     * @return Series of OceanBase clusters. Valid values: `normal`(default), `history`, `normal_ssd`.
+     * @return Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
      * 
      */
     public Output<String> series() {

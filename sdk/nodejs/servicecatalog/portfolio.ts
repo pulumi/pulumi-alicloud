@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Service Catalog Portfolio and how to use it, see [What is Portfolio](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-createportfolio).
  *
- * > **NOTE:** Available in v1.204.0+.
+ * > **NOTE:** Available since v1.204.0+.
  *
  * ## Example Usage
  *
@@ -19,9 +19,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
  * const _default = new alicloud.servicecatalog.Portfolio("default", {
- *     portfolioName: "example_value",
- *     providerName: "example_value",
+ *     portfolioName: name,
+ *     providerName: name,
  * });
  * ```
  *

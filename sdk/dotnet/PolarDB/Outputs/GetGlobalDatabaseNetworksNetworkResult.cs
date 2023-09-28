@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.PolarDB.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The status of the Global Database Network.
+        /// The status of the Global Database Network. Valid values:
         /// </summary>
         public readonly string Status;
 

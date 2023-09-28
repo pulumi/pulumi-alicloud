@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Security Center Group and how to use it, see [What is Group](https://www.alibabacloud.com/help/doc-detail/129195.htm).
  * 
- * &gt; **NOTE:** Available in v1.133.0+.
+ * &gt; **NOTE:** Available since v1.133.0.
  * 
  * ## Example Usage
  * 
@@ -45,8 +45,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
  *         var example = new Group(&#34;example&#34;, GroupArgs.builder()        
- *             .groupName(&#34;example_value&#34;)
+ *             .groupName(name)
  *             .build());
  * 
  *     }

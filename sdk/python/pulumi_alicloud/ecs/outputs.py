@@ -264,6 +264,7 @@ class EcsInstanceSetDataDisk(dict):
         :param str disk_category: The category of the disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
         :param str disk_description: The description of the data disk.
         :param str disk_name: The name of the data disk.
+        :param bool encrypted: Encrypted the data in this disk. Default value: `false`.
         :param str kms_key_id: The KMS key ID corresponding to the data disk.
         :param str performance_level: The performance level of the ESSD used as data disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
         :param str snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
@@ -333,6 +334,9 @@ class EcsInstanceSetDataDisk(dict):
     @property
     @pulumi.getter
     def encrypted(self) -> Optional[bool]:
+        """
+        Encrypted the data in this disk. Default value: `false`.
+        """
         return pulumi.get(self, "encrypted")
 
     @property

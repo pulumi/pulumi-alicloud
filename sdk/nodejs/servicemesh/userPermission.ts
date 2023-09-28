@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Service Mesh UserPermission resource.
  *
- * For information about Service Mesh User Permission and how to use it, see [What is User Permission](https://help.aliyun.com/document_detail/171622.html).
+ * For information about Service Mesh User Permission and how to use it, see [What is User Permission](https://www.alibabacloud.com/help/en/alibaba-cloud-service-mesh/latest/api-servicemesh-2020-01-11-grantuserpermissions).
  *
- * > **NOTE:** Available in v1.174.0+.
+ * > **NOTE:** Available since v1.174.0.
  *
  * ## Import
  *
@@ -50,7 +50,7 @@ export class UserPermission extends pulumi.CustomResource {
     }
 
     /**
-     * List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+     * List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
      */
     public readonly permissions!: pulumi.Output<outputs.servicemesh.UserPermissionPermission[]>;
     /**
@@ -91,7 +91,7 @@ export class UserPermission extends pulumi.CustomResource {
  */
 export interface UserPermissionState {
     /**
-     * List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+     * List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
      */
     permissions?: pulumi.Input<pulumi.Input<inputs.servicemesh.UserPermissionPermission>[]>;
     /**
@@ -105,7 +105,7 @@ export interface UserPermissionState {
  */
 export interface UserPermissionArgs {
     /**
-     * List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+     * List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
      */
     permissions?: pulumi.Input<pulumi.Input<inputs.servicemesh.UserPermissionPermission>[]>;
     /**

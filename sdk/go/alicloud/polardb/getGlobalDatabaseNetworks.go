@@ -14,7 +14,7 @@ import (
 
 // This data source provides the PolarDB Global Database Networks of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.181.0+.
+// > **NOTE:** Available since v1.181.0+.
 //
 // ## Example Usage
 //
@@ -26,28 +26,70 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := polardb.GetGlobalDatabaseNetworks(ctx, &polardb.GetGlobalDatabaseNetworksArgs{
-//				Ids: []string{
-//					"example_id",
+//			this, err := polardb.GetNodeClasses(ctx, &polardb.GetNodeClassesArgs{
+//				DbType:    pulumi.StringRef("MySQL"),
+//				DbVersion: pulumi.StringRef("8.0"),
+//				PayType:   "PostPaid",
+//				Category:  pulumi.StringRef("Normal"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      *pulumi.String(this.Classes[0].ZoneId),
+//				VswitchName: pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cluster, err := polardb.NewCluster(ctx, "cluster", &polardb.ClusterArgs{
+//				DbType:      pulumi.String("MySQL"),
+//				DbVersion:   pulumi.String("8.0"),
+//				PayType:     pulumi.String("PostPaid"),
+//				DbNodeCount: pulumi.Int(2),
+//				DbNodeClass: *pulumi.String(this.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass),
+//				VswitchId:   defaultSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultGlobalDatabaseNetwork, err := polardb.NewGlobalDatabaseNetwork(ctx, "defaultGlobalDatabaseNetwork", &polardb.GlobalDatabaseNetworkArgs{
+//				DbClusterId: cluster.ID(),
+//				Description: cluster.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := polardb.GetGlobalDatabaseNetworksOutput(ctx, polardb.GetGlobalDatabaseNetworksOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultGlobalDatabaseNetwork.ID(),
 //				},
 //			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("polardbGlobalDatabaseNetworkId1", ids.Networks[0].Id)
-//			description, err := polardb.GetGlobalDatabaseNetworks(ctx, &polardb.GetGlobalDatabaseNetworksArgs{
-//				Description: pulumi.StringRef("example_description"),
+//			ctx.Export("polardbGlobalDatabaseNetworkId1", ids.ApplyT(func(ids polardb.GetGlobalDatabaseNetworksResult) (*string, error) {
+//				return &ids.Networks[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			description := polardb.GetGlobalDatabaseNetworksOutput(ctx, polardb.GetGlobalDatabaseNetworksOutputArgs{
+//				Description: defaultGlobalDatabaseNetwork.Description,
 //			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("polardbGlobalDatabaseNetworkId2", description.Networks[0].Id)
+//			ctx.Export("polardbGlobalDatabaseNetworkId2", description.ApplyT(func(description polardb.GetGlobalDatabaseNetworksResult) (*string, error) {
+//				return &description.Networks[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -65,7 +107,7 @@ func GetGlobalDatabaseNetworks(ctx *pulumi.Context, args *GetGlobalDatabaseNetwo
 
 // A collection of arguments for invoking getGlobalDatabaseNetworks.
 type GetGlobalDatabaseNetworksArgs struct {
-	// The ID of the PolarDB cluster.
+	// The ID of the cluster.
 	DbClusterId *string `pulumi:"dbClusterId"`
 	// The description of the Global Database Network.
 	Description *string `pulumi:"description"`
@@ -77,23 +119,28 @@ type GetGlobalDatabaseNetworksArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
-	// The status of the Global Database Network.
+	// The status of the Global Database Network. Valid values:
 	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getGlobalDatabaseNetworks.
 type GetGlobalDatabaseNetworksResult struct {
+	// The ID of the PolarDB cluster.
 	DbClusterId *string `pulumi:"dbClusterId"`
+	// The description of the Global Database Network.
 	Description *string `pulumi:"description"`
-	GdnId       *string `pulumi:"gdnId"`
+	// The ID of the Global Database Network.
+	GdnId *string `pulumi:"gdnId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                             `pulumi:"id"`
-	Ids        []string                           `pulumi:"ids"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of PolarDB Global Database Networks. Each element contains the following attributes:
 	Networks   []GetGlobalDatabaseNetworksNetwork `pulumi:"networks"`
 	OutputFile *string                            `pulumi:"outputFile"`
 	PageNumber *int                               `pulumi:"pageNumber"`
 	PageSize   *int                               `pulumi:"pageSize"`
-	Status     *string                            `pulumi:"status"`
+	// The status of the Global Database Network.
+	Status *string `pulumi:"status"`
 }
 
 func GetGlobalDatabaseNetworksOutput(ctx *pulumi.Context, args GetGlobalDatabaseNetworksOutputArgs, opts ...pulumi.InvokeOption) GetGlobalDatabaseNetworksResultOutput {
@@ -111,7 +158,7 @@ func GetGlobalDatabaseNetworksOutput(ctx *pulumi.Context, args GetGlobalDatabase
 
 // A collection of arguments for invoking getGlobalDatabaseNetworks.
 type GetGlobalDatabaseNetworksOutputArgs struct {
-	// The ID of the PolarDB cluster.
+	// The ID of the cluster.
 	DbClusterId pulumi.StringPtrInput `pulumi:"dbClusterId"`
 	// The description of the Global Database Network.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -123,7 +170,7 @@ type GetGlobalDatabaseNetworksOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
-	// The status of the Global Database Network.
+	// The status of the Global Database Network. Valid values:
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -152,14 +199,17 @@ func (o GetGlobalDatabaseNetworksResultOutput) ToOutput(ctx context.Context) pul
 	}
 }
 
+// The ID of the PolarDB cluster.
 func (o GetGlobalDatabaseNetworksResultOutput) DbClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGlobalDatabaseNetworksResult) *string { return v.DbClusterId }).(pulumi.StringPtrOutput)
 }
 
+// The description of the Global Database Network.
 func (o GetGlobalDatabaseNetworksResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGlobalDatabaseNetworksResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the Global Database Network.
 func (o GetGlobalDatabaseNetworksResultOutput) GdnId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGlobalDatabaseNetworksResult) *string { return v.GdnId }).(pulumi.StringPtrOutput)
 }
@@ -173,6 +223,7 @@ func (o GetGlobalDatabaseNetworksResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGlobalDatabaseNetworksResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of PolarDB Global Database Networks. Each element contains the following attributes:
 func (o GetGlobalDatabaseNetworksResultOutput) Networks() GetGlobalDatabaseNetworksNetworkArrayOutput {
 	return o.ApplyT(func(v GetGlobalDatabaseNetworksResult) []GetGlobalDatabaseNetworksNetwork { return v.Networks }).(GetGlobalDatabaseNetworksNetworkArrayOutput)
 }
@@ -189,6 +240,7 @@ func (o GetGlobalDatabaseNetworksResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetGlobalDatabaseNetworksResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// The status of the Global Database Network.
 func (o GetGlobalDatabaseNetworksResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGlobalDatabaseNetworksResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

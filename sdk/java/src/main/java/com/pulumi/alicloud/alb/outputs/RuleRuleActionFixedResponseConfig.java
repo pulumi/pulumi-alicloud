@@ -17,12 +17,12 @@ public final class RuleRuleActionFixedResponseConfig {
      */
     private String content;
     /**
-     * @return The format of the fixed response.  Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+     * @return The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
      * 
      */
     private @Nullable String contentType;
     /**
-     * @return The redirect method. Valid values:301, 302, 303, 307, and 308.
+     * @return The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
      * 
      */
     private @Nullable String httpCode;
@@ -36,14 +36,14 @@ public final class RuleRuleActionFixedResponseConfig {
         return this.content;
     }
     /**
-     * @return The format of the fixed response.  Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+     * @return The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
      * 
      */
     public Optional<String> contentType() {
         return Optional.ofNullable(this.contentType);
     }
     /**
-     * @return The redirect method. Valid values:301, 302, 303, 307, and 308.
+     * @return The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
      * 
      */
     public Optional<String> httpCode() {

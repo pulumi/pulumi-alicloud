@@ -268,7 +268,7 @@ class ServiceQueue(pulumi.CustomResource):
 
         For information about Message Notification Service Queue and how to use it, see [What is Queue](https://www.alibabacloud.com/help/en/message-service/latest/createqueue).
 
-        > **NOTE:** Available in v1.188.0+.
+        > **NOTE:** Available since v1.188.0.
 
         ## Example Usage
 
@@ -278,14 +278,18 @@ class ServiceQueue(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         queue = alicloud.message.ServiceQueue("queue",
+            queue_name=name,
             delay_seconds=60478,
-            logging_enabled=True,
             maximum_message_size=12357,
             message_retention_period=256000,
+            visibility_timeout=30,
             polling_wait_seconds=3,
-            queue_name="tf-example-value",
-            visibility_timeout=30)
+            logging_enabled=True)
         ```
 
         ## Import
@@ -317,7 +321,7 @@ class ServiceQueue(pulumi.CustomResource):
 
         For information about Message Notification Service Queue and how to use it, see [What is Queue](https://www.alibabacloud.com/help/en/message-service/latest/createqueue).
 
-        > **NOTE:** Available in v1.188.0+.
+        > **NOTE:** Available since v1.188.0.
 
         ## Example Usage
 
@@ -327,14 +331,18 @@ class ServiceQueue(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         queue = alicloud.message.ServiceQueue("queue",
+            queue_name=name,
             delay_seconds=60478,
-            logging_enabled=True,
             maximum_message_size=12357,
             message_retention_period=256000,
+            visibility_timeout=30,
             polling_wait_seconds=3,
-            queue_name="tf-example-value",
-            visibility_timeout=30)
+            logging_enabled=True)
         ```
 
         ## Import

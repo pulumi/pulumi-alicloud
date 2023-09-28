@@ -18,6 +18,8 @@ import * as utilities from "../utilities";
  * * [Configure a TCP Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
  * * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
  *
+ * > **NOTE:** Available since v1.0.0.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -27,7 +29,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const slbListenerName = config.get("slbListenerName") || "forSlbListener";
  * const listenerApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("listenerApplicationLoadBalancer", {
- *     loadBalancerName: "tf-testAccSlbListenerHttp",
+ *     loadBalancerName: "tf-exampleSlbListenerHttp",
  *     internetChargeType: "PayByTraffic",
  *     addressType: "internet",
  *     instanceChargeType: "PayByCLCU",
@@ -42,7 +44,7 @@ import * as utilities from "../utilities";
  *     stickySession: "on",
  *     stickySessionType: "insert",
  *     cookieTimeout: 86400,
- *     cookie: "testslblistenercookie",
+ *     cookie: "tfslblistenercookie",
  *     healthCheck: "on",
  *     healthCheckDomain: "ali.com",
  *     healthCheckUri: "/cons",
@@ -208,7 +210,7 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly frontendPort!: pulumi.Output<number>;
     /**
-     * Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+     * Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
      */
     public readonly gzip!: pulumi.Output<boolean | undefined>;
     /**
@@ -256,15 +258,11 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly idleTimeout!: pulumi.Output<number | undefined>;
     /**
-     * @deprecated Field 'instance_port' has been deprecated, and using 'backend_port' to replace.
-     */
-    public readonly instancePort!: pulumi.Output<number | undefined>;
-    /**
-     * @deprecated Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.
+     * @deprecated Field 'lb_port' has been removed since 1.211.0.
      */
     public readonly lbPort!: pulumi.Output<number | undefined>;
     /**
-     * @deprecated Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.
+     * @deprecated Field 'lb_protocol' has been removed since 1.211.0.
      */
     public readonly lbProtocol!: pulumi.Output<string | undefined>;
     /**
@@ -335,7 +333,7 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly unhealthyThreshold!: pulumi.Output<number | undefined>;
     /**
-     * Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `xForwardedFor`.
+     * Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `xForwardedFor` below.
      */
     public readonly xForwardedFor!: pulumi.Output<outputs.slb.ListenerXForwardedFor>;
 
@@ -378,7 +376,6 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["healthCheckUri"] = state ? state.healthCheckUri : undefined;
             resourceInputs["healthyThreshold"] = state ? state.healthyThreshold : undefined;
             resourceInputs["idleTimeout"] = state ? state.idleTimeout : undefined;
-            resourceInputs["instancePort"] = state ? state.instancePort : undefined;
             resourceInputs["lbPort"] = state ? state.lbPort : undefined;
             resourceInputs["lbProtocol"] = state ? state.lbProtocol : undefined;
             resourceInputs["listenerForward"] = state ? state.listenerForward : undefined;
@@ -434,7 +431,6 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["healthCheckUri"] = args ? args.healthCheckUri : undefined;
             resourceInputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
             resourceInputs["idleTimeout"] = args ? args.idleTimeout : undefined;
-            resourceInputs["instancePort"] = args ? args.instancePort : undefined;
             resourceInputs["lbPort"] = args ? args.lbPort : undefined;
             resourceInputs["lbProtocol"] = args ? args.lbProtocol : undefined;
             resourceInputs["listenerForward"] = args ? args.listenerForward : undefined;
@@ -520,7 +516,7 @@ export interface ListenerState {
      */
     frontendPort?: pulumi.Input<number>;
     /**
-     * Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+     * Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
      */
     gzip?: pulumi.Input<boolean>;
     /**
@@ -568,15 +564,11 @@ export interface ListenerState {
      */
     idleTimeout?: pulumi.Input<number>;
     /**
-     * @deprecated Field 'instance_port' has been deprecated, and using 'backend_port' to replace.
-     */
-    instancePort?: pulumi.Input<number>;
-    /**
-     * @deprecated Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.
+     * @deprecated Field 'lb_port' has been removed since 1.211.0.
      */
     lbPort?: pulumi.Input<number>;
     /**
-     * @deprecated Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.
+     * @deprecated Field 'lb_protocol' has been removed since 1.211.0.
      */
     lbProtocol?: pulumi.Input<string>;
     /**
@@ -647,7 +639,7 @@ export interface ListenerState {
      */
     unhealthyThreshold?: pulumi.Input<number>;
     /**
-     * Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `xForwardedFor`.
+     * Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `xForwardedFor` below.
      */
     xForwardedFor?: pulumi.Input<inputs.slb.ListenerXForwardedFor>;
 }
@@ -713,7 +705,7 @@ export interface ListenerArgs {
      */
     frontendPort: pulumi.Input<number>;
     /**
-     * Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+     * Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
      */
     gzip?: pulumi.Input<boolean>;
     /**
@@ -761,15 +753,11 @@ export interface ListenerArgs {
      */
     idleTimeout?: pulumi.Input<number>;
     /**
-     * @deprecated Field 'instance_port' has been deprecated, and using 'backend_port' to replace.
-     */
-    instancePort?: pulumi.Input<number>;
-    /**
-     * @deprecated Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.
+     * @deprecated Field 'lb_port' has been removed since 1.211.0.
      */
     lbPort?: pulumi.Input<number>;
     /**
-     * @deprecated Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.
+     * @deprecated Field 'lb_protocol' has been removed since 1.211.0.
      */
     lbProtocol?: pulumi.Input<string>;
     /**
@@ -840,7 +828,7 @@ export interface ListenerArgs {
      */
     unhealthyThreshold?: pulumi.Input<number>;
     /**
-     * Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `xForwardedFor`.
+     * Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `xForwardedFor` below.
      */
     xForwardedFor?: pulumi.Input<inputs.slb.ListenerXForwardedFor>;
 }

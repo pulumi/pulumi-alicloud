@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// <summary>
         /// This data source provides the PolarDB Parameter Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.183.0+.
+        /// &gt; **NOTE:** Available since v1.183.0+.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -30,17 +30,23 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var @default = AliCloud.PolarDB.GetParameterGroups.Invoke(new()
+        ///     {
+        ///         DbType = "MySQL",
+        ///         DbVersion = "8.0",
+        ///     });
+        /// 
         ///     var ids = AliCloud.PolarDB.GetParameterGroups.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "example_id",
+        ///             @default.Apply(getParameterGroupsResult =&gt; getParameterGroupsResult.Groups[0]?.Id),
         ///         },
         ///     });
         /// 
         ///     var nameRegex = AliCloud.PolarDB.GetParameterGroups.Invoke(new()
         ///     {
-        ///         NameRegex = "example_name",
+        ///         NameRegex = @default.Apply(getParameterGroupsResult =&gt; getParameterGroupsResult.Groups[0]?.ParameterGroupName),
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -59,7 +65,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// <summary>
         /// This data source provides the PolarDB Parameter Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.183.0+.
+        /// &gt; **NOTE:** Available since v1.183.0+.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -75,17 +81,23 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var @default = AliCloud.PolarDB.GetParameterGroups.Invoke(new()
+        ///     {
+        ///         DbType = "MySQL",
+        ///         DbVersion = "8.0",
+        ///     });
+        /// 
         ///     var ids = AliCloud.PolarDB.GetParameterGroups.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "example_id",
+        ///             @default.Apply(getParameterGroupsResult =&gt; getParameterGroupsResult.Groups[0]?.Id),
         ///         },
         ///     });
         /// 
         ///     var nameRegex = AliCloud.PolarDB.GetParameterGroups.Invoke(new()
         ///     {
-        ///         NameRegex = "example_name",
+        ///         NameRegex = @default.Apply(getParameterGroupsResult =&gt; getParameterGroupsResult.Groups[0]?.ParameterGroupName),
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -106,13 +118,13 @@ namespace Pulumi.AliCloud.PolarDB
     public sealed class GetParameterGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of the database engine.
+        /// The type of the database engine. Only `MySQL` is supported.
         /// </summary>
         [Input("dbType")]
         public string? DbType { get; set; }
 
         /// <summary>
-        /// The version number of the database engine.
+        /// The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
         /// </summary>
         [Input("dbVersion")]
         public string? DbVersion { get; set; }
@@ -150,13 +162,13 @@ namespace Pulumi.AliCloud.PolarDB
     public sealed class GetParameterGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of the database engine.
+        /// The type of the database engine. Only `MySQL` is supported.
         /// </summary>
         [Input("dbType")]
         public Input<string>? DbType { get; set; }
 
         /// <summary>
-        /// The version number of the database engine.
+        /// The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
         /// </summary>
         [Input("dbVersion")]
         public Input<string>? DbVersion { get; set; }
@@ -195,8 +207,17 @@ namespace Pulumi.AliCloud.PolarDB
     [OutputType]
     public sealed class GetParameterGroupsResult
     {
+        /// <summary>
+        /// The type of the database engine.
+        /// </summary>
         public readonly string? DbType;
+        /// <summary>
+        /// The version number of the database engine.
+        /// </summary>
         public readonly string? DbVersion;
+        /// <summary>
+        /// A list of PolarDB Parameter Groups. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetParameterGroupsGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -204,6 +225,9 @@ namespace Pulumi.AliCloud.PolarDB
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Parameter Group names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
 

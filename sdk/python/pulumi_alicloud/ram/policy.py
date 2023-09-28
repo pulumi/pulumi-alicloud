@@ -464,7 +464,6 @@ class Policy(pulumi.CustomResource):
         # Create a new RAM Policy.
         policy = alicloud.ram.Policy("policy",
             description="this is a policy test",
-            force=True,
             policy_document=\"\"\"  {
             "Statement": [
               {
@@ -532,7 +531,6 @@ class Policy(pulumi.CustomResource):
         # Create a new RAM Policy.
         policy = alicloud.ram.Policy("policy",
             description="this is a policy test",
-            force=True,
             policy_document=\"\"\"  {
             "Statement": [
               {
@@ -755,7 +753,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rotateStrategy")
-    def rotate_strategy(self) -> pulumi.Output[Optional[str]]:
+    def rotate_strategy(self) -> pulumi.Output[str]:
         """
         The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
         """

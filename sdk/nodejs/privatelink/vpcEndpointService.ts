@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Private Link Vpc Endpoint Service resource.
  *
- * For information about Private Link Vpc Endpoint Service and how to use it, see [What is Vpc Endpoint Service](https://help.aliyun.com/document_detail/183540.html).
+ * For information about Private Link Vpc Endpoint Service and how to use it, see [What is Vpc Endpoint Service](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-createvpcendpointservice).
  *
- * > **NOTE:** Available in v1.109.0+.
+ * > **NOTE:** Available since v1.109.0.
  *
  * ## Example Usage
  *
@@ -19,10 +19,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
  * const example = new alicloud.privatelink.VpcEndpointService("example", {
- *     autoAcceptConnection: false,
+ *     serviceDescription: name,
  *     connectBandwidth: 103,
- *     serviceDescription: "tftest",
+ *     autoAcceptConnection: false,
  * });
  * ```
  *

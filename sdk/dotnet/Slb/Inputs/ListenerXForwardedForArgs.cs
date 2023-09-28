@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.Slb.Inputs
 
     public sealed class ListenerXForwardedForArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to retrieve the client ip. It is read-only attribute.
+        /// </summary>
         [Input("retriveClientIp")]
         public Input<bool>? RetriveClientIp { get; set; }
 

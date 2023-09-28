@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Message
     /// 
     /// For information about Message Notification Service Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-service/latest/createtopic).
     /// 
-    /// &gt; **NOTE:** Available in v1.188.0+.
+    /// &gt; **NOTE:** Available since v1.188.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,11 +28,13 @@ namespace Pulumi.AliCloud.Message
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var @default = new AliCloud.Message.ServiceTopic("default", new()
     ///     {
-    ///         LoggingEnabled = true,
+    ///         TopicName = name,
     ///         MaxMessageSize = 12357,
-    ///         TopicName = "tf-example-value",
+    ///         LoggingEnabled = true,
     ///     });
     /// 
     /// });

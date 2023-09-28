@@ -22,14 +22,22 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
  * const acceptingRegion = config.get("acceptingRegion") || "cn-beijing";
- * const acceptingAccountAccessKey = config.get("acceptingAccountAccessKey") || "access_key";
- * const acceptingAccountSecretKey = config.get("acceptingAccountSecretKey") || "secret_key";
- * const local = new alicloud.Provider("local", {region: "cn-hangzhou"});
+ * const acceptUid = config.get("acceptUid") || "xxxx";
+ * // Method 1: Use assume_role to operate resources in the target account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
  * const accepting = new alicloud.Provider("accepting", {
  *     region: acceptingRegion,
- *     accessKey: acceptingAccountAccessKey,
- *     secretKey: acceptingAccountSecretKey,
+ *     assumeRole: {
+ *         roleArn: `acs:ram::${acceptUid}:role/terraform-example-assume-role`,
+ *     },
  * });
+ * // Method 2: Use the target account's access_key, secret_key
+ * // provider "alicloud" {
+ * //   region     = "cn-hangzhou"
+ * //   access_key = "access_key"
+ * //   secret_key = "secret_key"
+ * //   alias      = "accepting"
+ * // }
+ * const local = new alicloud.Provider("local", {region: "cn-hangzhou"});
  * const localNetwork = new alicloud.vpc.Network("localNetwork", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",

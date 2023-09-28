@@ -10,7 +10,7 @@ import java.util.Objects;
 @CustomType
 public final class GetSharedResourcesResource {
     /**
-     * @return The ID of the Shared Resource.
+     * @return The ID of the Shared Resource. It formats as `&lt;resource_id&gt;:&lt;resource_type&gt;`.
      * 
      */
     private String id;
@@ -30,14 +30,14 @@ public final class GetSharedResourcesResource {
      */
     private String resourceType;
     /**
-     * @return The status of shared resource.
+     * @return The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
      * 
      */
     private String status;
 
     private GetSharedResourcesResource() {}
     /**
-     * @return The ID of the Shared Resource.
+     * @return The ID of the Shared Resource. It formats as `&lt;resource_id&gt;:&lt;resource_type&gt;`.
      * 
      */
     public String id() {
@@ -65,7 +65,7 @@ public final class GetSharedResourcesResource {
         return this.resourceType;
     }
     /**
-     * @return The status of shared resource.
+     * @return The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
      * 
      */
     public String status() {

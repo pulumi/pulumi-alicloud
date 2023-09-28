@@ -7,35 +7,41 @@ import * as utilities from "../utilities";
 /**
  * This resource will help you to bind a VPC to an OTS instance.
  *
+ * > **NOTE:** Available since v1.10.0.
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Create an OTS instance
- * const fooInstance = new alicloud.ots.Instance("fooInstance", {
- *     description: "for table",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultInstance = new alicloud.ots.Instance("defaultInstance", {
+ *     description: name,
  *     accessedBy: "Vpc",
  *     tags: {
  *         Created: "TF",
- *         For: "Building table",
+ *         For: "example",
  *     },
  * });
- * const fooZones = alicloud.getZones({
+ * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {cidrBlock: "172.16.0.0/16"});
- * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
- *     vpcId: fooNetwork.id,
- *     vswitchName: "for-ots-instance",
- *     cidrBlock: "172.16.1.0/24",
- *     zoneId: fooZones.then(fooZones => fooZones.zones?.[0]?.id),
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
  * });
- * const fooInstanceAttachment = new alicloud.ots.InstanceAttachment("fooInstanceAttachment", {
- *     instanceName: fooInstance.name,
- *     vpcName: "attachment1",
- *     vswitchId: fooSwitch.id,
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultInstanceAttachment = new alicloud.ots.InstanceAttachment("defaultInstanceAttachment", {
+ *     instanceName: defaultInstance.name,
+ *     vpcName: "examplename",
+ *     vswitchId: defaultSwitch.id,
  * });
  * ```
  */
@@ -76,7 +82,7 @@ export class InstanceAttachment extends pulumi.CustomResource {
      */
     public /*out*/ readonly vpcId!: pulumi.Output<string>;
     /**
-     * The name of attaching VPC to instance.
+     * The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
      */
     public readonly vpcName!: pulumi.Output<string>;
     /**
@@ -135,7 +141,7 @@ export interface InstanceAttachmentState {
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * The name of attaching VPC to instance.
+     * The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
      */
     vpcName?: pulumi.Input<string>;
     /**
@@ -153,7 +159,7 @@ export interface InstanceAttachmentArgs {
      */
     instanceName: pulumi.Input<string>;
     /**
-     * The name of attaching VPC to instance.
+     * The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
      */
     vpcName: pulumi.Input<string>;
     /**

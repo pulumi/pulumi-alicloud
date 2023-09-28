@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about HBR and how to use it, see [What is HBR](https://www.alibabacloud.com/help/en/hybrid-backup-recovery).
  *
- * > **NOTE:** Available in v1.184.0+
+ * > **NOTE:** Available since v1.184.0+
  *
  * ## Example Usage
  *
@@ -64,7 +64,7 @@ export interface GetServiceResult {
  *
  * For information about HBR and how to use it, see [What is HBR](https://www.alibabacloud.com/help/en/hybrid-backup-recovery).
  *
- * > **NOTE:** Available in v1.184.0+
+ * > **NOTE:** Available since v1.184.0+
  *
  * ## Example Usage
  *

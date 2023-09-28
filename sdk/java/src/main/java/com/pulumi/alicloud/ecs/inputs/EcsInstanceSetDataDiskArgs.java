@@ -100,9 +100,17 @@ public final class EcsInstanceSetDataDiskArgs extends com.pulumi.resources.Resou
         return this.diskSize;
     }
 
+    /**
+     * Encrypted the data in this disk. Default value: `false`.
+     * 
+     */
     @Import(name="encrypted")
     private @Nullable Output<Boolean> encrypted;
 
+    /**
+     * @return Encrypted the data in this disk. Default value: `false`.
+     * 
+     */
     public Optional<Output<Boolean>> encrypted() {
         return Optional.ofNullable(this.encrypted);
     }
@@ -297,11 +305,23 @@ public final class EcsInstanceSetDataDiskArgs extends com.pulumi.resources.Resou
             return diskSize(Output.of(diskSize));
         }
 
+        /**
+         * @param encrypted Encrypted the data in this disk. Default value: `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder encrypted(@Nullable Output<Boolean> encrypted) {
             $.encrypted = encrypted;
             return this;
         }
 
+        /**
+         * @param encrypted Encrypted the data in this disk. Default value: `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder encrypted(Boolean encrypted) {
             return encrypted(Output.of(encrypted));
         }

@@ -25,29 +25,36 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooCommonBandwithPackage, err := vpc.NewCommonBandwithPackage(ctx, "fooCommonBandwithPackage", &vpc.CommonBandwithPackageArgs{
-//				Bandwidth:            pulumi.String("2"),
-//				BandwidthPackageName: pulumi.String("test_common_bandwidth_package"),
-//				Description:          pulumi.String("test_common_bandwidth_package"),
-//			})
-//			if err != nil {
-//				return err
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
 //			}
-//			fooEipAddress, err := ecs.NewEipAddress(ctx, "fooEipAddress", &ecs.EipAddressArgs{
-//				Bandwidth:          pulumi.String("2"),
+//			defaultCommonBandwithPackage, err := vpc.NewCommonBandwithPackage(ctx, "defaultCommonBandwithPackage", &vpc.CommonBandwithPackageArgs{
+//				Bandwidth:          pulumi.String("3"),
 //				InternetChargeType: pulumi.String("PayByBandwidth"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewCommonBandwithPackageAttachment(ctx, "fooCommonBandwithPackageAttachment", &vpc.CommonBandwithPackageAttachmentArgs{
-//				BandwidthPackageId: fooCommonBandwithPackage.ID(),
-//				InstanceId:         fooEipAddress.ID(),
+//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
+//				Bandwidth:          pulumi.String("3"),
+//				InternetChargeType: pulumi.String("PayByTraffic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewCommonBandwithPackageAttachment(ctx, "defaultCommonBandwithPackageAttachment", &vpc.CommonBandwithPackageAttachmentArgs{
+//				BandwidthPackageId:        defaultCommonBandwithPackage.ID(),
+//				InstanceId:                defaultEipAddress.ID(),
+//				BandwidthPackageBandwidth: pulumi.String("2"),
+//				IpType:                    pulumi.String("EIP"),
 //			})
 //			if err != nil {
 //				return err
@@ -60,11 +67,11 @@ import (
 //
 // ## Import
 //
-// The common bandwidth package attachment can be imported using the id, e.g.
+// cbwp Common Bandwidth Package Attachment can be imported using the id, e.g.
 //
 // ```sh
 //
-//	$ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment foo <bandwidth_package_id>:<instance_id>
+//	$ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment example <bandwidth_package_id>:<instance_id>
 //
 // ```
 type CommonBandwithPackageAttachment struct {
@@ -78,6 +85,10 @@ type CommonBandwithPackageAttachment struct {
 	CancelCommonBandwidthPackageIpBandwidth pulumi.BoolPtrOutput `pulumi:"cancelCommonBandwidthPackageIpBandwidth"`
 	// The instanceId of the common bandwidth package attachment, the field can't be changed.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
+	// IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+	IpType pulumi.StringPtrOutput `pulumi:"ipType"`
+	// The status of the Internet Shared Bandwidth instance.
+	Status pulumi.StringOutput `pulumi:"status"`
 }
 
 // NewCommonBandwithPackageAttachment registers a new resource with the given unique name, arguments, and options.
@@ -124,6 +135,10 @@ type commonBandwithPackageAttachmentState struct {
 	CancelCommonBandwidthPackageIpBandwidth *bool `pulumi:"cancelCommonBandwidthPackageIpBandwidth"`
 	// The instanceId of the common bandwidth package attachment, the field can't be changed.
 	InstanceId *string `pulumi:"instanceId"`
+	// IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+	IpType *string `pulumi:"ipType"`
+	// The status of the Internet Shared Bandwidth instance.
+	Status *string `pulumi:"status"`
 }
 
 type CommonBandwithPackageAttachmentState struct {
@@ -135,6 +150,10 @@ type CommonBandwithPackageAttachmentState struct {
 	CancelCommonBandwidthPackageIpBandwidth pulumi.BoolPtrInput
 	// The instanceId of the common bandwidth package attachment, the field can't be changed.
 	InstanceId pulumi.StringPtrInput
+	// IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+	IpType pulumi.StringPtrInput
+	// The status of the Internet Shared Bandwidth instance.
+	Status pulumi.StringPtrInput
 }
 
 func (CommonBandwithPackageAttachmentState) ElementType() reflect.Type {
@@ -150,6 +169,8 @@ type commonBandwithPackageAttachmentArgs struct {
 	CancelCommonBandwidthPackageIpBandwidth *bool `pulumi:"cancelCommonBandwidthPackageIpBandwidth"`
 	// The instanceId of the common bandwidth package attachment, the field can't be changed.
 	InstanceId string `pulumi:"instanceId"`
+	// IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+	IpType *string `pulumi:"ipType"`
 }
 
 // The set of arguments for constructing a CommonBandwithPackageAttachment resource.
@@ -162,6 +183,8 @@ type CommonBandwithPackageAttachmentArgs struct {
 	CancelCommonBandwidthPackageIpBandwidth pulumi.BoolPtrInput
 	// The instanceId of the common bandwidth package attachment, the field can't be changed.
 	InstanceId pulumi.StringInput
+	// IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+	IpType pulumi.StringPtrInput
 }
 
 func (CommonBandwithPackageAttachmentArgs) ElementType() reflect.Type {
@@ -295,6 +318,16 @@ func (o CommonBandwithPackageAttachmentOutput) CancelCommonBandwidthPackageIpBan
 // The instanceId of the common bandwidth package attachment, the field can't be changed.
 func (o CommonBandwithPackageAttachmentOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommonBandwithPackageAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+func (o CommonBandwithPackageAttachmentOutput) IpType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CommonBandwithPackageAttachment) pulumi.StringPtrOutput { return v.IpType }).(pulumi.StringPtrOutput)
+}
+
+// The status of the Internet Shared Bandwidth instance.
+func (o CommonBandwithPackageAttachmentOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *CommonBandwithPackageAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 type CommonBandwithPackageAttachmentArrayOutput struct{ *pulumi.OutputState }

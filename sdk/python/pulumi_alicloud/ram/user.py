@@ -253,7 +253,6 @@ class User(pulumi.CustomResource):
             comments="yoyoyo",
             display_name="user_display_name",
             email="hello.uuu@aaa.com",
-            force=True,
             mobile="86-18688888888")
         ```
 
@@ -302,7 +301,6 @@ class User(pulumi.CustomResource):
             comments="yoyoyo",
             display_name="user_display_name",
             email="hello.uuu@aaa.com",
-            force=True,
             mobile="86-18688888888")
         ```
 

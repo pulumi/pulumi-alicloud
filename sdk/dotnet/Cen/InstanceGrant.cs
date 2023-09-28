@@ -29,15 +29,25 @@ namespace Pulumi.AliCloud.Cen
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var childAccountAk = config.Get("childAccountAk") ?? "example-ak";
-    ///     var childAccountSk = config.Get("childAccountSk") ?? "example-sk";
-    ///     var yourAccount = new AliCloud.Provider("yourAccount");
-    /// 
+    ///     var anotherUid = config.Get("anotherUid") ?? "xxxx";
+    ///     // Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
     ///     var childAccount = new AliCloud.Provider("childAccount", new()
     ///     {
-    ///         AccessKey = childAccountAk,
-    ///         SecretKey = childAccountSk,
+    ///         Region = "cn-hangzhou",
+    ///         AssumeRole = new AliCloud.Inputs.ProviderAssumeRoleArgs
+    ///         {
+    ///             RoleArn = $"acs:ram::{anotherUid}:role/terraform-example-assume-role",
+    ///         },
     ///     });
+    /// 
+    ///     // Method 2: Use the target cen account's access_key, secret_key
+    ///     // provider "alicloud" {
+    ///     //   region     = "cn-hangzhou"
+    ///     //   access_key = "access_key"
+    ///     //   secret_key = "secret_key"
+    ///     //   alias      = "child_account"
+    ///     // }
+    ///     var yourAccount = new AliCloud.Provider("yourAccount");
     /// 
     ///     var yourAccountAccount = AliCloud.GetAccount.Invoke();
     /// 

@@ -28,6 +28,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -46,24 +48,21 @@ import (
 //			if param := cfg.Get("acceptingRegion"); param != "" {
 //				acceptingRegion = param
 //			}
-//			acceptingAccountAccessKey := "access_key"
-//			if param := cfg.Get("acceptingAccountAccessKey"); param != "" {
-//				acceptingAccountAccessKey = param
+//			acceptUid := "xxxx"
+//			if param := cfg.Get("acceptUid"); param != "" {
+//				acceptUid = param
 //			}
-//			acceptingAccountSecretKey := "secret_key"
-//			if param := cfg.Get("acceptingAccountSecretKey"); param != "" {
-//				acceptingAccountSecretKey = param
-//			}
-//			_, err := alicloud.NewProvider(ctx, "local", &alicloud.ProviderArgs{
-//				Region: pulumi.String("cn-hangzhou"),
+//			_, err := alicloud.NewProvider(ctx, "accepting", &alicloud.ProviderArgs{
+//				Region: pulumi.String(acceptingRegion),
+//				AssumeRole: &alicloud.ProviderAssumeRoleArgs{
+//					RoleArn: pulumi.String(fmt.Sprintf("acs:ram::%v:role/terraform-example-assume-role", acceptUid)),
+//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = alicloud.NewProvider(ctx, "accepting", &alicloud.ProviderArgs{
-//				Region:    pulumi.String(acceptingRegion),
-//				AccessKey: pulumi.String(acceptingAccountAccessKey),
-//				SecretKey: pulumi.String(acceptingAccountSecretKey),
+//			_, err = alicloud.NewProvider(ctx, "local", &alicloud.ProviderArgs{
+//				Region: pulumi.String("cn-hangzhou"),
 //			})
 //			if err != nil {
 //				return err

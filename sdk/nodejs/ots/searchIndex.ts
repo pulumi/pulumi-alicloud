@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
  *
- * > **NOTE:** Available in v1.187.0+.
+ * > **NOTE:** Available since v1.187.0.
  *
  * ## Example Usage
  *
@@ -20,18 +20,22 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "terraformtest";
- * const instance1 = new alicloud.ots.Instance("instance1", {
+ * const name = config.get("name") || "tf-example";
+ * const defaultInstance = new alicloud.ots.Instance("defaultInstance", {
  *     description: name,
  *     accessedBy: "Any",
  *     tags: {
  *         Created: "TF",
- *         For: "acceptance test",
+ *         For: "example",
  *     },
  * });
- * const table1 = new alicloud.ots.Table("table1", {
- *     instanceName: instance1.name,
- *     tableName: name,
+ * const defaultTable = new alicloud.ots.Table("defaultTable", {
+ *     instanceName: defaultInstance.name,
+ *     tableName: "tf_example",
+ *     timeToLive: -1,
+ *     maxVersion: 1,
+ *     enableSse: true,
+ *     sseKeyType: "SSE_KMS_SERVICE",
  *     primaryKeys: [
  *         {
  *             name: "pk1",
@@ -41,25 +45,16 @@ import * as utilities from "../utilities";
  *             name: "pk2",
  *             type: "String",
  *         },
- *     ],
- *     definedColumns: [
  *         {
- *             name: "col1",
- *             type: "String",
- *         },
- *         {
- *             name: "col2",
- *             type: "Integer",
+ *             name: "pk3",
+ *             type: "Binary",
  *         },
  *     ],
- *     timeToLive: -1,
- *     maxVersion: 1,
- *     deviationCellVersionInSec: "1",
  * });
- * const _default = new alicloud.ots.SearchIndex("default", {
- *     instanceName: instance1.name,
- *     tableName: table1.tableName,
- *     indexName: name,
+ * const defaultSearchIndex = new alicloud.ots.SearchIndex("defaultSearchIndex", {
+ *     instanceName: defaultInstance.name,
+ *     tableName: defaultTable.tableName,
+ *     indexName: "example_index",
  *     timeToLive: -1,
  *     schemas: [{
  *         fieldSchemas: [
@@ -166,7 +161,7 @@ export class SearchIndex extends pulumi.CustomResource {
      */
     public readonly instanceName!: pulumi.Output<string>;
     /**
-     * The schema of the search index. If changed, a new index would be created.
+     * The schema of the search index. If changed, a new index would be created. See `schema` below.
      */
     public readonly schemas!: pulumi.Output<outputs.ots.SearchIndexSchema[]>;
     /**
@@ -259,7 +254,7 @@ export interface SearchIndexState {
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * The schema of the search index. If changed, a new index would be created.
+     * The schema of the search index. If changed, a new index would be created. See `schema` below.
      */
     schemas?: pulumi.Input<pulumi.Input<inputs.ots.SearchIndexSchema>[]>;
     /**
@@ -290,7 +285,7 @@ export interface SearchIndexArgs {
      */
     instanceName: pulumi.Input<string>;
     /**
-     * The schema of the search index. If changed, a new index would be created.
+     * The schema of the search index. If changed, a new index would be created. See `schema` below.
      */
     schemas: pulumi.Input<pulumi.Input<inputs.ots.SearchIndexSchema>[]>;
     /**

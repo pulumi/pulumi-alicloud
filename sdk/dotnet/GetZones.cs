@@ -35,12 +35,6 @@ namespace Pulumi.AliCloud
         ///         AvailableInstanceType = "ecs.n4.large",
         ///     });
         /// 
-        ///     // Create an ECS instance with the first matched zone
-        ///     var instance = new AliCloud.Ecs.Instance("instance", new()
-        ///     {
-        ///         AvailabilityZone = zonesDs.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-        ///     });
-        /// 
         /// });
         /// ```
         /// {{% /example %}}
@@ -71,12 +65,6 @@ namespace Pulumi.AliCloud
         ///     {
         ///         AvailableDiskCategory = "cloud_ssd",
         ///         AvailableInstanceType = "ecs.n4.large",
-        ///     });
-        /// 
-        ///     // Create an ECS instance with the first matched zone
-        ///     var instance = new AliCloud.Ecs.Instance("instance", new()
-        ///     {
-        ///         AvailabilityZone = zonesDs.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
         ///     });
         /// 
         /// });

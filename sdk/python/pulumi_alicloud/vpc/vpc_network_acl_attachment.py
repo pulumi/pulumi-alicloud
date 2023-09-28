@@ -146,7 +146,7 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
                  resource_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a VPC Network Acl Attachment resource.
+        Provides a VPC Network Acl Attachment resource. Resources associated with network Acl.
 
         For information about VPC Network Acl Attachment and how to use it, see [What is Network Acl Attachment](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/associatenetworkacl).
 
@@ -173,7 +173,7 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
                  args: VpcNetworkAclAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a VPC Network Acl Attachment resource.
+        Provides a VPC Network Acl Attachment resource. Resources associated with network Acl.
 
         For information about VPC Network Acl Attachment and how to use it, see [What is Network Acl Attachment](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/associatenetworkacl).
 

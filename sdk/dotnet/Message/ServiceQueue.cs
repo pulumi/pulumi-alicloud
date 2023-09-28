@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Message
     /// 
     /// For information about Message Notification Service Queue and how to use it, see [What is Queue](https://www.alibabacloud.com/help/en/message-service/latest/createqueue).
     /// 
-    /// &gt; **NOTE:** Available in v1.188.0+.
+    /// &gt; **NOTE:** Available since v1.188.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,15 +28,17 @@ namespace Pulumi.AliCloud.Message
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var queue = new AliCloud.Message.ServiceQueue("queue", new()
     ///     {
+    ///         QueueName = name,
     ///         DelaySeconds = 60478,
-    ///         LoggingEnabled = true,
     ///         MaximumMessageSize = 12357,
     ///         MessageRetentionPeriod = 256000,
-    ///         PollingWaitSeconds = 3,
-    ///         QueueName = "tf-example-value",
     ///         VisibilityTimeout = 30,
+    ///         PollingWaitSeconds = 3,
+    ///         LoggingEnabled = true,
     ///     });
     /// 
     /// });

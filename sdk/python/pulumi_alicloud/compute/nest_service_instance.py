@@ -33,10 +33,10 @@ class NestServiceInstanceArgs:
         The set of arguments for constructing a NestServiceInstance resource.
         :param pulumi.Input[str] service_id: The ID of the service.
         :param pulumi.Input[str] service_version: The version of the service.
-        :param pulumi.Input['NestServiceInstanceCommodityArgs'] commodity: The order information of cloud market. See the following `Block commodity`.
+        :param pulumi.Input['NestServiceInstanceCommodityArgs'] commodity: The order information of cloud market. See `commodity` below.
         :param pulumi.Input[bool] enable_instance_ops: Whether the service instance has the O&M function. Default value: `false`. Valid values:
         :param pulumi.Input[bool] enable_user_prometheus: Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
-        :param pulumi.Input['NestServiceInstanceOperationMetadataArgs'] operation_metadata: The configuration of O&M. See the following `Block operation_metadata`.
+        :param pulumi.Input['NestServiceInstanceOperationMetadataArgs'] operation_metadata: The configuration of O&M. See `operation_metadata` below.
         :param pulumi.Input[str] parameters: The parameters entered by the deployment service instance.
         :param pulumi.Input[str] payment_type: The type of payment. Valid values: `Permanent`, `Subscription`, `PayAsYouGo`, `CustomFixTime`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
@@ -98,7 +98,7 @@ class NestServiceInstanceArgs:
     @pulumi.getter
     def commodity(self) -> Optional[pulumi.Input['NestServiceInstanceCommodityArgs']]:
         """
-        The order information of cloud market. See the following `Block commodity`.
+        The order information of cloud market. See `commodity` below.
         """
         return pulumi.get(self, "commodity")
 
@@ -134,7 +134,7 @@ class NestServiceInstanceArgs:
     @pulumi.getter(name="operationMetadata")
     def operation_metadata(self) -> Optional[pulumi.Input['NestServiceInstanceOperationMetadataArgs']]:
         """
-        The configuration of O&M. See the following `Block operation_metadata`.
+        The configuration of O&M. See `operation_metadata` below.
         """
         return pulumi.get(self, "operation_metadata")
 
@@ -246,10 +246,10 @@ class _NestServiceInstanceState:
                  template_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering NestServiceInstance resources.
-        :param pulumi.Input['NestServiceInstanceCommodityArgs'] commodity: The order information of cloud market. See the following `Block commodity`.
+        :param pulumi.Input['NestServiceInstanceCommodityArgs'] commodity: The order information of cloud market. See `commodity` below.
         :param pulumi.Input[bool] enable_instance_ops: Whether the service instance has the O&M function. Default value: `false`. Valid values:
         :param pulumi.Input[bool] enable_user_prometheus: Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
-        :param pulumi.Input['NestServiceInstanceOperationMetadataArgs'] operation_metadata: The configuration of O&M. See the following `Block operation_metadata`.
+        :param pulumi.Input['NestServiceInstanceOperationMetadataArgs'] operation_metadata: The configuration of O&M. See `operation_metadata` below.
         :param pulumi.Input[str] parameters: The parameters entered by the deployment service instance.
         :param pulumi.Input[str] payment_type: The type of payment. Valid values: `Permanent`, `Subscription`, `PayAsYouGo`, `CustomFixTime`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
@@ -294,7 +294,7 @@ class _NestServiceInstanceState:
     @pulumi.getter
     def commodity(self) -> Optional[pulumi.Input['NestServiceInstanceCommodityArgs']]:
         """
-        The order information of cloud market. See the following `Block commodity`.
+        The order information of cloud market. See `commodity` below.
         """
         return pulumi.get(self, "commodity")
 
@@ -330,7 +330,7 @@ class _NestServiceInstanceState:
     @pulumi.getter(name="operationMetadata")
     def operation_metadata(self) -> Optional[pulumi.Input['NestServiceInstanceOperationMetadataArgs']]:
         """
-        The configuration of O&M. See the following `Block operation_metadata`.
+        The configuration of O&M. See `operation_metadata` below.
         """
         return pulumi.get(self, "operation_metadata")
 
@@ -481,9 +481,9 @@ class NestServiceInstance(pulumi.CustomResource):
         """
         Provides a Compute Nest Service Instance resource.
 
-        For information about Compute Nest Service Instance and how to use it, see [What is Service Instance](https://help.aliyun.com/document_detail/396194.html).
+        For information about Compute Nest Service Instance and how to use it, see [What is Service Instance](https://www.alibabacloud.com/help/en/compute-nest/developer-reference/api-computenest-2021-06-01-createserviceinstance).
 
-        > **NOTE:** Available in v1.205.0+.
+        > **NOTE:** Available since v1.205.0.
 
         ## Example Usage
 
@@ -493,18 +493,26 @@ class NestServiceInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
             instance_type_family="ecs.sn1ne")
         default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            most_recent=True,
             owners="system")
-        default_networks = alicloud.vpc.get_networks(name_regex="your_name_regex")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.1.0.0/16",
+            vpc_id=default_network.id,
             zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_instance = alicloud.ecs.Instance("defaultInstance",
             image_id=default_images.images[0].id,
             instance_type=default_instance_types.instance_types[0].id,
@@ -514,17 +522,26 @@ class NestServiceInstance(pulumi.CustomResource):
             availability_zone=default_zones.zones[0].id,
             instance_charge_type="PostPaid",
             system_disk_category="cloud_efficiency",
-            vswitch_id=default_switches.ids[0])
+            vswitch_id=default_switch.id)
         default_nest_service_instance = alicloud.compute.NestServiceInstance("defaultNestServiceInstance",
             service_id="service-dd475e6e468348799f0f",
             service_version="1",
-            service_instance_name=var["name"],
+            service_instance_name=name,
             resource_group_id=default_resource_groups.groups[0].id,
             payment_type="Permanent",
             operation_metadata=alicloud.compute.NestServiceInstanceOperationMetadataArgs(
                 operation_start_time="1681281179000",
                 operation_end_time="1681367579000",
-                resources=default_instance.id.apply(lambda id: f"{{\\"Type\\":\\"ResourceIds\\",\\"ResourceIds\\":{{\\"ALIYUN::ECS::INSTANCE\\":[\\"{id}\\"]}},\\"RegionId\\":\\"cn-hangzhou\\"}}"),
+                resources=default_instance.id.apply(lambda id: f\"\"\"    {{
+              "Type": "ResourceIds",
+              "RegionId": "cn-hangzhou",
+              "ResourceIds": {{
+              "ALIYUN::ECS::INSTANCE": [
+                "{id}"
+                ]
+              }} 
+            }}
+        \"\"\"),
             ),
             tags={
                 "Created": "TF",
@@ -542,10 +559,10 @@ class NestServiceInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['NestServiceInstanceCommodityArgs']] commodity: The order information of cloud market. See the following `Block commodity`.
+        :param pulumi.Input[pulumi.InputType['NestServiceInstanceCommodityArgs']] commodity: The order information of cloud market. See `commodity` below.
         :param pulumi.Input[bool] enable_instance_ops: Whether the service instance has the O&M function. Default value: `false`. Valid values:
         :param pulumi.Input[bool] enable_user_prometheus: Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
-        :param pulumi.Input[pulumi.InputType['NestServiceInstanceOperationMetadataArgs']] operation_metadata: The configuration of O&M. See the following `Block operation_metadata`.
+        :param pulumi.Input[pulumi.InputType['NestServiceInstanceOperationMetadataArgs']] operation_metadata: The configuration of O&M. See `operation_metadata` below.
         :param pulumi.Input[str] parameters: The parameters entered by the deployment service instance.
         :param pulumi.Input[str] payment_type: The type of payment. Valid values: `Permanent`, `Subscription`, `PayAsYouGo`, `CustomFixTime`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
@@ -565,9 +582,9 @@ class NestServiceInstance(pulumi.CustomResource):
         """
         Provides a Compute Nest Service Instance resource.
 
-        For information about Compute Nest Service Instance and how to use it, see [What is Service Instance](https://help.aliyun.com/document_detail/396194.html).
+        For information about Compute Nest Service Instance and how to use it, see [What is Service Instance](https://www.alibabacloud.com/help/en/compute-nest/developer-reference/api-computenest-2021-06-01-createserviceinstance).
 
-        > **NOTE:** Available in v1.205.0+.
+        > **NOTE:** Available since v1.205.0.
 
         ## Example Usage
 
@@ -577,18 +594,26 @@ class NestServiceInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
             instance_type_family="ecs.sn1ne")
         default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            most_recent=True,
             owners="system")
-        default_networks = alicloud.vpc.get_networks(name_regex="your_name_regex")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.1.0.0/16",
+            vpc_id=default_network.id,
             zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_instance = alicloud.ecs.Instance("defaultInstance",
             image_id=default_images.images[0].id,
             instance_type=default_instance_types.instance_types[0].id,
@@ -598,17 +623,26 @@ class NestServiceInstance(pulumi.CustomResource):
             availability_zone=default_zones.zones[0].id,
             instance_charge_type="PostPaid",
             system_disk_category="cloud_efficiency",
-            vswitch_id=default_switches.ids[0])
+            vswitch_id=default_switch.id)
         default_nest_service_instance = alicloud.compute.NestServiceInstance("defaultNestServiceInstance",
             service_id="service-dd475e6e468348799f0f",
             service_version="1",
-            service_instance_name=var["name"],
+            service_instance_name=name,
             resource_group_id=default_resource_groups.groups[0].id,
             payment_type="Permanent",
             operation_metadata=alicloud.compute.NestServiceInstanceOperationMetadataArgs(
                 operation_start_time="1681281179000",
                 operation_end_time="1681367579000",
-                resources=default_instance.id.apply(lambda id: f"{{\\"Type\\":\\"ResourceIds\\",\\"ResourceIds\\":{{\\"ALIYUN::ECS::INSTANCE\\":[\\"{id}\\"]}},\\"RegionId\\":\\"cn-hangzhou\\"}}"),
+                resources=default_instance.id.apply(lambda id: f\"\"\"    {{
+              "Type": "ResourceIds",
+              "RegionId": "cn-hangzhou",
+              "ResourceIds": {{
+              "ALIYUN::ECS::INSTANCE": [
+                "{id}"
+                ]
+              }} 
+            }}
+        \"\"\"),
             ),
             tags={
                 "Created": "TF",
@@ -710,10 +744,10 @@ class NestServiceInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['NestServiceInstanceCommodityArgs']] commodity: The order information of cloud market. See the following `Block commodity`.
+        :param pulumi.Input[pulumi.InputType['NestServiceInstanceCommodityArgs']] commodity: The order information of cloud market. See `commodity` below.
         :param pulumi.Input[bool] enable_instance_ops: Whether the service instance has the O&M function. Default value: `false`. Valid values:
         :param pulumi.Input[bool] enable_user_prometheus: Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
-        :param pulumi.Input[pulumi.InputType['NestServiceInstanceOperationMetadataArgs']] operation_metadata: The configuration of O&M. See the following `Block operation_metadata`.
+        :param pulumi.Input[pulumi.InputType['NestServiceInstanceOperationMetadataArgs']] operation_metadata: The configuration of O&M. See `operation_metadata` below.
         :param pulumi.Input[str] parameters: The parameters entered by the deployment service instance.
         :param pulumi.Input[str] payment_type: The type of payment. Valid values: `Permanent`, `Subscription`, `PayAsYouGo`, `CustomFixTime`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
@@ -749,7 +783,7 @@ class NestServiceInstance(pulumi.CustomResource):
     @pulumi.getter
     def commodity(self) -> pulumi.Output[Optional['outputs.NestServiceInstanceCommodity']]:
         """
-        The order information of cloud market. See the following `Block commodity`.
+        The order information of cloud market. See `commodity` below.
         """
         return pulumi.get(self, "commodity")
 
@@ -773,7 +807,7 @@ class NestServiceInstance(pulumi.CustomResource):
     @pulumi.getter(name="operationMetadata")
     def operation_metadata(self) -> pulumi.Output['outputs.NestServiceInstanceOperationMetadata']:
         """
-        The configuration of O&M. See the following `Block operation_metadata`.
+        The configuration of O&M. See `operation_metadata` below.
         """
         return pulumi.get(self, "operation_metadata")
 

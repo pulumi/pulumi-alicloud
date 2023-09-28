@@ -14,54 +14,6 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// &gt; **NOTE:** Available since v1.0.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a RAM Group membership.
-    ///     var @group = new AliCloud.Ram.Group("group", new()
-    ///     {
-    ///         Comments = "this is a group comments.",
-    ///         Force = true,
-    ///     });
-    /// 
-    ///     var user = new AliCloud.Ram.User("user", new()
-    ///     {
-    ///         DisplayName = "user_display_name",
-    ///         Mobile = "86-18688888888",
-    ///         Email = "hello.uuu@aaa.com",
-    ///         Comments = "yoyoyo",
-    ///         Force = true,
-    ///     });
-    /// 
-    ///     var user1 = new AliCloud.Ram.User("user1", new()
-    ///     {
-    ///         DisplayName = "user_display_name1",
-    ///         Mobile = "86-18688888889",
-    ///         Email = "hello.uuu@aaa.com",
-    ///         Comments = "yoyoyo",
-    ///         Force = true,
-    ///     });
-    /// 
-    ///     var membership = new AliCloud.Ram.GroupMembership("membership", new()
-    ///     {
-    ///         GroupName = @group.Name,
-    ///         UserNames = new[]
-    ///         {
-    ///             user.Name,
-    ///             user1.Name,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// RAM Group membership can be imported using the id, e.g.

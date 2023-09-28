@@ -17,14 +17,14 @@ public final class GetResourceGroupsPlainArgs extends com.pulumi.resources.Invok
     public static final GetResourceGroupsPlainArgs Empty = new GetResourceGroupsPlainArgs();
 
     /**
-     * Default to `false`. Set it to true can output more details.
+     * Set it to true can output more details. Default value: `false`.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
     /**
-     * @return Default to `false`. Set it to true can output more details.
+     * @return Set it to true can output more details. Default value: `false`.
      * 
      */
     public Optional<Boolean> enableDetails() {
@@ -47,14 +47,14 @@ public final class GetResourceGroupsPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * A regex string to filter results by resource group name.
+     * A regex string to filter results by resource group identifier.
      * 
      */
     @Import(name="nameRegex")
     private @Nullable String nameRegex;
 
     /**
-     * @return A regex string to filter results by resource group name.
+     * @return A regex string to filter results by resource group identifier.
      * 
      */
     public Optional<String> nameRegex() {
@@ -77,14 +77,14 @@ public final class GetResourceGroupsPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+     * The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+     * @return The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
      * 
      */
     public Optional<String> status() {
@@ -120,7 +120,7 @@ public final class GetResourceGroupsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param enableDetails Default to `false`. Set it to true can output more details.
+         * @param enableDetails Set it to true can output more details. Default value: `false`.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class GetResourceGroupsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param nameRegex A regex string to filter results by resource group name.
+         * @param nameRegex A regex string to filter results by resource group identifier.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class GetResourceGroupsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param status The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+         * @param status The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
          * 
          * @return builder
          * 

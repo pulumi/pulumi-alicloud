@@ -2330,46 +2330,46 @@ export namespace alb {
 
     export interface RuleRuleAction {
         /**
-         * Request forwarding based on CORS. See `corsConfig` below for details.
+         * Request forwarding based on CORS. See `corsConfig` below.
          */
         corsConfig?: outputs.alb.RuleRuleActionCorsConfig;
         /**
-         * The configuration of the fixed response. See `fixedResponseConfig` below for details.
+         * The configuration of the fixed response. See `fixedResponseConfig` below.
          */
         fixedResponseConfig?: outputs.alb.RuleRuleActionFixedResponseConfig;
         /**
-         * The forward response action within ALB. See `forwardGroupConfig` below for details.
+         * The forward response action within ALB. See `forwardGroupConfig` below.
          */
         forwardGroupConfig: outputs.alb.RuleRuleActionForwardGroupConfig;
         /**
-         * The configuration of the inserted header field. See `insertHeaderConfig` below for details.
+         * The configuration of the inserted header field. See `insertHeaderConfig` below.
          */
         insertHeaderConfig?: outputs.alb.RuleRuleActionInsertHeaderConfig;
         /**
-         * The order of the forwarding rule actions. Valid values: 1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+         * The order of the forwarding rule actions. Valid values: `1` to `50000`. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
          */
         order: number;
         /**
-         * The configuration of the external redirect action. See `redirectConfig` below for details.
+         * The configuration of the external redirect action. See `redirectConfig` below.
          */
         redirectConfig?: outputs.alb.RuleRuleActionRedirectConfig;
         /**
-         * The redirect action within ALB. See `rewriteConfig` below for details.
+         * The redirect action within ALB. See `rewriteConfig` below.
          */
         rewriteConfig?: outputs.alb.RuleRuleActionRewriteConfig;
         /**
-         * The Flow speed limit. See `trafficLimitConfig` below for details.
+         * The Flow speed limit. See `trafficLimitConfig` below.
          */
         trafficLimitConfig?: outputs.alb.RuleRuleActionTrafficLimitConfig;
         /**
-         * The Traffic mirroring. See `trafficMirrorConfig` below for details.
+         * The Traffic mirroring. See `trafficMirrorConfig` below.
          */
         trafficMirrorConfig?: outputs.alb.RuleRuleActionTrafficMirrorConfig;
         /**
-         * The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
-         * **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
-         * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
-         * **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
+         * The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
+         * **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+         * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
+         * **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
          */
         type: string;
     }
@@ -2407,22 +2407,22 @@ export namespace alb {
          */
         content: string;
         /**
-         * The format of the fixed response.  Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+         * The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
          */
         contentType?: string;
         /**
-         * The redirect method. Valid values:301, 302, 303, 307, and 308.
+         * The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
          */
         httpCode?: string;
     }
 
     export interface RuleRuleActionForwardGroupConfig {
         /**
-         * The configuration of session persistence for server groups. See `serverGroupStickySession` below for details.
+         * The configuration of session persistence for server groups. See `serverGroupStickySession` below.
          */
         serverGroupStickySession: outputs.alb.RuleRuleActionForwardGroupConfigServerGroupStickySession;
         /**
-         * The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
+         * The destination server group to which requests are forwarded. See `serverGroupTuples` below.
          */
         serverGroupTuples: outputs.alb.RuleRuleActionForwardGroupConfigServerGroupTuple[];
     }
@@ -2451,71 +2451,72 @@ export namespace alb {
 
     export interface RuleRuleActionInsertHeaderConfig {
         /**
-         * The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+         * The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
          */
         key?: string;
         /**
-         * The value of the values list.
+         * The content of the inserted header field. Valid values:
+         * * If the `valueType` is set to `SystemDefined`, the following values are used:
          */
         value?: string;
         /**
-         * Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
+         * The value type of the inserted header field. Valid values:
          */
         valueType?: string;
     }
 
     export interface RuleRuleActionRedirectConfig {
         /**
-         * The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+         * The host name of the destination to which requests are directed. The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
          */
         host?: string;
         /**
-         * The redirect method. Valid values:301, 302, 303, 307, and 308.
+         * The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
          */
         httpCode?: string;
         /**
-         * The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
+         * The path of the destination to which requests are directed. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
          */
         path?: string;
         /**
-         * The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
+         * The port of the destination to which requests are redirected. Valid values: 1 to 63335. Default value: ${port}. You cannot use this value together with other characters at the same time.
          */
         port?: string;
         /**
-         * The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
+         * The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
          */
         protocol?: string;
         /**
-         * The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
+         * The query string of the request to be redirected. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
          */
         query?: string;
     }
 
     export interface RuleRuleActionRewriteConfig {
         /**
-         * The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+         * The host name of the destination to which requests are directed. The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
          */
         host?: string;
         /**
-         * The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
+         * The path of the destination to which requests are directed. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
          */
         path?: string;
         /**
-         * The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
+         * The query string of the request to be redirected. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
          */
         query?: string;
     }
 
     export interface RuleRuleActionTrafficLimitConfig {
         /**
-         * The Number of requests per second. Value range: 1~100000.
+         * The Number of requests per second. Valid values: `1` to `100000`.
          */
         qps?: number;
     }
 
     export interface RuleRuleActionTrafficMirrorConfig {
         /**
-         * The Traffic is mirrored to the server group. See `mirrorGroupConfig` below for details.
+         * The Traffic is mirrored to the server group. See `mirrorGroupConfig` below.
          */
         mirrorGroupConfig?: outputs.alb.RuleRuleActionTrafficMirrorConfigMirrorGroupConfig;
         /**
@@ -2526,7 +2527,7 @@ export namespace alb {
 
     export interface RuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
         /**
-         * The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
+         * The destination server group to which requests are forwarded. See `serverGroupTuples` below.
          */
         serverGroupTuples?: outputs.alb.RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple[];
     }
@@ -2540,110 +2541,112 @@ export namespace alb {
 
     export interface RuleRuleCondition {
         /**
-         * The configuration of the cookie. See See `cookieConfig` below for details.
+         * The configuration of the cookie. See See `cookieConfig` below.
          */
         cookieConfig?: outputs.alb.RuleRuleConditionCookieConfig;
         /**
-         * The configuration of the header field. See `headerConfig` below for details.
+         * The configuration of the header field. See `headerConfig` below.
          */
         headerConfig?: outputs.alb.RuleRuleConditionHeaderConfig;
         /**
-         * The configuration of the host field. See `hostConfig` below for details.
+         * The configuration of the host field. See `hostConfig` below.
          */
         hostConfig?: outputs.alb.RuleRuleConditionHostConfig;
         /**
-         * The configuration of the request method. See `methodConfig` below for details.
+         * The configuration of the request method. See `methodConfig` below.
          */
         methodConfig?: outputs.alb.RuleRuleConditionMethodConfig;
         /**
-         * The configuration of the path for the request to be forwarded. See `pathConfig` below for details.
+         * The configuration of the path for the request to be forwarded. See `pathConfig` below.
          */
         pathConfig?: outputs.alb.RuleRuleConditionPathConfig;
         /**
-         * The configuration of the query string. See `queryStringConfig` below for details.
+         * The configuration of the query string. See `queryStringConfig` below.
          */
         queryStringConfig?: outputs.alb.RuleRuleConditionQueryStringConfig;
         /**
-         * The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `sourceIpConfig` below for details.
+         * The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `sourceIpConfig` below.
          */
         sourceIpConfig?: outputs.alb.RuleRuleConditionSourceIpConfig;
         /**
-         * The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+         * The type of the forwarding rule. Valid values:
          */
         type: string;
     }
 
     export interface RuleRuleConditionCookieConfig {
         /**
-         * The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+         * The values of the cookie. See `values` below.
          */
         values?: outputs.alb.RuleRuleConditionCookieConfigValue[];
     }
 
     export interface RuleRuleConditionCookieConfigValue {
         /**
-         * The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+         * The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
          */
         key?: string;
         /**
-         * The value of the values list.
+         * The content of the inserted header field. Valid values:
+         * * If the `valueType` is set to `SystemDefined`, the following values are used:
          */
         value?: string;
     }
 
     export interface RuleRuleConditionHeaderConfig {
         /**
-         * The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+         * The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
          */
         key?: string;
         /**
-         * The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+         * The values of the cookie. See `values` below.
          */
         values?: string[];
     }
 
     export interface RuleRuleConditionHostConfig {
         /**
-         * The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+         * The values of the cookie. See `values` below.
          */
         values?: string[];
     }
 
     export interface RuleRuleConditionMethodConfig {
         /**
-         * The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+         * The values of the cookie. See `values` below.
          */
         values?: string[];
     }
 
     export interface RuleRuleConditionPathConfig {
         /**
-         * The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+         * The values of the cookie. See `values` below.
          */
         values?: string[];
     }
 
     export interface RuleRuleConditionQueryStringConfig {
         /**
-         * The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+         * The values of the cookie. See `values` below.
          */
         values?: outputs.alb.RuleRuleConditionQueryStringConfigValue[];
     }
 
     export interface RuleRuleConditionQueryStringConfigValue {
         /**
-         * The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+         * The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
          */
         key?: string;
         /**
-         * The value of the values list.
+         * The content of the inserted header field. Valid values:
+         * * If the `valueType` is set to `SystemDefined`, the following values are used:
          */
         value?: string;
     }
 
     export interface RuleRuleConditionSourceIpConfig {
         /**
-         * The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
+         * The values of the cookie. See `values` below.
          */
         values?: string[];
     }
@@ -3811,6 +3814,33 @@ export namespace arms {
         value: string;
     }
 
+    export interface GetPrometheusMonitoringsPrometheusMonitoring {
+        /**
+         * The ID of the Prometheus instance.
+         */
+        clusterId: string;
+        /**
+         * The monitoring configuration. The value is a YAML string.
+         */
+        configYaml: string;
+        /**
+         * The ID of the Prometheus Monitoring. It formats as `<cluster_id>:<monitoring_name>:<type>`.
+         */
+        id: string;
+        /**
+         * The name of the monitoring configuration.
+         */
+        monitoringName: string;
+        /**
+         * The status of the monitoring configuration. Valid values: `run`, `stop`.
+         */
+        status: string;
+        /**
+         * The type of the monitoring configuration. Valid values: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
+         */
+        type: string;
+    }
+
     export interface GetRemoteWritesRemoteWrite {
         /**
          * The ID of the Prometheus instance.
@@ -4758,6 +4788,49 @@ export namespace cassandra {
 }
 
 export namespace cddc {
+    export interface DedicatedPropreHostEcsClassList {
+        /**
+         * Data disk PL level.
+         */
+        dataDiskPerformanceLevel?: string;
+        /**
+         * The capacity of the data disk.
+         */
+        diskCapacity?: number;
+        /**
+         * Number of mounted data disks.
+         */
+        diskCount?: number;
+        /**
+         * Data disk type, value range:
+         * - **cloud_essd**: the ESSD cloud disk.
+         * - **cloud_ssd**: SSD cloud disk.
+         * - **cloud_efficiency**: The ultra cloud disk.
+         * - **cloud_auto**: ESSD AutoPL cloud disk.
+         */
+        diskType?: string;
+        /**
+         * ECS specifications.
+         */
+        instanceType: string;
+        /**
+         * System disk capacity.
+         */
+        sysDiskCapacity: number;
+        /**
+         * System disk type, value:
+         * - **cloud_essd**: the ESSD cloud disk.
+         * - **cloud_ssd**: SSD cloud disk.
+         * - **cloud_efficiency**: The ultra cloud disk.
+         * - **cloud_auto**: ESSD AutoPL cloud disk.
+         */
+        sysDiskType: string;
+        /**
+         * System disk PL level.
+         */
+        systemDiskPerformanceLevel?: string;
+    }
+
     export interface GetDedicatedHostAccountsAccount {
         /**
          * The name of the Dedicated host account.
@@ -18515,6 +18588,9 @@ export namespace ecs {
          * - When `diskCategory` is `cloud`, Valid values: `5` to `200`.
          */
         diskSize: number;
+        /**
+         * Encrypted the data in this disk. Default value: `false`.
+         */
         encrypted?: boolean;
         /**
          * The KMS key ID corresponding to the data disk.
@@ -25737,6 +25813,167 @@ export namespace ess {
 }
 
 export namespace eventbridge {
+    export interface ApiDestinationHttpApiParameters {
+        /**
+         * The endpoint of the API destination.
+         */
+        endpoint: string;
+        /**
+         * The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
+         */
+        method: string;
+    }
+
+    export interface ConnectionAuthParameters {
+        /**
+         * The parameters that are configured for API key authentication. See `apiKeyAuthParameters` below.
+         */
+        apiKeyAuthParameters?: outputs.eventbridge.ConnectionAuthParametersApiKeyAuthParameters;
+        /**
+         * The type of the authentication. Valid values: `API_KEY_AUTH`, `BASIC_AUTH`, `OAUTH_AUTH`.
+         */
+        authorizationType?: string;
+        /**
+         * The parameters that are configured for basic authentication. See `basicAuthParameters` below.
+         */
+        basicAuthParameters?: outputs.eventbridge.ConnectionAuthParametersBasicAuthParameters;
+        /**
+         * The parameters that are configured for OAuth authentication. See `oauthParameters` below.
+         */
+        oauthParameters?: outputs.eventbridge.ConnectionAuthParametersOauthParameters;
+    }
+
+    export interface ConnectionAuthParametersApiKeyAuthParameters {
+        /**
+         * The name of the API key.
+         */
+        apiKeyName?: string;
+        /**
+         * The value of the API key.
+         */
+        apiKeyValue?: string;
+    }
+
+    export interface ConnectionAuthParametersBasicAuthParameters {
+        /**
+         * The password for basic authentication.
+         */
+        password?: string;
+        /**
+         * The username for basic authentication.
+         */
+        username?: string;
+    }
+
+    export interface ConnectionAuthParametersOauthParameters {
+        /**
+         * The IP address of the authorized endpoint.
+         */
+        authorizationEndpoint?: string;
+        /**
+         * The parameters that are configured for the client. See `clientParameters` below.
+         */
+        clientParameters?: outputs.eventbridge.ConnectionAuthParametersOauthParametersClientParameters;
+        /**
+         * The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
+         */
+        httpMethod?: string;
+        /**
+         * The request parameters that are configured for OAuth authentication. See `oauthHttpParameters` below.
+         */
+        oauthHttpParameters?: outputs.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParameters;
+    }
+
+    export interface ConnectionAuthParametersOauthParametersClientParameters {
+        /**
+         * The ID of the client.
+         */
+        clientId?: string;
+        /**
+         * The AccessKey secret of the client.
+         */
+        clientSecret?: string;
+    }
+
+    export interface ConnectionAuthParametersOauthParametersOauthHttpParameters {
+        /**
+         * The parameters that are configured for the request body. See `bodyParameters` below.
+         */
+        bodyParameters?: outputs.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter[];
+        /**
+         * The parameters that are configured for the request header. See `headerParameters` below.
+         */
+        headerParameters?: outputs.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter[];
+        /**
+         * The parameters that are configured for the request path. See `queryStringParameters` below.
+         */
+        queryStringParameters?: outputs.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter[];
+    }
+
+    export interface ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter {
+        /**
+         * Specifies whether to enable authentication.
+         */
+        isValueSecret?: string;
+        /**
+         * The key of the request header.
+         */
+        key?: string;
+        /**
+         * The value of the request header.
+         */
+        value?: string;
+    }
+
+    export interface ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter {
+        /**
+         * Specifies whether to enable authentication.
+         */
+        isValueSecret?: string;
+        /**
+         * The key of the request header.
+         */
+        key?: string;
+        /**
+         * The value of the request header.
+         */
+        value?: string;
+    }
+
+    export interface ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter {
+        /**
+         * Specifies whether to enable authentication.
+         */
+        isValueSecret?: string;
+        /**
+         * The key of the request header.
+         */
+        key?: string;
+        /**
+         * The value of the request header.
+         */
+        value?: string;
+    }
+
+    export interface ConnectionNetworkParameters {
+        /**
+         * The network type. Valid values: `PublicNetwork`, `PrivateNetwork`. **NOTE:** If you set `networkType` to `PrivateNetwork`, you must configure `vpcId`, `vswitcheId`, and `securityGroupId`.
+         */
+        networkType: string;
+        /**
+         * The ID of the security group.
+         */
+        securityGroupId?: string;
+        /**
+         * The ID of the VPC.
+         */
+        vpcId?: string;
+        /**
+         * The ID of the VSwitch.
+         */
+        vswitcheId?: string;
+    }
+
     export interface GetEventBusesBus {
         /**
          * The time of this bus was created.
@@ -29066,20 +29303,47 @@ export namespace hbase {
     }
 
     export interface InstanceSlbConnAddr {
+        /**
+         * The Phoenix address.
+         */
         connAddr: string;
+        /**
+         * The number of the port over which Phoenix connects to the instance.
+         */
         connAddrPort: string;
+        /**
+         * The type of the network. Valid values:
+         */
         netType: string;
     }
 
     export interface InstanceUiProxyConnAddr {
+        /**
+         * The Phoenix address.
+         */
         connAddr: string;
+        /**
+         * The number of the port over which Phoenix connects to the instance.
+         */
         connAddrPort: string;
+        /**
+         * The type of the network. Valid values:
+         */
         netType: string;
     }
 
     export interface InstanceZkConnAddr {
+        /**
+         * The Phoenix address.
+         */
         connAddr: string;
+        /**
+         * The number of the port over which Phoenix connects to the instance.
+         */
         connAddrPort: string;
+        /**
+         * The type of the network. Valid values:
+         */
         netType: string;
     }
 
@@ -30690,6 +30954,25 @@ export namespace kms {
         versionStages: string[];
     }
 
+    export interface InstanceBindVpc {
+        /**
+         * region id.
+         */
+        regionId?: string;
+        /**
+         * VPC ID.
+         */
+        vpcId?: string;
+        /**
+         * VPC owner root user ID.
+         */
+        vpcOwnerId?: number;
+        /**
+         * vswitch id.
+         */
+        vswitchId?: string;
+    }
+
 }
 
 export namespace kvstore {
@@ -31457,12 +31740,10 @@ export namespace log {
          */
         encryptType?: string;
         /**
-         * User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
-         *
+         * User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `userCmkInfo` below.
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * #### Block user_cmk_info
          */
         userCmkInfo?: outputs.log.StoreEncryptConfUserCmkInfo;
     }
@@ -31880,7 +32161,7 @@ export namespace maxcompute {
          */
         enableDecimal2: boolean;
         /**
-         * Whether encryption is turned on.See the following `Block Encryption`.
+         * Whether encryption is turned on. See `encryption` below.
          */
         encryption: outputs.maxcompute.ProjectPropertiesEncryption;
         /**
@@ -31892,7 +32173,7 @@ export namespace maxcompute {
          */
         sqlMeteringMax: string;
         /**
-         * Life cycle of tables.See the following `Block TableLifecycle`.
+         * Life cycle of tables. See `tableLifecycle` below.
          */
         tableLifecycle: outputs.maxcompute.ProjectPropertiesTableLifecycle;
         /**
@@ -31949,7 +32230,7 @@ export namespace maxcompute {
          */
         objectCreatorHasGrantPermission: boolean;
         /**
-         * Project protection.See the following `Block ProjectProtection`.
+         * Project protection. See `projectProtection` below.
          */
         projectProtection: outputs.maxcompute.ProjectSecurityPropertiesProjectProtection;
         /**
@@ -35735,15 +36016,15 @@ export namespace ots {
 
     export interface SearchIndexSchema {
         /**
-         * A list of field schemas. Each field schema contains the following parameters:
+         * A list of field schemas. See `fieldSchema` below.
          */
         fieldSchemas: outputs.ots.SearchIndexSchemaFieldSchema[];
         /**
-         * The settings of the search index, including routingFields.
+         * The settings of the search index, including routingFields. See `indexSetting` below.
          */
         indexSettings?: outputs.ots.SearchIndexSchemaIndexSetting[];
         /**
-         * The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default.
+         * The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default. See `indexSort` below.
          */
         indexSorts?: outputs.ots.SearchIndexSchemaIndexSort[];
     }
@@ -35758,7 +36039,7 @@ export namespace ots {
          */
         enableSortAndAgg?: boolean;
         /**
-         * The name of the field that is used to sort data. only required if sorterType is FieldSort.
+         * Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
          */
         fieldName: string;
         /**
@@ -35788,14 +36069,14 @@ export namespace ots {
 
     export interface SearchIndexSchemaIndexSort {
         /**
-         * Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported.
+         * Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `sorter` below.
          */
         sorters: outputs.ots.SearchIndexSchemaIndexSortSorter[];
     }
 
     export interface SearchIndexSchemaIndexSortSorter {
         /**
-         * The name of the field that is used to sort data. only required if sorterType is FieldSort.
+         * Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
          */
         fieldName?: string;
         /**
@@ -35825,11 +36106,11 @@ export namespace ots {
 
     export interface TablePrimaryKey {
         /**
-         * Name for defined column.
+         * Name for primary key.
          */
         name: string;
         /**
-         * Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+         * Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
          */
         type: string;
     }
@@ -36186,14 +36467,14 @@ export namespace polardb {
          */
         id: string;
         /**
-         * The status of the Global Database Network.
+         * The status of the Global Database Network. Valid values:
          */
         status: string;
     }
 
     export interface GetGlobalDatabaseNetworksNetworkDbCluster {
         /**
-         * The ID of the PolarDB cluster.
+         * The ID of the cluster.
          */
         dbClusterId: string;
         /**
@@ -36241,11 +36522,11 @@ export namespace polardb {
          */
         createTime: string;
         /**
-         * The type of the database engine.
+         * The type of the database engine. Only `MySQL` is supported.
          */
         dbType: string;
         /**
-         * The version number of the database engine.
+         * The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
          */
         dbVersion: string;
         /**
@@ -38845,15 +39126,15 @@ export namespace resourcemanager {
          */
         name: string;
         /**
-         * (Available in v1.114.0+) The status of the resource group in all regions.
+         * (Available since v1.114.0) The status of the resource group in all regions.
          */
         regionStatuses: outputs.resourcemanager.GetResourceGroupsGroupRegionStatus[];
         /**
-         * (Available in v1.114.0+) The unique identifier of the resource group.
+         * (Available since v1.114.0) The unique identifier of the resource group.
          */
         resourceGroupName: string;
         /**
-         * The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+         * The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
          */
         status: string;
     }
@@ -38864,7 +39145,7 @@ export namespace resourcemanager {
          */
         regionId: string;
         /**
-         * The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+         * The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
          */
         status: string;
     }
@@ -38929,7 +39210,7 @@ export namespace resourcemanager {
 
     export interface GetSharedResourcesResource {
         /**
-         * The ID of the Shared Resource.
+         * The ID of the Shared Resource. It formats as `<resource_id>:<resource_type>`.
          */
         id: string;
         /**
@@ -38945,7 +39226,7 @@ export namespace resourcemanager {
          */
         resourceType: string;
         /**
-         * The status of shared resource.
+         * The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
          */
         status: string;
     }
@@ -38956,15 +39237,15 @@ export namespace resourcemanager {
          */
         id: string;
         /**
-         * The resource shared ID of resource manager.
+         * The resource share ID of resource manager.
          */
         resourceShareId: string;
         /**
-         * The status of shared target.
+         * The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
          */
         status: string;
         /**
-         * The member account ID in resource directory.
+         * The ID of the Shared Target.
          */
         targetId: string;
     }
@@ -39638,6 +39919,290 @@ export namespace ros {
 }
 
 export namespace sae {
+    export interface ApplicationConfigMapMountDescV2 {
+        /**
+         * The ID of the ConfigMap.
+         */
+        configMapId: string;
+        /**
+         * The key.
+         */
+        key: string;
+        /**
+         * The path of the container in SAE.
+         */
+        mountPath: string;
+    }
+
+    export interface ApplicationCustomHostAliasV2 {
+        /**
+         * The domain name or hostname.
+         */
+        hostName: string;
+        /**
+         * The IP address.
+         */
+        ip: string;
+    }
+
+    export interface ApplicationKafkaConfigs {
+        /**
+         * One or more logging configurations of ApsaraMQ for Kafka. See `kafkaConfigs` below.
+         */
+        kafkaConfigs?: outputs.sae.ApplicationKafkaConfigsKafkaConfig[];
+        /**
+         * The endpoint of the ApsaraMQ for Kafka API.
+         */
+        kafkaEndpoint?: string;
+        /**
+         * The  ID of the ApsaraMQ for Kafka instance.
+         */
+        kafkaInstanceId?: string;
+    }
+
+    export interface ApplicationKafkaConfigsKafkaConfig {
+        /**
+         * The topic of the Kafka.
+         */
+        kafkaTopic?: string;
+        /**
+         * The path in which logs are stored.
+         */
+        logDir?: string;
+        /**
+         * The type of the log.
+         */
+        logType?: string;
+    }
+
+    export interface ApplicationLivenessV2 {
+        /**
+         * Execute. See `exec` below.
+         */
+        exec: outputs.sae.ApplicationLivenessV2Exec;
+        /**
+         * The liveness check settings of the container. See `httpGet` below.
+         */
+        httpGet: outputs.sae.ApplicationLivenessV2HttpGet;
+        /**
+         * The delay of the health check.
+         */
+        initialDelaySeconds: number;
+        /**
+         * The interval at which the health check is performed.
+         */
+        periodSeconds: number;
+        /**
+         * The liveness check settings of the container. See `tcpSocket` below.
+         */
+        tcpSocket: outputs.sae.ApplicationLivenessV2TcpSocket;
+        /**
+         * The timeout period of the health check.
+         */
+        timeoutSeconds: number;
+    }
+
+    export interface ApplicationLivenessV2Exec {
+        /**
+         * Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+         */
+        commands: string[];
+    }
+
+    export interface ApplicationLivenessV2HttpGet {
+        /**
+         * Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
+         */
+        isContainKeyWord: boolean;
+        /**
+         * The custom keywords.
+         */
+        keyWord: string;
+        /**
+         * The request path.
+         */
+        path: string;
+        /**
+         * The port that is used to check the status of TCP connections.
+         */
+        port: number;
+        /**
+         * The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
+         */
+        scheme: string;
+    }
+
+    export interface ApplicationLivenessV2TcpSocket {
+        /**
+         * The port that is used to check the status of TCP connections.
+         */
+        port: number;
+    }
+
+    export interface ApplicationNasConfig {
+        /**
+         * The domain name of the mount target.
+         */
+        mountDomain?: string;
+        /**
+         * The mount path of the container.
+         */
+        mountPath?: string;
+        /**
+         * The ID of the NAS file system.
+         */
+        nasId?: string;
+        /**
+         * The directory in the NAS file system.
+         */
+        nasPath?: string;
+        /**
+         * Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `readOnly` to `false`, the application has the read and write permissions.
+         */
+        readOnly?: boolean;
+    }
+
+    export interface ApplicationOssMountDescsV2 {
+        /**
+         * The name of the OSS bucket.
+         */
+        bucketName: string;
+        /**
+         * The directory or object in OSS.
+         */
+        bucketPath: string;
+        /**
+         * The path of the container in SAE.
+         */
+        mountPath: string;
+        /**
+         * Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
+         */
+        readOnly: boolean;
+    }
+
+    export interface ApplicationPostStartV2 {
+        /**
+         * Execute. See `exec` below.
+         */
+        exec: outputs.sae.ApplicationPostStartV2Exec;
+    }
+
+    export interface ApplicationPostStartV2Exec {
+        /**
+         * Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+         */
+        commands: string[];
+    }
+
+    export interface ApplicationPreStopV2 {
+        /**
+         * Execute. See `exec` below.
+         */
+        exec: outputs.sae.ApplicationPreStopV2Exec;
+    }
+
+    export interface ApplicationPreStopV2Exec {
+        /**
+         * Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+         */
+        commands: string[];
+    }
+
+    export interface ApplicationPvtzDiscoverySvc {
+        /**
+         * Enables the Kubernetes Service-based registration and discovery feature.
+         */
+        enable?: boolean;
+        /**
+         * The ID of the namespace.
+         */
+        namespaceId?: string;
+        /**
+         * The port number and protocol. See `portProtocols` below.
+         */
+        portProtocols?: outputs.sae.ApplicationPvtzDiscoverySvcPortProtocol[];
+        /**
+         * The name of the Service.
+         */
+        serviceName?: string;
+    }
+
+    export interface ApplicationPvtzDiscoverySvcPortProtocol {
+        /**
+         * The port that is used to check the status of TCP connections.
+         */
+        port?: number;
+        /**
+         * The protocol. Valid values: `TCP` and `UDP`.
+         */
+        protocol?: string;
+    }
+
+    export interface ApplicationReadinessV2 {
+        /**
+         * Execute. See `exec` below.
+         */
+        exec: outputs.sae.ApplicationReadinessV2Exec;
+        /**
+         * The liveness check settings of the container. See `httpGet` below.
+         */
+        httpGet: outputs.sae.ApplicationReadinessV2HttpGet;
+        /**
+         * The delay of the health check.
+         */
+        initialDelaySeconds: number;
+        /**
+         * The interval at which the health check is performed.
+         */
+        periodSeconds: number;
+        /**
+         * The liveness check settings of the container. See `tcpSocket` below.
+         */
+        tcpSocket: outputs.sae.ApplicationReadinessV2TcpSocket;
+        /**
+         * The timeout period of the health check.
+         */
+        timeoutSeconds: number;
+    }
+
+    export interface ApplicationReadinessV2Exec {
+        /**
+         * Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+         */
+        commands: string[];
+    }
+
+    export interface ApplicationReadinessV2HttpGet {
+        /**
+         * Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
+         */
+        isContainKeyWord: boolean;
+        /**
+         * The custom keywords.
+         */
+        keyWord: string;
+        /**
+         * The request path.
+         */
+        path: string;
+        /**
+         * The port that is used to check the status of TCP connections.
+         */
+        port: number;
+        /**
+         * The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
+         */
+        scheme: string;
+    }
+
+    export interface ApplicationReadinessV2TcpSocket {
+        /**
+         * The port that is used to check the status of TCP connections.
+         */
+        port: number;
+    }
+
     export interface ApplicationScalingRuleScalingRuleMetric {
         /**
          * Maximum number of instances applied.
@@ -39764,6 +40329,55 @@ export namespace sae {
          * This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `timing`.
          */
         targetReplicas?: number;
+    }
+
+    export interface ApplicationTomcatConfigV2 {
+        /**
+         * The path.
+         */
+        contextPath: string;
+        /**
+         * The maximum number of connections in the connection pool.
+         */
+        maxThreads: number;
+        /**
+         * The port that is used to check the status of TCP connections.
+         */
+        port: number;
+        /**
+         * The URI encoding scheme in the Tomcat container.
+         */
+        uriEncoding: string;
+        /**
+         * Specifies whether to use the encoding scheme that is specified by BodyEncoding for URL.
+         */
+        useBodyEncodingForUri: string;
+    }
+
+    export interface ApplicationUpdateStrategyV2 {
+        /**
+         * The phased release policy. See `batchUpdate` below.
+         */
+        batchUpdate: outputs.sae.ApplicationUpdateStrategyV2BatchUpdate;
+        /**
+         * The type of the release policy. Valid values: `GrayBatchUpdate` and `BatchUpdate`.
+         */
+        type: string;
+    }
+
+    export interface ApplicationUpdateStrategyV2BatchUpdate {
+        /**
+         * The number of batches in which you want to release the instances.
+         */
+        batch: number;
+        /**
+         * The batch wait time.
+         */
+        batchWaitTime: number;
+        /**
+         * The processing method for the batches. Valid values: `auto` and `manual`.
+         */
+        releaseType: string;
     }
 
     export interface GetApplicationScalingRulesRule {
@@ -40492,7 +41106,7 @@ export namespace sae {
          */
         condition?: string;
         /**
-         * A list of conditions items.See `items` below.
+         * A list of conditions items. See `items` below.
          */
         items?: outputs.sae.GreyTagRouteScRuleItem[];
         /**
@@ -41958,6 +42572,9 @@ export namespace servicemesh {
     }
 
     export interface ServiceMeshLoadBalancer {
+        /**
+         * The ID of the SLB instance that is used when the API server is exposed to the Internet.
+         */
         apiServerLoadbalancerId: string;
         /**
          * Whether to use the IP address of a public network exposed the API Server.
@@ -41967,20 +42584,23 @@ export namespace servicemesh {
          * Whether to use the IP address of a public network exposure the Istio Pilot.
          */
         pilotPublicEip: boolean;
+        /**
+         * The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
+         */
         pilotPublicLoadbalancerId: string;
     }
 
     export interface ServiceMeshMeshConfig {
         /**
-         * The configuration of the access logging.
+         * The configuration of the access logging. See `accessLog` below.
          */
         accessLog: outputs.servicemesh.ServiceMeshMeshConfigAccessLog;
         /**
-         * The configuration of the audit. See the following `Block audit`.
+         * The configuration of the audit. See `audit` below.
          */
         audit: outputs.servicemesh.ServiceMeshMeshConfigAudit;
         /**
-         * The configuration of the control plane logging.
+         * The configuration of the control plane logging. See `controlPlaneLog` below.
          */
         controlPlaneLog: outputs.servicemesh.ServiceMeshMeshConfigControlPlaneLog;
         /**
@@ -41992,11 +42612,11 @@ export namespace servicemesh {
          */
         enableLocalityLb: boolean;
         /**
-         * The configuration of the Kiali. See the following `Block kiali`.
+         * The configuration of the Kiali. See `kiali` below.
          */
         kiali: outputs.servicemesh.ServiceMeshMeshConfigKiali;
         /**
-         * The open-door policy of agent (OPA) plug-in information. See the following `Block opa`.
+         * The open-door policy of agent (OPA) plug-in information. See `opa` below.
          */
         opa: outputs.servicemesh.ServiceMeshMeshConfigOpa;
         /**
@@ -42004,23 +42624,23 @@ export namespace servicemesh {
          */
         outboundTrafficPolicy: string;
         /**
-         * The configuration of the Link trace sampling. See the following `Block pilot`.
+         * The configuration of the Link trace sampling. See `pilot` below.
          */
         pilot: outputs.servicemesh.ServiceMeshMeshConfigPilot;
         /**
-         * The configuration of the Proxy. See the following `Block proxy`.
+         * The configuration of the Proxy. See `proxy` below.
          */
         proxy: outputs.servicemesh.ServiceMeshMeshConfigProxy;
         /**
-         * The configuration of the Sidecar injector. See the following `Block sidecarInjector`.
+         * The configuration of the Sidecar injector. See `sidecarInjector` below.
          */
         sidecarInjector: outputs.servicemesh.ServiceMeshMeshConfigSidecarInjector;
         /**
-         * Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+         * Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
          */
         telemetry: boolean;
         /**
-         * Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+         * Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
          */
         tracing: boolean;
     }
@@ -43356,6 +43976,9 @@ export namespace slb {
     }
 
     export interface ListenerXForwardedFor {
+        /**
+         * Whether to retrieve the client ip. It is read-only attribute.
+         */
         retriveClientIp: boolean;
         /**
          * Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
@@ -47391,7 +48014,7 @@ export namespace wafv3 {
          */
         domain: string;
         /**
-         * The ID of the domain. The value is formulated as `<instance_id>:<domain>`.
+         * The ID of the domain. It formats as `<instance_id>:<domain>`.
          */
         id: string;
         /**
@@ -47403,7 +48026,7 @@ export namespace wafv3 {
          */
         redirects: outputs.wafv3.GetDomainsDomainRedirect[];
         /**
-         * The ID of the resource group
+         * The ID of the resource group.
          */
         resourceManagerResourceGroupId: string;
         /**

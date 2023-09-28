@@ -15,9 +15,17 @@ public final class ListenerXForwardedForArgs extends com.pulumi.resources.Resour
 
     public static final ListenerXForwardedForArgs Empty = new ListenerXForwardedForArgs();
 
+    /**
+     * Whether to retrieve the client ip. It is read-only attribute.
+     * 
+     */
     @Import(name="retriveClientIp")
     private @Nullable Output<Boolean> retriveClientIp;
 
+    /**
+     * @return Whether to retrieve the client ip. It is read-only attribute.
+     * 
+     */
     public Optional<Output<Boolean>> retriveClientIp() {
         return Optional.ofNullable(this.retriveClientIp);
     }
@@ -94,11 +102,23 @@ public final class ListenerXForwardedForArgs extends com.pulumi.resources.Resour
             $ = new ListenerXForwardedForArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param retriveClientIp Whether to retrieve the client ip. It is read-only attribute.
+         * 
+         * @return builder
+         * 
+         */
         public Builder retriveClientIp(@Nullable Output<Boolean> retriveClientIp) {
             $.retriveClientIp = retriveClientIp;
             return this;
         }
 
+        /**
+         * @param retriveClientIp Whether to retrieve the client ip. It is read-only attribute.
+         * 
+         * @return builder
+         * 
+         */
         public Builder retriveClientIp(Boolean retriveClientIp) {
             return retriveClientIp(Output.of(retriveClientIp));
         }

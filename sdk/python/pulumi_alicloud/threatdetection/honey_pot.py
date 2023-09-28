@@ -228,9 +228,9 @@ class HoneyPot(pulumi.CustomResource):
         """
         Provides a Threat Detection Honey Pot resource.
 
-        For information about Threat Detection Honey Pot and how to use it, see [What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypot).
+        For information about Threat Detection Honey Pot and how to use it, see [What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot).
 
-        > **NOTE:** Available in v1.195.0+.
+        > **NOTE:** Available since v1.195.0.
 
         ## Example Usage
 
@@ -240,11 +240,20 @@ class HoneyPot(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.threatdetection.HoneyPot("default",
-            honeypot_image_id="sha256:007095d6de9c7a343e9fc1f74a7efc9c5de9d5454789d2fa505a1b3fc623730c",
-            honeypot_image_name="ruoyi",
-            honeypot_name="huangtiong-test",
-            node_id="a44e1ab3-6945-444c-889d-5bacee7056e8")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        default_honeypot_images = alicloud.threatdetection.get_honeypot_images(name_regex="^ruoyi")
+        default_honeypot_node = alicloud.threatdetection.HoneypotNode("defaultHoneypotNode",
+            node_name=name,
+            available_probe_num=20,
+            security_group_probe_ip_lists=["0.0.0.0/0"])
+        default_honey_pot = alicloud.threatdetection.HoneyPot("defaultHoneyPot",
+            honeypot_image_name=default_honeypot_images.images[0].honeypot_image_name,
+            honeypot_image_id=default_honeypot_images.images[0].honeypot_image_id,
+            honeypot_name=name,
+            node_id=default_honeypot_node.id)
         ```
 
         ## Import
@@ -271,9 +280,9 @@ class HoneyPot(pulumi.CustomResource):
         """
         Provides a Threat Detection Honey Pot resource.
 
-        For information about Threat Detection Honey Pot and how to use it, see [What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypot).
+        For information about Threat Detection Honey Pot and how to use it, see [What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot).
 
-        > **NOTE:** Available in v1.195.0+.
+        > **NOTE:** Available since v1.195.0.
 
         ## Example Usage
 
@@ -283,11 +292,20 @@ class HoneyPot(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.threatdetection.HoneyPot("default",
-            honeypot_image_id="sha256:007095d6de9c7a343e9fc1f74a7efc9c5de9d5454789d2fa505a1b3fc623730c",
-            honeypot_image_name="ruoyi",
-            honeypot_name="huangtiong-test",
-            node_id="a44e1ab3-6945-444c-889d-5bacee7056e8")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        default_honeypot_images = alicloud.threatdetection.get_honeypot_images(name_regex="^ruoyi")
+        default_honeypot_node = alicloud.threatdetection.HoneypotNode("defaultHoneypotNode",
+            node_name=name,
+            available_probe_num=20,
+            security_group_probe_ip_lists=["0.0.0.0/0"])
+        default_honey_pot = alicloud.threatdetection.HoneyPot("defaultHoneyPot",
+            honeypot_image_name=default_honeypot_images.images[0].honeypot_image_name,
+            honeypot_image_id=default_honeypot_images.images[0].honeypot_image_id,
+            honeypot_name=name,
+            node_id=default_honeypot_node.id)
         ```
 
         ## Import

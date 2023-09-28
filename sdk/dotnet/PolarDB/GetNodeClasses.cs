@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// <summary>
         /// This data source provides the PolarDB node classes resource available info of Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in v1.81.0+
+        /// &gt; **NOTE:** Available since v1.81.0+
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// <summary>
         /// This data source provides the PolarDB node classes resource available info of Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in v1.81.0+
+        /// &gt; **NOTE:** Available since v1.81.0+
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -89,6 +89,9 @@ namespace Pulumi.AliCloud.PolarDB
 
     public sealed class GetNodeClassesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The PolarDB node cluster series.
+        /// </summary>
         [Input("category")]
         public string? Category { get; set; }
 
@@ -142,6 +145,9 @@ namespace Pulumi.AliCloud.PolarDB
 
     public sealed class GetNodeClassesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The PolarDB node cluster series.
+        /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 

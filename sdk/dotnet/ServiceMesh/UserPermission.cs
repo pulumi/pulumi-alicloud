@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.ServiceMesh
     /// <summary>
     /// Provides a Service Mesh UserPermission resource.
     /// 
-    /// For information about Service Mesh User Permission and how to use it, see [What is User Permission](https://help.aliyun.com/document_detail/171622.html).
+    /// For information about Service Mesh User Permission and how to use it, see [What is User Permission](https://www.alibabacloud.com/help/en/alibaba-cloud-service-mesh/latest/api-servicemesh-2020-01-11-grantuserpermissions).
     /// 
-    /// &gt; **NOTE:** Available in v1.174.0+.
+    /// &gt; **NOTE:** Available since v1.174.0.
     /// 
     /// ## Import
     /// 
@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.ServiceMesh
     public partial class UserPermission : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+        /// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
         /// </summary>
         [Output("permissions")]
         public Output<ImmutableArray<Outputs.UserPermissionPermission>> Permissions { get; private set; } = null!;
@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         private InputList<Inputs.UserPermissionPermissionArgs>? _permissions;
 
         /// <summary>
-        /// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+        /// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
         /// </summary>
         public InputList<Inputs.UserPermissionPermissionArgs> Permissions
         {
@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         private InputList<Inputs.UserPermissionPermissionGetArgs>? _permissions;
 
         /// <summary>
-        /// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
+        /// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
         /// </summary>
         public InputList<Inputs.UserPermissionPermissionGetArgs> Permissions
         {

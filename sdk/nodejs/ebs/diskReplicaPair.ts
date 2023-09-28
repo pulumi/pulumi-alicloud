@@ -9,56 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Ebs Disk Replica Pair and how to use it, see [What is Disk Replica Pair](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/CreateDiskReplicaPair).
  *
- * > **NOTE:** Available in v1.196.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultEcsDisk = new alicloud.ecs.EcsDisk("defaultEcsDisk", {
- *     zoneId: "cn-hangzhou-onebox-nebula",
- *     category: "cloud_essd",
- *     deleteAutoSnapshot: true,
- *     deleteWithInstance: true,
- *     description: "Test For Terraform",
- *     diskName: _var.name,
- *     enableAutoSnapshot: true,
- *     encrypted: true,
- *     size: 500,
- *     tags: {
- *         Created: "TF",
- *         Environment: "Acceptance-test",
- *     },
- * });
- * const defaultone = new alicloud.ecs.EcsDisk("defaultone", {
- *     zoneId: "cn-hangzhou-onebox-nebula-b",
- *     category: "cloud_essd",
- *     deleteAutoSnapshot: true,
- *     deleteWithInstance: true,
- *     description: "Test For Terraform",
- *     diskName: _var.name,
- *     enableAutoSnapshot: true,
- *     encrypted: true,
- *     size: 500,
- *     tags: {
- *         Created: "TF",
- *         Environment: "Acceptance-test",
- *     },
- * });
- * const defaultDiskReplicaPair = new alicloud.ebs.DiskReplicaPair("defaultDiskReplicaPair", {
- *     destinationDiskId: defaultEcsDisk.id,
- *     destinationRegionId: "cn-hangzhou-onebox-nebula",
- *     bandwidth: "10240",
- *     destinationZoneId: "cn-hangzhou-onebox-nebula-e",
- *     sourceZoneId: "cn-hangzhou-onebox-nebula-b",
- *     diskId: defaultone.id,
- *     description: "abc",
- * });
- * ```
+ * > **NOTE:** Available since v1.196.0.
  *
  * ## Import
  *
@@ -141,7 +92,7 @@ export class DiskReplicaPair extends pulumi.CustomResource {
      */
     public readonly periodUnit!: pulumi.Output<string | undefined>;
     /**
-     * The first ID of the resource
+     * The first ID of the resource.
      */
     public readonly replicaPairId!: pulumi.Output<string>;
     /**
@@ -278,7 +229,7 @@ export interface DiskReplicaPairState {
      */
     periodUnit?: pulumi.Input<string>;
     /**
-     * The first ID of the resource
+     * The first ID of the resource.
      */
     replicaPairId?: pulumi.Input<string>;
     /**
@@ -344,7 +295,7 @@ export interface DiskReplicaPairArgs {
      */
     periodUnit?: pulumi.Input<string>;
     /**
-     * The first ID of the resource
+     * The first ID of the resource.
      */
     replicaPairId?: pulumi.Input<string>;
     /**

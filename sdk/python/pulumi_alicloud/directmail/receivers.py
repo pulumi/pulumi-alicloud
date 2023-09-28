@@ -151,20 +151,7 @@ class Receivers(pulumi.CustomResource):
 
         For information about Direct Mail Receivers and how to use it, see [What is Direct Mail Receivers](https://www.alibabacloud.com/help/en/doc-detail/29414.htm).
 
-        > **NOTE:** Available in v1.125.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.directmail.Receivers("example",
-            receivers_alias="tf-vme8@onaliyun.com",
-            receivers_name="vme8")
-        ```
+        > **NOTE:** Available since v1.125.0.
 
         ## Import
 
@@ -191,20 +178,7 @@ class Receivers(pulumi.CustomResource):
 
         For information about Direct Mail Receivers and how to use it, see [What is Direct Mail Receivers](https://www.alibabacloud.com/help/en/doc-detail/29414.htm).
 
-        > **NOTE:** Available in v1.125.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.directmail.Receivers("example",
-            receivers_alias="tf-vme8@onaliyun.com",
-            receivers_name="vme8")
-        ```
+        > **NOTE:** Available since v1.125.0.
 
         ## Import
 

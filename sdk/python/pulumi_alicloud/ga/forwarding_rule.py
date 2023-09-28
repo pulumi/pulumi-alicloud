@@ -277,6 +277,9 @@ class ForwardingRule(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
         name = config.get("name")
         if name is None:
             name = "tf-example"
@@ -312,10 +315,6 @@ class ForwardingRule(pulumi.CustomResource):
                 from_port=60,
                 to_port=60,
             )])
-        example_ip_set = alicloud.ga.IpSet("exampleIpSet",
-            accelerate_region_id=default.regions[0].id,
-            accelerator_id=example_bandwidth_package_attachment.accelerator_id,
-            bandwidth=20)
         example_eip_address = alicloud.ecs.EipAddress("exampleEipAddress",
             bandwidth="10",
             internet_charge_type="PayByBandwidth")
@@ -375,7 +374,7 @@ class ForwardingRule(pulumi.CustomResource):
         Ga Forwarding Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/forwardingRule:ForwardingRule example <id>
+         $ pulumi import alicloud:ga/forwardingRule:ForwardingRule example <accelerator_id>:<listener_id>:<forwarding_rule_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -409,6 +408,9 @@ class ForwardingRule(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
         name = config.get("name")
         if name is None:
             name = "tf-example"
@@ -444,10 +446,6 @@ class ForwardingRule(pulumi.CustomResource):
                 from_port=60,
                 to_port=60,
             )])
-        example_ip_set = alicloud.ga.IpSet("exampleIpSet",
-            accelerate_region_id=default.regions[0].id,
-            accelerator_id=example_bandwidth_package_attachment.accelerator_id,
-            bandwidth=20)
         example_eip_address = alicloud.ecs.EipAddress("exampleEipAddress",
             bandwidth="10",
             internet_charge_type="PayByBandwidth")
@@ -507,7 +505,7 @@ class ForwardingRule(pulumi.CustomResource):
         Ga Forwarding Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/forwardingRule:ForwardingRule example <id>
+         $ pulumi import alicloud:ga/forwardingRule:ForwardingRule example <accelerator_id>:<listener_id>:<forwarding_rule_id>
         ```
 
         :param str resource_name: The name of the resource.

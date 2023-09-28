@@ -55,31 +55,47 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example-config&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example-config-name&#34;);
  *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
- *             .description(&#34;If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.&#34;)
+ *         var rule1 = new Rule(&#34;rule1&#34;, RuleArgs.builder()        
+ *             .description(name)
  *             .sourceOwner(&#34;ALIYUN&#34;)
- *             .sourceIdentifier(&#34;oss-bucket-public-read-prohibited&#34;)
+ *             .sourceIdentifier(&#34;ram-user-ak-create-date-expired-check&#34;)
  *             .riskLevel(1)
- *             .tagKeyScope(&#34;For&#34;)
- *             .tagValueScope(&#34;example&#34;)
+ *             .maximumExecutionFrequency(&#34;TwentyFour_Hours&#34;)
  *             .regionIdsScope(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
- *             .configRuleTriggerTypes(&#34;ConfigurationItemChangeNotification&#34;)
- *             .resourceTypesScopes(&#34;ACS::OSS::Bucket&#34;)
- *             .ruleName(&#34;oss-bucket-public-read-prohibited&#34;)
+ *             .configRuleTriggerTypes(&#34;ScheduledNotification&#34;)
+ *             .resourceTypesScopes(&#34;ACS::RAM::User&#34;)
+ *             .ruleName(&#34;ciscompliancecheck_ram-user-ak-create-date-expired-check&#34;)
+ *             .inputParameters(Map.of(&#34;days&#34;, &#34;90&#34;))
+ *             .build());
+ * 
+ *         var rule2 = new Rule(&#34;rule2&#34;, RuleArgs.builder()        
+ *             .description(name)
+ *             .sourceOwner(&#34;ALIYUN&#34;)
+ *             .sourceIdentifier(&#34;adb-cluster-maintain-time-check&#34;)
+ *             .riskLevel(2)
+ *             .regionIdsScope(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .configRuleTriggerTypes(&#34;ScheduledNotification&#34;)
+ *             .resourceTypesScopes(&#34;ACS::ADB::DBCluster&#34;)
+ *             .ruleName(&#34;governance-evaluation-adb-cluster-maintain-time-check&#34;)
+ *             .inputParameters(Map.of(&#34;maintainTimes&#34;, &#34;02:00-04:00,06:00-08:00,12:00-13:00&#34;))
  *             .build());
  * 
  *         var defaultCompliancePack = new CompliancePack(&#34;defaultCompliancePack&#34;, CompliancePackArgs.builder()        
  *             .compliancePackName(name)
- *             .description(name)
- *             .riskLevel(&#34;1&#34;)
- *             .configRuleIds(CompliancePackConfigRuleIdArgs.builder()
- *                 .configRuleId(defaultRule.id())
- *                 .build())
+ *             .description(&#34;CloudGovernanceCenter evaluation&#34;)
+ *             .riskLevel(&#34;2&#34;)
+ *             .configRuleIds(            
+ *                 CompliancePackConfigRuleIdArgs.builder()
+ *                     .configRuleId(rule1.id())
+ *                     .build(),
+ *                 CompliancePackConfigRuleIdArgs.builder()
+ *                     .configRuleId(rule2.id())
+ *                     .build())
  *             .build());
  * 
  *     }
@@ -98,14 +114,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cfg/compliancePack:CompliancePack")
 public class CompliancePack extends com.pulumi.resources.CustomResource {
     /**
-     * The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
+     * The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
      * 
      */
     @Export(name="compliancePackName", type=String.class, parameters={})
     private Output<String> compliancePackName;
 
     /**
-     * @return The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
+     * @return The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
      * 
      */
     public Output<String> compliancePackName() {
@@ -140,18 +156,18 @@ public class CompliancePack extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.configRuleIds);
     }
     /**
-     * A list of Config Rules. See `config_rules` below.
+     * A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
      * 
      * @deprecated
-     * Field &#39;config_rules&#39; has been deprecated from provider version 1.141.0. New field &#39;config_rule_ids&#39; instead.
+     * Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
      * 
      */
-    @Deprecated /* Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead. */
+    @Deprecated /* Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead. */
     @Export(name="configRules", type=List.class, parameters={CompliancePackConfigRule.class})
     private Output</* @Nullable */ List<CompliancePackConfigRule>> configRules;
 
     /**
-     * @return A list of Config Rules. See `config_rules` below.
+     * @return A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
      * 
      */
     public Output<Optional<List<CompliancePackConfigRule>>> configRules() {
@@ -172,28 +188,28 @@ public class CompliancePack extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
-     * The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+     * The Risk Level. Valid values:
      * 
      */
     @Export(name="riskLevel", type=Integer.class, parameters={})
     private Output<Integer> riskLevel;
 
     /**
-     * @return The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
+     * @return The Risk Level. Valid values:
      * 
      */
     public Output<Integer> riskLevel() {
         return this.riskLevel;
     }
     /**
-     * The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+     * The status of the Compliance Pack.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The status of the resource. The valid values: `CREATING`, `ACTIVE`.
+     * @return The status of the Compliance Pack.
      * 
      */
     public Output<String> status() {

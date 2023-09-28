@@ -20,9 +20,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Max Compute Project resource.
  * 
- * For information about Max Compute Project and how to use it, see [What is Project](https://help.aliyun.com/document_detail/473237.html).
+ * For information about Max Compute Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/maxcompute).
  * 
- * &gt; **NOTE:** Available in v1.77.0+.
+ * &gt; **NOTE:** Available since v1.77.0.
  * 
  * ## Example Usage
  * 
@@ -48,11 +48,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
  *         var default_ = new Project(&#34;default&#34;, ProjectArgs.builder()        
- *             .comment(&#34;test_for_terraform&#34;)
  *             .defaultQuota(&#34;默认后付费Quota&#34;)
- *             .productType(&#34;PAYASYOUGO&#34;)
- *             .projectName(&#34;test_create_spec_one&#34;)
+ *             .projectName(name)
+ *             .comment(name)
+ *             .productType(&#34;PayAsYouGo&#34;)
  *             .build());
  * 
  *     }
@@ -91,14 +93,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.defaultQuota);
     }
     /**
-     * IP whitelistSee the following `Block IpWhiteList`.
+     * IP whitelist. See `ip_white_list` below.
      * 
      */
     @Export(name="ipWhiteList", type=ProjectIpWhiteList.class, parameters={})
     private Output</* @Nullable */ ProjectIpWhiteList> ipWhiteList;
 
     /**
-     * @return IP whitelistSee the following `Block IpWhiteList`.
+     * @return IP whitelist. See `ip_white_list` below.
      * 
      */
     public Output<Optional<ProjectIpWhiteList>> ipWhiteList() {
@@ -147,28 +149,28 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.projectName;
     }
     /**
-     * Project base attributesSee the following `Block Properties`.
+     * Project base attributes. See `properties` below.
      * 
      */
     @Export(name="properties", type=ProjectProperties.class, parameters={})
     private Output<ProjectProperties> properties;
 
     /**
-     * @return Project base attributesSee the following `Block Properties`.
+     * @return Project base attributes. See `properties` below.
      * 
      */
     public Output<ProjectProperties> properties() {
         return this.properties;
     }
     /**
-     * Security-related attributesSee the following `Block SecurityProperties`.
+     * Security-related attributes. See `security_properties` below.
      * 
      */
     @Export(name="securityProperties", type=ProjectSecurityProperties.class, parameters={})
     private Output<ProjectSecurityProperties> securityProperties;
 
     /**
-     * @return Security-related attributesSee the following `Block SecurityProperties`.
+     * @return Security-related attributes. See `security_properties` below.
      * 
      */
     public Output<ProjectSecurityProperties> securityProperties() {

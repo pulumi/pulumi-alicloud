@@ -229,14 +229,14 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable &#34;Gzip Compression&#34;. If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+     * Whether to enable &#34;Gzip Compression&#34;. If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
      * 
      */
     @Import(name="gzip")
     private @Nullable Output<Boolean> gzip;
 
     /**
-     * @return Whether to enable &#34;Gzip Compression&#34;. If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+     * @return Whether to enable &#34;Gzip Compression&#34;. If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
      * 
      */
     public Optional<Output<Boolean>> gzip() {
@@ -410,57 +410,38 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @deprecated
-     * Field &#39;instance_port&#39; has been deprecated, and using &#39;backend_port&#39; to replace.
+     * Field &#39;lb_port&#39; has been removed since 1.211.0.
      * 
      */
-    @Deprecated /* Field 'instance_port' has been deprecated, and using 'backend_port' to replace. */
-    @Import(name="instancePort")
-    private @Nullable Output<Integer> instancePort;
-
-    /**
-     * @deprecated
-     * Field &#39;instance_port&#39; has been deprecated, and using &#39;backend_port&#39; to replace.
-     * 
-     */
-    @Deprecated /* Field 'instance_port' has been deprecated, and using 'backend_port' to replace. */
-    public Optional<Output<Integer>> instancePort() {
-        return Optional.ofNullable(this.instancePort);
-    }
-
-    /**
-     * @deprecated
-     * Field &#39;lb_port&#39; has been deprecated, and using &#39;frontend_port&#39; to replace.
-     * 
-     */
-    @Deprecated /* Field 'lb_port' has been deprecated, and using 'frontend_port' to replace. */
+    @Deprecated /* Field 'lb_port' has been removed since 1.211.0. */
     @Import(name="lbPort")
     private @Nullable Output<Integer> lbPort;
 
     /**
      * @deprecated
-     * Field &#39;lb_port&#39; has been deprecated, and using &#39;frontend_port&#39; to replace.
+     * Field &#39;lb_port&#39; has been removed since 1.211.0.
      * 
      */
-    @Deprecated /* Field 'lb_port' has been deprecated, and using 'frontend_port' to replace. */
+    @Deprecated /* Field 'lb_port' has been removed since 1.211.0. */
     public Optional<Output<Integer>> lbPort() {
         return Optional.ofNullable(this.lbPort);
     }
 
     /**
      * @deprecated
-     * Field &#39;lb_protocol&#39; has been deprecated, and using &#39;protocol&#39; to replace.
+     * Field &#39;lb_protocol&#39; has been removed since 1.211.0.
      * 
      */
-    @Deprecated /* Field 'lb_protocol' has been deprecated, and using 'protocol' to replace. */
+    @Deprecated /* Field 'lb_protocol' has been removed since 1.211.0. */
     @Import(name="lbProtocol")
     private @Nullable Output<String> lbProtocol;
 
     /**
      * @deprecated
-     * Field &#39;lb_protocol&#39; has been deprecated, and using &#39;protocol&#39; to replace.
+     * Field &#39;lb_protocol&#39; has been removed since 1.211.0.
      * 
      */
-    @Deprecated /* Field 'lb_protocol' has been deprecated, and using 'protocol' to replace. */
+    @Deprecated /* Field 'lb_protocol' has been removed since 1.211.0. */
     public Optional<Output<String>> lbProtocol() {
         return Optional.ofNullable(this.lbProtocol);
     }
@@ -709,14 +690,14 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34; (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
+     * Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34; (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
      * 
      */
     @Import(name="xForwardedFor")
     private @Nullable Output<ListenerXForwardedForArgs> xForwardedFor;
 
     /**
-     * @return Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34; (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
+     * @return Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34; (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
      * 
      */
     public Optional<Output<ListenerXForwardedForArgs>> xForwardedFor() {
@@ -752,7 +733,6 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         this.healthCheckUri = $.healthCheckUri;
         this.healthyThreshold = $.healthyThreshold;
         this.idleTimeout = $.idleTimeout;
-        this.instancePort = $.instancePort;
         this.lbPort = $.lbPort;
         this.lbProtocol = $.lbProtocol;
         this.listenerForward = $.listenerForward;
@@ -1086,7 +1066,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gzip Whether to enable &#34;Gzip Compression&#34;. If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+         * @param gzip Whether to enable &#34;Gzip Compression&#34;. If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
          * 
          * @return builder
          * 
@@ -1097,7 +1077,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gzip Whether to enable &#34;Gzip Compression&#34;. If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+         * @param gzip Whether to enable &#34;Gzip Compression&#34;. If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
          * 
          * @return builder
          * 
@@ -1341,35 +1321,10 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;instance_port&#39; has been deprecated, and using &#39;backend_port&#39; to replace.
+         * Field &#39;lb_port&#39; has been removed since 1.211.0.
          * 
          */
-        @Deprecated /* Field 'instance_port' has been deprecated, and using 'backend_port' to replace. */
-        public Builder instancePort(@Nullable Output<Integer> instancePort) {
-            $.instancePort = instancePort;
-            return this;
-        }
-
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;instance_port&#39; has been deprecated, and using &#39;backend_port&#39; to replace.
-         * 
-         */
-        @Deprecated /* Field 'instance_port' has been deprecated, and using 'backend_port' to replace. */
-        public Builder instancePort(Integer instancePort) {
-            return instancePort(Output.of(instancePort));
-        }
-
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;lb_port&#39; has been deprecated, and using &#39;frontend_port&#39; to replace.
-         * 
-         */
-        @Deprecated /* Field 'lb_port' has been deprecated, and using 'frontend_port' to replace. */
+        @Deprecated /* Field 'lb_port' has been removed since 1.211.0. */
         public Builder lbPort(@Nullable Output<Integer> lbPort) {
             $.lbPort = lbPort;
             return this;
@@ -1379,10 +1334,10 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;lb_port&#39; has been deprecated, and using &#39;frontend_port&#39; to replace.
+         * Field &#39;lb_port&#39; has been removed since 1.211.0.
          * 
          */
-        @Deprecated /* Field 'lb_port' has been deprecated, and using 'frontend_port' to replace. */
+        @Deprecated /* Field 'lb_port' has been removed since 1.211.0. */
         public Builder lbPort(Integer lbPort) {
             return lbPort(Output.of(lbPort));
         }
@@ -1391,10 +1346,10 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;lb_protocol&#39; has been deprecated, and using &#39;protocol&#39; to replace.
+         * Field &#39;lb_protocol&#39; has been removed since 1.211.0.
          * 
          */
-        @Deprecated /* Field 'lb_protocol' has been deprecated, and using 'protocol' to replace. */
+        @Deprecated /* Field 'lb_protocol' has been removed since 1.211.0. */
         public Builder lbProtocol(@Nullable Output<String> lbProtocol) {
             $.lbProtocol = lbProtocol;
             return this;
@@ -1404,10 +1359,10 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;lb_protocol&#39; has been deprecated, and using &#39;protocol&#39; to replace.
+         * Field &#39;lb_protocol&#39; has been removed since 1.211.0.
          * 
          */
-        @Deprecated /* Field 'lb_protocol' has been deprecated, and using 'protocol' to replace. */
+        @Deprecated /* Field 'lb_protocol' has been removed since 1.211.0. */
         public Builder lbProtocol(String lbProtocol) {
             return lbProtocol(Output.of(lbProtocol));
         }
@@ -1746,7 +1701,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param xForwardedFor Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34; (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
+         * @param xForwardedFor Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34; (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
          * 
          * @return builder
          * 
@@ -1757,7 +1712,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param xForwardedFor Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34; (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
+         * @param xForwardedFor Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34; (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
          * 
          * @return builder
          * 

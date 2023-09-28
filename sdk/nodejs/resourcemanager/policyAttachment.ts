@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
  * Provides a Resource Manager Policy Attachment resource to attaches a policy to an object. After you attach a policy to an object, the object has the operation permissions on the current resource group or the resources under the current account.
  * For information about Resource Manager Policy Attachment and how to use it, see [How to authorize and manage resource groups](https://www.alibabacloud.com/help/en/doc-detail/94490.htm).
  *
- * > **NOTE:** Available in v1.93.0+.
+ * > **NOTE:** Available since v1.93.0.
  *
  * ## Import
  *
@@ -51,7 +51,7 @@ export class PolicyAttachment extends pulumi.CustomResource {
      */
     public readonly policyName!: pulumi.Output<string>;
     /**
-     * - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+     * The type of the policy. Valid values: `Custom`, `System`.
      */
     public readonly policyType!: pulumi.Output<string>;
     /**
@@ -122,7 +122,7 @@ export interface PolicyAttachmentState {
      */
     policyName?: pulumi.Input<string>;
     /**
-     * - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+     * The type of the policy. Valid values: `Custom`, `System`.
      */
     policyType?: pulumi.Input<string>;
     /**
@@ -148,7 +148,7 @@ export interface PolicyAttachmentArgs {
      */
     policyName: pulumi.Input<string>;
     /**
-     * - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+     * The type of the policy. Valid values: `Custom`, `System`.
      */
     policyType: pulumi.Input<string>;
     /**

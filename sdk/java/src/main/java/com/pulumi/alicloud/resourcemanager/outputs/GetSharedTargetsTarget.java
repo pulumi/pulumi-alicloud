@@ -15,17 +15,17 @@ public final class GetSharedTargetsTarget {
      */
     private String id;
     /**
-     * @return The resource shared ID of resource manager.
+     * @return The resource share ID of resource manager.
      * 
      */
     private String resourceShareId;
     /**
-     * @return The status of shared target.
+     * @return The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
      * 
      */
     private String status;
     /**
-     * @return The member account ID in resource directory.
+     * @return The ID of the Shared Target.
      * 
      */
     private String targetId;
@@ -39,21 +39,21 @@ public final class GetSharedTargetsTarget {
         return this.id;
     }
     /**
-     * @return The resource shared ID of resource manager.
+     * @return The resource share ID of resource manager.
      * 
      */
     public String resourceShareId() {
         return this.resourceShareId;
     }
     /**
-     * @return The status of shared target.
+     * @return The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return The member account ID in resource directory.
+     * @return The ID of the Shared Target.
      * 
      */
     public String targetId() {

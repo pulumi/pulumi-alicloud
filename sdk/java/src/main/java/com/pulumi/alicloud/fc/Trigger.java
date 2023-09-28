@@ -146,7 +146,7 @@ import javax.annotation.Nullable;
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
  *             .memorySize(&#34;512&#34;)
- *             .runtime(&#34;python2.7&#34;)
+ *             .runtime(&#34;python3.10&#34;)
  *             .handler(&#34;hello.handler&#34;)
  *             .build());
  * 
@@ -156,16 +156,15 @@ import javax.annotation.Nullable;
  *             .role(defaultRole.arn())
  *             .sourceArn(defaultProject.name().applyValue(name -&gt; String.format(&#34;acs:log:%s:%s:project/%s&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()),name)))
  *             .type(&#34;log&#34;)
- *             .config(Output.tuple(defaultProject.name(), sourceStore.name(), defaultProject.name(), defaultStore.name()).applyValue(values -&gt; {
- *                 var defaultProjectName = values.t1;
- *                 var sourceStoreName = values.t2;
- *                 var defaultProjectName1 = values.t3;
- *                 var defaultStoreName = values.t4;
+ *             .config(Output.tuple(sourceStore.name(), defaultProject.name(), defaultStore.name()).applyValue(values -&gt; {
+ *                 var sourceStoreName = values.t1;
+ *                 var defaultProjectName = values.t2;
+ *                 var defaultStoreName = values.t3;
  *                 return &#34;&#34;&#34;
  *     {
  *         &#34;sourceConfig&#34;: {
- *             &#34;project&#34;: &#34;%s&#34;,
- *             &#34;logstore&#34;: &#34;%s&#34;
+ *             &#34;logstore&#34;: &#34;%s&#34;,
+ *             &#34;startTime&#34;: null
  *         },
  *         &#34;jobConfig&#34;: {
  *             &#34;maxRetryTime&#34;: 3,
@@ -179,10 +178,11 @@ import javax.annotation.Nullable;
  *              &#34;project&#34;: &#34;%s&#34;,
  *             &#34;logstore&#34;: &#34;%s&#34;
  *         },
+ *         &#34;targetConfig&#34;: null,
  *         &#34;enable&#34;: true
  *     }
  *   
- * &#34;, defaultProjectName,sourceStoreName,defaultProjectName1,defaultStoreName);
+ * &#34;, sourceStoreName,defaultProjectName,defaultStoreName);
  *             }))
  *             .build());
  * 
@@ -295,7 +295,7 @@ import javax.annotation.Nullable;
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
  *             .memorySize(&#34;512&#34;)
- *             .runtime(&#34;python2.7&#34;)
+ *             .runtime(&#34;python3.10&#34;)
  *             .handler(&#34;hello.handler&#34;)
  *             .build());
  * 
@@ -460,7 +460,7 @@ import javax.annotation.Nullable;
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
  *             .memorySize(&#34;512&#34;)
- *             .runtime(&#34;python2.7&#34;)
+ *             .runtime(&#34;python3.10&#34;)
  *             .handler(&#34;hello.handler&#34;)
  *             .build());
  * 
@@ -574,7 +574,7 @@ import javax.annotation.Nullable;
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
  *             .memorySize(&#34;512&#34;)
- *             .runtime(&#34;python2.7&#34;)
+ *             .runtime(&#34;python3.10&#34;)
  *             .handler(&#34;hello.handler&#34;)
  *             .build());
  * 
@@ -586,7 +586,14 @@ import javax.annotation.Nullable;
  *     {
  *         &#34;triggerEnable&#34;: false,
  *         &#34;asyncInvocationType&#34;: false,
- *         &#34;eventRuleFilterPattern&#34;: &#34;{\&#34;source\&#34;:[\&#34;acs.oss\&#34;],\&#34;type\&#34;:[\&#34;oss:BucketCreated:PutBucket\&#34;]}&#34;,
+ *         &#34;eventRuleFilterPattern&#34;: {
+ *           &#34;source&#34;:[
+ *             &#34;acs.oss&#34;
+ *             ],
+ *             &#34;type&#34;:[
+ *               &#34;oss:BucketCreated:PutBucket&#34;
+ *             ]
+ *         },
  *         &#34;eventSourceConfig&#34;: {
  *             &#34;eventSourceType&#34;: &#34;Default&#34;
  *         }

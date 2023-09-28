@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.ServiceMesh
     /// <summary>
     /// Provides a Service Mesh Service Mesh resource.
     /// 
-    /// For information about Service Mesh Service Mesh and how to use it, see [What is Service Mesh](https://help.aliyun.com/document_detail/171559.html).
+    /// For information about Service Mesh Service Mesh and how to use it, see [What is Service Mesh](https://www.alibabacloud.com/help/en/alibaba-cloud-service-mesh/latest/api-servicemesh-2020-01-11-createservicemesh).
     /// 
-    /// &gt; **NOTE:** Available in v1.138.0+.
+    /// &gt; **NOTE:** Available since v1.138.0.
     /// 
     /// ## Import
     /// 
@@ -34,19 +34,20 @@ namespace Pulumi.AliCloud.ServiceMesh
         public Output<ImmutableArray<string>> ClusterIds { get; private set; } = null!;
 
         /// <summary>
-        /// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+        /// The service mesh instance specification. 
+        /// Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
         /// </summary>
         [Output("clusterSpec")]
         public Output<string> ClusterSpec { get; private set; } = null!;
 
         /// <summary>
-        /// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+        /// The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
         /// </summary>
         [Output("edition")]
         public Output<string> Edition { get; private set; } = null!;
 
         /// <summary>
-        /// The configurations of additional features for the ASM instance. See the following `Block extra_configuration`.
+        /// The configurations of additional features for the ASM instance. See `extra_configuration` below.
         /// </summary>
         [Output("extraConfiguration")]
         public Output<Outputs.ServiceMeshExtraConfiguration> ExtraConfiguration { get; private set; } = null!;
@@ -58,19 +59,19 @@ namespace Pulumi.AliCloud.ServiceMesh
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of the Load Balancer. See the following `Block load_balancer`.
+        /// The configuration of the Load Balancer. See `load_balancer` below.
         /// </summary>
         [Output("loadBalancer")]
         public Output<Outputs.ServiceMeshLoadBalancer> LoadBalancer { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of the Service grid. See the following `Block mesh_config`.
+        /// The configuration of the Service grid. See `mesh_config` below.
         /// </summary>
         [Output("meshConfig")]
         public Output<Outputs.ServiceMeshMeshConfig> MeshConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The network configuration of the Service grid. See the following `Block network`.
+        /// The network configuration of the Service grid. See `network` below.
         /// </summary>
         [Output("network")]
         public Output<Outputs.ServiceMeshNetwork> Network { get; private set; } = null!;
@@ -152,19 +153,20 @@ namespace Pulumi.AliCloud.ServiceMesh
         }
 
         /// <summary>
-        /// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+        /// The service mesh instance specification. 
+        /// Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
         /// </summary>
         [Input("clusterSpec")]
         public Input<string>? ClusterSpec { get; set; }
 
         /// <summary>
-        /// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+        /// The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
         /// </summary>
         [Input("edition")]
         public Input<string>? Edition { get; set; }
 
         /// <summary>
-        /// The configurations of additional features for the ASM instance. See the following `Block extra_configuration`.
+        /// The configurations of additional features for the ASM instance. See `extra_configuration` below.
         /// </summary>
         [Input("extraConfiguration")]
         public Input<Inputs.ServiceMeshExtraConfigurationArgs>? ExtraConfiguration { get; set; }
@@ -176,19 +178,19 @@ namespace Pulumi.AliCloud.ServiceMesh
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// The configuration of the Load Balancer. See the following `Block load_balancer`.
+        /// The configuration of the Load Balancer. See `load_balancer` below.
         /// </summary>
         [Input("loadBalancer")]
         public Input<Inputs.ServiceMeshLoadBalancerArgs>? LoadBalancer { get; set; }
 
         /// <summary>
-        /// The configuration of the Service grid. See the following `Block mesh_config`.
+        /// The configuration of the Service grid. See `mesh_config` below.
         /// </summary>
         [Input("meshConfig")]
         public Input<Inputs.ServiceMeshMeshConfigArgs>? MeshConfig { get; set; }
 
         /// <summary>
-        /// The network configuration of the Service grid. See the following `Block network`.
+        /// The network configuration of the Service grid. See `network` below.
         /// </summary>
         [Input("network", required: true)]
         public Input<Inputs.ServiceMeshNetworkArgs> Network { get; set; } = null!;
@@ -226,19 +228,20 @@ namespace Pulumi.AliCloud.ServiceMesh
         }
 
         /// <summary>
-        /// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+        /// The service mesh instance specification. 
+        /// Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
         /// </summary>
         [Input("clusterSpec")]
         public Input<string>? ClusterSpec { get; set; }
 
         /// <summary>
-        /// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+        /// The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
         /// </summary>
         [Input("edition")]
         public Input<string>? Edition { get; set; }
 
         /// <summary>
-        /// The configurations of additional features for the ASM instance. See the following `Block extra_configuration`.
+        /// The configurations of additional features for the ASM instance. See `extra_configuration` below.
         /// </summary>
         [Input("extraConfiguration")]
         public Input<Inputs.ServiceMeshExtraConfigurationGetArgs>? ExtraConfiguration { get; set; }
@@ -250,19 +253,19 @@ namespace Pulumi.AliCloud.ServiceMesh
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// The configuration of the Load Balancer. See the following `Block load_balancer`.
+        /// The configuration of the Load Balancer. See `load_balancer` below.
         /// </summary>
         [Input("loadBalancer")]
         public Input<Inputs.ServiceMeshLoadBalancerGetArgs>? LoadBalancer { get; set; }
 
         /// <summary>
-        /// The configuration of the Service grid. See the following `Block mesh_config`.
+        /// The configuration of the Service grid. See `mesh_config` below.
         /// </summary>
         [Input("meshConfig")]
         public Input<Inputs.ServiceMeshMeshConfigGetArgs>? MeshConfig { get; set; }
 
         /// <summary>
-        /// The network configuration of the Service grid. See the following `Block network`.
+        /// The network configuration of the Service grid. See `network` below.
         /// </summary>
         [Input("network")]
         public Input<Inputs.ServiceMeshNetworkGetArgs>? Network { get; set; }

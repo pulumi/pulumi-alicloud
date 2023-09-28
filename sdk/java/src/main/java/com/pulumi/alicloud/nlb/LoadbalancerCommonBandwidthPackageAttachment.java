@@ -29,6 +29,21 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.nlb.NlbFunctions;
+ * import com.pulumi.alicloud.nlb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.nlb.LoadBalancer;
+ * import com.pulumi.alicloud.nlb.LoadBalancerArgs;
+ * import com.pulumi.alicloud.nlb.inputs.LoadBalancerZoneMappingArgs;
+ * import com.pulumi.alicloud.vpc.CommonBandwithPackage;
+ * import com.pulumi.alicloud.vpc.CommonBandwithPackageArgs;
  * import com.pulumi.alicloud.nlb.LoadbalancerCommonBandwidthPackageAttachment;
  * import com.pulumi.alicloud.nlb.LoadbalancerCommonBandwidthPackageAttachmentArgs;
  * import java.util.List;
@@ -45,10 +60,66 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new LoadbalancerCommonBandwidthPackageAttachment(&#34;default&#34;, LoadbalancerCommonBandwidthPackageAttachmentArgs.builder()        
- *             .bandwidthPackageId(&#34;cbwp-2zexv44uov1m4b7xnh60j&#34;)
- *             .loadBalancerId(&#34;nlb-f6gdwdsnt02uzx002l&#34;)
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ * 
+ *         final var defaultZones = NlbFunctions.getZones();
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var default1 = new Switch(&#34;default1&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;10.4.1.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].id()))
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultLoadBalancer = new LoadBalancer(&#34;defaultLoadBalancer&#34;, LoadBalancerArgs.builder()        
+ *             .loadBalancerName(name)
+ *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .loadBalancerType(&#34;Network&#34;)
+ *             .addressType(&#34;Internet&#34;)
+ *             .addressIpVersion(&#34;Ipv4&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *             ))
+ *             .zoneMappings(            
+ *                 LoadBalancerZoneMappingArgs.builder()
+ *                     .vswitchId(defaultSwitch.id())
+ *                     .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *                     .build(),
+ *                 LoadBalancerZoneMappingArgs.builder()
+ *                     .vswitchId(default1.id())
+ *                     .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].id()))
+ *                     .build())
+ *             .build());
+ * 
+ *         var defaultCommonBandwithPackage = new CommonBandwithPackage(&#34;defaultCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
+ *             .bandwidth(2)
+ *             .internetChargeType(&#34;PayByBandwidth&#34;)
+ *             .bandwidthPackageName(name)
+ *             .description(name)
+ *             .build());
+ * 
+ *         var defaultLoadbalancerCommonBandwidthPackageAttachment = new LoadbalancerCommonBandwidthPackageAttachment(&#34;defaultLoadbalancerCommonBandwidthPackageAttachment&#34;, LoadbalancerCommonBandwidthPackageAttachmentArgs.builder()        
+ *             .bandwidthPackageId(defaultCommonBandwithPackage.id())
+ *             .loadBalancerId(defaultLoadBalancer.id())
  *             .build());
  * 
  *     }

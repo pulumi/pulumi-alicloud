@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a VPC Route Table Attachment resource. Routing table associated resource type.
+ *
+ * For information about VPC Route Table Attachment and how to use it, see [What is Route Table Attachment](https://www.alibabacloud.com/help/doc-detail/174112.htm).
+ *
+ * > **NOTE:** Available since v1.194.0.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -14,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "route-table-attachment-example-name";
+ * const name = config.get("name") || "terraform-example";
  * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {cidrBlock: "172.16.0.0/12"});
  * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
@@ -37,10 +43,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * The route table attachment can be imported using the id, e.g.
+ * VPC Route Table Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment foo vtb-abc123456:vsw-abc123456
+ *  $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment example <route_table_id>:<vswitch_id>
  * ```
  */
 export class RouteTableAttachment extends pulumi.CustomResource {
@@ -72,11 +78,15 @@ export class RouteTableAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * The routeTableId of the route table attachment, the field can't be changed.
+     * The ID of the route table to be bound to the switch.
      */
     public readonly routeTableId!: pulumi.Output<string>;
     /**
-     * The vswitchId of the route table attachment, the field can't be changed.
+     * The status of the resource.
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The ID of the switch to bind the route table.
      */
     public readonly vswitchId!: pulumi.Output<string>;
 
@@ -94,6 +104,7 @@ export class RouteTableAttachment extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RouteTableAttachmentState | undefined;
             resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as RouteTableAttachmentArgs | undefined;
@@ -105,6 +116,7 @@ export class RouteTableAttachment extends pulumi.CustomResource {
             }
             resourceInputs["routeTableId"] = args ? args.routeTableId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RouteTableAttachment.__pulumiType, name, resourceInputs, opts);
@@ -116,11 +128,15 @@ export class RouteTableAttachment extends pulumi.CustomResource {
  */
 export interface RouteTableAttachmentState {
     /**
-     * The routeTableId of the route table attachment, the field can't be changed.
+     * The ID of the route table to be bound to the switch.
      */
     routeTableId?: pulumi.Input<string>;
     /**
-     * The vswitchId of the route table attachment, the field can't be changed.
+     * The status of the resource.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The ID of the switch to bind the route table.
      */
     vswitchId?: pulumi.Input<string>;
 }
@@ -130,11 +146,11 @@ export interface RouteTableAttachmentState {
  */
 export interface RouteTableAttachmentArgs {
     /**
-     * The routeTableId of the route table attachment, the field can't be changed.
+     * The ID of the route table to be bound to the switch.
      */
     routeTableId: pulumi.Input<string>;
     /**
-     * The vswitchId of the route table attachment, the field can't be changed.
+     * The ID of the switch to bind the route table.
      */
     vswitchId: pulumi.Input<string>;
 }

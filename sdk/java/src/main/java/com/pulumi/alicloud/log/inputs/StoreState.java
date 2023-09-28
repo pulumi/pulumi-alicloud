@@ -66,14 +66,14 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
+     * Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
      * 
      */
     @Import(name="encryptConf")
     private @Nullable Output<StoreEncryptConfArgs> encryptConf;
 
     /**
-     * @return Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
+     * @return Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
      * 
      */
     public Optional<Output<StoreEncryptConfArgs>> encryptConf() {
@@ -111,14 +111,14 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can&#39;t be changed after created.
+     * The mode of storage. Default to `standard`, must be `standard` or `query`.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can&#39;t be changed after created.
+     * @return The mode of storage. Default to `standard`, must be `standard` or `query`.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -315,7 +315,7 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptConf Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
+         * @param encryptConf Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptConf Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
+         * @param encryptConf Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mode The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can&#39;t be changed after created.
+         * @param mode The mode of storage. Default to `standard`, must be `standard` or `query`.
          * 
          * @return builder
          * 
@@ -389,7 +389,7 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mode The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can&#39;t be changed after created.
+         * @param mode The mode of storage. Default to `standard`, must be `standard` or `query`.
          * 
          * @return builder
          * 

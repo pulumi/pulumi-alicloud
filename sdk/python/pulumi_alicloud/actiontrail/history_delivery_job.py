@@ -84,9 +84,9 @@ class HistoryDeliveryJob(pulumi.CustomResource):
         """
         Provides a Actiontrail History Delivery Job resource.
 
-        For information about Actiontrail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/doc-detail/199999.htm).
+        For information about Actiontrail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createdeliveryhistoryjob).
 
-        > **NOTE:** Available in v1.139.0+.
+        > **NOTE:** Available since v1.139.0.
 
         > **NOTE:** You are authorized to use the historical event delivery task feature. To use this feature, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=a2c63.p38356.0.0.e29f552bb6odNZ#/ticket/createIndex) or ask the sales manager to add you to the whitelist.
 
@@ -102,11 +102,15 @@ class HistoryDeliveryJob(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
         example_regions = alicloud.get_regions(current=True)
         example_account = alicloud.get_account()
-        example_project = alicloud.log.Project("exampleProject", description="tf actiontrail test")
+        example_project = alicloud.log.Project("exampleProject", description="tf actiontrail example")
         example_trail = alicloud.actiontrail.Trail("exampleTrail",
-            trail_name="example_value",
+            trail_name=name,
             sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example_regions.regions[0].id}:{example_account.id}:project/{name}"))
         example_history_delivery_job = alicloud.actiontrail.HistoryDeliveryJob("exampleHistoryDeliveryJob", trail_name=example_trail.id)
         ```
@@ -132,9 +136,9 @@ class HistoryDeliveryJob(pulumi.CustomResource):
         """
         Provides a Actiontrail History Delivery Job resource.
 
-        For information about Actiontrail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/doc-detail/199999.htm).
+        For information about Actiontrail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createdeliveryhistoryjob).
 
-        > **NOTE:** Available in v1.139.0+.
+        > **NOTE:** Available since v1.139.0.
 
         > **NOTE:** You are authorized to use the historical event delivery task feature. To use this feature, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=a2c63.p38356.0.0.e29f552bb6odNZ#/ticket/createIndex) or ask the sales manager to add you to the whitelist.
 
@@ -150,11 +154,15 @@ class HistoryDeliveryJob(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
         example_regions = alicloud.get_regions(current=True)
         example_account = alicloud.get_account()
-        example_project = alicloud.log.Project("exampleProject", description="tf actiontrail test")
+        example_project = alicloud.log.Project("exampleProject", description="tf actiontrail example")
         example_trail = alicloud.actiontrail.Trail("exampleTrail",
-            trail_name="example_value",
+            trail_name=name,
             sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example_regions.regions[0].id}:{example_account.id}:project/{name}"))
         example_history_delivery_job = alicloud.actiontrail.HistoryDeliveryJob("exampleHistoryDeliveryJob", trail_name=example_trail.id)
         ```

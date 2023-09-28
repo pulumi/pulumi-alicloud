@@ -275,6 +275,7 @@ func (o BackendServerBackendServerArrayOutput) Index(i pulumi.IntInput) BackendS
 }
 
 type ListenerXForwardedFor struct {
+	// Whether to retrieve the client ip. It is read-only attribute.
 	RetriveClientIp *bool `pulumi:"retriveClientIp"`
 	// Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
 	RetriveSlbId *bool `pulumi:"retriveSlbId"`
@@ -296,6 +297,7 @@ type ListenerXForwardedForInput interface {
 }
 
 type ListenerXForwardedForArgs struct {
+	// Whether to retrieve the client ip. It is read-only attribute.
 	RetriveClientIp pulumi.BoolPtrInput `pulumi:"retriveClientIp"`
 	// Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
 	RetriveSlbId pulumi.BoolPtrInput `pulumi:"retriveSlbId"`
@@ -400,6 +402,7 @@ func (o ListenerXForwardedForOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
+// Whether to retrieve the client ip. It is read-only attribute.
 func (o ListenerXForwardedForOutput) RetriveClientIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedFor) *bool { return v.RetriveClientIp }).(pulumi.BoolPtrOutput)
 }
@@ -449,6 +452,7 @@ func (o ListenerXForwardedForPtrOutput) Elem() ListenerXForwardedForOutput {
 	}).(ListenerXForwardedForOutput)
 }
 
+// Whether to retrieve the client ip. It is read-only attribute.
 func (o ListenerXForwardedForPtrOutput) RetriveClientIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerXForwardedFor) *bool {
 		if v == nil {

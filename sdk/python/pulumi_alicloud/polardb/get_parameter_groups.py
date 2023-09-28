@@ -51,16 +51,25 @@ class GetParameterGroupsResult:
     @property
     @pulumi.getter(name="dbType")
     def db_type(self) -> Optional[str]:
+        """
+        The type of the database engine.
+        """
         return pulumi.get(self, "db_type")
 
     @property
     @pulumi.getter(name="dbVersion")
     def db_version(self) -> Optional[str]:
+        """
+        The version number of the database engine.
+        """
         return pulumi.get(self, "db_version")
 
     @property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetParameterGroupsGroupResult']:
+        """
+        A list of PolarDB Parameter Groups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "groups")
 
     @property
@@ -84,6 +93,9 @@ class GetParameterGroupsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Parameter Group names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -117,7 +129,7 @@ def get_parameter_groups(db_type: Optional[str] = None,
     """
     This data source provides the PolarDB Parameter Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.183.0+.
+    > **NOTE:** Available since v1.183.0+.
 
     ## Example Usage
 
@@ -127,15 +139,17 @@ def get_parameter_groups(db_type: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.polardb.get_parameter_groups(ids=["example_id"])
+    default = alicloud.polardb.get_parameter_groups(db_type="MySQL",
+        db_version="8.0")
+    ids = alicloud.polardb.get_parameter_groups(ids=[default.groups[0].id])
     pulumi.export("polardbParameterGroupId1", ids.groups[0].id)
-    name_regex = alicloud.polardb.get_parameter_groups(name_regex="example_name")
+    name_regex = alicloud.polardb.get_parameter_groups(name_regex=default.groups[0].parameter_group_name)
     pulumi.export("polardbParameterGroupId2", name_regex.groups[0].id)
     ```
 
 
-    :param str db_type: The type of the database engine.
-    :param str db_version: The version number of the database engine.
+    :param str db_type: The type of the database engine. Only `MySQL` is supported.
+    :param str db_version: The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
     :param Sequence[str] ids: A list of Parameter Group IDs.
     :param str name_regex: A regex string to filter results by Parameter Group name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -170,7 +184,7 @@ def get_parameter_groups_output(db_type: Optional[pulumi.Input[Optional[str]]] =
     """
     This data source provides the PolarDB Parameter Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.183.0+.
+    > **NOTE:** Available since v1.183.0+.
 
     ## Example Usage
 
@@ -180,15 +194,17 @@ def get_parameter_groups_output(db_type: Optional[pulumi.Input[Optional[str]]] =
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.polardb.get_parameter_groups(ids=["example_id"])
+    default = alicloud.polardb.get_parameter_groups(db_type="MySQL",
+        db_version="8.0")
+    ids = alicloud.polardb.get_parameter_groups(ids=[default.groups[0].id])
     pulumi.export("polardbParameterGroupId1", ids.groups[0].id)
-    name_regex = alicloud.polardb.get_parameter_groups(name_regex="example_name")
+    name_regex = alicloud.polardb.get_parameter_groups(name_regex=default.groups[0].parameter_group_name)
     pulumi.export("polardbParameterGroupId2", name_regex.groups[0].id)
     ```
 
 
-    :param str db_type: The type of the database engine.
-    :param str db_version: The version number of the database engine.
+    :param str db_type: The type of the database engine. Only `MySQL` is supported.
+    :param str db_version: The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
     :param Sequence[str] ids: A list of Parameter Group IDs.
     :param str name_regex: A regex string to filter results by Parameter Group name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
